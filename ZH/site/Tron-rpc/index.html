@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>TRON RPC接口 - TRON Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "TRON RPC\u63a5\u53e3";
+    var mkdocs_page_input_path = "Tron-rpc.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TRON Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">导航页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-overview/">TRON概览</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-http/">TRON Http接口</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">TRON RPC接口</a>
+    <ul class="subnav">
+            
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Official_Public_Node/">TRON 官方公共节点</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-VM/">TRON 虚拟机</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../SolidityNode&FullNode_Deployment/">TRON 部署</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TRON Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>TRON RPC接口</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><strong>For the specific definition of API, please refer to the following link:</strong> <br />
+<a href="https://github.com/tronprotocol/java-tron/blob/develop/src/main/protos/api/api.proto">https://github.com/tronprotocol/java-tron/blob/develop/src/main/protos/api/api.proto</a></p>
+<p><strong>1.&nbsp;Get account information</strong></p>
+<p>Interface statement:<br />
+rpc GetAccount (Account) returns (Account) {} <br />
+Nodes:<br />
+Fullnode and SolidityNode  </p>
+<p><strong>2.&nbsp;TRX transfer</strong></p>
+<p>Interface statement:<br />
+rpc CreateTransaction (TransferContract) returns (Transaction) {} <br />
+Nodes:<br />
+Fullnode  </p>
+<p><strong>3.&nbsp;Broadcast transaction</strong></p>
+<p>Interface statement:<br />
+rpc BroadcastTransaction (Transaction) returns (Return) {} <br />
+Nodes:<br />
+Fullnode<br />
+Description:  <br />
+Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after witness verification.</p>
+<p><strong>4.&nbsp;Create an account</strong></p>
+<p>Interface statement:<br />
+rpc CreateAccount (AccountCreateContract) returns (Transaction) {}<br />
+Nodes:<br />
+FullNode  </p>
+<p><strong>5.&nbsp;Account name update</strong>
+Interface statement:<br />
+rpc UpdateAccount (AccountUpdateContract) returns (Transaction) {}<br />
+Nodes:  <br />
+Fullnode   </p>
+<p><strong>6.&nbsp;Vote for super representative candidates</strong>
+Interface statement:<br />
+rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction) {}  <br />
+Nodes:<br />
+FullNode    </p>
+<p><strong>7.&nbsp;Issue a token</strong>
+Interface statement:<br />
+rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {}    <br />
+Nodes:<br />
+FullNode    </p>
+<p><strong>8.&nbsp;Query of list of super representative candidates</strong><br />
+Interface statement:<br />
+rpc ListWitnesses (EmptyMessage) returns (WitnessList) {}   <br />
+Nodes:<br />
+FullNode and SolidityNode    </p>
+<p><strong>9.&nbsp;Application for super representative</strong>
+Interface statement:<br />
+rpc CreateWitness (WitnessCreateContract) returns (Transaction) {}<br />
+Nodes:<br />
+FullNode<br />
+Description:<br />
+To apply to become TRON’s Super Representative candidate.  </p>
+<p><strong>10.&nbsp;Information update of Super Representative candidates</strong>
+Interface statement:<br />
+rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {}    <br />
+Nodes:<br />
+FullNode<br />
+Description:<br />
+Update the website url of the SR.  </p>
+<p><strong>11.&nbsp;Token transfer</strong>
+Interface statement :<br />
+rpc TransferAsset (TransferAssetContract) returns (Transaction){}   <br />
+Node:<br />
+FullNode    </p>
+<p><strong>12.&nbsp;Participate a token</strong>
+Interface statement:  <br />
+rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction) {}    <br />
+Nodes:<br />
+FullNode  </p>
+<p><strong>13.&nbsp;Query the list of nodes connected to the ip of the api</strong>
+Interface statement:  <br />
+rpc ListNodes (EmptyMessage) returns (NodeList) {}<br />
+Nodes: <br />
+FullNode and SolidityNode   </p>
+<p><strong>14.&nbsp;Query the list of all issued tokens</strong>
+Interface statement:  <br />
+rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {}  <br />
+Node:<br />
+FullNode and SolidityNode    </p>
+<p><strong>15.&nbsp;Query the token issued by a given account</strong>
+Interface statement:  <br />
+rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {} <br />
+Nodes:<br />
+FullNode and SolidityNode    </p>
+<p><strong>16.&nbsp;Query the token information by token name</strong>
+Interface statement:  <br />
+rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {}  <br />
+Nodes:  <br />
+FullNode and Soliditynode    </p>
+<p><strong>17.&nbsp;Query the list of tokens by timestamp</strong>
+Interface statement:<br />
+rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList){}   <br />
+Nodes:<br />
+SolidityNode    </p>
+<p><strong>18.&nbsp;Get current block information</strong>
+Interface statement:<br />
+rpc GetNowBlock (EmptyMessage) returns (Block) {}    <br />
+Nodes:<br />
+FullNode and SolidityNode    </p>
+<p><strong>19.&nbsp;Get a block by block height</strong>
+Interface statement:<br />
+rpc GetBlockByNum (NumberMessage) returns (Block) {}  <br />
+Nodes:<br />
+FullNode and SolidityNode  </p>
+<p><strong>20.&nbsp;Get the total number of transactions</strong>
+Interface statement:  <br />
+rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {}  <br />
+Nodes:  <br />
+FullNode and SolidityNode      </p>
+<p><strong>21.&nbsp;Query the transaction by transaction id</strong>
+Interface statement:<br />
+rpc getTransactionById (BytesMessage) returns (Transaction) {}    <br />
+Nodes:  <br />
+SolidityNode     </p>
+<p><strong>22.&nbsp;Query the transaction by timestamp</strong>
+Interface statement:<br />
+rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {}  <br />
+Nodes:  <br />
+SolidityNode   </p>
+<p><strong>23.&nbsp;Query the transactions initiated by an account</strong>
+Interface statement:  <br />
+rpc getTransactionsFromThis (Account) returns (TransactionList) {} <br />
+Node:  <br />
+SolidityNode      </p>
+<p><strong>24.&nbsp;Query the transactions received by an account</strong>
+Interface statement:<br />
+rpc getTransactionsToThis (Account) returns (NumberMessage) {}   <br />
+Nodes:<br />
+SolidityNode      </p>
+<p><strong>25.&nbsp;Freeze TRX</strong>
+Interface statement:<br />
+rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {}   <br />
+Nodes:  <br />
+FullNode      </p>
+<p><strong>26.&nbsp;Unfreeze TRX</strong>
+Interface statement:  <br />
+rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {}  <br />
+Nodes:  <br />
+FullNode   </p>
+<p><strong>27.&nbsp;Block producing reward redemption</strong>
+Interface statement:<br />
+rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {} <br />
+Nodes:<br />
+FullNode  </p>
+<p><strong>28.&nbsp;Unfreeze token balance</strong>
+Interface statement:  <br />
+rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {}    <br />
+Nodes:  <br />
+FullNode    </p>
+<p><strong>29.&nbsp;Query the next maintenance time</strong>
+Interface statement:    <br />
+rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {}    <br />
+Nodes:  <br />
+FullNode    </p>
+<p><strong>30.&nbsp;Query the transaction fee &amp; block information</strong><br />
+Interface statement:  <br />
+rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {}   <br />
+Nodes:  <br />
+SolidityNode    </p>
+<p><strong>31.&nbsp;Query block information by block id</strong><br />
+Interface statement:    <br />
+rpc GetBlockById (BytesMessage) returns (Block) {}    <br />
+Nodes:  <br />
+FullNode    </p>
+<p><strong>32.&nbsp;Update token information</strong><br />
+Interface statement:    <br />
+rpc UpdateAsset (UpdateAssetContract) returns (Transaction) {}   <br />
+Nodes:  <br />
+Fullnode    <br />
+Description:   <br />
+Token update can only be initiated by the token issuer to update token description, url, maximum bandwidth consumption by each account and total bandwidth consumption.    </p>
+<p><strong>33.&nbsp;Query the list of all the tokens by pagination</strong>
+Interface statement:  <br />
+rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {}  <br />
+Nodes:    <br />
+FullNode and SolidityNode    </p>
+<p><strong>34.&nbsp;To sign a transaction</strong><br />
+Interface statement:    <br />
+rpc GetTransactionSign (TransactionSign) returns (Transaction) {}  <br />
+Nodes:    <br />
+FullNode    </p>
+<p><strong>35.&nbsp;Address and private key creation</strong>
+35.1 Interface statement:    <br />
+rpc CreateAdresss (BytesMessage) returns (BytesMessage) {};
+35.2 Node<br />
+Fullnode.<br />
+35.3 Parameters<br />
+BytesMessage: Passphrase<br />
+35.4 Returns<br />
+BytesMessage: address.</p>
+<p><strong>36.&nbsp;TRX easy transfer</strong>
+Interface statement:    <br />
+rpc EasyTransfer (EasyTransferMessage) returns (EasyTransferResponse) {}  <br />
+Nodes:    <br />
+FullNode  </p>
+<p><strong>37.&nbsp;Deploy a smart contract</strong><br />
+Interface statement:   <br />
+rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {}<br />
+Nodes: <br />
+FullNode and SolidityNode  </p>
+<p><strong>38.&nbsp;Trigger a smart contract</strong>
+Interface statement:  <br />
+rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {}  <br />
+Nodes:  <br />
+FullNode   </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Official_Public_Node/" class="btn btn-neutral float-right" title="TRON 官方公共节点">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Tron-http/" class="btn btn-neutral" title="TRON Http接口"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Tron-http/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Official_Public_Node/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>TRON 部署 - TRON Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "TRON \u90e8\u7f72";
+    var mkdocs_page_input_path = "SolidityNode&FullNode_Deployment.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TRON Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">导航页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-overview/">TRON概览</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-http/">TRON Http接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-rpc/">TRON RPC接口</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Official_Public_Node/">TRON 官方公共节点</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-VM/">TRON 虚拟机</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">TRON 部署</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#soliditynode-and-fullnode-deployment-on-the-same-host">SolidityNode and FullNode Deployment on The Same Host</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#deployment-guide">Deployment Guide</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#logging-and-network-connection-verification">Logging and Network Connection Verification</a></li>
+    
+
+    <li class="toctree-l2"><a href="#stop-node-gracefully">Stop Node Gracefully</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TRON Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>TRON 部署</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="soliditynode-and-fullnode-deployment-on-the-same-host">SolidityNode and FullNode Deployment on The Same Host</h1>
+<p>Create separate directories for fullnode and soliditynode</p>
+<pre><code class="text">/deploy/fullnode
+/deploy/soliditynode
+</code></pre>
+
+<p>Create two folders for fullnode and soliditynode.</p>
+<p>Clone the latest master branch of <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a> and extract it to</p>
+<pre><code class="text">/deploy/java-tron 
+</code></pre>
+
+<p>Make sure you have the proper dependencies.</p>
+<ul>
+<li>JDK 1.8 (JDK 1.9+ is not supported yet)</li>
+<li>On Linux Ubuntu system (e.g. Ubuntu 16.04.4 LTS), ensure that the machine has <a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04"><strong>Oracle JDK 8</strong></a>, instead of having <strong>Open JDK 8</strong> in the system. If you are building the source code by using <strong>Open JDK 8</strong>, you will get <a href="https://github.com/tronprotocol/java-tron/issues/337"><strong>Build Failed</strong></a> result.</li>
+<li>Open <strong>UDP</strong> ports for connection to the network</li>
+<li><strong>MINIMUM</strong> 2 CPU Cores</li>
+</ul>
+<h2 id="deployment-guide">Deployment Guide</h2>
+<p>1.&nbsp;Build the java-tron project  </p>
+<pre><code class="text">cd /deploy/java-tron 
+./gradlew build
+</code></pre>
+
+<p>2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories</p>
+<pre><code class="text">download your needed configuration file from https://github.com/tronprotocol/TronDeployment.  
+
+main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.  
+
+please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SoliditNode.  
+
+cp build/libs/FullNode.jar ../fullnode  
+
+cp build/libs/SolidityNode.jar ../soliditynode
+</code></pre>
+
+<p>3.&nbsp;You can now run your FullNode using the following command</p>
+<pre><code class="text">java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+</code></pre>
+
+<p>4.&nbsp;Configure the SolidityNode configuration file  </p>
+<p>You need to edit <code>config.conf</code> to connect to your local FullNode. Change  <code>trustNode</code> in <code>node</code> to local <code>127.0.0.1:50051</code>, which is the default rpc port. Set <code>listen.port</code> to any number within the range of 1024-65535. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services. Also change <code>rpc port</code> to <code>50052</code> or something to avoid conflicts. <strong>Please forward the UDP port 18888 for FullNode.</strong></p>
+<pre><code class="text">rpc {
+      port = 50052
+    }
+</code></pre>
+
+<p>5.&nbsp;You can now run your SolidityNode using the following command：</p>
+<pre><code class="text">java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+</code></pre>
+
+<h1 id="logging-and-network-connection-verification">Logging and Network Connection Verification</h1>
+<p>Logs for both nodes are located in <code>/deploy/\*/logs/tron.log</code>. Use <code>tail -f /logs/tron.log/</code> to follow along with the block syncing.</p>
+<p>You should see something similar to this in your logs for block synchronization:</p>
+<p><strong>FullNode</strong></p>
+<pre><code class="text">12:00:57.658 INFO  [pool-7-thread-1] [o.t.c.n.n.NodeImpl](NodeImpl.java:830) Success handle block Num:236610,ID:0000000000039c427569efa27cc2493c1fff243cc1515aa6665c617c45d2e1bf
+</code></pre>
+
+<p><strong>SolidityNode</strong></p>
+<pre><code class="text">12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
+</code></pre>
+
+<h1 id="stop-node-gracefully">Stop Node Gracefully</h1>
+<p>Create file stop.sh，use kill -15 to close java-tron.jar（or FullNode.jar、SolidityNode.jar）.
+You need to modify pid=<code>ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'</code> to find the correct pid.</p>
+<pre><code class="text">#!/bin/bash
+while true; do
+  pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'`
+  if [ -n &quot;$pid&quot; ]; then
+    kill -15 $pid
+    echo &quot;The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently...&quot;
+    sleep 1
+  else
+    echo &quot;java-tron killed successfully!&quot;
+    break
+  fi
+done
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../Tron-VM/" class="btn btn-neutral" title="TRON 虚拟机"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Tron-VM/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
