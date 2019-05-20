@@ -4,7 +4,7 @@ nav:
     - TRON Overview: Tron-overview.md
     - TRON Http Api: Tron-http.md
     - TRON RPC Api: Tron-rpc.md
-    - TRON Official Public Nodes: Official_Public_Node.md
+    - TRON Official Public Nodes: official-public-nodes.md
     - TRON Virtual Machine: Tron-VM.md
-    - TRON Deployment: SolidityNode&FullNode_Deployment.md
+    - TRON Deployment: Tron-deployment.md
 theme: readthedocs

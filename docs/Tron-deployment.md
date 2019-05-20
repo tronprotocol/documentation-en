@@ -1,5 +1,4 @@
-# SolidityNode and FullNode Deployment on The Same Host
-
+# Premise
 Create separate directories for fullnode and soliditynode
 ```text
 /deploy/fullnode
@@ -20,7 +19,8 @@ Make sure you have the proper dependencies.
 * Open **UDP** ports for connection to the network
 * **MINIMUM** 2 CPU Cores
 
-## Deployment Guide
+
+# Deployment Guide
 
 1.&nbsp;Build the java-tron project  
 ```text
@@ -60,6 +60,32 @@ rpc {
 java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
 
+6.&nbsp;Running a Super Representative Node for mainnet
+```text
+java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-tron/config.conf)
+Example:
+java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+```
+
+This is similar to running a private testnet, except that the IPs in the `config.conf` are officially declared by TRON.
+
+7.&nbsp;Running a Super Representative Node for private testnet  
+
+You should modify the config.conf:   
+
+- Replace existing entry in genesis.block.witnesses with your address
+- Replace existing entry in seed.node ip.list with your ip list
+- The first Super Node start, needSyncCheck should be set false
+- Set p2pversion to 61 
+
+```text
+cd build/libs
+java -jar FullNode.jar -p your private key --witness -c your config.conf (Example：/data/java-tron/config.conf)
+Example:
+java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+```
+
+
 # Logging and Network Connection Verification
 
 Logs for both nodes are located in `/deploy/\*/logs/tron.log`. Use `tail -f /logs/tron.log/` to follow along with the block syncing.
@@ -91,3 +117,7 @@ while true; do
   fi
 done
 ```
+
+# Advanced Configurations
+
+Read the [Advanced Configuration](advanced-configuration.md)

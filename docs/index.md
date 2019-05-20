@@ -4,8 +4,8 @@
 + For TRON virtual machine information, please check out [TRON Virtual Machine](Tron-VM.md)
 + For TRON http api, please check out [TRON Http Api](Tron-http.md)
 + For TRON RPC api, please check out [TRON RPC Api](Tron-rpc.md)
-+ For TRON official public nodes ip, please check out [TRON Official Public Nodes](Official_Public_Node.md)
-+ For TRON node deployment, please check out [TRON Deployment](SolidityNode&FullNode_Deployment.md)  
++ For TRON official public nodes ip, please check out [TRON Official Public Nodes](official-public-nodes.md)
++ For TRON node deployment, please check out [TRON Deployment](Tron-deployment.md) 
 
 # Tips Guide 
 + [TRON Wallet Proposal](https://github.com/tronprotocol/TIPs/blob/master/tip-01.md)  
