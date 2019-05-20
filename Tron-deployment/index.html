@@ -18,7 +18,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "TRON Deployment";
-    var mkdocs_page_input_path = "SolidityNode&FullNode_Deployment.md";
+    var mkdocs_page_input_path = "Tron-deployment.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -70,7 +70,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Official_Public_Node/">TRON Official Public Nodes</a>
+    <a class="" href="../official-public-nodes/">TRON Official Public Nodes</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,19 +83,19 @@
     <a class="current" href="./">TRON Deployment</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#soliditynode-and-fullnode-deployment-on-the-same-host">SolidityNode and FullNode Deployment on The Same Host</a></li>
+    <li class="toctree-l2"><a href="#premise">Premise</a></li>
     
-        <ul>
-        
-            <li><a class="toctree-l3" href="#deployment-guide">Deployment Guide</a></li>
-        
-        </ul>
+
+    <li class="toctree-l2"><a href="#deployment-guide">Deployment Guide</a></li>
     
 
     <li class="toctree-l2"><a href="#logging-and-network-connection-verification">Logging and Network Connection Verification</a></li>
     
 
     <li class="toctree-l2"><a href="#stop-node-gracefully">Stop Node Gracefully</a></li>
+    
+
+    <li class="toctree-l2"><a href="#advanced-configurations">Advanced Configurations</a></li>
     
 
     </ul>
@@ -133,7 +133,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="soliditynode-and-fullnode-deployment-on-the-same-host">SolidityNode and FullNode Deployment on The Same Host</h1>
+                <h1 id="premise">Premise</h1>
 <p>Create separate directories for fullnode and soliditynode</p>
 <pre><code class="text">/deploy/fullnode
 /deploy/soliditynode
@@ -151,7 +151,7 @@
 <li>Open <strong>UDP</strong> ports for connection to the network</li>
 <li><strong>MINIMUM</strong> 2 CPU Cores</li>
 </ul>
-<h2 id="deployment-guide">Deployment Guide</h2>
+<h1 id="deployment-guide">Deployment Guide</h1>
 <p>1.&nbsp;Build the java-tron project  </p>
 <pre><code class="text">cd /deploy/java-tron 
 ./gradlew build
@@ -184,6 +184,27 @@ cp build/libs/SolidityNode.jar ../soliditynode
 <pre><code class="text">java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 </code></pre>
 
+<p>6.&nbsp;Running a Super Representative Node for mainnet</p>
+<pre><code class="text">java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-tron/config.conf)
+Example:
+java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+</code></pre>
+
+<p>This is similar to running a private testnet, except that the IPs in the <code>config.conf</code> are officially declared by TRON.</p>
+<p>7.&nbsp;Running a Super Representative Node for private testnet  </p>
+<p>You should modify the config.conf:   </p>
+<ul>
+<li>Replace existing entry in genesis.block.witnesses with your address</li>
+<li>Replace existing entry in seed.node ip.list with your ip list</li>
+<li>The first Super Node start, needSyncCheck should be set false</li>
+<li>Set p2pversion to 61 </li>
+</ul>
+<pre><code class="text">cd build/libs
+java -jar FullNode.jar -p your private key --witness -c your config.conf (Example：/data/java-tron/config.conf)
+Example:
+java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+</code></pre>
+
 <h1 id="logging-and-network-connection-verification">Logging and Network Connection Verification</h1>
 <p>Logs for both nodes are located in <code>/deploy/\*/logs/tron.log</code>. Use <code>tail -f /logs/tron.log/</code> to follow along with the block syncing.</p>
 <p>You should see something similar to this in your logs for block synchronization:</p>
@@ -211,6 +232,9 @@ while true; do
   fi
 done
 </code></pre>
+
+<h1 id="advanced-configurations">Advanced Configurations</h1>
+<p>Read the <a href="../advanced-configuration/">Advanced Configuration</a></p>
               
             </div>
           </div>
