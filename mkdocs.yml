@@ -7,4 +7,5 @@ nav:
     - TRON Official Public Nodes: official-public-nodes.md
     - TRON Virtual Machine: Tron-VM.md
     - TRON Deployment: Tron-deployment.md
+    - TRON Shielded Transaction: Tron-shielded-transaction.md
 theme: readthedocs

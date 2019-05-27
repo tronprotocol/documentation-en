@@ -6,6 +6,7 @@
 + For TRON RPC api, please check out [TRON RPC Api](Tron-rpc.md)
 + For TRON official public nodes ip, please check out [TRON Official Public Nodes](official-public-nodes.md)
 + For TRON node deployment, please check out [TRON Deployment](Tron-deployment.md) 
++ For TRON shielded transaction, please check out [TRON Shieled Transaction](Tron-shielded-transaction.md)
 
 # Tips Guide 
 + [TRON Wallet Proposal](https://github.com/tronprotocol/TIPs/blob/master/tip-01.md)  
