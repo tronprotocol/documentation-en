@@ -17,10 +17,9 @@ Parameters:
     "shieldedReceives":[{
         "note":
         {
-        "value":90000000,
-        "d":"72abc1f3731c9dab49a348",
-        "pkD":"c7672b5bde6ffda0bd01744b189213b4542b88d0b658ae6f8b6517b9e2edc30e",
-        "rcm":"e48836a3cfae0e1b27b5230460199b46ebd88ad650fa9db5ac1eafb20b516302"
+             "value": 500000000,
+             "payment_address": "ztron1jld8fmvujrz2vgkc867zuwklmewy4ypw0wtwgweqs2paee0uhc8f3azy90el770arksa2kunl02",
+             "rcm": "723053bcbfecdf5da66c18ab0376476ef308c61b7abe891b2c01e903bcb87c0e"
         }
     }]
 }
@@ -91,8 +90,7 @@ Parameter:
         {
             "note": {
                 "value": 90000000,
-                "d": "72abc1f3731c9dab49a348",
-                "pkD": "c7672b5bde6ffda0bd01744b189213b4542b88d0b658ae6f8b6517b9e2edc30e",
+                "payment_address": "ztron1jld8fmvujrz2vgkc867zuwklmewy4ypw0wtwgweqs2paee0uhc8f3azy90el770arksa2kunl02",
                 "rcm": "e48836a3cfae0e1b27b5230460199b46ebd88ad650fa9db5ac1eafb20b516302"
             },
             
@@ -107,8 +105,7 @@ Parameter:
         {
             "note": {
                 "value": 80000000,
-                "d": "84a6be22805d46d9e9954c",
-                "pkD": "63b5dde8f32b3e0d12a349cb757b99775992dbdaca51ffe20fbf3c678119d454",
+                "payment_address": "ztron1wd46s6fwmz99gulqpxul6zffqtevzfpl93ng3s5834fhwf6e7w5l6zmjhmpvtwsc4wxa7dusmvr",
                 "rcm": "ccced07d36641fc93cba33cddda7064cb82f6962a0bdf15a4240a4a742770e03"
             }
         }
@@ -162,8 +159,7 @@ Parameter:
         {
             "note": {
                 "value": 80000000,
-                "d": "84a6be22805d46d9e9954c",
-                "pkD": "63b5dde8f32b3e0d12a349cb757b99775992dbdaca51ffe20fbf3c678119d454",
+                "payment_address": "ztron1wd46s6fwmz99gulqpxul6zffqtevzfpl93ng3s5834fhwf6e7w5l6zmjhmpvtwsc4wxa7dusmvr",
                 "rcm": "ccced07d36641fc93cba33cddda7064cb82f6962a0bdf15a4240a4a742770e03"
             },
             "alpha": "3ad5406efd6efcd81d27696d5f91efc07ba5c98ea6fb0f787b93e557b51df405",
