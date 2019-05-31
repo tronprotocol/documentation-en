@@ -49,6 +49,11 @@ You can edit or add a documentation file in /docs/ folder.
 
 ## How to Wtite a TIP
 
+TRON Improvement Proposals (EIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.
+
+The TIPS repository is [https://github.com/tronprotocol/TIPs](https://github.com/tronprotocol/TIPs)
+
+Your first PR should be a first draft of the final TIP. It must meet the formatting criteria enforced by the build (largely, correct metadata in the header). An editor will manually review the first PR for a new TIP and assign it a number before merging it. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole.  Please refer to the [TIP template](https://github.com/tronprotocol/TIPs/blob/master/template.md)
 
 
 ## How to Contribute to TRON's Open Source Code
