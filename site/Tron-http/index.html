@@ -63,17 +63,13 @@
     <a class="current" href="./">TRON Http Api</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#tron-built-in-http-introduction">TRON Built-in Http Introduction</a></li>
+    <li class="toctree-l2"><a href="#hexstring-and-base58check-transcode-demo">HexString and Base58check Transcode Demo</a></li>
     
-        <ul>
-        
-            <li><a class="toctree-l3" href="#hexstring-and-base58check-transcode-demo">HexString and Base58check Transcode Demo</a></li>
-        
-            <li><a class="toctree-l3" href="#soliditynode-api-introduction">SolidityNode Api Introduction</a></li>
-        
-            <li><a class="toctree-l3" href="#fullnode-api-introduction">FullNode Api Introduction</a></li>
-        
-        </ul>
+
+    <li class="toctree-l2"><a href="#soliditynode-api-introduction">SolidityNode Api Introduction</a></li>
+    
+
+    <li class="toctree-l2"><a href="#fullnode-api-introduction">FullNode Api Introduction</a></li>
     
 
     </ul>
@@ -136,7 +132,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="tron-built-in-http-introduction">TRON Built-in Http Introduction</h1>
+                <p><strong> TRON Built-in Http Introduction </strong></p>
 <h2 id="hexstring-and-base58check-transcode-demo">HexString and Base58check Transcode Demo</h2>
 <p>JAVA:<br />
 <a href="https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92">https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92</a> <br />
@@ -482,6 +478,82 @@ Return: Deferred transaction object  </p>
 
 <p>Parameter value: transaction id<br />
 Return: Deferred transaction fee &amp; block height  </p>
+<ul>
+<li>/walletsolidity/getmerkletreevoucherinfo </li>
+</ul>
+<p>Description: To get a merkle tree infromation of a note  </p>
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d 
+'{
+    &quot;out_points&quot;:[{
+        &quot;hash&quot;:&quot;185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74&quot;,
+        &quot;index&quot;:0
+    }]
+}' 
+</code></pre>
+
+<p>Parameter out_points: Note information      <br />
+Return: A merkle tree of a note </p>
+<ul>
+<li>/walletsolidity/scannotebyivk </li>
+</ul>
+<p>Description: To get all the notes by ivk  </p>
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d 
+'{
+    &quot;startNum&quot;: 0,
+    &quot;endNum&quot;: 100000,
+    &quot;ivk&quot;: &quot;80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05&quot;
+}' 
+</code></pre>
+
+<p>Parameter startNum: The start block height    <br />
+Parameter endNum: The end block height   <br />
+Parameter ivk: Incoming viewing key      <br />
+Return: Notes list   </p>
+<ul>
+<li>/walletsolidity/scannotebyovk </li>
+</ul>
+<p>Description: To get all the notes by ovk  </p>
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d 
+'{
+    &quot;startNum&quot;: 0,
+    &quot;endNum&quot;: 100000,
+    &quot;ovk&quot;: &quot;705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539&quot;
+}' 
+</code></pre>
+
+<p>Parameter startNum: The start block height    <br />
+Parameter endNum: The end block height   <br />
+Parameter ovk: Outgoing viewing key      <br />
+Return: Notes list </p>
+<ul>
+<li>/walletsolidity/isspend </li>
+</ul>
+<p>Description: To check whether a note is spent or not  </p>
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/isspend -d 
+'{
+    &quot;ak&quot;: &quot;a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129&quot;,
+    &quot;nk&quot;: &quot;62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e&quot;,
+    &quot;note&quot;: {
+        &quot;payment_address&quot;: &quot;ztron1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq&quot;,
+        &quot;rcm&quot;: &quot;74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a&quot;,
+        &quot;value&quot;: 500000000
+    },
+    &quot;voucher&quot;: {
+        &quot;tree&quot;: {
+            &quot;left&quot;: {
+                &quot;content&quot;: &quot;a4d763fae3fee78964ccdf7567ec3062c95a5b97825d731202d3dfa6cb01c143&quot;
+            }
+        },
+        &quot;rt&quot;: &quot;7dc3652c2a16e8518a8be0e3e038f9d28c3eb96f13e8da8acc2a9b650702f33e&quot;
+    }
+}' 
+</code></pre>
+
+<p>Parameter ak: Ak key    <br />
+Parameter nk: Nk key    <br />
+Parameter note: Note information    <br />
+Parameter voucher: Voucher information     <br />
+Return: Note status  </p>
 <h2 id="fullnode-api-introduction">FullNode Api Introduction</h2>
 <p>FullNode api's default http port is 8090, when FullNode is started, http service will be started too.</p>
 <ul>

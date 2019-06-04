@@ -1,4 +1,4 @@
-#  TRON Built-in Http Introduction
+** TRON Built-in Http Introduction **
 ## HexString and Base58check Transcode Demo
 JAVA:  
 [https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92](https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92)   
@@ -350,6 +350,82 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactioni
 ```
 Parameter value: transaction id  
 Return: Deferred transaction fee & block height  
+
+- /walletsolidity/getmerkletreevoucherinfo 
+
+Description: To get a merkle tree infromation of a note  
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d 
+'{
+    "out_points":[{
+        "hash":"185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74",
+        "index":0
+    }]
+}' 
+```
+Parameter out_points: Note information        
+Return: A merkle tree of a note 
+
+- /walletsolidity/scannotebyivk 
+
+Description: To get all the notes by ivk  
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d 
+'{
+    "startNum": 0,
+    "endNum": 100000,
+    "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05"
+}' 
+```
+Parameter startNum: The start block height      
+Parameter endNum: The end block height     
+Parameter ivk: Incoming viewing key        
+Return: Notes list   
+
+- /walletsolidity/scannotebyovk 
+
+Description: To get all the notes by ovk  
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d 
+'{
+    "startNum": 0,
+    "endNum": 100000,
+    "ovk": "705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539"
+}' 
+```
+Parameter startNum: The start block height      
+Parameter endNum: The end block height     
+Parameter ovk: Outgoing viewing key        
+Return: Notes list 
+
+- /walletsolidity/isspend 
+
+Description: To check whether a note is spent or not  
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/isspend -d 
+'{
+    "ak": "a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129",
+    "nk": "62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e",
+    "note": {
+        "payment_address": "ztron1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq",
+        "rcm": "74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a",
+        "value": 500000000
+    },
+    "voucher": {
+        "tree": {
+            "left": {
+                "content": "a4d763fae3fee78964ccdf7567ec3062c95a5b97825d731202d3dfa6cb01c143"
+            }
+        },
+        "rt": "7dc3652c2a16e8518a8be0e3e038f9d28c3eb96f13e8da8acc2a9b650702f33e"
+    }
+}' 
+```
+Parameter ak: Ak key      
+Parameter nk: Nk key      
+Parameter note: Note information      
+Parameter voucher: Voucher information       
+Return: Note status  
 
 
 ## FullNode Api Introduction
