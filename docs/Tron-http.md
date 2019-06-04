@@ -11,7 +11,7 @@ When 'visible' is set true, the format of the input address must be base58, inpu
 
 Way to set the 'visible' parameter:    
 
-1.&nbsp;For the api need no parameter: by adding 'visible' parameter in the url  
+1.&nbsp;For the api needs no parameter: by adding 'visible' parameter in the url  
 
 + example:
 
