@@ -16,7 +16,7 @@
 + [Design of TRON account](https://github.com/tronprotocol/TIPs/blob/master/tip-13.md)    
 + [TRON Account Multi-Signature](https://github.com/tronprotocol/TIPs/blob/master/tip-16.md)  
 + [TRON Adaptive Energy Limit Model](https://github.com/tronprotocol/TIPs/blob/master/tip-17.md)  
-+ [ERC-20 Token Standard](https://github.com/tronprotocol/TIPs/blob/master/tip-20.md)  
++ [TRC-20 Token Standard](https://github.com/tronprotocol/TIPs/blob/master/tip-20.md)  
 + [Implement of DB storage with RocksDB](https://github.com/tronprotocol/TIPs/blob/master/tip-24.md)  
 + [Built-in Message Queue in Event Subscription Model](https://github.com/tronprotocol/TIPs/blob/master/tip-28.md)  
 + [To Support Contract without ABI in Event Subscription Model](https://github.com/tronprotocol/TIPs/blob/master/tip-34.md)
@@ -29,7 +29,7 @@ Thank you for considering to help out with the source code! We welcome contribut
 
 GitHub is used to track issues and contribute code, suggestions, feature requests or documentation.
 
-If you'd like to contribute to TRON, please fork, fix, commit and send a pull request (PR) for the maintainers to review and merge into the main code base. If you wish to submit more complex changes though, please check up with the core developers first on our channel to ensure those changes are in line with the general philosophy of the project and/or get some early feedback which can make both your efforts much lighter as well as our review and merge procedures quick and simple.
+If you'd like to contribute to TRON, please fork, fix, commit and send a pull request (PR) for the maintainers to review and merge into the main base. If you wish to submit more complex changes though, please check up with the core developers first on our channel to ensure those changes are in line with the general philosophy of the project and/or get some early feedback which can make both your efforts much lighter as well as our review and merge procedures quick and simple.
 
 PRs need to be based on and opened against the master branch (unless by explicit agreement, you contribute to a complex feature branch).
 
@@ -47,7 +47,7 @@ We use MkDocs to build documentation project. Documentation source files are wri
 
 You can edit or add a documentation file in /docs/ folder.
 
-## How to Wtite a TIP
+## How to Write a TIP
 
 TRON Improvement Proposals (EIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.
 
@@ -56,8 +56,13 @@ The TIPS repository is [https://github.com/tronprotocol/TIPs](https://github.com
 Your first PR should be a first draft of the final TIP. It must meet the formatting criteria enforced by the build (largely, correct metadata in the header). An editor will manually review the first PR for a new TIP and assign it a number before merging it. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole.  Please refer to the [TIP template](https://github.com/tronprotocol/TIPs/blob/master/template.md)
 
 
-## How to Contribute to TRON's Open Source Code
+## How to Contribute to java-tron
 
+First, please fork off of the ``develop`` branch and make your changes there. Your commit messages should detail *why* you made your change in addition to *what* you did (unless it is a tiny change).
+
+If you need to pull in any changes from ``develop`` after making your fork (for example, to resolve potential merge conflicts), please avoid using ``git merge`` and instead, ``git rebase`` your branch. This will help us review your change more easily.
+
+Additionally, if you are writing a new feature, please ensure you add appropriate test cases under ``/src/test``.
 
 
 
