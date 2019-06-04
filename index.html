@@ -65,9 +65,9 @@
         
             <li><a class="toctree-l3" href="#how-to-contribute-to-trons-documentation">How to Contribute to TRON's Documentation</a></li>
         
-            <li><a class="toctree-l3" href="#how-to-wtite-a-tip">How to Wtite a TIP</a></li>
+            <li><a class="toctree-l3" href="#how-to-write-a-tip">How to Write a TIP</a></li>
         
-            <li><a class="toctree-l3" href="#how-to-contribute-to-trons-open-source-code">How to Contribute to TRON's Open Source Code</a></li>
+            <li><a class="toctree-l3" href="#how-to-contribute-to-java-tron">How to Contribute to java-tron</a></li>
         
         </ul>
     
@@ -160,7 +160,7 @@
 <li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-13.md">Design of TRON account</a>    </li>
 <li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-16.md">TRON Account Multi-Signature</a>  </li>
 <li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-17.md">TRON Adaptive Energy Limit Model</a>  </li>
-<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-20.md">ERC-20 Token Standard</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-20.md">TRC-20 Token Standard</a>  </li>
 <li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-24.md">Implement of DB storage with RocksDB</a>  </li>
 <li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-28.md">Built-in Message Queue in Event Subscription Model</a>  </li>
 <li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-34.md">To Support Contract without ABI in Event Subscription Model</a></li>
@@ -169,7 +169,7 @@
 <p>TRON is a global, open-source platform for decentralized applications. </p>
 <p>Thank you for considering to help out with the source code! We welcome contributions from anyone on the internet, and are grateful for even the smallest of fixes!</p>
 <p>GitHub is used to track issues and contribute code, suggestions, feature requests or documentation.</p>
-<p>If you'd like to contribute to TRON, please fork, fix, commit and send a pull request (PR) for the maintainers to review and merge into the main code base. If you wish to submit more complex changes though, please check up with the core developers first on our channel to ensure those changes are in line with the general philosophy of the project and/or get some early feedback which can make both your efforts much lighter as well as our review and merge procedures quick and simple.</p>
+<p>If you'd like to contribute to TRON, please fork, fix, commit and send a pull request (PR) for the maintainers to review and merge into the main base. If you wish to submit more complex changes though, please check up with the core developers first on our channel to ensure those changes are in line with the general philosophy of the project and/or get some early feedback which can make both your efforts much lighter as well as our review and merge procedures quick and simple.</p>
 <p>PRs need to be based on and opened against the master branch (unless by explicit agreement, you contribute to a complex feature branch).</p>
 <p>Your PR will be reviewed according to the Code Review Guidelines.</p>
 <p>We encourage a PR early approach, meaning you create the PR the earliest even without the fix/feature. This will let core developers and other volunteers know you picked up an issue. These early PRs should indicate 'in progress' status.</p>
@@ -179,11 +179,14 @@
 <a href="https://github.com/tronprotocol/documentation-ZH">documentation-ZH</a> is the Chinese version.  </p>
 <p>We use MkDocs to build documentation project. Documentation source files are written in Markdown, and configured with a single YAML configuration file.</p>
 <p>You can edit or add a documentation file in /docs/ folder.</p>
-<h2 id="how-to-wtite-a-tip">How to Wtite a TIP</h2>
+<h2 id="how-to-write-a-tip">How to Write a TIP</h2>
 <p>TRON Improvement Proposals (EIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.</p>
 <p>The TIPS repository is <a href="https://github.com/tronprotocol/TIPs">https://github.com/tronprotocol/TIPs</a></p>
 <p>Your first PR should be a first draft of the final TIP. It must meet the formatting criteria enforced by the build (largely, correct metadata in the header). An editor will manually review the first PR for a new TIP and assign it a number before merging it. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole.  Please refer to the <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">TIP template</a></p>
-<h2 id="how-to-contribute-to-trons-open-source-code">How to Contribute to TRON's Open Source Code</h2>
+<h2 id="how-to-contribute-to-java-tron">How to Contribute to java-tron</h2>
+<p>First, please fork off of the <code>develop</code> branch and make your changes there. Your commit messages should detail <em>why</em> you made your change in addition to <em>what</em> you did (unless it is a tiny change).</p>
+<p>If you need to pull in any changes from <code>develop</code> after making your fork (for example, to resolve potential merge conflicts), please avoid using <code>git merge</code> and instead, <code>git rebase</code> your branch. This will help us review your change more easily.</p>
+<p>Additionally, if you are writing a new feature, please ensure you add appropriate test cases under <code>/src/test</code>.</p>
               
             </div>
           </div>
@@ -232,5 +235,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-06-04 03:14:53
+Build Date UTC : 2019-06-04 03:50:36
 -->
