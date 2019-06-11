@@ -21,7 +21,7 @@
 + [Built-in Message Queue in Event Subscription Model](https://github.com/tronprotocol/TIPs/blob/master/tip-28.md)  
 + [To Support Contract without ABI in Event Subscription Model](https://github.com/tronprotocol/TIPs/blob/master/tip-34.md)
 
-# Getting Started as an TRON Community Developer
+# Getting Started as TRON Community Developers
 
 TRON is a global, open-source platform for decentralized applications. 
 
