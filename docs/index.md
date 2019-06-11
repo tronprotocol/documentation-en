@@ -37,6 +37,11 @@ Your PR will be reviewed according to the Code Review Guidelines.
 
 We encourage a PR early approach, meaning you create the PR the earliest even without the fix/feature. This will let core developers and other volunteers know you picked up an issue. These early PRs should indicate 'in progress' status.
 
+** Developer Community **
+
+* [Discord](https://discord.gg/GsRgsTD)   
+* [Gitter](https://gitter.im/tronprotocol/allcoredev)   
+
 ## How to Contribute to TRON's Documentation
 
 There are two documentation repositories:  
