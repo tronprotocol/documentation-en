@@ -206,8 +206,66 @@ This is the branch that is going to be released. It is created based on <code>de
 This branch is used to fix a bug when an online bug is found. It is created based on <code>master</code> branch. When bug fix is done, it should be merged into <code>master</code> branch(as a new release) and <code>develop</code> and then delete the branch. branch.</p>
 <p><strong>Writing a new feature:</strong>    </p>
 <p>When you start to develop a new feature, please create a feature branch from <code>develop</code> branch under <code>origin/feature</code>.</p>
+<pre><code class="text">$ git checkout -b feature/my-feature develop
+# switch to 'feature/my-feature'
+</code></pre>
+
+<p>When you finish the development, the new feature should be merged into <code>develop</code> branch.</p>
+<pre><code class="text">$ git commit -m &quot;description&quot;
+# submit the code
+$ git checkout develop
+# switch to 'develop'
+$ git pull
+# update branch
+$ git checkout feature/my-feature
+# switch to 'feature/my-feature'
+$ git merge develop
+# merge 'develop', need to fix the conflict
+$ git push
+# submit to GitHub
+# make a Pull Request to wait the core developers to check
+$ git branch -d feature/my-feature
+# once it is merged, delete 'feature/my-feature'
+</code></pre>
+
 <p><strong>Fixing online bugs:</strong>   </p>
 <p>When you start to fix an online bug, please create a hotfix branch from <code>master</code> branch under <code>origin/hotfix</code>.</p>
+<pre><code class="text">$ git checkout -b hotfix/my-hotfix master
+# switch to 'hotfix/my-hotfix'
+$ git commit -a -m &quot;Bumped version number to 3.1.4&quot;
+# submit and modify the version number
+</code></pre>
+
+<p>When you finish the fix, it should be merged into <code>master</code> branch and <code>develop</code> branch.</p>
+<pre><code class="text">$ git commit -m &quot;description&quot;
+# submit the code
+$ git checkout master
+# switch to 'master'
+$ git pull
+# update branch
+$ git checkout hotfix/my-hotfix
+# switch to 'hotfix/my-hotfix'
+$ git merge master
+# merge 'master', need to fix the conflict
+$ git push
+# make a Pull Request to wait the core developers to check
+# tag 'master'
+
+$ git checkout develop
+# switch to 'develop'
+$ git pull
+# update branch
+$ git checkout hotfix/my-hotfix
+# switch to 'hotfix/my-hotfix'
+$ git merge develop
+# merge 'develop', need to fix the conflict
+$ git push
+# make a Pull Request to wait the core developers to check
+
+$ git branch -d hotfix/my-hotfix
+# once it is merged, delete 'my-hotfix'
+</code></pre>
+
 <p>Your commit messages should detail why you made your change in addition to what you did (unless it is a tiny change).</p>
 <p>Finally, please make a PR.</p>
 <p>Additionally, if you are writing a new feature, please ensure you add appropriate test cases under <code>/src/test</code>.</p>
@@ -259,5 +317,5 @@ This branch is used to fix a bug when an online bug is found. It is created base
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-06-12 09:36:49
+Build Date UTC : 2019-06-12 10:08:56
 -->
