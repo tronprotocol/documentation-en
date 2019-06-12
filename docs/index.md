@@ -54,7 +54,7 @@ You can edit or add a documentation file in /docs/ folder.
 
 ## How to Write a TIP
 
-TRON Improvement Proposals (EIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.
+TRON Improvement Proposals (TIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.
 
 The TIPS repository is [https://github.com/tronprotocol/TIPs](https://github.com/tronprotocol/TIPs)
 
