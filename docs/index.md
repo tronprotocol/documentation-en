@@ -81,10 +81,69 @@ This branch is used to fix a bug when an online bug is found. It is created base
 **Writing a new feature:**    
 
 When you start to develop a new feature, please create a feature branch from ``develop`` branch under ``origin/feature``.
+```text
+$ git checkout -b feature/my-feature develop
+# switch to 'feature/my-feature'
+```
+
+When you finish the development, the new feature should be merged into ``develop`` branch.
+```text
+$ git commit -m "description"
+# submit the code
+$ git checkout develop
+# switch to 'develop'
+$ git pull
+# update branch
+$ git checkout feature/my-feature
+# switch to 'feature/my-feature'
+$ git merge develop
+# merge 'develop', need to fix the conflict
+$ git push
+# submit to GitHub
+# make a Pull Request to wait the core developers to check
+$ git branch -d feature/my-feature
+# once it is merged, delete 'feature/my-feature'
+```
 
 **Fixing online bugs:**   
 
 When you start to fix an online bug, please create a hotfix branch from ``master`` branch under ``origin/hotfix``.
+```text
+$ git checkout -b hotfix/my-hotfix master
+# switch to 'hotfix/my-hotfix'
+$ git commit -a -m "Bumped version number to 3.1.4"
+# submit and modify the version number
+```
+When you finish the fix, it should be merged into ``master`` branch and ``develop`` branch.
+```text
+$ git commit -m "description"
+# submit the code
+$ git checkout master
+# switch to 'master'
+$ git pull
+# update branch
+$ git checkout hotfix/my-hotfix
+# switch to 'hotfix/my-hotfix'
+$ git merge master
+# merge 'master', need to fix the conflict
+$ git push
+# make a Pull Request to wait the core developers to check
+# tag 'master'
+
+$ git checkout develop
+# switch to 'develop'
+$ git pull
+# update branch
+$ git checkout hotfix/my-hotfix
+# switch to 'hotfix/my-hotfix'
+$ git merge develop
+# merge 'develop', need to fix the conflict
+$ git push
+# make a Pull Request to wait the core developers to check
+
+$ git branch -d hotfix/my-hotfix
+# once it is merged, delete 'my-hotfix'
+```
 
 Your commit messages should detail why you made your change in addition to what you did (unless it is a tiny change).
 
