@@ -193,10 +193,21 @@
 <p>The TIPS repository is <a href="https://github.com/tronprotocol/TIPs">https://github.com/tronprotocol/TIPs</a></p>
 <p>Your first PR should be a first draft of the final TIP. It must meet the formatting criteria enforced by the build (largely, correct metadata in the header). An editor will manually review the first PR for a new TIP and assign it a number before merging it. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole.  Please refer to the <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">TIP template</a></p>
 <h2 id="how-to-contribute-to-java-tron">How to Contribute to java-tron</h2>
-<p><strong>Writing a new feature:</strong>  <br />
-When you start to develop a new feature, please create a feature branch from <code>develop</code> branch under <code>origin/feature</code>.</p>
-<p><strong>Fixing online bugs:</strong> <br />
-When you start to fix an online bug, please create a hotfix branch from <code>master</code> branch under <code>origin/hotfix</code>.</p>
+<p><strong>Branch Introduction</strong></p>
+<p><code>master</code> branch:<br />
+This branch contains the latest code released to the production environment. It can only be merged, and can not be modified directly in this branch.</p>
+<p><code>develop</code> branch:<br />
+This branch is the main development branch. It contains the complete code that is going to release. It can only be merged, and can not be modified directly in this branch.</p>
+<p><code>feature</code> branch:<br />
+This branch is used to develop new features. It is created based on <code>develop</code> branch. Once the development is finished, it should be merged into <code>develop</code> branch, and then delete the branch.</p>
+<p><code>release</code> branch:<br />
+This is the branch that is going to be released. It is created based on <code>develop</code> branch. In this branch, small fix and modification of final version of metadata is allowed. When the code is released, this branch should be merged into <code>master</code> branch(tag needed) and <code>develop</code> branch. The final test before release uses this branch.</p>
+<p><code>hotfix</code> branch:<br />
+This branch is used to fix a bug when an online bug is found. It is created based on <code>master</code> branch. When bug fix is done, it should be merged into <code>master</code> branch(as a new release) and <code>develop</code> and then delete the branch. branch.</p>
+<p><strong>Writing a new feature:</strong>    </p>
+<p>When you start to develop a new feature, please create a feature branch from <code>develop</code> branch under <code>origin/feature</code>.</p>
+<p><strong>Fixing online bugs:</strong>   </p>
+<p>When you start to fix an online bug, please create a hotfix branch from <code>master</code> branch under <code>origin/hotfix</code>.</p>
 <p>Your commit messages should detail why you made your change in addition to what you did (unless it is a tiny change).</p>
 <p>Finally, please make a PR.</p>
 <p>Additionally, if you are writing a new feature, please ensure you add appropriate test cases under <code>/src/test</code>.</p>
@@ -248,5 +259,5 @@ When you start to fix an online bug, please create a hotfix branch from <code>ma
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-06-12 04:19:46
+Build Date UTC : 2019-06-12 09:36:49
 -->
