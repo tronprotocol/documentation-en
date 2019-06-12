@@ -31,8 +31,6 @@ GitHub is used to track issues and contribute code, suggestions, feature request
 
 If you'd like to contribute to TRON, please fork, fix, commit and send a pull request (PR) for the maintainers to review and merge into the main base. If you wish to submit more complex changes though, please check up with the core developers first on our channel to ensure those changes are in line with the general philosophy of the project and/or get some early feedback which can make both your efforts much lighter as well as our review and merge procedures quick and simple.
 
-PRs need to be based on and opened against the master branch (unless by explicit agreement, you contribute to a complex feature branch).
-
 Your PR will be reviewed according to the Code Review Guidelines.
 
 We encourage a PR early approach, meaning you create the PR the earliest even without the fix/feature. This will let core developers and other volunteers know you picked up an issue. These early PRs should indicate 'in progress' status.
@@ -42,7 +40,7 @@ We encourage a PR early approach, meaning you create the PR the earliest even wi
 * [Discord](https://discord.gg/GsRgsTD)   
 * [Gitter](https://gitter.im/tronprotocol/allcoredev)   
 
-## How to Contribute to TRON's Documentation
+## How to Contribute to TRON Documentation
 
 There are two documentation repositories:  
 [documentation-EN](https://github.com/tronprotocol/documentation-EN) is the English version.   
@@ -52,7 +50,7 @@ We use MkDocs to build documentation project. Documentation source files are wri
 
 You can edit or add a documentation file in /docs/ folder.
 
-## How to Write a TIP
+## How to Submit a TIP
 
 TRON Improvement Proposals (TIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.
 
@@ -63,9 +61,15 @@ Your first PR should be a first draft of the final TIP. It must meet the formatt
 
 ## How to Contribute to java-tron
 
-First, please fork off of the ``develop`` branch and make your changes there. Your commit messages should detail *why* you made your change in addition to *what* you did (unless it is a tiny change).
+**Writing a new feature:**    
+When you start to develop a new feature, please create a feature branch from ``develop`` branch under ``origin/feature``.
 
-If you need to pull in any changes from ``develop`` after making your fork (for example, to resolve potential merge conflicts), please avoid using ``git merge`` and instead, ``git rebase`` your branch. This will help us review your change more easily.
+**Fixing online bugs:**   
+When you start to fix an online bug, please create a hotfix branch from ``master`` branch under ``origin/hotfix``.
+
+Your commit messages should detail why you made your change in addition to what you did (unless it is a tiny change).
+
+Finally, please make a PR.
 
 Additionally, if you are writing a new feature, please ensure you add appropriate test cases under ``/src/test``.
 
