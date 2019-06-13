@@ -5,7 +5,7 @@
 
 In the past version, the transactions created in one account can only be signed by one private key, an account can only be managed by one private key. Since V3.5, an account can be managed by several private keys, and the transactions created in one account can be signed by serval private keys.  
 
-[Multi-signature Tip](https://github.com/tronprotocol/TIPs/issues/16)  
+[Tron multi-signatures Tip](https://github.com/tronprotocol/TIPs/issues/16)  
 
 ## <h2 id="2">2. Concept</h2>   
 
