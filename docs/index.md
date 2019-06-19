@@ -4,10 +4,13 @@
 + For TRON brief information, please check out [TRON Overview](Tron-overview.md)
 + For TRON virtual machine information, please check out [TRON Virtual Machine](Tron-VM.md)
 + For TRON http api, please check out [TRON Http Api](Tron-http.md)
-+ For TRON RPC api, please check out [TRON RPC Api](Tron-rpc.md)
-+ For TRON official public nodes ip, please check out [TRON Official Public Nodes](official-public-nodes.md)
-+ For TRON node deployment, please check out [TRON Deployment](Tron-deployment.md) 
-+ For TRON shielded transaction, please check out [TRON Shieled Transaction](Tron-shielded-transaction.md)
++ For TRON RPC api, please check out [TRON RPC Api](Tron-rpc.md)  
++ For TRON official public nodes ip, please check out [TRON Official Public Nodes](Tron-official-public-nodes.md)  
++ For TRON node deployment, please check out [TRON Deployment](Tron-deployment.md)   
++ For TRON shielded transaction, please check out [TRON Shieled Transaction](Tron-shielded-transaction.md)  
++ For TRON multi-signatures, please check out [TRON Multi-signatures](Tron-multi-signatures.md)  
++ For TRON resources, please check out [TRON Resources](Tron-resources.md)  
++ For TRON Q&A, please check out [TRON Q&A](Tron-QA.md)   
 
 # Tips Guide 
 + [TRON Wallet Proposal](https://github.com/tronprotocol/TIPs/blob/master/tip-01.md)  

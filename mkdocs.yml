@@ -1,14 +1,14 @@
 site_name: TRON Documentation
 nav:
     - Home: index.md
-    - TRON Overview: Tron-overview.md
-    - TRON Http Api: Tron-http.md
-    - TRON RPC Api: Tron-rpc.md
-    - TRON Official Public Nodes: official-public-nodes.md
-    - TRON Virtual Machine: Tron-VM.md
-    - TRON Deployment: Tron-deployment.md
-    - TRON Shielded Transaction: Tron-shielded-transaction.md
-    - TRON Multi Signatures: Tron-multi-signatures.md
-    - TRON Resources: resources.md
+    - Project Overview: Tron-overview.md
+    - Http Api: Tron-http.md
+    - RPC Api: Tron-rpc.md
+    - Official Public Nodes: Tron-official-public-nodes.md
+    - Virtual Machine: Tron-VM.md
+    - Deployment: Tron-deployment.md
+    - Shielded Transaction: Tron-shielded-transaction.md
+    - Multi Signatures: Tron-multi-signatures.md
+    - Resources: Tron-resources.md
     - Q&A: Tron-QA.md
 theme: readthedocs
