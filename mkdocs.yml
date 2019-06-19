@@ -10,4 +10,5 @@ nav:
     - TRON Shielded Transaction: Tron-shielded-transaction.md
     - TRON Multi Signatures: Tron-multi-signatures.md
     - TRON Resources: resources.md
+    - Q&A: Tron-QA.md
 theme: readthedocs
