@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Q&A - TRON Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Q&A";
+    var mkdocs_page_input_path = "Tron-QA.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TRON Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-overview/">TRON Overview</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-http/">TRON Http Api</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-rpc/">TRON RPC Api</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../official-public-nodes/">TRON Official Public Nodes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-VM/">TRON Virtual Machine</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-deployment/">TRON Deployment</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-shielded-transaction/">TRON Shielded Transaction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Tron-multi-signatures/">TRON Multi Signatures</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../resources/">TRON Resources</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Q&A</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#fullnode-model-question-under-private-environment">FullNode model Question under Private Environment</a></li>
+    
+
+    <li class="toctree-l2"><a href="#supernode-model-question-under-private-environment">SuperNode model Question under Private Environment</a></li>
+    
+
+    <li class="toctree-l2"><a href="#questions-under-public-environment">Questions under Public Environment</a></li>
+    
+
+    <li class="toctree-l2"><a href="#error-while-running-supernode">Error while Running SuperNode</a></li>
+    
+
+    <li class="toctree-l2"><a href="#supernode-block-producing-questions">SuperNode Block Producing Questions</a></li>
+    
+
+    <li class="toctree-l2"><a href="#super-representatives-election-questions">Super Representatives Election Questions</a></li>
+    
+
+    <li class="toctree-l2"><a href="#other-questions">Other Questions</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TRON Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Q&A</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="fullnode-model-question-under-private-environment">FullNode model Question under Private Environment</h2>
+<p><strong>Ask: If I replace the field value of 'genesis.block.witnesses' with the address generated in <a href="https://tronscan.org/">Tronscan</a> in config.conf, do I need to delete other addresses? Do I need to delete the field 'url' and 'voteCount'?</strong>    </p>
+<p>Answer: No need to delete other addresses, these addresses will be a part of your net, but if you do not own the private keys of these addresses, they will act like abandoned addresses. <br />
+Note: The addresses of Zion、Sun and Blackhole can not be deleted, but can be modified.  </p>
+<p><strong>Ask: After you replace the value of 'seed.node &gt; ip.list' with your own public ip, and then using  <code>java -jar java-tron.jar</code> to start. How to test if the deployment works normally, if there is a test api or command like redis: get ping return pong?</strong></p>
+<p>Answer: Java-tron does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. First of all, you need to confirm the grpc port is on:
+              </p>
+<pre><code class="text">- netstat -tulnp| grep 50051 
+
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/FAQ/查询节点.png)
+
+If your grpc port is on, you can use tronscan to test node connection, make sure the port and ip are open to public.  
+
+You can also use the following command to test:  
+
+- tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
+</code></pre>
+
+<h2 id="supernode-model-question-under-private-environment">SuperNode model Question under Private Environment</h2>
+<p><strong>Ask: When to deploy private environment, what's the relationship of SuperNode and FullNode? Should I firstly deploy a SuperNode, and then deploy a FullNode？</strong>  </p>
+<p>Answer: Under private environment, there should be at least one SuperNode, there is no amount limit for FullNode.  </p>
+<p><strong>Ask: Under private environment, should I submit application information to TRON to become a SR?</strong></p>
+<p>Answer: Under private environment, no need to submit application information to TRON to become a SR.  </p>
+<p><strong>Ask: As under private environment, why the log keeps updating with all other public nodes? What's the difference of private and public environment？</strong></p>
+<p>Answer: If it is related to ip list: You need to update 'seed.ip' in config.conf, if it is the same as your public ip, and your computer is connected to the internet, it will try to connect other nodes, even if it fails to connect, the ip list will be stored into DB. If it is related to block and transaction: Under private environment, you need to modify the p2p version and parent hash. If they are the same as MainNet or TestNet, and the computer is connected to internet, the node will sync data from public node.  </p>
+<h2 id="questions-under-public-environment">Questions under Public Environment</h2>
+<p><strong>Ask: The maximum RAM and CPU consumption of one java-tron application？</strong></p>
+<p>Answer: This depends on your computer system environment, if it is 32-bit system, the maximum heap memory is 32GB. If it is 64-bit system, heap memory will be constrained by operation system. Under private environment 4 cores cpu maybe enough for small amount of transactions. In public network, to be a SR, we recommend to use 64 cores CPU.   </p>
+<p><strong>Ask：Which service port should be public to public network?</strong></p>
+<p>Answer: Default port 18888, 50051  </p>
+<p><strong>Ask: What is the network flow?</strong></p>
+<p>Answer: Network flow depends on transaction volume. As a reference, the average size of a transaction currently is 200 bytes.  </p>
+<p><strong>Ask: After you create a token, how to change its status from 'not started yet' to 'participate'?</strong></p>
+<p>Answer: You need to wait till the time reaches the start time of participation you set when create a token. After a token is created, only the token url and description can be modified.  </p>
+<h2 id="error-while-running-supernode">Error while Running SuperNode</h2>
+<p><strong>Ask: What does the following error message mean?</strong></p>
+<pre><code class="text">17:02:42.699 INFO [o.t.c.s.WitnessService] Try Produce Block
+17:02:42.699 INFO [o.t.c.s.WitnessService] Not sync
+</code></pre>
+
+<p>Answer: This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to chek the block height.</p>
+<pre><code class="text">- tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
+</code></pre>
+
+<h2 id="supernode-block-producing-questions">SuperNode Block Producing Questions</h2>
+<p><strong>Ask：Do the SuperNodes take turns to produce blocks? what is the time interval? Will it be delisted from the SuperNodes list if no heartbeat message is detected within 24 hours?</strong></p>
+<p>Answer: They take turns to produce blocks. Every 3 seconds. Each SuperNode's Block missing rate will be counted.   </p>
+<p><strong>Ask: At the worst scenario, if the SuperNode can not be connected, the maximum time it allows the SuperNode to recover its service？</strong></p>
+<p>Answer: The internet connection recovery time only depends on the recovery of SuperNode itself, has nothing to do with internet situation.</p>
+<p><strong>Ask: The formula of calculating the block missing rate?</strong></p>
+<p>Answer: The number of the blocks are supposed to produce by each SuperNode but actually not will be counted, the number will be accumulated, will not be reset.  </p>
+<p><strong>Ask: Is the source code of SuperNode open source?</strong></p>
+<p>Answer: Yes. Please refer to <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a></p>
+<p><strong>Ask: How to know wether my test SuperNode is running or not?</strong></p>
+<p>Answer: Using the following command</p>
+<pre><code class="text">- tail -f logs/tron.log |grep &quot;Try Produce Block&quot;
+</code></pre>
+
+<p><strong>Ask: In addition, according to this command: <code>java -jar java-tron.jar -p yourself private key --witness -c yourself config.conf(Example：/data/java-tron/config.conf</code>, How to know whether it is the SuperNode running?</strong></p>
+<p>Answer: Using the following command</p>
+<pre><code class="text">- tail -f logs/tron.log |grep &quot;Try Produce Block&quot;
+</code></pre>
+
+<p><strong>Ask: How can I generate an account?</strong></p>
+<p>Answer: You can use <a href="https://github.com/tronprotocol/wallet-cli">Wallet-cli</a> or <a href="https://tronscan.org/#/wallet/new">Tronscan</a>  </p>
+<p><strong>Ask: We want to test our SuperNode's performance under test environment, do we need to be voted to become a SR under test environment?</strong></p>
+<p>Answer: Yes. Under test environment, we can vote you to become SR.  </p>
+<p><strong>Ask: Is there a place to see if all the SuperNodes are producing blocks?</strong></p>
+<p>Answer: Please refer to <a href="https://tronscan.org/#/sr/representatives">Tronscan</a></p>
+<p><strong>Ask: Is the block producing time interval always remain the same?</strong></p>
+<p>Answer: The current block producing time interval is 3 seconds. In the future, it may be improved to 1 second.</p>
+<p><strong>Ask: Will the block producing reward reduce half?</strong></p>
+<p>Answer: No.</p>
+<p><strong>Ask: If one of the top 27 SuperNodes goes wrong, will it be removed from the SRs list?</strong></p>
+<p>Answer: If people stop voting for it, it will drop out of the top 27 SRs.  </p>
+<h2 id="super-representatives-election-questions">Super Representatives Election Questions</h2>
+<p><strong>Ask: Why I can see my votes at <a href="https://tronscan.org/#/sr/votes">Tronscan</a>?</strong></p>
+<p>Answer: The votes will be counted every 6 hours.  </p>
+<p><strong>Ask: How to get the right to vote? How many candidates can one vote be voted to?</strong></p>
+<p>Answer: You can get Tron Power(TP) by freezing TRX, 1 TRX equals 1 TP, 1 TP equals 1 vote. One vote can only be voted to one candidate.  </p>
+<p><strong>Ask: In order to vote, do I need to deposit TRX in Tronscan wallet?</strong></p>
+<p>Answer: Yes. Not only Tronscan wallet, you can also use other wallets that support vote feature. The TRX is recorded in the blockchain, not in the wallet.  </p>
+<p><strong>Ask: Is there a threshold to become a SR?</strong>  </p>
+<p>Answer: When the amount of votes you get ranks into top 27, you will become a SR.  </p>
+<p><strong>Ask: 27 SRs shares the block producing reward equally or by their computing power?</strong></p>
+<p>Answer: It has nothing to do with computing power. The reward is a fixed 32 TRX for each block produced.</p>
+<p><strong>Ask: Will there be an over 50% computing power issue in Tron network?</strong></p>
+<p>Answer: No.</p>
+<p><strong>Ask: Will voting burns TRX?</strong></p>
+<p>Answer: No.</p>
+<p><strong>Ask: How long does SR's power last?</strong></p>
+<p>Answer: Every 6 hours, the votes will be counted to check the qualifications of all the SRs.  </p>
+<p><strong>Ask: My node info is not set in <code>build/resources/main/config.conf</code>, can my node be identified by the network?</strong></p>
+<p>Answer: You need to add your private key to <code>localwitness</code>.  </p>
+<h2 id="other-questions">Other Questions</h2>
+<p><strong>Ask: How can I specify the data storage path when start a node?</strong></p>
+<p>Answer: Will do.</p>
+<p><strong>Ask: Does a node have wallet function?</strong></p>
+<p>Answer: The node provides wallet rpc api.  </p>
+<p><strong>Ask: Can SolidityNode and FullNode be deployed in one machine? Will they share the data?</strong></p>
+<p>Answer: They can be deployed in one machine. You can specify the data storage path in configuration file <code>db.directory = "database"，index.directory = "index"</code>. You can run FullNode.jar and SolidityNode.jar in different path to separate the data and log. Remember to change the port in config.conf, because two nodes can not work using the same port.   </p>
+<p><strong>Ask: What is the proof of a transaction？</strong></p>
+<p>Answer: Transaction hash.</p>
+<p><strong>Ask: Does SolidityNode sync data from FullNode?</strong></p>
+<p>Answer: Yes.</p>
+<p><strong>Ask: Is gateway connected to SolidityNode？</strong></p>
+<p>Answer: Gateway can connect to SolidityNode and FullNode.</p>
+<p><strong>Ask: What the decimal of TRX?</strong></p>
+<p>Answer: 6</p>
+<p><strong>Ask: If the node is deployed in China, is there a firewall issue?</strong></p>
+<p>Answer: 39.106.220.120 locates in Beijing, Others not.  </p>
+<p><strong>Ask: How many types of wallet does Tron have?</strong></p>
+<p>Answer: Wallet-cli, Web wallet, IOS wallet, Android wallet.  </p>
+<p><strong>Ask: Should the internet bandwidth reach 25Gbps, or 10Gbps?</strong></p>
+<p>Answer: We have no requirement on internet bandwidth.  </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../resources/" class="btn btn-neutral" title="TRON Resources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../resources/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
