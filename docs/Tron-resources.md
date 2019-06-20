@@ -16,3 +16,10 @@
 [https://github.com/tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli)    
 
 
+* TRON Zksnark-java-sdk   
+[https://github.com/tronprotocol/zksnark-java-sdk](https://github.com/tronprotocol/zksnark-java-sdk)   
+
+
+* TRON Sun-network   
+[https://github.com/tronprotocol/sun-network](https://github.com/tronprotocol/sun-network)    
+
