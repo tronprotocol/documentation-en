@@ -377,11 +377,11 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d
     "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05"
 }' 
 ```
-Parameter startNum: The start block height, itself included      
-Parameter endNum: The end block height, itself not included     
+Parameter start_block_index: The start block height, itself included      
+Parameter end_block_index: The end block height, itself not included     
 Parameter ivk: Incoming viewing key        
 Return: Notes list   
-Note: Range limit (endNum - startNum <= 1000)   
+Note: Range limit (end_block_index - start_block_index <= 1000)   
 
 - /walletsolidity/scannotebyovk 
 
@@ -394,11 +394,11 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d
     "ovk": "705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539"
 }' 
 ```
-Parameter startNum: The start block height, itself included      
-Parameter endNum: The end block height, itself not included    
+Parameter start_block_index: The start block height, itself included      
+Parameter end_block_index: The end block height, itself not included    
 Parameter ovk: Outgoing viewing key        
 Return: Notes list   
-Note: Range limit (endNum - startNum <= 1000)   
+Note: Range limit (end_block_index - end_block_index <= 1000)   
 
 - /walletsolidity/isspend 
 
@@ -1902,11 +1902,11 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d
     "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05"
 }' 
 ```
-Parameter startNum: The start block height, itself included      
-Parameter endNum: The end block height, itself not included     
+Parameter start_block_index: The start block height, itself included      
+Parameter end_block_index: The end block height, itself not included     
 Parameter ivk: Incoming viewing key        
 Return: Notes list     
-Note: Range limit (endNum - startNum <= 1000)   
+Note: Range limit (end_block_index - start_block_index <= 1000)   
 
 - wallet/scannotebyovk    
 
@@ -1919,11 +1919,11 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d
     "ovk": "705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539"
 }' 
 ```
-Parameter startNum: The start block height, itself included      
-Parameter endNum: The end block height, itself not included     
+Parameter start_block_index: The start block height, itself included      
+Parameter end_block_index: The end block height, itself not included     
 Parameter ovk: Outgoing viewing key        
 Return: Notes list   
-Note: Range limit (endNum - startNum <= 1000)    
+Note: Range limit (end_block_index - start_block_index <= 1000)    
 
 - wallet/getrcm    
 
