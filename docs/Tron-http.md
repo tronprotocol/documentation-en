@@ -398,7 +398,7 @@ Parameter start_block_index: The start block height, itself included
 Parameter end_block_index: The end block height, itself not included    
 Parameter ovk: Outgoing viewing key        
 Return: Notes list   
-Note: Range limit (end_block_index - end_block_index <= 1000)   
+Note: Range limit (end_block_index - start_block_index <= 1000)   
 
 - /walletsolidity/isspend 
 
