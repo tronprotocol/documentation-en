@@ -520,11 +520,11 @@ Return: A merkle tree of a note </p>
 }' 
 </code></pre>
 
-<p>Parameter startNum: The start block height, itself included    <br />
-Parameter endNum: The end block height, itself not included   <br />
+<p>Parameter start_block_index: The start block height, itself included    <br />
+Parameter end_block_index: The end block height, itself not included   <br />
 Parameter ivk: Incoming viewing key      <br />
 Return: Notes list <br />
-Note: Range limit (endNum - startNum &lt;= 1000)   </p>
+Note: Range limit (end_block_index - start_block_index &lt;= 1000)   </p>
 <ul>
 <li>/walletsolidity/scannotebyovk </li>
 </ul>
@@ -537,11 +537,11 @@ Note: Range limit (endNum - startNum &lt;= 1000)   </p>
 }' 
 </code></pre>
 
-<p>Parameter startNum: The start block height, itself included    <br />
-Parameter endNum: The end block height, itself not included  <br />
+<p>Parameter start_block_index: The start block height, itself included    <br />
+Parameter end_block_index: The end block height, itself not included  <br />
 Parameter ovk: Outgoing viewing key      <br />
 Return: Notes list <br />
-Note: Range limit (endNum - startNum &lt;= 1000)   </p>
+Note: Range limit (end_block_index - end_block_index &lt;= 1000)   </p>
 <ul>
 <li>/walletsolidity/isspend </li>
 </ul>
@@ -2043,11 +2043,11 @@ Return: Transaction object   </p>
 }' 
 </code></pre>
 
-<p>Parameter startNum: The start block height, itself included    <br />
-Parameter endNum: The end block height, itself not included   <br />
+<p>Parameter start_block_index: The start block height, itself included    <br />
+Parameter end_block_index: The end block height, itself not included   <br />
 Parameter ivk: Incoming viewing key      <br />
 Return: Notes list   <br />
-Note: Range limit (endNum - startNum &lt;= 1000)   </p>
+Note: Range limit (end_block_index - start_block_index &lt;= 1000)   </p>
 <ul>
 <li>wallet/scannotebyovk    </li>
 </ul>
@@ -2060,11 +2060,11 @@ Note: Range limit (endNum - startNum &lt;= 1000)   </p>
 }' 
 </code></pre>
 
-<p>Parameter startNum: The start block height, itself included    <br />
-Parameter endNum: The end block height, itself not included   <br />
+<p>Parameter start_block_index: The start block height, itself included    <br />
+Parameter end_block_index: The end block height, itself not included   <br />
 Parameter ovk: Outgoing viewing key      <br />
 Return: Notes list <br />
-Note: Range limit (endNum - startNum &lt;= 1000)    </p>
+Note: Range limit (end_block_index - start_block_index &lt;= 1000)    </p>
 <ul>
 <li>wallet/getrcm    </li>
 </ul>
