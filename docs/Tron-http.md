@@ -372,8 +372,8 @@ Description: To get all the notes by ivk
 ```json
 demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d 
 '{
-    "startNum": 0,
-    "endNum": 100,
+    "start_block_index": 0,
+    "end_block_index": 100,
     "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05"
 }' 
 ```
@@ -389,8 +389,8 @@ Description: To get all the notes by ovk
 ```json
 demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d 
 '{
-    "startNum": 0,
-    "endNum": 100,
+    "start_block_index": 0,
+    "end_block_index": 100,
     "ovk": "705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539"
 }' 
 ```
@@ -1897,8 +1897,8 @@ Description: To get all the notes by ivk
 ```json
 demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d 
 '{
-    "startNum": 0,
-    "endNum": 100,
+    "start_block_index": 0,
+    "end_block_index": 100,
     "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05"
 }' 
 ```
@@ -1914,8 +1914,8 @@ Description: To get all the notes by ovk
 ```json
 demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d 
 '{
-    "startNum": 0,
-    "endNum": 100,
+    "start_block_index": 0,
+    "end_block_index": 100,
     "ovk": "705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539"
 }' 
 ```
