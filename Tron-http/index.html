@@ -514,8 +514,8 @@ Return: A merkle tree of a note </p>
 <p>Description: To get all the notes by ivk  </p>
 <pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d 
 '{
-    &quot;startNum&quot;: 0,
-    &quot;endNum&quot;: 100,
+    &quot;start_block_index&quot;: 0,
+    &quot;end_block_index&quot;: 100,
     &quot;ivk&quot;: &quot;80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05&quot;
 }' 
 </code></pre>
@@ -531,8 +531,8 @@ Note: Range limit (endNum - startNum &lt;= 1000)   </p>
 <p>Description: To get all the notes by ovk  </p>
 <pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d 
 '{
-    &quot;startNum&quot;: 0,
-    &quot;endNum&quot;: 100,
+    &quot;start_block_index&quot;: 0,
+    &quot;end_block_index&quot;: 100,
     &quot;ovk&quot;: &quot;705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539&quot;
 }' 
 </code></pre>
@@ -2037,8 +2037,8 @@ Return: Transaction object   </p>
 <p>Description: To get all the notes by ivk  </p>
 <pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d 
 '{
-    &quot;startNum&quot;: 0,
-    &quot;endNum&quot;: 100,
+    &quot;start_block_index&quot;: 0,
+    &quot;end_block_index&quot;: 100,
     &quot;ivk&quot;: &quot;80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05&quot;
 }' 
 </code></pre>
@@ -2054,8 +2054,8 @@ Note: Range limit (endNum - startNum &lt;= 1000)   </p>
 <p>Description: To get all the notes by ovk  </p>
 <pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d 
 '{
-    &quot;startNum&quot;: 0,
-    &quot;endNum&quot;: 100,
+    &quot;start_block_index&quot;: 0,
+    &quot;end_block_index&quot;: 100,
     &quot;ovk&quot;: &quot;705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539&quot;
 }' 
 </code></pre>
