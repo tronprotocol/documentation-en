@@ -88,15 +88,17 @@
     <a class="current" href="./">Shielded Transaction</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#simple-summary">Simple Summary</a></li>
+    <li class="toctree-l2"><a href="#introduction">Introduction</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#1-transfer-from-transparent-address-to-shielded-address">1. Transfer from transparent address to shielded address</a></li>
+            <li><a class="toctree-l3" href="#usage-guide">Usage Guide</a></li>
         
-            <li><a class="toctree-l3" href="#2-transfer-from-shielded-address-to-shielded-address">2. Transfer from shielded address to shielded address</a></li>
+            <li><a class="toctree-l3" href="#transfer-from-transparent-address-to-shielded-address">Transfer from transparent address to shielded address</a></li>
         
-            <li><a class="toctree-l3" href="#3-transfer-from-shielded-address-to-transparent-address">3. Transfer from shielded address to transparent address</a></li>
+            <li><a class="toctree-l3" href="#transfer-from-shielded-address-to-shielded-address">Transfer from shielded address to shielded address</a></li>
+        
+            <li><a class="toctree-l3" href="#transfer-from-shielded-address-to-transparent-address">Transfer from shielded address to transparent address</a></li>
         
         </ul>
     
@@ -151,9 +153,41 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="simple-summary">Simple Summary</h2>
-<p>This doc describes how to use TRON Shielded Transaction api.</p>
-<h3 id="1-transfer-from-transparent-address-to-shielded-address">1. Transfer from transparent address to shielded address</h3>
+                <h2 id="introduction">Introduction</h2>
+<p>TRON shielded transaction uses zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) to implement a completely anonymous transaction.</p>
+<p>In TRON network, the sender and the receiver's address and transfer amount can both be completely confidential.   </p>
+<p>In TRON network, there are two types of address:   </p>
+<ul>
+<li>"t-addr" (Transparent Address)  </li>
+<li>"z-addr" (Shielded Address)  </li>
+</ul>
+<p>"t-addr" address uses TRON account model. <br />
+"z-addr" address uses Unspent Transaction Output account model.  </p>
+<p>In TRON network, there are four types of transfer transaction:  </p>
+<ul>
+<li>
+<p>From "t-addr" to "t-addr":<br />
+All the transaction information of the two addresses can be tracked.  </p>
+</li>
+<li>
+<p>From "t-addr" to "z-addr": <br />
+The transaction information of "t-addr" can be tracked, "z-addr" can not be tracked.  </p>
+</li>
+<li>
+<p>From "z-addr" to "z-addr":  <br />
+The transaction information of both "z-addr" can not be tracked.  </p>
+</li>
+<li>
+<p>From "z-addr" to "t-addr":<br />
+The transaction information of both "t-addr" can be tracked, "z-addr" can not be tracked.   </p>
+</li>
+</ul>
+<h3 id="usage-guide">Usage Guide</h3>
+<p>1.&nbsp;The sender can only spend one note in each transfer. The receiver can receive two notes in each transfer at most.  </p>
+<p>2.&nbsp;When you transfer from "z-addr" to "t-addr", if no note returns to "z-addr" as a change, it will generate a note of zero value, and send it to black hole addresses.   </p>
+<p>3.&nbsp;The fee for each shielded transaction is xx.  </p>
+<p>The doc below describes how to use TRON Shielded Transaction with http api.</p>
+<h3 id="transfer-from-transparent-address-to-shielded-address">Transfer from transparent address to shielded address</h3>
 <p><strong>Step 1. Call api: wallet/createshieldedtransaction to build the transaction</strong>  <br />
 Method: Post<br />
 Parameters:   </p>
@@ -206,7 +240,7 @@ Parameters:   </p>
 <pre><code class="bash">{&quot;result&quot;: true}
 </code></pre>
 
-<h3 id="2-transfer-from-shielded-address-to-shielded-address">2. Transfer from shielded address to shielded address</h3>
+<h3 id="transfer-from-shielded-address-to-shielded-address">Transfer from shielded address to shielded address</h3>
 <p><strong>Step 1. Call api: wallet/getmerkletreevoucherinfo to get the voucher of the shield address, this info will be used when create shielded transaction</strong><br />
 Method: Post<br />
 Parameter:  </p>
@@ -273,7 +307,7 @@ Parameter:  </p>
 <pre><code class="bash">{&quot;result&quot;: true}
 </code></pre>
 
-<h3 id="3-transfer-from-shielded-address-to-transparent-address">3. Transfer from shielded address to transparent address</h3>
+<h3 id="transfer-from-shielded-address-to-transparent-address">Transfer from shielded address to transparent address</h3>
 <p><strong>Step 1. Call api: wallet/getmerkletreevoucherinfo to get the voucher of the shield address, this info will be used when create shielded transaction</strong><br />
 Method: Post<br />
 Parameter:   </p>

@@ -1057,10 +1057,14 @@ buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / suppl
 
 
 # 10. Multi-Signatures
-Please refer to: 
-[https://github.com/tronprotocol/documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E5%A4%9A%E9%87%8D%E7%AD%BE%E5%90%8D.md](https://github.com/tronprotocol/documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E5%A4%9A%E9%87%8D%E7%AD%BE%E5%90%8D.md)
+Please refer to:  
+[TRON Multi-signatures](Tron-multi-signatures.md)    
 
-# 11. Wallet Introduction
+# 11. Shielded Transaction  
+Please refer to:  
+[TRON Shielded Transaction](Tron-shielded-transaction.md)   
+
+# 12. Wallet Introduction
 <h2> 11.1 wallet-cli Introduction </h2>
 Please refer to:  
 [https://github.com/tronprotocol/wallet-cli/blob/master/README.md](https://github.com/tronprotocol/wallet-cli/blob/master/README.md)

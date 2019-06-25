@@ -93,16 +93,16 @@
     <a class="current" href="./">Multi Signatures</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#1-background">1. Background</a></li>
+    <li class="toctree-l2"><a href="#background">Background</a></li>
     
 
-    <li class="toctree-l2"><a href="#2-concept">2. Concept</a></li>
+    <li class="toctree-l2"><a href="#concept">Concept</a></li>
     
 
-    <li class="toctree-l2"><a href="#3-api">3. API</a></li>
+    <li class="toctree-l2"><a href="#api">API</a></li>
     
 
-    <li class="toctree-l2"><a href="#4-others">4. Others</a></li>
+    <li class="toctree-l2"><a href="#others">Others</a></li>
     
 
     </ul>
@@ -150,13 +150,13 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="1-background"><h2 id="1">1. Background</h2></h2>
+                <h2 id="background"><h2 id="1">Background</h2></h2>
 <p><strong>Notice: Since V3.5</strong></p>
 <p>In the past version, the transactions created in one account can only be signed by one private key, an account can only be managed by one private key. Since V3.5, an account can be managed by several private keys, and the transactions created in one account can be signed by serval private keys.  </p>
 <p><a href="https://github.com/tronprotocol/TIPs/issues/16">Tron multi-signatures Tip</a>  </p>
-<h2 id="2-concept"><h2 id="2">2. Concept</h2></h2>
+<h2 id="concept"><h2 id="2">Concept</h2></h2>
 <p>There are three types of permission: owner、witness and active. Owner permission has the right to execute all the contracts. Witness permission is for SR. Active permission contains a set of contracts selected execution permissions.</p>
-<h3 id="2.1">2.1 Protocol</h3>
+<h3 id="2.1">1) Protocol</h3>
 
 <p><strong>Account</strong></p>
 <pre><code class="text">message Account { 
@@ -238,7 +238,7 @@ For instance, operations=0x0100...00(hex), 100...0(binary), refer to the definit
 
 <p><code>Permission_id</code> is added. It is corresponding to <code>Permission.id</code><br />
 1 is not allowed, because witness permission is only used to produce blocks, not for transaction signature.</p>
-<h3 id="2.2">2.2 Owner Permission</h3>
+<h3 id="2.2">2) Owner Permission</h3>
 
 <p>Owner permission is the top permission of an account. It is used to control account ownership, adjust permission  structure. Owner Permission has the right to execute all the contracts.  </p>
 <p>Owner permission's features: <br />
@@ -246,7 +246,7 @@ For instance, operations=0x0100...00(hex), 100...0(binary), refer to the definit
 2、When owner permission is null, the default owner of the account owns the owner permission<br />
 3、When you create a new account, the address will be insert into owner permission automatically, default weight is 1, keys field only contains this address and also weight is 1.  <br />
 4、If a permissionId is not specified when a contract is executed, using owner permission by defualt.  </p>
-<h3 id="2.3">2.3 Witness Permission</h3>
+<h3 id="2.3">3) Witness Permission</h3>
 
 <p>Super representatives can use this permission to manage block producing. Only witness account has this permission. </p>
 <p>Usage scenario example: <br />
@@ -270,7 +270,7 @@ localwitness = [
 
 </code></pre>
 
-<h3 id="2.4">2.4 Active Permission</h3>
+<h3 id="2.4">4) Active Permission</h3>
 
 <p>Active permission is composed of a set of contract execution permission, like creating an account, trnasfer function, etc.   </p>
 <p>Active permission's features:  <br />
@@ -279,13 +279,13 @@ localwitness = [
 3、8 permissions at most    <br />
 4、permissionId increases from 2 automatically   <br />
 5、when a new account is created, an active permission will be created automatically, and the address will be inserted into it, default weight is 1, keys field only contains this address and weight is 1    </p>
-<h3 id="2.5">2.5 Fee</h3>
+<h3 id="2.5">5) Fee</h3>
 
 <p>1、Using AccountPermissionUpdateContract costs 100TRX <br />
 2、If a transaction contains 2 or more than 2 signatures, it charges an extra 1 TRX besides the transaction fee   <br />
 3、The fee can be modified by proposing      </p>
-<h2 id="3-api"><h2 id="3">3. API</h2></h2>
-<h3 id="3.1">Change Permission</h3>
+<h2 id="api"><h2 id="3">API</h2></h2>
+<h3 id="3.1">1) Change Permission</h3>
 
 <p><code>AccountPermissionUpdateContract</code>, steps:   </p>
 <p>1、call <code>getaccount</code> to query the account, get the original permission <br />
@@ -367,7 +367,7 @@ localwitness = [
 }
 </code></pre>
 
-<h3 id="3.2">Contract Execution</h3>
+<h3 id="3.2">2) Contract Execution</h3>
 
 <p>1、Create transaction, the same as none multi-signatures   <br />
 2、Specify Permission_id, default 0, represent owner permission, <a href="https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211">demo</a> <br />
@@ -378,7 +378,7 @@ n、The last users that signs the transaction broadcast it to the node  <br />
 n+1、The node will verify if the sum of the weight of all signatures is bigger than threshold, if true, the transaction is accepted, otherwise, is rejected    </p>
 <p>Demo:  </p>
 <p><a href="https://github.com/tronprotocol/wallet-cli/blob/multi_sign_V2/src/main/java/org/tron/demo/MultiSignDemo.java">https://github.com/tronprotocol/wallet-cli/blob/multi_sign_V2/src/main/java/org/tron/demo/MultiSignDemo.java</a></p>
-<h3 id="3.3">Other Api</h3>
+<h3 id="3.3">3) Other Api</h3>
 
 <p>Please refer to <a href="../Tron-http/">Tron http api</a> and <a href="../Tron-rpc/">Tron rpc api</a> for more information  </p>
 <p>1、add signature   </p>
@@ -399,7 +399,7 @@ rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList) { 
 rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}
 </code></pre>
 
-<h2 id="4-others"><h2 id="4">4. Others</h2></h2>
+<h2 id="others"><h2 id="4">Others</h2></h2>
 <p>Since V3.5, what is the change after a new account is created?   </p>
 <p>When to create a new account, an owner permission and active permission will be generated automatically. Owner permission only contains one key, the weight and threshold are both 1. Active permission also contains one key, the weight and threshold are both 1, and operations is "7fff1fc0037e0000000000000000000000000000000000000000000000000000", means it support the execution of all contracts except AccountPermissionUpdateContract.</p>
 <p>Please refer to <a href="https://github.com/tronprotocol/wallet-cli/blob/master/README.md">wallet-cli</a> to check the usage of multi-signatures.</p>

@@ -1,5 +1,5 @@
 
-## <h2 id="1">1. Background</h2>   
+## <h2 id="1">Background</h2>   
 
 **Notice: Since V3.5**
 
@@ -7,11 +7,11 @@ In the past version, the transactions created in one account can only be signed 
 
 [Tron multi-signatures Tip](https://github.com/tronprotocol/TIPs/issues/16)  
 
-## <h2 id="2">2. Concept</h2>   
+## <h2 id="2">Concept</h2>   
 
 There are three types of permission: owner、witness and active. Owner permission has the right to execute all the contracts. Witness permission is for SR. Active permission contains a set of contracts selected execution permissions.
 
-<h3 id="2.1">2.1 Protocol</h3>
+<h3 id="2.1">1) Protocol</h3>
 
 **Account**
 ```text  
@@ -102,7 +102,7 @@ message Transaction {
 `Permission_id` is added. It is corresponding to `Permission.id`  
 1 is not allowed, because witness permission is only used to produce blocks, not for transaction signature.
 
-<h3 id="2.2">2.2 Owner Permission</h3>
+<h3 id="2.2">2) Owner Permission</h3>
 
 Owner permission is the top permission of an account. It is used to control account ownership, adjust permission  structure. Owner Permission has the right to execute all the contracts.  
 
@@ -113,7 +113,7 @@ Owner permission's features:
 4、If a permissionId is not specified when a contract is executed, using owner permission by defualt.  
 
 
-<h3 id="2.3">2.3 Witness Permission</h3>
+<h3 id="2.3">3) Witness Permission</h3>
 
 Super representatives can use this permission to manage block producing. Only witness account has this permission. 
 
@@ -141,7 +141,7 @@ localwitness = [
 
 ```
 
-<h3 id="2.4">2.4 Active Permission</h3>
+<h3 id="2.4">4) Active Permission</h3>
 
 Active permission is composed of a set of contract execution permission, like creating an account, trnasfer function, etc.   
 
@@ -153,15 +153,15 @@ Active permission's features:
 5、when a new account is created, an active permission will be created automatically, and the address will be inserted into it, default weight is 1, keys field only contains this address and weight is 1    
  
  
-<h3 id="2.5">2.5 Fee</h3>
+<h3 id="2.5">5) Fee</h3>
 
 1、Using AccountPermissionUpdateContract costs 100TRX   
 2、If a transaction contains 2 or more than 2 signatures, it charges an extra 1 TRX besides the transaction fee     
 3、The fee can be modified by proposing      
 
-## <h2 id="3">3. API</h2>  
+## <h2 id="3">API</h2>  
 
-<h3 id="3.1">Change Permission</h3>
+<h3 id="3.1">1) Change Permission</h3>
 
 `AccountPermissionUpdateContract`, steps:   
 
@@ -249,7 +249,7 @@ public static void main(String[] args) {
 ```
 
 
-<h3 id="3.2">Contract Execution</h3>   
+<h3 id="3.2">2) Contract Execution</h3>   
 
 1、Create transaction, the same as none multi-signatures     
 2、Specify Permission_id, default 0, represent owner permission, [demo](https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211)   
@@ -264,7 +264,7 @@ Demo:
 [https://github.com/tronprotocol/wallet-cli/blob/multi_sign_V2/src/main/java/org/tron/demo/MultiSignDemo.java](https://github.com/tronprotocol/wallet-cli/blob/multi_sign_V2/src/main/java/org/tron/demo/MultiSignDemo.java)
   
 
-<h3 id="3.3">Other Api</h3>
+<h3 id="3.3">3) Other Api</h3>
 
 Please refer to [Tron http api](Tron-http.md) and [Tron rpc api](Tron-rpc.md) for more information  
 
@@ -288,7 +288,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{"transaction"}'
 rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}
 ```
   
-## <h2 id="4">4. Others</h2>  
+## <h2 id="4">Others</h2>  
 
 Since V3.5, what is the change after a new account is created?   
 
