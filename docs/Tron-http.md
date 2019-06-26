@@ -355,7 +355,7 @@ Return: Deferred transaction fee & block height
 
 Description: To get a merkle tree infromation of a note  
 ```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d 
+demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/getmerkletreevoucherinfo -d 
 '{
     "out_points":[{
         "hash":"185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74",
@@ -370,7 +370,7 @@ Return: A merkle tree of a note
 
 Description: To get all the notes by ivk  
 ```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d 
+demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyivk -d 
 '{
     "start_block_index": 0,
     "end_block_index": 100,
@@ -383,11 +383,32 @@ Parameter ivk: Incoming viewing key
 Return: Notes list   
 Note: Range limit (end_block_index - start_block_index <= 1000)   
 
+- /walletsolidity/scanandmarknotebyivk    
+
+Description: To get all the notes with spent status by ivk  
+```json
+demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scanandmarknotebyivk -d 
+'{
+    "start_block_index": 0,
+    "end_block_index": 100,
+    "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05",
+    "ak": "1d4f9b5551f4aa9443ceb263f0e208eb7e26080264571c5ef06de97a646fe418",
+    "nk": "748522c7571a9da787e43940c9a474aa0c5c39b46c338905deb6726fa3678bdb"
+}' 
+```
+Parameter start_block_index: The start block height, itself included      
+Parameter end_block_index: The end block height, itself not included     
+Parameter ivk: Incoming viewing key  
+Parameter ak: Ak key     
+Parameter nk: Nk key  
+Return: Notes list     
+Note: Range limit (end_block_index - start_block_index <= 1000)  
+
 - /walletsolidity/scannotebyovk 
 
 Description: To get all the notes by ovk  
 ```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d 
+demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyovk -d 
 '{
     "start_block_index": 0,
     "end_block_index": 100,
@@ -404,7 +425,7 @@ Note: Range limit (end_block_index - start_block_index <= 1000)
 
 Description: To check whether a note is spent or not  
 ```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/isspend -d 
+demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/isspend -d 
 '{
     "ak": "a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129",
     "nk": "62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e",
@@ -413,20 +434,15 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/isspend -d
         "rcm": "74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a",
         "value": 500000000
     },
-    "voucher": {
-        "tree": {
-            "left": {
-                "content": "a4d763fae3fee78964ccdf7567ec3062c95a5b97825d731202d3dfa6cb01c143"
-            }
-        },
-        "rt": "7dc3652c2a16e8518a8be0e3e038f9d28c3eb96f13e8da8acc2a9b650702f33e"
-    }
+    "txid": "7d09e471bb047d3ac044d5d6691b3721a2dddbb683ac02c207fbe78af6302463",
+    "index": 1
 }' 
 ```
 Parameter ak: Ak key      
 Parameter nk: Nk key      
-Parameter note: Note information      
-Parameter voucher: Voucher information       
+Parameter note: Note information       
+Parameter txid: Transaction id    
+Parameter index: Note index        
 Return: Note status  
 
 
@@ -1908,6 +1924,27 @@ Parameter ivk: Incoming viewing key
 Return: Notes list     
 Note: Range limit (end_block_index - start_block_index <= 1000)   
 
+- wallet/scanandmarknotebyivk    
+
+Description: To get all the notes with spent status by ivk  
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/scanandmarknotebyivk -d 
+'{
+    "start_block_index": 0,
+    "end_block_index": 100,
+    "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05",
+    "ak": "1d4f9b5551f4aa9443ceb263f0e208eb7e26080264571c5ef06de97a646fe418",
+    "nk": "748522c7571a9da787e43940c9a474aa0c5c39b46c338905deb6726fa3678bdb"
+}' 
+```
+Parameter start_block_index: The start block height, itself included      
+Parameter end_block_index: The end block height, itself not included     
+Parameter ivk: Incoming viewing key  
+Parameter ak: Ak key     
+Parameter nk: Nk key  
+Return: Notes list     
+Note: Range limit (end_block_index - start_block_index <= 1000)  
+
 - wallet/scannotebyovk    
 
 Description: To get all the notes by ovk  
@@ -1962,20 +1999,15 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/isspend -d
         "rcm": "74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a",
         "value": 500000000
     },
-    "voucher": {
-        "tree": {
-            "left": {
-                "content": "a4d763fae3fee78964ccdf7567ec3062c95a5b97825d731202d3dfa6cb01c143"
-            }
-        },
-        "rt": "7dc3652c2a16e8518a8be0e3e038f9d28c3eb96f13e8da8acc2a9b650702f33e"
-    }
+    "txid": "7d09e471bb047d3ac044d5d6691b3721a2dddbb683ac02c207fbe78af6302463",
+    "index": 1
 }' 
 ```
 Parameter ak: Ak key      
 Parameter nk: Nk key      
 Parameter note: Note information      
-Parameter voucher: Voucher information       
+Parameter txid: Transaction id     
+Parameter index: Note index         
 Return: Note status  
 
 - wallet/createspendauthsig    

@@ -497,7 +497,7 @@ Return: Deferred transaction fee &amp; block height  </p>
 <li>/walletsolidity/getmerkletreevoucherinfo </li>
 </ul>
 <p>Description: To get a merkle tree infromation of a note  </p>
-<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d 
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/getmerkletreevoucherinfo -d 
 '{
     &quot;out_points&quot;:[{
         &quot;hash&quot;:&quot;185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74&quot;,
@@ -512,7 +512,7 @@ Return: A merkle tree of a note </p>
 <li>/walletsolidity/scannotebyivk </li>
 </ul>
 <p>Description: To get all the notes by ivk  </p>
-<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d 
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyivk -d 
 '{
     &quot;start_block_index&quot;: 0,
     &quot;end_block_index&quot;: 100,
@@ -526,10 +526,31 @@ Parameter ivk: Incoming viewing key      <br />
 Return: Notes list <br />
 Note: Range limit (end_block_index - start_block_index &lt;= 1000)   </p>
 <ul>
+<li>/walletsolidity/scanandmarknotebyivk    </li>
+</ul>
+<p>Description: To get all the notes with spent status by ivk  </p>
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scanandmarknotebyivk -d 
+'{
+    &quot;start_block_index&quot;: 0,
+    &quot;end_block_index&quot;: 100,
+    &quot;ivk&quot;: &quot;80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05&quot;,
+    &quot;ak&quot;: &quot;1d4f9b5551f4aa9443ceb263f0e208eb7e26080264571c5ef06de97a646fe418&quot;,
+    &quot;nk&quot;: &quot;748522c7571a9da787e43940c9a474aa0c5c39b46c338905deb6726fa3678bdb&quot;
+}' 
+</code></pre>
+
+<p>Parameter start_block_index: The start block height, itself included    <br />
+Parameter end_block_index: The end block height, itself not included   <br />
+Parameter ivk: Incoming viewing key<br />
+Parameter ak: Ak key   <br />
+Parameter nk: Nk key<br />
+Return: Notes list   <br />
+Note: Range limit (end_block_index - start_block_index &lt;= 1000)  </p>
+<ul>
 <li>/walletsolidity/scannotebyovk </li>
 </ul>
 <p>Description: To get all the notes by ovk  </p>
-<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d 
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyovk -d 
 '{
     &quot;start_block_index&quot;: 0,
     &quot;end_block_index&quot;: 100,
@@ -546,7 +567,7 @@ Note: Range limit (end_block_index - start_block_index &lt;= 1000)   </p>
 <li>/walletsolidity/isspend </li>
 </ul>
 <p>Description: To check whether a note is spent or not  </p>
-<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/isspend -d 
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/isspend -d 
 '{
     &quot;ak&quot;: &quot;a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129&quot;,
     &quot;nk&quot;: &quot;62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e&quot;,
@@ -555,21 +576,16 @@ Note: Range limit (end_block_index - start_block_index &lt;= 1000)   </p>
         &quot;rcm&quot;: &quot;74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a&quot;,
         &quot;value&quot;: 500000000
     },
-    &quot;voucher&quot;: {
-        &quot;tree&quot;: {
-            &quot;left&quot;: {
-                &quot;content&quot;: &quot;a4d763fae3fee78964ccdf7567ec3062c95a5b97825d731202d3dfa6cb01c143&quot;
-            }
-        },
-        &quot;rt&quot;: &quot;7dc3652c2a16e8518a8be0e3e038f9d28c3eb96f13e8da8acc2a9b650702f33e&quot;
-    }
+    &quot;txid&quot;: &quot;7d09e471bb047d3ac044d5d6691b3721a2dddbb683ac02c207fbe78af6302463&quot;,
+    &quot;index&quot;: 1
 }' 
 </code></pre>
 
 <p>Parameter ak: Ak key    <br />
 Parameter nk: Nk key    <br />
-Parameter note: Note information    <br />
-Parameter voucher: Voucher information     <br />
+Parameter note: Note information     <br />
+Parameter txid: Transaction id  <br />
+Parameter index: Note index      <br />
 Return: Note status  </p>
 <h2 id="fullnode-api-introduction">FullNode Api Introduction</h2>
 <p>FullNode api's default http port is 8090, when FullNode is started, http service will be started too.</p>
@@ -2049,6 +2065,27 @@ Parameter ivk: Incoming viewing key      <br />
 Return: Notes list   <br />
 Note: Range limit (end_block_index - start_block_index &lt;= 1000)   </p>
 <ul>
+<li>wallet/scanandmarknotebyivk    </li>
+</ul>
+<p>Description: To get all the notes with spent status by ivk  </p>
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/scanandmarknotebyivk -d 
+'{
+    &quot;start_block_index&quot;: 0,
+    &quot;end_block_index&quot;: 100,
+    &quot;ivk&quot;: &quot;80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05&quot;,
+    &quot;ak&quot;: &quot;1d4f9b5551f4aa9443ceb263f0e208eb7e26080264571c5ef06de97a646fe418&quot;,
+    &quot;nk&quot;: &quot;748522c7571a9da787e43940c9a474aa0c5c39b46c338905deb6726fa3678bdb&quot;
+}' 
+</code></pre>
+
+<p>Parameter start_block_index: The start block height, itself included    <br />
+Parameter end_block_index: The end block height, itself not included   <br />
+Parameter ivk: Incoming viewing key<br />
+Parameter ak: Ak key   <br />
+Parameter nk: Nk key<br />
+Return: Notes list   <br />
+Note: Range limit (end_block_index - start_block_index &lt;= 1000)  </p>
+<ul>
 <li>wallet/scannotebyovk    </li>
 </ul>
 <p>Description: To get all the notes by ovk  </p>
@@ -2102,21 +2139,16 @@ Return: A merkle tree of a note  </p>
         &quot;rcm&quot;: &quot;74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a&quot;,
         &quot;value&quot;: 500000000
     },
-    &quot;voucher&quot;: {
-        &quot;tree&quot;: {
-            &quot;left&quot;: {
-                &quot;content&quot;: &quot;a4d763fae3fee78964ccdf7567ec3062c95a5b97825d731202d3dfa6cb01c143&quot;
-            }
-        },
-        &quot;rt&quot;: &quot;7dc3652c2a16e8518a8be0e3e038f9d28c3eb96f13e8da8acc2a9b650702f33e&quot;
-    }
+    &quot;txid&quot;: &quot;7d09e471bb047d3ac044d5d6691b3721a2dddbb683ac02c207fbe78af6302463&quot;,
+    &quot;index&quot;: 1
 }' 
 </code></pre>
 
 <p>Parameter ak: Ak key    <br />
 Parameter nk: Nk key    <br />
 Parameter note: Note information    <br />
-Parameter voucher: Voucher information     <br />
+Parameter txid: Transaction id   <br />
+Parameter index: Note index       <br />
 Return: Note status  </p>
 <ul>
 <li>wallet/createspendauthsig    </li>
