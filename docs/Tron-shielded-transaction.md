@@ -33,7 +33,7 @@ The transaction information of both "t-addr" can be tracked, "z-addr" can not be
 
 1.&nbsp;The sender can only spend one note in each transfer. The receiver can receive two notes in each transfer at most.  
 
-2.&nbsp;When you transfer from "z-addr" to "t-addr", if no note returns to "z-addr" as a change, it will generate a note of zero value, and send it to black hole addresses.   
+2.&nbsp;When you transfer from "z-addr" to "t-addr", if no note returns to "z-addr" as a change, it will generate a note of zero value automatically, and send it to a random black hole address.   
 
 3.&nbsp;The fee for each shielded transaction is xx.  
 

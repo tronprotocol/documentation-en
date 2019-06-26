@@ -1065,16 +1065,16 @@ Please refer to:
 [TRON Shielded Transaction](Tron-shielded-transaction.md)   
 
 # 12. Wallet Introduction
-<h2> 11.1 wallet-cli Introduction </h2>
+<h2> 12.1 wallet-cli Introduction </h2>
 Please refer to:  
 [https://github.com/tronprotocol/wallet-cli/blob/master/README.md](https://github.com/tronprotocol/wallet-cli/blob/master/README.md)
 
-<h2> 11.2 Get Transaction ID </h2>
+<h2> 12.2 Get Transaction ID </h2>
 
 ```text
 Hash.sha256(transaction.getRawData().toByteArray())
 ```
-<h2> 11.3 Get Block ID </h2>
+<h2> 12.3 Get Block ID </h2>
 
 ```text
 private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
@@ -1084,7 +1084,7 @@ private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
   return hash;
   }
 ```
-<h2> 11.4 How to Build a Transaction Locally </h2>
+<h2> 12.4 How to Build a Transaction Locally </h2>
 According to the defination of the transaction, you need to fill up all the fields of the transaction.  
 
 You need to set refference block and expiration time information, so you need to connect to the Mainnet. We recommend to use the latest block on fullnode as the value of refference block, use the latest block time plus N minutes as the value of expiration time.  
@@ -1133,7 +1133,7 @@ public static Transaction createTransaction(byte[] from, byte[] to, long amount)
      return refTransaction;
    }
 ```
-<h2> 11.5 Related Demo </h2>
+<h2> 12.5 Related Demo </h2>
 
 Build transaction locally, signature demo, please refer to:  
 [https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java](https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java)  
