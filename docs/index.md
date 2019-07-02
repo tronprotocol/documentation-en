@@ -43,6 +43,8 @@ We encourage a PR early approach, meaning you create the PR the earliest even wi
 * [Discord](https://discord.gg/GsRgsTD)   
 * [Gitter](https://gitter.im/tronprotocol/allcoredev)   
 
+Check [TRON Incentives Policy](Tron-incentives.md)
+
 ## How to Contribute to TRON Documentation
 
 There are two documentation repositories:  
