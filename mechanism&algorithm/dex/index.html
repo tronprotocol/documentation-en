@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>DEX - TRON Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "DEX";
+    var mkdocs_page_input_path = "mechanism&algorithm/dex.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TRON Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../introduction/">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../api/http/">Http Api</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/rpc/">Rpc Api</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Mechanism & Algorithm</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sr/">SR and Committee</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../trc10/">TRC-10</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../account/">Account Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../resource/">Resource Model</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">DEX</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#what-is-an-exchange-pair">What is an Exchange Pair</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exchange-pair-creation">Exchange Pair Creation</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exchange-pair-transaction">Exchange Pair Transaction</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exchange-pair-injection">Exchange Pair Injection</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exchange-pair-withdrawal">Exchange Pair Withdrawal</a></li>
+    
+
+    <li class="toctree-l3"><a href="#query">Query</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multi-signatures/">Multi Signatures</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../shielded-transaction/">Shielded Transaction</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Architecture</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../architecture/network/">Network</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../architecture/database/">Database</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Contracts</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../contracts/tvm/">TVM</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../contracts/compiler/">Compiler</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../contracts/contract/">Contract</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../developers/official-public-nodes/">Official Public Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/deployment/">Deployment</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/resources/">Resources</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/contribution/">Contribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/incentives/">Incentives Policy</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../q&a/qa/">Q&A</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TRON Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Mechanism & Algorithm &raquo;</li>
+        
+      
+    
+    <li>DEX</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>TRON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs. You can find the api below in <a href="../../api/http">http api</a></p>
+<h2 id="what-is-an-exchange-pair">What is an Exchange Pair</h2>
+<p>The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/TRX.  </p>
+<h2 id="exchange-pair-creation">Exchange Pair Creation</h2>
+<p>Any account can create an exchange pair, it burns 1024 TRX.    </p>
+<p>Please refer to 'wallet/exchangecreate'  </p>
+<h2 id="exchange-pair-transaction">Exchange Pair Transaction</h2>
+<p>Any account can trade in the DEX. The trade follows Bancor protocol.   </p>
+<p>Please refer to 'wallet/exchangetransaction'  </p>
+<h2 id="exchange-pair-injection">Exchange Pair Injection</h2>
+<p>The exchange pair creator can inject more tokens into the exchange pair. Injection can decrease the range of ratio fluctuation. If one token is injected, the other one will be injected automatically to keep the current ratio of the two tokens unchanged.  </p>
+<p>Please refer to 'wallet/exchangeinject'    </p>
+<h2 id="exchange-pair-withdrawal">Exchange Pair Withdrawal</h2>
+<p>The exchange pair creator can withdraw tokens from the exchange pair. Withdrawal can increase the range of ratio fluctuation. If one token is withdrawn, the other one will be withdrawn automatically to keep the current ratio of the two tokens unchanged.   </p>
+<p>Please refer to 'wallet/exchangewithdraw'  </p>
+<h2 id="query">Query</h2>
+<h3>1. Transaction Query </h3>
+
+<p>ListExchanges: Query the list of all the exchange pairs<br />
+GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination<br />
+GetExchangeById: Query an exchange pair by exchange pair id   </p>
+<h3>2. Price Calculation </h3>
+
+<p>The token price is determined by the ratio of the balance of the two tokens.  </p>
+<h3>3. Calculate the Amount of Token You Can Get </h3>
+
+<p>sellTokenQuant is the amount of the first_token you want to sell;<br />
+buyTokenQuant is the amount of second_token you can get;
+supply = 1_000_000_000_000_000_000L; <br />
+supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant, 0.0005)); <br />
+buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0); </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../multi-signatures/" class="btn btn-neutral float-right" title="Multi Signatures">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../resource/" class="btn btn-neutral" title="Resource Model"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../resource/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../multi-signatures/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

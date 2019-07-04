@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Advanced Configurations - TRON Documentation</title>
+  <title>Introduction - TRON Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Advanced Configurations";
-    var mkdocs_page_input_path = "advanced-configuration.md";
+    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_input_path = "introduction.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -48,9 +48,18 @@
 	<ul class="current">
 	  
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="../introduction/">Introduction</a>
+    <a class="current" href="./">Introduction</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#project-repository">Project Repository</a></li>
+    
+
+    <li class="toctree-l2"><a href="#tips-guide">Tips Guide</a></li>
+    
+
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -191,7 +200,7 @@
     
       
     
-    <li>Advanced Configurations</li>
+    <li>Introduction</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -201,118 +210,39 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="advanced-configurations">Advanced Configurations</h1>
-<p>we provide some configuration items for LevelDB and gRPC in <code>config.conf</code> file, for fine-grained performance tuning. <br />
-You may custom these items only if you have deep understanding on them, otherwise keep them as default.</p>
-<h2 id="leveldb">LevelDB</h2>
-<p>You can custom LevelDB options in the <code>storage</code> part of <code>config.conf</code>, which looks like:</p>
-<pre><code>storage {
-  # Directory for storing persistent data
-
-  db.directory = &quot;database&quot;,
-  index.directory = &quot;index&quot;,
-
-  # You can custom these 14 databases' configs:
-
-  # account, account-index, asset-issue, block, block-index,
-  # block_KDB, peers, properties, recent-block, trans,
-  # utxo, votes, witness, witness_schedule.
-
-  # Otherwise, db configs will remain defualt and data will be stored in
-  # the path of &quot;output-directory&quot; or which is set by &quot;-d&quot; (&quot;--output-directory&quot;).
-
-  # Attention: name is a required field that must be set !!!
-  properties = [
-    {
-      name = &quot;account&quot;,
-      path = &quot;/path/to/accout&quot;,   // relative or absolute path
-      createIfMissing = true,
-      paranoidChecks = true,
-      verifyChecksums = true,
-      compressionType = 1,        // 0 - no compression,  1 - compressed with snappy
-      blockSize = 4096,           // 4  KB =         4 * 1024 B
-      writeBufferSize = 10485760, // 10 MB = 10 * 1024 * 1024 B
-      cacheSize = 10485760,       // 10 MB = 10 * 1024 * 1024 B
-      maxOpenFiles = 100
-    }
-  ]
-
-}
-
-</code></pre>
-
-<p>As shown in the example above, the data of database <code>accout</code> will be stored in the path of <code>/path/to/accout/database</code> while the index be stored in <code>/path/to/accout/index</code>. And, the example also shows our default value of LevelDB options from <code>createIfMissing</code> to <code>maxOpenFiles</code>. You can just refer to the docs of <a href="https://github.com/google/leveldb/blob/master/doc/index.md#performance">LevelDB</a> to figure out details of these options.</p>
-<h2 id="grpc">gRPC</h2>
-<p>You can custom gPRC options in the <code>node.rpc</code> part of <code>config.conf</code>, which looks like:</p>
-<pre><code>node {
-  rpc {
-    port = 50051
-
-    # Number of gRPC thread, default availableProcessors / 2
-    # thread = 16
-
-    # The maximum number of concurrent calls permitted for each incoming connection
-    # maxConcurrentCallsPerConnection =
-
-    # The HTTP/2 flow control window, default 1MB
-    # flowControlWindow =
-
-    # Connection being idle for longer than which will be gracefully terminated
-    maxConnectionIdleInMillis = 60000
-
-    # Connection lasting longer than which will be gracefully terminated
-    # maxConnectionAgeInMillis =
-
-    # The maximum message size allowed to be received on the server, default 4MB
-    # maxMessageSize =
-
-    # The maximum size of header list allowed to be received, default 8192
-    # maxHeaderListSize =
-  }
-}
-</code></pre>
-
-<h2 id="backup">backup</h2>
-<p>You can custom backup options in the <code>node.backup</code> part of <code>config.conf</code>, which looks like:</p>
-<pre><code>node.backup {
-    # my priority, each member should use different priority
-    priority = 
-    # members should use same port
-    port = 
-    # peer's ip list, can't contain mine
-    members = []
-}
-</code></pre>
-
-<p>policy: 
-1. the one which synchronized first will become master.
-2. if synchronization is completed at the same time, the one which with big priority will become master.</p>
-<p>E.g. create backups for node A(192.168.0.100) and node B(192.168.0.100 ):
-node A's configuration:</p>
-<pre><code>node.backup {
-    priority = 8 
-    port = 10001
-    members = [
-        &quot;192.168.0.101&quot;
-    ]
-}
-</code></pre>
-
-<p>node B's configuration:</p>
-<pre><code>node.backup {
-    priority = 5
-    port = 10001
-    members = [
-        &quot;192.168.0.100&quot;
-    ]
-}
-</code></pre>
-
-<p>You may refer to the source code of <code>io.grpc.netty.NettyServerBuilder</code> class to see details or just make a decision according to the brief comments above.  </p>
+                <h2 id="project-repository">Project Repository</h2>
+<p>Github Url: <a href="https://github.com/tronprotocol">https://github.com/tronprotocol</a>  <br />
+<a href="https://github.com/tronprotocol/java-tron">java-tron</a> is the source code of the MainNet.<br />
+<a href="https://github.com/tronprotocol/protocol">protocol</a> is the defination of the api and data structure.<br />
+<a href="https://github.com/tronprotocol/wallet-cli">wallet-cli</a> is the official command line wallet.   </p>
+<p>MainNet Configuration:<br />
+<a href="https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf">https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf</a>  <br />
+TestNet Configuration: <br />
+<a href="https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf">https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf</a>    </p>
+<h2 id="tips-guide">Tips Guide</h2>
+<ul>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-01.md">TRON Wallet Proposal</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-10.md">TRON Token Standard</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-12.md">TRON Event Subscription Model</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-13.md">Design of TRON account</a>    </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-16.md">TRON Account Multi-Signature</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-17.md">TRON Adaptive Energy Limit Model</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-20.md">TRC-20 Token Standard</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-24.md">Implement of DB storage with RocksDB</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-28.md">Built-in Message Queue in Event Subscription Model</a>  </li>
+<li><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-34.md">To Support Contract without ABI in Event Subscription Model</a></li>
+</ul>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/http/" class="btn btn-neutral float-right" title="Http Api">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
   
 
   <hr/>
@@ -336,6 +266,8 @@ node A's configuration:</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+      
+        <span style="margin-left: 15px"><a href="../api/http/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

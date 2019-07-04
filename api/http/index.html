@@ -7,23 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="shortcut icon" href="../img/favicon.ico">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Http Api - TRON Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "Http Api";
-    var mkdocs_page_input_path = "Tron-http.md";
+    var mkdocs_page_input_path = "api/http.md";
     var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -36,9 +36,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> TRON Documentation</a>
+        <a href="../.." class="icon icon-home"> TRON Documentation</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -50,69 +50,135 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Home</a>
+    <a class="" href="../../introduction/">Introduction</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Tron-overview/">Project Overview</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
+    <span class="caption-text">API</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
     <a class="current" href="./">Http Api</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#hexstring-and-base58check-transcode-demo">HexString and Base58check Transcode Demo</a></li>
+    <li class="toctree-l3"><a href="#hexstring-and-base58check-transcode-demo">HexString and Base58check Transcode Demo</a></li>
     
 
-    <li class="toctree-l2"><a href="#soliditynode-api-introduction">SolidityNode Api Introduction</a></li>
+    <li class="toctree-l3"><a href="#soliditynode-api">SolidityNode Api</a></li>
     
 
-    <li class="toctree-l2"><a href="#fullnode-api-introduction">FullNode Api Introduction</a></li>
+    <li class="toctree-l3"><a href="#fullnode-api">FullNode Api</a></li>
     
 
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rpc/">Rpc Api</a>
+                </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Tron-rpc/">RPC Api</a>
+    <span class="caption-text">Mechanism & Algorithm</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/sr/">SR and Committee</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/trc10/">TRC-10</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/account/">Account Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/resource/">Resource Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/dex/">DEX</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/multi-signatures/">Multi Signatures</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/shielded-transaction/">Shielded Transaction</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Tron-official-public-nodes/">Official Public Nodes</a>
+    <span class="caption-text">Architecture</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../architecture/network/">Network</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../architecture/database/">Database</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Tron-VM/">Virtual Machine</a>
+    <span class="caption-text">Contracts</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../contracts/tvm/">TVM</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../contracts/compiler/">Compiler</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../contracts/contract/">Contract</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Tron-deployment/">Deployment</a>
+    <span class="caption-text">Developers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../developers/official-public-nodes/">Official Public Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/deployment/">Deployment</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/resources/">Resources</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/contribution/">Contribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/incentives/">Incentives Policy</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Tron-shielded-transaction/">Shielded Transaction</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../Tron-multi-signatures/">Multi Signatures</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../Tron-resources/">Resources</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../Tron-QA/">Q&A</a>
+    <a class="" href="../../q&a/qa/">Q&A</a>
 	    </li>
           
         </ul>
@@ -125,7 +191,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">TRON Documentation</a>
+        <a href="../..">TRON Documentation</a>
       </nav>
 
       
@@ -133,8 +199,12 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
+    <li><a href="../..">Docs</a> &raquo;</li>
     
+      
+        
+          <li>API &raquo;</li>
+        
       
     
     <li>Http Api</li>
@@ -147,8 +217,7 @@
           <div role="main">
             <div class="section">
               
-                <p><strong> TRON Built-in Http Introduction </strong></p>
-<h2 id="hexstring-and-base58check-transcode-demo">HexString and Base58check Transcode Demo</h2>
+                <h2 id="hexstring-and-base58check-transcode-demo">HexString and Base58check Transcode Demo</h2>
 <p>JAVA:<br />
 <a href="https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92">https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92</a> <br />
 PHP:<br />
@@ -177,7 +246,7 @@ PHP:<br />
 </code></pre>
 
 <p>3.&nbsp;For GET method api: By adding 'visible' parameter in the url, as way 1  </p>
-<h2 id="soliditynode-api-introduction">SolidityNode Api Introduction</h2>
+<h2 id="soliditynode-api">SolidityNode Api</h2>
 <p>SolidityNode api's default http port is 8091, when solidityNode is started, http service will be started too.</p>
 <ul>
 <li>/walletsolidity/getaccount  </li>
@@ -587,7 +656,7 @@ Parameter note: Note information     <br />
 Parameter txid: Transaction id  <br />
 Parameter index: Note index      <br />
 Return: Note status  </p>
-<h2 id="fullnode-api-introduction">FullNode Api Introduction</h2>
+<h2 id="fullnode-api">FullNode Api</h2>
 <p>FullNode api's default http port is 8090, when FullNode is started, http service will be started too.</p>
 <ul>
 <li>wallet/createtransaction  </li>
@@ -2248,7 +2317,7 @@ Return: a shielded transaction hash  </p>
 <li>wallet/createshieldedtransaction  </li>
 </ul>
 <p>Description: To create shielded transaction  <br />
-Please refer to: <a href="../Tron-shielded-transaction/">demo</a>   <br />
+Please refer to: <a href="Tron-shielded-transaction.md">demo</a>   <br />
 Parameter transparent_from_address: Transparent sender's address  <br />
 Parameter from_amount: Send amount from transparent address<br />
 Parameter ask: Ask <br />
@@ -2266,10 +2335,10 @@ Return: Transaction object  </p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Tron-rpc/" class="btn btn-neutral float-right" title="RPC Api">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rpc/" class="btn btn-neutral float-right" title="Rpc Api">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Tron-overview/" class="btn btn-neutral" title="Project Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../introduction/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -2295,16 +2364,16 @@ Return: Transaction object  </p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../Tron-overview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../introduction/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../Tron-rpc/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../rpc/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
 
 </body>
 </html>
