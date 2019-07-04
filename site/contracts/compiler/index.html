@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Compiler - TRON Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Compiler";
+    var mkdocs_page_input_path = "contracts/compiler.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TRON Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../introduction/">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../api/http/">Http Api</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/rpc/">Rpc Api</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Mechanism & Algorithm</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/sr/">SR and Committee</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/trc10/">TRC-10</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/account/">Account Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/resource/">Resource Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/dex/">DEX</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/multi-signatures/">Multi Signatures</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/shielded-transaction/">Shielded Transaction</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Architecture</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../architecture/network/">Network</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../architecture/database/">Database</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Contracts</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../tvm/">TVM</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Compiler</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#tools">Tools</a></li>
+    
+
+    <li class="toctree-l3"><a href="#development">Development</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contract/">Contract</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../developers/official-public-nodes/">Official Public Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/deployment/">Deployment</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/resources/">Resources</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/contribution/">Contribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/incentives/">Incentives Policy</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../q&a/qa/">Q&A</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TRON Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Contracts &raquo;</li>
+        
+      
+    
+    <li>Compiler</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="tools">Tools</h2>
+<h3> 1. TronStudio </h3>
+
+<p>Support the build, debug, run, etc. for solidity language written smart contract.<br />
+<a href="https://developers.tron.network/docs/tron-studio-intro">https://developers.tron.network/docs/tron-studio-intro</a></p>
+<h3> 2. TronBox </h3>
+
+<p>Support the build, deploy, transplant, etc. for solidity language written smart contract.<br />
+<a href="https://developers.tron.network/docs/tron-box-user-guide">https://developers.tron.network/docs/tron-box-user-guide</a></p>
+<h3> 3. TronWeb </h3>
+
+<p>Provide http api service for the usage of smart contract.<br />
+<a href="https://developers.tron.network/docs/tron-web-intro">https://developers.tron.network/docs/tron-web-intro</a></p>
+<h3> 4. TronGrid </h3>
+
+<p>Provide smart contract event query service.<br />
+<a href="https://developers.tron.network/docs/tron-grid-intro">https://developers.tron.network/docs/tron-grid-intro</a></p>
+<h2 id="development">Development</h2>
+<p>First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to <a href="https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler">SimpleWebCompiler</a> to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:  </p>
+<pre><code class="text">pragma solidity ^0.4.0;
+contract DataStore {
+
+    mapping(uint256 =&gt; uint256) data;
+
+    function set(uint256 key, uint256 value) public {
+        data[key] = value;
+    }
+
+    function get(uint256 key) view public returns (uint256 value) {
+        value = data[key];
+    }
+}
+</code></pre>
+
+<p><strong> Start a Private Net </strong>  </p>
+<p>Make sure the fullnode code has been deployed locally, you can check if 'Produce block successfully' log appears in FullNode/logs/tron.log  </p>
+<p><strong> Develop a Smart Contract </strong>  </p>
+<p>Copy the code example above to remix to debug.  </p>
+<p><strong> Compile in SimpleWebCompiler for ABI and ByteCode </strong>    </p>
+<p>Copy the code example above to SimpleWebCompiler to get ABI and ByteCode. <br />
+Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.  </p>
+<p><strong> Using Wallet-cli to Deploy </strong>    </p>
+<p>Download Wallet-Cli and build  </p>
+<pre><code class="text">shell
+# download cource code
+git clone https://github.com/tronprotocol/wallet-cli
+cd  wallet-cli
+# build
+./gradlew build
+cd  build/libs
+</code></pre>
+
+<p>Note: You need to change the node ip and port in config.conf  </p>
+<p>start wallet-cli  </p>
+<pre><code class="text">java -jar wallet-cli.jar
+</code></pre>
+
+<p>after started, you can use command lines to operate:  </p>
+<pre><code class="text">importwallet
+&lt;input your password twice for your account&gt;
+&lt;input your private key&gt;
+login
+&lt;input your password you set&gt;
+getbalance
+</code></pre>
+
+<p>deploy contract  </p>
+<pre><code class="text">Shell
+# contract deployment command
+DeployContract contractName ABI byteCode constructor params isHex fee_limit consume_user_resource_percent &lt;value&gt; &lt;library:address,library:address,...&gt;
+
+# parameters
+contract_name: Contract name
+ABI: ABI from SimpleWebCompiler
+bytecode: ByteCode from SimpleWebCompiler
+constructor: When deploy contract, this will be called. If is needed, write as constructor(uint256,string). If not, just write #
+params: The parameters of the constructor, use ',' to split, like  1, &quot;test&quot;, if no constructor, just write #
+fee_limit: The TRX consumption limit for the deployment, unit is SUN(1 SUN = 10^-6 TRX)
+consume_user_resource_percent: Consume user's resource percentage. It should be an integer between [0, 100]. if 0, means it does not consume user's resource until the developer's resource has been used up
+value: The amount of TRX transfer to the contract when deploy
+library: If the contract contains library, you need to specify the library address
+
+# example
+deploycontract DataStore [{&quot;constant&quot;:false,&quot;inputs&quot;:[{&quot;name&quot;:&quot;key&quot;,&quot;type&quot;:&quot;uint256&quot;},{&quot;name&quot;:&quot;value&quot;,&quot;type&quot;:&quot;uint256&quot;}],&quot;name&quot;:&quot;set&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;},{&quot;constant&quot;:true,&quot;inputs&quot;:[{&quot;name&quot;:&quot;key&quot;,&quot;type&quot;:&quot;uint256&quot;}],&quot;name&quot;:&quot;get&quot;,&quot;outputs&quot;:[{&quot;name&quot;:&quot;value&quot;,&quot;type&quot;:&quot;uint256&quot;}],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;}] 608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029 # # false 1000000 30 0
+If it is deployed successfully, it will return 'Deploy the contract successfully'
+</code></pre>
+
+<p>get the contract address  </p>
+<pre><code class="text">Your smart contract address will be: &lt;contract address&gt;
+
+# in this example
+Your smart contract address will be: TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
+</code></pre>
+
+<p>call the contract to store data, query data  </p>
+<pre><code class="text">Shell
+# call contract command
+triggercontract &lt;contract_address&gt; &lt;method&gt; &lt;args&gt; &lt;is_hex&gt; &lt;fee_limit&gt; &lt;value&gt;
+
+# parameters
+contract_address: Contract address, like TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
+method: The method called, like set(uint256,uint256) or fool(), use ',' to split the parameters. Do not leave space between parameters
+args: The parameters passed to the method called, use ',' to split the parameters. Do not leave space between parameters
+is_hex: whether the input parameters is Hex, false or true
+fee_limit: The TRX consumption limit for the trigger, unit is SUN(1 SUN = 10^-6 TRX)
+value: The amount of TRX transfer to the contract when trigger
+
+# trigger example
+## set mapping 1-&gt;1
+triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 set(uint256,uint256) 1,1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
+
+## get mapping key = 1 
+triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
+</code></pre>
+
+<p>If the function called is constant or view, wallet-cli will return the result directly.<br />
+If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...  </p>
+<pre><code class="text"># for instance, using remix to get the bytecode of the contract, like:
+608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073&lt;b&gt;__browser/oneLibrary.sol.Math3__________&lt;\b&gt;634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029  
+</code></pre>
+
+<p>The address of the library deployed before is: TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54<br />
+When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 as the parameter of deploycontract. </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../contract/" class="btn btn-neutral float-right" title="Contract">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../tvm/" class="btn btn-neutral" title="TVM"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../tvm/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../contract/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

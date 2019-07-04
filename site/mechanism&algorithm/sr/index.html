@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>SR and Committee - TRON Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "SR and Committee";
+    var mkdocs_page_input_path = "mechanism&algorithm/sr.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TRON Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../introduction/">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../api/http/">Http Api</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/rpc/">Rpc Api</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Mechanism & Algorithm</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">SR and Committee</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#how-to-become-a-super-representative">How to Become a Super Representative</a></li>
+    
+
+    <li class="toctree-l3"><a href="#super-representatives-election">Super Representatives Election</a></li>
+    
+
+    <li class="toctree-l3"><a href="#reward-for-super-representatives">Reward for Super Representatives</a></li>
+    
+
+    <li class="toctree-l3"><a href="#committee">Committee</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../trc10/">TRC-10</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../account/">Account Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../resource/">Resource Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dex/">DEX</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multi-signatures/">Multi Signatures</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../shielded-transaction/">Shielded Transaction</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Architecture</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../architecture/network/">Network</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../architecture/database/">Database</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Contracts</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../contracts/tvm/">TVM</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../contracts/compiler/">Compiler</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../contracts/contract/">Contract</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../developers/official-public-nodes/">Official Public Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/deployment/">Deployment</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/resources/">Resources</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/contribution/">Contribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/incentives/">Incentives Policy</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../q&a/qa/">Q&A</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TRON Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Mechanism & Algorithm &raquo;</li>
+        
+      
+    
+    <li>SR and Committee</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-become-a-super-representative">How to Become a Super Representative</h2>
+<p>In TRON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.  </p>
+<p>To prevent vicious attack, TRON network burns 9999 TRX from the account that applies to become a super representative candidate.</p>
+<h2 id="super-representatives-election">Super Representatives Election</h2>
+<p>To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.  </p>
+<p>Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.  </p>
+<p>Example (Using wallet-cli):  </p>
+<pre><code class="text">freezebalance 10,000,000 3 // Freeze 10 TRX to get 10 TRON Power(TP)  
+votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2  
+votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2  
+</code></pre>
+
+<p>The final output above is: Vote 3 votes for witness1, 7 votes for witness2</p>
+<h2 id="reward-for-super-representatives">Reward for Super Representatives</h2>
+<p><strong>Votes Reward:</strong><br />
+Every 6 hours, the top 127 super representative candidates with the most votes will share a total amount of 115,200 TRX according to their votes percentage. The annual votes reward is 168,192,000 TRX in total. </p>
+<p><strong>Block Producing Reward:</strong> <br />
+Every time after a super representative produces a block, it will be reward 32 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 336,384,000 TRX in total.  </p>
+<p>Every time after a super representative produces a block, the 32 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.</p>
+<h2 id="committee">Committee</h2>
+<h3> 1. What is Committee </h3>
+
+<p>Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.</p>
+<h3> 2. Create a Proposal </h3>
+
+<p>Only the account of a super representative can create a proposal. <br />
+The network parameters can be modified([min,max]):  </p>
+<ul>
+<li>0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000, 24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms  </li>
+<li>1: ACCOUNT_UPGRADE_COST, [0, 100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 SUN   </li>
+<li>2: CREATE_ACCOUNT_FEE, [0, 100 000 000 000  000 000] //the fee to create an account, currently 100_000 SUN  </li>
+<li>3: TRANSACTION_FEE, [0, 100 000 000 000 000 000] //the fee for bandwidth, currently 10 SUN/byte  </li>
+<li>4: ASSET_ISSUE_FEE, [0, 100 000 000 000 000 000] //the fee to issue an asset, currently 1024_000_000 SUN  </li>
+<li>5: WITNESS_PAY_PER_BLOCK, [0, 100 000 000 000 000 000] //the block producing reward, currently 32_000_000 SUN  </li>
+<li>6: WITNESS_STANDBY_ALLOWANCE, [0, 100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115_200_000_000 SUN   </li>
+<li>7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 0 SUN  </li>
+<li>8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwith or TRX while creating an account, using together with #7  </li>
+<li>9: ALLOW_CREATION_OF_CONTRACTS, //to enable the VM  </li>
+<li>10: REMOVE_THE_POWER_OF_THE_GR, //to clear the votes of GR  </li>
+<li>11: ENERGY_FEE, [0,100 000 000 000 000 000] //SUN  </li>
+<li>12: EXCHANGE_CREATE_FEE, [0, 100 000 000 000 000 000] //SUN  </li>
+<li>13: MAX_CPU_TIME_OF_ONE_TX, [0, 1000] //ms  </li>
+<li>14: ALLOW_UPDATE_ACCOUNT_NAME, //to allow users to change account name and allow account duplicate name, currently 0, means false  </li>
+<li>15: ALLOW_SAME_TOKEN_NAME, //to allow create a token with duplicate name, currently 1, means true  </li>
+<li>16: ALLOW_DELEGATE_RESOURCE, //to enable the resource delegation  </li>
+<li>17: TOTAL_ENERGY_LIMIT, //to modify the energy limit  </li>
+<li>18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false  </li>
+</ul>
+<p>Example (Using wallet-cli):  </p>
+<pre><code class="text">createproposal id value  
+id: the serial number (0 ~ 18)  
+value: the parameter value  
+</code></pre>
+
+<p>Note: In TRON network, 1 TRX = 1000_000 SUN</p>
+<h3> 3. Vote for a Proposal </h3>
+
+<p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.  </p>
+<p>Example (Using wallet-cli):  </p>
+<pre><code class="text">approveProposal id is_or_not_add_approval
+id: proposal id  
+is_or_not_add_approval: YES vote or cancel YES vote  
+</code></pre>
+
+<h3> 4. Cancel Proposal </h3>
+
+<p>Proposal creator can cancel the proposal before it is passed.  </p>
+<p>Example (Using wallet-cli):  </p>
+<pre><code class="text">deleteProposal id
+id: proposal id
+</code></pre>
+
+<h3> 5. Query Proposal </h3>
+
+<ul>
+<li>Query all the proposals list (ListProposals)  </li>
+<li>Query all the proposals list by pagination (GetPaginatedProposalList)  </li>
+<li>Query a proposal by proposal id (GetProposalById)  </li>
+</ul>
+<p>For more api detail, please refer to <a href="Tron-http.md">Tron-http</a>  </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../trc10/" class="btn btn-neutral float-right" title="TRC-10">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../api/rpc/" class="btn btn-neutral" title="Rpc Api"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../api/rpc/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../trc10/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,14 +1,30 @@
 site_name: TRON Documentation
 nav:
-    - Home: index.md
-    - Project Overview: Tron-overview.md
-    - Http Api: Tron-http.md
-    - RPC Api: Tron-rpc.md
-    - Official Public Nodes: Tron-official-public-nodes.md
-    - Virtual Machine: Tron-VM.md
-    - Deployment: Tron-deployment.md
-    - Shielded Transaction: Tron-shielded-transaction.md
-    - Multi Signatures: Tron-multi-signatures.md
-    - Resources: Tron-resources.md
-    - Q&A: Tron-QA.md
+    - Introduction: introduction.md
+    - API:
+        - Http Api: api/http.md
+        - Rpc Api: api/rpc.md
+    - Mechanism & Algorithm:
+        - SR and Committee: mechanism&algorithm/sr.md
+        - TRC-10: mechanism&algorithm/trc10.md  
+        - Account Model: mechanism&algorithm/account.md
+        - Resource Model: mechanism&algorithm/resource.md
+        - DEX: mechanism&algorithm/dex.md
+        - Multi Signatures: mechanism&algorithm/multi-signatures.md
+        - Shielded Transaction: mechanism&algorithm/shielded-transaction.md
+    - Architecture:
+        - Network: architecture/network.md
+        - Database: architecture/database.md
+    - Contracts: 
+        - TVM: contracts/tvm.md
+        - Compiler: contracts/compiler.md    
+        - Contract: contracts/contract.md   
+    - Developers:
+        - Official Public Nodes: developers/official-public-nodes.md
+        - Deployment: developers/deployment.md
+        - Resources: developers/resources.md
+        - Contribution: developers/contribution.md
+        - Incentives Policy: developers/incentives.md
+    - Q&A: q&a/qa.md
+
 theme: readthedocs
