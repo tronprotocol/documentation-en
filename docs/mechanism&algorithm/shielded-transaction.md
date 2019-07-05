@@ -12,7 +12,7 @@ In TRON network, there are two types of address:
 - "z-addr" (Shielded Address)  
 
 "t-addr" address uses TRON account model.   
-"z-addr" address uses Unspent Transaction Output account model.  
+"z-addr" address uses Anonymous account model.  
 
 In TRON network, there are four types of transfer transaction:  
  
