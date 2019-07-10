@@ -4,7 +4,7 @@ Point program applies in TRON incentives policy. Developers can earn points by c
 
 Reward 1:   
 
-At the end of every month, we will calculate the points each developer newly gets in the month and who finish in Top 5 will be rewarded.  
+At the end of every month, we will calculate the points each developer newly gets in the month and who finish in Top 5 will be rewarded. Also, there is a chance to display developers' photos on TRON official website.   
 
 | No. 1   |  No. 2    |   No. 3  |   No. 4   |   No. 5   |
 |---------|-----------|----------|-----------|-----------|
