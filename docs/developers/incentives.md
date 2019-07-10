@@ -15,9 +15,9 @@ Reward 2:
 
 At the end of every month, we will calculate the total points each developer possesses. Every developer who participates java-tron's developement will be honored with a TRON Honorary Developer Certificate with a title. The certificate has 5 titles. Different titles correspond to different points levels as below.  
 
-| TRON Core Developer  |  TRON Senior Developer    | TRON Mid-Level Developer |   TRON Junior Developer   |   Member of TRON   |
-|----------------------|---------------------------|--------------------------|---------------------------|--------------------|
-|   > 10000 Points     |      > 5000 Points        |     > 2000 Points        |      > 500 Points         |      > 0 Point     |
+| Core Developer  |  Senior Developer    | Mid-Level Developer |   Junior Developer   |   Member of TRON   |
+|-----------------|----------------------|---------------------|----------------------|--------------------|
+| > 10000 Points  | > 5000 Points        | > 2000 Points       |   > 500 Points       |      > 0 Point     |
 
 Reward 3: 
 
