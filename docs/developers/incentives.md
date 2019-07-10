@@ -1,10 +1,29 @@
 <h1>Community Developers Incentives Policy</h1>
 
-Point program applies in TRON incentives policy. Developers can earn points by contributing to TRON. At the end of every month, we will calculate the points each developer gets in the month and the developers who finish in Top 5 will be rewarded.  
+Point program applies in TRON incentives policy. Developers can earn points by contributing to TRON.   
+
+Reward 1:   
+
+At the end of every month, we will calculate the points each developer newly gets in the month and who finish in Top 5 will be rewarded.  
+
 
 | No. 1   |  No. 2    |   No. 3  |   No. 4   |   No. 5   |
 |---------|-----------|----------|-----------|-----------|
 | 200 USD |  180 USD  | 150 USD  |  120 USD  |  100 USD  |
+
+Reward 2:   
+
+At the end of every month, we will calculate the total points each developer possesses. Every developer who participates java-tron's developement will be honored with a TRON Honorary Developer Certificate with a title. The certificate has 5 titles. Different titles correspond to different points levels as below.  
+
+| TRON Core Developer  |  TRON Senior Developer    | TRON Mid-Level Developer |   TRON Junior Developer   |   Member of TRON   |
+|----------------------|---------------------------|--------------------------|---------------------------|--------------------|
+|   > 10000 Points     |      > 5000 Points        |     > 2000 Points        |      > 500 Points         |      > 0 Point     |
+
+Reward 3: 
+
+The Top 5 developers from "Reward 1" and developers with a certificate higher than Member of TRON from "Reward 2" can require to put their photos on TRON official website.  
+
+The following shows the content you can contribute to.  
 
 ## Non-code Related
 
