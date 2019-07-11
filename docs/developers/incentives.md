@@ -12,7 +12,7 @@ At the end of every month, we will calculate the points each developer newly get
 
 Reward 2:   
 
-Every developer who participates java-tron's developement will be honored with a TRON Honorary Developer Certificate.   
+Every developer who participates java-tron's developement will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.    
  
 
 The following shows the content you can contribute to.  
