@@ -41,6 +41,8 @@ Your first PR should be a first draft of the final TIP. It must meet the formatt
 
 ## How to Contribute to java-tron
 
+The java-tron repository is: [https://github.com/tronprotocol/java-tron]https://github.com/tronprotocol/java-tron)    
+
 **Branch Introduction**
 
 ``master`` branch:  
