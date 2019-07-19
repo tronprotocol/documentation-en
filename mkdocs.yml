@@ -25,6 +25,8 @@ nav:
         - Resources: developers/resources.md
         - Contribution: developers/contribution.md
         - Incentives Policy: developers/incentives.md
+    - Clients:  
+        - Wallet-cli: clients/wallet-cli.md  
     - Q&A: q&a/qa.md
 
 theme: readthedocs
