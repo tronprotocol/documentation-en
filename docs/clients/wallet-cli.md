@@ -1542,7 +1542,7 @@ This command is similar with sendshieldedcoin. The difference is sendshieldedcoi
 
 5.&nbsp;To show the notes your account possesses  
 
-listshieldednote type 
+listshieldednote type   
 type: 0 means the unspent notes, 1 means all the notes.  
 
 Example:
