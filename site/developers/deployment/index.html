@@ -115,6 +115,10 @@
                     
     <a class="" href="../../architecture/database/">Database</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../architecture/plugin/">Plugin</a>
+                </li>
     </ul>
 	    </li>
           
@@ -161,15 +165,20 @@
 
     <li class="toctree-l3"><a href="#stop-node-gracefully">Stop Node Gracefully</a></li>
     
-        <ul>
-        
-            <li><a class="toctree-l4" href="#fullnode-and-soliditynode-fast-deployment">FullNode and SolidityNode Fast Deployment</a></li>
-        
-            <li><a class="toctree-l4" href="#grpc-gateway-deployment">Grpc Gateway Deployment</a></li>
-        
-            <li><a class="toctree-l4" href="#advanced-configurations">Advanced Configurations</a></li>
-        
-        </ul>
+
+    <li class="toctree-l3"><a href="#fullnode-and-soliditynode-fast-deployment">FullNode and SolidityNode Fast Deployment</a></li>
+    
+
+    <li class="toctree-l3"><a href="#grpc-gateway-deployment">Grpc Gateway Deployment</a></li>
+    
+
+    <li class="toctree-l3"><a href="#event-subscribe-plugin-deployment">Event Subscribe plugin Deployment</a></li>
+    
+
+    <li class="toctree-l3"><a href="#event-query-service-deployment">Event query service deployment</a></li>
+    
+
+    <li class="toctree-l3"><a href="#advanced-configurations">Advanced Configurations</a></li>
     
 
     </ul>
@@ -324,7 +333,7 @@ java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F
 <pre><code class="text">12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
 </code></pre>
 
-<h1 id="stop-node-gracefully">Stop Node Gracefully</h1>
+<h2 id="stop-node-gracefully">Stop Node Gracefully</h2>
 <p>Create file stop.sh，use kill -15 to close java-tron.jar（or FullNode.jar、SolidityNode.jar）.
 You need to modify pid=<code>ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'</code> to find the correct pid.</p>
 <pre><code class="text">#!/bin/bash
@@ -420,6 +429,276 @@ Install Golang, Protoc, and set $GOPATH environment variable according to your r
 <pre><code class="shell">bash deploy_grpc_gateway.sh --rpchost 127.0.0.1 --rpcport 50052 --httpport 18891
 </code></pre>
 
+<h2 id="event-subscribe-plugin-deployment">Event Subscribe plugin Deployment</h2>
+<p>This is an implementation of Tron eventsubscribe model. </p>
+<ul>
+<li><strong>api</strong> module defines IPluginEventListener, a protocol between Java-tron and event plugin. </li>
+<li><strong>app</strong> module is an example for loading plugin, developers could use it for debugging.</li>
+<li><strong>kafkaplugin</strong> module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from Java-tron and relay events to kafka server. </li>
+<li><strong>mongodbplugin</strong> mongodbplugin module is the implementation for mongodb. </li>
+</ul>
+<h3> Setup/Build </h3>
+
+<ol>
+<li>Clone the repo</li>
+<li>Go to eventplugin <code>cd eventplugin</code> </li>
+<li>
+<p>run <code>./gradlew build</code></p>
+</li>
+<li>
+<p>This will produce one plugin zip, named <code>plugin-kafka-1.0.0.zip</code>, located in the <code>eventplugin/build/plugins/</code> directory.</p>
+</li>
+</ol>
+<h3> Edit **config.conf** of Java-tron， add the following fileds:</h3>
+
+<pre><code>event.subscribe = {
+    path = &quot;&quot; // absolute path of plugin
+    server = &quot;&quot; // target server address to receive event triggers
+    dbconfig=&quot;&quot; // dbname|username|password
+    topics = [
+        {
+          triggerName = &quot;block&quot; // block trigger, the value can't be modified
+          enable = false
+          topic = &quot;block&quot; // plugin topic, the value could be modified
+        },
+        {
+          triggerName = &quot;transaction&quot;
+          enable = false
+          topic = &quot;transaction&quot;
+        },
+        {
+          triggerName = &quot;contractevent&quot;
+          enable = true
+          topic = &quot;contractevent&quot;
+        },
+        {
+          triggerName = &quot;contractlog&quot;
+          enable = true
+          topic = &quot;contractlog&quot;
+        }
+    ]
+
+    filter = {
+       fromblock = &quot;&quot; // the value could be &quot;&quot;, &quot;earliest&quot; or a specified block number as the beginning of the queried range
+       toblock = &quot;&quot; // the value could be &quot;&quot;, &quot;latest&quot; or a specified block number as end of the queried range
+       contractAddress = [
+           &quot;&quot; // contract address you want to subscribe, if it's set to &quot;&quot;, you will receive contract logs/events with any contract address.
+       ]
+
+       contractTopic = [
+           &quot;&quot; // contract topic you want to subscribe, if it's set to &quot;&quot;, you will receive contract logs/events with any contract topic.
+       ]
+    }
+}
+
+
+</code></pre>
+
+<ul>
+<li><strong>path</strong>: is the absolute path of "plugin-kafka-1.0.0.zip"</li>
+<li><strong>server</strong>: Kafka server address</li>
+<li><strong>topics</strong>: each event type maps to one Kafka topic, we support four event types subscribing, block, transaction, contractlog and contractevent.</li>
+<li><strong>dbconfig</strong>: db configuration information for mongodb, if using kafka, delete this one; if using Mongodb, add like that dbname|username|password</li>
+<li><strong>triggerName</strong>: the trigger type, the value can't be modified.</li>
+<li><strong>enable</strong>: plugin can receive nothing if the value is false.</li>
+<li><strong>topic</strong>: the value is the kafka topic to receive events. Make sure it has been created and Kafka process is running  </li>
+<li><strong>filter</strong>: filter condition for process trigger.
+ <strong>note</strong>: if the server is not 127.0.0.1, pls set some properties in config/server.properties file<br />
+           remove comment and set listeners=PLAINTEXT://:9092<br />
+           remove comment and set advertised.listeners to PLAINTEXT://host_ip:9092 </li>
+</ul>
+<h3> Install Kafka </h3>
+
+<p><strong>On Mac</strong>:</p>
+<pre><code>brew install kafka
+</code></pre>
+
+<p><strong>On Linux</strong>:</p>
+<pre><code>cd /usr/local
+wget http://archive.apache.org/dist/kafka/0.10.2.2/kafka_2.10-0.10.2.2.tgz
+tar -xzvf kafka_2.10-0.10.2.2.tgz 
+mv kafka_2.10-0.10.2.2 kafka
+
+add &quot;export PATH=$PATH:/usr/local/kafka/bin&quot; to end of /etc/profile
+source /etc/profile
+
+
+kafka-server-start.sh /usr/local/kafka/config/server.properties &amp;
+
+</code></pre>
+
+<p><strong>Note</strong>: make sure the version of Kafka is the same as the version set in build.gradle of eventplugin project.(kafka_2.10-0.10.2.2 kafka)</p>
+<h3> Run Kafka </h3>
+
+<p><strong>On Mac</strong>:</p>
+<pre><code>zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties &amp; kafka-server-start /usr/local/etc/kafka/server.properties
+</code></pre>
+
+<p><strong>On Linux</strong>:</p>
+<pre><code>zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties &amp;
+Sleep about 3 seconds 
+kafka-server-start.sh /usr/local/kafka/config/server.properties &amp;
+</code></pre>
+
+<h3> Create topics to receive events, the topic is defined in config.conf </h3>
+
+<p><strong>On Mac</strong>:</p>
+<pre><code>kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent
+</code></pre>
+
+<p><strong>On Linux</strong>:</p>
+<pre><code>kafka-topics.sh  --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent
+</code></pre>
+
+<h3> Kafka consumer </h3>
+
+<p><strong>On Mac</strong>:</p>
+<pre><code>kafka-console-consumer --bootstrap-server localhost:9092  --topic block
+kafka-console-consumer --bootstrap-server localhost:9092  --topic transaction
+kafka-console-consumer --bootstrap-server localhost:9092  --topic contractlog
+kafka-console-consumer --bootstrap-server localhost:9092  --topic contractevent
+</code></pre>
+
+<p><strong>On Linux</strong>:</p>
+<pre><code>kafka-console-consumer.sh --zookeeper localhost:2181 --topic block
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic transaction
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractlog
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
+</code></pre>
+
+<h3> Load plugin in Java-tron </h3>
+
+<ul>
+<li>add --es to command line, for example:</li>
+</ul>
+<pre><code> java -jar FullNode.jar -p privatekey -c config.conf --es 
+</code></pre>
+
+<h3> Event filter </h3>
+
+<p>which is defined in config.conf, path: event.subscribe</p>
+<pre><code>filter = {
+       fromblock = &quot;&quot; // the value could be &quot;&quot;, &quot;earliest&quot; or a specified block number as the beginning of the queried range
+       toblock = &quot;&quot; // the value could be &quot;&quot;, &quot;latest&quot; or a specified block number as end of the queried range
+       contractAddress = [
+           &quot;TVkNuE1BYxECWq85d8UR9zsv6WppBns9iH&quot; // contract address you want to subscribe, if it's set to &quot;&quot;, you will receive contract logs/events with any contract address.
+       ]
+
+       contractTopic = [
+           &quot;f0f1e23ddce8a520eaa7502e02fa767cb24152e9a86a4bf02529637c4e57504b&quot; // contract topic you want to subscribe, if it's set to &quot;&quot;, you will receive contract logs/events with any contract topic.
+       ]
+    }
+</code></pre>
+
+<h3> Download and install MongoDB </h3>
+
+<p><strong> Suggested Configuration </strong> </p>
+<ul>
+<li>CPU/ RAM: 16Core / 32G  </li>
+<li>DISK: 500G  </li>
+<li>System: CentOS 64</li>
+</ul>
+<p>The version of MongoDB is <strong>4.0.4</strong>, below is the command:</p>
+<ul>
+<li>cd /home/java-tron</li>
+<li>curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz</li>
+<li>tar zxvf mongodb-linux-x86_64-4.0.4.tgz</li>
+<li>mv mongodb-linux-x86_64-4.0.4 mongodb</li>
+</ul>
+<p><strong> Set environment </strong>
+- export MONGOPATH=/home/java-tron/mongodb/
+- export PATH=$PATH:$MONGOPATH/bin</p>
+<p><strong> Create mongodb config </strong>
+The path is : /etc/mongodb/mgdb.conf</p>
+<ul>
+<li>cd /etc/mongodb</li>
+<li>touch mgdb.conf</li>
+</ul>
+<p>Create data&amp;log folder for mongodb
+Create data, log subfolder in mongodb directory,  and add their absolute path to mgdb.conf</p>
+<p><strong> Example: </strong></p>
+<ul>
+<li>dbpath=/home/java-tron/mongodb/data</li>
+<li>logpath=/home/java-tron/mongodb/log/mongodb.log</li>
+<li>port=27017</li>
+<li>logappend=true</li>
+<li>fork=true</li>
+<li>bind_ip=0.0.0.0</li>
+<li>auth=true</li>
+<li>wiredTigerCacheSizeGB=2</li>
+</ul>
+<p><strong> Note: </strong>
+- bind_ip must be configured to 0.0.0.0，otherwise remote connection will be refused.
+- wiredTigerCacheSizeGB, must be configured to prevent OOM</p>
+<p><strong> Launch MongoDB </strong>
+  - mongod  --config /etc/mongodb/mgdb.conf</p>
+<p><strong> Create admin account: </strong>
+- mongo
+- use admin
+- db.createUser({user:"root",pwd:"admin",roles:[{role:"root",db:"admin"}]})</p>
+<p><strong> Create eventlog and its owner account </strong></p>
+<ul>
+<li>db.auth("root", "admin")</li>
+<li>use eventlog</li>
+<li>db.createUser({user:"tron",pwd:"123456",roles:[{role:"dbOwner",db:"eventlog"}]})</li>
+</ul>
+<blockquote>
+<p>database: eventlog, username:tron, password: 123456</p>
+</blockquote>
+<p><strong> Firewall rule: </strong>
+- iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 27017 -j ACCEPT</p>
+<p><strong> Remote connection via mongo: </strong></p>
+<ul>
+<li>mongo 47.90.245.68:27017</li>
+<li>use eventlog</li>
+<li>db.auth("tron", "123456")</li>
+<li>show collections</li>
+<li>db.block.find()</li>
+</ul>
+<p><strong> Query block trigger data: </strong></p>
+<ul>
+<li>db.block.find({blockNumber: {$lt: 1000}});  // return records whose blockNumber less than1000</li>
+</ul>
+<p><strong> Set database index to speedup query: </strong></p>
+<p>cd /{projectPath} <br />
+sh insertIndex.sh</p>
+<h2 id="event-query-service-deployment">Event query service deployment</h2>
+<h3>Download sourcecode</h3>
+
+<p>Download sourcecode</p>
+<p>git clone https://github.com/tronprotocol/tron-eventquery.git
+cd troneventquery</p>
+<h3> Build </h3>
+
+<ul>
+<li>mvn package</li>
+</ul>
+<p>After the build command is executed successfully, troneventquery jar to release will be generated under troneventquery/target directory. </p>
+<p>Configuration of mongodb "config.conf" should be created for storing mongodb configuration, such as database name, username, password, and so on. We provided an example in sourcecode, which is " troneventquery/config.conf ". Replace with your specified configuration if needed.</p>
+<p><strong>Note</strong>: </p>
+<p>Make sure the relative path of config.conf and troneventquery jar. The config.conf 's path is the parent of troneventquery jar.</p>
+<ul>
+<li>mongo.host=IP </li>
+<li>mongo.port=27017 </li>
+<li>mongo.dbname=eventlog</li>
+<li>mongo.username=tron</li>
+<li>mongo.password=123456</li>
+<li>mongo.connectionsPerHost=8</li>
+<li>mongo.threadsAllowedToBlockForConnectionMultiplier=4</li>
+</ul>
+<p>Any configuration could be modified except <strong>mongo.dbname</strong>, "<strong>eventlog</strong>" is the specified database name for event subscribe.</p>
+<h3> Run </h3>
+
+<ul>
+<li>troneventquery/deploy.sh is used to deploy troneventquery</li>
+<li>troneventquery/insertIndex.sh is used to setup mongodb index to speedup query.</li>
+</ul>
 <h2 id="advanced-configurations">Advanced Configurations</h2>
 <p>Read the <a href="../../advanced-configuration/">Advanced Configuration</a></p>
               

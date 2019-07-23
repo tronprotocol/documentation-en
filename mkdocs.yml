@@ -15,6 +15,7 @@ nav:
     - Architecture:
         - Network: architecture/network.md
         - Database: architecture/database.md
+        - Plugin: architecture/plugin.md
     - Contracts: 
         - TVM: contracts/tvm.md
         - Compiler: contracts/compiler.md    

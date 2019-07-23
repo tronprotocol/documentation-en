@@ -100,7 +100,7 @@ You should see something similar to this in your logs for block synchronization:
 ```text
 12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
 ```
-# Stop Node Gracefully
+## Stop Node Gracefully
 Create file stop.sh，use kill -15 to close java-tron.jar（or FullNode.jar、SolidityNode.jar）.
 You need to modify pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
 ```text
@@ -210,6 +210,296 @@ Use customized configuration：
 ```shell
 bash deploy_grpc_gateway.sh --rpchost 127.0.0.1 --rpcport 50052 --httpport 18891
 ```
+
+## Event Subscribe plugin Deployment
+
+This is an implementation of Tron eventsubscribe model. 
+
+* **api** module defines IPluginEventListener, a protocol between Java-tron and event plugin. 
+* **app** module is an example for loading plugin, developers could use it for debugging.
+* **kafkaplugin** module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from Java-tron and relay events to kafka server. 
+* **mongodbplugin** mongodbplugin module is the implementation for mongodb. 
+
+<h3> Setup/Build </h3>
+
+1. Clone the repo
+2. Go to eventplugin `cd eventplugin` 
+3. run `./gradlew build`
+
+* This will produce one plugin zip, named `plugin-kafka-1.0.0.zip`, located in the `eventplugin/build/plugins/` directory.
+
+
+<h3> Edit **config.conf** of Java-tron， add the following fileds:</h3>
+
+```
+event.subscribe = {
+    path = "" // absolute path of plugin
+    server = "" // target server address to receive event triggers
+    dbconfig="" // dbname|username|password
+    topics = [
+        {
+          triggerName = "block" // block trigger, the value can't be modified
+          enable = false
+          topic = "block" // plugin topic, the value could be modified
+        },
+        {
+          triggerName = "transaction"
+          enable = false
+          topic = "transaction"
+        },
+        {
+          triggerName = "contractevent"
+          enable = true
+          topic = "contractevent"
+        },
+        {
+          triggerName = "contractlog"
+          enable = true
+          topic = "contractlog"
+        }
+    ]
+
+    filter = {
+       fromblock = "" // the value could be "", "earliest" or a specified block number as the beginning of the queried range
+       toblock = "" // the value could be "", "latest" or a specified block number as end of the queried range
+       contractAddress = [
+           "" // contract address you want to subscribe, if it's set to "", you will receive contract logs/events with any contract address.
+       ]
+
+       contractTopic = [
+           "" // contract topic you want to subscribe, if it's set to "", you will receive contract logs/events with any contract topic.
+       ]
+    }
+}
+
+
+```
+ * **path**: is the absolute path of "plugin-kafka-1.0.0.zip"
+ * **server**: Kafka server address
+ * **topics**: each event type maps to one Kafka topic, we support four event types subscribing, block, transaction, contractlog and contractevent.
+ * **dbconfig**: db configuration information for mongodb, if using kafka, delete this one; if using Mongodb, add like that dbname|username|password
+ * **triggerName**: the trigger type, the value can't be modified.
+ * **enable**: plugin can receive nothing if the value is false.
+ * **topic**: the value is the kafka topic to receive events. Make sure it has been created and Kafka process is running  
+ * **filter**: filter condition for process trigger.
+ **note**: if the server is not 127.0.0.1, pls set some properties in config/server.properties file  
+           remove comment and set listeners=PLAINTEXT://:9092  
+           remove comment and set advertised.listeners to PLAINTEXT://host_ip:9092 
+
+<h3> Install Kafka </h3>
+
+**On Mac**:
+```
+brew install kafka
+```
+
+**On Linux**:
+```
+cd /usr/local
+wget http://archive.apache.org/dist/kafka/0.10.2.2/kafka_2.10-0.10.2.2.tgz
+tar -xzvf kafka_2.10-0.10.2.2.tgz 
+mv kafka_2.10-0.10.2.2 kafka
+
+add "export PATH=$PATH:/usr/local/kafka/bin" to end of /etc/profile
+source /etc/profile
+
+
+kafka-server-start.sh /usr/local/kafka/config/server.properties &
+
+```
+**Note**: make sure the version of Kafka is the same as the version set in build.gradle of eventplugin project.(kafka_2.10-0.10.2.2 kafka)
+
+<h3> Run Kafka </h3>
+
+**On Mac**:
+```
+zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
+```
+
+**On Linux**:
+```
+zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties &
+Sleep about 3 seconds 
+kafka-server-start.sh /usr/local/kafka/config/server.properties &
+```
+
+<h3> Create topics to receive events, the topic is defined in config.conf </h3>
+ 
+**On Mac**:
+```
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent
+```
+
+**On Linux**:
+```
+kafka-topics.sh  --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent
+```
+
+<h3> Kafka consumer </h3>
+
+**On Mac**:
+```
+kafka-console-consumer --bootstrap-server localhost:9092  --topic block
+kafka-console-consumer --bootstrap-server localhost:9092  --topic transaction
+kafka-console-consumer --bootstrap-server localhost:9092  --topic contractlog
+kafka-console-consumer --bootstrap-server localhost:9092  --topic contractevent
+```
+
+**On Linux**:
+```
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic block
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic transaction
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractlog
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
+```
+
+<h3> Load plugin in Java-tron </h3>
+
+* add --es to command line, for example:
+```
+ java -jar FullNode.jar -p privatekey -c config.conf --es 
+```
+
+
+<h3> Event filter </h3>
+
+which is defined in config.conf, path: event.subscribe
+```
+filter = {
+       fromblock = "" // the value could be "", "earliest" or a specified block number as the beginning of the queried range
+       toblock = "" // the value could be "", "latest" or a specified block number as end of the queried range
+       contractAddress = [
+           "TVkNuE1BYxECWq85d8UR9zsv6WppBns9iH" // contract address you want to subscribe, if it's set to "", you will receive contract logs/events with any contract address.
+       ]
+
+       contractTopic = [
+           "f0f1e23ddce8a520eaa7502e02fa767cb24152e9a86a4bf02529637c4e57504b" // contract topic you want to subscribe, if it's set to "", you will receive contract logs/events with any contract topic.
+       ]
+    }
+```
+
+
+<h3> Download and install MongoDB </h3>
+
+** Suggested Configuration ** 
+
+- CPU/ RAM: 16Core / 32G  
+- DISK: 500G  
+- System: CentOS 64
+
+The version of MongoDB is **4.0.4**, below is the command:
+
+- cd /home/java-tron
+- curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
+- tar zxvf mongodb-linux-x86_64-4.0.4.tgz
+- mv mongodb-linux-x86_64-4.0.4 mongodb
+
+** Set environment **
+- export MONGOPATH=/home/java-tron/mongodb/
+- export PATH=$PATH:$MONGOPATH/bin
+
+** Create mongodb config **
+The path is : /etc/mongodb/mgdb.conf
+
+- cd /etc/mongodb
+- touch mgdb.conf
+
+Create data&log folder for mongodb
+Create data, log subfolder in mongodb directory,  and add their absolute path to mgdb.conf
+
+** Example: **
+
+- dbpath=/home/java-tron/mongodb/data
+- logpath=/home/java-tron/mongodb/log/mongodb.log
+- port=27017
+- logappend=true
+- fork=true
+- bind_ip=0.0.0.0
+- auth=true
+- wiredTigerCacheSizeGB=2
+
+** Note: **
+- bind_ip must be configured to 0.0.0.0，otherwise remote connection will be refused.
+- wiredTigerCacheSizeGB, must be configured to prevent OOM
+
+** Launch MongoDB **
+  - mongod  --config /etc/mongodb/mgdb.conf
+
+** Create admin account: **
+- mongo
+- use admin
+- db.createUser({user:"root",pwd:"admin",roles:[{role:"root",db:"admin"}]})
+
+** Create eventlog and its owner account **
+
+- db.auth("root", "admin")
+- use eventlog
+- db.createUser({user:"tron",pwd:"123456",roles:[{role:"dbOwner",db:"eventlog"}]})
+
+> database: eventlog, username:tron, password: 123456
+
+** Firewall rule: **
+- iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 27017 -j ACCEPT
+
+** Remote connection via mongo: **
+
+- mongo 47.90.245.68:27017
+- use eventlog
+- db.auth("tron", "123456")
+- show collections
+- db.block.find()
+
+** Query block trigger data: **
+
+-  db.block.find({blockNumber: {$lt: 1000}});  // return records whose blockNumber less than1000
+
+** Set database index to speedup query: **
+
+cd /{projectPath}   
+sh insertIndex.sh
+
+## Event query service deployment  
+
+<h3>Download sourcecode</h3>
+
+Download sourcecode
+
+git clone https://github.com/tronprotocol/tron-eventquery.git
+cd troneventquery
+
+<h3> Build </h3>
+
+- mvn package
+
+After the build command is executed successfully, troneventquery jar to release will be generated under troneventquery/target directory. 
+
+Configuration of mongodb "config.conf" should be created for storing mongodb configuration, such as database name, username, password, and so on. We provided an example in sourcecode, which is " troneventquery/config.conf ". Replace with your specified configuration if needed.
+
+**Note**: 
+
+Make sure the relative path of config.conf and troneventquery jar. The config.conf 's path is the parent of troneventquery jar.
+
+ - mongo.host=IP 
+ - mongo.port=27017 
+ - mongo.dbname=eventlog
+ - mongo.username=tron
+ - mongo.password=123456
+ - mongo.connectionsPerHost=8
+ - mongo.threadsAllowedToBlockForConnectionMultiplier=4
+
+Any configuration could be modified except **mongo.dbname**, "**eventlog**" is the specified database name for event subscribe.
+
+<h3> Run </h3>
+
+- troneventquery/deploy.sh is used to deploy troneventquery
+- troneventquery/insertIndex.sh is used to setup mongodb index to speedup query.
+
 
 ## Advanced Configurations
 
