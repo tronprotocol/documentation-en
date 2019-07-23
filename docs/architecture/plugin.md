@@ -73,7 +73,7 @@ contractTopics: contract topics list
 
 2.&nbsp;Supporting subscription of chain data, such as block, transaction, contract log, contract event and so on. For transaction events, developers can get information such as internal transactions, contract info and so on; for contract events, developers could configure the contract addresses list or contract topic list to receive the specified events, and event subscription has a very low latency. The deployed fullnode can receive event information immediately after the contract is executed.
 
-3.&nbsp;Event query service tron-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is https://api.tronex.io.
+3.&nbsp;Event query service tron-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is [https://api.tronex.io](https://api.tronex.io)
 
 <h3> Github project </h3>
 
@@ -91,7 +91,7 @@ Tron Event Query Service
 
 TronEventQuery is implemented with Tron's new event subscribe model. It uses same query interface with Tron-Grid. Users can also subscribe block trigger, transaction trigger, contract log trigger, and contract event trigger. TronEvent is independent of a particular branch of java-tron, the new event subscribes model will be released on version 3.5 of java-tron.
 
-For more information of tron event subscribe model, please refer to https://github.com/tronprotocol/TIPs/issues/12.
+For more information of tron event subscribe model, please refer to [https://github.com/tronprotocol/TIPs/issues/12](https://github.com/tronprotocol/TIPs/issues/12)
 
 - [Event query deployment](https://tronprotocol.github.io/documentation-EN/developers/deployment/#event-subscribe-plugin-deployment)
 - [Event query http api](https://github.com/tronprotocol/documentation-EN/tree/master/docs_without_index/plugin/event-query-http.md)
