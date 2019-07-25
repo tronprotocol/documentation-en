@@ -286,7 +286,7 @@ event.subscribe = {
            remove comment and set listeners=PLAINTEXT://:9092  
            remove comment and set advertised.listeners to PLAINTEXT://host_ip:9092 
 
-<h3> Install Kafka </h3>
+<h3 id="kafka"> Install Kafka </h3>
 
 **On Mac**:
 ```
@@ -385,7 +385,7 @@ filter = {
 ```
 
 
-<h3> Download and install MongoDB </h3>
+<h3 id="mongo"> Download and install MongoDB </h3>
 
 ** Suggested Configuration ** 
 

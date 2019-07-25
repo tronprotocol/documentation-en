@@ -82,8 +82,8 @@ contractTopics: contract topics list
 
 <h3> Event plugin </h3>
 
-- [kafka deployment](https://tronprotocol.github.io/documentation-EN/developers/deployment/#event-subscribe-plugin-deployment)
-- [mongo deployment](https://tronprotocol.github.io/documentation-EN/developers/deployment/#event-subscribe-plugin-deployment)
+- [kafka deployment](https://tronprotocol.github.io/documentation-EN/developers/deployment/#kafka)  
+- [mongo deployment](https://tronprotocol.github.io/documentation-EN/developers/deployment/#mongo)  
 
 <h3> Event query </h3>
 
