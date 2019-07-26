@@ -139,7 +139,9 @@ We think highly of all the security bugs in the TRON project seriously. Thank yo
   
 Report security bugs at [https://hackerone.com/tronfoundation](https://hackerone.com/tronfoundation)  
 
-A developer from the core devs will follow up the issue. Firstly, we will confirm the bug and determine the affected versions. Secondly, we will try to find any potential similar bugs. Then we will do the fix and prepare for the release. After the initial reply to your report is sent, we will try to keep you informed on the progress towards the fix. The security team may ask you for additional information or guidance.  
+A developer from the core devs will follow up the issue. Firstly, we will confirm the bug and determine the affected versions. Secondly, we will try to find any potential similar bugs. Then we will do the fix and prepare for the release. 
+
+After the initial reply to your report is sent, we will try to keep you informed on the progress towards the fix. The security team may ask you for additional information or guidance.  
 
 If you have suggestions on how this process could be improved, please submit a pull request.
 
