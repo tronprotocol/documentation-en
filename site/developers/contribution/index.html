@@ -165,13 +165,16 @@
     <li class="toctree-l3"><a href="#getting-started-as-tron-community-developers">Getting Started as TRON Community Developers</a></li>
     
 
-    <li class="toctree-l3"><a href="#how-to-contribute-to-tron-documentation">How to Contribute to TRON Documentation</a></li>
+    <li class="toctree-l3"><a href="#writing-documentation">Writing Documentation</a></li>
     
 
-    <li class="toctree-l3"><a href="#how-to-submit-a-tip">How to Submit a TIP</a></li>
+    <li class="toctree-l3"><a href="#submitting-a-tip">Submitting a TIP</a></li>
     
 
-    <li class="toctree-l3"><a href="#how-to-contribute-to-java-tron">How to Contribute to java-tron</a></li>
+    <li class="toctree-l3"><a href="#coding-java-tron">Coding java-tron</a></li>
+    
+
+    <li class="toctree-l3"><a href="#reporting-vulnerabilities">Reporting Vulnerabilities</a></li>
     
 
     </ul>
@@ -248,17 +251,17 @@
 <li><a href="https://gitter.im/tronprotocol/allcoredev">Gitter</a>   </li>
 </ul>
 <p>Check <a href="../incentives/">TRON Incentives Policy</a></p>
-<h2 id="how-to-contribute-to-tron-documentation">How to Contribute to TRON Documentation</h2>
+<h2 id="writing-documentation">Writing Documentation</h2>
 <p>There are two documentation repositories:<br />
 <a href="https://github.com/tronprotocol/documentation-EN">documentation-EN</a> is the English version. <br />
 <a href="https://github.com/tronprotocol/documentation-ZH">documentation-ZH</a> is the Chinese version.  </p>
 <p>We use MkDocs to build documentation project. Documentation source files are written in Markdown, and configured with a single YAML configuration file.</p>
 <p>You can edit or add a documentation file in /docs/ folder.</p>
-<h2 id="how-to-submit-a-tip">How to Submit a TIP</h2>
+<h2 id="submitting-a-tip">Submitting a TIP</h2>
 <p>TRON Improvement Proposals (TIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.</p>
 <p>The TIPS repository is <a href="https://github.com/tronprotocol/TIPs">https://github.com/tronprotocol/TIPs</a></p>
 <p>Your first PR should be a first draft of the final TIP. It must meet the formatting criteria enforced by the build (largely, correct metadata in the header). An editor will manually review the first PR for a new TIP and assign it a number before merging it. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole.  Please refer to the <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">TIP template</a></p>
-<h2 id="how-to-contribute-to-java-tron">How to Contribute to java-tron</h2>
+<h2 id="coding-java-tron">Coding java-tron</h2>
 <p>The java-tron repository is: <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a>    </p>
 <p><strong>Branch Introduction</strong></p>
 <p><code>master</code> branch:<br />
@@ -335,7 +338,12 @@ $ git branch -d hotfix/my-hotfix
 
 <p>Your commit messages should detail why you made your change in addition to what you did (unless it is a tiny change).</p>
 <p>Finally, please make a PR.</p>
-<p>Additionally, if you are writing a new feature, please ensure you add appropriate test cases under <code>/src/test</code>.</p>
+<p>Additionally, if you are writing a new feature, please ensure you add appropriate test cases under <code>/src/test</code>.  </p>
+<h2 id="reporting-vulnerabilities">Reporting Vulnerabilities</h2>
+<p>We think highly of all the security bugs in the TRON project seriously. Thank you for improving the security of TRON project. We really appreciate your efforts and responsible disclosure. We will make every effort to acknowledge your contributions.</p>
+<p>Report security bugs at <a href="https://hackerone.com/tronfoundation">https://hackerone.com/tronfoundation</a>  </p>
+<p>A developer from the core devs will follow up the issue. Firstly, we will confirm the bug and determine the affected versions. Secondly, we will try to find any potential similar bugs. Then we will do the fix and prepare for the release. After the initial reply to your report is sent, we will try to keep you informed on the progress towards the fix. The security team may ask you for additional information or guidance.  </p>
+<p>If you have suggestions on how this process could be improved, please submit a pull request.</p>
               
             </div>
           </div>

@@ -20,7 +20,7 @@ We encourage a PR early approach, meaning you create the PR the earliest even wi
 
 Check [TRON Incentives Policy](incentives.md)
 
-## How to Contribute to TRON Documentation
+## Writing Documentation
 
 There are two documentation repositories:  
 [documentation-EN](https://github.com/tronprotocol/documentation-EN) is the English version.   
@@ -30,7 +30,7 @@ We use MkDocs to build documentation project. Documentation source files are wri
 
 You can edit or add a documentation file in /docs/ folder.
 
-## How to Submit a TIP
+## Submitting a TIP
 
 TRON Improvement Proposals (TIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.
 
@@ -39,7 +39,7 @@ The TIPS repository is [https://github.com/tronprotocol/TIPs](https://github.com
 Your first PR should be a first draft of the final TIP. It must meet the formatting criteria enforced by the build (largely, correct metadata in the header). An editor will manually review the first PR for a new TIP and assign it a number before merging it. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole.  Please refer to the [TIP template](https://github.com/tronprotocol/TIPs/blob/master/template.md)
 
 
-## How to Contribute to java-tron
+## Coding java-tron
 
 The java-tron repository is: [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron)    
 
@@ -131,7 +131,15 @@ Your commit messages should detail why you made your change in addition to what 
 
 Finally, please make a PR.
 
-Additionally, if you are writing a new feature, please ensure you add appropriate test cases under ``/src/test``.
+Additionally, if you are writing a new feature, please ensure you add appropriate test cases under ``/src/test``.  
 
+## Reporting Vulnerabilities
 
+We think highly of all the security bugs in the TRON project seriously. Thank you for improving the security of TRON project. We really appreciate your efforts and responsible disclosure. We will make every effort to acknowledge your contributions.
+  
+Report security bugs at [https://hackerone.com/tronfoundation](https://hackerone.com/tronfoundation)  
+
+A developer from the core devs will follow up the issue. Firstly, we will confirm the bug and determine the affected versions. Secondly, we will try to find any potential similar bugs. Then we will do the fix and prepare for the release. After the initial reply to your report is sent, we will try to keep you informed on the progress towards the fix. The security team may ask you for additional information or guidance.  
+
+If you have suggestions on how this process could be improved, please submit a pull request.
 
