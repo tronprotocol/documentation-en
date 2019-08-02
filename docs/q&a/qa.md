@@ -64,11 +64,11 @@ Answer: To meet your needs, you can use TRON event subscription plugin. For more
 
 Answer: please refer to [https://tronprotocol.github.io/documentation-EN/mechanism&algorithm/resource/](https://tronprotocol.github.io/documentation-EN/mechanism&algorithm/resource/)
 
-**Ask: How to calculate the number of bytes of transactions**
+**Ask: How to calculate the number of bytes of transactions?**
 
 Answer: tx-size  = grpcClient.getTransactionById(txId).get().getSerializedSize() + 60
 
-**Ask: How to reset my vote**
+**Ask: How to reset my vote?**
 
 Answer: You need to vote again, set your votes number to 0.  
 
