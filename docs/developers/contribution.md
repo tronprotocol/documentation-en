@@ -15,7 +15,6 @@ We encourage a PR early approach, meaning you create the PR the earliest even wi
 
 ** Developer Community **
 
-* [Discord](https://discord.gg/GsRgsTD)   
 * [Gitter](https://gitter.im/tronprotocol/allcoredev)   
 
 Check [TRON Incentives Policy](incentives.md)
