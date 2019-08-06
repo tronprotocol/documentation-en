@@ -16,7 +16,7 @@ TronGrid supports all the FullNode and SolidityNode api calls, you only need to 
 As this is the first iteration of the improved TronGrid, it starts with v1.   
 Example: `https://api.trongrid.io/v1`
 
-## Parameters, Queries, & Return Values
+**Parameters, Queries, & Return Values**
 
 - Addresses in TG3 can be passed in base58 or hex formats.  
 - Query parameters can be passed in camelCase or snake_case.  
@@ -134,3 +134,8 @@ address: The address of the deployed contract.
 *Params:*      
 id: The id of the transaction.    
 
+2.&nbsp;Get Transaction By Transaction ID       
+*API:*         
+`https://api.trongrid.io/v1/transactions/:id/events`      
+*Params:*        
+id: The id of the transaction.   

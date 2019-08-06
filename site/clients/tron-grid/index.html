@@ -181,9 +181,6 @@
     <a class="current" href="./">TRON-grid</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#parameters-queries-return-values">Parameters, Queries, &amp; Return Values</a></li>
-    
-
     <li class="toctree-l3"><a href="#account-apis">Account APIs</a></li>
     
 
@@ -259,7 +256,7 @@ TronGrid uses a set of NodeJS apps to talk with Redis and PostgreSQL to provide 
 </ul>
 <p>As this is the first iteration of the improved TronGrid, it starts with v1. <br />
 Example: <code>https://api.trongrid.io/v1</code></p>
-<h2 id="parameters-queries-return-values">Parameters, Queries, &amp; Return Values</h2>
+<p><strong>Parameters, Queries, &amp; Return Values</strong></p>
 <ul>
 <li>Addresses in TG3 can be passed in base58 or hex formats.  </li>
 <li>Query parameters can be passed in camelCase or snake_case.  </li>
@@ -359,6 +356,11 @@ address: The address of the deployed contract.<br />
 <code>https://api.trongrid.io/v1/transactions/:id/events</code>  <br />
 <em>Params:</em>    <br />
 id: The id of the transaction.    </p>
+<p>2.&nbsp;Get Transaction By Transaction ID     <br />
+<em>API:</em>       <br />
+<code>https://api.trongrid.io/v1/transactions/:id/events</code>    <br />
+<em>Params:</em>      <br />
+id: The id of the transaction.   </p>
               
             </div>
           </div>
