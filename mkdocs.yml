@@ -28,7 +28,6 @@ nav:
         - Incentives Policy: developers/incentives.md
     - Clients:  
         - Wallet-cli: clients/wallet-cli.md  
-        - TRON-grid: clients/tron-grid.md
     - Q&A: q&a/qa.md
 
 theme: readthedocs
