@@ -133,10 +133,10 @@ To be continued
 
 Appendix: Reference Documentations
 
-https://www.coinbureau.com/education/delegated-proof-stake-dpos/
+[https://www.coinbureau.com/education/delegated-proof-stake-dpos/](https://www.coinbureau.com/education/delegated-proof-stake-dpos/)  
 
-https://www.nichanank.com/blog/2018/6/4/consensus-algorithms-pos-dpos
+[https://www.nichanank.com/blog/2018/6/4/consensus-algorithms-pos-dpos](https://www.nichanank.com/blog/2018/6/4/consensus-algorithms-pos-dpos)  
 
-http://docs.bitshares.org/en/master/technology/dpos.html#role-of-delegates
+[http://docs.bitshares.org/en/master/technology/dpos.html#role-of-delegates](http://docs.bitshares.org/en/master/technology/dpos.html#role-of-delegates)  
 
-https://hackernoon.com/what-is-delegated-proof-of-stake-897a2f0558f9
+[https://hackernoon.com/what-is-delegated-proof-of-stake-897a2f0558f9](https://hackernoon.com/what-is-delegated-proof-of-stake-897a2f0558f9)   
