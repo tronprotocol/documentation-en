@@ -1,6 +1,8 @@
 site_name: TRON Documentation
 nav:
-    - Introduction: index.md  
+    - Introduction: 
+        - Repository: introduction/index.md  
+        - DPOS: introduction/dpos.md
     - API:
         - Http Api: api/http.md
         - Rpc Api: api/rpc.md
