@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Contribution - TRON Documentation</title>
+  <title>Tips - TRON Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Contribution";
-    var mkdocs_page_input_path = "developers/contribution.md";
+    var mkdocs_page_name = "Tips";
+    var mkdocs_page_input_path = "developers/tips.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -167,27 +167,9 @@
                     
     <a class="" href="../resources/">Resources</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Contribution</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#getting-started-as-tron-community-developers">Getting Started as TRON Community Developers</a></li>
-    
-
-    <li class="toctree-l3"><a href="#submitting-a-tip">Submitting a TIP</a></li>
-    
-
-    <li class="toctree-l3"><a href="#coding-java-tron">Coding java-tron</a></li>
-    
-
-    <li class="toctree-l3"><a href="#reporting-vulnerabilities">Reporting Vulnerabilities</a></li>
-    
-
-    <li class="toctree-l3"><a href="#writing-documentation">Writing Documentation</a></li>
-    
-
-    </ul>
+    <a class="" href="../contribution/">Contribution</a>
                 </li>
                 <li class="">
                     
@@ -233,12 +215,8 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Developers &raquo;</li>
-        
-      
     
-    <li>Contribution</li>
+    <li>Tips</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -248,54 +226,46 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="getting-started-as-tron-community-developers">Getting Started as TRON Community Developers</h2>
-<p>TRON is a global, open-source platform for decentralized applications. </p>
-<p>Thank you for considering to help out with the source code! We welcome contributions from anyone on the internet, and are grateful for even the smallest of fixes!</p>
-<p>GitHub is used to track issues and contribute code, suggestions, feature requests or documentation.</p>
-<p>If you'd like to contribute to TRON, please fork, fix, commit and send a pull request (PR) for the maintainers to review and merge into the main base. If you wish to submit more complex changes though, please check up with the core developers first on our channel to ensure those changes are in line with the general philosophy of the project and/or get some early feedback which can make both your efforts much lighter as well as our review and merge procedures quick and simple.</p>
-<p>Your PR will be reviewed according to the Code Review Guidelines.</p>
-<p>We encourage a PR early approach, meaning you create the PR the earliest even without the fix/feature. This will let core developers and other volunteers know you picked up an issue. These early PRs should indicate 'in progress' status.</p>
-<p><strong> Developer Community </strong></p>
+                <p>TRON Improvement Proposals (TIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.</p>
+<p>The TIPS repository is <a href="https://github.com/tronprotocol/TIPs">https://github.com/tronprotocol/TIPs</a></p>
+<h2>To Submit a TIP</h2>
+
+<p>1.&nbsp;Fork the repository by clicking "Fork" in the top right.  </p>
+<p>2.&nbsp;Add your TIP to your fork of the repository. There is a <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">TIP template</a> here.  </p>
+<p>3.&nbsp;Submit a Pull Request to TRON's TIPs repository.   </p>
+<p>Your first PR should be a first draft of the final TIP. It must meet the formatting criteria enforced by the build (largely, correct metadata in the header). An editor will manually review the first PR for a new TIP and assign it a number before merging it. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole.  </p>
+<p>When you believe your TIP is mature and ready to progress past the draft phase, you should do one of two things:</p>
 <ul>
-<li><a href="https://gitter.im/tronprotocol/allcoredev">java-tron gitter channel</a> <br />
-This channel is for TRON network issues.    </li>
-<li><a href="https://gitter.im/tronprotocol/wallet-cli">wallet-cli gitter channel</a><br />
-This channel is for the client of TRON network issues.   </li>
-<li><a href="https://gitter.im/tronprotocol/documentation">documentation gitter channel</a><br />
-This channel is for TRON docunentation issues.   </li>
-<li><a href="https://gitter.im/tronprotocol/TIPs">tips gitter channel</a> <br />
-This channel is for TRON improment proposal issues.  </li>
+<li>
+<p>For a Standards Track TIP of type Core, ask to have your issue added to the agenda of an upcoming All Core Devs meeting, where it can be discussed for inclusion in a future hard fork. If implementers agree to include it, the TIP editors will update the state of your TIP to 'Accepted'.  </p>
+</li>
+<li>
+<p>For all other TIPs, open a PR changing the state of your TIP to 'Final'. An editor will review your draft and ask if anyone objects to its being finalised. If the editor decides there is no rough consensus, they may close the PR and request that you fix the issues in the draft before trying again.</p>
+</li>
 </ul>
-<p>Check <a href="../incentives/">TRON Incentives Policy</a></p>
-<h2 id="submitting-a-tip">Submitting a TIP</h2>
-<p>Please check <a href="../tips/">Submitting a TIP</a>      </p>
-<h2 id="coding-java-tron">Coding java-tron</h2>
-<p>Please check <a href="../java-tron/">Coding java-tron</a>    </p>
-<h2 id="reporting-vulnerabilities">Reporting Vulnerabilities</h2>
-<p>We think highly of all the security bugs in the TRON project seriously. Thank you for improving the security of TRON project. We really appreciate your efforts and responsible disclosure. We will make every effort to acknowledge your contributions.</p>
-<p>Report security bugs at <a href="https://hackerone.com/tronfoundation">https://hackerone.com/tronfoundation</a>  </p>
-<p>A developer from the core devs will follow up the issue. Firstly, we will confirm the bug and determine the affected versions. Secondly, we will try to find any potential similar bugs. Then we will do the fix and prepare for the release. </p>
-<p>After the initial reply to your report is sent, we will try to keep you informed on the progress towards the fix. The core devs may ask you for additional information or guidance.  </p>
-<p>If you have suggestions on how this process could be improved, please submit a pull request.</p>
-<h2 id="writing-documentation">Writing Documentation</h2>
-<p>There are two documentation repositories:<br />
-<a href="https://github.com/tronprotocol/documentation-EN">documentation-EN</a> is the English version. <br />
-<a href="https://github.com/tronprotocol/documentation-ZH">documentation-ZH</a> is the Chinese version.  </p>
-<p>We use MkDocs to build documentation project. Documentation source files are written in Markdown, and configured with a single YAML configuration file.</p>
-<p>You can edit or add a documentation file in /docs/ folder.</p>
+<h2>TIP Status</h2>
+
+<ul>
+<li>
+<p><strong>Draft</strong>: A TIP that is undergoing rapid iteration and changes.  </p>
+</li>
+<li>
+<p><strong>Last Call</strong>: A TIP that is done with its initial iteration and ready for review by a wide audience.  </p>
+</li>
+<li>
+<p><strong>Accepted</strong>: A core TIP that has been in Last Call for at least 2 weeks and any technical changes that were requested have been addressed by the author. The process for Core Devs to decide whether to encode an TIP into their clients as part of a hard fork is not part of the TIP process. If such a decision is made, the TIP will move to final.  </p>
+</li>
+<li>
+<p><strong>Final (non-Core)</strong>: A TIP that has been in Last Call for at least 2 weeks and any technical changes that were requested have been addressed by the author.  </p>
+</li>
+<li>
+<p><strong>Final (Core)</strong>: A TIP that the Core Devs have decided to implement and release in a future hard fork or has already been released in a hard fork.      </p>
+</li>
+</ul>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../incentives/" class="btn btn-neutral float-right" title="Incentives Policy">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../resources/" class="btn btn-neutral" title="Resources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -319,10 +289,6 @@ This channel is for TRON improment proposal issues.  </li>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../resources/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../incentives/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
