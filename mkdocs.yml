@@ -31,5 +31,6 @@ nav:
     - Clients:  
         - Wallet-cli: clients/wallet-cli.md  
     - Q&A: q&a/qa.md
+    - Glossary: glossary.md 
 
 theme: readthedocs
