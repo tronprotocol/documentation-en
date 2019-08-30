@@ -37,3 +37,20 @@ The Bandwidth consumption in one contract trigger.  (NetFee not included)
 **net_fee** 
 
 The TRX burned for Bandwidth consumption in one contract trigger.  
+
+**Bandwidth**
+
+The Bandwidth Points consumed by a transaction is the size of the byte array in this transaction. If the byte array length of a transaction is 100, then the transaction needs to consume 100 Bandwidth Points.
+
+**Energy**
+
+The creation and operation of a smart contract consume CPU resources. It takes time for smart contracts to operate in virtual machines (VMs), and the time consumed in the system is calculated in microseconds. CPU resources are consumed in energy, which means 1 Energy = 1 Microsecond (μs). If a contract takes 100 μs to execute in a VM, it needs to consume 100 Energy.
+
+**TRON Power(TP)**
+
+1 Frozen TRX = 1 TP, TP can be used to vote, 1 TP = 1 vote.
+
+**Super Representative(SR)**
+
+The current block producing Top 27 nodes.  
+

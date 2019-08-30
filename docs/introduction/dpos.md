@@ -3,8 +3,8 @@ Blockchain is a distributed bookkeeping system. There can be thousands of nodes 
 
 There are several types of consensus, and the most used ones are POW, POS, and DPOS. Of course, different blockchain systems will have their own unique way of implementation. The article will mainly introduce the DPOS consensus on which TRON bases itself. We will also explain the basic components and mechanism of DPOS.
 
-## Bookkeeping process
-The bookkeeper of the blockchain system collects the newly generated transactions in the blockchain network and verifies the legality of these transactions, then packages the transactions in a block, records them as a new page on the ledger, and broadcasts the page to the entire blockchain network. Other nodes will receive the new page and verify the legality of the transaction data on the page and add it to their own ledger. The bookkeeper will repeat this process so all new transaction data in the blockchain system can be recorded in the ledger.
+## Block Producing Process
+The SRs of the blockchain network collects the newly generated transactions in the blockchain network and verifies the legality of these transactions, then packages the transactions in a block, records them as a new page on the ledger, and broadcasts the page to the entire blockchain network. Other nodes will receive the new page and verify the legality of the transaction data on the page and add it to their own ledger. The bookkeeper will repeat this process so all new transaction data in the blockchain system can be recorded in the ledger.
 
 ## DPOS overview
 The role of consensus is to select the bookkeepers in the blockchain system. The bookkeepers verify the transaction data and keep the account in order to broadcast new accounts to other nodes in the network and obtains the approval of the new accounts from other nodes. As a specific implementation of consensus, DPOS works in the following way:

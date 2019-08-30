@@ -10,6 +10,8 @@ TRON uses account model. An account's identity is address, it needs private key 
 
 2.&nbsp;Use an account already existed in TRON network to create an account   
 
+If you have enough frozen BandWidth Points, creating an account only consume your frozen BandWidth Points, otherwise, it burns 0.1 TRX.     
+
 ## Key-pair Generation
 Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then caculate P = d * G as the public key, G is the elliptic curve base point.
 
@@ -24,13 +26,15 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 ## Signature
 
 <h3> Step </h3>
-1.&nbsp;取交易的rawdata，转成byte[]格式。  
-2.&nbsp;对rawdata进行sha256运算。  
-3.&nbsp;用交易每个合约中地址对应的私钥（现在一般就是一个合约，一个私钥），对sha256的结果进行签名。  
-4.&nbsp;把签名结果添加到交易中。  
-<h3> Algorithm </h3>
-1.&nbsp;ECDSA算法，SECP256K。  
-2.&nbsp;签名示例数据    
+1.&nbsp;Get the rawdata of the transaction, then transfer it to byte[]  
+2.&nbsp;Do sha256 calculation to the rawdata      
+3.&nbsp;Use the private key to sign the result gained from step 2      
+4.&nbsp;Add the signature back into the transaction     
+
+<h3> Algorithm </h3>  
+1.&nbsp;ECDSA, SECP256K    
+2.&nbsp;Example: 
+  
 ```text    
     priKey:::8e812436a0e3323166e1f0e8ba79e19e217b2c4a53c970d4cca0cfb1078979df         
     pubKey::04a5bb3b28466f578e6e93fbfd5f75cee1ae86033aa4bbea690e3312c087181eb366f9a1d1d6a437a9bf9fc65ec853b9fd60fa322be3997c47144eb20da658b3d1         
@@ -39,8 +43,9 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     s:::08bf123eabe77480787d664ca280dc1f20d9205725320658c39c6c143fd5642d         
     v:::0  
 ```   
-注意：签名结果应该是65字节。 r 32字节， s 32字节，v 1个字节。  
-3.&nbsp;fullnode节点收到交易后会进行验签，由hash 和 r、s、v计算出一个地址，与合约中的地址进行比较，相同则为验签通过。  
+Note: The size of the signature result is 65 bytes. r 32 bytes, s 32 bytes, v 1 bytes.     
+
+3.&nbsp;fullnode will verify the signature, it generates an address with the value of hash and r、s、v, then it compares with the address in the transaction.    
 <h3> Demo </h3>
 ```
 public static Transaction sign(Transaction transaction, ECKey myKey) {

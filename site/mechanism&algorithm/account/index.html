@@ -258,6 +258,7 @@
 <h2 id="how-to-create-an-account">How to Create an Account</h2>
 <p>1.&nbsp;Use a wallet to generate the address and private key. To active the account, you need to transfer TRX or transfer token to the new created account. <a href="https://tronscan.org/#/wallet/new">generate an account</a></p>
 <p>2.&nbsp;Use an account already existed in TRON network to create an account   </p>
+<p>If you have enough frozen BandWidth Points, creating an account only consume your frozen BandWidth Points, otherwise, it burns 0.1 TRX.     </p>
 <h2 id="key-pair-generation">Key-pair Generation</h2>
 <p>Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then caculate P = d * G as the public key, G is the elliptic curve base point.</p>
 <h2 id="address-format">Address Format</h2>
@@ -268,13 +269,14 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"  </p>
 <h2 id="signature">Signature</h2>
 <h3> Step </h3>
 
-<p>1.&nbsp;取交易的rawdata，转成byte[]格式。<br />
-2.&nbsp;对rawdata进行sha256运算。<br />
-3.&nbsp;用交易每个合约中地址对应的私钥（现在一般就是一个合约，一个私钥），对sha256的结果进行签名。<br />
-4.&nbsp;把签名结果添加到交易中。<br />
+<p>1.&nbsp;Get the rawdata of the transaction, then transfer it to byte[]<br />
+2.&nbsp;Do sha256 calculation to the rawdata    <br />
+3.&nbsp;Use the private key to sign the result gained from step 2    <br />
+4.&nbsp;Add the signature back into the transaction     </p>
 <h3> Algorithm </h3>
-1.&nbsp;ECDSA算法，SECP256K。<br />
-2.&nbsp;签名示例数据    </p>
+
+<p>1.&nbsp;ECDSA, SECP256K  <br />
+2.&nbsp;Example: </p>
 <pre><code class="text">    priKey:::8e812436a0e3323166e1f0e8ba79e19e217b2c4a53c970d4cca0cfb1078979df         
     pubKey::04a5bb3b28466f578e6e93fbfd5f75cee1ae86033aa4bbea690e3312c087181eb366f9a1d1d6a437a9bf9fc65ec853b9fd60fa322be3997c47144eb20da658b3d1         
     hash:::159817a085f113d099d3d93c051410e9bfe043cc5c20e43aa9a083bf73660145         
@@ -283,8 +285,8 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"  </p>
     v:::0  
 </code></pre>
 
-<p>注意：签名结果应该是65字节。 r 32字节， s 32字节，v 1个字节。<br />
-3.&nbsp;fullnode节点收到交易后会进行验签，由hash 和 r、s、v计算出一个地址，与合约中的地址进行比较，相同则为验签通过。<br />
+<p>Note: The size of the signature result is 65 bytes. r 32 bytes, s 32 bytes, v 1 bytes.     </p>
+<p>3.&nbsp;fullnode will verify the signature, it generates an address with the value of hash and r、s、v, then it compares with the address in the transaction.  <br />
 <h3> Demo </h3></p>
 <pre><code>public static Transaction sign(Transaction transaction, ECKey myKey) {
     Transaction.Builder transactionBuilderSigned = transaction.toBuilder();
