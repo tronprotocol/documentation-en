@@ -6,7 +6,13 @@ When a issue (or PR) is closed, it will be added into the reward program. The co
 
 Reward 1:   
 
-At the end of every month, we will calculate the points each developer newly gets in the month and who finish in Top 5 will be rewarded. Also, there is a chance to display developers' photos on TRON official website.   
+At the end of every month, we will calculate all points each developer gets in the current month and who finish in Top 5 will be rewarded.    
+
+At the end of every quarter, we will calculate all points each developer gets in the current quarter and who finish in Top 5 will be rewarded.    
+
+At the end of every year, we will calculate all points each developer gets in the current year and who finish in Top 5 will be rewarded.   
+
+Also, there is a chance to display developers' photos on TRON official website.     
 
 | No. 1   |  No. 2    |   No. 3  |   No. 4   |   No. 5   |
 |---------|-----------|----------|-----------|-----------|
