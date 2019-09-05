@@ -2,7 +2,7 @@
 
 Point program applies in TRON incentives policy. Developers can earn points by contributing to TRON.  
 
-When a issue（or PR）is closed, it will be added into the reward program. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track.    
+When a issue (or PR) is closed, it will be added into the reward program. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track.    
 
 Reward 1:   
 
