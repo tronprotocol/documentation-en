@@ -1,18 +1,19 @@
-<h1>Community Developers Incentives Policy</h1>
+<h1>Community Developers Incentives Programme</h1>
 
-Point program applies in TRON incentives policy. Developers can earn points by contributing to TRON.  
+Bonus point applies in TRON incentives programme. Developers can earn points by contributing to TRON.  
 
-When a issue (or PR) is closed, it will be added into the reward program. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track.    
+When a issue (or PR) is closed, it will be added into the reward programme. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track.    
 
 Reward 1:   
 
-At the end of every month, we will calculate all points each developer gets in the current month and who finish in Top 5 will be rewarded.    
+At the end of every month, we will calculate all points each developer gets in the current month and who finish in Top 5 will be rewarded with cash.    
 
-At the end of every quarter, we will calculate all points each developer gets in the current quarter and who finish in Top 5 will be rewarded.    
+At the end of every quarter, we will calculate all points each developer gets in the current quarter and who finish in Top 5 will be rewarded with cash.    
+At the end of every year, we will calculate all points each developer gets in the current year and who finish in Top 5 will be rewarded with cash.   
 
-At the end of every year, we will calculate all points each developer gets in the current year and who finish in Top 5 will be rewarded.   
+The Top 5 developers who win the cash reward will be announced at Tronscan. 
 
-Also, there is a chance to display developers' photos on TRON official website.     
+Also, there is a chance to display developers' photos at TRON official website.     
 
 | No. 1   |  No. 2    |   No. 3  |   No. 4   |   No. 5   |
 |---------|-----------|----------|-----------|-----------|
