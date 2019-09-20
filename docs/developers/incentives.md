@@ -2,7 +2,9 @@
 
 Bonus point applies in TRON incentives programme. Developers can earn points by contributing to TRON.  
 
-When a issue (or PR) is closed, it will be added into the reward programme. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track.    
+When a issue (or PR) is closed, it will be added into the reward programme. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track. 
+
+You can find your points ranking at [Tronscan](https://tronscan.org/#/developersreward).   
 
 Reward 1:   
 
