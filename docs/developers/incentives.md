@@ -102,3 +102,13 @@ Points:
 |-----------|-----------|----------|-----------|
 |    100    |    80     |    50    |     20    |
 
+**5. Others**
+
+Description: Code improvements, etc.   
+Scope: java-tron   
+Points:
+
+| Critical  |   High    |  Medium  |     Low   |
+|-----------|-----------|----------|-----------|
+|    20     |    15     |   10     |     5     |
+
