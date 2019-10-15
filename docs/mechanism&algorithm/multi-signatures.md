@@ -297,6 +297,11 @@ When to create a new account, an owner permission and active permission will be 
 Please refer to [wallet-cli](https://github.com/tronprotocol/wallet-cli/blob/master/README.md) to check the usage of multi-signatures.
 
 
+## <h2 id="5">Fees</h2>  
+
+If you update your account permission, the fee is 100 TRX.  
+
+If a transaction is signed by more than 1 account, the fee is 1 TRX.    
 
 
 
