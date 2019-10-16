@@ -65,7 +65,7 @@ Points:
 ** 1. Feature Development **
 
 Description: To add new features to TRON network  
-Scope: java-tron    
+Scope: java-tron, wallet-cli    
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
@@ -75,7 +75,7 @@ Points:
 ** 2. Bug Report **
 
 Description: To report bugs in online TRON network  
-Scope: java-tron     
+Scope: java-tron, wallet-cli     
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
@@ -85,7 +85,7 @@ Points:
 **3. Bug Fix**
 
 Description: To fix bugs in online TRON network   
-Scope: java-tron     
+Scope: java-tron, wallet-cli     
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
@@ -105,7 +105,7 @@ Points:
 **5. Others**
 
 Description: Code improvements, etc.   
-Scope: java-tron   
+Scope: java-tron, wallet-cli   
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
