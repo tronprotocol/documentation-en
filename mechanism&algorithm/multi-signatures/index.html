@@ -119,6 +119,9 @@
     <li class="toctree-l3"><a href="#others">Others</a></li>
     
 
+    <li class="toctree-l3"><a href="#fees">Fees</a></li>
+    
+
     </ul>
                 </li>
                 <li class="">
@@ -503,6 +506,9 @@ rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}
 <p>Since V3.5, what is the change after a new account is created?   </p>
 <p>When to create a new account, an owner permission and active permission will be generated automatically. Owner permission only contains one key, the weight and threshold are both 1. Active permission also contains one key, the weight and threshold are both 1, and operations is "7fff1fc0037e0000000000000000000000000000000000000000000000000000", means it support the execution of all contracts except AccountPermissionUpdateContract.</p>
 <p>Please refer to <a href="https://github.com/tronprotocol/wallet-cli/blob/master/README.md">wallet-cli</a> to check the usage of multi-signatures.</p>
+<h2 id="fees"><h2 id="5">Fees</h2></h2>
+<p>If you update your account permission, the fee is 100 TRX.  </p>
+<p>If a transaction is signed by more than 1 account, the fee is 1 TRX.    </p>
               
             </div>
           </div>
