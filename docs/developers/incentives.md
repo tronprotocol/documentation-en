@@ -112,3 +112,8 @@ Points:
 |-----------|-----------|----------|-----------|
 |    20     |    15     |   10     |     5     |
 
+
+In order to get 5 (or more) points, the content of a PR should be creative, pratical, critical or can reflect significant workload.   
+
+One PR should aim at solving one type of problems, so do not break one type of PR into many small PRs.   
+
