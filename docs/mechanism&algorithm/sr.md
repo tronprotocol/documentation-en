@@ -75,7 +75,7 @@ The network parameters can be modified([min,max]):
 - 30: ALLOW_CHANGE_DELEGATION, //to change the replacement of delegation mechanism switch, currently 0, means false
 - 31: WITNESS_127_PAY_PER_BLOCK, [0,100 000 000 000 000 000] //the modification of votes rank reward, currently 16000000 SUN
 - 32: ALLOW_TVM_SOLIDITY_059, //to allow TVM supports Solidity Compiler Version 0.5.9, currently 0, means false
-- 33: ADAPTIVE_RESOURCE_LIMIT_TARGET_RATIO, [1,1 000] //the target value of energy, currently 10, means The target energy is 1/10 of the total energy
+- 33: ADAPTIVE_RESOURCE_LIMIT_TARGET_RATIO, [1,1 000] //the target value of energy, currently 10, means the target energy is 1/10 of the total energy
 
 
 Example (Using wallet-cli):  
