@@ -55,7 +55,7 @@ The network parameters can be modified([min,max]):
 - 10: REMOVE_THE_POWER_OF_THE_GR, //to clear the votes of GR  
 - 11: ENERGY_FEE, [0,100 000 000 000 000 000] //SUN  
 - 12: EXCHANGE_CREATE_FEE, [0, 100 000 000 000 000 000] //SUN  
-- 13: MAX_CPU_TIME_OF_ONE_TX, [0, 1 000] //ms  
+- 13: MAX_CPU_TIME_OF_ONE_TX, [0, 1000] //ms  
 - 14: ALLOW_UPDATE_ACCOUNT_NAME, //to allow users to change account name and allow account duplicate name, currently 0, means false  
 - 15: ALLOW_SAME_TOKEN_NAME, //to allow create a token with duplicate name, currently 1, means true  
 - 16: ALLOW_DELEGATE_RESOURCE, //to enable the resource delegation  
@@ -67,14 +67,14 @@ The network parameters can be modified([min,max]):
 - 22: UPDATE_ACCOUNT_PERMISSION_FEE, //the fee to update the account permission, currently 100000000 SUN
 - 23: MULTI_SIGN_FEE, //the fee to modify multi-signature fee, currently 1000000 SUN
 - 24: ALLOW_PROTO_FILTER_NUM, //update allow protobuf number
-- 25: ALLOW_ACCOUNT_STATE_ROOT, //
-- 26: ALLOW_TVM_CONSTANTINOPLE, //
+- 25: ALLOW_ACCOUNT_STATE_ROOT, //to enable the account state root
+- 26: ALLOW_TVM_CONSTANTINOPLE, //to allow the TVM support the upgrade of Constantinople
 - 27: ALLOW_SHIELDED_TRANSACTION, //to allow shielded transactions, currently 0, means false
 - 28: SHIELDED_TRANSACTION_FEE, [0,10 000 000 000] //the fee to modify shielded transactons, currently 10
 - 29: ADAPTIVE_RESOURCE_LIMIT_MULTIPLIER, [1,10 000] //the limit of dynamic energy maximum multiplier, currently 1000, means the value is 1000 times of total energy
 - 30: ALLOW_CHANGE_DELEGATION, //to change the replacement of delegation mechanism switch, currently 0, means false
 - 31: WITNESS_127_PAY_PER_BLOCK, [0,100 000 000 000 000 000] //the modification of votes rank reward, currently 16000000 SUN
-- 32: ALLOW_TVM_SOLIDITY_059, //to allow VM supports Solidity Compiler Version 0.5.9, currently 0, means false
+- 32: ALLOW_TVM_SOLIDITY_059, //to allow TVM supports Solidity Compiler Version 0.5.9, currently 0, means false
 - 33: ADAPTIVE_RESOURCE_LIMIT_TARGET_RATIO, [1,1 000] //the target value of energy, currently 10, means The target energy is 1/10 of the total energy
 
 
