@@ -222,11 +222,11 @@ This is an implementation of Tron eventsubscribe model.
 
 <h3> Setup/Build </h3>
 
-1. Clone the repo
-2. Go to eventplugin `cd eventplugin` 
+1. Clone the repo `git clone https://github.com/tronprotocol/event-plugin.git`
+2. Go to eventplugin `cd event-plugin` 
 3. run `./gradlew build`
 
-* This will produce one plugin zip, named `plugin-kafka-1.0.0.zip`, located in the `eventplugin/build/plugins/` directory.
+* This will produce one plugin zip, named `plugin-kafka-1.0.0.zip`, located in the `event-plugin/build/plugins/` directory.
 
 
 <h3> Edit **config.conf** of Java-tron， add the following fileds:</h3>
