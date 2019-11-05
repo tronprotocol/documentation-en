@@ -7,7 +7,7 @@ TRON network uses Peer-to-Peer(P2P) network instructure, all nodes status equal.
 
 <h3>SuperNode</h3>
 
-Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using [tronscan](https://tronscan.org/#/representatives).
+Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using [tronscan](https://tronscan.org/#/sr/representatives).
 
 Recommended Hardware Configuration:  
 minimum requirement:  
