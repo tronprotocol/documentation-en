@@ -769,7 +769,7 @@ demo: curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
     "frozen_balance": 10000,
     "frozen_duration": 3,
     "resource": "BANDWIDTH",
-    "receiveraddress": "414332f387585c2b58bc2c9bb4492bc1f17342cd1"
+    "receiver_address": "414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 ```
 Parameter owner_address: Owner address, default hexString      
@@ -788,7 +788,7 @@ demo: curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d
 '{
     "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
     "resource": "BANDWIDTH",
-    "receiveraddress": "414332f387585c2b58bc2c9bb4492bc1f17342cd1"
+    "receiver_address": "414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 ```
 Parameter owner_address: Owner address, default hexString      
