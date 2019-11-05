@@ -39,8 +39,8 @@ Committee can modify the TRON network parameters, like transacton fees, block pr
 
 <h3> 2. Create a Proposal </h3>
 
-Only the account of a super representative can create a proposal.   
-The network parameters can be modified([min,max]):  
+Only the accounts of the super representatives and candidates can create a proposal.       
+The network parameters can be modified([min,max]):    
 
 - 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000, 24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms  
 - 1: ACCOUNT_UPGRADE_COST, [0, 100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 SUN   
