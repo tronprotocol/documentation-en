@@ -40,43 +40,43 @@ Committee can modify the TRON network parameters, like transacton fees, block pr
 <h3> 2. Create a Proposal </h3>
 
 Only the accounts of the super representatives and candidates can create a proposal.       
-The network parameters can be modified([min,max]):    
+The network parameters can be modified([min,max]).   
+{0,1}: 1 means 'allowed' or 'actived', 0 means no.    
 
-- 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000, 24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms  
-- 1: ACCOUNT_UPGRADE_COST, [0, 100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 SUN   
-- 2: CREATE_ACCOUNT_FEE, [0, 100 000 000 000  000 000] //the fee to create an account, currently 100_000 SUN  
-- 3: TRANSACTION_FEE, [0, 100 000 000 000 000 000] //the fee for bandwidth, currently 10 SUN/byte  
-- 4: ASSET_ISSUE_FEE, [0, 100 000 000 000 000 000] //the fee to issue an asset, currently 1024_000_000 SUN  
-- 5: WITNESS_PAY_PER_BLOCK, [0, 100 000 000 000 000 000] //the block producing reward, currently 32_000_000 SUN  
-- 6: WITNESS_STANDBY_ALLOWANCE, [0, 100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115_200_000_000 SUN   
-- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 0 SUN  
-- 8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwith or TRX while creating an account, using together with #7  
-- 9: ALLOW_CREATION_OF_CONTRACTS, //to enable the VM  
-- 10: REMOVE_THE_POWER_OF_THE_GR, //to clear the votes of GR  
-- 11: ENERGY_FEE, [0,100 000 000 000 000 000] //SUN  
-- 12: EXCHANGE_CREATE_FEE, [0, 100 000 000 000 000 000] //SUN  
-- 13: MAX_CPU_TIME_OF_ONE_TX, [0, 1000] //ms  
-- 14: ALLOW_UPDATE_ACCOUNT_NAME, //to allow users to change account name and allow account duplicate name, currently 0, means false  
-- 15: ALLOW_SAME_TOKEN_NAME, //to allow create a token with duplicate name, currently 1, means true  
-- 16: ALLOW_DELEGATE_RESOURCE, //to enable the resource delegation  
-- 17: TOTAL_ENERGY_LIMIT, //to modify the energy limit  
-- 18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false
-- 19: TOTAL_CURRENT_ENERGY_LIMIT, //to modify the total energy, currently 50000000000
-- 20: ALLOW_MULTI_SIGN, //to multi-signature, currently 1
-- 21: ALLOW_ADAPTIVE_ENERGY, //to allow the total energy adaptive, currently 0, means false
-- 22: UPDATE_ACCOUNT_PERMISSION_FEE, //the fee to update the account permission, currently 100000000 SUN
-- 23: MULTI_SIGN_FEE, //the fee to modify multi-signature fee, currently 1000000 SUN
-- 24: ALLOW_PROTO_FILTER_NUM, //update allow protobuf number
-- 25: ALLOW_ACCOUNT_STATE_ROOT, //to enable the account state root
-- 26: ALLOW_TVM_CONSTANTINOPLE, //to allow the TVM support the upgrade of Constantinople
-- 27: ALLOW_SHIELDED_TRANSACTION, //to allow shielded transactions, currently 0, means false
-- 28: SHIELDED_TRANSACTION_FEE, [0,10 000 000 000] //the fee to modify shielded transactons, currently 10
-- 29: ADAPTIVE_RESOURCE_LIMIT_MULTIPLIER, [1,10 000] //the limit of dynamic energy maximum multiplier, currently 1000, means the value is 1000 times of total energy
-- 30: ALLOW_CHANGE_DELEGATION, //to change the replacement of delegation mechanism switch, currently 0, means false
-- 31: WITNESS_127_PAY_PER_BLOCK, [0,100 000 000 000 000 000] //the modification of votes rank reward, currently 16000000 SUN
-- 32: ALLOW_TVM_SOLIDITY_059, //to allow TVM supports Solidity Compiler Version 0.5.9, currently 0, means false
-- 33: ADAPTIVE_RESOURCE_LIMIT_TARGET_RATIO, [1,1 000] //the target value of energy, currently 10, means the target energy is 1/10 of the total energy
-
+|  #    | Command  |  Value  |   
+|  ----  | ----    | ---- | 
+|  0     | getMaintenanceTimeInterval <br> (To modify the maintenance interval of SR)	| 6  Hours <br> [3 * 27, 24 * 3600] s | 
+|  1     | getAccountUpgradeCost <br> (To modify the cost of applying for SR account) | 9999  TRX <br> [0, 100000000000] TRX | 
+|  2     | getCreateAccountFee <br> (To modify the account creation fee) | 0.1  TRX <br> [0, 100000000000] TRX |
+|  3     | getTransactionFee <br> (To modify the amount of TRX used to gain extra bandwidth) | 10  Sun/Byte <br> [0, 100000000000] TRX |
+|  4     | getAssetIssueFee <br> (To modify asset issuance fee) | 1024  TRX <br> [0, 100000000000] TRX| 
+|  5     | getWitnessPayPerBlock <br> (To modify SR block generation reward) | 16 TRX <br> [0, 100000000000] TRX |
+|  6     | getWitnessStandbyAllowance <br> (To modify the rewards given to the top 27 SRs and <br> the following 100 partners) | 115200  TRX <br> [0, 100000000000] TRX |
+|  7     | getCreateNewAccountFeeInSystemContract <br> (To modify the cost of account creation) | 0 TRX  |
+|  8     | getCreateNewAccountBandwidthRate <br> (To modify the consumption of bandwith of account creation) | 1&nbsp;Bandwith/Byte | 
+|  9     | getAllowCreationOfContracts <br> (To activate the Virtual Machine (VM)) | 1 <br> {0, 1} | 
+|  10	 | getRemoveThePowerOfTheGr <br> (To remove the GR Genesis votes) |	1 <br> {0, 1}| 
+|  11	 | getEnergyFee <br> (To modify the fee of 1 energy) | 10 Sun <br> [0, 100000000000] TRX |
+|  12	 | getExchangeCreateFee <br> (To modify the cost of trading pair creation) | 1024 TRX <br> [0, 100000000000] TRX |
+|  13	 | getMaxCpuTimeOfOneTx <br> (To modify the maximum execution time of one transaction) | 50 ms <br> [0, 1000] ms |
+|  14	 | getAllowUpdateAccountName <br> (To allow to change the account name) | 0 <br> {0, 1} |
+|  15	 | getAllowSameTokenName <br> (To allow the same token name) | 1 <br> {0, 1} | 
+|  16	 | getAllowDelegateResource <br> (To allow resource delegation) | 1 <br> {0, 1} |
+|  18	 | getAllowTvmTransferTrc10 <br> (To allow the TRC-10 token transfer in smart contracts) | 1 <br> {0, 1} | 
+|  19	 | getTotalEnergyCurrentLimit <br> (To modify current total energy limit) | 50000000000 | 
+|  20	 | getAllowMultiSign <br> (To allow the initiation of multi-signature) | 1 <br> {0, 1} | 
+|  21	 | getAllowAdaptiveEnergy <br> (To allow adaptive adjustment for total Energy) | 0 <br> {0, 1} |
+|  22	 | getUpdateAccountPermissionFee <br> (To modify the fee for updating account permission) | 100 TRX |  
+|  23	 | getMultiSignFee <br> (To modify the fee for multi-signature) | 1 TRX | 
+|  24	 | getAllowProtoFilterNum <br> (To enable protocol optimization) | 0 <br> {0, 1} | 
+|  26	 | getAllowTvmConstantinople <br> (To support the new commands of Constantinople) | 1 <br> {0, 1} |
+|  27	 | getAllowShieldedTransaction <br> (To enable shielded transaction) | 0 <br> {0, 1} |
+|  28	 | getShieldedTransactionFee <br> (To modify shielded transaction fee) | 10 TRX <br> [0, 10000] TRX |
+|  29	 | getAdaptiveResourceLimitMultiplier <br> (To modify the adaptive energy limit multiplier) | 1000 <br> [1, 10000] |
+|  30    | getChangeDelegation <br> (Propose to support the decentralized vote dividend) | 1 <br> {0, 1} |
+|  31    | getWitness127PayPerBlock <br> (Propose to modify the block voting rewards given to <br> the top 27 SRs and the following 100 partners) | 160  TRX <br> [0, 100000000000] TRX |
+|  32    | getAllowTvmSolidity059 <br> (To allow TVM to support solidity compiler 0.5.9) | 0 <br> {0, 1} |
+|  33    | getAdaptiveResourceLimitTargetRatio <br> (To modify the target energy limit) | 10 <br> [1, 1000] |
 
 Example (Using wallet-cli):  
 ```text
