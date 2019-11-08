@@ -13,16 +13,16 @@ nav:
         - Resource Model: mechanism&algorithm/resource.md
         - DEX: mechanism&algorithm/dex.md
         - Multi Signatures: mechanism&algorithm/multi-signatures.md
-        - Shielded Transaction: mechanism&algorithm/shielded-transaction.md
+        - Shielded Transaction: mechanism&algorithm/shielded-transaction.md  
+        - System Contracts:  mechanism&algorithm/systemContracts.md
     - Architecture:
         - Network: architecture/network.md
         - Database: architecture/database.md
         - Plugin: architecture/plugin.md
-    - Contracts: 
+    - Smart Contract: 
         - TVM: contracts/tvm.md
         - Compiler: contracts/compiler.md    
         - Contract: contracts/contract.md  
-        - System Contracts:  contracts/systemContracts.md
     - Developers:
         - Official Public Nodes: developers/official-public-nodes.md
         - Deployment: developers/deployment.md

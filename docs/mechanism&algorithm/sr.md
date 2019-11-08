@@ -1,7 +1,11 @@
 
 ## How to Become a Super Representative
 
- In TRON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.  
+ In TRON network, any account can apply to become a witness. Every account can vote for witnesses.   
+
+ The top 27 witnesses are called SR, the witnesses from 28th to 127th are called Partner, the witnesses after 128th are called Candidates. Only SR can produce blocks.     
+
+ The votes will be counted every 6 hours, so super representatives may also change every 6 hours.  
 
  To prevent vicious attack, TRON network burns 9999 TRX from the account that applies to become a super representative candidate.
 
@@ -39,9 +43,11 @@ Committee can modify the TRON network parameters, like transacton fees, block pr
 
 <h3> 2. Create a Proposal </h3>
 
-Only the accounts of the super representatives and candidates can create a proposal.       
-The network parameters can be modified([min,max]).   
-{0,1}: 1 means 'allowed' or 'actived', 0 means no.    
+Only SRs, Partners and Candidates can create a proposal.      
+
+The network parameters can be modified([min,max]).     
+
+{0,1}: 1 means 'allowed' or 'actived', 0 means no.      
 
 |  #    | Command  |  Value  |   
 |  ----  | ----    | ---- | 

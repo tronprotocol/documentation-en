@@ -416,3 +416,7 @@
    `c_enc`: part of note ciphertext, encryption of diversifier, receiver's transfer amount, rcm, and memo.   
    `c_out`: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.   
    `zkproof`: zero-knowledge proof of the receiver's note.      
+
+  <h2 id="27">27. Multi Signatures</h2>
+
+  [Multi Signatures](./multi-signatures.md)
