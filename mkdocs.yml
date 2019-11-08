@@ -21,7 +21,8 @@ nav:
     - Contracts: 
         - TVM: contracts/tvm.md
         - Compiler: contracts/compiler.md    
-        - Contract: contracts/contract.md   
+        - Contract: contracts/contract.md  
+        - System Contracts:  contracts/systemContracts.md
     - Developers:
         - Official Public Nodes: developers/official-public-nodes.md
         - Deployment: developers/deployment.md
