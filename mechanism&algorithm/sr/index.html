@@ -125,6 +125,10 @@
                     
     <a class="" href="../shielded-transaction/">Shielded Transaction</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../systemContracts/">System Contracts</a>
+                </li>
     </ul>
 	    </li>
           
@@ -149,7 +153,7 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Contracts</span>
+    <span class="caption-text">Smart Contract</span>
     <ul class="subnav">
                 <li class="">
                     
@@ -162,10 +166,6 @@
                 <li class="">
                     
     <a class="" href="../../contracts/contract/">Contract</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/systemContracts/">System Contracts</a>
                 </li>
     </ul>
 	    </li>
@@ -255,7 +255,9 @@
             <div class="section">
               
                 <h2 id="how-to-become-a-super-representative">How to Become a Super Representative</h2>
-<p>In TRON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.  </p>
+<p>In TRON network, any account can apply to become a witness. Every account can vote for witnesses.   </p>
+<p>The top 27 witnesses are called SR, the witnesses from 28th to 127th are called Partner, the witnesses after 128th are called Candidates. Only SR can produce blocks.     </p>
+<p>The votes will be counted every 6 hours, so super representatives may also change every 6 hours.  </p>
 <p>To prevent vicious attack, TRON network burns 9999 TRX from the account that applies to become a super representative candidate.</p>
 <h2 id="super-representatives-election">Super Representatives Election</h2>
 <p>To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.  </p>
@@ -279,9 +281,9 @@ Every time after a super representative produces a block, it will be reward 32 T
 <p>Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.</p>
 <h3> 2. Create a Proposal </h3>
 
-<p>Only the accounts of the super representatives and candidates can create a proposal.     <br />
-The network parameters can be modified([min,max]). <br />
-{0,1}: 1 means 'allowed' or 'actived', 0 means no.    </p>
+<p>Only SRs, Partners and Candidates can create a proposal.      </p>
+<p>The network parameters can be modified([min,max]).     </p>
+<p>{0,1}: 1 means 'allowed' or 'actived', 0 means no.      </p>
 <table>
 <thead>
 <tr>
