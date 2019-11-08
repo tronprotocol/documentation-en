@@ -1,5 +1,4 @@
-
-          
+      
  <h2 id="1">1. AccountCreateContract</h2>  
 
      message AccountCreateContract {
@@ -142,7 +141,7 @@
      
  <h2 id="9">9. AccountUpdateContract</h2> 
 
-     // Update account name. Account name is not unique now.
+     // Update account name. Account name is unique now.
      message AccountUpdateContract {
        bytes account_name = 1;
        bytes owner_address = 2;
