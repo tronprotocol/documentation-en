@@ -242,9 +242,7 @@
           <div role="main">
             <div class="section">
               
-                <pre><code>
-</code></pre>
-<p><h2 id="1">1. AccountCreateContract</h2>  </p>
+                <p><h2 id="1">1. AccountCreateContract</h2>  </p>
 <pre><code> message AccountCreateContract {
    bytes owner_address = 1;
    bytes account_address = 2;
@@ -362,7 +360,7 @@
 <code>account_name</code>: The token id.   <br />
 <code>amount</code>: The amount of token to purchase.    </p>
 <p><h2 id="9">9. AccountUpdateContract</h2> </p>
-<pre><code> // Update account name. Account name is not unique now.
+<pre><code> // Update account name. Account name is unique now.
  message AccountUpdateContract {
    bytes account_name = 1;
    bytes owner_address = 2;
