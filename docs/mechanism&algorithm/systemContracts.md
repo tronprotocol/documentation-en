@@ -419,4 +419,37 @@
 
   <h2 id="27">27. Multi Signatures</h2>
 
-  [Multi Signatures](./multi-signatures.md)
+  [Multi Signatures](./multi-signatures.md)    
+
+   <h2 id="28">28. ClearABIContract</h2>  
+
+     message ClearABIContract {
+       bytes owner_address = 1;
+       bytes contract_address = 2;
+     }
+  
+   `owner_address`: The owner of the current account.  
+   `account_address`: The target contract address to clear ABI.   
+
+  <h2 id="29">29. UpdateBrokerageContract</h2>  
+
+     message UpdateBrokerageContract {
+       bytes owner_address = 1;
+       int32 brokerage = 2; 
+     }
+  
+   `owner_address`: The owner of the current account.  
+   `brokerage`: Commission rate, from 0 to 100,1 mean 1%.    
+
+  <h2 id="30">30. UpdateEnergyLimitContract</h2>  
+
+     message UpdateEnergyLimitContract {
+       bytes owner_address = 1;
+       bytes contract_address = 2;
+       int64 origin_energy_limit = 3; 
+     }
+  
+   `owner_address`: The owner of the current account.  
+   `contract_address`: The contract address.    
+   `origin_energy_limit`: The original energy limit.    
+
