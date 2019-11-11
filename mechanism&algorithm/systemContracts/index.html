@@ -582,7 +582,33 @@
 <code>c_out</code>: part of note ciphertext, encryption of the receiver's public key and ephemeral private key. <br />
 <code>zkproof</code>: zero-knowledge proof of the receiver's note.      </p>
 <p><h2 id="27">27. Multi Signatures</h2></p>
-<p><a href="../multi-signatures/">Multi Signatures</a></p>
+<p><a href="../multi-signatures/">Multi Signatures</a>    </p>
+<p><h2 id="28">28. ClearABIContract</h2>  </p>
+<pre><code> message ClearABIContract {
+   bytes owner_address = 1;
+   bytes contract_address = 2;
+ }
+</code></pre>
+<p><code>owner_address</code>: The owner of the current account.<br />
+<code>account_address</code>: The target contract address to clear ABI.   </p>
+<p><h2 id="29">29. UpdateBrokerageContract</h2>  </p>
+<pre><code> message UpdateBrokerageContract {
+   bytes owner_address = 1;
+   int32 brokerage = 2; 
+ }
+</code></pre>
+<p><code>owner_address</code>: The owner of the current account.<br />
+<code>brokerage</code>: Commission rate, from 0 to 100,1 mean 1%.    </p>
+<p><h2 id="30">30. UpdateEnergyLimitContract</h2>  </p>
+<pre><code> message UpdateEnergyLimitContract {
+   bytes owner_address = 1;
+   bytes contract_address = 2;
+   int64 origin_energy_limit = 3; 
+ }
+</code></pre>
+<p><code>owner_address</code>: The owner of the current account.<br />
+<code>contract_address</code>: The contract address.  <br />
+<code>origin_energy_limit</code>: The original energy limit.    </p>
               
             </div>
           </div>
