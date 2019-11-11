@@ -451,5 +451,5 @@
   
    `owner_address`: The owner of the current account.  
    `contract_address`: The contract address.    
-   `origin_energy_limit`: The original energy limit.    
+   `origin_energy_limit`: The target energy limit to change.    
 
