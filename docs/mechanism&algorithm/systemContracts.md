@@ -9,7 +9,7 @@
  
    `owner_address`: The owner of the current account.      
    `account_address`: The target address to create.          
-   `type`: Account type. 0 means normal account; 1 means smart contract account      
+   `type`: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.        
 
      
  <h2 id="2">2. TransferContract</h2>  
