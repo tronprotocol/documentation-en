@@ -243,7 +243,7 @@ public static void main(String[] args) {
     operations[e / 8] |= (1 << e % 8);
   });
   
-  //7fff1fc0037e0000000000000000000000000000000000000000000000000000
+  //7fff1fc0033e0000000000000000000000000000000000000000000000000000
   System.out.println(ByteArray.toHexString(operations));
 }
 ```
@@ -292,7 +292,8 @@ rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}
 
 Since V3.5, what is the change after a new account is created?   
 
-When to create a new account, an owner permission and active permission will be generated automatically. Owner permission only contains one key, the weight and threshold are both 1. Active permission also contains one key, the weight and threshold are both 1, and operations is "7fff1fc0037e0000000000000000000000000000000000000000000000000000", means it support the execution of all contracts except AccountPermissionUpdateContract.
+When to create a new account, an owner permission and active permission will be generated automatically. Owner permission only contains one key, the weight and threshold are both 1. Active permission also contains one key, the weight and threshold are both 1, and operations is "7fff1fc0033e0000000000000000000000000000000000000000000000000000", means it support the execution of all contracts except AccountPermissionUpdateContract.
+After V3.5, if there is a new system contract, the default operations value of the newly created account will change. The operations of existing accounts will not change.
 
 Please refer to [wallet-cli](https://github.com/tronprotocol/wallet-cli/blob/master/README.md) to check the usage of multi-signatures.
 
