@@ -36,6 +36,7 @@ GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination
 GetExchangeById: Query an exchange pair by exchange pair id     
 
 <h3>2. Price Calculation </h3>
+
 The token price is determined by the ratio of the balance of the two tokens.  
 
 <h3>3. Calculate the Amount of Token You Can Get </h3>
