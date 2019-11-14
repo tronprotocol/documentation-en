@@ -28,17 +28,25 @@ Please refer to 'wallet/exchangewithdraw'
 ## Query 
 
 <h3>1. Transaction Query </h3>
-ListExchanges: Query the list of all the exchange pairs  
-GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination  
-GetExchangeById: Query an exchange pair by exchange pair id   
+
+ListExchanges: Query the list of all the exchange pairs    
+
+GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination    
+
+GetExchangeById: Query an exchange pair by exchange pair id     
 
 <h3>2. Price Calculation </h3>
 The token price is determined by the ratio of the balance of the two tokens.  
 
 <h3>3. Calculate the Amount of Token You Can Get </h3>
-sellTokenQuant is the amount of the first_token you want to sell;  
-buyTokenQuant is the amount of second_token you can get;
-supply = 1_000_000_000_000_000_000L;   
-supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant, 0.0005));   
-buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0); 
+
+sellTokenQuant is the amount of the first_token you want to sell    
+
+buyTokenQuant is the amount of second_token you can get  
+
+supply = 1_000_000_000_000_000_000L  
+
+supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant, 0.0005))   
+
+buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0)  
 
