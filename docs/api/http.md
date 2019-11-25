@@ -1,3 +1,54 @@
+**API INDEX:**
+    
+| transaction                   |  account                           |   shielded transactions                      |
+|-------------------------------|------------------------------------|----------------------------------------------|
+| createtransaction             |  updateaccount                     | getexpandedspendingkey                       |
+| gettransactionsign            |  createaccount                     | getakfromask                                 |
+| gettransactionbyid            |  createaddress                     | getnkfromnsk                                 |
+| gettransactioninfobyid        |  getaccountnet                     | getspendingkey                               |
+| gettransactioncountbyblocknum |  getaccount                        | getdiversifier                               | 
+| totaltransaction              |  generateaddress                   | getincomingviewingkey                        | 
+| getdeferredtransactionbyid    |  validateaddress                   | getzenpaymentaddress                         |
+| canceldeferredtransactionbyid |  getaccountresource                | scannotebyivk                                |
+| getdeferredtransactioninfobyid|  setaccountid                      | scanandmarknotebyivk                         | 
+| getsignweight                 |  getaccountbyid                    | scannotebyovk                                |
+| addtransactionsign            |  accountpermissionupdate           | getrcm                                       | 
+|                               |  getdelegatedresource              | getmerkletreevoucherinfo                     | 
+|                               |  getdelegatedresourceaccountindex  | isspend                                      |
+|                               |  freezebalance                     | createspendauthsig                           | 
+|    **block**                  |  unfreezebalance                   | createshieldnullifier                        |
+| getnowblock                   |  unfreezeasset                     | getshieldtransactionhash                     | 
+| getblockbynum                 |  withdrawbalance                   | createshieldedtransaction                    |
+| getblockbyid                  |  votewitnessaccount                | createshieldedtransaction<br>withoutspendauthsig |
+| getblockbylimitnext           |  updatewitness                     | createshieldedtransaction<br>withoutspendauthsig |
+| getblockbylatestnum           |  createwitness                     |                                              |
+
+
+
+|   asset                        |  exchange               | transfer                        |  
+|--------------------------------|-------------------------|---------------------------------|
+|  createassetissue              | exchangecreate          | easytransferbyprivate           | 
+|  participateassetissue         | exchangeinject          | easytransferassetbyprivate      |       
+|  getassetissuebyaccount        | exchangewithdraw        | transferasset                   |  
+|  getassetissuebyname           | exchangetransaction     | easytransfer                    | 
+|  getassetissuelistbyname       | getexchangebyid         | easytransferasset               | 
+|  getassetissuelist             | getpaginatedexchangelist|                                 |                    
+|  getpaginatedassetissuelist    | getpaginatedexchangelist|                                 |                    
+|  getassetissuebyid             | listexchanges           |                                 |                    
+|  updateasset                   | getpaginatedexchangelist|                                 |                    
+
+
+
+|   proposal                       | smart contract          | others                |
+|----------------------------------|-------------------------|-----------------------|
+|  getpaginatedproposallist        | deploycontract          | broadcasttransaction  |
+|  proposalcreate                  | getcontract             | broadcasthex          |
+|  getproposalbyid                 | triggerconstantcontract | listnodes             |
+|  listproposals                   | triggersmartcontract    | listwitnesses         |
+|  proposalapprove                 | clearabi                | getnextmaintenancetime|
+|  proposaldelete                  | updateenergylimit       | getnodeinfo           |
+|  getapprovedlist                 | updatesetting           | getchainparameters    |
+
 ## HexString and Base58check Transcode Demo
 JAVA:  
 [https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92](https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92)   
@@ -29,9 +80,9 @@ curl -X POST http://127.0.0.1:8090/wallet/createtransaction  -d
     "visible": true
 }'
 ```
-3.&nbsp;For GET method api: By adding 'visible' parameter in the url, as way 1  
+3.&nbsp;For GET method api: By adding 'visible' parameter in the url, as way 1.    
 
-    
+
 ## SolidityNode Api
 
 SolidityNode api's default http port is 8091, when solidityNode is started, http service will be started too.
