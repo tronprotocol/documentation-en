@@ -52,11 +52,11 @@ For each super representative, the daily Block Rewards = (460,800 / 27) x 20%
 
 ## Reward for Voters
 
-If you vote for a super representative:  
+If you vote for a Super Representative:  
 
 the daily Voter Rewards =  (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a witness) / (the total number of votes a witness receives)  
 
-If you vote for a none super representative:   
+If you vote for a Partner:   
 
 the daily Voter Rewards =  (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%)   
 
