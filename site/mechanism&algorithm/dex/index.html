@@ -278,19 +278,19 @@
 <h2 id="query">Query</h2>
 <h3>1. Transaction Query </h3>
 
-<p>ListExchanges: Query the list of all the exchange pairs<br />
-GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination<br />
-GetExchangeById: Query an exchange pair by exchange pair id   </p>
+<p>ListExchanges: Query the list of all the exchange pairs    </p>
+<p>GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination    </p>
+<p>GetExchangeById: Query an exchange pair by exchange pair id     </p>
 <h3>2. Price Calculation </h3>
 
 <p>The token price is determined by the ratio of the balance of the two tokens.  </p>
 <h3>3. Calculate the Amount of Token You Can Get </h3>
 
-<p>sellTokenQuant is the amount of the first_token you want to sell;<br />
-buyTokenQuant is the amount of second_token you can get;
-supply = 1_000_000_000_000_000_000L; <br />
-supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant, 0.0005)); <br />
-buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0); </p>
+<p>sellTokenQuant is the amount of the first_token you want to sell    </p>
+<p>buyTokenQuant is the amount of second_token you can get  </p>
+<p>supply = 1_000_000_000_000_000_000L  </p>
+<p>supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant, 0.0005))   </p>
+<p>buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0)  </p>
               
             </div>
           </div>

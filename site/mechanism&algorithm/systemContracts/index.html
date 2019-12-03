@@ -251,7 +251,7 @@
 </code></pre>
 <p><code>owner_address</code>: The owner of the current account.    <br />
 <code>account_address</code>: The target address to create.        <br />
-<code>type</code>: Account type. 0 means normal account; 1 means smart contract account      </p>
+<code>type</code>: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.        </p>
 <p><h2 id="2">2. TransferContract</h2>  </p>
 <pre><code> message TransferContract {
    bytes owner_address = 1;
@@ -608,7 +608,7 @@
 </code></pre>
 <p><code>owner_address</code>: The owner of the current account.<br />
 <code>contract_address</code>: The contract address.  <br />
-<code>origin_energy_limit</code>: The original energy limit.    </p>
+<code>origin_energy_limit</code>: The target energy limit to change.    </p>
               
             </div>
           </div>
