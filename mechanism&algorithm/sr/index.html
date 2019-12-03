@@ -93,7 +93,10 @@
     <li class="toctree-l3"><a href="#super-representatives-election">Super Representatives Election</a></li>
     
 
-    <li class="toctree-l3"><a href="#reward-for-super-representatives">Reward for Super Representatives</a></li>
+    <li class="toctree-l3"><a href="#reward-for-witnesses">Reward for Witnesses</a></li>
+    
+
+    <li class="toctree-l3"><a href="#reward-for-voters">Reward for Voters</a></li>
     
 
     <li class="toctree-l3"><a href="#committee">Committee</a></li>
@@ -269,12 +272,23 @@ votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witn
 </code></pre>
 
 <p>The final output above is: Vote 3 votes for witness1, 7 votes for witness2</p>
-<h2 id="reward-for-super-representatives">Reward for Super Representatives</h2>
-<p><strong>Votes Reward:</strong><br />
-Every 6 hours, the top 127 super representative candidates with the most votes will share a total amount of 115,200 TRX according to their votes percentage. The annual votes reward is 168,192,000 TRX in total.</p>
-<p><strong>Block Producing Reward:</strong> <br />
-Every time after a super representative produces a block, it will be reward 32 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 336,384,000 TRX in total.  </p>
-<p>Every time after a super representative produces a block, the 32 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.</p>
+<p><strong>Witnesses Brokerage</strong></p>
+<p>The default ratio is 20%, which can be modified by the witnesses.</p>
+<p>If a witness get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the witness; if set to 0, the rewards are all sent to the voters.   </p>
+<h2 id="reward-for-witnesses">Reward for Witnesses</h2>
+<p><strong>Votes Reward:</strong>  </p>
+<p>Vote rewards are 160 TRX every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX. </p>
+<p>For each candidate, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  </p>
+<p><strong>Block Producing Reward:</strong>   </p>
+<p>Every time after a super representative produces a block, it will be reward 16 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 168,192,000 TRX in total.  </p>
+<p>Every time after a super representative produces a block, the 16 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.</p>
+<p>16 (TRX/block) * 28,800 (blockss/day) = 460,800 (TRX/Day)   </p>
+<p>For each super representative, the daily Block Rewards = (460,800 / 27) x 20%  </p>
+<h2 id="reward-for-voters">Reward for Voters</h2>
+<p>If you vote for a super representative:  </p>
+<p>the daily Voter Rewards =  (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a witness) / (the total number of votes a witness receives)  </p>
+<p>If you vote for a none super representative:   </p>
+<p>the daily Voter Rewards =  (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%)   </p>
 <h2 id="committee">Committee</h2>
 <h3> 1. What is Committee </h3>
 
