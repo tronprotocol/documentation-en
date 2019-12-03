@@ -37,7 +37,7 @@ If a witness get 20% of the reward, and the other 80% will be awarded to the vot
 
 Vote rewards are 160 TRX every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX. 
 
-For each candidate, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  
+For each SR and Partner, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  TRX  
 
 
 **Block Producing Reward:**   
@@ -46,19 +46,21 @@ Every time after a super representative produces a block, it will be reward 16 T
 
 Every time after a super representative produces a block, the 16 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
 
-16 (TRX/block) * 28,800 (blockss/day) = 460,800 (TRX/Day)   
+16 (TRX/block) * 28,800 (blocks/day) = 460,800 (TRX/Day)   
 
-For each super representative, the daily Block Rewards = (460,800 / 27) x 20%  
+For each super representative, the daily Block Rewards = (460,800 / 27) x 20%  TRX    
+
+Reward may be less than the theoretical number due to missed blocks and maintenance period.      
 
 ## Reward for Voters
 
-If you vote for a super representative:  
+If you vote for a Super Representative:  
 
-the daily Voter Rewards =  (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a witness) / (the total number of votes a witness receives)  
+the daily Voter Rewards =  (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a witness) / (the total number of votes a witness receives) TRX    
 
-If you vote for a none super representative:   
+If you vote for a Partner:   
 
-the daily Voter Rewards =  (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%)   
+the daily Voter Rewards =  (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) TRX    
 
 ## Committee
 
