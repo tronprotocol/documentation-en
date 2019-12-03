@@ -46,9 +46,11 @@ Every time after a super representative produces a block, it will be reward 16 T
 
 Every time after a super representative produces a block, the 16 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
 
-16 (TRX/block) * 28,800 (blockss/day) = 460,800 (TRX/Day)   
+16 (TRX/block) * 28,800 (blocks/day) = 460,800 (TRX/Day)   
 
 For each super representative, the daily Block Rewards = (460,800 / 27) x 20%  
+
+Reward may be less than the theoretical number due to missed blocks and maintenance period.      
 
 ## Reward for Voters
 
