@@ -37,7 +37,7 @@ If a witness get 20% of the reward, and the other 80% will be awarded to the vot
 
 Vote rewards are 160 TRX every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX. 
 
-For each candidate, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  
+For each SR and Partner, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  
 
 
 **Block Producing Reward:**   
