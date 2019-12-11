@@ -37,8 +37,7 @@ Create a new account transaction, Bandwidth points consumption sequence:
 
 Token transfer transaction, Bandwidth points consumption sequence:  
 
-1.&nbsp;依次验证 发行Token资产总的免费Bandwidth Points是否足够消耗，转账发起者的Token剩余免费Bandwidth Points是否足够消耗，
-    Token发行者冻结TRX获取Bandwidth Points剩余量是否足够消耗。如果满足则扣除Token发行者的Bandwidth Points，任意一个不满足则进入下一步。  
+1.&nbsp;Firstly, check if the total free Bandwidth Points of the token issuer is enough, then check if the transfer Initiator‘s remaining token freeBandwidth Points is enough, finally check if the Bandwidth Points of token issuer obtained by freezing TRX is enough. Otherise, it will go to step 2;  
 
 2.&nbsp;Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;  
 
