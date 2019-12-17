@@ -7,12 +7,12 @@
 | gettransactionbyid            |  createaddress                     | getnkfromnsk                                 |
 | gettransactioninfobyid        |  getaccountnet                     | getspendingkey                               |
 | gettransactioncountbyblocknum |  getaccount                        | getdiversifier                               | 
-| totaltransaction              |  generateaddress                   | getincomingviewingkey                        | 
-| getdeferredtransactionbyid    |  validateaddress                   | getzenpaymentaddress                         |
-| canceldeferredtransactionbyid |  getaccountresource                | scannotebyivk                                |
-| getdeferredtransactioninfobyid|  setaccountid                      | scanandmarknotebyivk                         | 
-| getsignweight                 |  getaccountbyid                    | scannotebyovk                                |
-| addtransactionsign            |  accountpermissionupdate           | getrcm                                       | 
+| getdeferredtransactionbyid    |  generateaddress                   | getincomingviewingkey                        | 
+| canceldeferredtransactionbyid |  validateaddress                   | getzenpaymentaddress                         |
+| getdeferredtransactioninfobyid|  getaccountresource                | scannotebyivk                                |
+| getsignweight                 |  setaccountid                      | scanandmarknotebyivk                         | 
+| addtransactionsign            |  getaccountbyid                    | scannotebyovk                                |
+|                               |  accountpermissionupdate           | getrcm                                       | 
 |                               |  getdelegatedresource              | getmerkletreevoucherinfo                     | 
 |                               |  getdelegatedresourceaccountindex  | isspend                                      |
 |                               |  freezebalance                     | createspendauthsig                           | 
@@ -1133,16 +1133,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedexchangelist -d
 ```
 Parameter offset:  The index of the start exchange pair  
 Parameter limit: The amount of exchange pairs per page  
-Return: The list of exchange pairs by pagination  
-
-- wallet/totaltransaction  
-
-Description: Query the total transactions number  
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/totaltransaction
-```
-Parameter: No parameter  
-Return: Total transaction number  
+Return: The list of exchange pairs by pagination   
 
 - wallet/getnextmaintenancetime  
 
