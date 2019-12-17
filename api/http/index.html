@@ -287,32 +287,32 @@
 <td>getdiversifier</td>
 </tr>
 <tr>
-<td>totaltransaction</td>
+<td>getdeferredtransactionbyid</td>
 <td>generateaddress</td>
 <td>getincomingviewingkey</td>
 </tr>
 <tr>
-<td>getdeferredtransactionbyid</td>
+<td>canceldeferredtransactionbyid</td>
 <td>validateaddress</td>
 <td>getzenpaymentaddress</td>
 </tr>
 <tr>
-<td>canceldeferredtransactionbyid</td>
+<td>getdeferredtransactioninfobyid</td>
 <td>getaccountresource</td>
 <td>scannotebyivk</td>
 </tr>
 <tr>
-<td>getdeferredtransactioninfobyid</td>
+<td>getsignweight</td>
 <td>setaccountid</td>
 <td>scanandmarknotebyivk</td>
 </tr>
 <tr>
-<td>getsignweight</td>
+<td>addtransactionsign</td>
 <td>getaccountbyid</td>
 <td>scannotebyovk</td>
 </tr>
 <tr>
-<td>addtransactionsign</td>
+<td></td>
 <td>accountpermissionupdate</td>
 <td>getrcm</td>
 </tr>
@@ -1539,16 +1539,7 @@ Return: The list of proposals by pagination  </p>
 
 <p>Parameter offset:  The index of the start exchange pair<br />
 Parameter limit: The amount of exchange pairs per page<br />
-Return: The list of exchange pairs by pagination  </p>
-<ul>
-<li>wallet/totaltransaction  </li>
-</ul>
-<p>Description: Query the total transactions number  </p>
-<pre><code class="json">demo: curl -X GET  http://127.0.0.1:8090/wallet/totaltransaction
-</code></pre>
-
-<p>Parameter: No parameter<br />
-Return: Total transaction number  </p>
+Return: The list of exchange pairs by pagination   </p>
 <ul>
 <li>wallet/getnextmaintenancetime  </li>
 </ul>
