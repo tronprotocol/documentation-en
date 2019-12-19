@@ -134,7 +134,7 @@ Use the public key P as the input, by SHA3 get the result H. The length of the p
 
 basecheck process: first do sha256 caculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.  
 
-character map:  
+Character map:  
 ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"  
 
 <h2> 3.5 Signature </h2>
@@ -160,7 +160,7 @@ FullNode has the complete block chain data, can update data in real time. It can
 <h3> 4.2.2 FullNode Deployment </h3>
 please refer to [TRON-Deployment](https://github.com/tronprotocol/tron-deployment)
 <h3> 4.2.3 Recommended Hardware Configuration </h3>
-minimum requirement:    
+Minimum requirement:    
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T   
 Recommended requirement:  
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
@@ -169,9 +169,9 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 <h3> 4.3.1 SolidityNode Introduction </h3>
 SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.
 <h3> 4.3.2 SolidityNode Deployment </h3>
-please refer to [TRON-Deployment](https://github.com/tronprotocol/tron-deployment)
+Please refer to [TRON-Deployment](https://github.com/tronprotocol/tron-deployment)
 <h3> 4.3.3 Recommended Hardware Configuration </h3>
-minimum requirement:    
+Minimum requirement:    
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T   
 Recommended requirement:  
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
@@ -314,7 +314,7 @@ Example, if you run the script like this:
 ```text
  nohup java -jar FullNode.jar -d your_database_dir &
 ```
-then, you should run DBConvert.jar this way:  
+Then, you should run DBConvert.jar this way:  
 ```text
  java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
 ```
@@ -331,7 +331,7 @@ Example:
  All the whole data conversion process may take 10 hours.  
   
 <h4> 4.7.1.4 rocksdb vs leveldb  </h4>
-you can refer to:  
+You can refer to:  
 [rocksdb vs leveldb](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)  
 [ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)  
 
