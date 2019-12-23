@@ -23,6 +23,7 @@ nav:
         - TVM: contracts/tvm.md
         - Compiler: contracts/compiler.md    
         - Contract: contracts/contract.md  
+        - TRC-20: contracts/trc20.md
     - Developers:
         - Official Public Nodes: developers/official-public-nodes.md
         - Deployment: developers/deployment.md
