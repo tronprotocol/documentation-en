@@ -291,5 +291,8 @@ Interface statement:
 rpc CreateShieldNullifier (NfParameters) returns (BytesMessage) {};
 Nodes: FullNode  
 
-
+**57.&nbsp;Get new shielded address**    
+Interface statement:    
+rpc GetNewShieldedAddress (EmptyMessage) returns (ShieldedAddressInfo){}
+Nodes: FullNode  
 
