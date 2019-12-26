@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>TRC-20 - TRON Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "TRC-20";
+    var mkdocs_page_input_path = "contracts/trc20.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TRON Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Introduction</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../introduction/">Repository</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../introduction/dpos/">DPOS</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../api/http/">Http Api</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/rpc/">Rpc Api</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Mechanism & Algorithm</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/sr/">SR and Committee</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/trc10/">TRC-10</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/account/">Account Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/resource/">Resource Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/dex/">DEX</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/multi-signatures/">Multi Signatures</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/shielded-transaction/">Shielded Transaction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/systemContracts/">System Contracts</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Architecture</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../architecture/network/">Network</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../architecture/database/">Database</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../architecture/plugin/">Plugin</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Smart Contract</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../tvm/">TVM</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compiler/">Compiler</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contract/">Contract</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">TRC-20</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#implementation-rules">Implementation Rules</a></li>
+    
+
+    <li class="toctree-l3"><a href="#example">Example</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../developers/official-public-nodes/">Official Public Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/deployment/">Deployment</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/resources/">Resources</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/contribution/">Contribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/incentives/">Incentives Policy</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Clients</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../clients/wallet-cli/">Wallet-cli</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../q&a/qa/">Q&A</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../glossary/">Glossary</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TRON Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Smart Contract &raquo;</li>
+        
+      
+    
+    <li>TRC-20</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>TRC‌-20 is a technical standard used for smart contracts on the TRON blockchain for implementing tokens with the TRON Virtual Machine (TVM). It is fully compatible to ERC‌-20.   </p>
+<h2 id="implementation-rules">Implementation Rules</h2>
+<p><strong>3 Optional Items</strong></p>
+<ul>
+<li>Token Name</li>
+</ul>
+<pre><code class="text">string public constant name = “TRONEuropeRewardCoin”;
+</code></pre>
+
+<ul>
+<li>Token Abbreviation</li>
+</ul>
+<pre><code class="text">string public constant symbol = “TERC”;
+</code></pre>
+
+<ul>
+<li>Token Precision</li>
+</ul>
+<pre><code class="text">uint8 public constant decimals = 6;
+</code></pre>
+
+<p><strong>6 Required Items</strong></p>
+<pre><code class="text">
+contract TRC20 {
+    function totalSupply() constant returns (uint theTotalSupply);
+    function balanceOf(address _owner) constant returns (uint balance);
+    function transfer(address _to, uint _value) returns (bool success);
+    function transferFrom(address _from, address _to, uint _value) returns (bool success);
+    function approve(address _spender, uint _value) returns (bool success);
+    function allowance(address _owner, address _spender) constant returns (uint remaining);
+    event Transfer(address indexed _from, address indexed _to, uint _value);
+    event Approval(address indexed _owner, address indexed _spender, uint _value);
+}
+
+</code></pre>
+
+<ul>
+<li>totalSupply()</li>
+</ul>
+<p>This function returns the total supply of the token.</p>
+<ul>
+<li>balanceOf()</li>
+</ul>
+<p>This function returns the token balance of the specific account.</p>
+<ul>
+<li>transfer()</li>
+</ul>
+<p>This function is used to transfer an amount of tokens from the smart contract to a specific address.</p>
+<ul>
+<li>approve()</li>
+</ul>
+<p>This function is used to authorize the third party (like a DAPP smart contract) to transfer token from the token owner’s account.</p>
+<ul>
+<li>transferFrom() </li>
+</ul>
+<p>This function is used to allow the third party to transfer token from an owner account to a receiver account. The owner account must be approved to be called by the third party.</p>
+<ul>
+<li>allowance() </li>
+</ul>
+<p>This function is used to query the remaining amount of tokens the third party can transfer.</p>
+<p><strong>2 Event Functions</strong></p>
+<p>When token is successfully transferred, it has to trigger Transfer Event.  </p>
+<pre><code class="text">event Transfer(address indexed _from, address indexed _to, uint256 _value)
+</code></pre>
+
+<p>When approval() is successfully called, it has to trigger Approval Event.</p>
+<pre><code class="text">event Approval(address indexed _owner, address indexed _spender, uint256 _value)
+</code></pre>
+
+<h2 id="example">Example</h2>
+<pre><code class="text">pragma solidity ^0.4.16;
+
+interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) external; }
+
+contract TokenTRC20 {
+    // Public variables of the token
+    string public name;
+    string public symbol;
+    uint8 public decimals = 18;
+    // 18 decimals is the strongly suggested default, avoid changing it
+    uint256 public totalSupply;
+
+    // This creates an array with all balances
+    mapping (address =&gt; uint256) public balanceOf;
+    mapping (address =&gt; mapping (address =&gt; uint256)) public allowance;
+
+    // This generates a public event on the blockchain that will notify clients
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    // This notifies clients about the amount burnt
+    event Burn(address indexed from, uint256 value);
+
+    /**
+     * Constructor function
+     *
+     * Initializes contract with initial supply tokens to the creator of the contract
+     */
+    function TokenTRC20(
+        uint256 initialSupply,
+        string tokenName,
+        string tokenSymbol
+    ) public {
+        totalSupply = initialSupply * 10 ** uint256(decimals);  // Update total supply with the decimal amount
+        balanceOf[msg.sender] = totalSupply;                // Give the creator all initial tokens
+        name = tokenName;                                   // Set the name for display purposes
+        symbol = tokenSymbol;                               // Set the symbol for display purposes
+    }
+
+    /**
+     * Internal transfer, only can be called by this contract
+     */
+    function _transfer(address _from, address _to, uint _value) internal {
+        // Prevent transfer to 0x0 address. Use burn() instead
+        require(_to != 0x0);
+        // Check if the sender has enough
+        require(balanceOf[_from] &gt;= _value);
+        // Check for overflows
+        require(balanceOf[_to] + _value &gt;= balanceOf[_to]);
+        // Save this for an assertion in the future
+        uint previousBalances = balanceOf[_from] + balanceOf[_to];
+        // Subtract from the sender
+        balanceOf[_from] -= _value;
+        // Add the same to the recipient
+        balanceOf[_to] += _value;
+        emit Transfer(_from, _to, _value);
+        // Asserts are used to use static analysis to find bugs in your code. They should never fail
+        assert(balanceOf[_from] + balanceOf[_to] == previousBalances);
+    }
+
+    /**
+     * Transfer tokens
+     *
+     * Send `_value` tokens to `_to` from your account
+     *
+     * @param _to The address of the recipient
+     * @param _value the amount to send
+     */
+    function transfer(address _to, uint256 _value) public {
+        _transfer(msg.sender, _to, _value);
+    }
+
+    /**
+     * Transfer tokens from other address
+     *
+     * Send `_value` tokens to `_to` on behalf of `_from`
+     *
+     * @param _from The address of the sender
+     * @param _to The address of the recipient
+     * @param _value the amount to send
+     */
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+        require(_value &lt;= allowance[_from][msg.sender]);     // Check allowance
+        allowance[_from][msg.sender] -= _value;
+        _transfer(_from, _to, _value);
+        return true;
+    }
+
+    /**
+     * Set allowance for other address
+     *
+     * Allows `_spender` to spend no more than `_value` tokens on your behalf
+     *
+     * @param _spender The address authorized to spend
+     * @param _value the max amount they can spend
+     */
+    function approve(address _spender, uint256 _value) public
+        returns (bool success) {
+        allowance[msg.sender][_spender] = _value;
+        return true;
+    }
+
+    /**
+     * Set allowance for other address and notify
+     *
+     * Allows `_spender` to spend no more than `_value` tokens on your behalf, and then ping the contract about it
+     *
+     * @param _spender The address authorized to spend
+     * @param _value the max amount they can spend
+     * @param _extraData some extra information to send to the approved contract
+     */
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData)
+        public
+        returns (bool success) {
+        tokenRecipient spender = tokenRecipient(_spender);
+        if (approve(_spender, _value)) {
+            spender.receiveApproval(msg.sender, _value, this, _extraData);
+            return true;
+        }
+    }
+
+    /**
+     * Destroy tokens
+     *
+     * Remove `_value` tokens from the system irreversibly
+     *
+     * @param _value the amount of money to burn
+     */
+    function burn(uint256 _value) public returns (bool success) {
+        require(balanceOf[msg.sender] &gt;= _value);   // Check if the sender has enough
+        balanceOf[msg.sender] -= _value;            // Subtract from the sender
+        totalSupply -= _value;                      // Updates totalSupply
+        emit Burn(msg.sender, _value);
+        return true;
+    }
+
+    /**
+     * Destroy tokens from other account
+     *
+     * Remove `_value` tokens from the system irreversibly on behalf of `_from`.
+     *
+     * @param _from the address of the sender
+     * @param _value the amount of money to burn
+     */
+    function burnFrom(address _from, uint256 _value) public returns (bool success) {
+        require(balanceOf[_from] &gt;= _value);                // Check if the targeted balance is enough
+        require(_value &lt;= allowance[_from][msg.sender]);    // Check allowance
+        balanceOf[_from] -= _value;                         // Subtract from the targeted balance
+        allowance[_from][msg.sender] -= _value;             // Subtract from the sender's allowance
+        totalSupply -= _value;                              // Update totalSupply
+        emit Burn(_from, _value);
+        return true;
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../developers/official-public-nodes/" class="btn btn-neutral float-right" title="Official Public Nodes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../contract/" class="btn btn-neutral" title="Contract"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../contract/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../developers/official-public-nodes/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

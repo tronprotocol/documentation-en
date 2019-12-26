@@ -152,6 +152,10 @@
                     
     <a class="" href="../contracts/contract/">Contract</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../contracts/trc20/">TRC-20</a>
+                </li>
     </ul>
 	    </li>
           
@@ -344,7 +348,7 @@ id: proposal id
 
 <p>Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address come out. Do basecheck to address, here is the final address. All addresses start with 'T'.   </p>
 <p>basecheck process: first do sha256 caculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.  </p>
-<p>character map:<br />
+<p>Character map:<br />
 ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"  </p>
 <h2> 3.5 Signature </h2>
 
@@ -369,7 +373,7 @@ CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
 <h3> 4.2.2 FullNode Deployment </h3>
 please refer to <a href="https://github.com/tronprotocol/tron-deployment">TRON-Deployment</a>
 <h3> 4.2.3 Recommended Hardware Configuration </h3>
-minimum requirement:  <br />
+Minimum requirement:  <br />
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T <br />
 Recommended requirement:<br />
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
@@ -379,9 +383,9 @@ CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
 
 <p>SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.
 <h3> 4.3.2 SolidityNode Deployment </h3>
-please refer to <a href="https://github.com/tronprotocol/tron-deployment">TRON-Deployment</a>
+Please refer to <a href="https://github.com/tronprotocol/tron-deployment">TRON-Deployment</a>
 <h3> 4.3.3 Recommended Hardware Configuration </h3>
-minimum requirement:  <br />
+Minimum requirement:  <br />
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T <br />
 Recommended requirement:<br />
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
@@ -512,7 +516,7 @@ command line parameters introduction:
 <pre><code class="text"> nohup java -jar FullNode.jar -d your_database_dir &amp;
 </code></pre>
 
-<p>then, you should run DBConvert.jar this way:  </p>
+<p>Then, you should run DBConvert.jar this way:  </p>
 <pre><code class="text"> java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
 </code></pre>
 
@@ -527,7 +531,7 @@ command line parameters introduction:
 <p>All the whole data conversion process may take 10 hours.  </p>
 <h4> 4.7.1.4 rocksdb vs leveldb  </h4>
 
-<p>you can refer to:<br />
+<p>You can refer to:<br />
 <a href="https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md">rocksdb vs leveldb</a><br />
 <a href="https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md">ROCKSDB vs LEVELDB</a>  </p>
 <h1 id="5-smart-contract">5. Smart Contract</h1>
