@@ -4,9 +4,9 @@
 
 TRON shielded transaction uses zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) to implement a completely anonymous transaction.
 
-In TRON network, the sender and the receiver's address and transfer amount can both be completely confidential.   
+In TronZ network, the sender and the receiver's address and transfer amount can both be completely confidential.   
 
-In TRON network, there are two types of address:   
+In TronZ network, there are two types of address:   
 
 - "t-addr" (Transparent Address)  
 - "z-addr" (Shielded Address)  
@@ -14,7 +14,7 @@ In TRON network, there are two types of address:
 "t-addr" address uses TRON account model.   
 "z-addr" address uses Anonymous account model.  
 
-In TRON network, there are four types of transfer transaction:  
+In TronZ network, there are four types of transfer transaction:  
  
 - From "t-addr" to "t-addr":  
 All the transaction information of the two addresses can be tracked.  
