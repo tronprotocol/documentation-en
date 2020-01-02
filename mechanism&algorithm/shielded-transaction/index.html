@@ -262,25 +262,19 @@
             <div class="section">
               
                 <h2 id="introduction">Introduction</h2>
-<p>TRON shielded transaction uses zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) to implement a completely anonymous transaction.</p>
-<p>In TronZ network, the sender and the receiver's address and transfer amount can both be completely confidential.   </p>
-<p>In TronZ network, there are two types of address:   </p>
+<p>TRON shielded transaction uses zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) to implement a completely anonymous transaction. TronZ is the name of shielded trc10 token.</p>
+<p>In shielded transaction of transfering TronZ, the sender and the receiver's address and transfer amount can both be completely confidential.   </p>
+<p>In shielded transaction of transfering TronZ, there are two types of address:   </p>
 <ul>
 <li>"t-addr" (Transparent Address)  </li>
 <li>"z-addr" (Shielded Address)  </li>
 </ul>
 <p>"t-addr" address uses TRON account model. <br />
 "z-addr" address uses Anonymous account model.  </p>
-<p>In TronZ network, there are four types of transfer transaction:  </p>
-<ul>
-<li>
-<p>From "t-addr" to "t-addr":<br />
-All the transaction information of the two addresses can be tracked.  </p>
-</li>
-<li>
-<p>From "t-addr" to "z-addr": <br />
+<p>In shielded transaction of transfering TronZ, there are three types of transfer transaction:<br />
+- From "t-addr" to "z-addr": <br />
 The transaction information of "t-addr" can be tracked, "z-addr" can not be tracked.  </p>
-</li>
+<ul>
 <li>
 <p>From "z-addr" to "z-addr":  <br />
 The transaction information of both "z-addr" can not be tracked.  </p>
@@ -290,6 +284,7 @@ The transaction information of both "z-addr" can not be tracked.  </p>
 The transaction information of both "t-addr" can be tracked, "z-addr" can not be tracked.   </p>
 </li>
 </ul>
+<p>From "t-addr" to "t-addr" are not supported.</p>
 <h3 id="usage-guide">Usage Guide</h3>
 <p>1.&nbsp;The sender can only spend one note in each transfer. The receiver can receive two notes in each transfer at most.  </p>
 <p>2.&nbsp;When you transfer from "z-addr" to "t-addr", if no note returns to "z-addr" as a change, it will generate a note of zero value automatically, and send it to a random black hole address.   </p>
