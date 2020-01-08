@@ -292,4 +292,33 @@ rpc CreateShieldNullifier (NfParameters) returns (BytesMessage) {};
 Nodes: FullNode  
 
 
+**57.&nbsp;Create an market order**      
+Interface statement:    
+rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+Nodes: FullNode
+ 
+**58.&nbsp;Cancel the order**      
+Interface statement:    
+rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+Nodes: FullNode 
+
+**59.&nbsp;Get all orders for the account**      
+Interface statement:    
+rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+Nodes: FullNode 
+
+**60.&nbsp;Get all trading pairs**      
+Interface statement:    
+rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+Nodes: FullNode 
+
+**61.&nbsp;Get all orders for the trading pair**      
+Interface statement:    
+rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+Nodes: FullNode 
+
+**62.&nbsp;Get all prices for the trading pair**      
+Interface statement:    
+rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+Nodes: FullNode 
 
