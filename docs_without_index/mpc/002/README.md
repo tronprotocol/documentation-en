@@ -1,5 +1,5 @@
 # Crypto Guy
-* See `./report.asc` for the Mailing list post.
+* See [report.asc](./report.asc) for the Mailing list post.
 
 params file:
 * https://mpcfilepub.s3.amazonaws.com/mpc/002/params
