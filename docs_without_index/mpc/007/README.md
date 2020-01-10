@@ -8,4 +8,4 @@ new_params file:
 * https://mpcfilepub.s3.amazonaws.com/mpc/007/new_params
 
 os: 
-* Unknown
+* centos rhel fedora, amazon linux 2
