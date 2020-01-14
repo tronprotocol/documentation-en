@@ -1799,7 +1799,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getexpandedspendingkey -d
 }' 
 ```
 Parameter value: Spending key        
-Return: Expanded spending keys  
+Return: Expanded spending keys, it consists of three keys: ask, nsk and ovk.
 
 - wallet/getakfromask  
 
