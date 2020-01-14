@@ -358,7 +358,7 @@
 <tr>
 <td>getblockbylimitnext</td>
 <td>updatewitness</td>
-<td>createshieldedtransaction<br>withoutspendauthsig</td>
+<td>getnewshieldedaddress</td>
 </tr>
 <tr>
 <td>getblockbylatestnum</td>
@@ -2511,7 +2511,7 @@ Return: A shielded nullifier  </p>
 <li>wallet/getshieldtransactionhash    </li>
 </ul>
 <p>Description: To get a shielded transaction hash   </p>
-<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldnullifier -d 
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/getshieldtransactionhash -d 
 '{
     &quot;txID&quot;: &quot;de639a64497d86bb27e34a2953093a0cc488ec4c7bc9624ac5857d3799748595&quot;,
     &quot;raw_data&quot;: {
@@ -2552,6 +2552,7 @@ Return: A shielded nullifier  </p>
     },
     &quot;raw_data_hex&quot;: &quot;0a020d5922087356ce5c35d8265e40b899a3ceb02d5a940b0833128f0b0a35747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e536869656c6465645472616e73666572436f6e747261637412d50a1acb020a20cbe1063adbe7e10919421fa6133f03150253913f5aff02d165e2c019cea4a8691220fb1115d5ddd16c5427c3a608d6b5add5967e70f51c890307c6142083a2c285651a2093e329d464e1dbddc8bb4d2dcc939a796dfe11e985d4e9033a15edf0e3df4f35222010c702d6dff1509502ee5acc0b01d4b4531b2ff53b0dd54488aea6031b5e6d162ac001abf64b3beacfd873b1db764c3da9f739993518f3f740e761cb8af60682b7171892895c3ccfb550c3cf757e906dbf5313a3676b8226b0b84960f76a185c8d3fdfc3fa9c08479a704852d7b3dfeb913cf13e01c25657561e00a06c61e7c65b50b812902ddc4f17bfe2bcb2f247c2dc6132d0f0e0abcecc0332fdd99077af10d07bbdb88c4fd257948428e233c57f84eee8b2eeab2162c1aeccf2e1dfaa306d5803a8b2d281a549440fbd5a3657a830c1ca07a384cea446aa077b195b29b23023b122c2070a20f6d45db8ec5a1c8dbbde040b4ea138efbe8db2d0597ed2306ff3fdd0620b3c5a1220ec3f5472ac8114a9a07987d1c2a0e1254504e352d9574971e77084293900312e1a20719eeb5ebaeeccc55c9f0d73767aadf0c0513603400ccb50bd789637d984b8e622c4043a6c4fe0e79f5b23fed34a419c4728d0b26bca23180a22871743b0a9444c27663cf07c55a0ea6db504d70421768bf17384e180b2ad8b8be88ff5cf662c53a4ba086effc3a4b1df39265f71dfac884bff5a69e1dcdcae8aecf6ae443168ffab692a5c1e4908b415dd830dcf6432fae1c32461132080da74d6b83d3d00887eb2ce9965a749f8d8410ea4182969371ac2fd5e0e74d27d883492a08e6209cd9959d74bb67c2a9fe7faac5a4777f1bff19cf0b6398a2faa9b194bbb93d60f132f382f7d693a722e8cbca1da084ee7e0c371397419a7259d1fa0943078cfe5ea352e4b53907bb6c04ca8ad409fb0ae0b110a6b312200e21ab79d543ae7aeb16802cf87afdac1e8954038caa42818f4ca2847fd642360c098accfeeade4abd1cc9ca3315a4336be224ba3516973c7dae3f41875457236675993df38d3a544470c4f9335d77b005e6a9aec40fd881b34852ec9bbbcc3d24ee92930eae770a5462ce04c4e37b0524ef07e00e8d58c810d6aefb19fa7bc2c3a2fdfab6dd4fe73dbecc0795a280f9b7ca35cc8bc1062aed8e26bd81ba33c6f4c318974636f6d796723e77772ced3dbc1f42afec6fc9bb61f8beac704affea9baf2e2de226250c1d427c7d78b1eb1d239e1f3eb6af0f017b80541333f4fce17340048d826b9b0be8477c996ad8bfc3440dc686fdff6d0d63986db4d95962d7977289cbfd14c745de7c79d4dc0bcd220e5b4ced5b409e79142e0f336e44ca29a9a87f6f43707d8c4936e895236dd2b393a478a8bc27b1f682496ba84a0ddc549da06cb7855c4d8680dc66ac40240733b7f2a5050be6e77854d4c427b2af4f16e5275f0b0c206b3ea2d2a24ffb287ea356f323523354cd83d15e7c48e6f1fa103dfca3d49ca2263dbb0cd8bfb35d72cdcad1351de6fba7a30aea27184a68bcda19cc6da32c001a4e6c50d5753092d005689922c2bdeafc98775bce59db840974163ace23c13fec18112e32aae1c39842c645ed172ad8fa277e63c1e3d6d7fb12eb15d56b573237b776f562a81d0e6be362d147d8604fdfec421482270ca82950de1883fda06e719f5d256d7a039769bffc570a1778d70c17295d1c0336a6ae0903d2460dc139a9563c2d40f37bffefa73003a55af1ff0861b6f79ef40099b6a0cb25ab3f40727210e4629647d0711abff125712a5f0d64fcb6e6a6b0b34478d7da0552b493a802a402b8ae5e11ecad3e6946f54b7ad513bd8692a3edae72d29e266b28e47c9b37ccdb38e3b6433575694b6681136b1734f85afcfe672061d2ee7368755ad0b96a80b70d68b8ebdb02d&quot;
 }' 
+
 </code></pre>
 
 <p>Parameter transaction: Transaction object           <br />
@@ -2571,6 +2572,24 @@ Parameter shieldedSpends: Shielded spend information<br />
 Parameter transparent_to_address: Transparent receiver's address<br />
 Parameter to_amount: Send amount to transparent address<br />
 Return: Transaction object  </p>
+<ul>
+<li>wallet/getnewshieldedaddress   </li>
+</ul>
+<p>Description: To get new shieldedAddress</p>
+<pre><code class="json">demo: curl -X GET  http://127.0.0.1:8090/wallet/getnewshieldedaddress
+</code></pre>
+
+<p>Parameter: No Parameter <br />
+Return: Spending key   <br />
+Return: Ask key
+Return: Nsk key
+Return: Outgoing viewing key
+Return: Ak Key
+Return: Nk key
+Return: incoming viewing key
+Return: Diversifier
+Return: pkD
+Return: payment address </p>
               
             </div>
           </div>
