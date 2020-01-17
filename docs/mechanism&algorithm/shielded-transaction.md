@@ -47,7 +47,7 @@ Parameters:
     "transparent_from_address":"41A7D8A35B260395C14AA456297662092BA3B76FC0",
     "from_amount":100000000,
     "ovk":"798ba79bfec55e154fa69b4e6a96247288f727b5e4ecc5cd848aefc0afab02b6",
-    "shieldedReceives":[{
+    "shielded_receives":[{
         "note":
         {
              "value": 500000000,
@@ -119,7 +119,7 @@ Parameter:
     "nsk": "050fc9a42909e60fefb9d548fe12718cb759e3ee28d1b92ceaeaffc23d200a0d",
     "ovk": "a0da0cc6294dc900e93887b9f08ac42a162234359fdaf523b98382602c92513c",
     
-    "shieldedSpends": [
+    "shielded_spends": [
         {
             "note": {
                 "value": 90000000,
@@ -134,7 +134,7 @@ Parameter:
 
         }
     ],
-    "shieldedReceives": [
+    "shielded_receives": [
         {
             "note": {
                 "value": 80000000,
@@ -188,7 +188,7 @@ Parameter:
     "ask": "653b3a3fdd40b60d2f53ba121df8840f6590384993f8fa9a0ecb0dfb23496604",
     "nsk": "428ff3c9e101dc1fca08f7b0e3387b23b68016746ae565aefc19d112b696db01",
     "ovk": "1274dcc5c7307bf0fd0ead466e9dd5641fed4a51391f681862370e2f2654cc61",
-    "shieldedSpends": [
+    "shielded_spends": [
         {
             "note": {
                 "value": 80000000,
