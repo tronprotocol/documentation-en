@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Account Model - TRON Documentation</title>
+  <title>Run FullNode in IDEA - TRON Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Account Model";
-    var mkdocs_page_input_path = "mechanism&algorithm/account.md";
+    var mkdocs_page_name = "Run FullNode in IDEA";
+    var mkdocs_page_input_path = "developers/run_in_IDEA.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -84,53 +84,35 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../sr/">SR and Committee</a>
+    <a class="" href="../../mechanism&algorithm/sr/">SR and Committee</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../trc10/">TRC-10</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Account Model</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#introduction">Introduction</a></li>
-    
-
-    <li class="toctree-l3"><a href="#how-to-create-an-account">How to Create an Account</a></li>
-    
-
-    <li class="toctree-l3"><a href="#key-pair-generation">Key-pair Generation</a></li>
-    
-
-    <li class="toctree-l3"><a href="#address-format">Address Format</a></li>
-    
-
-    <li class="toctree-l3"><a href="#signature">Signature</a></li>
-    
-
-    </ul>
+    <a class="" href="../../mechanism&algorithm/trc10/">TRC-10</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../resource/">Resource Model</a>
+    <a class="" href="../../mechanism&algorithm/account/">Account Model</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../dex/">DEX</a>
+    <a class="" href="../../mechanism&algorithm/resource/">Resource Model</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../multi-signatures/">Multi Signatures</a>
+    <a class="" href="../../mechanism&algorithm/dex/">DEX</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../shielded-transaction/">Shielded Transaction</a>
+    <a class="" href="../../mechanism&algorithm/multi-signatures/">Multi Signatures</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../systemContracts/">System Contracts</a>
+    <a class="" href="../../mechanism&algorithm/shielded-transaction/">Shielded Transaction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mechanism&algorithm/systemContracts/">System Contracts</a>
                 </li>
     </ul>
 	    </li>
@@ -183,27 +165,41 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../developers/official-public-nodes/">Official Public Nodes</a>
+    <a class="" href="../official-public-nodes/">Official Public Nodes</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../developers/deployment/">Deployment</a>
+    <a class="" href="../deployment/">Deployment</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Run FullNode in IDEA</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#run-the-fullnode-with-idea">Run the FullNode with IDEA</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#configure-idea">Configure IDEA</a></li>
+        
+            <li><a class="toctree-l4" href="#deployment-guide">Deployment guide</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../developers/run_in_IDEA/">Run FullNode in IDEA</a>
+    <a class="" href="../resources/">Resources</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../developers/resources/">Resources</a>
+    <a class="" href="../contribution/">Contribution</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../developers/contribution/">Contribution</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/incentives/">Incentives Policy</a>
+    <a class="" href="../incentives/">Incentives Policy</a>
                 </li>
     </ul>
 	    </li>
@@ -251,11 +247,11 @@
     
       
         
-          <li>Mechanism & Algorithm &raquo;</li>
+          <li>Developers &raquo;</li>
         
       
     
-    <li>Account Model</li>
+    <li>Run FullNode in IDEA</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -265,55 +261,49 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="introduction">Introduction</h2>
-<p>TRON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transfered from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All TRON's activities are based on account.</p>
-<h2 id="how-to-create-an-account">How to Create an Account</h2>
-<p>1.&nbsp;Use a wallet to generate the address and private key. To active the account, you need to transfer TRX or transfer token to the new created account. <a href="https://tronscan.org/#/wallet/new">generate an account</a></p>
-<p>2.&nbsp;Use an account already existed in TRON network to create an account   </p>
-<p>If you have enough frozen BandWidth Points, creating an account only consume your frozen BandWidth Points, otherwise, it burns 0.1 TRX.     </p>
-<h2 id="key-pair-generation">Key-pair Generation</h2>
-<p>Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then caculate P = d * G as the public key, G is the elliptic curve base point.</p>
-<h2 id="address-format">Address Format</h2>
-<p>Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address come out. Do basecheck to address, here is the final address. All addresses start with 'T'.   </p>
-<p>basecheck process: first do sha256 caculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.  </p>
-<p>character map:<br />
-ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"  </p>
-<h2 id="signature">Signature</h2>
-<h3> Step </h3>
-
-<p>1.&nbsp;Get the rawdata of the transaction, then transfer it to byte[]<br />
-2.&nbsp;Do sha256 calculation to the rawdata    <br />
-3.&nbsp;Use the private key to sign the result gained from step 2    <br />
-4.&nbsp;Add the signature back into the transaction     </p>
-<h3> Algorithm </h3>
-
-<p>1.&nbsp;ECDSA, SECP256K  <br />
-2.&nbsp;Example: </p>
-<pre><code class="text">    priKey:::8e812436a0e3323166e1f0e8ba79e19e217b2c4a53c970d4cca0cfb1078979df         
-    pubKey::04a5bb3b28466f578e6e93fbfd5f75cee1ae86033aa4bbea690e3312c087181eb366f9a1d1d6a437a9bf9fc65ec853b9fd60fa322be3997c47144eb20da658b3d1         
-    hash:::159817a085f113d099d3d93c051410e9bfe043cc5c20e43aa9a083bf73660145         
-    r:::38b7dac5ee932ac1bf2bc62c05b792cd93c3b4af61dc02dbb4b93dacb758123f         
-    s:::08bf123eabe77480787d664ca280dc1f20d9205725320658c39c6c143fd5642d         
-    v:::0  
+                <h1 id="run-the-fullnode-with-idea">Run the FullNode with IDEA</h1>
+<p>This document aims to facilitate developers with some experience to run the FullNode with IDEA.</p>
+<p><strong>The following is for the master branch of java-tron.</strong></p>
+<h2 id="configure-idea">Configure IDEA</h2>
+<p><strong>The configuration of IDEA</strong>
+- Oracle JDK 1.8 <strong>OpenJDK is not currently supported</strong>
+- Install Lombok plugin</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/lombok.png" /></p>
+<ul>
+<li>Tick Enable annotation processing</li>
+</ul>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/annnotation.png" /></p>
+<h2 id="deployment-guide">Deployment guide</h2>
+<p><strong>1.Create a directory</strong> <em>/deploy</em></p>
+<pre><code class="text">mkdir deploy
 </code></pre>
 
-<p>Note: The size of the signature result is 65 bytes. r 32 bytes, s 32 bytes, v 1 bytes.     </p>
-<p>3.&nbsp;fullnode will verify the signature, it generates an address with the value of hash and r、s、v, then it compares with the address in the transaction.  <br />
-<h3> Demo </h3></p>
-<pre><code>public static Transaction sign(Transaction transaction, ECKey myKey) {
-    Transaction.Builder transactionBuilderSigned = transaction.toBuilder();
-    byte[] hash = sha256(transaction.getRawData().toByteArray());
-    List&lt;Contract&gt; listContract = transaction.getRawData().getContractList();
-
-    for (int i = 0; i &lt; listContract.size(); i++) {
-      ECDSASignature signature = myKey.sign(hash);
-      ByteString bsSign = ByteString.copyFrom(signature.toByteArray());
-
-      //Each contract may be signed with a different private key in the future.
-      transactionBuilderSigned.addSignature(bsSign);
-    }
-  }
+<p><strong>2.Clone the latest code</strong></p>
+<pre><code class="text">git clone https://github.com/tronprotocol/java-tron
 </code></pre>
+
+<p><strong>3.Switch to the master branch</strong></p>
+<pre><code class="text">cd java-tron
+git checkout -t origin/master
+</code></pre>
+
+<p><strong>4.Compile the code</strong></p>
+<pre><code class="text">./gradlew build
+</code></pre>
+
+<p>The compilation process may take some time, please be patient. If the compilation is successful, you can see the information similar to the following:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/build_success_test.png" /></p>
+<p>If you do not want to perform unit test tasks, you can run the following command:</p>
+<pre><code class="text">./gradlew build -x test
+</code></pre>
+
+<p><strong>5.Start the FullNode</strong></p>
+<p>After compiling successfully, you can find the main function file through the path java-tron / src / main / java / org / tron / program / FullNode.java and then start a full node.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/start.png" /></p>
+<p>After starting, you can check the log to verify whether the startup is successful. The log path is: /deploy/java-tron/logs/tron.log. If the startup is successful, you can see the following logs:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/start_success.png" /></p>
+<p>Also,you can use this command like tail -f /logs/tron.log to view the real-time log, as follows:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/start_successed.png" /></p>
               
             </div>
           </div>
@@ -321,10 +311,10 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"  </p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../resource/" class="btn btn-neutral float-right" title="Resource Model">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../resources/" class="btn btn-neutral float-right" title="Resources">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../trc10/" class="btn btn-neutral" title="TRC-10"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../deployment/" class="btn btn-neutral" title="Deployment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -350,10 +340,10 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"  </p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../trc10/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../deployment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../resource/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../resources/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
