@@ -5,6 +5,7 @@ This document aims to facilitate developers with some experience to run the Full
 ## Configure IDEA
 **The configuration of IDEA**
 - Oracle JDK 1.8 **OpenJDK is not currently supported**
+
 - Install Lombok plugin
 
 
