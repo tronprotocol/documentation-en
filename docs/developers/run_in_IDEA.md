@@ -1,13 +1,14 @@
 # Run the FullNode with IDEA
+
 This document aims to facilitate developers with some experience to run the FullNode with IDEA.
 
 **The following is for the master branch of java-tron.**
 ## Configure IDEA
 **The configuration of IDEA**
+
 - Oracle JDK 1.8 **OpenJDK is not currently supported**
 
 - Install Lombok plugin
-
 
 ![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/lombok.png)
 
@@ -16,7 +17,8 @@ This document aims to facilitate developers with some experience to run the Full
 ![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/annnotation.png)
 
 ## Deployment guide
-**1.Create a directory** _/deploy_
+**1.Create a directory** 
+_/deploy_
 
 ```text
 mkdir deploy
@@ -40,8 +42,8 @@ git checkout -t origin/master
 ```text
 ./gradlew build
 ```
-
-The compilation process may take some time, please be patient. If the compilation is successful, you can see the information similar to the following:
+The compilation process may take some time, please be patient. 
+If the compilation is successful, you can see the information similar to the following:
 
 ![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/build_success_test.png)
 
