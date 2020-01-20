@@ -188,7 +188,7 @@ Answer: Using the following command
 
 **Ask: Can SolidityNode and FullNode be deployed in one machine? Will they share the data?**
 
-Answer: They can be deployed in one machine. You can specify the data storage path in configuration file `db.directory = "database"，index.directory = "index"`. You can run FullNode.jar and SolidityNode.jar in different paths to separate the data and log. Remember to change the port in `config.conf`, because two nodes can not work using the same port. SolidityNode is deprecated by FullNode. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.
+Answer: They can be deployed in one machine. You can specify the data storage path in configuration file `db.directory = "database"，index.directory = "index"`. You can run FullNode.jar and SolidityNode.jar in different paths to separate the data and log. Remember to change the port in `config.conf`, because two nodes can not work using the same port. SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.
 
 
 

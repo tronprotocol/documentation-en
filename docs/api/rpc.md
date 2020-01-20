@@ -4,7 +4,7 @@
 [https://github.com/tronprotocol/protocol/blob/master/api/api.proto](https://github.com/tronprotocol/protocol/blob/master/api/api.proto)
 [https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto](https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto)
 
-> NOTE: SolidityNode is deprecated by FullNode. Now a FullNode supports all RPCs of a SolidityNode.
+> NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
 > New developers should deploy FullNode only.
 
 **1.&nbsp;Get account information**

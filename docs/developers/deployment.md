@@ -3,7 +3,7 @@
 ## Premise
 Create separate directories for fullnode and soliditynode
 
-> NOTE: SolidityNode is deprecated by FullNode. Now a FullNode supports all RPCs of a SolidityNode.
+> NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
 > New developers should deploy FullNode only.
 
 ```text
