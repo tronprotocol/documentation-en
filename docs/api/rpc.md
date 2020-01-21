@@ -322,3 +322,7 @@ Interface statement:
 rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
 Nodes: FullNode 
 
+**63.&nbsp;Get order by id**      
+Interface statement: 
+rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+Nodes: FullNode 
