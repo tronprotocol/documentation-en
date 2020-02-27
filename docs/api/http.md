@@ -76,8 +76,8 @@ http://127.0.0.1:8090/wallet/listexchanges?visible=true
 ```json
 curl -X POST http://127.0.0.1:8090/wallet/createtransaction  -d 
 '{
-    "owner_address_": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-    "to_address_": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
+    "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+    "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
     "amount": 1000000,
     "visible": true
 }'
