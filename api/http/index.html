@@ -369,6 +369,21 @@
 <td>createwitness</td>
 <td></td>
 </tr>
+<tr>
+<td></td>
+<td>getbrokerage</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>getreward</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>updateBrokerage</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <table>
@@ -1048,6 +1063,40 @@ Return: Transaction object  </p>
 Parameter votes: 'vote_address' stands for the address of the witness you want to vote, default hexString, 'vote_count' stands for the number of votes you want to vote  <br />
 Parameter permission_id: Optional, for multi-signature use     <br />
 Return: Transaction object    </p>
+<ul>
+<li>wallet/getBrokerage  </li>
+</ul>
+<p>Description: Query the ratio of brokerage of the witness  </p>
+<pre><code class="json">demo: curl -X GET  http://127.0.0.1:8090/wallet/getBrokerage -d '{
+&quot;address&quot;:&quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;}'
+</code></pre>
+
+<p>Parameter address: The address of the witness's account, default hexString<br />
+Return: The ratio of brokerage of the witness</p>
+<ul>
+<li>wallet/getReward  </li>
+</ul>
+<p>Description: Query unclaimed reward  </p>
+<pre><code class="json">demo: curl -X GET  
+http://127.0.0.1:8090/wallet/getReward -d '{
+&quot;address&quot;:&quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;}'
+</code></pre>
+
+<p>Parameter address: The address of the voter's account, default hexString<br />
+Return: Unclaimed reward</p>
+<ul>
+<li>wallet/updateBrokerage  </li>
+</ul>
+<p>Description: Update the ratio of brokerage </p>
+<pre><code class="json">demo: curl -X POST  http://127.0.0.1:8090/wallet/updateBrokerage  -d '{
+&quot;owner_address&quot;:&quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;,
+&quot;brokerage&quot;:30
+}'
+</code></pre>
+
+<p>Parameter owner_address: The address of the witness's account, default hexString<br />
+Parameter brokerage: The ratio of brokerage you want to update to</p>
+<p>Return: Transaction object</p>
 <ul>
 <li>wallet/createassetissue  </li>
 </ul>

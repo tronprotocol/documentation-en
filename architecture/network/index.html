@@ -262,113 +262,117 @@
 <h3>SuperNode</h3>
 
 <p>Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using <a href="https://tronscan.org/#/sr/representatives">tronscan</a>.</p>
-<p>Recommended Hardware Configuration:<br />
-minimum requirement:<br />
-CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T<br />
-Recommended requirement:<br />
+<p>Recommended Hardware Configuration:
+minimum requirement:
+CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
+Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
 <h3>FullNode</h3>
 
 <p>FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.</p>
-<p>Recommended Hardware Configuration:<br />
-minimum requirement:   <br />
-CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T <br />
-Recommended requirement:<br />
+<p>Recommended Hardware Configuration:
+minimum requirement:
+CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
+Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
 <h3>SolidityNode</h3>
 
-<p>SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.  </p>
-<p>Recommended Hardware Configuration:<br />
-minimum requirement:  <br />
-CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T <br />
-Recommended requirement:<br />
+<p>SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.</p>
+<blockquote>
+<p>NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
+New developers should deploy FullNode only.</p>
+</blockquote>
+<p>Recommended Hardware Configuration:
+minimum requirement:
+CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
+Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
 <h2 id="mainnet-testnet-privatenet">MainNet, TestNet, PrivateNet</h2>
-<p>MainNet, TestNet, PrivateNet all use the same code, only the node start configuration varies.  </p>
+<p>MainNet, TestNet, PrivateNet all use the same code, only the node start configuration varies.</p>
 <h3>1. MainNet </h3>
 
-<p><a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">MainNet configuration</a>  </p>
+<p><a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">MainNet configuration</a></p>
 <h3>2. TestNet </h3>
 
-<p><a href="https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf">TestNet configuration</a>  </p>
+<p><a href="https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf">TestNet configuration</a></p>
 <h3>3. PrivateNet </h3>
 
 <h4>3.1 Preconditions </h4>
 
 <ul>
-<li>at least two accounts <a href="https://tronscan.org/#/wallet/new">generate an account</a>  </li>
-<li>at least deploy one SuperNode to produce blocks  </li>
-<li>deploy serval FullNodes to synchronize blocks and broadcast transactions  </li>
-<li>SuperNode and FullNode comprise the private network  </li>
+<li>at least two accounts <a href="https://tronscan.org/#/wallet/new">generate an account</a></li>
+<li>at least deploy one SuperNode to produce blocks</li>
+<li>deploy serval FullNodes to synchronize blocks and broadcast transactions</li>
+<li>SuperNode and FullNode comprise the private network</li>
 </ul>
 <h5>3.2 Deployment </h5>
 
 <h6>3.2.1 Step 1: SuperNode Deployment </h6>
 
-<p>1.&nbsp;download private_net_config.conf  </p>
+<p>1.&nbsp;download private_net_config.conf</p>
 <pre><code class="text">wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
 </code></pre>
 
-<p>2.&nbsp;add your private key in localwitness<br />
- 3.&nbsp;set genesis.block.witnesses as the private key's corresponding address<br />
- 4.&nbsp;set p2p.version, any positive integer but 11111<br />
- 5.&nbsp;set the first SR needSyncCheck = false, others can be set true<br />
- 6.&nbsp;set node.discovery.enable = true<br />
- 7.&nbsp;run the script  </p>
+<p>2.&nbsp;add your private key in localwitness
+ 3.&nbsp;set genesis.block.witnesses as the private key's corresponding address
+ 4.&nbsp;set p2p.version, any positive integer but 11111
+ 5.&nbsp;set the first SR needSyncCheck = false, others can be set true
+ 6.&nbsp;set node.discovery.enable = true
+ 7.&nbsp;run the script</p>
 <pre><code class="text">nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
-command line parameters introduction:  
---witness: start witness function, i.e.: --witness  
---log-config: specify the log configuration file path, i.e.: --log-config logback.xml  
--c: specify the configuration file path, i.e.: -c config.conf 
+command line parameters introduction:
+--witness: start witness function, i.e.: --witness
+--log-config: specify the log configuration file path, i.e.: --log-config logback.xml
+-c: specify the configuration file path, i.e.: -c config.conf
 </code></pre>
 
-<p>The usage of the log file:<br />
- You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:<br />
+<p>The usage of the log file:
+ You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
  <logger name="net" level="WARN"/>
- The parameters in configuration file that need to modify:<br />
- localwitness:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/localwitness.jpg" /><br />
- witnesses:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/witness.png" /><br />
- version:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png" /><br />
- enable:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png" />  </p>
+ The parameters in configuration file that need to modify:
+ localwitness:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/localwitness.jpg" />
+ witnesses:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/witness.png" />
+ version:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png" />
+ enable:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png" /></p>
 <h6>3.2.2 Step 2: FullNode Deployment </h6>
 
-<p>1.&nbsp;Download private_net_config.conf  </p>
-<pre><code class="text">wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf 
+<p>1.&nbsp;Download private_net_config.conf</p>
+<pre><code class="text">wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
 </code></pre>
 
-<p>2.&nbsp;set seed.node ip.list with SR's ip and port<br />
- 3.&nbsp;set p2p.version the same as SuperNode's p2p.version <br />
- 4.&nbsp;set genesis.block the same as genesis.block<br />
- 5.&nbsp;set needSyncCheck true <br />
- 6.&nbsp;set node.discovery.enable true <br />
- 7.&nbsp;run the script  </p>
+<p>2.&nbsp;set seed.node ip.list with SR's ip and port
+ 3.&nbsp;set p2p.version the same as SuperNode's p2p.version
+ 4.&nbsp;set genesis.block the same as genesis.block
+ 5.&nbsp;set needSyncCheck true
+ 6.&nbsp;set node.discovery.enable true
+ 7.&nbsp;run the script</p>
 <pre><code class="text"> nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
- command lines parameters  
- --witness: start witness function，i.e.: --witness  
- --log-config: specify the log configuration file path, i.e.: --log-config logback.xml  
+ command lines parameters
+ --witness: start witness function，i.e.: --witness
+ --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
  -c: specify the configuration file path, i.e.: -c config.conf
 </code></pre>
 
-<p>The usage of the log file:<br />
- You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:<br />
+<p>The usage of the log file:
+ You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
  <logger name="net" level="WARN"/>
- The parameters in configuration file that need to modify:  <br />
- ip.list:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/ip_list.png" /><br />
- p2p.version:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png" /><br />
- genesis.block:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/genesis_block.png" /><br />
- needSyncCheck:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/need_sync_check.png" /><br />
- node.discovery.enable:<br />
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png" />  </p>
+ The parameters in configuration file that need to modify:
+ ip.list:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/ip_list.png" />
+ p2p.version:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png" />
+ genesis.block:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/genesis_block.png" />
+ needSyncCheck:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/need_sync_check.png" />
+ node.discovery.enable:
+ <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png" /></p>
               
             </div>
           </div>
