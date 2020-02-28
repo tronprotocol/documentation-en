@@ -22,7 +22,9 @@
 | getblockbyid                  |  votewitnessaccount                | createshieldedtransaction<br>withoutspendauthsig |
 | getblockbylimitnext           |  updatewitness                     | getnewshieldedaddress                        |
 | getblockbylatestnum           |  createwitness                     |                                              |
-
+|                               |  getbrokerage                      |                                              |
+|                               |  getreward                      |                                              |
+|                               |  updateBrokerage                      |                                              |
 
 
 |   asset                        |  exchange               | transfer                        |  
@@ -634,6 +636,41 @@ Parameter owner_address: Owner address, default hexString
 Parameter votes: 'vote_address' stands for the address of the witness you want to vote, default hexString, 'vote_count' stands for the number of votes you want to vote    
 Parameter permission_id: Optional, for multi-signature use       
 Return: Transaction object    
+
+- wallet/getBrokerage  
+
+Description: Query the ratio of brokerage of the witness  
+```json
+demo: curl -X GET  http://127.0.0.1:8090/wallet/getBrokerage -d '{
+"address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
+```
+Parameter address: The address of the witness's account, default hexString  
+Return: The ratio of brokerage of the witness
+
+- wallet/getReward  
+
+Description: Query unclaimed reward  
+```json
+demo: curl -X GET  
+http://127.0.0.1:8090/wallet/getReward -d '{
+"address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
+```
+Parameter address: The address of the voter's account, default hexString  
+Return: Unclaimed reward
+
+- wallet/updateBrokerage  
+
+Description: Update the ratio of brokerage 
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/updateBrokerage  -d '{
+"owner_address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0",
+"brokerage":30
+}'
+```
+Parameter owner_address: The address of the witness's account, default hexString  
+Parameter brokerage: The ratio of brokerage you want to update to
+
+Return: Transaction object
 
 - wallet/createassetissue  
 
