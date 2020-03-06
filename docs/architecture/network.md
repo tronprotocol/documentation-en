@@ -64,74 +64,77 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 
 <h6>3.2.1 Step 1: SuperNode Deployment </h6>
 
- 1.&nbsp;download private_net_config.conf
+1. download private_net_config.conf
 
-```text
-wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
 ```
- 2.&nbsp;add your private key in localwitness
- 3.&nbsp;set genesis.block.witnesses as the private key's corresponding address
- 4.&nbsp;set p2p.version, any positive integer but 11111
- 5.&nbsp;set the first SR needSyncCheck = false, others can be set true
- 6.&nbsp;set node.discovery.enable = true
- 7.&nbsp;run the script
+wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+```
+2. add your private key in localwitness
+3. set genesis.block.witnesses as the private key's corresponding address
+4. set p2p.version, any positive integer but 11111
+5. set the first SR needSyncCheck = false, others can be set true
+6. set node.discovery.enable = true
+7. run the script
 
-```text
-nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+    ```
+    nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
-command line parameters introduction:
---witness: start witness function, i.e.: --witness
+    command line parameters introduction:
+    --witness: start witness function, i.e.: --witness
+    --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
+    -c: specify the configuration file path, i.e.: -c config.conf
+    ```
+
+The usage of the log file:
+You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
+```
+<logger name="net" level="WARN"/>
+```
+The parameters in configuration file that need to modify:
+localwitness:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/localwitness.jpg)
+witnesses:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/witness.png)
+version:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
+enable:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
+
+
+<h6>3.2.2 Step 2: FullNode Deployment </h6>
+1. Download private_net_config.conf
+```
+wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+```
+2. set seed.node ip.list with SR's ip and port
+3. set p2p.version the same as SuperNode's p2p.version
+4. set genesis.block the same as genesis.block(Including Assets and Witness)
+5. set needSyncCheck true
+6. set node.discovery.enable true
+7. modify "listen.port", "http port" and "rpc port" if SuperNode and FullNode are deploied on the same server.
+8. run the script
+
+```
+nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c private_net_config.conf
+
+command lines parameters
 --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
 -c: specify the configuration file path, i.e.: -c config.conf
 ```
 
- The usage of the log file:
- You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
- <logger name="net" level="WARN"/>
- The parameters in configuration file that need to modify:
- localwitness:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/localwitness.jpg)
- witnesses:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/witness.png)
- version:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
- enable:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
-
-
-<h6>3.2.2 Step 2: FullNode Deployment </h6>
- 1.&nbsp;Download private_net_config.conf
-
-```text
-wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
+The usage of the log file:
+You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
 ```
- 2.&nbsp;set seed.node ip.list with SR's ip and port
- 3.&nbsp;set p2p.version the same as SuperNode's p2p.version
- 4.&nbsp;set genesis.block the same as genesis.block
- 5.&nbsp;set needSyncCheck true
- 6.&nbsp;set node.discovery.enable true
- 7.&nbsp;run the script
-
-```text
- nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
-
- command lines parameters
- --witness: start witness function，i.e.: --witness
- --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
- -c: specify the configuration file path, i.e.: -c config.conf
+<logger name="net" level="WARN"/>
 ```
-
- The usage of the log file:
- You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
- <logger name="net" level="WARN"/>
- The parameters in configuration file that need to modify:
- ip.list:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/ip_list.png)
- p2p.version:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
- genesis.block:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/genesis_block.png)
- needSyncCheck:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/need_sync_check.png)
- node.discovery.enable:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
+The parameters in configuration file that need to modify:
+ip.list:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/ip_list.png)
+p2p.version:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
+genesis.block:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/genesis_block.png)
+needSyncCheck:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/need_sync_check.png)
+node.discovery.enable:
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
