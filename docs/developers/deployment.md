@@ -509,4 +509,4 @@ Any configuration could be modified except **mongo.dbname**, "**eventlog**" is t
 
 ## Advanced Configurations
 
-Read the [Advanced Configuration](../advanced-configuration.md)
+Read the [Advanced Configuration](./advanced-configuration.md)

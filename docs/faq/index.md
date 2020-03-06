@@ -58,11 +58,11 @@ Answer: Frozen duration must be 3 days now. It means you can not unfreeze until 
 
 **Ask: How to watch my account for transactions**
 
-Answer: To meet your needs, you can use TRON event subscription plugin. For more detail, please refer to [https://tronprotocol.github.io/documentation-EN/architecture/plugin/#tron-event-subscription](https://tronprotocol.github.io/documentation-EN/architecture/plugin/#tron-event-subscription)
+Answer: To meet your needs, you can use TRON event subscription plugin. For more detail, please refer to [https://tronprotocol.github.io/documentation-en/architecture/plugin/#tron-event-subscription](https://tronprotocol.github.io/documentation-en/architecture/plugin/#tron-event-subscription)
 
 **Ask: How to calculate the transaction fee?**
 
-Answer: please refer to [https://tronprotocol.github.io/documentation-EN/mechanism&algorithm/resource/](https://tronprotocol.github.io/documentation-EN/mechanism&algorithm/resource/)
+Answer: please refer to [https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/)
 
 **Ask: How to calculate the number of bytes of transactions?**
 

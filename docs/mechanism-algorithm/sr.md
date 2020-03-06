@@ -1,3 +1,4 @@
+# Super Representative
 
 ## How to Become a Super Representative
 
@@ -147,4 +148,4 @@ id: proposal id
 - Query all the proposals list by pagination (GetPaginatedProposalList)
 - Query a proposal by proposal id (GetProposalById)
 
-For more api detail, please refer to [Tron-http](Tron-http.md)
+For more api detail, please refer to [HTTP API](../api/http.md)

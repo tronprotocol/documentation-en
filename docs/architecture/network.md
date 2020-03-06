@@ -1,7 +1,7 @@
 # Tron Network Instructure
 
 Tron network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join Tron network as a node.
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/network.png)
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png)
 
 ## SuperNode
 
@@ -91,13 +91,13 @@ You can change the level of the module to control the log output. The default le
 The parameters in configuration file that need to modify:
 
 localwitness:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/localwitness.jpg)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/localwitness.jpg)
 witnesses:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/witness.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/witness.png)
 version:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png)
 enable:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png)
 
 #### Deploy the FullNode
 
@@ -111,12 +111,12 @@ Same as Above except for:
 The parameters in configuration file that need to modify:
 
 ip.list:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/ip_list.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/ip_list.png)
 p2p.version:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png)
 genesis.block:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/genesis_block.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/genesis_block.png)
 needSyncCheck:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/need_sync_check.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/need_sync_check.png)
 node.discovery.enable:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png)

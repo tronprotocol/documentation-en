@@ -56,7 +56,7 @@ Ordinary transaction, Bandwidth points consumption sequence:
 
 <h3> 3. Bandwidth Points Recovery </h3>
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/bandwidthRestoreEqn.gif)
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/bandwidthRestoreEqn.gif)
 
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.
 

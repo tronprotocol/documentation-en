@@ -2,72 +2,72 @@
 ## TRON Event Subscription
 
 <h3> Introduction </h3>
- 
-TIP: [https://github.com/tronprotocol/TIPs/issues/12](https://github.com/tronprotocol/TIPs/issues/12)  
 
-TRON Event Subscription supports 4 types of event:  
+TIP: [https://github.com/tronprotocol/TIPs/issues/12](https://github.com/tronprotocol/TIPs/issues/12)
 
-- Transaction Event 
+TRON Event Subscription supports 4 types of event:
 
-The parameters passed to Subscriber: 
+- Transaction Event
 
-transactionId: transaction hash   
-blockHash: block hash    
-blockNumber: block number   
-energyUsage: energy usage   
-energyFee: energy fee   
-originEnergyUsage: origin energy usage 
+The parameters passed to Subscriber:
+
+transactionId: transaction hash
+blockHash: block hash
+blockNumber: block number
+energyUsage: energy usage
+energyFee: energy fee
+originEnergyUsage: origin energy usage
 energyUsageTotal: total energy usage total
 
 - Block Event
 
-The parameters passed to Subscriber:   
+The parameters passed to Subscriber:
 
-blockHash: block hash    
-blockNumber: block number    
-transactionSize: the number of transactions in a block   
-latestSolidifiedBlockNumber: the latest solidified block number      
-transactionList: the transactions hash list    
+blockHash: block hash
+blockNumber: block number
+transactionSize: the number of transactions in a block
+latestSolidifiedBlockNumber: the latest solidified block number
+transactionList: the transactions hash list
 
-- Contract Event  
+- Contract Event
 
-The parameters passed to Subscriber:    
+The parameters passed to Subscriber:
 
-transactionId: transaction id   
-contractAddress: contract address     
-callerAddress: contract caller address       
-blockNumber: the number of the block contract related events recorded      
-blockTimestamp: the block time stamp     
-eventSignature: event signature     
-topicMap: the map of topic in solidity language    
-data: the data information in solidity language   
-removed: 'true' means the log is removed    
-  
-
-- Contract Log Event  
-
-The parameters passed to Subscriber:   
-transactionId: transaction hash 
-contractAddress: contract address     
-callerAddress: contract caller address     
-blockNumber: the number of the block contract related events recorded    
-blockTimestamp: the block time stamp      
-contractTopics: the list of topic in solidity language    
-data: the data information in solidity language    
-removed: 'true' means the log is removed   
+transactionId: transaction id
+contractAddress: contract address
+callerAddress: contract caller address
+blockNumber: the number of the block contract related events recorded
+blockTimestamp: the block time stamp
+eventSignature: event signature
+topicMap: the map of topic in solidity language
+data: the data information in solidity language
+removed: 'true' means the log is removed
 
 
-Contract Event and Contract Log Even support event filter function which includes:   
+- Contract Log Event
 
-fromBlock: the start block number   
-toBlock: the end block number    
-contractAddress: contract adsresses list  
-contractTopics: contract topics list    
+The parameters passed to Subscriber:
+transactionId: transaction hash
+contractAddress: contract address
+callerAddress: contract caller address
+blockNumber: the number of the block contract related events recorded
+blockTimestamp: the block time stamp
+contractTopics: the list of topic in solidity language
+data: the data information in solidity language
+removed: 'true' means the log is removed
 
-**Note**: History data query is not supported.  
+
+Contract Event and Contract Log Even support event filter function which includes:
+
+fromBlock: the start block number
+toBlock: the end block number
+contractAddress: contract adsresses list
+contractTopics: contract topics list
+
+**Note**: History data query is not supported.
 
 
-<h3> New features </h3> 
+<h3> New features </h3>
 
 1.&nbsp;Supporting event plug-ins, kafka & mongodb plug-ins have been released, developers can also customize their own plug-ins according to their own needs.
 
@@ -77,13 +77,13 @@ contractTopics: contract topics list
 
 <h3> Github project </h3>
 
-- [event plugin](https://github.com/tronprotocol/event-plugin)  
-- [event query](https://github.com/tronprotocol/tron-eventquery)  
+- [event plugin](https://github.com/tronprotocol/event-plugin)
+- [event query](https://github.com/tronprotocol/tron-eventquery)
 
 <h3> Event plugin </h3>
 
-- [kafka deployment](https://tronprotocol.github.io/documentation-EN/developers/deployment/#kafka)  
-- [mongo deployment](https://tronprotocol.github.io/documentation-EN/developers/deployment/#mongo)  
+- [kafka deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/#kafka)
+- [mongo deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/#mongo)
 
 <h3> Event query </h3>
 
@@ -93,5 +93,5 @@ TronEventQuery is implemented with Tron's new event subscribe model. It uses sam
 
 For more information of tron event subscribe model, please refer to [https://github.com/tronprotocol/TIPs/issues/12](https://github.com/tronprotocol/TIPs/issues/12)
 
-- [Event query deployment](https://tronprotocol.github.io/documentation-EN/developers/deployment/#event-subscribe-plugin-deployment)
-- [Event query http api](https://github.com/tronprotocol/documentation-EN/tree/master/docs_without_index/plugin/event-query-http.md)
+- [Event query deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/#event-subscribe-plugin-deployment)
+- [Event query http api](https://github.com/tronprotocol/documentation-en/tree/master/docs_without_index/plugin/event-query-http.md)

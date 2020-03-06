@@ -1,28 +1,33 @@
 site_name: TRON Documentation
+site_url: https://tronprotocol.github.io/documentation-en/
+repo_url: https://github.com/tronprotocol/documentation-en
+
 nav:
-    - Introduction: 
-        - Repository: introduction/index.md  
-        - DPOS: introduction/dpos.md
+    - Home: index.md
+    - Introduction:
+        - Repository: introduction/index.md
+        - DPoS: introduction/dpos.md
+        - Overview: introduction/overview.md
     - API:
-        - Http Api: api/http.md
-        - Rpc Api: api/rpc.md
+        - HTTP API: api/http.md
+        - RPC API: api/rpc.md
     - Mechanism & Algorithm:
-        - SR and Committee: mechanism&algorithm/sr.md
-        - TRC-10: mechanism&algorithm/trc10.md  
-        - Account Model: mechanism&algorithm/account.md
-        - Resource Model: mechanism&algorithm/resource.md
-        - DEX: mechanism&algorithm/dex.md
-        - Multi Signatures: mechanism&algorithm/multi-signatures.md
-        - Shielded Transaction: mechanism&algorithm/shielded-transaction.md  
-        - System Contracts:  mechanism&algorithm/systemContracts.md
+        - SR and Committee: mechanism-algorithm/sr.md
+        - TRC-10: mechanism-algorithm/trc10.md
+        - Account Model: mechanism-algorithm/account.md
+        - Resource Model: mechanism-algorithm/resource.md
+        - DEX: mechanism-algorithm/dex.md
+        - Multi Signatures: mechanism-algorithm/multi-signatures.md
+        - Shielded Transaction: mechanism-algorithm/shielded-transaction.md
+        - System Contracts:  mechanism-algorithm/system-contracts.md
     - Architecture:
         - Network: architecture/network.md
         - Database: architecture/database.md
         - Plugin: architecture/plugin.md
-    - Smart Contract: 
+    - Smart Contract:
         - TVM: contracts/tvm.md
-        - Compiler: contracts/compiler.md    
-        - Contract: contracts/contract.md  
+        - Compiler: contracts/compiler.md
+        - Contract: contracts/contract.md
         - TRC-20: contracts/trc20.md
     - Developers:
         - Official Public Nodes: developers/official-public-nodes.md
@@ -31,9 +36,13 @@ nav:
         - Resources: developers/resources.md
         - Contribution: developers/contribution.md
         - Incentives Policy: developers/incentives.md
-    - Clients:  
-        - Wallet-cli: clients/wallet-cli.md  
-    - Q&A: q&a/qa.md
-    - Glossary: glossary.md 
+        - Java-Tron: developers/java-tron.md
+        - TIPs: developers/tips.md
+        - Advanced Configuration: developers/advanced-configuration.md
+    - Clients:
+        - Wallet-cli: clients/wallet-cli.md
+        - TronGrid: clients/tron-grid.md
+    - FAQ: faq/index.md
+    - Glossary: glossary.md
 
 theme: readthedocs
