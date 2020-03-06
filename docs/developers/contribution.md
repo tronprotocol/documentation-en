@@ -1,3 +1,4 @@
+# How to contribute
 
 ## Getting Started as TRON Community Developers
 
@@ -50,9 +51,8 @@ If you have suggestions on how this process could be improved, please submit a p
 
 There are two documentation repositories:
 [documentation-en](https://github.com/tronprotocol/documentation-en) is the English version.
-[documentation-ZH](https://github.com/tronprotocol/documentation-ZH) is the Chinese version.
+[documentation-zh](https://github.com/tronprotocol/documentation-zh) is the Chinese version.
 
 We use MkDocs to build documentation project. Documentation source files are written in Markdown, and configured with a single YAML configuration file.
 
 You can edit or add a documentation file in /docs/ folder.
-

@@ -1,4 +1,4 @@
-<h1>Community Developers Incentives Programme</h1>
+# Community Developers Incentives Programme
 
 Bonus point applies in TRON incentives programme. Developers can earn points by contributing to TRON.
 
@@ -111,7 +111,6 @@ Points:
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
 |    20     |    15     |   10     |     5     |
-
 
 In order to get 5 (or more) points, the content of a PR should be creative, pratical, critical or can reflect significant workload.
 

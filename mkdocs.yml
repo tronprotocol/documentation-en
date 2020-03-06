@@ -23,7 +23,7 @@ nav:
     - Architecture:
         - Network: architecture/network.md
         - Database: architecture/database.md
-        - Plugin: architecture/plugin.md
+        - Event: architecture/event.md
     - Smart Contract:
         - TVM: contracts/tvm.md
         - Compiler: contracts/compiler.md
@@ -32,7 +32,7 @@ nav:
     - Developers:
         - Official Public Nodes: developers/official-public-nodes.md
         - Deployment: developers/deployment.md
-        - Run FullNode in IDEA: developers/run_in_IDEA.md
+        - Run FullNode in IDEA: developers/run-in-idea.md
         - Resources: developers/resources.md
         - Contribution: developers/contribution.md
         - Incentives Policy: developers/incentives.md

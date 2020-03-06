@@ -1,3 +1,4 @@
+# Contract
 
 ## Smart Contract Introduction
 
