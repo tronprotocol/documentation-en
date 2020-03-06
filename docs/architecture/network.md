@@ -64,26 +64,26 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 
 <h6>3.2.1 Step 1: SuperNode Deployment </h6>
 
- 1.&nbsp;download private_net_config.conf
+ 1. download private_net_config.conf
 
-```text
-wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
-```
- 2.&nbsp;add your private key in localwitness
- 3.&nbsp;set genesis.block.witnesses as the private key's corresponding address
- 4.&nbsp;set p2p.version, any positive integer but 11111
- 5.&nbsp;set the first SR needSyncCheck = false, others can be set true
- 6.&nbsp;set node.discovery.enable = true
- 7.&nbsp;run the script
+    ```
+    wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+    ```
+ 2. add your private key in localwitness
+ 3. set genesis.block.witnesses as the private key's corresponding address
+ 4. set p2p.version, any positive integer but 11111
+ 5. set the first SR needSyncCheck = false, others can be set true
+ 6. set node.discovery.enable = true
+ 7. run the script
 
-```text
-nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+    ```
+    nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
-command line parameters introduction:
---witness: start witness function, i.e.: --witness
---log-config: specify the log configuration file path, i.e.: --log-config logback.xml
--c: specify the configuration file path, i.e.: -c config.conf
-```
+    command line parameters introduction:
+    --witness: start witness function, i.e.: --witness
+    --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
+    -c: specify the configuration file path, i.e.: -c config.conf
+    ```
 
  The usage of the log file:
  You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
