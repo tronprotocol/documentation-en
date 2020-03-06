@@ -17,7 +17,7 @@ nav:
         - Account Model: mechanism-algorithm/account.md
         - Resource Model: mechanism-algorithm/resource.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
-        - Multi Signatures: mechanism-algorithm/multi-signatures.md
+        - Multi Signature: mechanism-algorithm/multi-signatures.md
         - Shielded Transaction: mechanism-algorithm/shielded-transaction.md
         - System Contracts:  mechanism-algorithm/system-contracts.md
     - Architecture:
