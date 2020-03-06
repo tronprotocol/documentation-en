@@ -46,3 +46,13 @@ nav:
     - Glossary: glossary.md
 
 theme: readthedocs
+markdown_extensions:
+    - admonition
+    - footnotes
+    - codehilite
+    - toc:
+        permalink: true
+    - pymdownx.arithmatex
+    - pymdownx.tilde
+    - pymdownx.tasklist
+    - pymdownx.superfences
