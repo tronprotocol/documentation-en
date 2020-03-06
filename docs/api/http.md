@@ -367,7 +367,7 @@ Parameter num: The number of the blocks expected to return
 
 Return: The list of the blocks
 
-- /walletextension/gettransactionsfromthis（No longer supported in the latest version）
+- /walletextension/gettransactionsfromthis(No longer supported in the latest version)
 
 Description: Query the transactions initiated by an account
 ```console
@@ -397,7 +397,7 @@ Return: The list of transactions
 
 Note: This api is no longer supported in the latest version, you can use the central node api: 47.90.247.237:8091/walletextension/gettransactionsfromthis
 
-- /walletextension/gettransactionstothis（No longer supported in the latest version）
+- /walletextension/gettransactionstothis(No longer supported in the latest version)
 
 Description: Query the transactions received by an account
 ```console

@@ -7,6 +7,7 @@ TRON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit 
 TRON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage.
 
 Note:
+
 - Ordinary transaction only consumes Bandwidth points
 - Smart contract related transaction not only consumes Bandwidth points, but also Energy
 
@@ -120,11 +121,11 @@ Set a rational fee limit can guarantee the smart contract execution. And if the 
 
 2.&nbsp;Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount fo energy[^1]. When the contract is triggered, the commands will be executed one by one and consume energy. If it reaches the fee limit, commands will fail to be executed, and energy is not refundable.
 
-3.&nbsp;Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[2]. The energy consumed by triggering contract also includes developer's share.
+3.&nbsp;Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[^2]. The energy consumed by triggering contract also includes developer's share.
 
 4.&nbsp;For a vicious contract, if it encounters execution timeout or bug crash, all it's energy will be consumed.
 
-5.&nbsp;Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [2].
+5.&nbsp;Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [^2].
 
 To encourage caller to trigger the contract, usually developer has enough energy.
 
