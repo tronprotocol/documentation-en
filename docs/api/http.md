@@ -1,4 +1,6 @@
-**API INDEX:**
+# HTTP API
+
+## API Index
 
 | transaction                   |  account                           |   shielded transactions                      |
 |-------------------------------|------------------------------------|----------------------------------------------|
@@ -26,7 +28,6 @@
 |                               |  getreward                      |                                              |
 |                               |  updateBrokerage                      |                                              |
 
-
 |   asset                        |  exchange               | transfer                        |
 |--------------------------------|-------------------------|---------------------------------|
 |  createassetissue              | exchangecreate          | easytransferbyprivate           |
@@ -39,8 +40,6 @@
 |  getassetissuebyid             | listexchanges           |                                 |
 |  updateasset                   | getpaginatedexchangelist|                                 |
 
-
-
 |   proposal                       | smart contract          | others                |
 |----------------------------------|-------------------------|-----------------------|
 |  getpaginatedproposallist        | deploycontract          | broadcasttransaction  |
@@ -51,286 +50,328 @@
 |  proposaldelete                  | updateenergylimit       | getnodeinfo           |
 |  getapprovedlist                 | updatesetting           | getchainparameters    |
 
-
-
 ## HexString and Base58check Transcode Demo
+
 JAVA:
-[https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92](https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92)
+[GH tronprotocol/wallet-cli/src/main/java/org/tron/demo/TransactionSignDemo.java#L92](https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92)
+
 PHP:
-[https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php](https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php)
+[GH: tronprotocol/Documentation/TRX_CN/index.php](https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php)
 
-**Since v3.6, parameter 'visible' is added, when 'visible' is set true, no need to transcode the relevant address and string. This parameter is valid for all api, including solidityNode api and FullNode api.**
+### The visible parameter
 
-When 'visible' is set true, the format of the input address must be base58, input string must text string, so does the format of the output. If 'visible' is set false or null, the api acts the same as previous version. If the format of the parameters do not match with the set of visible, it will throw out an error.
+Since v3.6, parameter `visible` is added. When `visible` is set true, there's no need to transcode the relevant address and string. This parameter is valid for all API, including solidityNode api and FullNode api.
 
-Way to set the 'visible' parameter:
+When `visible` is set true, the format of the input address must be base58check, input string must text string, so does the format of the output. If `visible` is set false or null, the api acts the same as previous version. If the format of the parameters do not match with the set of visible, it will throw out an error.
 
-1.&nbsp;For the api needs no parameter: by adding 'visible' parameter in the url
+Ways to set the `visible` parameter:
 
-+ example:
+1. For the api needs no parameter: by adding 'visible' parameter in the url
 
-```json
-http://127.0.0.1:8090/wallet/listexchanges?visible=true
-```
-2.&nbsp;For POST method api: By adding 'visible' parameter to the most out layer of the json
+        http://127.0.0.1:8090/wallet/listexchanges?visible=true
 
-+ example:
-```json
-curl -X POST http://127.0.0.1:8090/wallet/createtransaction  -d
-'{
-    "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-    "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
-    "amount": 1000000,
-    "visible": true
-}'
-```
-3.&nbsp;For GET method api: By adding 'visible' parameter in the url, as way 1.
+2. For POST method api: By adding 'visible' parameter to the most out layer of the json
 
+    ```console
+    $ curl -X POST http://127.0.0.1:8090/wallet/createtransaction -d
+    '{
+        "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+        "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
+        "amount": 1000000,
+        "visible": true
+    }'
+    ```
 
-## SolidityNode Api
+3. For HTTP GET API: By adding `visible` parameter in the url, as method 1.
 
-SolidityNode api's default http port is 8091, when solidityNode is started, http service will be started too.
+## SolidityNode API
+
+SolidityNode api's default HTTP port is 8091, when solidityNode is started, http service will be started too.
 
 - /walletsolidity/getaccount
 
 Description: Query an account information
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccount -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccount -d
 '{
     "address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"
 }'
 ```
+
 Parameter address: Default hexString
+
 Return: Account object
 
 - walletsolidity/listwitnesses
 
 Description: Qyery the list of the witnesses
-```json
-demo: curl -X GET  http://127.0.0.1:8091/walletsolidity/listwitnesses
+```console
+$ curl -X GET  http://127.0.0.1:8091/walletsolidity/listwitnesses
 ```
+
 Parameter: No parameter
+
 Return: The list of all the witnesses
 
 - /walletsolidity/getassetissuelist
 
 Description: Query the list of all the tokens
-```json
-demo: curl -X GET  http://127.0.0.1:8091/walletsolidity/getassetissuelist
+```console
+$ curl -X GET  http://127.0.0.1:8091/walletsolidity/getassetissuelist
 ```
+
 Parameter: No parameter
+
 Return: The list of all the tokens
 
 - /walletsolidity/getpaginatedassetissuelist
 
 Description: Query the list of all the tokens by pagination
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuelist -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuelist -d
 '{
     "offset": 0,
     "limit": 10
 }'
 ```
+
 Parameter offset: the index of the start token
+
 Parameter limit: the amount of tokens per page
+
 Return: The list of tokens by pagination
 
 - /walletsolidity/getassetissuebyname(Since Odyssey-v3.2)
 
 Description: Query a token by token name
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d
 '{
     "value": "44756354616E"
 }'
 ```
+
 Parameter value: Token name, default hexString
+
 Return: Token object
+
 Note: Since Odyssey-v3.2, getassetissuebyid or getassetissuelistbyname is recommended, as since v3.2, token name can be repeatable. If the token name you query is not unique, this api will throw out an error
 
 - /walletsolidity/getassetissuelistbyname(Since Odyssey-v3.2)
 
 Description: Query the list of tokens by name
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d
 '{
     "value": "44756354616E"
 }'
 ```
+
 Parameter value: Token name, default hexString
+
 Return: The list of tokens
 
 - /walletsolidity/getassetissuebyid(Since Odyssey-v3.2)
 
 Description: Query a token by token id
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d
 '{
     "value": "1000001"
 }'
 ```
+
 Parameter value: Token id
+
 Return: Token object
 
 - /walletsolidity/getnowblock
 
 Description: Query the latest block information
-```json
-demo: curl -X GET  http://127.0.0.1:8091/walletsolidity/getnowblock
+```console
+$ curl -X GET  http://127.0.0.1:8091/walletsolidity/getnowblock
 ```
+
 Parameter: No parameter
+
 Return: the latest block from solidityNode
 
 - /walletsolidity/getblockbynum
 
 Description: Query a block information by block height
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbynum -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbynum -d
 '{
     "num": 100
 }'
 ```
+
 Parameter num: Block height
+
 Return: Block information
 
 - /walletsolidity/gettransactionbyid
 
 Description: Query an transaction infromation by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d
 '{
     "value": "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"
 }'
 ```
+
 Parameter value: Transaction id
+
 Return: Transaction information
 
 - /walletsolidity/gettransactioncountbyblocknum(Since Odyssey-v3.2)
 
 Description: Query th the number of transactions in a specific block
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d
 '{
     "num": 100
 }'
 ```
+
 Parameter num: Block height
+
 Return: The number of transactions
 
 - /walletsolidity/gettransactioninfobyid
 
 Description: Query the transaction fee, block height by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d
 '{
     "value": "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"
 }'
 ```
+
 Parameter value: Transaction id
+
 Return: Transaction fee & block height
 
 - /walletsolidity/getdelegatedresource(Since Odyssey-v3.2)
 
 Description: Query the energy delegation information
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresource -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresource -d
 '{
     "fromAddress": "419844f7600e018fd0d710e2145351d607b3316ce9",
     "toAddress": "41c6600433381c731f22fc2b9f864b14fe518b322f"
 }'
 ```
+
 Parameter fromAddress: Energy from address, default hexString
+
 Parameter toAddress: Energy to address, default hexString
+
 Return: Energy delegation information
 
 - /walletsolidity/getdelegatedresourceaccountindex(Since Odyssey-v3.2)
 
 Description: Query the energy delegation index by an account
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceaccountindex -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceaccountindex -d
 '{
     "value": "419844f7600e018fd0d710e2145351d607b3316ce9"
 }'
 ```
+
 Parameter value: Address, default hexString
+
 Return: Energy delegation index
 
 - /walletsolidity/getexchangebyid(Since Odyssey-v3.2)
 
 Description: Query an exchange pair by exchange pair id
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d
 '{
     "id": 1
 }'
 ```
+
 Parameter id: Exchange pair id
+
 Return: Exchange pair object
 
 - /walletsolidity/listexchanges(Since Odyssey-v3.2)
 
 Description: Query the list of all the exchange pairs
-```json
-demo: curl -X GET  http://127.0.0.1:8091/walletsolidity/listexchanges
+```console
+$ curl -X GET  http://127.0.0.1:8091/walletsolidity/listexchanges
 ```
+
 Parameter: No parameter
+
 Return: The list of all the exchange pairs
 
 - /walletsolidity/getaccountbyid
 
 Description: Query an account information by account id
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d
 '{
     "account_id": "6161616162626262"
 }'
 ```
+
 Parameter account_id: Account id, default hexString
+
 Return: Account object
 
 - /walletsolidity/getblockbyid
 
 Description: Query a block information by block id
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d
 '{
     "value": "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"
 }'
 ```
+
 Parameter value: Block id
+
 Return: Block object
 
 - /walletsolidity/getblockbylimitnext
 
 Description: Query a list of blocks by range
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d
 '{
     "startNum": 1,
     "endNum": 2
 }'
 ```
+
 Parameter startNum: The start block height, itself included
+
 Parameter endNum: The end block height, itself not included
+
 Return: The list of the blocks
 
 - /walletsolidity/getblockbylatestnum
 
 Description: Query the several latest blocks
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d
 '{
     "num": 5
 }'
 ```
+
 Parameter num: The number of the blocks expected to return
+
 Return: The list of the blocks
 
 - /walletextension/gettransactionsfromthis（No longer supported in the latest version）
 
 Description: Query the transactions initiated by an account
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d
 '{
     "account": {
         "address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"
@@ -341,19 +382,26 @@ demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthi
     "endTime": 1552028828000
 }'
 ```
+
 Parameter address: Address, default hexString
+
 Parameter offset: The start index of the transactions, must not greater then 10000
+
 Parameter limit: The number of transactions expected to return, maximum 50, offset+limit must smaller than 10000
+
 Parameter startTime: Query start time
+
 Parameter endTime: Query end time, Default latest 7 days
+
 Return: The list of transactions
+
 Note: This api is no longer supported in the latest version, you can use the central node api: 47.90.247.237:8091/walletextension/gettransactionsfromthis
 
 - /walletextension/gettransactionstothis（No longer supported in the latest version）
 
 Description: Query the transactions received by an account
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d
 '{
     "account": {
         "address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"
@@ -364,52 +412,65 @@ demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis 
     "endTime": 1552028828000
 }'
 ```
+
 Parameter address: Address, default hexString
+
 Parameter offset: The start index of the transactions, must not greater then 10000
+
 Parameter limit: The number of transactions expected to return, maximum 50, offset+limit must smaller than 10000
+
 Parameter startTime: Query start time
+
 Parameter endTime: Query end time, Default latest 7 days
+
 Return: The list of transactions
+
 Note: This api is no longer supported in the latest version, you can use the central node api: 47.90.247.237:8091/walletextension/gettransactionstothis
 
 - /wallet/getnodeinfo(Since Odyssey-v3.2)
 
 Description: Query the current node infromation
-```json
-demo: curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
+```console
+$ curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
 ```
+
 Parameter: No parameter
+
 Return: The node information
 
 - /walletsolidity/getdeferredtransactionbyid
 
 Description: Query the deferred transaction infromation by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactionbyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactionbyid -d
 '{
     "value": "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"
 }'
 ```
+
 Parameter value: transaction id
+
 Return: Deferred transaction object
 
 - /walletsolidity/getdeferredtransactioninfobyid
 
 Description: Query the deferred transaction fee, block height by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactioninfobyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactioninfobyid -d
 '{
     "value": "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"
 }'
 ```
+
 Parameter value: transaction id
+
 Return: Deferred transaction fee & block height
 
 - /walletsolidity/getmerkletreevoucherinfo
 
 Description: To get a merkle tree infromation of a note
-```json
-demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/getmerkletreevoucherinfo -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/walletsolidity/getmerkletreevoucherinfo -d
 '{
     "out_points":[{
         "hash":"185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74",
@@ -417,31 +478,38 @@ demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/getmerkletreevoucherinf
     }]
 }'
 ```
+
 Parameter out_points: Note information
+
 Return: A merkle tree of a note
 
 - /walletsolidity/scannotebyivk
 
 Description: To get all the notes by ivk
-```json
-demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyivk -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyivk -d
 '{
     "start_block_index": 0,
     "end_block_index": 100,
     "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05"
 }'
 ```
+
 Parameter start_block_index: The start block height, itself included
+
 Parameter end_block_index: The end block height, itself not included
+
 Parameter ivk: Incoming viewing key
+
 Return: Notes list
+
 Note: Range limit (end_block_index - start_block_index <= 1000)
 
 - /walletsolidity/scanandmarknotebyivk
 
 Description: To get all the notes with spent status by ivk
-```json
-demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scanandmarknotebyivk -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/walletsolidity/scanandmarknotebyivk -d
 '{
     "start_block_index": 0,
     "end_block_index": 100,
@@ -450,36 +518,48 @@ demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scanandmarknotebyivk -d
     "nk": "748522c7571a9da787e43940c9a474aa0c5c39b46c338905deb6726fa3678bdb"
 }'
 ```
+
 Parameter start_block_index: The start block height, itself included
+
 Parameter end_block_index: The end block height, itself not included
+
 Parameter ivk: Incoming viewing key
+
 Parameter ak: Ak key
+
 Parameter nk: Nk key
+
 Return: Notes list
+
 Note: Range limit (end_block_index - start_block_index <= 1000)
 
 - /walletsolidity/scannotebyovk
 
 Description: To get all the notes by ovk
-```json
-demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyovk -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyovk -d
 '{
     "start_block_index": 0,
     "end_block_index": 100,
     "ovk": "705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539"
 }'
 ```
+
 Parameter start_block_index: The start block height, itself included
+
 Parameter end_block_index: The end block height, itself not included
+
 Parameter ovk: Outgoing viewing key
+
 Return: Notes list
+
 Note: Range limit (end_block_index - start_block_index <= 1000)
 
 - /walletsolidity/isspend
 
 Description: To check whether a note is spent or not
-```json
-demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/isspend -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/walletsolidity/isspend -d
 '{
     "ak": "a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129",
     "nk": "62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e",
@@ -492,39 +572,50 @@ demo: curl -X POST  http://127.0.0.1:8090/walletsolidity/isspend -d
     "index": 1
 }'
 ```
+
 Parameter ak: Ak key
+
 Parameter nk: Nk key
+
 Parameter note: Note information
+
 Parameter txid: Transaction id
+
 Parameter index: Note index
+
 Return: Note status
 
+## FullNode API
 
-## FullNode Api
 FullNode api's default http port is 8090, when FullNode is started, http service will be started too.
 
 - wallet/createtransaction
 
 Description: Create a transfer transaction, if to address is not existed, then create the account on the blockchain
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d
 '{
     "to_address": "41e9d79cc47518930bc322d9bf7cddd260a0260a8d",
     "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292",
     "amount": 1000
 }'
 ```
+
 Parameter to_address: To address, default hexString
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter amount: Transfer amount
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/gettransactionsign
 
 Description: To sign a transaction
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d
 '{
     "transaction": {
         "txID": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
@@ -551,16 +642,20 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d
     "privateKey": "your private key"
 }'
 ```
+
 Parameter transaction: Transaction object
+
 Parameter privateKey: Private key
+
 Return: Transaction after sign
+
 Note: Using this api may leak out private key, please ensure using this api in a secure network
 
 - wallet/broadcasttransaction
 
 Description: Broadcast transaction after sign
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d
 '{
     "signature": [
         "97c825b41c77de2a8bd65b3df55cd4c0df59c307c0187e42321dcc1cc455ddba583dd9502e17cfec5945b34cad0511985a6165999092a6dec84c2bdd97e649fc01"
@@ -587,41 +682,49 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d
     }
 }'
 ```
+
 Parameter: Transaction after sign
+
 Return: The result of the broadcast
 
 - wallet/broadcasthex
 
 Description: Broadcast transaction hex string after sign
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/broadcasthex -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/broadcasthex -d
 '{
    "transaction":"0A8A010A0202DB2208C89D4811359A28004098A4E0A6B52D5A730802126F0A32747970652E676F6F676C65617069732E636F6D2F70726F746F636F6C2E5472616E736665724173736574436F6E747261637412390A07313030303030311215415A523B449890854C8FC460AB602DF9F31FE4293F1A15416B0580DA195542DDABE288FEC436C7D5AF769D24206412418BF3F2E492ED443607910EA9EF0A7EF79728DAAAAC0EE2BA6CB87DA38366DF9AC4ADE54B2912C1DEB0EE6666B86A07A6C7DF68F1F9DA171EEE6A370B3CA9CBBB00"
 }'
 ```
+
 Parameter: Transaction hex after sign
+
 Return: The result of the broadcast
 
 - wallet/updateaccount
 
 Description: Update the name of an account
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d
 '{
     "account_name": "0x7570646174654e616d6531353330383933343635353139",
     "owner_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292"
 }'
 ```
+
 Parameter account_name: Account name, default hexString
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/votewitnessaccount
 
 Description: Vote for witnesses
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d
 '{
     "owner_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292",
     "votes": [
@@ -632,51 +735,62 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d
     ]
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter votes: 'vote_address' stands for the address of the witness you want to vote, default hexString, 'vote_count' stands for the number of votes you want to vote
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/getBrokerage
 
 Description: Query the ratio of brokerage of the witness
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getBrokerage -d '{
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getBrokerage -d '{
 "address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 ```
+
 Parameter address: The address of the witness's account, default hexString
+
 Return: The ratio of brokerage of the witness
 
 - wallet/getReward
 
 Description: Query unclaimed reward
-```json
-demo: curl -X GET
+```console
+$ curl -X GET
 http://127.0.0.1:8090/wallet/getReward -d '{
 "address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 ```
+
 Parameter address: The address of the voter's account, default hexString
+
 Return: Unclaimed reward
 
 - wallet/updateBrokerage
 
 Description: Update the ratio of brokerage
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/updateBrokerage  -d '{
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/updateBrokerage  -d '{
 "owner_address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0",
 "brokerage":30
 }'
 ```
+
 Parameter owner_address: The address of the witness's account, default hexString
+
 Parameter brokerage: The ratio of brokerage you want to update to
+
 
 Return: Transaction object
 
 - wallet/createassetissue
 
 Description: Issue a token
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d
 '{
     "owner_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
     "name": "0x6173736574497373756531353330383934333132313538",
@@ -696,74 +810,103 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d
     }
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter name: Token name, default hexString
+
 Parameter abbr: Token name abbreviation, default hexString
+
 Parameter total_supply: Token total supply
+
 Parameter trx_num: Define the price by the ratio of trx_num/num
+
 Parameter num: Define the price by the ratio of trx_num/num
+
 Parameter start_time: ICO start time
+
 Parameter end_time: ICO end time
+
 Parameter description: Token description, default hexString
+
 Parameter url: Token official website url, default hexString
+
 Parameter free_asset_net_limit: Token free asset net limit
+
 Parameter public_free_asset_net_limit: Token public free asset net limit
+
 Parameter frozen_supply: Token frozen supply
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of 'trx_num' is SUN
 
 - wallet/updatewitness
 
 Description: Update the witness' website url
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d
 '{
     "owner_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292",
     "update_url": "007570646174654e616d6531353330363038383733343633"
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter update_url: Website url, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/createaccount
 
 Description: Create an account
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d
 '{
     "owner_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292",
     "account_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0"
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter account_address: New address, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: It costs 0.1 TRX
 
 - wallet/createwitness
 
 Description: Apply to become a witness
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d
 '{
     "owner_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292",
     "url": "007570646174654e616d6531353330363038383733343633"
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter url: Website url, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/transferasset
 
 Description: Transfer token
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d
 '{
     "owner_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292",
     "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
@@ -771,35 +914,47 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d
     "amount": 100
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter to_address: To address, default hexString
+
 Parameter asset_name: Token id, default hexString
+
 Parameter amount: Token transfer amount
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of 'amount' is the smallest unit of the token
 
 - wallet/easytransfer
 
 Description: Easy transfer
-```json
-demo: curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d
 '{
     "passPhrase": "your password",
     "toAddress": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
     "amount": 100
 }'
 ```
+
 Parameter passPhrase: Password, default hexString
+
 Parameter toAddress: To address, default hexString
+
 Parameter amount: Transfer TRX amount
+
 Return: Transaction object & the result of the broadcast
+
 Note: Using this api may leak out private key, please ensure using this api in a secure network
 
 - wallet/easytransferasset
 
 Description: Easy token transfer
-```json
+```console
 demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d
 '{
     "passPhrase": "your password",
@@ -808,32 +963,41 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d
     "amount": 100
 }'
 ```
+
 Parameter passPhrase: Password, default hexString
+
 Parameter toAddress: To address, default hexString
+
 Parameter assetId: Token id
+
 Parameter amount: Transfer token amount
+
 Return: Transaction object & the result of the broadcast
+
 Note: Using this api may leak out private key, please ensure using this api in a secure network
 The unit of 'amount' is the smallest unit of the token
 
 - wallet/createaddress
 
 Description: Create an address with a password
-```json
-demo: curl -X POST http://127.0.0.1:8090/wallet/createaddress -d
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/createaddress -d
 '{
     "value": "3230313271756265696a696e67"
 }'
 ```
+
 Parameter value: Password, default hexString
+
 Return: An address
+
 Note: Using this api may leak out private key, please ensure using this api in a secure network
 
 - wallet/participateassetissue
 
 Description: Participate a token
-```json
-demo: curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d
 '{
     "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
     "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
@@ -841,19 +1005,26 @@ demo: curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d
     "asset_name": "3230313271756265696a696e67"
 }'
 ```
+
 Parameter to_address: The issuer address of the token, default hexString
+
 Parameter owner_address: The participant address, default hexString
+
 Parameter amount: Participate token amount
+
 Parameter asset_name: Token id, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of 'amount' is the smallest unit of the token
 
 - wallet/freezebalance
 
 Description: Freeze TRX
-```json
-demo: curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
 '{
     "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
     "frozen_balance": 10000,
@@ -862,63 +1033,82 @@ demo: curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
     "receiver_address": "414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter frozen_balance: TRX freeze amount
+
 Parameter frozen_duration: TRX freeze duration, at least 3 days
+
 Parameter resource: TRX freeze type, 'BANDWIDTH' or 'ENERGY'
+
 Parameter receiverAddress: The address that will receive the resource, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/unfreezebalance
 
 Description: Unfreeze the frozen TRX that is due
-```json
-demo: curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d
 '{
     "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
     "resource": "BANDWIDTH",
     "receiver_address": "414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter resource: Frozen TRX unfreeze type 'BANDWIDTH' or 'ENERGY'
+
 Parameter receiverAddress: The address that will lose the resource, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/unfreezeasset
 
 Description: Unfreeze the frozen token that is due
-```json
-demo: curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d
 '{
     "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/withdrawbalance
 
 Description: Withdraw reward to account balance for witnesses
-```json
-demo: curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d
 '{
     "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: It can only withdraw once for every 24 hours
 
 - wallet/updateasset
 
 Description: Update token information
-```json
-demo: curl -X POST http://127.0.0.1:8090/wallet/updateasset -d
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/updateasset -d
 '{
     "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
     "description": "",
@@ -927,282 +1117,341 @@ demo: curl -X POST http://127.0.0.1:8090/wallet/updateasset -d
     "new_public_limit": 100
 }'
 ```
+
 Parameter owner_address: The issuers address of the token, default hexString
+
 Parameter description: The description of token, default hexString
+
 Parameter url: The token's website url, default hexString
+
 Parameter new_limit: Each token holder's free bandwidth
+
 Parameter new_public_limit: The total free bandwidth of the token
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/listnodes
 
 Description: Query the list of nodes connected to the ip of the api
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/listnodes
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/listnodes
 ```
+
 Parameter: No parameter
+
 Return: The list of nodes
 
 - wallet/getassetissuebyaccount
 
 Description: Query the token issue information of an account
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d
 '{
     "address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"
 }'
 ```
+
 Parameter address: Token issuer's address, default hexString
+
 Return: Token object
 
 - wallet/getaccountnet
 
 Description: Query the bandwidth information of an account
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d
 '{
     "address": "4112E621D5577311998708F4D7B9F71F86DAE138B5"
 }'
 ```
+
 Parameter address: Address, default hexString
+
 Return: Bandwidth information
 
 - wallet/getassetissuebyname
 
 Description: Query a token by token name
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d
 '{
     "value": "44756354616E"
 }'
 ```
+
 Parameter value: Token name, default hexString
+
 Return: Token object
+
 Note: Since Odyssey-v3.2, getassetissuebyid or getassetissuelistbyname is recommended, as since v3.2, token name can be repeatable. If the token name you query is not unique, this api will throw out an error
 
 - wallet/getassetissuelistbyname(Since Odyssey-v3.2)
 
 Description: Query the list of tokens by name
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d
 '{
     "value": "44756354616E"
 }'
 ```
+
 Parameter value: Token name, default hexString
+
 Return: The list of tokens
 
 - wallet/getassetissuebyid(Since Odyssey-v3.2)
 
 Description: Query a token by token id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d
 '{
     "value": "1000001"
 }'
 ```
+
 Parameter value: Token id
+
 Return: Token object
 
 - wallet/getnowblock
 
 Description: Query the latest block information
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getnowblock
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getnowblock
 ```
+
 Parameter: No parameter
+
 Return: The latest block
 
 - wallet/getblockbynum
 
 Description: Query a block information by block height
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbynum -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getblockbynum -d
 '{
     "num": 1
 }'
 ```
+
 Parameter num: Block height
+
 Return: Block information
 
 - wallet/getblockbyid
 
 Description: Query a block information by block id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid-d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid-d
 '{
     "value": "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"
 }'
 ```
+
 Parameter value: Block id
+
 Return: Block object
 
 - wallet/getblockbylimitnext
 
 Description: Query a list of blocks by range
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d
 '{
     "startNum": 1,
     "endNum": 2
 }'
 ```
+
 Parameter startNum: The start block height, itself included
+
 Parameter endNum: The end block height, itself not included
+
 Return: The list of the blocks
 
 - wallet/getblockbylatestnum
 
 Description: Query the several latest blocks
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d
 '{
     "num": 5
 }'
 ```
+
 Parameter num: The number of the blocks expected to return
+
 Return: The list of the blocks
 
 - wallet/gettransactionbyid
 
 Description: Query an transaction infromation by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d
 '{
     "value": "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"
 }'
 ```
+
 Parameter value: Transaction id
+
 Return: Transaction information
 
 - wallet/gettransactioninfobyid(Since Odyssey-v3.2)
 
 Description: Query the transaction fee, block height by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d
 '{
     "value": "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"
 }'
 ```
+
 Parameter value: Transaction id
+
 Return: Transaction fee & block height
 
 - wallet/gettransactioncountbyblocknum(Since Odyssey-v3.2)
 
 Description: Query th the number of transactions in a specific block
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d
 '{
     "num": 100
 }'
 ```
+
 Parameter num: Block height
+
 Return: The number of transactions
 
 - wallet/getaccount
 
 Description: Query an account information
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d
 '{
     "address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"
 }'
 ```
+
 Parameter address: Default hexString
+
 Return: Account object
 
 - wallet/listwitnesses
 
 Description: Qyery the list of the witnesses
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/listwitnesses
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/listwitnesses
 ```
+
 Parameter: No parameter
+
 Return: The list of all the witnesses
 
 - wallet/getassetissuelist
 
 Description: Query the list of all the tokens
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getassetissuelist
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getassetissuelist
 ```
+
 Parameter: No parameter
+
 Return: The list of all the tokens
 
 - wallet/getpaginatedassetissuelist
 
 Description: Query the list of all the tokens by pagination
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedassetissuelist -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedassetissuelist -d
 '{
     "offset": 0,
     "limit": 10
 }'
 ```
+
 Parameter offset: The index of the start token
+
 Parameter limit: The amount of tokens per page
+
 Return: The list of tokens by pagination
 
 - wallet/getpaginatedproposallist(Since Odyssey-v3.5)
 
 Description: Query the list of all the proposals by pagination
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedproposallist -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedproposallist -d
 '{
     "offset": 0,
     "limit": 10
 }'
 ```
+
 Parameter offset: The index of the start proposal
+
 Parameter limit: The amount of proposals per page
+
 Return: The list of proposals by pagination
 
 - wallet/getpaginatedexchangelist(Odyssey-v3.2开始支持)
 
 Description: Query the list of all the exchange pairs by pagination
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedexchangelist -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedexchangelist -d
 '{
     "offset": 0,
     "limit": 10
 }'
 ```
+
 Parameter offset:  The index of the start exchange pair
+
 Parameter limit: The amount of exchange pairs per page
+
 Return: The list of exchange pairs by pagination
 
 - wallet/getnextmaintenancetime
 
 Description: Query the time interval till the next vote round
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getnextmaintenancetime
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getnextmaintenancetime
 ```
+
 Parameter: No parameter
+
 Return: The time interval till the next vote round(unit: ms)
 
 - wallet/easytransferbyprivate
 
 Description: TRX Easy transfer
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d
 '{
     "privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366",
     "toAddress": "4112E621D5577311998708F4D7B9F71F86DAE138B5",
     "amount": 10000
 }'
 ```
+
 Parameter privateKey: Private key, default hexString
+
 Parameter toAddress: To address, default hexString
+
 Parameter amount: TRX transfer amount
+
 Return: Transaction object & the result of the broadcast
+
 Note: Using this api may leak out private key, please ensure using this api in a secure network
 
 - wallet/easytransferassetbyprivate
 
 Description: Token easy transfer
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d
 '{
     "privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366",
     "toAddress": "4112E621D5577311998708F4D7B9F71F86DAE138B5",
@@ -1210,40 +1459,50 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d
     "amount": 10000
 }'
 ```
+
 Parameter privateKey: Private key, default hexString
+
 Parameter toAddress: To address, default hexString
+
 Parameter assetId: Token id
+
 Parameter amount: Token transfer amount
+
 Return: Transaction object & the result of the broadcast
+
 Note: Using this api may leak out private key, please ensure using this api in a secure network
 The unit of 'amount' is the smallest unit of the token
 
 - wallet/generateaddress
 
 Description: Generate address and private key
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/generateaddress
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/generateaddress
 ```
+
 Parameter: No parameter
+
 Return: Address and private key
+
 Note: Using this api may leak out private key, please ensure using this api in a secure network
 
 - wallet/validateaddress
 
 Description: Check the validity of the address
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d
 '{
     "address": "4189139CB1387AF85E3D24E212A008AC974967E561"
 }'
 ```
+
 Return: The check result
 
 - wallet/deploycontract
 
 Description: Deploy a smart contract
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d
 '{
     "abi": "[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]",
     "bytecode": "608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029",
@@ -1256,26 +1515,40 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d
     "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292"
 }'
 ```
+
 Parameter abi: Abi
+
 Parameter bytecode: Bytecode, default hexString
+
 Parameter parameter: The list of the parameters of the constructor, It should be converted hexString after encoded according to ABI encoder. If constructor has no parameter, this can be optional
+
 Parameter consume_user_resource_percent: Consume user's resource percentage. It should be an integer between [0, 100]. if 0, means it does not consume user's resource until the developer's resource has been used up
+
 Parameter fee_limit: The maximum TRX burns for resource consumption
+
 Parameter call_value: The TRX transfer to the contract for each call
+
 Parameter call_token_value: The amount of  trc10 token transfer to the contract for each call (Optional)
+
 Parameter token_id: The id of trc10 token transfer to the contract (Optional)
+
 Parameter owner_address: Owner address of the contract, default hexString
+
 Parameter name: Contract name
+
 Parameter origin_energy_limit: The maximum resource consumption of the creator in one execution or creation
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of TRX in the parameters is SUN
 
 - wallet/triggersmartcontract
 
 Description: Trigger smart contract
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d
 '{
     "contract_address": "4189139CB1387AF85E3D24E212A008AC974967E561",
     "function_selector": "set(uint256,uint256)",
@@ -1285,35 +1558,48 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d
     "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292"
 }'
 ```
+
 Parameter contract_address: Contract address, default hexString
+
 Parameter function_selector: Function call, must not leave a blank space
+
 Parameter parameter: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a js tool provided by remix to convert a parameter like [1,2] to the format that VM requires
+
 Parameter fee_limit: The maximum TRX burns for resource consumption
+
 Parameter call_value: The TRX transfer to the contract for each call
+
 Parameter call_token_value: The amount of  trc10 token transfer to the contract for each call
+
 Parameter token_id: The id of trc10 token transfer to the contract
+
 Parameter owner_address: Owner address that triggers the contract, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of TRX in the parameters is SUN
 
 - wallet/getcontract
 
 Description: Query a contract
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d
 '{
     "value": "4189139CB1387AF85E3D24E212A008AC974967E561"
 }'
 ```
+
 Parameter value: Contract address, default hexString
+
 Return: Smart contract object
 
 - wallet/proposalcreate
 
 Description: Create a proposal
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d
 '{
     "owner_address": "419844F7600E018FD0D710E2145351D607B3316CE9",
     "parameters": [
@@ -1328,81 +1614,100 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d
     ]
 }'
 ```
+
 Parameter owner_address: Creator address
+
 Parameter parameters: Proposal parameters
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/getproposalbyid
 
 Description: Query a proposal by proposal id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d
 '{
     "id": 1
 }'
 ```
+
 Parameter id: Proposal id
+
 Return: The proposal information
 
 - wallet/listproposals
 
 Description: Query all the proposals
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposals
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 ```
+
 Parameter: No parameter
+
 Return: The list of all the proposals
 
 - wallet/proposalapprove
 
 Description: To approve a proposal
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d
 '{
     "owner_address": "419844F7600E018FD0D710E2145351D607B3316CE9",
     "proposal_id": 1,
     "is_add_approval": true
 }'
 ```
+
 Parameter owner_address: The address that makes the approve action, default hexString
+
 Parameter proposal_id: Proposal id
+
 Parameter is_add_approval: Whether to approve
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/proposaldelete
 
 Description: To delete a proposal
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d
 '{
     "owner_address": "419844F7600E018FD0D710E2145351D607B3316CE9",
     "proposal_id": 1
 }'
 ```
+
 Parameter owner_address: Owner address of the proposal, default hexString
+
 Parameter proposal_id: Proposal id
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/getaccountresource
 
 Description: Query the resource information of an account
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d
 '{
     "address": "419844f7600e018fd0d710e2145351d607b3316ce9"
 }'
 ```
+
 Parameter address: Address, default hexString
+
 Return: The resource information
 
 - wallet/exchangecreate
 
 Description: Create an exchange pair
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d
 '{
     "owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9",
     "first_token_id": "token_a",
@@ -1411,19 +1716,26 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d
     "second_token_balance": 200
 }'
 ```
+
 Parameter first_token_id: The first token's id, default hexString
+
 Parameter first_token_balance: The first token's balance
+
 Parameter second_token_id: The second token's id, default hexString
+
 Parameter second_token_balance: The second token's balance
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of 'first_token_balance' and 'second_token_balance' is the smallest unit of the token
 
 - wallet/exchangeinject
 
 Description: Inject funds for exchange pair
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d
 '{
     "owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9",
     "exchange_id": 1,
@@ -1431,19 +1743,26 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d
     "quant": 100
 }'
 ```
+
 Parameter owner_address: Owner address of the exchange pair, default hexString
+
 Parameter exchange_id: Exchange pair id
+
 Parameter token_id: Token id, default hexString
+
 Parameter quant: Token inject amount
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of 'quant' is the smallest unit of the token
 
 - wallet/exchangewithdraw
 
 Description: Withdraw from exchange pair
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d
 '{
     "owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9",
     "exchange_id": 1,
@@ -1451,19 +1770,26 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d
     "quant": 100
 }'
 ```
+
 Parameter owner_address: Owner address of the exchange pair, default hexString
+
 Parameter exchange_id: Exchange pair id
+
 Parameter token_id: Token id, default hexString
+
 Parameter quant: Token withdraw amount
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of 'quant' is the smallest unit of the token
 
 - wallet/exchangetransaction
 
 Description: Participate the transaction of exchange pair
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d
 '{
     "owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9",
     "exchange_id": 1,
@@ -1472,183 +1798,226 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d
     "expected": 10
 }'
 ```
+
 Parameter owner_address: Owner address of the exchange pair, default hexString
+
 Parameter exchange_id: Exchange pair id
+
 Parameter token_id: Token id, default hexString
+
 Parameter quant: Sell token amount
+
 Parameter expected: Expected token amount to get
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of 'quant' and 'expected' is the smallest unit of the token
 
 - wallet/getexchangebyid
 
 Description: Query an exchange pair by exchange pair id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d
 '{
     "id": 1
 }'
 ```
+
 Parameter id: Exchange pair id
+
 Return: Exchange pair information
 
 - wallet/listexchanges
 
 Description: Query the list of all the exchange pairs
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/listexchanges
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/listexchanges
 ```
+
 Parameter: No parameter
+
 Return: The list of all the exchange pairs
 
 - wallet/getchainparameters
 
 Description: Query the parameters of the blockchain used for witnessses to create a proposal
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getchainparameters
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getchainparameters
 ```
+
 Parameter: No parameter
+
 Return: The list of parameters of the blockchain
 
 - wallet/updatesetting
 
 Description: Update the consume_user_resource_percent parameter of a smart contract
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d
 '{
     "owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9",
     "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f",
     "consume_user_resource_percent": 7
 }'
 ```
+
 Parameter owner_address: Owner address of the smart contract, default hexString
+
 Parameter contract_address: Smart contract address, default hexString
+
 Parameter consume_user_resource_percent: Consume user's resource percentage
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/updateenergylimit
 
 Description: Update the origin_energy_limit parameter of a smart contract
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d
 '{
     "owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9",
     "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f",
     "origin_energy_limit": 7
 }'
 ```
+
 Parameter owner_address: Owner address of the smart contract, default hexString
+
 Parameter contract_address: Smart contract address, default hexString
+
 Parameter origin_energy_limit: The maximum resource consumption of the creator in one execution or creation
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
 
 - wallet/getdelegatedresource(Since Odyssey-v3.2)
 
 Description: Query the energy delegation information
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d
 '{
     "fromAddress": "419844f7600e018fd0d710e2145351d607b3316ce9",
     "toAddress": "41c6600433381c731f22fc2b9f864b14fe518b322f"
 }'
 ```
+
 Parameter fromAddress: Energy from address, default hexString
+
 Parameter toAddress: Energy to address, default hexString
+
 Return: Energy delegation information
 
 - wallet/getdelegatedresourceaccountindex(Since Odyssey-v3.2)
 
 Description: Query the energy delegation index by an account
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindex -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindex -d
 '{
     "value": "419844f7600e018fd0d710e2145351d607b3316ce9"
 }'
 ```
+
 Parameter value: Address, default hexString
+
 Return: Energy delegation index
 
 - wallet/getnodeinfo(Since Odyssey-v3.2)
 
 Description: Query the current node infromation
-```json
-demo: curl -X GET http://127.0.0.1:8090/wallet/getnodeinfo
+```console
+$ curl -X GET http://127.0.0.1:8090/wallet/getnodeinfo
 ```
+
 Parameter: No Parameter
+
 Return: The node information
 
 - wallet/setaccountid
 
 Description: To set an account id for an account
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d
 '{
     "owner_address": "41a7d8a35b260395c14aa456297662092ba3b76fc0",
     "account_id": "6161616162626262"
 }'
 ```
+
 Parameter owner_address: Owner address, default hexString
+
 Parameter account_id: Account id, default hexString
+
 Return: Transaction object
 
 - wallet/getaccountbyid
 
 Description: Query an account information by account id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
 '{
     "account_id": "6161616162626262"
 }'
 ```
+
 Parameter account_id: Account id, default hexString
+
 Return: Account object
 
 - wallet/getdeferredtransactionbyid
 
 Description: Query the deferred transaction infromation by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactionbyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactionbyid -d
 '{
     "value": "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"
 }'
 ```
+
 Parameter value: Transaction id
+
 Return: Deferred transaction object
 
 - wallet/canceldeferredtransactionbyid
 
 Description: Query a deferred transaction by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/canceldeferredtransactionbyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/canceldeferredtransactionbyid -d
 '{
     "transactionId": "34e6b6497b71100756790a7f20cd729376768dd2bebb6a4a9c5e87b920d5de10",
     "ownerAddress": "41a7d8a35b260395c14aa456297662092ba3b76fc0"
 }'
 ```
+
 Parameter owner_address: Owner address of the transaction, default hexString
+
 Parameter transactionId: Transaction id
+
 Return: Transaction object
 
 - wallet/getdeferredtransactioninfobyid
 
 Description: Query the deferred transaction fee, block height by transaction id
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactioninfobyid -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactioninfobyid -d
 '{
     "value": "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"
 }'
 ```
+
 Parameter value: Transaction id
+
 Return: Deferred transaction fee & block height
 
 - wallet/triggerconstantcontract
 
 Description: Trigger the constant of the smart contract, the transaction is off the blockchain
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d
 '{
     "contract_address": "4189139CB1387AF85E3D24E212A008AC974967E561",
     "function_selector": "set(uint256,uint256)",
@@ -1658,49 +2027,64 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d
     "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292"
 }'
 ```
+
 Parameter contract_address: Smart contract address, defualt hexString
+
 Parameter function_selector:  Function call, must not leave a blank space
+
 Parameter parameter: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires
+
 Parameter fee_limit: The maximum TRX burns for resource consumption
+
 Parameter call_value: The TRX transfer to the contract for each call
+
 Parameter owner_address: Owner address that triggers the contract, default hexString
+
 Parameter permission_id: Optional, for multi-signature use
+
 Return: Transaction object
+
 Note: The unit of TRX in the parameters is SUN
 
 - wallet/clearabi
 
 Description: To clear the abi of a smart contract
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/clearabi -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/clearabi -d
 '{
     "owner_address": "41a7d8a35b260395c14aa456297662092ba3b76fc0",
     "contract_address": "417bcb781f4743afaacf9f9528f3ea903b3782339f"
 }'
 ```
+
 Parameter owner_address: Owner address of the smart contract
+
 Parameter contract_address: Smart contract address, default hexString
+
 Return: Transaction object
 
 - wallet/addtransactionsign
 
 Description: To sign the transaction of trigger constant contract
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d
 '{
     "owner_address": "41a7d8a35b260395c14aa456297662092ba3b76fc0",
     "contract_address": "417bcb781f4743afaacf9f9528f3ea903b3782339f"
 }'
 ```
+
 Parameter owner_address: Owner address of the smart contract
+
 Parameter contract_address: Smart contract address, default hexString
+
 Return: Transaction object after sign
 
 - wallet/getsignweight
 
 Description: Query the current signatures total weight of a transaction after sign
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d
 '{
     "visible": true,
     "signature": [
@@ -1730,14 +2114,16 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d
     "raw_data_hex": "0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d"
 }'
 ```
+
 Parameter: Transaction object after sign
+
 Return: The current signatures total weight
 
 - wallet/getapprovedlist
 
 Description: Query the signatures list of a transaction after sign
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d
 '{
     "visible": true,
     "signature": [
@@ -1767,14 +2153,16 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d
     "raw_data_hex": "0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d"
 }'
 ```
+
 Parameter: Transaction object after sign
+
 Return: The list of the signatures
 
 - wallet/accountpermissionupdate
 
 Description: To set multi-signature for an account
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
 '{
     "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
     "owner": {
@@ -1820,120 +2208,151 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
     "visible": true
 }'
 ```
+
 Parameter owner_address: Owner address of the account, default hexString
+
 Parameter owner: Account owner permission
+
 Parameter witness: Account witness permission, only for witness
+
 Parameter actives: Operation permission
+
 Return: Transaction object
 
 - wallet/getexpandedspendingkey
 
 Description: To get expanded spending keys from spending key
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getexpandedspendingkey -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getexpandedspendingkey -d
 '{
     "value": "06b02aaa00f230b0887ff57a6609d76691369972ac3ba568fe7a8a0897fce7c4"
 }'
 ```
+
 Parameter value: Spending key
+
 Return: Expanded spending keys, it consists of three keys: ask, nsk and ovk.
 
 - wallet/getakfromask
 
 Description: To get ak key from ask key
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getakfromask -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getakfromask -d
 '{
     "value": "653b3a3fdd40b60d2f53ba121df8840f6590384993f8fa9a0ecb0dfb23496604"
 }'
 ```
+
 Parameter value: Ask key
+
 Return: Ak key
 
 - wallet/getnkfromnsk
 
 Description: To get nk key from nsk key
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getnkfromnsk -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getnkfromnsk -d
 '{
     "value": "428ff3c9e101dc1fca08f7b0e3387b23b68016746ae565aefc19d112b696db01"
 }'
 ```
+
 Parameter value: Nsk key
+
 Return: Nk key
 
 - wallet/getspendingkey
 
 Description: To get spending key
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getspendingkey
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getspendingkey
 ```
+
 Parameter: No Parameter
+
 Return: Spending key
 
 - wallet/getdiversifier
 
 Description: To get diversifier
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getdiversifier
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getdiversifier
 ```
+
 Parameter: No Parameter
+
 Return: Diversifier
 
 - wallet/getincomingviewingkey
 
 Description: To get incoming viewing key
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getincomingviewingkey -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getincomingviewingkey -d
 '{
-	"ak":"b443f1a303ef5837ba95750b48b6fef15f9c77f63a8c28c161bcd6613f423b5c",
+  "ak":"b443f1a303ef5837ba95750b48b6fef15f9c77f63a8c28c161bcd6613f423b5c",
     "nk":"632137e69179df3d10e252fcce85d13464c3163fe7a619edf8d43ebefa8162d9"
  }'
 ```
+
 Parameter ak: Ak
+
 Parameter nk: Nk
+
 Return: Incoming viewing key
 
 - wallet/getzenpaymentaddress
 
 Description: To get payment address
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getzenpaymentaddress -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getzenpaymentaddress -d
 '{
-	"ivk":"8c7852e10862d8eec058635974f70f24c1f8d73819131bb5b54028d0a9408a03",
+  "ivk":"8c7852e10862d8eec058635974f70f24c1f8d73819131bb5b54028d0a9408a03",
     "d":"736ba8692ed88a5473e009"
  }'
 ```
+
 Parameter ivk: Ivk
+
 Parameter d: D
+
 Return: Payment address
 
 - wallet/createshieldedtransactionwithoutspendauthsig
 
 Description: To create shielded transaction without using ask
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspendauthsig -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspendauthsig -d
 '{
-	"ivk":"8c7852e10862d8eec058635974f70f24c1f8d73819131bb5b54028d0a9408a03",
+  "ivk":"8c7852e10862d8eec058635974f70f24c1f8d73819131bb5b54028d0a9408a03",
     "d":"736ba8692ed88a5473e009"
  }'
 ```
+
 Parameter transparent_from_address: Transparent sender's address
+
 Parameter from_amount: Send amount from transparent address
+
 Parameter ask: Ask
+
 Parameter nsk: Nsk
+
 Parameter ovk: Ovk
+
 Parameter shielded_receives: Shielded receive information
+
 Parameter shieldedSpends: Shielded spend information
+
 Parameter transparent_to_address: Transparent receiver's address
+
 Parameter to_amount: Send amount to transparent address
+
 Return: Transaction object
 
 - wallet/createshieldedtransactionwithoutspendauthsig
 
 Description: To create shielded transaction without using ask
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspendauthsig -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspendauthsig -d
 '{
     "ak": "bf051629fd8122cd9dd8591d72947b026c214cf7cdac1f68eff97179727d38e9",
     "nsk": "42963d26af8122204273fa3489d9efd6babf1f7179ff193c955a1f3d9c2df10c",
@@ -1976,39 +2395,54 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithou
     ]
 }'
 ```
+
 Parameter transparent_from_address: Transparent sender's address
+
 Parameter from_amount: Send amount from transparent address
+
 Parameter ak: Ak
+
 Parameter nsk: Nsk
+
 Parameter ovk: Ovk
+
 Parameter shielded_receives: Shielded receive information
+
 Parameter shieldedSpends: Shielded spend information
+
 Parameter transparent_to_address: Transparent receiver's address
+
 Parameter to_amount: Send amount to transparent address
+
 Return: Transaction object
 
 - wallet/scannotebyivk
 
 Description: To get all the notes by ivk
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d
 '{
     "start_block_index": 0,
     "end_block_index": 100,
     "ivk": "80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05"
 }'
 ```
+
 Parameter start_block_index: The start block height, itself included
+
 Parameter end_block_index: The end block height, itself not included
+
 Parameter ivk: Incoming viewing key
+
 Return: Notes list
+
 Note: Range limit (end_block_index - start_block_index <= 1000)
 
 - wallet/scanandmarknotebyivk
 
 Description: To get all the notes with spent status by ivk
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/scanandmarknotebyivk -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/scanandmarknotebyivk -d
 '{
     "start_block_index": 0,
     "end_block_index": 100,
@@ -2017,60 +2451,76 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/scanandmarknotebyivk -d
     "nk": "748522c7571a9da787e43940c9a474aa0c5c39b46c338905deb6726fa3678bdb"
 }'
 ```
+
 Parameter start_block_index: The start block height, itself included
+
 Parameter end_block_index: The end block height, itself not included
+
 Parameter ivk: Incoming viewing key
+
 Parameter ak: Ak key
+
 Parameter nk: Nk key
+
 Return: Notes list
+
 Note: Range limit (end_block_index - start_block_index <= 1000)
 
 - wallet/scannotebyovk
 
 Description: To get all the notes by ovk
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d
 '{
     "start_block_index": 0,
     "end_block_index": 100,
     "ovk": "705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539"
 }'
 ```
+
 Parameter start_block_index: The start block height, itself included
+
 Parameter end_block_index: The end block height, itself not included
+
 Parameter ovk: Outgoing viewing key
+
 Return: Notes list
+
 Note: Range limit (end_block_index - start_block_index <= 1000)
 
 - wallet/getrcm
 
 Description: To get a random commitment trapdoor
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getrcm
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getrcm
 ```
+
 Parameter: No Parameter
+
 Return: A random commitment trapdoor
 
 - wallet/getmerkletreevoucherinfo
 
 Description: To get a merkle tree infromation of a note
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d
 '{
-	"out_points":[{
-		"hash":"185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74",
-		"index":0
-	}]
+  "out_points":[{
+    "hash":"185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74",
+    "index":0
+  }]
 }'
 ```
+
 Parameter out_points: Note information
+
 Return: A merkle tree of a note
 
 - wallet/isspend
 
 Description: To check whether a note is spent or not
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/isspend -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/isspend -d
 '{
     "ak": "a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129",
     "nk": "62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e",
@@ -2083,34 +2533,44 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/isspend -d
     "index": 1
 }'
 ```
+
 Parameter ak: Ak key
+
 Parameter nk: Nk key
+
 Parameter note: Note information
+
 Parameter txid: Transaction id
+
 Parameter index: Note index
+
 Return: Note status
 
 - wallet/createspendauthsig
 
 Description: To create a signature for a transaction
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/createspendauthsig -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/createspendauthsig -d
 '{
     "ask": "e3ebcba1531f6d9158d9c162660c5d7c04dadf77d85d7436a9c98b291ff69a09",
     "tx_hash": "3b78fee6e956f915ffe082284c5f18640edca9c57a5f227e5f7d7eb65ad61502",
     "alpha": "2608999c3a97d005a879ecdaa16fd29ae434fb67b177c5e875b0c829e6a1db04"
 }'
 ```
+
 Parameter ask: Ask key
+
 Parameter tx_hash: Transaction hash
+
 Parameter alpha: Alpha
+
 Return: A signature
 
 - wallet/createshieldnullifier
 
 Description: To create a shielded nullifier
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldnullifier -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/createshieldnullifier -d
 '{
     "note": {
         "payment_address": "ztron1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq",
@@ -2129,17 +2589,22 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldnullifier -d
     "nk": "62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e"
 }'
 ```
+
 Parameter note: Note information
+
 Parameter voucher: Voucher information
+
 Parameter ak: Ak
+
 Parameter nk: Nk
+
 Return: A shielded nullifier
 
 - wallet/getshieldtransactionhash
 
 Description: To get a shielded transaction hash
-```json
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getshieldtransactionhash -d
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getshieldtransactionhash -d
 '{
     "txID": "de639a64497d86bb27e34a2953093a0cc488ec4c7bc9624ac5857d3799748595",
     "raw_data": {
@@ -2182,40 +2647,61 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getshieldtransactionhash -d
 }'
 
 ```
+
 Parameter transaction: Transaction object
+
 Return: a shielded transaction hash
 
 - wallet/createshieldedtransaction
 
 Description: To create shielded transaction
 Please refer to [The Demo](../mechanism-algorithm/shielded-transaction.md)
+
 Parameter transparent_from_address: Transparent sender's address
+
 Parameter from_amount: Send amount from transparent address
+
 Parameter ask: Ask
+
 Parameter nsk: Nsk
+
 Parameter ovk: Ovk
+
 Parameter shielded_receives: Shielded receive information
+
 Parameter shieldedSpends: Shielded spend information
+
 Parameter transparent_to_address: Transparent receiver's address
+
 Parameter to_amount: Send amount to transparent address
+
 Return: Transaction object
-
-
 
 - wallet/getnewshieldedaddress
 
 Description: To get new shieldedAddress
-```json
-demo: curl -X GET  http://127.0.0.1:8090/wallet/getnewshieldedaddress
+```console
+$ curl -X GET  http://127.0.0.1:8090/wallet/getnewshieldedaddress
 ```
+
 Parameter: No Parameter
+
 Return: Spending key
+
 Return: Ask key
+
 Return: Nsk key
+
 Return: Outgoing viewing key
+
 Return: Ak Key
+
 Return: Nk key
+
 Return: incoming viewing key
+
 Return: Diversifier
+
 Return: pkD
+
 Return: payment address
