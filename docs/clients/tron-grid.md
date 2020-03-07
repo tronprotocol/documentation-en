@@ -1,5 +1,9 @@
 # TronGrid
 
+The up-to-date TronGrid API Documentation is at [https://developers.tron.network/docs/tron-grid-intro](https://developers.tron.network/docs/tron-grid-intro).
+
+## Introduction
+
 TronGrid provides TRON clients running in the cloud, so you don't have to run one yourself to work with TRON on your next project.
 
 TronGrid offers an easy to use hosted API, load balanced full nodes, secure and reliable developer tools with direct access to the TRON Network.
