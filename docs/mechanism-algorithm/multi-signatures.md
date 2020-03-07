@@ -2,19 +2,18 @@
 
 ## Background
 
-**Notice: Since V3.5**
+!!! note
+    **Since v3.5** In the past version, the transactions created in one account can only be signed by one private key, an account can only be managed by one private key. Since V3.5, an account can be managed by several private keys, and the transactions created in one account can be signed by serval private keys.
 
-In the past version, the transactions created in one account can only be signed by one private key, an account can only be managed by one private key. Since V3.5, an account can be managed by several private keys, and the transactions created in one account can be signed by serval private keys.
-
-[Tron multi-signatures Tip](https://github.com/tronprotocol/TIPs/issues/16)
+Reference: [TIP-16: Account Multi-signature](https://github.com/tronprotocol/TIPs/blob/master/tip-16.md)
 
 ## Concept
 
 There are three types of permission: owner、witness and active. Owner permission has the right to execute all the contracts. Witness permission is for SR. Active permission contains a set of contracts selected execution permissions.
 
-### Protocol
+### Protocol Definition
 
-**Account**
+#### Account
 
 ```protobuf
 message Account {
@@ -27,7 +26,7 @@ message Account {
 
 Three attributes are added, owner_permission、witness_permission and active_permission. active_permission is a list, the length can not be bigger than 8.
 
-**ContractType**
+#### ContractType
 
 ```protobuf
 message Transaction {
@@ -41,9 +40,9 @@ message Transaction {
 }
 ```
 
-AccountPermissionUpdateContract is a new contract used to update the account permission.
+AccountPermissionUpdateContract is a new contract type used to update the account permission.
 
-**AccountPermissionUpdateContract**
+#### AccountPermissionUpdateContract
 
 ```protobuf
 message AccountPermissionUpdateContract {
@@ -61,7 +60,8 @@ message AccountPermissionUpdateContract {
 
 This will override the Original account permission.
 
-**Permission**
+#### Permission
+
 ```protobuf
 message Permission {
   enum PermissionType {
@@ -90,7 +90,7 @@ message Permission {
 
 - `keys`: The accounts and weights that all own the permission, 5 keys at most.
 
-**Key**
+#### Key
 
 ```protobuf
 message Key {
@@ -102,7 +102,7 @@ message Key {
 - `address`: The account address
 - `weight`: The signature weight
 
-**Transaction**
+#### Transaction
 
 ```protobuf
 message Transaction {
@@ -182,10 +182,10 @@ Active permission's features:
 3. build transaction and sign
 4. send transaction
 
-**http-demo**
-```json
-http://{{host}}:{{port}}/wallet/accountpermissionupdate
+Demo HTTP request:
 
+```console
+// POST to http://{{host}}:{{port}}/wallet/accountpermissionupdate
 
 {
   "owner_address": "41ffa9466d5bf6bb6b7e4ab6ef2b1cb9f1f41f9700",
@@ -242,7 +242,7 @@ http://{{host}}:{{port}}/wallet/accountpermissionupdate
 }
 ```
 
-**active permission's operations calculation demo**
+#### Calculate the Active Permission's Operations
 
 ```java
 public static void main(String[] args) {
@@ -264,45 +264,56 @@ public static void main(String[] args) {
 
 ### Contract Execution
 
-1、Create transaction, the same as none multi-signatures
+(1). Create transaction, the same as none multi-signatures
 
-2、Specify Permission_id, default 0, represent owner permission, [demo](https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211)
+(2). Specify `Permission_id`, default 0, represent owner permission, [demo](https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211)
 
-3、User A sign the transaction, and then send it to user B
+(3). User A sign the transaction, and then send it to user B
 
-4、User B sign the transaction gets from A, and then send it to user C
+(4). User B sign the transaction gets from A, and then send it to user C
 
 ......
 
-n、The last users that signs the transaction broadcast it to the node
+(n). The last users that signs the transaction broadcast it to the node
 
-n+1、The node will verify if the sum of the weight of all signatures is bigger than threshold, if true, the transaction is accepted, otherwise, is rejected
+(n+1). The node will verify if the sum of the weight of all signatures is bigger than threshold, if true, the transaction is accepted, otherwise, is rejected
 
 Demo: [MultiSignDemo.java](https://github.com/tronprotocol/wallet-cli/blob/multi_sign_V2/src/main/java/org/tron/demo/MultiSignDemo.java)
 
-### Other API
+### Other APIs
 
-Please refer to [HTTP API](../api/http.md) and [RPC API](../api/rpc.md) for more information
+Please refer to [HTTP API](../api/http.md) and [RPC API](../api/rpc.md) for more information.
 
-1、add signature
-```text
-curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{"transaction": "TransferContract", "privateKey": "permissionkey1"}'
+1. add signature
 
-rpc AddSign (TransactionSign) returns (TransactionExtention) {}
-```
-2、query the addresses that already signed a transaction
-```text
-curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{"transaction"}'
+    ```console
+    > curl -X POST http://127.0.0.1:8090/wallet/addtransactionsign -d '
+      {"transaction": "TransferContract", "privateKey": "permissionkey1"}'
+    ```
 
-rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList) { }
-```
+    ```protobuf
+    rpc AddSign (TransactionSign) returns (TransactionExtention) {}
+    ```
 
-3、query the signature weigth of a transaction
-```text
-curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{"transaction"}'
+2. query the addresses that already signed a transaction
 
-rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}
-```
+    ```console
+    > curl -X POST http://127.0.0.1:8090/wallet/getapprovedlist -d '{"transaction"}'
+    ```
+
+    ```protobuf
+    rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList) { }
+    ```
+
+3. query the signature weigth of a transaction
+
+    ```console
+    > curl -X POST http://127.0.0.1:8090/wallet/getsignweight -d '{"transaction"}'
+    ```
+
+    ```protobuf
+    rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}
+    ```
 
 ## Others
 
@@ -311,8 +322,7 @@ Since V3.5, what is the change after a new account is created?
 When to create a new account, an owner permission and active permission will be generated automatically. Owner permission only contains one key, the weight and threshold are both 1. Active permission also contains one key, the weight and threshold are both 1, and operations is "7fff1fc0033e0000000000000000000000000000000000000000000000000000", means it support the execution of all contracts except AccountPermissionUpdateContract.
 After V3.5, if there is a new system contract, the default operations value of the newly created account will change. The operations of existing accounts will not change.
 
-Please refer to [wallet-cli](https://github.com/tronprotocol/wallet-cli/blob/master/README.md) to check the usage of multi-signatures.
-
+Please refer to [wallet-cli](https://github.com/tronprotocol/wallet-cli/blob/master/README.md) to check the usage of multi-signature.
 
 ## Fees
 
