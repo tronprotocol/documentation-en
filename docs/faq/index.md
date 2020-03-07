@@ -1,8 +1,10 @@
+# The Tron FAQ
+
 ## TRON Network Design and Protocol Questions
 
 **Ask: How can I generate an account?**
 
-Answer: You can use [Wallet-cli](https://github.com/tronprotocol/wallet-cli) or [Tronscan](https://tronscan.org/#/wallet/new)
+Answer: You can use [wallet-cli](https://github.com/tronprotocol/wallet-cli) or [Tronscan](https://tronscan.org/#/wallet/new).
 
 **Ask: What is the network flow?**
 
@@ -170,9 +172,9 @@ Answer: Please use './gradlew build -x test' to skip the test cases.
 **Ask: How to test if the deployment works normally, if there is a test api or command like redis: get ping return pong?**
 
 Answer: Java-tron does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. You can also use the following command to test:
-       
+
 ```text
-- tail -f logs/tron.log |grep "MyheadBlockNumber"
+> tail -f logs/tron.log |grep "MyheadBlockNumber"
 ```
 
 **Ask: When to deploy private environment, what's the relationship of SuperNode and FullNode? Should I firstly deploy a SuperNode, and then deploy a FullNode？**
@@ -183,7 +185,7 @@ Answer: Under private environment, there should be at least one SuperNode, there
 
 Answer: Using the following command
 ```text
-- tail -f logs/tron.log |grep "Try Produce Block"
+> tail -f logs/tron.log |grep "Try Produce Block"
 ```
 
 **Ask: Can SolidityNode and FullNode be deployed in one machine? Will they share the data?**
@@ -286,7 +288,7 @@ triggercontract contractaddress balanceOf(address) "youraddress" false 0 0 0 #
 ```
 Answer: This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to chek the block height.
 ```text
-- tail -f logs/tron.log |grep "MyheadBlockNumber"
+> tail -f logs/tron.log |grep "MyheadBlockNumber"
 ```
 
 ## Other Questions
