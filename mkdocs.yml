@@ -23,7 +23,7 @@ nav:
     - Architecture:
         - Network: architecture/network.md
         - Database: architecture/database.md
-        - Event: architecture/event.md
+        - Event Subsystem: architecture/event.md
     - Smart Contract:
         - TVM: contracts/tvm.md
         - Compiler: contracts/compiler.md
