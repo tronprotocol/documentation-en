@@ -210,10 +210,10 @@
 <h3 id="convert-leveldb-data-to-rocksdb-data">Convert LevelDB data to RocksDB data<a class="headerlink" href="#convert-leveldb-data-to-rocksdb-data" title="Permanent link">&para;</a></h3>
 <p>The data storage structure of LevelDB and RocksDB is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert LevelDB data to RocksDB data.</p>
 <p>Usage:</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> <span class="nb">cd</span> /path/to/java-tron/source-code
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> <span class="nb">cd</span> /path/to/java-tron/source-code
 <span class="gp">&gt;</span> ./gradlew build  <span class="c1"># build the source code</span>
 <span class="gp">&gt;</span> java -jar build/libs/DBConvert.jar  <span class="c1"># run data conversion command</span>
-</pre></div>
+</code></pre></div>
 
 <p>Note: If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:</p>
 <ul>
@@ -221,20 +221,20 @@
 <li><strong>dst_db_path</strong>: specify RocksDb source directory, default output-directory-dst/database</li>
 </ul>
 <p>Example, if you run the script like this:</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> nohup java -jar FullNode.jar -d your_database_dir &lt;/dev/null <span class="p">&amp;</span>&gt;/dev/null <span class="p">&amp;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> nohup java -jar FullNode.jar -d your_database_dir &lt;/dev/null <span class="p">&amp;</span>&gt;/dev/null <span class="p">&amp;</span>
+</code></pre></div>
 
 <p>then, you should run DBConvert.jar this way:</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> java -jar build/libs/DBConvert.jar your_database_dir/database output-directory-dst/database
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> java -jar build/libs/DBConvert.jar your_database_dir/database output-directory-dst/database
+</code></pre></div>
 
 <p>Note: You have to stop the running of the node, and then to run the data conversion script.</p>
 <p>If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node. Run DBConvert.jar in the previous directory of the new directory, and specify the parameters: <code>src_db_path</code> and <code>dst_db_path</code>.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> cp -rf output-directory /tmp/output-directory
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> cp -rf output-directory /tmp/output-directory
 <span class="gp">&gt;</span> <span class="nb">cd</span> /tmp
 <span class="gp">&gt;</span> java -jar DBConvert.jar output-directory/database output-directory-dst/database
-</pre></div>
+</code></pre></div>
 
 <p>All the whole data conversion process may take 10 hours.</p>
 <h3 id="rocksdb-vs-leveldb">RocksDB vs LevelDB<a class="headerlink" href="#rocksdb-vs-leveldb" title="Permanent link">&para;</a></h3>

@@ -242,17 +242,17 @@
 <p>There are three types of permission: owner、witness and active. Owner permission has the right to execute all the contracts. Witness permission is for SR. Active permission contains a set of contracts selected execution permissions.</p>
 <h3 id="protocol-definition">Protocol Definition<a class="headerlink" href="#protocol-definition" title="Permanent link">&para;</a></h3>
 <h4 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="kd">message</span> <span class="nc">Account</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">message</span> <span class="nc">Account</span> <span class="p">{</span>
   <span class="c1">// ...</span>
   <span class="n">Permission</span> <span class="na">owner_permission</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
   <span class="n">Permission</span> <span class="na">witness_permission</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span>
   <span class="k">repeated</span> <span class="n">Permission</span> <span class="na">active_permission</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 <p>Three attributes are added, owner_permission、witness_permission and active_permission. active_permission is a list, the length can not be bigger than 8.</p>
 <h4 id="contracttype">ContractType<a class="headerlink" href="#contracttype" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="kd">message</span> <span class="nc">Transaction</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">message</span> <span class="nc">Transaction</span> <span class="p">{</span>
   <span class="kd">message</span> <span class="nc">Contract</span> <span class="p">{</span>
     <span class="kd">enum</span> <span class="n">ContractType</span> <span class="p">{</span>
       <span class="na">AccountCreateContract</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -261,17 +261,17 @@
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 <p>AccountPermissionUpdateContract is a new contract type used to update the account permission.</p>
 <h4 id="accountpermissionupdatecontract">AccountPermissionUpdateContract<a class="headerlink" href="#accountpermissionupdatecontract" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="kd">message</span> <span class="nc">AccountPermissionUpdateContract</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">message</span> <span class="nc">AccountPermissionUpdateContract</span> <span class="p">{</span>
   <span class="kt">bytes</span> <span class="na">owner_address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="n">Permission</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
   <span class="n">Permission</span> <span class="na">witness</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
   <span class="k">repeated</span> <span class="n">Permission</span> <span class="na">actives</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 <ul>
 <li><code>owner_address</code>: The account applys multi-signatures</li>
@@ -281,7 +281,7 @@
 </ul>
 <p>This will override the Original account permission.</p>
 <h4 id="permission">Permission<a class="headerlink" href="#permission" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="kd">message</span> <span class="nc">Permission</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">message</span> <span class="nc">Permission</span> <span class="p">{</span>
   <span class="kd">enum</span> <span class="n">PermissionType</span> <span class="p">{</span>
     <span class="na">Owner</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="na">Witness</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -295,7 +295,7 @@
   <span class="kt">bytes</span> <span class="na">operations</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
   <span class="k">repeated</span> <span class="n">Key</span> <span class="na">keys</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 <ul>
 <li><code>PermissionType</code>: Pemission type</li>
@@ -312,22 +312,22 @@
 </li>
 </ul>
 <h4 id="key">Key<a class="headerlink" href="#key" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="kd">message</span> <span class="nc">Key</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">message</span> <span class="nc">Key</span> <span class="p">{</span>
   <span class="kt">bytes</span> <span class="na">address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="kt">int64</span> <span class="na">weight</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 <ul>
 <li><code>address</code>: The account address</li>
 <li><code>weight</code>: The signature weight</li>
 </ul>
 <h4 id="transaction">Transaction<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="kd">message</span> <span class="nc">Transaction</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">message</span> <span class="nc">Transaction</span> <span class="p">{</span>
   <span class="c1">// ...</span>
   <span class="kt">int32</span> <span class="na">Permission_id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 <p><code>Permission_id</code> is added. It is corresponding to <code>Permission.id</code>
 1 is not allowed, because witness permission is only used to produce blocks, not for transaction signature.</p>
@@ -349,20 +349,20 @@ A super representative deploys a witness node on cloud server. In order to keep 
 <li>if no witness permission is used, no need to configure</li>
 <li>if itness permission is used, need to reconfigure:</li>
 </ol>
-<div class="codehilite"><pre><span></span># config.conf
+<div class="codehilite"><pre><span></span><code><span class="o">#</span> <span class="n">config</span><span class="p">.</span><span class="n">conf</span>
 
-// Optional.The default is empty.
-// It is used when the witness account has set the witnessPermission.
-// When it is not empty, the localWitnessAccountAddress represents the address of the witness account,
-// and the localwitness is configured with the private key of the witnessPermissionAddress in the witness account.
-// When it is empty,the localwitness is configured with the private key of the witness account.
+<span class="o">//</span> <span class="n">Optional</span><span class="p">.</span><span class="n">The</span> <span class="k">default</span> <span class="k">is</span> <span class="n">empty</span><span class="p">.</span>
+<span class="o">//</span> <span class="n">It</span> <span class="k">is</span> <span class="n">used</span> <span class="k">when</span> <span class="n">the</span> <span class="n">witness</span> <span class="n">account</span> <span class="n">has</span> <span class="k">set</span> <span class="n">the</span> <span class="n">witnessPermission</span><span class="p">.</span>
+<span class="o">//</span> <span class="k">When</span> <span class="n">it</span> <span class="k">is</span> <span class="k">not</span> <span class="n">empty</span><span class="p">,</span> <span class="n">the</span> <span class="n">localWitnessAccountAddress</span> <span class="n">represents</span> <span class="n">the</span> <span class="n">address</span> <span class="k">of</span> <span class="n">the</span> <span class="n">witness</span> <span class="n">account</span><span class="p">,</span>
+<span class="o">//</span> <span class="k">and</span> <span class="n">the</span> <span class="n">localwitness</span> <span class="k">is</span> <span class="n">configured</span> <span class="k">with</span> <span class="n">the</span> <span class="n">private</span> <span class="k">key</span> <span class="k">of</span> <span class="n">the</span> <span class="n">witnessPermissionAddress</span> <span class="k">in</span> <span class="n">the</span> <span class="n">witness</span> <span class="n">account</span><span class="p">.</span>
+<span class="o">//</span> <span class="k">When</span> <span class="n">it</span> <span class="k">is</span> <span class="n">empty</span><span class="p">,</span><span class="n">the</span> <span class="n">localwitness</span> <span class="k">is</span> <span class="n">configured</span> <span class="k">with</span> <span class="n">the</span> <span class="n">private</span> <span class="k">key</span> <span class="k">of</span> <span class="n">the</span> <span class="n">witness</span> <span class="n">account</span><span class="p">.</span>
 
-//localWitnessAccountAddress =
+<span class="o">//</span><span class="n">localWitnessAccountAddress</span> <span class="o">=</span>
 
-localwitness = [
-  f4df789d3210ac881cb900464dd30409453044d2777060a0c391cbdf4c6a4f57
-]
-</pre></div>
+<span class="n">localwitness</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="n">f4df789d3210ac881cb900464dd30409453044d2777060a0c391cbdf4c6a4f57</span>
+<span class="p">]</span>
+</code></pre></div>
 
 <h3 id="active-permission">Active Permission<a class="headerlink" href="#active-permission" title="Permanent link">&para;</a></h3>
 <p>Active permission is composed of a set of contract execution permission, like creating an account, trnasfer function, etc.</p>
@@ -390,7 +390,7 @@ localwitness = [
 <li>send transaction</li>
 </ol>
 <p>Demo HTTP request:</p>
-<div class="codehilite"><pre><span></span><span class="go">// POST to http://{{host}}:{{port}}/wallet/accountpermissionupdate</span>
+<div class="codehilite"><pre><span></span><code><span class="go">// POST to http://{{host}}:{{port}}/wallet/accountpermissionupdate</span>
 
 <span class="go">{</span>
 <span class="go">  &quot;owner_address&quot;: &quot;41ffa9466d5bf6bb6b7e4ab6ef2b1cb9f1f41f9700&quot;,</span>
@@ -445,25 +445,25 @@ localwitness = [
 <span class="go">    ]</span>
 <span class="go">  }]</span>
 <span class="go">}</span>
-</pre></div>
+</code></pre></div>
 
 <h4 id="calculate-the-active-permissions-operations">Calculate the Active Permission's Operations<a class="headerlink" href="#calculate-the-active-permissions-operations" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
 
   <span class="c1">//you need to specify the id of the contract you need to give permission to by referring to the definition of Transaction.ContractType in proto to get the id of the contract, below includes all the contract except AccountPermissionUpdateContract(id=46)</span>
 
-  <span class="n">Integer</span><span class="o">[]</span> <span class="n">contractId</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">11</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">13</span><span class="o">,</span> <span class="mi">14</span><span class="o">,</span> <span class="mi">15</span><span class="o">,</span> <span class="mi">16</span><span class="o">,</span> <span class="mi">17</span><span class="o">,</span> <span class="mi">18</span><span class="o">,</span> <span class="mi">19</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span>
-      <span class="mi">32</span><span class="o">,</span> <span class="mi">33</span><span class="o">,</span> <span class="mi">41</span><span class="o">,</span> <span class="mi">42</span><span class="o">,</span> <span class="mi">43</span><span class="o">,</span> <span class="mi">44</span><span class="o">,</span> <span class="mi">45</span><span class="o">};</span>
-  <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">contractId</span><span class="o">));</span>
-  <span class="kt">byte</span><span class="o">[]</span> <span class="n">operations</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">32</span><span class="o">];</span>
-  <span class="n">list</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
-    <span class="n">operations</span><span class="o">[</span><span class="n">e</span> <span class="o">/</span> <span class="mi">8</span><span class="o">]</span> <span class="o">|=</span> <span class="o">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">8</span><span class="o">);</span>
-  <span class="o">});</span>
+  <span class="n">Integer</span><span class="o">[]</span> <span class="n">contractId</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span>
+      <span class="mi">32</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">45</span><span class="p">};</span>
+  <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">contractId</span><span class="p">));</span>
+  <span class="kt">byte</span><span class="o">[]</span> <span class="n">operations</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">32</span><span class="o">]</span><span class="p">;</span>
+  <span class="n">list</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="p">{</span>
+    <span class="n">operations</span><span class="o">[</span><span class="n">e</span> <span class="o">/</span> <span class="mi">8</span><span class="o">]</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">8</span><span class="p">);</span>
+  <span class="p">});</span>
 
   <span class="c1">//7fff1fc0033e0000000000000000000000000000000000000000000000000000</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ByteArray</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">operations</span><span class="o">));</span>
-<span class="o">}</span>
-</pre></div>
+  <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ByteArray</span><span class="p">.</span><span class="na">toHexString</span><span class="p">(</span><span class="n">operations</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <h3 id="contract-execution">Contract Execution<a class="headerlink" href="#contract-execution" title="Permanent link">&para;</a></h3>
 <p>(1). Create transaction, the same as none multi-signatures</p>
@@ -479,30 +479,30 @@ localwitness = [
 <ol>
 <li>
 <p>add signature</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> curl -X POST http://127.0.0.1:8090/wallet/addtransactionsign -d <span class="err">&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> curl -X POST http://127.0.0.1:8090/wallet/addtransactionsign -d <span class="err">&#39;</span>
 <span class="go">  {&quot;transaction&quot;: &quot;TransferContract&quot;, &quot;privateKey&quot;: &quot;permissionkey1&quot;}&#39;</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">AddSign</span> <span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">rpc</span> <span class="n">AddSign</span> <span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
 
 </li>
 <li>
 <p>query the addresses that already signed a transaction</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> curl -X POST http://127.0.0.1:8090/wallet/getapprovedlist -d <span class="s1">&#39;{&quot;transaction&quot;}&#39;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> curl -X POST http://127.0.0.1:8090/wallet/getapprovedlist -d <span class="s1">&#39;{&quot;transaction&quot;}&#39;</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetTransactionApprovedList</span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionApprovedList</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetTransactionApprovedList</span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionApprovedList</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
 
 </li>
 <li>
 <p>query the signature weigth of a transaction</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> curl -X POST http://127.0.0.1:8090/wallet/getsignweight -d <span class="s1">&#39;{&quot;transaction&quot;}&#39;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> curl -X POST http://127.0.0.1:8090/wallet/getsignweight -d <span class="s1">&#39;{&quot;transaction&quot;}&#39;</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetTransactionSignWeight</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionSignWeight</span><span class="p">)</span> <span class="p">{}</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetTransactionSignWeight</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionSignWeight</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
 
 </li>
 </ol>

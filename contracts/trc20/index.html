@@ -194,23 +194,23 @@
 <ul>
 <li>Token Name</li>
 </ul>
-<div class="codehilite"><pre><span></span>string public constant name = “TRONEuropeRewardCoin”;
-</pre></div>
+<div class="codehilite"><pre><span></span><code>string public constant name = “TRONEuropeRewardCoin”;
+</code></pre></div>
 
 <ul>
 <li>Token Abbreviation</li>
 </ul>
-<div class="codehilite"><pre><span></span>string public constant symbol = “TERC”;
-</pre></div>
+<div class="codehilite"><pre><span></span><code>string public constant symbol = “TERC”;
+</code></pre></div>
 
 <ul>
 <li>Token Precision</li>
 </ul>
-<div class="codehilite"><pre><span></span>uint8 public constant decimals = 6;
-</pre></div>
+<div class="codehilite"><pre><span></span><code>uint8 public constant decimals = 6;
+</code></pre></div>
 
 <p><strong>6 Required Items</strong></p>
-<div class="codehilite"><pre><span></span>contract TRC20 {
+<div class="codehilite"><pre><span></span><code>contract TRC20 {
     function totalSupply() constant returns (uint theTotalSupply);
     function balanceOf(address _owner) constant returns (uint balance);
     function transfer(address _to, uint _value) returns (bool success);
@@ -220,7 +220,7 @@
     event Transfer(address indexed _from, address indexed _to, uint _value);
     event Approval(address indexed _owner, address indexed _spender, uint _value);
 }
-</pre></div>
+</code></pre></div>
 
 <ul>
 <li>totalSupply()</li>
@@ -248,15 +248,15 @@
 <p>This function is used to query the remaining amount of tokens the third party can transfer.</p>
 <p><strong>2 Event Functions</strong></p>
 <p>When token is successfully transferred, it has to trigger Transfer Event.</p>
-<div class="codehilite"><pre><span></span>event Transfer(address indexed _from, address indexed _to, uint256 _value)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>event Transfer(address indexed _from, address indexed _to, uint256 _value)
+</code></pre></div>
 
 <p>When approval() is successfully called, it has to trigger Approval Event.</p>
-<div class="codehilite"><pre><span></span>event Approval(address indexed _owner, address indexed _spender, uint256 _value)
-</pre></div>
+<div class="codehilite"><pre><span></span><code>event Approval(address indexed _owner, address indexed _spender, uint256 _value)
+</code></pre></div>
 
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>pragma solidity ^0.4.16;
+<div class="codehilite"><pre><span></span><code>pragma solidity ^0.4.16;
 
 interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) external; }
 
@@ -409,7 +409,7 @@ contract TokenTRC20 {
         return true;
     }
 }
-</pre></div>
+</code></pre></div>
               
             </div>
           </div>

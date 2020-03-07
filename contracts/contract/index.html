@@ -196,51 +196,51 @@
 <h3> 1. Smart Contract </h3>
 
 <p>TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:</p>
-<div class="codehilite"><pre><span></span>message SmartContract {
-  message ABI {
-    message Entry {
-      enum EntryType {
-        UnknownEntryType = 0;
-        Constructor = 1;
-        Function = 2;
-        Event = 3;
-        Fallback = 4;
-      }
-      message Param {
-        bool indexed = 1;
-        string name = 2;
-        string type = 3;
-        // SolidityType type = 3;
-      }
-      enum StateMutabilityType {
-        UnknownMutabilityType = 0;
-        Pure = 1;
-        View = 2;
-        Nonpayable = 3;
-        Payable = 4;
-      }
+<div class="codehilite"><pre><span></span><code><span class="n">message</span> <span class="n">SmartContract</span> <span class="err">{</span>
+  <span class="n">message</span> <span class="n">ABI</span> <span class="err">{</span>
+    <span class="n">message</span> <span class="n">Entry</span> <span class="err">{</span>
+      <span class="n">enum</span> <span class="n">EntryType</span> <span class="err">{</span>
+        <span class="n">UnknownEntryType</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">Constructor</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">Function</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">Event</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">Fallback</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+      <span class="err">}</span>
+      <span class="n">message</span> <span class="n">Param</span> <span class="err">{</span>
+        <span class="n">bool</span> <span class="n">indexed</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">string</span> <span class="k">type</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="o">//</span> <span class="n">SolidityType</span> <span class="k">type</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+      <span class="err">}</span>
+      <span class="n">enum</span> <span class="n">StateMutabilityType</span> <span class="err">{</span>
+        <span class="n">UnknownMutabilityType</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">Pure</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">View</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">Nonpayable</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">Payable</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+      <span class="err">}</span>
 
-      bool anonymous = 1;
-      bool constant = 2;
-      string name = 3;
-      repeated Param inputs = 4;
-      repeated Param outputs = 5;
-      EntryType type = 6;
-      bool payable = 7;
-      StateMutabilityType stateMutability = 8;
-    }
-    repeated Entry entrys = 1;
-  }
-  bytes origin_address = 1;
-  bytes contract_address = 2;
-  ABI abi = 3;
-  bytes bytecode = 4;
-  int64 call_value = 5;
-  int64 consume_user_resource_percent = 6;
-  string name = 7；
-  int64 origin_energy_limit = 8;
-}
-</pre></div>
+      <span class="n">bool</span> <span class="n">anonymous</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">bool</span> <span class="n">constant</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+      <span class="n">repeated</span> <span class="n">Param</span> <span class="n">inputs</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+      <span class="n">repeated</span> <span class="n">Param</span> <span class="n">outputs</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+      <span class="n">EntryType</span> <span class="k">type</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+      <span class="n">bool</span> <span class="n">payable</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+      <span class="n">StateMutabilityType</span> <span class="n">stateMutability</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="err">}</span>
+    <span class="n">repeated</span> <span class="n">Entry</span> <span class="n">entrys</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="err">}</span>
+  <span class="n">bytes</span> <span class="n">origin_address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">bytes</span> <span class="n">contract_address</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">ABI</span> <span class="n">abi</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="n">bytes</span> <span class="n">bytecode</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="n">int64</span> <span class="n">call_value</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="n">int64</span> <span class="n">consume_user_resource_percent</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+  <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="mi">7</span><span class="err">；</span>
+  <span class="n">int64</span> <span class="n">origin_energy_limit</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <p>origin_address: smart contract creator address
@@ -288,7 +288,7 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 <p>Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.</p>
 <p>1.&nbsp;address conversion</p>
 <p>Need to convert TRON's address while using in solidity (recommended):
-<div class="codehilite"><pre><span></span>/**
+<div class="codehilite"><pre><span></span><code>/**
      *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
@@ -297,11 +297,11 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 function convertFromTronInt(uint256 tronAddress) public view returns(address){
         return address(tronAddress);
 }
-</pre></div>
+</code></pre></div>
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.</p>
 <p>2.&nbsp;address judgement</p>
 <p>Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-<div class="codehilite"><pre><span></span>function compareAddress(address tronAddress) public view returns (uint256){
+<div class="codehilite"><pre><span></span><code>function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
         if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
             return 1;
@@ -309,16 +309,16 @@ This is similar with the grammar of the conversion from other types converted to
             return 0;
         }
 }
-</pre></div>
+</code></pre></div>
 But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c</p>
 <p>3.&nbsp;variable assignment</p>
 <p>Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-<div class="codehilite"><pre><span></span>function assignAddress() public view {
+<div class="codehilite"><pre><span></span><code>function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
         address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
         // do something
 }
-</pre></div>
+</code></pre></div>
 If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).</p>
 <h3> 4. The Special Constants Differ from Ethereum </h3>
 

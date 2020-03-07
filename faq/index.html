@@ -247,8 +247,8 @@
 Note: The addresses of Zion、Sun and Blackhole can not be deleted, but can be modified.</p>
 <p><strong>Ask: How can I specify the data storage path when start a node?</strong></p>
 <p>Answer: You can add the data storage path when you start the node, like:
-<div class="codehilite"><pre><span></span>java -jar FullNode.jar -c config.conf -d /data/output
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code>java -jar FullNode.jar -c config.conf -d /data/output
+</code></pre></div></p>
 <p><strong>Ask: Is there any config file option, which I can use for sending logs to stdout?</strong></p>
 <p>Answer: Steps to send logs to stdout:</p>
 <p>Download <a href="https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml">https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml</a></p>
@@ -259,11 +259,11 @@ uncomment the configuration: appender-ref ref="STDOUT"
 comment the configuration: appender-ref ref="ASYNC"</p>
 <p>Move logback.xml to the same directory with FullNode.jar</p>
 <p>Launch FullNode.jar with additional parameter: --log-config logback.xml, for example:
-<div class="codehilite"><pre><span></span>java -jar FullNode.jar --log-config logback.xml
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code>java -jar FullNode.jar --log-config logback.xml
+</code></pre></div></p>
 <p><strong>Ask: How to change log level</strong></p>
 <p>Answer: The log level is defined in logback.xml. Please set the root level to "ERROR" if you want to filter only error logs. Please refer to the configuration below.
-<div class="codehilite"><pre><span></span>&lt;root level=&quot;ERROR&quot;&gt;
+<div class="codehilite"><pre><span></span><code>&lt;root level=&quot;ERROR&quot;&gt;
     &lt;!--&lt;appender-ref ref=&quot;STDOUT&quot;/&gt;--&gt;
     &lt;appender-ref ref=&quot;ASYNC&quot;/&gt;
   &lt;/root&gt;
@@ -280,10 +280,10 @@ comment the configuration: appender-ref ref="ASYNC"</p>
   &lt;logger name=&quot;DB&quot; level=&quot;ERROR&quot;/&gt;
   &lt;logger name=&quot;capsule&quot; level=&quot;ERROR&quot;/&gt;
   &lt;logger name=&quot;VM&quot; level=&quot;ERROR&quot;/&gt;
-</pre></div></p>
+</code></pre></div></p>
 <p><strong>Ask: How can I get asset from private net?</strong></p>
 <p>Answer: In private network, you can set the initial account balance in config file. Please refer to below settings:
-<div class="codehilite"><pre><span></span>genesis.block = {
+<div class="codehilite"><pre><span></span><code>genesis.block = {
   # Reserve balance
   assets = [
     {
@@ -305,22 +305,22 @@ comment the configuration: appender-ref ref="ASYNC"</p>
       balance = &quot;1000000000000000&quot;
     }
   ]
-</pre></div></p>
+</code></pre></div></p>
 <h2 id="build-questions">Build Questions<a class="headerlink" href="#build-questions" title="Permanent link">&para;</a></h2>
 <p><strong>Ask: java-tron build failed with unit test issue</strong></p>
 <p>Answer: Please use './gradlew build -x test' to skip the test cases.</p>
 <h2 id="deployment-questions">Deployment Questions<a class="headerlink" href="#deployment-questions" title="Permanent link">&para;</a></h2>
 <p><strong>Ask: How to test if the deployment works normally, if there is a test api or command like redis: get ping return pong?</strong></p>
 <p>Answer: Java-tron does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. You can also use the following command to test:</p>
-<div class="codehilite"><pre><span></span>&gt; tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
-</pre></div>
+<div class="codehilite"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
+</code></pre></div>
 
 <p><strong>Ask: When to deploy private environment, what's the relationship of SuperNode and FullNode? Should I firstly deploy a SuperNode, and then deploy a FullNode？</strong></p>
 <p>Answer: Under private environment, there should be at least one SuperNode, there is no amount limit for FullNode.</p>
 <p><strong>Ask: How to know wether my test SuperNode is running or not?</strong></p>
 <p>Answer: Using the following command
-<div class="codehilite"><pre><span></span>&gt; tail -f logs/tron.log |grep &quot;Try Produce Block&quot;
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;Try Produce Block&quot;
+</code></pre></div></p>
 <p><strong>Ask: Can SolidityNode and FullNode be deployed in one machine? Will they share the data?</strong></p>
 <p>Answer: They can be deployed in one machine. You can specify the data storage path in configuration file <code>db.directory = "database"，index.directory = "index"</code>. You can run FullNode.jar and SolidityNode.jar in different paths to separate the data and log. Remember to change the port in <code>config.conf</code>, because two nodes can not work using the same port. SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.</p>
 <h2 id="development-questions">Development Questions<a class="headerlink" href="#development-questions" title="Permanent link">&para;</a></h2>
@@ -361,17 +361,17 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 <p>Answer: You can use 'wallet/broadcasthex'.</p>
 <p><strong>Ask: How to get token balance of an account?</strong></p>
 <p>Answer: You can use the following wallet-cli api:</p>
-<div class="codehilite"><pre><span></span>triggercontract contractaddress balanceOf(address) &quot;youraddress&quot; false 0 0 0 #
-</pre></div>
+<div class="codehilite"><pre><span></span><code>triggercontract contractaddress balanceOf(address) &quot;youraddress&quot; false 0 0 0 #
+</code></pre></div>
 
 <h2 id="errors-questions">Errors Questions<a class="headerlink" href="#errors-questions" title="Permanent link">&para;</a></h2>
 <p><strong>Ask: What does the following error message mean?</strong>
-<div class="codehilite"><pre><span></span>17:02:42.699 INFO [o.t.c.s.WitnessService] Try Produce Block
+<div class="codehilite"><pre><span></span><code>17:02:42.699 INFO [o.t.c.s.WitnessService] Try Produce Block
 17:02:42.699 INFO [o.t.c.s.WitnessService] Not sync
-</pre></div>
+</code></pre></div>
 Answer: This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to chek the block height.
-<div class="codehilite"><pre><span></span>&gt; tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
+</code></pre></div></p>
 <h2 id="other-questions">Other Questions<a class="headerlink" href="#other-questions" title="Permanent link">&para;</a></h2>
 <p><strong>Ask: If the node is deployed in China, is there a firewall issue?</strong></p>
 <p>Answer: 39.106.220.120 locates in Beijing, others not.</p>

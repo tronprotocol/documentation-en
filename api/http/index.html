@@ -437,21 +437,21 @@
 <ol>
 <li>
 <p>For the api needs no parameter: by adding 'visible' parameter in the url</p>
-<div class="codehilite"><pre><span></span>http://127.0.0.1:8090/wallet/listexchanges?visible=true
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="c">http://127.0.0.1:8090/wallet/listexchanges?visible=true</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>For POST method api: By adding 'visible' parameter to the most out layer of the json</p>
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/createtransaction -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/createtransaction -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ&quot;,</span>
 <span class="go">    &quot;to_address&quot;: &quot;TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW&quot;,</span>
 <span class="go">    &quot;amount&quot;: 1000000,</span>
 <span class="go">    &quot;visible&quot;: true</span>
 <span class="go">}&#39;</span>
-</pre></div>
+</code></pre></div>
 
 </li>
 <li>
@@ -464,39 +464,39 @@
 <li>/walletsolidity/getaccount</li>
 </ul>
 <p>Description: Query an account information
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccount -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccount -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;address&quot;: &quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: Default hexString</p>
 <p>Return: Account object</p>
 <ul>
 <li>walletsolidity/listwitnesses</li>
 </ul>
 <p>Description: Qyery the list of the witnesses
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8091/walletsolidity/listwitnesses
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8091/walletsolidity/listwitnesses
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of all the witnesses</p>
 <ul>
 <li>/walletsolidity/getassetissuelist</li>
 </ul>
 <p>Description: Query the list of all the tokens
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8091/walletsolidity/getassetissuelist
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8091/walletsolidity/getassetissuelist
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of all the tokens</p>
 <ul>
 <li>/walletsolidity/getpaginatedassetissuelist</li>
 </ul>
 <p>Description: Query the list of all the tokens by pagination
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuelist -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuelist -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;offset&quot;: 0,</span>
 <span class="go">    &quot;limit&quot;: 10</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter offset: the index of the start token</p>
 <p>Parameter limit: the amount of tokens per page</p>
 <p>Return: The list of tokens by pagination</p>
@@ -504,11 +504,11 @@
 <li>/walletsolidity/getassetissuebyname(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query a token by token name
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;44756354616E&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Token name, default hexString</p>
 <p>Return: Token object</p>
 <p>Note: Since Odyssey-v3.2, getassetissuebyid or getassetissuelistbyname is recommended, as since v3.2, token name can be repeatable. If the token name you query is not unique, this api will throw out an error</p>
@@ -516,86 +516,86 @@
 <li>/walletsolidity/getassetissuelistbyname(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the list of tokens by name
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;44756354616E&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Token name, default hexString</p>
 <p>Return: The list of tokens</p>
 <ul>
 <li>/walletsolidity/getassetissuebyid(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query a token by token id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;1000001&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Token id</p>
 <p>Return: Token object</p>
 <ul>
 <li>/walletsolidity/getnowblock</li>
 </ul>
 <p>Description: Query the latest block information
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8091/walletsolidity/getnowblock
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8091/walletsolidity/getnowblock
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: the latest block from solidityNode</p>
 <ul>
 <li>/walletsolidity/getblockbynum</li>
 </ul>
 <p>Description: Query a block information by block height
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbynum -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbynum -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;num&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter num: Block height</p>
 <p>Return: Block information</p>
 <ul>
 <li>/walletsolidity/gettransactionbyid</li>
 </ul>
 <p>Description: Query an transaction infromation by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Transaction id</p>
 <p>Return: Transaction information</p>
 <ul>
 <li>/walletsolidity/gettransactioncountbyblocknum(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query th the number of transactions in a specific block
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;num&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter num: Block height</p>
 <p>Return: The number of transactions</p>
 <ul>
 <li>/walletsolidity/gettransactioninfobyid</li>
 </ul>
 <p>Description: Query the transaction fee, block height by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Transaction id</p>
 <p>Return: Transaction fee &amp; block height</p>
 <ul>
 <li>/walletsolidity/getdelegatedresource(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the energy delegation information
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresource -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresource -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;fromAddress&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;,</span>
 <span class="go">    &quot;toAddress&quot;: &quot;41c6600433381c731f22fc2b9f864b14fe518b322f&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter fromAddress: Energy from address, default hexString</p>
 <p>Parameter toAddress: Energy to address, default hexString</p>
 <p>Return: Energy delegation information</p>
@@ -603,64 +603,64 @@
 <li>/walletsolidity/getdelegatedresourceaccountindex(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the energy delegation index by an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceaccountindex -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceaccountindex -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Address, default hexString</p>
 <p>Return: Energy delegation index</p>
 <ul>
 <li>/walletsolidity/getexchangebyid(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query an exchange pair by exchange pair id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;id&quot;: 1</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter id: Exchange pair id</p>
 <p>Return: Exchange pair object</p>
 <ul>
 <li>/walletsolidity/listexchanges(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the list of all the exchange pairs
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8091/walletsolidity/listexchanges
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8091/walletsolidity/listexchanges
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of all the exchange pairs</p>
 <ul>
 <li>/walletsolidity/getaccountbyid</li>
 </ul>
 <p>Description: Query an account information by account id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;account_id&quot;: &quot;6161616162626262&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter account_id: Account id, default hexString</p>
 <p>Return: Account object</p>
 <ul>
 <li>/walletsolidity/getblockbyid</li>
 </ul>
 <p>Description: Query a block information by block id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Block id</p>
 <p>Return: Block object</p>
 <ul>
 <li>/walletsolidity/getblockbylimitnext</li>
 </ul>
 <p>Description: Query a list of blocks by range
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;startNum&quot;: 1,</span>
 <span class="go">    &quot;endNum&quot;: 2</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter startNum: The start block height, itself included</p>
 <p>Parameter endNum: The end block height, itself not included</p>
 <p>Return: The list of the blocks</p>
@@ -668,18 +668,18 @@
 <li>/walletsolidity/getblockbylatestnum</li>
 </ul>
 <p>Description: Query the several latest blocks
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;num&quot;: 5</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter num: The number of the blocks expected to return</p>
 <p>Return: The list of the blocks</p>
 <ul>
 <li>/walletextension/gettransactionsfromthis(No longer supported in the latest version)</li>
 </ul>
 <p>Description: Query the transactions initiated by an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;account&quot;: {</span>
 <span class="go">        &quot;address&quot;: &quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;</span>
@@ -689,7 +689,7 @@
 <span class="go">    &quot;startTime&quot;: 1546099200000,</span>
 <span class="go">    &quot;endTime&quot;: 1552028828000</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: Address, default hexString</p>
 <p>Parameter offset: The start index of the transactions, must not greater then 10000</p>
 <p>Parameter limit: The number of transactions expected to return, maximum 50, offset+limit must smaller than 10000</p>
@@ -701,7 +701,7 @@
 <li>/walletextension/gettransactionstothis(No longer supported in the latest version)</li>
 </ul>
 <p>Description: Query the transactions received by an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;account&quot;: {</span>
 <span class="go">        &quot;address&quot;: &quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;</span>
@@ -711,7 +711,7 @@
 <span class="go">    &quot;startTime&quot;: 1546099200000,</span>
 <span class="go">    &quot;endTime&quot;: 1552028828000</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: Address, default hexString</p>
 <p>Parameter offset: The start index of the transactions, must not greater then 10000</p>
 <p>Parameter limit: The number of transactions expected to return, maximum 50, offset+limit must smaller than 10000</p>
@@ -723,57 +723,57 @@
 <li>/wallet/getnodeinfo(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the current node infromation
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The node information</p>
 <ul>
 <li>/walletsolidity/getdeferredtransactionbyid</li>
 </ul>
 <p>Description: Query the deferred transaction infromation by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactionbyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactionbyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: transaction id</p>
 <p>Return: Deferred transaction object</p>
 <ul>
 <li>/walletsolidity/getdeferredtransactioninfobyid</li>
 </ul>
 <p>Description: Query the deferred transaction fee, block height by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactioninfobyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactioninfobyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: transaction id</p>
 <p>Return: Deferred transaction fee &amp; block height</p>
 <ul>
 <li>/walletsolidity/getmerkletreevoucherinfo</li>
 </ul>
 <p>Description: To get a merkle tree infromation of a note
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/getmerkletreevoucherinfo -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/getmerkletreevoucherinfo -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;out_points&quot;:[{</span>
 <span class="go">        &quot;hash&quot;:&quot;185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74&quot;,</span>
 <span class="go">        &quot;index&quot;:0</span>
 <span class="go">    }]</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter out_points: Note information</p>
 <p>Return: A merkle tree of a note</p>
 <ul>
 <li>/walletsolidity/scannotebyivk</li>
 </ul>
 <p>Description: To get all the notes by ivk
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyivk -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyivk -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;start_block_index&quot;: 0,</span>
 <span class="go">    &quot;end_block_index&quot;: 100,</span>
 <span class="go">    &quot;ivk&quot;: &quot;80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter start_block_index: The start block height, itself included</p>
 <p>Parameter end_block_index: The end block height, itself not included</p>
 <p>Parameter ivk: Incoming viewing key</p>
@@ -783,7 +783,7 @@
 <li>/walletsolidity/scanandmarknotebyivk</li>
 </ul>
 <p>Description: To get all the notes with spent status by ivk
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/scanandmarknotebyivk -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/scanandmarknotebyivk -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;start_block_index&quot;: 0,</span>
 <span class="go">    &quot;end_block_index&quot;: 100,</span>
@@ -791,7 +791,7 @@
 <span class="go">    &quot;ak&quot;: &quot;1d4f9b5551f4aa9443ceb263f0e208eb7e26080264571c5ef06de97a646fe418&quot;,</span>
 <span class="go">    &quot;nk&quot;: &quot;748522c7571a9da787e43940c9a474aa0c5c39b46c338905deb6726fa3678bdb&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter start_block_index: The start block height, itself included</p>
 <p>Parameter end_block_index: The end block height, itself not included</p>
 <p>Parameter ivk: Incoming viewing key</p>
@@ -803,13 +803,13 @@
 <li>/walletsolidity/scannotebyovk</li>
 </ul>
 <p>Description: To get all the notes by ovk
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyovk -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyovk -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;start_block_index&quot;: 0,</span>
 <span class="go">    &quot;end_block_index&quot;: 100,</span>
 <span class="go">    &quot;ovk&quot;: &quot;705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter start_block_index: The start block height, itself included</p>
 <p>Parameter end_block_index: The end block height, itself not included</p>
 <p>Parameter ovk: Outgoing viewing key</p>
@@ -819,7 +819,7 @@
 <li>/walletsolidity/isspend</li>
 </ul>
 <p>Description: To check whether a note is spent or not
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/isspend -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/walletsolidity/isspend -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;ak&quot;: &quot;a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129&quot;,</span>
 <span class="go">    &quot;nk&quot;: &quot;62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e&quot;,</span>
@@ -831,7 +831,7 @@
 <span class="go">    &quot;txid&quot;: &quot;7d09e471bb047d3ac044d5d6691b3721a2dddbb683ac02c207fbe78af6302463&quot;,</span>
 <span class="go">    &quot;index&quot;: 1</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter ak: Ak key</p>
 <p>Parameter nk: Nk key</p>
 <p>Parameter note: Note information</p>
@@ -844,13 +844,13 @@
 <li>wallet/createtransaction</li>
 </ul>
 <p>Description: Create a transfer transaction, if to address is not existed, then create the account on the blockchain
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;to_address&quot;: &quot;41e9d79cc47518930bc322d9bf7cddd260a0260a8d&quot;,</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;,</span>
 <span class="go">    &quot;amount&quot;: 1000</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter to_address: To address, default hexString</p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter amount: Transfer amount</p>
@@ -860,7 +860,7 @@
 <li>wallet/gettransactionsign</li>
 </ul>
 <p>Description: To sign a transaction
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;transaction&quot;: {</span>
 <span class="go">        &quot;txID&quot;: &quot;454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8&quot;,</span>
@@ -886,7 +886,7 @@
 <span class="go">    },</span>
 <span class="go">    &quot;privateKey&quot;: &quot;your private key&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter transaction: Transaction object</p>
 <p>Parameter privateKey: Private key</p>
 <p>Return: Transaction after sign</p>
@@ -895,7 +895,7 @@
 <li>wallet/broadcasttransaction</li>
 </ul>
 <p>Description: Broadcast transaction after sign
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;signature&quot;: [</span>
 <span class="go">        &quot;97c825b41c77de2a8bd65b3df55cd4c0df59c307c0187e42321dcc1cc455ddba583dd9502e17cfec5945b34cad0511985a6165999092a6dec84c2bdd97e649fc01&quot;</span>
@@ -921,30 +921,30 @@
 <span class="go">        &quot;timestamp&quot;: 1530893006233</span>
 <span class="go">    }</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter: Transaction after sign</p>
 <p>Return: The result of the broadcast</p>
 <ul>
 <li>wallet/broadcasthex</li>
 </ul>
 <p>Description: Broadcast transaction hex string after sign
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/broadcasthex -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/broadcasthex -d
 <span class="go">&#39;{</span>
 <span class="go">   &quot;transaction&quot;:&quot;0A8A010A0202DB2208C89D4811359A28004098A4E0A6B52D5A730802126F0A32747970652E676F6F676C65617069732E636F6D2F70726F746F636F6C2E5472616E736665724173736574436F6E747261637412390A07313030303030311215415A523B449890854C8FC460AB602DF9F31FE4293F1A15416B0580DA195542DDABE288FEC436C7D5AF769D24206412418BF3F2E492ED443607910EA9EF0A7EF79728DAAAAC0EE2BA6CB87DA38366DF9AC4ADE54B2912C1DEB0EE6666B86A07A6C7DF68F1F9DA171EEE6A370B3CA9CBBB00&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter: Transaction hex after sign</p>
 <p>Return: The result of the broadcast</p>
 <ul>
 <li>wallet/updateaccount</li>
 </ul>
 <p>Description: Update the name of an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;account_name&quot;: &quot;0x7570646174654e616d6531353330383933343635353139&quot;,</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter account_name: Account name, default hexString</p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
@@ -953,7 +953,7 @@
 <li>wallet/votewitnessaccount</li>
 </ul>
 <p>Description: Vote for witnesses
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
 <span class="go">    &quot;votes&quot;: [</span>
@@ -963,7 +963,7 @@
 <span class="go">        }</span>
 <span class="go">    ]</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter votes: 'vote_address' stands for the address of the witness you want to vote, default hexString, 'vote_count' stands for the number of votes you want to vote</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
@@ -972,30 +972,30 @@
 <li>wallet/getBrokerage</li>
 </ul>
 <p>Description: Query the ratio of brokerage of the witness
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getBrokerage -d <span class="err">&#39;</span><span class="o">{</span>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getBrokerage -d <span class="err">&#39;</span><span class="o">{</span>
 <span class="go">&quot;address&quot;:&quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: The address of the witness's account, default hexString</p>
 <p>Return: The ratio of brokerage of the witness</p>
 <ul>
 <li>wallet/getReward</li>
 </ul>
 <p>Description: Query unclaimed reward
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET
 <span class="go">http://127.0.0.1:8090/wallet/getReward -d &#39;{</span>
 <span class="go">&quot;address&quot;:&quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: The address of the voter's account, default hexString</p>
 <p>Return: Unclaimed reward</p>
 <ul>
 <li>wallet/updateBrokerage</li>
 </ul>
 <p>Description: Update the ratio of brokerage
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updateBrokerage  -d <span class="err">&#39;</span><span class="o">{</span>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updateBrokerage  -d <span class="err">&#39;</span><span class="o">{</span>
 <span class="go">&quot;owner_address&quot;:&quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;,</span>
 <span class="go">&quot;brokerage&quot;:30</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: The address of the witness's account, default hexString</p>
 <p>Parameter brokerage: The ratio of brokerage you want to update to</p>
 <p>Return: Transaction object</p>
@@ -1003,7 +1003,7 @@
 <li>wallet/createassetissue</li>
 </ul>
 <p>Description: Issue a token
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,</span>
 <span class="go">    &quot;name&quot;: &quot;0x6173736574497373756531353330383934333132313538&quot;,</span>
@@ -1022,7 +1022,7 @@
 <span class="go">        &quot;frozen_days&quot;: 2</span>
 <span class="go">    }</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter name: Token name, default hexString</p>
 <p>Parameter abbr: Token name abbreviation, default hexString</p>
@@ -1043,12 +1043,12 @@
 <li>wallet/updatewitness</li>
 </ul>
 <p>Description: Update the witness' website url
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
 <span class="go">    &quot;update_url&quot;: &quot;007570646174654e616d6531353330363038383733343633&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter update_url: Website url, default hexString</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
@@ -1057,12 +1057,12 @@
 <li>wallet/createaccount</li>
 </ul>
 <p>Description: Create an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
 <span class="go">    &quot;account_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter account_address: New address, default hexString</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
@@ -1072,12 +1072,12 @@
 <li>wallet/createwitness</li>
 </ul>
 <p>Description: Apply to become a witness
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
 <span class="go">    &quot;url&quot;: &quot;007570646174654e616d6531353330363038383733343633&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter url: Website url, default hexString</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
@@ -1086,14 +1086,14 @@
 <li>wallet/transferasset</li>
 </ul>
 <p>Description: Transfer token
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
 <span class="go">    &quot;to_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,</span>
 <span class="go">    &quot;asset_name&quot;: &quot;31303030303031&quot;,</span>
 <span class="go">    &quot;amount&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter to_address: To address, default hexString</p>
 <p>Parameter asset_name: Token id, default hexString</p>
@@ -1105,13 +1105,13 @@
 <li>wallet/easytransfer</li>
 </ul>
 <p>Description: Easy transfer
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;passPhrase&quot;: &quot;your password&quot;,</span>
 <span class="go">    &quot;toAddress&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,</span>
 <span class="go">    &quot;amount&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter passPhrase: Password, default hexString</p>
 <p>Parameter toAddress: To address, default hexString</p>
 <p>Parameter amount: Transfer TRX amount</p>
@@ -1121,14 +1121,14 @@
 <li>wallet/easytransferasset</li>
 </ul>
 <p>Description: Easy token transfer
-<div class="codehilite"><pre><span></span><span class="go">demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d</span>
+<div class="codehilite"><pre><span></span><code><span class="go">demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d</span>
 <span class="go">&#39;{</span>
 <span class="go">    &quot;passPhrase&quot;: &quot;your password&quot;,</span>
 <span class="go">    &quot;toAddress&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,</span>
 <span class="go">    &quot;assetId&quot;: &quot;1000001&quot;,</span>
 <span class="go">    &quot;amount&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter passPhrase: Password, default hexString</p>
 <p>Parameter toAddress: To address, default hexString</p>
 <p>Parameter assetId: Token id</p>
@@ -1140,11 +1140,11 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/createaddress</li>
 </ul>
 <p>Description: Create an address with a password
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/createaddress -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/createaddress -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;3230313271756265696a696e67&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Password, default hexString</p>
 <p>Return: An address</p>
 <p>Note: Using this api may leak out private key, please ensure using this api in a secure network</p>
@@ -1152,14 +1152,14 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/participateassetissue</li>
 </ul>
 <p>Description: Participate a token
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;to_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
 <span class="go">    &quot;amount&quot;: 100,</span>
 <span class="go">    &quot;asset_name&quot;: &quot;3230313271756265696a696e67&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter to_address: The issuer address of the token, default hexString</p>
 <p>Parameter owner_address: The participant address, default hexString</p>
 <p>Parameter amount: Participate token amount</p>
@@ -1171,7 +1171,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/freezebalance</li>
 </ul>
 <p>Description: Freeze TRX
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
 <span class="go">    &quot;frozen_balance&quot;: 10000,</span>
@@ -1179,7 +1179,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;resource&quot;: &quot;BANDWIDTH&quot;,</span>
 <span class="go">    &quot;receiver_address&quot;: &quot;414332f387585c2b58bc2c9bb4492bc1f17342cd1&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter frozen_balance: TRX freeze amount</p>
 <p>Parameter frozen_duration: TRX freeze duration, at least 3 days</p>
@@ -1191,13 +1191,13 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/unfreezebalance</li>
 </ul>
 <p>Description: Unfreeze the frozen TRX that is due
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
 <span class="go">    &quot;resource&quot;: &quot;BANDWIDTH&quot;,</span>
 <span class="go">    &quot;receiver_address&quot;: &quot;414332f387585c2b58bc2c9bb4492bc1f17342cd1&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter resource: Frozen TRX unfreeze type 'BANDWIDTH' or 'ENERGY'</p>
 <p>Parameter receiverAddress: The address that will lose the resource, default hexString</p>
@@ -1207,11 +1207,11 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/unfreezeasset</li>
 </ul>
 <p>Description: Unfreeze the frozen token that is due
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
 <p>Return: Transaction object</p>
@@ -1219,11 +1219,11 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/withdrawbalance</li>
 </ul>
 <p>Description: Withdraw reward to account balance for witnesses
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
 <p>Return: Transaction object</p>
@@ -1232,7 +1232,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/updateasset</li>
 </ul>
 <p>Description: Update token information
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/updateasset -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST http://127.0.0.1:8090/wallet/updateasset -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
 <span class="go">    &quot;description&quot;: &quot;&quot;,</span>
@@ -1240,7 +1240,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;new_limit&quot;: 1000000,</span>
 <span class="go">    &quot;new_public_limit&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: The issuers address of the token, default hexString</p>
 <p>Parameter description: The description of token, default hexString</p>
 <p>Parameter url: The token's website url, default hexString</p>
@@ -1252,41 +1252,41 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/listnodes</li>
 </ul>
 <p>Description: Query the list of nodes connected to the ip of the api
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/listnodes
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/listnodes
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of nodes</p>
 <ul>
 <li>wallet/getassetissuebyaccount</li>
 </ul>
 <p>Description: Query the token issue information of an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;address&quot;: &quot;41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: Token issuer's address, default hexString</p>
 <p>Return: Token object</p>
 <ul>
 <li>wallet/getaccountnet</li>
 </ul>
 <p>Description: Query the bandwidth information of an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;address&quot;: &quot;4112E621D5577311998708F4D7B9F71F86DAE138B5&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: Address, default hexString</p>
 <p>Return: Bandwidth information</p>
 <ul>
 <li>wallet/getassetissuebyname</li>
 </ul>
 <p>Description: Query a token by token name
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;44756354616E&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Token name, default hexString</p>
 <p>Return: Token object</p>
 <p>Note: Since Odyssey-v3.2, getassetissuebyid or getassetissuelistbyname is recommended, as since v3.2, token name can be repeatable. If the token name you query is not unique, this api will throw out an error</p>
@@ -1294,64 +1294,64 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getassetissuelistbyname(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the list of tokens by name
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;44756354616E&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Token name, default hexString</p>
 <p>Return: The list of tokens</p>
 <ul>
 <li>wallet/getassetissuebyid(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query a token by token id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;1000001&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Token id</p>
 <p>Return: Token object</p>
 <ul>
 <li>wallet/getnowblock</li>
 </ul>
 <p>Description: Query the latest block information
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getnowblock
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getnowblock
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The latest block</p>
 <ul>
 <li>wallet/getblockbynum</li>
 </ul>
 <p>Description: Query a block information by block height
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getblockbynum -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getblockbynum -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;num&quot;: 1</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter num: Block height</p>
 <p>Return: Block information</p>
 <ul>
 <li>wallet/getblockbyid</li>
 </ul>
 <p>Description: Query a block information by block id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid-d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Block id</p>
 <p>Return: Block object</p>
 <ul>
 <li>wallet/getblockbylimitnext</li>
 </ul>
 <p>Description: Query a list of blocks by range
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;startNum&quot;: 1,</span>
 <span class="go">    &quot;endNum&quot;: 2</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter startNum: The start block height, itself included</p>
 <p>Parameter endNum: The end block height, itself not included</p>
 <p>Return: The list of the blocks</p>
@@ -1359,83 +1359,83 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getblockbylatestnum</li>
 </ul>
 <p>Description: Query the several latest blocks
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;num&quot;: 5</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter num: The number of the blocks expected to return</p>
 <p>Return: The list of the blocks</p>
 <ul>
 <li>wallet/gettransactionbyid</li>
 </ul>
 <p>Description: Query an transaction infromation by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Transaction id</p>
 <p>Return: Transaction information</p>
 <ul>
 <li>wallet/gettransactioninfobyid(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the transaction fee, block height by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Transaction id</p>
 <p>Return: Transaction fee &amp; block height</p>
 <ul>
 <li>wallet/gettransactioncountbyblocknum(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query th the number of transactions in a specific block
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;num&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter num: Block height</p>
 <p>Return: The number of transactions</p>
 <ul>
 <li>wallet/getaccount</li>
 </ul>
 <p>Description: Query an account information
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;address&quot;: &quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: Default hexString</p>
 <p>Return: Account object</p>
 <ul>
 <li>wallet/listwitnesses</li>
 </ul>
 <p>Description: Qyery the list of the witnesses
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/listwitnesses
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/listwitnesses
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of all the witnesses</p>
 <ul>
 <li>wallet/getassetissuelist</li>
 </ul>
 <p>Description: Query the list of all the tokens
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getassetissuelist
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getassetissuelist
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of all the tokens</p>
 <ul>
 <li>wallet/getpaginatedassetissuelist</li>
 </ul>
 <p>Description: Query the list of all the tokens by pagination
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedassetissuelist -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedassetissuelist -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;offset&quot;: 0,</span>
 <span class="go">    &quot;limit&quot;: 10</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter offset: The index of the start token</p>
 <p>Parameter limit: The amount of tokens per page</p>
 <p>Return: The list of tokens by pagination</p>
@@ -1443,12 +1443,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getpaginatedproposallist(Since Odyssey-v3.5)</li>
 </ul>
 <p>Description: Query the list of all the proposals by pagination
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedproposallist -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedproposallist -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;offset&quot;: 0,</span>
 <span class="go">    &quot;limit&quot;: 10</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter offset: The index of the start proposal</p>
 <p>Parameter limit: The amount of proposals per page</p>
 <p>Return: The list of proposals by pagination</p>
@@ -1456,12 +1456,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getpaginatedexchangelist(Odyssey-v3.2开始支持)</li>
 </ul>
 <p>Description: Query the list of all the exchange pairs by pagination
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedexchangelist -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedexchangelist -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;offset&quot;: 0,</span>
 <span class="go">    &quot;limit&quot;: 10</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter offset:  The index of the start exchange pair</p>
 <p>Parameter limit: The amount of exchange pairs per page</p>
 <p>Return: The list of exchange pairs by pagination</p>
@@ -1469,21 +1469,21 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getnextmaintenancetime</li>
 </ul>
 <p>Description: Query the time interval till the next vote round
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getnextmaintenancetime
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getnextmaintenancetime
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The time interval till the next vote round(unit: ms)</p>
 <ul>
 <li>wallet/easytransferbyprivate</li>
 </ul>
 <p>Description: TRX Easy transfer
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;privateKey&quot;: &quot;D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366&quot;,</span>
 <span class="go">    &quot;toAddress&quot;: &quot;4112E621D5577311998708F4D7B9F71F86DAE138B5&quot;,</span>
 <span class="go">    &quot;amount&quot;: 10000</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter privateKey: Private key, default hexString</p>
 <p>Parameter toAddress: To address, default hexString</p>
 <p>Parameter amount: TRX transfer amount</p>
@@ -1493,14 +1493,14 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/easytransferassetbyprivate</li>
 </ul>
 <p>Description: Token easy transfer
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;privateKey&quot;: &quot;D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366&quot;,</span>
 <span class="go">    &quot;toAddress&quot;: &quot;4112E621D5577311998708F4D7B9F71F86DAE138B5&quot;,</span>
 <span class="go">    &quot;assetId&quot;: &quot;1000001&quot;,</span>
 <span class="go">    &quot;amount&quot;: 10000</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter privateKey: Private key, default hexString</p>
 <p>Parameter toAddress: To address, default hexString</p>
 <p>Parameter assetId: Token id</p>
@@ -1512,8 +1512,8 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/generateaddress</li>
 </ul>
 <p>Description: Generate address and private key
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/generateaddress
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/generateaddress
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: Address and private key</p>
 <p>Note: Using this api may leak out private key, please ensure using this api in a secure network</p>
@@ -1521,17 +1521,17 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/validateaddress</li>
 </ul>
 <p>Description: Check the validity of the address
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;address&quot;: &quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Return: The check result</p>
 <ul>
 <li>wallet/deploycontract</li>
 </ul>
 <p>Description: Deploy a smart contract
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;abi&quot;: &quot;[{\&quot;constant\&quot;:false,\&quot;inputs\&quot;:[{\&quot;name\&quot;:\&quot;key\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;},{\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;name\&quot;:\&quot;set\&quot;,\&quot;outputs\&quot;:[],\&quot;payable\&quot;:false,\&quot;stateMutability\&quot;:\&quot;nonpayable\&quot;,\&quot;type\&quot;:\&quot;function\&quot;},{\&quot;constant\&quot;:true,\&quot;inputs\&quot;:[{\&quot;name\&quot;:\&quot;key\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;name\&quot;:\&quot;get\&quot;,\&quot;outputs\&quot;:[{\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;payable\&quot;:false,\&quot;stateMutability\&quot;:\&quot;view\&quot;,\&quot;type\&quot;:\&quot;function\&quot;}]&quot;,</span>
 <span class="go">    &quot;bytecode&quot;: &quot;608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029&quot;,</span>
@@ -1543,7 +1543,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;origin_energy_limit&quot;: 10,</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter abi: Abi</p>
 <p>Parameter bytecode: Bytecode, default hexString</p>
 <p>Parameter parameter: The list of the parameters of the constructor, It should be converted hexString after encoded according to ABI encoder. If constructor has no parameter, this can be optional</p>
@@ -1562,7 +1562,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/triggersmartcontract</li>
 </ul>
 <p>Description: Trigger smart contract
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;contract_address&quot;: &quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;,</span>
 <span class="go">    &quot;function_selector&quot;: &quot;set(uint256,uint256)&quot;,</span>
@@ -1571,7 +1571,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;call_value&quot;: 100,</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter contract_address: Contract address, default hexString</p>
 <p>Parameter function_selector: Function call, must not leave a blank space</p>
 <p>Parameter parameter: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a js tool provided by remix to convert a parameter like [1,2] to the format that VM requires</p>
@@ -1587,18 +1587,18 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getcontract</li>
 </ul>
 <p>Description: Query a contract
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Contract address, default hexString</p>
 <p>Return: Smart contract object</p>
 <ul>
 <li>wallet/proposalcreate</li>
 </ul>
 <p>Description: Create a proposal
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844F7600E018FD0D710E2145351D607B3316CE9&quot;,</span>
 <span class="go">    &quot;parameters&quot;: [</span>
@@ -1612,7 +1612,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">        }</span>
 <span class="go">    ]</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Creator address</p>
 <p>Parameter parameters: Proposal parameters</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
@@ -1621,32 +1621,32 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getproposalbyid</li>
 </ul>
 <p>Description: Query a proposal by proposal id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;id&quot;: 1</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter id: Proposal id</p>
 <p>Return: The proposal information</p>
 <ul>
 <li>wallet/listproposals</li>
 </ul>
 <p>Description: Query all the proposals
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/listproposals
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/listproposals
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of all the proposals</p>
 <ul>
 <li>wallet/proposalapprove</li>
 </ul>
 <p>Description: To approve a proposal
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844F7600E018FD0D710E2145351D607B3316CE9&quot;,</span>
 <span class="go">    &quot;proposal_id&quot;: 1,</span>
 <span class="go">    &quot;is_add_approval&quot;: true</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: The address that makes the approve action, default hexString</p>
 <p>Parameter proposal_id: Proposal id</p>
 <p>Parameter is_add_approval: Whether to approve</p>
@@ -1656,12 +1656,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/proposaldelete</li>
 </ul>
 <p>Description: To delete a proposal
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844F7600E018FD0D710E2145351D607B3316CE9&quot;,</span>
 <span class="go">    &quot;proposal_id&quot;: 1</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the proposal, default hexString</p>
 <p>Parameter proposal_id: Proposal id</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
@@ -1670,18 +1670,18 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getaccountresource</li>
 </ul>
 <p>Description: Query the resource information of an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;address&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter address: Address, default hexString</p>
 <p>Return: The resource information</p>
 <ul>
 <li>wallet/exchangecreate</li>
 </ul>
 <p>Description: Create an exchange pair
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;,</span>
 <span class="go">    &quot;first_token_id&quot;: &quot;token_a&quot;,</span>
@@ -1689,7 +1689,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;second_token_id&quot;: &quot;token_b&quot;,</span>
 <span class="go">    &quot;second_token_balance&quot;: 200</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter first_token_id: The first token's id, default hexString</p>
 <p>Parameter first_token_balance: The first token's balance</p>
 <p>Parameter second_token_id: The second token's id, default hexString</p>
@@ -1701,14 +1701,14 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/exchangeinject</li>
 </ul>
 <p>Description: Inject funds for exchange pair
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;,</span>
 <span class="go">    &quot;exchange_id&quot;: 1,</span>
 <span class="go">    &quot;token_id&quot;: &quot;74726f6e6e616d65&quot;,</span>
 <span class="go">    &quot;quant&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the exchange pair, default hexString</p>
 <p>Parameter exchange_id: Exchange pair id</p>
 <p>Parameter token_id: Token id, default hexString</p>
@@ -1720,14 +1720,14 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/exchangewithdraw</li>
 </ul>
 <p>Description: Withdraw from exchange pair
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;,</span>
 <span class="go">    &quot;exchange_id&quot;: 1,</span>
 <span class="go">    &quot;token_id&quot;: &quot;74726f6e6e616d65&quot;,</span>
 <span class="go">    &quot;quant&quot;: 100</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the exchange pair, default hexString</p>
 <p>Parameter exchange_id: Exchange pair id</p>
 <p>Parameter token_id: Token id, default hexString</p>
@@ -1739,7 +1739,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/exchangetransaction</li>
 </ul>
 <p>Description: Participate the transaction of exchange pair
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;,</span>
 <span class="go">    &quot;exchange_id&quot;: 1,</span>
@@ -1747,7 +1747,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;quant&quot;: 100,</span>
 <span class="go">    &quot;expected&quot;: 10</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the exchange pair, default hexString</p>
 <p>Parameter exchange_id: Exchange pair id</p>
 <p>Parameter token_id: Token id, default hexString</p>
@@ -1760,40 +1760,40 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getexchangebyid</li>
 </ul>
 <p>Description: Query an exchange pair by exchange pair id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;id&quot;: 1</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter id: Exchange pair id</p>
 <p>Return: Exchange pair information</p>
 <ul>
 <li>wallet/listexchanges</li>
 </ul>
 <p>Description: Query the list of all the exchange pairs
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/listexchanges
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/listexchanges
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of all the exchange pairs</p>
 <ul>
 <li>wallet/getchainparameters</li>
 </ul>
 <p>Description: Query the parameters of the blockchain used for witnessses to create a proposal
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getchainparameters
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getchainparameters
+</code></pre></div></p>
 <p>Parameter: No parameter</p>
 <p>Return: The list of parameters of the blockchain</p>
 <ul>
 <li>wallet/updatesetting</li>
 </ul>
 <p>Description: Update the consume_user_resource_percent parameter of a smart contract
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;,</span>
 <span class="go">    &quot;contract_address&quot;: &quot;41c6600433381c731f22fc2b9f864b14fe518b322f&quot;,</span>
 <span class="go">    &quot;consume_user_resource_percent&quot;: 7</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the smart contract, default hexString</p>
 <p>Parameter contract_address: Smart contract address, default hexString</p>
 <p>Parameter consume_user_resource_percent: Consume user's resource percentage</p>
@@ -1803,13 +1803,13 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/updateenergylimit</li>
 </ul>
 <p>Description: Update the origin_energy_limit parameter of a smart contract
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;,</span>
 <span class="go">    &quot;contract_address&quot;: &quot;41c6600433381c731f22fc2b9f864b14fe518b322f&quot;,</span>
 <span class="go">    &quot;origin_energy_limit&quot;: 7</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the smart contract, default hexString</p>
 <p>Parameter contract_address: Smart contract address, default hexString</p>
 <p>Parameter origin_energy_limit: The maximum resource consumption of the creator in one execution or creation</p>
@@ -1819,12 +1819,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getdelegatedresource(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the energy delegation information
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;fromAddress&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;,</span>
 <span class="go">    &quot;toAddress&quot;: &quot;41c6600433381c731f22fc2b9f864b14fe518b322f&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter fromAddress: Energy from address, default hexString</p>
 <p>Parameter toAddress: Energy to address, default hexString</p>
 <p>Return: Energy delegation information</p>
@@ -1832,31 +1832,31 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getdelegatedresourceaccountindex(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the energy delegation index by an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindex -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindex -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Address, default hexString</p>
 <p>Return: Energy delegation index</p>
 <ul>
 <li>wallet/getnodeinfo(Since Odyssey-v3.2)</li>
 </ul>
 <p>Description: Query the current node infromation
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET http://127.0.0.1:8090/wallet/getnodeinfo
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET http://127.0.0.1:8090/wallet/getnodeinfo
+</code></pre></div></p>
 <p>Parameter: No Parameter</p>
 <p>Return: The node information</p>
 <ul>
 <li>wallet/setaccountid</li>
 </ul>
 <p>Description: To set an account id for an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41a7d8a35b260395c14aa456297662092ba3b76fc0&quot;,</span>
 <span class="go">    &quot;account_id&quot;: &quot;6161616162626262&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
 <p>Parameter account_id: Account id, default hexString</p>
 <p>Return: Transaction object</p>
@@ -1864,34 +1864,34 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getaccountbyid</li>
 </ul>
 <p>Description: Query an account information by account id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;account_id&quot;: &quot;6161616162626262&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter account_id: Account id, default hexString</p>
 <p>Return: Account object</p>
 <ul>
 <li>wallet/getdeferredtransactionbyid</li>
 </ul>
 <p>Description: Query the deferred transaction infromation by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactionbyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactionbyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Transaction id</p>
 <p>Return: Deferred transaction object</p>
 <ul>
 <li>wallet/canceldeferredtransactionbyid</li>
 </ul>
 <p>Description: Query a deferred transaction by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/canceldeferredtransactionbyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/canceldeferredtransactionbyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;transactionId&quot;: &quot;34e6b6497b71100756790a7f20cd729376768dd2bebb6a4a9c5e87b920d5de10&quot;,</span>
 <span class="go">    &quot;ownerAddress&quot;: &quot;41a7d8a35b260395c14aa456297662092ba3b76fc0&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the transaction, default hexString</p>
 <p>Parameter transactionId: Transaction id</p>
 <p>Return: Transaction object</p>
@@ -1899,18 +1899,18 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getdeferredtransactioninfobyid</li>
 </ul>
 <p>Description: Query the deferred transaction fee, block height by transaction id
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactioninfobyid -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactioninfobyid -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Transaction id</p>
 <p>Return: Deferred transaction fee &amp; block height</p>
 <ul>
 <li>wallet/triggerconstantcontract</li>
 </ul>
 <p>Description: Trigger the constant of the smart contract, the transaction is off the blockchain
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;contract_address&quot;: &quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;,</span>
 <span class="go">    &quot;function_selector&quot;: &quot;set(uint256,uint256)&quot;,</span>
@@ -1919,7 +1919,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;call_value&quot;: 100,</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter contract_address: Smart contract address, defualt hexString</p>
 <p>Parameter function_selector:  Function call, must not leave a blank space</p>
 <p>Parameter parameter: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires</p>
@@ -1933,12 +1933,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/clearabi</li>
 </ul>
 <p>Description: To clear the abi of a smart contract
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/clearabi -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/clearabi -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41a7d8a35b260395c14aa456297662092ba3b76fc0&quot;,</span>
 <span class="go">    &quot;contract_address&quot;: &quot;417bcb781f4743afaacf9f9528f3ea903b3782339f&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the smart contract</p>
 <p>Parameter contract_address: Smart contract address, default hexString</p>
 <p>Return: Transaction object</p>
@@ -1946,12 +1946,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/addtransactionsign</li>
 </ul>
 <p>Description: To sign the transaction of trigger constant contract
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41a7d8a35b260395c14aa456297662092ba3b76fc0&quot;,</span>
 <span class="go">    &quot;contract_address&quot;: &quot;417bcb781f4743afaacf9f9528f3ea903b3782339f&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the smart contract</p>
 <p>Parameter contract_address: Smart contract address, default hexString</p>
 <p>Return: Transaction object after sign</p>
@@ -1959,7 +1959,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getsignweight</li>
 </ul>
 <p>Description: Query the current signatures total weight of a transaction after sign
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;visible&quot;: true,</span>
 <span class="go">    &quot;signature&quot;: [</span>
@@ -1988,14 +1988,14 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    },</span>
 <span class="go">    &quot;raw_data_hex&quot;: &quot;0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter: Transaction object after sign</p>
 <p>Return: The current signatures total weight</p>
 <ul>
 <li>wallet/getapprovedlist</li>
 </ul>
 <p>Description: Query the signatures list of a transaction after sign
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;visible&quot;: true,</span>
 <span class="go">    &quot;signature&quot;: [</span>
@@ -2024,14 +2024,14 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    },</span>
 <span class="go">    &quot;raw_data_hex&quot;: &quot;0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter: Transaction object after sign</p>
 <p>Return: The list of the signatures</p>
 <ul>
 <li>wallet/accountpermissionupdate</li>
 </ul>
 <p>Description: To set multi-signature for an account
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ&quot;,</span>
 <span class="go">    &quot;owner&quot;: {</span>
@@ -2076,7 +2076,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    ],</span>
 <span class="go">    &quot;visible&quot;: true</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter owner_address: Owner address of the account, default hexString</p>
 <p>Parameter owner: Account owner permission</p>
 <p>Parameter witness: Account witness permission, only for witness</p>
@@ -2086,61 +2086,61 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getexpandedspendingkey</li>
 </ul>
 <p>Description: To get expanded spending keys from spending key
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getexpandedspendingkey -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getexpandedspendingkey -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;06b02aaa00f230b0887ff57a6609d76691369972ac3ba568fe7a8a0897fce7c4&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Spending key</p>
 <p>Return: Expanded spending keys, it consists of three keys: ask, nsk and ovk.</p>
 <ul>
 <li>wallet/getakfromask</li>
 </ul>
 <p>Description: To get ak key from ask key
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getakfromask -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getakfromask -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;653b3a3fdd40b60d2f53ba121df8840f6590384993f8fa9a0ecb0dfb23496604&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Ask key</p>
 <p>Return: Ak key</p>
 <ul>
 <li>wallet/getnkfromnsk</li>
 </ul>
 <p>Description: To get nk key from nsk key
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getnkfromnsk -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getnkfromnsk -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;428ff3c9e101dc1fca08f7b0e3387b23b68016746ae565aefc19d112b696db01&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter value: Nsk key</p>
 <p>Return: Nk key</p>
 <ul>
 <li>wallet/getspendingkey</li>
 </ul>
 <p>Description: To get spending key
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getspendingkey
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getspendingkey
+</code></pre></div></p>
 <p>Parameter: No Parameter</p>
 <p>Return: Spending key</p>
 <ul>
 <li>wallet/getdiversifier</li>
 </ul>
 <p>Description: To get diversifier
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getdiversifier
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getdiversifier
+</code></pre></div></p>
 <p>Parameter: No Parameter</p>
 <p>Return: Diversifier</p>
 <ul>
 <li>wallet/getincomingviewingkey</li>
 </ul>
 <p>Description: To get incoming viewing key
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getincomingviewingkey -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getincomingviewingkey -d
 <span class="go">&#39;{</span>
 <span class="go">  &quot;ak&quot;:&quot;b443f1a303ef5837ba95750b48b6fef15f9c77f63a8c28c161bcd6613f423b5c&quot;,</span>
 <span class="go">    &quot;nk&quot;:&quot;632137e69179df3d10e252fcce85d13464c3163fe7a619edf8d43ebefa8162d9&quot;</span>
 <span class="go"> }&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter ak: Ak</p>
 <p>Parameter nk: Nk</p>
 <p>Return: Incoming viewing key</p>
@@ -2148,12 +2148,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getzenpaymentaddress</li>
 </ul>
 <p>Description: To get payment address
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getzenpaymentaddress -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getzenpaymentaddress -d
 <span class="go">&#39;{</span>
 <span class="go">  &quot;ivk&quot;:&quot;8c7852e10862d8eec058635974f70f24c1f8d73819131bb5b54028d0a9408a03&quot;,</span>
 <span class="go">    &quot;d&quot;:&quot;736ba8692ed88a5473e009&quot;</span>
 <span class="go"> }&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter ivk: Ivk</p>
 <p>Parameter d: D</p>
 <p>Return: Payment address</p>
@@ -2161,12 +2161,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/createshieldedtransactionwithoutspendauthsig</li>
 </ul>
 <p>Description: To create shielded transaction without using ask
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspendauthsig -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspendauthsig -d
 <span class="go">&#39;{</span>
 <span class="go">  &quot;ivk&quot;:&quot;8c7852e10862d8eec058635974f70f24c1f8d73819131bb5b54028d0a9408a03&quot;,</span>
 <span class="go">    &quot;d&quot;:&quot;736ba8692ed88a5473e009&quot;</span>
 <span class="go"> }&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter transparent_from_address: Transparent sender's address</p>
 <p>Parameter from_amount: Send amount from transparent address</p>
 <p>Parameter ask: Ask</p>
@@ -2181,7 +2181,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/createshieldedtransactionwithoutspendauthsig</li>
 </ul>
 <p>Description: To create shielded transaction without using ask
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspendauthsig -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspendauthsig -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;ak&quot;: &quot;bf051629fd8122cd9dd8591d72947b026c214cf7cdac1f68eff97179727d38e9&quot;,</span>
 <span class="go">    &quot;nsk&quot;: &quot;42963d26af8122204273fa3489d9efd6babf1f7179ff193c955a1f3d9c2df10c&quot;,</span>
@@ -2223,7 +2223,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">        }</span>
 <span class="go">    ]</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter transparent_from_address: Transparent sender's address</p>
 <p>Parameter from_amount: Send amount from transparent address</p>
 <p>Parameter ak: Ak</p>
@@ -2238,13 +2238,13 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/scannotebyivk</li>
 </ul>
 <p>Description: To get all the notes by ivk
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/scannotebyivk -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;start_block_index&quot;: 0,</span>
 <span class="go">    &quot;end_block_index&quot;: 100,</span>
 <span class="go">    &quot;ivk&quot;: &quot;80a481c3c739e54b4e0608090b3a1a6e9f8dce42346e95bf5a2d8a487bf45c05&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter start_block_index: The start block height, itself included</p>
 <p>Parameter end_block_index: The end block height, itself not included</p>
 <p>Parameter ivk: Incoming viewing key</p>
@@ -2254,7 +2254,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/scanandmarknotebyivk</li>
 </ul>
 <p>Description: To get all the notes with spent status by ivk
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/scanandmarknotebyivk -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/scanandmarknotebyivk -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;start_block_index&quot;: 0,</span>
 <span class="go">    &quot;end_block_index&quot;: 100,</span>
@@ -2262,7 +2262,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;ak&quot;: &quot;1d4f9b5551f4aa9443ceb263f0e208eb7e26080264571c5ef06de97a646fe418&quot;,</span>
 <span class="go">    &quot;nk&quot;: &quot;748522c7571a9da787e43940c9a474aa0c5c39b46c338905deb6726fa3678bdb&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter start_block_index: The start block height, itself included</p>
 <p>Parameter end_block_index: The end block height, itself not included</p>
 <p>Parameter ivk: Incoming viewing key</p>
@@ -2274,13 +2274,13 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/scannotebyovk</li>
 </ul>
 <p>Description: To get all the notes by ovk
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/scannotebyovk -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;start_block_index&quot;: 0,</span>
 <span class="go">    &quot;end_block_index&quot;: 100,</span>
 <span class="go">    &quot;ovk&quot;: &quot;705145aa18cbe6c11d5d0011419a98f3d5b1d341eb4727f1315597f4bdaf8539&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter start_block_index: The start block height, itself included</p>
 <p>Parameter end_block_index: The end block height, itself not included</p>
 <p>Parameter ovk: Outgoing viewing key</p>
@@ -2290,29 +2290,29 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getrcm</li>
 </ul>
 <p>Description: To get a random commitment trapdoor
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getrcm
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getrcm
+</code></pre></div></p>
 <p>Parameter: No Parameter</p>
 <p>Return: A random commitment trapdoor</p>
 <ul>
 <li>wallet/getmerkletreevoucherinfo</li>
 </ul>
 <p>Description: To get a merkle tree infromation of a note
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d
 <span class="go">&#39;{</span>
 <span class="go">  &quot;out_points&quot;:[{</span>
 <span class="go">    &quot;hash&quot;:&quot;185b3e085723f5862b3a3c3cf54d52f5c1eaf2541e3a1e0ecd08bc12cd958d74&quot;,</span>
 <span class="go">    &quot;index&quot;:0</span>
 <span class="go">  }]</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter out_points: Note information</p>
 <p>Return: A merkle tree of a note</p>
 <ul>
 <li>wallet/isspend</li>
 </ul>
 <p>Description: To check whether a note is spent or not
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/isspend -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/isspend -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;ak&quot;: &quot;a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129&quot;,</span>
 <span class="go">    &quot;nk&quot;: &quot;62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e&quot;,</span>
@@ -2324,7 +2324,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;txid&quot;: &quot;7d09e471bb047d3ac044d5d6691b3721a2dddbb683ac02c207fbe78af6302463&quot;,</span>
 <span class="go">    &quot;index&quot;: 1</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter ak: Ak key</p>
 <p>Parameter nk: Nk key</p>
 <p>Parameter note: Note information</p>
@@ -2335,13 +2335,13 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/createspendauthsig</li>
 </ul>
 <p>Description: To create a signature for a transaction
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createspendauthsig -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createspendauthsig -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;ask&quot;: &quot;e3ebcba1531f6d9158d9c162660c5d7c04dadf77d85d7436a9c98b291ff69a09&quot;,</span>
 <span class="go">    &quot;tx_hash&quot;: &quot;3b78fee6e956f915ffe082284c5f18640edca9c57a5f227e5f7d7eb65ad61502&quot;,</span>
 <span class="go">    &quot;alpha&quot;: &quot;2608999c3a97d005a879ecdaa16fd29ae434fb67b177c5e875b0c829e6a1db04&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter ask: Ask key</p>
 <p>Parameter tx_hash: Transaction hash</p>
 <p>Parameter alpha: Alpha</p>
@@ -2350,7 +2350,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/createshieldnullifier</li>
 </ul>
 <p>Description: To create a shielded nullifier
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createshieldnullifier -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/createshieldnullifier -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;note&quot;: {</span>
 <span class="go">        &quot;payment_address&quot;: &quot;ztron1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq&quot;,</span>
@@ -2368,7 +2368,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    &quot;ak&quot;: &quot;a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129&quot;,</span>
 <span class="go">    &quot;nk&quot;: &quot;62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter note: Note information</p>
 <p>Parameter voucher: Voucher information</p>
 <p>Parameter ak: Ak</p>
@@ -2378,7 +2378,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getshieldtransactionhash</li>
 </ul>
 <p>Description: To get a shielded transaction hash
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getshieldtransactionhash -d
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/getshieldtransactionhash -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;txID&quot;: &quot;de639a64497d86bb27e34a2953093a0cc488ec4c7bc9624ac5857d3799748595&quot;,</span>
 <span class="go">    &quot;raw_data&quot;: {</span>
@@ -2419,7 +2419,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">    },</span>
 <span class="go">    &quot;raw_data_hex&quot;: &quot;0a020d5922087356ce5c35d8265e40b899a3ceb02d5a940b0833128f0b0a35747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e536869656c6465645472616e73666572436f6e747261637412d50a1acb020a20cbe1063adbe7e10919421fa6133f03150253913f5aff02d165e2c019cea4a8691220fb1115d5ddd16c5427c3a608d6b5add5967e70f51c890307c6142083a2c285651a2093e329d464e1dbddc8bb4d2dcc939a796dfe11e985d4e9033a15edf0e3df4f35222010c702d6dff1509502ee5acc0b01d4b4531b2ff53b0dd54488aea6031b5e6d162ac001abf64b3beacfd873b1db764c3da9f739993518f3f740e761cb8af60682b7171892895c3ccfb550c3cf757e906dbf5313a3676b8226b0b84960f76a185c8d3fdfc3fa9c08479a704852d7b3dfeb913cf13e01c25657561e00a06c61e7c65b50b812902ddc4f17bfe2bcb2f247c2dc6132d0f0e0abcecc0332fdd99077af10d07bbdb88c4fd257948428e233c57f84eee8b2eeab2162c1aeccf2e1dfaa306d5803a8b2d281a549440fbd5a3657a830c1ca07a384cea446aa077b195b29b23023b122c2070a20f6d45db8ec5a1c8dbbde040b4ea138efbe8db2d0597ed2306ff3fdd0620b3c5a1220ec3f5472ac8114a9a07987d1c2a0e1254504e352d9574971e77084293900312e1a20719eeb5ebaeeccc55c9f0d73767aadf0c0513603400ccb50bd789637d984b8e622c4043a6c4fe0e79f5b23fed34a419c4728d0b26bca23180a22871743b0a9444c27663cf07c55a0ea6db504d70421768bf17384e180b2ad8b8be88ff5cf662c53a4ba086effc3a4b1df39265f71dfac884bff5a69e1dcdcae8aecf6ae443168ffab692a5c1e4908b415dd830dcf6432fae1c32461132080da74d6b83d3d00887eb2ce9965a749f8d8410ea4182969371ac2fd5e0e74d27d883492a08e6209cd9959d74bb67c2a9fe7faac5a4777f1bff19cf0b6398a2faa9b194bbb93d60f132f382f7d693a722e8cbca1da084ee7e0c371397419a7259d1fa0943078cfe5ea352e4b53907bb6c04ca8ad409fb0ae0b110a6b312200e21ab79d543ae7aeb16802cf87afdac1e8954038caa42818f4ca2847fd642360c098accfeeade4abd1cc9ca3315a4336be224ba3516973c7dae3f41875457236675993df38d3a544470c4f9335d77b005e6a9aec40fd881b34852ec9bbbcc3d24ee92930eae770a5462ce04c4e37b0524ef07e00e8d58c810d6aefb19fa7bc2c3a2fdfab6dd4fe73dbecc0795a280f9b7ca35cc8bc1062aed8e26bd81ba33c6f4c318974636f6d796723e77772ced3dbc1f42afec6fc9bb61f8beac704affea9baf2e2de226250c1d427c7d78b1eb1d239e1f3eb6af0f017b80541333f4fce17340048d826b9b0be8477c996ad8bfc3440dc686fdff6d0d63986db4d95962d7977289cbfd14c745de7c79d4dc0bcd220e5b4ced5b409e79142e0f336e44ca29a9a87f6f43707d8c4936e895236dd2b393a478a8bc27b1f682496ba84a0ddc549da06cb7855c4d8680dc66ac40240733b7f2a5050be6e77854d4c427b2af4f16e5275f0b0c206b3ea2d2a24ffb287ea356f323523354cd83d15e7c48e6f1fa103dfca3d49ca2263dbb0cd8bfb35d72cdcad1351de6fba7a30aea27184a68bcda19cc6da32c001a4e6c50d5753092d005689922c2bdeafc98775bce59db840974163ace23c13fec18112e32aae1c39842c645ed172ad8fa277e63c1e3d6d7fb12eb15d56b573237b776f562a81d0e6be362d147d8604fdfec421482270ca82950de1883fda06e719f5d256d7a039769bffc570a1778d70c17295d1c0336a6ae0903d2460dc139a9563c2d40f37bffefa73003a55af1ff0861b6f79ef40099b6a0cb25ab3f40727210e4629647d0711abff125712a5f0d64fcb6e6a6b0b34478d7da0552b493a802a402b8ae5e11ecad3e6946f54b7ad513bd8692a3edae72d29e266b28e47c9b37ccdb38e3b6433575694b6681136b1734f85afcfe672061d2ee7368755ad0b96a80b70d68b8ebdb02d&quot;</span>
 <span class="go">}&#39;</span>
-</pre></div></p>
+</code></pre></div></p>
 <p>Parameter transaction: Transaction object</p>
 <p>Return: a shielded transaction hash</p>
 <ul>
@@ -2441,8 +2441,8 @@ Please refer to <a href="../../mechanism-algorithm/shielded-transaction/">The De
 <li>wallet/getnewshieldedaddress</li>
 </ul>
 <p>Description: To get new shieldedAddress
-<div class="codehilite"><pre><span></span><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getnewshieldedaddress
-</pre></div></p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X GET  http://127.0.0.1:8090/wallet/getnewshieldedaddress
+</code></pre></div></p>
 <p>Parameter: No Parameter</p>
 <p>Return: Spending key</p>
 <p>Return: Ask key</p>

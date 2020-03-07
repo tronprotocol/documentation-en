@@ -211,27 +211,27 @@
 <p>TRON Event Subscription supports 4 types of event:</p>
 <h3 id="transaction-event">Transaction Event<a class="headerlink" href="#transaction-event" title="Permanent link">&para;</a></h3>
 <p>The parameters passed to Subscriber:</p>
-<div class="codehilite"><pre><span></span><span class="n">transactionId</span><span class="o">:</span> <span class="n">transaction</span> <span class="n">hash</span>
+<div class="codehilite"><pre><span></span><code><span class="n">transactionId</span><span class="o">:</span> <span class="n">transaction</span> <span class="n">hash</span>
 <span class="n">blockHash</span><span class="o">:</span> <span class="n">block</span> <span class="n">hash</span>
 <span class="n">blockNumber</span><span class="o">:</span> <span class="n">block</span> <span class="n">number</span>
 <span class="n">energyUsage</span><span class="o">:</span> <span class="n">energy</span> <span class="n">usage</span>
 <span class="n">energyFee</span><span class="o">:</span> <span class="n">energy</span> <span class="n">fee</span>
 <span class="n">originEnergyUsage</span><span class="o">:</span> <span class="n">origin</span> <span class="n">energy</span> <span class="n">usage</span>
 <span class="n">energyUsageTotal</span><span class="o">:</span> <span class="n">total</span> <span class="n">energy</span> <span class="n">usage</span> <span class="n">total</span>
-</pre></div>
+</code></pre></div>
 
 <h3 id="block-event">Block Event<a class="headerlink" href="#block-event" title="Permanent link">&para;</a></h3>
 <p>The parameters passed to Subscriber:</p>
-<div class="codehilite"><pre><span></span><span class="n">blockHash</span><span class="o">:</span> <span class="n">block</span> <span class="n">hash</span>
+<div class="codehilite"><pre><span></span><code><span class="n">blockHash</span><span class="o">:</span> <span class="n">block</span> <span class="n">hash</span>
 <span class="n">blockNumber</span><span class="o">:</span> <span class="n">block</span> <span class="n">number</span>
 <span class="n">transactionSize</span><span class="o">:</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">transactions</span> <span class="k">in</span> <span class="n">a</span> <span class="n">block</span>
 <span class="n">latestSolidifiedBlockNumber</span><span class="o">:</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">solidified</span> <span class="n">block</span> <span class="n">number</span>
 <span class="n">transactionList</span><span class="o">:</span> <span class="n">the</span> <span class="n">transactions</span> <span class="n">hash</span> <span class="n">list</span>
-</pre></div>
+</code></pre></div>
 
 <h3 id="contract-event">Contract Event<a class="headerlink" href="#contract-event" title="Permanent link">&para;</a></h3>
 <p>The parameters passed to Subscriber:</p>
-<div class="codehilite"><pre><span></span><span class="n">transactionId</span><span class="o">:</span> <span class="n">transaction</span> <span class="n">id</span>
+<div class="codehilite"><pre><span></span><code><span class="n">transactionId</span><span class="o">:</span> <span class="n">transaction</span> <span class="n">id</span>
 <span class="n">contractAddress</span><span class="o">:</span> <span class="n">contract</span> <span class="n">address</span>
 <span class="n">callerAddress</span><span class="o">:</span> <span class="n">contract</span> <span class="n">caller</span> <span class="n">address</span>
 <span class="n">blockNumber</span><span class="o">:</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">the</span> <span class="n">block</span> <span class="n">contract</span> <span class="n">related</span> <span class="n">events</span> <span class="n">recorded</span>
@@ -240,11 +240,11 @@
 <span class="n">topicMap</span><span class="o">:</span> <span class="n">the</span> <span class="n">map</span> <span class="n">of</span> <span class="n">topic</span> <span class="k">in</span> <span class="n">solidity</span> <span class="n">language</span>
 <span class="n">data</span><span class="o">:</span> <span class="n">the</span> <span class="n">data</span> <span class="n">information</span> <span class="k">in</span> <span class="n">solidity</span> <span class="n">language</span>
 <span class="n">removed</span><span class="o">:</span> <span class="s1">&#39;true&#39;</span> <span class="n">means</span> <span class="n">the</span> <span class="n">log</span> <span class="k">is</span> <span class="n">removed</span>
-</pre></div>
+</code></pre></div>
 
 <h3 id="contract-log-event">Contract Log Event<a class="headerlink" href="#contract-log-event" title="Permanent link">&para;</a></h3>
 <p>The parameters passed to Subscriber:</p>
-<div class="codehilite"><pre><span></span><span class="n">transactionId</span><span class="o">:</span> <span class="n">transaction</span> <span class="n">hash</span>
+<div class="codehilite"><pre><span></span><code><span class="n">transactionId</span><span class="o">:</span> <span class="n">transaction</span> <span class="n">hash</span>
 <span class="n">contractAddress</span><span class="o">:</span> <span class="n">contract</span> <span class="n">address</span>
 <span class="n">callerAddress</span><span class="o">:</span> <span class="n">contract</span> <span class="n">caller</span> <span class="n">address</span>
 <span class="n">blockNumber</span><span class="o">:</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">the</span> <span class="n">block</span> <span class="n">contract</span> <span class="n">related</span> <span class="n">events</span> <span class="n">recorded</span>
@@ -252,14 +252,14 @@
 <span class="n">contractTopics</span><span class="o">:</span> <span class="n">the</span> <span class="n">list</span> <span class="n">of</span> <span class="n">topic</span> <span class="k">in</span> <span class="n">solidity</span> <span class="n">language</span>
 <span class="n">data</span><span class="o">:</span> <span class="n">the</span> <span class="n">data</span> <span class="n">information</span> <span class="k">in</span> <span class="n">solidity</span> <span class="n">language</span>
 <span class="n">removed</span><span class="o">:</span> <span class="s1">&#39;true&#39;</span> <span class="n">means</span> <span class="n">the</span> <span class="n">log</span> <span class="k">is</span> <span class="n">removed</span>
-</pre></div>
+</code></pre></div>
 
 <p>Contract Event and Contract Log Even support event filter function which includes:</p>
-<div class="codehilite"><pre><span></span><span class="n">fromBlock</span><span class="o">:</span> <span class="n">the</span> <span class="n">start</span> <span class="n">block</span> <span class="n">number</span>
+<div class="codehilite"><pre><span></span><code><span class="n">fromBlock</span><span class="o">:</span> <span class="n">the</span> <span class="n">start</span> <span class="n">block</span> <span class="n">number</span>
 <span class="n">toBlock</span><span class="o">:</span> <span class="n">the</span> <span class="n">end</span> <span class="n">block</span> <span class="n">number</span>
 <span class="n">contractAddress</span><span class="o">:</span> <span class="n">contract</span> <span class="n">adsresses</span> <span class="n">list</span>
 <span class="n">contractTopics</span><span class="o">:</span> <span class="n">contract</span> <span class="n">topics</span> <span class="n">list</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>

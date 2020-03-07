@@ -213,20 +213,20 @@
 <h2 id="supernode">SuperNode<a class="headerlink" href="#supernode" title="Permanent link">&para;</a></h2>
 <p>Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SRs. They verify the transactions and write the transactions into the blocks in turn. The super Representatives' information is public to everyone in Tron network. The best way to browse is using <a href="https://tronscan.org/#/sr/representatives">Tronscan</a>.</p>
 <p>Recommended Hardware Configuration:</p>
-<div class="codehilite"><pre><span></span>minimum requirement:
+<div class="codehilite"><pre><span></span><code>minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
-</pre></div>
+</code></pre></div>
 
 <h2 id="fullnode">FullNode<a class="headerlink" href="#fullnode" title="Permanent link">&para;</a></h2>
 <p>FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.</p>
 <p>Recommended Hardware Configuration:</p>
-<div class="codehilite"><pre><span></span>minimum requirement:
+<div class="codehilite"><pre><span></span><code>minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
-</pre></div>
+</code></pre></div>
 
 <h2 id="soliditynode">SolidityNode<a class="headerlink" href="#soliditynode" title="Permanent link">&para;</a></h2>
 <p>SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.</p>
@@ -235,11 +235,11 @@ CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
 New developers should deploy FullNode only.</p>
 </blockquote>
 <p>Recommended Hardware Configuration:</p>
-<div class="codehilite"><pre><span></span>minimum requirement:
+<div class="codehilite"><pre><span></span><code>minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
-</pre></div>
+</code></pre></div>
 
 <h2 id="mainnet-testnet-and-privatenet">MainNet, TestNet and PrivateNet<a class="headerlink" href="#mainnet-testnet-and-privatenet" title="Permanent link">&para;</a></h2>
 <p>MainNet, TestNet, PrivateNet all use the same code, only the node start configuration varies.</p>
@@ -259,8 +259,8 @@ CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
 <ol>
 <li>
 <p>download private_net_config.conf</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+</code></pre></div>
 
 </li>
 <li>
@@ -272,20 +272,20 @@ CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
 <li>set <code>node.discovery.enable = true</code></li>
 <li>
 <p>run the following command</p>
-<div class="codehilite"><pre><span></span>&gt; nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar -c private_net_config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
+<div class="codehilite"><pre><span></span><code>&gt; nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar -c private_net_config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
 
 command line parameters introduction:
 --witness: start witness function, i.e.: --witness YOUR_PRIVATE_KEY_IN_HEX
 --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
 -c: specify the configuration file path, i.e.: -c config.conf
-</pre></div>
+</code></pre></div>
 
 </li>
 </ol>
 <p>The usage of the log file:</p>
 <p>You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:</p>
-<div class="codehilite"><pre><span></span><span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">&quot;net&quot;</span> <span class="na">level=</span><span class="s">&quot;WARN&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">&quot;net&quot;</span> <span class="na">level=</span><span class="s">&quot;WARN&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
 
 <p>The parameters in configuration file that need to modify:</p>
 <p>localwitness:</p>

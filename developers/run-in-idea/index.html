@@ -208,27 +208,27 @@
 <h2 id="deployment-guide">Deployment guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h2>
 <p><strong>1.Create a directory</strong>
 <em>/deploy</em></p>
-<div class="codehilite"><pre><span></span>mkdir deploy
-</pre></div>
+<div class="codehilite"><pre><span></span><code>mkdir deploy
+</code></pre></div>
 
 <p><strong>2.Clone the latest code</strong></p>
-<div class="codehilite"><pre><span></span>git clone https://github.com/tronprotocol/java-tron
-</pre></div>
+<div class="codehilite"><pre><span></span><code>git clone https://github.com/tronprotocol/java-tron
+</code></pre></div>
 
 <p><strong>3.Switch to the master branch</strong></p>
-<div class="codehilite"><pre><span></span>cd java-tron
+<div class="codehilite"><pre><span></span><code>cd java-tron
 git checkout -t origin/master
-</pre></div>
+</code></pre></div>
 
 <p><strong>4.Compile the code</strong></p>
-<p><div class="codehilite"><pre><span></span>./gradlew build
-</pre></div>
+<p><div class="codehilite"><pre><span></span><code>./gradlew build
+</code></pre></div>
 The compilation process may take some time, please be patient.
 If the compilation is successful, you can see the information similar to the following:</p>
 <p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/build_success_test.png" /></p>
 <p>If you do not want to perform unit test tasks, you can run the following command:</p>
-<div class="codehilite"><pre><span></span>./gradlew build -x test
-</pre></div>
+<div class="codehilite"><pre><span></span><code>./gradlew build -x test
+</code></pre></div>
 
 <p><strong>5.Start the FullNode</strong></p>
 <p>After compiling successfully, you can find the main function file through the path java-tron / src / main / java / org / tron / program / FullNode.java and then start a full node.</p>

@@ -245,12 +245,12 @@
               
                 <h1 id="system-contracts">System Contracts<a class="headerlink" href="#system-contracts" title="Permanent link">&para;</a></h1>
 <h2 id="accountcreatecontract">AccountCreateContract<a class="headerlink" href="#accountcreatecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message AccountCreateContract {
-  bytes owner_address = 1;
-  bytes account_address = 2;
-  AccountType type = 3;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message AccountCreateContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes account_address = 2;</span>
+<span class="err">  AccountType type = 3;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -259,12 +259,12 @@
 <li><code>type</code>: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.</li>
 </ul>
 <h2 id="transfercontract">TransferContract<a class="headerlink" href="#transfercontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message TransferContract {
-  bytes owner_address = 1;
-  bytes to_address = 2;
-  int64 amount = 3;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message TransferContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes to_address = 2;</span>
+<span class="err">  int64 amount = 3;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -273,13 +273,13 @@
 <li><code>amount</code>: The amount of TRX to transfer.</li>
 </ul>
 <h2 id="transferassetcontract">TransferAssetContract<a class="headerlink" href="#transferassetcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message TransferAssetContract {
-  bytes asset_name = 1;
-  bytes owner_address = 2;
-  bytes to_address = 3;
-  int64 amount = 4;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message TransferAssetContract {</span>
+<span class="err">  bytes asset_name = 1;</span>
+<span class="err">  bytes owner_address = 2;</span>
+<span class="err">  bytes to_address = 3;</span>
+<span class="err">  int64 amount = 4;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -289,16 +289,16 @@
 <li><code>amount</code>: The amount of token to transfer.</li>
 </ul>
 <h2 id="votewitnesscontract">VoteWitnessContract<a class="headerlink" href="#votewitnesscontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message VoteWitnessContract {
-  message Vote {
-    bytes vote_address = 1;
-    int64 vote_count = 2;
-  }
-  bytes owner_address = 1;
-  repeated Vote votes = 2;
-  bool support = 3;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message VoteWitnessContract {</span>
+<span class="err">  message Vote {</span>
+<span class="err">    bytes vote_address = 1;</span>
+<span class="err">    int64 vote_count = 2;</span>
+<span class="err">  }</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  repeated Vote votes = 2;</span>
+<span class="err">  bool support = 3;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -308,11 +308,11 @@
 <li><code>support</code>: Constant true, not used.</li>
 </ul>
 <h2 id="witnesscreatecontract">WitnessCreateContract<a class="headerlink" href="#witnesscreatecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message WitnessCreateContract {
-  bytes owner_address = 1;
-  bytes url = 2;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message WitnessCreateContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes url = 2;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -320,30 +320,30 @@
 <li><code>url</code>: The website url of the witness.</li>
 </ul>
 <h2 id="assetissuecontract">AssetIssueContract<a class="headerlink" href="#assetissuecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message AssetIssueContract {
-  message FrozenSupply {
-    int64 frozen_amount = 1;
-    int64 frozen_days = 2;
-  }
-  bytes owner_address = 1;
-  bytes name = 2;
-  bytes abbr = 3;
-  int64 total_supply = 4;
-  repeated FrozenSupply frozen_supply = 5;
-  int32 trx_num = 6;
-  int32 num = 8;
-  int64 start_time = 9;
-  int64 end_time = 10;
-  int64 order = 11; // the order of tokens of the same name
-  int32 vote_score = 16;
-  bytes description = 20;
-  bytes url = 21;
-  int64 free_asset_net_limit = 22;
-  int64 public_free_asset_net_limit = 23;
-  int64 public_free_asset_net_usage = 24;
-  int64 public_latest_free_net_time = 25;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message AssetIssueContract {</span>
+<span class="err">  message FrozenSupply {</span>
+<span class="err">    int64 frozen_amount = 1;</span>
+<span class="err">    int64 frozen_days = 2;</span>
+<span class="err">  }</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes name = 2;</span>
+<span class="err">  bytes abbr = 3;</span>
+<span class="err">  int64 total_supply = 4;</span>
+<span class="err">  repeated FrozenSupply frozen_supply = 5;</span>
+<span class="err">  int32 trx_num = 6;</span>
+<span class="err">  int32 num = 8;</span>
+<span class="err">  int64 start_time = 9;</span>
+<span class="err">  int64 end_time = 10;</span>
+<span class="err">  int64 order = 11; // the order of tokens of the same name</span>
+<span class="err">  int32 vote_score = 16;</span>
+<span class="err">  bytes description = 20;</span>
+<span class="err">  bytes url = 21;</span>
+<span class="err">  int64 free_asset_net_limit = 22;</span>
+<span class="err">  int64 public_free_asset_net_limit = 23;</span>
+<span class="err">  int64 public_free_asset_net_usage = 24;</span>
+<span class="err">  int64 public_latest_free_net_time = 25;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -366,11 +366,11 @@
 <li><code>public_latest_free_net_time</code>: The latest bandwidth consumption time of token transfer.</li>
 </ul>
 <h2 id="witnessupdatecontract">WitnessUpdateContract<a class="headerlink" href="#witnessupdatecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message WitnessUpdateContract {
-  bytes owner_address = 1;
-  bytes update_url = 12;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message WitnessUpdateContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes update_url = 12;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -378,13 +378,13 @@
 <li><code>update_url</code>: The website url of the witness.</li>
 </ul>
 <h2 id="participateassetissuecontract">ParticipateAssetIssueContract<a class="headerlink" href="#participateassetissuecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ParticipateAssetIssueContract {
-  bytes owner_address = 1;
-  bytes to_address = 2;
-  bytes asset_name = 3;
-  int64 amount = 4;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ParticipateAssetIssueContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes to_address = 2;</span>
+<span class="err">  bytes asset_name = 3;</span>
+<span class="err">  int64 amount = 4;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -394,12 +394,12 @@
 <li><code>amount</code>: The amount of token to purchase.</li>
 </ul>
 <h2 id="accountupdatecontract">AccountUpdateContract<a class="headerlink" href="#accountupdatecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>// Update account name. Account name is unique now.
-message AccountUpdateContract {
-  bytes account_name = 1;
-  bytes owner_address = 2;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">// Update account name. Account name is unique now.</span>
+<span class="err">message AccountUpdateContract {</span>
+<span class="err">  bytes account_name = 1;</span>
+<span class="err">  bytes owner_address = 2;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -407,14 +407,14 @@ message AccountUpdateContract {
 <li><code>account_name</code>: Account name.</li>
 </ul>
 <h2 id="freezebalancecontract">FreezeBalanceContract<a class="headerlink" href="#freezebalancecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message FreezeBalanceContract {
-  bytes owner_address = 1;
-  int64 frozen_balance = 2;
-  int64 frozen_duration = 3;
-  ResourceCode resource = 10;
-  bytes receiver_address = 15;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message FreezeBalanceContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  int64 frozen_balance = 2;</span>
+<span class="err">  int64 frozen_duration = 3;</span>
+<span class="err">  ResourceCode resource = 10;</span>
+<span class="err">  bytes receiver_address = 15;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -425,12 +425,12 @@ message AccountUpdateContract {
 <li><code>receiver_address</code>: The account address to receive resource.</li>
 </ul>
 <h2 id="unfreezebalancecontract">UnfreezeBalanceContract<a class="headerlink" href="#unfreezebalancecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message UnfreezeBalanceContract {
-  bytes owner_address = 1;
-  ResourceCode resource = 10;
-  bytes receiver_address = 13;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message UnfreezeBalanceContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  ResourceCode resource = 10;</span>
+<span class="err">  bytes receiver_address = 13;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -439,34 +439,34 @@ message AccountUpdateContract {
 <li><code>receiver_address</code>: The account address to receive resource.</li>
 </ul>
 <h2 id="withdrawbalancecontract">WithdrawBalanceContract<a class="headerlink" href="#withdrawbalancecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message WithdrawBalanceContract {
-  bytes owner_address = 1;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message WithdrawBalanceContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
 <li><code>owner_address</code>: The owner of the current account.</li>
 </ul>
 <h2 id="unfreezeassetcontract">UnfreezeAssetContract<a class="headerlink" href="#unfreezeassetcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message UnfreezeAssetContract {
-  bytes owner_address = 1;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message UnfreezeAssetContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
 <li><code>owner_address</code>: The owner of the current account.</li>
 </ul>
 <h2 id="updateassetcontract">UpdateAssetContract<a class="headerlink" href="#updateassetcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message UpdateAssetContract {
-  bytes owner_address = 1;
-  bytes description = 2;
-  bytes url = 3;
-  int64 new_limit = 4;
-  int64 new_public_limit = 5;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message UpdateAssetContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes description = 2;</span>
+<span class="err">  bytes url = 3;</span>
+<span class="err">  int64 new_limit = 4;</span>
+<span class="err">  int64 new_public_limit = 5;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -477,11 +477,11 @@ message AccountUpdateContract {
 <li><code>new_public_limit</code>: The bandwidth consumption limit of the accounts.</li>
 </ul>
 <h2 id="proposalcreatecontract">ProposalCreateContract<a class="headerlink" href="#proposalcreatecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ProposalCreateContract {
-  bytes owner_address = 1;
-  map&lt;int64, int64&gt; parameters = 2;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ProposalCreateContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  map&lt;int64, int64&gt; parameters = 2;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -489,12 +489,12 @@ message AccountUpdateContract {
 <li><code>parameters</code>: The proposal.</li>
 </ul>
 <h2 id="proposalapprovecontract">ProposalApproveContract<a class="headerlink" href="#proposalapprovecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ProposalApproveContract {
-  bytes owner_address = 1;
-  int64 proposal_id = 2;
-  bool is_add_approval = 3; // add or remove approval
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ProposalApproveContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  int64 proposal_id = 2;</span>
+<span class="err">  bool is_add_approval = 3; // add or remove approval</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -503,11 +503,11 @@ message AccountUpdateContract {
 <li><code>is_add_approval</code>: Whether to approve.</li>
 </ul>
 <h2 id="proposaldeletecontract">ProposalDeleteContract<a class="headerlink" href="#proposaldeletecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ProposalDeleteContract {
-  bytes owner_address = 1;
-  int64 proposal_id = 2;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ProposalDeleteContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  int64 proposal_id = 2;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -515,12 +515,12 @@ message AccountUpdateContract {
 <li><code>proposal_id</code>: The proposal id.</li>
 </ul>
 <h2 id="setaccountidcontract">SetAccountIdContract<a class="headerlink" href="#setaccountidcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>// Set account id if the account has no id. Account id is unique and case insensitive.
-message SetAccountIdContract {
-  bytes account_id = 1;
-  bytes owner_address = 2;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">// Set account id if the account has no id. Account id is unique and case insensitive.</span>
+<span class="err">message SetAccountIdContract {</span>
+<span class="err">  bytes account_id = 1;</span>
+<span class="err">  bytes owner_address = 2;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -528,11 +528,11 @@ message SetAccountIdContract {
 <li><code>account_id</code>: The account id.</li>
 </ul>
 <h2 id="createsmartcontract">CreateSmartContract<a class="headerlink" href="#createsmartcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message CreateSmartContract {
-  bytes owner_address = 1;
-  SmartContract new_contract = 2;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message CreateSmartContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  SmartContract new_contract = 2;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -540,13 +540,13 @@ message SetAccountIdContract {
 <li><code>new_contract</code>: the smart contract.</li>
 </ul>
 <h2 id="triggersmartcontract">TriggerSmartContract<a class="headerlink" href="#triggersmartcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message TriggerSmartContract {
-  bytes owner_address = 1;
-  bytes contract_address = 2;
-  int64 call_value = 3;
-  bytes data = 4;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message TriggerSmartContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes contract_address = 2;</span>
+<span class="err">  int64 call_value = 3;</span>
+<span class="err">  bytes data = 4;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -556,12 +556,12 @@ message SetAccountIdContract {
 <li><code>data</code>: The parameters to trigger the contract.</li>
 </ul>
 <h2 id="updatesettingcontract">UpdateSettingContract<a class="headerlink" href="#updatesettingcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message UpdateSettingContract {
-  bytes owner_address = 1;
-  bytes contract_address = 2;
-  int64 consume_user_resource_percent = 3;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message UpdateSettingContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes contract_address = 2;</span>
+<span class="err">  int64 consume_user_resource_percent = 3;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -570,14 +570,14 @@ message SetAccountIdContract {
 <li><code>consume_user_resource_percent</code>: The percentage of resource consumption ratio.</li>
 </ul>
 <h2 id="exchangecreatecontract">ExchangeCreateContract<a class="headerlink" href="#exchangecreatecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ExchangeCreateContract {
-  bytes owner_address = 1;
-  bytes first_token_id = 2;
-  int64 first_token_balance = 3;
-  bytes second_token_id = 4;
-  int64 second_token_balance = 5;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ExchangeCreateContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes first_token_id = 2;</span>
+<span class="err">  int64 first_token_balance = 3;</span>
+<span class="err">  bytes second_token_id = 4;</span>
+<span class="err">  int64 second_token_balance = 5;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -588,13 +588,13 @@ message SetAccountIdContract {
 <li><code>second_token_balance</code>: Second token balance.</li>
 </ul>
 <h2 id="exchangeinjectcontract">ExchangeInjectContract<a class="headerlink" href="#exchangeinjectcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ExchangeInjectContract {
-  bytes owner_address = 1;
-  int64 exchange_id = 2;
-  bytes token_id = 3;
-  int64 quant = 4;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ExchangeInjectContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  int64 exchange_id = 2;</span>
+<span class="err">  bytes token_id = 3;</span>
+<span class="err">  int64 quant = 4;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -604,13 +604,13 @@ message SetAccountIdContract {
 <li><code>quant</code>: The token amount to inject.</li>
 </ul>
 <h2 id="exchangewithdrawcontract">ExchangeWithdrawContract<a class="headerlink" href="#exchangewithdrawcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ExchangeWithdrawContract {
-  bytes owner_address = 1;
-  int64 exchange_id = 2;
-  bytes token_id = 3;
-  int64 quant = 4;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ExchangeWithdrawContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  int64 exchange_id = 2;</span>
+<span class="err">  bytes token_id = 3;</span>
+<span class="err">  int64 quant = 4;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -620,13 +620,13 @@ message SetAccountIdContract {
 <li><code>quant</code>: The token amount to withdraw.</li>
 </ul>
 <h2 id="exchangetransactioncontract">ExchangeTransactionContract<a class="headerlink" href="#exchangetransactioncontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ExchangeTransactionContract {
-  bytes owner_address = 1;
-  int64 exchange_id = 2;
-  bytes token_id = 3;
-  int64 quant = 4;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ExchangeTransactionContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  int64 exchange_id = 2;</span>
+<span class="err">  bytes token_id = 3;</span>
+<span class="err">  int64 quant = 4;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -636,16 +636,16 @@ message SetAccountIdContract {
 <li><code>quant</code>: The token amount to sell.</li>
 </ul>
 <h2 id="shieldedtransfercontract">ShieldedTransferContract<a class="headerlink" href="#shieldedtransfercontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ShieldedTransferContract {
-  bytes transparent_from_address = 1;
-  int64 from_amount = 2;
-  repeated SpendDescription spend_description = 3;
-  repeated ReceiveDescription receive_description = 4;
-  bytes binding_signature = 5;
-  bytes transparent_to_address = 6;
-  int64 to_amount = 7;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ShieldedTransferContract {</span>
+<span class="err">  bytes transparent_from_address = 1;</span>
+<span class="err">  int64 from_amount = 2;</span>
+<span class="err">  repeated SpendDescription spend_description = 3;</span>
+<span class="err">  repeated ReceiveDescription receive_description = 4;</span>
+<span class="err">  bytes binding_signature = 5;</span>
+<span class="err">  bytes transparent_to_address = 6;</span>
+<span class="err">  int64 to_amount = 7;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -657,15 +657,15 @@ message SetAccountIdContract {
 <li><code>transparent_to_address</code>: The transparent address of the receiver.</li>
 <li><code>to_amount</code>: The amount to receive.</li>
 </ul>
-<div class="codehilite"><pre><span></span>message SpendDescription {
-  bytes value_commitment = 1;
-  bytes anchor = 2;
-  bytes nullifier = 3;
-  bytes rk = 4;
-  bytes zkproof = 5;
-  bytes spend_authority_signature = 6;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message SpendDescription {</span>
+<span class="err">  bytes value_commitment = 1;</span>
+<span class="err">  bytes anchor = 2;</span>
+<span class="err">  bytes nullifier = 3;</span>
+<span class="err">  bytes rk = 4;</span>
+<span class="err">  bytes zkproof = 5;</span>
+<span class="err">  bytes spend_authority_signature = 6;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 <ul>
 <li><code>value_commitment</code>: <em>value commitment</em> of spender's transfer amount.</li>
@@ -675,15 +675,15 @@ message SetAccountIdContract {
 <li><code>zkproof</code>: zero-knowledge proof of spender's note, prove that this note exists and could be spent.</li>
 <li><code>spend_authority_signature</code>: the spender's <em>Spend Authorization Signature</em>.</li>
 </ul>
-<div class="codehilite"><pre><span></span>message ReceiveDescription {
-  bytes value_commitment = 1;
-  bytes note_commitment = 2;
-  bytes epk = 3;
-  bytes c_enc = 4;
-  bytes c_out = 5;
-  bytes zkproof = 6;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ReceiveDescription {</span>
+<span class="err">  bytes value_commitment = 1;</span>
+<span class="err">  bytes note_commitment = 2;</span>
+<span class="err">  bytes epk = 3;</span>
+<span class="err">  bytes c_enc = 4;</span>
+<span class="err">  bytes c_out = 5;</span>
+<span class="err">  bytes zkproof = 6;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 <ul>
 <li><code>value_commitment</code>: <em>value commitment</em> of receiver's transfer amount.</li>
@@ -696,11 +696,11 @@ message SetAccountIdContract {
 <h2 id="multi-signature">Multi Signature<a class="headerlink" href="#multi-signature" title="Permanent link">&para;</a></h2>
 <p><a href="../multi-signatures/">Multi-Signature</a></p>
 <h2 id="clearabicontract">ClearABIContract<a class="headerlink" href="#clearabicontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message ClearABIContract {
-  bytes owner_address = 1;
-  bytes contract_address = 2;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message ClearABIContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes contract_address = 2;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -708,11 +708,11 @@ message SetAccountIdContract {
 <li><code>account_address</code>: The target contract address to clear ABI.</li>
 </ul>
 <h2 id="updatebrokeragecontract">UpdateBrokerageContract<a class="headerlink" href="#updatebrokeragecontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message UpdateBrokerageContract {
-  bytes owner_address = 1;
-  int32 brokerage = 2;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message UpdateBrokerageContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  int32 brokerage = 2;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
@@ -720,12 +720,12 @@ message SetAccountIdContract {
 <li><code>brokerage</code>: Commission rate, from 0 to 100,1 mean 1%.</li>
 </ul>
 <h2 id="updateenergylimitcontract">UpdateEnergyLimitContract<a class="headerlink" href="#updateenergylimitcontract" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>message UpdateEnergyLimitContract {
-  bytes owner_address = 1;
-  bytes contract_address = 2;
-  int64 origin_energy_limit = 3;
-}
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">message UpdateEnergyLimitContract {</span>
+<span class="err">  bytes owner_address = 1;</span>
+<span class="err">  bytes contract_address = 2;</span>
+<span class="err">  int64 origin_energy_limit = 3;</span>
+<span class="err">}</span>
+</code></pre></div>
 
 
 <ul>
