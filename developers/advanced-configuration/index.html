@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/java-tron/">
+  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/advanced-configuration/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Java-Tron - TRON Documentation</title>
+  <title>Advanced Configuration - TRON Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Java-Tron";
-    var mkdocs_page_input_path = "developers/java-tron.md";
-    var mkdocs_page_url = "/documentation-en/developers/java-tron/";
+    var mkdocs_page_name = "Advanced Configuration";
+    var mkdocs_page_input_path = "developers/advanced-configuration.md";
+    var mkdocs_page_url = "/documentation-en/developers/advanced-configuration/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -120,13 +120,19 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../incentives/">Incentive Policy</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Java-Tron</a>
-    <ul class="current">
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Java-Tron</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../advanced-configuration/">Advanced Configuration</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Advanced Configuration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#leveldb">LevelDB</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#grpc">gRPC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#backup">backup</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Clients</span></p>
@@ -169,10 +175,10 @@
         
       
     
-    <li>Java-Tron</li>
+    <li>Advanced Configuration</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/java-tron.md"
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/advanced-configuration.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -183,83 +189,110 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="java-tron">Java-tron<a class="headerlink" href="#java-tron" title="Permanent link">&para;</a></h1>
-<p>The java-tron repository is: <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a></p>
-<h2>Branch Introduction</h2>
+                <h1 id="advanced-configurations">Advanced Configurations<a class="headerlink" href="#advanced-configurations" title="Permanent link">&para;</a></h1>
+<p>we provide some configuration items for LevelDB and gRPC in <code>config.conf</code> file, for fine-grained performance tuning. <br />
+You may custom these items only if you have deep understanding on them, otherwise keep them as default.</p>
+<h2 id="leveldb">LevelDB<a class="headerlink" href="#leveldb" title="Permanent link">&para;</a></h2>
+<p>You can custom LevelDB options in the <code>storage</code> part of <code>config.conf</code>, which looks like:</p>
+<div class="codehilite"><pre><span></span>storage {
+  # Directory for storing persistent data
 
-<p><code>master</code> branch:
-This branch contains the latest code released to the production environment. It can only be merged, and can not be modified directly in this branch.</p>
-<p><code>develop</code> branch:
-This branch is the main development branch. It contains the complete code that is going to release. It can only be merged, and can not be modified directly in this branch.</p>
-<p><code>feature</code> branch:
-This branch is used to develop new features. It is created based on <code>develop</code> branch. Once the development is finished, it should be merged into <code>develop</code> branch, and then delete the branch.</p>
-<p><code>release</code> branch:
-This is the branch that is going to be released. It is created based on <code>develop</code> branch. In this branch, small fix and modification of final version of metadata is allowed. When the code is released, this branch should be merged into <code>master</code> branch(tag needed) and <code>develop</code> branch. The final test before release uses this branch.</p>
-<p><code>hotfix</code> branch:
-This branch is used to fix a bug when an online bug is found. It is created based on <code>master</code> branch. When bug fix is done, it should be merged into <code>master</code> branch(as a new release) and <code>develop</code> and then delete the branch. branch.</p>
-<h2>Writing a new feature</h2>
+  db.directory = &quot;database&quot;,
+  index.directory = &quot;index&quot;,
 
-<p>When you start to develop a new feature, please create a feature branch from <code>develop</code> branch under <code>origin/feature</code>.
-<div class="codehilite"><pre><span></span>$ git checkout -b feature/my-feature develop
-# switch to &#39;feature/my-feature&#39;
-</pre></div></p>
-<p>When you finish the development, the new feature should be merged into <code>develop</code> branch.
-<div class="codehilite"><pre><span></span>$ git commit -m &quot;description&quot;
-# submit the code
-$ git checkout develop
-# switch to &#39;develop&#39;
-$ git pull
-# update branch
-$ git checkout feature/my-feature
-# switch to &#39;feature/my-feature&#39;
-$ git merge develop
-# merge &#39;develop&#39;, need to fix the conflict
-$ git push
-# submit to GitHub
-# make a Pull Request to wait the core developers to check
-$ git branch -d feature/my-feature
-# once it is merged, delete &#39;feature/my-feature&#39;
-</pre></div></p>
-<h2>Fixing online bugs:</h2>
+  # You can custom these 14 databases&#39; configs:
 
-<p>When you start to fix an online bug, please create a hotfix branch from <code>master</code> branch under <code>origin/hotfix</code>.
-<div class="codehilite"><pre><span></span>$ git checkout -b hotfix/my-hotfix master
-# switch to &#39;hotfix/my-hotfix&#39;
-$ git commit -a -m &quot;Bumped version number to 3.1.4&quot;
-# submit and modify the version number
+  # account, account-index, asset-issue, block, block-index,
+  # block_KDB, peers, properties, recent-block, trans,
+  # utxo, votes, witness, witness_schedule.
+
+  # Otherwise, db configs will remain defualt and data will be stored in
+  # the path of &quot;output-directory&quot; or which is set by &quot;-d&quot; (&quot;--output-directory&quot;).
+
+  # Attention: name is a required field that must be set !!!
+  properties = [
+    {
+      name = &quot;account&quot;,
+      path = &quot;/path/to/accout&quot;,   // relative or absolute path
+      createIfMissing = true,
+      paranoidChecks = true,
+      verifyChecksums = true,
+      compressionType = 1,        // 0 - no compression,  1 - compressed with snappy
+      blockSize = 4096,           // 4  KB =         4 * 1024 B
+      writeBufferSize = 10485760, // 10 MB = 10 * 1024 * 1024 B
+      cacheSize = 10485760,       // 10 MB = 10 * 1024 * 1024 B
+      maxOpenFiles = 100
+    }
+  ]
+
+}
 </pre></div>
-When you finish the fix, it should be merged into <code>master</code> branch and <code>develop</code> branch.
-<div class="codehilite"><pre><span></span>$ git commit -m &quot;description&quot;
-# submit the code
-$ git checkout master
-# switch to &#39;master&#39;
-$ git pull
-# update branch
-$ git checkout hotfix/my-hotfix
-# switch to &#39;hotfix/my-hotfix&#39;
-$ git merge master
-# merge &#39;master&#39;, need to fix the conflict
-$ git push
-# make a Pull Request to wait the core developers to check
-# tag &#39;master&#39;
 
-$ git checkout develop
-# switch to &#39;develop&#39;
-$ git pull
-# update branch
-$ git checkout hotfix/my-hotfix
-# switch to &#39;hotfix/my-hotfix&#39;
-$ git merge develop
-# merge &#39;develop&#39;, need to fix the conflict
-$ git push
-# make a Pull Request to wait the core developers to check
+<p>As shown in the example above, the data of database <code>accout</code> will be stored in the path of <code>/path/to/accout/database</code> while the index be stored in <code>/path/to/accout/index</code>. And, the example also shows our default value of LevelDB options from <code>createIfMissing</code> to <code>maxOpenFiles</code>. You can just refer to the docs of <a href="https://github.com/google/leveldb/blob/master/doc/index.md#performance">LevelDB</a> to figure out details of these options.</p>
+<h2 id="grpc">gRPC<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h2>
+<p>You can custom gPRC options in the <code>node.rpc</code> part of <code>config.conf</code>, which looks like:</p>
+<div class="codehilite"><pre><span></span>node {
+  rpc {
+    port = 50051
 
-$ git branch -d hotfix/my-hotfix
-# once it is merged, delete &#39;my-hotfix&#39;
+    # Number of gRPC thread, default availableProcessors / 2
+    # thread = 16
+
+    # The maximum number of concurrent calls permitted for each incoming connection
+    # maxConcurrentCallsPerConnection =
+
+    # The HTTP/2 flow control window, default 1MB
+    # flowControlWindow =
+
+    # Connection being idle for longer than which will be gracefully terminated
+    maxConnectionIdleInMillis = 60000
+
+    # Connection lasting longer than which will be gracefully terminated
+    # maxConnectionAgeInMillis =
+
+    # The maximum message size allowed to be received on the server, default 4MB
+    # maxMessageSize =
+
+    # The maximum size of header list allowed to be received, default 8192
+    # maxHeaderListSize =
+  }
+}
+</pre></div>
+
+<h2 id="backup">backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
+<p>You can custom backup options in the <code>node.backup</code> part of <code>config.conf</code>, which looks like:
+<div class="codehilite"><pre><span></span>node.backup {
+    # my priority, each member should use different priority
+    priority = 
+    # members should use same port
+    port = 
+    # peer&#39;s ip list, can&#39;t contain mine
+    members = []
+}
+</pre></div>
+policy: 
+1. the one which synchronized first will become master.
+2. if synchronization is completed at the same time, the one which with big priority will become master.</p>
+<p>E.g. create backups for node A(192.168.0.100) and node B(192.168.0.100 ):
+node A's configuration:
+<div class="codehilite"><pre><span></span>node.backup {
+    priority = 8 
+    port = 10001
+    members = [
+        &quot;192.168.0.101&quot;
+    ]
+}
+</pre></div>
+node B's configuration:
+<div class="codehilite"><pre><span></span>node.backup {
+    priority = 5
+    port = 10001
+    members = [
+        &quot;192.168.0.100&quot;
+    ]
+}
 </pre></div></p>
-<p>Your commit messages should detail why you made your change in addition to what you did (unless it is a tiny change).</p>
-<p>Finally, please make a PR.</p>
-<p>Additionally, if you are writing a new feature, please ensure you add appropriate test cases under <code>/src/test</code>.</p>
+<p>You may refer to the source code of <code>io.grpc.netty.NettyServerBuilder</code> class to see details or just make a decision according to the brief comments above.  </p>
               
             </div>
           </div>
@@ -267,10 +300,10 @@ $ git branch -d hotfix/my-hotfix
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tips/" class="btn btn-neutral float-right" title="TIPs">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../clients/wallet-cli/" class="btn btn-neutral float-right" title="Wallet-cli">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../incentives/" class="btn btn-neutral" title="Incentive Policy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tips/" class="btn btn-neutral" title="TIPs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -298,10 +331,10 @@ $ git branch -d hotfix/my-hotfix
           <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../incentives/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../tips/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../tips/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../clients/wallet-cli/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

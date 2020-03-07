@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
+  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/api/rpc/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Rpc Api - TRON Documentation</title>
+  <title>RPC API - TRON Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Rpc Api";
+    var mkdocs_page_name = "RPC API";
     var mkdocs_page_input_path = "api/rpc.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/documentation-en/api/rpc/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -47,39 +47,45 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">Introduction</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../introduction/">Repository</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPOS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/overview/">Overview</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../http/">Http Api</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../http/">HTTP API</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Rpc Api</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">RPC API</a>
     <ul class="current">
     </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Mechanism & Algorithm</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/sr/">SR and Committee</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">SR and Committee</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/trc10/">TRC-10</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/trc10/">TRC-10</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/account/">Account Model</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/resource/">Resource Model</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/dex/">DEX</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/multi-signatures/">Multi Signatures</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/shielded-transaction/">Shielded Transaction</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/systemContracts/">System Contracts</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Architecture</span></p>
@@ -88,7 +94,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/plugin/">Plugin</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subsystem</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Smart Contract</span></p>
@@ -108,22 +114,30 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/deployment/">Deployment</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../developers/run_in_IDEA/">Run FullNode in IDEA</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Run FullNode in IDEA</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/resources/">Resources</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/contribution/">Contribution</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../developers/incentives/">Incentives Policy</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/incentives/">Incentive Policy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Java-Tron</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/advanced-configuration/">Advanced Configuration</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Clients</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Wallet-cli</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../clients/tron-grid/">TronGrid</a>
+                    </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../q%26a/qa/">Q&A</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
                     </li>
                 </ul>
                 <ul>
@@ -155,8 +169,11 @@
         
       
     
-    <li>Rpc Api</li>
+    <li>RPC API</li>
     <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/api/rpc.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
@@ -166,257 +183,256 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="rpc-list">RPC List</h1>
+                <h1 id="rpc-list">RPC List<a class="headerlink" href="#rpc-list" title="Permanent link">&para;</a></h1>
 <p><strong>For the specific definition of API, please refer to the following link:</strong>
-<a href="https://github.com/tronprotocol/protocol/blob/master/api/api.proto">https://github.com/tronprotocol/protocol/blob/master/api/api.proto</a>
-<a href="https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto">https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto</a></p>
-<blockquote>
-<p>NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
-New developers should deploy FullNode only.</p>
-</blockquote>
+<a href="https://github.com/tronprotocol/protocol/blob/master/api/api.proto">api/api.proto</a>
+<a href="https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto">core/Contract.proto</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.</p>
+</div>
 <p><strong>1.&nbsp;Get account information</strong></p>
-<p>Interface statement:
-rpc GetAccount (Account) returns (Account) {}
+<p><div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetAccount</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: Fullnode and SolidityNode</p>
 <p><strong>2.&nbsp;TRX transfer</strong></p>
-<p>Interface statement:
-rpc CreateTransaction (TransferContract) returns (Transaction) {}
+<p><div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateTransaction</span> <span class="p">(</span><span class="n">TransferContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: Fullnode</p>
 <p><strong>3.&nbsp;Broadcast transaction</strong></p>
-<p>Interface statement:
-rpc BroadcastTransaction (Transaction) returns (Return) {}
-Nodes: Fullnode
-Description:
+<p><div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">BroadcastTransaction</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Return</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+Nodes: Fullnode</p>
+<p>Description:
 Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after witness verification.</p>
 <p><strong>4.&nbsp;Create an account</strong></p>
-<p>Interface statement:
-rpc CreateAccount (AccountCreateContract) returns (Transaction) {}
+<p><div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateAccount</span> <span class="p">(</span><span class="n">AccountCreateContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>5.&nbsp;Account name update</strong>
-Interface statement:
-rpc UpdateAccount (AccountUpdateContract) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">UpdateAccount</span> <span class="p">(</span><span class="n">AccountUpdateContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: Fullnode</p>
 <p><strong>6.&nbsp;Vote for super representative candidates</strong>
-Interface statement:
-rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">VoteWitnessAccount</span> <span class="p">(</span><span class="n">VoteWitnessContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
-<p><strong>7.&nbsp;Query the ratio of brokerage of the witness</strong><br />
-Interface statement:<br />
-rpc GetBrokerageInfo (BytesMessage) returns (NumberMessage) {} <br />
-Nodes: FullNode </p>
-<p><strong>8.&nbsp;Query unclaimed reward</strong><br />
-Interface statement:<br />
-rpc GetRewardInfo (BytesMessage) returns (NumberMessage) {} 
+<p><strong>7.&nbsp;Query the ratio of brokerage of the witness</strong>
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetBrokerageInfo</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
-<p><strong>9.&nbsp;Update the ratio of brokerage</strong><br />
-Interface statement:<br />
-rpc UpdateBrokerage (UpdateBrokerageContract) returns (TransactionExtention) {} 
+<p><strong>8.&nbsp;Query unclaimed reward</strong>
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetRewardInfo</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+Nodes: FullNode</p>
+<p><strong>9.&nbsp;Update the ratio of brokerage</strong>
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">UpdateBrokerage</span> <span class="p">(</span><span class="n">UpdateBrokerageContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>10.&nbsp;Issue a token</strong>
-Interface statement:
-rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateAssetIssue</span> <span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>11.&nbsp;Query of list of super representative candidates</strong>
-Interface statement:
-rpc ListWitnesses (EmptyMessage) returns (WitnessList) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">ListWitnesses</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">WitnessList</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>12.&nbsp;Application for super representative</strong>
-Interface statement:
-rpc CreateWitness (WitnessCreateContract) returns (Transaction) {}
-Nodes: FullNode
-Description:
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateWitness</span> <span class="p">(</span><span class="n">WitnessCreateContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+Nodes: FullNode</p>
+<p>Description:
 To apply to become TRON’s Super Representative candidate.</p>
 <p><strong>13.&nbsp;Information update of Super Representative candidates</strong>
-Interface statement:
-rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {}
-Nodes: FullNode
-Description:
-Update the website url of the SR.</p>
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">UpdateWitness</span> <span class="p">(</span><span class="n">WitnessUpdateContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+Nodes: FullNode</p>
+<p>Description: Update the website url of the SR.</p>
 <p><strong>14.&nbsp;Token transfer</strong>
-Interface statement :
-rpc TransferAsset (TransferAssetContract) returns (Transaction){}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">TransferAsset</span> <span class="p">(</span><span class="n">TransferAssetContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">){}</span>
+</pre></div>
 Node: FullNode</p>
 <p><strong>15.&nbsp;Participate a token</strong>
-Interface statement:
-rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">ParticipateAssetIssue</span> <span class="p">(</span><span class="n">ParticipateAssetIssueContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>16.&nbsp;Query the list of nodes connected to the ip of the api</strong>
-Interface statement:
-rpc ListNodes (EmptyMessage) returns (NodeList) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">ListNodes</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NodeList</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>17.&nbsp;Query the list of all issued tokens</strong>
-Interface statement:
-rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetAssetIssueList</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>18.&nbsp;Query the token issued by a given account</strong>
-Interface statement:
-rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetAssetIssueByAccount</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>19.&nbsp;Query the token information by token name</strong>
-Interface statement:
-rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetAssetIssueByName</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and Soliditynode</p>
 <p><strong>20.&nbsp;Query the list of tokens by timestamp</strong>
-Interface statement:
-rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList){}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetAssetIssueListByTimestamp</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueList</span><span class="p">){}</span>
+</pre></div>
 Nodes: SolidityNode</p>
 <p><strong>21.&nbsp;Get current block information</strong>
-Interface statement:
-rpc GetNowBlock (EmptyMessage) returns (Block) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetNowBlock</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Block</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>22.&nbsp;Get a block by block height</strong>
-Interface statement:
-rpc GetBlockByNum (NumberMessage) returns (Block) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetBlockByNum</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Block</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>23.&nbsp;Get the total number of transactions</strong>
-Interface statement:
-rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">TotalTransaction</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>24.&nbsp;Query the transaction by transaction id</strong>
-Interface statement:
-rpc getTransactionById (BytesMessage) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">getTransactionById</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: SolidityNode</p>
 <p><strong>25.&nbsp;Query the transaction by timestamp</strong>
-Interface statement:
-rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">getTransactionsByTimestamp</span> <span class="p">(</span><span class="n">TimeMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionList</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: SolidityNode</p>
 <p><strong>26.&nbsp;Query the transactions initiated by an account</strong>
-Interface statement:
-rpc getTransactionsFromThis (Account) returns (TransactionList) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">getTransactionsFromThis</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionList</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: SolidityNode</p>
 <p><strong>27.&nbsp;Query the transactions received by an account</strong>
-Interface statement:
-rpc getTransactionsToThis (Account) returns (NumberMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">getTransactionsToThis</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: SolidityNode</p>
 <p><strong>28.&nbsp;Freeze TRX</strong>
-Interface statement:
-rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">FreezeBalance</span> <span class="p">(</span><span class="n">FreezeBalanceContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>29.&nbsp;Unfreeze TRX</strong>
-Interface statement:
-rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">UnfreezeBalance</span> <span class="p">(</span><span class="n">UnfreezeBalanceContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>30.&nbsp;Block producing reward redemption</strong>
-Interface statement:
-rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">WithdrawBalance</span> <span class="p">(</span><span class="n">WithdrawBalanceContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>31.&nbsp;Unfreeze token balance</strong>
-Interface statement:
-rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">UnfreezeAsset</span> <span class="p">(</span><span class="n">UnfreezeAssetContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>32.&nbsp;Query the next maintenance time</strong>
-Interface statement:
-rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetNextMaintenanceTime</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>33.&nbsp;Query the transaction fee &amp; block information</strong>
-Interface statement:
-rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetTransactionInfoById</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionInfo</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: SolidityNode</p>
 <p><strong>34.&nbsp;Query block information by block id</strong>
-Interface statement:
-rpc GetBlockById (BytesMessage) returns (Block) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetBlockById</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Block</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>35.&nbsp;Update token information</strong>
-Interface statement:
-rpc UpdateAsset (UpdateAssetContract) returns (Transaction) {}
-Nodes: Fullnode
-Description:
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">UpdateAsset</span> <span class="p">(</span><span class="n">UpdateAssetContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+Nodes: Fullnode</p>
+<p>Description:
 Token update can only be initiated by the token issuer to update token description, url, maximum bandwidth consumption by each account and total bandwidth consumption.</p>
 <p><strong>36.&nbsp;Query the list of all the tokens by pagination</strong>
-Interface statement:
-rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetPaginatedAssetIssueList</span> <span class="p">(</span><span class="n">PaginatedMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>37.&nbsp;To sign a transaction</strong>
-Interface statement:
-rpc GetTransactionSign (TransactionSign) returns (Transaction) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetTransactionSign</span> <span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>38.&nbsp;Address and private key creation</strong>
-Interface statement:
-rpc CreateAdresss (BytesMessage) returns (BytesMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateAdresss</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: Fullnode</p>
 <p><strong>39.&nbsp;TRX easy transfer</strong>
-Interface statement:
-rpc EasyTransfer (EasyTransferMessage) returns (EasyTransferResponse) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">EasyTransfer</span> <span class="p">(</span><span class="n">EasyTransferMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">EasyTransferResponse</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>40.&nbsp;Deploy a smart contract</strong>
-Interface statement:
-rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">DeployContract</span> <span class="p">(</span><span class="n">CreateSmartContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>41.&nbsp;Trigger a smart contract</strong>
-Interface statement:
-rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">TriggerContract</span> <span class="p">(</span><span class="n">TriggerSmartContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>42.&nbsp;Create a shielded transaction</strong>
-Interface statement:
-rpc CreateShieldedTransaction (PrivateParameters) returns (TransactionExtention) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateShieldedTransaction</span> <span class="p">(</span><span class="n">PrivateParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>43.&nbsp;Get a Merkle tree information of a note</strong>
-Interface statement:
-rpc GetMerkleTreeVoucherInfo (OutputPointInfo) returns (IncrementalMerkleVoucherInfo) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetMerkleTreeVoucherInfo</span> <span class="p">(</span><span class="n">OutputPointInfo</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">IncrementalMerkleVoucherInfo</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>44.&nbsp;Scan note by ivk</strong>
-Interface statement:
-rpc ScanNoteByIvk (IvkDecryptParameters) returns (DecryptNotes) {};
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">ScanNoteByIvk</span> <span class="p">(</span><span class="n">IvkDecryptParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DecryptNotes</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>45.&nbsp;Scan note by ovk</strong>
-Interface statement:
-rpc ScanNoteByOvk (OvkDecryptParameters) returns (DecryptNotes) {};
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">ScanNoteByOvk</span> <span class="p">(</span><span class="n">OvkDecryptParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DecryptNotes</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>46.&nbsp;Get spending key</strong>
-Interface statement:
-rpc GetSpendingKey (EmptyMessage) returns (BytesMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetSpendingKey</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>47.&nbsp;Get expanded spending key</strong>
-Interface statement:
-rpc GetExpandedSpendingKey (BytesMessage) returns (ExpandedSpendingKeyMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetExpandedSpendingKey</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ExpandedSpendingKeyMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>48.&nbsp;Get ak from ask</strong>
-Interface statement:
-rpc GetAkFromAsk (BytesMessage) returns (BytesMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetAkFromAsk</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>49.&nbsp;Get nk from nsk</strong>
-Interface statement:
-rpc GetNkFromNsk (BytesMessage) returns (BytesMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetNkFromNsk</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>50.&nbsp;Get incoming viewing key</strong>
-Interface statement:
-rpc GetIncomingViewingKey (ViewingKeyMessage) returns (IncomingViewingKeyMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetIncomingViewingKey</span> <span class="p">(</span><span class="n">ViewingKeyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">IncomingViewingKeyMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>51.&nbsp;Get diversifier</strong>
-Interface statement:
-rpc GetDiversifier (EmptyMessage) returns (DiversifierMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetDiversifier</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DiversifierMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>52.&nbsp;Get zen payment address</strong>
-Interface statement:
-rpc GetZenPaymentAddress (IncomingViewingKeyDiversifierMessage) returns (PaymentAddressMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetZenPaymentAddress</span> <span class="p">(</span><span class="n">IncomingViewingKeyDiversifierMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">PaymentAddressMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>53.&nbsp;Get rcm</strong>
-Interface statement:
-rpc GetRcm (EmptyMessage) returns (BytesMessage) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetRcm</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>54.&nbsp;Get a note status of is spent or not</strong>
-Interface statement:
-rpc IsSpend (NoteParameters) returns (SpendResult) {}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">IsSpend</span> <span class="p">(</span><span class="n">NoteParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">SpendResult</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>55.&nbsp;Create a shielded transaction without using ask</strong>
-Interface statement:
-rpc CreateShieldedTransactionWithoutSpendAuthSig (PrivateParametersWithoutAsk) returns (TransactionExtention) {};
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateShieldedTransactionWithoutSpendAuthSig</span> <span class="p">(</span><span class="n">PrivateParametersWithoutAsk</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>56.&nbsp;Create a shielded transaction hash</strong>
-Interface statement:
-rpc GetShieldTransactionHash (Transaction) returns (BytesMessage) {};
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetShieldTransactionHash</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>57.&nbsp;Create a signature for a shielded transaction</strong>
-Interface statement:
-rpc CreateSpendAuthSig (SpendAuthSigParameters) returns (BytesMessage) {};
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateSpendAuthSig</span> <span class="p">(</span><span class="n">SpendAuthSigParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>58.&nbsp;Create a shield nullifier</strong>
-Interface statement:
-rpc CreateShieldNullifier (NfParameters) returns (BytesMessage) {};
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">CreateShieldNullifier</span> <span class="p">(</span><span class="n">NfParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
 Nodes: FullNode</p>
 <p><strong>59.&nbsp;Get new shielded address</strong>
-Interface statement:
-rpc GetNewShieldedAddress (EmptyMessage) returns (ShieldedAddressInfo){}
+<div class="codehilite"><pre><span></span><span class="k">rpc</span> <span class="n">GetNewShieldedAddress</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ShieldedAddressInfo</span><span class="p">){}</span>
+</pre></div>
 Nodes: FullNode</p>
               
             </div>
@@ -425,10 +441,10 @@ Nodes: FullNode</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../mechanism%26algorithm/sr/" class="btn btn-neutral float-right" title="SR and Committee">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../mechanism-algorithm/sr/" class="btn btn-neutral float-right" title="SR and Committee">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../http/" class="btn btn-neutral" title="Http Api"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../http/" class="btn btn-neutral" title="HTTP API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -453,16 +469,19 @@ Nodes: FullNode</p>
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
       
         <span><a href="../http/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../mechanism%26algorithm/sr/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../mechanism-algorithm/sr/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

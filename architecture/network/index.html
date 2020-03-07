@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
+  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/architecture/network/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Network - TRON Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Network";
     var mkdocs_page_input_path = "architecture/network.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/documentation-en/architecture/network/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -47,37 +47,43 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">Introduction</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../introduction/">Repository</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPOS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/overview/">Overview</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/http/">Http Api</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">Rpc Api</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">RPC API</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Mechanism & Algorithm</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/sr/">SR and Committee</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">SR and Committee</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/trc10/">TRC-10</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/trc10/">TRC-10</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/account/">Account Model</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/resource/">Resource Model</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/dex/">DEX</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/multi-signatures/">Multi Signatures</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/shielded-transaction/">Shielded Transaction</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/systemContracts/">System Contracts</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Architecture</span></p>
@@ -90,7 +96,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#soliditynode">SolidityNode</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#mainnet-testnet-privatenet">MainNet, TestNet, PrivateNet</a>
+    <li class="toctree-l2"><a class="reference internal" href="#mainnet-testnet-and-privatenet">MainNet, TestNet and PrivateNet</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#mainnet">MainNet</a>
     </li>
@@ -112,7 +118,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../database/">Database</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../plugin/">Plugin</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../event/">Event Subsystem</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Smart Contract</span></p>
@@ -132,22 +138,30 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/deployment/">Deployment</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../developers/run_in_IDEA/">Run FullNode in IDEA</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Run FullNode in IDEA</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/resources/">Resources</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/contribution/">Contribution</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../developers/incentives/">Incentives Policy</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/incentives/">Incentive Policy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Java-Tron</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/advanced-configuration/">Advanced Configuration</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Clients</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Wallet-cli</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../clients/tron-grid/">TronGrid</a>
+                    </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../q%26a/qa/">Q&A</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
                     </li>
                 </ul>
                 <ul>
@@ -182,6 +196,9 @@
     <li>Network</li>
     <li class="wy-breadcrumbs-aside">
       
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/architecture/network.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
     </li>
   </ul>
   
@@ -190,57 +207,61 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="tron-network-instructure">Tron Network Instructure</h1>
-<p>Tron network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join Tron network as a node.
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/network.png" /></p>
-<h2 id="supernode">SuperNode</h2>
-<p>Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SRs. They verify the transactions and write the transactions into the blocks in turn. The super Representatives' information is public to everyone in Tron network. The best way to browse is using <a href="https://tronscan.org/#/sr/representatives">tronscan</a>.</p>
-<p>Recommended Hardware Configuration:
-minimum requirement:
+                <h1 id="tron-network-instructure">Tron Network Instructure<a class="headerlink" href="#tron-network-instructure" title="Permanent link">&para;</a></h1>
+<p>Tron network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join Tron network as a node.</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png" /></p>
+<h2 id="supernode">SuperNode<a class="headerlink" href="#supernode" title="Permanent link">&para;</a></h2>
+<p>Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SRs. They verify the transactions and write the transactions into the blocks in turn. The super Representatives' information is public to everyone in Tron network. The best way to browse is using <a href="https://tronscan.org/#/sr/representatives">Tronscan</a>.</p>
+<p>Recommended Hardware Configuration:</p>
+<div class="codehilite"><pre><span></span>minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
-CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
-<h2 id="fullnode">FullNode</h2>
+CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
+</pre></div>
+
+<h2 id="fullnode">FullNode<a class="headerlink" href="#fullnode" title="Permanent link">&para;</a></h2>
 <p>FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.</p>
-<p>Recommended Hardware Configuration:
-minimum requirement:
+<p>Recommended Hardware Configuration:</p>
+<div class="codehilite"><pre><span></span>minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
-CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
-<h2 id="soliditynode">SolidityNode</h2>
+CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
+</pre></div>
+
+<h2 id="soliditynode">SolidityNode<a class="headerlink" href="#soliditynode" title="Permanent link">&para;</a></h2>
 <p>SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.</p>
 <blockquote>
 <p>NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
 New developers should deploy FullNode only.</p>
 </blockquote>
-<p>Recommended Hardware Configuration:
-minimum requirement:
+<p>Recommended Hardware Configuration:</p>
+<div class="codehilite"><pre><span></span>minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
-CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
-<h2 id="mainnet-testnet-privatenet">MainNet, TestNet, PrivateNet</h2>
+CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T
+</pre></div>
+
+<h2 id="mainnet-testnet-and-privatenet">MainNet, TestNet and PrivateNet<a class="headerlink" href="#mainnet-testnet-and-privatenet" title="Permanent link">&para;</a></h2>
 <p>MainNet, TestNet, PrivateNet all use the same code, only the node start configuration varies.</p>
-<h3 id="mainnet">MainNet</h3>
-<p><a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">MainNet configuration</a></p>
-<h3 id="testnet">TestNet</h3>
-<p><a href="https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf">TestNet configuration</a></p>
-<h3 id="privatenet">PrivateNet</h3>
-<h4 id="preconditions">Preconditions</h4>
+<h3 id="mainnet">MainNet<a class="headerlink" href="#mainnet" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">MainNet configuration: main_net_config.conf</a></p>
+<h3 id="testnet">TestNet<a class="headerlink" href="#testnet" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf">TestNet configuration: test_net_config.conf</a></p>
+<h3 id="privatenet">PrivateNet<a class="headerlink" href="#privatenet" title="Permanent link">&para;</a></h3>
+<h4 id="preconditions">Preconditions<a class="headerlink" href="#preconditions" title="Permanent link">&para;</a></h4>
 <ul>
 <li>at least two accounts <a href="https://tronscan.org/#/wallet/new">generate an account</a></li>
 <li>at least one SuperNode to produce blocks</li>
 <li>deploy serval FullNodes to synchronize blocks and broadcast transactions</li>
 <li>SuperNode and FullNode comprise the private network</li>
 </ul>
-<h4 id="deploy-the-supernode">Deploy the SuperNode</h4>
+<h4 id="deploy-the-supernode">Deploy the SuperNode<a class="headerlink" href="#deploy-the-supernode" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>download private_net_config.conf</p>
-<p>```console</p>
-<blockquote>
-<p>wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
-```</p>
-</blockquote>
+<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+</pre></div>
+
 </li>
 <li>
 <p>add your private key in <code>localwitness</code></p>
@@ -251,35 +272,40 @@ CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
 <li>set <code>node.discovery.enable = true</code></li>
 <li>
 <p>run the following command</p>
-<p>```text</p>
-<blockquote>
-<p>nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar -c private_net_config.conf &amp;&gt;/dev/null &amp;</p>
-</blockquote>
-<p>command line parameters introduction:
+<div class="codehilite"><pre><span></span>&gt; nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar -c private_net_config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
+
+command line parameters introduction:
 --witness: start witness function, i.e.: --witness YOUR_PRIVATE_KEY_IN_HEX
 --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
 -c: specify the configuration file path, i.e.: -c config.conf
-```</p>
+</pre></div>
+
 </li>
 </ol>
-<p>The usage of the log file:
-You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:</p>
-<pre><code class="xml">&lt;logger name=&quot;net&quot; level=&quot;WARN&quot;/&gt;
-</code></pre>
+<p>The usage of the log file:</p>
+<p>You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">&quot;net&quot;</span> <span class="na">level=</span><span class="s">&quot;WARN&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 <p>The parameters in configuration file that need to modify:</p>
 <p>localwitness:</p>
 <blockquote>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/localwitness.jpg" />
-witnesses:
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/witness.png" />
-version:
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png" />
-enable:
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/localwitness.jpg" /></p>
 </blockquote>
-<h4 id="deploy-the-fullnode">Deploy the FullNode</h4>
-<p>Same as Above except for:</p>
+<p>witnesses:</p>
+<blockquote>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/witness.png" /></p>
+</blockquote>
+<p>version:</p>
+<blockquote>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png" /></p>
+</blockquote>
+<p>enable:</p>
+<blockquote>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png" /></p>
+</blockquote>
+<h4 id="deploy-the-fullnode">Deploy the FullNode<a class="headerlink" href="#deploy-the-fullnode" title="Permanent link">&para;</a></h4>
+<p>Same as above except for:</p>
 <ol>
 <li>set <code>seed.node.ip.list</code> to SR's ip and port</li>
 <li>set <code>needSyncCheck</code> true</li>
@@ -289,15 +315,23 @@ enable:
 <p>The parameters in configuration file that need to modify:</p>
 <p>ip.list:</p>
 <blockquote>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/ip_list.png" />
-p2p.version:
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png" />
-genesis.block:
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/genesis_block.png" />
-needSyncCheck:
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/need_sync_check.png" />
-node.discovery.enable:
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png" /></p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/ip_list.png" /></p>
+</blockquote>
+<p>p2p.version:</p>
+<blockquote>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png" /></p>
+</blockquote>
+<p>genesis.block:</p>
+<blockquote>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/genesis_block.png" /></p>
+</blockquote>
+<p>needSyncCheck:</p>
+<blockquote>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/need_sync_check.png" /></p>
+</blockquote>
+<p>node.discovery.enable:</p>
+<blockquote>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png" /></p>
 </blockquote>
               
             </div>
@@ -309,7 +343,7 @@ node.discovery.enable:
         <a href="../database/" class="btn btn-neutral float-right" title="Database">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../mechanism%26algorithm/systemContracts/" class="btn btn-neutral" title="System Contracts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../mechanism-algorithm/system-contracts/" class="btn btn-neutral" title="System Contracts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -334,8 +368,10 @@ node.discovery.enable:
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
-        <span><a href="../../mechanism%26algorithm/systemContracts/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+        <span><a href="../../mechanism-algorithm/system-contracts/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../database/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -344,6 +380,7 @@ node.discovery.enable:
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

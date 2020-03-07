@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
+  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/contracts/trc20/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>TRC-20 - TRON Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "TRC-20";
     var mkdocs_page_input_path = "contracts/trc20.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/documentation-en/contracts/trc20/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -47,37 +47,43 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">Introduction</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../introduction/">Repository</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPOS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/overview/">Overview</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/http/">Http Api</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">Rpc Api</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">RPC API</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Mechanism & Algorithm</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/sr/">SR and Committee</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">SR and Committee</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/trc10/">TRC-10</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/trc10/">TRC-10</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/account/">Account Model</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/resource/">Resource Model</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/dex/">DEX</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/multi-signatures/">Multi Signatures</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/shielded-transaction/">Shielded Transaction</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/systemContracts/">System Contracts</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Architecture</span></p>
@@ -86,7 +92,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/plugin/">Plugin</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subsystem</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Smart Contract</span></p>
@@ -99,6 +105,10 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">TRC-20</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#implementation-rules">Implementation Rules</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example">Example</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -108,22 +118,30 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/deployment/">Deployment</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../developers/run_in_IDEA/">Run FullNode in IDEA</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Run FullNode in IDEA</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/resources/">Resources</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../developers/contribution/">Contribution</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../developers/incentives/">Incentives Policy</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/incentives/">Incentive Policy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Java-Tron</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../developers/advanced-configuration/">Advanced Configuration</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Clients</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Wallet-cli</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../clients/tron-grid/">TronGrid</a>
+                    </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../q%26a/qa/">Q&A</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
                     </li>
                 </ul>
                 <ul>
@@ -158,6 +176,9 @@
     <li>TRC-20</li>
     <li class="wy-breadcrumbs-aside">
       
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/contracts/trc20.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
     </li>
   </ul>
   
@@ -166,30 +187,30 @@
           <div role="main">
             <div class="section">
               
-                <p>TRC‌-20 is a technical standard used for smart contracts on the TRON blockchain for implementing tokens with the TRON Virtual Machine (TVM). It is fully compatible to ERC‌-20.   </p>
-<h2 id="implementation-rules">Implementation Rules</h2>
+                <h1 id="trc-20">TRC-20<a class="headerlink" href="#trc-20" title="Permanent link">&para;</a></h1>
+<p>TRC‌-20 is a technical standard used for smart contracts on the TRON blockchain for implementing tokens with the TRON Virtual Machine (TVM). It is fully compatible to ERC‌-20.</p>
+<h2 id="implementation-rules">Implementation Rules<a class="headerlink" href="#implementation-rules" title="Permanent link">&para;</a></h2>
 <p><strong>3 Optional Items</strong></p>
 <ul>
 <li>Token Name</li>
 </ul>
-<pre><code class="text">string public constant name = “TRONEuropeRewardCoin”;
-</code></pre>
+<div class="codehilite"><pre><span></span>string public constant name = “TRONEuropeRewardCoin”;
+</pre></div>
 
 <ul>
 <li>Token Abbreviation</li>
 </ul>
-<pre><code class="text">string public constant symbol = “TERC”;
-</code></pre>
+<div class="codehilite"><pre><span></span>string public constant symbol = “TERC”;
+</pre></div>
 
 <ul>
 <li>Token Precision</li>
 </ul>
-<pre><code class="text">uint8 public constant decimals = 6;
-</code></pre>
+<div class="codehilite"><pre><span></span>uint8 public constant decimals = 6;
+</pre></div>
 
 <p><strong>6 Required Items</strong></p>
-<pre><code class="text">
-contract TRC20 {
+<div class="codehilite"><pre><span></span>contract TRC20 {
     function totalSupply() constant returns (uint theTotalSupply);
     function balanceOf(address _owner) constant returns (uint balance);
     function transfer(address _to, uint _value) returns (bool success);
@@ -199,8 +220,7 @@ contract TRC20 {
     event Transfer(address indexed _from, address indexed _to, uint _value);
     event Approval(address indexed _owner, address indexed _spender, uint _value);
 }
-
-</code></pre>
+</pre></div>
 
 <ul>
 <li>totalSupply()</li>
@@ -219,24 +239,24 @@ contract TRC20 {
 </ul>
 <p>This function is used to authorize the third party (like a DAPP smart contract) to transfer token from the token owner’s account.</p>
 <ul>
-<li>transferFrom() </li>
+<li>transferFrom()</li>
 </ul>
 <p>This function is used to allow the third party to transfer token from an owner account to a receiver account. The owner account must be approved to be called by the third party.</p>
 <ul>
-<li>allowance() </li>
+<li>allowance()</li>
 </ul>
 <p>This function is used to query the remaining amount of tokens the third party can transfer.</p>
 <p><strong>2 Event Functions</strong></p>
-<p>When token is successfully transferred, it has to trigger Transfer Event.  </p>
-<pre><code class="text">event Transfer(address indexed _from, address indexed _to, uint256 _value)
-</code></pre>
+<p>When token is successfully transferred, it has to trigger Transfer Event.</p>
+<div class="codehilite"><pre><span></span>event Transfer(address indexed _from, address indexed _to, uint256 _value)
+</pre></div>
 
 <p>When approval() is successfully called, it has to trigger Approval Event.</p>
-<pre><code class="text">event Approval(address indexed _owner, address indexed _spender, uint256 _value)
-</code></pre>
+<div class="codehilite"><pre><span></span>event Approval(address indexed _owner, address indexed _spender, uint256 _value)
+</pre></div>
 
-<h2 id="example">Example</h2>
-<pre><code class="text">pragma solidity ^0.4.16;
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>pragma solidity ^0.4.16;
 
 interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) external; }
 
@@ -383,13 +403,13 @@ contract TokenTRC20 {
         require(balanceOf[_from] &gt;= _value);                // Check if the targeted balance is enough
         require(_value &lt;= allowance[_from][msg.sender]);    // Check allowance
         balanceOf[_from] -= _value;                         // Subtract from the targeted balance
-        allowance[_from][msg.sender] -= _value;             // Subtract from the sender's allowance
+        allowance[_from][msg.sender] -= _value;             // Subtract from the sender&#39;s allowance
         totalSupply -= _value;                              // Update totalSupply
         emit Burn(_from, _value);
         return true;
     }
 }
-</code></pre>
+</pre></div>
               
             </div>
           </div>
@@ -425,6 +445,8 @@ contract TokenTRC20 {
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
       
         <span><a href="../contract/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
@@ -435,6 +457,7 @@ contract TokenTRC20 {
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

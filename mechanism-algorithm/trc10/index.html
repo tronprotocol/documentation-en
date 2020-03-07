@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/architecture/database/">
+  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/mechanism-algorithm/trc10/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Database - TRON Documentation</title>
+  <title>TRC-10 - TRON Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Database";
-    var mkdocs_page_input_path = "architecture/database.md";
-    var mkdocs_page_url = "/documentation-en/architecture/database/";
+    var mkdocs_page_name = "TRC-10";
+    var mkdocs_page_input_path = "mechanism-algorithm/trc10.md";
+    var mkdocs_page_url = "/documentation-en/mechanism-algorithm/trc10/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -68,45 +68,39 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Mechanism & Algorithm</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">SR and Committee</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/trc10/">TRC-10</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Architecture</span></p>
                 <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../network/">Network</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../sr/">SR and Committee</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Database</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">TRC-10</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#use-rocksdb">Use RocksDB</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-issue-a-trc-10-token">How to Issue a TRC-10 Token</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#use-rocksdbs-data-backup-function">Use RocksDB's data backup function</a>
+    <li class="toctree-l2"><a class="reference internal" href="#participate-trc-10-token-issuing">Participate TRC-10 Token Issuing</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#convert-leveldb-data-to-rocksdb-data">Convert LevelDB data to RocksDB data</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#rocksdb-vs-leveldb">RocksDB vs LevelDB</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#trc-10-token-transfer">TRC-10 Token Transfer</a>
     </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../event/">Event Subsystem</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../account/">Account Model</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../resource/">Resource Model</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dex/">Decentralized Exchange</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../multi-signatures/">Multi-Signature</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../shielded-transaction/">Shielded Transaction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../system-contracts/">System Contracts</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Architecture</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/network/">Network</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subsystem</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Smart Contract</span></p>
@@ -177,14 +171,14 @@
     
       
         
-          <li>Architecture &raquo;</li>
+          <li>Mechanism & Algorithm &raquo;</li>
         
       
     
-    <li>Database</li>
+    <li>TRC-10</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/architecture/database.md"
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/mechanism-algorithm/trc10.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -195,54 +189,85 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="the-database">The Database<a class="headerlink" href="#the-database" title="Permanent link">&para;</a></h1>
-<h2 id="use-rocksdb">Use RocksDB<a class="headerlink" href="#use-rocksdb" title="Permanent link">&para;</a></h2>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
-<p>Use RocksDB as the data storage engine, need to set <code>db.engine</code> to "ROCKSDB".</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_engine.png" /></p>
-<p>Note: RocksDB only supports <code>db.version=2</code>, yet does not supports <code>db.version=1</code></p>
-<p>The optimization parameters RocksDB support:</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/rocksdb_tuning_parameters.png" /></p>
-<h3 id="use-rocksdbs-data-backup-function">Use RocksDB's data backup function<a class="headerlink" href="#use-rocksdbs-data-backup-function" title="Permanent link">&para;</a></h3>
-<p>Choose RocksDB to be the data storage engine, you can use its data backup function while running</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_backup.png" /></p>
-<p>Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.</p>
-<h3 id="convert-leveldb-data-to-rocksdb-data">Convert LevelDB data to RocksDB data<a class="headerlink" href="#convert-leveldb-data-to-rocksdb-data" title="Permanent link">&para;</a></h3>
-<p>The data storage structure of LevelDB and RocksDB is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert LevelDB data to RocksDB data.</p>
-<p>Usage:</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> <span class="nb">cd</span> /path/to/java-tron/source-code
-<span class="gp">&gt;</span> ./gradlew build  <span class="c1"># build the source code</span>
-<span class="gp">&gt;</span> java -jar build/libs/DBConvert.jar  <span class="c1"># run data conversion command</span>
+                <h1 id="trc-10">TRC-10<a class="headerlink" href="#trc-10" title="Permanent link">&para;</a></h1>
+<p>TRON network supports two types of tokens, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.</p>
+<h2 id="how-to-issue-a-trc-10-token">How to Issue a TRC-10 Token<a class="headerlink" href="#how-to-issue-a-trc-10-token" title="Permanent link">&para;</a></h2>
+<p>HTTP API:</p>
+<div class="codehilite"><pre><span></span>wallet/createassetissue
+Description: Issue a token
+demo: curl -X POST http://127.0.0.1:8090/wallet/createassetissue -d &#39;{
+  &quot;owner_address&quot;:&quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,
+  &quot;name&quot;:&quot;0x6173736574497373756531353330383934333132313538&quot;,
+  &quot;abbr&quot;: &quot;0x6162627231353330383934333132313538&quot;,
+  &quot;total_supply&quot; :4321,
+  &quot;trx_num&quot;:1,
+  &quot;num&quot;:1,
+  &quot;start_time&quot; : 1530894315158,
+  &quot;end_time&quot;:1533894312158,
+  &quot;description&quot;:&quot;007570646174654e616d6531353330363038383733343633&quot;,
+  &quot;url&quot;:&quot;007570646174654e616d6531353330363038383733343633&quot;,
+  &quot;free_asset_net_limit&quot;:10000,
+  &quot;public_free_asset_net_limit&quot;:10000,
+  &quot;frozen_supply&quot;:{&quot;frozen_amount&quot;:1, &quot;frozen_days&quot;:2}
+}&#39;
+
+Parameter owner_address: Owner address, default hexString
+Parameter name: Token name, default hexString
+Parameter abbr: Token name abbreviation, default hexString
+Parameter total_supply: Token total supply
+Parameter trx_num: Define the price by the ratio of trx_num/num,
+Parameter num: Define the price by the ratio of trx_num/num
+Parameter start_time: ICO start time
+Parameter end_time: ICO end time
+Parameter description: Token description, default hexString
+Parameter url: Token official website url, default hexString
+Parameter free_asset_net_limit: Token free asset net limit
+Parameter public_free_asset_net_limit: Token public free asset net limit
+Parameter frozen_supply: Token frozen supply
+Parameter permission_id: Optional, for multi-signature use
+Return: Transaction object
+Note: The unit of &#39;trx_num&#39; is SUN
 </pre></div>
 
-<p>Note: If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:</p>
-<ul>
-<li><strong>src_db_path</strong>: specify LevelDB source directory, default output-directory/database</li>
-<li><strong>dst_db_path</strong>: specify RocksDb source directory, default output-directory-dst/database</li>
-</ul>
-<p>Example, if you run the script like this:</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> nohup java -jar FullNode.jar -d your_database_dir &lt;/dev/null <span class="p">&amp;</span>&gt;/dev/null <span class="p">&amp;</span>
+<h2 id="participate-trc-10-token-issuing">Participate TRC-10 Token Issuing<a class="headerlink" href="#participate-trc-10-token-issuing" title="Permanent link">&para;</a></h2>
+<p>HTTP API:</p>
+<div class="codehilite"><pre><span></span>wallet/participateassetissue
+Description: Participate a token issuing
+demo: curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d &#39;{
+  &quot;to_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,
+  &quot;owner_address&quot;:&quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,
+  &quot;amount&quot;:100,
+  &quot;asset_name&quot;:&quot;3230313271756265696a696e67&quot;
+}&#39;
+
+Parameter to_address: The issuer address of the token, default hexString
+Parameter owner_address: The participant address, default hexString
+Parameter amount: Participate token amount
+Parameter asset_name: Token id, default hexString
+Parameter permission_id: Optional, for multi-signature use
+Return: Transaction object
+Note: The unit of &#39;amount&#39; is the smallest unit of the token
 </pre></div>
 
-<p>then, you should run DBConvert.jar this way:</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> java -jar build/libs/DBConvert.jar your_database_dir/database output-directory-dst/database
-</pre></div>
+<h2 id="trc-10-token-transfer">TRC-10 Token Transfer<a class="headerlink" href="#trc-10-token-transfer" title="Permanent link">&para;</a></h2>
+<p>HTTP API:</p>
+<div class="codehilite"><pre><span></span>wallet/transferasset
+Description: Transfer token
+demo: curl -X POST http://127.0.0.1:8090/wallet/transferasset -d &#39;{
+  &quot;owner_address&quot;:&quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,
+  &quot;to_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,
+  &quot;asset_name&quot;: &quot;31303030303031&quot;,
+  &quot;amount&quot;: 100
+}&#39;
 
-<p>Note: You have to stop the running of the node, and then to run the data conversion script.</p>
-<p>If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node. Run DBConvert.jar in the previous directory of the new directory, and specify the parameters: <code>src_db_path</code> and <code>dst_db_path</code>.</p>
-<p>Example:</p>
-<div class="codehilite"><pre><span></span><span class="gp">&gt;</span> cp -rf output-directory /tmp/output-directory
-<span class="gp">&gt;</span> <span class="nb">cd</span> /tmp
-<span class="gp">&gt;</span> java -jar DBConvert.jar output-directory/database output-directory-dst/database
+Parameter owner_address: Owner address, default hexString
+Parameter to_address: To address, default hexString
+Parameter asset_name: Token id number encoded as hexString
+Parameter amount: Token transfer amount
+Parameter permission_id: Optional, for multi-signature use
+Return: Transaction object
+Note: The unit of &#39;amount&#39; is the smallest unit of the token
 </pre></div>
-
-<p>All the whole data conversion process may take 10 hours.</p>
-<h3 id="rocksdb-vs-leveldb">RocksDB vs LevelDB<a class="headerlink" href="#rocksdb-vs-leveldb" title="Permanent link">&para;</a></h3>
-<p>You can refer to:</p>
-<ul>
-<li><a href="https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md">RocksDB vs LevelDB(en)</a></li>
-<li><a href="https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md">RocksDB vs LevelDB(zh-cn)</a></li>
-</ul>
               
             </div>
           </div>
@@ -250,10 +275,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../event/" class="btn btn-neutral float-right" title="Event Subsystem">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../account/" class="btn btn-neutral float-right" title="Account Model">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../network/" class="btn btn-neutral" title="Network"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../sr/" class="btn btn-neutral" title="SR and Committee"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -281,10 +306,10 @@
           <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../network/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../sr/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../event/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../account/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

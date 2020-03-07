@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
+  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/incentives/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Incentives Policy - TRON Documentation</title>
+  <title>Incentive Policy - TRON Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Incentives Policy";
+    var mkdocs_page_name = "Incentive Policy";
     var mkdocs_page_input_path = "developers/incentives.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/documentation-en/developers/incentives/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -47,37 +47,43 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">Introduction</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../introduction/">Repository</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPOS</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../introduction/overview/">Overview</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/http/">Http Api</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">Rpc Api</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">RPC API</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Mechanism & Algorithm</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/sr/">SR and Committee</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">SR and Committee</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/trc10/">TRC-10</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/trc10/">TRC-10</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/account/">Account Model</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/resource/">Resource Model</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/dex/">DEX</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/multi-signatures/">Multi Signatures</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/shielded-transaction/">Shielded Transaction</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism%26algorithm/systemContracts/">System Contracts</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Architecture</span></p>
@@ -86,7 +92,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/plugin/">Plugin</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subsystem</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Smart Contract</span></p>
@@ -106,24 +112,36 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../deployment/">Deployment</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../run_in_IDEA/">Run FullNode in IDEA</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../run-in-idea/">Run FullNode in IDEA</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../resources/">Resources</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../contribution/">Contribution</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Incentives Policy</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Incentive Policy</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#non-code-related">Non-code Related</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-related">Code Related</a>
+    </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Java-Tron</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../advanced-configuration/">Advanced Configuration</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Clients</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Wallet-cli</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../clients/tron-grid/">TronGrid</a>
+                    </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../q%26a/qa/">Q&A</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
                     </li>
                 </ul>
                 <ul>
@@ -155,8 +173,11 @@
         
       
     
-    <li>Incentives Policy</li>
+    <li>Incentive Policy</li>
     <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/incentives.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
@@ -166,17 +187,16 @@
           <div role="main">
             <div class="section">
               
-                <h1>Community Developers Incentives Programme</h1>
-
-<p>Bonus point applies in TRON incentives programme. Developers can earn points by contributing to TRON.  </p>
-<p>When a issue (or PR) is closed, it will be added into the reward programme. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track. </p>
-<p>You can find your points ranking at <a href="https://tronscan.org/#/developersreward">Tronscan</a>.   </p>
-<p>Reward 1:   </p>
-<p>At the end of every month, we will calculate all points each developer gets in the current month and who finish in Top 5 will be rewarded with cash.    </p>
-<p>At the end of every quarter, we will calculate all points each developer gets in the current quarter and who finish in Top 5 will be rewarded with cash.  <br />
-At the end of every year, we will calculate all points each developer gets in the current year and who finish in Top 5 will be rewarded with cash.   </p>
-<p>The Top 5 developers who win the cash reward will be announced at Tronscan. </p>
-<p>Also, there is a chance to display developers' photos at TRON official website.     </p>
+                <h1 id="community-developers-incentives-programme">Community Developers Incentives Programme<a class="headerlink" href="#community-developers-incentives-programme" title="Permanent link">&para;</a></h1>
+<p>Bonus point applies in TRON incentives programme. Developers can earn points by contributing to TRON.</p>
+<p>When a issue (or PR) is closed, it will be added into the reward programme. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track.</p>
+<p>You can find your points ranking at <a href="https://tronscan.org/#/developersreward">Tronscan</a>.</p>
+<p>Reward 1:</p>
+<p>At the end of every month, we will calculate all points each developer gets in the current month and who finish in Top 5 will be rewarded with cash.</p>
+<p>At the end of every quarter, we will calculate all points each developer gets in the current quarter and who finish in Top 5 will be rewarded with cash.
+At the end of every year, we will calculate all points each developer gets in the current year and who finish in Top 5 will be rewarded with cash.</p>
+<p>The Top 5 developers who win the cash reward will be announced at Tronscan.</p>
+<p>Also, there is a chance to display developers' photos at TRON official website.</p>
 <table>
 <thead>
 <tr>
@@ -197,13 +217,13 @@ At the end of every year, we will calculate all points each developer gets in th
 </tr>
 </tbody>
 </table>
-<p>Reward 2:   </p>
-<p>Every developer who participates java-tron's developement will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.    </p>
-<p>The following shows the content you can contribute to.  </p>
-<h2 id="non-code-related">Non-code Related</h2>
+<p>Reward 2:</p>
+<p>Every developer who participates java-tron's developement will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.</p>
+<p>The following shows the content you can contribute to.</p>
+<h2 id="non-code-related">Non-code Related<a class="headerlink" href="#non-code-related" title="Permanent link">&para;</a></h2>
 <p><strong> 1. TIP </strong></p>
-<p>Description: TRON Improvement Proposal（TIP）<br />
-Scope: Any improvement related to TRON ecosystem, like a new feature, TRC, protocol improvement, programming tool, etc.   <br />
+<p>Description: TRON Improvement Proposal(TIP)
+Scope: Any improvement related to TRON ecosystem, like a new feature, TRC, protocol improvement, programming tool, etc.
 Points:</p>
 <table>
 <thead>
@@ -224,9 +244,9 @@ Points:</p>
 </tbody>
 </table>
 <p><strong> 2. Documentation  </strong></p>
-<p>Description: To revise, update and add technical documentation related to TRON network.<br />
-Scope: mechanism and algorithm, network architecture and database, contracts and other technical documentation <br />
-Points:  </p>
+<p>Description: To revise, update and add technical documentation related to TRON network.
+Scope: mechanism and algorithm, network architecture and database, contracts and other technical documentation
+Points:</p>
 <table>
 <thead>
 <tr>
@@ -245,9 +265,9 @@ Points:  </p>
 </tr>
 </tbody>
 </table>
-<p><strong> 3. Issue </strong>  </p>
-<p>Description: Create a topic about a question, enhancement, bug or feature and so on to discuss <br />
-Scope: java-tron, TRON ecosystem<br />
+<p><strong> 3. Issue </strong></p>
+<p>Description: Create a topic about a question, enhancement, bug or feature and so on to discuss
+Scope: java-tron, TRON ecosystem
 Points:</p>
 <table>
 <thead>
@@ -267,10 +287,10 @@ Points:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="code-related">Code Related</h2>
+<h2 id="code-related">Code Related<a class="headerlink" href="#code-related" title="Permanent link">&para;</a></h2>
 <p><strong> 1. Feature Development </strong></p>
-<p>Description: To add new features to TRON network<br />
-Scope: java-tron, wallet-cli  <br />
+<p>Description: To add new features to TRON network
+Scope: java-tron, wallet-cli
 Points:</p>
 <table>
 <thead>
@@ -291,8 +311,8 @@ Points:</p>
 </tbody>
 </table>
 <p><strong> 2. Bug Report </strong></p>
-<p>Description: To report bugs in online TRON network<br />
-Scope: java-tron, wallet-cli   <br />
+<p>Description: To report bugs in online TRON network
+Scope: java-tron, wallet-cli
 Points:</p>
 <table>
 <thead>
@@ -313,8 +333,8 @@ Points:</p>
 </tbody>
 </table>
 <p><strong>3. Bug Fix</strong></p>
-<p>Description: To fix bugs in online TRON network <br />
-Scope: java-tron, wallet-cli   <br />
+<p>Description: To fix bugs in online TRON network
+Scope: java-tron, wallet-cli
 Points:</p>
 <table>
 <thead>
@@ -335,8 +355,8 @@ Points:</p>
 </tbody>
 </table>
 <p><strong>4. Security Related</strong></p>
-<p>Description: To find the security risks and enhance the security of TRON network and ecosystem <br />
-Scope: java-tron, TRON ecosystem <br />
+<p>Description: To find the security risks and enhance the security of TRON network and ecosystem
+Scope: java-tron, TRON ecosystem
 Points:</p>
 <table>
 <thead>
@@ -357,8 +377,8 @@ Points:</p>
 </tbody>
 </table>
 <p><strong>5. Others</strong></p>
-<p>Description: Code improvements, etc. <br />
-Scope: java-tron, wallet-cli <br />
+<p>Description: Code improvements, etc.
+Scope: java-tron, wallet-cli
 Points:</p>
 <table>
 <thead>
@@ -378,8 +398,8 @@ Points:</p>
 </tr>
 </tbody>
 </table>
-<p>In order to get 5 (or more) points, the content of a PR should be creative, pratical, critical or can reflect significant workload.   </p>
-<p>One PR should aim at solving one type of problems, so do not break one type of PR into many small PRs.   </p>
+<p>In order to get 5 (or more) points, the content of a PR should be creative, pratical, critical or can reflect significant workload.</p>
+<p>One PR should aim at solving one type of problems, so do not break one type of PR into many small PRs.</p>
               
             </div>
           </div>
@@ -387,7 +407,7 @@ Points:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../clients/wallet-cli/" class="btn btn-neutral float-right" title="Wallet-cli">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../java-tron/" class="btn btn-neutral float-right" title="Java-Tron">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../contribution/" class="btn btn-neutral" title="Contribution"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -415,16 +435,19 @@ Points:</p>
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
       
         <span><a href="../contribution/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../clients/wallet-cli/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../java-tron/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

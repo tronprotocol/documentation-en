@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/java-tron/">
+  <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/run-in-idea/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Java-Tron - TRON Documentation</title>
+  <title>Run FullNode in IDEA - TRON Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Java-Tron";
-    var mkdocs_page_input_path = "developers/java-tron.md";
-    var mkdocs_page_url = "/documentation-en/developers/java-tron/";
+    var mkdocs_page_name = "Run FullNode in IDEA";
+    var mkdocs_page_input_path = "developers/run-in-idea.md";
+    var mkdocs_page_url = "/documentation-en/developers/run-in-idea/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -112,7 +112,13 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../deployment/">Deployment</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../run-in-idea/">Run FullNode in IDEA</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Run FullNode in IDEA</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#configure-idea">Configure IDEA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deployment-guide">Deployment guide</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../resources/">Resources</a>
                     </li>
@@ -120,9 +126,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../incentives/">Incentive Policy</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Java-Tron</a>
-    <ul class="current">
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Java-Tron</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs</a>
                     </li>
@@ -169,10 +173,10 @@
         
       
     
-    <li>Java-Tron</li>
+    <li>Run FullNode in IDEA</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/java-tron.md"
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/run-in-idea.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -183,83 +187,56 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="java-tron">Java-tron<a class="headerlink" href="#java-tron" title="Permanent link">&para;</a></h1>
-<p>The java-tron repository is: <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a></p>
-<h2>Branch Introduction</h2>
-
-<p><code>master</code> branch:
-This branch contains the latest code released to the production environment. It can only be merged, and can not be modified directly in this branch.</p>
-<p><code>develop</code> branch:
-This branch is the main development branch. It contains the complete code that is going to release. It can only be merged, and can not be modified directly in this branch.</p>
-<p><code>feature</code> branch:
-This branch is used to develop new features. It is created based on <code>develop</code> branch. Once the development is finished, it should be merged into <code>develop</code> branch, and then delete the branch.</p>
-<p><code>release</code> branch:
-This is the branch that is going to be released. It is created based on <code>develop</code> branch. In this branch, small fix and modification of final version of metadata is allowed. When the code is released, this branch should be merged into <code>master</code> branch(tag needed) and <code>develop</code> branch. The final test before release uses this branch.</p>
-<p><code>hotfix</code> branch:
-This branch is used to fix a bug when an online bug is found. It is created based on <code>master</code> branch. When bug fix is done, it should be merged into <code>master</code> branch(as a new release) and <code>develop</code> and then delete the branch. branch.</p>
-<h2>Writing a new feature</h2>
-
-<p>When you start to develop a new feature, please create a feature branch from <code>develop</code> branch under <code>origin/feature</code>.
-<div class="codehilite"><pre><span></span>$ git checkout -b feature/my-feature develop
-# switch to &#39;feature/my-feature&#39;
-</pre></div></p>
-<p>When you finish the development, the new feature should be merged into <code>develop</code> branch.
-<div class="codehilite"><pre><span></span>$ git commit -m &quot;description&quot;
-# submit the code
-$ git checkout develop
-# switch to &#39;develop&#39;
-$ git pull
-# update branch
-$ git checkout feature/my-feature
-# switch to &#39;feature/my-feature&#39;
-$ git merge develop
-# merge &#39;develop&#39;, need to fix the conflict
-$ git push
-# submit to GitHub
-# make a Pull Request to wait the core developers to check
-$ git branch -d feature/my-feature
-# once it is merged, delete &#39;feature/my-feature&#39;
-</pre></div></p>
-<h2>Fixing online bugs:</h2>
-
-<p>When you start to fix an online bug, please create a hotfix branch from <code>master</code> branch under <code>origin/hotfix</code>.
-<div class="codehilite"><pre><span></span>$ git checkout -b hotfix/my-hotfix master
-# switch to &#39;hotfix/my-hotfix&#39;
-$ git commit -a -m &quot;Bumped version number to 3.1.4&quot;
-# submit and modify the version number
+                <h1 id="run-the-fullnode-with-idea">Run the FullNode with IDEA<a class="headerlink" href="#run-the-fullnode-with-idea" title="Permanent link">&para;</a></h1>
+<p>This document aims to facilitate developers with some experience to run the FullNode with IDEA.</p>
+<p><strong>The following is for the master branch of java-tron.</strong></p>
+<h2 id="configure-idea">Configure IDEA<a class="headerlink" href="#configure-idea" title="Permanent link">&para;</a></h2>
+<p><strong>The configuration of IDEA</strong></p>
+<ul>
+<li>
+<p>Oracle JDK 1.8 <strong>OpenJDK is not currently supported</strong></p>
+</li>
+<li>
+<p>Install Lombok plugin</p>
+</li>
+</ul>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/lombok.png" /></p>
+<ul>
+<li>Tick Enable annotation processing</li>
+</ul>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/annnotation.png" /></p>
+<h2 id="deployment-guide">Deployment guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h2>
+<p><strong>1.Create a directory</strong>
+<em>/deploy</em></p>
+<div class="codehilite"><pre><span></span>mkdir deploy
 </pre></div>
-When you finish the fix, it should be merged into <code>master</code> branch and <code>develop</code> branch.
-<div class="codehilite"><pre><span></span>$ git commit -m &quot;description&quot;
-# submit the code
-$ git checkout master
-# switch to &#39;master&#39;
-$ git pull
-# update branch
-$ git checkout hotfix/my-hotfix
-# switch to &#39;hotfix/my-hotfix&#39;
-$ git merge master
-# merge &#39;master&#39;, need to fix the conflict
-$ git push
-# make a Pull Request to wait the core developers to check
-# tag &#39;master&#39;
 
-$ git checkout develop
-# switch to &#39;develop&#39;
-$ git pull
-# update branch
-$ git checkout hotfix/my-hotfix
-# switch to &#39;hotfix/my-hotfix&#39;
-$ git merge develop
-# merge &#39;develop&#39;, need to fix the conflict
-$ git push
-# make a Pull Request to wait the core developers to check
+<p><strong>2.Clone the latest code</strong></p>
+<div class="codehilite"><pre><span></span>git clone https://github.com/tronprotocol/java-tron
+</pre></div>
 
-$ git branch -d hotfix/my-hotfix
-# once it is merged, delete &#39;my-hotfix&#39;
-</pre></div></p>
-<p>Your commit messages should detail why you made your change in addition to what you did (unless it is a tiny change).</p>
-<p>Finally, please make a PR.</p>
-<p>Additionally, if you are writing a new feature, please ensure you add appropriate test cases under <code>/src/test</code>.</p>
+<p><strong>3.Switch to the master branch</strong></p>
+<div class="codehilite"><pre><span></span>cd java-tron
+git checkout -t origin/master
+</pre></div>
+
+<p><strong>4.Compile the code</strong></p>
+<p><div class="codehilite"><pre><span></span>./gradlew build
+</pre></div>
+The compilation process may take some time, please be patient.
+If the compilation is successful, you can see the information similar to the following:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/build_success_test.png" /></p>
+<p>If you do not want to perform unit test tasks, you can run the following command:</p>
+<div class="codehilite"><pre><span></span>./gradlew build -x test
+</pre></div>
+
+<p><strong>5.Start the FullNode</strong></p>
+<p>After compiling successfully, you can find the main function file through the path java-tron / src / main / java / org / tron / program / FullNode.java and then start a full node.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start.png" /></p>
+<p>After starting, you can check the log to verify whether the startup is successful. The log path is: /deploy/java-tron/logs/tron.log. If the startup is successful, you can see the following logs:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start_success.png" /></p>
+<p>Also,you can use this command like tail -f /logs/tron.log to view the real-time log, as follows:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start_successed.png" /></p>
               
             </div>
           </div>
@@ -267,10 +244,10 @@ $ git branch -d hotfix/my-hotfix
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tips/" class="btn btn-neutral float-right" title="TIPs">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../resources/" class="btn btn-neutral float-right" title="Resources">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../incentives/" class="btn btn-neutral" title="Incentive Policy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../deployment/" class="btn btn-neutral" title="Deployment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -298,10 +275,10 @@ $ git branch -d hotfix/my-hotfix
           <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../incentives/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../deployment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../tips/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../resources/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
