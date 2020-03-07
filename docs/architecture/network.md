@@ -1,27 +1,34 @@
 # Tron Network Instructure
 
 Tron network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join Tron network as a node.
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/network.png)
+
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png)
 
 ## SuperNode
 
-Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SRs. They verify the transactions and write the transactions into the blocks in turn. The super Representatives' information is public to everyone in Tron network. The best way to browse is using [tronscan](https://tronscan.org/#/sr/representatives).
+Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SRs. They verify the transactions and write the transactions into the blocks in turn. The super Representatives' information is public to everyone in Tron network. The best way to browse is using [Tronscan](https://tronscan.org/#/sr/representatives).
 
 Recommended Hardware Configuration:
+
+```text
 minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
+```
 
 ## FullNode
 
 FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.
 
 Recommended Hardware Configuration:
+
+```text
 minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
+```
 
 ## SolidityNode
 
@@ -31,22 +38,25 @@ SolidityNode only synchronize solidified blocks data from the fullNode it specif
 > New developers should deploy FullNode only.
 
 Recommended Hardware Configuration:
+
+```text
 minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
+```
 
-## MainNet, TestNet, PrivateNet
+## MainNet, TestNet and PrivateNet
 
 MainNet, TestNet, PrivateNet all use the same code, only the node start configuration varies.
 
 ### MainNet
 
-[MainNet configuration](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
+[MainNet configuration: main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
 
 ### TestNet
 
-[TestNet configuration](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)
+[TestNet configuration: test_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)
 
 ### PrivateNet
 
@@ -73,7 +83,7 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 7. run the following command
 
     ```text
-    > nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar -c private_net_config.conf &>/dev/null &
+    > nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar -c private_net_config.conf </dev/null &>/dev/null &
 
     command line parameters introduction:
     --witness: start witness function, i.e.: --witness YOUR_PRIVATE_KEY_IN_HEX
@@ -82,6 +92,7 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
     ```
 
 The usage of the log file:
+
 You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
 
 ```xml
@@ -91,17 +102,20 @@ You can change the level of the module to control the log output. The default le
 The parameters in configuration file that need to modify:
 
 localwitness:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/localwitness.jpg)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/localwitness.jpg)
+
 witnesses:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/witness.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/witness.png)
+
 version:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png)
+
 enable:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png)
 
 #### Deploy the FullNode
 
-Same as Above except for:
+Same as above except for:
 
 1. set `seed.node.ip.list` to SR's ip and port
 2. set `needSyncCheck` true
@@ -111,12 +125,16 @@ Same as Above except for:
 The parameters in configuration file that need to modify:
 
 ip.list:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/ip_list.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/ip_list.png)
+
 p2p.version:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png)
+
 genesis.block:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/genesis_block.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/genesis_block.png)
+
 needSyncCheck:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/need_sync_check.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/need_sync_check.png)
+
 node.discovery.enable:
-> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
+> ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png)

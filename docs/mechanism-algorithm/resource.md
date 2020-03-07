@@ -1,3 +1,4 @@
+# Resource Model
 
 ## Introduction
 
@@ -6,6 +7,7 @@ TRON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit 
 TRON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage.
 
 Note:
+
 - Ordinary transaction only consumes Bandwidth points
 - Smart contract related transaction not only consumes Bandwidth points, but also Energy
 
@@ -17,13 +19,13 @@ Such as if the number of bytes of a transaction is 200, so this transaction cons
 
 Note: Due to the change of the total amount of the frozen TRX in the network and the self-frozen TRX amount, the Bandwidth Points an account possesses is not fixed.
 
-<h3> 1. How to Get Bandwidth Points </h3>
+### 1. How to Get Bandwidth Points
 
 1.&nbsp;By Freezing TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-frozen / the total amount of TRX frozen for Bandwidth Points in the network * 43_200_000_000
 
 2.&nbsp;Every account has a fixed amount of free Bandwidth Points(5000) every day
 
-<h3> 2. Bandwidth Points Consumption </h3>
+### 2. Bandwidth Points Consumption
 
 Except for query operation, any transaction consumes Bandwidth points.
 
@@ -53,10 +55,10 @@ Ordinary transaction, Bandwidth points consumption sequence:
 
 3.&nbsp;Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
 
+### 3. Bandwidth Points Recovery
 
-<h3> 3. Bandwidth Points Recovery </h3>
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/bandwidthRestoreEqn.gif)
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/bandwidthRestoreEqn.gif)
 
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.
 
@@ -64,7 +66,7 @@ Every 24 hours, the amount of the usage of Bandwidth points of an account will b
 
 Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.
 
-<h3> 1. How to Get Energy </h3>
+### 1. How to Get Energy
 
 Freeze TRX to get energy.
 
@@ -104,9 +106,9 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 24 hours later, the energy consumption amount will be 0 Energy
 ```
 
-<h3> 2. How to Set Fee Limit (Caller Must Read) </h3>
-***
+### 2. How to Set Fee Limit (Caller Must Read)
 
+***
 *Within the scope of this section, the smart contract developer will be called "developer", the users or other contracts which call the smart contract will be called "caller"*
 
 *The amount of energy consumed while call the contract can be converted to TRX or SUN, so within the scope of this section, when refer to the consumption of the resource, there's no strict difference between Energy, TRX and SUN, unless they are used as a number unit.*
@@ -117,13 +119,13 @@ Set a rational fee limit can guarantee the smart contract execution. And if the 
 
 1.&nbsp;The legal fee limit is a integer between 0 - 10^9, unit is SUN.
 
-2.&nbsp;Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount fo energy[1]. When the contract is triggered, the commands will be executed one by one and consume energy. If it reaches the fee limit, commands will fail to be executed, and energy is not refundable.
+2.&nbsp;Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount fo energy[^1]. When the contract is triggered, the commands will be executed one by one and consume energy. If it reaches the fee limit, commands will fail to be executed, and energy is not refundable.
 
-3.&nbsp;Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[2]. The energy consumed by triggering contract also includes developer's share.
+3.&nbsp;Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[^2]. The energy consumed by triggering contract also includes developer's share.
 
 4.&nbsp;For a vicious contract, if it encounters execution timeout or bug crash, all it's energy will be consumed.
 
-5.&nbsp;Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [2].
+5.&nbsp;Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [^2].
 
 To encourage caller to trigger the contract, usually developer has enough energy.
 
@@ -131,31 +133,31 @@ To encourage caller to trigger the contract, usually developer has enough energy
 
 How to estimate the fee limit:
 
-Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[3]
+Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[^3]
 
 According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy.
 
-When to burn TRX, 1 TRX = 10000 energy[4]
+When to burn TRX, 1 TRX = 10000 energy[^4]
 
 Assume developer undertake 90% energy consumption, and developer has enough energy.
 
 Then the way to estimate the fee limit is:
 
-1). A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,
-2). B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2_000_000 SUN,
-3). Take the greater number of A and B, which is 50_000_000 SUN,
-4). Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
+1. A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,
+2. B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2_000_000 SUN,
+3. Take the greater number of A and B, which is 50_000_000 SUN,
+4. Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
 
 So, the caller is suggested to set fee limit to 50_000_000 SUN * 10% = 5_000_000 SUN
 
 Note:
 
-[1] The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
-[2] TRON may change this policy.
-[3] The estimated energy consumption limit for the next execution should be greater than the last one.
-[4] 1 TRX = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.
+[^1]: The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
+[^2]: TRON may change this policy.
+[^3]: The estimated energy consumption limit for the next execution should be greater than the last one.
+[^4]: 1 TRX = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.
 
-<h3> 3. Energy Calculation (Developer Must Read)  </h3>
+### 3. Energy Calculation (Developer Must Read)
 
 1.&nbsp;In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.
 
@@ -164,8 +166,8 @@ Note:
 3.&nbsp;Currently, the total energy available when trigger a contract is composed of caller fee limit and developer's share
 
 Note:
-- If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[1].
-- We recommend to set caller's energy consumption proportion to 10% ~ 100%[2].
+- If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[^1].
+- We recommend to set caller's energy consumption proportion to 10% ~ 100%[^2].
 
 ** Example 1 **
 
@@ -187,7 +189,7 @@ If contract executes successfully without any exception, the energy needed for t
 
 If Assert-style error come out, it will consume the whole number of energy set for fee limit.
 
-Assert-style error introduction, refer to [https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+Assert-style error introduction, refer to [Exception Handling(zh-cn)](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
 
 ** Example 2 **
 
@@ -211,11 +213,11 @@ if (X + Y) / 40% < Z / 60%, the energy A can use is (X + Y) / 40%
 
 If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.
 
-If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to [Exception Handling(zh-cn)](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
 
 Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef.
 
-Assert-style error introduction, refer to [https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+Assert-style error introduction, refer to [Exception Handling(zh-cn)](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
 
 To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.
 

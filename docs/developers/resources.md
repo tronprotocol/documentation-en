@@ -1,28 +1,29 @@
+# Resources
 
-* TRON Official Website    
-[https://tron.network/](https://tron.network/)    
-
-
-* TRON White Paper   
-[https://tron.network/resources?lng=&name=1](https://tron.network/resources?lng=&name=1)  
+* TRON Official Website
+[https://tron.network/](https://tron.network/)
 
 
-* TRON Blockchain Browser    
-[https://tronscan.org/](https://tronscan.org/)     
-[https://www.trxplorer.io/](https://www.trxplorer.io/)     
+* TRON White Paper
+[https://tron.network/resources?lng=&name=1](https://tron.network/resources?lng=&name=1)
 
 
-* TRON Wallet   
-[https://github.com/tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli)    
+* TRON Blockchain Browser
+[https://tronscan.org/](https://tronscan.org/)
+[https://www.trxplorer.io/](https://www.trxplorer.io/)
 
 
-* TRON Zksnark-java-sdk   
-[https://github.com/tronprotocol/zksnark-java-sdk](https://github.com/tronprotocol/zksnark-java-sdk)   
+* TRON Wallet
+[https://github.com/tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli)
 
 
-* TRON Sun-network   
-[https://github.com/tronprotocol/sun-network](https://github.com/tronprotocol/sun-network)    
+* TRON Zksnark-java-sdk
+[https://github.com/tronprotocol/zksnark-java-sdk](https://github.com/tronprotocol/zksnark-java-sdk)
 
 
-* TRON Javascript API  
-[https://github.com/tron-us/tronweb](https://github.com/tron-us/tronweb)  
+* TRON Sun-network
+[https://github.com/tronprotocol/sun-network](https://github.com/tronprotocol/sun-network)
+
+
+* TRON Javascript API
+[https://github.com/tron-us/tronweb](https://github.com/tron-us/tronweb)

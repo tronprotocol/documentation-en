@@ -10,14 +10,14 @@ This document aims to facilitate developers with some experience to run the Full
 
 - Install Lombok plugin
 
-![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/lombok.png)
+![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/lombok.png)
 
 - Tick Enable annotation processing
 
-![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/annnotation.png)
+![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/annnotation.png)
 
 ## Deployment guide
-**1.Create a directory** 
+**1.Create a directory**
 _/deploy_
 
 ```text
@@ -42,10 +42,10 @@ git checkout -t origin/master
 ```text
 ./gradlew build
 ```
-The compilation process may take some time, please be patient. 
+The compilation process may take some time, please be patient.
 If the compilation is successful, you can see the information similar to the following:
 
-![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/build_success_test.png)
+![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/build_success_test.png)
 
 If you do not want to perform unit test tasks, you can run the following command:
 
@@ -57,12 +57,12 @@ If you do not want to perform unit test tasks, you can run the following command
 
 After compiling successfully, you can find the main function file through the path java-tron / src / main / java / org / tron / program / FullNode.java and then start a full node.
 
-![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/start.png)
+![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start.png)
 
 After starting, you can check the log to verify whether the startup is successful. The log path is: /deploy/java-tron/logs/tron.log. If the startup is successful, you can see the following logs:
 
-![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/start_success.png)
+![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start_success.png)
 
 Also,you can use this command like tail -f /logs/tron.log to view the real-time log, as follows:
 
-![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/imags/start_successed.png)
+![](https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start_successed.png)

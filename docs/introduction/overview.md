@@ -1,3 +1,4 @@
+# Overview
 
 # 1. Project Repository
 
@@ -112,7 +113,7 @@ id: proposal id
 - Query all the proposals list by pagination (GetPaginatedProposalList)
 - Query a proposal by proposal id (GetProposalById)
 
-For more api detail, please refer to [Tron-http](Tron-http.md)
+For more api detail, please refer to [Tron HTTP API](../api/http.md)
 
 # 3. Account Model
 
@@ -178,7 +179,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 <h2> 4.4 TRON Network Instructure </h2>
 TRON network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join TRON network as a node.
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/network.png)
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png)
 
 <h2> 4.5 FullNode and SolidityNode Fast Deployment </h2>
 Download fast deployment script, run the script according to different types of node.
@@ -235,13 +236,13 @@ command line parameters introduction:
  <logger name="net" level="WARN"/>
  The parameters in configuration file that need to modify:
  localwitness:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/localwitness.jpg)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/localwitness.jpg)
  witnesses:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/witness.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/witness.png)
  version:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png)
  enable:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png)
 
 
 <h6> 4.6.3.2.2 Step 2: FullNode Deployment </h6>
@@ -271,29 +272,29 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
  <logger name="net" level="WARN"/>
  The parameters in configuration file that need to modify:
  ip.list:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/ip_list.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/ip_list.png)
  p2p.version:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/p2p_version.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png)
  genesis.block:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/genesis_block.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/genesis_block.png)
  needSyncCheck:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/need_sync_check.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/need_sync_check.png)
  node.discovery.enable:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/discovery_enable.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png)
 
 <h2> 4.7 DB Engine </h2>
 <h3> 4.7.1 Rocksdb </h3>
 <h4> 4.7.1.1 Configuration </h4>
  Use rocksdb as the data storage engine, need to set db.engine to "ROCKSDB"
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/db_engine.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_engine.png)
  Note: rocksdb only support db.version=2, do not support db.version=1
 
  The optimization parameters rocksdb support:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/rocksdb_tuning_parameters.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/rocksdb_tuning_parameters.png)
 
 <h4> 4.7.1.2 Use rocksdb's data backup function </h4>
  Choose rocksdb to be the data storage engine, you can use it's data backup function while running
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/db_backup.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_backup.png)
  Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
 
 <h4> 4.7.1.3 Convert leveldb data to rocksdb data </h4>
@@ -429,23 +430,23 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 
 5.&nbsp;built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-1）TVM is compatible with solidity language's transfer format, including:
+1)TVM is compatible with solidity language's transfer format, including:
 - accompany with constructor to call transfer
 - accompany with internal function to call transfer
 - use transfer/send/call/callcode/delegatecall to call transfer
 
 Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
 
-2）Different accounts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-3）SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-4）SuperNode approves or disapproves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-5）SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-6）SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-7）TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-8）TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-9）Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-10）Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-11）Compatible with all the built-in functions of Ethereum
+2)Different accounts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+3)SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+4)SuperNode approves or disapproves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+5)SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+6)SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+7)TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+8)TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+9)Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+10)Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+11)Compatible with all the built-in functions of Ethereum
 
 Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
 
@@ -848,7 +849,7 @@ Please refer to:
 TRON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.
 
 <h2> 7.1 How to Issue a TRC-10 Token </h2>
-Http Api:
+HTTP API:
 
 ```text
 wallet/createassetissue
@@ -887,7 +888,7 @@ Note: The unit of 'trx_num' is SUN
 ```
 
 <h2> 7.2 Participate TRC-10 Token </h2>
-Http Api:
+HTTP API:
 
 ```text
 wallet/participateassetissue
@@ -908,7 +909,7 @@ Note: The unit of 'amount' is the smallest unit of the token
 ```
 
 <h2> 7.3 TRC-10 Token Transfer </h2>
-Http Api:
+HTTP API:
 
 ```text
 wallet/transferasset
@@ -975,7 +976,7 @@ Ordinary transaction, Bandwidth points consumption sequence:
 
 <h3> 8.2.3 Bandwidth Points Recovery </h3>
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-EN/master/imags/bandwidthRestoreEqn.gif)
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/bandwidthRestoreEqn.gif)
 
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.
 
@@ -1052,17 +1053,17 @@ The token price is determined by the ratio of the balance of the two tokens.
 sellTokenQuant is the amount of the first_token you want to sell;
 buyTokenQuant is the amount of second_token you can get;
 supply = 1_000_000_000_000_000_000L;
-supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant, 0.0005));
-buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0);
+supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/(firstTokenBalance + sellTokenQuant, 0.0005));
+buyTokenQuant = (long)balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0);
 
 
 # 10. Multi-Signatures
 Please refer to:
-[TRON Multi-signatures](Tron-multi-signatures.md)
+[Multi-signatures](../mechanism-algorithm/multi-signatures.md)
 
 # 11. Shielded Transaction
 Please refer to:
-[TRON Shielded Transaction](Tron-shielded-transaction.md)
+[Shielded Transaction](../mechanism-algorithm/shielded-transaction.md)
 
 # 12. Wallet Introduction
 <h2> 12.1 wallet-cli Introduction </h2>
