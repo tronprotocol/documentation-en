@@ -17,7 +17,7 @@ nav:
         - Account Model: mechanism-algorithm/account.md
         - Resource Model: mechanism-algorithm/resource.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
-        - Multi Signature: mechanism-algorithm/multi-signatures.md
+        - Multi-Signature: mechanism-algorithm/multi-signatures.md
         - Shielded Transaction: mechanism-algorithm/shielded-transaction.md
         - System Contracts:  mechanism-algorithm/system-contracts.md
     - Architecture:
@@ -35,7 +35,7 @@ nav:
         - Run FullNode in IDEA: developers/run-in-idea.md
         - Resources: developers/resources.md
         - Contribution: developers/contribution.md
-        - Incentives Policy: developers/incentives.md
+        - Incentive Policy: developers/incentives.md
         - Java-Tron: developers/java-tron.md
         - TIPs: developers/tips.md
         - Advanced Configuration: developers/advanced-configuration.md
