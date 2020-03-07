@@ -31,7 +31,7 @@ Developers can call these interfaces to deploy, trigger or check smart contracts
 
 ## How TVM Works
 
-![Flowchart of Tron Virtual Machine](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Virtual_Machine/虚拟机.png)
+![Flowchart of Tron Virtual Machine](https://raw.githubusercontent.com/tronprotocol/documentation/master/images/Virtual_Machine/虚拟机.png)
 
 The above flowchart shows how TVM works:
 Compilation of Tron smart contract→execution and computing engines of VM→Interoperation service layer for external interfaces.
