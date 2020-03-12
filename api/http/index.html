@@ -355,7 +355,7 @@
 <td>scannotebyovk</td>
 </tr>
 <tr>
-<td></td>
+<td>gettransactioninfobyblocknum</td>
 <td>accountpermissionupdate</td>
 <td>getrcm</td>
 </tr>
@@ -684,6 +684,17 @@
 </code></pre></div></p>
 <p>Parameter value: Transaction id</p>
 <p>Return: Transaction fee &amp; block height</p>
+<ul>
+<li>/walletsolidity/gettransactioninfobyblocknum(Since Odyssey-v3.7)</li>
+</ul>
+<p>Description: Query the list of transactioninfos in a specific block
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyblocknum -d
+<span class="go">&#39;{</span>
+<span class="go">    &quot;num&quot;: 100</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameter num: Block height</p>
+<p>Return: The list of transactioninfos</p>
 <ul>
 <li>/walletsolidity/getdelegatedresource(Since Odyssey-v3.2)</li>
 </ul>
@@ -1497,6 +1508,17 @@ The unit of 'amount' is the smallest unit of the token</p>
 </code></pre></div></p>
 <p>Parameter num: Block height</p>
 <p>Return: The number of transactions</p>
+<ul>
+<li>wallet/gettransactioninfobyblocknum(Since Odyssey-v3.7)</li>
+</ul>
+<p>Description: Query th the number of transactions in a specific block
+<div class="codehilite"><pre><span></span><code><span class="gp">$</span> curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyblocknum -d
+<span class="go">&#39;{</span>
+<span class="go">    &quot;num&quot;: 100</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameter num: Block height</p>
+<p>Return: The list of transactioninfos</p>
 <ul>
 <li>wallet/getaccount</li>
 </ul>
