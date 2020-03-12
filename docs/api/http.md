@@ -14,7 +14,7 @@
 | getdeferredtransactioninfobyid|  getaccountresource                | scannotebyivk                                |
 | getsignweight                 |  setaccountid                      | scanandmarknotebyivk                         |
 | addtransactionsign            |  getaccountbyid                    | scannotebyovk                                |
-|                               |  accountpermissionupdate           | getrcm                                       |
+| gettransactioninfobyblocknum  |  accountpermissionupdate           | getrcm                                       |
 |                               |  getdelegatedresource              | getmerkletreevoucherinfo                     |
 |                               |  getdelegatedresourceaccountindex  | isspend                                      |
 |                               |  freezebalance                     | createspendauthsig                           |
@@ -237,6 +237,20 @@ $ curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblockn
 Parameter num: Block height
 
 Return: The number of transactions
+
+- /walletsolidity/gettransactioninfobyblocknum(Since Odyssey-v3.7)
+
+Description: Query the list of transaction information in a specific block
+```console
+$ curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyblocknum -d
+'{
+    "num": 100
+}'
+```
+
+Parameter num: Block height
+
+Return: The list of transaction information
 
 - /walletsolidity/gettransactioninfobyid
 
@@ -1326,6 +1340,20 @@ $ curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d
 Parameter num: Block height
 
 Return: The number of transactions
+
+- wallet/gettransactioninfobyblocknum(Since Odyssey-v3.7)
+
+Description: Query the list of transaction information in a specific block
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyblocknum -d
+'{
+    "num": 100
+}'
+```
+
+Parameter num: Block height
+
+Return: The list of transaction information
 
 - wallet/getaccount
 
