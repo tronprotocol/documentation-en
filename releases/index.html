@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Glossary - TRON Documentation</title>
+  <title>Binary Integrity Check - TRON Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Glossary";
-    var mkdocs_page_input_path = "glossary.md";
-    var mkdocs_page_url = "/documentation-en/glossary/";
+    var mkdocs_page_name = "Binary Integrity Check";
+    var mkdocs_page_input_path = "releases/index.md";
+    var mkdocs_page_url = "/documentation-en/releases/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -230,9 +230,21 @@
 		
     <span class="caption-text">Releases</span>
     <ul class="subnav">
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../releases/">Binary Integrity Check</a>
+    <a class="current" href="./">Binary Integrity Check</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#releases">Releases</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#binary-integrity-check">Binary Integrity Check</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -242,15 +254,9 @@
     <a class="" href="../faq/">FAQ</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Glossary</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#glossary">Glossary</a></li>
-    
-
-    </ul>
+    <a class="" href="../glossary/">Glossary</a>
 	    </li>
           
         </ul>
@@ -274,11 +280,15 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Releases &raquo;</li>
+        
+      
     
-    <li>Glossary</li>
+    <li>Binary Integrity Check</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/glossary.md"
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/index.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -288,35 +298,35 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Permanent link">&para;</a></h1>
-<p><strong>energyUsage</strong></p>
-<p>The Energy conumption of the contract caller in one contract trigger.</p>
-<p><strong>energyFee</strong></p>
-<p>The number of TRX burned from the contract caller for Energy conumption in one contract trigger.</p>
-<p><strong>originEnergyUsage</strong></p>
-<p>The total Energy conumption of the contract developer in one contract trigger.</p>
-<p><strong>energyUsageTotal</strong></p>
-<p>The total Energy conumption of the contract developer and the contract caller combined.</p>
-<p><strong>Feelimit</strong></p>
-<p>When the user triggers or create the contract, this is used to set the usage limit of the Energy consumption got from burning TRX or freezing TRX, Energy got from freezing TRX will be used first.</p>
-<p><strong>CallValue</strong></p>
-<p>When the user triggers or create the contract, this can be used to send TRX to the contract.</p>
-<p><strong>consume_user_resource_percent</strong></p>
-<p>For a contract, Resource consumption is composed of two parts, one part is afforded by contract developer and the other part is afforded by contract caller. This is the percentage of the two parts in the Resource consumption.</p>
-<p><strong>origin_energy_limit</strong></p>
-<p>The usage limit of the Energy consumption of the developer in one  contract trigger, should be greater than 0.</p>
-<p><strong>net_usage</strong></p>
-<p>The Bandwidth consumption in one contract trigger.  (NetFee not included)</p>
-<p><strong>net_fee</strong></p>
-<p>The TRX burned for Bandwidth consumption in one contract trigger.</p>
-<p><strong>Bandwidth</strong></p>
-<p>The Bandwidth Points consumed by a transaction is the size of the byte array in this transaction. If the byte array length of a transaction is 100, then the transaction needs to consume 100 Bandwidth Points.</p>
-<p><strong>Energy</strong></p>
-<p>The creation and operation of a smart contract consume CPU resources. It takes time for smart contracts to operate in virtual machines (VMs), and the time consumed in the system is calculated in microseconds. CPU resources are consumed in energy, which means 1 Energy = 1 Microsecond (μs). If a contract takes 100 μs to execute in a VM, it needs to consume 100 Energy.</p>
-<p><strong>TRON Power(TP)</strong></p>
-<p>1 Frozen TRX = 1 TP, TP can be used to vote, 1 TP = 1 vote.</p>
-<p><strong>Super Representative(SR)</strong></p>
-<p>The current block producing Top 27 nodes.</p>
+                <h1 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h1>
+<h2 id="binary-integrity-check">Binary Integrity Check<a class="headerlink" href="#binary-integrity-check" title="Permanent link">&para;</a></h2>
+<p>All released files after 3.7 will provide signatures signed by the Tron Account: <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>.</p>
+<h3 id="signature-verification">Signature Verification<a class="headerlink" href="#signature-verification" title="Permanent link">&para;</a></h3>
+<p>You can verify the signature by tronweb.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">Trx</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;tronweb&#39;</span><span class="p">).</span><span class="nx">Trx</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Trx</span><span class="p">.</span><span class="nx">verifySignature</span><span class="p">(</span><span class="nx">SHA256</span><span class="p">,</span> <span class="nx">ADDRESS</span><span class="p">,</span> <span class="nx">SIGNATURE</span><span class="p">));</span>
+</code></pre></div>
+
+<p>Suppose we got a <code>FullNode.jar</code> with a SHA256 hash <code>2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e</code>, and a Tron signature <code>21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b</code>.</p>
+<p>To verify the integrity of the released file:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># First calculate the sha256 hash</span>
+
+sha256sum FullNode.jar  <span class="c1"># or shasum -a 256 FullNode.jar (macOS)</span>
+<span class="c1"># 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e  FullNode.jar</span>
+
+<span class="c1"># Then check the signature</span>
+
+npm install -g tronweb
+node -e <span class="s1">&#39;console.log(require(&quot;tronweb&quot;).Trx.verifySignature(</span>
+<span class="s1">    &quot;2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e&quot;,</span>
+<span class="s1">    &quot;TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2&quot;,</span>
+<span class="s1">    &quot;21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b&quot;</span>
+<span class="s1">  ))&#39;</span>
+<span class="c1"># true</span>
+
+<span class="c1"># Now you&#39;ve verified the integrity of the binary release file.</span>
+</code></pre></div>
               
             </div>
           </div>
@@ -324,8 +334,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../faq/" class="btn btn-neutral" title="FAQ"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../clients/tron-grid/" class="btn btn-neutral" title="TronGrid"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -353,8 +365,10 @@
           <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../faq/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../clients/tron-grid/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
