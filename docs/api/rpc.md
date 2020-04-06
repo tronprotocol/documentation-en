@@ -298,3 +298,28 @@ Nodes: FullNode
 Interface statement:
 rpc GetNewShieldedAddress (EmptyMessage) returns (ShieldedAddressInfo){}
 Nodes: FullNode
+
+**58.&nbsp;Create shielded contract parameters**
+Interface statement:
+rpc CreateShieldedContractParameters (PrivateShieldedTRC20Parameters) returns (ShieldedTRC20Parameters) {}
+Nodes: FullNode
+
+**59.&nbsp;Create shielded contract parameters without ask**
+Interface statement:
+rpc CreateShieldedContractParametersWithoutAsk (PrivateShieldedTRC20ParametersWithoutAsk) returns (ShieldedTRC20Parameters) {}
+Nodes: FullNode
+
+**60.&nbsp;Scan shielded TRC20 notes by ivk**
+Interface statement:
+rpc ScanShieldedTRC20NotesbyIvk (IvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
+Nodes: FullNode, SolidityNode
+
+**61.&nbsp;Scan shielded TRC20 notes by ovk**
+Interface statement:
+rpc ScanShieldedTRC20NotesbyOvk (OvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
+Nodes: FullNode, SolidityNode
+
+**62.&nbsp;Get the status of shielded TRC20 note of spent or not**
+Interface statement:
+rpc IsShieldedTRC20ContractNoteSpent (NfTRC20Parameters) returns (NullifierResult) {}
+Nodes: FullNode, SolidityNode

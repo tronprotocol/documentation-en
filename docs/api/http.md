@@ -39,15 +39,27 @@
 
 
 
-|   proposal                       | smart contract          | others                |
+|   proposal                       | smart contract          | shielded TRC20 contract|
 |----------------------------------|-------------------------|-----------------------|
-|  getpaginatedproposallist        | deploycontract          | broadcasttransaction  |
-|  proposalcreate                  | getcontract             | broadcasthex          |
-|  getproposalbyid                 | triggerconstantcontract | listnodes             |
-|  listproposals                   | triggersmartcontract    | listwitnesses         |
+|  getpaginatedproposallist        | deploycontract          | createshieldedcontractparameters  |
+|  proposalcreate                  | getcontract             | createshieldedcontractparameterswithoutask          |
+|  getproposalbyid                 | triggerconstantcontract | scanshieldedtrc20notesbyivk             |
+|  listproposals                   | triggersmartcontract    | scanshieldedtrc20notesbyovk         |
 |  proposalapprove                 | clearabi                | getnextmaintenancetime|
 |  proposaldelete                  | updateenergylimit       | getnodeinfo           |
 |  getapprovedlist                 | updatesetting           | getchainparameters    |
+
+
+
+| others                |
+|-----------------------|
+| broadcasttransaction  |
+| broadcasthex          |
+| listnodes             |
+| listwitnesses         |
+| getnextmaintenancetime|
+| getnodeinfo           |
+| getchainparameters    |
 
 
 
@@ -496,6 +508,73 @@ Parameter note: Note information
 Parameter txid: Transaction id    
 Parameter index: Note index        
 Return: Note status  
+
+
+/walletsolidity/scanshieldedtrc20notesbyivk
+Description: scan the shielded TRC-20 notes by ivk and mark their status of whether spent
+```json
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyivk -d
+'{
+    "start_block_index": 9200,
+    "end_block_index": 9240,
+    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
+    "ivk": "9f8e74bb3d7188a2781dc1db38810c6914eef4570a79e8ec8404480948e4e305",
+    "ak":"8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64",
+    "nk":"590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14"
+}'
+```
+Parameters:
+start_block_index: the start block index, inclusive
+end_block_index: the end block index, exclusive
+shielded_TRC20_contract_address: shielded TRC-20 contract address
+ivk: Incoming viewing key
+ak: Ak key
+nk: Nk key
+Return: notes list
+Note: block limit（end_block_index - start_block_index <= 1000）
+
+/walletsolidity/scanshieldedtrc20notesbyovk
+Description: scan the shielded TRC-20 notes by ovk
+```json
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyovk -d
+'{
+    "start_block_index": 9200,
+    "end_block_index": 9240,
+    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
+    "ovk": "0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889"
+}'
+```
+Parameters:
+start_block_index: start block index, inclusive
+end_block_index: end block index, exclusive
+shielded_TRC20_contract_address: shielded TRC-20 contract address
+ovk: Outgoing viewing key
+Return: notes list
+Note: block limit（end_block_index - start_block_index <= 1000）
+
+/walletsolidity/isshieldedtrc20contractnotespent
+Description: check the status whether the specified shielded TRC-20 note is spent
+```json
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyovk -d
+'{
+   "note": {
+       "value": 40,
+       "payment_address":"ztron1768kf7dy4qquefp46szk978d65eeua66yhr4zv260c0uzj68t3tfjl3en9lhyyfxalv4jus30xs",
+       "rcm": "296070782a94c6936b0b4f6daf8d7c7605a4374fe595b96148dc0f4b59015d0d"
+    },
+    "ak": "8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64",
+    "nk": "590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14",
+    "position": 272,
+    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7"
+}'
+```
+Parameters:
+note: the specified note
+ak: Ak
+nk: Nk
+position: the leaf position index of note commitment in the Merkle tree
+shielded_TRC20_contract_address: the shielded TRC-20 contract address
+Return: note status
 
 
 ## FullNode Api
@@ -2182,3 +2261,124 @@ Return: incoming viewing key
 Return: Diversifier
 Return: pkD
 Return: payment address 
+
+
+- wallet/createshieldedcontractparameters
+Description: create the shielded TRC-20 transaction parameters, which has three types: mint, transfer and burn
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameters -d
+'{
+   "ask": "0f63eabdfe2bbfe08012f6bb2db024e6809c16e8ed055aa41a6095424f192005",
+   "nsk": "cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404",
+   "ovk": "1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9",
+   "from_amount": 50,
+    "shielded_receives": {
+       "note": {
+          "value": 50,
+          "payment_address": "ztron15js0jkuxczt8caq5hp59rnh6rgf34sek7vqn9u6ljelxv4nuzz2x9qe3ffm2wzz6ck53yxyhxs6",
+          "rcm": "74baec30dfac8ed59968955ff245ae002009005194e5b824c35ab88c52e5170e"
+       }
+    },
+    "shielded_TRC20_contract_address": "41e6e90fbc958ba09483550882b1f0327e0193250a"
+}'
+```
+Parameters:
+ask: Ask
+nsk: Nsk
+ovk: Outgoing view key
+from_amount: the amount for mint
+shielded_receives: the shielded notes to be created
+shielded_TRC20_contract_address: shielded TRC-20 contract address
+Return: the shielded TRC-20 transaction parameters
+Note: The input parameters will differ according to the variety of shileded TRC-20 transaction type
+
+- wallet/createshieldedcontractparameterswithoutask
+Description: create the shielded TRC-20 transaction parameters without Ask, which has three types: mint, transfer and burn
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameterswithoutask -d
+'{
+   "ovk": "cd361834b3adc06f130de24f7d0c18f92a093cc885d9ce492cc6c02071f7a4f0",
+   "from_amount": 50,
+    "shielded_receives": {
+       "note": {
+          "value": 50,
+          "payment_address": "ztron13lvfnt4rau4ad9mmgztd3aftw49e3amz8gm2kvyzrsaw0ugz2grxwkvcfys5e2gkchj7cnnetjz",
+          "rcm": "499e73f2f8aaf05fac41a35b8343bde27f6629cbe66d35da5364a99b94a55a06"
+       }
+    },
+    "shielded_TRC20_contract_address": "41e6e90fbc958ba09483550882b1f0327e0193250a"
+}'
+```
+Parameters:
+ovk: Outgoing view key
+from_amount: the amount for mint
+shielded_receives: the shielded notes to be created
+shielded_TRC20_contract_address: shielded TRC-20 contract address
+Return: the shielded TRC-20 transaction parameters
+Note: The input parameters will differ according to the variety of shileded TRC-20 transaction type
+
+- wallet/scanshieldedtrc20notesbyivk
+Description: scan the shielded TRC-20 notes by ivk and mark their status of whether spent
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyivk -d
+'{
+    "start_block_index": 9200,
+    "end_block_index": 9240,
+    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
+    "ivk": "9f8e74bb3d7188a2781dc1db38810c6914eef4570a79e8ec8404480948e4e305",
+    "ak":"8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64",
+    "nk":"590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14"
+}'
+```
+Parameters:
+start_block_index: the start block index, inclusive
+end_block_index: the end block index, exclusive
+shielded_TRC20_contract_address: shielded TRC-20 contract address
+ivk: Incoming viewing key
+ak: Ak key
+nk: Nk key
+Return: notes list
+Note: block limit（end_block_index - start_block_index <= 1000）
+
+- wallet/scanshieldedtrc20notesbyovk
+Description: scan the shielded TRC-20 notes by ovk
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyovk -d
+'{
+    "start_block_index": 9200,
+    "end_block_index": 9240,
+    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
+    "ovk": "0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889"
+}'
+```
+Parameters:
+start_block_index: start block index, inclusive
+end_block_index: end block index, exclusive
+shielded_TRC20_contract_address: shielded TRC-20 contract address
+ovk: Outgoing viewing key
+Return: notes list
+Note: block limit（end_block_index - start_block_index <= 1000）
+
+- wallet/isshieldedtrc20contractnotespent
+Description: check the status whether the specified shielded TRC-20 note is spent
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyovk -d
+'{
+   "note": {
+       "value": 40,
+       "payment_address":"ztron1768kf7dy4qquefp46szk978d65eeua66yhr4zv260c0uzj68t3tfjl3en9lhyyfxalv4jus30xs",
+       "rcm": "296070782a94c6936b0b4f6daf8d7c7605a4374fe595b96148dc0f4b59015d0d"
+    },
+    "ak": "8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64",
+    "nk": "590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14",
+    "position": 272,
+    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7"
+}'
+```
+Parameters:
+note: the specified note
+ak: Ak
+nk: Nk
+position: the leaf position index of note commitment in the Merkle tree
+shielded_TRC20_contract_address: the shielded TRC-20 contract address
+Return: note status
