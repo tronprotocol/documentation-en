@@ -1,5 +1,11 @@
+# Deployment
+
 ## Premise
 Create separate directories for fullnode and soliditynode
+
+> NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
+> New developers should deploy FullNode only.
+
 ```text
 /deploy/fullnode
 /deploy/soliditynode
@@ -8,8 +14,8 @@ Create separate directories for fullnode and soliditynode
 Create two folders for fullnode and soliditynode.
 
 Clone the latest master branch of [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) and extract it to
-```text      
-/deploy/java-tron 
+```text
+/deploy/java-tron
 ```
 
 Make sure you have the proper dependencies.
@@ -22,21 +28,21 @@ Make sure you have the proper dependencies.
 
 ## Deployment Guide
 
-1.&nbsp;Build the java-tron project  
+1.&nbsp;Build the java-tron project
 ```text
-cd /deploy/java-tron 
+cd /deploy/java-tron
 ./gradlew build
 ```
 
 2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories
 ```text
-download your needed configuration file from https://github.com/tronprotocol/TronDeployment.  
+download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
 
-main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.  
+main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
-please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SoliditNode.  
+please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SoliditNode.
 
-cp build/libs/FullNode.jar ../fullnode  
+cp build/libs/FullNode.jar ../fullnode
 
 cp build/libs/SolidityNode.jar ../soliditynode
 ```
@@ -46,7 +52,7 @@ cp build/libs/SolidityNode.jar ../soliditynode
 java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
 
-4.&nbsp;Configure the SolidityNode configuration file  
+4.&nbsp;Configure the SolidityNode configuration file
 
 You need to edit `config.conf` to connect to your local FullNode. Change  `trustNode` in `node` to local `127.0.0.1:50051`, which is the default rpc port. Set `listen.port` to any number within the range of 1024-65535. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services. Also change `rpc port` to `50052` or something to avoid conflicts. **Please forward the UDP port 18888 for FullNode.**
 ```text
@@ -56,7 +62,7 @@ rpc {
 ```
 
 5.&nbsp;You can now run your SolidityNode using the following command：
-```text        
+```text
 java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
 
@@ -69,14 +75,14 @@ java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F
 
 This is similar to running a private testnet, except that the IPs in the `config.conf` are officially declared by TRON.
 
-7.&nbsp;Running a Super Representative Node for private testnet  
+7.&nbsp;Running a Super Representative Node for private testnet
 
-You should modify the config.conf:   
+You should modify the config.conf:
 
 - Replace existing entry in genesis.block.witnesses with your address
 - Replace existing entry in seed.node ip.list with your ip list
 - The first Super Node start, needSyncCheck should be set false
-- Set p2pversion to 61 
+- Set p2pversion to 61
 
 ```text
 cd build/libs
@@ -101,7 +107,7 @@ You should see something similar to this in your logs for block synchronization:
 12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
 ```
 ## Stop Node Gracefully
-Create file stop.sh，use kill -15 to close java-tron.jar（or FullNode.jar、SolidityNode.jar）.
+Create file stop.sh，use kill -15 to close java-tron.jar(or FullNode.jar、SolidityNode.jar).
 You need to modify pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
 ```text
 #!/bin/bash
@@ -118,9 +124,9 @@ while true; do
 done
 ```
 
-## FullNode and SolidityNode Fast Deployment 
+## FullNode and SolidityNode Fast Deployment
 
-Download fast deployment script, run the script according to different types of node.   
+Download fast deployment script, run the script according to different types of node.
 
 <h3>Scope of use</h3>
 
@@ -181,7 +187,7 @@ This script helps you download the code from https://github.com/tronprotocol/grp
 
 <h3> Pre-requests </h3>
 
-Please follow the guide on https://github.com/tronprotocol/grpc-gateway 
+Please follow the guide on https://github.com/tronprotocol/grpc-gateway
 Install Golang, Protoc, and set $GOPATH environment variable according to your requirement.
 
 <h3> Download and run script </h3>
@@ -193,7 +199,7 @@ wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy
 <h3> Parameter Illustration </h3>
 
 ```shell
-bash deploy_grpc_gateway.sh --rpchost [rpc host ip] --rpcport [rpc port number] --httpport [http port number] 
+bash deploy_grpc_gateway.sh --rpchost [rpc host ip] --rpcport [rpc port number] --httpport [http port number]
 
 --rpchost The fullnode or soliditynode IP where the grpc service is provided. Default value is "localhost".
 --rpcport The fullnode or soliditynode port number grpc service is consuming. Default value is 50051.
@@ -213,17 +219,17 @@ bash deploy_grpc_gateway.sh --rpchost 127.0.0.1 --rpcport 50052 --httpport 18891
 
 ## Event Subscribe plugin Deployment
 
-This is an implementation of Tron eventsubscribe model. 
+This is an implementation of Tron eventsubscribe model.
 
-* **api** module defines IPluginEventListener, a protocol between Java-tron and event plugin. 
+* **api** module defines IPluginEventListener, a protocol between Java-tron and event plugin.
 * **app** module is an example for loading plugin, developers could use it for debugging.
-* **kafkaplugin** module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from Java-tron and relay events to kafka server. 
-* **mongodbplugin** mongodbplugin module is the implementation for mongodb. 
+* **kafkaplugin** module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from Java-tron and relay events to kafka server.
+* **mongodbplugin** mongodbplugin module is the implementation for mongodb.
 
 <h3> Setup/Build </h3>
 
 1. Clone the repo `git clone https://github.com/tronprotocol/event-plugin.git`
-2. Go to eventplugin `cd event-plugin` 
+2. Go to eventplugin `cd event-plugin`
 3. run `./gradlew build`
 
 * This will produce one plugin zip, named `plugin-kafka-1.0.0.zip`, located in the `event-plugin/build/plugins/` directory.
@@ -280,11 +286,11 @@ event.subscribe = {
  * **dbconfig**: db configuration information for mongodb, if using kafka, delete this one; if using Mongodb, add like that dbname|username|password
  * **triggerName**: the trigger type, the value can't be modified.
  * **enable**: plugin can receive nothing if the value is false.
- * **topic**: the value is the kafka topic to receive events. Make sure it has been created and Kafka process is running  
+ * **topic**: the value is the kafka topic to receive events. Make sure it has been created and Kafka process is running
  * **filter**: filter condition for process trigger.
- **note**: if the server is not 127.0.0.1, pls set some properties in config/server.properties file  
-           remove comment and set listeners=PLAINTEXT://:9092  
-           remove comment and set advertised.listeners to PLAINTEXT://host_ip:9092 
+ **note**: if the server is not 127.0.0.1, pls set some properties in config/server.properties file
+           remove comment and set listeners=PLAINTEXT://:9092
+           remove comment and set advertised.listeners to PLAINTEXT://host_ip:9092
 
 <h3 id="kafka"> Install Kafka </h3>
 
@@ -297,7 +303,7 @@ brew install kafka
 ```
 cd /usr/local
 wget http://archive.apache.org/dist/kafka/0.10.2.2/kafka_2.10-0.10.2.2.tgz
-tar -xzvf kafka_2.10-0.10.2.2.tgz 
+tar -xzvf kafka_2.10-0.10.2.2.tgz
 mv kafka_2.10-0.10.2.2 kafka
 
 add "export PATH=$PATH:/usr/local/kafka/bin" to end of /etc/profile
@@ -319,12 +325,12 @@ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-
 **On Linux**:
 ```
 zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties &
-Sleep about 3 seconds 
+Sleep about 3 seconds
 kafka-server-start.sh /usr/local/kafka/config/server.properties &
 ```
 
 <h3> Create topics to receive events, the topic is defined in config.conf </h3>
- 
+
 **On Mac**:
 ```
 kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
@@ -363,7 +369,7 @@ kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
 
 * add --es to command line, for example:
 ```
- java -jar FullNode.jar -p privatekey -c config.conf --es 
+ java -jar FullNode.jar -p privatekey -c config.conf --es
 ```
 
 
@@ -387,10 +393,10 @@ filter = {
 
 <h3 id="mongo"> Download and install MongoDB </h3>
 
-** Suggested Configuration ** 
+** Suggested Configuration **
 
-- CPU/ RAM: 16Core / 32G  
-- DISK: 500G  
+- CPU/ RAM: 16Core / 32G
+- DISK: 500G
 - System: CentOS 64
 
 The version of MongoDB is **4.0.4**, below is the command:
@@ -461,10 +467,10 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 
 ** Set database index to speedup query: **
 
-cd /{projectPath}   
+cd /{projectPath}
 sh insertIndex.sh
 
-## Event query service deployment  
+## Event query service deployment
 
 <h3>Download sourcecode</h3>
 
@@ -477,16 +483,16 @@ cd troneventquery
 
 - mvn package
 
-After the build command is executed successfully, troneventquery jar to release will be generated under troneventquery/target directory. 
+After the build command is executed successfully, troneventquery jar to release will be generated under troneventquery/target directory.
 
 Configuration of mongodb "config.conf" should be created for storing mongodb configuration, such as database name, username, password, and so on. We provided an example in sourcecode, which is " troneventquery/config.conf ". Replace with your specified configuration if needed.
 
-**Note**: 
+**Note**:
 
 Make sure the relative path of config.conf and troneventquery jar. The config.conf 's path is the parent of troneventquery jar.
 
- - mongo.host=IP 
- - mongo.port=27017 
+ - mongo.host=IP
+ - mongo.port=27017
  - mongo.dbname=eventlog
  - mongo.username=tron
  - mongo.password=123456
@@ -503,4 +509,4 @@ Any configuration could be modified except **mongo.dbname**, "**eventlog**" is t
 
 ## Advanced Configurations
 
-Read the [Advanced Configuration](../advanced-configuration.md)
+Read the [Advanced Configuration](./advanced-configuration.md)

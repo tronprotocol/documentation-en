@@ -1,23 +1,25 @@
-The java-tron repository is: [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron)    
+# Java-tron
+
+The java-tron repository is: [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron)
 
 <h2>Branch Introduction</h2>
 
-``master`` branch:  
+``master`` branch:
 This branch contains the latest code released to the production environment. It can only be merged, and can not be modified directly in this branch.
 
-``develop`` branch:  
+``develop`` branch:
 This branch is the main development branch. It contains the complete code that is going to release. It can only be merged, and can not be modified directly in this branch.
 
-``feature`` branch:  
+``feature`` branch:
 This branch is used to develop new features. It is created based on ``develop`` branch. Once the development is finished, it should be merged into ``develop`` branch, and then delete the branch.
 
-``release`` branch:  
+``release`` branch:
 This is the branch that is going to be released. It is created based on ``develop`` branch. In this branch, small fix and modification of final version of metadata is allowed. When the code is released, this branch should be merged into ``master`` branch(tag needed) and ``develop`` branch. The final test before release uses this branch.
 
-``hotfix`` branch:  
+``hotfix`` branch:
 This branch is used to fix a bug when an online bug is found. It is created based on ``master`` branch. When bug fix is done, it should be merged into ``master`` branch(as a new release) and ``develop`` and then delete the branch. branch.
 
-<h2>Writing a new feature</h2>   
+<h2>Writing a new feature</h2>
 
 When you start to develop a new feature, please create a feature branch from ``develop`` branch under ``origin/feature``.
 ```text
@@ -44,7 +46,7 @@ $ git branch -d feature/my-feature
 # once it is merged, delete 'feature/my-feature'
 ```
 
-<h2>Fixing online bugs:</h2>   
+<h2>Fixing online bugs:</h2>
 
 When you start to fix an online bug, please create a hotfix branch from ``master`` branch under ``origin/hotfix``.
 ```text
@@ -88,4 +90,4 @@ Your commit messages should detail why you made your change in addition to what 
 
 Finally, please make a PR.
 
-Additionally, if you are writing a new feature, please ensure you add appropriate test cases under ``/src/test``.  
+Additionally, if you are writing a new feature, please ensure you add appropriate test cases under ``/src/test``.
