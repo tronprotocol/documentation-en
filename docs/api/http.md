@@ -3031,8 +3031,6 @@ spend_authority_signature: the spend authority signatures
 
 amount: the amount 
  
-position: the leaf position index of note commitment in the Merkle tree
-
 transparent_to_address: the receiver for the `burn` operation.
 
 Return: the input data for triggering shielded TRC-20 contract.
