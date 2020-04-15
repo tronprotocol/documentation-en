@@ -6,18 +6,18 @@
 | gettransactionsign            |  createaccount                     | getakfromask                                 |
 | gettransactionbyid            |  createaddress                     | getnkfromnsk                                 |
 | gettransactioninfobyid        |  getaccountnet                     | getspendingkey                               |
-| gettransactioncountbyblocknum |  getaccount                        | getdiversifier                               | 
-| totaltransaction              |  generateaddress                   | getincomingviewingkey                        | 
+| gettransactioncountbyblocknum |  getaccount                        | getdiversifier                               |
+| totaltransaction              |  generateaddress                   | getincomingviewingkey                        |
 | getdeferredtransactionbyid    |  validateaddress                   | getzenpaymentaddress                         |
 | canceldeferredtransactionbyid |  getaccountresource                | scannotebyivk                                |
-| getdeferredtransactioninfobyid|  setaccountid                      | scanandmarknotebyivk                         | 
+| getdeferredtransactioninfobyid|  setaccountid                      | scanandmarknotebyivk                         |
 | getsignweight                 |  getaccountbyid                    | scannotebyovk                                |
-| addtransactionsign            |  accountpermissionupdate           | getrcm                                       | 
-|                               |  getdelegatedresource              | getmerkletreevoucherinfo                     | 
+| addtransactionsign            |  accountpermissionupdate           | getrcm                                       |
+|                               |  getdelegatedresource              | getmerkletreevoucherinfo                     |
 |                               |  getdelegatedresourceaccountindex  | isspend                                      |
-|                               |  freezebalance                     | createspendauthsig                           | 
+|                               |  freezebalance                     | createspendauthsig                           |
 |    **block**                  |  unfreezebalance                   | createshieldnullifier                        |
-| getnowblock                   |  unfreezeasset                     | getshieldtransactionhash                     | 
+| getnowblock                   |  unfreezeasset                     | getshieldtransactionhash                     |
 | getblockbynum                 |  withdrawbalance                   | createshieldedtransaction                    |
 | getblockbyid                  |  votewitnessaccount                | createshieldedtransaction<br>withoutspendauthsig |
 | getblockbylimitnext           |  updatewitness                     | createshieldedtransaction<br>withoutspendauthsig |
@@ -25,17 +25,17 @@
 
 
 
-|   asset                        |  exchange               | transfer                        |  
+|   asset                        |  exchange               | transfer                        |
 |--------------------------------|-------------------------|---------------------------------|
-|  createassetissue              | exchangecreate          | easytransferbyprivate           | 
-|  participateassetissue         | exchangeinject          | easytransferassetbyprivate      |       
-|  getassetissuebyaccount        | exchangewithdraw        | transferasset                   |  
-|  getassetissuebyname           | exchangetransaction     | easytransfer                    | 
-|  getassetissuelistbyname       | getexchangebyid         | easytransferasset               | 
-|  getassetissuelist             | getpaginatedexchangelist|                                 |                    
-|  getpaginatedassetissuelist    | getpaginatedexchangelist|                                 |                    
-|  getassetissuebyid             | listexchanges           |                                 |                    
-|  updateasset                   | getpaginatedexchangelist|                                 |                    
+|  createassetissue              | exchangecreate          | easytransferbyprivate           |
+|  participateassetissue         | exchangeinject          | easytransferassetbyprivate      |
+|  getassetissuebyaccount        | exchangewithdraw        | transferasset                   |
+|  getassetissuebyname           | exchangetransaction     | easytransfer                    |
+|  getassetissuelistbyname       | getexchangebyid         | easytransferasset               |
+|  getassetissuelist             | getpaginatedexchangelist|                                 |
+|  getpaginatedassetissuelist    | getpaginatedexchangelist|                                 |
+|  getassetissuebyid             | listexchanges           |                                 |
+|  updateasset                   | getpaginatedexchangelist|                                 |
 
 
 
@@ -79,7 +79,8 @@ curl -X POST http://127.0.0.1:8090/wallet/createtransaction  -d
     "owner_address_": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
     "to_address_": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
     "amount": 1000000,
-    "visible": true
+    "visible": true,
+		"extra_data": "You may write your remarks here."
 }'
 ```
 3.&nbsp;For GET method api: By adding 'visible' parameter in the url, as way 1.    
@@ -320,7 +321,7 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d
 '{
     "num": 5
 }'
-``` 
+```
 Parameter num: The number of the blocks expected to return  
 Return: The list of the blocks  
 
@@ -1014,7 +1015,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d
 Parameter startNum: The start block height, itself included  
 Parameter endNum: The end block height, itself not included  
 Return: The list of the blocks  
-  
+
 - wallet/getblockbylatestnum  
 
 Description: Query the several latest blocks  
@@ -1163,7 +1164,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d
     "toAddress": "4112E621D5577311998708F4D7B9F71F86DAE138B5",
     "amount": 10000
 }'
-``` 
+```
 Parameter privateKey: Private key, default hexString    
 Parameter toAddress: To address, default hexString     
 Parameter amount: TRX transfer amount  
@@ -1342,7 +1343,7 @@ Parameter proposal_id: Proposal id
 Parameter is_add_approval: Whether to approve  
 Parameter permission_id: Optional, for multi-signature use      
 Return: Transaction object  
-  
+
 - wallet/proposaldelete  
 
 Description: To delete a proposal  
@@ -1382,7 +1383,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d
     "second_token_id": "token_b",
     "second_token_balance": 200
 }'
-```  
+```
 Parameter first_token_id: The first token's id, default hexString      
 Parameter first_token_balance: The first token's balance  
 Parameter second_token_id: The second token's id, default hexString      
@@ -1530,7 +1531,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d
 Parameter fromAddress: Energy from address, default hexString  
 Parameter toAddress: Energy to address, default hexString  
 Return: Energy delegation information  
-  
+
 - wallet/getdelegatedresourceaccountindex(Since Odyssey-v3.2)  
 
 Description: Query the energy delegation index by an account  
@@ -1542,7 +1543,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountinde
 ```
 Parameter value: Address, default hexString  
 Return: Energy delegation index   
-  
+
 - wallet/getnodeinfo(Since Odyssey-v3.2)  
 
 Description: Query the current node infromation  
@@ -1947,7 +1948,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithou
         }
     ]
 }' 
-```  
+```
 Parameter transparent_from_address: Transparent sender's address   
 Parameter from_amount: Send amount from transparent address  
 Parameter ak: Ak     
