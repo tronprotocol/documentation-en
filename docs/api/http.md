@@ -80,7 +80,7 @@ curl -X POST http://127.0.0.1:8090/wallet/createtransaction  -d
     "to_address_": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
     "amount": 1000000,
     "visible": true,
-		"extra_data": "You may write your remarks here."
+    "extra_data": "You may write your remarks here."
 }'
 ```
 3.&nbsp;For GET method api: By adding 'visible' parameter in the url, as way 1.    
