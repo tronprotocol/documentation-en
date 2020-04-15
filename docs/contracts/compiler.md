@@ -1,26 +1,28 @@
-## Tools 
+# Compiler
+
+## Tools
 
 <h3> 1. TronStudio </h3>
 
-Support the build, debug, run, etc. for solidity language written smart contract.  
+Support the build, debug, run, etc. for solidity language written smart contract.
 [https://developers.tron.network/docs/tron-studio-intro](https://developers.tron.network/docs/tron-studio-intro)
 
 <h3> 2. TronBox </h3>
 
-Support the build, deploy, transplant, etc. for solidity language written smart contract.  
+Support the build, deploy, transplant, etc. for solidity language written smart contract.
 [https://developers.tron.network/docs/tron-box-user-guide](https://developers.tron.network/docs/tron-box-user-guide)
 
 <h3> 3. TronWeb </h3>
-Provide http api service for the usage of smart contract.  
+Provide http api service for the usage of smart contract.
 [https://developers.tron.network/docs/tron-web-intro](https://developers.tron.network/docs/tron-web-intro)
 
 <h3> 4. TronGrid </h3>
-Provide smart contract event query service.  
+Provide smart contract event query service.
 [https://developers.tron.network/docs/tron-grid-intro](https://developers.tron.network/docs/tron-grid-intro)
 
 ## Development
 
-First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:  
+First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:
 
 ```text
 pragma solidity ^0.4.0;
@@ -31,29 +33,29 @@ contract DataStore {
     function set(uint256 key, uint256 value) public {
         data[key] = value;
     }
-    
+
     function get(uint256 key) view public returns (uint256 value) {
         value = data[key];
     }
 }
 ```
 
-** Start a Private Net **  
+** Start a Private Net **
 
-Make sure the fullnode code has been deployed locally, you can check if 'Produce block successfully' log appears in FullNode/logs/tron.log  
+Make sure the fullnode code has been deployed locally, you can check if 'Produce block successfully' log appears in FullNode/logs/tron.log
 
-** Develop a Smart Contract **  
+** Develop a Smart Contract **
 
-Copy the code example above to remix to debug.  
+Copy the code example above to remix to debug.
 
-** Compile in SimpleWebCompiler for ABI and ByteCode **    
+** Compile in SimpleWebCompiler for ABI and ByteCode **
 
-Copy the code example above to SimpleWebCompiler to get ABI and ByteCode.   
-Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.  
+Copy the code example above to SimpleWebCompiler to get ABI and ByteCode.
+Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.
 
-** Using Wallet-cli to Deploy **    
+** Using Wallet-cli to Deploy **
 
-Download Wallet-Cli and build  
+Download Wallet-Cli and build
 
 ```text
 shell
@@ -65,15 +67,15 @@ cd  wallet-cli
 cd  build/libs
 ```
 
-Note: You need to change the node ip and port in config.conf  
+Note: You need to change the node ip and port in config.conf
 
-start wallet-cli  
+start wallet-cli
 
 ```text
 java -jar wallet-cli.jar
 ```
 
-after started, you can use command lines to operate:  
+after started, you can use command lines to operate:
 
 ```text
 importwallet
@@ -84,7 +86,7 @@ login
 getbalance
 ```
 
-deploy contract  
+deploy contract
 
 ```text
 Shell
@@ -107,7 +109,7 @@ deploycontract DataStore [{"constant":false,"inputs":[{"name":"key","type":"uint
 If it is deployed successfully, it will return 'Deploy the contract successfully'
 ```
 
-get the contract address  
+get the contract address
 
 ```text
 Your smart contract address will be: <contract address>
@@ -116,7 +118,7 @@ Your smart contract address will be: <contract address>
 Your smart contract address will be: TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
 ```
 
-call the contract to store data, query data  
+call the contract to store data, query data
 
 ```text
 Shell
@@ -135,17 +137,17 @@ value: The amount of TRX transfer to the contract when trigger
 ## set mapping 1->1
 triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 set(uint256,uint256) 1,1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
 
-## get mapping key = 1 
+## get mapping key = 1
 triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
 ```
 
-If the function called is constant or view, wallet-cli will return the result directly.  
-If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...  
+If the function called is constant or view, wallet-cli will return the result directly.
+If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...
 
 ```text
 # for instance, using remix to get the bytecode of the contract, like:
-608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073<b>__browser/oneLibrary.sol.Math3__________<\b>634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029  
+608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073<b>__browser/oneLibrary.sol.Math3__________<\b>634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029
 ```
 
-The address of the library deployed before is: TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54  
-When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 as the parameter of deploycontract. 
+The address of the library deployed before is: TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54
+When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 as the parameter of deploycontract.
