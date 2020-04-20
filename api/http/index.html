@@ -493,43 +493,73 @@
 <tr>
 <th>proposal</th>
 <th>smart contract</th>
-<th>others</th>
+<th>shielded TRC20 contract</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>getpaginatedproposallist</td>
 <td>deploycontract</td>
-<td>broadcasttransaction</td>
+<td>createshieldedcontractparameters</td>
 </tr>
 <tr>
 <td>proposalcreate</td>
 <td>getcontract</td>
-<td>broadcasthex</td>
+<td>createshieldedcontractparameterswithoutask</td>
 </tr>
 <tr>
 <td>getproposalbyid</td>
 <td>triggerconstantcontract</td>
-<td>listnodes</td>
+<td>scanshieldedtrc20notesbyivk</td>
 </tr>
 <tr>
 <td>listproposals</td>
 <td>triggersmartcontract</td>
-<td>listwitnesses</td>
+<td>scanshieldedtrc20notesbyovk</td>
 </tr>
 <tr>
 <td>proposalapprove</td>
 <td>clearabi</td>
-<td>getnextmaintenancetime</td>
+<td>isshieldedtrc20contractnotespent</td>
 </tr>
 <tr>
 <td>proposaldelete</td>
 <td>updateenergylimit</td>
-<td>getnodeinfo</td>
+<td>getTriggerInputForShieldedTRC20Contract</td>
 </tr>
 <tr>
 <td>getapprovedlist</td>
 <td>updatesetting</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>others</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcasttransaction</td>
+</tr>
+<tr>
+<td>broadcasthex</td>
+</tr>
+<tr>
+<td>listnodes</td>
+</tr>
+<tr>
+<td>listwitnesses</td>
+</tr>
+<tr>
+<td>getnextmaintenancetime</td>
+</tr>
+<tr>
+<td>getnodeinfo</td>
+</tr>
+<tr>
 <td>getchainparameters</td>
 </tr>
 </tbody>
@@ -958,6 +988,72 @@
 <p>Parameter txid: Transaction id</p>
 <p>Parameter index: Note index</p>
 <p>Return: Note status</p>
+<ul>
+<li>/walletsolidity/scanshieldedtrc20notesbyivk</li>
+</ul>
+<p>Description: scan the shielded TRC-20 notes by ivk and mark their status of whether spent
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyivk -d</span>
+<span class="go">&#39;{</span>
+<span class="go">    &quot;start_block_index&quot;: 9200,</span>
+<span class="go">    &quot;end_block_index&quot;: 9240,</span>
+<span class="go">    &quot;shielded_TRC20_contract_address&quot;: &quot;41274fc7464fadac5c00c893c58bce6c39bf59e4c7&quot;,</span>
+<span class="go">    &quot;ivk&quot;: &quot;9f8e74bb3d7188a2781dc1db38810c6914eef4570a79e8ec8404480948e4e305&quot;,</span>
+<span class="go">    &quot;ak&quot;:&quot;8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64&quot;,</span>
+<span class="go">    &quot;nk&quot;:&quot;590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameters:</p>
+<p>start_block_index: the start block index, inclusive</p>
+<p>end_block_index: the end block index, exclusive</p>
+<p>shielded_TRC20_contract_address: shielded TRC-20 contract address</p>
+<p>ivk: Incoming viewing key</p>
+<p>ak: Ak key</p>
+<p>nk: Nk key</p>
+<p>Return: notes list</p>
+<p>Note: block limit（end_block_index - start_block_index &lt;= 1000）</p>
+<ul>
+<li>/walletsolidity/scanshieldedtrc20notesbyovk</li>
+</ul>
+<p>Description: scan the shielded TRC-20 notes by ovk
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyovk -d</span>
+<span class="go">&#39;{</span>
+<span class="go">    &quot;start_block_index&quot;: 9200,</span>
+<span class="go">    &quot;end_block_index&quot;: 9240,</span>
+<span class="go">    &quot;shielded_TRC20_contract_address&quot;: &quot;41274fc7464fadac5c00c893c58bce6c39bf59e4c7&quot;,</span>
+<span class="go">    &quot;ovk&quot;: &quot;0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameters:</p>
+<p>start_block_index: start block index, inclusive</p>
+<p>end_block_index: end block index, exclusive</p>
+<p>shielded_TRC20_contract_address: shielded TRC-20 contract address</p>
+<p>ovk: Outgoing viewing key</p>
+<p>Return: notes list</p>
+<p>Note: block limit（end_block_index - start_block_index &lt;= 1000）</p>
+<ul>
+<li>/walletsolidity/isshieldedtrc20contractnotespent
+Description: check the status whether the specified shielded TRC-20 note is spent
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyovk -d</span>
+<span class="go">&#39;{</span>
+<span class="go">   &quot;note&quot;: {</span>
+<span class="go">       &quot;value&quot;: 40,</span>
+<span class="go">       &quot;payment_address&quot;:&quot;ztron1768kf7dy4qquefp46szk978d65eeua66yhr4zv260c0uzj68t3tfjl3en9lhyyfxalv4jus30xs&quot;,</span>
+<span class="go">       &quot;rcm&quot;: &quot;296070782a94c6936b0b4f6daf8d7c7605a4374fe595b96148dc0f4b59015d0d&quot;</span>
+<span class="go">    },</span>
+<span class="go">    &quot;ak&quot;: &quot;8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64&quot;,</span>
+<span class="go">    &quot;nk&quot;: &quot;590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14&quot;,</span>
+<span class="go">    &quot;position&quot;: 272,</span>
+<span class="go">    &quot;shielded_TRC20_contract_address&quot;: &quot;41274fc7464fadac5c00c893c58bce6c39bf59e4c7&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></li>
+</ul>
+<p>Parameters:</p>
+<p>note: the specified note</p>
+<p>ak: Ak</p>
+<p>nk: Nk</p>
+<p>position: the leaf position index of note commitment in the Merkle tree</p>
+<p>shielded_TRC20_contract_address: the shielded TRC-20 contract address</p>
+<p>Return: note status</p>
 <h2 id="fullnode-api">FullNode API<a class="headerlink" href="#fullnode-api" title="Permanent link">&para;</a></h2>
 <p>FullNode api's default http port is 8090, when FullNode is started, http service will be started too.</p>
 <ul>
@@ -2585,6 +2681,148 @@ Please refer to <a href="../../mechanism-algorithm/shielded-transaction/">The De
 <p>Return: Diversifier</p>
 <p>Return: pkD</p>
 <p>Return: payment address</p>
+<ul>
+<li>wallet/createshieldedcontractparameters</li>
+</ul>
+<p>Description: create the shielded TRC-20 transaction parameters, which has three types: mint, transfer and burn
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameters -d</span>
+<span class="go">&#39;{</span>
+<span class="go">   &quot;ask&quot;: &quot;0f63eabdfe2bbfe08012f6bb2db024e6809c16e8ed055aa41a6095424f192005&quot;,</span>
+<span class="go">   &quot;nsk&quot;: &quot;cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404&quot;,</span>
+<span class="go">   &quot;ovk&quot;: &quot;1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9&quot;,</span>
+<span class="go">   &quot;from_amount&quot;: 50,</span>
+<span class="go">    &quot;shielded_receives&quot;: {</span>
+<span class="go">       &quot;note&quot;: {</span>
+<span class="go">          &quot;value&quot;: 50,</span>
+<span class="go">          &quot;payment_address&quot;: &quot;ztron15js0jkuxczt8caq5hp59rnh6rgf34sek7vqn9u6ljelxv4nuzz2x9qe3ffm2wzz6ck53yxyhxs6&quot;,</span>
+<span class="go">          &quot;rcm&quot;: &quot;74baec30dfac8ed59968955ff245ae002009005194e5b824c35ab88c52e5170e&quot;</span>
+<span class="go">       }</span>
+<span class="go">    },</span>
+<span class="go">    &quot;shielded_TRC20_contract_address&quot;: &quot;41e6e90fbc958ba09483550882b1f0327e0193250a&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameters:</p>
+<p>ask: Ask</p>
+<p>nsk: Nsk</p>
+<p>ovk: Outgoing view key</p>
+<p>from_amount: the amount for mint</p>
+<p>shielded_receives: the shielded notes to be created</p>
+<p>shielded_TRC20_contract_address: shielded TRC-20 contract address</p>
+<p>Return: the shielded TRC-20 transaction parameters</p>
+<p>Note: The input parameters will differ according to the variety of shileded TRC-20 transaction type</p>
+<ul>
+<li>wallet/createshieldedcontractparameterswithoutask</li>
+</ul>
+<p>Description: create the shielded TRC-20 transaction parameters without Ask, which has three types: mint, transfer and burn
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameterswithoutask -d</span>
+<span class="go">&#39;{</span>
+<span class="go">   &quot;ovk&quot;: &quot;cd361834b3adc06f130de24f7d0c18f92a093cc885d9ce492cc6c02071f7a4f0&quot;,</span>
+<span class="go">   &quot;from_amount&quot;: 50,</span>
+<span class="go">    &quot;shielded_receives&quot;: {</span>
+<span class="go">       &quot;note&quot;: {</span>
+<span class="go">          &quot;value&quot;: 50,</span>
+<span class="go">          &quot;payment_address&quot;: &quot;ztron13lvfnt4rau4ad9mmgztd3aftw49e3amz8gm2kvyzrsaw0ugz2grxwkvcfys5e2gkchj7cnnetjz&quot;,</span>
+<span class="go">          &quot;rcm&quot;: &quot;499e73f2f8aaf05fac41a35b8343bde27f6629cbe66d35da5364a99b94a55a06&quot;</span>
+<span class="go">       }</span>
+<span class="go">    },</span>
+<span class="go">    &quot;shielded_TRC20_contract_address&quot;: &quot;41e6e90fbc958ba09483550882b1f0327e0193250a&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameters:</p>
+<p>ovk: Outgoing view key</p>
+<p>from_amount: the amount for mint</p>
+<p>shielded_receives: the shielded notes to be created</p>
+<p>shielded_TRC20_contract_address: shielded TRC-20 contract address</p>
+<p>Return: the shielded TRC-20 transaction parameters</p>
+<p>Note: The input parameters will differ according to the variety of shileded TRC-20 transaction type</p>
+<ul>
+<li>wallet/scanshieldedtrc20notesbyivk</li>
+</ul>
+<p>Description: scan the shielded TRC-20 notes by ivk and mark their status of whether spent
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyivk -d</span>
+<span class="go">&#39;{</span>
+<span class="go">    &quot;start_block_index&quot;: 9200,</span>
+<span class="go">    &quot;end_block_index&quot;: 9240,</span>
+<span class="go">    &quot;shielded_TRC20_contract_address&quot;: &quot;41274fc7464fadac5c00c893c58bce6c39bf59e4c7&quot;,</span>
+<span class="go">    &quot;ivk&quot;: &quot;9f8e74bb3d7188a2781dc1db38810c6914eef4570a79e8ec8404480948e4e305&quot;,</span>
+<span class="go">    &quot;ak&quot;:&quot;8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64&quot;,</span>
+<span class="go">    &quot;nk&quot;:&quot;590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameters:</p>
+<p>start_block_index: the start block index, inclusive</p>
+<p>end_block_index: the end block index, exclusive</p>
+<p>shielded_TRC20_contract_address: shielded TRC-20 contract address</p>
+<p>ivk: Incoming viewing key</p>
+<p>ak: Ak key</p>
+<p>nk: Nk key</p>
+<p>Return: notes list</p>
+<p>Note: block limit（end_block_index - start_block_index &lt;= 1000）</p>
+<ul>
+<li>wallet/scanshieldedtrc20notesbyovk</li>
+</ul>
+<p>Description: scan the shielded TRC-20 notes by ovk
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyovk -d</span>
+<span class="go">&#39;{</span>
+<span class="go">    &quot;start_block_index&quot;: 9200,</span>
+<span class="go">    &quot;end_block_index&quot;: 9240,</span>
+<span class="go">    &quot;shielded_TRC20_contract_address&quot;: &quot;41274fc7464fadac5c00c893c58bce6c39bf59e4c7&quot;,</span>
+<span class="go">    &quot;ovk&quot;: &quot;0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameters:</p>
+<p>start_block_index: start block index, inclusive</p>
+<p>end_block_index: end block index, exclusive</p>
+<p>shielded_TRC20_contract_address: shielded TRC-20 contract address</p>
+<p>ovk: Outgoing viewing key</p>
+<p>Return: notes list</p>
+<p>Note: block limit（end_block_index - start_block_index &lt;= 1000）</p>
+<ul>
+<li>wallet/isshieldedtrc20contractnotespent</li>
+</ul>
+<p>Description: check the status whether the specified shielded TRC-20 note is spent
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyovk -d</span>
+<span class="go">&#39;{</span>
+<span class="go">   &quot;note&quot;: {</span>
+<span class="go">       &quot;value&quot;: 40,</span>
+<span class="go">       &quot;payment_address&quot;:&quot;ztron1768kf7dy4qquefp46szk978d65eeua66yhr4zv260c0uzj68t3tfjl3en9lhyyfxalv4jus30xs&quot;,</span>
+<span class="go">       &quot;rcm&quot;: &quot;296070782a94c6936b0b4f6daf8d7c7605a4374fe595b96148dc0f4b59015d0d&quot;</span>
+<span class="go">    },</span>
+<span class="go">    &quot;ak&quot;: &quot;8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64&quot;,</span>
+<span class="go">    &quot;nk&quot;: &quot;590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14&quot;,</span>
+<span class="go">    &quot;position&quot;: 272,</span>
+<span class="go">    &quot;shielded_TRC20_contract_address&quot;: &quot;41274fc7464fadac5c00c893c58bce6c39bf59e4c7&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameters:</p>
+<p>note: the specified note</p>
+<p>ak: Ak</p>
+<p>nk: Nk</p>
+<p>position: the leaf position index of note commitment in the Merkle tree</p>
+<p>shielded_TRC20_contract_address: the shielded TRC-20 contract address</p>
+<p>Return: note status</p>
+<ul>
+<li>wallet/gettriggerinputforshieldedtrc20contract</li>
+</ul>
+<p>Description: get the trigger input data of shielded TRC-20 contract for the shielded TRC-20 parameters without spend authority signature.
+<div class="highlight"><pre><span></span><code><span class="go">demo: curl -X POST  http://127.0.0.1:8090/wallet/gettriggerinputforshieldedtrc20contract -d</span>
+<span class="go">&#39;{  </span>
+<span class="go">     &quot;shielded_TRC20_Parameters&quot;: {&quot;spend_description&quot;: [{&quot;value_commitment&quot;: &quot;43916fbd329030567a12ed99e389ed3498a122453a90fcb87eafd195bde3b726&quot;,&quot;anchor&quot;: &quot;4c9cbebece033dc1d253b93e4a3682187daae4f905515761d10287b801e69816&quot;,&quot;nullifier&quot;: &quot;74edce8798a3976ee41e045bb666f3a121c27235b0f1b44b3456d2c84bc725dc&quot;,&quot;rk&quot;: &quot;9dcf4254aa7c4fb7c8bc6956d4b0c7c6c87c37a2552e7bf4e60c12cb5bc6c8cd&quot;,&quot;zkproof&quot;: &quot;976aef79cf12c9d769c3113997f5c797cc4f51c3fbdc29f720cdb28a0f19eba1b6ce047ce6e107e8c5520746de81490a991aedda34b1662e446264d9941517f20876f8e00600e77534abd15ec3c21bd926eb3915bba05c38e7a7477b34b790081447ebd0458e5b9713b1516863e620952dc9fe02a3b7ed9d6685645b426133c06b9a6fe97adf20ad829268598f4938cd93c6bd4d662ebc4cd1a9495f070e3e7066f34831dc734d18603ca29a334973b77085b92304a302f0d37ff9a2eae6bfcb&quot;}],&quot;binding_signature&quot;: &quot;853e64a648a80113b2cd38b3cc4ed52da565cd63dcecf81df6dad296d4de1190928735a37853db231d2f00a44a2bc5901e528fbfbff71bf6d7c2f07158ee2b0b&quot;,&quot;message_hash&quot;: &quot;4378a92b097411a857411ba2d51b78fc6ac522283d517dbb46129e512488590e&quot;,&quot;parameter_type&quot;: &quot;burn&quot;},</span>
+<span class="go">     &quot;spend_authority_signature&quot;: [</span>
+<span class="go">       {</span>
+<span class="go">         &quot;value&quot;: &quot;62690bf5a5796507403695e9a645c419bf08593010878f7af8bb206156c1ea6cbfc3aac0cf383b2d269bb02ec857e3be19e24092988c84c7ea277be70ccd9d05&quot;</span>
+<span class="go">       }</span>
+<span class="go">     ],</span>
+<span class="go">     &quot;amount&quot;: 60,</span>
+<span class="go">     &quot;transparent_to_address&quot;: &quot;4140cd765f8e637a2bbe00f9bc458f6b21eb0e648f&quot;</span>
+<span class="go"> }&#39;</span>
+</code></pre></div></p>
+<p>Parameters:</p>
+<p>shielded_TRC20_Parameters: the generated shielded TRC-20 parameters</p>
+<p>spend_authority_signature: the spend authority signatures</p>
+<p>amount: the amount </p>
+<p>transparent_to_address: the receiver for the <code>burn</code> operation.</p>
+<p>Return: the input data for triggering shielded TRC-20 contract.</p>
               
             </div>
           </div>

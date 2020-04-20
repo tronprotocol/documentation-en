@@ -543,6 +543,30 @@ Nodes: FullNode</p>
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetNewShieldedAddress</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ShieldedAddressInfo</span><span class="p">){}</span>
 </code></pre></div>
 Nodes: FullNode</p>
+<p><strong>60.&nbsp;Create shielded contract parameters</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateShieldedContractParameters</span> <span class="p">(</span><span class="n">PrivateShieldedTRC20Parameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ShieldedTRC20Parameters</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>61.&nbsp;Create shielded contract parameters without ask</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateShieldedContractParametersWithoutAsk</span> <span class="p">(</span><span class="n">PrivateShieldedTRC20ParametersWithoutAsk</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ShieldedTRC20Parameters</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>62.&nbsp;Scan shielded TRC20 notes by ivk</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ScanShieldedTRC20NotesbyIvk</span> <span class="p">(</span><span class="n">IvkDecryptTRC20Parameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DecryptNotesTRC20</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode, SolidityNode</p>
+<p><strong>63.&nbsp;Scan shielded TRC20 notes by ovk</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ScanShieldedTRC20NotesbyOvk</span> <span class="p">(</span><span class="n">OvkDecryptTRC20Parameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DecryptNotesTRC20</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode, SolidityNode</p>
+<p><strong>64.&nbsp;Get the status of shielded TRC20 note of spent or not</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">IsShieldedTRC20ContractNoteSpent</span> <span class="p">(</span><span class="n">NfTRC20Parameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NullifierResult</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode, SolidityNode</p>
+<p><strong>65.&nbsp;Get the trigger input for the shielded TRC20 </strong>
+<div class="highlight"><pre><span></span><code>  <span class="k">rpc</span> <span class="n">GetTriggerInputForShieldedTRC20Contract</span> <span class="p">(</span><span class="n">ShieldedTRC20TriggerContractParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
               
             </div>
           </div>
