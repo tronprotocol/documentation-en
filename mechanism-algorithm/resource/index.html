@@ -366,12 +366,12 @@ U^\prime = ( 1 - \frac{T_2 - T_1}{24h} ) * U + u
 <h3 id="1-how-to-get-energy">1. How to Get Energy<a class="headerlink" href="#1-how-to-get-energy" title="Permanent link">&para;</a></h3>
 <p>Freeze TRX to get energy.</p>
 <p>Example (Using wallet-cli):</p>
-<div class="codehilite"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
+<div class="highlight"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 </code></pre></div>
 
 <p>Freeze TRX to get energy, energy obtained = user's TRX frozen amount / total amount of frozen TRX in TRON * 50_000_000_000.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>If there are only two users, A freezes 2 TRX, B freezes 2 TRX
+<div class="highlight"><pre><span></span><code>If there are only two users, A freezes 2 TRX, B freezes 2 TRX
 the energy they can get is:
 A: 25_000_000_000 and energy_limit is 25_000_000_000
 B: 25_000_000_000 and energy_limit is 25_000_000_000
@@ -386,7 +386,7 @@ B: 10_000_000_000 and energy_limit is 10_000_000_000
 <h4 id="energy-recovery">Energy Recovery<a class="headerlink" href="#energy-recovery" title="Permanent link">&para;</a></h4>
 <p>The energy consumed will reduce to 0 smoothly within 24 hours.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>at one moment, A has used 72_000_000 Energy
+<div class="highlight"><pre><span></span><code>at one moment, A has used 72_000_000 Energy
 if there is no continuous consumption or TRX freeze
 one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
 24 hours later, the energy consumption amount will be 0 Energy
@@ -481,7 +481,7 @@ if (X + Y) / 40% &lt; Z / 60%, the energy A can use is (X + Y) / 40%</p>
 <p>In TRON network, an account can freeze TRX for Bandwidth or Energy for other accounts. The primary account owns the frozen TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary freezing, resource delegation freezing is also at least 3 days.</p>
 <ul>
 <li>Example(Using wallet-cli)
-<div class="codehilite"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
+<div class="highlight"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 
 frozen_balance: the amount of TRX to freeze (unit SUN)
 frozen_duration: the freezing period (currently a fixed 3 days)

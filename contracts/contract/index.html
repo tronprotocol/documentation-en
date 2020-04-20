@@ -401,7 +401,7 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 <p>Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.</p>
 <p>1.&nbsp;address conversion</p>
 <p>Need to convert TRON's address while using in solidity (recommended):
-<div class="codehilite"><pre><span></span><code>/**
+<div class="highlight"><pre><span></span><code>/**
      *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
@@ -414,7 +414,7 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address){
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.</p>
 <p>2.&nbsp;address judgement</p>
 <p>Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-<div class="codehilite"><pre><span></span><code>function compareAddress(address tronAddress) public view returns (uint256){
+<div class="highlight"><pre><span></span><code>function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
         if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
             return 1;
@@ -426,7 +426,7 @@ This is similar with the grammar of the conversion from other types converted to
 But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c</p>
 <p>3.&nbsp;variable assignment</p>
 <p>Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-<div class="codehilite"><pre><span></span><code>function assignAddress() public view {
+<div class="highlight"><pre><span></span><code>function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
         address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
         // do something

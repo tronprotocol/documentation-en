@@ -321,13 +321,13 @@
 <p>NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
 New developers should deploy FullNode only.</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>/deploy/fullnode
+<div class="highlight"><pre><span></span><code>/deploy/fullnode
 /deploy/soliditynode
 </code></pre></div>
 
 <p>Create two folders for fullnode and soliditynode.</p>
 <p>Clone the latest master branch of <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a> and extract it to
-<div class="codehilite"><pre><span></span><code>/deploy/java-tron
+<div class="highlight"><pre><span></span><code>/deploy/java-tron
 </code></pre></div></p>
 <p>Make sure you have the proper dependencies.</p>
 <ul>
@@ -338,11 +338,11 @@ New developers should deploy FullNode only.</p>
 </ul>
 <h2 id="deployment-guide">Deployment Guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h2>
 <p>1.&nbsp;Build the java-tron project
-<div class="codehilite"><pre><span></span><code>cd /deploy/java-tron
+<div class="highlight"><pre><span></span><code>cd /deploy/java-tron
 ./gradlew build
 </code></pre></div></p>
 <p>2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories
-<div class="codehilite"><pre><span></span><code>download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
+<div class="highlight"><pre><span></span><code>download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
 
 main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
@@ -353,19 +353,19 @@ cp build/libs/FullNode.jar ../fullnode
 cp build/libs/SolidityNode.jar ../soliditynode
 </code></pre></div></p>
 <p>3.&nbsp;You can now run your FullNode using the following command
-<div class="codehilite"><pre><span></span><code>java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 </code></pre></div></p>
 <p>4.&nbsp;Configure the SolidityNode configuration file</p>
 <p>You need to edit <code>config.conf</code> to connect to your local FullNode. Change  <code>trustNode</code> in <code>node</code> to local <code>127.0.0.1:50051</code>, which is the default rpc port. Set <code>listen.port</code> to any number within the range of 1024-65535. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services. Also change <code>rpc port</code> to <code>50052</code> or something to avoid conflicts. <strong>Please forward the UDP port 18888 for FullNode.</strong>
-<div class="codehilite"><pre><span></span><code>rpc {
+<div class="highlight"><pre><span></span><code>rpc {
       port = 50052
     }
 </code></pre></div></p>
 <p>5.&nbsp;You can now run your SolidityNode using the following command：
-<div class="codehilite"><pre><span></span><code>java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+<div class="highlight"><pre><span></span><code>java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 </code></pre></div></p>
 <p>6.&nbsp;Running a Super Representative Node for mainnet
-<div class="codehilite"><pre><span></span><code>java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-tron/config.conf)
+<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-tron/config.conf)
 Example:
 java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
 </code></pre></div></p>
@@ -378,7 +378,7 @@ java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F
 <li>The first Super Node start, needSyncCheck should be set false</li>
 <li>Set p2pversion to 61</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>cd build/libs
+<div class="highlight"><pre><span></span><code>cd build/libs
 java -jar FullNode.jar -p your private key --witness -c your config.conf (Example：/data/java-tron/config.conf)
 Example:
 java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
@@ -388,15 +388,15 @@ java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F
 <p>Logs for both nodes are located in <code>/deploy/\*/logs/tron.log</code>. Use <code>tail -f /logs/tron.log/</code> to follow along with the block syncing.</p>
 <p>You should see something similar to this in your logs for block synchronization:</p>
 <p><strong>FullNode</strong>
-<div class="codehilite"><pre><span></span><code>12:00:57.658 INFO  [pool-7-thread-1] [o.t.c.n.n.NodeImpl](NodeImpl.java:830) Success handle block Num:236610,ID:0000000000039c427569efa27cc2493c1fff243cc1515aa6665c617c45d2e1bf
+<div class="highlight"><pre><span></span><code>12:00:57.658 INFO  [pool-7-thread-1] [o.t.c.n.n.NodeImpl](NodeImpl.java:830) Success handle block Num:236610,ID:0000000000039c427569efa27cc2493c1fff243cc1515aa6665c617c45d2e1bf
 </code></pre></div>
 <strong>SolidityNode</strong>
-<div class="codehilite"><pre><span></span><code>12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
+<div class="highlight"><pre><span></span><code>12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
 </code></pre></div></p>
 <h2 id="stop-node-gracefully">Stop Node Gracefully<a class="headerlink" href="#stop-node-gracefully" title="Permanent link">&para;</a></h2>
 <p>Create file stop.sh，use kill -15 to close java-tron.jar(or FullNode.jar、SolidityNode.jar).
 You need to modify pid=<code>ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'</code> to find the correct pid.
-<div class="codehilite"><pre><span></span><code>#!/bin/bash
+<div class="highlight"><pre><span></span><code>#!/bin/bash
 while true; do
   pid=`ps -ef |grep java-tron.jar |grep -v grep |awk &#39;{print $2}&#39;`
   if [ -n &quot;$pid&quot; ]; then
@@ -417,12 +417,12 @@ done
 Just Support FullNode and SolidityNode.</p>
 <h3>Download and run script</h3>
 
-<div class="codehilite"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
 </code></pre></div>
 
 <h3>Parameter Illustration</h3>
 
-<div class="codehilite"><pre><span></span><code>bash deploy_tron.sh --app <span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span> --net <span class="o">[</span>mainnet<span class="p">|</span>testnet<span class="p">|</span>privatenet<span class="o">]</span> --db <span class="o">[</span>keep<span class="p">|</span>remove<span class="p">|</span>backup<span class="o">]</span> --heap-size &lt;heapsize&gt;
+<div class="highlight"><pre><span></span><code>bash deploy_tron.sh --app <span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span> --net <span class="o">[</span>mainnet<span class="p">|</span>testnet<span class="p">|</span>privatenet<span class="o">]</span> --db <span class="o">[</span>keep<span class="p">|</span>remove<span class="p">|</span>backup<span class="o">]</span> --heap-size &lt;heapsize&gt;
 
 --app Optional, Running application. The default node is Fullnode and it could be FullNode or SolidityNode.
 --net Optional, Connecting network. The default network is mainnet and it could be mainnet, testnet.
@@ -437,20 +437,20 @@ Just Support FullNode and SolidityNode.</p>
 
 <h3> Deployment of FullNode on the one host </h3>
 
-<div class="codehilite"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
 bash deploy_tron.sh
 </code></pre></div>
 
 <h3> Deployment of SolidityNode on the one host </h3>
 
-<div class="codehilite"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
 <span class="c1"># User can self-configure the IP and Port of GRPC service in the turst-node field of SolidityNode. trust-node is the fullnode you just deploy.</span>
 bash deploy_tron.sh --app SolidityNode --trust-node &lt;grpc-ip:grpc-port&gt;
 </code></pre></div>
 
 <h3> Deployment of FullNode and SolidityNode on the same host </h3>
 
-<div class="codehilite"><pre><span></span><code><span class="c1"># You need to configure different gRPC ports on the same host because gRPC port is available on SolidityNode and FullNodeConfigure and it cannot be set as default value 50051. In this case the default value of rpc port is set as 50041.</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># You need to configure different gRPC ports on the same host because gRPC port is available on SolidityNode and FullNodeConfigure and it cannot be set as default value 50051. In this case the default value of rpc port is set as 50041.</span>
 wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
 bash deploy_tron.sh --app FullNode
 bash deploy_tron.sh --app SolidityNode --rpc-port <span class="m">50041</span>
@@ -466,12 +466,12 @@ bash deploy_tron.sh --app SolidityNode --rpc-port <span class="m">50041</span>
 Install Golang, Protoc, and set $GOPATH environment variable according to your requirement.</p>
 <h3> Download and run script </h3>
 
-<div class="codehilite"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
 </code></pre></div>
 
 <h3> Parameter Illustration </h3>
 
-<div class="codehilite"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="o">[</span>rpc host ip<span class="o">]</span> --rpcport <span class="o">[</span>rpc port number<span class="o">]</span> --httpport <span class="o">[</span>http port number<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="o">[</span>rpc host ip<span class="o">]</span> --rpcport <span class="o">[</span>rpc port number<span class="o">]</span> --httpport <span class="o">[</span>http port number<span class="o">]</span>
 
 --rpchost The fullnode or soliditynode IP where the grpc service is provided. Default value is <span class="s2">&quot;localhost&quot;</span>.
 --rpcport The fullnode or soliditynode port number grpc service is consuming. Default value is <span class="m">50051</span>.
@@ -481,10 +481,10 @@ Install Golang, Protoc, and set $GOPATH environment variable according to your r
 <h3> Example </h3>
 
 <p>Use default configuration：
-<div class="codehilite"><pre><span></span><code>bash deploy_grpc_gateway.sh
+<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh
 </code></pre></div>
 Use customized configuration：
-<div class="codehilite"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="m">127</span>.0.0.1 --rpcport <span class="m">50052</span> --httpport <span class="m">18891</span>
+<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="m">127</span>.0.0.1 --rpcport <span class="m">50052</span> --httpport <span class="m">18891</span>
 </code></pre></div></p>
 <h2 id="event-subscribe-plugin-deployment">Event Subscribe plugin Deployment<a class="headerlink" href="#event-subscribe-plugin-deployment" title="Permanent link">&para;</a></h2>
 <p>This is an implementation of Tron eventsubscribe model.</p>
@@ -508,45 +508,45 @@ Use customized configuration：
 </ol>
 <h3> Edit **config.conf** of Java-tron， add the following fileds:</h3>
 
-<p><div class="codehilite"><pre><span></span><code><span class="n">event</span><span class="p">.</span><span class="n">subscribe</span> <span class="o">=</span> <span class="err">{</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="ss">&quot;&quot;</span> <span class="o">//</span> <span class="k">absolute</span> <span class="n">path</span> <span class="k">of</span> <span class="n">plugin</span>
-    <span class="n">server</span> <span class="o">=</span> <span class="ss">&quot;&quot;</span> <span class="o">//</span> <span class="n">target</span> <span class="n">server</span> <span class="n">address</span> <span class="k">to</span> <span class="n">receive</span> <span class="n">event</span> <span class="n">triggers</span>
-    <span class="n">dbconfig</span><span class="o">=</span><span class="ss">&quot;&quot;</span> <span class="o">//</span> <span class="n">dbname</span><span class="o">|</span><span class="n">username</span><span class="o">|</span><span class="n">password</span>
-    <span class="n">topics</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="err">{</span>
-          <span class="n">triggerName</span> <span class="o">=</span> <span class="ss">&quot;block&quot;</span> <span class="o">//</span> <span class="n">block</span> <span class="k">trigger</span><span class="p">,</span> <span class="n">the</span> <span class="n">value</span> <span class="n">can</span><span class="s1">&#39;t be modified</span>
-<span class="s1">          enable = false</span>
-<span class="s1">          topic = &quot;block&quot; // plugin topic, the value could be modified</span>
-<span class="s1">        },</span>
-<span class="s1">        {</span>
-<span class="s1">          triggerName = &quot;transaction&quot;</span>
-<span class="s1">          enable = false</span>
-<span class="s1">          topic = &quot;transaction&quot;</span>
-<span class="s1">        },</span>
-<span class="s1">        {</span>
-<span class="s1">          triggerName = &quot;contractevent&quot;</span>
-<span class="s1">          enable = true</span>
-<span class="s1">          topic = &quot;contractevent&quot;</span>
-<span class="s1">        },</span>
-<span class="s1">        {</span>
-<span class="s1">          triggerName = &quot;contractlog&quot;</span>
-<span class="s1">          enable = true</span>
-<span class="s1">          topic = &quot;contractlog&quot;</span>
-<span class="s1">        }</span>
-<span class="s1">    ]</span>
+<p><div class="highlight"><pre><span></span><code>event.subscribe = {
+    path = &quot;&quot; // absolute path of plugin
+    server = &quot;&quot; // target server address to receive event triggers
+    dbconfig=&quot;&quot; // dbname|username|password
+    topics = [
+        {
+          triggerName = &quot;block&quot; // block trigger, the value can&#39;t be modified
+          enable = false
+          topic = &quot;block&quot; // plugin topic, the value could be modified
+        },
+        {
+          triggerName = &quot;transaction&quot;
+          enable = false
+          topic = &quot;transaction&quot;
+        },
+        {
+          triggerName = &quot;contractevent&quot;
+          enable = true
+          topic = &quot;contractevent&quot;
+        },
+        {
+          triggerName = &quot;contractlog&quot;
+          enable = true
+          topic = &quot;contractlog&quot;
+        }
+    ]
 
-<span class="s1">    filter = {</span>
-<span class="s1">       fromblock = &quot;&quot; // the value could be &quot;&quot;, &quot;earliest&quot; or a specified block number as the beginning of the queried range</span>
-<span class="s1">       toblock = &quot;&quot; // the value could be &quot;&quot;, &quot;latest&quot; or a specified block number as end of the queried range</span>
-<span class="s1">       contractAddress = [</span>
-<span class="s1">           &quot;&quot; // contract address you want to subscribe, if it&#39;</span><span class="n">s</span> <span class="k">set</span> <span class="k">to</span> <span class="ss">&quot;&quot;</span><span class="p">,</span> <span class="n">you</span> <span class="n">will</span> <span class="n">receive</span> <span class="n">contract</span> <span class="n">logs</span><span class="o">/</span><span class="n">events</span> <span class="k">with</span> <span class="k">any</span> <span class="n">contract</span> <span class="n">address</span><span class="p">.</span>
-       <span class="p">]</span>
+    filter = {
+       fromblock = &quot;&quot; // the value could be &quot;&quot;, &quot;earliest&quot; or a specified block number as the beginning of the queried range
+       toblock = &quot;&quot; // the value could be &quot;&quot;, &quot;latest&quot; or a specified block number as end of the queried range
+       contractAddress = [
+           &quot;&quot; // contract address you want to subscribe, if it&#39;s set to &quot;&quot;, you will receive contract logs/events with any contract address.
+       ]
 
-       <span class="n">contractTopic</span> <span class="o">=</span> <span class="p">[</span>
-           <span class="ss">&quot;&quot;</span> <span class="o">//</span> <span class="n">contract</span> <span class="n">topic</span> <span class="n">you</span> <span class="n">want</span> <span class="k">to</span> <span class="n">subscribe</span><span class="p">,</span> <span class="k">if</span> <span class="n">it</span><span class="err">&#39;</span><span class="n">s</span> <span class="k">set</span> <span class="k">to</span> <span class="ss">&quot;&quot;</span><span class="p">,</span> <span class="n">you</span> <span class="n">will</span> <span class="n">receive</span> <span class="n">contract</span> <span class="n">logs</span><span class="o">/</span><span class="n">events</span> <span class="k">with</span> <span class="k">any</span> <span class="n">contract</span> <span class="n">topic</span><span class="p">.</span>
-       <span class="p">]</span>
-    <span class="err">}</span>
-<span class="err">}</span>
+       contractTopic = [
+           &quot;&quot; // contract topic you want to subscribe, if it&#39;s set to &quot;&quot;, you will receive contract logs/events with any contract topic.
+       ]
+    }
+}
 </code></pre></div>
  * <strong>path</strong>: is the absolute path of "plugin-kafka-1.0.0.zip"
  * <strong>server</strong>: Kafka server address
@@ -562,80 +562,80 @@ Use customized configuration：
 <h3 id="kafka"> Install Kafka </h3>
 
 <p><strong>On Mac</strong>:
-<div class="codehilite"><pre><span></span><code><span class="err">brew install kafka</span>
+<div class="highlight"><pre><span></span><code>brew install kafka
 </code></pre></div></p>
 <p><strong>On Linux</strong>:
-<div class="codehilite"><pre><span></span><code><span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span>
-<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">archive</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">kafka</span><span class="o">/</span><span class="mi">0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="o">/</span><span class="n">kafka_2</span><span class="p">.</span><span class="mi">10</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="n">tgz</span>
-<span class="n">tar</span> <span class="o">-</span><span class="n">xzvf</span> <span class="n">kafka_2</span><span class="p">.</span><span class="mi">10</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="n">tgz</span>
-<span class="n">mv</span> <span class="n">kafka_2</span><span class="p">.</span><span class="mi">10</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span> <span class="n">kafka</span>
+<div class="highlight"><pre><span></span><code>cd /usr/local
+wget http://archive.apache.org/dist/kafka/0.10.2.2/kafka_2.10-0.10.2.2.tgz
+tar -xzvf kafka_2.10-0.10.2.2.tgz
+mv kafka_2.10-0.10.2.2 kafka
 
-<span class="k">add</span> <span class="ss">&quot;export PATH=$PATH:/usr/local/kafka/bin&quot;</span> <span class="k">to</span> <span class="k">end</span> <span class="k">of</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
-<span class="k">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
+add &quot;export PATH=$PATH:/usr/local/kafka/bin&quot; to end of /etc/profile
+source /etc/profile
 
 
-<span class="n">kafka</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="k">start</span><span class="p">.</span><span class="n">sh</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">kafka</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">server</span><span class="p">.</span><span class="n">properties</span> <span class="o">&amp;</span>
+kafka-server-start.sh /usr/local/kafka/config/server.properties &amp;
 </code></pre></div>
 <strong>Note</strong>: make sure the version of Kafka is the same as the version set in build.gradle of eventplugin project.(kafka_2.10-0.10.2.2 kafka)</p>
 <h3> Run Kafka </h3>
 
 <p><strong>On Mac</strong>:
-<div class="codehilite"><pre><span></span><code><span class="err">zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties &amp; kafka-server-start /usr/local/etc/kafka/server.properties</span>
+<div class="highlight"><pre><span></span><code>zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties &amp; kafka-server-start /usr/local/etc/kafka/server.properties
 </code></pre></div></p>
 <p><strong>On Linux</strong>:
-<div class="codehilite"><pre><span></span><code><span class="err">zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties &amp;</span>
-<span class="err">Sleep about 3 seconds</span>
-<span class="err">kafka-server-start.sh /usr/local/kafka/config/server.properties &amp;</span>
+<div class="highlight"><pre><span></span><code>zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties &amp;
+Sleep about 3 seconds
+kafka-server-start.sh /usr/local/kafka/config/server.properties &amp;
 </code></pre></div></p>
 <h3> Create topics to receive events, the topic is defined in config.conf </h3>
 
 <p><strong>On Mac</strong>:
-<div class="codehilite"><pre><span></span><code><span class="err">kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block</span>
-<span class="err">kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction</span>
-<span class="err">kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog</span>
-<span class="err">kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent</span>
+<div class="highlight"><pre><span></span><code>kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent
 </code></pre></div></p>
 <p><strong>On Linux</strong>:
-<div class="codehilite"><pre><span></span><code><span class="err">kafka-topics.sh  --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block</span>
-<span class="err">kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction</span>
-<span class="err">kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog</span>
-<span class="err">kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent</span>
+<div class="highlight"><pre><span></span><code>kafka-topics.sh  --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent
 </code></pre></div></p>
 <h3> Kafka consumer </h3>
 
 <p><strong>On Mac</strong>:
-<div class="codehilite"><pre><span></span><code><span class="err">kafka-console-consumer --bootstrap-server localhost:9092  --topic block</span>
-<span class="err">kafka-console-consumer --bootstrap-server localhost:9092  --topic transaction</span>
-<span class="err">kafka-console-consumer --bootstrap-server localhost:9092  --topic contractlog</span>
-<span class="err">kafka-console-consumer --bootstrap-server localhost:9092  --topic contractevent</span>
+<div class="highlight"><pre><span></span><code>kafka-console-consumer --bootstrap-server localhost:9092  --topic block
+kafka-console-consumer --bootstrap-server localhost:9092  --topic transaction
+kafka-console-consumer --bootstrap-server localhost:9092  --topic contractlog
+kafka-console-consumer --bootstrap-server localhost:9092  --topic contractevent
 </code></pre></div></p>
 <p><strong>On Linux</strong>:
-<div class="codehilite"><pre><span></span><code><span class="err">kafka-console-consumer.sh --zookeeper localhost:2181 --topic block</span>
-<span class="err">kafka-console-consumer.sh --zookeeper localhost:2181 --topic transaction</span>
-<span class="err">kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractlog</span>
-<span class="err">kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent</span>
+<div class="highlight"><pre><span></span><code>kafka-console-consumer.sh --zookeeper localhost:2181 --topic block
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic transaction
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractlog
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
 </code></pre></div></p>
 <h3> Load plugin in Java-tron </h3>
 
 <ul>
 <li>add --es to command line, for example:
-<div class="codehilite"><pre><span></span><code><span class="err"> java -jar FullNode.jar -p privatekey -c config.conf --es</span>
+<div class="highlight"><pre><span></span><code> java -jar FullNode.jar -p privatekey -c config.conf --es
 </code></pre></div></li>
 </ul>
 <h3> Event filter </h3>
 
 <p>which is defined in config.conf, path: event.subscribe
-<div class="codehilite"><pre><span></span><code><span class="n">filter</span> <span class="o">=</span> <span class="err">{</span>
-       <span class="n">fromblock</span> <span class="o">=</span> <span class="ss">&quot;&quot;</span> <span class="o">//</span> <span class="n">the</span> <span class="n">value</span> <span class="n">could</span> <span class="n">be</span> <span class="ss">&quot;&quot;</span><span class="p">,</span> <span class="ss">&quot;earliest&quot;</span> <span class="k">or</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">block</span> <span class="nb">number</span> <span class="k">as</span> <span class="n">the</span> <span class="n">beginning</span> <span class="k">of</span> <span class="n">the</span> <span class="n">queried</span> <span class="n">range</span>
-       <span class="n">toblock</span> <span class="o">=</span> <span class="ss">&quot;&quot;</span> <span class="o">//</span> <span class="n">the</span> <span class="n">value</span> <span class="n">could</span> <span class="n">be</span> <span class="ss">&quot;&quot;</span><span class="p">,</span> <span class="ss">&quot;latest&quot;</span> <span class="k">or</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">block</span> <span class="nb">number</span> <span class="k">as</span> <span class="k">end</span> <span class="k">of</span> <span class="n">the</span> <span class="n">queried</span> <span class="n">range</span>
-       <span class="n">contractAddress</span> <span class="o">=</span> <span class="p">[</span>
-           <span class="ss">&quot;TVkNuE1BYxECWq85d8UR9zsv6WppBns9iH&quot;</span> <span class="o">//</span> <span class="n">contract</span> <span class="n">address</span> <span class="n">you</span> <span class="n">want</span> <span class="k">to</span> <span class="n">subscribe</span><span class="p">,</span> <span class="k">if</span> <span class="n">it</span><span class="s1">&#39;s set to &quot;&quot;, you will receive contract logs/events with any contract address.</span>
-<span class="s1">       ]</span>
+<div class="highlight"><pre><span></span><code>filter = {
+       fromblock = &quot;&quot; // the value could be &quot;&quot;, &quot;earliest&quot; or a specified block number as the beginning of the queried range
+       toblock = &quot;&quot; // the value could be &quot;&quot;, &quot;latest&quot; or a specified block number as end of the queried range
+       contractAddress = [
+           &quot;TVkNuE1BYxECWq85d8UR9zsv6WppBns9iH&quot; // contract address you want to subscribe, if it&#39;s set to &quot;&quot;, you will receive contract logs/events with any contract address.
+       ]
 
-<span class="s1">       contractTopic = [</span>
-<span class="s1">           &quot;f0f1e23ddce8a520eaa7502e02fa767cb24152e9a86a4bf02529637c4e57504b&quot; // contract topic you want to subscribe, if it&#39;</span><span class="n">s</span> <span class="k">set</span> <span class="k">to</span> <span class="ss">&quot;&quot;</span><span class="p">,</span> <span class="n">you</span> <span class="n">will</span> <span class="n">receive</span> <span class="n">contract</span> <span class="n">logs</span><span class="o">/</span><span class="n">events</span> <span class="k">with</span> <span class="k">any</span> <span class="n">contract</span> <span class="n">topic</span><span class="p">.</span>
-       <span class="p">]</span>
-    <span class="err">}</span>
+       contractTopic = [
+           &quot;f0f1e23ddce8a520eaa7502e02fa767cb24152e9a86a4bf02529637c4e57504b&quot; // contract topic you want to subscribe, if it&#39;s set to &quot;&quot;, you will receive contract logs/events with any contract topic.
+       ]
+    }
 </code></pre></div></p>
 <h3 id="mongo"> Download and install MongoDB </h3>
 

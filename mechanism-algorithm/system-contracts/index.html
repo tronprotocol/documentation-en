@@ -770,14 +770,14 @@
 <li><code>transparent_to_address</code>: The transparent address of the receiver.</li>
 <li><code>to_amount</code>: The amount to receive.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">message SpendDescription {</span>
-<span class="err">  bytes value_commitment = 1;</span>
-<span class="err">  bytes anchor = 2;</span>
-<span class="err">  bytes nullifier = 3;</span>
-<span class="err">  bytes rk = 4;</span>
-<span class="err">  bytes zkproof = 5;</span>
-<span class="err">  bytes spend_authority_signature = 6;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span><code>message SpendDescription {
+  bytes value_commitment = 1;
+  bytes anchor = 2;
+  bytes nullifier = 3;
+  bytes rk = 4;
+  bytes zkproof = 5;
+  bytes spend_authority_signature = 6;
+}
 </code></pre></div>
 
 <ul>
@@ -788,14 +788,14 @@
 <li><code>zkproof</code>: zero-knowledge proof of spender's note, prove that this note exists and could be spent.</li>
 <li><code>spend_authority_signature</code>: the spender's <em>Spend Authorization Signature</em>.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">message ReceiveDescription {</span>
-<span class="err">  bytes value_commitment = 1;</span>
-<span class="err">  bytes note_commitment = 2;</span>
-<span class="err">  bytes epk = 3;</span>
-<span class="err">  bytes c_enc = 4;</span>
-<span class="err">  bytes c_out = 5;</span>
-<span class="err">  bytes zkproof = 6;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span><code>message ReceiveDescription {
+  bytes value_commitment = 1;
+  bytes note_commitment = 2;
+  bytes epk = 3;
+  bytes c_enc = 4;
+  bytes c_out = 5;
+  bytes zkproof = 6;
+}
 </code></pre></div>
 
 <ul>

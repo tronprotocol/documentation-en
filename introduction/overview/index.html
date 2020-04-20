@@ -348,7 +348,7 @@ TestNet Configuration:
 <p>To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.</p>
 <p>Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.</p>
 <p>Example (Using wallet-cli):</p>
-<div class="codehilite"><pre><span></span><code>freezebalance 10,000,000 3 // Freeze 10 TRX to get 10 TRON Power(TP)
+<div class="highlight"><pre><span></span><code>freezebalance 10,000,000 3 // Freeze 10 TRX to get 10 TRON Power(TP)
 votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2
 votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2
 </code></pre></div>
@@ -392,7 +392,7 @@ The network parameters can be modified([min,max]):</p>
 <li>18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false</li>
 </ul>
 <p>Example (Using wallet-cli):
-<div class="codehilite"><pre><span></span><code>createproposal id value
+<div class="highlight"><pre><span></span><code>createproposal id value
 id: the serial number (0 ~ 18)
 value: the parameter value
 </code></pre></div></p>
@@ -401,7 +401,7 @@ value: the parameter value
 
 <p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.</p>
 <p>Example (Using wallet-cli):
-<div class="codehilite"><pre><span></span><code>approveProposal id is_or_not_add_approval
+<div class="highlight"><pre><span></span><code>approveProposal id is_or_not_add_approval
 id: proposal id
 is_or_not_add_approval: YES vote or cancel YES vote
 </code></pre></div></p>
@@ -409,7 +409,7 @@ is_or_not_add_approval: YES vote or cancel YES vote
 
 <p>Proposal creator can cancel the proposal before it is passed.</p>
 <p>Example (Using wallet-cli):
-<div class="codehilite"><pre><span></span><code>deleteProposal id
+<div class="highlight"><pre><span></span><code>deleteProposal id
 id: proposal id
 </code></pre></div></p>
 <h3> 2.4.5 Query Proposal </h3>
@@ -508,7 +508,7 @@ please refer to <a href="https://github.com/tronprotocol/tron-deployment#deploym
 <h6> 4.6.3.2.1 Step 1: SuperNode Deployment </h6>
 
 <p>1.&nbsp;download private_net_config.conf</p>
-<p><div class="codehilite"><pre><span></span><code>wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
+<p><div class="highlight"><pre><span></span><code>wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
 </code></pre></div>
  2.&nbsp;add your private key in localwitness
  3.&nbsp;set genesis.block.witnesses as the private key's corresponding address
@@ -516,7 +516,7 @@ please refer to <a href="https://github.com/tronprotocol/tron-deployment#deploym
  5.&nbsp;set the first SR needSyncCheck = false, others can be set true
  6.&nbsp;set node.discovery.enable = true
  7.&nbsp;run the script</p>
-<div class="codehilite"><pre><span></span><code>nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+<div class="highlight"><pre><span></span><code>nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
 command line parameters introduction:
 --witness: start witness function, i.e.: --witness
@@ -539,7 +539,7 @@ command line parameters introduction:
 <h6> 4.6.3.2.2 Step 2: FullNode Deployment </h6>
 
 <p>1.&nbsp;Download private_net_config.conf</p>
-<p><div class="codehilite"><pre><span></span><code>wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
+<p><div class="highlight"><pre><span></span><code>wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
 </code></pre></div>
  2.&nbsp;set seed.node ip.list with SR's ip and port
  3.&nbsp;set p2p.version the same as SuperNode's p2p.version
@@ -547,7 +547,7 @@ command line parameters introduction:
  5.&nbsp;set needSyncCheck true
  6.&nbsp;set node.discovery.enable true
  7.&nbsp;run the script</p>
-<div class="codehilite"><pre><span></span><code> nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+<div class="highlight"><pre><span></span><code> nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
  command lines parameters
  --witness: start witness function，i.e.: --witness
@@ -589,7 +589,7 @@ command line parameters introduction:
 
 <p>The data storage structure of leveldb and rocksdb is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert leveldb data to rocksdb data.</p>
 <p>Usage:
-<div class="codehilite"><pre><span></span><code> cd to the source code root directory
+<div class="highlight"><pre><span></span><code> cd to the source code root directory
  ./gradlew build   #build the source code
  java -jar build/libs/DBConvert.jar  #run data conversion command
 </code></pre></div>
@@ -597,15 +597,15 @@ command line parameters introduction:
 <p><strong>src_db_path</strong>: specify LevelDB source directory, default output-directory/database
  <strong>dst_db_path</strong>: specify RocksDb source directory, default output-directory-dst/database</p>
 <p>Example, if you run the script like this:
-<div class="codehilite"><pre><span></span><code> nohup java -jar FullNode.jar -d your_database_dir &amp;
+<div class="highlight"><pre><span></span><code> nohup java -jar FullNode.jar -d your_database_dir &amp;
 </code></pre></div>
 Then, you should run DBConvert.jar this way:
-<div class="codehilite"><pre><span></span><code> java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
+<div class="highlight"><pre><span></span><code> java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
 </code></pre></div>
  Note: You have to stop the running of the node, and then to run the data conversion script.</p>
 <p>If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node. Run DBConvert.jar in the previous directory of the new directory, and specify the parameters: <code>src_db_path</code>和<code>dst_db_path</code>.</p>
 <p>Example:
-<div class="codehilite"><pre><span></span><code> cp -rf output-directory /tmp/output-directory
+<div class="highlight"><pre><span></span><code> cp -rf output-directory /tmp/output-directory
  cd /tmp
  java -jar DBConvert.jar output-directory/database  output-directory-dst/database
 </code></pre></div>
@@ -717,7 +717,7 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 <p>Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.</p>
 <p>1.&nbsp;address conversion</p>
 <p>Need to convert TRON's address while using in solidity (recommended):
-<div class="codehilite"><pre><span></span><code>/**
+<div class="highlight"><pre><span></span><code>/**
      *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
@@ -730,7 +730,7 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address){
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.</p>
 <p>2.&nbsp;address judgement</p>
 <p>Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-<div class="codehilite"><pre><span></span><code>function compareAddress(address tronAddress) public view returns (uint256){
+<div class="highlight"><pre><span></span><code>function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
         if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
             return 1;
@@ -742,7 +742,7 @@ This is similar with the grammar of the conversion from other types converted to
 But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c</p>
 <p>3.&nbsp;variable assignment</p>
 <p>Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-<div class="codehilite"><pre><span></span><code>function assignAddress() public view {
+<div class="highlight"><pre><span></span><code>function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
         address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
         // do something
@@ -779,12 +779,12 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.</
 
 <p>Freeze TRX to get energy.</p>
 <p>Example (Using wallet-cli):</p>
-<div class="codehilite"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
+<div class="highlight"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 </code></pre></div>
 
 <p>Freeze TRX to get energy, energy obtained = user's TRX frozen amount / total amount of frozen TRX in TRON * 50_000_000_000.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>If there are only two users, A freezes 2 TRX, B freezes 2 TRX
+<div class="highlight"><pre><span></span><code>If there are only two users, A freezes 2 TRX, B freezes 2 TRX
 the energy they can get is:
 A: 25_000_000_000 and energy_limit is 25_000_000_000
 B: 25_000_000_000 and energy_limit is 25_000_000_000
@@ -799,7 +799,7 @@ B: 10_000_000_000 and energy_limit is 10_000_000_000
 <p><strong> Energy Recovery </strong></p>
 <p>The energy consumed will reduce to 0 smoothly within 24 hours.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>at one moment, A has used 72_000_000 Energy
+<div class="highlight"><pre><span></span><code>at one moment, A has used 72_000_000 Energy
 if there is no continuous consumption or TRX freeze
 one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
 24 hours later, the energy consumption amount will be 0 Energy
@@ -894,7 +894,7 @@ if (X + Y) / 40% &lt; Z / 60%, the energy A can use is (X + Y) / 40%</p>
 <h2> 5.5 Using Command Lines Tool to Develop Smart Contract </h2>
 
 <p>First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to <a href="https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler">SimpleWebCompiler</a> to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:</p>
-<div class="codehilite"><pre><span></span><code>pragma solidity ^0.4.0;
+<div class="highlight"><pre><span></span><code>pragma solidity ^0.4.0;
 contract DataStore {
 
     mapping(uint256 =&gt; uint256) data;
@@ -918,7 +918,7 @@ contract DataStore {
 Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.</p>
 <p><strong> Using Wallet-cli to Deploy </strong></p>
 <p>Download Wallet-Cli and build</p>
-<div class="codehilite"><pre><span></span><code>shell
+<div class="highlight"><pre><span></span><code>shell
 # download cource code
 git clone https://github.com/tronprotocol/wallet-cli
 cd  wallet-cli
@@ -929,11 +929,11 @@ cd  build/libs
 
 <p>Note: You need to change the node ip and port in config.conf</p>
 <p>start wallet-cli</p>
-<div class="codehilite"><pre><span></span><code>java -jar wallet-cli.jar
+<div class="highlight"><pre><span></span><code>java -jar wallet-cli.jar
 </code></pre></div>
 
 <p>after started, you can use command lines to operate:</p>
-<div class="codehilite"><pre><span></span><code>importwallet
+<div class="highlight"><pre><span></span><code>importwallet
 &lt;input your password twice for your account&gt;
 &lt;input your private key&gt;
 login
@@ -942,7 +942,7 @@ getbalance
 </code></pre></div>
 
 <p>deploy contract</p>
-<div class="codehilite"><pre><span></span><code>Shell
+<div class="highlight"><pre><span></span><code>Shell
 # contract deployment command
 DeployContract contractName ABI byteCode constructor params isHex fee_limit consume_user_resource_percent &lt;value&gt; &lt;library:address,library:address,...&gt;
 
@@ -963,14 +963,14 @@ If it is deployed successfully, it will return &#39;Deploy the contract successf
 </code></pre></div>
 
 <p>get the contract address</p>
-<div class="codehilite"><pre><span></span><code>Your smart contract address will be: &lt;contract address&gt;
+<div class="highlight"><pre><span></span><code>Your smart contract address will be: &lt;contract address&gt;
 
 # in this example
 Your smart contract address will be: TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
 </code></pre></div>
 
 <p>call the contract to store data, query data</p>
-<div class="codehilite"><pre><span></span><code>Shell
+<div class="highlight"><pre><span></span><code>Shell
 # call contract command
 triggercontract &lt;contract_address&gt; &lt;method&gt; &lt;args&gt; &lt;is_hex&gt; &lt;fee_limit&gt; &lt;value&gt;
 
@@ -992,7 +992,7 @@ triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000 
 
 <p>If the function called is constant or view, wallet-cli will return the result directly.
 If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...</p>
-<div class="codehilite"><pre><span></span><code># for instance, using remix to get the bytecode of the contract, like:
+<div class="highlight"><pre><span></span><code># for instance, using remix to get the bytecode of the contract, like:
 608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073&lt;b&gt;__browser/oneLibrary.sol.Math3__________&lt;\b&gt;634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029
 </code></pre></div>
 
@@ -1015,7 +1015,7 @@ Please refer to:
 <h2> 7.1 How to Issue a TRC-10 Token </h2>
 
 <p>HTTP API:</p>
-<div class="codehilite"><pre><span></span><code>wallet/createassetissue
+<div class="highlight"><pre><span></span><code>wallet/createassetissue
 Description: Issue a token
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d &#39;{
 &quot;owner_address&quot;:&quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,
@@ -1053,7 +1053,7 @@ Note: The unit of &#39;trx_num&#39; is SUN
 <h2> 7.2 Participate TRC-10 Token </h2>
 
 <p>HTTP API:</p>
-<div class="codehilite"><pre><span></span><code>wallet/participateassetissue
+<div class="highlight"><pre><span></span><code>wallet/participateassetissue
 Description: Participate a token
 demo: curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d &#39;{
 &quot;to_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,
@@ -1073,7 +1073,7 @@ Note: The unit of &#39;amount&#39; is the smallest unit of the token
 <h2> 7.3 TRC-10 Token Transfer </h2>
 
 <p>HTTP API:</p>
-<div class="codehilite"><pre><span></span><code>wallet/transferasset
+<div class="highlight"><pre><span></span><code>wallet/transferasset
 Description: Transfer token
 demo: curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d &#39;{&quot;owner_address&quot;:&quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;, &quot;to_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;, &quot;asset_name&quot;: &quot;31303030303031&quot;, &quot;amount&quot;: 100}&#39;
 Parameter owner_address: Owner address, default hexString
@@ -1131,7 +1131,7 @@ Note: The unit of &#39;amount&#39; is the smallest unit of the token
 <p>In TRON network, an account can freeze TRX for Bandwidth or Energy for other accounts. The primary account owns the frozen TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary freezing, resource delegation freezing is also at least 3 days.</p>
 <ul>
 <li>Example(Using wallet-cli)
-<div class="codehilite"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
+<div class="highlight"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 
 frozen_balance: the amount of TRX to freeze (unit SUN)
 frozen_duration: the freezing period (currently a fixed 3 days)
@@ -1223,10 +1223,10 @@ Please refer to:
 <a href="https://github.com/tronprotocol/wallet-cli/blob/master/README.md">https://github.com/tronprotocol/wallet-cli/blob/master/README.md</a></p>
 <h2> 12.2 Get Transaction ID </h2>
 
-<p><div class="codehilite"><pre><span></span><code>Hash.sha256(transaction.getRawData().toByteArray())
+<p><div class="highlight"><pre><span></span><code>Hash.sha256(transaction.getRawData().toByteArray())
 </code></pre></div>
 <h2> 12.3 Get Block ID </h2></p>
-<p><div class="codehilite"><pre><span></span><code>private byte[] generateBlockId(long blockNum, byte[] blockHash) {
+<p><div class="highlight"><pre><span></span><code>private byte[] generateBlockId(long blockNum, byte[] blockHash) {
   byte[] numBytes = Longs.toByteArray(blockNum);
   byte[] hash = blockHash;
   System.arraycopy(numBytes, 0, hash, 0, 8);
@@ -1238,7 +1238,7 @@ According to the defination of the transaction, you need to fill up all the fiel
 <p>You need to set reference block and expiration time information, so you need to connect to the Mainnet. We recommend to use the latest block on fullnode as the value of reference block, use the latest block time plus N minutes as the value of expiration time.</p>
 <p>The network judgment condition is if (expiration &gt; latest block time and expiration &lt; latest block time + 24 hours) means the transaction is in period of validity. Otherwise, it will be an overdue transaction, will not be accepted by the Mainnet.</p>
 <p>Way to set reference block: set RefBlockHash the bytes from the 8 to 16(not included) of the hash of the latest block, set BlockBytes the bytes from 6 to 8(not included) of the height of the latest block.
-<div class="codehilite"><pre><span></span><code>public static Transaction setReference(Transaction transaction, Block newestBlock) {
+<div class="highlight"><pre><span></span><code>public static Transaction setReference(Transaction transaction, Block newestBlock) {
      long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
      byte[] blockHash = getBlockHash(newestBlock).getBytes();
      byte[] refBlockNum = ByteArray.fromLong(blockHeight);
@@ -1250,7 +1250,7 @@ According to the defination of the transaction, you need to fill up all the fiel
    }
 </code></pre></div>
 Way to set expiration time and transaction timestamp:
-<div class="codehilite"><pre><span></span><code>public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
+<div class="highlight"><pre><span></span><code>public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
      Transaction.Builder transactionBuilder = Transaction.newBuilder();
      Block newestBlock = WalletClient.getBlock(-1);
 

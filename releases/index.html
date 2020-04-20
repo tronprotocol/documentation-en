@@ -303,14 +303,14 @@
 <p>All released files after 3.7 will provide signatures signed by the Tron Account: <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>.</p>
 <h3 id="signature-verification">Signature Verification<a class="headerlink" href="#signature-verification" title="Permanent link">&para;</a></h3>
 <p>You can verify the signature by tronweb.</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">Trx</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;tronweb&#39;</span><span class="p">).</span><span class="nx">Trx</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">const</span> <span class="nx">Trx</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;tronweb&#39;</span><span class="p">).</span><span class="nx">Trx</span><span class="p">;</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Trx</span><span class="p">.</span><span class="nx">verifySignature</span><span class="p">(</span><span class="nx">SHA256</span><span class="p">,</span> <span class="nx">ADDRESS</span><span class="p">,</span> <span class="nx">SIGNATURE</span><span class="p">));</span>
 </code></pre></div>
 
 <p>Suppose we got a <code>FullNode.jar</code> with a SHA256 hash <code>2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e</code>, and a Tron signature <code>21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b</code>.</p>
 <p>To verify the integrity of the released file:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># First calculate the sha256 hash</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># First calculate the sha256 hash</span>
 
 sha256sum FullNode.jar  <span class="c1"># or shasum -a 256 FullNode.jar (macOS)</span>
 <span class="c1"># 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e  FullNode.jar</span>

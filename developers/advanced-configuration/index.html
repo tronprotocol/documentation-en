@@ -307,103 +307,103 @@
 You may custom these items only if you have deep understanding on them, otherwise keep them as default.</p>
 <h2 id="leveldb">LevelDB<a class="headerlink" href="#leveldb" title="Permanent link">&para;</a></h2>
 <p>You can custom LevelDB options in the <code>storage</code> part of <code>config.conf</code>, which looks like:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">storage</span> <span class="err">{</span>
-  <span class="o">#</span> <span class="n">Directory</span> <span class="k">for</span> <span class="n">storing</span> <span class="n">persistent</span> <span class="k">data</span>
+<div class="highlight"><pre><span></span><code>storage {
+  # Directory for storing persistent data
 
-  <span class="n">db</span><span class="p">.</span><span class="n">directory</span> <span class="o">=</span> <span class="ss">&quot;database&quot;</span><span class="p">,</span>
-  <span class="k">index</span><span class="p">.</span><span class="n">directory</span> <span class="o">=</span> <span class="ss">&quot;index&quot;</span><span class="p">,</span>
+  db.directory = &quot;database&quot;,
+  index.directory = &quot;index&quot;,
 
-  <span class="o">#</span> <span class="n">You</span> <span class="n">can</span> <span class="n">custom</span> <span class="n">these</span> <span class="mi">14</span> <span class="n">databases</span><span class="err">&#39;</span> <span class="n">configs</span><span class="p">:</span>
+  # You can custom these 14 databases&#39; configs:
 
-  <span class="o">#</span> <span class="n">account</span><span class="p">,</span> <span class="n">account</span><span class="o">-</span><span class="k">index</span><span class="p">,</span> <span class="n">asset</span><span class="o">-</span><span class="n">issue</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">block</span><span class="o">-</span><span class="k">index</span><span class="p">,</span>
-  <span class="o">#</span> <span class="n">block_KDB</span><span class="p">,</span> <span class="n">peers</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">recent</span><span class="o">-</span><span class="n">block</span><span class="p">,</span> <span class="n">trans</span><span class="p">,</span>
-  <span class="o">#</span> <span class="n">utxo</span><span class="p">,</span> <span class="n">votes</span><span class="p">,</span> <span class="n">witness</span><span class="p">,</span> <span class="n">witness_schedule</span><span class="p">.</span>
+  # account, account-index, asset-issue, block, block-index,
+  # block_KDB, peers, properties, recent-block, trans,
+  # utxo, votes, witness, witness_schedule.
 
-  <span class="o">#</span> <span class="n">Otherwise</span><span class="p">,</span> <span class="n">db</span> <span class="n">configs</span> <span class="n">will</span> <span class="n">remain</span> <span class="n">defualt</span> <span class="k">and</span> <span class="k">data</span> <span class="n">will</span> <span class="n">be</span> <span class="n">stored</span> <span class="k">in</span>
-  <span class="o">#</span> <span class="n">the</span> <span class="n">path</span> <span class="k">of</span> <span class="ss">&quot;output-directory&quot;</span> <span class="k">or</span> <span class="n">which</span> <span class="k">is</span> <span class="k">set</span> <span class="k">by</span> <span class="ss">&quot;-d&quot;</span> <span class="p">(</span><span class="ss">&quot;--output-directory&quot;</span><span class="p">).</span>
+  # Otherwise, db configs will remain defualt and data will be stored in
+  # the path of &quot;output-directory&quot; or which is set by &quot;-d&quot; (&quot;--output-directory&quot;).
 
-  <span class="o">#</span> <span class="n">Attention</span><span class="p">:</span> <span class="n">name</span> <span class="k">is</span> <span class="n">a</span> <span class="n">required</span> <span class="n">field</span> <span class="n">that</span> <span class="n">must</span> <span class="n">be</span> <span class="k">set</span> <span class="o">!!!</span>
-  <span class="n">properties</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="err">{</span>
-      <span class="n">name</span> <span class="o">=</span> <span class="ss">&quot;account&quot;</span><span class="p">,</span>
-      <span class="n">path</span> <span class="o">=</span> <span class="ss">&quot;/path/to/accout&quot;</span><span class="p">,</span>   <span class="o">//</span> <span class="k">relative</span> <span class="k">or</span> <span class="k">absolute</span> <span class="n">path</span>
-      <span class="n">createIfMissing</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-      <span class="n">paranoidChecks</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-      <span class="n">verifyChecksums</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-      <span class="n">compressionType</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>        <span class="o">//</span> <span class="mi">0</span> <span class="o">-</span> <span class="k">no</span> <span class="n">compression</span><span class="p">,</span>  <span class="mi">1</span> <span class="o">-</span> <span class="n">compressed</span> <span class="k">with</span> <span class="n">snappy</span>
-      <span class="n">blockSize</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">,</span>           <span class="o">//</span> <span class="mi">4</span>  <span class="n">KB</span> <span class="o">=</span>         <span class="mi">4</span> <span class="o">*</span> <span class="mi">1024</span> <span class="n">B</span>
-      <span class="n">writeBufferSize</span> <span class="o">=</span> <span class="mi">10485760</span><span class="p">,</span> <span class="o">//</span> <span class="mi">10</span> <span class="n">MB</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="n">B</span>
-      <span class="n">cacheSize</span> <span class="o">=</span> <span class="mi">10485760</span><span class="p">,</span>       <span class="o">//</span> <span class="mi">10</span> <span class="n">MB</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="n">B</span>
-      <span class="n">maxOpenFiles</span> <span class="o">=</span> <span class="mi">100</span>
-    <span class="err">}</span>
-  <span class="p">]</span>
+  # Attention: name is a required field that must be set !!!
+  properties = [
+    {
+      name = &quot;account&quot;,
+      path = &quot;/path/to/accout&quot;,   // relative or absolute path
+      createIfMissing = true,
+      paranoidChecks = true,
+      verifyChecksums = true,
+      compressionType = 1,        // 0 - no compression,  1 - compressed with snappy
+      blockSize = 4096,           // 4  KB =         4 * 1024 B
+      writeBufferSize = 10485760, // 10 MB = 10 * 1024 * 1024 B
+      cacheSize = 10485760,       // 10 MB = 10 * 1024 * 1024 B
+      maxOpenFiles = 100
+    }
+  ]
 
-<span class="err">}</span>
+}
 </code></pre></div>
 
 <p>As shown in the example above, the data of database <code>accout</code> will be stored in the path of <code>/path/to/accout/database</code> while the index be stored in <code>/path/to/accout/index</code>. And, the example also shows our default value of LevelDB options from <code>createIfMissing</code> to <code>maxOpenFiles</code>. You can just refer to the docs of <a href="https://github.com/google/leveldb/blob/master/doc/index.md#performance">LevelDB</a> to figure out details of these options.</p>
 <h2 id="grpc">gRPC<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h2>
 <p>You can custom gPRC options in the <code>node.rpc</code> part of <code>config.conf</code>, which looks like:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">node</span> <span class="err">{</span>
-  <span class="n">rpc</span> <span class="err">{</span>
-    <span class="n">port</span> <span class="o">=</span> <span class="mi">50051</span>
+<div class="highlight"><pre><span></span><code>node {
+  rpc {
+    port = 50051
 
-    <span class="o">#</span> <span class="nb">Number</span> <span class="k">of</span> <span class="n">gRPC</span> <span class="n">thread</span><span class="p">,</span> <span class="k">default</span> <span class="n">availableProcessors</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="o">#</span> <span class="n">thread</span> <span class="o">=</span> <span class="mi">16</span>
+    # Number of gRPC thread, default availableProcessors / 2
+    # thread = 16
 
-    <span class="o">#</span> <span class="n">The</span> <span class="n">maximum</span> <span class="nb">number</span> <span class="k">of</span> <span class="n">concurrent</span> <span class="n">calls</span> <span class="n">permitted</span> <span class="k">for</span> <span class="k">each</span> <span class="n">incoming</span> <span class="k">connection</span>
-    <span class="o">#</span> <span class="n">maxConcurrentCallsPerConnection</span> <span class="o">=</span>
+    # The maximum number of concurrent calls permitted for each incoming connection
+    # maxConcurrentCallsPerConnection =
 
-    <span class="o">#</span> <span class="n">The</span> <span class="n">HTTP</span><span class="o">/</span><span class="mi">2</span> <span class="n">flow</span> <span class="n">control</span> <span class="n">window</span><span class="p">,</span> <span class="k">default</span> <span class="mi">1</span><span class="n">MB</span>
-    <span class="o">#</span> <span class="n">flowControlWindow</span> <span class="o">=</span>
+    # The HTTP/2 flow control window, default 1MB
+    # flowControlWindow =
 
-    <span class="o">#</span> <span class="k">Connection</span> <span class="n">being</span> <span class="n">idle</span> <span class="k">for</span> <span class="n">longer</span> <span class="k">than</span> <span class="n">which</span> <span class="n">will</span> <span class="n">be</span> <span class="n">gracefully</span> <span class="n">terminated</span>
-    <span class="n">maxConnectionIdleInMillis</span> <span class="o">=</span> <span class="mi">60000</span>
+    # Connection being idle for longer than which will be gracefully terminated
+    maxConnectionIdleInMillis = 60000
 
-    <span class="o">#</span> <span class="k">Connection</span> <span class="n">lasting</span> <span class="n">longer</span> <span class="k">than</span> <span class="n">which</span> <span class="n">will</span> <span class="n">be</span> <span class="n">gracefully</span> <span class="n">terminated</span>
-    <span class="o">#</span> <span class="n">maxConnectionAgeInMillis</span> <span class="o">=</span>
+    # Connection lasting longer than which will be gracefully terminated
+    # maxConnectionAgeInMillis =
 
-    <span class="o">#</span> <span class="n">The</span> <span class="n">maximum</span> <span class="n">message</span> <span class="k">size</span> <span class="n">allowed</span> <span class="k">to</span> <span class="n">be</span> <span class="n">received</span> <span class="k">on</span> <span class="n">the</span> <span class="n">server</span><span class="p">,</span> <span class="k">default</span> <span class="mi">4</span><span class="n">MB</span>
-    <span class="o">#</span> <span class="n">maxMessageSize</span> <span class="o">=</span>
+    # The maximum message size allowed to be received on the server, default 4MB
+    # maxMessageSize =
 
-    <span class="o">#</span> <span class="n">The</span> <span class="n">maximum</span> <span class="k">size</span> <span class="k">of</span> <span class="n">header</span> <span class="n">list</span> <span class="n">allowed</span> <span class="k">to</span> <span class="n">be</span> <span class="n">received</span><span class="p">,</span> <span class="k">default</span> <span class="mi">8192</span>
-    <span class="o">#</span> <span class="n">maxHeaderListSize</span> <span class="o">=</span>
-  <span class="err">}</span>
-<span class="err">}</span>
+    # The maximum size of header list allowed to be received, default 8192
+    # maxHeaderListSize =
+  }
+}
 </code></pre></div>
 
 <h2 id="backup">backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
 <p>You can custom backup options in the <code>node.backup</code> part of <code>config.conf</code>, which looks like:
-<div class="codehilite"><pre><span></span><code><span class="err">node.backup {</span>
-<span class="err">    # my priority, each member should use different priority</span>
-<span class="err">    priority = </span>
-<span class="err">    # members should use same port</span>
-<span class="err">    port = </span>
-<span class="err">    # peer&#39;s ip list, can&#39;t contain mine</span>
-<span class="err">    members = []</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span><code>node.backup {
+    # my priority, each member should use different priority
+    priority = 
+    # members should use same port
+    port = 
+    # peer&#39;s ip list, can&#39;t contain mine
+    members = []
+}
 </code></pre></div>
 policy: 
 1. the one which synchronized first will become master.
 2. if synchronization is completed at the same time, the one which with big priority will become master.</p>
 <p>E.g. create backups for node A(192.168.0.100) and node B(192.168.0.100 ):
 node A's configuration:
-<div class="codehilite"><pre><span></span><code><span class="err">node.backup {</span>
-<span class="err">    priority = 8 </span>
-<span class="err">    port = 10001</span>
-<span class="err">    members = [</span>
-<span class="err">        &quot;192.168.0.101&quot;</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span><code>node.backup {
+    priority = 8 
+    port = 10001
+    members = [
+        &quot;192.168.0.101&quot;
+    ]
+}
 </code></pre></div>
 node B's configuration:
-<div class="codehilite"><pre><span></span><code><span class="err">node.backup {</span>
-<span class="err">    priority = 5</span>
-<span class="err">    port = 10001</span>
-<span class="err">    members = [</span>
-<span class="err">        &quot;192.168.0.100&quot;</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span><code>node.backup {
+    priority = 5
+    port = 10001
+    members = [
+        &quot;192.168.0.100&quot;
+    ]
+}
 </code></pre></div></p>
 <p>You may refer to the source code of <code>io.grpc.netty.NettyServerBuilder</code> class to see details or just make a decision according to the brief comments above.  </p>
               

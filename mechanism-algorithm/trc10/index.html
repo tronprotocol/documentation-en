@@ -306,7 +306,7 @@
 <p>TRON network supports two types of tokens, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.</p>
 <h2 id="how-to-issue-a-trc-10-token">How to Issue a TRC-10 Token<a class="headerlink" href="#how-to-issue-a-trc-10-token" title="Permanent link">&para;</a></h2>
 <p>HTTP API:</p>
-<div class="codehilite"><pre><span></span><code>wallet/createassetissue
+<div class="highlight"><pre><span></span><code>wallet/createassetissue
 Description: Issue a token
 demo: curl -X POST http://127.0.0.1:8090/wallet/createassetissue -d &#39;{
   &quot;owner_address&quot;:&quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,
@@ -344,7 +344,7 @@ Note: The unit of &#39;trx_num&#39; is SUN
 
 <h2 id="participate-trc-10-token-issuing">Participate TRC-10 Token Issuing<a class="headerlink" href="#participate-trc-10-token-issuing" title="Permanent link">&para;</a></h2>
 <p>HTTP API:</p>
-<div class="codehilite"><pre><span></span><code>wallet/participateassetissue
+<div class="highlight"><pre><span></span><code>wallet/participateassetissue
 Description: Participate a token issuing
 demo: curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d &#39;{
   &quot;to_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,
@@ -364,7 +364,7 @@ Note: The unit of &#39;amount&#39; is the smallest unit of the token
 
 <h2 id="trc-10-token-transfer">TRC-10 Token Transfer<a class="headerlink" href="#trc-10-token-transfer" title="Permanent link">&para;</a></h2>
 <p>HTTP API:</p>
-<div class="codehilite"><pre><span></span><code>wallet/transferasset
+<div class="highlight"><pre><span></span><code>wallet/transferasset
 Description: Transfer token
 demo: curl -X POST http://127.0.0.1:8090/wallet/transferasset -d &#39;{
   &quot;owner_address&quot;:&quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,

@@ -316,7 +316,7 @@
 <p>To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.</p>
 <p>Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.</p>
 <p>Example (Using wallet-cli):</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> freezebalance <span class="m">10</span>,000,000 <span class="m">3</span> // Freeze <span class="m">10</span> TRX to get <span class="m">10</span> TRON Power<span class="o">(</span>TP<span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;</span> freezebalance <span class="m">10</span>,000,000 <span class="m">3</span> // Freeze <span class="m">10</span> TRX to get <span class="m">10</span> TRON Power<span class="o">(</span>TP<span class="o">)</span>
 <span class="gp">&gt;</span> votewitness witness1 <span class="m">4</span> witness2 <span class="m">6</span> // Vote <span class="m">4</span> votes <span class="k">for</span> witness1, <span class="m">6</span> votes <span class="k">for</span> witness2
 <span class="gp">&gt;</span> votewitness witness1 <span class="m">3</span> witness2 <span class="m">7</span> // Vote <span class="m">3</span> votes <span class="k">for</span> witness1, <span class="m">7</span> votes <span class="k">for</span> witness2
 </code></pre></div>
@@ -519,7 +519,7 @@
 </tbody>
 </table>
 <p>Example (Using wallet-cli):</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> createproposal id value
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;</span> createproposal id value
 <span class="gp">#</span> id: the serial number <span class="o">(</span><span class="m">0</span> ~ <span class="m">33</span><span class="o">)</span>
 <span class="gp">#</span> value: the parameter value
 </code></pre></div>
@@ -528,7 +528,7 @@
 <h3 id="3-vote-for-a-proposal">3. Vote for a Proposal<a class="headerlink" href="#3-vote-for-a-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.</p>
 <p>Example (Using wallet-cli):</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> approveProposal id is_or_not_add_approval
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;</span> approveProposal id is_or_not_add_approval
 <span class="gp">#</span> id: proposal id
 <span class="gp">#</span> is_or_not_add_approval: YES vote or cancel YES vote
 </code></pre></div>
@@ -536,7 +536,7 @@
 <h3 id="4-cancel-proposal">4. Cancel Proposal<a class="headerlink" href="#4-cancel-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal creator can cancel the proposal before it is passed.</p>
 <p>Example (Using wallet-cli):</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">&gt;</span> deleteProposal id
+<div class="highlight"><pre><span></span><code><span class="gp">&gt;</span> deleteProposal id
 <span class="gp">#</span> id: proposal id
 </code></pre></div>
 

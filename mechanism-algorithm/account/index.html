@@ -335,7 +335,7 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"</p>
 <li>ECDSA, SECP256K</li>
 <li>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>priKey:::8e812436a0e3323166e1f0e8ba79e19e217b2c4a53c970d4cca0cfb1078979df
+<div class="highlight"><pre><span></span><code>priKey:::8e812436a0e3323166e1f0e8ba79e19e217b2c4a53c970d4cca0cfb1078979df
 pubKey::04a5bb3b28466f578e6e93fbfd5f75cee1ae86033aa4bbea690e3312c087181eb366f9a1d1d6a437a9bf9fc65ec853b9fd60fa322be3997c47144eb20da658b3d1
 hash:::159817a085f113d099d3d93c051410e9bfe043cc5c20e43aa9a083bf73660145
 r:::38b7dac5ee932ac1bf2bc62c05b792cd93c3b4af61dc02dbb4b93dacb758123f
@@ -350,7 +350,7 @@ v:::0
 </li>
 </ol>
 <h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">Transaction</span> <span class="nf">sign</span><span class="p">(</span><span class="n">Transaction</span> <span class="n">transaction</span><span class="p">,</span> <span class="n">ECKey</span> <span class="n">myKey</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">Transaction</span> <span class="nf">sign</span><span class="p">(</span><span class="n">Transaction</span> <span class="n">transaction</span><span class="p">,</span> <span class="n">ECKey</span> <span class="n">myKey</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">Transaction</span><span class="p">.</span><span class="na">Builder</span> <span class="n">transactionBuilderSigned</span> <span class="o">=</span> <span class="n">transaction</span><span class="p">.</span><span class="na">toBuilder</span><span class="p">();</span>
     <span class="kt">byte</span><span class="o">[]</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="n">transaction</span><span class="p">.</span><span class="na">getRawData</span><span class="p">().</span><span class="na">toByteArray</span><span class="p">());</span>
     <span class="n">List</span><span class="o">&lt;</span><span class="n">Contract</span><span class="o">&gt;</span> <span class="n">listContract</span> <span class="o">=</span> <span class="n">transaction</span><span class="p">.</span><span class="na">getRawData</span><span class="p">().</span><span class="na">getContractList</span><span class="p">();</span>

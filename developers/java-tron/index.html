@@ -309,11 +309,11 @@ This branch is used to fix a bug when an online bug is found. It is created base
 <h2>Writing a new feature</h2>
 
 <p>When you start to develop a new feature, please create a feature branch from <code>develop</code> branch under <code>origin/feature</code>.
-<div class="codehilite"><pre><span></span><code>$ git checkout -b feature/my-feature develop
+<div class="highlight"><pre><span></span><code>$ git checkout -b feature/my-feature develop
 # switch to &#39;feature/my-feature&#39;
 </code></pre></div></p>
 <p>When you finish the development, the new feature should be merged into <code>develop</code> branch.
-<div class="codehilite"><pre><span></span><code>$ git commit -m &quot;description&quot;
+<div class="highlight"><pre><span></span><code>$ git commit -m &quot;description&quot;
 # submit the code
 $ git checkout develop
 # switch to &#39;develop&#39;
@@ -332,13 +332,13 @@ $ git branch -d feature/my-feature
 <h2>Fixing online bugs:</h2>
 
 <p>When you start to fix an online bug, please create a hotfix branch from <code>master</code> branch under <code>origin/hotfix</code>.
-<div class="codehilite"><pre><span></span><code>$ git checkout -b hotfix/my-hotfix master
+<div class="highlight"><pre><span></span><code>$ git checkout -b hotfix/my-hotfix master
 # switch to &#39;hotfix/my-hotfix&#39;
 $ git commit -a -m &quot;Bumped version number to 3.1.4&quot;
 # submit and modify the version number
 </code></pre></div>
 When you finish the fix, it should be merged into <code>master</code> branch and <code>develop</code> branch.
-<div class="codehilite"><pre><span></span><code>$ git commit -m &quot;description&quot;
+<div class="highlight"><pre><span></span><code>$ git commit -m &quot;description&quot;
 # submit the code
 $ git checkout master
 # switch to &#39;master&#39;
