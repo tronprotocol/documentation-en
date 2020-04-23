@@ -375,3 +375,39 @@ Nodes: FullNode
 rpc GetNewShieldedAddress (EmptyMessage) returns (ShieldedAddressInfo){}
 ```
 Nodes: FullNode
+
+**60.&nbsp;Create shielded contract parameters**
+```protobuf
+rpc CreateShieldedContractParameters (PrivateShieldedTRC20Parameters) returns (ShieldedTRC20Parameters) {}
+```
+Nodes: FullNode
+
+**61.&nbsp;Create shielded contract parameters without ask**
+```protobuf
+rpc CreateShieldedContractParametersWithoutAsk (PrivateShieldedTRC20ParametersWithoutAsk) returns (ShieldedTRC20Parameters) {}
+```
+Nodes: FullNode
+
+**62.&nbsp;Scan shielded TRC20 notes by ivk**
+```protobuf
+rpc ScanShieldedTRC20NotesbyIvk (IvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
+```
+Nodes: FullNode, SolidityNode
+
+**63.&nbsp;Scan shielded TRC20 notes by ovk**
+```protobuf
+rpc ScanShieldedTRC20NotesbyOvk (OvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
+```
+Nodes: FullNode, SolidityNode
+
+**64.&nbsp;Get the status of shielded TRC20 note of spent or not**
+```protobuf
+rpc IsShieldedTRC20ContractNoteSpent (NfTRC20Parameters) returns (NullifierResult) {}
+```
+Nodes: FullNode, SolidityNode
+
+**65.&nbsp;Get the trigger input for the shielded TRC20 **
+```protobuf
+  rpc GetTriggerInputForShieldedTRC20Contract (ShieldedTRC20TriggerContractParameters) returns (BytesMessage) {}
+```
+Nodes: FullNode

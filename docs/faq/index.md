@@ -294,10 +294,6 @@ This message means your node does not sync with the network. Before producing bl
 
 ## Other Questions
 
-### If the node is deployed in China, is there a firewall issue?
-
-39.106.220.120 locates in Beijing, others not.
-
 ## My Question is Not Listed Here?
 
 Feel free to join our community, just open an Issue on github:
