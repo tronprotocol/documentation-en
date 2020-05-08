@@ -2171,8 +2171,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d
     "sell_token_id": "5f",
     "sell_token_quantity": 100,
     "buy_token_id": "31303030303031",
-    "buy_token_quantity": 200
-    "pre_price_key": 
+    "buy_token_quantity": 200 
 }'  
 
 Parameter：
@@ -2180,8 +2179,7 @@ owner_address：Owner address,default hexString
 sell_token_id：sell token id,default hexString     
 sell_token_quantity：sell token quantity           
 buy_token_id：buy token id,default hexString         
-buy_token_quantity：buy token quantity (min to receive)      
-pre_price_key:order price position   
+buy_token_quantity：buy token quantity (min to receive)       
 Return：Transaction object   
 
 
