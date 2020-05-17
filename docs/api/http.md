@@ -2842,7 +2842,9 @@ Return: payment address
 Description: create the shielded TRC-20 transaction parameters, which has three types: mint, transfer and burn
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameters -d
-'{
+'{  
+    "ask": "0f63eabdfe2bbfe08012f6bb2db024e6809c16e8ed055aa41a6095424f192005",
+    "nsk": "cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404",
     "ovk": "1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9",
     "from_amount": "5000",
      "shielded_receives": {
