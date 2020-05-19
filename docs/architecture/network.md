@@ -14,7 +14,7 @@ Recommended Hardware Configuration:
 minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
-CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
+CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 2T
 ```
 
 ## FullNode
@@ -27,7 +27,7 @@ Recommended Hardware Configuration:
 minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
-CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
+CPU: > 32 cores RAM: > 48G, Bandwidth: > 500M, Disk: > 2T
 ```
 
 ## SolidityNode
@@ -43,7 +43,7 @@ Recommended Hardware Configuration:
 minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
-CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
+CPU: > 32 cores RAM: > 48G, Bandwidth: > 500M, Disk: > 2T
 ```
 
 ## MainNet, TestNet and PrivateNet
