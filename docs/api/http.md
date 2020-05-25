@@ -701,6 +701,8 @@ shielded_TRC20_contract_address: the shielded TRC-20 contract address
 
 Return: note status
 
+Note: the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `real_amount` = `value` * `scalingFactor`. 
+
 
 ## FullNode API
 
@@ -2866,7 +2868,7 @@ nsk: Nsk
 
 ovk: Outgoing view key
 
-from_amount: the amount for mint, which is scaled by scaling factor with note value  
+from_amount: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100.
 
 shielded_receives: the shielded notes to be created
 
@@ -2874,7 +2876,8 @@ shielded_TRC20_contract_address: shielded TRC-20 contract address
 
 Return: the shielded TRC-20 transaction parameters
 
-Note: The input parameters will differ according to the variety of shileded TRC-20 transaction type
+Note: 1. The input parameters will differ according to the variety of shielded TRC-20 transaction type; 2. the `from_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `from_amount` = `value` * `scalingFactor`. In this example, the value of `scalingFactor` is 100. 
+
 
 
 - wallet/createshieldedcontractparameterswithoutask
@@ -2900,7 +2903,7 @@ Parameters:
 
 ovk: Outgoing view key
 
-from_amount: the amount for mint, which is scaled by scaling factor with note value
+from_amount: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100
 
 shielded_receives: the shielded notes to be created
 
@@ -2908,7 +2911,8 @@ shielded_TRC20_contract_address: shielded TRC-20 contract address
 
 Return: the shielded TRC-20 transaction parameters
 
-Note: The input parameters will differ according to the variety of shileded TRC-20 transaction type
+Note: the input parameters will differ according to the variety of shielded TRC-20 transaction type 
+
 
 
 - wallet/scanshieldedtrc20notesbyivk
@@ -3004,6 +3008,8 @@ position: the leaf position index of note commitment in the Merkle tree
 shielded_TRC20_contract_address: the shielded TRC-20 contract address
 
 Return: note status
+
+Note: the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `real_amount` = `value` * `scalingFactor`. 
 
 
 - wallet/gettriggerinputforshieldedtrc20contract
