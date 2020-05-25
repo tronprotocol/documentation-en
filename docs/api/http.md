@@ -2876,7 +2876,7 @@ shielded_TRC20_contract_address: shielded TRC-20 contract address
 
 Return: the shielded TRC-20 transaction parameters
 
-Note: 1. The input parameters will differ according to the variety of shielded TRC-20 transaction type; 2. the `from_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `from_amount` = `value` * `scalingFactor`. In this example, the value of `scalingFactor` is 100. 
+Note: the input parameters will differ according to the variety of shielded TRC-20 transaction type
 
 
 
@@ -3036,7 +3036,7 @@ shielded_TRC20_Parameters: the generated shielded TRC-20 parameters
 spend_authority_signature: the spend authority signatures
 
 amount: the amount 
- 
+
 transparent_to_address: the receiver for the `burn` operation.
 
 Return: the input data for triggering shielded TRC-20 contract.
