@@ -70,9 +70,9 @@ PHP:
 
 ### The visible parameter
 
-Since v3.6, parameter `visible` is added. When `visible` is set true, there's no need to transcode the relevant address and string. This parameter is valid for all API, including solidityNode api and FullNode api.
+Since v3.6, parameter `visible` is added. When `visible` is set to true, there's no need to transcode the relevant address and string. This parameter is valid for all API, including solidityNode api and FullNode api.
 
-When `visible` is set true, the format of the input address must be base58check, input string must text string, so does the format of the output. If `visible` is set false or null, the api acts the same as previous version. If the format of the parameters do not match with the set of visible, it will throw out an error.
+When `visible` is set to true, the format of the input address `owner_address` & `to_address` must be base58check encoded, and remark `extra_data` would be normal visible text string. If `visible` is set to false or null, both input address & remark have to be hex encoded. The output format would be identical to the input format. If the format of the parameters doesn't match with their corresponding encode method, an error would be thrown.
 
 Ways to set the `visible` parameter:
 
@@ -88,7 +88,8 @@ Ways to set the `visible` parameter:
         "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
         "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
         "amount": 1000000,
-        "visible": true
+        "visible": true,
+        "extra_data": "1 Pizza"
     }'
     ```
 
@@ -2858,6 +2859,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameter
      },
      "shielded_TRC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
  }'
+ 
 ```
 
 Parameters:
@@ -2868,7 +2870,7 @@ nsk: Nsk
 
 ovk: Outgoing view key
 
-from_amount: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100.
+from_amount: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100
 
 shielded_receives: the shielded notes to be created
 
@@ -2877,7 +2879,6 @@ shielded_TRC20_contract_address: shielded TRC-20 contract address
 Return: the shielded TRC-20 transaction parameters
 
 Note: the input parameters will differ according to the variety of shielded TRC-20 transaction type
-
 
 
 - wallet/createshieldedcontractparameterswithoutask
@@ -2912,7 +2913,6 @@ shielded_TRC20_contract_address: shielded TRC-20 contract address
 Return: the shielded TRC-20 transaction parameters
 
 Note: the input parameters will differ according to the variety of shielded TRC-20 transaction type 
-
 
 
 - wallet/scanshieldedtrc20notesbyivk
