@@ -406,7 +406,7 @@ Parameters:
 ```
 Return:
 ```bash
-{"noteTxs":[{"note":{"payment_address":"ztron1spjnr0vw4gsthtkm36m0fwgfcsn4ysu6aw6gqzzzpkx83sfxvcczfusw964wm642dserjc8n6vc","value":60,"rcm":"e813cb55ca302f4c24bb644f588cefaf76151a549b95e6e6f5b2ab573b87330e"},"isSpent":true,"txid":"8b1d2adac1c3796ed436668f640da5a09c12b9894f1739560d87ea080aa3c5b9","index":0},{"note":{"payment_address":"ztron1nzfh9270dvpn0gysedl9gx6wfmh2hve3rtf0m57vla04pfjm3ermmrh9yasa2xnuy2zycsvwawe","value":40,"rcm":"b269a741bde1de2df79ffccf96d6eb646aa996e6567c208d774e851aef3e1909"},"isSpent":true,"txid":"b513117a7e022046f2b5271344d4911fd1896b4d76a0e66bca947ec223b47eb8","index":0,"position":1},{"note":{"payment_address":"ztron163plyhqczk640j3qncsszhhmmw7uyevr77ysnlsg8asfauhkhyc9pmf6fpr4mjeg60u9xjhtcne","value":70,"rcm":"91ce6904de6ce68713cc8a7773bb9fb76da6ac0ccf7f626bffaa08aba34f9709"},"txid":"6677cf45306277ae628654cbd4e169e0feb53fcba6983a1722f078d436458149","index":1,"position":3}]}
+{"noteTxs":[{"note":{"payment_address":"ztron1spjnr0vw4gsthtkm36m0fwgfcsn4ysu6aw6gqzzzpkx83sfxvcczfusw964wm642dserjc8n6vc","value":60,"rcm":"e813cb55ca302f4c24bb644f588cefaf76151a549b95e6e6f5b2ab573b87330e"},"is_spent":true,"txid":"8b1d2adac1c3796ed436668f640da5a09c12b9894f1739560d87ea080aa3c5b9","index":0},{"note":{"payment_address":"ztron1nzfh9270dvpn0gysedl9gx6wfmh2hve3rtf0m57vla04pfjm3ermmrh9yasa2xnuy2zycsvwawe","value":40,"rcm":"b269a741bde1de2df79ffccf96d6eb646aa996e6567c208d774e851aef3e1909"},"is_spent":true,"txid":"b513117a7e022046f2b5271344d4911fd1896b4d76a0e66bca947ec223b47eb8","index":0,"position":1},{"note":{"payment_address":"ztron163plyhqczk640j3qncsszhhmmw7uyevr77ysnlsg8asfauhkhyc9pmf6fpr4mjeg60u9xjhtcne","value":70,"rcm":"91ce6904de6ce68713cc8a7773bb9fb76da6ac0ccf7f626bffaa08aba34f9709"},"txid":"6677cf45306277ae628654cbd4e169e0feb53fcba6983a1722f078d436458149","index":1,"position":3}]}
 ```
 
 ### Scan shielded TRC-20 notes by `ovk` 
@@ -453,7 +453,7 @@ Parameters:
 ```
 Return:
 ```bash
-{"isSpent": true}
+{"is_spent": true}
 ```
 
 
