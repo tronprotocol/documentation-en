@@ -19,7 +19,7 @@ Also, there is a chance to display developers' photos at TRON official website.
 
 | No. 1   |  No. 2    |   No. 3  |   No. 4   |   No. 5   |
 |---------|-----------|----------|-----------|-----------|
-| 200 USD |  180 USD  | 150 USD  |  120 USD  |  100 USD  |
+| 200 USD |  180 USD  | 150 USD  |  120 ~ 140 USD  |  100 ~ 120 USD  |
 
 Reward 2:
 
@@ -38,7 +38,7 @@ Points:
 
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
-|    20     |    15     |    10    |      5    |
+|    20     |    15     |    10    |      < 5  |
 
 ** 2. Documentation  **
 
@@ -48,7 +48,7 @@ Points:
 
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
-|    20     |    15     |    10    |      5    |
+|    20     |    15     |    10    |      < 5  |
 
 ** 3. Issue **
 
@@ -58,7 +58,7 @@ Points:
 
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
-|    10     |    8      |    5     |      2    |
+|    10     |    8      |    5     |      < 2  |
 
 ## Code Related
 
@@ -70,7 +70,7 @@ Points:
 
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
-|    100    |    80     |    50    |     20    |
+|    100    |    80     |    50    |     < 20  |
 
 ** 2. Bug Report **
 
@@ -80,7 +80,7 @@ Points:
 
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
-|    20     |    15     |    10    |     5     |
+|    20     |    15     |    10    |     < 5   |
 
 **3. Bug Fix**
 
@@ -90,7 +90,7 @@ Points:
 
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
-|    40     |    30     |    20    |     10    |
+|    40     |    30     |    20    |     < 10  |
 
 **4. Security Related**
 
@@ -100,7 +100,7 @@ Points:
 
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
-|    100    |    80     |    50    |     20    |
+|    100    |    80     |    50    |     < 20  |
 
 **5. Others**
 
@@ -110,7 +110,7 @@ Points:
 
 | Critical  |   High    |  Medium  |     Low   |
 |-----------|-----------|----------|-----------|
-|    20     |    15     |   10     |     5     |
+|    20     |    15     |   10     |     < 5   |
 
 In order to get 5 (or more) points, the content of a PR should be creative, pratical, critical or can reflect significant workload.
 
