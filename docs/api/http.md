@@ -70,9 +70,9 @@ PHP:
 
 ### The visible parameter
 
-Since v3.6, parameter `visible` is added. When `visible` is set to true, there's no need to transcode the relevant address and string. This parameter is valid for all API, including solidityNode api and FullNode api.
+Since v3.6, parameter `visible` is added. When `visible` is set true, there's no need to transcode the relevant address and string. This parameter is valid for all API, including solidityNode api and FullNode api.
 
-When `visible` is set to true, the format of the input address `owner_address` & `to_address` must be base58check encoded, and remark `extra_data` would be normal visible text string. If `visible` is set to false or null, both input address & remark have to be hex encoded. The output format would be identical to the input format. If the format of the parameters doesn't match with their corresponding encode method, an error would be thrown.
+When `visible` is set true, the format of the input address must be base58check, input string must text string, so does the format of the output. If `visible` is set false or null, the api acts the same as previous version. If the format of the parameters do not match with the set of visible, it will throw out an error.
 
 Ways to set the `visible` parameter:
 
@@ -88,8 +88,7 @@ Ways to set the `visible` parameter:
         "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
         "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
         "amount": 1000000,
-        "visible": true,
-        "extra_data": "1 Pizza"
+        "visible": true
     }'
     ```
 
@@ -3031,7 +3030,7 @@ shielded_TRC20_Parameters: the generated shielded TRC-20 parameters
 spend_authority_signature: the spend authority signatures
 
 amount: the amount 
-
+ 
 transparent_to_address: the receiver for the `burn` operation.
 
 Return: the input data for triggering shielded TRC-20 contract.
