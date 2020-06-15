@@ -570,8 +570,8 @@
 <p>PHP:
 <a href="https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php">GH: tronprotocol/Documentation/TRX_CN/index.php</a></p>
 <h3 id="the-visible-parameter">The visible parameter<a class="headerlink" href="#the-visible-parameter" title="Permanent link">&para;</a></h3>
-<p>Since v3.6, parameter <code>visible</code> is added. When <code>visible</code> is set to true, there's no need to transcode the relevant address and string. This parameter is valid for all API, including solidityNode api and FullNode api.</p>
-<p>When <code>visible</code> is set to true, the format of the input address <code>owner_address</code> &amp; <code>to_address</code> must be base58check encoded, and remark <code>extra_data</code> would be normal visible text string. If <code>visible</code> is set to false or null, both input address &amp; remark have to be hex encoded. The output format would be identical to the input format. If the format of the parameters doesn't match with their corresponding encode method, an error would be thrown.</p>
+<p>Since v3.6, parameter <code>visible</code> is added. When <code>visible</code> is set true, there's no need to transcode the relevant address and string. This parameter is valid for all API, including solidityNode api and FullNode api.</p>
+<p>When <code>visible</code> is set true, the format of the input address must be base58check, input string must text string, so does the format of the output. If <code>visible</code> is set false or null, the api acts the same as previous version. If the format of the parameters do not match with the set of visible, it will throw out an error.</p>
 <p>Ways to set the <code>visible</code> parameter:</p>
 <ol>
 <li>
@@ -588,8 +588,7 @@
 <span class="go">    &quot;owner_address&quot;: &quot;TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ&quot;,</span>
 <span class="go">    &quot;to_address&quot;: &quot;TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW&quot;,</span>
 <span class="go">    &quot;amount&quot;: 1000000,</span>
-<span class="go">    &quot;visible&quot;: true,</span>
-<span class="go">    &quot;extra_data&quot;: &quot;1 Pizza&quot;</span>
+<span class="go">    &quot;visible&quot;: true</span>
 <span class="go">}&#39;</span>
 </code></pre></div>
 
