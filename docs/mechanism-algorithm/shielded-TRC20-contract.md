@@ -8,7 +8,7 @@ The shielded TRC-20 contract has three core functions: `mint`, `transfer` and `b
 
 -  `mint` is used to transform the public TRC-20 token to shielded token, which makes token ownership invisible. mint` has only one transparent input and one shielded output.
 -  `transfer` is used for shielded token transactions, which can hide the source address, the destination address, and the transaction amount. `transfer` has at most two shielded input and two shielded output.
-- `burn` is used to transform the shielded token to the public TRC-20 token. `burn` has only one shielded input and one transparent output.
+- `burn` is used to transform the shielded token to the public TRC-20 token. `burn` has only one shielded input, one transparent output and zero or one shielded output.
 
 The technical implementation is based on zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) proof system, which is secure and efficient. 
 
