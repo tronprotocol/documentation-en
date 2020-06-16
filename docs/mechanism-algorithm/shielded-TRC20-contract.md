@@ -16,7 +16,7 @@ The technical implementation is based on zk-SNARK(Zero-Knowledge Succinct Non-In
 
 1.&nbsp;The sender needs to create an ordianry account by api. The account is used to trigger the shielded TRC-20 contract, so it should has some trx to pay the transaction fee.  
 
-2.&nbsp;The sender shoud create the shielded address, which is used to send and receive the shielded TRC-20 notes.
+2.&nbsp;The sender should create the shielded address, which is used to send and receive the shielded TRC-20 notes.
 
 3.&nbsp;The sender calls the api to create shielded TRC-20 contract parameters for `mint`, `transfer` and `burn`.
 
@@ -402,7 +402,7 @@ The returned `value` is the `spend_authority_signature`. If the `transfer` has t
 
 Note: in order to guarantee the security,  the user should be better to generate the `spend_authority_signature` by itself instead of calling  the api.
 
-Then the user need to call the api:
+Then the user need to call the api to generate the triggering contract input:
 
 **wallet/gettriggerinputforshieldedtrc20contract**
 
