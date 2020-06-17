@@ -12,6 +12,12 @@ The shielded TRC-20 contract has three core functions: `mint`, `transfer` and `b
 
 The technical implementation is based on zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) proof system, which is secure and efficient. 
 
+### Contract Deployment
+
+1. Use `deployContract` method in the wallet-cli to deploy the TRC-20 contract. 
+
+2. Use the `deployContract` method to deploy the shielded TRC-20 contract. The shielded TRC-20 contract will bind the TRC-20 contract. The `scalingFactor` is also specified when deploying the the shielded TRC-20 contract. For more details about `scalingFactor`, please refer [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md).
+
 ### Usage Guide
 
 1.&nbsp;The sender needs to create an ordianry account by api. The account is used to trigger the shielded TRC-20 contract, so it should has some trx to pay the transaction fee.  
