@@ -479,7 +479,7 @@ Parameters:
     "visible": true
 }
 ```
-Note: the `to_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract. In this example, the value of `scalingFactor` is 100. 
+Note: the `to_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract. In this example, the value of `scalingFactor` is 100. , namely 60 * 100 =  40 * 100 + 2000.
 
 Return:
 
@@ -528,7 +528,7 @@ Parameters:
     "visible": true
 }
 ```
-Note: the `to_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract. In this example, the value of `scalingFactor` is 100. 
+Note: the `to_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract. In this example, the value of `scalingFactor` is 100, namely 60 * 100 =  40 * 100 + 2000.
 
 Return:
 
