@@ -1,5 +1,6 @@
 # Shielded TRC-20 Contract
-
+Note: This feature is now enabled on Nile Testnet.
+ 
 ## Introduction
 
 TRC-20 token contract allows users to issue and transfer tokens, but it can not guarantee the privacy since it leaks the token ownership. When transferring the token, the source address, destination address, and the token amount are  public. The shielded TRC-20 contract ([TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md)) aims to solve this problem and provides users better privacy of token ownership and transactions.
