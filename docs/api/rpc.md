@@ -406,7 +406,7 @@ rpc IsShieldedTRC20ContractNoteSpent (NfTRC20Parameters) returns (NullifierResul
 ```
 Nodes: FullNode, SolidityNode
 
-**65.&nbsp;Get the trigger input for the shielded TRC20 **
+**65.&nbsp;Get the trigger input for the shielded TRC20**
 ```protobuf
   rpc GetTriggerInputForShieldedTRC20Contract (ShieldedTRC20TriggerContractParameters) returns (BytesMessage) {}
 ```

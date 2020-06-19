@@ -46,8 +46,8 @@
 |  proposalcreate                  | getcontract             | createshieldedcontractparameterswithoutask |
 |  getproposalbyid                 | triggerconstantcontract | scanshieldedtrc20notesbyivk             |
 |  listproposals                   | triggersmartcontract    | scanshieldedtrc20notesbyovk         |
-|  proposalapprove                 | clearabi                | isshieldedtrc20contractnotespent |                             |
-|  proposaldelete                  | updateenergylimit       | getTriggerInputForShieldedTRC20Contract |
+|  proposalapprove                 | clearabi                | isshieldedtrc20contractnotespent |
+|  proposaldelete                  | updateenergylimit       | gettriggerinputforshieldedtrc20contract |
 |  getapprovedlist                 | updatesetting           |                                  |
 
 | others                |
@@ -700,6 +700,8 @@ position: the leaf position index of note commitment in the Merkle tree
 shielded_TRC20_contract_address: the shielded TRC-20 contract address
 
 Return: note status
+
+Note: the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `real_amount` = `value` * `scalingFactor`. 
 
 
 ## FullNode API
@@ -2842,20 +2844,21 @@ Return: payment address
 Description: create the shielded TRC-20 transaction parameters, which has three types: mint, transfer and burn
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameters -d
-'{
-   "ask": "0f63eabdfe2bbfe08012f6bb2db024e6809c16e8ed055aa41a6095424f192005",
-   "nsk": "cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404",
-   "ovk": "1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9",
-   "from_amount": 50,
-    "shielded_receives": {
-       "note": {
-          "value": 50,
-          "payment_address": "ztron15js0jkuxczt8caq5hp59rnh6rgf34sek7vqn9u6ljelxv4nuzz2x9qe3ffm2wzz6ck53yxyhxs6",
-          "rcm": "74baec30dfac8ed59968955ff245ae002009005194e5b824c35ab88c52e5170e"
-       }
-    },
-    "shielded_TRC20_contract_address": "41e6e90fbc958ba09483550882b1f0327e0193250a"
-}'
+'{  
+    "ask": "0f63eabdfe2bbfe08012f6bb2db024e6809c16e8ed055aa41a6095424f192005",
+    "nsk": "cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404",
+    "ovk": "1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9",
+    "from_amount": "5000",
+     "shielded_receives": {
+        "note": {
+           "value": 50,
+           "payment_address": "ztron15js0jkuxczt8caq5hp59rnh6rgf34sek7vqn9u6ljelxv4nuzz2x9qe3ffm2wzz6ck53yxyhxs6",
+           "rcm": "74baec30dfac8ed59968955ff245ae002009005194e5b824c35ab88c52e5170e"
+        }
+     },
+     "shielded_TRC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
+ }'
+ 
 ```
 
 Parameters:
@@ -2866,7 +2869,7 @@ nsk: Nsk
 
 ovk: Outgoing view key
 
-from_amount: the amount for mint
+from_amount: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100
 
 shielded_receives: the shielded notes to be created
 
@@ -2874,7 +2877,7 @@ shielded_TRC20_contract_address: shielded TRC-20 contract address
 
 Return: the shielded TRC-20 transaction parameters
 
-Note: The input parameters will differ according to the variety of shileded TRC-20 transaction type
+Note: the input parameters will differ according to the variety of shielded TRC-20 transaction type
 
 
 - wallet/createshieldedcontractparameterswithoutask
@@ -2883,24 +2886,24 @@ Description: create the shielded TRC-20 transaction parameters without Ask, whic
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameterswithoutask -d
 '{
-   "ovk": "cd361834b3adc06f130de24f7d0c18f92a093cc885d9ce492cc6c02071f7a4f0",
-   "from_amount": 50,
-    "shielded_receives": {
-       "note": {
-          "value": 50,
-          "payment_address": "ztron13lvfnt4rau4ad9mmgztd3aftw49e3amz8gm2kvyzrsaw0ugz2grxwkvcfys5e2gkchj7cnnetjz",
-          "rcm": "499e73f2f8aaf05fac41a35b8343bde27f6629cbe66d35da5364a99b94a55a06"
-       }
-    },
-    "shielded_TRC20_contract_address": "41e6e90fbc958ba09483550882b1f0327e0193250a"
-}'
+    "ovk": "cd361834b3adc06f130de24f7d0c18f92a093cc885d9ce492cc6c02071f7a4f0",
+    "from_amount": "5000",
+     "shielded_receives": {
+        "note": {
+           "value": 50,
+           "payment_address": "ztron13lvfnt4rau4ad9mmgztd3aftw49e3amz8gm2kvyzrsaw0ugz2grxwkvcfys5e2gkchj7cnnetjz",
+           "rcm": "499e73f2f8aaf05fac41a35b8343bde27f6629cbe66d35da5364a99b94a55a06"
+        }
+     },
+     "shielded_TRC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
+ }'
 ```
 
 Parameters:
 
 ovk: Outgoing view key
 
-from_amount: the amount for mint
+from_amount: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100
 
 shielded_receives: the shielded notes to be created
 
@@ -2908,7 +2911,7 @@ shielded_TRC20_contract_address: shielded TRC-20 contract address
 
 Return: the shielded TRC-20 transaction parameters
 
-Note: The input parameters will differ according to the variety of shileded TRC-20 transaction type
+Note: the input parameters will differ according to the variety of shielded TRC-20 transaction type 
 
 
 - wallet/scanshieldedtrc20notesbyivk
@@ -3005,6 +3008,8 @@ shielded_TRC20_contract_address: the shielded TRC-20 contract address
 
 Return: note status
 
+Note: the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `real_amount` = `value` * `scalingFactor`. 
+
 
 - wallet/gettriggerinputforshieldedtrc20contract
 
@@ -3012,13 +3017,13 @@ Description: get the trigger input data of shielded TRC-20 contract for the shie
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/gettriggerinputforshieldedtrc20contract -d
 '{  
-     "shielded_TRC20_Parameters": {"spend_description": [{"value_commitment": "43916fbd329030567a12ed99e389ed3498a122453a90fcb87eafd195bde3b726","anchor": "4c9cbebece033dc1d253b93e4a3682187daae4f905515761d10287b801e69816","nullifier": "74edce8798a3976ee41e045bb666f3a121c27235b0f1b44b3456d2c84bc725dc","rk": "9dcf4254aa7c4fb7c8bc6956d4b0c7c6c87c37a2552e7bf4e60c12cb5bc6c8cd","zkproof": "976aef79cf12c9d769c3113997f5c797cc4f51c3fbdc29f720cdb28a0f19eba1b6ce047ce6e107e8c5520746de81490a991aedda34b1662e446264d9941517f20876f8e00600e77534abd15ec3c21bd926eb3915bba05c38e7a7477b34b790081447ebd0458e5b9713b1516863e620952dc9fe02a3b7ed9d6685645b426133c06b9a6fe97adf20ad829268598f4938cd93c6bd4d662ebc4cd1a9495f070e3e7066f34831dc734d18603ca29a334973b77085b92304a302f0d37ff9a2eae6bfcb"}],"binding_signature": "853e64a648a80113b2cd38b3cc4ed52da565cd63dcecf81df6dad296d4de1190928735a37853db231d2f00a44a2bc5901e528fbfbff71bf6d7c2f07158ee2b0b","message_hash": "4378a92b097411a857411ba2d51b78fc6ac522283d517dbb46129e512488590e","parameter_type": "burn"},
+     "shielded_TRC20_Parameters": {"spend_description": [{"value_commitment": "e3fcc8609ff6a4b00b77a00ef624f305cec5f55cc7312ff5526d0b3057f2ef9e","anchor": "4c9cbebece033dc1d253b93e4a3682187daae4f905515761d10287b801e69816","nullifier": "74edce8798a3976ee41e045bb666f3a121c27235b0f1b44b3456d2c84bc725dc","rk": "9dcf4254aa7c4fb7c8bc6956d4b0c7c6c87c37a2552e7bf4e60c12cb5bc6c8cd","zkproof": "9926045cd1442a7d20153e6abda9f77a6526895f0a29a57cb1bc76ef6b7cacef2d0f4c94aa97c3acacdb95cabb065057b7edb4cbea098149a8aa7114a6a6b340c58007ac64b64e592eb18fdd299de5962a2a32ab0caebb2ab198704c751a9d0e143d68a50257d7c9e2230a7420fa46450299fd167141367e201726532d8e815413d8571d6c8c12937674dec92caf1f4583ebe560ac4c7eba290deee0a1c0da5f72c0b9df89fb3b338c683b654b3dc2373a4c2a4fef7f4fa489b44405fb7d2bfb"}],"binding_signature": "11e949887d9ec92eb32c78f0bc48afdc9a16a2ecbd5a0eca1be070fb900eeda347918bd6e9521d4baf1f74963bee0c1956559623a9e7cbc886941b227341ea06","message_hash": "7e6a00736c4f9e0036cb74c7fa3b1e3cd8f6bf0f038edeb03b668c4c5536a357","parameter_type": "burn"},
      "spend_authority_signature": [
        {
-         "value": "62690bf5a5796507403695e9a645c419bf08593010878f7af8bb206156c1ea6cbfc3aac0cf383b2d269bb02ec857e3be19e24092988c84c7ea277be70ccd9d05"
+         "value": "eeaaecd725ac80ec398b95cf188b769c1be66cc8e76e6c90843b7f23818704595719ce8bf694ffb8cd7aaa8739d50fe8eea7ba39d5026c4b019c973185ca7201"
        }
      ],
-     "amount": 60,
+     "amount": "6000",
      "transparent_to_address": "4140cd765f8e637a2bbe00f9bc458f6b21eb0e648f"
  }'
 ```
