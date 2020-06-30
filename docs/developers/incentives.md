@@ -10,7 +10,6 @@ Reward 1:
 
 At the end of every month, we will calculate all points each developer gets in the current month and who finish in Top 5 will be rewarded with cash.
 
-At the end of every quarter, we will calculate all points each developer gets in the current quarter and who finish in Top 5 will be rewarded with cash.
 At the end of every year, we will calculate all points each developer gets in the current year and who finish in Top 5 will be rewarded with cash.
 
 The Top 5 developers who win the cash reward will be announced at Tronscan.
