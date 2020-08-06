@@ -36,7 +36,7 @@ Let's see how it's realized in the context of TRON:
 
 - The maintenance period: TRON sets the period to be 2 block time, which is 6 seconds. This period of time is used to count the votes for candidates. There are 4 Epochs in 24 hours, and naturally, 4 maintenance periods. During the maintenance period, no block is generated and block generation order for the next Epoch is decided.
 
-![image](https://github.com/tronprotocol/documentation-en/raw/master/imags/sequence_en.jpg)
+![image](https://github.com/tronprotocol/documentation-en/raw/master/images/sequence_en.jpg)
 
 ## Election mechanism
 1. Votes
