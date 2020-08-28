@@ -1,5 +1,4 @@
 # Shielded TRC-20 Contract
-Note: This feature is now enabled on Nile Testnet.
 
 ## Introduction
 
