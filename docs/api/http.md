@@ -50,15 +50,15 @@
 |  proposaldelete                  | updateenergylimit       | gettriggerinputforshieldedtrc20contract |
 |  getapprovedlist                 | updatesetting           |                                  |
 
-|   market                       |  others   |             |
+|   market                       |  others                 |                       |
 |--------------------------------|-------------------------|-----------------------|
-|  marketsellasset               |broadcasttransaction          |   |
-|  marketcancelorder             |broadcasthex              |           |
-|  getmarketorderbyaccount       |listnodes  |              |
-|  getmarketpairlist             |listwitnesses  |              |
-|  getmarketorderlistbypair      |getnextmaintenancetime     |          |
-|  getmarketpricebypair          |getnodeinfo                 | |
-|  getmarketorderbyid            |getchainparameters        |            |
+|  marketsellasset               |broadcasttransaction     |                       |
+|  marketcancelorder             |broadcasthex             |                       |
+|  getmarketorderbyaccount       |listnodes                |                       |
+|  getmarketpairlist             |listwitnesses            |                       |
+|  getmarketorderlistbypair      |getnextmaintenancetime   |                       |
+|  getmarketpricebypair          |getnodeinfo              |                       |
+|  getmarketorderbyid            |getchainparameters       |                       |
 
 
 ## HexString and Base58check Transcode Demo
