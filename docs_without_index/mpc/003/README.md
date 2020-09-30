@@ -8,4 +8,4 @@ new_params file:
 * https://mpcfilepub.s3.amazonaws.com/mpc/003/new_params
 
 os: 
-* Unknown
+* Debian Stretch
