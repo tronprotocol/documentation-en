@@ -3113,7 +3113,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d
 Parameter：
 sell_token_id：sell token id，default hexString        
 buy_token_id：buy token id，default hexString      
-Return：order list
+Return：price list
 
 wallet/getmarketorderbyid    
 Description：Get all orders for the account
