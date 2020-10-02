@@ -3055,10 +3055,10 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d
 }'  
 
 Parameter：
-owner_address：Owner address,default hexString 
-sell_token_id：sell token id,default hexString     
+owner_address：owner address, default hexString 
+sell_token_id：sell token id, default hexString     
 sell_token_quantity：sell token quantity           
-buy_token_id：buy token id,default hexString         
+buy_token_id：buy token id, default hexString         
 buy_token_quantity：buy token quantity (min to receive)       
 Return：Transaction object   
 
@@ -3071,7 +3071,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/marketcancelorder -d
     "order_id": "0a7af584a53b612bcff1d0fc86feab05f69bc4528f26a4433bb344d453bd6eeb"
 }'   
 Parameter：
-owner_address：Owner address,default hexString 
+owner_address：owner address, default hexString 
 order_id：order id        
 Return：Transaction object   
 
@@ -3082,7 +3082,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d
     "value": "4184894b42f66dce8cb84aec2ed11604c991351ac8" 
 }'   
 Parameter：
-value：owner addresss,default hexString     
+value：owner address, default hexString     
 Return：order list   
 
 wallet/getmarketpairlist     
@@ -3099,8 +3099,8 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d
     "buy_token_id": "31303030303031"
 }'   
 Parameter：
-sell_token_id：sell token id，default hexString          
-buy_token_id：buy token id，default hexString         
+sell_token_id：sell token id, default hexString          
+buy_token_id：buy token id, default hexString         
 Return：order list
 
 wallet/getmarketpricebypair    
@@ -3111,8 +3111,8 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d
     "buy_token_id": "31303030303031" 
 }'   
 Parameter：
-sell_token_id：sell token id，default hexString        
-buy_token_id：buy token id，default hexString      
+sell_token_id：sell token id, default hexString        
+buy_token_id：buy token id, default hexString      
 Return：price list
 
 wallet/getmarketorderbyid    
@@ -3122,5 +3122,5 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d
     "value": "orderid" 
 }'   
 Parameter：
-value：order id,default hexString     
+value：order id, default hexString     
 Return：order   
