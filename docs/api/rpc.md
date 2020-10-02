@@ -411,3 +411,39 @@ Nodes: FullNode, SolidityNode
   rpc GetTriggerInputForShieldedTRC20Contract (ShieldedTRC20TriggerContractParameters) returns (BytesMessage) {}
 ```
 Nodes: FullNode
+
+
+**66.&nbsp;Create an market order**      
+Interface statement:    
+rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+Nodes: FullNode
+ 
+**67.&nbsp;Cancel the order**      
+Interface statement:    
+rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+Nodes: FullNode 
+
+**68.&nbsp;Get all orders for the account**      
+Interface statement:    
+rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+Nodes: FullNode 
+
+**69.&nbsp;Get all trading pairs**      
+Interface statement:    
+rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+Nodes: FullNode 
+
+**70.&nbsp;Get all orders for the trading pair**      
+Interface statement:    
+rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+Nodes: FullNode 
+
+**71.&nbsp;Get all prices for the trading pair**      
+Interface statement:    
+rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+Nodes: FullNode 
+
+**71.&nbsp;Get order by id**      
+Interface statement: 
+rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+Nodes: FullNode 

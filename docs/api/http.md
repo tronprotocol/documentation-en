@@ -50,15 +50,16 @@
 |  proposaldelete                  | updateenergylimit       | gettriggerinputforshieldedtrc20contract |
 |  getapprovedlist                 | updatesetting           |                                  |
 
-| others                |
-|-----------------------|
-| broadcasttransaction  |
-| broadcasthex          |
-| listnodes             |
-| listwitnesses         |
-| getnextmaintenancetime|
-| getnodeinfo           |
-| getchainparameters    |
+|   market                       |  others                 |                       |
+|--------------------------------|-------------------------|-----------------------|
+|  marketsellasset               |broadcasttransaction     |                       |
+|  marketcancelorder             |broadcasthex             |                       |
+|  getmarketorderbyaccount       |listnodes                |                       |
+|  getmarketpairlist             |listwitnesses            |                       |
+|  getmarketorderlistbypair      |getnextmaintenancetime   |                       |
+|  getmarketpricebypair          |getnodeinfo              |                       |
+|  getmarketorderbyid            |getchainparameters       |                       |
+
 
 ## HexString and Base58check Transcode Demo
 
@@ -3039,3 +3040,87 @@ amount: the amount
 transparent_to_address: the receiver for the `burn` operation.
 
 Return: the input data for triggering shielded TRC-20 contract.
+
+
+
+wallet/marketsellasset    
+Description：Create an market order 
+demo: curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d 
+'{
+    "owner_address": "4184894b42f66dce8cb84aec2ed11604c991351ac8",
+    "sell_token_id": "5f",
+    "sell_token_quantity": 100,
+    "buy_token_id": "31303030303031",
+    "buy_token_quantity": 200 
+}'  
+
+Parameter：
+owner_address：owner address, default hexString 
+sell_token_id：sell token id, default hexString     
+sell_token_quantity：sell token quantity           
+buy_token_id：buy token id, default hexString         
+buy_token_quantity：buy token quantity (min to receive)       
+Return：Transaction object   
+
+
+wallet/marketcancelorder    
+Description：Cancel the order
+demo: curl -X POST  http://127.0.0.1:8090/wallet/marketcancelorder -d 
+'{
+    "owner_address": "4184894b42f66dce8cb84aec2ed11604c991351ac8",
+    "order_id": "0a7af584a53b612bcff1d0fc86feab05f69bc4528f26a4433bb344d453bd6eeb"
+}'   
+Parameter：
+owner_address：owner address, default hexString 
+order_id：order id        
+Return：Transaction object   
+
+wallet/getmarketorderbyaccount    
+Description：Get all orders for the account
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d 
+'{
+    "value": "4184894b42f66dce8cb84aec2ed11604c991351ac8" 
+}'   
+Parameter：
+value：owner address, default hexString     
+Return：order list   
+
+wallet/getmarketpairlist     
+Description：Get all trading pairs
+demo: curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist  
+Parameter：  none
+Return：makket pair list
+ 
+wallet/getmarketorderlistbypair   
+Description：Get all orders for the trading pair
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d 
+'{
+    "sell_token_id": "5f" ,
+    "buy_token_id": "31303030303031"
+}'   
+Parameter：
+sell_token_id：sell token id, default hexString          
+buy_token_id：buy token id, default hexString         
+Return：order list
+
+wallet/getmarketpricebypair    
+Description：Get all prices for the trading pair
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d 
+'{
+    "sell_token_id": "5f" 
+    "buy_token_id": "31303030303031" 
+}'   
+Parameter：
+sell_token_id：sell token id, default hexString        
+buy_token_id：buy token id, default hexString      
+Return：price list
+
+wallet/getmarketorderbyid    
+Description：Get all orders for the account
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d 
+'{
+    "value": "orderid" 
+}'   
+Parameter：
+value：order id, default hexString     
+Return：order   
