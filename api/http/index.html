@@ -537,30 +537,46 @@
 <table>
 <thead>
 <tr>
+<th>market</th>
 <th>others</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>marketsellasset</td>
 <td>broadcasttransaction</td>
+<td></td>
 </tr>
 <tr>
+<td>marketcancelorder</td>
 <td>broadcasthex</td>
+<td></td>
 </tr>
 <tr>
+<td>getmarketorderbyaccount</td>
 <td>listnodes</td>
+<td></td>
 </tr>
 <tr>
+<td>getmarketpairlist</td>
 <td>listwitnesses</td>
+<td></td>
 </tr>
 <tr>
+<td>getmarketorderlistbypair</td>
 <td>getnextmaintenancetime</td>
+<td></td>
 </tr>
 <tr>
+<td>getmarketpricebypair</td>
 <td>getnodeinfo</td>
+<td></td>
 </tr>
 <tr>
+<td>getmarketorderbyid</td>
 <td>getchainparameters</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -2825,6 +2841,79 @@ Please refer to <a href="../../mechanism-algorithm/shielded-transaction/">The De
 <p>amount: the amount </p>
 <p>transparent_to_address: the receiver for the <code>burn</code> operation.</p>
 <p>Return: the input data for triggering shielded TRC-20 contract.</p>
+<p>wallet/marketsellasset  <br />
+Description：Create an market order 
+demo: curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d 
+'{
+    "owner_address": "4184894b42f66dce8cb84aec2ed11604c991351ac8",
+    "sell_token_id": "5f",
+    "sell_token_quantity": 100,
+    "buy_token_id": "31303030303031",
+    "buy_token_quantity": 200 
+}'  </p>
+<p>Parameter：
+owner_address：owner address, default hexString 
+sell_token_id：sell token id, default hexString   <br />
+sell_token_quantity：sell token quantity         <br />
+buy_token_id：buy token id, default hexString       <br />
+buy_token_quantity：buy token quantity (min to receive)     <br />
+Return：Transaction object   </p>
+<p>wallet/marketcancelorder  <br />
+Description：Cancel the order
+demo: curl -X POST  http://127.0.0.1:8090/wallet/marketcancelorder -d 
+'{
+    "owner_address": "4184894b42f66dce8cb84aec2ed11604c991351ac8",
+    "order_id": "0a7af584a53b612bcff1d0fc86feab05f69bc4528f26a4433bb344d453bd6eeb"
+}' <br />
+Parameter：
+owner_address：owner address, default hexString 
+order_id：order id      <br />
+Return：Transaction object   </p>
+<p>wallet/getmarketorderbyaccount  <br />
+Description：Get all orders for the account
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d 
+'{
+    "value": "4184894b42f66dce8cb84aec2ed11604c991351ac8" 
+}' <br />
+Parameter：
+value：owner address, default hexString   <br />
+Return：order list   </p>
+<p>wallet/getmarketpairlist   <br />
+Description：Get all trading pairs
+demo: curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist<br />
+Parameter：  none
+Return：makket pair list</p>
+<p>wallet/getmarketorderlistbypair <br />
+Description：Get all orders for the trading pair
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d 
+'{
+    "sell_token_id": "5f" ,
+    "buy_token_id": "31303030303031"
+}' <br />
+Parameter：
+sell_token_id：sell token id, default hexString        <br />
+buy_token_id：buy token id, default hexString       <br />
+Return：order list</p>
+<p>wallet/getmarketpricebypair  <br />
+Description：Get all prices for the trading pair
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d 
+'{
+    "sell_token_id": "5f" 
+    "buy_token_id": "31303030303031" 
+}' <br />
+Parameter：
+sell_token_id：sell token id, default hexString      <br />
+buy_token_id：buy token id, default hexString    <br />
+Return：price list</p>
+<p>wallet/getmarketorderbyid  <br />
+Description：Get all orders for the account
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d 
+'{
+    "value": "orderid" 
+}' <br />
+Parameter：
+value：order id, default hexString   <br />
+Return：order   </p>
               
             </div>
           </div>

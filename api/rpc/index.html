@@ -567,6 +567,34 @@ Nodes: FullNode, SolidityNode</p>
 <div class="highlight"><pre><span></span><code>  <span class="k">rpc</span> <span class="n">GetTriggerInputForShieldedTRC20Contract</span> <span class="p">(</span><span class="n">ShieldedTRC20TriggerContractParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
+<p><strong>66.&nbsp;Create an market order</strong>    <br />
+Interface statement:  <br />
+rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+Nodes: FullNode</p>
+<p><strong>67.&nbsp;Cancel the order</strong>    <br />
+Interface statement:  <br />
+rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+Nodes: FullNode </p>
+<p><strong>68.&nbsp;Get all orders for the account</strong>    <br />
+Interface statement:  <br />
+rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+Nodes: FullNode </p>
+<p><strong>69.&nbsp;Get all trading pairs</strong>    <br />
+Interface statement:  <br />
+rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+Nodes: FullNode </p>
+<p><strong>70.&nbsp;Get all orders for the trading pair</strong>    <br />
+Interface statement:  <br />
+rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+Nodes: FullNode </p>
+<p><strong>71.&nbsp;Get all prices for the trading pair</strong>    <br />
+Interface statement:  <br />
+rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+Nodes: FullNode </p>
+<p><strong>71.&nbsp;Get order by id</strong>    <br />
+Interface statement: 
+rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+Nodes: FullNode </p>
               
             </div>
           </div>
