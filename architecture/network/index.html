@@ -226,6 +226,10 @@
                     
     <a class="" href="../../developers/advanced-configuration/">Advanced Configuration</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/gpg/">Contact Us (GPG Key)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -315,7 +319,6 @@ CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 2T
 </code></pre></div>
-
 <h2 id="fullnode">FullNode<a class="headerlink" href="#fullnode" title="Permanent link">&para;</a></h2>
 <p>FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.</p>
 <p>Recommended Hardware Configuration:</p>
@@ -324,7 +327,6 @@ CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: &gt; 32 cores RAM: &gt; 48G, Bandwidth: &gt; 500M, Disk: &gt; 2T
 </code></pre></div>
-
 <h2 id="soliditynode">SolidityNode<a class="headerlink" href="#soliditynode" title="Permanent link">&para;</a></h2>
 <p>SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.</p>
 <blockquote>
@@ -337,7 +339,6 @@ CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: &gt; 32 cores RAM: &gt; 48G, Bandwidth: &gt; 500M, Disk: &gt; 2T
 </code></pre></div>
-
 <h2 id="mainnet-testnet-and-privatenet">MainNet, TestNet and PrivateNet<a class="headerlink" href="#mainnet-testnet-and-privatenet" title="Permanent link">&para;</a></h2>
 <p>MainNet, TestNet, PrivateNet all use the same code, only the node start configuration varies.</p>
 <h3 id="mainnet">MainNet<a class="headerlink" href="#mainnet" title="Permanent link">&para;</a></h3>
@@ -358,7 +359,6 @@ CPU: &gt; 32 cores RAM: &gt; 48G, Bandwidth: &gt; 500M, Disk: &gt; 2T
 <p>download private_net_config.conf</p>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;</span> wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
 </code></pre></div>
-
 </li>
 <li>
 <p>add your private key in <code>localwitness</code></p>
@@ -376,14 +376,12 @@ command line parameters introduction:
 --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
 -c: specify the configuration file path, i.e.: -c config.conf
 </code></pre></div>
-
 </li>
 </ol>
 <p>The usage of the log file:</p>
 <p>You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">&quot;net&quot;</span> <span class="na">level=</span><span class="s">&quot;WARN&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 <p>The parameters in configuration file that need to modify:</p>
 <p>localwitness:</p>
 <blockquote>

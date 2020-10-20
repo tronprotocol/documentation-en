@@ -208,6 +208,10 @@
                     
     <a class="" href="../../developers/advanced-configuration/">Advanced Configuration</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/gpg/">Contact Us (GPG Key)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -307,7 +311,7 @@
 <p>git clone <a href="https://github.com/tronprotocol/wallet-cli">https://github.com/tronprotocol/wallet-cli</a></p>
 <h3>Edit config.conf in src/main/resources</h3>
 
-<p><div class="highlight"><pre><span></span><code>net {
+<div class="highlight"><pre><span></span><code>net {
  type = mainnet
  #type = testnet
 }
@@ -324,13 +328,13 @@ soliditynode = {
   ]
 }//note: solidity node is optional
 </code></pre></div>
-<h3>Build and run wallet-cli by command line</h3></p>
+<h3>Build and run wallet-cli by command line</h3>
+
 <p>Create a new command line terminal window.</p>
 <div class="highlight"><pre><span></span><code>cd wallet-cli
 ./gradlew build
 ./gradlew run
 </code></pre></div>
-
 <h3>Build and run web wallet</h3>
 
 <div class="highlight"><pre><span></span><code>cd wallet-cli
@@ -338,7 +342,6 @@ soliditynode = {
 cd build/libs
 java -jar wallet-cli.jar
 </code></pre></div>
-
 <h3>How wallet-cli connects to java-tron:</h3>
 
 <p>Wallet-cli connect to java-tron by grpc protocol.
@@ -752,7 +755,6 @@ asset {
 (You can query the trx balance and other asset balances for any account )
 TransferAsset 123456 649DDB4AB82D558AD6809C7AB2BA43D1D1054B3F testAssetIssue00001 10000
 </code></pre></div>
-
 <h3>How to freeze/unfreeze balance</h3>
 
 <p>After the funds are frozen, the corresponding number of shares and bandwidth will be obtained.
@@ -768,7 +770,6 @@ frozen_duration: Freeze time, this value is currently only allowed for 3 days
 
 unfreezeBalance  [ResourceCode:0 BANDWIDTH, 1 ENERGY] [receiverAddress]
 </code></pre></div>
-
 <p>After the freeze operation,frozen funds will be transferred from Account Balance to Frozen,
 You can view frozen funds from your account information.
 After being unfrozen, it is transferred back to Balance by Frozen, and the frozen funds cannot be used for trading.</p>
@@ -792,7 +793,6 @@ votewitness witness1 4 witness2 6   // Cast 4 votes for witness1 and 6 votes for
 
 votewitness witness1 10   // Voted 10 votes for witness1.
 </code></pre></div>
-
 <p>The final result of the above command was 10 votes for witness1 and 0 votes for witness2.</p>
 <h3>How to issue TRC10 tokens</h3>
 
@@ -810,7 +810,6 @@ PublicFreeNetLimit: The maximum amount of bandwidth issuing accounts are allowed
 StartDate,EndDate: The start and end date of token issuance. Within this period time, other users can participate in token issuance.
 FrozenAmount0 FrozenDays0: Amount and time of token freeze. FrozenAmount0 must be bigger than 0, FrozenDays0 must be bigger than 1 and smaller than 3653.
 </code></pre></div>
-
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>AssetIssue TestTRX 100000 1 1 2 &quot;2019-04-04 11:48:00&quot; &quot;2019-04-05&quot; &quot;just for test&quot; www.test.com
 100 100000 10000 10 10000 1
@@ -848,7 +847,6 @@ Frozen_supply
 }
 ]
 </code></pre></div>
-
 <p>b. Update parameters of TRC10 token</p>
 <p>UpdateAsset FreeNetLimitPerAccount PublicFreeNetLimit Description Url
 Specific meaning of the parameters is the same with that of AssetIssue</p>
@@ -889,7 +887,6 @@ Frozen_supply
 }
 ]
 </code></pre></div>
-
 <p>c. TRC10 transfer</p>
 <p>TransferAsset ToAddress AssertName Amount
 ToAddress:              Address of the target account
@@ -912,7 +909,6 @@ assetV2
 ...
 }
 </code></pre></div>
-
 <p>d. Participating in the issue of TRC10</p>
 <p>ParticipateAssetIssue ToAddress AssetName Amount
 ToAddress:              Account address of Token 10 issuers
@@ -937,7 +933,6 @@ assetV2
 ...
 }
 </code></pre></div>
-
 <p>e. unfreeze TRC10 token</p>
 <p>It must be unfrozen after the freezing period, unfreeze Token10, which has stopped being frozen.
 UnfreezeAsset</p>
@@ -977,7 +972,6 @@ approvalsList: [
 ]]
 The corresponding id is 1
 </code></pre></div>
-
 <p>b. Approve/Cancel the proposal</p>
 <p>approveProposal id is_or_not_add_approval
 id:                         ID of the initiated proposal, 1 in the example
@@ -993,7 +987,6 @@ The proposal must be canceled by the supernode that initiated the proposal</p>
 <p>Example：</p>
 <div class="highlight"><pre><span></span><code>DeleteProposal 1
 </code></pre></div>
-
 <p>d. Obtain proposal information</p>
 <p>ListProposals:
 Obtain initiated proposals
@@ -1015,7 +1008,6 @@ than 0, and less than 1,000,000,000,000,000.</p>
 <div class="highlight"><pre><span></span><code>exchangeCreate 1000001 10000 _ 10000
 Create trading pairs with the IDs of 1000001 and TRX, the amount is 10000 for both.
 </code></pre></div>
-
 <p>b. Capital injection</p>
 <p>exchangeInject exchange_id token_id quant
 exchange_id:    The ID of the transaction pair to be funded
@@ -1035,7 +1027,6 @@ The expected must be less than exchanged, otherwise, an error will be reported.<
 It is expected to acquire the 80 TRX by exchanging 1000001 from the transaction pair ID of 1, and
  the amount is 100 (equivalent to selling token10, the ID is 1000001, the amount is 100).
 </code></pre></div>
-
 <p>d. Divestment</p>
 <p>exchangeWithdraw exchange_id token_id quant
 Exchange_id:    The ID of the transaction pair to be divested
@@ -1072,7 +1063,6 @@ The account TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ gives the owner access to itself,
 If the account is not a witness, it&#39;s not necessary to set witness_permission, otherwise an error
  will occur.
 </code></pre></div>
-
 <p>Signed transaction</p>
 <p>SendCoin TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW 10000000000000000
 will show "Please confirm and input your permission id, if input y or Y means default 0, other
@@ -1150,7 +1140,6 @@ signature 1
 }
 }
 </code></pre></div>
-
 <p>Get signature information according to transactions:</p>
 <div class="highlight"><pre><span></span><code>getTransactionApprovedList
 0a8c010a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d1241c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b0112413d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101
@@ -1194,7 +1183,6 @@ signature 1
 }
 }
 </code></pre></div>
-
 <h3>How to use smart contracts </h3>
 
 <p>a. deploy smart contracts</p>
@@ -1252,7 +1240,6 @@ NetUsage:
 NetFee:
 0
 </code></pre></div>
-
 <p>InternalTransactionList:</p>
 <p>b. trigger smart contarct</p>
 <p>TriggerContract contractAddress method args isHex fee_limit value token_value token_id
@@ -1301,7 +1288,6 @@ NetUsage:
 NetFee:
 0
 </code></pre></div>
-
 <p>InternalTransactionList:</p>
 <p>c. get details of a smart contract</p>
 <p>GetContract contractAddress
@@ -1326,7 +1312,6 @@ contract owner:TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ
 contract ConsumeUserResourcePercent:75
 contract energy limit:50000
 </code></pre></div>
-
 <p>d. update smart contract parameters</p>
 <p>UpdateEnergyLimit contract_address energy_limit                 Update parameter energy_limit
 UpdateSetting contract_address consume_user_resource_percent    Update parameter
@@ -1343,7 +1328,6 @@ number: The number of addresses you want to generate, default is 1</p>
 10:11:02.567 INFO  [main] [Client](Client.java:1919) ztron1hn9r3wmytavslztwmlzvuzk3dqpdhwcmda2d0deyu5pwv32dp78saaslyt82w0078y6uzfg8x6w
 10:11:02.567 INFO  [main] [Client](Client.java:1923) GenerateShieldedAddress successful !!
 </code></pre></div>
-
 <p>2.&nbsp;To show the shielded address generated local</p>
 <p>listshieldedaddress</p>
 <p>Example:</p>
@@ -1353,7 +1337,6 @@ number: The number of addresses you want to generate, default is 1</p>
 10:11:55.371 INFO  [main] [Client](Client.java:1930) ztron1ghdy60hya8y72deu0q0r25qfl60unmue6889m3xfc3296a5ut6jcyafzhtp9nlutndukufzap4h
 10:11:55.371 INFO  [main] [Client](Client.java:1930) ztron1hn9r3wmytavslztwmlzvuzk3dqpdhwcmda2d0deyu5pwv32dp78saaslyt82w0078y6uzfg8x6w
 </code></pre></div>
-
 <p>3.&nbsp;Transfer</p>
 <p>SendShieldedCoin publicFromAddress fromAmount shieldedInputNum input1 input2 input3 ... publicToAddress toAmount shieldedOutputNum shieldedAddress1 amount1 memo1 shieldedAddress2 amount2 memo2 ...</p>
 <p>publicFromAddress: Transparent sender address. If not needed, set null.
@@ -1473,7 +1456,6 @@ Please input your password.
 current transaction hex string is 0ac6100a0204ac2208eb0077152510524940b0e0bfc0c02d5aa710083312a2100a35747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e536869656c6465645472616e73666572436f6e747261637412e80f0a1541a7d8a35b260395c14aa456297662092ba3b76fc01080b1916422c2070a20de75bc31efea3a115c387d70721cb0f9aecfec2474f27475abcb980886ad0d3d12203b89783436db7d908b0639a4da16ffe16be3af123dcac2d7bbd34c0e6d7d65441a2013905055444c524ada9730e591360fef353e7badfd5111aa483d2c18ff1aa32522c404283bad882abc89bf5726535ccbbcb279ff6858bc5882c32380117ea693dfeb145377b4509e9d8ac7211519af29a07f95dd3c92c937352e12c33c8f23a1eab8669a7f4a0b87ae0173e47e2b63488f7568e3960101b9b30be87f7e8ccae954fab14776dfaf7157eddaf92e76385b3c03364a14689e661e225f13414e3a2930bb03b374e6afe01e3e1109963d9cf2a89598226f4617fda887390bf96227befcf13769ca733ed8b5966fcf4e24142399530b86dd2b310760eb5be40aeb617a8f417532417c7a6c1dabcf511be38545ff37be77a7868a9bcefed6d64c906975e55172f23e2bd5e5fad01fe881b43df1bc5305b01f6790929f06aa2ff76edd22d7f07a076a1df670424dd49b0f9736f2e732e69b46ee533dc9772a960c81f57555a98367554d2baece36155dd8cf8fc62b9474117bcf8eb9a7905e4b143d64c168ae2490d811749aaccc44f9a91a2630cb90bfc922e2b49a3083f18e2b227fc1db9c91a725c17bb5400b769c0c5c80c0083a3e0a8f00e72565b927ba4a95d6d79187219fb836282ebac38671929ac232739ee1a35b21e51ff01dd3d6de1a3a1a0b42ca8b1ae435f124860c2d9ecd5835ad0e94dd33a36edbd37ed2e581e28cc0d6740945dc5f71f9310fbabcd881036f3ccfb7524e7877de54c295577f43c7551accab575b9bcde331ee529d69e40540414f179d914c8b7c62e0e11547d3687d837bd129af855902f647a6eca89d83a4b4442e8b44d87839d0c95a79727ffed286ac78a512b20a03c8e5aeb7c997bd24e8e61a74cd6824afe1f844c14e52958f72896c91214d462a5028084dab0df35e91f297508e71de534ed8ea9aaa5f9c2c5e8fcc472552107581c58a11fbfb500c05d3b75472e770e4aec9dafa97a4e11a0a145ee4f58eeb996e4d0b8f90a29480f43be490e6119989ef32c0018eed2aef1edf5d000f8bcdbb1bc228fa6ea4ca1e237da41dde6e49057398ca9db4f785f0327ff87cd2685594ab637c0989604856571d6b2373c949796d52a432094bce27d445e1ec751203480803c19c1ddd5b435f88c27a90700296f2d5473d11234dde23740cd532987b7e7a5eb129f67f63f2b64b07f980856d19dee4965ef2c8d9cea30778db888e0500d04d910d990fb2de69d5062a5e9bababfd54d23376c9aa53c6359551bd296658be04dc1392b1d30ea2d8572862deb1e9402d5d6c22c2070a20c43166a68ea4585bd99a28f2b22be8c9acf35874ab19d94314eb7972a89723a4122093f76ff28e95094e2bbd3f3b8a0680bdfdc4f06cf67abb59d6cf6bb2a30ffb131a2028aeccd4e7c6ec30db5c8cfa0f0c530ade45a0e0802ae77279d35b1cf086f94722c4046c62fde60d4c0cc48e84b1b023c6664332a244d8a2e650f41f323b9d05c0637959796b9ef6c3dabee35c81a409e8d5279197af772eddf3fd609822393d2e17fc215f09da41ebd991407b9b206e93fcdbbb3ccf53dcdacdb9759460cb35bd00e281ba2ebd6f04af46c3872b12bccb7b70f61397d27dbfee5e508ca02451047b25520307831ceb7cb39ea35305dae84b3a9a5871ade0f364a35b7214b1b7bb4e5b2bd80ab83740d3e00e57218e499ee2763fa683f9e2118eb7dab943cfac6cef8fd36d37e91cf08459d1077813d506040fa8b6c5cf76a75c7cf0a476a8eb36ad428db29a31d0eadcca7f70f8768a6893991899ba0a3f469ef5f0a8feb0877e4557a2ca1d41ca944db3de4d13125b82dabcbbf36624308eaff2055109446777ca592a3c4f62a9823cd53de6993d5edeaef7e9cd471fd7bc0973e46732c5dbc2f642504fb6fe840c99c012f2dcf035495237f2451dc7e708bf4e22010e86fe21c30aac0e9f3ad31feee69849d6eafeba8337690e163bb22c8d9aff2c55865663af5d4dd23132a7d6d9748dbdc86d71cf773a0a1a2768ce8da9e6fbecda29ab2eb1ad75705ab1fb448cd6c2987b814d759462e4930e124b48838319f5907f33911cb80a583e91c552d1d41de91ed02aba232b9a53331260c8061ae354646e96fde0818d695b7aa058d0ac09fb4f92cb412e218f4e9f9771c1cd067023e844c96ac188db8869c50b1297010d9c21dbce60d815a1c936170df77e057a13b4798f39f5bfc36f5acf36728ea7e017ab5fc39a06e2bbd42ad3118a8c2e5531fb6ae63adf525591ed1a2a50ecf81a290d80573434d45024a8050a0d51c6e74f4ac2c539f6d68694b367a3568ba9187872d9b648fd4dcc9a01de7b2c8d1036d7b2e37b57d89c8df37e26be4bad0728e2922915901339b8a908fb2a5632c0018b6ca51f29b66e7cc833e1b602f954d3ccc6ed80cf727ce0e4bd74500b32635d909fb7dda7be7d0807b93318e81108c4a1d2c4dc73e7b393b5cc66e18fb7a49d665f3bde62b1832ec01fabecdf8fa77668b78db3679376938820ada3ccf23f540c1fa1c32b4c3303c0ac72351da080c0bab70b8effdc304089601feb613f0c11b57822474a788479ca7322b6d3f606fea2208d45ff3c1f893617f628304ba6765a4eeb1ac52a0e666373e5c746ddc48a781331eff4e465f8993c1bbaafd25d3b2a401c9732654d45f51fd2cadf1baf0d85a50f55f08d181ef08eb704392d5ee03bc4bc77d56e26b706ab88cae85f6ac608abd2e16b2242653c90e058a3c8a3d2310870f8a2bcc0c02d1241f1e90556d1ef91c26c01261c30c79a20a2a14a68196956bb1d0375179c897a143eaf5f357df22f21b556b17e12335ae01c9929bda86dcf101367407e0d115de401
 10:28:26.914 INFO  [main] [Client](Client.java:2040) SendShieldedCoin successful !!
 </code></pre></div>
-
 <p>Transfer from shielded address to shielded address</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>listshieldednote
@@ -1575,7 +1557,6 @@ fee_limit: 0
 
 10:43:38.722 INFO  [main] [Client](Client.java:2058) SendShieldedCoinWithoutAsk successful !!
 </code></pre></div>
-
 <p>Transfer from shielded address to transparent address</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>listshieldednote
@@ -1681,7 +1662,6 @@ fee_limit: 0
 
 10:46:19.226 INFO  [main] [Client](Client.java:2040) SendShieldedCoin successful !!
 </code></pre></div>
-
 <p>4.&nbsp;sendshieldedcoinwithoutask</p>
 <p>This command is similar with sendshieldedcoin. The difference is sendshieldedcoin uses 'ask' to sign, however sendshieldedcoinwithoutask uses 'ak' to sign.</p>
 <p>5.&nbsp;To show the notes your account possesses</p>
@@ -1697,7 +1677,6 @@ ztron1ghdy60hya8y72deu0q0r25qfl60unmue6889m3xfc3296a5ut6jcyafzhtp9nlutndukufzap4
 ztron16j06s3p5gvp2jde4vh7w3ug3zz3m62zkyfu86s7ara5lafhp22p9wr3gz0lcdm3pvt7qx0aftu4 100000000 4ce5656a13049df00abc7fb3ce78d54c78944d3cbbdfdb29f288e1df5fdf67e1 0 Spend test1
 ztron1hn9r3wmytavslztwmlzvuzk3dqpdhwcmda2d0deyu5pwv32dp78saaslyt82w0078y6uzfg8x6w 90000000 06b55fc27f7ec649396706d149d18a0bb003347bdd7f489e3d47205da9cee802 0 Spend test2
 </code></pre></div>
-
 <p>6.&nbsp;To clear the all local notes</p>
 <p>resetshieldednote</p>
 <p>When there is something wrong with the data or you switch the environment, you can use this command.</p>
@@ -1717,7 +1696,6 @@ value:100000000
 memo:test1
 11:25:43.730 INFO  [main] [WalletApiWrapper](WalletApiWrapper.java:974) complete.
 </code></pre></div>
-
 <p>8.&nbsp;To scan notes using ovk</p>
 <p>ScanNotebyOvk ovk startNum endNum</p>
 <p>ovk: The ovk of the shielded address
@@ -1734,7 +1712,6 @@ memo:test2
 value:90000000
 11:27:17.760 INFO  [main] [WalletApiWrapper](WalletApiWrapper.java:1050) complete.
 </code></pre></div>
-
 <p>9.&nbsp;To calculate the nullifier of a note</p>
 <p>GetShieldedNullifier index</p>
 <p>index: The index of the note</p>
@@ -1751,7 +1728,6 @@ index 1
 memo
 ShieldedNullifier:2a524a3be2643365ecdacf8f0d3ca1de8fad3080eea0b9561435b5d1ee467042
 </code></pre></div>
-
 <p>10.&nbsp;To scan the notes status of your local shielded address</p>
 <p>ScanAndMarkNotebyAddress shieldedAddress startNum endNum</p>
 <p>shieldedAddress: The local shielded address
@@ -1769,14 +1745,12 @@ value:100000000
 memo:test1
 11:33:27.789 INFO  [main] [WalletApiWrapper](WalletApiWrapper.java:1019) complete.
 </code></pre></div>
-
 <p>11.&nbsp;To generate the spending key of a shielded address</p>
 <p>GetSpendingKey</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>GetSpendingKey
 11:48:52.918 INFO  [main] [Client](Client.java:2194) 0eb458b309fa544066c40d80ce30a8002756c37d2716315c59a98c893dbb5f6a
 </code></pre></div>
-
 <p>12.&nbsp;To get the ask，nsk and ovk from a spending key</p>
 <p>etExpandedSpendingKey sk</p>
 <p>Example:</p>
@@ -1785,28 +1759,24 @@ memo:test1
 11:49:00.485 INFO  [main] [Client](Client.java:2213) nsk:5cd2bc8d9468dbad26ea37c5335a0cd25f110eaf533248c59a3310dcbc03e503
 11:49:00.485 INFO  [main] [Client](Client.java:2214) ovk:892a10c1d3e8ea22242849e13f177d69e1180d1d5bba118c586765241ba2d3d6
 </code></pre></div>
-
 <p>13.&nbsp;To get ak from ask</p>
 <p>getAkFromAsk ask</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>GetAkFromAsk 252a0f6f6f0bac114a13e1e663d51943f1df9309649400218437586dea78260e
 11:49:33.547 INFO  [main] [Client](Client.java:2232) ak:f1b843147150027daa5b522dd8d0757ec5c8c146defd8e01b62b34cf917299f1
 </code></pre></div>
-
 <p>14.&nbsp;To get nk from nsk</p>
 <p>getNkFromNsk nsk</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>GetNkFromNsk 5cd2bc8d9468dbad26ea37c5335a0cd25f110eaf533248c59a3310dcbc03e503
 11:49:44.651 INFO  [main] [Client](Client.java:2250) nk:ed3dc885049f0a716a4de8c08c6cabcad0da3c437202341aa3d9248d8eb2b74a
 </code></pre></div>
-
 <p>15.&nbsp;To get ivk from ak and nk</p>
 <p>getIncomingViewingKey ak[64] nk[64]</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>getincomingviewingkey  f1b843147150027daa5b522dd8d0757ec5c8c146defd8e01b62b34cf917299f1  ed3dc885049f0a716a4de8c08c6cabcad0da3c437202341aa3d9248d8eb2b74a
 11:51:45.686 INFO  [main] [Client](Client.java:2272) ivk:148cf9e91f1e6656a41dc9b6c6ee4e52ff7a25b25c2d4a3a3182d0a2cd851205
 </code></pre></div>
-
 <p>16.&nbsp;To GetDiversifier</p>
 <p>GetDiversifier</p>
 <p>Example:
@@ -1819,7 +1789,6 @@ memo:test1
 11:52:33.542 INFO  [main] [Client](Client.java:2309) pkd:65c11642115d386ed716b9cc06a3498e86e303d7f20d0869c9de90e31322ac15
 11:52:33.543 INFO  [main] [Client](Client.java:2310) shieldedAddress:ztron1z8d5htmt6h26l5agk4juz9jzz9wnsmkhz6uucp4rfx8gdccr6leq6zrfe80fpccny2kp2cray8z
 </code></pre></div>
-
 <h3>How to delegate resource</h3>
 
 <p>a. delegate resource</p>
@@ -1894,7 +1863,7 @@ BroadcastTransaction:   Broadcast the transaction, where the transaction is in h
         <a href="../tron-grid/" class="btn btn-neutral float-right" title="TronGrid">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../developers/advanced-configuration/" class="btn btn-neutral" title="Advanced Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../developers/gpg/" class="btn btn-neutral" title="Contact Us (GPG Key)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -1922,7 +1891,7 @@ BroadcastTransaction:   Broadcast the transaction, where the transaction is in h
           <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../developers/advanced-configuration/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../developers/gpg/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../tron-grid/" style="color: #fcfcfc">Next &raquo;</a></span>

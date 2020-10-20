@@ -208,6 +208,10 @@
                     
     <a class="" href="../developers/advanced-configuration/">Advanced Configuration</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../developers/gpg/">Contact Us (GPG Key)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -440,7 +444,6 @@ Note: The addresses of Zion、Sun and Blackhole can not be deleted, but can be m
 <p>You can add the data storage path when you start the node, like:</p>
 <div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf -d /data/output
 </code></pre></div>
-
 <h3 id="is-there-any-config-file-option-which-i-can-use-for-sending-logs-to-stdout">Is there any config file option, which I can use for sending logs to stdout?<a class="headerlink" href="#is-there-any-config-file-option-which-i-can-use-for-sending-logs-to-stdout" title="Permanent link">&para;</a></h3>
 <p>Steps to send logs to stdout:</p>
 <p>Download <a href="https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml">https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml</a></p>
@@ -453,7 +456,6 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 <p>Launch FullNode.jar with additional parameter: --log-config logback.xml, for example:</p>
 <div class="highlight"><pre><span></span><code>java -jar FullNode.jar --log-config logback.xml
 </code></pre></div>
-
 <h3 id="how-to-change-log-level">How to change log level<a class="headerlink" href="#how-to-change-log-level" title="Permanent link">&para;</a></h3>
 <p>The log level is defined in logback.xml. Please set the root level to "ERROR" if you want to filter only error logs. Please refer to the configuration below.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">&quot;ERROR&quot;</span><span class="nt">&gt;</span>
@@ -474,7 +476,6 @@ comment the configuration: appender-ref ref="ASYNC"</p>
   <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">&quot;capsule&quot;</span> <span class="na">level=</span><span class="s">&quot;ERROR&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">&quot;VM&quot;</span> <span class="na">level=</span><span class="s">&quot;ERROR&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-
 <h3 id="how-can-i-get-asset-from-private-net">How can I get asset from private net?<a class="headerlink" href="#how-can-i-get-asset-from-private-net" title="Permanent link">&para;</a></h3>
 <p>In private network, you can set the initial account balance in config file. Please refer to below settings:</p>
 <div class="highlight"><pre><span></span><code>genesis.block = {
@@ -500,7 +501,6 @@ comment the configuration: appender-ref ref="ASYNC"</p>
     }
   ]
 </code></pre></div>
-
 <h2 id="compile-and-build">Compile and Build<a class="headerlink" href="#compile-and-build" title="Permanent link">&para;</a></h2>
 <h3 id="java-tron-build-failed-with-unit-test-issue">java-tron build failed with unit test issue<a class="headerlink" href="#java-tron-build-failed-with-unit-test-issue" title="Permanent link">&para;</a></h3>
 <p>Please use './gradlew build -x test' to skip the test cases.</p>
@@ -509,14 +509,12 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 <p>Java-tron does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. You can also use the following command to test:</p>
 <div class="highlight"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
 </code></pre></div>
-
 <h3 id="when-to-deploy-private-environment-whats-the-relationship-of-supernode-and-fullnode-should-i-firstly-deploy-a-supernode-and-then-deploy-a-fullnode">When to deploy private environment, what's the relationship of SuperNode and FullNode? Should I firstly deploy a SuperNode, and then deploy a FullNode？<a class="headerlink" href="#when-to-deploy-private-environment-whats-the-relationship-of-supernode-and-fullnode-should-i-firstly-deploy-a-supernode-and-then-deploy-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>Under private environment, there should be at least one SuperNode, there is no amount limit for FullNode.</p>
 <h3 id="how-to-know-wether-my-test-supernode-is-running-or-not">How to know wether my test SuperNode is running or not?<a class="headerlink" href="#how-to-know-wether-my-test-supernode-is-running-or-not" title="Permanent link">&para;</a></h3>
 <p>Using the following command</p>
 <div class="highlight"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;Try Produce Block&quot;
 </code></pre></div>
-
 <h3 id="can-soliditynode-and-fullnode-be-deployed-in-one-machine-will-they-share-the-data">Can SolidityNode and FullNode be deployed in one machine? Will they share the data?<a class="headerlink" href="#can-soliditynode-and-fullnode-be-deployed-in-one-machine-will-they-share-the-data" title="Permanent link">&para;</a></h3>
 <p>They can be deployed in one machine. You can specify the data storage path in configuration file <code>db.directory = "database"，index.directory = "index"</code>. You can run FullNode.jar and SolidityNode.jar in different paths to separate the data and log. Remember to change the port in <code>config.conf</code>, because two nodes can not work using the same port. SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.</p>
 <h2 id="running-a-node">Running a Node<a class="headerlink" href="#running-a-node" title="Permanent link">&para;</a></h2>
@@ -557,17 +555,14 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 <p>You can use the following wallet-cli api:</p>
 <div class="highlight"><pre><span></span><code>triggercontract contractaddress balanceOf(address) &quot;youraddress&quot; false 0 0 0 #
 </code></pre></div>
-
 <h2 id="error-log">Error Log<a class="headerlink" href="#error-log" title="Permanent link">&para;</a></h2>
 <h3 id="what-does-the-following-error-message-mean">What does the following error message mean?<a class="headerlink" href="#what-does-the-following-error-message-mean" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>17:02:42.699 INFO [o.t.c.s.WitnessService] Try Produce Block
 17:02:42.699 INFO [o.t.c.s.WitnessService] Not sync
 </code></pre></div>
-
 <p>This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to chek the block height.</p>
 <div class="highlight"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
 </code></pre></div>
-
 <h2 id="other-questions">Other Questions<a class="headerlink" href="#other-questions" title="Permanent link">&para;</a></h2>
 <h2 id="my-question-is-not-listed-here">My Question is Not Listed Here?<a class="headerlink" href="#my-question-is-not-listed-here" title="Permanent link">&para;</a></h2>
 <p>Feel free to join our community, just open an Issue on github:</p>
@@ -629,5 +624,5 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-10-02 16:41:02
+Build Date UTC : 2020-10-20 14:37:10
 -->

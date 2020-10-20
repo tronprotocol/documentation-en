@@ -236,6 +236,10 @@
                     
     <a class="" href="../advanced-configuration/">Advanced Configuration</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../gpg/">Contact Us (GPG Key)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -324,7 +328,6 @@ New developers should deploy FullNode only.</p>
 <div class="highlight"><pre><span></span><code>/deploy/fullnode
 /deploy/soliditynode
 </code></pre></div>
-
 <p>Create two folders for fullnode and soliditynode.</p>
 <p>Clone the latest master branch of <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a> and extract it to
 <div class="highlight"><pre><span></span><code>/deploy/java-tron
@@ -383,7 +386,6 @@ java -jar FullNode.jar -p your private key --witness -c your config.conf (Exampl
 Example:
 java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
 </code></pre></div>
-
 <h2 id="logging-and-network-connection-verification">Logging and Network Connection Verification<a class="headerlink" href="#logging-and-network-connection-verification" title="Permanent link">&para;</a></h2>
 <p>Logs for both nodes are located in <code>/deploy/\*/logs/tron.log</code>. Use <code>tail -f /logs/tron.log/</code> to follow along with the block syncing.</p>
 <p>You should see something similar to this in your logs for block synchronization:</p>
@@ -419,7 +421,6 @@ Just Support FullNode and SolidityNode.</p>
 
 <div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
 </code></pre></div>
-
 <h3>Parameter Illustration</h3>
 
 <div class="highlight"><pre><span></span><code>bash deploy_tron.sh --app <span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span> --net <span class="o">[</span>mainnet<span class="p">|</span>testnet<span class="p">|</span>privatenet<span class="o">]</span> --db <span class="o">[</span>keep<span class="p">|</span>remove<span class="p">|</span>backup<span class="o">]</span> --heap-size &lt;heapsize&gt;
@@ -434,20 +435,17 @@ Just Support FullNode and SolidityNode.</p>
 --heap-size  Optional, jvm option: Xmx. The default heap-size is <span class="m">0</span>.8 * memory size.
 --work_space  Optional, default is current directory.
 </code></pre></div>
-
 <h3> Deployment of FullNode on the one host </h3>
 
 <div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
 bash deploy_tron.sh
 </code></pre></div>
-
 <h3> Deployment of SolidityNode on the one host </h3>
 
 <div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
 <span class="c1"># User can self-configure the IP and Port of GRPC service in the turst-node field of SolidityNode. trust-node is the fullnode you just deploy.</span>
 bash deploy_tron.sh --app SolidityNode --trust-node &lt;grpc-ip:grpc-port&gt;
 </code></pre></div>
-
 <h3> Deployment of FullNode and SolidityNode on the same host </h3>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># You need to configure different gRPC ports on the same host because gRPC port is available on SolidityNode and FullNodeConfigure and it cannot be set as default value 50051. In this case the default value of rpc port is set as 50041.</span>
@@ -455,7 +453,6 @@ wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy
 bash deploy_tron.sh --app FullNode
 bash deploy_tron.sh --app SolidityNode --rpc-port <span class="m">50041</span>
 </code></pre></div>
-
 <h2 id="grpc-gateway-deployment">Grpc Gateway Deployment<a class="headerlink" href="#grpc-gateway-deployment" title="Permanent link">&para;</a></h2>
 <h3> Summary </h3>
 
@@ -468,7 +465,6 @@ Install Golang, Protoc, and set $GOPATH environment variable according to your r
 
 <div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
 </code></pre></div>
-
 <h3> Parameter Illustration </h3>
 
 <div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="o">[</span>rpc host ip<span class="o">]</span> --rpcport <span class="o">[</span>rpc port number<span class="o">]</span> --httpport <span class="o">[</span>http port number<span class="o">]</span>
@@ -477,7 +473,6 @@ Install Golang, Protoc, and set $GOPATH environment variable according to your r
 --rpcport The fullnode or soliditynode port number grpc service is consuming. Default value is <span class="m">50051</span>.
 --httpport The port intends to provide http service provided by grpc gateway. Default value is <span class="m">18890</span>.
 </code></pre></div>
-
 <h3> Example </h3>
 
 <p>Use default configuration：

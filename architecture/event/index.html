@@ -224,6 +224,10 @@
                     
     <a class="" href="../../developers/advanced-configuration/">Advanced Configuration</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../developers/gpg/">Contact Us (GPG Key)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -316,7 +320,6 @@ energyFee: energy fee
 originEnergyUsage: origin energy usage
 energyUsageTotal: total energy usage total
 </code></pre></div>
-
 <h3 id="block-event">Block Event<a class="headerlink" href="#block-event" title="Permanent link">&para;</a></h3>
 <p>The parameters passed to Subscriber:</p>
 <div class="highlight"><pre><span></span><code>blockHash: block hash
@@ -325,7 +328,6 @@ transactionSize: the number of transactions in a block
 latestSolidifiedBlockNumber: the latest solidified block number
 transactionList: the transactions hash list
 </code></pre></div>
-
 <h3 id="contract-event">Contract Event<a class="headerlink" href="#contract-event" title="Permanent link">&para;</a></h3>
 <p>The parameters passed to Subscriber:</p>
 <div class="highlight"><pre><span></span><code>transactionId: transaction id
@@ -338,7 +340,6 @@ topicMap: the map of topic in solidity language
 data: the data information in solidity language
 removed: &#39;true&#39; means the log is removed
 </code></pre></div>
-
 <h3 id="contract-log-event">Contract Log Event<a class="headerlink" href="#contract-log-event" title="Permanent link">&para;</a></h3>
 <p>The parameters passed to Subscriber:</p>
 <div class="highlight"><pre><span></span><code>transactionId: transaction hash
@@ -350,14 +351,12 @@ contractTopics: the list of topic in solidity language
 data: the data information in solidity language
 removed: &#39;true&#39; means the log is removed
 </code></pre></div>
-
 <p>Contract Event and Contract Log Even support event filter function which includes:</p>
 <div class="highlight"><pre><span></span><code>fromBlock: the start block number
 toBlock: the end block number
 contractAddress: contract adsresses list
 contractTopics: contract topics list
 </code></pre></div>
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Historical data query is not supported.</p>
