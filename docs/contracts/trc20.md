@@ -1,4 +1,6 @@
-TRC‌-20 is a technical standard used for smart contracts on the TRON blockchain for implementing tokens with the TRON Virtual Machine (TVM). It is fully compatible to ERC‌-20.   
+# TRC-20
+
+TRC‌-20 is a technical standard used for smart contracts on the TRON blockchain for implementing tokens with the TRON Virtual Machine (TVM). It is fully compatible to ERC‌-20.
 
 ## Implementation Rules
 
@@ -59,18 +61,18 @@ This function is used to transfer an amount of tokens from the smart contract to
 This function is used to authorize the third party (like a DAPP smart contract) to transfer token from the token owner’s account.
 
 
-- transferFrom() 
+- transferFrom()
 
 This function is used to allow the third party to transfer token from an owner account to a receiver account. The owner account must be approved to be called by the third party.
 
 
-- allowance() 
+- allowance()
 
 This function is used to query the remaining amount of tokens the third party can transfer.
 
 **2 Event Functions**
 
-When token is successfully transferred, it has to trigger Transfer Event.  
+When token is successfully transferred, it has to trigger Transfer Event.
 
 ```text
 event Transfer(address indexed _from, address indexed _to, uint256 _value)

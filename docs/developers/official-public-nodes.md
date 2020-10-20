@@ -1,8 +1,12 @@
-# FullNodes
-* GRPC port: 50051
-* P2P network port: 18888
-* HTTP port : 8090
-```
+# Official Public Nodes
+
+## FullNodes
+
+* gRPC port: 50051/tcp
+* P2P network port: 18888/udp, 18888/tcp
+* HTTP API port : 8090/tcp
+
+```text
 54.236.37.243
 52.53.189.99
 18.196.99.16
@@ -35,10 +39,12 @@
 47.75.249.4
 ```
 
-# SolidityNodes
-* GRPC port: 50051
-* HTTP port : 8091
-```
+## SolidityNodes(deprecated)
+
+* gRPC port: 50051/tcp
+* HTTP API port : 8091/tcp
+
+```text
 47.89.187.247
 47.91.18.255
 47.75.10.71
