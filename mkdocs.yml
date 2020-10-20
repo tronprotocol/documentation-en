@@ -31,6 +31,7 @@ nav:
         - Resources: developers/resources.md
         - Contribution: developers/contribution.md
         - Incentives Policy: developers/incentives.md
+        - Contact Us (GPG Key): developers/gpg.md
     - Clients:  
         - Wallet-cli: clients/wallet-cli.md  
     - Q&A: q&a/qa.md
