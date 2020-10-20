@@ -2,7 +2,8 @@ This file contains the PGP keys of official support.
   
 Users: pgp < KEYS  
 or&nbsp;&nbsp;&nbsp;&nbsp;gpg --import KEYS  
-
+or&nbsp;&nbsp;&nbsp;&nbsp;gpg --keyserver hkp://keys.gnupg.net --search-keys support@tron.network  
+  
 pub&nbsp;&nbsp;rsa3072&nbsp;&nbsp;2020-10-20 [SC]  
    &nbsp;&nbsp;fingerprint = C07A AC17 C98D 205F 0CE3  0BF9 7F0A F58B 65C7 EEF4  
 uid&nbsp;&nbsp;Tron-Support <support@tron.network>  
