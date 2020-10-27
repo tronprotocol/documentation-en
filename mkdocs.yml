@@ -33,6 +33,7 @@ nav:
         - Official Public Nodes: developers/official-public-nodes.md
         - Deployment: developers/deployment.md
         - Run FullNode in IDEA: developers/run-in-idea.md
+        - Run Lite FullNode: developers/litefullnode.md
         - Resources: developers/resources.md
         - Contribution: developers/contribution.md
         - Incentive Policy: developers/incentives.md
