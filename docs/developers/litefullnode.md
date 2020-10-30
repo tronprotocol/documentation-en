@@ -9,7 +9,7 @@ Lite FullNode Tool is used to split the database of a FullNode into a `Snapshot 
 
 Remember stop the FullNode process before any operation. This tool provides the ability to specify which dataset to split.
 The two datasets are split by the `latest_block_number`. Lite FullNode that startup by `Snapshot dataset` does not support query the historical data behind the `latest_block_number`,
-this tool also provides a merge function that can merge `History dataset` into the database of Lite FullNode. For more API details: [HTTP&GRPC APIs](#HTTP&GRPC-APIs)
+this tool also provides a merge function that can merge `History dataset` into the database of Lite FullNode. For more API details: [HTTP&GRPC APIs](#httpgrpc-apis)
 
 For more design details, please refer to: [TIP128](https://github.com/tronprotocol/tips/issues/128)
 
