@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Run FullNode in IDEA - TRON Documentation</title>
+  <title>Run Lite FullNode - TRON Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Run FullNode in IDEA";
-    var mkdocs_page_input_path = "developers/run-in-idea.md";
-    var mkdocs_page_url = "/documentation-en/developers/run-in-idea/";
+    var mkdocs_page_name = "Run Lite FullNode";
+    var mkdocs_page_input_path = "developers/litefullnode.md";
+    var mkdocs_page_url = "/documentation-en/developers/litefullnode/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -180,27 +180,27 @@
                     
     <a class="" href="../deployment/">Deployment</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../run-in-idea/">Run FullNode in IDEA</a>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Run FullNode in IDEA</a>
+    <a class="current" href="./">Run Lite FullNode</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#run-the-fullnode-with-idea">Run the FullNode with IDEA</a></li>
+    <li class="toctree-l3"><a href="#lite-fullnode-tool">Lite FullNode Tool</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#configure-idea">Configure IDEA</a></li>
+            <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
         
-            <li><a class="toctree-l4" href="#deployment-guide">Deployment guide</a></li>
+            <li><a class="toctree-l4" href="#usage">Usage</a></li>
         
         </ul>
     
 
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../litefullnode/">Run Lite FullNode</a>
                 </li>
                 <li class="">
                     
@@ -295,10 +295,10 @@
         
       
     
-    <li>Run FullNode in IDEA</li>
+    <li>Run Lite FullNode</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/run-in-idea.md"
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/litefullnode.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -308,52 +308,214 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="run-the-fullnode-with-idea">Run the FullNode with IDEA<a class="headerlink" href="#run-the-fullnode-with-idea" title="Permanent link">&para;</a></h1>
-<p>This document aims to facilitate developers with some experience to run the FullNode with IDEA.</p>
-<p><strong>The following is for the master branch of java-tron.</strong></p>
-<h2 id="configure-idea">Configure IDEA<a class="headerlink" href="#configure-idea" title="Permanent link">&para;</a></h2>
-<p><strong>The configuration of IDEA</strong></p>
+                <h1 id="lite-fullnode-tool">Lite FullNode Tool<a class="headerlink" href="#lite-fullnode-tool" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Lite FullNode Tool is used to split the database of a FullNode into a <code>Snapshot dataset</code> and a <code>History dataset</code>.</p>
 <ul>
-<li>
-<p>Oracle JDK 1.8 <strong>OpenJDK is not currently supported</strong></p>
-</li>
-<li>
-<p>Install Lombok plugin</p>
-</li>
+<li><code>Snapshot dataset</code>: the minimum dataset for quick startup of the Lite FullNode.</li>
+<li><code>History dataset</code>: the archive dataset that used for historical data queries.</li>
 </ul>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/lombok.png" /></p>
+<p>Remember stop the FullNode process before any operation. This tool provides the ability to specify which dataset to split.
+The two datasets are split by the <code>latest_block_number</code>. Lite FullNode that startup by <code>Snapshot dataset</code> does not support query the historical data behind the <code>latest_block_number</code>,
+this tool also provides a merge function that can merge <code>History dataset</code> into the database of Lite FullNode. For more API details: <a href="#HTTP&amp;GRPC-APIs">HTTP&amp;GRPC APIs</a></p>
+<p>For more design details, please refer to: <a href="https://github.com/tronprotocol/tips/issues/128">TIP128</a></p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
+<p>This tool provides independent cutting of <code>Snapshot Dataset</code> and <code>History Dataset</code> and a merge function.</p>
 <ul>
-<li>Tick Enable annotation processing</li>
+<li><code>--operation | -o</code>: [ split | merge ] specifies the operation as either to split or to merge</li>
+<li><code>--type | -t</code>: [ snapshot | history ] is used only with <code>split</code> to specify the type of the dataset to be split; snapshot refers to Snapshot Dataset and history refers to History Dataset.</li>
+<li><code>--fn-data-path</code>: FullNode database directory</li>
+<li><code>--dataset-path</code>: dataset directory, when operation is <code>split</code>, <code>dataset-path</code> is the path that store the <code>Snapshot Dataset</code> or <code>History Dataset</code>,
+otherwise <code>dataset-path</code> should be the <code>History Dataset</code> path.</li>
 </ul>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/annnotation.png" /></p>
-<h2 id="deployment-guide">Deployment guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h2>
-<p><strong>1.Create a directory</strong>
-<em>/deploy</em></p>
-<div class="highlight"><pre><span></span><code>mkdir deploy
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p>Start a new FullNode using the default config, then an <code>output-directory</code> will be produced in the current directory.
+<code>output-directory</code> contains a sub-directory named <code>database</code> which is the database to be split.</p>
+<h4 id="split-and-get-a-snapshot">Split and get a <code>Snapshot</code><a class="headerlink" href="#split-and-get-a-snapshot" title="Permanent link">&para;</a></h4>
+<p>First, stop the FullNode and execute:
+<div class="highlight"><pre><span></span><code>// just for simplify, locate the snapshot into `/tmp` directory,
+java -jar LiteFullNodeTool.jar -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
 </code></pre></div>
-<p><strong>2.Clone the latest code</strong></p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/java-tron
+then a <code>snapshot</code> directory will be generated in <code>/tmp</code>, pack this directory and copy it to somewhere that is ready to run a Lite Fullnode.
+Do not forget rename the directory from <code>snapshot</code> to <code>database</code>.
+(the default value of the storage.db.directory is <code>database</code>, make sure rename the snapshot to the specified value)</p>
+<h4 id="split-a-history">Split a <code>History</code><a class="headerlink" href="#split-a-history" title="Permanent link">&para;</a></h4>
+<p>If historical data query is needed, <code>History dataset</code> should be generated and merged into Lite FullNode.
+<div class="highlight"><pre><span></span><code>// just for simplify, locate the history into `/tmp` directory,
+java -jar LiteFullNodeTool.jar -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
 </code></pre></div>
-<p><strong>3.Switch to the master branch</strong></p>
-<div class="highlight"><pre><span></span><code>cd java-tron
-git checkout -t origin/master
-</code></pre></div>
-<p><strong>4.Compile the code</strong></p>
-<p><div class="highlight"><pre><span></span><code>./gradlew build
-</code></pre></div>
-The compilation process may take some time, please be patient.
-If the compilation is successful, you can see the information similar to the following:</p>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/build_success_test.png" /></p>
-<p>If you do not want to perform unit test tasks, you can run the following command:</p>
-<div class="highlight"><pre><span></span><code>./gradlew build -x test
-</code></pre></div>
-<p><strong>5.Start the FullNode</strong></p>
-<p>After compiling successfully, you can find the main function file through the path java-tron / src / main / java / org / tron / program / FullNode.java and then start a full node.</p>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start.png" /></p>
-<p>After starting, you can check the log to verify whether the startup is successful. The log path is: /deploy/java-tron/logs/tron.log. If the startup is successful, you can see the following logs:</p>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start_success.png" /></p>
-<p>Also,you can use this command like tail -f /logs/tron.log to view the real-time log, as follows:</p>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start_successed.png" /></p>
+A <code>history</code> directory will be generated in <code>/tmp</code>, pack this directory and copy it to a Lite Fullnode.
+<code>History dataset</code> always take a large storage, make sure the disk has enough volume to store the <code>History dataset</code>.</p>
+<h4 id="merge">Merge<a class="headerlink" href="#merge" title="Permanent link">&para;</a></h4>
+<p>Both <code>History Dataset</code> and <code>Snapshot Dataset</code> have an info.properties file to identify the block height from which they are segmented.
+Make sure that the <code>split_block_num</code> in <code>History Dataset</code> is not less than the corresponding value in the <code>Snapshot Dataset</code>.</p>
+<p>After getting the <code>History dataset</code>, the Lite FullNode can merge the <code>History dataset</code> and become a real FullNode.
+<div class="highlight"><pre><span></span><code>// just for simplify, assume `History dataset` is locate in /tmp
+java -jar LiteFullNodeTool.jar -o merge --fn-data-path output-directory/database --dataset-path /tmp/history
+</code></pre></div></p>
+<h3 id="httpgrpc-apis">HTTP&amp;GRPC APIs<a class="headerlink" href="#httpgrpc-apis" title="Permanent link">&para;</a></h3>
+<p>Some APIs are not supported on lite fullnode, here is the list:</p>
+<h4 id="http">Http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>wallet/</th>
+<th>walletsolidity/</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getblockbyid</td>
+<td>getblockbyid</td>
+</tr>
+<tr>
+<td>getblockbylatestnum</td>
+<td>getblockbylatestnum</td>
+</tr>
+<tr>
+<td>getblockbylimitnext</td>
+<td>getblockbylimitnext</td>
+</tr>
+<tr>
+<td>getblockbynum</td>
+<td>getblockbynum</td>
+</tr>
+<tr>
+<td>getmerkletreevoucherinfo</td>
+<td>getmerkletreevoucherinfo</td>
+</tr>
+<tr>
+<td>gettransactionbyid</td>
+<td>gettransactionbyid</td>
+</tr>
+<tr>
+<td>gettransactioncountbyblocknum</td>
+<td>gettransactioncountbyblocknum</td>
+</tr>
+<tr>
+<td>gettransactioninfobyid</td>
+<td>gettransactioninfobyid</td>
+</tr>
+<tr>
+<td>gettransactionreceiptbyid</td>
+<td></td>
+</tr>
+<tr>
+<td>isspend</td>
+<td>isspend</td>
+</tr>
+<tr>
+<td>scanandmarknotebyivk</td>
+<td>scanandmarknotebyivk</td>
+</tr>
+<tr>
+<td>scannotebyivk</td>
+<td>scannotebyivk</td>
+</tr>
+<tr>
+<td>scannotebyovk</td>
+<td>scannotebyovk</td>
+</tr>
+<tr>
+<td>totaltransaction</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="grpc">GRPC<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>protocol.Wallet</th>
+<th>protocol.WalletSolidity</th>
+<th>protocol.Database</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GetBlockById</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GetBlockByLatestNum</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GetBlockByLatestNum2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GetBlockByLimitNext</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GetBlockByLimitNext2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GetBlockByNum</td>
+<td>GetBlockByNum</td>
+<td>GetBlockByNum</td>
+</tr>
+<tr>
+<td>GetBlockByNum2</td>
+<td>GetBlockByNum2</td>
+<td></td>
+</tr>
+<tr>
+<td>GetMerkleTreeVoucherInfo</td>
+<td>GetMerkleTreeVoucherInfo</td>
+<td></td>
+</tr>
+<tr>
+<td>GetTransactionById</td>
+<td>GetTransactionById</td>
+<td></td>
+</tr>
+<tr>
+<td>GetTransactionCountByBlockNum</td>
+<td>GetTransactionCountByBlockNum</td>
+<td></td>
+</tr>
+<tr>
+<td>GetTransactionInfoById</td>
+<td>GetTransactionInfoById</td>
+<td></td>
+</tr>
+<tr>
+<td>IsSpend</td>
+<td>IsSpend</td>
+<td></td>
+</tr>
+<tr>
+<td>ScanAndMarkNoteByIvk</td>
+<td>ScanAndMarkNoteByIvk</td>
+<td></td>
+</tr>
+<tr>
+<td>ScanNoteByIvk</td>
+<td>ScanNoteByIvk</td>
+<td></td>
+</tr>
+<tr>
+<td>ScanNoteByOvk</td>
+<td>ScanNoteByOvk</td>
+<td></td>
+</tr>
+<tr>
+<td>TotalTransaction</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>These APIs can open forcibly by set <code>openHistoryQueryWhenLiteFN</code> = true, but not recommended.</p>
               
             </div>
           </div>
@@ -361,10 +523,10 @@ If the compilation is successful, you can see the information similar to the fol
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../litefullnode/" class="btn btn-neutral float-right" title="Run Lite FullNode">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../resources/" class="btn btn-neutral float-right" title="Resources">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../deployment/" class="btn btn-neutral" title="Deployment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../run-in-idea/" class="btn btn-neutral" title="Run FullNode in IDEA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -392,10 +554,10 @@ If the compilation is successful, you can see the information similar to the fol
           <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../deployment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../run-in-idea/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../litefullnode/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../resources/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
