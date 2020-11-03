@@ -49,7 +49,7 @@ cp build/libs/SolidityNode.jar ../soliditynode
 
 3.&nbsp;You can now run your FullNode using the following command
 ```text
-java -Xmx20g -Xloggc:gc.log -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+java -Xmx20g -Xloggc:gc.log -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf #make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
 !!! note
     The memory management arguements **MUST BE ADDED**.
@@ -65,7 +65,7 @@ rpc {
 
 5.&nbsp;You can now run your SolidityNode using the following command：
 ```text
-java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+java -jar SolidityNode.jar -c config.conf #make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
 
 6.&nbsp;Running a Super Representative Node for mainnet
