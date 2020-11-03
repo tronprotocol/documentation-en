@@ -49,8 +49,10 @@ cp build/libs/SolidityNode.jar ../soliditynode
 
 3.&nbsp;You can now run your FullNode using the following command
 ```text
-java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+java -Xmx20g -Xloggc:gc.log -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
+!!! note
+    The memory management arguements **MUST BE ADDED**.
 
 4.&nbsp;Configure the SolidityNode configuration file
 
