@@ -40,13 +40,13 @@ Token transfer transaction, Bandwidth points consumption sequence:
 1. Firstly, check if the total free Bandwidth Points of the token issuer is enough, then check if the transfer Initiator‘s remaining token freeBandwidth Points is enough, finally check if the Bandwidth Points of token issuer obtained by freezing TRX is enough. Otherise, it will go to step 2;
 2. Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
 3. Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 4;
-4. Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
+4. Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 40 SUN;
 
 Ordinary transaction, Bandwidth points consumption sequence:
 
 1. Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
 2. Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
-3. Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
+3. Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 40 SUN;
 
 ### 3. Bandwidth Points Recovery
 
@@ -129,14 +129,14 @@ Assume contract C's last execution consumes 18000 Energy, so estimate the energy
 
 According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy.
 
-When to burn TRX, 1 TRX = 10000 energy[^4]
+When to burn TRX, 4 TRX = 100000 energy[^4]
 
 Assume developer undertake 90% energy consumption, and developer has enough energy.
 
 Then the way to estimate the fee limit is:
 
 1. A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,
-2. B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2_000_000 SUN,
+2. B = 20000 energy * (4 TRX / 100000 energy) = 0.8 TRX = 800_000 SUN,
 3. Take the greater number of A and B, which is 50_000_000 SUN,
 4. Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
 
@@ -235,4 +235,4 @@ receiverAddress: recipient account address
 [^1]: The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
 [^2]: TRON may change this policy.
 [^3]: The estimated energy consumption limit for the next execution should be greater than the last one.
-[^4]: 1 TRX = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.
+[^4]: 4 TRX = 10^5 energy is a fixed number for burning TRX to get energy, TRON may change it in future.
