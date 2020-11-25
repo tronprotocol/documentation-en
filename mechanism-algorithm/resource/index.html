@@ -350,13 +350,13 @@
 <li>Firstly, check if the total free Bandwidth Points of the token issuer is enough, then check if the transfer Initiator‘s remaining token freeBandwidth Points is enough, finally check if the Bandwidth Points of token issuer obtained by freezing TRX is enough. Otherise, it will go to step 2;</li>
 <li>Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;</li>
 <li>Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 4;</li>
-<li>Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;</li>
+<li>Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 40 SUN;</li>
 </ol>
 <p>Ordinary transaction, Bandwidth points consumption sequence:</p>
 <ol>
 <li>Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;</li>
 <li>Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;</li>
-<li>Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;</li>
+<li>Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 40 SUN;</li>
 </ol>
 <h3 id="3-bandwidth-points-recovery">3. Bandwidth Points Recovery<a class="headerlink" href="#3-bandwidth-points-recovery" title="Permanent link">&para;</a></h3>
 <p>Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:</p>
@@ -415,12 +415,12 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 <p>How to estimate the fee limit:</p>
 <p>Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
 <p>According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy.</p>
-<p>When to burn TRX, 1 TRX = 10000 energy<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
+<p>When to burn TRX, 4 TRX = 100000 energy<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
 <p>Assume developer undertake 90% energy consumption, and developer has enough energy.</p>
 <p>Then the way to estimate the fee limit is:</p>
 <ol>
 <li>A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,</li>
-<li>B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2_000_000 SUN,</li>
+<li>B = 20000 energy * (4 TRX / 100000 energy) = 0.8 TRX = 800_000 SUN,</li>
 <li>Take the greater number of A and B, which is 50_000_000 SUN,</li>
 <li>Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,</li>
 </ol>
@@ -534,7 +534,7 @@ receiverAddress: recipient account address
 <p>The estimated energy consumption limit for the next execution should be greater than the last one.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>1 TRX = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>4 TRX = 10^5 energy is a fixed number for burning TRX to get energy, TRON may change it in future.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
