@@ -1439,7 +1439,9 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbalance -d
 }'
 ```
 Parameter number: The block number.
+
 Parameter hash: The hash of the block number. The hash and block number must match. 
+
 Return : The balance changes object.
 
 - wallet/gettransactionbyid  
@@ -2140,7 +2142,7 @@ Parameter account_id: Account id, default hexString
 Return: Account object
 
 
-- wallet/getdeferredtransactionbyid  
+- wallet/getdeferredtransactionbyid
 
 Description: Query the deferred transaction infromation by transaction id
 ```console
@@ -3074,7 +3076,7 @@ shielded_TRC20_Parameters: the generated shielded TRC-20 parameters
 spend_authority_signature: the spend authority signatures
 
 amount: the amount 
- 
+
 transparent_to_address: the receiver for the `burn` operation.
 
 Return: the input data for triggering shielded TRC-20 contract.
@@ -3128,7 +3130,7 @@ Description：Get all trading pairs
 demo: curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist  
 Parameter：  none
 Return：makket pair list
- 
+
 wallet/getmarketorderlistbypair   
 Description：Get all orders for the trading pair
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d 
