@@ -24,9 +24,10 @@
 | getblockbyid                  |  votewitnessaccount                | createshieldedtransaction<br>withoutspendauthsig |
 | getblockbylimitnext           |  updatewitness                     | getnewshieldedaddress                        |
 | getblockbylatestnum           |  createwitness                     |                                              |
-|                               |  getbrokerage                      |                                              |
-|                               |  getreward                      |                                              |
-|                               |  updateBrokerage                      |                                              |
+| getblockbalance               |  getbrokerage                      |                                              |
+|                               |  getreward                         |                                              |
+|                               |  updateBrokerage                   |                                              |
+|                               |  getaccountbalance                 |                                              |
 
 |   asset                        |  exchange               | transfer                        |
 |--------------------------------|-------------------------|---------------------------------|
@@ -906,6 +907,27 @@ Parameter brokerage: The ratio of brokerage you want to update to
 
 Return: Transaction object
 
+- wallet/getaccountbalance
+
+Description： Get the account balance in a specific block.
+
+```console
+$ curl -X POST  http://127.0.0.1:8090/wallet/getaccountbalance -d
+'{
+    "account_identifier": {
+        "address": "TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm"
+    }, 
+    "block_identifier": {
+        "hash": "0000000000010c4a732d1e215e87466271e425c86945783c3d3f122bfa5affd9",
+        "number": 68682
+    },
+    "visible": true
+}'
+```
+Parameter account_identifier: The account address.
+Parameter block_identifier: The block number.
+Return: The balance object of the account in a specific block, the `block_identifier` is the block hash. 
+
 - wallet/createassetissue
 
 Description: Issue a token
@@ -1405,7 +1427,24 @@ Parameter num: The number of the blocks expected to return
 
 Return: The list of the blocks
 
-- wallet/gettransactionbyid
+- wallet/getblockbalance
+
+Description：Get all balance change operations in a block.
+```json
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbalance -d
+'{
+    "hash": "000000000000dc2a3731e28a75b49ac1379bcc425afc95f6ab3916689fbb0189",
+    "number": 56362,
+    "visible": true
+}'
+```
+Parameter number: The block number.
+
+Parameter hash: The hash of the block number. The hash and block number must match. 
+
+Return : The balance changes object.
+
+- wallet/gettransactionbyid  
 
 Description: Query an transaction infromation by transaction id
 ```console
@@ -2101,6 +2140,7 @@ $ curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
 Parameter account_id: Account id, default hexString
 
 Return: Account object
+
 
 - wallet/getdeferredtransactionbyid
 
@@ -3036,7 +3076,7 @@ shielded_TRC20_Parameters: the generated shielded TRC-20 parameters
 spend_authority_signature: the spend authority signatures
 
 amount: the amount 
- 
+
 transparent_to_address: the receiver for the `burn` operation.
 
 Return: the input data for triggering shielded TRC-20 contract.
@@ -3090,7 +3130,7 @@ Description：Get all trading pairs
 demo: curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist  
 Parameter：  none
 Return：makket pair list
- 
+
 wallet/getmarketorderlistbypair   
 Description：Get all orders for the trading pair
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d 
