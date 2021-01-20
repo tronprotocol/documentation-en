@@ -599,9 +599,17 @@ Nodes: FullNode </p>
 Interface statement:  <br />
 rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
 Nodes: FullNode </p>
-<p><strong>71.&nbsp;Get order by id</strong>    <br />
+<p><strong>72.&nbsp;Get order by id</strong>    <br />
 Interface statement: 
 rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+Nodes: FullNode </p>
+<p><strong>73.&nbsp;perform a historical balance lookup</strong>    <br />
+Interface statement:<br />
+rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
+Nodes: FullNode </p>
+<p><strong>74.&nbsp;fetch all balance-changing transactions in a block</strong>    <br />
+Interface statement:<br />
+rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
 Nodes: FullNode </p>
               
             </div>

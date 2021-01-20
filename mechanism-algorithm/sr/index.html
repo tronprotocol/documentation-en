@@ -527,22 +527,22 @@
 </table>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;</span> createproposal id value
-<span class="gp">#</span> id: the serial number <span class="o">(</span><span class="m">0</span> ~ <span class="m">33</span><span class="o">)</span>
-<span class="gp">#</span> value: the parameter value
+<span class="gp"># </span>id: the serial number <span class="o">(</span><span class="m">0</span> ~ <span class="m">33</span><span class="o">)</span>
+<span class="gp"># </span>value: the parameter value
 </code></pre></div>
 <p>Note: In TRON network, 1 TRX = 1_000_000 SUN</p>
 <h3 id="3-vote-for-a-proposal">3. Vote for a Proposal<a class="headerlink" href="#3-vote-for-a-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;</span> approveProposal id is_or_not_add_approval
-<span class="gp">#</span> id: proposal id
-<span class="gp">#</span> is_or_not_add_approval: YES vote or cancel YES vote
+<span class="gp"># </span>id: proposal id
+<span class="gp"># </span>is_or_not_add_approval: YES vote or cancel YES vote
 </code></pre></div>
 <h3 id="4-cancel-proposal">4. Cancel Proposal<a class="headerlink" href="#4-cancel-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal creator can cancel the proposal before it is passed.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;</span> deleteProposal id
-<span class="gp">#</span> id: proposal id
+<span class="gp"># </span>id: proposal id
 </code></pre></div>
 <h3 id="5-query-proposal">5. Query Proposal<a class="headerlink" href="#5-query-proposal" title="Permanent link">&para;</a></h3>
 <ul>

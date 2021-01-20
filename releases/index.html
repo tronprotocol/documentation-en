@@ -311,7 +311,7 @@
 <p>All released files after 3.7 will provide signatures signed by the Tron Account: <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>.</p>
 <h3 id="signature-verification">Signature Verification<a class="headerlink" href="#signature-verification" title="Permanent link">&para;</a></h3>
 <p>You can verify the signature by tronweb.</p>
-<div class="highlight"><pre><span></span><code><span class="kr">const</span> <span class="nx">Trx</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;tronweb&#39;</span><span class="p">).</span><span class="nx">Trx</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Trx</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;tronweb&#39;</span><span class="p">).</span><span class="nx">Trx</span><span class="p">;</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Trx</span><span class="p">.</span><span class="nx">verifySignature</span><span class="p">(</span><span class="nx">SHA256</span><span class="p">,</span> <span class="nx">ADDRESS</span><span class="p">,</span> <span class="nx">SIGNATURE</span><span class="p">));</span>
 </code></pre></div>
