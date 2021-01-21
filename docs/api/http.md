@@ -60,7 +60,7 @@
 |  getmarketorderlistbypair      |getnextmaintenancetime   |                       |
 |  getmarketpricebypair          |getnodeinfo              |                       |
 |  getmarketorderbyid            |getchainparameters       |                       |
-
+|                                |getburntrx               |                       |
 
 ## HexString and Base58check Transcode Demo
 
@@ -3163,4 +3163,10 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d
 }'   
 Parameter：
 value：order id, default hexString     
-Return：order   
+Return：order  
+
+wallet/getburntrx     
+Description：Get burn trx amount
+demo: curl -X get  http://127.0.0.1:8090/wallet/getburntrx  
+Parameter：  none
+Return：burn trx amount
