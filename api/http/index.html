@@ -591,6 +591,11 @@
 <td>getchainparameters</td>
 <td></td>
 </tr>
+<tr>
+<td></td>
+<td>getburntrx</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h2 id="hexstring-and-base58check-transcode-demo">HexString and Base58check Transcode Demo<a class="headerlink" href="#hexstring-and-base58check-transcode-demo" title="Permanent link">&para;</a></h2>
@@ -2957,7 +2962,12 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d
 }' <br />
 Parameter：
 value：order id, default hexString   <br />
-Return：order   </p>
+Return：order  </p>
+<p>wallet/getburntrx   <br />
+Description：Get burn trx amount
+demo: curl -X get  http://127.0.0.1:8090/wallet/getburntrx<br />
+Parameter：  none
+Return：burn trx amount</p>
               
             </div>
           </div>
