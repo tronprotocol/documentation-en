@@ -457,3 +457,8 @@ Nodes: FullNode
 Interface statement:  
 rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
 Nodes: FullNode 
+
+**75.&nbsp;get the burn trx amount**      
+Interface statement:  
+rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
+Nodes: FullNode and SolidityNode
