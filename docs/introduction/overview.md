@@ -226,7 +226,7 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
 nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
 command line parameters introduction:
---witness: start witness function, i.e.: --witness
+--witness: start witness function. For SuperNode, this parameter is required, i.e.: --witness
 --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
 -c: specify the configuration file path, i.e.: -c config.conf
 ```
@@ -259,10 +259,9 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
  7.&nbsp;run the script
 
 ```text
- nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+ nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c private_net_config.conf
 
  command lines parameters
- --witness: start witness function，i.e.: --witness
  --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
  -c: specify the configuration file path, i.e.: -c config.conf
 ```
