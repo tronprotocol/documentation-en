@@ -517,7 +517,7 @@ please refer to <a href="https://github.com/tronprotocol/tron-deployment#deploym
 <div class="highlight"><pre><span></span><code>nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
 command line parameters introduction:
---witness: start witness function, i.e.: --witness
+--witness: start witness function. For SuperNode, this parameter is required, i.e.: --witness
 --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
 -c: specify the configuration file path, i.e.: -c config.conf
 </code></pre></div>
@@ -543,10 +543,9 @@ command line parameters introduction:
  5.&nbsp;set needSyncCheck true
  6.&nbsp;set node.discovery.enable true
  7.&nbsp;run the script</p>
-<div class="highlight"><pre><span></span><code> nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+<div class="highlight"><pre><span></span><code> nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c private_net_config.conf
 
  command lines parameters
- --witness: start witness function，i.e.: --witness
  --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
  -c: specify the configuration file path, i.e.: -c config.conf
 </code></pre></div>
