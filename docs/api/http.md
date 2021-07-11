@@ -1400,11 +1400,7 @@ Return: Block object
 
 Description: Query a list of blocks by range
 ```console
-$ curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d
-'{
-    "startNum": 1,
-    "endNum": 2
-}'
+$ curl -X GET  curl -X POST  http://127.0.0.1:9090/wallet/getblockbylimitnext -d '{"startNum": 1,"endNum": 2}'
 ```
 
 Parameter startNum: The start block height, itself included
