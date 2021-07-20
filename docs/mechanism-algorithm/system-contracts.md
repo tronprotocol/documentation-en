@@ -252,10 +252,14 @@
     message CreateSmartContract {
       bytes owner_address = 1;
       SmartContract new_contract = 2;
+      int64 call_token_value = 5;
+      int64 token_id = 6;
     }
 
 - `owner_address`: The owner of the current account.
 - `new_contract`: the smart contract.
+- `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
+- `token_id` : The id of the TRC-10 token to be sent to the contract.
 
 ## TriggerSmartContract
 
@@ -264,12 +268,16 @@
       bytes contract_address = 2;
       int64 call_value = 3;
       bytes data = 4;
+      int64 call_token_value = 5;
+      int64 token_id = 6;
     }
 
 - `owner_address`: The owner of the current account.
 - `contract_address`: The contract address.
 - `call_value`: The amount of TRX to send to the contract when triggers.
 - `data`: The parameters to trigger the contract.
+- `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
+- `token_id` : The id of the TRC-10 token to be sent to the contract.
 
 ## UpdateSettingContract
 
