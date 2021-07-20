@@ -634,12 +634,16 @@ message AccountUpdateContract {
 <div class="codehilite"><pre><span></span><code>message CreateSmartContract {
   bytes owner_address = 1;
   SmartContract new_contract = 2;
+  int64 call_token_value = 5;
+  int64 token_id = 6;
 }
 </code></pre></div>
 
 <ul>
 <li><code>owner_address</code>: The owner of the current account.</li>
 <li><code>new_contract</code>: the smart contract.</li>
+<li><code>call_token_value</code> : The amount of TRC-10 token to send to the contract when triggers.</li>
+<li><code>token_id</code> : The id of the TRC-10 token to be sent to the contract.</li>
 </ul>
 <h2 id="triggersmartcontract">TriggerSmartContract<a class="headerlink" href="#triggersmartcontract" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code>message TriggerSmartContract {
@@ -647,6 +651,8 @@ message AccountUpdateContract {
   bytes contract_address = 2;
   int64 call_value = 3;
   bytes data = 4;
+  int64 call_token_value = 5;
+  int64 token_id = 6;
 }
 </code></pre></div>
 
@@ -655,6 +661,8 @@ message AccountUpdateContract {
 <li><code>contract_address</code>: The contract address.</li>
 <li><code>call_value</code>: The amount of TRX to send to the contract when triggers.</li>
 <li><code>data</code>: The parameters to trigger the contract.</li>
+<li><code>call_token_value</code> : The amount of TRC-10 token to send to the contract when triggers.</li>
+<li><code>token_id</code> : The id of the TRC-10 token to be sent to the contract.</li>
 </ul>
 <h2 id="updatesettingcontract">UpdateSettingContract<a class="headerlink" href="#updatesettingcontract" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code>message UpdateSettingContract {
