@@ -10,7 +10,6 @@
 
 * TRON Blockchain Browser
 [https://tronscan.org/](https://tronscan.org/)
-[https://www.trxplorer.io/](https://www.trxplorer.io/)
 
 
 * TRON Wallet
@@ -26,4 +25,4 @@
 
 
 * TRON Javascript API
-[https://github.com/tron-us/tronweb](https://github.com/tron-us/tronweb)
+[https://github.com/tronprotocol/tronweb](https://github.com/tronprotocol/tronweb)
