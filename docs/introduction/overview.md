@@ -199,7 +199,7 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 
 <h4> 4.6.3.1 Preconditions </h4>
 
-- at least two accounts [generate an account](https://tronscan.org/#/wallet/new)
+- at least two accounts
 - at least deploy one SuperNode to produce blocks
 - deploy serval FullNodes to synchronize blocks and broadcast transactions
 - SuperNode and FullNode comprise the private network
