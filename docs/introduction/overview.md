@@ -139,14 +139,12 @@ Character map:
 ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
 <h2> 3.5 Signature </h2>
-Signature introduction, please refer to:
-[https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md](
-https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md)
+[Signature introduction](https://github.com/tronprotocol/documentation/blob/master/English_Documentation/Procedures_of_transaction_signature_generation.md) 
 
 # 4. Network Node
 <h2> 4.1 SuperNode </h2>
 <h3> 4.1.1 SuperNode Introduction </h3>
-Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using [tronscan](https://tronscan.org/#/representatives).
+Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using [tronscan](https://tronscan.org/#/sr/representatives).
 <h3> 4.1.2 SuperNode Deployment </h3>
 [SuperNode Deployment](https://github.com/tronprotocol/java-tron#running-a-super-representative-node-for-mainnet)
 <h3> 4.1.3 Recommended Hardware Configuration </h3>
@@ -201,7 +199,7 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 
 <h4> 4.6.3.1 Preconditions </h4>
 
-- at least two accounts [generate an account](https://tronscan.org/#/wallet/new)
+- at least two accounts
 - at least deploy one SuperNode to produce blocks
 - deploy serval FullNodes to synchronize blocks and broadcast transactions
 - SuperNode and FullNode comprise the private network
