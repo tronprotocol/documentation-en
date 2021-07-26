@@ -340,23 +340,33 @@
 <h3 id="2-bandwidth-points-consumption">2. Bandwidth Points Consumption<a class="headerlink" href="#2-bandwidth-points-consumption" title="Permanent link">&para;</a></h3>
 <p>Except for query operation, any transaction consumes Bandwidth points.</p>
 <p>There's another situation: When you transfer(TRX or token) to an account that does not exist in the network, this operation will first create that account in the network and then do the transfer. It only consumes Bandwidth points for account creation, no extra Bandwidth points consumption for transfer.</p>
-<p>Create a new account transaction, Bandwidth points consumption sequence:</p>
+<p>To create an account, a flat charge of 1 TRX is required. If there are insufficient Bandwidth points obtained by TRX freezing, an additional 0.1 TRX will be spent.</p>
+<p>Bandwidth points consumption sequence for TRC-10 transfer:</p>
 <ol>
-<li>Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;</li>
-<li>Burn 0.1 TRX;</li>
+<li>
+<p>Free Bandwidth points.</p>
+</li>
+<li>
+<p>TRC-10 issuer's Bandwidth points(if possible.)</p>
+</li>
+<li>
+<p>Bandwidth points TRX freezing.</p>
+</li>
+<li>
+<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;</p>
+</li>
 </ol>
-<p>Token transfer transaction, Bandwidth points consumption sequence:</p>
+<p>Bandwidth points consumption sequence for other transactions:</p>
 <ol>
-<li>Firstly, check if the total free Bandwidth Points of the token issuer is enough, then check if the transfer Initiator‘s remaining token freeBandwidth Points is enough, finally check if the Bandwidth Points of token issuer obtained by freezing TRX is enough. Otherise, it will go to step 2;</li>
-<li>Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;</li>
-<li>Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 4;</li>
-<li>Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 40 SUN;</li>
-</ol>
-<p>Ordinary transaction, Bandwidth points consumption sequence:</p>
-<ol>
-<li>Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;</li>
-<li>Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;</li>
-<li>Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 40 SUN;</li>
+<li>
+<p>Free Bandwidth points.</p>
+</li>
+<li>
+<p>Bandwidth points TRX freezing.</p>
+</li>
+<li>
+<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;</p>
+</li>
 </ol>
 <h3 id="3-bandwidth-points-recovery">3. Bandwidth Points Recovery<a class="headerlink" href="#3-bandwidth-points-recovery" title="Permanent link">&para;</a></h3>
 <p>Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:</p>
@@ -513,7 +523,7 @@ receiverAddress: recipient account address
 </tr>
 <tr>
 <td align="left">Create an account</td>
-<td align="center">0.1 TRX</td>
+<td align="center">1 TRX</td>
 </tr>
 <tr>
 <td align="left">Create an exchange</td>
