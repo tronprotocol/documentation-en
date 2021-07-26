@@ -81,15 +81,15 @@ The network parameters can be modified([min,max]).
 |  0     | MaintenanceTimeInterval <br> (To modify the maintenance interval of SR)  | 6  Hours <br> [3 * 27, 24 * 3600] s |
 |  1     | AccountUpgradeCost <br> (To modify the cost of applying for SR account) | 9999  TRX <br> [0, 100000000000] TRX |
 |  2     | CreateAccountFee <br> (To modify the account creation fee) | 0.1  TRX <br> [0, 100000000000] TRX |
-|  3     | TransactionFee <br> (To modify the amount of TRX used to gain extra bandwidth) | 10  Sun/Byte <br> [0, 100000000000] TRX |
+|  3     | TransactionFee <br> (To modify the amount of TRX used to gain extra bandwidth) | 1000  Sun/Byte <br> [0, 100000000000] TRX |
 |  4     | AssetIssueFee <br> (To modify asset issuance fee) | 1024  TRX <br> [0, 100000000000] TRX|
 |  5     | WitnessPayPerBlock <br> (To modify SR block generation reward) | 16 TRX <br> [0, 100000000000] TRX |
 |  6     | WitnessStandbyAllowance <br> (To modify the rewards given to the top 27 SRs and <br> the following 100 partners) | 115200  TRX <br> [0, 100000000000] TRX |
-|  7     | CreateNewAccountFeeInSystemContract <br> (To modify the cost of account creation) | 0 TRX  |
+|  7     | CreateNewAccountFeeInSystemContract <br> (To modify the cost of account creation) | 1 TRX  |
 |  8     | CreateNewAccountBandwidthRate <br> (To modify the consumption of bandwidth of account creation) | 1&nbsp;Bandwidth/Byte |
 |  9     | AllowCreationOfContracts <br> (To activate the Virtual Machine (VM)) | 1 <br> {0, 1} |
 |  10   | RemoveThePowerOfTheGr <br> (To remove the GR Genesis votes) |  1 <br> {0, 1}|
-|  11   | EnergyFee <br> (To modify the fee of 1 energy) | 10 Sun <br> [0, 100000000000] TRX |
+|  11   | EnergyFee <br> (To modify the fee of 1 energy) | 140 Sun <br> [0, 100000000000] TRX |
 |  12   | ExchangeCreateFee <br> (To modify the cost of trading pair creation) | 1024 TRX <br> [0, 100000000000] TRX |
 |  13   | MaxCpuTimeOfOneTx <br> (To modify the maximum execution time of one transaction) | 50 ms <br> [0, 1000] ms |
 |  14   | AllowUpdateAccountName <br> (To allow to change the account name) | 0 <br> {0, 1} |

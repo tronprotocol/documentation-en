@@ -30,23 +30,25 @@ Except for query operation, any transaction consumes Bandwidth points.
 
 There's another situation: When you transfer(TRX or token) to an account that does not exist in the network, this operation will first create that account in the network and then do the transfer. It only consumes Bandwidth points for account creation, no extra Bandwidth points consumption for transfer.
 
-Create a new account transaction, Bandwidth points consumption sequence:
+To create an account, a flat charge of 1 TRX is required. If there are insufficient Bandwidth points obtained by TRX freezing, an additional 0.1 TRX will be spent.
 
-1. Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
-2. Burn 0.1 TRX;
+Bandwidth points consumption sequence for TRC-10 transfer:
 
-Token transfer transaction, Bandwidth points consumption sequence:
+1. Free Bandwidth points.
 
-1. Firstly, check if the total free Bandwidth Points of the token issuer is enough, then check if the transfer Initiator‘s remaining token freeBandwidth Points is enough, finally check if the Bandwidth Points of token issuer obtained by freezing TRX is enough. Otherise, it will go to step 2;
-2. Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
-3. Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 4;
-4. Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 40 SUN;
+2. TRC-10 issuer's Bandwidth points(if possible.)
 
-Ordinary transaction, Bandwidth points consumption sequence:
+3. Bandwidth points TRX freezing.
 
-1. Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
-2. Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
-3. Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 40 SUN;
+4. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
+
+Bandwidth points consumption sequence for other transactions:
+
+1. Free Bandwidth points.
+
+2. Bandwidth points TRX freezing.
+
+3. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
 
 ### 3. Bandwidth Points Recovery
 
@@ -229,7 +231,7 @@ receiverAddress: recipient account address
 | :------|:------:|
 |Create a witness|9999 TRX|
 |Issue a token|1024 TRX|
-|Create an account|0.1 TRX|
+|Create an account|1 TRX|
 |Create an exchange|1024 TRX|
 
 [^1]: The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
