@@ -60,11 +60,11 @@ The network parameters can be modified([min,max]):
 - 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000, 24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms
 - 1: ACCOUNT_UPGRADE_COST, [0, 100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 SUN
 - 2: CREATE_ACCOUNT_FEE, [0, 100 000 000 000  000 000] //the fee to create an account, currently 100_000 SUN
-- 3: TRANSACTION_FEE, [0, 100 000 000 000 000 000] //the fee for bandwidth, currently 10 SUN/byte
+- 3: TRANSACTION_FEE, [0, 100 000 000 000 000 000] //the fee for bandwidth, currently 1_000 SUN/byte
 - 4: ASSET_ISSUE_FEE, [0, 100 000 000 000 000 000] //the fee to issue an asset, currently 1024_000_000 SUN
 - 5: WITNESS_PAY_PER_BLOCK, [0, 100 000 000 000 000 000] //the block producing reward, currently 32_000_000 SUN
 - 6: WITNESS_STANDBY_ALLOWANCE, [0, 100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115_200_000_000 SUN
-- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 0 SUN
+- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 1_000_000 SUN
 - 8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwidth or TRX while creating an account, using together with #7
 - 9: ALLOW_CREATION_OF_CONTRACTS, //to enable the VM
 - 10: REMOVE_THE_POWER_OF_THE_GR, //to clear the votes of GR
@@ -948,28 +948,29 @@ Note: Due to the change of the total amount of the frozen TRX in the network and
 
 <h3> 8.2.2 Bandwidth Points Consumption </h3>
 
-Except for query operation, any transaction consumes Bandwidth points.
+Transactions other than queries consume Bandwidth points.
 
-There's another situation: When you transfer(TRX or token) to an account that does not exist in the network, this operation will first create that account in the network and then do the transfer. It only consumes Bandwidth points for account creation, no extra Bandwidth points consumption for transfer.
+A special scenario: When transferring TRX or TRC-10 tokens to an account that does not yet exist, this procedure creates the account prior to the transfer.
 
-Create a new account transaction, Bandwidth points consumption sequence:
+To create an account, a flat charge of 1 TRX is required. If there are insufficient Bandwidth points obtained by TRX freezing, an additional 0.1 TRX will be spent.
 
-1.&nbsp;Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
-2.&nbsp;Burn 0.1 TRX;
+Bandwidth points consumption sequence for TRC-10 transfer:
 
-Token transfer transaction, Bandwidth points consumption sequence:
+1. Free Bandwidth points.
 
-1.&nbsp;依次验证 发行Token资产总的免费Bandwidth Points是否足够消耗，转账发起者的Token剩余免费Bandwidth Points是否足够消耗，
-    Token发行者冻结TRX获取Bandwidth Points剩余量是否足够消耗。如果满足则扣除Token发行者的Bandwidth Points，任意一个不满足则进入下一步。
-2.&nbsp;Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
-3.&nbsp;Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 4;
-4.&nbsp;Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
+2. TRC-10 issuer's Bandwidth points(if possible.)
 
-Ordinary transaction, Bandwidth points consumption sequence:
+3. Bandwidth points TRX freezing.
 
-1.&nbsp;Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
-2.&nbsp;Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
-3.&nbsp;Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
+4. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
+
+Bandwidth points consumption sequence for other transactions:
+
+1. Free Bandwidth points.
+
+2. Bandwidth points TRX freezing.
+
+3. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
 
 <h3> 8.2.3 Bandwidth Points Recovery </h3>
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
@@ -998,8 +999,8 @@ receiverAddress: recipient account address
 |Type|Fee|
 | :------|:------:|
 |Create a witness|9999 TRX|
-|Issue a token|1024 TRX|
-|Create an account|0.1 TRX|
+|Issue a TRC-10 token|1024 TRX|
+|Create an account|1 TRX|
 |Create an exchange|1024 TRX|
 
 # 9. DEX Introduction
