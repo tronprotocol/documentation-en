@@ -1,4 +1,4 @@
-# Leveldb Open Optimization Plugins
+# Leveldb Startup Optimization Plugins
 
 ## Introduction
 
@@ -8,30 +8,37 @@ For this reason, leveldb startup optimization plugin is introduced since `GreatV
 
 Remember stop the FullNode process before any operation. This tool provides the ability to reformat the manifest according to the current `database`.
 
-For more design details, please refer to: [TIP298](https://github.com/tronprotocol/tips/issues/298)
+For more design details, please refer to: [TIP298](https://github.com/tronprotocol/tips/issues/298).
 
 ## Usage
 
 ### Options
 
-- `-b | --batch-size`: [ int ]  specify the batch manifest size,default：80000。
-- `-d | --database-directory`: [ string ]  Specify the database directory to be processed,default：output-directory/database。
-- `-m | --manifest-size`: [ int ] Specify the minimum required manifest file size ，unit:M，default：0。
-- `-h | --help`: [ bool ]  for usage help，default：false。
+- `-b | --batch-size`: [ int ]  specify the batch manifest size,default：80000.
+- `-d | --database-directory`: [ string ]  Specify the database directory to be processed,default：output-directory/database.
+- `-m | --manifest-size`: [ int ] Specify the minimum required manifest file size ，unit:M，default：0.
+- `-h | --help`: [ bool ]  for usage help，default：false.
 
-###How to get
+### How to get
 - build by yourself.
-  Under java-tron, execute ``. /gradlew build``, you can get ArchiveManifest.jar under `build/libs/`
+  Under java-tron, execute ``. /gradlew build``, you can get ArchiveManifest.jar under `build/libs/`.
 - Download directly.
   [Links](https://github.com/tronprotocol/java-tron/releases)
+
+### Use Steps
+``Step 2`` is not required every time, but it is recommended to run it every time to optimize the experience
+- 1. Make sure the FullNode service is stopped
+- 2. Execute the ArchiveManifest plugin
+- 3. Start the FullNode service
 
 ### How to use
 
 Start a new FullNode using the default config, then an `output-directory` will be produced in the current directory.
-The database in the `database` subdirectory of the `output-directory` directory is the database to be processed
+The database in the `database` subdirectory of the `output-directory` directory is the database to be processed.
 
-#### Use alone
-batch-size: 5120，directory: /tmp/output-directory/database,minimum required manifest file size:  4M
+
+#### Use it Independently
+batch-size: 5120，directory: /tmp/output-directory/database,minimum required manifest file size:  4M.
 
 First, stop the FullNode and execute:
 
@@ -40,7 +47,7 @@ First, stop the FullNode and execute:
 java -jar ArchiveManifest.jar -b 5120 -d /tmp/output-directory/database -m 4
 ```
 
-After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result
+After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
 
 #### Integrated startup script
 
@@ -195,7 +202,7 @@ sleep 5
 startService
 ```
  example
-`warn`:In the above script the `-r` argument is fixed in the first or second argument (optimized in subsequent versions)
+`warn`:In the above script the `-r` argument is fixed in the first or second argument (optimized in subsequent versions).
 ```shell
 # just for simplify, locate the snapshot into `/tmp` directory,
 ./start.sh -r -b 5120 -d /tmp/output-directory/database -m 4
