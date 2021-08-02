@@ -44,11 +44,12 @@ batch-size: 5120，directory: /tmp/output-directory/database,minimum required ma
 First, stop the FullNode and execute:
 
 ```shell
-# just for simplify, locate the snapshot into `/tmp` directory,
-java -jar ArchiveManifest.jar -b 5120 -d /tmp/output-directory/database -m 4
+java -jar ArchiveManifest.jar
 ```
 
 After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
+
+Last, start the FullNode.
 
 #### 2. Integrated startup script
 
@@ -127,7 +128,33 @@ checkpid() {
 
 }
 
+checkPath(){
+  path='output-directory/database'
+  flag=1
+  for p in ${ALL_OPT}
+  do
+   	 if [[ $flag == 0 ]] ; then
+   	 	path=`echo $p`
+   	 	break
+   	 fi
+   	 if [[ $p == '-d' || $p == '--database-directory' ]] ; then
+   	 	path=''
+   	 	flag=0
+   	 fi
+  done
 
+  if [[ -z "${path}" ]]; then
+     echo '-d /path or --database-directory /path'
+     return 1
+  fi
+
+  if [[ -d ${path} ]]; then
+    return 0
+  else
+    echo $path 'not exist'
+    return 1
+  fi
+}
 
 
 
@@ -196,7 +223,12 @@ startService() {
 
 stopService
 
-rebuildManifest
+if [[ 0 ==  $? ]] ; then
+ rebuildManifest
+ APP=''
+else
+ exit -1
+fi
 
 sleep 5
 
@@ -205,7 +237,6 @@ startService
  example
 > Note: In the above script the `-r` argument is fixed in the first or second argument (optimized in subsequent versions).
 ```shell
-# just for simplify, locate the snapshot into `/tmp` directory,
-./start.sh -r -b 5120 -d /tmp/output-directory/database -m 4
+./start.sh -r
 ````
 
