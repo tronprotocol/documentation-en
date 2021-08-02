@@ -3,7 +3,7 @@
 ## Introduction
 
 With the operation of levelDB, manifest file will continue to grow, huge manifest file not only affects the node startup speed, but also may cause the problem of system exit with continuous memory growth.
-For this reason, leveldb startup optimization plugin is introduced, which optimizes the file size of manifest and the startup process of LevelDB, reduces the memory occupation and improves the node startup speed.
+For this reason, leveldb startup optimization plugin is introduced since `GreatVoyage-v4.3.0(Bacon)`, which optimizes the file size of manifest and the startup process of LevelDB, reduces the memory occupation and improves the node startup speed.
 
 
 Remember stop the FullNode process before any operation. This tool provides the ability to reformat the manifest according to the current `database`.
@@ -21,7 +21,7 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 
 ###How to get
 - build by yourself.
-  Under java-tron, execute ``. /gradlew build``, you can get it under `build/libs/`
+  Under java-tron, execute ``. /gradlew build``, you can get ArchiveManifest.jar under `build/libs/`
 - Download directly.
   [Links](https://github.com/tronprotocol/java-tron/releases)
 
