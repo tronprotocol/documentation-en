@@ -26,15 +26,16 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
   [Links](https://github.com/tronprotocol/java-tron/releases)
 
 ### Use Steps
-``Step 2`` is not required every time, but it is recommended to run it every time to optimize the experience
-- 1. Make sure the FullNode service is stopped
-- 2. Execute the ArchiveManifest plugin
-- 3. Start the FullNode service
+
+- 1. Make sure the FullNode service is stopped.
+- 2. Execute the ArchiveManifest plugin.
+- 3. Start the FullNode service.
+
+``Step ii`` is not required every time, but it is recommended to run it every time to optimize the experience.
 
 ### How to use
 
-Start a new FullNode using the default config, then an `output-directory` will be produced in the current directory.
-The database in the `database` subdirectory of the `output-directory` directory is the database to be processed.
+After FullNode runs, the default database directory: `output-directory`, the optimization plugin will work with the `output-directory/database` directory.
 
 
 #### Use it Independently
