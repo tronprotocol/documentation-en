@@ -31,14 +31,14 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 - 2. Execute the ArchiveManifest plugin.
 - 3. Start the FullNode service.
 
-``Step ii`` is not required every time, but it is recommended to run it every time to optimize the experience.
+> Note: ``Step ii`` is not required every time, but it is recommended to run it every time to optimize the experience.
 
 ### How to use
 
 After FullNode runs, the default database directory: `output-directory`, the optimization plugin will work with the `output-directory/database` directory.
 
 
-#### Use it Independently
+#### 1. Use it Independently
 batch-size: 5120，directory: /tmp/output-directory/database,minimum required manifest file size:  4M.
 
 First, stop the FullNode and execute:
@@ -50,7 +50,7 @@ java -jar ArchiveManifest.jar -b 5120 -d /tmp/output-directory/database -m 4
 
 After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
 
-#### Integrated startup script
+#### 2. Integrated startup script
 
 
 ```shell
@@ -203,7 +203,7 @@ sleep 5
 startService
 ```
  example
-`warn`:In the above script the `-r` argument is fixed in the first or second argument (optimized in subsequent versions).
+> Note: In the above script the `-r` argument is fixed in the first or second argument (optimized in subsequent versions).
 ```shell
 # just for simplify, locate the snapshot into `/tmp` directory,
 ./start.sh -r -b 5120 -d /tmp/output-directory/database -m 4
