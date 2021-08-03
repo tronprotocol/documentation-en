@@ -39,7 +39,6 @@ After FullNode runs, the default database directory: `output-directory`, the opt
 
 
 #### 1. Use it Independently
-batch-size: 5120，directory: /tmp/output-directory/database,minimum required manifest file size:  4M.
 
 First, stop the FullNode and execute:
 
