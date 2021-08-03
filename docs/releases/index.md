@@ -38,7 +38,9 @@ node -e 'console.log(require("tronweb").Trx.verifySignature(
 ```
 
 ### Version Signature
+
 - Odyssey-3.7 
+
 ```shell
 FullNode sha256sum: 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e  
 FullNode signature: 21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b   
@@ -47,6 +49,7 @@ SolidityNode signature: 6dcad6e02f17467e5cfebeefa0f9963da08e7da10feebefdec47d689
 ```
 
 - GreatVoyage-4.0.0
+
 ```shell
 FullNode sha256sum: d3f8f9fde64bdefaadae784d09de97172e5e8a3fe539217e12b89963983a530d  
 FullNode signature: e788dbaf2fe35f099f65b2403cfb0d7cbe7f4611f8c5ff8151e4bd84ae468d2e541043c9cde9e74500003027ae9f25cdda81a9bcd60abb45ca7a69f965f4dcc71c  
@@ -55,6 +58,7 @@ SolidityNode signature: e3b9859f178f7851dedb7a0a8deb715e5f1e3af10b1064c36f2727ec
 ```
 
 - GreatVoyage-4.1.1
+
 ```shell
 FullNode sha256sum: 30e716b86b879af1e006c2b463903ae3835e239e32e2b01c2a1b903a153897fe  
 FullNode signature: 5faee65a448bb9aa77835992ca3d24e50d8a76b7934f80664ad38e83179c8114278fdef4494de7231f8e40de86461676a7aa4a54c795f4c692e91d90e156ec471b  
@@ -63,6 +67,7 @@ SolidityNode signature: 1d1413b13adf7778f9a720294eca066ac728ad636d166505276f5ff1
 ```
 
 - GreatVoyage-v4.1.2
+
 ```shell
 FullNode sha256sum: 4ded44b6c1a3dbd25212e14ab413142b5463dcbf30a528f83ded529048542547
 FullNode signature: 57a094c1b8a5ec301ef913eb718de2498b5695eb999530863df05252ba8919ba6866c8490e29d36f7dbf34537c898ece5ef0111efb134419c3a5fd6fc9ec03b81c
@@ -71,6 +76,7 @@ SolidityNode signature: d07604f6811cbed628dd6e5c07880c2fdd3025848fd5365925531c77
 ```
 
 - GreatVoyage-v4.1.3(Thales)
+
 ```shell
 FullNode sha256sum: c5fb99ad5b024bb7877118f30fb6065f6e6febd11a3cfa241521cbed73cca181
 FullNode signature: d80ec371e791c4316925d80ff3400cf51b14c8a4d4c696b7817c517eb094823622932b45b9b37f9e9657513c3eddb1134fbbb1ee56727c0957e8a3b40c67409b1c
@@ -79,6 +85,7 @@ SolidityNode signature: f8a8e8d411b009d02986cad1e19e745f8107384a274f146bcae60c57
 ```
 
 - GreatVoyage-v4.2.0(Plato)
+
 ```shell
 FullNode sha256sum:
 bbf103432be016b582452137b4862140af15ccf7c5daa9be738450705317fdb8
@@ -91,6 +98,7 @@ SolidityNode signature:
 ```
 
 - GreatVoyage-v4.2.1(Origen)
+
 ```shell
 FullNode sha256sum:
 9888710c915a4027f1bc3dcb1d5d983e0c00d4c438f6fa307d412f62ff6862ea
@@ -103,6 +111,7 @@ SolidityNode signature:
 ```
 
 - GreatVoyage-v4.2.2(Lucretius)
+
 ```shell
 FullNode sha256sum:
 8a7f8143b3351ea6b5d8e3dfc857b09256d363d4907ba3ab0288f67f77c2a58f
@@ -115,6 +124,7 @@ SolidityNode signature:
 ```
 
 - GreatVoyage-v4.2.2.1(Epictetus)
+
 ```shell
 FullNode sha256sum:
 8bd040a8db16ccba3e957ed3558b82d145928153a53f9688302849658a72f9bc
@@ -124,4 +134,17 @@ SolidityNode sha256sum:
 ee8abd39732e4901828a61124880f1d2eab62f7f3d97150f1e1921bf7da10e54
 SolidityNode signature:
 092b08184677449dd283a31cc486f994166cd9f5ad312a9c80d3e06689ec540774ac9a1334dffeb6412039ed70ee912ead39c4025dd69b688ea9df4dd831b5771c
+```
+
+- GreatVoyage-v4.3.0(Bacon)
+
+```shell
+FullNode sha256sum:
+b5e993800cea5ca040758dd6b3c7438def03cbf1358468beb76ea45399a59298
+FullNode signature:
+8da6ac58129d78d948810e4bc7372dd8aef5232bfbc4c33ad8fb21e88314e3d97dd77509e0f03a98da32679495152ccd4a9d07541589822e5cf5d3d4f61877191b
+SolidityNode sha256sum:
+446a4736901958a450e4e95aaca99a63957163854fb32d25eed84600e6996668
+SolidityNode signature:
+c27ffde8ce88ee14689e15a9d5c3fb2d2a9d180ea43b45046131df8ac5481fae2588621b395ad7031ed49d65ddd020b3ce084537e3f527d8a5a979f8c65265561c
 ```
