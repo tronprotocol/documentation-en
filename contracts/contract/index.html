@@ -325,12 +325,13 @@
         <span class="n">Function</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="n">Event</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
         <span class="n">Fallback</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">Receive</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="n">Error</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
       <span class="p">}</span>
       <span class="n">message</span> <span class="n">Param</span> <span class="p">{</span>
         <span class="nb nb-Type">bool</span> <span class="n">indexed</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="n">string</span> <span class="n">type</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-        <span class="o">//</span> <span class="n">SolidityType</span> <span class="n">type</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
       <span class="p">}</span>
       <span class="k">enum</span> <span class="n">StateMutabilityType</span> <span class="p">{</span>
         <span class="n">UnknownMutabilityType</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -357,8 +358,10 @@
   <span class="n">bytes</span> <span class="n">bytecode</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
   <span class="n">int64</span> <span class="n">call_value</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
   <span class="n">int64</span> <span class="n">consume_user_resource_percent</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
-  <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="mi">7</span><span class="err">；</span>
+  <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
   <span class="n">int64</span> <span class="n">origin_energy_limit</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+  <span class="n">bytes</span> <span class="n">code_hash</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+  <span class="n">bytes</span> <span class="n">trx_hash</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 
