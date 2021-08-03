@@ -21,12 +21,13 @@ TRON VM is compatible with Ethereum's smart contract, using protobuf to define t
             Function = 2;
             Event = 3;
             Fallback = 4;
+            Receive = 5;
+            Error = 6;
           }
           message Param {
             bool indexed = 1;
             string name = 2;
             string type = 3;
-            // SolidityType type = 3;
           }
           enum StateMutabilityType {
             UnknownMutabilityType = 0;
@@ -53,8 +54,10 @@ TRON VM is compatible with Ethereum's smart contract, using protobuf to define t
       bytes bytecode = 4;
       int64 call_value = 5;
       int64 consume_user_resource_percent = 6;
-      string name = 7；
+      string name = 7;
       int64 origin_energy_limit = 8;
+      bytes code_hash = 9;
+      bytes trx_hash = 10;
     }
 
 origin_address: smart contract creator address
