@@ -64,11 +64,11 @@ ALL_OPT=$*
 
 NEED_REBUILD=0
 
-if [[ $1 == '-y' ]]  ; then
+if [[ $1 == '--rewrite--manifest' ]]  ; then
    APP=''
    NEED_REBUILD=1
 
- elif [[ $2 == '-y' ]]  ; then
+ elif [[ $2 == '--rewrite--manifest' ]]  ; then
    NEED_REBUILD=1
  fi
 
@@ -229,8 +229,12 @@ sleep 5
 startService
 ```
  example
-> Note: In the above script the `-y` argument is fixed in the first or second argument (optimized in subsequent versions).
+> Note: In the above script the `--rewrite--manifest` argument is fixed in the first or second argument.
+>
+> OPTIONS
+>
+>            --rewrite--manifest       enable leveldb startup optimization plugins
 ```shell
-./start.sh -y
+./start.sh [--rewrite--manifest]
 ````
 
