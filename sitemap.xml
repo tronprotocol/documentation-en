@@ -61,7 +61,7 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/shielded-transaction/</loc>
+     <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/shielded-TRC20-contract/</loc>
      <lastmod>2021-08-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -122,6 +122,11 @@
     </url>
     <url>
      <loc>https://tronprotocol.github.io/documentation-en/developers/litefullnode/</loc>
+     <lastmod>2021-08-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://tronprotocol.github.io/documentation-en/developers/archive-manifest/</loc>
      <lastmod>2021-08-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
