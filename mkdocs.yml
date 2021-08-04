@@ -18,7 +18,7 @@ nav:
         - Resource Model: mechanism-algorithm/resource.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
         - Multi-Signature: mechanism-algorithm/multi-signatures.md
-        - Shielded Transaction: mechanism-algorithm/shielded-transaction.md
+        - Shielded TRC20 Contract: mechanism-algorithm/shielded-TRC20-contract.md
         - System Contracts:  mechanism-algorithm/system-contracts.md
     - Architecture:
         - Network: architecture/network.md
@@ -34,6 +34,7 @@ nav:
         - Deployment: developers/deployment.md
         - Run FullNode in IDEA: developers/run-in-idea.md
         - Run Lite FullNode: developers/litefullnode.md
+        - Leveldb Startup Optimization Plugins: developers/archive-manifest.md
         - Resources: developers/resources.md
         - Contribution: developers/contribution.md
         - Incentive Policy: developers/incentives.md
