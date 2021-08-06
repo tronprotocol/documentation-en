@@ -43,8 +43,7 @@ After FullNode runs, the default database directory: `output-directory`, the opt
 First, stop the FullNode and execute:
 
 ```shell
-java -jar ArchiveManifest.jar [-b batchSize] [-d databaseDirectory] [-m manifestSize]
-java -jar -h
+java -jar ArchiveManifest.jar [-b batchSize] [-d databaseDirectory] [-m manifestSize] [-h]
 ```
 
 After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
