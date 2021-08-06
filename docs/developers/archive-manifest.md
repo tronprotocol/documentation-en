@@ -48,6 +48,13 @@ java -jar ArchiveManifest.jar
 
 After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
 
+> Note: After the command is executed，If successful, the log will display something similar to the following,
+> and will run generally within 120s, depending on how long the FullNode service keeps running,
+> and if it fails there will be a corresponding error message
+>
+> `[main] [archive](ArchiveManifest.java:144) DatabaseDirectory:output-directory/database, maxManifestSize:0, maxBatchSize:80000,database reopen use 80 seconds total.`
+
+
 Last, start the FullNode.
 
 #### 2. Integrated startup script
