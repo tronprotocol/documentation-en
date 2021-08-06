@@ -12,7 +12,7 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 
 ## Usage
 
-### Options
+### Options For Plug-in
 
 - `-b | --batch-size`: [ int ]  specify the batch manifest size,default：80000.
 - `-d | --database-directory`: [ string ]  Specify the database directory to be processed,default：output-directory/database.
@@ -43,10 +43,17 @@ After FullNode runs, the default database directory: `output-directory`, the opt
 First, stop the FullNode and execute:
 
 ```shell
-java -jar ArchiveManifest.jar
+java -jar ArchiveManifest.jar [-b batchSize] [-d databaseDirectory] [-m manifestSize] [-h]
 ```
 
 After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
+
+> Note: After the command is executed，If successful, the log will display something similar to the following,
+> and will run generally within 120s, depending on how long the FullNode service keeps running,
+> and if it fails there will be a corresponding error message
+>
+> `[main] [archive](ArchiveManifest.java:144) DatabaseDirectory:output-directory/database, maxManifestSize:0, maxBatchSize:80000,database reopen use 80 seconds total.`
+
 
 Last, start the FullNode.
 
@@ -64,11 +71,11 @@ ALL_OPT=$*
 
 NEED_REBUILD=0
 
-if [[ $1 == '-y' ]]  ; then
+if [[ $1 == '--rewrite--manifest' ]]  ; then
    APP=''
    NEED_REBUILD=1
 
- elif [[ $2 == '-y' ]]  ; then
+ elif [[ $2 == '--rewrite--manifest' ]]  ; then
    NEED_REBUILD=1
  fi
 
@@ -229,8 +236,12 @@ sleep 5
 startService
 ```
  example
-> Note: In the above script the `-y` argument is fixed in the first or second argument (optimized in subsequent versions).
+> Note: Save above script as start.sh,  In the above script the `--rewrite--manifest` argument is fixed in the first or second argument.
+>
+> OPTIONS
+>
+>            --rewrite--manifest       enable leveldb startup optimization plugins，The above plug-in option `-d -m -b -h` will take effect iff this option(--rewrite--manifest) is turned on
 ```shell
-./start.sh -y
+./start.sh [FullNode|SolidityNode] [--rewrite--manifest] [-b batchSize] [-d databaseDirectory] [-m manifestSize]
 ````
 
