@@ -214,7 +214,7 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
  1.&nbsp;download private_net_config.conf
 
 ```text
-wget wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
 ```
  2.&nbsp;add your private key in localwitness
  3.&nbsp;set genesis.block.witnesses as the private key's corresponding address
