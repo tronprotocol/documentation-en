@@ -12,7 +12,7 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 
 ## Usage
 
-### Options
+### Options For Plug-in
 
 - `-b | --batch-size`: [ int ]  specify the batch manifest size,default：80000.
 - `-d | --database-directory`: [ string ]  Specify the database directory to be processed,default：output-directory/database.
@@ -43,7 +43,8 @@ After FullNode runs, the default database directory: `output-directory`, the opt
 First, stop the FullNode and execute:
 
 ```shell
-java -jar ArchiveManifest.jar
+java -jar ArchiveManifest.jar [-b batchSize] [-d databaseDirectory] [-m manifestSize]
+java -jar -h
 ```
 
 After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
@@ -236,12 +237,15 @@ sleep 5
 startService
 ```
  example
-> Note: In the above script the `--rewrite--manifest` argument is fixed in the first or second argument.
+> Note: Save above script as start.sh,  In the above script the `--rewrite--manifest` argument is fixed in the first or second argument.
 >
 > OPTIONS
 >
->            --rewrite--manifest       enable leveldb startup optimization plugins
+>            --rewrite--manifest       enable leveldb startup optimization plugins，The above plug-in option `-d -m -b -h` will take effect iff this option is turned on
 ```shell
-./start.sh [--rewrite--manifest]
+#Correct
+./start.sh --rewrite--manifest [-b batchSize] [-d databaseDirectory] [-m manifestSize]
+#Error
+./start.sh  [-b batchSize] [-d databaseDirectory] [-m manifestSize]
 ````
 
