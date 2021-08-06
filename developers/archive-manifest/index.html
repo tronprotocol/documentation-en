@@ -319,7 +319,7 @@ For this reason, leveldb startup optimization plugin is introduced since <code>G
 <p>Remember stop the FullNode process before any operation. This tool provides the ability to reformat the manifest according to the current <code>database</code>.</p>
 <p>For more design details, please refer to: <a href="https://github.com/tronprotocol/tips/issues/298">TIP298</a>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
+<h3 id="options-for-plug-in">Options For Plug-in<a class="headerlink" href="#options-for-plug-in" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>-b | --batch-size</code>: [ int ]  specify the batch manifest size,default：80000.</li>
 <li><code>-d | --database-directory</code>: [ string ]  Specify the database directory to be processed,default：output-directory/database.</li>
@@ -358,9 +358,15 @@ For this reason, leveldb startup optimization plugin is introduced since <code>G
 <p>After FullNode runs, the default database directory: <code>output-directory</code>, the optimization plugin will work with the <code>output-directory/database</code> directory.</p>
 <h4 id="1-use-it-independently">1. Use it Independently<a class="headerlink" href="#1-use-it-independently" title="Permanent link">&para;</a></h4>
 <p>First, stop the FullNode and execute:</p>
-<div class="highlight"><pre><span></span><code>java -jar ArchiveManifest.jar
+<div class="highlight"><pre><span></span><code>java -jar ArchiveManifest.jar <span class="o">[</span>-b batchSize<span class="o">]</span> <span class="o">[</span>-d databaseDirectory<span class="o">]</span> <span class="o">[</span>-m manifestSize<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span>
 </code></pre></div>
 <p>After the command is executed, <code>archive.log</code> will be generated in the <code>. /logs</code> directory, you can see the result.</p>
+<blockquote>
+<p>Note: After the command is executed，If successful, the log will display something similar to the following,
+and will run generally within 120s, depending on how long the FullNode service keeps running,
+and if it fails there will be a corresponding error message</p>
+<p><code>[main] [archive](ArchiveManifest.java:144) DatabaseDirectory:output-directory/database, maxManifestSize:0, maxBatchSize:80000,database reopen use 80 seconds total.</code></p>
+</blockquote>
 <p>Last, start the FullNode.</p>
 <h4 id="2-integrated-startup-script">2. Integrated startup script<a class="headerlink" href="#2-integrated-startup-script" title="Permanent link">&para;</a></h4>
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -373,11 +379,11 @@ For this reason, leveldb startup optimization plugin is introduced since <code>G
 
 <span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">0</span>
 
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$1</span> <span class="o">==</span> <span class="s1">&#39;-y&#39;</span> <span class="o">]]</span>  <span class="p">;</span> <span class="k">then</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$1</span> <span class="o">==</span> <span class="s1">&#39;--rewrite--manifest&#39;</span> <span class="o">]]</span>  <span class="p">;</span> <span class="k">then</span>
    <span class="nv">APP</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
    <span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">1</span>
 
- <span class="k">elif</span> <span class="o">[[</span> <span class="nv">$2</span> <span class="o">==</span> <span class="s1">&#39;-y&#39;</span> <span class="o">]]</span>  <span class="p">;</span> <span class="k">then</span>
+ <span class="k">elif</span> <span class="o">[[</span> <span class="nv">$2</span> <span class="o">==</span> <span class="s1">&#39;--rewrite--manifest&#39;</span> <span class="o">]]</span>  <span class="p">;</span> <span class="k">then</span>
    <span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">1</span>
  <span class="k">fi</span>
 
@@ -539,9 +545,13 @@ startService
 </code></pre></div>
  example</p>
 <blockquote>
-<p>Note: In the above script the <code>-y</code> argument is fixed in the first or second argument (optimized in subsequent versions).
-```shell
-./start.sh -y
+<p>Note: Save above script as start.sh,  In the above script the <code>--rewrite--manifest</code> argument is fixed in the first or second argument.</p>
+<p>OPTIONS</p>
+<div class="codehilite"><pre><span></span><code>       --rewrite--manifest       enable leveldb startup optimization plugins，The above plug-in option `-d -m -b -h` will take effect iff this option(--rewrite--manifest) is turned on
+</code></pre></div>
+
+<p>```shell
+./start.sh [FullNode|SolidityNode] [--rewrite--manifest] [-b batchSize] [-d databaseDirectory] [-m manifestSize]
 ````</p>
 </blockquote>
               
