@@ -243,5 +243,5 @@ startService
 >            --rewrite--manifest       enable leveldb startup optimization plugins，The above plug-in option `-d -m -b -h` will take effect iff this option(--rewrite--manifest) is turned on
 ```shell
 ./start.sh [FullNode|SolidityNode] [--rewrite--manifest] [-b batchSize] [-d databaseDirectory] [-m manifestSize]
-````
+```
 
