@@ -95,7 +95,7 @@
 - `name`: The token name to issue.
 - `abbr`: The abbreviation of the token name.
 - `total_supply`: The amount of token to issue.
-- `frozen_supply`: The amount of token and frozen days to freeze.
+- `frozen_supply`: The amount of token and staked days to stake.
 - `trx_num`: trx_num/num defines the token price.
 - `num`: trx_num/num defines the token price.
 - `start_time`: ICO starts time.
@@ -155,9 +155,9 @@
     }
 
 - `owner_address`: The owner of the current account.
-- `frozen_balance`: The amount of TRX to freeze.
-- `frozen_duration`: The freeze duration.
-- `resource`: The type of resource get by freezing TRX.
+- `frozen_balance`: The amount of TRX to stake.
+- `frozen_duration`: The stake duration.
+- `resource`: The type of resource get by staking TRX.
 - `receiver_address`: The account address to receive resource.
 
 ## UnfreezeBalanceContract

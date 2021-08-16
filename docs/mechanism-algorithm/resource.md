@@ -17,11 +17,11 @@ The transaction information is stored and transmitted in the form of byte array,
 Such as if the number of bytes of a transaction is 200, so this transaction consumes 200 Bandwidth Points.
 
 !!! note
-    Due to the change of the total amount of the frozen TRX in the network and the self-frozen TRX amount, the Bandwidth Points an account possesses is not fixed.
+    Due to the change of the total amount of the staked TRX in the network and the self-staked TRX amount, the Bandwidth Points an account possesses is not fixed.
 
 ### 1. How to Get Bandwidth Points
 
-1. By Freezing TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-frozen / the total amount of TRX frozen for Bandwidth Points in the network * 43_200_000_000
+1. By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43_200_000_000
 2. Every account has a fixed amount of free Bandwidth Points(5000) every day
 
 ### 2. Bandwidth Points Consumption
@@ -30,7 +30,7 @@ Except for query operation, any transaction consumes Bandwidth points.
 
 There's another situation: When you transfer(TRX or token) to an account that does not exist in the network, this operation will first create that account in the network and then do the transfer. It only consumes Bandwidth points for account creation, no extra Bandwidth points consumption for transfer.
 
-To create an account, a flat charge of 1 TRX is required. If there are insufficient Bandwidth points obtained by TRX freezing, an additional 0.1 TRX will be spent.
+To create an account, a flat charge of 1 TRX is required. If there are insufficient Bandwidth points obtained by TRX staking, an additional 0.1 TRX will be spent.
 
 Bandwidth points consumption sequence for TRC-10 transfer:
 
@@ -38,7 +38,7 @@ Bandwidth points consumption sequence for TRC-10 transfer:
 
 2. TRC-10 issuer's Bandwidth points(if possible.)
 
-3. Bandwidth points TRX freezing.
+3. Bandwidth points TRX staking.
 
 4. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
 
@@ -46,7 +46,7 @@ Bandwidth points consumption sequence for other transactions:
 
 1. Free Bandwidth points.
 
-2. Bandwidth points TRX freezing.
+2. Bandwidth points TRX staking.
 
 3. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
 
@@ -66,7 +66,7 @@ Each command of smart contract consume system resource while running, we use 'En
 
 ### 1. How to Get Energy
 
-Freeze TRX to get energy.
+Stake TRX to get energy.
 
 Example (Using wallet-cli):
 
@@ -74,17 +74,17 @@ Example (Using wallet-cli):
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-Freeze TRX to get energy, energy obtained = user's TRX frozen amount / total amount of frozen TRX in TRON * 50_000_000_000.
+stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50_000_000_000.
 
 Example:
 
 ```text
-If there are only two users, A freezes 2 TRX, B freezes 2 TRX
+If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
 A: 25_000_000_000 and energy_limit is 25_000_000_000
 B: 25_000_000_000 and energy_limit is 25_000_000_000
 
-when C freezes 1 TRX:
+when C stakes 1 TRX:
 the energy they can get is:
 A: 20_000_000_000 and energy_limit is 20_000_000_000
 B: 20_000_000_000 and energy_limit is 20_000_000_000
@@ -99,7 +99,7 @@ Example:
 
 ```text
 at one moment, A has used 72_000_000 Energy
-if there is no continuous consumption or TRX freeze
+if there is no continuous consumption or TRX stake
 one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
 24 hours later, the energy consumption amount will be 0 Energy
 ```
@@ -129,7 +129,7 @@ How to estimate the fee limit:
 
 Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[^3]
 
-According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy.
+According to the staked TRX amount and energy conversion, assume 1 TRX = 400 energy.
 
 When to burn TRX, 4 TRX = 100000 energy[^4]
 
@@ -158,7 +158,7 @@ So, the caller is suggested to set fee limit to 50_000_000 SUN * 10% = 5_000_000
 
 ** Example 1 **
 
-A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy.
+A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.
 
 Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely.
 
@@ -166,10 +166,10 @@ A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX)
 
 So during this trigger the energy A can use is from two parts:
 
-- A's energy by freezing TRX;
+- A's energy by staking TRX;
 - The energy converted from the amount of TRX burning according to a fixed rate;
 
-If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy.
+If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy.
 
 Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.
 
@@ -181,22 +181,22 @@ Assert-style error introduction, refer to [Exception Handling(zh-cn)](https://gi
 
 ** Example 2 **
 
-A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy.
+A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.
 
 Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption.
 
-Developer D freezes 50 TRX to get 500000 energy.
+Developer D stakes 50 TRX to get 500000 energy.
 
 A triggers C, the fee limit set is 200000000 (unit SUN, 200 TRX).
 
 So during this trigger the energy A can use is from three parts:
 
-- A's energy by freezing TRX -- X;
+- A's energy by staking TRX -- X;
 - The energy converted from the amount of TRX bruning according to a fixed rate -- Y;
 
-    If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy;
+    If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy;
 
-- D's energy by freezing TRX -- Z;
+- D's energy by staking TRX -- Z;
 
 There are two situation:
 if (X + Y) / 40% >= Z / 60%, the energy A can use is X + Y + Z
@@ -213,14 +213,14 @@ Assert-style error introduction, refer to [Exception Handling(zh-cn)](https://gi
 To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.
 
 ## Resource Delegation
-In TRON network, an account can freeze TRX for Bandwidth or Energy for other accounts. The primary account owns the frozen TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary freezing, resource delegation freezing is also at least 3 days.
+In TRON network, an account can stake TRX for Bandwidth or Energy for other accounts. The primary account owns the staked TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary staking, resource delegation staking is also at least 3 days.
 
 + Example(Using wallet-cli)
 ```text
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 
-frozen_balance: the amount of TRX to freeze (unit SUN)
-frozen_duration: the freezing period (currently a fixed 3 days)
+frozen_balance: the amount of TRX to stake (unit SUN)
+frozen_duration: the staking period (currently a fixed 3 days)
 ResourceCode: 0 for Bandwidth, 1 for Energy
 receiverAddress: recipient account address
 ```

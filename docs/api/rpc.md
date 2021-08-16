@@ -181,13 +181,13 @@ rpc getTransactionsToThis (Account) returns (NumberMessage) {}
 ```
 Nodes: SolidityNode
 
-**28.&nbsp;Freeze TRX**
+**28.&nbsp;Stake TRX**
 ```protobuf
 rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {}
 ```
 Nodes: FullNode
 
-**29.&nbsp;Unfreeze TRX**
+**29.&nbsp;Unstake TRX**
 ```protobuf
 rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {}
 ```
@@ -199,7 +199,7 @@ rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {}
 ```
 Nodes: FullNode
 
-**31.&nbsp;Unfreeze token balance**
+**31.&nbsp;Unstake token balance**
 ```protobuf
 rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {}
 ```
