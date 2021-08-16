@@ -12,14 +12,14 @@ To prevent vicious attack, TRON network burns 9999 TRX from the account that app
 
 ## Super Representative Election
 
-To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
+To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
 
 Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.
 
 Example (Using wallet-cli):
 
 ```console
-> freezebalance 10,000,000 3 // Freeze 10 TRX to get 10 TRON Power(TP)
+> freezebalance 10,000,000 3 // Stake 10 TRX to get 10 TRON Power(TP)
 > votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2
 > votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2
 ```

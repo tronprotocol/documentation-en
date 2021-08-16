@@ -496,9 +496,9 @@ asset {
 TransferAsset 123456 649DDB4AB82D558AD6809C7AB2BA43D1D1054B3F testAssetIssue00001 10000
 ```
 
-<h3>How to freeze/unfreeze balance</h3>
+<h3>How to stake/unstake balance</h3>
 
-After the funds are frozen, the corresponding number of shares and bandwidth will be obtained.
+After the funds are staked, the corresponding number of shares and bandwidth will be obtained.
 Shares can be used for voting and bandwidth can be used for trading.
 The rules for the use and calculation of share and bandwidth are described later in this article.
 
@@ -508,30 +508,30 @@ Example:
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH, 1 ENERGY] [receiverAddress]
 
 freezeBalance 100000000 3 1 address
-frozen_balance: The amount of frozen funds，the unit is SUN. The minimum value is 1000000 SUN (1 TRX)
-frozen_duration: Freeze time, this value is currently only allowed for 3 days
+frozen_balance: The amount of staked funds，the unit is SUN. The minimum value is 1000000 SUN (1 TRX)
+frozen_duration: Stake time, this value is currently only allowed for 3 days
 
 
 unfreezeBalance  [ResourceCode:0 BANDWIDTH, 1 ENERGY] [receiverAddress]
 
 ```
 
-After the freeze operation,frozen funds will be transferred from Account Balance to Frozen,
-You can view frozen funds from your account information.
-After being unfrozen, it is transferred back to Balance by Frozen, and the frozen funds cannot be used for trading.
+After the stake operation,staked funds will be transferred from Account Balance to staked,
+You can view staked funds from your account information.
+After being unstaked, it is transferred back to Balance by staked, and the staked funds cannot be used for trading.
 
-When more share or bandwidth is needed temporarily, additional funds may be frozen to obtain additional share and bandwidth.
-The unfrozen time is postponed until 3 days after the last freeze operation
+When more share or bandwidth is needed temporarily, additional funds may be staked to obtain additional share and bandwidth.
+The unstaked time is postponed until 3 days after the last stake operation
 
-After the freezing time expires, funds can be unfrozen.
+After the staking time expires, funds can be unstaked.
 
 
 <h3>How to vote</h3>
 
-Voting requires share. Share can be obtained by freezing funds.
+Voting requires share. Share can be obtained by staking funds.
 
-- The share calculation method is: **1** unit of share can be obtained for every **1 TRX** frozen.
-- After unfreezing, previous vote will expire. You can avoid the invalidation of the vote by re-freezing and voting.
+- The share calculation method is: **1** unit of share can be obtained for every **1 TRX** staked.
+- After unstaking, previous vote will expire. You can avoid the invalidation of the vote by re-staking and voting.
 
 **Note:** The Tron Network only records the status of your last vote, which means that each of your votes will cover all previous voting results.
 
@@ -540,7 +540,7 @@ Example：
 ```
 VoteWitness Address0 Count0 ... AddressN CountN
 
-freezeBalance 100000000 3 1 address  // Freeze 10 TRX and acquire 10 units of shares
+freezeBalance 100000000 3 1 address  // stake 10 TRX and acquire 10 units of shares
 
 votewitness witness1 4 witness2 6   // Cast 4 votes for witness1 and 6 votes for witness2 at the same time.
 
@@ -561,12 +561,12 @@ Command:
 AssetIssue AssetName TotalSupply TrxNum AssetNum Precision StartDate EndDate Description Url FreeNetLimitPerAccount PublicFreeNetLimit FrozenAmount0 FrozenDays0 ... FrozenAmountN FrozenDaysN
 
 AssetName: The name of the issued TRC10 token
-TotalSupply: Total issuing amount = account balance of the issuer at the time of issuance + all the frozen amount, before asset transfer and the issuance.
+TotalSupply: Total issuing amount = account balance of the issuer at the time of issuance + all the staked amount, before asset transfer and the issuance.
 TrxNum,AssetNum: these two parameters determine the exchange rate between the issued token and the minimum unit of TRX (sun) when the token is issued.
-FreeNetLimitPerAccount:	The maximum amount of bandwidth an account is allowed to use. Token issuers can freeze TRX to obtain bandwidth (TransferAssetContract only)
-PublicFreeNetLimit:	The maximum amount of bandwidth issuing accounts are allowed user. Token issuers can freeze REX to obtain bandwidth (TransferAssetContract only).
+FreeNetLimitPerAccount:	The maximum amount of bandwidth an account is allowed to use. Token issuers can stake TRX to obtain bandwidth (TransferAssetContract only)
+PublicFreeNetLimit:	The maximum amount of bandwidth issuing accounts are allowed user. Token issuers can stake REX to obtain bandwidth (TransferAssetContract only).
 StartDate,EndDate: The start and end date of token issuance. Within this period time, other users can participate in token issuance.
-FrozenAmount0 FrozenDays0: Amount and time of token freeze. FrozenAmount0 must be bigger than 0, FrozenDays0 must be bigger than 1 and smaller than 3653.
+FrozenAmount0 FrozenDays0: Amount and time of token stake. FrozenAmount0 must be bigger than 0, FrozenDays0 must be bigger than 1 and smaller than 3653.
 ```
 
 Example:
@@ -710,9 +710,9 @@ assetV2
 }
 ```
 
-e. unfreeze TRC10 token
+e. unstake TRC10 token
 
-It must be unfrozen after the freezing period, unfreeze Token10, which has stopped being frozen.
+It must be unstaked after the staking period, unstake Token10, which has stopped being staked.
 UnfreezeAsset
 
 f. Obtain information about Token 10
@@ -1738,21 +1738,21 @@ GetShieldedPaymentAddress 148cf9e91f1e6656a41dc9b6c6ee4e52ff7a25b25c2d4a3a3182d0
 
 a. delegate resource
 
-The latter two parameters are optional parameters. If not set, the TRX is frozen to obtain
+The latter two parameters are optional parameters. If not set, the TRX is staked to obtain
 resources for its own use; if it is not empty, the acquired resources are used by receiverAddress
 .
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 [receiverAddress]
-frozen_balance:				The amount of frozen TRX, the unit is the smallest unit (sun), the
+frozen_balance:				The amount of staked TRX, the unit is the smallest unit (sun), the
 minimum is 1000000sun
-frozen_duration:			frezen duration, 3 days
+frozen_duration:			staked duration, 3 days
 ResourceCode:				0 BANDWIDTH;1 ENERGY
 receiverAddress:			target account address
 
-b. unfreeze delegated resource
+b. unstake delegated resource
 
-The latter two parameters are optional. If they are not set, the BANDWIDTH resource is unfreeze
-by default; when the receiverAddress is set, the delegate resources are unfreezed.
+The latter two parameters are optional. If they are not set, the BANDWIDTH resource is unstake
+by default; when the receiverAddress is set, the delegate resources are unstaked.
 unfreezeBalance  [ResourceCode:0 BANDWIDTH,1 CPU] [receiverAddress]
 
 c. get resource delegation information

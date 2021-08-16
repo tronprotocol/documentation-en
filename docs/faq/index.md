@@ -58,9 +58,9 @@ Every 6 hours, the votes will be counted to check the qualifications of all the 
 
 Transaction hash.
 
-### Why I Can't freeze TRX longer than 3 days
+### Why I Can't stake TRX longer than 3 days
 
-Frozen duration must be 3 days now. It means you can not unfreeze until the 3 days duration expires. If you don't unfreeze after 3 days, the frozen TRX will remain in frozen status until you unfreeze it.
+Staked duration must be 3 days now. It means you can not unstake until the 3 days duration expires. If you don't unstake after 3 days, the staked TRX will remain in staked status until you unstake it.
 
 ### How to watch my account for transactions
 

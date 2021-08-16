@@ -977,7 +977,7 @@ Parameter free_asset_net_limit: Token free asset net limit
 
 Parameter public_free_asset_net_limit: Token public free asset net limit
 
-Parameter frozen_supply: Token frozen supply
+Parameter frozen_supply: Token staked supply
 
 Parameter permission_id: Optional, for multi-signature use
 
@@ -1164,7 +1164,7 @@ Note: The unit of 'amount' is the smallest unit of the token
 
 - wallet/freezebalance
 
-Description: Freeze TRX
+Description: Stake TRX
 ```console
 $ curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
 '{
@@ -1178,11 +1178,11 @@ $ curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
 
 Parameter owner_address: Owner address, default hexString
 
-Parameter frozen_balance: TRX freeze amount
+Parameter frozen_balance: TRX stake amount
 
-Parameter frozen_duration: TRX freeze duration, at least 3 days
+Parameter frozen_duration: TRX stake duration, at least 3 days
 
-Parameter resource: TRX freeze type, 'BANDWIDTH' or 'ENERGY'
+Parameter resource: TRX stake type, 'BANDWIDTH' or 'ENERGY'
 
 Parameter receiverAddress: The address that will receive the resource, default hexString
 
@@ -1192,7 +1192,7 @@ Return: Transaction object
 
 - wallet/unfreezebalance
 
-Description: Unfreeze the frozen TRX that is due
+Description: Unstake the staked TRX that is due
 ```console
 $ curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d
 '{
@@ -1204,7 +1204,7 @@ $ curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d
 
 Parameter owner_address: Owner address, default hexString
 
-Parameter resource: Frozen TRX unfreeze type 'BANDWIDTH' or 'ENERGY'
+Parameter resource: staked TRX unstake type 'BANDWIDTH' or 'ENERGY'
 
 Parameter receiverAddress: The address that will lose the resource, default hexString
 
@@ -1214,7 +1214,7 @@ Return: Transaction object
 
 - wallet/unfreezeasset
 
-Description: Unfreeze the frozen token that is due
+Description: Unstake the staked token that is due
 ```console
 $ curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d
 '{
