@@ -470,7 +470,7 @@
 <li><code>name</code>: The token name to issue.</li>
 <li><code>abbr</code>: The abbreviation of the token name.</li>
 <li><code>total_supply</code>: The amount of token to issue.</li>
-<li><code>frozen_supply</code>: The amount of token and frozen days to freeze.</li>
+<li><code>frozen_supply</code>: The amount of token and staked days to stake.</li>
 <li><code>trx_num</code>: trx_num/num defines the token price.</li>
 <li><code>num</code>: trx_num/num defines the token price.</li>
 <li><code>start_time</code>: ICO starts time.</li>
@@ -534,9 +534,9 @@ message AccountUpdateContract {
 
 <ul>
 <li><code>owner_address</code>: The owner of the current account.</li>
-<li><code>frozen_balance</code>: The amount of TRX to freeze.</li>
-<li><code>frozen_duration</code>: The freeze duration.</li>
-<li><code>resource</code>: The type of resource get by freezing TRX.</li>
+<li><code>frozen_balance</code>: The amount of TRX to stake.</li>
+<li><code>frozen_duration</code>: The stake duration.</li>
+<li><code>resource</code>: The type of resource get by staking TRX.</li>
 <li><code>receiver_address</code>: The account address to receive resource.</li>
 </ul>
 <h2 id="unfreezebalancecontract">UnfreezeBalanceContract<a class="headerlink" href="#unfreezebalancecontract" title="Permanent link">&para;</a></h2>

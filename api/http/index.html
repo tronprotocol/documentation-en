@@ -1307,7 +1307,7 @@ Return: The balance object of the account in a specific block, the <code>block_i
 <p>Parameter url: Token official website url, default hexString</p>
 <p>Parameter free_asset_net_limit: Token free asset net limit</p>
 <p>Parameter public_free_asset_net_limit: Token public free asset net limit</p>
-<p>Parameter frozen_supply: Token frozen supply</p>
+<p>Parameter frozen_supply: Token staked supply</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
 <p>Return: Transaction object</p>
 <p>Note: The unit of 'trx_num' is SUN</p>
@@ -1442,7 +1442,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <ul>
 <li>wallet/freezebalance</li>
 </ul>
-<p>Description: Freeze TRX
+<p>Description: Stake TRX
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
@@ -1453,16 +1453,16 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">}&#39;</span>
 </code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
-<p>Parameter frozen_balance: TRX freeze amount</p>
-<p>Parameter frozen_duration: TRX freeze duration, at least 3 days</p>
-<p>Parameter resource: TRX freeze type, 'BANDWIDTH' or 'ENERGY'</p>
+<p>Parameter frozen_balance: TRX stake amount</p>
+<p>Parameter frozen_duration: TRX stake duration, at least 3 days</p>
+<p>Parameter resource: TRX stake type, 'BANDWIDTH' or 'ENERGY'</p>
 <p>Parameter receiverAddress: The address that will receive the resource, default hexString</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
 <p>Return: Transaction object</p>
 <ul>
 <li>wallet/unfreezebalance</li>
 </ul>
-<p>Description: Unfreeze the frozen TRX that is due
+<p>Description: Unstake the staked TRX that is due
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
@@ -1471,14 +1471,14 @@ The unit of 'amount' is the smallest unit of the token</p>
 <span class="go">}&#39;</span>
 </code></pre></div></p>
 <p>Parameter owner_address: Owner address, default hexString</p>
-<p>Parameter resource: Frozen TRX unfreeze type 'BANDWIDTH' or 'ENERGY'</p>
+<p>Parameter resource: staked TRX unstake type 'BANDWIDTH' or 'ENERGY'</p>
 <p>Parameter receiverAddress: The address that will lose the resource, default hexString</p>
 <p>Parameter permission_id: Optional, for multi-signature use</p>
 <p>Return: Transaction object</p>
 <ul>
 <li>wallet/unfreezeasset</li>
 </ul>
-<p>Description: Unfreeze the frozen token that is due
+<p>Description: Unstake the staked token that is due
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;</span>
