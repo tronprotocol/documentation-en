@@ -1618,7 +1618,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <li>wallet/getblockbylimitnext</li>
 </ul>
 <p>Description: Query a list of blocks by range
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -X GET  curl -X POST  http://127.0.0.1:9090/wallet/getblockbylimitnext -d <span class="s1">&#39;{&quot;startNum&quot;: 1,&quot;endNum&quot;: 2}&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -X POST http://127.0.0.1:9090/wallet/getblockbylimitnext -d <span class="s1">&#39;{&quot;startNum&quot;: 1,&quot;endNum&quot;: 2}&#39;</span>
 </code></pre></div></p>
 <p>Parameter startNum: The start block height, itself included</p>
 <p>Parameter endNum: The end block height, itself not included</p>
