@@ -27,7 +27,7 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 
 ### Use Steps
 
-- 1. Make sure the FullNode service is stopped.
+- 1. Stop the FullNode service.
 - 2. Execute the ArchiveManifest plugin.
 - 3. Start the FullNode service.
 
@@ -36,14 +36,40 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 ### How to use
 
 After FullNode runs, the default database directory: `output-directory`, the optimization plugin will work with the `output-directory/database` directory.
-
+Developers can choose one of the following two ways  according to actual situation.
 
 #### 1. Use it Independently
 
-First, stop the FullNode and execute:
+##### 1.Stop the FullNode service
+
+Create file stop.sh，use kill -15 to close java-tron.jar(or FullNode.jar、SolidityNode.jar).
+You need to modify pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
+
+```text
+#!/bin/bash
+while true; do
+  pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'`
+  if [ -n "$pid" ]; then
+    kill -15 $pid
+    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
+    sleep 1
+  else
+    echo "java-tron killed successfully!"
+    break
+  fi
+done
+```
+
+##### 2.Execute the ArchiveManifest plugin
 
 ```shell
+# Full command
 java -jar ArchiveManifest.jar [-b batchSize] [-d databaseDirectory] [-m manifestSize] [-h]
+# examples
+   java -jar ArchiveManifest.jar #1. use default settings
+   java -jar ArchiveManifest.jar -d /tmp/db/database #2. Specify the database directory as /tmp/db/database
+   java -jar ArchiveManifest.jar -b 64000 #3. Specify the batch size to 64000 when optimizing Manifest
+   java -jar ArchiveManifest.jar -m 128 #4. Specify optimization only when Manifest exceeds 128M
 ```
 
 After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
@@ -55,7 +81,7 @@ After the command is executed, `archive.log` will be generated in the `. /logs` 
 > `[main] [archive](ArchiveManifest.java:144) DatabaseDirectory:output-directory/database, maxManifestSize:0, maxBatchSize:80000,database reopen use 80 seconds total.`
 
 
-Last, start the FullNode.
+##### 3.Start the FullNode service
 
 #### 2. Integrated startup script
 
@@ -220,11 +246,12 @@ startService() {
 
 }
 
-
+#1.Stop the FullNode service
 stopService
 
 checkPath
 
+#2.Execute the ArchiveManifest plugin
 if [[ 0 ==  $? ]] ; then
  rebuildManifest
 else
@@ -232,7 +259,7 @@ else
 fi
 
 sleep 5
-
+# Start the FullNode service
 startService
 ```
  example
@@ -244,6 +271,14 @@ startService
 
 
 ```shell
+# Full command
 ./start.sh [FullNode|SolidityNode] [--rewrite--manifest] [-b batchSize] [-d databaseDirectory] [-m manifestSize]
+# examples
+  ./start.sh # 1. Start the FullNode.jar service without the plugin
+   ./start.sh SolidityNode #2. 不Start the SolidityNode.jar service without the plugin
+   ./start.sh FullNode --rewrite--manifest  #3. Execute the optimization plugin with default settings and start the FullNode.jar service
+   ./start.sh --rewrite--manifest -d /tmp/db/database #4. Specify the database directory as /tmp/db/database, execute the optimization plugin, and start the FullNode.jar service
+   ./start.sh --rewrite--manifest -b 64000 #5. Specify the batch size to 64000 when optimizing Manifest, and start the FullNode.jar service
+   ./start.sh --rewrite--manifest -m 128 #6. Specify that optimization is performed only when the Manifest exceeds 128M, and start the FullNode.jar service
 ```
 
