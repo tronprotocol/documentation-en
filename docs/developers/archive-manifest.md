@@ -42,7 +42,9 @@ Developers can choose one of the following two ways  according to actual situati
 
 ##### 1.Stop the FullNode service
 
-Use kill -15 to close FullNode.jar ,find pid `ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
+Use `kill -15 ` to shutdown the FullNode.jar .
+
+Query the pid: `ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
 
 
 
