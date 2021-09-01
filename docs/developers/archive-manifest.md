@@ -58,7 +58,7 @@ java -jar ArchiveManifest.jar [-b batchSize] [-d databaseDirectory] [-m manifest
    java -jar ArchiveManifest.jar -m 128 #4. Specify optimization only when Manifest exceeds 128M
 ```
 
-After the command is executed, `archive.log` will be generated in the `. /logs` directory, you can see the result.
+After the command is executed, `archive.log` will be generated in the `./logs` directory, you can see the result.
 
 > Note: After the command is executed，If successful, the log will display something similar to the following,
 > and will run generally within 120s, depending on how long the FullNode service keeps running,
@@ -267,9 +267,9 @@ startService
 # Full command
 ./start.sh [FullNode|SolidityNode] [--rewrite--manifest] [-b batchSize] [-d databaseDirectory] [-m manifestSize]
 # examples
-  ./start.sh # 1. Start the FullNode.jar service without the plugin
+  ./start.sh #1. Start the FullNode.jar service without the plugin
    ./start.sh SolidityNode #2. Start the SolidityNode.jar service without the plugin
-   ./start.sh FullNode --rewrite--manifest  #3. Execute the optimization plugin with default settings and start the FullNode.jar service
+   ./start.sh FullNode --rewrite--manifest #3. Execute the optimization plugin with default settings and start the FullNode.jar service
    ./start.sh --rewrite--manifest -d /tmp/db/database #4. Specify the database directory as /tmp/db/database, execute the optimization plugin, and start the FullNode.jar service
    ./start.sh --rewrite--manifest -b 64000 #5. Specify the batch size to 64000 when optimizing Manifest, and start the FullNode.jar service
    ./start.sh --rewrite--manifest -m 128 #6. Specify that optimization is performed only when the Manifest exceeds 128M, and start the FullNode.jar service
