@@ -337,7 +337,7 @@ For this reason, leveldb startup optimization plugin is introduced since <code>G
 <ul>
 <li>
 <ol>
-<li>Make sure the FullNode service is stopped.</li>
+<li>Stop the FullNode service.</li>
 </ol>
 </li>
 <li>
@@ -355,19 +355,34 @@ For this reason, leveldb startup optimization plugin is introduced since <code>G
 <p>Note: <code>Step ii</code> is not required every time, but it is recommended to run it every time to optimize the experience.</p>
 </blockquote>
 <h3 id="how-to-use">How to use<a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h3>
-<p>After FullNode runs, the default database directory: <code>output-directory</code>, the optimization plugin will work with the <code>output-directory/database</code> directory.</p>
+<p>After FullNode runs, the default database directory: <code>output-directory</code>, the optimization plugin will work with the <code>output-directory/database</code> directory.
+Developers can choose one of the following two ways  according to actual situation.</p>
 <h4 id="1-use-it-independently">1. Use it Independently<a class="headerlink" href="#1-use-it-independently" title="Permanent link">&para;</a></h4>
-<p>First, stop the FullNode and execute:</p>
-<div class="highlight"><pre><span></span><code>java -jar ArchiveManifest.jar <span class="o">[</span>-b batchSize<span class="o">]</span> <span class="o">[</span>-d databaseDirectory<span class="o">]</span> <span class="o">[</span>-m manifestSize<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span>
+<h5 id="1stop-the-fullnode-service">1.Stop the FullNode service<a class="headerlink" href="#1stop-the-fullnode-service" title="Permanent link">&para;</a></h5>
+<p>Use <code>kill -15</code> to shutdown the FullNode.jar .</p>
+<p>Query the pid: <code>ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code></p>
+<h5 id="2execute-the-archivemanifest-plugin">2.Execute the ArchiveManifest plugin<a class="headerlink" href="#2execute-the-archivemanifest-plugin" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># Full command</span>
+java -jar ArchiveManifest.jar <span class="o">[</span>-b batchSize<span class="o">]</span> <span class="o">[</span>-d databaseDirectory<span class="o">]</span> <span class="o">[</span>-m manifestSize<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span>
+<span class="c1"># examples</span>
+   java -jar ArchiveManifest.jar <span class="c1">#1. use default settings</span>
+   java -jar ArchiveManifest.jar -d /tmp/db/database <span class="c1">#2. Specify the database directory as /tmp/db/database</span>
+   java -jar ArchiveManifest.jar -b <span class="m">64000</span> <span class="c1">#3. Specify the batch size to 64000 when optimizing Manifest</span>
+   java -jar ArchiveManifest.jar -m <span class="m">128</span> <span class="c1">#4. Specify optimization only when Manifest exceeds 128M</span>
 </code></pre></div>
-<p>After the command is executed, <code>archive.log</code> will be generated in the <code>. /logs</code> directory, you can see the result.</p>
+<p>After the command is executed, <code>archive.log</code> will be generated in the <code>./logs</code> directory, you can see the result.</p>
 <blockquote>
 <p>Note: After the command is executed，If successful, the log will display something similar to the following,
 and will run generally within 120s, depending on how long the FullNode service keeps running,
 and if it fails there will be a corresponding error message</p>
 <p><code>[main] [archive](ArchiveManifest.java:144) DatabaseDirectory:output-directory/database, maxManifestSize:0, maxBatchSize:80000,database reopen use 80 seconds total.</code></p>
 </blockquote>
-<p>Last, start the FullNode.</p>
+<h5 id="3start-the-fullnode-service">3.Start the FullNode service<a class="headerlink" href="#3start-the-fullnode-service" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code> <span class="c1">#FullNode</span>
+nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf &lt;/dev/null <span class="p">&amp;</span>&gt;/dev/null <span class="p">&amp;</span>
+ <span class="c1">#SR Node</span>
+nohup java -Xmx24g -XX:+UseConcMarkSweepGC  -jar FullNode.jar  -p  private key --witness -c main_net_config.conf &lt;/dev/null <span class="p">&amp;</span>&gt;/dev/null <span class="p">&amp;</span>
+</code></pre></div>
 <h4 id="2-integrated-startup-script">2. Integrated startup script<a class="headerlink" href="#2-integrated-startup-script" title="Permanent link">&para;</a></h4>
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -528,11 +543,12 @@ startService<span class="o">()</span> <span class="o">{</span>
 
 <span class="o">}</span>
 
-
+<span class="c1">#1.Stop the FullNode service</span>
 stopService
 
 checkPath
 
+<span class="c1">#2.Execute the ArchiveManifest plugin</span>
 <span class="k">if</span> <span class="o">[[</span> <span class="nv">0</span> <span class="o">==</span>  <span class="nv">$?</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span>
  rebuildManifest
 <span class="k">else</span>
@@ -540,7 +556,7 @@ checkPath
 <span class="k">fi</span>
 
 sleep <span class="m">5</span>
-
+<span class="c1"># Start the FullNode service</span>
 startService
 </code></pre></div>
  example</p>
@@ -551,7 +567,15 @@ startService
 </code></pre></div>
 
 </blockquote>
-<div class="highlight"><pre><span></span><code>./start.sh <span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span> <span class="o">[</span>--rewrite--manifest<span class="o">]</span> <span class="o">[</span>-b batchSize<span class="o">]</span> <span class="o">[</span>-d databaseDirectory<span class="o">]</span> <span class="o">[</span>-m manifestSize<span class="o">]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Full command</span>
+./start.sh <span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span> <span class="o">[</span>--rewrite--manifest<span class="o">]</span> <span class="o">[</span>-b batchSize<span class="o">]</span> <span class="o">[</span>-d databaseDirectory<span class="o">]</span> <span class="o">[</span>-m manifestSize<span class="o">]</span>
+<span class="c1"># examples</span>
+  ./start.sh <span class="c1">#1. Start the FullNode.jar service without the plugin</span>
+   ./start.sh SolidityNode <span class="c1">#2. Start the SolidityNode.jar service without the plugin</span>
+   ./start.sh FullNode --rewrite--manifest <span class="c1">#3. Execute the optimization plugin with default settings and start the FullNode.jar service</span>
+   ./start.sh --rewrite--manifest -d /tmp/db/database <span class="c1">#4. Specify the database directory as /tmp/db/database, execute the optimization plugin, and start the FullNode.jar service</span>
+   ./start.sh --rewrite--manifest -b <span class="m">64000</span> <span class="c1">#5. Specify the batch size to 64000 when optimizing Manifest, and start the FullNode.jar service</span>
+   ./start.sh --rewrite--manifest -m <span class="m">128</span> <span class="c1">#6. Specify that optimization is performed only when the Manifest exceeds 128M, and start the FullNode.jar service</span>
 </code></pre></div>
               
             </div>
