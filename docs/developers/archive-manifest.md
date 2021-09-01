@@ -42,23 +42,10 @@ Developers can choose one of the following two ways  according to actual situati
 
 ##### 1.Stop the FullNode service
 
-Create file stop.sh，use kill -15 to close java-tron.jar(or FullNode.jar、SolidityNode.jar).
-You need to modify pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
+use kill -15 to close FullNode.jar
+Find pid `ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
 
-```text
-#!/bin/bash
-while true; do
-  pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'`
-  if [ -n "$pid" ]; then
-    kill -15 $pid
-    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
-    sleep 1
-  else
-    echo "java-tron killed successfully!"
-    break
-  fi
-done
-```
+
 
 ##### 2.Execute the ArchiveManifest plugin
 
@@ -82,6 +69,13 @@ After the command is executed, `archive.log` will be generated in the `. /logs` 
 
 
 ##### 3.Start the FullNode service
+
+```shell
+ #FullNode
+nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf </dev/null &>/dev/null &
+ #SR Node
+nohup java -Xmx24g -XX:+UseConcMarkSweepGC  -jar FullNode.jar  -p  private key --witness -c main_net_config.conf </dev/null &>/dev/null &
+```
 
 #### 2. Integrated startup script
 
@@ -275,7 +269,7 @@ startService
 ./start.sh [FullNode|SolidityNode] [--rewrite--manifest] [-b batchSize] [-d databaseDirectory] [-m manifestSize]
 # examples
   ./start.sh # 1. Start the FullNode.jar service without the plugin
-   ./start.sh SolidityNode #2. 不Start the SolidityNode.jar service without the plugin
+   ./start.sh SolidityNode #2. Start the SolidityNode.jar service without the plugin
    ./start.sh FullNode --rewrite--manifest  #3. Execute the optimization plugin with default settings and start the FullNode.jar service
    ./start.sh --rewrite--manifest -d /tmp/db/database #4. Specify the database directory as /tmp/db/database, execute the optimization plugin, and start the FullNode.jar service
    ./start.sh --rewrite--manifest -b 64000 #5. Specify the batch size to 64000 when optimizing Manifest, and start the FullNode.jar service
