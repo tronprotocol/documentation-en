@@ -404,11 +404,11 @@ java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F
 <div class="highlight"><pre><span></span><code>12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
 </code></pre></div></p>
 <h2 id="stop-node-gracefully">Stop Node Gracefully<a class="headerlink" href="#stop-node-gracefully" title="Permanent link">&para;</a></h2>
-<p>Create file stop.sh，use kill -15 to close java-tron.jar(or FullNode.jar、SolidityNode.jar).
-You need to modify pid=<code>ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'</code> to find the correct pid.
+<p>Create file stop.sh，use kill -15 to close FullNode.jar(or SolidityNode.jar).
+You need to modify pid=<code>ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code> to find the correct pid.
 <div class="highlight"><pre><span></span><code>#!/bin/bash
 while true; do
-  pid=`ps -ef |grep java-tron.jar |grep -v grep |awk &#39;{print $2}&#39;`
+  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
   if [ -n &quot;$pid&quot; ]; then
     kill -15 $pid
     echo &quot;The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently...&quot;
