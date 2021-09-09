@@ -972,7 +972,7 @@ Note: Due to the change of the total amount of the staked TRX in the network and
 
 1.&nbsp;By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43_200_000_000
 
-2.&nbsp;Every account has a fixed amount of free Bandwidth Points(5000) every day
+2.&nbsp;Every account has a fixed amount of free Bandwidth Points every day, it is defined in #61 network parameter, user can check the value on tronscan(https://tronscan.org/#/sr/committee).
 
 ### 8.2.2 Bandwidth Points Consumption
 
