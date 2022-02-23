@@ -329,32 +329,32 @@
 <p>There are three types of permission: owner、witness and active. Owner permission has the right to execute all the contracts. Witness permission is for SR. Active permission contains a set of contracts selected execution permissions.</p>
 <h3 id="protocol-definition">Protocol Definition<a class="headerlink" href="#protocol-definition" title="Permanent link">&para;</a></h3>
 <h4 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Account</span> <span class="p">{</span>
-  <span class="c1">// ...</span>
-  <span class="n">Permission</span> <span class="na">owner_permission</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
-  <span class="n">Permission</span> <span class="na">witness_permission</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span>
-  <span class="k">repeated</span> <span class="n">Permission</span> <span class="na">active_permission</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Account</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">owner_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">witness_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="na">active_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Three attributes are added, owner_permission、witness_permission and active_permission. active_permission is a list, the length can not be bigger than 8.</p>
 <h4 id="contracttype">ContractType<a class="headerlink" href="#contracttype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Transaction</span> <span class="p">{</span>
-  <span class="kd">message</span> <span class="nc">Contract</span> <span class="p">{</span>
-    <span class="kd">enum</span> <span class="n">ContractType</span> <span class="p">{</span>
-      <span class="na">AccountCreateContract</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-      <span class="c1">// ...</span>
-      <span class="na">AccountPermissionUpdateContract</span> <span class="o">=</span> <span class="mi">46</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Transaction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">message</span><span class="w"> </span><span class="nc">Contract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">enum</span><span class="w"> </span><span class="n">ContractType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">AccountCreateContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">      </span><span class="c1">// ...</span>
+<span class="w">      </span><span class="na">AccountPermissionUpdateContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">46</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>AccountPermissionUpdateContract is a new contract type used to update the account permission.</p>
 <h4 id="accountpermissionupdatecontract">AccountPermissionUpdateContract<a class="headerlink" href="#accountpermissionupdatecontract" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">AccountPermissionUpdateContract</span> <span class="p">{</span>
-  <span class="kt">bytes</span> <span class="na">owner_address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="n">Permission</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="n">Permission</span> <span class="na">witness</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="k">repeated</span> <span class="n">Permission</span> <span class="na">actives</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">AccountPermissionUpdateContract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">witness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="na">actives</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -365,19 +365,19 @@
 </ul>
 <p>This will override the Original account permission.</p>
 <h4 id="permission">Permission<a class="headerlink" href="#permission" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Permission</span> <span class="p">{</span>
-  <span class="kd">enum</span> <span class="n">PermissionType</span> <span class="p">{</span>
-    <span class="na">Owner</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="na">Witness</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="na">Active</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="n">PermissionType</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kt">int32</span> <span class="na">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="kt">string</span> <span class="na">permission_name</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="kt">int64</span> <span class="na">threshold</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-  <span class="kt">int32</span> <span class="na">parent_id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-  <span class="kt">bytes</span> <span class="na">operations</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
-  <span class="k">repeated</span> <span class="n">Key</span> <span class="na">keys</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Permission</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">PermissionType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="na">Witness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="na">Active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">PermissionType</span><span class="w"> </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">permission_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">parent_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">operations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="na">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -395,9 +395,9 @@
 </li>
 </ul>
 <h4 id="key">Key<a class="headerlink" href="#key" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Key</span> <span class="p">{</span>
-  <span class="kt">bytes</span> <span class="na">address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kt">int64</span> <span class="na">weight</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Key</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -405,9 +405,9 @@
 <li><code>weight</code>: The signature weight</li>
 </ul>
 <h4 id="transaction">Transaction<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Transaction</span> <span class="p">{</span>
-  <span class="c1">// ...</span>
-  <span class="kt">int32</span> <span class="na">Permission_id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Transaction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">Permission_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><code>Permission_id</code> is added. It is corresponding to <code>Permission.id</code>
@@ -560,21 +560,21 @@ localwitness = [
 <div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/addtransactionsign -d &#39;</span>
 <span class="go">  {&quot;transaction&quot;: &quot;TransferContract&quot;, &quot;privateKey&quot;: &quot;permissionkey1&quot;}&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">AddSign</span> <span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">AddSign</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 </li>
 <li>
 <p>query the addresses that already signed a transaction</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/getapprovedlist -d &#39;{&quot;transaction&quot;}&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetTransactionApprovedList</span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionApprovedList</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionApprovedList</span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionApprovedList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>query the signature weigth of a transaction</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/getsignweight -d &#39;{&quot;transaction&quot;}&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetTransactionSignWeight</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionSignWeight</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionSignWeight</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionSignWeight</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 </li>
 </ol>

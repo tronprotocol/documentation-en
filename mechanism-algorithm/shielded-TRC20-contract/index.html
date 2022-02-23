@@ -341,10 +341,10 @@
 <p><strong>1. Call api: wallet/createaccount to generate the account</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="s2">&quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;account_address&quot;</span><span class="p">:</span><span class="s2">&quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="s2">&quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;account_address&quot;</span><span class="p">:</span><span class="s2">&quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -374,7 +374,7 @@ Return:</p>
 <p><strong>1. Call api: wallet/getspendingkey to generate the spending key</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kc">null</span>
+<p><div class="highlight"><pre><span></span><code><span class="kc">null</span><span class="w"></span>
 </code></pre></div>
 Return:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -384,9 +384,9 @@ Return:</p>
 <p><strong>2. Call api: wallet/getexpandedspendingkey to generate the expanded spending key</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;09124de6a534661ef1cfad0335832445a3b83c08e885881a68a52cf4dc735e68&quot;</span> 
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;09124de6a534661ef1cfad0335832445a3b83c08e885881a68a52cf4dc735e68&quot;</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -398,9 +398,9 @@ Return:</p>
 <p><strong>3. Call api: wallet/getakfromask to generate the ak from ask</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">&quot;value&quot;</span> <span class="p">:</span> <span class="s2">&quot;23d11537676610c287ffcd1bc33d650df37fc90d13bb65356fbc9045cfb91705&quot;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;value&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;23d11537676610c287ffcd1bc33d650df37fc90d13bb65356fbc9045cfb91705&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Return:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -410,9 +410,9 @@ Return:</p>
 <p><strong>4. Call api: wallet/getnkfromnsk to generate the nk from nsk</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;da6542f57f6f730cb31b401b9ca8660589d8a765405c6d6f48fd392ac5360b0a&quot;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;da6542f57f6f730cb31b401b9ca8660589d8a765405c6d6f48fd392ac5360b0a&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Return:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -422,10 +422,10 @@ Return:</p>
 <p><strong>5. Call api: wallet/getincomingviewingkey to generate the incoming viewing key</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">&quot;ak&quot;</span><span class="p">:</span> <span class="s2">&quot;72b041a8006a02a995c24f5b8531a62008c8c54a1979622dc4ea6f54a506732d&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;nk&quot;</span><span class="p">:</span> <span class="s2">&quot;da6542f57f6f730cb31b401b9ca8660589d8a765405c6d6f48fd392ac5360b0a&quot;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;ak&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;72b041a8006a02a995c24f5b8531a62008c8c54a1979622dc4ea6f54a506732d&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;nk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;da6542f57f6f730cb31b401b9ca8660589d8a765405c6d6f48fd392ac5360b0a&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Return:</p>
 <p><div class="highlight"><pre><span></span><code>{
@@ -435,7 +435,7 @@ Return:</p>
 <strong>6. Call api: wallet/getdiversifier to generate the diversifier</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="kc">null</span>
+<div class="highlight"><pre><span></span><code><span class="kc">null</span><span class="w"></span>
 </code></pre></div>
 <p>Return:</p>
 <div class="highlight"><pre><span></span><code>{&quot;d&quot;: &quot;dd6b441bd5dcb9c25ec41f&quot;}
@@ -443,10 +443,10 @@ Return:</p>
 <p><strong>7. Call api: wallet/getzenpaymentaddress to generate shielded payment address</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;ivk&quot;</span><span class="p">:</span><span class="s2">&quot;6896b46a8355ae75896900ac617293d98e1b48fd885ed484a7cbddd566762705&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;d&quot;</span><span class="p">:</span><span class="s2">&quot;dd6b441bd5dcb9c25ec41f&quot;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ivk&quot;</span><span class="p">:</span><span class="s2">&quot;6896b46a8355ae75896900ac617293d98e1b48fd885ed484a7cbddd566762705&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;d&quot;</span><span class="p">:</span><span class="s2">&quot;dd6b441bd5dcb9c25ec41f&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Return:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -460,7 +460,7 @@ Return:</p>
 <p><strong>8. Call api: wallet/getnewshieldedaddress to generate all the related keys</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="kc">null</span>
+<div class="highlight"><pre><span></span><code><span class="kc">null</span><span class="w"></span>
 </code></pre></div>
 <p>Return:</p>
 <div class="highlight"><pre><span></span><code>{
@@ -480,18 +480,18 @@ Return:</p>
 <p><strong>1. Call api: wallet/createshieldedcontractparameters to build the parameters</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">&quot;ovk&quot;</span><span class="p">:</span> <span class="s2">&quot;1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;from_amount&quot;</span><span class="p">:</span> <span class="s2">&quot;5000&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_receives&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-          <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span> <span class="s2">&quot;ztron15js0jkuxczt8caq5hp59rnh6rgf34sek7vqn9u6ljelxv4nuzz2x9qe3ffm2wzz6ck53yxyhxs6&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;74baec30dfac8ed59968955ff245ae002009005194e5b824c35ab88c52e5170e&quot;</span>
-       <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;41f3392eaa7d38749176e0671dbc6912f8ef956943&quot;</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;ovk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;from_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_receives&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ztron15js0jkuxczt8caq5hp59rnh6rgf34sek7vqn9u6ljelxv4nuzz2x9qe3ffm2wzz6ck53yxyhxs6&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;74baec30dfac8ed59968955ff245ae002009005194e5b824c35ab88c52e5170e&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41f3392eaa7d38749176e0671dbc6912f8ef956943&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Note: 1. the shielded TRC-20 contract should be deployed befor calling the api; 2. the <code>from_amount</code> is the real value, the <code>value</code> in note is the scaled value by <code>scalingFactor</code> set in the shielded TRC-20 contract, namely <code>from_amount</code> = <code>value</code> * <code>scalingFactor</code>. In this example, the value of <code>scalingFactor</code> is 100; 3. the <code>rcm</code> is a random field element with the length of 32 bytes,  which should be generated by <code>GetRcm</code> api. </p>
 <p>Return:</p>
@@ -516,18 +516,18 @@ Note: 1. the shielded TRC-20 contract should be deployed befor calling the api; 
 <p><strong>2. Call api: wallet/createshieldedcontractparameterswithoutask to build the parameters</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">&quot;ovk&quot;</span><span class="p">:</span> <span class="s2">&quot;cd361834b3adc06f130de24f7d0c18f92a093cc885d9ce492cc6c02071f7a4f0&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;from_amount&quot;</span><span class="p">:</span> <span class="s2">&quot;5000&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_receives&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-          <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span> <span class="s2">&quot;ztron13lvfnt4rau4ad9mmgztd3aftw49e3amz8gm2kvyzrsaw0ugz2grxwkvcfys5e2gkchj7cnnetjz&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;499e73f2f8aaf05fac41a35b8343bde27f6629cbe66d35da5364a99b94a55a06&quot;</span>
-       <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;41f3392eaa7d38749176e0671dbc6912f8ef956943&quot;</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;ovk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cd361834b3adc06f130de24f7d0c18f92a093cc885d9ce492cc6c02071f7a4f0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;from_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_receives&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ztron13lvfnt4rau4ad9mmgztd3aftw49e3amz8gm2kvyzrsaw0ugz2grxwkvcfys5e2gkchj7cnnetjz&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;499e73f2f8aaf05fac41a35b8343bde27f6629cbe66d35da5364a99b94a55a06&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41f3392eaa7d38749176e0671dbc6912f8ef956943&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Note: the <code>from_amount</code> is the real value, the <code>value</code> in note is the scaled value by <code>scalingFactor</code> set in the shielded TRC-20 contract, namely <code>from_amount</code> = <code>value</code> * <code>scalingFactor</code>. In this example, the value of <code>scalingFactor</code> is 100. </p>
 <p>Return:</p>
@@ -552,52 +552,52 @@ Note: the <code>from_amount</code> is the real value, the <code>value</code> in 
 <p><strong>1. Call api: wallet/createshieldedcontractparameters to build the parameters</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>  
-    <span class="nt">&quot;ask&quot;</span><span class="p">:</span> <span class="s2">&quot;0f63eabdfe2bbfe08012f6bb2db024e6809c16e8ed055aa41a6095424f192005&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;nsk&quot;</span><span class="p">:</span> <span class="s2">&quot;cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ovk&quot;</span><span class="p">:</span> <span class="s2">&quot;0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889&quot;</span><span class="p">,</span>
-    <span class="err">shielded_spe</span><span class="kc">n</span><span class="err">ds</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1n2xqnggktc8tfhskevgfvnjjkd4tj6n98e28vdwjyu9p4dz5t55nwazay5y3qnv8cp0xs3fgzgv&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;6760c1f7681752bf9ec18316dfbc2d66ddaae690d77302bdc6d127ff3084af00&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;alpha&quot;</span><span class="p">:</span> <span class="s2">&quot;9a22f748597f7dc83edb3b05b3a3def34f47c4cb13d216be7ce03d2ea9da7e0a&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;root&quot;</span><span class="p">:</span>  <span class="s2">&quot;4d46e59b39d39430208317a101bc94ef1ee8276181cce24180612d500593315a&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span>  <span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613912d82b2c2bca231f71efcf61737fbf0a08befa0416215aeef53e8bb6d23390a5761cd9b3396e9cedf9afeecac3edbcd192c5f65a4b108cc595dd7f668df0a1fd8283386ef2ef07ebdbb4383c12a739a953a4d6e0d6fb1139a4036d693bfbb6ca0568ea9736f053947db35d23177d291ebc45d45ed0519d69e12dad90ec25100817de36ab2d57feb077634bca77819c8e0bd298c04f6fed0e6a83cc1356ca1557d62777dfad1d910d526787f2ea857575dad337270a07dd99127a6b320a39a72&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;pos&quot;</span><span class="p">:</span> <span class="mi">20</span>
-      <span class="p">},</span>
-     <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-            <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron135rhyme9sqgfdzszmvj0pzhvnthzdl59fqag362lsyrme3xrcjat9am35a390uk0yudskaqppf5&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;9ff13d57e9c5a92405da71d6187bb0c11d6260914788a54f38ad62e4a04ffa04&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;alpha&quot;</span><span class="p">:</span> <span class="s2">&quot;6865f8058e33b3d3dccb8f0b5c39993760d305a711165724d90998fb68c64b00&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;root&quot;</span><span class="p">:</span>  <span class="s2">&quot;4d46e59b39d39430208317a101bc94ef1ee8276181cce24180612d500593315a&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613912d82b2c2bca231f71efcf61737fbf0a08befa0416215aeef53e8bb6d23390a5761cd9b3396e9cedf9afeecac3edbcd192c5f65a4b108cc595dd7f668df0a1fd8283386ef2ef07ebdbb4383c12a739a953a4d6e0d6fb1139a4036d693bfbb6ca0568ea9736f053947db35d23177d291ebc45d45ed0519d69e12dad90ec25100817de36ab2d57feb077634bca77819c8e0bd298c04f6fed0e6a83cc1356ca15542bfe0aed87e6bb53dce44c20046a43418f9c43bc9f5695e55aa7580729cd74e&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="mi">21</span> 
-      <span class="p">},</span>
-   <span class="p">],</span>
-   <span class="err">shielded_receives</span><span class="p">:</span> <span class="p">[</span>
-     <span class="p">{</span>
-       <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-           <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-           <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron16455ldgqwz3sfamz0nymymwcvg0v6qsvn8prqtnznu6dmuuud965ar6rqw3yas48dn9w7ejne59&quot;</span><span class="p">,</span>
-           <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;75ba6b5949879ae11229f53728cd6f1eadbb999898e0927d7e9dc4045d806602&quot;</span>
-        <span class="p">}</span>
-     <span class="p">},</span>
-     <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-           <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span>
-           <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1fkcy3738mx4h448cpx76yz5fjsa8c4ra8r4ff8x6s5n4ak5303a5hrgcw66c5syf0y87wqwcrnh&quot;</span><span class="p">,</span>
-           <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;43e419fb8abef141f7b9d5d5a30ac743edebf9eb80cd24a344efe3ca091b6008&quot;</span>
-        <span class="p">}</span>
-     <span class="p">}</span>
-   <span class="p">],</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;41e6e90fbc958ba09483550882b1f0327e0193250a&quot;</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">&quot;ask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0f63eabdfe2bbfe08012f6bb2db024e6809c16e8ed055aa41a6095424f192005&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;nsk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ovk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">shielded_spe</span><span class="kc">n</span><span class="err">ds</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1n2xqnggktc8tfhskevgfvnjjkd4tj6n98e28vdwjyu9p4dz5t55nwazay5y3qnv8cp0xs3fgzgv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6760c1f7681752bf9ec18316dfbc2d66ddaae690d77302bdc6d127ff3084af00&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;alpha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9a22f748597f7dc83edb3b05b3a3def34f47c4cb13d216be7ce03d2ea9da7e0a&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;root&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;4d46e59b39d39430208317a101bc94ef1ee8276181cce24180612d500593315a&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613912d82b2c2bca231f71efcf61737fbf0a08befa0416215aeef53e8bb6d23390a5761cd9b3396e9cedf9afeecac3edbcd192c5f65a4b108cc595dd7f668df0a1fd8283386ef2ef07ebdbb4383c12a739a953a4d6e0d6fb1139a4036d693bfbb6ca0568ea9736f053947db35d23177d291ebc45d45ed0519d69e12dad90ec25100817de36ab2d57feb077634bca77819c8e0bd298c04f6fed0e6a83cc1356ca1557d62777dfad1d910d526787f2ea857575dad337270a07dd99127a6b320a39a72&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron135rhyme9sqgfdzszmvj0pzhvnthzdl59fqag362lsyrme3xrcjat9am35a390uk0yudskaqppf5&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9ff13d57e9c5a92405da71d6187bb0c11d6260914788a54f38ad62e4a04ffa04&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;alpha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6865f8058e33b3d3dccb8f0b5c39993760d305a711165724d90998fb68c64b00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;root&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;4d46e59b39d39430208317a101bc94ef1ee8276181cce24180612d500593315a&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613912d82b2c2bca231f71efcf61737fbf0a08befa0416215aeef53e8bb6d23390a5761cd9b3396e9cedf9afeecac3edbcd192c5f65a4b108cc595dd7f668df0a1fd8283386ef2ef07ebdbb4383c12a739a953a4d6e0d6fb1139a4036d693bfbb6ca0568ea9736f053947db35d23177d291ebc45d45ed0519d69e12dad90ec25100817de36ab2d57feb077634bca77819c8e0bd298c04f6fed0e6a83cc1356ca15542bfe0aed87e6bb53dce44c20046a43418f9c43bc9f5695e55aa7580729cd74e&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="mi">21</span><span class="w"> </span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="w">   </span><span class="err">shielded_receives</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron16455ldgqwz3sfamz0nymymwcvg0v6qsvn8prqtnznu6dmuuud965ar6rqw3yas48dn9w7ejne59&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;75ba6b5949879ae11229f53728cd6f1eadbb999898e0927d7e9dc4045d806602&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">     </span><span class="p">},</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1fkcy3738mx4h448cpx76yz5fjsa8c4ra8r4ff8x6s5n4ak5303a5hrgcw66c5syf0y87wqwcrnh&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;43e419fb8abef141f7b9d5d5a30ac743edebf9eb80cd24a344efe3ca091b6008&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41e6e90fbc958ba09483550882b1f0327e0193250a&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:
 <div class="highlight"><pre><span></span><code><span class="o">{</span>
@@ -646,52 +646,52 @@ Return:
 <p><strong>2. Call api: wallet/createshieldedcontractparameterswithoutask to build the parameters</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>  
-    <span class="nt">&quot;ak&quot;</span><span class="p">:</span> <span class="s2">&quot;8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;nsk&quot;</span><span class="p">:</span> <span class="s2">&quot;cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ovk&quot;</span><span class="p">:</span> <span class="s2">&quot;0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889&quot;</span><span class="p">,</span>
-    <span class="err">shielded_spe</span><span class="kc">n</span><span class="err">ds</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1nx3cnncmlcl72ppcrz23krpurxphz9g5yj85zvpgm94g46zs8pq8gd7qrcv8xezp9rryzlar4az&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;4636333870ccc91fb8bfe53ed559f8cf64505672a58d82875694dd38eb3d6404&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;alpha&quot;</span><span class="p">:</span> <span class="s2">&quot;d0f0768664f5c807f9e70d05993f029c71da529afaa5c037b44c63d6e13bc907&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;root&quot;</span><span class="p">:</span>  <span class="s2">&quot;c1dda86b7af8ce842e349347b364936baf24ad36be65046e2fd7349640bba873&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span>  <span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613213099b1bdbe886f3bca27080fe45467bb6a83e77e68348a8e863b0c676a30475761cd9b3396e9cedf9afeecac3edbcd192c5f65a4b108cc595dd7f668df0a1fec35ec8008050551a48d62ca8b2085276d589a8d02ab9cad8b0d6b30b8622d279acf822005ced7f6caaea51d378f0084bea34d1f98f759186ea5a2e67756b6656258501e6cf76599d3a854584c3438a34bb4754f9a84bfe98ad55cfc4bc25d4ed185719284bf14140befea7d9ec174b9dae461f4832db5f7d2e96aa4c0c52a6a&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;pos&quot;</span><span class="p">:</span> <span class="mi">31</span>
-      <span class="p">},</span>
-     <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-            <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1x54s8nrzf2g85grp729s4pxx7ta3s38lj0jw57qwnuqx0e2wy8sfdcyldyfs9hazhqrs6jjzxhw&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;74908b43975847d5df6c0b40c4d5b1dbe732cb720e6b5bd5a55e7cd10e2a3a05&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;alpha&quot;</span><span class="p">:</span> <span class="s2">&quot;ff3bd6babd3e28da098c67c67f26f2e613a5d1cec966b2f25ca4a943218ee805&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;root&quot;</span><span class="p">:</span>  <span class="s2">&quot;c1dda86b7af8ce842e349347b364936baf24ad36be65046e2fd7349640bba873&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613cccdc97df3913f95c42665c3db7e806af0f5e84d5b6caac5754f6100df1a0c18e110de65c907b9dea4ae0bd83a4b0a51bea175646a64c12b4c9f931b2cb31b49d8283386ef2ef07ebdbb4383c12a739a953a4d6e0d6fb1139a4036d693bfbb6cffe9fc03f18b176c998806439ff0bb8ad193afdb27b2ccbc88856916dd804e34817de36ab2d57feb077634bca77819c8e0bd298c04f6fed0e6a83cc1356ca1550100000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="mi">32</span> 
-      <span class="p">},</span>
-   <span class="p">],</span>
-   <span class="err">shielded_receives</span><span class="p">:</span> <span class="p">[</span>
-     <span class="p">{</span>
-       <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-           <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-           <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron127acwjxf499f43t8mk42ch5jyru68fsw7jun9hfu7pv87we3dnfrwtml8np80gsegksnjfz87vd&quot;</span><span class="p">,</span>
-           <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;4172682e3f0398abb7f204220279948b3dd930bc901b1c9223a5cac51b1a7703&quot;</span>
-        <span class="p">}</span>
-     <span class="p">},</span>
-     <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-           <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span>
-           <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1f6dfsq8mxj8pd2f2dvnle4x6ahfrqr4ll2ezp2ez90jmcjtksr2r6s8095ljf7a3mfpn2uklc9r&quot;</span><span class="p">,</span>
-           <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;7b4d06b6e0b5ea0172063f7f7e495bb840ff279787bd49adffdcfde65d68700e&quot;</span>
-        <span class="p">}</span>
-     <span class="p">}</span>
-   <span class="p">],</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;41e6e90fbc958ba09483550882b1f0327e0193250a&quot;</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">&quot;ak&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;nsk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cd43d722fd4b6b01f19449ea826c3e935609648520fcc2a95c0026f0fa9ee404&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ovk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">shielded_spe</span><span class="kc">n</span><span class="err">ds</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1nx3cnncmlcl72ppcrz23krpurxphz9g5yj85zvpgm94g46zs8pq8gd7qrcv8xezp9rryzlar4az&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4636333870ccc91fb8bfe53ed559f8cf64505672a58d82875694dd38eb3d6404&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;alpha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d0f0768664f5c807f9e70d05993f029c71da529afaa5c037b44c63d6e13bc907&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;root&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;c1dda86b7af8ce842e349347b364936baf24ad36be65046e2fd7349640bba873&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613213099b1bdbe886f3bca27080fe45467bb6a83e77e68348a8e863b0c676a30475761cd9b3396e9cedf9afeecac3edbcd192c5f65a4b108cc595dd7f668df0a1fec35ec8008050551a48d62ca8b2085276d589a8d02ab9cad8b0d6b30b8622d279acf822005ced7f6caaea51d378f0084bea34d1f98f759186ea5a2e67756b6656258501e6cf76599d3a854584c3438a34bb4754f9a84bfe98ad55cfc4bc25d4ed185719284bf14140befea7d9ec174b9dae461f4832db5f7d2e96aa4c0c52a6a&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1x54s8nrzf2g85grp729s4pxx7ta3s38lj0jw57qwnuqx0e2wy8sfdcyldyfs9hazhqrs6jjzxhw&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;74908b43975847d5df6c0b40c4d5b1dbe732cb720e6b5bd5a55e7cd10e2a3a05&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;alpha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ff3bd6babd3e28da098c67c67f26f2e613a5d1cec966b2f25ca4a943218ee805&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;root&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;c1dda86b7af8ce842e349347b364936baf24ad36be65046e2fd7349640bba873&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613cccdc97df3913f95c42665c3db7e806af0f5e84d5b6caac5754f6100df1a0c18e110de65c907b9dea4ae0bd83a4b0a51bea175646a64c12b4c9f931b2cb31b49d8283386ef2ef07ebdbb4383c12a739a953a4d6e0d6fb1139a4036d693bfbb6cffe9fc03f18b176c998806439ff0bb8ad193afdb27b2ccbc88856916dd804e34817de36ab2d57feb077634bca77819c8e0bd298c04f6fed0e6a83cc1356ca1550100000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="mi">32</span><span class="w"> </span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="w">   </span><span class="err">shielded_receives</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron127acwjxf499f43t8mk42ch5jyru68fsw7jun9hfu7pv87we3dnfrwtml8np80gsegksnjfz87vd&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4172682e3f0398abb7f204220279948b3dd930bc901b1c9223a5cac51b1a7703&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">     </span><span class="p">},</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1f6dfsq8mxj8pd2f2dvnle4x6ahfrqr4ll2ezp2ez90jmcjtksr2r6s8095ljf7a3mfpn2uklc9r&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7b4d06b6e0b5ea0172063f7f7e495bb840ff279787bd49adffdcfde65d68700e&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41e6e90fbc958ba09483550882b1f0327e0193250a&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:
 <div class="highlight"><pre><span></span><code><span class="o">{</span>
@@ -812,38 +812,38 @@ Return:
 <p><strong>1. Call api: wallet/createshieldedcontractparameters to build the parameters</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>  
-    <span class="nt">&quot;ask&quot;</span><span class="p">:</span> <span class="s2">&quot;0f04d283f9a26718676a29d5fc9af0199874c5c2f6fd103f2342b24c9820a604&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;nsk&quot;</span><span class="p">:</span> <span class="s2">&quot;572d8147283d90a938bd2867926fef485290c5fce37fad72eb733f9cd8a07e09&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ovk&quot;</span><span class="p">:</span> <span class="s2">&quot;1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_spends&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1mpwx0380fvw7gacf5hm4vl625ltmdezt0dwp3ssyd84y8jxzp3guqz9utzn35u7038jx6a6ucly&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;b67b18fee3133440bfc4509912b96482fdcacbc0b5679af1785247c94224200c&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;alpha&quot;</span><span class="p">:</span> <span class="s2">&quot;b6de1a3a40764bd7a24147f155011624805bfcd6d21283c69a3f21aea9401201&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;root&quot;</span><span class="p">:</span>  <span class="s2">&quot;b0b6f5be533b99be38bc9a3c2f3c75a9be263c42500a9e13ffb00df15cda126f&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span>  <span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613912d82b2c2bca231f71efcf61737fbf0a08befa0416215aeef53e8bb6d23390a93a022931b1f10886401d5fc249cbc9d0158945f4ecc0509041abc868077545d091e115b68c44341eec6fd6862140898e7399401f2ec319e3daefd931dcf1a3fffe9fc03f18b176c998806439ff0bb8ad193afdb27b2ccbc88856916dd804e34adfa6682c546a5f87ac883fa09f6954b50fb7330f8e6b080a9a417548ab062674fc4565e1c6027648d10d91b1708cb4456f2e09220ab8f155c41ef790ea9b562&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;pos&quot;</span><span class="p">:</span> <span class="mi">27</span>
-      <span class="p">}</span>
-   <span class="p">],</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">&quot;ask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0f04d283f9a26718676a29d5fc9af0199874c5c2f6fd103f2342b24c9820a604&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;nsk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;572d8147283d90a938bd2867926fef485290c5fce37fad72eb733f9cd8a07e09&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ovk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_spends&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1mpwx0380fvw7gacf5hm4vl625ltmdezt0dwp3ssyd84y8jxzp3guqz9utzn35u7038jx6a6ucly&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b67b18fee3133440bfc4509912b96482fdcacbc0b5679af1785247c94224200c&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;alpha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b6de1a3a40764bd7a24147f155011624805bfcd6d21283c69a3f21aea9401201&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;root&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;b0b6f5be533b99be38bc9a3c2f3c75a9be263c42500a9e13ffb00df15cda126f&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613912d82b2c2bca231f71efcf61737fbf0a08befa0416215aeef53e8bb6d23390a93a022931b1f10886401d5fc249cbc9d0158945f4ecc0509041abc868077545d091e115b68c44341eec6fd6862140898e7399401f2ec319e3daefd931dcf1a3fffe9fc03f18b176c998806439ff0bb8ad193afdb27b2ccbc88856916dd804e34adfa6682c546a5f87ac883fa09f6954b50fb7330f8e6b080a9a417548ab062674fc4565e1c6027648d10d91b1708cb4456f2e09220ab8f155c41ef790ea9b562&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
 
-   <span class="nt">&quot;shielded_receives&quot;</span><span class="p">:</span> <span class="p">[</span>
-     <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-           <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-           <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1nupklnacqyjc7ge998f6v2wutm7urdcdupl6j4ypq7qwws5yqfqrlxwvnylucwre8yewx5s0keu&quot;</span><span class="p">,</span>
-           <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;f2aa138d0d04b685b236d797458d0cf53749b96bbb6d5f1e6c5f2db31b0b2d09&quot;</span>
-        <span class="p">}</span>
-     <span class="p">}</span>
-   <span class="p">],</span>
-   <span class="nt">&quot;transparent_to_address&quot;</span><span class="p">:</span><span class="s2">&quot;TBaBXpRAeBhs75TZT751LwyhrcR25XeUot&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;to_amount&quot;</span><span class="p">:</span><span class="s2">&quot;2000&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;TDxka3zetrpWsWoeWWjSAQDwM186UmzwQn&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;visible&quot;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
+<span class="w">   </span><span class="nt">&quot;shielded_receives&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1nupklnacqyjc7ge998f6v2wutm7urdcdupl6j4ypq7qwws5yqfqrlxwvnylucwre8yewx5s0keu&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f2aa138d0d04b685b236d797458d0cf53749b96bbb6d5f1e6c5f2db31b0b2d09&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;transparent_to_address&quot;</span><span class="p">:</span><span class="s2">&quot;TBaBXpRAeBhs75TZT751LwyhrcR25XeUot&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;to_amount&quot;</span><span class="p">:</span><span class="s2">&quot;2000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TDxka3zetrpWsWoeWWjSAQDwM186UmzwQn&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Note: the <code>to_amount</code> is the real value, the <code>value</code> in note is the scaled value by <code>scalingFactor</code> set in the shielded TRC-20 contract. In this example, the value of <code>scalingFactor</code> is 100. , namely 60 * 100 =  40 * 100 + 2000.</p>
 <p>Return:</p>
@@ -876,37 +876,37 @@ Note: the <code>to_amount</code> is the real value, the <code>value</code> in no
 <p><strong>2. Call api: wallet/createshieldedcontractparameterswithoutask to build the parameters</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>  
-    <span class="nt">&quot;ak&quot;</span><span class="p">:</span> <span class="s2">&quot;66fda71a704eb463a13b6f43be7e296dd7ff3e6075e64badf462eca042f0b269&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;nsk&quot;</span><span class="p">:</span> <span class="s2">&quot;572d8147283d90a938bd2867926fef485290c5fce37fad72eb733f9cd8a07e09&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ovk&quot;</span><span class="p">:</span> <span class="s2">&quot;1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_spends&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1mpwx0380fvw7gacf5hm4vl625ltmdezt0dwp3ssyd84y8jxzp3guqz9utzn35u7038jx6a6ucly&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;b67b18fee3133440bfc4509912b96482fdcacbc0b5679af1785247c94224200c&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;alpha&quot;</span><span class="p">:</span> <span class="s2">&quot;b6de1a3a40764bd7a24147f155011624805bfcd6d21283c69a3f21aea9401201&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;root&quot;</span><span class="p">:</span>  <span class="s2">&quot;b0b6f5be533b99be38bc9a3c2f3c75a9be263c42500a9e13ffb00df15cda126f&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span>  <span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613912d82b2c2bca231f71efcf61737fbf0a08befa0416215aeef53e8bb6d23390a93a022931b1f10886401d5fc249cbc9d0158945f4ecc0509041abc868077545d091e115b68c44341eec6fd6862140898e7399401f2ec319e3daefd931dcf1a3fffe9fc03f18b176c998806439ff0bb8ad193afdb27b2ccbc88856916dd804e34adfa6682c546a5f87ac883fa09f6954b50fb7330f8e6b080a9a417548ab062674fc4565e1c6027648d10d91b1708cb4456f2e09220ab8f155c41ef790ea9b562&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;pos&quot;</span><span class="p">:</span> <span class="mi">27</span>
-      <span class="p">}</span>
-   <span class="p">],</span>
-   <span class="nt">&quot;shielded_receives&quot;</span><span class="p">:</span> <span class="p">[</span>
-     <span class="p">{</span>
-        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-           <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-           <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1nupklnacqyjc7ge998f6v2wutm7urdcdupl6j4ypq7qwws5yqfqrlxwvnylucwre8yewx5s0keu&quot;</span><span class="p">,</span>
-           <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;f2aa138d0d04b685b236d797458d0cf53749b96bbb6d5f1e6c5f2db31b0b2d09&quot;</span>
-        <span class="p">}</span>
-     <span class="p">}</span>
-   <span class="p">],</span>
-   <span class="nt">&quot;transparent_to_address&quot;</span><span class="p">:</span><span class="s2">&quot;TBaBXpRAeBhs75TZT751LwyhrcR25XeUot&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;to_amount&quot;</span><span class="p">:</span><span class="s2">&quot;2000&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;TDxka3zetrpWsWoeWWjSAQDwM186UmzwQn&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;visible&quot;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">&quot;ak&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;66fda71a704eb463a13b6f43be7e296dd7ff3e6075e64badf462eca042f0b269&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;nsk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;572d8147283d90a938bd2867926fef485290c5fce37fad72eb733f9cd8a07e09&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ovk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1797de3b7f33cafffe3fe18c6b43ec6760add2ad81b10978d1fca5290497ede9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_spends&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1mpwx0380fvw7gacf5hm4vl625ltmdezt0dwp3ssyd84y8jxzp3guqz9utzn35u7038jx6a6ucly&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b67b18fee3133440bfc4509912b96482fdcacbc0b5679af1785247c94224200c&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;alpha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b6de1a3a40764bd7a24147f155011624805bfcd6d21283c69a3f21aea9401201&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;root&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;b0b6f5be533b99be38bc9a3c2f3c75a9be263c42500a9e13ffb00df15cda126f&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;b2eed031d4d6a4f02a097f80b54cc1541d4163c6b6f5971f88b6e41d35c5381412935f14b676509b81eb49ef25f39269ed72309238b4c145803544b646dca62de1f34b034d4a3cd28557e2907ebf990c918f64ecb50a94f01d6fda5ca5c7ef7228e7b841dcbc47cceb69d7cb8d94245fb7cb2ba3a7a6bc18f13f945f7dbd6e2aa5122c08ff9c161d9ca6fc462073396c7d7d38e8ee48cdb3bea7e2230134ed6ad2e1642c9a462229289e5b0e3b7f9008e0301cbb93385ee0e21da2545073cb5816d6252968971a83da8521d65382e61f0176646d771c91528e3276ee45383e4afee0e52802cb0c46b1eb4d376c62697f4759f6c8917fa352571202fd778fd7124c6937d78f42685f84b43ad3b7b00f81285662f85c6a68ef11d62ad1a3ee08500769557bc682b1bf308646fd0b22e648e8b9e98f57e29f5af40f6edb833e2c4908eeab0c13abd6069e6310197bf80f9c1ea6de78fd19cbae24d4a520e6cf30238d5fa43e5a10d11605ac7430ba1f5d81fb1b68d29a640405767749e8415276736aca8448d8263e547d5ff2950e2ed3839e998d31cbc6ac9fd57bc6002b159216cd1c8dbf6e3acc7a80439bc4962cf25b9dce7c896f3a5bd70803fc5a0e33cf006edb16d01907b759977d7650dad7e3ec049af1a3d875380b697c862c9ec5d51c1ea6675f9551eeb9dfaaa9247bc9858270d3d3a4c5afa7177a984d5ed1be2451d6acdedf95f608e09fa53fb43dcd0990475726c5131210c9e5caeab97f0e642fbd74b25aacb92378a871bf27d225cfc26baca344a1ea35fdd94510f3d157082c1b77dac4d24fb7258c3c528704c59430b630718bec486421837021cf75dab651ec677114c27206f5debc1c1ed66f95e2b1885da5b7be3d736b1de985794730484777c8776a3b1e69b73a62fa701fa4f7a6282d9aee2c7a6b82e7937d7081c23cba49b659fbd0b7334211ea6a9d9df185c757e70aa81da562fb912b84f49bce7243ff5457f13b926b61df552d4e402ee6dc1463f99a535f9a713439264d5b616b7b99abdc3730991cc9274727d7d82d28cb794edbc7034b4f0053ff7c4b680444d6c639ac24b46bd19341c91b13fdcab31581ddaf7f1411336a271f3d0aa528138ac9cf9c391e3fd42891d27238a81a8a5c1d3a72b1bcbea8cf44a58ce7389613912d82b2c2bca231f71efcf61737fbf0a08befa0416215aeef53e8bb6d23390a93a022931b1f10886401d5fc249cbc9d0158945f4ecc0509041abc868077545d091e115b68c44341eec6fd6862140898e7399401f2ec319e3daefd931dcf1a3fffe9fc03f18b176c998806439ff0bb8ad193afdb27b2ccbc88856916dd804e34adfa6682c546a5f87ac883fa09f6954b50fb7330f8e6b080a9a417548ab062674fc4565e1c6027648d10d91b1708cb4456f2e09220ab8f155c41ef790ea9b562&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;pos&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;shielded_receives&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1nupklnacqyjc7ge998f6v2wutm7urdcdupl6j4ypq7qwws5yqfqrlxwvnylucwre8yewx5s0keu&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f2aa138d0d04b685b236d797458d0cf53749b96bbb6d5f1e6c5f2db31b0b2d09&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;transparent_to_address&quot;</span><span class="p">:</span><span class="s2">&quot;TBaBXpRAeBhs75TZT751LwyhrcR25XeUot&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;to_amount&quot;</span><span class="p">:</span><span class="s2">&quot;2000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TDxka3zetrpWsWoeWWjSAQDwM186UmzwQn&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Note: the <code>to_amount</code> is the real value, the <code>value</code> in note is the scaled value by <code>scalingFactor</code> set in the shielded TRC-20 contract. In this example, the value of <code>scalingFactor</code> is 100, namely 60 * 100 =  40 * 100 + 2000.</p>
 <p>Return:</p>
@@ -997,16 +997,16 @@ Note: the <code>to_amount</code> is the real value, the <code>value</code> in no
 <p><strong>Call api: wallet/triggersmartcontract to trigger the shielded TRC-20 contract and geneate the shielded TRC-20 transaction</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">&quot;owner_address&quot;</span><span class="p">:</span> <span class="s2">&quot;411195752747f24146fd1fcd12c31600a81f7c5423&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;41959ec81ae3c002192fd25dff7f8d20b4bb6b76ee&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;function_selector&quot;</span><span class="p">:</span> <span class="s2">&quot;mint(uint256,bytes32[9],bytes32[2],bytes32[21])&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000000000000000000000000000000000000000000000000000000013889fb4acd771c24fdd47aabb109b7596566509421cdc11d1f8babb5d5af22a614ef10f73d04837be9158010626423130663ad09d6436b97b694acb2b92d940201efa4a7ef3e2406c2c897894ea73cad3ded8dbcfb90521ec8488163b2baeef6a88aa9af11367a3cd1cd797937bb7f521162d5264e1f2dc39ca7c6b0eadf8520a1b5c2bd3bbe50835a9f3419b82909cbf60989f83496480008cceb6a3783bbc25d2921f86d79b0bad5d493766b8cf1f6bec74f6b67480e770c3a7f5b27a30ae3d4a13df273ab73e9107a5287883317bb5417b7f6841e197df99f5321807995c80fd3810f791845681560ccd3a4bfd8c56e298bc09b989e5279ca190ac3b29cdb7941315c027facc97bf1c0a02fa437dd68b335f8cbf0d9a3ba4a30302523609f40a177cc31961ca63a9c375b714831bc007ddbc5cfbafca368200b6c33b4b0aeadf537b47c16788bdc00981713b79f23fc0b4065ab9369072589728ed0cc3ac25076a2f8141a2637e589983210ce6d09e67c36167cb9fa5b4a9bf8daafc795b9c3978ffeade3698dfd4c86f3c7b2dd92c36e6303101b49fdd4f1e4357223c02f19329f6bb18f1f6d2e297e9fefa2d9f92f81ce07a8980effa10b8b8bf39aa19e80d96ef1c915cc55d1d26ea07b1c0da2ecf66b7f8b64657f6ac95466a983553f29a8bea3d78c178b2129745d432ddc95532e56f8e93625c674f20375a48990ca287591fcf0c476c3d1392d4e1355caf8d7352f895dc62da55d83e478ab00b78d5a68a0f50a69d9c595bcf494361517c703db9dba728e8c79a833d753f1977f526e9afd4b6daaff37fa0f1d52a63199fb3f8e97b7061a200aed5d2865de16b83b762638e6c8f9269967299a97618c1bd984f5afa25d170cf9eef601bdd1c1d33bd91813c19f70e102b16327e4cd3d4851bfa76b7caf45026c70d4f2b4872d7255133b07dc41b626228051537eee53083e9a11daf5fcc5cf7ca1cef99579362b1506a90fc1ed5d4fe8b7133c7179a2d3aee27dc802a90403ba445adb6eef8b35fd798fb0d374ce3c8b4a6870bcf32651c9c32cfeafbb0672f50561d76826b938b9b2c44029bc5d11838d453a48565c70e0d3c8f2a915ba932a02271c73046b2c53aaf6e27bb72a567a26e2a4164974fc52d0ad7fa5dddfe9390007e2fc3ad46d644be55519e01a2cce76744f165c6705d3b007d2f649df84e3783622f5e077fe37fdd192896eae9b1245322db6e3242714a0552253b472103553f09b6b1d32804742375d3b140d2ebff2155b6248d07992f40e5537a0587315c451ac53cee490ce49c3b321a967558c39f789bf5d35859d4136bcf4178bf6b1814d617e139aa35710edcd325dd03957462070393b7066182fc56be713bba49a2359db71604e97e9350af687a7f185d7905d8900f7e2431386c00e55e32000000000000000000000000&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;call_value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-   <span class="nt">&quot;call_token_value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-   <span class="nt">&quot;token_id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-   <span class="nt">&quot;fee_limit&quot;</span><span class="p">:</span> <span class="mi">1000000000</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;411195752747f24146fd1fcd12c31600a81f7c5423&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41959ec81ae3c002192fd25dff7f8d20b4bb6b76ee&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;function_selector&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mint(uint256,bytes32[9],bytes32[2],bytes32[21])&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;parameter&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;00000000000000000000000000000000000000000000000000000000000013889fb4acd771c24fdd47aabb109b7596566509421cdc11d1f8babb5d5af22a614ef10f73d04837be9158010626423130663ad09d6436b97b694acb2b92d940201efa4a7ef3e2406c2c897894ea73cad3ded8dbcfb90521ec8488163b2baeef6a88aa9af11367a3cd1cd797937bb7f521162d5264e1f2dc39ca7c6b0eadf8520a1b5c2bd3bbe50835a9f3419b82909cbf60989f83496480008cceb6a3783bbc25d2921f86d79b0bad5d493766b8cf1f6bec74f6b67480e770c3a7f5b27a30ae3d4a13df273ab73e9107a5287883317bb5417b7f6841e197df99f5321807995c80fd3810f791845681560ccd3a4bfd8c56e298bc09b989e5279ca190ac3b29cdb7941315c027facc97bf1c0a02fa437dd68b335f8cbf0d9a3ba4a30302523609f40a177cc31961ca63a9c375b714831bc007ddbc5cfbafca368200b6c33b4b0aeadf537b47c16788bdc00981713b79f23fc0b4065ab9369072589728ed0cc3ac25076a2f8141a2637e589983210ce6d09e67c36167cb9fa5b4a9bf8daafc795b9c3978ffeade3698dfd4c86f3c7b2dd92c36e6303101b49fdd4f1e4357223c02f19329f6bb18f1f6d2e297e9fefa2d9f92f81ce07a8980effa10b8b8bf39aa19e80d96ef1c915cc55d1d26ea07b1c0da2ecf66b7f8b64657f6ac95466a983553f29a8bea3d78c178b2129745d432ddc95532e56f8e93625c674f20375a48990ca287591fcf0c476c3d1392d4e1355caf8d7352f895dc62da55d83e478ab00b78d5a68a0f50a69d9c595bcf494361517c703db9dba728e8c79a833d753f1977f526e9afd4b6daaff37fa0f1d52a63199fb3f8e97b7061a200aed5d2865de16b83b762638e6c8f9269967299a97618c1bd984f5afa25d170cf9eef601bdd1c1d33bd91813c19f70e102b16327e4cd3d4851bfa76b7caf45026c70d4f2b4872d7255133b07dc41b626228051537eee53083e9a11daf5fcc5cf7ca1cef99579362b1506a90fc1ed5d4fe8b7133c7179a2d3aee27dc802a90403ba445adb6eef8b35fd798fb0d374ce3c8b4a6870bcf32651c9c32cfeafbb0672f50561d76826b938b9b2c44029bc5d11838d453a48565c70e0d3c8f2a915ba932a02271c73046b2c53aaf6e27bb72a567a26e2a4164974fc52d0ad7fa5dddfe9390007e2fc3ad46d644be55519e01a2cce76744f165c6705d3b007d2f649df84e3783622f5e077fe37fdd192896eae9b1245322db6e3242714a0552253b472103553f09b6b1d32804742375d3b140d2ebff2155b6248d07992f40e5537a0587315c451ac53cee490ce49c3b321a967558c39f789bf5d35859d4136bcf4178bf6b1814d617e139aa35710edcd325dd03957462070393b7066182fc56be713bba49a2359db71604e97e9350af687a7f185d7905d8900f7e2431386c00e55e32000000000000000000000000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;call_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;call_token_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;token_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;fee_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000000</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:
 <div class="highlight"><pre><span></span><code><span class="o">{</span>
@@ -1044,30 +1044,30 @@ Return:
 <p><strong>Call api: wallet/broadcasttransaction to broadcast this transaction</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="s2">&quot;d8ae793212147ed7d64f96a1a6c1477aeeecdedf6f5cb2e7cd897f70c7c2603e&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;raw_data&quot;</span><span class="p">:{</span>
-        <span class="nt">&quot;contract&quot;</span><span class="p">:[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;parameter&quot;</span><span class="p">:{</span>
-                    <span class="nt">&quot;value&quot;</span><span class="p">:{</span>
-                        <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;855d175e00000000000000000000000000000000000000000000000000000000000013889fb4acd771c24fdd47aabb109b7596566509421cdc11d1f8babb5d5af22a614ef10f73d04837be9158010626423130663ad09d6436b97b694acb2b92d940201efa4a7ef3e2406c2c897894ea73cad3ded8dbcfb90521ec8488163b2baeef6a88aa9af11367a3cd1cd797937bb7f521162d5264e1f2dc39ca7c6b0eadf8520a1b5c2bd3bbe50835a9f3419b82909cbf60989f83496480008cceb6a3783bbc25d2921f86d79b0bad5d493766b8cf1f6bec74f6b67480e770c3a7f5b27a30ae3d4a13df273ab73e9107a5287883317bb5417b7f6841e197df99f5321807995c80fd3810f791845681560ccd3a4bfd8c56e298bc09b989e5279ca190ac3b29cdb7941315c027facc97bf1c0a02fa437dd68b335f8cbf0d9a3ba4a30302523609f40a177cc31961ca63a9c375b714831bc007ddbc5cfbafca368200b6c33b4b0aeadf537b47c16788bdc00981713b79f23fc0b4065ab9369072589728ed0cc3ac25076a2f8141a2637e589983210ce6d09e67c36167cb9fa5b4a9bf8daafc795b9c3978ffeade3698dfd4c86f3c7b2dd92c36e6303101b49fdd4f1e4357223c02f19329f6bb18f1f6d2e297e9fefa2d9f92f81ce07a8980effa10b8b8bf39aa19e80d96ef1c915cc55d1d26ea07b1c0da2ecf66b7f8b64657f6ac95466a983553f29a8bea3d78c178b2129745d432ddc95532e56f8e93625c674f20375a48990ca287591fcf0c476c3d1392d4e1355caf8d7352f895dc62da55d83e478ab00b78d5a68a0f50a69d9c595bcf494361517c703db9dba728e8c79a833d753f1977f526e9afd4b6daaff37fa0f1d52a63199fb3f8e97b7061a200aed5d2865de16b83b762638e6c8f9269967299a97618c1bd984f5afa25d170cf9eef601bdd1c1d33bd91813c19f70e102b16327e4cd3d4851bfa76b7caf45026c70d4f2b4872d7255133b07dc41b626228051537eee53083e9a11daf5fcc5cf7ca1cef99579362b1506a90fc1ed5d4fe8b7133c7179a2d3aee27dc802a90403ba445adb6eef8b35fd798fb0d374ce3c8b4a6870bcf32651c9c32cfeafbb0672f50561d76826b938b9b2c44029bc5d11838d453a48565c70e0d3c8f2a915ba932a02271c73046b2c53aaf6e27bb72a567a26e2a4164974fc52d0ad7fa5dddfe9390007e2fc3ad46d644be55519e01a2cce76744f165c6705d3b007d2f649df84e3783622f5e077fe37fdd192896eae9b1245322db6e3242714a0552253b472103553f09b6b1d32804742375d3b140d2ebff2155b6248d07992f40e5537a0587315c451ac53cee490ce49c3b321a967558c39f789bf5d35859d4136bcf4178bf6b1814d617e139aa35710edcd325dd03957462070393b7066182fc56be713bba49a2359db71604e97e9350af687a7f185d7905d8900f7e2431386c00e55e32000000000000000000000000&quot;</span><span class="p">,</span>
-                        <span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="s2">&quot;411195752747f24146fd1fcd12c31600a81f7c5423&quot;</span><span class="p">,</span>
-                        <span class="nt">&quot;contract_address&quot;</span><span class="p">:</span><span class="s2">&quot;41959ec81ae3c002192fd25dff7f8d20b4bb6b76ee&quot;</span>
-                    <span class="p">},</span>
-                    <span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="s2">&quot;type.googleapis.com/protocol.TriggerSmartContract&quot;</span>
-                <span class="p">},</span>
-                <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;TriggerSmartContract&quot;</span>
-            <span class="p">}],</span>
-        <span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="s2">&quot;f1a0&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="s2">&quot;6525d0bb0966c224&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="mi">1593795795000</span><span class="p">,</span>
-        <span class="nt">&quot;fee_limit&quot;</span><span class="p">:</span><span class="mi">1000000000</span><span class="p">,</span>
-        <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1593795737687</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;signature&quot;</span><span class="p">:</span> <span class="s2">&quot;2c1593a78911b9183bd513fcaeeec1440a9a5bd2896adde30411872bfc2d551a1b8211455d3ff686e08d02d230ea4d50e8d4875a88bc13e368e2e4aab80dcb4901&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span> <span class="s2">&quot;0a02f1a022086525d0bb0966c22440b8b087adb12e5a9009081f128b090a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412d5080a15411195752747f24146fd1fcd12c31600a81f7c5423121541959ec81ae3c002192fd25dff7f8d20b4bb6b76ee22a408855d175e00000000000000000000000000000000000000000000000000000000000013889fb4acd771c24fdd47aabb109b7596566509421cdc11d1f8babb5d5af22a614ef10f73d04837be9158010626423130663ad09d6436b97b694acb2b92d940201efa4a7ef3e2406c2c897894ea73cad3ded8dbcfb90521ec8488163b2baeef6a88aa9af11367a3cd1cd797937bb7f521162d5264e1f2dc39ca7c6b0eadf8520a1b5c2bd3bbe50835a9f3419b82909cbf60989f83496480008cceb6a3783bbc25d2921f86d79b0bad5d493766b8cf1f6bec74f6b67480e770c3a7f5b27a30ae3d4a13df273ab73e9107a5287883317bb5417b7f6841e197df99f5321807995c80fd3810f791845681560ccd3a4bfd8c56e298bc09b989e5279ca190ac3b29cdb7941315c027facc97bf1c0a02fa437dd68b335f8cbf0d9a3ba4a30302523609f40a177cc31961ca63a9c375b714831bc007ddbc5cfbafca368200b6c33b4b0aeadf537b47c16788bdc00981713b79f23fc0b4065ab9369072589728ed0cc3ac25076a2f8141a2637e589983210ce6d09e67c36167cb9fa5b4a9bf8daafc795b9c3978ffeade3698dfd4c86f3c7b2dd92c36e6303101b49fdd4f1e4357223c02f19329f6bb18f1f6d2e297e9fefa2d9f92f81ce07a8980effa10b8b8bf39aa19e80d96ef1c915cc55d1d26ea07b1c0da2ecf66b7f8b64657f6ac95466a983553f29a8bea3d78c178b2129745d432ddc95532e56f8e93625c674f20375a48990ca287591fcf0c476c3d1392d4e1355caf8d7352f895dc62da55d83e478ab00b78d5a68a0f50a69d9c595bcf494361517c703db9dba728e8c79a833d753f1977f526e9afd4b6daaff37fa0f1d52a63199fb3f8e97b7061a200aed5d2865de16b83b762638e6c8f9269967299a97618c1bd984f5afa25d170cf9eef601bdd1c1d33bd91813c19f70e102b16327e4cd3d4851bfa76b7caf45026c70d4f2b4872d7255133b07dc41b626228051537eee53083e9a11daf5fcc5cf7ca1cef99579362b1506a90fc1ed5d4fe8b7133c7179a2d3aee27dc802a90403ba445adb6eef8b35fd798fb0d374ce3c8b4a6870bcf32651c9c32cfeafbb0672f50561d76826b938b9b2c44029bc5d11838d453a48565c70e0d3c8f2a915ba932a02271c73046b2c53aaf6e27bb72a567a26e2a4164974fc52d0ad7fa5dddfe9390007e2fc3ad46d644be55519e01a2cce76744f165c6705d3b007d2f649df84e3783622f5e077fe37fdd192896eae9b1245322db6e3242714a0552253b472103553f09b6b1d32804742375d3b140d2ebff2155b6248d07992f40e5537a0587315c451ac53cee490ce49c3b321a967558c39f789bf5d35859d4136bcf4178bf6b1814d617e139aa35710edcd325dd03957462070393b7066182fc56be713bba49a2359db71604e97e9350af687a7f185d7905d8900f7e2431386c00e55e3200000000000000000000000070d7f083adb12e90018094ebdc03&quot;</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="s2">&quot;d8ae793212147ed7d64f96a1a6c1477aeeecdedf6f5cb2e7cd897f70c7c2603e&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;raw_data&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;contract&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;parameter&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;855d175e00000000000000000000000000000000000000000000000000000000000013889fb4acd771c24fdd47aabb109b7596566509421cdc11d1f8babb5d5af22a614ef10f73d04837be9158010626423130663ad09d6436b97b694acb2b92d940201efa4a7ef3e2406c2c897894ea73cad3ded8dbcfb90521ec8488163b2baeef6a88aa9af11367a3cd1cd797937bb7f521162d5264e1f2dc39ca7c6b0eadf8520a1b5c2bd3bbe50835a9f3419b82909cbf60989f83496480008cceb6a3783bbc25d2921f86d79b0bad5d493766b8cf1f6bec74f6b67480e770c3a7f5b27a30ae3d4a13df273ab73e9107a5287883317bb5417b7f6841e197df99f5321807995c80fd3810f791845681560ccd3a4bfd8c56e298bc09b989e5279ca190ac3b29cdb7941315c027facc97bf1c0a02fa437dd68b335f8cbf0d9a3ba4a30302523609f40a177cc31961ca63a9c375b714831bc007ddbc5cfbafca368200b6c33b4b0aeadf537b47c16788bdc00981713b79f23fc0b4065ab9369072589728ed0cc3ac25076a2f8141a2637e589983210ce6d09e67c36167cb9fa5b4a9bf8daafc795b9c3978ffeade3698dfd4c86f3c7b2dd92c36e6303101b49fdd4f1e4357223c02f19329f6bb18f1f6d2e297e9fefa2d9f92f81ce07a8980effa10b8b8bf39aa19e80d96ef1c915cc55d1d26ea07b1c0da2ecf66b7f8b64657f6ac95466a983553f29a8bea3d78c178b2129745d432ddc95532e56f8e93625c674f20375a48990ca287591fcf0c476c3d1392d4e1355caf8d7352f895dc62da55d83e478ab00b78d5a68a0f50a69d9c595bcf494361517c703db9dba728e8c79a833d753f1977f526e9afd4b6daaff37fa0f1d52a63199fb3f8e97b7061a200aed5d2865de16b83b762638e6c8f9269967299a97618c1bd984f5afa25d170cf9eef601bdd1c1d33bd91813c19f70e102b16327e4cd3d4851bfa76b7caf45026c70d4f2b4872d7255133b07dc41b626228051537eee53083e9a11daf5fcc5cf7ca1cef99579362b1506a90fc1ed5d4fe8b7133c7179a2d3aee27dc802a90403ba445adb6eef8b35fd798fb0d374ce3c8b4a6870bcf32651c9c32cfeafbb0672f50561d76826b938b9b2c44029bc5d11838d453a48565c70e0d3c8f2a915ba932a02271c73046b2c53aaf6e27bb72a567a26e2a4164974fc52d0ad7fa5dddfe9390007e2fc3ad46d644be55519e01a2cce76744f165c6705d3b007d2f649df84e3783622f5e077fe37fdd192896eae9b1245322db6e3242714a0552253b472103553f09b6b1d32804742375d3b140d2ebff2155b6248d07992f40e5537a0587315c451ac53cee490ce49c3b321a967558c39f789bf5d35859d4136bcf4178bf6b1814d617e139aa35710edcd325dd03957462070393b7066182fc56be713bba49a2359db71604e97e9350af687a7f185d7905d8900f7e2431386c00e55e32000000000000000000000000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="s2">&quot;411195752747f24146fd1fcd12c31600a81f7c5423&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;contract_address&quot;</span><span class="p">:</span><span class="s2">&quot;41959ec81ae3c002192fd25dff7f8d20b4bb6b76ee&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="s2">&quot;type.googleapis.com/protocol.TriggerSmartContract&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;TriggerSmartContract&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="s2">&quot;f1a0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="s2">&quot;6525d0bb0966c224&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="mi">1593795795000</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;fee_limit&quot;</span><span class="p">:</span><span class="mi">1000000000</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1593795737687</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2c1593a78911b9183bd513fcaeeec1440a9a5bd2896adde30411872bfc2d551a1b8211455d3ff686e08d02d230ea4d50e8d4875a88bc13e368e2e4aab80dcb4901&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0a02f1a022086525d0bb0966c22440b8b087adb12e5a9009081f128b090a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412d5080a15411195752747f24146fd1fcd12c31600a81f7c5423121541959ec81ae3c002192fd25dff7f8d20b4bb6b76ee22a408855d175e00000000000000000000000000000000000000000000000000000000000013889fb4acd771c24fdd47aabb109b7596566509421cdc11d1f8babb5d5af22a614ef10f73d04837be9158010626423130663ad09d6436b97b694acb2b92d940201efa4a7ef3e2406c2c897894ea73cad3ded8dbcfb90521ec8488163b2baeef6a88aa9af11367a3cd1cd797937bb7f521162d5264e1f2dc39ca7c6b0eadf8520a1b5c2bd3bbe50835a9f3419b82909cbf60989f83496480008cceb6a3783bbc25d2921f86d79b0bad5d493766b8cf1f6bec74f6b67480e770c3a7f5b27a30ae3d4a13df273ab73e9107a5287883317bb5417b7f6841e197df99f5321807995c80fd3810f791845681560ccd3a4bfd8c56e298bc09b989e5279ca190ac3b29cdb7941315c027facc97bf1c0a02fa437dd68b335f8cbf0d9a3ba4a30302523609f40a177cc31961ca63a9c375b714831bc007ddbc5cfbafca368200b6c33b4b0aeadf537b47c16788bdc00981713b79f23fc0b4065ab9369072589728ed0cc3ac25076a2f8141a2637e589983210ce6d09e67c36167cb9fa5b4a9bf8daafc795b9c3978ffeade3698dfd4c86f3c7b2dd92c36e6303101b49fdd4f1e4357223c02f19329f6bb18f1f6d2e297e9fefa2d9f92f81ce07a8980effa10b8b8bf39aa19e80d96ef1c915cc55d1d26ea07b1c0da2ecf66b7f8b64657f6ac95466a983553f29a8bea3d78c178b2129745d432ddc95532e56f8e93625c674f20375a48990ca287591fcf0c476c3d1392d4e1355caf8d7352f895dc62da55d83e478ab00b78d5a68a0f50a69d9c595bcf494361517c703db9dba728e8c79a833d753f1977f526e9afd4b6daaff37fa0f1d52a63199fb3f8e97b7061a200aed5d2865de16b83b762638e6c8f9269967299a97618c1bd984f5afa25d170cf9eef601bdd1c1d33bd91813c19f70e102b16327e4cd3d4851bfa76b7caf45026c70d4f2b4872d7255133b07dc41b626228051537eee53083e9a11daf5fcc5cf7ca1cef99579362b1506a90fc1ed5d4fe8b7133c7179a2d3aee27dc802a90403ba445adb6eef8b35fd798fb0d374ce3c8b4a6870bcf32651c9c32cfeafbb0672f50561d76826b938b9b2c44029bc5d11838d453a48565c70e0d3c8f2a915ba932a02271c73046b2c53aaf6e27bb72a567a26e2a4164974fc52d0ad7fa5dddfe9390007e2fc3ad46d644be55519e01a2cce76744f165c6705d3b007d2f649df84e3783622f5e077fe37fdd192896eae9b1245322db6e3242714a0552253b472103553f09b6b1d32804742375d3b140d2ebff2155b6248d07992f40e5537a0587315c451ac53cee490ce49c3b321a967558c39f789bf5d35859d4136bcf4178bf6b1814d617e139aa35710edcd325dd03957462070393b7066182fc56be713bba49a2359db71604e97e9350af687a7f185d7905d8900f7e2431386c00e55e3200000000000000000000000070d7f083adb12e90018094ebdc03&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:
 <div class="highlight"><pre><span></span><code><span class="o">{</span><span class="s2">&quot;result&quot;</span>: true<span class="o">}</span>
@@ -1077,15 +1077,15 @@ Note: before broadcasting the transaction, the sender should sign the transactio
 <p><strong>Call api: wallet/scanshieldedtrc20notesbyivk to scan the shielded TRC-20 notes</strong></p>
 <p>Method: Post and Get</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;start_block_index&quot;</span><span class="p">:</span> <span class="mi">46079</span><span class="p">,</span>
-    <span class="nt">&quot;end_block_index&quot;</span><span class="p">:</span> <span class="mi">46091</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;TDxka3zetrpWsWoeWWjSAQDwM186UmzwQn&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ivk&quot;</span><span class="p">:</span> <span class="s2">&quot;c1898b84ced7e5c8840632ad1203d56b4a8ebbaa8425dd8b5a5b3d43578e1006&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ak&quot;</span><span class="p">:</span> <span class="s2">&quot;66fda71a704eb463a13b6f43be7e296dd7ff3e6075e64badf462eca042f0b269&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;nk&quot;</span><span class="p">:</span> <span class="s2">&quot;b5f558a783c968b624f7cfc9a4f2c909332c0c514a8a419e552337e82e073f66&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;visible&quot;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start_block_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46079</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;end_block_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46091</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TDxka3zetrpWsWoeWWjSAQDwM186UmzwQn&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ivk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c1898b84ced7e5c8840632ad1203d56b4a8ebbaa8425dd8b5a5b3d43578e1006&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ak&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;66fda71a704eb463a13b6f43be7e296dd7ff3e6075e64badf462eca042f0b269&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;nk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b5f558a783c968b624f7cfc9a4f2c909332c0c514a8a419e552337e82e073f66&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:
 <div class="highlight"><pre><span></span><code><span class="o">{</span>
@@ -1107,13 +1107,13 @@ Return:
 <p><strong>Call api: wallet/scanshieldedtrc20notesbyovk to scan the shileded TRC-20 notes</strong></p>
 <p>Method: Post and Get</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;start_block_index&quot;</span><span class="p">:</span> <span class="mi">46079</span><span class="p">,</span>
-    <span class="nt">&quot;end_block_index&quot;</span><span class="p">:</span> <span class="mi">46091</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;TDxka3zetrpWsWoeWWjSAQDwM186UmzwQn&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ovk&quot;</span><span class="p">:</span> <span class="s2">&quot;4364c875deeb663781a2f1530f9e4f87ea81cc3c757ca2a30fa4768940de2f98&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;visible&quot;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start_block_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46079</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;end_block_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46091</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TDxka3zetrpWsWoeWWjSAQDwM186UmzwQn&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ovk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4364c875deeb663781a2f1530f9e4f87ea81cc3c757ca2a30fa4768940de2f98&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:
 <div class="highlight"><pre><span></span><code><span class="o">{</span>
@@ -1148,17 +1148,17 @@ Return:
 <p><strong>Call api: wallet/isshieldedtrc20contractNoteSpent to check the shielded TRC-20 note status whether it is spent</strong></p>
 <p>Method: Post</p>
 <p>Parameters:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-       <span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1nzfh9270dvpn0gysedl9gx6wfmh2hve3rtf0m57vla04pfjm3ermmrh9yasa2xnuy2zycsvwawe&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;rcm&quot;</span><span class="p">:</span> <span class="s2">&quot;b269a741bde1de2df79ffccf96d6eb646aa996e6567c208d774e851aef3e1909&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;ak&quot;</span><span class="p">:</span> <span class="s2">&quot;8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;nk&quot;</span><span class="p">:</span> <span class="s2">&quot;590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;position&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span> <span class="s2">&quot;41e6e90fbc958ba09483550882b1f0327e0193250a&quot;</span>
-<span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;payment_address&quot;</span><span class="p">:</span><span class="s2">&quot;ztron1nzfh9270dvpn0gysedl9gx6wfmh2hve3rtf0m57vla04pfjm3ermmrh9yasa2xnuy2zycsvwawe&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;rcm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b269a741bde1de2df79ffccf96d6eb646aa996e6567c208d774e851aef3e1909&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ak&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;nk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;shielded_TRC20_contract_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41e6e90fbc958ba09483550882b1f0327e0193250a&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 Return:
 <div class="highlight"><pre><span></span><code><span class="o">{</span><span class="s2">&quot;is_spent&quot;</span>: true<span class="o">}</span>
