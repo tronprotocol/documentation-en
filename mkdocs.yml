@@ -1,9 +1,9 @@
-site_name: TRON Documentation
+site_name: Java Tron
 site_url: https://tronprotocol.github.io/documentation-en/
 repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
-    - Home: index.md
+    - Getting Started: index.md
     - Introduction:
         - Repository: introduction/index.md
         - DPoS: introduction/dpos.md
