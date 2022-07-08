@@ -1,10 +1,10 @@
 # Getting Started with Java-tron
 
-This page mainly explains how to start the java-tron node and use the command line tool `wallet-cli` to execute basic commands to interact with the java-tron node. Regarding the installation of java-tron, you can download the runnable file directly or build it from source code. Instructions for installing java-tron can be found on the [Install and Build](https://tronprotocol.github.io/documentation-en/developers/deployment/) page. This tutorial on this page assumes java-tron and associated developer tools have been successfully installed.
+This page mainly explains how to start the Java-tron node and use the command line tool `wallet-cli` to execute basic commands to interact with the Java-tron node. Regarding the installation of Java-tron, you can download the runnable file directly or build it from source code. Instructions for installing Java-tron can be found on the [Install and Build](https://tronprotocol.github.io/documentation-en/developers/deployment/) page. This tutorial on this page assumes Java-tron and associated developer tools have been successfully installed.
 
-This page covers the basics of using java-tron, which includes generating accounts, joining the TRON nile testnet, sending TRX between accounts. Wallet-cli is also used in this document. Wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with java-tron more conveniently.
+This page covers the basics of using Java-tron, which includes generating accounts, joining the TRON nile testnet, sending TRX between accounts. Wallet-cli is also used in this document. Wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with Java-tron more conveniently.
 
-Java-tron is a TRON network client written in Java. This means a computer running java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. Java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
+Java-tron is a TRON network client written in Java. This means a computer running Java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. Java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
 
 ## Step 1: Generating accounts
 There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).
@@ -61,12 +61,12 @@ wallet>
 Then you can use the `backupwallet` command to view the private key of the account, you need to enter the password according to the prompt. It is recommended to save the private key.
 
 
-## Step 3：Start java-tron node
-Java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON nile testnet. To start java-tron, you need first obtain the java-tron executable file, please refer to the [Installation and Deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/) chapter, and then run the following command to start java-tron.
+## Step 3：Start Java-tron node
+Java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON nile testnet. To start Java-tron, you need first obtain the Java-tron executable file, please refer to the [Installation and Deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/) chapter, and then run the following command to start Java-tron.
 ```shell=
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 ```
-After java-tron starts, the logs will include the following:
+After Java-tron starts, the logs will include the following:
 ```
 11:07:58.758 INFO  [main] [app](Args.java:1143) ************************ Net config ************************
 11:07:58.758 INFO  [main] [app](Args.java:1144) P2P version: 201910292
@@ -77,7 +77,7 @@ After java-tron starts, the logs will include the following:
 ```
 
 
-The above logs indicate that java-tron has started and connected to the nile testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
+The above logs indicate that Java-tron has started and connected to the nile testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
 ```
 11:08:42.547 INFO  [TronJClientWorker-1] [net](Channel.java:116) Finish handshake with /123.56.3.74:18888.
 11:08:42.547 INFO  [TronJClientWorker-1] [net](ChannelManager.java:161) Add active peer /123.56.3.74:18888 | fea80a0298b465a54fd332ff36819545d850115e77b327858b5306c9a58c6b8c2e7c08df76ab508a7594ed3577a8f4157727108442877077ab499b102b488467, total active peers: 1
@@ -106,13 +106,13 @@ Num:23113870,ID:000000000160b08e37cb9951d31a4233f106c7e77e0535c597dbb6a16f163699
 ```
 
 
-These logs show that java-tron is running as expected. You can determine whether the node has been started and check the status of the node by sending the following http request to the java-tron node:
+These logs show that Java-tron is running as expected. You can determine whether the node has been started and check the status of the node by sending the following http request to the Java-tron node:
 ```
 $ curl http://127.0.0.1:16887/wallet/getnodeinfo
 ```
-If no error messages are reported in the node logs, everything is fine. In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of the local java-tron node `/wallet/getnowblock`. If they are equal, it means that the synchronization status of the local node is normal.
+If no error messages are reported in the node logs, everything is fine. In order for users to interact with the TRON network, the Java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of the local Java-tron node `/wallet/getnowblock`. If they are equal, it means that the synchronization status of the local node is normal.
 
-If you want to shut down java-tron node, please use this command: `kill -15 process id`.
+If you want to shut down Java-tron node, please use this command: `kill -15 process id`.
 
 ## Step 4：Get TRX on Nile testnet
 In order to make some transactions, the user must fund their account with TRX. On TRON mainnet, TRX can only be obtained by three ways:
@@ -123,12 +123,12 @@ In order to make some transactions, the user must fund their account with TRX. O
 In the TRON testnet, TRX has no real value and can be obtained for free through [faucet](https://nileex.io/join/getJoinPage).
 
 
-## Step 5：Interact with Java-Tron
+## Step 5：Interact with Java-tron
 
-### Interacting with Java-Tron nodes using wallet-cli
-Java-Tron provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.
+### Interacting with Java-tron nodes using wallet-cli
+Java-tron provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.
 #### Get account information
-After entering the `getaccount` command in wallet-cli, it will request account information data from the java-tron node, and then display the result in the terminal.
+After entering the `getaccount` command in wallet-cli, it will request account information data from the Java-tron node, and then display the result in the terminal.
 ```shell
 wallet> getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 ```
@@ -189,7 +189,7 @@ before sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240a89aef
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 ```
 
-This command returns the transaction of transferring TRX. After confirmation, enter `y` to confirm, and other letters indicate to cancel the transaction. If you enter `y`, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signature of the transaction, and wallet-cli will send the signed transaction to the java-tron node.
+This command returns the transaction of transferring TRX. After confirmation, enter `y` to confirm, and other letters indicate to cancel the transaction. If you enter `y`, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signature of the transaction, and wallet-cli will send the signed transaction to the Java-tron node.
 ```json=
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 y
@@ -262,8 +262,8 @@ wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca14
 }
 wallet> 
 ```
-### Interacting with Java-Tron nodes using Curl
-The above describes how to use wallet-cli to interact with java-tron. Compared with sending grpc/http commands directly, this tool provides more friendly interactive commands, allowing users to send commands to java-tron more conveniently. But, how to send HTTP request directly to java-tron node? Curl is a command line tool for sending HTTP requests. This chapter will explain how to check account balances and send transactions through Curl.
+### Interacting with Java-tron nodes using Curl
+The above describes how to use wallet-cli to interact with Java-tron. Compared with sending grpc/http commands directly, this tool provides more friendly interactive commands, allowing users to send commands to Java-tron more conveniently. But, how to send HTTP request directly to Java-tron node? Curl is a command line tool for sending HTTP requests. This chapter will explain how to check account balances and send transactions through Curl.
 
 
 #### Get account balance
@@ -285,7 +285,7 @@ Sending a transaction through the http interface requires a total of three steps
 2. Sign the transaction
 3. Broadcast transaction
 
-The following takes the transferring TRX as an example to illustrate how to send a transaction to java-tron node.
+The following takes the transferring TRX as an example to illustrate how to send a transaction to Java-tron node.
 
 Create an unsigned TRX transferring transaction through the fullnode HTTP interface [`wallet/createtransaction`](https://developers.tron.network/reference/createtransaction):
 
@@ -386,7 +386,7 @@ Result:
     "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
 }
 ```
-Finally, the signed transaction is broadcast to the java-tron node through the [`wallet/broadcasttransaction`](https://developers.tron.network/reference/broadcasttransaction) interface to complete the sending of the TRX transferring transaction.
+Finally, the signed transaction is broadcast to the Java-tron node through the [`wallet/broadcasttransaction`](https://developers.tron.network/reference/broadcasttransaction) interface to complete the sending of the TRX transferring transaction.
 
 
 ```curl=
