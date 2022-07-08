@@ -10,7 +10,7 @@ Java-tron is a TRON network client written in Java. This means a computer runnin
 There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).
 
 Enter the command `java -jar wallet-cli.jar` in the terminal to start a wallet-cli:
-```shell=
+```
 $ java -jar wallet-cli.jar
 
 Welcome to Tron Wallet-Cli
@@ -23,7 +23,7 @@ wallet>
 ```
 
 Enter the command: `registerwallet`, and then enter the password as prompted. This command will generate a TRON network account and register it with wallet-cli, that is, wallet-cli will save the private key of this account, and then you can use the private key to sign transactions.
-```shell=
+```
 wallet> registerwallet
 Please input password.
 password: 
@@ -37,12 +37,12 @@ wallet>
 
 ### Step 2：Login wallet-cli
 After the registration is complete, enter the `login` command to log in to wallet-cli.
-```shell=
+```
 wallet> login
 ```
 
 Select the account you want to login, and then enter the password. If the password is entered correctly, you will see the following result to the terminal: "Login successful !!!".
-```shell=
+```
 Please choose between 1 and 3
 2
 Please input your password.
@@ -52,7 +52,7 @@ wallet>
 ```
 
 After logging in, you can view the login account address through the `getaddress` command:
-```shell=
+```
 wallet> getaddress
 GetAddress successful !!
 address = TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz
@@ -63,7 +63,7 @@ Then you can use the `backupwallet` command to view the private key of the accou
 
 ### Step 3：Start Java-tron node
 Java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON nile testnet. To start Java-tron, you need first obtain the Java-tron executable file, please refer to the [Installation and Deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/) chapter, and then run the following command to start Java-tron.
-```shell=
+```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 ```
 After Java-tron starts, the logs will include the following:
@@ -129,7 +129,7 @@ In the TRON testnet, TRX has no real value and can be obtained for free through 
 Java-tron provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.
 ##### Get account information
 After entering the `getaccount` command in wallet-cli, it will request account information data from the Java-tron node, and then display the result in the terminal.
-```shell
+```
 wallet> getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 ```
 Result:
@@ -161,7 +161,7 @@ wallet>
 
 ##### Transferring TRX
 To transfer TRX through the `sendcoin` command, enter the transfer address, and the amount:
-```shell=
+```
 wallet> sendcoin TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
 {
 	"raw_data":{
@@ -210,7 +210,7 @@ wallet>
 ##### Query transaction by transaction id
 The above step sends a transferring TRX transaction through the `sendcoin` command, and prints the id of the transaction on the wallet-cli terminal:`21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4`. Next, you can query the transaction through `gettransactionbyid`, or query the result of the transaction through `gettransactioninfobyid`.
 
-```shell=
+```
 wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
 {
 	"ret":[
@@ -247,7 +247,7 @@ wallet>
 
 ```
 
-```shell=
+```
 wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
 {
 	"id": "21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
