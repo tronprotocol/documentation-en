@@ -6,7 +6,7 @@ This page covers the basics of using Java-tron, which includes generating accoun
 
 Java-tron is a TRON network client written in Java. This means a computer running Java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. Java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
 
-### Step 1: Generating accounts
+### Generating accounts
 There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).
 
 Enter the command `java -jar wallet-cli.jar` in the terminal to start a wallet-cli:
@@ -35,7 +35,7 @@ Register a wallet successful, keystore file name is UTC--2022-07-04T06-35-35.304
 wallet> 
 ```
 
-### Step 2：Login wallet-cli
+### Login wallet-cli
 After the registration is complete, enter the `login` command to log in to wallet-cli.
 ```
 wallet> login
@@ -61,7 +61,7 @@ wallet>
 Then you can use the `backupwallet` command to view the private key of the account, you need to enter the password according to the prompt. It is recommended to save the private key.
 
 
-### Step 3：Start Java-tron node
+### Start Java-tron node
 Java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON nile testnet. To start Java-tron, you need first obtain the Java-tron executable file, please refer to the [Installation and Deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/) chapter, and then run the following command to start Java-tron.
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
@@ -114,7 +114,7 @@ If no error messages are reported in the node logs, everything is fine. In order
 
 If you want to shut down Java-tron node, please use this command: `kill -15 process id`.
 
-### Step 4：Get TRX on Nile testnet
+### Get TRX on Nile testnet
 In order to make some transactions, the user must fund their account with TRX. On TRON mainnet, TRX can only be obtained by three ways:
 1. Rewards for block production by SRs/rewards for voting for SRs；
 2. Another TRON account transfers TRX to it;
@@ -123,7 +123,7 @@ In order to make some transactions, the user must fund their account with TRX. O
 In the TRON testnet, TRX has no real value and can be obtained for free through [faucet](https://nileex.io/join/getJoinPage).
 
 
-### Step 5：Interact with Java-tron
+### Interact with Java-tron
 
 #### Interacting with Java-tron nodes using wallet-cli
 Java-tron provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.
@@ -133,7 +133,7 @@ After entering the `getaccount` command in wallet-cli, it will request account i
 wallet> getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 ```
 Result:
-```json=
+```
 {
 	"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
 	"balance": 93643857919,
@@ -190,7 +190,7 @@ Please confirm and input your permission id, if input y or Y means default 0, ot
 ```
 
 This command returns the transaction of transferring TRX. After confirmation, enter `y` to confirm, and other letters indicate to cancel the transaction. If you enter `y`, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signature of the transaction, and wallet-cli will send the signed transaction to the Java-tron node.
-```json=
+```
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 y
 Please choose your key for sign.
@@ -268,14 +268,14 @@ The above describes how to use wallet-cli to interact with Java-tron. Compared w
 
 ##### Get account balance
 You can query the TRX balance information of the account through the node HTTP interface `wallet/getaccount`. The `balance` field in the returned result is the TRX balance, in sun:
-```curl=
+```
  curl -X POST http://127.0.0.1:16887/wallet/getaccount -d 
      '{"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
        "visible": true
      }'
 ```
 Result：
-```json=
+```json
 {"account_name": "testacc2","address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM","balance": 1000000000000000,"account_resource": {}}
 ```
 
@@ -289,7 +289,7 @@ The following takes the transferring TRX as an example to illustrate how to send
 
 Create an unsigned TRX transferring transaction through the fullnode HTTP interface [`wallet/createtransaction`](https://developers.tron.network/reference/createtransaction):
 
-```curl=
+```
 curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d 
     '{
         "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf", 
@@ -299,7 +299,7 @@ curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d
     }'
 ```
 Returns an unsigned TRX transferring transaction:
-```json=
+```json
 {
     "visible": true,
     "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
@@ -327,7 +327,7 @@ Returns an unsigned TRX transferring transaction:
 ```
 Then sign the transaction, for your own node, you can use the http interface [`wallet/gettransactionsign`](https://developers.tron.network/reference/gettransactionsign) to sign the transaction, otherwise, because this interface needs to be filled in private key, it has the risk of leaking the private key, so it is recommended to sign transaction offline, but not use this api. 
 
-```curl=
+```
 curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactionsign' \
 --header 'Content-Type: application/json' \
 --data-raw '{"transaction":{
@@ -357,7 +357,7 @@ curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactionsign
 "privateKey":"e62650acb68caf5cd8fe3d03eb3fb9ca37afb72429f68053f9278f73951591ed"}'
 ```
 Result:
-```json=
+```json
 {
     "visible": true,
     "signature": [
@@ -389,7 +389,7 @@ Result:
 Finally, the signed transaction is broadcast to the Java-tron node through the [`wallet/broadcasttransaction`](https://developers.tron.network/reference/broadcasttransaction) interface to complete the sending of the TRX transferring transaction.
 
 
-```curl=
+```
 curl --location --request POST 'http://127.0.0.1:16887/wallet/broadcasttransaction' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -421,7 +421,7 @@ curl --location --request POST 'http://127.0.0.1:16887/wallet/broadcasttransacti
 }'
 ```
 Result：
-```json=
+```json
 {
     "result": true,
     "txid": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
@@ -431,7 +431,7 @@ The return result is true, indicating that the transaction broadcast was success
 
 ##### Query transaction by transaction id
 Query the content of the transaction through the http interface `wallet/gettransactionbyid`:
-```curl=
+```
 curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactionbyid' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -439,7 +439,7 @@ curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactionbyid
 }'
 ```
 Result:
-```json=
+```json
 {
     "ret": [
         {
@@ -476,7 +476,7 @@ Result:
 
 Query transaction results and transaction receipts through the http interface `wallet/gettransactioninfobyid`:
 
-```curl=
+```
 curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactioninfobyid' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -484,7 +484,7 @@ curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactioninfo
 }'
 ```
 Result:
-```json=
+```json
 {
     "id": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
     "blockNumber": 27662687,
