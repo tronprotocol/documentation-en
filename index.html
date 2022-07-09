@@ -57,15 +57,15 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#step-1-generating-accounts">Step 1: Generating accounts</a></li>
+            <li><a class="toctree-l3" href="#generating-accounts">Generating accounts</a></li>
         
-            <li><a class="toctree-l3" href="#step-2login-wallet-cli">Step 2：Login wallet-cli</a></li>
+            <li><a class="toctree-l3" href="#login-wallet-cli">Login wallet-cli</a></li>
         
-            <li><a class="toctree-l3" href="#step-3start-java-tron-node">Step 3：Start Java-tron node</a></li>
+            <li><a class="toctree-l3" href="#start-java-tron-node">Start Java-tron node</a></li>
         
-            <li><a class="toctree-l3" href="#step-4get-trx-on-nile-testnet">Step 4：Get TRX on Nile testnet</a></li>
+            <li><a class="toctree-l3" href="#get-trx-on-nile-testnet">Get TRX on Nile testnet</a></li>
         
-            <li><a class="toctree-l3" href="#step-5interact-with-java-tron">Step 5：Interact with Java-tron</a></li>
+            <li><a class="toctree-l3" href="#interact-with-java-tron">Interact with Java-tron</a></li>
         
         </ul>
     
@@ -318,7 +318,7 @@
 <p>This page mainly explains how to start the Java-tron node and use the command line tool <code>wallet-cli</code> to execute basic commands to interact with the Java-tron node. Regarding the installation of Java-tron, you can download the runnable file directly or build it from source code. Instructions for installing Java-tron can be found on the <a href="https://tronprotocol.github.io/documentation-en/developers/deployment/">Install and Build</a> page. This tutorial on this page assumes Java-tron and associated developer tools have been successfully installed.</p>
 <p>This page covers the basics of using Java-tron, which includes generating accounts, joining the TRON nile testnet, sending TRX between accounts. Wallet-cli is also used in this document. Wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with Java-tron more conveniently.</p>
 <p>Java-tron is a TRON network client written in Java. This means a computer running Java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. Java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.</p>
-<h3 id="step-1-generating-accounts">Step 1: Generating accounts<a class="headerlink" href="#step-1-generating-accounts" title="Permanent link">&para;</a></h3>
+<h3 id="generating-accounts">Generating accounts<a class="headerlink" href="#generating-accounts" title="Permanent link">&para;</a></h3>
 <p>There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).</p>
 <p>Enter the command <code>java -jar wallet-cli.jar</code> in the terminal to start a wallet-cli:
 <div class="highlight"><pre><span></span><code>$ java -jar wallet-cli.jar
@@ -342,7 +342,7 @@ password:
 Register a wallet successful, keystore file name is UTC--2022-07-04T06-35-35.304000000Z--TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz.json
 wallet&gt; 
 </code></pre></div></p>
-<h3 id="step-2login-wallet-cli">Step 2：Login wallet-cli<a class="headerlink" href="#step-2login-wallet-cli" title="Permanent link">&para;</a></h3>
+<h3 id="login-wallet-cli">Login wallet-cli<a class="headerlink" href="#login-wallet-cli" title="Permanent link">&para;</a></h3>
 <p>After the registration is complete, enter the <code>login</code> command to log in to wallet-cli.
 <div class="highlight"><pre><span></span><code>wallet&gt; login
 </code></pre></div></p>
@@ -361,7 +361,7 @@ address = TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz
 wallet&gt; 
 </code></pre></div>
 Then you can use the <code>backupwallet</code> command to view the private key of the account, you need to enter the password according to the prompt. It is recommended to save the private key.</p>
-<h3 id="step-3start-java-tron-node">Step 3：Start Java-tron node<a class="headerlink" href="#step-3start-java-tron-node" title="Permanent link">&para;</a></h3>
+<h3 id="start-java-tron-node">Start Java-tron node<a class="headerlink" href="#start-java-tron-node" title="Permanent link">&para;</a></h3>
 <p>Java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON nile testnet. To start Java-tron, you need first obtain the Java-tron executable file, please refer to the <a href="https://tronprotocol.github.io/documentation-en/developers/deployment/">Installation and Deployment</a> chapter, and then run the following command to start Java-tron.
 <div class="highlight"><pre><span></span><code>$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 </code></pre></div>
@@ -404,13 +404,13 @@ Num:23113870,ID:000000000160b08e37cb9951d31a4233f106c7e77e0535c597dbb6a16f163699
 </code></pre></div>
 If no error messages are reported in the node logs, everything is fine. In order for users to interact with the TRON network, the Java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of the local Java-tron node <code>/wallet/getnowblock</code>. If they are equal, it means that the synchronization status of the local node is normal.</p>
 <p>If you want to shut down Java-tron node, please use this command: <code>kill -15 process id</code>.</p>
-<h3 id="step-4get-trx-on-nile-testnet">Step 4：Get TRX on Nile testnet<a class="headerlink" href="#step-4get-trx-on-nile-testnet" title="Permanent link">&para;</a></h3>
+<h3 id="get-trx-on-nile-testnet">Get TRX on Nile testnet<a class="headerlink" href="#get-trx-on-nile-testnet" title="Permanent link">&para;</a></h3>
 <p>In order to make some transactions, the user must fund their account with TRX. On TRON mainnet, TRX can only be obtained by three ways:
 1. Rewards for block production by SRs/rewards for voting for SRs；
 2. Another TRON account transfers TRX to it;
 3. Obtained from the exchange.</p>
 <p>In the TRON testnet, TRX has no real value and can be obtained for free through <a href="https://nileex.io/join/getJoinPage">faucet</a>.</p>
-<h3 id="step-5interact-with-java-tron">Step 5：Interact with Java-tron<a class="headerlink" href="#step-5interact-with-java-tron" title="Permanent link">&para;</a></h3>
+<h3 id="interact-with-java-tron">Interact with Java-tron<a class="headerlink" href="#interact-with-java-tron" title="Permanent link">&para;</a></h3>
 <h4 id="interacting-with-java-tron-nodes-using-wallet-cli">Interacting with Java-tron nodes using wallet-cli<a class="headerlink" href="#interacting-with-java-tron-nodes-using-wallet-cli" title="Permanent link">&para;</a></h4>
 <p>Java-tron provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.</p>
 <h5 id="get-account-information">Get account information<a class="headerlink" href="#get-account-information" title="Permanent link">&para;</a></h5>
@@ -418,59 +418,57 @@ If no error messages are reported in the node logs, everything is fine. In order
 <div class="highlight"><pre><span></span><code>wallet&gt; getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 </code></pre></div>
 Result:
-```json=
-{
-    "address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-    "balance": 93643857919,
-    "create_time": 1619681898000,
-    "latest_opration_time": 1655358327000,
-    "is_witness": true,
-    "asset_issued_name": "TestTRC10T",
-    "latest_consume_free_time": 1652948766000,
-    "account_resource": {
-        "latest_consume_time_for_energy": 1655358327000
-    },</p>
-<div class="codehilite"><pre><span></span><code>    ......
-</code></pre></div>
+<div class="highlight"><pre><span></span><code>{
+    &quot;address&quot;: &quot;TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM&quot;,
+    &quot;balance&quot;: 93643857919,
+    &quot;create_time&quot;: 1619681898000,
+    &quot;latest_opration_time&quot;: 1655358327000,
+    &quot;is_witness&quot;: true,
+    &quot;asset_issued_name&quot;: &quot;TestTRC10T&quot;,
+    &quot;latest_consume_free_time&quot;: 1652948766000,
+    &quot;account_resource&quot;: {
+        &quot;latest_consume_time_for_energy&quot;: 1655358327000
+    },
 
-<p>}</p>
-<p><div class="highlight"><pre><span></span><code>##### Get account balance
-Get the balance of an account with the `getbalance` command:
-</code></pre></div>
-wallet&gt; getbalance
+        ......
+}
+</code></pre></div></p>
+<h5 id="get-account-balance">Get account balance<a class="headerlink" href="#get-account-balance" title="Permanent link">&para;</a></h5>
+<p>Get the balance of an account with the <code>getbalance</code> command:
+<div class="highlight"><pre><span></span><code>wallet&gt; getbalance
 Balance = 93642857919
 wallet&gt; 
-<div class="highlight"><pre><span></span><code>##### Transferring TRX
-To transfer TRX through the `sendcoin` command, enter the transfer address, and the amount:
-</code></pre></div>
-wallet&gt; sendcoin TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
+</code></pre></div></p>
+<h5 id="transferring-trx">Transferring TRX<a class="headerlink" href="#transferring-trx" title="Permanent link">&para;</a></h5>
+<p>To transfer TRX through the <code>sendcoin</code> command, enter the transfer address, and the amount:
+<div class="highlight"><pre><span></span><code>wallet&gt; sendcoin TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
 {
-    "raw_data":{
-        "contract":[
+    &quot;raw_data&quot;:{
+        &quot;contract&quot;:[
             {
-                "parameter":{
-                    "value":{
-                        "amount":1000000,
-                        "owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-                        "to_address":"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+                &quot;parameter&quot;:{
+                    &quot;value&quot;:{
+                        &quot;amount&quot;:1000000,
+                        &quot;owner_address&quot;:&quot;TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM&quot;,
+                        &quot;to_address&quot;:&quot;TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf&quot;
                     },
-                    "type_url":"type.googleapis.com/protocol.TransferContract"
+                    &quot;type_url&quot;:&quot;type.googleapis.com/protocol.TransferContract&quot;
                 },
-                "type":"TransferContract"
+                &quot;type&quot;:&quot;TransferContract&quot;
             }
         ],
-        "ref_block_bytes":"cbc3",
-        "ref_block_hash":"8581ae7e29258a52",
-        "expiration":1656917577000,
-        "timestamp":1656917518232
+        &quot;ref_block_bytes&quot;:&quot;cbc3&quot;,
+        &quot;ref_block_hash&quot;:&quot;8581ae7e29258a52&quot;,
+        &quot;expiration&quot;:1656917577000,
+        &quot;timestamp&quot;:1656917518232
     },
-    "raw_data_hex":"0a02cbc322088581ae7e29258a5240a89aefbf9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30"
+    &quot;raw_data_hex&quot;:&quot;0a02cbc322088581ae7e29258a5240a89aefbf9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30&quot;
 }
 before sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240a89aefbf9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
-<div class="highlight"><pre><span></span><code>This command returns the transaction of transferring TRX. After confirmation, enter `y` to confirm, and other letters indicate to cancel the transaction. If you enter `y`, then according to the prompt, choose which account&#39;s private key to use for signing, and finally enter the password to complete the signature of the transaction, and wallet-cli will send the signed transaction to the Java-tron node.
-```json=
-Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
+</code></pre></div></p>
+<p>This command returns the transaction of transferring TRX. After confirmation, enter <code>y</code> to confirm, and other letters indicate to cancel the transaction. If you enter <code>y</code>, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signature of the transaction, and wallet-cli will send the signed transaction to the Java-tron node.
+<div class="highlight"><pre><span></span><code>Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 y
 Please choose your key for sign.
 The 1th keystore file name is .DS_Store
@@ -537,16 +535,15 @@ wallet&gt;
 </code></pre></div>
 <h4 id="interacting-with-java-tron-nodes-using-curl">Interacting with Java-tron nodes using Curl<a class="headerlink" href="#interacting-with-java-tron-nodes-using-curl" title="Permanent link">&para;</a></h4>
 <p>The above describes how to use wallet-cli to interact with Java-tron. Compared with sending grpc/http commands directly, this tool provides more friendly interactive commands, allowing users to send commands to Java-tron more conveniently. But, how to send HTTP request directly to Java-tron node? Curl is a command line tool for sending HTTP requests. This chapter will explain how to check account balances and send transactions through Curl.</p>
-<h5 id="get-account-balance">Get account balance<a class="headerlink" href="#get-account-balance" title="Permanent link">&para;</a></h5>
+<h5 id="get-account-balance_1">Get account balance<a class="headerlink" href="#get-account-balance_1" title="Permanent link">&para;</a></h5>
 <p>You can query the TRX balance information of the account through the node HTTP interface <code>wallet/getaccount</code>. The <code>balance</code> field in the returned result is the TRX balance, in sun:
-```curl=
- curl -X POST http://127.0.0.1:16887/wallet/getaccount -d 
-     '{"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-       "visible": true
-     }'
-<div class="highlight"><pre><span></span><code>Result：
-```json=
-{&quot;account_name&quot;: &quot;testacc2&quot;,&quot;address&quot;: &quot;TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM&quot;,&quot;balance&quot;: 1000000000000000,&quot;account_resource&quot;: {}}
+<div class="highlight"><pre><span></span><code> curl -X POST http://127.0.0.1:16887/wallet/getaccount -d 
+     &#39;{&quot;address&quot;: &quot;TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM&quot;,
+       &quot;visible&quot;: true
+     }&#39;
+</code></pre></div>
+Result：
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;account_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testacc2&quot;</span><span class="p">,</span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM&quot;</span><span class="p">,</span><span class="nt">&quot;balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000000000000</span><span class="p">,</span><span class="nt">&quot;account_resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}}</span><span class="w"></span>
 </code></pre></div></p>
 <h5 id="send-transactions">Send transactions<a class="headerlink" href="#send-transactions" title="Permanent link">&para;</a></h5>
 <p>Sending a transaction through the http interface requires a total of three steps:
@@ -555,17 +552,44 @@ wallet&gt;
 3. Broadcast transaction</p>
 <p>The following takes the transferring TRX as an example to illustrate how to send a transaction to Java-tron node.</p>
 <p>Create an unsigned TRX transferring transaction through the fullnode HTTP interface <a href="https://developers.tron.network/reference/createtransaction"><code>wallet/createtransaction</code></a>:</p>
-<p><code>``curl=
-curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d 
-    '{
-        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf", 
-        "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM", 
-        "amount": 10000000,
-        "visible":true
-    }'
-<div class="highlight"><pre><span></span><code>Returns an unsigned TRX transferring transaction:
-```json=
-{
+<p><div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d 
+    &#39;{
+        &quot;to_address&quot;: &quot;TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf&quot;, 
+        &quot;owner_address&quot;: &quot;TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM&quot;, 
+        &quot;amount&quot;: 10000000,
+        &quot;visible&quot;:true
+    }&#39;
+</code></pre></div>
+Returns an unsigned TRX transferring transaction:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;raw_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;parameter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;to_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;type.googleapis.com/protocol.TransferContract&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TransferContract&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;193b&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aaecd88e4e0e7528&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1656580476000</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1656580418228</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+Then sign the transaction, for your own node, you can use the http interface <a href="https://developers.tron.network/reference/gettransactionsign"><code>wallet/gettransactionsign</code></a> to sign the transaction, otherwise, because this interface needs to be filled in private key, it has the risk of leaking the private key, so it is recommended to sign transaction offline, but not use this api. </p>
+<p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:16887/wallet/gettransactionsign&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data-raw &#39;{&quot;transaction&quot;:{
     &quot;visible&quot;: true,
     &quot;txID&quot;: &quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;,
     &quot;raw_data&quot;: {
@@ -588,40 +612,42 @@ curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d
         &quot;timestamp&quot;: 1656580418228
     },
     &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
-}
-</code></pre></div>
-Then sign the transaction, for your own node, you can use the http interface [</code>wallet/gettransactionsign`](https://developers.tron.network/reference/gettransactionsign) to sign the transaction, otherwise, because this interface needs to be filled in private key, it has the risk of leaking the private key, so it is recommended to sign transaction offline, but not use this api. </p>
-<p><code>``curl=
-curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactionsign' \
---header 'Content-Type: application/json' \
---data-raw '{"transaction":{
-    "visible": true,
-    "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "raw_data": {
-        "contract": [
-            {
-                "parameter": {
-                    "value": {
-                        "amount": 10000000,
-                        "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
-                        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TransferContract"
-                },
-                "type": "TransferContract"
-            }
-        ],
-        "ref_block_bytes": "193b",
-        "ref_block_hash": "aaecd88e4e0e7528",
-        "expiration": 1656580476000,
-        "timestamp": 1656580418228
-    },
-    "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
 },
-"privateKey":"e62650acb68caf5cd8fe3d03eb3fb9ca37afb72429f68053f9278f73951591ed"}'
-<div class="highlight"><pre><span></span><code>Result:
-```json=
-{
+&quot;privateKey&quot;:&quot;e62650acb68caf5cd8fe3d03eb3fb9ca37afb72429f68053f9278f73951591ed&quot;}&#39;
+</code></pre></div>
+Result:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;raw_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;parameter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;to_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;type.googleapis.com/protocol.TransferContract&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TransferContract&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;193b&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aaecd88e4e0e7528&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1656580476000</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1656580418228</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+Finally, the signed transaction is broadcast to the Java-tron node through the <a href="https://developers.tron.network/reference/broadcasttransaction"><code>wallet/broadcasttransaction</code></a> interface to complete the sending of the TRX transferring transaction.</p>
+<p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:16887/wallet/broadcasttransaction&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data-raw &#39;{
     &quot;visible&quot;: true,
     &quot;signature&quot;: [
         &quot;e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301&quot;
@@ -647,109 +673,75 @@ curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactionsign
         &quot;timestamp&quot;: 1656580418228
     },
     &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
-}
+}&#39;
 </code></pre></div>
-Finally, the signed transaction is broadcast to the Java-tron node through the [</code>wallet/broadcasttransaction`](https://developers.tron.network/reference/broadcasttransaction) interface to complete the sending of the TRX transferring transaction.</p>
-<p>```curl=
-curl --location --request POST 'http://127.0.0.1:16887/wallet/broadcasttransaction' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "visible": true,
-    "signature": [
-        "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
-    ],
-    "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "raw_data": {
-        "contract": [
-            {
-                "parameter": {
-                    "value": {
-                        "amount": 10000000,
-                        "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
-                        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TransferContract"
-                },
-                "type": "TransferContract"
-            }
-        ],
-        "ref_block_bytes": "193b",
-        "ref_block_hash": "aaecd88e4e0e7528",
-        "expiration": 1656580476000,
-        "timestamp": 1656580418228
-    },
-    "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
-}'
-<div class="highlight"><pre><span></span><code>Result：
-```json=
-{
-    &quot;result&quot;: true,
-    &quot;txid&quot;: &quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;
-}
+Result：
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 The return result is true, indicating that the transaction broadcast was successful.</p>
 <h5 id="query-transaction-by-transaction-id_1">Query transaction by transaction id<a class="headerlink" href="#query-transaction-by-transaction-id_1" title="Permanent link">&para;</a></h5>
 <p>Query the content of the transaction through the http interface <code>wallet/gettransactionbyid</code>:
-```curl=
-curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactionbyid' \
---header 'Content-Type: application/json' \
---data-raw '{
-     "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
-}'
-<div class="highlight"><pre><span></span><code>Result:
-```json=
-{
-    &quot;ret&quot;: [
-        {
-            &quot;contractRet&quot;: &quot;SUCCESS&quot;
-        }
-    ],
-    &quot;signature&quot;: [
-        &quot;e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301&quot;
-    ],
-    &quot;txID&quot;: &quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;,
-    &quot;raw_data&quot;: {
-        &quot;contract&quot;: [
-            {
-                &quot;parameter&quot;: {
-                    &quot;value&quot;: {
-                        &quot;amount&quot;: 10000000,
-                        &quot;owner_address&quot;: &quot;4198927ffb9f554dc4a453c64b2e553a02d6df514b&quot;,
-                        &quot;to_address&quot;: &quot;41d0b69631440f0a494bb51f7eee68ff5c593c00f0&quot;
-                    },
-                    &quot;type_url&quot;: &quot;type.googleapis.com/protocol.TransferContract&quot;
-                },
-                &quot;type&quot;: &quot;TransferContract&quot;
-            }
-        ],
-        &quot;ref_block_bytes&quot;: &quot;193b&quot;,
-        &quot;ref_block_hash&quot;: &quot;aaecd88e4e0e7528&quot;,
-        &quot;expiration&quot;: 1656580476000,
-        &quot;timestamp&quot;: 1656580418228
-    },
-    &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
-}
+<div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:16887/wallet/gettransactionbyid&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data-raw &#39;{
+     &quot;value&quot;: &quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;
+}&#39;
+</code></pre></div>
+Result:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ret&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;contractRet&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;raw_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;parameter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4198927ffb9f554dc4a453c64b2e553a02d6df514b&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;to_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41d0b69631440f0a494bb51f7eee68ff5c593c00f0&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;type.googleapis.com/protocol.TransferContract&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TransferContract&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;193b&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aaecd88e4e0e7528&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1656580476000</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1656580418228</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 <p>Query transaction results and transaction receipts through the http interface <code>wallet/gettransactioninfobyid</code>:</p>
-<p>```curl=
-curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactioninfobyid' \
---header 'Content-Type: application/json' \
---data-raw '{
-     "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
-}'
-<div class="highlight"><pre><span></span><code>Result:
-```json=
-{
-    &quot;id&quot;: &quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;,
-    &quot;blockNumber&quot;: 27662687,
-    &quot;blockTimeStamp&quot;: 1656580470000,
-    &quot;contractResult&quot;: [
-        &quot;&quot;
-    ],
-    &quot;receipt&quot;: {
-        &quot;net_usage&quot;: 268
-    }
-}
+<p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:16887/wallet/gettransactioninfobyid&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data-raw &#39;{
+     &quot;value&quot;: &quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;
+}&#39;
+</code></pre></div>
+Result:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;blockNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">27662687</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;blockTimeStamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1656580470000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;contractResult&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;receipt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;net_usage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">268</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
               
             </div>
@@ -802,5 +794,5 @@ curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactioninfo
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2022-07-09 12:21:19
+Build Date UTC : 2022-07-09 13:23:59
 -->
