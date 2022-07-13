@@ -1,6 +1,6 @@
-site_name: Java Tron
-site_url: https://tronprotocol.github.io/documentation-en/
-repo_url: https://github.com/tronprotocol/documentation-en
+site_name:Java Tron
+site_url:https://tronprotocol.github.io/documentation-en/
+repo_url:https://github.com/tronprotocol/documentation-en
 
 nav:
     - Getting Started: index.md
@@ -9,14 +9,14 @@ nav:
         - DPoS: introduction/dpos.md
         - Overview: introduction/overview.md
     - API:
-        - HTTP API: api/http.md
-        - RPC API: api/rpc.md
+        - HTTP API:api/http.md
+        - RPC API:api/rpc.md
     - Mechanism & Algorithm:
         - SR and Committee: mechanism-algorithm/sr.md
-        - TRC-10: mechanism-algorithm/trc10.md
-        - Account Model: mechanism-algorithm/account.md
-        - Resource Model: mechanism-algorithm/resource.md
-        - Decentralized Exchange: mechanism-algorithm/dex.md
+        - TRC-10:mechanism-algorithm/trc10.md
+        - Account Model:mechanism-algorithm/account.md
+        - Resource Model:mechanism-algorithm/resource.md
+        - Decentralized Exchange:mechanism-algorithm/dex.md
         - Multi-Signature: mechanism-algorithm/multi-signatures.md
         - Shielded TRC20 Contract: mechanism-algorithm/shielded-TRC20-contract.md
         - System Contracts:  mechanism-algorithm/system-contracts.md
@@ -58,7 +58,7 @@ markdown_extensions:
     - footnotes
     - codehilite
     - toc:
-        permalink: true
+        permalink:true
     - pymdownx.arithmatex
     - pymdownx.tilde
     - pymdownx.tasklist
