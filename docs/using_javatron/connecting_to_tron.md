@@ -1,6 +1,6 @@
 # Connecting to the TRON network
 
-The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the Java-Tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet support.
+The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the Java-Tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
 
 You need to set the following configuration items to connect Java-tron to one of the TRON networks:
 
@@ -16,7 +16,7 @@ You need to set the following configuration items to connect Java-tron to one of
 # Finding peers
 Java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. Java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. 
 
-If you want Java-tron node do node discovery, you need to enable the node discovery service in the node configuration file first:
+If you want Java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:
 
 ```
 node.discovery = {
@@ -24,7 +24,7 @@ node.discovery = {
   ...
 }
 ```
-Then, for the new node that join the TRON network, you can configure the `seed node` to make it easier for the current node to connect to the peer node, and then obtain the address information of other nodes through the peer node. Generally, the seed nodes are set as stable online fullnodes. For the TRON main network, community public nodes can be used as seed nodes, for example:
+Then, for the new node that joins the TRON network, you can configure the `seed node` to make it easier for the current node to connect to the peer node, and then obtain the address information of other nodes through the peer node. Generally, the seed nodes are set as stable online fullnodes. For the TRON main network, community public nodes can be used as seed nodes, for example:
 
 ```
 seed.node = {
@@ -97,7 +97,7 @@ For the super representative's fullnode, you will see the following producing bl
 02:31:33.059 INFO  [DPosMiner] [DB](SnapshotManager.java:315) flush cost:51, create checkpoint cost:49, refresh cost:2
 02:31:33.060 INFO  [DPosMiner] [DB](Manager.java:1492) Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponedCount: 0
 ```
-If no error messages are reported in the node logs, means everything is fine. You can also send a http request to determine whether the node has been started, and to view the status of the node: including the node configuration information, the information about the machine where the node is located, the connection status of the node peers, etc.
+If no error messages are reported in the node logs, means everything is fine. You can also send an http request to check whether the node has been started, and to view the status of the node: including the node configuration information, the information about the machine where the node is located, the connection status of the node peers, etc.
 
 ```
 $ curl http://127.0.0.1:16887/wallet/getnodeinfo
@@ -173,7 +173,7 @@ node {
 ```
 
 # Peer limit
-`node.maxActiveNodes` indicates the maximum number of connections between the node and other nodes, the default value is 30. Setting a larger value can enable nodes to establish more connections, join the network more efficiently, and broadcast more efficiently. However, the bandwidth required to maintain the connection is also higher and the performance consumption is higher. Therefore, please set according to the actual situation.
+`node.maxActiveNodes` indicates the maximum number of connections between the node and other nodes, the default value is 30. Setting a larger value can enable nodes to establish more connections, join the network more efficiently, and broadcast more efficiently. However, the bandwidth required to maintain the connection is also higher and the performance consumption is higher. Therefore, please set it according to the actual situation.
 
 ```
 node {

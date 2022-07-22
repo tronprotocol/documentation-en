@@ -2,7 +2,7 @@
 
 This page mainly explains how to start the Java-tron node and use the command line tool `wallet-cli` to execute basic commands to interact with the Java-tron node. Regarding the installation of Java-tron, you can download the runnable file directly or build it from source code. Instructions for installing Java-tron can be found on the [Install and Build](../using_javatron/installing_javatron.md) page. This tutorial on this page assumes Java-tron and associated developer tools have been successfully installed.
 
-This page covers the basics of using Java-tron, which includes generating accounts, joining the TRON nile testnet, sending TRX between accounts. Wallet-cli is also used in this document. Wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with Java-tron more conveniently.
+This page covers the basics of using Java-tron, which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. Wallet-cli is also used in this document. Wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with Java-tron more conveniently.
 
 Java-tron is a TRON network client written in Java. This means a computer running Java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. Java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
 
@@ -62,7 +62,7 @@ Then you can use the `backupwallet` command to view the private key of the accou
 
 
 ### Start Java-tron node
-Java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON nile testnet. To start Java-tron, you need first obtain the Java-tron executable file, please refer to the [Installation and Deployment](../using_javatron/installing_javatron.md) chapter, and then run the following command to start Java-tron.
+Java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start Java-tron, you need first obtain the Java-tron executable file, please refer to the [Installation and Deployment](../using_javatron/installing_javatron.md) chapter, and then run the following command to start Java-tron.
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 ```
@@ -77,7 +77,7 @@ After Java-tron starts, the logs will include the following:
 ```
 
 
-The above logs indicate that Java-tron has started and connected to the nile testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
+The above logs indicate that Java-tron has started and connected to the Nile testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
 ```
 11:08:42.547 INFO  [TronJClientWorker-1] [net](Channel.java:116) Finish handshake with /123.56.3.74:18888.
 11:08:42.547 INFO  [TronJClientWorker-1] [net](ChannelManager.java:161) Add active peer /123.56.3.74:18888 | fea80a0298b465a54fd332ff36819545d850115e77b327858b5306c9a58c6b8c2e7c08df76ab508a7594ed3577a8f4157727108442877077ab499b102b488467, total active peers: 1
@@ -115,7 +115,7 @@ If no error messages are reported in the node logs, everything is fine. In order
 If you want to shut down Java-tron node, please use this command: `kill -15 process id`.
 
 ### Get TRX on Nile testnet
-In order to make some transactions, the user must fund their account with TRX. On TRON mainnet, TRX can only be obtained by three ways:
+In order to make some transactions, the user must fund their account with TRX. On TRON mainnet, TRX can only be obtained in three ways:
 1. Rewards for block production by SRs/rewards for voting for SRs；
 2. Another TRON account transfers TRX to it;
 3. Obtained from the exchange.
@@ -189,7 +189,7 @@ before sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240a89aef
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 ```
 
-This command returns the transaction of transferring TRX. After confirmation, enter `y` to confirm, and other letters indicate to cancel the transaction. If you enter `y`, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signature of the transaction, and wallet-cli will send the signed transaction to the Java-tron node.
+This command returns the transaction of transferring TRX. After confirmation, enter `y` to confirm, and other letters indicate to cancel the transaction. If you enter `y`, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signing of the transaction, and wallet-cli will send the signed transaction to the Java-tron node.
 ```
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 y

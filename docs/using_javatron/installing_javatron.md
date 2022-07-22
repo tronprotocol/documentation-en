@@ -44,14 +44,14 @@ To obtain an executable file by compiling the source code, you need to clone the
 
 
 ## 2. Obtain the configuration file
-Get the mainnet configure file: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be find [here](https://github.com/tronprotocol/tron-deployment).
+Get the mainnet configure file: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/tronprotocol/tron-deployment).
 
 ## 2. Start The Node
 The command to start a fullnode or a block-producing fullnode is as follows:
 
 * Startup a fullnode for mainnet
 
-    Full node has full historical data, it is the entry point into the TRON network , it provides HTTP API and Grpc API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the `-c` parameter: 
+    Full node has full historical data, it is the entry point into the TRON network , it provides HTTP API and gRPC API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the `-c` parameter: 
 
     ```
     $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
@@ -106,7 +106,7 @@ For a running fullnode, you can use the command `kill -15 process id` to shut do
 
 Memory allocation of java-tron can be optimized with tcmalloc. The method is as follows:
 
-First install tcmalloc, then add the following two lines to the startup script, the path of tcmalloc is slightly different for different linux distributions.
+First install tcmalloc, then add the following two lines to the startup script, the path of tcmalloc is slightly different for different Linux distributions.
 
 ```
 #!/bin/bash
@@ -118,7 +118,7 @@ export TCMALLOC_RELEASE_RATE=10
 java -jar .....
 ```
 
-Instructions for each linux distributions are as belows:
+Instructions for each Linux distributions are as belows:
 
 * Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable
     Install
