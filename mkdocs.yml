@@ -3,51 +3,39 @@ site_url: https://tronprotocol.github.io/documentation-en/
 repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
-    - Getting Started: index.md
-    - Introduction:
-        - Repository: introduction/index.md
-        - DPoS: introduction/dpos.md
-        - Overview: introduction/overview.md
+    - Getting Started: getting_started/getting_started_with_javatron.md
+    - Using Java-tron:
+        - Deploy Java-tron Node: using_javatron/installing_javatron.md
+        - Backup & Restore: using_javatron/backup_restore.md
+        - Connecting To The TRON Network: using_javatron/connecting_to_tron.md
+        - Lite Fullnode: developers/litefullnode.md
+        - Private Network: using_javatron/private_network.md
+        - Database Configuration: architecture/database.md
+        - Deploy Event Plugin: architecture/event.md
+        - Node Monitoring: using_javatron/metrics.md
     - API:
         - HTTP API: api/http.md
         - RPC API: api/rpc.md
-    - Mechanism & Algorithm:
-        - SR and Committee: mechanism-algorithm/sr.md
-        - TRC-10: mechanism-algorithm/trc10.md
+    - Core Protocal:
+        - DPoS: introduction/dpos.md
+        - Super Representative: mechanism-algorithm/sr.md
         - Account Model: mechanism-algorithm/account.md
         - Resource Model: mechanism-algorithm/resource.md
+        - Smart Contract: contracts/contract.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
         - Multi-Signature: mechanism-algorithm/multi-signatures.md
-        - Shielded TRC20 Contract: mechanism-algorithm/shielded-TRC20-contract.md
-        - System Contracts:  mechanism-algorithm/system-contracts.md
-    - Architecture:
-        - Network: architecture/network.md
-        - Database: architecture/database.md
-        - Event Subsystem: architecture/event.md
-    - Smart Contract:
-        - TVM: contracts/tvm.md
-        - Compiler: contracts/compiler.md
-        - Contract: contracts/contract.md
-        - TRC-20: contracts/trc20.md
-    - Developers:
-        - Official Public Nodes: developers/official-public-nodes.md
-        - Deployment: developers/deployment.md
-        - Run FullNode in IDEA: developers/run-in-idea.md
-        - Run Lite FullNode: developers/litefullnode.md
-        - Leveldb Startup Optimization Plugins: developers/archive-manifest.md
-        - Resources: developers/resources.md
+    - Java-tron Development:
+        - Java-tron Repository: developers/java-tron.md
         - Contribution: developers/contribution.md
-        - Incentive Policy: developers/incentives.md
-        - Java-Tron: developers/java-tron.md
+        - Configure the IDE: developers/run-in-idea.md
         - TIPs: developers/tips.md
-        - Advanced Configuration: developers/advanced-configuration.md
-        - Contact Us (GPG Key): developers/gpg.md
-    - Clients:
-        - Wallet-cli: clients/wallet-cli.md
-        - TronGrid: clients/tron-grid.md
+        - GPG Key: developers/gpg.md
+    - DAPP development:
+        - Dapp Development Tool: contracts/compiler.md
+    - Wallet-cli:
+        - Installation: clients/wallet-cli.md
     - Releases:
         - Binary Integrity Check: releases/index.md
-    - FAQ: faq/index.md
     - Glossary: glossary.md
 
 theme: readthedocs
