@@ -1,6 +1,9 @@
-# The Database
+# Database configuration
+Java-tron data storage supports LevelDB or RocksDB, and LevelDB is used by default. You can also choose RocksDB, which provides lots of configuration parameters, allowing nodes to be tuned according to their own machine configuration. The node database occupies less disk space than LevelDB. At the same time, RocksDB supports data backup during runtime, and the backup time only takes a few seconds.
 
-## Use RocksDB
+The following describes how to set the storage engine of the Java-tron node to RocksDB, and how to perform data conversion between leveldb and rocksdb.
+
+# RocksDB
 
 ### Configuration
 
@@ -67,7 +70,4 @@ All the whole data conversion process may take 10 hours.
 
 ### RocksDB vs LevelDB
 
-You can refer to:
-
-- [RocksDB vs LevelDB(en)](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
-- [RocksDB vs LevelDB(zh-cn)](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)
+You can refer to the following documents for detailed information::[RocksDB vs LevelDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
