@@ -3,7 +3,8 @@ site_url: https://tronprotocol.github.io/documentation-en/
 repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
-    - Getting Started: getting_started/getting_started_with_javatron.md
+    - Getting Started:
+        - Getting Started with Java-tron: getting_started/getting_started_with_javatron.md
     - Using Java-tron:
         - Deploy Java-tron Node: using_javatron/installing_javatron.md
         - Backup & Restore: using_javatron/backup_restore.md

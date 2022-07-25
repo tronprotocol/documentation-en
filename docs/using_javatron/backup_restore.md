@@ -1,6 +1,5 @@
 # Data Backup & Restore
 
-# Data Directory
 Everything `Java-tron` persists gets written inside its data directory. The default data directory is: `/output-directory/`. If you need to specify other directories, you can add `-d` or `--output-directory` parameter to the java-tron node startup command to specify the data storage location.
 
 ```
