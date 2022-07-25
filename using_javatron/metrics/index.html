@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/metrics/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Node Monitoring - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Node Monitoring";
+        var mkdocs_page_input_path = "using_javatron/metrics.md";
+        var mkdocs_page_url = "/documentation-en/using_javatron/metrics/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploy Java-tron Node</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../connecting_to_tron/">Connecting To The TRON Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Deploy Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Node Monitoring</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#configure-java-tron">Configure Java-tron</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#start-java-tron-node">Start Java-tron node</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deply-prometheus-service">Deply prometheus service</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deploy-grafana">Deploy Grafana</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">RPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocal</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Java-tron Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Java-tron Repository</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/contribution/">Contribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/gpg/">GPG Key</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DAPP development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Using Java-tron &raquo;</li><li>Node Monitoring</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/metrics.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="java-tron-node-metrics-monitoring">Java-tron Node Metrics Monitoring<a class="headerlink" href="#java-tron-node-metrics-monitoring" title="Permanent link">&para;</a></h1>
+<p>Starting from the GreatVoyage-4.5.1 (Tertullian) version, the node provides a series of interfaces compatible with the prometheus protocol, so that the node deployer can monitor the health status of the node more conveniently. If you want to monitor various indicators of the node, you first need to deploy a prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.</p>
+<h2 id="configure-java-tron">Configure Java-tron<a class="headerlink" href="#configure-java-tron" title="Permanent link">&para;</a></h2>
+<p>To use the Prometheus tool to monitor the java-tron node, you first need to enable prometheus metric monitoring in the node configuration file and set the http port:</p>
+<div class="highlight"><pre><span></span><code>node {
+  ... ...
+  p2p {
+    version = 11111 # 11111: mainnet; 20180622: testnet
+  }
+ ####### add for prometheus start.
+ metrics{
+  prometheus{
+  enable=true 
+  port=&quot;9527&quot;
+  }
+ }
+ ####### add for prometheus end.
+}
+</code></pre></div>
+<h2 id="start-java-tron-node">Start Java-tron node<a class="headerlink" href="#start-java-tron-node" title="Permanent link">&para;</a></h2>
+<p>Start Java-tron node using below command：</p>
+<div class="highlight"><pre><span></span><code>$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
+</code></pre></div>
+<h2 id="deply-prometheus-service">Deply prometheus service<a class="headerlink" href="#deply-prometheus-service" title="Permanent link">&para;</a></h2>
+<p><a href="https://prometheus.io/download/">prometheus</a> officially provides precompiled binaries and docker images, you can download them directly from the official website or pull the docker images on dockerhub. For more detailed installation and configuration instructions, Please refer to the <a href="https://prometheus.io/docs/introduction/overview/">prometheus documentation</a>. As a simple deployment instruction, this article will adopt the docker image deployment:</p>
+<ol>
+<li>
+<p>After installing docker, enter the following command to pull the prometheus image:</p>
+<div class="highlight"><pre><span></span><code>$ docker pull prom/prometheus
+</code></pre></div>
+</li>
+<li>
+<p>Download the prometheus configuration file</p>
+<p>The following is a prometheus configuration file template <code>prometheus.yaml</code>:
+<div class="highlight"><pre><span></span><code>global:
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  evaluation_interval: 30s
+scrape_configs:
+- job_name: java-tron
+  honor_timestamps: true
+  scrape_interval: 3s
+  scrape_timeout: 2s
+  metrics_path: /metrics
+  scheme: http
+  follow_redirects: true
+  static_configs:
+  - targets:
+    - 127.0.0.1:9527
+    labels:
+      group: group-xxx
+      instance: xxx-01
+  - targets:
+    - 172.0.0.2:9527
+    labels:
+      group: group-xxx
+      instance: xxx-02
+</code></pre></div>
+You can download and use this template and modify the configuration items <code>targets</code>, it is used to configure the ip and prometheus port of the java-tron node. If you deploy multiple java-tron nodes, you can configure multiple <code>targets</code> to monitor multiple nodes.</p>
+</li>
+<li>
+<p>Start a Prometheus container</p>
+<p>Start a Prometheus container with the following command and specify to use the user-defined configuration file in the previous step:<code>/Users/test/deploy/prometheus/prometheus.yaml</code> </p>
+<div class="highlight"><pre><span></span><code>$ docker run --name prometheus \
+    -d -p :9090:9090 \
+    -v  /Users/test/deploy/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml \
+    prom/prometheus:latest
+</code></pre></div>
+<p>After the container starts, you can view the running status of the prometheus service through <code>http://localhost:9090/</code>.</p>
+<p>Click "Status" -&gt; "Configuration" to check whether the configuration file used by the container is correct:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_config.png" /></p>
+<p>Click "Status" -&gt; "Targets" to view the status of each monitored java-tron node:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_targets.png" /></p>
+<p>In this example, the status of the first endpoint is <code>UP</code>, which means that Prometheus can fetch the data of this node normally. The second endpoint, whose status is <code>DOWN</code>, indicates an exception. For details, please refer to the description in "Error".</p>
+<p>When the status of the monitored java-tron nodes is normal, you can monitor the indicator data through visualization tools such as Grafana or Promdash, etc. This article will use grafana to display the data:</p>
+</li>
+</ol>
+<h2 id="deploy-grafana">Deploy Grafana<a class="headerlink" href="#deploy-grafana" title="Permanent link">&para;</a></h2>
+<p>The deployment process of the Grafana visualization tool is as follows:</p>
+<ol>
+<li>
+<p>Install Grafana
+    Please refer to the official documentation to install <a href="https://grafana.com/docs/grafana/next/setup-grafana/installation/">Grafana</a>. This article will adopt the docker image deployment, and the pulled image version is the open source version:</p>
+<div class="highlight"><pre><span></span><code>$ docker pull grafana/grafana-oss
+</code></pre></div>
+</li>
+<li>
+<p>Strat Grafana</p>
+<p>You can use the below command to start Grafana:
+<div class="highlight"><pre><span></span><code>$ docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
+</code></pre></div></p>
+</li>
+<li>
+<p>Log in to the Grafana web UI</p>
+<p>After startup, you can login the Grafana web UI through <code>http://localhost:3000/</code>. The initial user name and password are both <code>admin</code>. After login, change the password according to the prompts, and then you can enter the main interface. Click the settings icon on the left side of the main page and select "Data Sources" to configure Grafana's data sources:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_datasource.png" /></p>
+<p>Enter the ip and port of the prometheus service in <code>URL</code>:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_prometheus.png" /></p>
+<p>Then click the "Save &amp; test" button at the bottom of the page to save the settings. After clicking save, Grafana will detect the connection with the data source, and if the connection is successful, you will find the words <code>Data source is working</code>.</p>
+</li>
+<li>
+<p>Import Dashboard</p>
+<p>Grafana's dashboard needs to be configured. For the convenience of java-tron node deployers, the TRON community provides a comprehensive dashboard configuration file <a href="https://grafana.com/grafana/dashboards/16567">java-tron-template_rev1.json</a>, which you can download directly and then import into Grafana.</p>
+<p>Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import the downloaded dashboard configuration file:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png" /></p>
+<p>Then you can see the following types of monitoring metrics on the dashboard, and monitor the running status of the nodes in real time:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_dashboard.png" /></p>
+</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../architecture/event/" class="btn btn-neutral float-left" title="Deploy Event Plugin"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../api/http/" class="btn btn-neutral float-right" title="HTTP API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../architecture/event/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../api/http/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

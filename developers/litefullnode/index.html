@@ -1,330 +1,182 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Run Lite FullNode - Java Tron</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Run Lite FullNode";
-    var mkdocs_page_input_path = "developers/litefullnode.md";
-    var mkdocs_page_url = "/documentation-en/developers/litefullnode/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/litefullnode/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Lite Fullnode - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Lite Fullnode";
+        var mkdocs_page_input_path = "developers/litefullnode.md";
+        var mkdocs_page_url = "/documentation-en/developers/litefullnode/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> Java Tron</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Getting Started</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Introduction</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../introduction/">Repository</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/dpos/">DPoS</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/overview/">Overview</a>
-                </li>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploy Java-tron Node</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Connecting To The TRON Network</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Lite Fullnode</a>
+    <ul class="current">
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Deploy Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">RPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocal</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Java-tron Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Java-tron Repository</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../contribution/">Contribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gpg/">GPG Key</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DAPP development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../../api/rpc/">RPC API</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Mechanism & Algorithm</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/sr/">SR and Committee</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/trc10/">TRC-10</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/account/">Account Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/shielded-TRC20-contract/">Shielded TRC20 Contract</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Architecture</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../architecture/network/">Network</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/database/">Database</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/event/">Event Subsystem</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Smart Contract</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../contracts/tvm/">TVM</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/compiler/">Compiler</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/contract/">Contract</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/trc20/">TRC-20</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../official-public-nodes/">Official Public Nodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../deployment/">Deployment</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../run-in-idea/">Run FullNode in IDEA</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Run Lite FullNode</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#lite-fullnode-tool">Lite FullNode Tool</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
-        
-            <li><a class="toctree-l4" href="#usage">Usage</a></li>
-        
-        </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../archive-manifest/">Leveldb Startup Optimization Plugins</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../resources/">Resources</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../contribution/">Contribution</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../incentives/">Incentive Policy</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../java-tron/">Java-Tron</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../tips/">TIPs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../advanced-configuration/">Advanced Configuration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../gpg/">Contact Us (GPG Key)</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Clients</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../clients/wallet-cli/">Wallet-cli</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../clients/tron-grid/">TronGrid</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Releases</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../releases/">Binary Integrity Check</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../faq/">FAQ</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../glossary/">Glossary</a>
-	    </li>
-          
-        </ul>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">Java Tron</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
-          <li>Developers &raquo;</li>
-        
-      
-    
-    <li>Run Lite FullNode</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Using Java-tron &raquo;</li><li>Lite Fullnode</li>
     <li class="wy-breadcrumbs-aside">
-      
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/litefullnode.md"
           class="icon icon-github"> Edit on GitHub</a>
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
-                <h1 id="lite-fullnode-tool">Lite FullNode Tool<a class="headerlink" href="#lite-fullnode-tool" title="Permanent link">&para;</a></h1>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+                <h1 id="lite-fullnode">Lite FullNode<a class="headerlink" href="#lite-fullnode" title="Permanent link">&para;</a></h1>
+<p>Lite FullNode runs the same code with FullNode, the difference is that Lite FullNode only starts based on state data snapshot, which only contains all account state data and historical data of the last 256 blocks. Moreover, during the running of the node, only the data related to the state data snapshot is stored, and the historical data of blocks and transactions are not saved. Therefore, Lite Fullnode has the advantages of occupying less disk space and startting up fast, but it does not provide historical block and transaction data query, and only provides part of HTTP API and GRPC API of fullnode. For APIs that are not supported by Lite Fullnode, please refer to <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryHttpFilter.java">HTTP</a>, <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryGrpcInterceptor.java">GRPC</a>. These APIs can be forced open by configuring <code>openHistoryQueryWhenLiteFN = true</code> in the configuration file, but this is not recommended.</p>
+<p>Therefore, if developers only need to use nodes for block synchronization, processing and broadcasting transactions, then Lite Fullnoe will be a better choice.</p>
+<p>The deployment steps of a Lite fullnode are the same as fullnode. The difference is that the light node database needs to be obtained. You can directly download the light node data snapshot from the <a href="../../using_javatron/backup_restore/#lite-fullnode-data-snapshot">public backup data</a> and use it directly; you can also use the lite fulnode tool to convert the fullnode database to lite fullnode database. The use of the light node tool will be described in detail below.</p>
+<h1 id="lite-fullnode-tool">Lite FullNode Tool<a class="headerlink" href="#lite-fullnode-tool" title="Permanent link">&para;</a></h1>
 <p>Lite FullNode Tool is used to split the database of a FullNode into a <code>Snapshot dataset</code> and a <code>History dataset</code>.</p>
 <ul>
 <li><code>Snapshot dataset</code>: the minimum dataset for quick startup of the Lite FullNode.</li>
 <li><code>History dataset</code>: the archive dataset that used for historical data queries.</li>
 </ul>
-<p>Remember stop the FullNode process before any operation. This tool provides the ability to specify which dataset to split.
-The two datasets are split by the <code>latest_block_number</code>. Lite FullNode that startup by <code>Snapshot dataset</code> does not support query the historical data behind the <code>latest_block_number</code>,
-this tool also provides a merge function that can merge <code>History dataset</code> into the database of Lite FullNode. For more API details: <a href="#httpgrpc-apis">HTTP&amp;GRPC APIs</a></p>
-<p>For more design details, please refer to: <a href="https://github.com/tronprotocol/tips/issues/128">TIP128</a></p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
+<p>Before using this tool for any operation, you need to stop the currently running FullNode process first. This tool provides the function of splitting the complete data into two datasets according to the current <code>latest block height</code> (latest_block_number). Lite FullNode launched from snapshot datasets do not support querying historical data prior to this block height. The tool also provides the ability to merge historical datasets with snapshot datasets.</p>
+<p>For more design details, please refer to: <a href="https://github.com/tronprotocol/tips/issues/128">TIP-128</a>.</p>
+<h3 id="obtain-lite-fullnode-tool">Obtain Lite Fullnode Tool<a class="headerlink" href="#obtain-lite-fullnode-tool" title="Permanent link">&para;</a></h3>
+<p>LiteFullNodeTool.jar can be obtained by compiling the java-tron source code, the steps are as follows:</p>
+<ol>
+<li>Obtain java-tron source code
+    <div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
+$ git checkout -t origin/master
+</code></pre></div></li>
+<li>
+<p>Compile
+    <div class="highlight"><pre><span></span><code>$ cd java-tron
+$ ./gradlew clean build -x test
+</code></pre></div></p>
+<p>After compiling, <code>LiteFullNodeTool.jar</code> will be generated in the <code>java-tron/build/libs/</code> directory.</p>
+</li>
+</ol>
+<h3 id="use-lite-fullnode-tool">Use Lite Fullnode tool<a class="headerlink" href="#use-lite-fullnode-tool" title="Permanent link">&para;</a></h3>
+<p><strong>Options</strong></p>
 <p>This tool provides independent cutting of <code>Snapshot Dataset</code> and <code>History Dataset</code> and a merge function.</p>
 <ul>
 <li><code>--operation | -o</code>: [ split | merge ] specifies the operation as either to split or to merge</li>
@@ -333,218 +185,56 @@ this tool also provides a merge function that can merge <code>History dataset</c
 <li><code>--dataset-path</code>: dataset directory, when operation is <code>split</code>, <code>dataset-path</code> is the path that store the <code>Snapshot Dataset</code> or <code>History Dataset</code>,
 otherwise <code>dataset-path</code> should be the <code>History Dataset</code> path.</li>
 </ul>
-<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p><strong>Examples</strong></p>
 <p>Start a new FullNode using the default config, then an <code>output-directory</code> will be produced in the current directory.
 <code>output-directory</code> contains a sub-directory named <code>database</code> which is the database to be split.</p>
-<h4 id="split-and-get-a-snapshot">Split and get a <code>Snapshot</code><a class="headerlink" href="#split-and-get-a-snapshot" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Split and get a <code>Snapshot Dataset</code></strong></p>
 <p>First, stop the FullNode and execute:
 <div class="highlight"><pre><span></span><code>// just for simplify, locate the snapshot into `/tmp` directory,
-java -jar LiteFullNodeTool.jar -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
+$ java -jar LiteFullNodeTool.jar -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
 </code></pre></div>
 then a <code>snapshot</code> directory will be generated in <code>/tmp</code>, pack this directory and copy it to somewhere that is ready to run a Lite Fullnode.
 Do not forget rename the directory from <code>snapshot</code> to <code>database</code>.
 (the default value of the storage.db.directory is <code>database</code>, make sure rename the snapshot to the specified value)</p>
-<h4 id="split-a-history">Split a <code>History</code><a class="headerlink" href="#split-a-history" title="Permanent link">&para;</a></h4>
+</li>
+<li>
+<p><strong>Split and get a <code>History Dataset</code></strong></p>
 <p>If historical data query is needed, <code>History dataset</code> should be generated and merged into Lite FullNode.
 <div class="highlight"><pre><span></span><code>// just for simplify, locate the history into `/tmp` directory,
-java -jar LiteFullNodeTool.jar -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
+$ java -jar LiteFullNodeTool.jar -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
 </code></pre></div>
 A <code>history</code> directory will be generated in <code>/tmp</code>, pack this directory and copy it to a Lite Fullnode.
 <code>History dataset</code> always take a large storage, make sure the disk has enough volume to store the <code>History dataset</code>.</p>
-<h4 id="merge">Merge<a class="headerlink" href="#merge" title="Permanent link">&para;</a></h4>
+</li>
+<li>
+<p><strong>Merge <code>History Dataset</code> and <code>Snapshot Dataset</code></strong></p>
 <p>Both <code>History Dataset</code> and <code>Snapshot Dataset</code> have an info.properties file to identify the block height from which they are segmented.
 Make sure that the <code>split_block_num</code> in <code>History Dataset</code> is not less than the corresponding value in the <code>Snapshot Dataset</code>.</p>
 <p>After getting the <code>History dataset</code>, the Lite FullNode can merge the <code>History dataset</code> and become a real FullNode.
 <div class="highlight"><pre><span></span><code>// just for simplify, assume `History dataset` is locate in /tmp
-java -jar LiteFullNodeTool.jar -o merge --fn-data-path output-directory/database --dataset-path /tmp/history
+$ java -jar LiteFullNodeTool.jar -o merge --fn-data-path output-directory/database --dataset-path /tmp/history
 </code></pre></div></p>
-<h3 id="httpgrpc-apis">HTTP&amp;GRPC APIs<a class="headerlink" href="#httpgrpc-apis" title="Permanent link">&para;</a></h3>
-<p>Some APIs are not supported on lite fullnode, here is the list:</p>
-<h4 id="http">Http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>wallet/</th>
-<th>walletsolidity/</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>getblockbyid</td>
-<td>getblockbyid</td>
-</tr>
-<tr>
-<td>getblockbylatestnum</td>
-<td>getblockbylatestnum</td>
-</tr>
-<tr>
-<td>getblockbylimitnext</td>
-<td>getblockbylimitnext</td>
-</tr>
-<tr>
-<td>getblockbynum</td>
-<td>getblockbynum</td>
-</tr>
-<tr>
-<td>getmerkletreevoucherinfo</td>
-<td>getmerkletreevoucherinfo</td>
-</tr>
-<tr>
-<td>gettransactionbyid</td>
-<td>gettransactionbyid</td>
-</tr>
-<tr>
-<td>gettransactioncountbyblocknum</td>
-<td>gettransactioncountbyblocknum</td>
-</tr>
-<tr>
-<td>gettransactioninfobyid</td>
-<td>gettransactioninfobyid</td>
-</tr>
-<tr>
-<td>gettransactionreceiptbyid</td>
-<td></td>
-</tr>
-<tr>
-<td>isspend</td>
-<td>isspend</td>
-</tr>
-<tr>
-<td>scanandmarknotebyivk</td>
-<td>scanandmarknotebyivk</td>
-</tr>
-<tr>
-<td>scannotebyivk</td>
-<td>scannotebyivk</td>
-</tr>
-<tr>
-<td>scannotebyovk</td>
-<td>scannotebyovk</td>
-</tr>
-<tr>
-<td>totaltransaction</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="grpc">GRPC<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>protocol.Wallet</th>
-<th>protocol.WalletSolidity</th>
-<th>protocol.Database</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GetBlockById</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GetBlockByLatestNum</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GetBlockByLatestNum2</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GetBlockByLimitNext</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GetBlockByLimitNext2</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GetBlockByNum</td>
-<td>GetBlockByNum</td>
-<td>GetBlockByNum</td>
-</tr>
-<tr>
-<td>GetBlockByNum2</td>
-<td>GetBlockByNum2</td>
-<td></td>
-</tr>
-<tr>
-<td>GetMerkleTreeVoucherInfo</td>
-<td>GetMerkleTreeVoucherInfo</td>
-<td></td>
-</tr>
-<tr>
-<td>GetTransactionById</td>
-<td>GetTransactionById</td>
-<td></td>
-</tr>
-<tr>
-<td>GetTransactionCountByBlockNum</td>
-<td>GetTransactionCountByBlockNum</td>
-<td></td>
-</tr>
-<tr>
-<td>GetTransactionInfoById</td>
-<td>GetTransactionInfoById</td>
-<td></td>
-</tr>
-<tr>
-<td>IsSpend</td>
-<td>IsSpend</td>
-<td></td>
-</tr>
-<tr>
-<td>ScanAndMarkNoteByIvk</td>
-<td>ScanAndMarkNoteByIvk</td>
-<td></td>
-</tr>
-<tr>
-<td>ScanNoteByIvk</td>
-<td>ScanNoteByIvk</td>
-<td></td>
-</tr>
-<tr>
-<td>ScanNoteByOvk</td>
-<td>ScanNoteByOvk</td>
-<td></td>
-</tr>
-<tr>
-<td>TotalTransaction</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>These APIs can open forcibly by set <code>openHistoryQueryWhenLiteFN</code> = true, but not recommended.</p>
+</li>
+</ul>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../archive-manifest/" class="btn btn-neutral float-right" title="Leveldb Startup Optimization Plugins">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../run-in-idea/" class="btn btn-neutral" title="Run FullNode in IDEA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../using_javatron/connecting_to_tron/" class="btn btn-neutral float-left" title="Connecting To The TRON Network"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../using_javatron/private_network/" class="btn btn-neutral float-right" title="Private Network">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -552,23 +242,31 @@ java -jar LiteFullNodeTool.jar -o merge --fn-data-path output-directory/database
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../run-in-idea/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../archive-manifest/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../using_javatron/connecting_to_tron/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../using_javatron/private_network/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

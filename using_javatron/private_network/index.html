@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Private Network - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Private Network";
+        var mkdocs_page_input_path = "using_javatron/private_network.md";
+        var mkdocs_page_url = "/documentation-en/using_javatron/private_network/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploy Java-tron Node</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../connecting_to_tron/">Connecting To The TRON Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Private Network</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Deploy Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">RPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocal</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Java-tron Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Java-tron Repository</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/contribution/">Contribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/gpg/">GPG Key</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DAPP development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Using Java-tron &raquo;</li><li>Private Network</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/private_network.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="private-network">Private Network<a class="headerlink" href="#private-network" title="Permanent link">&para;</a></h1>
+<p>To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the <code>Oracle JDK 1.8</code> first, and then you need to prepare at least two TRON network address and save the address and private key. You can use <a href="https://github.com/tronprotocol/wallet-cli">wallet-cli</a> or <a href="https://www.tronlink.org/">Tronlink</a> to create address.</p>
+<h1 id="deployment-guide">Deployment Guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h1>
+<p>The process of building a node on private chain is the same as that on mainnet. The difference is the content of the node configuration file. The most important step to build a private chain is to modify the configuration items in the configuration file, so that the nodes can form a private network for node discovery, block synchronization and broadcast transactions.</p>
+<ol>
+<li>
+<p>Create deployment directory</p>
+<p>Create deployment directory, it is recommended to put the two fullnodes in different directories.
+  <div class="highlight"><pre><span></span><code>$ mkdir SR
+$ mkdir FullNode
+</code></pre></div></p>
+</li>
+<li>
+<p>Obtain <a href="https://github.com/tronprotocol/java-tron/releases">FullNode.jar</a></p>
+<p>Obtain FullNode.jar, then put it into the SR and FullNode directories respectively.
+ <div class="highlight"><pre><span></span><code>$ cp FullNode.jar ./SR
+$ cp FullNode.jar ./FullNode
+</code></pre></div></p>
+</li>
+<li>
+<p>Obtain the node's config file <a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private_net_config.conf</a></p>
+<p>Obtain the node's config file private_net_config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
+  <div class="highlight"><pre><span></span><code>$ cp private_net_config.conf ./SR/supernode.conf
+$ cp private_net_config.conf ./FullNode/fullnode.conf
+</code></pre></div></p>
+</li>
+<li>
+<p>Modify the configuration file of each node</p>
+<p>Please modify each configuration item of the node in turn according to the instructions in the following table:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Config Item</th>
+<th style="text-align: left;">SR Fullnode</th>
+<th style="text-align: left;">FullNode</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">localwitness</td>
+<td style="text-align: left;">The private key of witness address</td>
+<td style="text-align: left;">Please do not fill in data</td>
+<td style="text-align: left;">Generating blocks requires signing with a private key</td>
+</tr>
+<tr>
+<td style="text-align: left;">genesis.block.witnesses</td>
+<td style="text-align: left;">Witness address</td>
+<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">Genesis block related configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;">genesis.block.Assets</td>
+<td style="text-align: left;">Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as needed</td>
+<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">Genesis block related configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;">p2p.version</td>
+<td style="text-align: left;">any positive integer except for 11111</td>
+<td style="text-align: left;">the same as SR node's</td>
+<td style="text-align: left;">Only nodes of the same p2p version can shake hands successfully</td>
+</tr>
+<tr>
+<td style="text-align: left;">seed.node</td>
+<td style="text-align: left;">Please do not fill in data</td>
+<td style="text-align: left;">Change the seed.node ip.list in the configuration file to the IP address and the port (<code>listen.port</code>) of the SR</td>
+<td style="text-align: left;">Enables fullnode to establish connection with SR node and synchronize data</td>
+</tr>
+<tr>
+<td style="text-align: left;">needSyncCheck</td>
+<td style="text-align: left;">false</td>
+<td style="text-align: left;">true</td>
+<td style="text-align: left;">Set the first SR’s needSyncCheck to false, other SRs true</td>
+</tr>
+<tr>
+<td style="text-align: left;">node.discovery.enable</td>
+<td style="text-align: left;">true</td>
+<td style="text-align: left;">true</td>
+<td style="text-align: left;">If it is false, the current node will not be discovered by other nodes</td>
+</tr>
+<tr>
+<td style="text-align: left;">block.proposalExpireTime</td>
+<td style="text-align: left;">600000</td>
+<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">The default proposal effective time is 3 days: 259200000 (ms), if you want to quickly pass the proposal, you can set this item to a smaller value, such as 10 minutes, that is, 600000ms</td>
+</tr>
+<tr>
+<td style="text-align: left;">block.maintenanceTimeInterval</td>
+<td style="text-align: left;">300000</td>
+<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">The defaul maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.</td>
+</tr>
+<tr>
+<td style="text-align: left;">committee.allowSameTokenName</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Allow same token name</td>
+</tr>
+<tr>
+<td style="text-align: left;">committee.allowTvmTransferTrc10</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Allow tvm transfer TRC10</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Modify the port in the configuration file, and configure the SR and FullNode with different port numbers. <strong>Note</strong>, this step is only required if SR and FullNode are running on the same machine, otherwise, this step can be skipped.</p>
+<ul>
+<li><code>listen.port</code> ： p2p listen port</li>
+<li><code>http</code> port： Http listen port</li>
+<li><code>rpc</code> port： rpc listen port</li>
+</ul>
+</li>
+<li>
+<p>Startup the node</p>
+<p>The fullnode that produces blocks has the different startup command with the fullnodes that do not produce blocks:</p>
+<ul>
+<li>Fullnode that produces blocks
+  <div class="highlight"><pre><span></span><code>$ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
+</code></pre></div></li>
+<li>Fullnode
+  <div class="highlight"><pre><span></span><code>$ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Modify the dynamic parameters of the private chain</p>
+<p>In order to be the same as the main network environment, the dynamic parameters of the private chain need to be modified to be consistent with those of the main network. The modification of dynamic parameters can be done through proposals. The SR account can use <a href="https://github.com/tronprotocol/wallet-cli">wallet-cli</a> or fullnode http API  <a href="https://developers.tron.network/reference/proposalcreate"><code>wallet/proposalcreate</code></a>to create proposals, <a href="https://developers.tron.network/reference/proposalapprove"><code>wallet/proposalapprove</code></a> to approve proposals. </p>
+<p>The following are the dynamic parameters and values sorted out according to the proposals passed by the mainnet successively. SR can directly use the following commands to create a proposal to complete the modification of all the dynamic parameters of the private chain at one time.</p>
+<div class="highlight"><pre><span></span><code>var TronWeb = require(&#39;tronweb&#39;);
+var tronWeb = new TronWeb({
+        fullHost: &#39;http://localhost:16887&#39;,
+        privateKey: &#39;c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc&#39;
+    })
+
+var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal([{&quot;key&quot;:9,&quot;value&quot;:1},{&quot;key&quot;:10,&quot;value&quot;:1},{&quot;key&quot;:11,&quot;value&quot;:280},{&quot;key&quot;:19,&quot;value&quot;:90000000000},{&quot;key&quot;:15,&quot;value&quot;:1},{&quot;key&quot;:18,&quot;value&quot;:1},{&quot;key&quot;:16,&quot;value&quot;:1},{&quot;key&quot;:20,&quot;value&quot;:1},{&quot;key&quot;:26,&quot;value&quot;:1},{&quot;key&quot;:30,&quot;value&quot;:1},{&quot;key&quot;:5,&quot;value&quot;:16000000},{&quot;key&quot;:31,&quot;value&quot;:160000000},{&quot;key&quot;:32,&quot;value&quot;:1},{&quot;key&quot;:39,&quot;value&quot;:1},{&quot;key&quot;:41,&quot;value&quot;:1},{&quot;key&quot;:3,&quot;value&quot;:1000},{&quot;key&quot;:47,&quot;value&quot;:10000000000},{&quot;key&quot;:49,&quot;value&quot;:1},{&quot;key&quot;:13,&quot;value&quot;:80},{&quot;key&quot;:7,&quot;value&quot;:1000000},{&quot;key&quot;:61,&quot;value&quot;:1500},{&quot;key&quot;:63,&quot;value&quot;:1}],&quot;41D0B69631440F0A494BB51F7EEE68FF5C593C00F0&quot;)
+var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn, &quot;c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc&quot;);
+var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
+
+setTimeout(async function() { 
+        console.log(&quot;Vote proposal!&quot;) 
+        var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(1, true, tronWeb.defaultAddress.hex)
+        var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn, &quot;c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc&quot;);
+        var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
+    }, 1000)
+</code></pre></div>
+</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../developers/litefullnode/" class="btn btn-neutral float-left" title="Lite Fullnode"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../architecture/database/" class="btn btn-neutral float-right" title="Database Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../developers/litefullnode/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../architecture/database/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

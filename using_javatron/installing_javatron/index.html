@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Deploy Java-tron Node - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Deploy Java-tron Node";
+        var mkdocs_page_input_path = "using_javatron/installing_javatron.md";
+        var mkdocs_page_url = "/documentation-en/using_javatron/installing_javatron/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Deploy Java-tron Node</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../connecting_to_tron/">Connecting To The TRON Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Deploy Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">RPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocal</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Java-tron Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Java-tron Repository</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/contribution/">Contribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/gpg/">GPG Key</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DAPP development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Using Java-tron &raquo;</li><li>Deploy Java-tron Node</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/installing_javatron.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="deploy-a-java-tron-node">Deploy a Java-tron Node<a class="headerlink" href="#deploy-a-java-tron-node" title="Permanent link">&para;</a></h1>
+<p>Java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported.</p>
+<p>The minimum hardware configuration required to run a Java-tron node is <code>8-core CPU</code>, <code>16G memory</code>, <code>1T SDD</code>, the recommended configuration is: <code>16-core CPU</code>, <code>32G memory</code>, <code>1.5T+ SDD</code>. The fullnode running by super representative to produce block recommends <code>32-core CPU</code> and <code>64G memory</code>.</p>
+<h1 id="compile-the-source-code">Compile the source code<a class="headerlink" href="#compile-the-source-code" title="Permanent link">&para;</a></h1>
+<p>First, clone the Java-tron repository to the local with the following git command, and switch to the <code>master</code> branch. Before executing the command, make sure you have installed the <code>git</code> tool.</p>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
+$ git checkout -t origin/master
+</code></pre></div>
+<p>Then, compile the Java-tron source code by executing the following command. The parameter <code>-x test</code> means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the <code>java-tron/build/libs/</code> directory.</p>
+<div class="highlight"><pre><span></span><code>$ cd java-tron
+$ ./gradlew clean build -x test
+</code></pre></div>
+<h2 id="run-a-java-tron-node">Run a Java-tron Node<a class="headerlink" href="#run-a-java-tron-node" title="Permanent link">&para;</a></h2>
+<p>You can choose different configuration files to connect Java-tron nodes to different networks. The mainnet configuration file is: <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">main_net_config.conf</a>, other network configuration files can be found <a href="https://github.com/tronprotocol/tron-deployment">here</a>.</p>
+<h3 id="startup-a-fullnode">Startup a fullnode<a class="headerlink" href="#startup-a-fullnode" title="Permanent link">&para;</a></h3>
+<p>Fullnode has full historical data, it is the entry point into the TRON network , it provides HTTP API and gRPC API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the <code>-c</code> parameter: </p>
+<div class="highlight"><pre><span></span><code>$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
+</code></pre></div>
+<ul>
+<li>-XX:+UseConcMarkSweepGC  ：Specifies parallel garbage collection. To be placed before the -jar parameter, not at the end. </li>
+<li>-Xmx  ：The maximum value of the JVM heap, which can be set to 80% of the physical memory.</li>
+</ul>
+<h3 id="startup-a-fullnode-that-produces-blocks">Startup a fullnode that produces blocks<a class="headerlink" href="#startup-a-fullnode-that-produces-blocks" title="Permanent link">&para;</a></h3>
+<p>Adding the <code>--witness</code> parameter to the startup command, fullnode will run as a node which produces blocks. In addition to supporting all the functions of fullnode, the block-producing fullnode also supports block production and transaction packaging. Please make sure you have a super representative account and get the votes of others. If the votes ranks in the top 27, you need to start a full node that produces blocks to participate in block production.</p>
+<p>Fill in the private key of the super representative address into the <code>localwitness</code> list in the main_net_config.conf, below is an example. But if you don't want to use this way of specifying the private key in plain text, you can use the keystore + password method, please refer to <a href="#others">Others</a> chapter.</p>
+<div class="highlight"><pre><span></span><code>localwitness = [
+    650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812
+]
+</code></pre></div>
+<p>then run the following command to start the node:</p>
+<div class="highlight"><pre><span></span><code>$ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
+</code></pre></div>
+<p><strong>Note</strong>: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use <a href="../backup_restore/#public-backup-data">Data Snapshots</a> to speed up node synchronization. First download the latest data snapshot and extract it to the <code>output-directory</code> directory of the tron project, and then start the node, so that the node will synchronize on the basis of the data snapshot.</p>
+<h1 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h1>
+<h3 id="how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account">How to use <code>keystore + password</code> to specify the privatekey of witness account<a class="headerlink" href="#how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account" title="Permanent link">&para;</a></h3>
+<ol>
+<li>You should not use the nohup command because the interaction is required when running the node. It is recommended to use session keeping tools such as screen, tmux, etc.</li>
+<li>Comment the <code>localwitness</code> item in main_net_config.conf and uncomment the <code>localwitnesskeystore</code> item. Fill in the path of the Keystore file. Note that the Keystore file needs to be placed in the current directory where the startup command is executed or its subdirectory. If the current directory is "A", the directory of the Keystore file is "A/B/localwitnesskeystore.json", it needs to be configured as:
+    <div class="highlight"><pre><span></span><code>localwitnesskeystore = [
+      &quot;B/localwitnesskeystore.json&quot;
+]
+</code></pre></div>
+    <strong>Note</strong>: For <code>keystore + password</code> generation, you can use the register wallet command of the <a href="https://github.com/tronprotocol/wallet-cli.git">wallet-cli</a>.</li>
+<li>Startup the fullnode which produces blocks
+    <div class="highlight"><pre><span></span><code>    $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
+</code></pre></div></li>
+<li>Enter the password correctly to finish the node startup.</li>
+</ol>
+<h3 id="optimize-memory-allocation-with-tcmalloc">Optimize Memory Allocation with tcmalloc<a class="headerlink" href="#optimize-memory-allocation-with-tcmalloc" title="Permanent link">&para;</a></h3>
+<p>Memory allocation of java-tron can be optimized with tcmalloc. The method is as follows:</p>
+<p>First install tcmalloc, then add the following two lines to the startup script, the path of tcmalloc is slightly different for different Linux distributions.</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+
+export LD_PRELOAD=&quot;/usr/lib/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
+
+# original start command
+java -jar .....
+</code></pre></div>
+<p>Instructions for each Linux distributions are as belows:</p>
+<ul>
+<li>
+<p>Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable
+    Install</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt install libgoogle-perftools4
+</code></pre></div>
+<p>In the startup script add the followings:</p>
+<div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
+</code></pre></div>
+</li>
+<li>
+<p>Ubuntu 16.04 LTS
+    Same install command as above. In the startup script add the followings:</p>
+<div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
+</code></pre></div>
+</li>
+<li>
+<p>CentOS 7
+  Install
+    <div class="highlight"><pre><span></span><code>$ sudo yum install gperftools-libs
+</code></pre></div>
+    In the startup script add the followings:
+    <div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib64/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
+</code></pre></div></p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../getting_started/getting_started_with_javatron/" class="btn btn-neutral float-left" title="Getting Started with Java-tron"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../backup_restore/" class="btn btn-neutral float-right" title="Backup & Restore">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../getting_started/getting_started_with_javatron/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../backup_restore/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
