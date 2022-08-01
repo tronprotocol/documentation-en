@@ -6,13 +6,13 @@ nav:
     - Getting Started:
         - Getting Started with Java-tron: getting_started/getting_started_with_javatron.md
     - Using Java-tron:
-        - Deploy Java-tron Node: using_javatron/installing_javatron.md
+        - Deploying Java-tron: using_javatron/installing_javatron.md
         - Backup & Restore: using_javatron/backup_restore.md
-        - Connecting To The TRON Network: using_javatron/connecting_to_tron.md
         - Lite Fullnode: developers/litefullnode.md
         - Private Network: using_javatron/private_network.md
+        - Event Plugin: architecture/event.md
         - Database Configuration: architecture/database.md
-        - Deploy Event Plugin: architecture/event.md
+        - Network Configuration: using_javatron/connecting_to_tron.md
         - Node Monitoring: using_javatron/metrics.md
     - API:
         - HTTP API: api/http.md
@@ -25,13 +25,13 @@ nav:
         - Smart Contract: contracts/contract.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
         - Multi-Signature: mechanism-algorithm/multi-signatures.md
-    - Java-tron Development:
+    - For Java-tron Developers:
         - Java-tron Repository: developers/java-tron.md
         - Contribution: developers/contribution.md
         - Configure the IDE: developers/run-in-idea.md
         - TIPs: developers/tips.md
         - GPG Key: developers/gpg.md
-    - DAPP development:
+    - For DAPP developers:
         - Dapp Development Tool: contracts/compiler.md
     - Wallet-cli:
         - Installation: clients/wallet-cli.md
