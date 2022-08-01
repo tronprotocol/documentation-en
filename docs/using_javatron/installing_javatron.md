@@ -5,7 +5,7 @@ Java-tron nodes support to be deployed on `Linux` or `MacOS` operating systems, 
 The minimum hardware configuration required to run a Java-tron node is `8-core CPU`, `16G memory`, `1T SDD`, the recommended configuration is: `16-core CPU`, `32G memory`, `1.5T+ SDD`. The fullnode running by super representative to produce block recommends `32-core CPU` and `64G memory`.
 
 
-# Compile the source code
+# Compile the Source Code
 First, clone the Java-tron repository to the local with the following git command, and switch to the `master` branch. Before executing the command, make sure you have installed the `git` tool.
 
 ```
