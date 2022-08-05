@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/tips/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>TIPs - Java Tron</title>
+    <title>TIPs Workflow - Java Tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "TIPs";
+        var mkdocs_page_name = "TIPs Workflow";
         var mkdocs_page_input_path = "developers/tips.md";
         var mkdocs_page_url = "/documentation-en/developers/tips/";
       </script>
@@ -90,15 +90,37 @@
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Java-tron Repository</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Developer Guide</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../contribution/">Contribution</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">TIPs Workflow</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#tip-types">TIP Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tip-work-flow">TIP Work Flow</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tip-status">TIP Status</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tip-structure">TIP Structure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tip-header-preamble">TIP Header Preamble</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tip-body">TIP Body</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#linking-to-external-resources">Linking to External Resources</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#linking-to-other-tips">Linking to other TIPs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#auxiliary-files">Auxiliary Files</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../issue-workflow/">Issue Workflow</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../run-in-idea/">Configure the IDE</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">TIPs</a>
-    <ul class="current">
-    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../gpg/">GPG Key</a>
                   </li>
@@ -136,7 +158,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>For Java-tron Developers &raquo;</li><li>TIPs</li>
+          <li>For Java-tron Developers &raquo;</li><li>TIPs Workflow</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/tips.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -148,49 +170,95 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="tron-improvement-proposaltip">TRON Improvement Proposal(TIP)<a class="headerlink" href="#tron-improvement-proposaltip" title="Permanent link">&para;</a></h1>
-<p>TRON Improvement Proposals (TIPs) describe standards for the TRON platform, including core protocol specifications, client APIs, and contract standards.</p>
-<p>The TIPS repository is <a href="https://github.com/tronprotocol/TIPs">https://github.com/tronprotocol/TIPs</a></p>
-<h2>To Submit a TIP</h2>
-
-<p>1.&nbsp;Fork the repository by clicking "Fork" in the top right.</p>
-<p>2.&nbsp;Add your TIP to your fork of the repository. There is a <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">TIP template</a> here.</p>
-<p>3.&nbsp;Submit a Pull Request to TRON's TIPs repository.</p>
-<p>Your first PR should be a first draft of the final TIP. It must meet the formatting criteria enforced by the build (largely, correct metadata in the header). An editor will manually review the first PR for a new TIP and assign it a number before merging it. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole.</p>
-<p>When you believe your TIP is mature and ready to progress past the draft phase, you should do one of two things:</p>
+                <h1 id="tron-improvement-proposals-tips">TRON Improvement Proposals (TIPs)<a class="headerlink" href="#tron-improvement-proposals-tips" title="Permanent link">&para;</a></h1>
+<p>TIP stands for TRON Improvement Proposal. TIPs record the entire process of TRON improvement, including the process of community making suggestions, discussions, and adoption. A TIP is a design document about a proposal, including the rationale and technical specifications of the proposal. Community users can read the TIP document to learn more about the proposal.</p>
+<p>TIPs are the unit around which governance happens in TRON，anyone is free to propose one, and then community participants will debate to determine if it should be adopted as a standard or included in a network upgrade. The TIP author is responsible for building consensus within the community and documenting dissenting opinions. </p>
+<h2 id="tip-types">TIP Types<a class="headerlink" href="#tip-types" title="Permanent link">&para;</a></h2>
+<p>TIPs are mainly divided into <code>Standard Track</code> and <code>Informational</code>:</p>
 <ul>
 <li>
-<p>For a Standards Track TIP of type Core, ask to have your issue added to the agenda of an upcoming All Core Devs meeting, where it can be discussed for inclusion in a future hard fork. If implementers agree to include it, the TIP editors will update the state of your TIP to 'Accepted'.</p>
-</li>
-<li>
-<p>For all other TIPs, open a PR changing the state of your TIP to 'Final'. An editor will review your draft and ask if anyone objects to its being finalised. If the editor decides there is no rough consensus, they may close the PR and request that you fix the issues in the draft before trying again.</p>
-</li>
-</ul>
-<h2>TIP Status</h2>
-
+<p><code>Standard Track</code> :  Describes any change that affects most or all TRON implementations, such as a change in block or transaction validity rules, proposed application standards/conventions, or any change or addition that affects the interoperability of applications using TRON. Furthermore, Standard TIPs can be broken down into the following categories.</p>
 <ul>
-<li>
-<p><strong>Draft</strong>: A TIP that is undergoing rapid iteration and changes.</p>
+<li><code>Core</code>:  Improvements requiring a consensus fork, as well as changes that are not necessarily consensus critical but may be relevant to "core dev" discussions.</li>
+<li><code>Networking</code>: Improvements around network protocol.</li>
+<li><code>Interface</code>:  Improvements around client API/RPC specifications and standards.</li>
+<li><code>TRC</code>：Application-level standards and conventions, including contract standards such as token standards (TRC-20).</li>
+<li><code>TVM</code>：mprovements around TRON Virtual Machine.</li>
+</ul>
 </li>
 <li>
-<p><strong>Last Call</strong>: A TIP that is done with its initial iteration and ready for review by a wide audience.</p>
-</li>
-<li>
-<p><strong>Accepted</strong>: A core TIP that has been in Last Call for at least 2 weeks and any technical changes that were requested have been addressed by the author. The process for Core Devs to decide whether to encode an TIP into their clients as part of a hard fork is not part of the TIP process. If such a decision is made, the TIP will move to final.</p>
-</li>
-<li>
-<p><strong>Final (non-Core)</strong>: A TIP that has been in Last Call for at least 2 weeks and any technical changes that were requested have been addressed by the author.</p>
-</li>
-<li>
-<p><strong>Final (Core)</strong>: A TIP that the Core Devs have decided to implement and release in a future hard fork or has already been released in a hard fork.</p>
+<p><code>Informational</code>: Describes a TRON design issue, or provides general guidelines or information to the TRON community, but does not propose a new feature.</p>
 </li>
 </ul>
+<h2 id="tip-work-flow">TIP Work Flow<a class="headerlink" href="#tip-work-flow" title="Permanent link">&para;</a></h2>
+<p>Before you submit a TIP, you need to create an issue for comment and add the issue URL to your TIP header. The format of a TIP issue is consistent with the content of TIP. The process of submitting TIP is as follows:</p>
+<ol>
+<li>Fork the <a href="https://github.com/tronprotocol/TIPs">TIP repository</a> by clicking "Fork" in the top right.</li>
+<li>Add your TIP to your fork of the repository. There is a <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">TIP template</a> here.</li>
+<li>Submit a Pull Request to TRON's TIPs repository.</li>
+</ol>
+<p>Please use <code>markdown</code> to write TIP in strict accordance with the requirements of <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">template</a>. Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole. If a TIP is about the feature development of java-tron, and a PR of the development exists, in your TIP and your java-tron's PR you need to refer each other's github link to make the requirements analysis of new features and development code traceable.</p>
+<p>Your first PR for a new TIP will be in the state of <code>draft</code>. It must meet the formatting criteria enforced by the build. An editor will manually review it and assign it a number before merging it.</p>
+<p>When you believe your TIP is mature and ready to progress past the <code>draft</code> phase, you should do one of two things:</p>
+<ul>
+<li>For a Standards Track TIP of type Core, ask to have your issue added to the agenda of an upcoming All Core Devs meeting, where it can be discussed for inclusion in a future hard fork. If core devs agree to include it, the TIP editors will update the state of your TIP to <code>Accepted</code>.</li>
+<li>For all other TIPs, open a PR changing the state of your TIP to <code>Final(non-Core)</code>. An editor will review your draft and ask if anyone objects to its being finalized. If the editor decides there is no rough consensus, they may close the PR and request you fix the issues in the draft before trying again.</li>
+</ul>
+<h3 id="tip-status">TIP Status<a class="headerlink" href="#tip-status" title="Permanent link">&para;</a></h3>
+<p>A TIP may go through the following states:</p>
+<ul>
+<li><code>Draft</code>: A TIP that is undergoing rapid iteration and changes.</li>
+<li><code>Last Call</code>:  A TIP that is done with its initial iteration and ready for review by a wide audience.</li>
+<li><code>Accepted</code>: A core TIP that has been in the <code>Last Call</code> for at least 2 weeks and any technical changes that were requested have been addressed by the author. The process for Core Devs to decide whether to encode a TIP into their clients as part of a hard fork is not part of the TIP process. If such a decision is made, the TIP will move to the <code>final</code>.</li>
+<li><code>Final (non-Core)</code>: A TIP that has been in the <code>Last Call</code> for at least 2 weeks and any technical changes that were requested have been addressed by the author. </li>
+<li><code>Final (Core)</code>: A TIP that the Core Devs have decided to implement and release in a future version or has already been released.</li>
+<li><code>Active</code>: If the TIPs are never meant to be completed, the TIPs may have a status of <code>Active</code>.</li>
+<li><code>Abandoned</code>: If a TIP is no longer pursued by the original authors or it may not be a (technically) preferred option anymore.</li>
+<li><code>Rejected</code>: A TIP that is fundamentally broken or a Core TIP that was rejected by the Core Devs and will not be implemented.</li>
+<li><code>Superseded</code>: A TIP which was previously Final but is no longer considered state-of-the-art. Another TIP will be in the Final status and cite the Superseded TIP.</li>
+<li><code>Deferred</code>: A TIP which isn't accepted now, may be accepted in the future.</li>
+</ul>
+<h2 id="tip-structure">TIP Structure<a class="headerlink" href="#tip-structure" title="Permanent link">&para;</a></h2>
+<p>A TIP consists of a title preamble and body content.</p>
+<h3 id="tip-header-preamble">TIP Header Preamble<a class="headerlink" href="#tip-header-preamble" title="Permanent link">&para;</a></h3>
+<p>The TIP header preamble contains the TIP number, a short descriptive title (limited to a maximum of 44 characters), author details, discussion link, TIP status, TIP type, creation time, etc. Please refer to the specific format:
+<div class="highlight"><pre><span></span><code>---
+tip: &lt;to be assigned&gt;
+title: &lt;TIP title&gt;
+author: &lt;a list of the author&#39;s or authors&#39; name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName &lt;foo@bar.com&gt;, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)&gt;
+discussions-to: &lt;URL&gt;
+status: &lt;Draft | Last Call | Accepted | Final | Deferred&gt;
+type: &lt;Standards Track (Core, Networking, Interface, TRC, VM) | Informational&gt;
+category (*only required for Standard Track): &lt;Core | Networking | Interface | TRC | VM&gt;
+created: &lt;date created on, in ISO 8601 (yyyy-mm-dd) format&gt;
+requires (*optional): &lt;TIP number(s)&gt;
+replaces (*optional): &lt;TIP number(s)&gt;
+---  
+</code></pre></div></p>
+<h3 id="tip-body">TIP Body<a class="headerlink" href="#tip-body" title="Permanent link">&para;</a></h3>
+<p>TIP body should have the following parts:</p>
+<ul>
+<li><code>Simple Summary</code>：Provide a simplified explanation of the TIP.</li>
+<li><code>Abstract</code>： A short (~200 word) description of the technical issue being addressed. It should be a very terse and human-readable version of the <code>specification</code> section. Someone should be able to read only the abstract to get the gist of what this specification does.</li>
+<li><code>Motivation</code>: (optional) A motivation section is critical for TIPs. It should clearly explain why the existing protocol specification is inadequate to address the problem that the TIP solves. This section may be omitted if the motivation is evident.</li>
+<li><code>Specification</code>：The technical specification should detail the syntax and semantics of any new feature.</li>
+<li><code>Rationale</code>：The rationale fleshes out the specification by describing what motivated the design and why particular design decisions were made. It should describe alternate designs that were considered and related work. The rationale should discuss important objections or concerns raised during the discussion around the TIP.</li>
+<li><code>Backwards Compatibility</code> ：(optional) All TIPs that introduce backward incompatibilities must include a section describing these incompatibilities and their consequences. The TIP must explain how the author proposes to deal with these incompatibilities. </li>
+<li><code>Test Cases</code> ：(optional) Test cases for an implementation are mandatory for TIPs that are affecting consensus changes. This section may be omitted for non-Core proposals.</li>
+<li><code>Implementation</code>：The implementations must be completed before any TIP is given the status <code>Final</code>, but it need not be completed before the TIP is <code>accepted</code>. The principle of "rough consensus and running code" is still useful when it comes to resolving many discussions of API details.</li>
+</ul>
+<h2 id="linking-to-external-resources">Linking to External Resources<a class="headerlink" href="#linking-to-external-resources" title="Permanent link">&para;</a></h2>
+<p>Links to external resources SHOULD NOT be included. External resources may disappear, move, or change unexpectedly.</p>
+<h2 id="linking-to-other-tips">Linking to other TIPs<a class="headerlink" href="#linking-to-other-tips" title="Permanent link">&para;</a></h2>
+<p>References to other TIPs should follow the format <code>TIP-N</code> where N is the TIP number you are referring to. Each TIP that is referenced in a TIP MUST be accompanied by a relative markdown link. The link MUST always be done via relative paths so that the links work in TIP GitHub repository and forks of TIP repository. For example, you would link to TIP-1 with <code>[TIP-1](/TIPS/tip-1)</code>.</p>
+<h2 id="auxiliary-files">Auxiliary Files<a class="headerlink" href="#auxiliary-files" title="Permanent link">&para;</a></h2>
+<p>Images, diagrams and auxiliary files should be included in a subdirectory of the <code>assets</code> folder for that TIP as follows: <code>assets/tip-N</code> (where N is to be replaced with the TIP number). When linking to an image in the TIP, use relative links such as <code>../assets/tip-1/image.png</code>.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../run-in-idea/" class="btn btn-neutral float-left" title="Configure the IDE"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../gpg/" class="btn btn-neutral float-right" title="GPG Key">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../java-tron/" class="btn btn-neutral float-left" title="Developer Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../issue-workflow/" class="btn btn-neutral float-right" title="Issue Workflow">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -217,10 +285,10 @@
         </span>
     
     
-      <span><a href="../run-in-idea/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../java-tron/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../gpg/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../issue-workflow/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
