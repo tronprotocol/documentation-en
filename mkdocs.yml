@@ -26,10 +26,11 @@ nav:
         - Decentralized Exchange: mechanism-algorithm/dex.md
         - Multi-Signature: mechanism-algorithm/multi-signatures.md
     - For Java-tron Developers:
-        - Java-tron Repository: developers/java-tron.md
-        - Contribution: developers/contribution.md
+        - Developer Guide: developers/java-tron.md
+        - TIPs Workflow: developers/tips.md
+        - Issue Workflow: developers/issue-workflow.md
         - Configure the IDE: developers/run-in-idea.md
-        - TIPs: developers/tips.md
+        
         - GPG Key: developers/gpg.md
     - For DAPP developers:
         - Dapp Development Tool: contracts/compiler.md
