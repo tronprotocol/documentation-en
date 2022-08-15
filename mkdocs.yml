@@ -16,7 +16,7 @@ nav:
         - Node Monitoring: using_javatron/metrics.md
     - API:
         - HTTP API: api/http.md
-        - RPC API: api/rpc.md
+        - gRPC API: api/rpc.md
     - Core Protocal:
         - DPoS: introduction/dpos.md
         - Super Representative: mechanism-algorithm/sr.md
