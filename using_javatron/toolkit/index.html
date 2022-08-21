@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Backup & Restore - Java Tron</title>
+    <title>Database Partition - Java Tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Backup \u0026 Restore";
-        var mkdocs_page_input_path = "using_javatron/backup_restore.md";
-        var mkdocs_page_url = "/documentation-en/using_javatron/backup_restore/";
+        var mkdocs_page_name = "Database Partition";
+        var mkdocs_page_input_path = "using_javatron/toolkit.md";
+        var mkdocs_page_url = "/documentation-en/using_javatron/toolkit/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -49,9 +49,7 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying Java-tron</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Backup & Restore</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
                   </li>
@@ -65,9 +63,27 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Tools</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../toolkit/">Database Partition</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Tools</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Database Partition</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#compile">Compile</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#options">Options</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usage-instructions">Usage Instructions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#stop-fullnode-service">Stop FullNode Service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-for-database-storage-migration">Configure For Database Storage Migration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#perform-database-migration">Perform database migration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#restart-fullnode-service">Restart FullNode service</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                 </li>
     </ul>
                   </li>
@@ -144,9 +160,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Backup & Restore</li>
+          <li>Using Java-tron &raquo;</li>
+          <li>Tools &raquo;</li><li>Database Partition</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/backup_restore.md"
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/toolkit.md"
           class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
@@ -156,106 +173,82 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="data-backup-restore">Data Backup &amp; Restore<a class="headerlink" href="#data-backup-restore" title="Permanent link">&para;</a></h1>
-<p>Everything <code>Java-tron</code> persists gets written inside its data directory. The default data directory is: <code>/output-directory/</code>. If you need to specify other directories, you can add <code>-d</code> or <code>--output-directory</code> parameter to the java-tron node startup command to specify the data storage location.</p>
-<div class="highlight"><pre><span></span><code>$ java -jar fullnode.jar -d ./outputdir
-</code></pre></div>
-<h1 id="data-backup">Data Backup<a class="headerlink" href="#data-backup" title="Permanent link">&para;</a></h1>
-<p>Please shut down the node process before backing up the node data, for details, please refer to the following steps:</p>
-<p>First, use the command <code>$ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code> to get the process id of java-tron, and then use the command <code>kill -15 process id</code> to kill the process. Or use a stop script like this:</p>
-<div class="highlight"><pre><span></span><code>#!/bin/bash
-while true; do
-  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
-  if [ -n &quot;$pid&quot; ]; then
-    kill -15 $pid
-    echo &quot;The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently...&quot;
-    sleep 1
-  else
-    echo &quot;java-tron killed successfully!&quot;
-    break
-  fi
-done
-</code></pre></div>
-<p>Then, backup the data by the following command.</p>
-<div class="highlight"><pre><span></span><code>$ tar cvzf output-directory.`date &quot;+%Y%m%d%H%M%S&quot;`.etgz output-directory
-</code></pre></div>
-<h1 id="data-restore">Data Restore<a class="headerlink" href="#data-restore" title="Permanent link">&para;</a></h1>
-<p>When restoring the data, just copy the corresponding backup data to the node directory. Take the database backup file name <code>output-directory.20220628152402.etgz</code> as an example, the command to restore the database file is:</p>
-<div class="highlight"><pre><span></span><code>$ tar xzvf output-directory.20220628152402.etgz
-</code></pre></div>
-<h1 id="public-backup-data">Public Backup Data<a class="headerlink" href="#public-backup-data" title="Permanent link">&para;</a></h1>
-<p>For the TRON mainnet and Nile testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a TRON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.</p>
-<h3 id="fullnode-data-snapshot">FullNode Data Snapshot<a class="headerlink" href="#fullnode-data-snapshot" title="Permanent link">&para;</a></h3>
-<p>The following table shows the download address of Fullnode data snapshots. Please select a suitable data snapshot according to the location and node database type, and whether you need to query historical internal transactions.</p>
-<table>
-<thead>
-<tr>
-<th>Fullnode Data Source</th>
-<th>Download site</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Official data source (North America: Virginia)</td>
-<td>http://47.89.178.46/</td>
-<td>LevelDB, , exclude internal transactions (About 609G on 28 Oct. 2021)</td>
-</tr>
-<tr>
-<td>Official data source (North America: Virginia)</td>
-<td>http://47.89.178.46:18811/</td>
-<td>RocksDB,  exclude internal transactions (About 601G on 28 Oct. 2021)</td>
-</tr>
-<tr>
-<td>Official data source (Singapore)</td>
-<td>http://47.74.159.117/</td>
-<td>LevelDB, exclude internal transactions (About 609G on 28 Oct. 2021)</td>
-</tr>
-<tr>
-<td>Official data source (Singapore)</td>
-<td>http://47.74.159.117/saveInternalTx/</td>
-<td>LevelDB, include internal transactions (About 769G on 28 Oct. 2021)</td>
-</tr>
-<tr>
-<td>Data sources provided by  TronGrid Community</td>
-<td>https://backups.trongrid.io/</td>
-<td>LevelDB, include internal transactions (About 815G on 28 Oct. 2021)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Note</strong>：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. </p>
-<h3 id="lite-fullnode-data-snapshot">Lite FullNode Data Snapshot<a class="headerlink" href="#lite-fullnode-data-snapshot" title="Permanent link">&para;</a></h3>
-<p>The Tron Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.</p>
-<table>
-<thead>
-<tr>
-<th>Lite Fullnode Data Source</th>
-<th>Download site</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Official data source (North America: Virginia)</td>
-<td>http://47.89.178.46/</td>
-<td>LevelDB, At present, the download of Lite Fullnode data snapshot has been closed, and it is expected to open at the version of GreatVoyage-V4.5.0</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Tips</strong>: You can split the data from the whole data with the help of the <a href="../../developers/litefullnode/#lite-fullnode-tool">Lite FullNode Tool</a>.</p>
-<h3 id="use-the-data-snapshot">Use the data snapshot<a class="headerlink" href="#use-the-data-snapshot" title="Permanent link">&para;</a></h3>
-<p>The steps for using data snapshots are as follows:</p>
+                <h1 id="database-partition-tool">Database partition Tool<a class="headerlink" href="#database-partition-tool" title="Permanent link">&para;</a></h1>
+<p>As the data on the chain continues to grow, the pressure on data storage will increase. At present, the FullNode data of the TRON public chain is close to 1T, and the daily data growth is about 1.2G. According to the current data growth rate, the annual growth rate is about 450G. A single disk capacity may be insufficient and need to be replaced by a larger disk. To solve it, a database storage partition tool has been introduced in <code>GreatVoyage-v4.5.2 (Aurelius)</code>. The tool can migrate some databases to other storage disks. When the user encounters insufficient disk space, he only needs to add another disk according to the capacity requirement and does not need to replace the original disk.</p>
+<h2 id="compile">Compile<a class="headerlink" href="#compile" title="Permanent link">&para;</a></h2>
+<p>Under the java-tron project directory, execute the command <code>./gradlew build -x test</code> to compile the tool, and the tool will be generated in <code>build/libs/Toolkit.jar</code>.</p>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h2>
+<p>This tool provides data migration and storage functions. The optional command parameters are as follows:</p>
+<ul>
+<li><code>-c | --config</code>: [ string ]  This option is used to specify the FullNode configuration file. If not specified, the default value will be <code>config.conf</code>.</li>
+<li><code>-d | --database-directory</code>: [ string ]  This option is used to specify the FullNode database directory. If not specified, the default value will be <code>output-directory</code>.</li>
+<li><code>-h | --help</code>: [ bool ]  This option is used to view help description, default value: false.</li>
+</ul>
+<h2 id="usage-instructions">Usage Instructions<a class="headerlink" href="#usage-instructions" title="Permanent link">&para;</a></h2>
+<p>Follow the following steps to use the database partition tool:</p>
 <ol>
-<li>Download the corresponding compressed backup database according to your needs.</li>
-<li>Decompress the compressed file of the backup database to the output-directory directory or to the corresponding directory according to your needs.</li>
-<li>Startup the node. The node reads the output-directory directory by default. If you need to specify another directory，please add the <code>-d directory</code> parameter when the node starts.</li>
+<li><a href="#stop-fullnode-service">Stop FullNode service</a></li>
+<li><a href="#configure-for-database-storage-migration">Configure for database storage migration</a></li>
+<li><a href="#perform-database-migration">Perform database migration</a></li>
+<li><a href="#restart-fullnode-service">Restart FullNode service</a></li>
 </ol>
+<h3 id="stop-fullnode-service">Stop FullNode Service<a class="headerlink" href="#stop-fullnode-service" title="Permanent link">&para;</a></h3>
+<p>Use the command <code>kill -15 pid</code> to close FullNode.jar, below is the FullNode process pid lookup command:
+<div class="highlight"><pre><span></span><code>$ ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
+</code></pre></div></p>
+<h3 id="configure-for-database-storage-migration">Configure For Database Storage Migration<a class="headerlink" href="#configure-for-database-storage-migration" title="Permanent link">&para;</a></h3>
+<p>The configuration of database migration is in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L37">storage.properties</a> field in the Java-tron node configuration file. The following is an example of migrating only the <code>block</code> and <code>trans</code> databases to illustrate how to migrate some databases to other storage disks:</p>
+<p><div class="highlight"><pre><span></span><code>storage {
+ ......
+  properties = [
+    {
+     name = &quot;block&quot;,
+     path = &quot;/data1/tron&quot;,
+
+    },
+    {
+     name = &quot;trans&quot;,
+     path = &quot;/data1/tron&quot;,
+   }
+  ]
+ ......
+}
+</code></pre></div>
+<code>name</code> is the database name which you want to migrate, and <code>path</code> is the destination directory for database migration. The tool will migrate the database specified by <code>name</code> to the directory specified by <code>path</code>, and then create a soft link under the original path pointing to <code>path</code> directory. After <code>FullNode</code> starts, it will find the <code>path</code> directory according to the soft link.</p>
+<h3 id="perform-database-migration">Perform database migration<a class="headerlink" href="#perform-database-migration" title="Permanent link">&para;</a></h3>
+<p>When executed, the current migration progress will be shown.</p>
+<div class="highlight"><pre><span></span><code>$ java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+</code></pre></div>
+<h3 id="restart-fullnode-service">Restart FullNode service<a class="headerlink" href="#restart-fullnode-service" title="Permanent link">&para;</a></h3>
+<p>After the migration is complete, restart the java-tron node.
+<div class="highlight"><pre><span></span><code># FullNode
+$ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
+                -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+                -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+                -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+                -XX:+UseConcMarkSweepGC -XX:NewRatio=2 \
+                -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+                -XX:+HeapDumpOnOutOfMemoryError \
+                -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+                -jar FullNode.jar -c main_net_config.conf &gt;&gt; start.log 2&gt;&amp;1 &amp;
+
+# Super representative&#39;s FullNode
+$ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
+               -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+               -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+               -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+               -XX:+UseConcMarkSweepGC -XX:NewRatio=2 \
+               -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+               -XX:+HeapDumpOnOutOfMemoryError \
+               -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+               -jar FullNode.jar --witness -c main_net_config.conf &gt;&gt; start.log 2&gt;&amp;1 &amp;
+</code></pre></div></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../installing_javatron/" class="btn btn-neutral float-left" title="Deploying Java-tron"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../developers/litefullnode/" class="btn btn-neutral float-right" title="Lite Fullnode">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../metrics/" class="btn btn-neutral float-left" title="Node Monitoring"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../api/http/" class="btn btn-neutral float-right" title="HTTP API">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -282,10 +275,10 @@ done
         </span>
     
     
-      <span><a href="../installing_javatron/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../metrics/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../developers/litefullnode/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../api/http/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
