@@ -14,6 +14,8 @@ nav:
         - Database Configuration: architecture/database.md
         - Network Configuration: using_javatron/connecting_to_tron.md
         - Node Monitoring: using_javatron/metrics.md
+        - Tools:
+            - Database Partition: using_javatron/toolkit.md
     - API:
         - HTTP API: api/http.md
         - gRPC API: api/rpc.md
@@ -30,7 +32,7 @@ nav:
         - TIPs Workflow: developers/tips.md
         - Issue Workflow: developers/issue-workflow.md
         - Configure the IDE: developers/run-in-idea.md
-        
+        - Development Example: developers/demo.md
         - GPG Key: developers/gpg.md
     - For DAPP developers:
         - Dapp Development Tool: contracts/compiler.md
