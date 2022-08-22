@@ -77,9 +77,9 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#configure-for-database-storage-migration">Configure For Database Storage Migration</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#perform-database-migration">Perform database migration</a>
+    <li class="toctree-l4"><a class="reference internal" href="#perform-database-migration">Perform Database Migration</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#restart-fullnode-service">Restart FullNode service</a>
+    <li class="toctree-l4"><a class="reference internal" href="#restart-fullnode-service">Restart FullNode Service</a>
     </li>
         </ul>
     </li>
@@ -173,7 +173,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="database-partition-tool">Database partition Tool<a class="headerlink" href="#database-partition-tool" title="Permanent link">&para;</a></h1>
+                <h1 id="database-partition-tool">Database Partition Tool<a class="headerlink" href="#database-partition-tool" title="Permanent link">&para;</a></h1>
 <p>As the data on the chain continues to grow, the pressure on data storage will increase. At present, the FullNode data of the TRON public chain is close to 1T, and the daily data growth is about 1.2G. According to the current data growth rate, the annual growth rate is about 450G. A single disk capacity may be insufficient and need to be replaced by a larger disk. To solve it, a database storage partition tool has been introduced in <code>GreatVoyage-v4.5.2 (Aurelius)</code>. The tool can migrate some databases to other storage disks. When the user encounters insufficient disk space, he only needs to add another disk according to the capacity requirement and does not need to replace the original disk.</p>
 <h2 id="compile">Compile<a class="headerlink" href="#compile" title="Permanent link">&para;</a></h2>
 <p>Under the java-tron project directory, execute the command <code>./gradlew build -x test</code> to compile the tool, and the tool will be generated in <code>build/libs/Toolkit.jar</code>.</p>
@@ -215,11 +215,11 @@
 }
 </code></pre></div>
 <code>name</code> is the database name which you want to migrate, and <code>path</code> is the destination directory for database migration. The tool will migrate the database specified by <code>name</code> to the directory specified by <code>path</code>, and then create a soft link under the original path pointing to <code>path</code> directory. After <code>FullNode</code> starts, it will find the <code>path</code> directory according to the soft link.</p>
-<h3 id="perform-database-migration">Perform database migration<a class="headerlink" href="#perform-database-migration" title="Permanent link">&para;</a></h3>
+<h3 id="perform-database-migration">Perform Database Migration<a class="headerlink" href="#perform-database-migration" title="Permanent link">&para;</a></h3>
 <p>When executed, the current migration progress will be shown.</p>
 <div class="highlight"><pre><span></span><code>$ java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
 </code></pre></div>
-<h3 id="restart-fullnode-service">Restart FullNode service<a class="headerlink" href="#restart-fullnode-service" title="Permanent link">&para;</a></h3>
+<h3 id="restart-fullnode-service">Restart FullNode Service<a class="headerlink" href="#restart-fullnode-service" title="Permanent link">&para;</a></h3>
 <p>After the migration is complete, restart the java-tron node.
 <div class="highlight"><pre><span></span><code># FullNode
 $ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \

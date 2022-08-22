@@ -116,11 +116,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#write-unit-test">Write Unit Test</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#java-tron-unit-test-cases-writing-specification">Java-tron unit test cases writing specification</a>
+    <li class="toctree-l3"><a class="reference internal" href="#java-tron-unit-test-cases-writing-specification">Java-tron Unit Test Cases Writing Specification</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#common-annotations">Common annotations</a>
+    <li class="toctree-l3"><a class="reference internal" href="#common-annotations">Common Annotations</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#the-composition-of-the-unit-test-class">The composition of the unit test class</a>
+    <li class="toctree-l3"><a class="reference internal" href="#the-composition-of-the-unit-test-class">The Composition Of The Unit Test Class</a>
     </li>
         </ul>
     </li>
@@ -190,13 +190,13 @@ $ git remote add upstream https://github.com/tronprotocol/java-tron.git
 </code></pre></div>
 <h2 id="sync-repository">Sync Repository<a class="headerlink" href="#sync-repository" title="Permanent link">&para;</a></h2>
 <p>Before developing new features, please synchronize your fork repository with the upstream repository.</p>
-<div class="highlight"><pre><span></span><code>git fetch upstream 
-git checkout develop 
-git merge upstream/develop --no-ff
+<div class="highlight"><pre><span></span><code>$ git fetch upstream 
+$ git checkout develop 
+$ git merge upstream/develop --no-ff
 </code></pre></div>
 <h2 id="create-new-branch">Create New Branch<a class="headerlink" href="#create-new-branch" title="Permanent link">&para;</a></h2>
 <p>Pull a new branch from the <code>develop</code> branch of your own repository for local development, please refer to <a href="../java-tron/#branch-naming-conventions">branch naming convention</a>. In this example, the name of the new branch is: <code>feature/ add-new-http-demo</code>.</p>
-<div class="highlight"><pre><span></span><code>git checkout -b feature/add-new-http-demo develop
+<div class="highlight"><pre><span></span><code>$ git checkout -b feature/add-new-http-demo develop
 </code></pre></div>
 <h2 id="code-development">Code Development<a class="headerlink" href="#code-development" title="Permanent link">&para;</a></h2>
 <p>Open the Java-tron project in IDEA. Create a new servlet file in the <code>java-tron/framework/src/main/java/org/tron/core/services/http</code> directory to process HTTP requests: SetPeerServlet.java, the file should contain two functions <code>doGet</code> and <code>doPost</code>. <code>doGet</code> is used to handle http get requests and <code>doPost</code> is used to handle http post requests. If one of these types of requests is not supported, the method content can be empty.</p>
@@ -277,7 +277,7 @@ In this example, the setPeer request should be sent by post, so you need to add 
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/ tron/core/services/http/FullNodeHttpApiService.java">FullNodeHttpApiService</a> is the registration entry for the node HTTP API.</p>
+After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java">FullNodeHttpApiService</a> is the registration entry for the node HTTP API.</p>
 <p>Call the <code>context.addServlet</code> method in the <code>start</code> function of the <code>FullNodeHttpApiService</code> class to register the SetPeerServlet to the service. The name of the HTTP interface is defined as <code>/wallet/setpeer</code>.</p>
 <p><div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FullNodeHttpApiService</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Service</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">......</span><span class="w"></span>
@@ -307,14 +307,14 @@ Return:</p>
 <p>At this point, the code development is complete, and then you need to write unit tests for the changes. For simple changes, unit tests can be written after the development code is completed, but for larger changes, it is recommended to write unit tests at the same time as development.</p>
 <h2 id="write-unit-test">Write Unit Test<a class="headerlink" href="#write-unit-test" title="Permanent link">&para;</a></h2>
 <p>The unit test of the Java-tron project is based on the JUnit framework. For the usage of JUnit, please refer to <a href="https://junit.org">JUnit official website</a>. The following is a brief introduction to the Java-tron unit test case specification and common annotations.</p>
-<h3 id="java-tron-unit-test-cases-writing-specification">Java-tron unit test cases writing specification<a class="headerlink" href="#java-tron-unit-test-cases-writing-specification" title="Permanent link">&para;</a></h3>
+<h3 id="java-tron-unit-test-cases-writing-specification">Java-tron Unit Test Cases Writing Specification<a class="headerlink" href="#java-tron-unit-test-cases-writing-specification" title="Permanent link">&para;</a></h3>
 <p>When writing Java-tron unit test cases, please follow the below guidelines:</p>
 <ul>
 <li>All test classes should be placed in the test directory, and the package of the test class should be consistent with the package structure of the tested code. Generally, use <code>Test</code> as the suffix of a class name</li>
 <li>The test method must be decorated with <code>@Test</code> and it must be <code>public</code> <code>void</code> type. Generally, <code>test</code> is used as the prefix of the method name</li>
 <li>Each test method in the test class must be independently testable, and there must be no dependencies between methods</li>
 </ul>
-<h3 id="common-annotations">Common annotations<a class="headerlink" href="#common-annotations" title="Permanent link">&para;</a></h3>
+<h3 id="common-annotations">Common Annotations<a class="headerlink" href="#common-annotations" title="Permanent link">&para;</a></h3>
 <p>The following are descriptions of some commonly used annotations. For other annotations, please refer to <a href="https://junit.org">JUnit official website documentation</a>.</p>
 <ul>
 <li><code>@Test</code> - transforms a normal method into a test method</li>
@@ -324,7 +324,7 @@ Return:</p>
 <li><code>@Before</code> - it will be executed once before each test method</li>
 <li><code>@After</code> - it will be executed once after each test method</li>
 </ul>
-<h3 id="the-composition-of-the-unit-test-class">The composition of the unit test class<a class="headerlink" href="#the-composition-of-the-unit-test-class" title="Permanent link">&para;</a></h3>
+<h3 id="the-composition-of-the-unit-test-class">The Composition Of The Unit Test Class<a class="headerlink" href="#the-composition-of-the-unit-test-class" title="Permanent link">&para;</a></h3>
 <p>A unit test class should contain the following three parts:</p>
 <ul>
 <li><code>@Before</code> or <code>@BeforeClass</code> decorated function, used for initialization before test case execution</li>

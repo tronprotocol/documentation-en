@@ -326,10 +326,10 @@ Please be sure to click on the link in the red box shown below. Select the base 
 5. Avoid meaningless commits. It is recommended to use the git rebase command.</p>
 <p>Message body use the imperative, present tense: "change" not "changed" nor "changes". The body should include the motivation for the change and contrast this with previous behavior.</p>
 <p>Here is an example:
-<div class="highlight"><pre><span></span><code>feat(block): optimize product block
+<div class="highlight"><pre><span></span><code>feat(block): optimize the block-producing logic
 
-1. optimize the block production threads
-2. improve transaction entry speed
+1. increase the priority that block producing thread acquires synchronization lock
+2. add the interruption exception handling in block-producing thread
 
 Closes #1234
 </code></pre></div>
