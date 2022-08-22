@@ -1,4 +1,4 @@
-# Database partition Tool
+# Database Partition Tool
 
 As the data on the chain continues to grow, the pressure on data storage will increase. At present, the FullNode data of the TRON public chain is close to 1T, and the daily data growth is about 1.2G. According to the current data growth rate, the annual growth rate is about 450G. A single disk capacity may be insufficient and need to be replaced by a larger disk. To solve it, a database storage partition tool has been introduced in `GreatVoyage-v4.5.2 (Aurelius)`. The tool can migrate some databases to other storage disks. When the user encounters insufficient disk space, he only needs to add another disk according to the capacity requirement and does not need to replace the original disk.
 
@@ -58,7 +58,7 @@ storage {
 `name` is the database name which you want to migrate, and `path` is the destination directory for database migration. The tool will migrate the database specified by `name` to the directory specified by `path`, and then create a soft link under the original path pointing to `path` directory. After `FullNode` starts, it will find the `path` directory according to the soft link.
 
 
-### Perform database migration
+### Perform Database Migration
 
 When executed, the current migration progress will be shown.
 
@@ -66,7 +66,7 @@ When executed, the current migration progress will be shown.
 $ java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
 ```
 
-### Restart FullNode service
+### Restart FullNode Service
 After the migration is complete, restart the java-tron node.
 ```
 # FullNode
