@@ -17,16 +17,16 @@ $ git remote add upstream https://github.com/tronprotocol/java-tron.git
 Before developing new features, please synchronize your fork repository with the upstream repository.
     
 ```
-git fetch upstream 
-git checkout develop 
-git merge upstream/develop --no-ff
+$ git fetch upstream 
+$ git checkout develop 
+$ git merge upstream/develop --no-ff
 ```
 
 ## Create New Branch
 Pull a new branch from the `develop` branch of your own repository for local development, please refer to [branch naming convention](../java-tron/#branch-naming-conventions). In this example, the name of the new branch is: `feature/ add-new-http-demo`.
 
 ```
-git checkout -b feature/add-new-http-demo develop
+$ git checkout -b feature/add-new-http-demo develop
 ```
 
 ## Code Development
@@ -116,7 +116,7 @@ The logic of the `addPeer` method is:
   }
 }
 ```
-After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, [FullNodeHttpApiService](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/ tron/core/services/http/FullNodeHttpApiService.java) is the registration entry for the node HTTP API.
+After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, [FullNodeHttpApiService](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java) is the registration entry for the node HTTP API.
 
 Call the `context.addServlet` method in the `start` function of the `FullNodeHttpApiService` class to register the SetPeerServlet to the service. The name of the HTTP interface is defined as `/wallet/setpeer`.
 
@@ -159,14 +159,14 @@ At this point, the code development is complete, and then you need to write unit
 The unit test of the Java-tron project is based on the JUnit framework. For the usage of JUnit, please refer to [JUnit official website](https://junit.org). The following is a brief introduction to the Java-tron unit test case specification and common annotations.
 
 
-### Java-tron unit test cases writing specification
+### Java-tron Unit Test Cases Writing Specification
 When writing Java-tron unit test cases, please follow the below guidelines:
 
 * All test classes should be placed in the test directory, and the package of the test class should be consistent with the package structure of the tested code. Generally, use `Test` as the suffix of a class name
 * The test method must be decorated with `@Test` and it must be `public` `void` type. Generally, `test` is used as the prefix of the method name
 * Each test method in the test class must be independently testable, and there must be no dependencies between methods
 
-### Common annotations
+### Common Annotations
 The following are descriptions of some commonly used annotations. For other annotations, please refer to [JUnit official website documentation](https://junit.org).
 
 * `@Test` - transforms a normal method into a test method
@@ -177,7 +177,7 @@ The following are descriptions of some commonly used annotations. For other anno
 * `@After` - it will be executed once after each test method
 
 
-### The composition of the unit test class
+### The Composition Of The Unit Test Class
 A unit test class should contain the following three parts:
 
 * `@Before` or `@BeforeClass` decorated function, used for initialization before test case execution
