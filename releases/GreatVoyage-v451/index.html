@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/GreatVoyage-v451/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>GreatVoyage-v4.5.1 - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GreatVoyage-v4.5.1";
+        var mkdocs_page_input_path = "releases/GreatVoyage-v451.md";
+        var mkdocs_page_url = "/documentation-en/releases/GreatVoyage-v451/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Tools</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/toolkit/">Database Partition</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocal</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/gpg/">GPG Key</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">History</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v452/">GreatVoyage-v4.5.2</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">GreatVoyage-v4.5.1</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v446/">GreatVoyage-v4.4.6</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v445/">GreatVoyage-v4.4.5</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v444/">GreatVoyage-v4.4.4</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v442/">GreatVoyage-v4.4.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v440/">GreatVoyage-v4.4.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v430/">GreatVoyage-v4.3.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v4221/">GreatVoyage-v4.2.2.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v422/">GreatVoyage-v4.2.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v420/">GreatVoyage-v4.2.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v413/">GreatVoyage-v4.1.3</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v412/">GreatVoyage-v4.1.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v411/">GreatVoyage-v4.1.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v400/">GreatVoyage-v4.0.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v37/">Odyssey-v3.7</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v365/">Odyssey-v3.6.5</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Binary Integrity Check</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Releases &raquo;</li>
+          <li>History &raquo;</li><li>GreatVoyage-v4.5.1</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/GreatVoyage-v451.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="greatvoyage-v451tertullian">GreatVoyage-v4.5.1(Tertullian)<a class="headerlink" href="#greatvoyage-v451tertullian" title="Permanent link">&para;</a></h1>
+<p>The GreatVoyage-v4.5.1(Tertullian) version introduces several important optimization updates. The optimized transaction cache loading process shortens the node startup time; the optimized block acquisition logic and light node synchronization logic promote the stability of the node; the optimized account asset structure and TVM cache structure improves the processing speed of transactions, thereby further improving the performance of node; supporting prometheus protocol interface brings users a more convenient development experience and helps to further prosper the TRON ecosystem.</p>
+<h1 id="core">Core<a class="headerlink" href="#core" title="Permanent link">&para;</a></h1>
+<h2 id="1-optimize-transaction-cache-loading">1. Optimize transaction cache loading<a class="headerlink" href="#1-optimize-transaction-cache-loading" title="Permanent link">&para;</a></h2>
+<p>In versions prior to GreatVoyage-v4.5.1 (Tertullian), it took a long time from node startup to block synchronization, and the loading of the transaction cache took up most of the node startup time. The transaction cache is used by the node to determine whether a transaction is a duplicate transaction, so during the node startup process, the transaction cache needs to be loaded from the database to the memory, and in versions prior to GreatVoyage-v4.5.1 (Tertullian), it adopts transaction as the storage unit to read the database when loading the transaction cache, so the amount of data to be read is large, and the entire reading process is time-consuming.</p>
+<p>In order to speed up the startup of the node, the GreatVoyage-v4.5.1 (Tertullian) version optimizes the loading of the transaction cache. By adopting the block as the storage unit to read the database reduces the times of database reading,  improves the efficiency of transaction cache loading, and improves the speed of node startup.</p>
+<p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-383.md 
+Source Code: https://github.com/tronprotocol/java-tron/pull/4319 </p>
+<h2 id="2-optimize-account-trc-10-asset-storage-structure">2. Optimize account TRC-10 asset storage structure<a class="headerlink" href="#2-optimize-account-trc-10-asset-storage-structure" title="Permanent link">&para;</a></h2>
+<p>In versions prior to GreatVoyage-v4.5.1 (Tertullian), when there were too many TRC10 assets in the account, the content of the account stored in the database was large, resulting in the deserialization of the account during the transaction execution process is very time-consuming , therefore, the GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal to optimize the asset structure of the account, allowing TRC-10 assets to be separated from the account and stored separately in a key-value data structure. That will reduce the content of the account structure, speed up the deserialization operation of the account and reduce the execution time of the transaction, thereby increasing the network throughput and improving the network performance.</p>
+<p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-382.md<br />
+Source Code: https://github.com/tronprotocol/java-tron/pull/4392 </p>
+<h2 id="3-optimize-light-node-synchronization">3. Optimize light node synchronization<a class="headerlink" href="#3-optimize-light-node-synchronization" title="Permanent link">&para;</a></h2>
+<p>Since light nodes do not store complete block data, there is a possibility that a node connects to a light node which does not have the block the node wants to synchronize with, in this situation, the light node will actively disconnect the connection. In versions prior to GreatVoyage-v4.5.1 (Tertullian), nodes may repeatedly establish connections with such light nodes, and then be disconnected by the other part, which greatly affects the efficiency of synchronizing blocks between nodes. Therefore, in the GreatVoyage-v4.5.1 (Tertullian) version, the logic of establishing a connection with light nodes has been optimized, and the two fields of "node type" and "node's lowest block" are added to the handshake message between nodes, and the nodes will save the handshake messages with each node. If the highest block of the current node is lower than the lowest block of the light node, it will actively disconnect from the light node, and the next time it establishes a connection with the node, it will filter out such nodes to avoid more invalidations connection, which improves the efficiency of synchronization between nodes.</p>
+<p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-388.md 
+Source Code: https://github.com/tronprotocol/java-tron/pull/4323  </p>
+<h2 id="4-optimize-block-broadcasting">4. Optimize block broadcasting<a class="headerlink" href="#4-optimize-block-broadcasting" title="Permanent link">&para;</a></h2>
+<p>The GreatVoyage-v4.5.1 (Tertullian) version optimizes the block broadcast logic, so that the fast forward node only broadcasts the block to the three super representative nodes that will produce blocks next (the number of broadcasted super representative nodes can be changed through the configuration file) to ensure that the super representative node can obtain the latest block in time, which improves the efficiency of block production.</p>
+<p>Source Code: https://github.com/tronprotocol/java-tron/pull/4336 </p>
+<h2 id="5-optimize-fetch-block-process">5. Optimize fetch block process<a class="headerlink" href="#5-optimize-fetch-block-process" title="Permanent link">&para;</a></h2>
+<p>Due to network reasons, the node may not receive the new broadcasted block. In versions before GreatVoyage-v4.5.1 (Tertullian), when the block acquisition times out, the node will acquire the block through the P2P synchronization process, but the process is complicated and time-consuming. Therefore, the GreatVoyage-v4.5.1 (Tertullian) version optimizes the process of obtaining the latest block. The node will first select a node according to the status of each node, and then directly send the block obtaining message <code>FetchInvDataMessage</code> to this node to obtain the latest block, which saves most of the time in the block synchronization process, speeds up the acquisition of the latest block, and improves the stability of the node.</p>
+<p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-391.md
+Source Code: https://github.com/tronprotocol/java-tron/pull/4326 </p>
+<h2 id="6-support-prometheus-metric-protocol-interface">6. Support prometheus metric protocol interface<a class="headerlink" href="#6-support-prometheus-metric-protocol-interface" title="Permanent link">&para;</a></h2>
+<p>Starting from the GreatVoyage-v4.5.1 (Tertullian) version, the node provides an open source system monitoring tool - prometheus’s protocol interface, and users can monitor the health status of the node more conveniently.</p>
+<p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-369.md<br />
+Source Code: https://github.com/tronprotocol/java-tron/pull/4337 </p>
+<h2 id="7-support-node-stop-at-specified-condition">7. Support node stop at specified condition<a class="headerlink" href="#7-support-node-stop-at-specified-condition" title="Permanent link">&para;</a></h2>
+<p>In order to facilitate node deployers to do data backup or data statistics, starting from the GreatVoyage-v4.5.1 (Tertullian) version, the node could stop running under specific conditions. Users can set the conditions for node stop through the node configuration file, such as the node stop’s block time, block height, and the number of blocks the node needs to synchronize from start to stop. The node will stop running automatically when the set conditions are met.</p>
+<p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-370.md<br />
+Source Code: https://github.com/tronprotocol/java-tron/pull/4325 </p>
+<h1 id="tvm">TVM<a class="headerlink" href="#tvm" title="Permanent link">&para;</a></h1>
+<h2 id="1-adjust-the-upper-limit-that-can-be-set-for-the-maximum-execution-time-of-tvm">1. Adjust the upper limit that can be set for the maximum execution time of TVM<a class="headerlink" href="#1-adjust-the-upper-limit-that-can-be-set-for-the-maximum-execution-time-of-tvm" title="Permanent link">&para;</a></h2>
+<p>"TVM maximum execution time" is a dynamic parameter of the TRON network, indicating the maximum time allowed for a smart contract to be executed. Super representatives can change this parameter through proposal voting. In versions prior to GreatVoyage-v4.5.1 (Tertullian), the maximum value that this parameter can be modified is 100ms. With the stability of the TRON network infrastructure and the vigorous development of the ecology, the 100ms upper limit confines the complexity of smart contracts. Therefore, GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal that allows to raise the configurable upper limit of "TVM maximum execution time" to 400ms.</p>
+<p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-397.md 
+Source Code: https://github.com/tronprotocol/java-tron/pull/4375 </p>
+<h2 id="2-optimize-the-cache-structure-of-tvm">2. Optimize the cache structure of TVM<a class="headerlink" href="#2-optimize-the-cache-structure-of-tvm" title="Permanent link">&para;</a></h2>
+<p>In versions prior to GreatVoyage-v4.5.1 (Tertullian), the cached data in TVM is stored in the form of a byte array. When the data in the cache needs to be changed, the data must first be converted from the form of a byte array to a protobuf object by performing a serialization operation, then change a field of the object (such as account balance, etc.) to generate a new object, then serialize the newly generated protobuf object to byte array, and at last write the result byte array to TVM cache. Since the serialization and deserialization of protobuf is time-consuming, the GreatVoyage-v4.5.1 (Tertullian) version optimizes the data structure in the cache when TVM is executed, and directly saves the protobuf object data to reduce the serialize/deserialize operations when accessing the data in the cache, speeding up TVM execution of bytecode.</p>
+<p>Source Code: https://github.com/tronprotocol/java-tron/pull/4375   </p>
+<hr />
+<p><em>Hope is patience with the lamp lit.</em> </p>
+<p align="right"> --- Tertullian </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../GreatVoyage-v452/" class="btn btn-neutral float-left" title="GreatVoyage-v4.5.2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../GreatVoyage-v446/" class="btn btn-neutral float-right" title="GreatVoyage-v4.4.6">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../GreatVoyage-v452/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../GreatVoyage-v446/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

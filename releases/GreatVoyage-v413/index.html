@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/GreatVoyage-v413/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>GreatVoyage-v4.1.3 - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GreatVoyage-v4.1.3";
+        var mkdocs_page_input_path = "releases/GreatVoyage-v413.md";
+        var mkdocs_page_url = "/documentation-en/releases/GreatVoyage-v413/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Tools</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/toolkit/">Database Partition</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocal</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/gpg/">GPG Key</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">History</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v452/">GreatVoyage-v4.5.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v451/">GreatVoyage-v4.5.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v446/">GreatVoyage-v4.4.6</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v445/">GreatVoyage-v4.4.5</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v444/">GreatVoyage-v4.4.4</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v442/">GreatVoyage-v4.4.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v440/">GreatVoyage-v4.4.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v430/">GreatVoyage-v4.3.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v4221/">GreatVoyage-v4.2.2.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v422/">GreatVoyage-v4.2.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v420/">GreatVoyage-v4.2.0</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">GreatVoyage-v4.1.3</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v412/">GreatVoyage-v4.1.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v411/">GreatVoyage-v4.1.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v400/">GreatVoyage-v4.0.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v37/">Odyssey-v3.7</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v365/">Odyssey-v3.6.5</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Binary Integrity Check</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Releases &raquo;</li>
+          <li>History &raquo;</li><li>GreatVoyage-v4.1.3</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/GreatVoyage-v413.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="greatvoyage-413thales">GreatVoyage-4.1.3(Thales)<a class="headerlink" href="#greatvoyage-413thales" title="Permanent link">&para;</a></h1>
+<p>GreatVoyage-4.1.3(Thales)  is released with the following new features and modifications:</p>
+<h1 id="core-protocol">Core Protocol<a class="headerlink" href="#core-protocol" title="Permanent link">&para;</a></h1>
+<h2 id="1sorting-the-transactions-in-pending-pool-sr-will-prioritize-the-transactions-with-high-packing-fee">1.Sorting the transactions in pending pool,  SR will prioritize the transactions with high packing fee<a class="headerlink" href="#1sorting-the-transactions-in-pending-pool-sr-will-prioritize-the-transactions-with-high-packing-fee" title="Permanent link">&para;</a></h2>
+<p>In GreatVoyage-4.1.2 and earlier versions, SR packaging transactions are carried out in accordance with the time sequence of the arrival of the transaction.This will easily be attacked by low transaction fees.</p>
+<p>After this optimization, block producers sort the transactions to be packaged according to the cost, and then prioritize the transaction with high cost to prevent low-cost transaction attacks.</p>
+<h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<h2 id="1add-new-api-to-support-transaction-query-in-pending-pool">1.Add new API to support transaction query in pending pool.<a class="headerlink" href="#1add-new-api-to-support-transaction-query-in-pending-pool" title="Permanent link">&para;</a></h2>
+<p>It is currently impossible to query the intermediate state information of a certain transaction from after it is issued to before it is on the chain.After a transaction is sent, if it is not on the chain, we cannot know whether it is waiting for packaging or has been discarded.</p>
+<p>In this upgrade, the Fullnode node provides 3 API to obtain detailed information about the pending pool:
+- /wallet/gettransactionfrompending: Obtain the transaction information from pending pool through the - transaction ID
+- /wallet/gettransactionlistfrompending: Get all transactions from the pending pool
+- /wallet/getpendingsize: Get the number of transactions in pending pool</p>
+<p>The optimization of transaction packaging logic of GreatVoyage-4.1.3(Thales)  will effectively reduce low-cost attacks and greatly improve the security of the TRON public chain.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../GreatVoyage-v420/" class="btn btn-neutral float-left" title="GreatVoyage-v4.2.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../GreatVoyage-v412/" class="btn btn-neutral float-right" title="GreatVoyage-v4.1.2">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../GreatVoyage-v420/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../GreatVoyage-v412/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

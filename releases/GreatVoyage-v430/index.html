@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/GreatVoyage-v430/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>GreatVoyage-v4.3.0 - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GreatVoyage-v4.3.0";
+        var mkdocs_page_input_path = "releases/GreatVoyage-v430.md";
+        var mkdocs_page_url = "/documentation-en/releases/GreatVoyage-v430/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Tools</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/toolkit/">Database Partition</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocal</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/gpg/">GPG Key</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">History</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v452/">GreatVoyage-v4.5.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v451/">GreatVoyage-v4.5.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v446/">GreatVoyage-v4.4.6</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v445/">GreatVoyage-v4.4.5</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v444/">GreatVoyage-v4.4.4</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v442/">GreatVoyage-v4.4.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v440/">GreatVoyage-v4.4.0</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">GreatVoyage-v4.3.0</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v4221/">GreatVoyage-v4.2.2.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v422/">GreatVoyage-v4.2.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v420/">GreatVoyage-v4.2.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v413/">GreatVoyage-v4.1.3</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v412/">GreatVoyage-v4.1.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v411/">GreatVoyage-v4.1.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v400/">GreatVoyage-v4.0.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v37/">Odyssey-v3.7</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v365/">Odyssey-v3.6.5</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Binary Integrity Check</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Releases &raquo;</li>
+          <li>History &raquo;</li><li>GreatVoyage-v4.3.0</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/GreatVoyage-v430.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="greatvoyage-430bacon">GreatVoyage-4.3.0(Bacon)<a class="headerlink" href="#greatvoyage-430bacon" title="Permanent link">&para;</a></h1>
+<p>The release of GreatVoyage-v4.3.0 (Bacon) includes several significant optimization enhancements. The configurability of the parameters <code>FREE_NET_LIMIT</code> and <code>TOTAL_NET_LIMIT</code> will aid the TRON community in achieving improved on-chain governance; The addition of new TVM instructions and ABI types facilitates the use of smart contracts; the new cryptography library strengthens the TRON network's security; the optimization of the account data storage and transaction verification procedures increases transaction processing speed and block verification speed, greatly improving the TRON network's performance; node startup speed improvement will benefit customers and help the TRON ecosystem grow even further.</p>
+<h1 id="core">Core<a class="headerlink" href="#core" title="Permanent link">&para;</a></h1>
+<h2 id="1-add-a-proposal-to-adjust-the-free-net-limit-in-an-account">1. Add a proposal to adjust the free net limit in an account.<a class="headerlink" href="#1-add-a-proposal-to-adjust-the-free-net-limit-in-an-account" title="Permanent link">&para;</a></h2>
+<p>Prior to GreatVoyage-v4.3.0 (Bacon), the account's daily free bandwidth quota was fixed at 5000. The GreatVoyage-v4.3.0 (Bacon) version includes the #61 proposal <code>FREE_NET_LIMIT</code>, which allows for the customization of the free bandwidth quota. Super representatives and super partners may initiate a vote request for Proposal 61, which modifies the <code>FREE_NET_LIMIT</code> variable, which has the value [0, 100000].</p>
+<ul>
+<li>TIP: https://github.com/tronprotocol/tips/blob/master/tip-292.md</li>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3917 </li>
+</ul>
+<p><strong>NOTICE</strong>
+The account's daily free bandwidth quota  is not changed now. The super representative or super partner will initiate a vote request to change the value in the future.</p>
+<h2 id="2-add-a-proposal-to-adjust-the-total-net-limit">2. Add a proposal to adjust the total net limit.<a class="headerlink" href="#2-add-a-proposal-to-adjust-the-total-net-limit" title="Permanent link">&para;</a></h2>
+<p>Prior to GreatVoyage-v4.3.0 (Bacon), the total bandwidth obtained by staking TRX throughout the entire network was fixed at 43,200,000,000.
+The GreatVoyage-v4.3.0 (Bacon) version incorporates proposal #62 <code>TOTAL_NET_LIMIT</code>, which allows for configuring the total bandwidth available by staking TRX over the entire network. Super representatives and super partners may initiate a voting request for Proposal 62, which amends <code>TOTAL_NET_LIMIT</code>. <code>TOTAL_NET_LIMIT</code> has a range of [0, 1000000000000].</p>
+<ul>
+<li>TIP: https://github.com/tronprotocol/tips/blob/master/tip-293.md </li>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3917  </li>
+</ul>
+<p><strong>NOTICE</strong>
+The total net limit is not changed now. The super representative or super partner will initiate a vote request to change the value in the future.</p>
+<h2 id="3-optimize-the-account-data-structure">3. Optimize the Account Data Structure<a class="headerlink" href="#3-optimize-the-account-data-structure" title="Permanent link">&para;</a></h2>
+<p>Account is a database that receives numerous accesses during the node's operation, necessitating frequent deserialization operations on the account data structure. Prior to GreatVoyage-v4.3.0 (Bacon), Account contained not only the account's basic data, but also user TRC-10 asset data. However, for TRX transfers and smart contract-related transactions, only the Account's basic data is used. An excessively large TRC-10 asset list will have a significant impact on the Account data structure's deserialization performance.
+GreatVoyage-v4.3.0 (Bacon) improves the Account database's storage structure by separating TRC-10 asset data from the Account and storing it independently in the <code>AccountAssetIssue</code>. Reduce the amount of data that is deserialized during Account deserialization and increase the deserialization speed.</p>
+<ul>
+<li>TIP: https://github.com/tronprotocol/tips/blob/master/tip-295.md </li>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3906 </li>
+</ul>
+<p><strong>NOTICE</strong>
+By default, this feature is disabled, and the super representative or super partner will initiate a vote request to enable it in the future.</p>
+<h1 id="tvm">TVM<a class="headerlink" href="#tvm" title="Permanent link">&para;</a></h1>
+<h2 id="1-add-vote-instructions-and-precompile-contracts-in-tvm">1. Add Vote Instructions and Precompile Contracts in TVM<a class="headerlink" href="#1-add-vote-instructions-and-precompile-contracts-in-tvm" title="Permanent link">&para;</a></h2>
+<p>Ordinary accounts can earn block rewards and voting rewards in versions prior to GreatVoyage-v4.3.0 (Bacon) by voting for super representatives or super representative candidates. However, because TVM does not accept voting instructions, TRX assets in smart contract accounts are unable to generate revenue via voting.
+The GreatVoyage-v4.3.0 (Bacon) version adds voting instructions to TVM: <code>VOTE</code> / <code>WITHDRAWBALANCE</code>, allowing smart contract accounts to vote for super representatives or super representative candidates.</p>
+<ul>
+<li>TIP: https://github.com/tronprotocol/tips/blob/master/tip-271.md </li>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3921 </li>
+</ul>
+<p><strong>NOTICE</strong>
+By default, this feature is disabled, and the super representative or super partner will initiate a vote request to enable it in the future.</p>
+<h2 id="2-add-a-new-type-error-in-smart-contract-abi">2. Add a New Type: <code>Error</code> in Smart Contract ABI<a class="headerlink" href="#2-add-a-new-type-error-in-smart-contract-abi" title="Permanent link">&para;</a></h2>
+<p>GreatVoyage-v4.3.0 (Bacon) provides a new ABI type Error, which is a custom error type that is compatible with Ethereum solidity 0.8.4's new features.</p>
+<ul>
+<li>TIP: https://github.com/tronprotocol/tips/blob/master/tip-306.md </li>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3921 </li>
+</ul>
+<h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<h2 id="1-add-a-new-field-energy_used-in-transactionextention">1. Add a New Field: <code>energy_used</code> in <code>TransactionExtention</code><a class="headerlink" href="#1-add-a-new-field-energy_used-in-transactionextention" title="Permanent link">&para;</a></h2>
+<p>Users cannot forecast the energy usage of smart contract transactions in versions earlier to GreatVoyage-v4.3.0 (Bacon).
+The version of GreatVoyage-v4.3.0 (Bacon) adds the <code>energy_used</code> field to the <code>TransactionExtension</code>. When the user invokes the contract method via <code>TriggerConstantContract</code>, a sandbox environment based on the most recently synchronized block at the current node is created to supply TVM with this method call. Following the execution, the actual energy consumption figure is written to the <code>energy_used</code> field(this operation will not generate an on-chain transaction, nor will it change the status of the current node).</p>
+<ul>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3940 </li>
+</ul>
+<h1 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h1>
+<h2 id="1-change-the-cryptography-library-to-bouncy-castle">1. Change the Cryptography Library to Bouncy Castle<a class="headerlink" href="#1-change-the-cryptography-library-to-bouncy-castle" title="Permanent link">&para;</a></h2>
+<p>Since <code>SpongyCastle</code> is no longer maintained, <code>BouncyCastle</code> is utilized as the encryption library starting with GreatVoyage-v4.3.0 (Bacon).</p>
+<ul>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3919 </li>
+</ul>
+<h2 id="2-modify-the-calculation-of-net_usage-value-in-the-transactioninfo-when-creating-new-accounts">2. Modify the Calculation of <code>net_usage</code> Value in the <code>Transactioninfo</code> when Creating New Accounts<a class="headerlink" href="#2-modify-the-calculation-of-net_usage-value-in-the-transactioninfo-when-creating-new-accounts" title="Permanent link">&para;</a></h2>
+<p>When a new account is created in GreatVoyage-v4.3.0 (Bacon), the method for calculating <code>net_usage</code> is altered.</p>
+<ul>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3917 </li>
+</ul>
+<h2 id="3-optimize-the-block-verification">3. Optimize the Block Verification<a class="headerlink" href="#3-optimize-the-block-verification" title="Permanent link">&para;</a></h2>
+<p>When a node checks a block prior to GreatVoyage-v4.3.0 (Bacon), it verifies each transaction included inside it, regardless of whether it has been verified previously. The transaction verification procedure consumes roughly one-third of the total time required to process a block.
+The GreatVoyage-v4.3.0 (Bacon) release optimizes the block verification logic. If non-<code>AccountUpdateContract</code> transactions in the block have been validated previously (<code>AccountUpdateContract</code> transactions entail account permission changes), they will no longer be verified to expedite block verification.</p>
+<ul>
+<li>TIP: https://github.com/tronprotocol/tips/blob/master/tip-276.md </li>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3910 </li>
+</ul>
+<h2 id="4-optimize-the-node-startup">4. Optimize the Node Startup<a class="headerlink" href="#4-optimize-the-node-startup" title="Permanent link">&para;</a></h2>
+<p>Prior to GreatVoyage-v4.3.0 (Bacon), during node startup, transaction cache and block data from the database are read to complete the RAM transaction cache initialization. The RAM transaction cache initialization process has been streamlined in GreatVoyage-v4.3.0 (Bacon), and some superfluous parsing processes have been deleted. The speed of node startup will be increased following optimization.</p>
+<ul>
+<li>TIP: https://github.com/tronprotocol/tips/blob/master/tip-285.md </li>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3907 </li>
+</ul>
+<h2 id="5-optimize-transaction-processing-flow-to-reduce-memory-usage">5. Optimize Transaction Processing Flow to Reduce Memory Usage<a class="headerlink" href="#5-optimize-transaction-processing-flow-to-reduce-memory-usage" title="Permanent link">&para;</a></h2>
+<p>The transaction processing flow is streamlined in GreatVoyage-v4.3.0 (Bacon), unneeded objects are released in advance, and memory utilization is optimized.</p>
+<ul>
+<li>Source Code: https://github.com/tronprotocol/java-tron/pull/3911 </li>
+</ul>
+<h2 id="6-add-new-plugins-to-optimize-the-performance-of-levedb-startup">6. Add New Plugins to Optimize the Performance of <code>levedb</code> Startup<a class="headerlink" href="#6-add-new-plugins-to-optimize-the-performance-of-levedb-startup" title="Permanent link">&para;</a></h2>
+<p>In the version before GreatVoyage-v4.3.0 (Bacon), with the running of <code>levedb</code>, the manifest file will continue to grow. Excessive manifest file will not only affect the startup speed of the node but also may cause the memory to continue to grow and lead to insufficient memory and the service was terminated abnormally.
+GreatVoyage-v4.3.0 (Bacon) introduces the <code>leveldb</code> startup optimization plug-in. The plug-in optimizes the file size of the manifest and the startup process of LevelDB, reduces memory usage, and improves node startup speed.</p>
+<ul>
+<li>TIP:  https://github.com/tronprotocol/tips/blob/master/tip-298.md </li>
+<li>Source Code:  https://github.com/tronprotocol/java-tron/pull/3925</li>
+<li>Plug-in Usage Guide: https://github.com/tronprotocol/documentation-en/blob/master/docs/developers/archive-manifest.md</li>
+</ul>
+<p><em>Knowledge is power.</em> </p>
+<p align="right"> --- Francis Bacon </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../GreatVoyage-v440/" class="btn btn-neutral float-left" title="GreatVoyage-v4.4.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../GreatVoyage-v4221/" class="btn btn-neutral float-right" title="GreatVoyage-v4.2.2.1">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../GreatVoyage-v440/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../GreatVoyage-v4221/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
