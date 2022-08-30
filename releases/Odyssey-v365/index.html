@@ -157,15 +157,15 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Odyssey-v3.6.5</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#1">1、新的抵押机制</a>
+    <li class="toctree-l3"><a class="reference internal" href="#1-new-delegation-mechanism">1. New delegation mechanism</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2">2、更加公平高效的股权分红机制</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-fairer-and-more-efficient-staking-rewards-mechanism">2. Fairer and more efficient staking rewards mechanism</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3">3、更加合理的激励机制</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-fairer-incentive-mechanism">3. Fairer incentive mechanism</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4tvm">4、虚拟机TVM的改进和优化</a>
+    <li class="toctree-l3"><a class="reference internal" href="#4-improvement-and-optimization-of-tvm">4. Improvement and optimization of TVM</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5">5、完善能量上限动态调整机制</a>
+    <li class="toctree-l3"><a class="reference internal" href="#5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit">5. Improvement of the dynamic adjustment scheme of Energy upper limit</a>
     </li>
     </ul>
                 </li>
@@ -206,24 +206,25 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="odyssey-v365">Odyssey-v3.6.5<a class="headerlink" href="#odyssey-v365" title="Permanent link">&para;</a></h1>
-<p>本次奥德赛v3.6.5升级主要有以下新功能和修改：</p>
-<h2 id="1">1、新的抵押机制<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>新的抵押机制提供了为SR设置佣金的功能，SR可以自行设置佣金比例，这样用户在为SR投票时可以进行参考，同时SR的佣金比例可以在链上进行查询，将使用户获得的投票奖励数额更加透明。另外，新的抵押机制为下一步进行更加复杂的共识机制和激励计划提供了实现基础。</p>
-<h2 id="2">2、更加公平高效的股权分红机制<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>股权收益的分发从原来的部分去中心化方式变为完全去中心化的方式。一方面，股权收益的分发完全在区块链上进行，完全保证分发过程受到链的监督，是完全去中心化的；另一方面，减少了不必要的股权分红交易，从而减少了带宽消耗，波场网络的运行将更有效率。</p>
-<h2 id="3">3、更加合理的激励机制<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<p>出块奖励从原来的32TRX调整为16TRX，投票奖励从原来的16TRX提升为160TRX，这样大大促进了社区用户参与投票的热情，增加波场生态用户的锁仓率。同时结合新的股权分红机制，保证用户能够切实收到股权收益。</p>
-<h2 id="4tvm">4、虚拟机TVM的改进和优化<a class="headerlink" href="#4tvm" title="Permanent link">&para;</a></h2>
-<p>（1）增加新的虚拟机指令 ISCONTRACT(0xd4) 新指令让开发者在编写合约可以从虚拟机层面更加灵活的判断目标地址类型，提升了智能合约开发的灵活性。
-（2）将虚拟机验证签名的方式修改为多线程的方式，相比于以太坊的ecrecover速度更快，同时能量消耗仅为ecrecover的一半。
-合约地址: 0x09, solidity内使用方式：batchvalidatesign(bytes32 hash, bytes[] memory signatures, address[] memory addresses) 
-（3）增加了一条新的预编译合约，用于支持在虚拟机中进行多重验签的特性，加快验签速度, 同时降低能量消耗。
-合约地址: 0x0a, solidity内使用方式： validatemultisign(address accountAddress, uint256 permissionId, bytes32 content, bytes[] signatures)
-（4）禁止通过系统合约转账到TransferContract和TransferAssetContract向智能合约地址进行转账，当使用TransferContract和TransferAssetContract以上两个合约进行进行转账时，如目标地址为合约地址，转账将不成功。这可以防止普通用户误操作将资产转移到到智能合约地址，从而避免给造成用户资产的丢失
-（5）在智能合约里向账户转账trx /trc10时, 如果该账户尚未激活，支持先自动激活然后转账。
-（6）为SolidityNode和FullNode增加了triggerConstantContract功能，完善和丰富了节点API的功能性。</p>
-<h2 id="5">5、完善能量上限动态调整机制<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<p>将单位时间内能量的消耗统计方式由只统计质押的能量消耗调整为统计所有能量的消耗。这样统计的能量消耗数据更加精确有效，为能量上限的调整提供依据，有利于降低用户使用波场区块链网络的成本，提高波场网络的效率。</p>
+<p>Odyssey v3.6.5 Update includes the following new features and improvements   </p>
+<h2 id="1-new-delegation-mechanism">1. New delegation mechanism<a class="headerlink" href="#1-new-delegation-mechanism" title="Permanent link">&para;</a></h2>
+<p>The new delegation mechanism enables SRs to set commission rates by themselves, which will serve as a reference for users when they vote for SRs. Meanwhile, traceability of the SR’s commission rate on the chain makes the amount of rewards that users receive through voting more transparent. Moreover, the new delegation mechanism lays a foundation for more complex consensus mechanisms and incentive schemes in the near future. </p>
+<h2 id="2-fairer-and-more-efficient-staking-rewards-mechanism">2. Fairer and more efficient staking rewards mechanism<a class="headerlink" href="#2-fairer-and-more-efficient-staking-rewards-mechanism" title="Permanent link">&para;</a></h2>
+<p>Staking rewards are now distributed in a fully-decentralized way, a step forward from the old partially-decentralized mechanism. With this change, staking rewards are now distributed entirely through the blockchain, ensuring complete supervision from the chain and thus true decentralization. Moreover, the new mechanism cuts unnecessary reward distribution transactions, signaling lower bandwidth consumption and higher efficiency on the TRON network.</p>
+<h2 id="3-fairer-incentive-mechanism">3. Fairer incentive mechanism<a class="headerlink" href="#3-fairer-incentive-mechanism" title="Permanent link">&para;</a></h2>
+<p>Block rewards decreased from 32 TRX to 16 TRX, while voting rewards increased from 16 TRX to 160 TRX. The adjustment will boost voter turnout in the community, with more TRX locked up by users in the TRON ecosystem. This move is accompanied by the new staking rewards mechanism to guarantee real staking revenues to users.</p>
+<h2 id="4-improvement-and-optimization-of-tvm">4. Improvement and optimization of TVM<a class="headerlink" href="#4-improvement-and-optimization-of-tvm" title="Permanent link">&para;</a></h2>
+<p>(1) Added a new VM instruction ISCONTRACT(0xd4), which has made smart contract development more flexible by allowing developers to identify the type of the target address in VMs when writing contracts. 
+batchvalidatesign(bytes32 hash, bytes[] memory signatures, address[] memory addresses) </p>
+<p>(2) Adopted a multi-thread method for VMs to verify signatures, which is faster than ecrecover of Ethereum while cutting Energy consumption by half.
+Contract address: 0x09. To use it in solidity: batchvalidatesign(bytes32 hash, bytes[] memory signatures, address[] memory addresses) 
+validatemultisign(address accountAddress, uint256 permissionId, bytes32 content, bytes[] signatures)</p>
+<p>(3) Added a new pre-compiled contract to boost multi-signature verification in TVM, speeding up the verification process and reducing Energy consumption.</p>
+<p>(4) Banned transfer TRX to smart contract address by two system contract TransferContract and TransferAssetContract. The transfer would fail if the target address is a smart    address when using TransferContract and TransferAssetContract. This can prevent general users from transferring assets to smart contract address by mistake, avoiding users’ asset loss.</p>
+<p>(5) Allowed automatic activation of inactive accounts when transferring TRX/ TRC10 tokens to accounts in smart contracts. </p>
+<p>(6) Added triggerConstantContract feature for SolidityNode and FullNode so as to improve the functionality of node APIs.</p>
+<h2 id="5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit">5. Improvement of the dynamic adjustment scheme of Energy upper limit<a class="headerlink" href="#5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit" title="Permanent link">&para;</a></h2>
+<p>The method of calculating Energy consumed per unit of time shifted from only calculating the staked Energy consumed to all Energy consumed. With this change, statistics of Energy consumption will be more accurate and effective, providing reference for adjusting Energy upper limit, saving users’ costs of using TRON blockchain network and improving network efficiency.</p>
               
             </div>
           </div><footer>
