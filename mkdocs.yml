@@ -33,7 +33,8 @@ nav:
         - Issue Workflow: developers/issue-workflow.md
         - Configure the IDE: developers/run-in-idea.md
         - Development Example: developers/demo.md
-        - GPG Key: developers/gpg.md
+        - Core Modules:
+            - Overview: developers/code-structure.md
     - For DAPP developers:
         - Dapp Development Tool: contracts/compiler.md
     - Wallet-cli:
