@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/code-structure/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Overview - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "developers/code-structure.md";
+        var mkdocs_page_url = "/documentation-en/developers/code-structure/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../litefullnode/">Lite Fullnode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Tools</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/toolkit/">Database Partition</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocal</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Core Modules</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Overview</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#protocol">protocol</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#common">common</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#chainbase">chainbase</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#consensus">consensus</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#actuator">actuator</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crypto">crypto</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#framework">framework</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">Installation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">History</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v452/">GreatVoyage-v4.5.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v451/">GreatVoyage-v4.5.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v446/">GreatVoyage-v4.4.6</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v445/">GreatVoyage-v4.4.5</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v444/">GreatVoyage-v4.4.4</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v442/">GreatVoyage-v4.4.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v440/">GreatVoyage-v4.4.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v430/">GreatVoyage-v4.3.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v4221/">GreatVoyage-v4.2.2.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v422/">GreatVoyage-v4.2.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v420/">GreatVoyage-v4.2.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v413/">GreatVoyage-v4.1.3</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v412/">GreatVoyage-v4.1.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v411/">GreatVoyage-v4.1.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v400/">GreatVoyage-v4.0.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v37/">Odyssey-v3.7</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>For Java-tron Developers &raquo;</li>
+          <li>Core Modules &raquo;</li><li>Overview</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/code-structure.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="java-tron-code-structure">Java-tron Code Structure<a class="headerlink" href="#java-tron-code-structure" title="Permanent link">&para;</a></h1>
+<p>Java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a TRON node by starting Java-tron. In this article, we will describe the code structure of Java-tron in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.</p>
+<p>Java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently Java-tron is divided into 7 modules: <a href="#protocol">protocol</a>, <a href="#common">common</a>, <a href="#chainbase">chainbase</a>, <a href="#consensus">consensus</a>, <a href="#actuator">actuator</a>, <a href="#crypto">crypto</a>, <a href="#framework">framework</a>, the following introduces the functions of each module and its code organization.</p>
+<h2 id="protocol">protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h2>
+<p>For a distributed network such as blockchain, a concise and efficient data interaction protocol is very important. The protocol module defines:</p>
+<ul>
+<li>Inter-node communication protocol</li>
+<li>Communication protocol between modules within the node</li>
+<li>Agreement for Services Provided Externally</li>
+</ul>
+<p>The above protocols adopt the <a href="https://developers.google.com/protocol-buffers"><code>Google Protobuf</code></a> data exchange format. Compared with JSON and XML, the <code>Google Protobuf</code> format is more efficient and flexible and can be compiled by the ProtoBuf compiler to generate language-specific serialization and deserialization source code for the defined protocol files. Protobuf is the basis for java-tron to achieve cross-language and cross-platform.</p>
+<p><a href="https://github.com/tronprotocol/java-tron/tree/develop/protocol">protocol</a> module's source code is located at:  <code>https://github.com/tronprotocol/java-tron/tree/develop/protocol</code> , its directory structure is as follows:</p>
+<div class="highlight"><pre><span></span><code>|-- protos
+    |-- api
+    |   |-- api.proto
+    |   |-- zksnark.proto
+    |-- core
+        |-- Discover.proto
+        |-- Tron.proto
+        |-- TronInventoryItems.proto
+        |-- contract
+</code></pre></div>
+<ul>
+<li><code>protos/api/</code> - The gRPC interface and data structure provided by the Java-tron node externally</li>
+<li><code>protos/core/</code> - Data structure for communication between nodes and between modules within nodes<ul>
+<li><code>Discover.proto</code> - Node discovers related data structures</li>
+<li><code>TronInventoryItems.proto</code> - Data structure related to block transferring between nodes</li>
+<li><code>contract/</code> - Contract related data structures</li>
+<li><code>Tron.proto</code> - Other important data structures, including accounts, blocks, transactions, resources, super representatives, voting, and proposals...</li>
+</ul>
+</li>
+</ul>
+<h2 id="common">common<a class="headerlink" href="#common" title="Permanent link">&para;</a></h2>
+<p>The common module encapsulates common components and tools, such as exception handling, metrics monitoring tools, etc which make it easy to use by other modules.</p>
+<p><a href="https://github.com/tronprotocol/java-tron/tree/develop/common">common</a> module's source code is located at:  <code>https://github.com/tronprotocol/java-tron/tree/develop/common</code>, its directory structure is as follows:</p>
+<div class="highlight"><pre><span></span><code>|-- /common/src/main/java/org/tron
+    |-- common
+    |   |-- args
+    |   |-- config
+    |   |-- entity
+    |   |-- logsfilter
+    |   |-- overlay
+    |   |-- parameter
+    |   |-- prometheus
+    |   |-- runtime
+    |   |-- setting
+    |   |-- utils
+    |-- core
+        |-- config
+        |-- db
+        |-- db2
+        |-- exception
+</code></pre></div>
+<ul>
+<li><code>common/prometheus</code> - Prometheus metrics monitoring</li>
+<li><code>common/utils</code> - The wrapper class of basic data type</li>
+<li><code>core/config</code> - Node configuration related classes</li>
+<li><code>core/exception</code> - All exception handling related classes</li>
+</ul>
+<h2 id="chainbase">chainbase<a class="headerlink" href="#chainbase" title="Permanent link">&para;</a></h2>
+<p>Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. Because of this, chainbase defines an interface standard supporting databases that can roll back. This interface requires databases to have a state rollback mechanism, a checkpoint-based disaster tolerant mechanism and so on. </p>
+<p>In addition, the chainbase module features a well-designed abstract interface. Any database that implements the interface can be used for underlying storage on the blockchain, granting more flexibility to developers. LevelDB and RocksDB are two default implementations.</p>
+<p><a href="https://github.com/tronprotocol/java-tron/tree/develop/chainbase">chainbase</a> module's source code is located at: <code>https://github.com/tronprotocol/java-tron/tree/develop/chainbase</code>, its directory structure is as follows:
+<div class="highlight"><pre><span></span><code>|-- chainbase.src.main.java.org.tron
+    |-- common
+    |   |-- bloom
+    |   |-- error
+    |   |-- overlay
+    |   |-- runtime
+    |   |-- storage
+    |   |   |-- leveldb
+    |   |   |-- rocksdb
+    |   |-- utils
+    |   |-- zksnark
+    |-- core
+        |-- actuator
+        |-- capsule
+        |-- db
+        |   |-- RevokingDatabase.java
+        |   |-- TronStoreWithRevoking.java
+        |   |-- ......
+        |-- db2
+        |   |-- common
+        |   |-- core
+        |       |-- SnapshotManager.java
+        |       |-- ......
+        |-- net
+        |-- service
+        |-- store
+</code></pre></div></p>
+<ul>
+<li><code>common/</code> - Common components, such as exception handling, tools, etc<ul>
+<li><code>storage/leveldb/</code> Implemented the use of LevelDB as the underlying storage database</li>
+<li><code>storage/rocksdb/</code> Implemented the use of RocksDB as the underlying storage database</li>
+</ul>
+</li>
+<li>
+<p><code>core/</code> - The core code of the chainbase module</p>
+<ul>
+<li>
+<p><code>capsule/</code> </p>
+<p>The encapsulation class of each data structure, such as AccountCapsule, BlockCapsule, etc. AccountCapsule is the encapsulation class of Account data structure, which provides modification and query of account data; BlockCapsule is the encapsulation class of Block data structure, which provides modification and query of block data.</p>
+</li>
+<li>
+<p><code>store/</code> </p>
+<p>Various databases, such as <code>AccountStore</code>, <code>ProposalStore</code>, etc. <code>AccountStore</code> is the account database, the database name is <code>account</code>, which stores all account information in the TRON network; <code>ProposalStore</code> is the proposal database, and the database name is <code>proposal</code>, which stores all the proposal information in the TRON network.</p>
+</li>
+<li>
+<p><code>db/</code> and <code>db2/</code> </p>
+<p>Implemented rollbackable databases, including two rollbackable databases: <code>AbstractRevokingStore</code> located in the <code>db/</code> directory and <code>SnapshotManager</code> located in the <code>db2/</code> directory. Compared with <code>AbstractRevokingStore</code>, <code>SnapshotManager</code> has a more stable data rollback function and supports the extension of the underlying database. Therefore, Java-tron uses <code>SnapshotManager</code> to roll back the database. Several important interfaces and implementation classes are as follows:</p>
+<ul>
+<li><code>RevokingDatabase.java</code> - It is the interface of the database container, used to manage all rollbackable databases, <code>SnapshotManager</code> is an implementation of this interface</li>
+<li><code>TronStoreWithRevoking.java</code> - It is the base class that supports rollbackable databases. All rollbackable databases are their implementations, such as <code>BlockStore</code>, <code>TransactionStore</code>, etc</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="consensus">consensus<a class="headerlink" href="#consensus" title="Permanent link">&para;</a></h2>
+<p>The consensus mechanism is a crucial module in blockchains. Common ones are PoW, PoS, DPoS and PBFT, etc. While Paxos, Raft, etc, are applied to consortium blockchains and other trusted networks. The consensus mechanism should match the business scenario. For instance, PoW is not suitable for real-time games that are sensitive to consensus efficiency, while PBFT can make an optimized choice for exchanges demanding high real-time capability. In this sense, a replaceable consensus is a creative innovation and an essential link in building application-specific blockchains. Even star blockchain programs like Cosmos SDK are still at a stage where the application layer provides developers with limited autonomy and the consensus at the base level is subject to Tendermint. Therefore, the ultimate goal of the consensus module is to make consensus switch as easy as configuring parameters for application developers.</p>
+<p><a href="https://github.com/tronprotocol/java-tron/tree/develop/consensus">consensus</a> module's source code is located at:  <code>https://github.com/tronprotocol/java-tron/tree/develop/consensus</code>, its directory structure is as follows:
+<div class="highlight"><pre><span></span><code>|-- consensus/src/main/java/org/tron/consensus
+    |-- Consensus.java
+    |-- ConsensusDelegate.java
+    |-- base
+    |   |-- ConsensusInterface.java
+    |   |-- ......
+    |-- dpos
+    |-- pbft
+</code></pre></div>
+consensus module divides the consensus process into several important parts that are defined in <code>ConsensusInterface</code>:</p>
+<ol>
+<li><code>start</code> - start the consensus service with customizable startup parameters</li>
+<li><code>stop</code> - stop the consensus service</li>
+<li><code>receiveBlock</code> - define the consensus logic of receiving blocks</li>
+<li><code>validBlock</code> - define the consensus logic of validating blocks</li>
+<li><code>applyBlock</code> - define the consensus logic of processing blocks</li>
+</ol>
+<p>Currently, Java-tron implements DPOS consensus and PBFT consensus based on the <code>ConsensusInterface</code> interface, which is located in the <code>dpos/</code> and <code>pbft/</code> directories respectively. Developers can also implement the <code>ConsensusInterface</code> interface according to their own business needs to customize the consensus mechanism.</p>
+<h2 id="actuator">actuator<a class="headerlink" href="#actuator" title="Permanent link">&para;</a></h2>
+<p>Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. This is one of the reasons why java-tron supports the creation of a chain of applications. For the reasons mentioned, java-tron includes a separate module, Actuator, offering application developers a brand new way of development. They can choose to implant their application codes into a chain instead of running them on virtual machines. </p>
+<p>Actuator is the executor of transactions, while applications can be viewed as a cluster of different types of transactions, each of which is executed by a corresponding actuator.</p>
+<p><a href="https://github.com/tronprotocol/java-tron/tree/develop/actuator">actuator</a> module's source code is located at: <code>https://github.com/tronprotocol/java-tron/tree/develop/actuator</code>, its directory structure is as follows:
+<div class="highlight"><pre><span></span><code>|-- actuator/src/main/java/org/tron/core
+    |-- actuator
+    |   |-- AbstractActuator.java
+    |   |-- ActuatorCreator.java
+    |   |-- ActuatorFactory.java
+    |   |-- TransferActuator.java
+    |   |-- VMActuator.java
+    |   |-- ......
+    |-- utils
+    |-- vm
+</code></pre></div></p>
+<ul>
+<li><code>actuator/</code> - The executors of various types of transactions in the TRON network which define the processing logic of different types of transactions. For example, <code>TransferActuator</code> is the processing class for transferring TRX, and <code>FreezeBalanceActuator</code> is the processing class for staking TRX to obtain resource</li>
+<li><code>utils/</code> - tools needed to execute transaction</li>
+<li><code>vm/</code> - TRON virtual machine related code</li>
+</ul>
+<p>Actuator module defines the <code>Actuator</code> interface, which includes 4 different methods:</p>
+<ul>
+<li><code>execute</code> - execute specific actions of transactions, such as state modification, communication between modules, logic execution, etc.</li>
+<li><code>validate</code> - validate authenticity of transactions</li>
+<li><code>getOwnerAddress</code> - acquire the address of transaction initiators</li>
+<li><code>calcFee</code> - define the logic of calculating transaction fees</li>
+</ul>
+<p>Depending on their businesses, developers may set up Actuator accordingly and customize the processing of different types of transactions.</p>
+<h2 id="crypto">crypto<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h2>
+<p>Crypto is a relatively independent module, but it is also a very important module. Data security in Java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.</p>
+<p><a href="https://github.com/tronprotocol/java-tron/tree/develop/crypto">crypto</a> module's source code is located at: <code>https://github.com/tronprotocol/java-tron/tree/develop/crypto</code>, its directory structure is as follows:
+<div class="highlight"><pre><span></span><code>|-- crypto/src/main/java/org/tron/common/crypto
+    |-- Blake2bfMessageDigest.java
+    |-- ECKey.java
+    |-- Hash.java
+    |-- SignInterface.java
+    |-- SignUtils.java
+    |-- SignatureInterface.java
+    |-- cryptohash
+    |-- jce
+    |-- sm2
+    |-- zksnark
+</code></pre></div></p>
+<ul>
+<li><code>sm2</code> and <code>jce</code> - Provide SM2 and ECKey encryption algorithm and signature algorithm</li>
+<li><code>zksnark</code> - Provide a zero-knowledge proof algorithm</li>
+</ul>
+<h2 id="framework">framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h2>
+<p>The framework is the core module of java-tron and the entrance of the node. The framework module is responsible for the initialization of each module and business logic. The framework module includes the services provided externally, the node discovery and node management process related to the P2P network, and the block broadcasting and processing procedures.</p>
+<p><a href="https://github.com/tronprotocol/java-tron/tree/develop/framework">framework</a> module's source code is located at:  <code>https://github.com/tronprotocol/java-tron/tree/develop/framework</code>, its directory structure is as follows:</p>
+<div class="highlight"><pre><span></span><code>|-- framework/src/main/java/org/tron
+    |-- common
+    |   |-- application
+    |   |-- backup
+    |   |-- logsfilter
+    |   |-- net
+    |   |-- overlay
+    |   |   |-- client
+    |   |   |-- discover
+    |   |   |-- message
+    |   |   |-- server
+    |   |-- runtime
+    |   |-- zksnark
+    |-- core
+    |   |-- Wallet.java
+    |   |-- capsule
+    |   |-- config
+    |   |-- consensus
+    |   |-- db
+    |   |-- metrics
+    |   |-- net
+    |   |-- services
+    |   |-- trie
+    |   |-- zen
+    |-- keystore
+    |-- program
+    |   |-- FullNode.java
+    |-- tool
+</code></pre></div>
+<ul>
+<li><code>program/FullNode.java</code> - It is the entry point of the program and initializes external HTTP, gRPC and json-rpc interface services</li>
+<li><code>core/services</code> - Defines the externally provided services, its subdirectory <code>http/</code> contains all http interface processing classes, <code>json-rpc/</code> contains all json-rpc interface processing classes</li>
+<li><code>common/overlay/discover</code> - Node discovery logic</li>
+<li><code>common/overlay/server</code> - Node management and block synchronization logic among nodes</li>
+<li><code>core/net</code> - Message processing, its subdirectory <code>/service</code> is  transaction and block broadcasting, block fetching and synchronization logic</li>
+<li><code>core/db/Manager.java</code> - Transaction and block verification and processing logic</li>
+</ul>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This article mainly introduces the code structure of Java-tron, as well as the function, location and directory structure of each functional module. Through this article, you will have a general understanding of the overall structure and key interfaces of Java-tron, which is helpful for subsequent code analysis and development.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../demo/" class="btn btn-neutral float-left" title="Development Example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../contracts/compiler/" class="btn btn-neutral float-right" title="Dapp Development Tool">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../demo/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../contracts/compiler/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
