@@ -36,6 +36,7 @@ nav:
         - Core Modules:
             - Overview: developers/code-structure.md
             - Chainbase: developers/chainbase.md
+            - Network: developers/network.md
     - For DAPP developers:
         - Dapp Development Tool: contracts/compiler.md
     - Wallet-cli:
