@@ -40,7 +40,8 @@ nav:
     - For DAPP developers:
         - Dapp Development Tool: contracts/compiler.md
     - Wallet-cli:
-        - Installation: clients/wallet-cli.md
+        - What is Wallet-CLI: clients/wallet-cli.md
+        - Wallet Commands: clients/wallet-cli-command.md
     - Releases:
         - History:
             - GreatVoyage-v4.5.2: releases/GreatVoyage-v452.md
