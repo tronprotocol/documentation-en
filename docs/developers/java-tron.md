@@ -93,7 +93,7 @@ If you want to contribute codes to java-tron, please follow the following steps:
 
 
 ## Code Review Guidelines
-The only way to get code into java-tron is to send a pull request. Those pull requests need to be reviewed by someone. there a guide that explains our expectations around PRs for both authors and reviewers.
+The only way to get code into java-tron is to send a pull request. Those pull requests need to be reviewed by someone. The following guide explains our expectations around PRs for both authors and reviewers.
 
 
 ### The Process
