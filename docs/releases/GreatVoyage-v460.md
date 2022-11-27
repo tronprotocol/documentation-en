@@ -130,7 +130,7 @@ LiteFullNodeTool.jar is a light node tool of java-tron. Its main function is to 
 In order to be better compatible with Ethereum's JsonRPC 2.0 protocol interface, GreatVoyage-v4.6.0(Socrates) changes the unit of the `timestamp` field in the return value of the eth_getBlockByHash and eth_getBlockByNumber APIs from milliseconds to seconds, making the return values of these two APIs fully compatible with Ethereum Geth.
 
 
-Source code: [https://github.com/tronprotocol/java-tron/pull/4642](https://github.com/tronprotocol/java-tron/pull/4642) 
+* Source code: [https://github.com/tronprotocol/java-tron/pull/4642](https://github.com/tronprotocol/java-tron/pull/4642) 
 
 --- 
 
