@@ -31,6 +31,7 @@ nav:
         - Developer Guide: developers/java-tron.md
         - TIPs Workflow: developers/tips.md
         - Issue Workflow: developers/issue-workflow.md
+        - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md
         - Development Example: developers/demo.md
         - Core Modules:
