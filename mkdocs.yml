@@ -44,6 +44,7 @@ nav:
         - What is Wallet-CLI: clients/wallet-cli.md
         - Wallet Commands: clients/wallet-cli-command.md
     - Releases:
+        - New Version Deployment Manual: releases/upgrade-instruction.md
         - History:
             - GreatVoyage-v4.6.0: releases/GreatVoyage-v460.md
             - GreatVoyage-v4.5.2: releases/GreatVoyage-v452.md
