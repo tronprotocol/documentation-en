@@ -1,4 +1,4 @@
-# Java-tron New Version Deployment Manual
+# New Version Deployment Manual of Java-tron
 For the mandatory upgrade versions, please strictly follow this guide to deploy the new version. For the non-mandatory upgrade ones, you can decide whether to deploy it according to your needs. 
 
 Please directly refer to [Java-tron New version deployment Process](#new-version-deployment-process) to upgrade your node. If you have deployed 'Active and Backup nodes', please follow the process of [Active and Backup Nodes Upgrade Guide](#active-and-backup-nodes-upgrade-guide). 
