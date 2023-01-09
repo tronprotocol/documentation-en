@@ -64,7 +64,7 @@ nav:
             - GreatVoyage-v4.0.0: releases/GreatVoyage-v400.md
             - Odyssey-v3.7: releases/Odyssey-v37.md
             - Odyssey-v3.6.5: releases/Odyssey-v365.md
-        - Binary Integrity Check: releases/index.md
+        - Integrity Check: releases/index.md
     - Glossary: glossary.md
 
 theme: readthedocs
