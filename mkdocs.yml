@@ -45,6 +45,7 @@ nav:
         - Wallet Commands: clients/wallet-cli-command.md
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
+        - Integrity Check: releases/index.md
         - History:
             - GreatVoyage-v4.6.0: releases/GreatVoyage-v460.md
             - GreatVoyage-v4.5.2: releases/GreatVoyage-v452.md
@@ -64,7 +65,6 @@ nav:
             - GreatVoyage-v4.0.0: releases/GreatVoyage-v400.md
             - Odyssey-v3.7: releases/Odyssey-v37.md
             - Odyssey-v3.6.5: releases/Odyssey-v365.md
-        - Integrity Check: releases/index.md
     - Glossary: glossary.md
 
 theme: readthedocs
