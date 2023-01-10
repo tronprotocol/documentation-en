@@ -1,69 +1,127 @@
-# Releases
+# Signature Verification of Java-tron Release Package 
 
-## Binary Integrity Check
+Java-tron integrity verification is to check the reliability and integrity of the obtained Java-tron executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by TRON. If they are consistent, it means that the Java-tron executable file you get is a complete file released by TRON.
 
-All released files after 3.7 will provide signatures signed by the Tron Account: `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`.
+The version of Java-tron released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified TRON account for signature and verification.
 
-### Signature Verification
+* Versions released after January 3, 2023: [GPG Signature Verification Process](#gpg-signature-verification-process)
+* Versions released before January 3, 2023: [TRON Address Signature Verification Process](#tron-address-signature-verification-process)
 
-You can verify the signature by tronweb.
+## GPG signature verification process
+The java-tron executable file and its signature file are released together, you can get it at [here](https://github.com/tronprotocol/java-tron/releases), please follow the below process to verify the signature of the Java-tron which released after January 3, 2023.
 
-```js
-const Trx = require('tronweb').Trx;
+### Install GPG
+If you have already installed GPG, please skip this step. If not, please refer to the following command to install it on MacOS:
+```
+$ brew install gpg
+```
+On Debian, Ubuntu and other Linux distributions:
+```
+$ sudo apt install gpg
+```
+### Import public key
+If you have imported the public key before, please skip this step, just import the public key once.
 
-console.log(Trx.verifySignature(SHA256, ADDRESS, SIGNATURE));
+Please first obtain the public key Hash and uid of the GPG signature of the Java-tron release package from [here](https://github.com/tronprotocol/java-tron).
+
+```
+pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
+uid: build@tron.network
+```
+Import the public key from the GPG public key server to the local according to the public key Hash, the command is:
+```
+$ gpg --keyserver hkp://keys.openpgp.org --recv-keys 1254F859D2B1BD9F66E7107DF859BCB44A28290B
+```
+If the import was successful, you will see the return result like this:
+```
+gpg: key 785FB96D2C7C3CA5: public key “build_tron <build@tron.network>” imported
+gpg: Total number processed: 1
+gpg:        imported: 1
+```
+        
+### Signature verification
+For example, if the executable file of a certain version is `FullNode.jar` and the signature file is `FullNode.jar.sig`, the signature verification command is:
+
+```
+$ gpg --verify FullNode.jar.sig FullNode.jar
+```
+If the signature verification is passed, the following will be returned:
+```
+gpg: Signature made Fri. 1/ 6 12:21:51 2023 CST
+gpg:        using RSA key 1254F859D2B1BD9F66E7107DF859BCB44A28290B
+gpg: Good signature from “build_tron <build@tron.network>” [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:     There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 07B2 3298 AEA4 E006 BD9A 42DE 785F B96D 2C7C 3CA5
+Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
+```
+If the verification fails, it will display the words `gpg: BAD signature from “build_tron <build@tron.network>”`.
+    
+## TRON address signature verification process
+The Java-tron version released before January 3, 2023 is signed by the TRON account `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the TRON account to sign the sha256 hash value. The sha256 hash value can be viewed in the [Signatures of historical versions](#signatures-of-historical-versions) chapter, or in the [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases) page; the signature result please check in the [Signatures of historical versions](#signatures-of-historical-versions) chapter.
+
+[tronweb](https://developers.tron.network/docs/tronweb-1) provides the `Trx.verifySignature` interface to verify the signature. If the verification is passed, it will return true, otherwise, it will return false. Please follow the below process to verify.
+
+### Install tronweb
+If you have already installed tronweb, please skip this step, if not, please refer to the following command to install.
+
+```
+npm install -g tronweb
+```
+### Verify the integrity of the release package
+Confirm the integrity of the release package by comparing the Hash value of the excutable file and the hash value in the release information. Take [Odyssey-3.7](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v3.7) version as an example:
+
+* The release package file name: `FullNode.jar` 
+* The SHA256 value of the release package: `2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e`
+* Signature：  `21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b`
+
+Execute the following command for verification under MacOS system:
+```shell
+$ sha256sum FullNode.jar  
+```
+Execute the following command for verification under Debian, Ubuntu and other Linux distributions:
+```
+$ shasum -a 256 FullNode.jar (macOS)
 ```
 
-Suppose we got a `FullNode.jar` with a SHA256 hash `2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e`, and a Tron signature `21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b`.
-
-To verify the integrity of the released file:
-
-```shell
-# First calculate the sha256 hash
-
-sha256sum FullNode.jar  # or shasum -a 256 FullNode.jar (macOS)
-# 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e  FullNode.jar
-
-# Then check the signature
-
-npm install -g tronweb
+### Signature verification
+Execute the following command to verify the signature of the release package:
+```js
+# Trx.verifySignature(SHA256, ADDRESS, SIGNATURE));
 node -e 'console.log(require("tronweb").Trx.verifySignature(
     "2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e",
     "TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2",
     "21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b"
   ))'
-# true
-
-# Now you've verified the integrity of the binary release file.
 ```
 
-### Version Signature
+### Signatures of historical versions
 
-- Odyssey-3.7 
+- Odyssey-3.7
 
 ```shell
-FullNode sha256sum: 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e  
-FullNode signature: 21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b   
-SolidityNode sha256sum: fcdea8b3e511306218ba442fb0828f0413574012d646c39c212a59f6ba5844bc  
-SolidityNode signature: 6dcad6e02f17467e5cfebeefa0f9963da08e7da10feebefdec47d689fecc30f104c9b7f5e784b883e7ceb786fe55188356c42c306d727fb7819eed2a71f788361c  
+FullNode sha256sum: 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e
+FullNode signature: 21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b
+SolidityNode sha256sum: fcdea8b3e511306218ba442fb0828f0413574012d646c39c212a59f6ba5844bc
+SolidityNode signature: 6dcad6e02f17467e5cfebeefa0f9963da08e7da10feebefdec47d689fecc30f104c9b7f5e784b883e7ceb786fe55188356c42c306d727fb7819eed2a71f788361c
 ```
 
 - GreatVoyage-4.0.0
 
 ```shell
-FullNode sha256sum: d3f8f9fde64bdefaadae784d09de97172e5e8a3fe539217e12b89963983a530d  
-FullNode signature: e788dbaf2fe35f099f65b2403cfb0d7cbe7f4611f8c5ff8151e4bd84ae468d2e541043c9cde9e74500003027ae9f25cdda81a9bcd60abb45ca7a69f965f4dcc71c  
-SolidityNode sha256sum: adddf88423c6c31f1f25ed39b10779c24dd7cdcf37f2325c02b2f2ecfc97e1f6  
-SolidityNode signature: e3b9859f178f7851dedb7a0a8deb715e5f1e3af10b1064c36f2727ec2b8825510df4fd7b09d7d049204e5df3e8d5b87778e83a15ca96ce786f7977a6cb48bca91b  
+FullNode sha256sum: d3f8f9fde64bdefaadae784d09de97172e5e8a3fe539217e12b89963983a530d
+FullNode signature: e788dbaf2fe35f099f65b2403cfb0d7cbe7f4611f8c5ff8151e4bd84ae468d2e541043c9cde9e74500003027ae9f25cdda81a9bcd60abb45ca7a69f965f4dcc71c
+SolidityNode sha256sum: adddf88423c6c31f1f25ed39b10779c24dd7cdcf37f2325c02b2f2ecfc97e1f6
+SolidityNode signature: e3b9859f178f7851dedb7a0a8deb715e5f1e3af10b1064c36f2727ec2b8825510df4fd7b09d7d049204e5df3e8d5b87778e83a15ca96ce786f7977a6cb48bca91b
 ```
 
 - GreatVoyage-4.1.1
 
 ```shell
-FullNode sha256sum: 30e716b86b879af1e006c2b463903ae3835e239e32e2b01c2a1b903a153897fe  
-FullNode signature: 5faee65a448bb9aa77835992ca3d24e50d8a76b7934f80664ad38e83179c8114278fdef4494de7231f8e40de86461676a7aa4a54c795f4c692e91d90e156ec471b  
-SolidityNode sha256sum: 10a160181053b421109ecace74df5fc0f8860bc8a70181add65fd9a292c35a44  
-SolidityNode signature: 1d1413b13adf7778f9a720294eca066ac728ad636d166505276f5ff1f63973c100c04778f937f240f10107edb7de477604857867fc4dbdb68238169c978fc3da1b  
+FullNode sha256sum: 30e716b86b879af1e006c2b463903ae3835e239e32e2b01c2a1b903a153897fe
+FullNode signature: 5faee65a448bb9aa77835992ca3d24e50d8a76b7934f80664ad38e83179c8114278fdef4494de7231f8e40de86461676a7aa4a54c795f4c692e91d90e156ec471b
+SolidityNode sha256sum: 10a160181053b421109ecace74df5fc0f8860bc8a70181add65fd9a292c35a44
+SolidityNode signature: 1d1413b13adf7778f9a720294eca066ac728ad636d166505276f5ff1f63973c100c04778f937f240f10107edb7de477604857867fc4dbdb68238169c978fc3da1b
 ```
 
 - GreatVoyage-v4.1.2
