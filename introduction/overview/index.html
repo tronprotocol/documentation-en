@@ -135,6 +135,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Integrity Check</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">History</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
@@ -174,8 +176,6 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
                 </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
                   </li>
               </ul>
               <ul>
@@ -366,12 +366,12 @@ please refer to <a href="https://github.com/tronprotocol/tron-deployment#deploym
  5.&nbsp;set the first SR needSyncCheck = false, others can be set true
  6.&nbsp;set node.discovery.enable = true
  7.&nbsp;run the script</p>
-<div class="highlight"><pre><span></span><code>nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx6g<span class="w"> </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w">  </span>--witness<span class="w">  </span>-c<span class="w"> </span>private_net_config.conf
 
-<span class="nb">command</span> line parameters introduction:
---witness: start witness <span class="k">function</span>. For SuperNode, this parameter is required, i.e.: --witness
---log-config: specify the log configuration file path, i.e.: --log-config logback.xml
--c: specify the configuration file path, i.e.: -c config.conf
+<span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>parameters<span class="w"> </span>introduction:
+--witness:<span class="w"> </span>start<span class="w"> </span>witness<span class="w"> </span><span class="k">function</span>.<span class="w"> </span>For<span class="w"> </span>SuperNode,<span class="w"> </span>this<span class="w"> </span>parameter<span class="w"> </span>is<span class="w"> </span>required,<span class="w"> </span>i.e.:<span class="w"> </span>--witness
+--log-config:<span class="w"> </span>specify<span class="w"> </span>the<span class="w"> </span>log<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>path,<span class="w"> </span>i.e.:<span class="w"> </span>--log-config<span class="w"> </span>logback.xml
+-c:<span class="w"> </span>specify<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>path,<span class="w"> </span>i.e.:<span class="w"> </span>-c<span class="w"> </span>config.conf
 </code></pre></div>
 <p>The usage of the log file:
  You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
@@ -387,7 +387,7 @@ please refer to <a href="https://github.com/tronprotocol/tron-deployment#deploym
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png" /></p>
 <p><strong>4.6.3.2.2  Step 2: FullNode Deployment</strong></p>
 <p>1.&nbsp;Download private_net_config.conf</p>
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
 </code></pre></div>
 <p>2.&nbsp;set seed.node ip.list with SR's ip and port</p>
 <p>3.&nbsp;set p2p.version the same as SuperNode's p2p.version</p>
@@ -395,11 +395,11 @@ please refer to <a href="https://github.com/tronprotocol/tron-deployment#deploym
 <p>5.&nbsp;set needSyncCheck true</p>
 <p>6.&nbsp;set node.discovery.enable true</p>
 <p>7.&nbsp;run the script</p>
-<div class="highlight"><pre><span></span><code> nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c private_net_config.conf
+<div class="highlight"><pre><span></span><code><span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx6g<span class="w"> </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w">  </span>-c<span class="w"> </span>private_net_config.conf
 
- <span class="nb">command</span> lines parameters
- --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
- -c: specify the configuration file path, i.e.: -c config.conf
+<span class="w"> </span><span class="nb">command</span><span class="w"> </span>lines<span class="w"> </span>parameters
+<span class="w"> </span>--log-config:<span class="w"> </span>specify<span class="w"> </span>the<span class="w"> </span>log<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>path,<span class="w"> </span>i.e.:<span class="w"> </span>--log-config<span class="w"> </span>logback.xml
+<span class="w"> </span>-c:<span class="w"> </span>specify<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>path,<span class="w"> </span>i.e.:<span class="w"> </span>-c<span class="w"> </span>config.conf
 </code></pre></div>
 <p>The usage of the log file:
  You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:
@@ -739,11 +739,11 @@ Because TRON's compiler is a little different from Ethereum, so you can not get 
 <p><strong>Using Wallet-cli to Deploy</strong></p>
 <p>Download Wallet-Cli and build</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># download cource code</span>
-git clone https://github.com/tronprotocol/wallet-cli
-<span class="nb">cd</span>  wallet-cli
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tronprotocol/wallet-cli
+<span class="nb">cd</span><span class="w">  </span>wallet-cli
 <span class="c1"># build</span>
-./gradlew build
-<span class="nb">cd</span>  build/libs
+./gradlew<span class="w"> </span>build
+<span class="nb">cd</span><span class="w">  </span>build/libs
 </code></pre></div>
 <p>Note: You need to change the node ip and port in config.conf</p>
 <p>start wallet-cli</p>

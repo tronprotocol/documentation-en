@@ -135,6 +135,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Integrity Check</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">History</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
@@ -174,8 +176,6 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
                 </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
                   </li>
               </ul>
               <ul>
@@ -258,12 +258,12 @@ Developers can choose one of the following two ways  according to actual situati
 <p>Query the pid: <code>ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code></p>
 <h5 id="2execute-the-archivemanifest-plugin">2.Execute the ArchiveManifest plugin<a class="headerlink" href="#2execute-the-archivemanifest-plugin" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="c1"># Full command</span>
-java -jar ArchiveManifest.jar <span class="o">[</span>-b batchSize<span class="o">]</span> <span class="o">[</span>-d databaseDirectory<span class="o">]</span> <span class="o">[</span>-m manifestSize<span class="o">]</span> <span class="o">[</span>-h<span class="o">]</span>
+java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>batchSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>databaseDirectory<span class="o">]</span><span class="w"> </span><span class="o">[</span>-m<span class="w"> </span>manifestSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
 <span class="c1"># examples</span>
-   java -jar ArchiveManifest.jar <span class="c1">#1. use default settings</span>
-   java -jar ArchiveManifest.jar -d /tmp/db/database <span class="c1">#2. Specify the database directory as /tmp/db/database</span>
-   java -jar ArchiveManifest.jar -b <span class="m">64000</span> <span class="c1">#3. Specify the batch size to 64000 when optimizing Manifest</span>
-   java -jar ArchiveManifest.jar -m <span class="m">128</span> <span class="c1">#4. Specify optimization only when Manifest exceeds 128M</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span><span class="c1">#1. use default settings</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span>-d<span class="w"> </span>/tmp/db/database<span class="w"> </span><span class="c1">#2. Specify the database directory as /tmp/db/database</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span>-b<span class="w"> </span><span class="m">64000</span><span class="w"> </span><span class="c1">#3. Specify the batch size to 64000 when optimizing Manifest</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span>-m<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="c1">#4. Specify optimization only when Manifest exceeds 128M</span>
 </code></pre></div>
 <p>After the command is executed, <code>archive.log</code> will be generated in the <code>./logs</code> directory, you can see the result.</p>
 <blockquote>
@@ -273,10 +273,10 @@ and if it fails there will be a corresponding error message</p>
 <p><code>[main] [archive](ArchiveManifest.java:144) DatabaseDirectory:output-directory/database, maxManifestSize:0, maxBatchSize:80000,database reopen use 80 seconds total.</code></p>
 </blockquote>
 <h5 id="3start-the-fullnode-service">3.Start the FullNode service<a class="headerlink" href="#3start-the-fullnode-service" title="Permanent link">&para;</a></h5>
-<div class="highlight"><pre><span></span><code> <span class="c1">#FullNode</span>
-nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf &lt;/dev/null <span class="p">&amp;</span>&gt;/dev/null <span class="p">&amp;</span>
- <span class="c1">#SR Node</span>
-nohup java -Xmx24g -XX:+UseConcMarkSweepGC  -jar FullNode.jar  -p  private key --witness -c main_net_config.conf &lt;/dev/null <span class="p">&amp;</span>&gt;/dev/null <span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="c1">#FullNode</span>
+nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>&lt;/dev/null<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="p">&amp;</span>
+<span class="w"> </span><span class="c1">#SR Node</span>
+nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w">  </span>-jar<span class="w"> </span>FullNode.jar<span class="w">  </span>-p<span class="w">  </span>private<span class="w"> </span>key<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>&lt;/dev/null<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h4 id="2-integrated-startup-script">2. Integrated startup script<a class="headerlink" href="#2-integrated-startup-script" title="Permanent link">&para;</a></h4>
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -289,39 +289,39 @@ nohup java -Xmx24g -XX:+UseConcMarkSweepGC  -jar FullNode.jar  -p  private key -
 
 <span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">0</span>
 
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$1</span> <span class="o">==</span> <span class="s1">&#39;--rewrite--manifest&#39;</span> <span class="o">]]</span>  <span class="p">;</span> <span class="k">then</span>
-   <span class="nv">APP</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-   <span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">1</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;--rewrite--manifest&#39;</span><span class="w"> </span><span class="o">]]</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">   </span><span class="nv">APP</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="w">   </span><span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">1</span>
 
- <span class="k">elif</span> <span class="o">[[</span> <span class="nv">$2</span> <span class="o">==</span> <span class="s1">&#39;--rewrite--manifest&#39;</span> <span class="o">]]</span>  <span class="p">;</span> <span class="k">then</span>
-   <span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">1</span>
- <span class="k">fi</span>
+<span class="w"> </span><span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;--rewrite--manifest&#39;</span><span class="w"> </span><span class="o">]]</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">   </span><span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">1</span>
+<span class="w"> </span><span class="k">fi</span>
 
 
-rebuildManifest<span class="o">()</span> <span class="o">{</span>
+rebuildManifest<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 
- <span class="k">if</span> <span class="o">[[</span> <span class="nv">$NEED_REBUILD</span> <span class="o">==</span> <span class="m">1</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span>
-   buildManifest
- <span class="k">fi</span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$NEED_REBUILD</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">   </span>buildManifest
+<span class="w"> </span><span class="k">fi</span>
 
 <span class="o">}</span>
 
 
-buildManifest<span class="o">()</span> <span class="o">{</span>
+buildManifest<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 
- <span class="nv">ARCHIVE_JAR</span><span class="o">=</span><span class="s1">&#39;ArchiveManifest.jar&#39;</span>
+<span class="w"> </span><span class="nv">ARCHIVE_JAR</span><span class="o">=</span><span class="s1">&#39;ArchiveManifest.jar&#39;</span>
 
- java -jar <span class="nv">$ARCHIVE_JAR</span> <span class="nv">$ALL_OPT</span>
+<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span><span class="nv">$ARCHIVE_JAR</span><span class="w"> </span><span class="nv">$ALL_OPT</span>
 
- <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 
-     <span class="nb">echo</span> <span class="s1">&#39;rebuild manifest success&#39;</span>
+<span class="w">     </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;rebuild manifest success&#39;</span>
 
- <span class="k">else</span>
+<span class="w"> </span><span class="k">else</span>
 
-     <span class="nb">echo</span> <span class="s1">&#39;rebuild manifest fail, log in logs/archive.log&#39;</span>
+<span class="w">     </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;rebuild manifest fail, log in logs/archive.log&#39;</span>
 
- <span class="k">fi</span>
+<span class="w"> </span><span class="k">fi</span>
 
 <span class="o">}</span>
 
@@ -329,7 +329,7 @@ buildManifest<span class="o">()</span> <span class="o">{</span>
 
 <span class="nv">APP</span><span class="o">=</span><span class="si">${</span><span class="nv">APP</span><span class="k">:-</span><span class="s2">&quot;FullNode&quot;</span><span class="si">}</span>
 
-<span class="nv">START_OPT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="si">${</span><span class="p">@:</span><span class="nv">2</span><span class="si">}</span><span class="sb">`</span>
+<span class="nv">START_OPT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="p">@:</span><span class="nv">2</span><span class="si">}</span><span class="sb">`</span>
 
 <span class="nv">JAR_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$APP</span><span class="s2">.jar&quot;</span>
 
@@ -341,100 +341,100 @@ buildManifest<span class="o">()</span> <span class="o">{</span>
 
 
 
-checkpid<span class="o">()</span> <span class="o">{</span>
+checkpid<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 
- <span class="nv">pid</span><span class="o">=</span><span class="sb">`</span>ps -ef <span class="p">|</span> grep <span class="nv">$JAR_NAME</span> <span class="p">|</span>grep -v grep <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+<span class="w"> </span><span class="nv">pid</span><span class="o">=</span><span class="sb">`</span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nv">$JAR_NAME</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
 
- <span class="k">return</span> <span class="nv">$pid</span>
+<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nv">$pid</span>
 
 <span class="o">}</span>
 
 checkPath<span class="o">(){</span>
-  <span class="nv">path</span><span class="o">=</span><span class="s1">&#39;output-directory/database&#39;</span>
-  <span class="nv">flag</span><span class="o">=</span><span class="m">1</span>
-  <span class="k">for</span> p <span class="k">in</span> <span class="si">${</span><span class="nv">ALL_OPT</span><span class="si">}</span>
-  <span class="k">do</span>
-     <span class="k">if</span> <span class="o">[[</span> <span class="nv">$flag</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span>
-        <span class="nv">path</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$p</span><span class="sb">`</span>
-        <span class="nb">break</span>
-     <span class="k">fi</span>
-     <span class="k">if</span> <span class="o">[[</span> <span class="nv">$p</span> <span class="o">==</span> <span class="s1">&#39;-d&#39;</span> <span class="o">||</span> <span class="nv">$p</span> <span class="o">==</span> <span class="s1">&#39;--database-directory&#39;</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span>
-        <span class="nv">path</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-        <span class="nv">flag</span><span class="o">=</span><span class="m">0</span>
-     <span class="k">fi</span>
-  <span class="k">done</span>
+<span class="w">  </span><span class="nv">path</span><span class="o">=</span><span class="s1">&#39;output-directory/database&#39;</span>
+<span class="w">  </span><span class="nv">flag</span><span class="o">=</span><span class="m">1</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span>p<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">ALL_OPT</span><span class="si">}</span>
+<span class="w">  </span><span class="k">do</span>
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$flag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nv">path</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$p</span><span class="sb">`</span>
+<span class="w">        </span><span class="nb">break</span>
+<span class="w">     </span><span class="k">fi</span>
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;-d&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;--database-directory&#39;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nv">path</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="nv">flag</span><span class="o">=</span><span class="m">0</span>
+<span class="w">     </span><span class="k">fi</span>
+<span class="w">  </span><span class="k">done</span>
 
-  <span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;</span><span class="si">${</span><span class="nv">path</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-     <span class="nb">echo</span> <span class="s1">&#39;-d /path or --database-directory /path&#39;</span>
-     <span class="k">return</span> <span class="m">1</span>
-  <span class="k">fi</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">     </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;-d /path or --database-directory /path&#39;</span>
+<span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="k">fi</span>
 
-  <span class="k">if</span> <span class="o">[[</span> -d <span class="si">${</span><span class="nv">path</span><span class="si">}</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="k">return</span> <span class="m">0</span>
-  <span class="k">else</span>
-    <span class="nb">echo</span> <span class="nv">$path</span> <span class="s1">&#39;not exist&#39;</span>
-    <span class="k">return</span> <span class="m">1</span>
-  <span class="k">fi</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span><span class="si">${</span><span class="nv">path</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$path</span><span class="w"> </span><span class="s1">&#39;not exist&#39;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="k">fi</span>
 <span class="o">}</span>
 
 
 
-stopService<span class="o">()</span> <span class="o">{</span>
+stopService<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 
-  <span class="nv">count</span><span class="o">=</span><span class="m">1</span>
+<span class="w">  </span><span class="nv">count</span><span class="o">=</span><span class="m">1</span>
 
-  <span class="k">while</span> <span class="o">[</span> <span class="nv">$count</span> -le <span class="nv">$MAX_STOP_TIME</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$count</span><span class="w"> </span>-le<span class="w"> </span><span class="nv">$MAX_STOP_TIME</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 
-    checkpid
+<span class="w">    </span>checkpid
 
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$pid</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$pid</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 
-       <span class="nb">kill</span> -15 <span class="nv">$pid</span>
+<span class="w">       </span><span class="nb">kill</span><span class="w"> </span>-15<span class="w"> </span><span class="nv">$pid</span>
 
-       sleep <span class="m">1</span>
+<span class="w">       </span>sleep<span class="w"> </span><span class="m">1</span>
 
-    <span class="k">else</span>
+<span class="w">    </span><span class="k">else</span>
 
-       <span class="nb">echo</span> <span class="s2">&quot;java-tron stop&quot;</span>
+<span class="w">       </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;java-tron stop&quot;</span>
 
-       <span class="k">return</span>
+<span class="w">       </span><span class="k">return</span>
 
-    <span class="k">fi</span>
+<span class="w">    </span><span class="k">fi</span>
 
-    <span class="nv">count</span><span class="o">=</span>$<span class="o">[</span><span class="nv">$count</span>+1<span class="o">]</span>
+<span class="w">    </span><span class="nv">count</span><span class="o">=</span>$<span class="o">[</span><span class="nv">$count</span>+1<span class="o">]</span>
 
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$count</span> -eq <span class="nv">$MAX_STOP_TIME</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$count</span><span class="w"> </span>-eq<span class="w"> </span><span class="nv">$MAX_STOP_TIME</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 
-      <span class="nb">kill</span> -9 <span class="nv">$pid</span>
+<span class="w">      </span><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span><span class="nv">$pid</span>
 
-      sleep <span class="m">1</span>
+<span class="w">      </span>sleep<span class="w"> </span><span class="m">1</span>
 
-    <span class="k">fi</span>
+<span class="w">    </span><span class="k">fi</span>
 
-  <span class="k">done</span>
+<span class="w">  </span><span class="k">done</span>
 
 <span class="o">}</span>
 
-startService<span class="o">()</span> <span class="o">{</span>
- <span class="nb">echo</span> <span class="sb">`</span>date<span class="sb">`</span> &gt;&gt; start.log
+startService<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="sb">`</span>date<span class="sb">`</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>start.log
 
- <span class="nv">total</span><span class="o">=</span><span class="m">16</span>*1024*1024
+<span class="w"> </span><span class="nv">total</span><span class="o">=</span><span class="m">16</span>*1024*1024
 
- <span class="nv">xmx</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$total</span><span class="s2">/1024/1024*0.6&quot;</span> <span class="p">|</span> bc <span class="p">|</span>awk -F. <span class="s1">&#39;{print $1&quot;g&quot;}&#39;</span><span class="sb">`</span>
+<span class="w"> </span><span class="nv">xmx</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$total</span><span class="s2">/1024/1024*0.6&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1&quot;g&quot;}&#39;</span><span class="sb">`</span>
 
- <span class="nv">directmem</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$total</span><span class="s2">/1024/1024*0.1&quot;</span> <span class="p">|</span> bc <span class="p">|</span>awk -F. <span class="s1">&#39;{print $1&quot;g&quot;}&#39;</span><span class="sb">`</span>
+<span class="w"> </span><span class="nv">directmem</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$total</span><span class="s2">/1024/1024*0.1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1&quot;g&quot;}&#39;</span><span class="sb">`</span>
 
- <span class="nv">logtime</span><span class="o">=</span><span class="sb">`</span>date +%Y-%m-%d_%H-%M-%S<span class="sb">`</span>
+<span class="w"> </span><span class="nv">logtime</span><span class="o">=</span><span class="sb">`</span>date<span class="w"> </span>+%Y-%m-%d_%H-%M-%S<span class="sb">`</span>
 
- <span class="nb">export</span> <span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib64/libtcmalloc.so&quot;</span>
+<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib64/libtcmalloc.so&quot;</span>
 
-  nohup java -Xms<span class="nv">$xmx</span> -Xmx<span class="nv">$xmx</span> -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -Xloggc:./gc.log<span class="se">\</span>
-  -XX:+PrintGCDateStamps -XX:+CMSParallelRemarkEnabled -XX:ReservedCodeCacheSize<span class="o">=</span>256m -XX:+UseCodeCacheFlushing<span class="se">\</span>
-  <span class="nv">$MEM_OPT</span> -XX:MaxDirectMemorySize<span class="o">=</span><span class="nv">$directmem</span> -XX:+HeapDumpOnOutOfMemoryError -jar <span class="nv">$JAR_NAME</span> <span class="nv">$START_OPT</span> -c config.conf  &gt;&gt; start.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+<span class="w">  </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xms<span class="nv">$xmx</span><span class="w"> </span>-Xmx<span class="nv">$xmx</span><span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span>-Xloggc:./gc.log<span class="se">\</span>
+<span class="w">  </span>-XX:+PrintGCDateStamps<span class="w"> </span>-XX:+CMSParallelRemarkEnabled<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span>-XX:+UseCodeCacheFlushing<span class="se">\</span>
+<span class="w">  </span><span class="nv">$MEM_OPT</span><span class="w"> </span>-XX:MaxDirectMemorySize<span class="o">=</span><span class="nv">$directmem</span><span class="w"> </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span>-jar<span class="w"> </span><span class="nv">$JAR_NAME</span><span class="w"> </span><span class="nv">$START_OPT</span><span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w">  </span>&gt;&gt;<span class="w"> </span>start.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
 
- <span class="nv">pid</span><span class="o">=</span><span class="sb">`</span>ps -ef <span class="p">|</span>grep <span class="nv">$JAR_NAME</span> <span class="p">|</span>grep -v grep <span class="p">|</span>awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+<span class="w"> </span><span class="nv">pid</span><span class="o">=</span><span class="sb">`</span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="nv">$JAR_NAME</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
 
- <span class="nb">echo</span> <span class="s2">&quot;start java-tron with pid </span><span class="nv">$pid</span><span class="s2"> on </span><span class="nv">$HOSTNAME</span><span class="s2">&quot;</span>
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;start java-tron with pid </span><span class="nv">$pid</span><span class="s2"> on </span><span class="nv">$HOSTNAME</span><span class="s2">&quot;</span>
 
 <span class="o">}</span>
 
@@ -444,13 +444,13 @@ stopService
 checkPath
 
 <span class="c1">#2.Execute the ArchiveManifest plugin</span>
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">0</span> <span class="o">==</span>  <span class="nv">$?</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span>
- rebuildManifest
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">0</span><span class="w"> </span><span class="o">==</span><span class="w">  </span><span class="nv">$?</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w"> </span>rebuildManifest
 <span class="k">else</span>
- <span class="nb">exit</span> -1
+<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>-1
 <span class="k">fi</span>
 
-sleep <span class="m">5</span>
+sleep<span class="w"> </span><span class="m">5</span>
 <span class="c1"># Start the FullNode service</span>
 startService
 </code></pre></div>
@@ -463,14 +463,14 @@ startService
 
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># Full command</span>
-./start.sh <span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span> <span class="o">[</span>--rewrite--manifest<span class="o">]</span> <span class="o">[</span>-b batchSize<span class="o">]</span> <span class="o">[</span>-d databaseDirectory<span class="o">]</span> <span class="o">[</span>-m manifestSize<span class="o">]</span>
+./start.sh<span class="w"> </span><span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span><span class="w"> </span><span class="o">[</span>--rewrite--manifest<span class="o">]</span><span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>batchSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>databaseDirectory<span class="o">]</span><span class="w"> </span><span class="o">[</span>-m<span class="w"> </span>manifestSize<span class="o">]</span>
 <span class="c1"># examples</span>
-  ./start.sh <span class="c1">#1. Start the FullNode.jar service without the plugin</span>
-   ./start.sh SolidityNode <span class="c1">#2. Start the SolidityNode.jar service without the plugin</span>
-   ./start.sh FullNode --rewrite--manifest <span class="c1">#3. Execute the optimization plugin with default settings and start the FullNode.jar service</span>
-   ./start.sh --rewrite--manifest -d /tmp/db/database <span class="c1">#4. Specify the database directory as /tmp/db/database, execute the optimization plugin, and start the FullNode.jar service</span>
-   ./start.sh --rewrite--manifest -b <span class="m">64000</span> <span class="c1">#5. Specify the batch size to 64000 when optimizing Manifest, and start the FullNode.jar service</span>
-   ./start.sh --rewrite--manifest -m <span class="m">128</span> <span class="c1">#6. Specify that optimization is performed only when the Manifest exceeds 128M, and start the FullNode.jar service</span>
+<span class="w">  </span>./start.sh<span class="w"> </span><span class="c1">#1. Start the FullNode.jar service without the plugin</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>SolidityNode<span class="w"> </span><span class="c1">#2. Start the SolidityNode.jar service without the plugin</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>FullNode<span class="w"> </span>--rewrite--manifest<span class="w"> </span><span class="c1">#3. Execute the optimization plugin with default settings and start the FullNode.jar service</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>--rewrite--manifest<span class="w"> </span>-d<span class="w"> </span>/tmp/db/database<span class="w"> </span><span class="c1">#4. Specify the database directory as /tmp/db/database, execute the optimization plugin, and start the FullNode.jar service</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>--rewrite--manifest<span class="w"> </span>-b<span class="w"> </span><span class="m">64000</span><span class="w"> </span><span class="c1">#5. Specify the batch size to 64000 when optimizing Manifest, and start the FullNode.jar service</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>--rewrite--manifest<span class="w"> </span>-m<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="c1">#6. Specify that optimization is performed only when the Manifest exceeds 128M, and start the FullNode.jar service</span>
 </code></pre></div>
               
             </div>

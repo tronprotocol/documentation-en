@@ -145,6 +145,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Integrity Check</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">History</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
@@ -184,8 +186,6 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
                 </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
                   </li>
               </ul>
               <ul>
@@ -239,7 +239,7 @@
 </code></pre></div>
 <h2 id="start-java-tron-node">Start Java-tron node<a class="headerlink" href="#start-java-tron-node" title="Permanent link">&para;</a></h2>
 <p>Start Java-tron node using below command：</p>
-<div class="highlight"><pre><span></span><code>$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
+<div class="highlight"><pre><span></span><code>$<span class="w">  </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
 </code></pre></div>
 <h2 id="deply-prometheus-service">Deply prometheus service<a class="headerlink" href="#deply-prometheus-service" title="Permanent link">&para;</a></h2>
 <p><a href="https://prometheus.io/download/">prometheus</a> officially provides precompiled binaries and docker images, you can download them directly from the official website or pull the docker images on dockerhub. For more detailed installation and configuration instructions, Please refer to the <a href="https://prometheus.io/docs/introduction/overview/">prometheus documentation</a>. As a simple deployment instruction, this article will adopt the docker image deployment:</p>

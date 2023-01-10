@@ -151,6 +151,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Integrity Check</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">History</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
@@ -191,8 +193,6 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
-                  </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
@@ -232,53 +232,53 @@
 <p>TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.</p>
 <h3 id="1-smart-contract">1. Smart Contract<a class="headerlink" href="#1-smart-contract" title="Permanent link">&para;</a></h3>
 <p>TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
-<div class="highlight"><pre><span></span><code>message<span class="w"> </span>SmartContract<span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span>message<span class="w"> </span>ABI<span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span>message<span class="w"> </span>Entry<span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="kt">enum</span><span class="w"> </span><span class="nv">EntryType</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span>UnknownEntryType<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Constructor<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Function<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Event<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Fallback<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">4</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Receive<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">5</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Error<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">6</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span>message<span class="w"> </span>Param<span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="kt">enum</span><span class="w"> </span><span class="nv">StateMutabilityType</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span>UnknownMutabilityType<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Pure<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>View<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Nonpayable<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span>Payable<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">4</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code>message<span class="w"> </span>SmartContract<span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>message<span class="w"> </span>ABI<span class="w"> </span><span class="p">{</span>
+<span class="w">    </span>message<span class="w"> </span>Entry<span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kt">enum</span><span class="w"> </span><span class="nv">EntryType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>UnknownEntryType<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">;</span>
+<span class="w">        </span>Constructor<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
+<span class="w">        </span>Function<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span>
+<span class="w">        </span>Event<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span>
+<span class="w">        </span>Fallback<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">4</span><span class="p">;</span>
+<span class="w">        </span>Receive<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">5</span><span class="p">;</span>
+<span class="w">        </span>Error<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">6</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span>message<span class="w"> </span>Param<span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="kt">enum</span><span class="w"> </span><span class="nv">StateMutabilityType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>UnknownMutabilityType<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">;</span>
+<span class="w">        </span>Pure<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
+<span class="w">        </span>View<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span>
+<span class="w">        </span>Nonpayable<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span>
+<span class="w">        </span>Payable<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">4</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
 
-<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="nv">anonymous</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="nv">constant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="kt">string</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span>repeated<span class="w"> </span>Param<span class="w"> </span>inputs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">4</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span>repeated<span class="w"> </span>Param<span class="w"> </span>outputs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">5</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span>EntryType<span class="w"> </span>type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">6</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">7</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span>StateMutabilityType<span class="w"> </span>stateMutability<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">8</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span>repeated<span class="w"> </span>Entry<span class="w"> </span>entrys<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">origin_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">contract_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span>ABI<span class="w"> </span>abi<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">bytecode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">4</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="nv">call_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">5</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="nv">consume_user_resource_percent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">6</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">7</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="nv">origin_energy_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">8</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">code_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">9</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">trx_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">10</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="nv">anonymous</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="nv">constant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">string</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span>
+<span class="w">      </span>repeated<span class="w"> </span>Param<span class="w"> </span>inputs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">4</span><span class="p">;</span>
+<span class="w">      </span>repeated<span class="w"> </span>Param<span class="w"> </span>outputs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">5</span><span class="p">;</span>
+<span class="w">      </span>EntryType<span class="w"> </span>type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">6</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">7</span><span class="p">;</span>
+<span class="w">      </span>StateMutabilityType<span class="w"> </span>stateMutability<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">8</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>repeated<span class="w"> </span>Entry<span class="w"> </span>entrys<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">origin_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">contract_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="p">;</span>
+<span class="w">  </span>ABI<span class="w"> </span>abi<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">3</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">bytecode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">4</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="nv">call_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">5</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="nv">consume_user_resource_percent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">6</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">7</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="nv">origin_energy_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">8</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">code_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">9</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">trx_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">10</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 origin_address: smart contract creator address
 contract_address: smart contract address

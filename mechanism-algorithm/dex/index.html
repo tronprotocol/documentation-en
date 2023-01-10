@@ -157,6 +157,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Integrity Check</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">History</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
@@ -196,8 +198,6 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
                 </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
                   </li>
               </ul>
               <ul>
@@ -256,11 +256,11 @@
 <h3 id="calculate-the-amount-of-token-you-can-get">Calculate the Amount of Token You Can Get<a class="headerlink" href="#calculate-the-amount-of-token-you-can-get" title="Permanent link">&para;</a></h3>
 <p><code>sellTokenQuant</code> is the amount of the <code>first_token</code> you want to sell.</p>
 <p><code>buyTokenQuant</code> is the amount of <code>second_token</code> you can get.</p>
-<div class="highlight"><pre><span></span><code><span class="n">supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1_000_000_000_000_000_000L</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1_000_000_000_000_000_000L</span>
 
-<span class="n">supplyQuant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">supply</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">sellTokenQuant</span><span class="o">/</span><span class="p">(</span><span class="n">firstTokenBalance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sellTokenQuant</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0005</span><span class="p">))</span><span class="w"></span>
+<span class="n">supplyQuant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">supply</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">sellTokenQuant</span><span class="o">/</span><span class="p">(</span><span class="n">firstTokenBalance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sellTokenQuant</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0005</span><span class="p">))</span>
 
-<span class="n">buyTokenQuant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">supplyQuant</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">supply</span><span class="p">,</span><span class="w"> </span><span class="mf">2000.0</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"></span>
+<span class="n">buyTokenQuant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">supplyQuant</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">supply</span><span class="p">,</span><span class="w"> </span><span class="mf">2000.0</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
 </code></pre></div>
               
             </div>

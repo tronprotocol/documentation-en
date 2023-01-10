@@ -135,6 +135,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Integrity Check</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">History</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
@@ -174,8 +176,6 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
                 </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
                   </li>
               </ul>
               <ul>
@@ -308,39 +308,39 @@ done
 Just Support FullNode and SolidityNode.</p>
 <h3>Download and run script</h3>
 
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
 </code></pre></div>
 <h3>Parameter Illustration</h3>
 
-<div class="highlight"><pre><span></span><code>bash deploy_tron.sh --app <span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span> --net <span class="o">[</span>mainnet<span class="p">|</span>testnet<span class="p">|</span>privatenet<span class="o">]</span> --db <span class="o">[</span>keep<span class="p">|</span>remove<span class="p">|</span>backup<span class="o">]</span> --heap-size &lt;heapsize&gt;
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span><span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span><span class="w"> </span>--net<span class="w"> </span><span class="o">[</span>mainnet<span class="p">|</span>testnet<span class="p">|</span>privatenet<span class="o">]</span><span class="w"> </span>--db<span class="w"> </span><span class="o">[</span>keep<span class="p">|</span>remove<span class="p">|</span>backup<span class="o">]</span><span class="w"> </span>--heap-size<span class="w"> </span>&lt;heapsize&gt;
 
---app Optional, Running application. The default node is Fullnode and it could be FullNode or SolidityNode.
---net Optional, Connecting network. The default network is mainnet and it could be mainnet, testnet.
---db  Optional, The way of data processing could be keep, remove and backup. Default is keep. If you launch two different networks, like from mainnet to testnet or from testnet to mainnet, you need to delete database.
---trust-node  Optional, It only works when deploying SolidityNode. Default is <span class="m">127</span>.0.0.1:50051. The specified gRPC service of Fullnode, like <span class="m">127</span>.0.0.1:50051 or <span class="m">13</span>.125.249.129:50051.
---rpc-port  Optional, Port of grpc. Default is <span class="m">50051</span>. If you deploy SolidityNode and FullNode on the same host，you need to configure different ports.
---commit  Optional, commitid of project.
---branch  Optional, branch of project.  Mainnet default is latest release and Testnet default is master.
---heap-size  Optional, jvm option: Xmx. The default heap-size is <span class="m">0</span>.8 * memory size.
---work_space  Optional, default is current directory.
+--app<span class="w"> </span>Optional,<span class="w"> </span>Running<span class="w"> </span>application.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>node<span class="w"> </span>is<span class="w"> </span>Fullnode<span class="w"> </span>and<span class="w"> </span>it<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>FullNode<span class="w"> </span>or<span class="w"> </span>SolidityNode.
+--net<span class="w"> </span>Optional,<span class="w"> </span>Connecting<span class="w"> </span>network.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>network<span class="w"> </span>is<span class="w"> </span>mainnet<span class="w"> </span>and<span class="w"> </span>it<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>mainnet,<span class="w"> </span>testnet.
+--db<span class="w">  </span>Optional,<span class="w"> </span>The<span class="w"> </span>way<span class="w"> </span>of<span class="w"> </span>data<span class="w"> </span>processing<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>keep,<span class="w"> </span>remove<span class="w"> </span>and<span class="w"> </span>backup.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span>keep.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>launch<span class="w"> </span>two<span class="w"> </span>different<span class="w"> </span>networks,<span class="w"> </span>like<span class="w"> </span>from<span class="w"> </span>mainnet<span class="w"> </span>to<span class="w"> </span>testnet<span class="w"> </span>or<span class="w"> </span>from<span class="w"> </span>testnet<span class="w"> </span>to<span class="w"> </span>mainnet,<span class="w"> </span>you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>delete<span class="w"> </span>database.
+--trust-node<span class="w">  </span>Optional,<span class="w"> </span>It<span class="w"> </span>only<span class="w"> </span>works<span class="w"> </span>when<span class="w"> </span>deploying<span class="w"> </span>SolidityNode.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span><span class="m">127</span>.0.0.1:50051.<span class="w"> </span>The<span class="w"> </span>specified<span class="w"> </span>gRPC<span class="w"> </span>service<span class="w"> </span>of<span class="w"> </span>Fullnode,<span class="w"> </span>like<span class="w"> </span><span class="m">127</span>.0.0.1:50051<span class="w"> </span>or<span class="w"> </span><span class="m">13</span>.125.249.129:50051.
+--rpc-port<span class="w">  </span>Optional,<span class="w"> </span>Port<span class="w"> </span>of<span class="w"> </span>grpc.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span><span class="m">50051</span>.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>deploy<span class="w"> </span>SolidityNode<span class="w"> </span>and<span class="w"> </span>FullNode<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>host，you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>configure<span class="w"> </span>different<span class="w"> </span>ports.
+--commit<span class="w">  </span>Optional,<span class="w"> </span>commitid<span class="w"> </span>of<span class="w"> </span>project.
+--branch<span class="w">  </span>Optional,<span class="w"> </span>branch<span class="w"> </span>of<span class="w"> </span>project.<span class="w">  </span>Mainnet<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>latest<span class="w"> </span>release<span class="w"> </span>and<span class="w"> </span>Testnet<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>master.
+--heap-size<span class="w">  </span>Optional,<span class="w"> </span>jvm<span class="w"> </span>option:<span class="w"> </span>Xmx.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>heap-size<span class="w"> </span>is<span class="w"> </span><span class="m">0</span>.8<span class="w"> </span>*<span class="w"> </span>memory<span class="w"> </span>size.
+--work_space<span class="w">  </span>Optional,<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>current<span class="w"> </span>directory.
 </code></pre></div>
 <h3> Deployment of FullNode on the one host </h3>
 
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-bash deploy_tron.sh
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
+bash<span class="w"> </span>deploy_tron.sh
 </code></pre></div>
 <h3> Deployment of SolidityNode on the one host </h3>
 
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
 <span class="c1"># User can self-configure the IP and Port of GRPC service in the turst-node field of SolidityNode. trust-node is the fullnode you just deploy.</span>
-bash deploy_tron.sh --app SolidityNode --trust-node &lt;grpc-ip:grpc-port&gt;
+bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span>SolidityNode<span class="w"> </span>--trust-node<span class="w"> </span>&lt;grpc-ip:grpc-port&gt;
 </code></pre></div>
 <h3> Deployment of FullNode and SolidityNode on the same host </h3>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># You need to configure different gRPC ports on the same host because gRPC port is available on SolidityNode and FullNodeConfigure and it cannot be set as default value 50051. In this case the default value of rpc port is set as 50041.</span>
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-bash deploy_tron.sh --app FullNode
-bash deploy_tron.sh --app SolidityNode --rpc-port <span class="m">50041</span>
+wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
+bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span>FullNode
+bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span>SolidityNode<span class="w"> </span>--rpc-port<span class="w"> </span><span class="m">50041</span>
 </code></pre></div>
 <h2 id="grpc-gateway-deployment">Grpc Gateway Deployment<a class="headerlink" href="#grpc-gateway-deployment" title="Permanent link">&para;</a></h2>
 <h3> Summary </h3>
@@ -352,23 +352,23 @@ bash deploy_tron.sh --app SolidityNode --rpc-port <span class="m">50041</span>
 Install Golang, Protoc, and set $GOPATH environment variable according to your requirement.</p>
 <h3> Download and run script </h3>
 
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh<span class="w"> </span>-O<span class="w"> </span>deploy_grpc_gateway.sh
 </code></pre></div>
 <h3> Parameter Illustration </h3>
 
-<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="o">[</span>rpc host ip<span class="o">]</span> --rpcport <span class="o">[</span>rpc port number<span class="o">]</span> --httpport <span class="o">[</span>http port number<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_grpc_gateway.sh<span class="w"> </span>--rpchost<span class="w"> </span><span class="o">[</span>rpc<span class="w"> </span>host<span class="w"> </span>ip<span class="o">]</span><span class="w"> </span>--rpcport<span class="w"> </span><span class="o">[</span>rpc<span class="w"> </span>port<span class="w"> </span>number<span class="o">]</span><span class="w"> </span>--httpport<span class="w"> </span><span class="o">[</span>http<span class="w"> </span>port<span class="w"> </span>number<span class="o">]</span>
 
---rpchost The fullnode or soliditynode IP where the grpc service is provided. Default value is <span class="s2">&quot;localhost&quot;</span>.
---rpcport The fullnode or soliditynode port number grpc service is consuming. Default value is <span class="m">50051</span>.
---httpport The port intends to provide http service provided by grpc gateway. Default value is <span class="m">18890</span>.
+--rpchost<span class="w"> </span>The<span class="w"> </span>fullnode<span class="w"> </span>or<span class="w"> </span>soliditynode<span class="w"> </span>IP<span class="w"> </span>where<span class="w"> </span>the<span class="w"> </span>grpc<span class="w"> </span>service<span class="w"> </span>is<span class="w"> </span>provided.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span><span class="s2">&quot;localhost&quot;</span>.
+--rpcport<span class="w"> </span>The<span class="w"> </span>fullnode<span class="w"> </span>or<span class="w"> </span>soliditynode<span class="w"> </span>port<span class="w"> </span>number<span class="w"> </span>grpc<span class="w"> </span>service<span class="w"> </span>is<span class="w"> </span>consuming.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span><span class="m">50051</span>.
+--httpport<span class="w"> </span>The<span class="w"> </span>port<span class="w"> </span>intends<span class="w"> </span>to<span class="w"> </span>provide<span class="w"> </span>http<span class="w"> </span>service<span class="w"> </span>provided<span class="w"> </span>by<span class="w"> </span>grpc<span class="w"> </span>gateway.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span><span class="m">18890</span>.
 </code></pre></div>
 <h3> Example </h3>
 
 <p>Use default configuration：
-<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_grpc_gateway.sh
 </code></pre></div>
 Use customized configuration：
-<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="m">127</span>.0.0.1 --rpcport <span class="m">50052</span> --httpport <span class="m">18891</span>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_grpc_gateway.sh<span class="w"> </span>--rpchost<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--rpcport<span class="w"> </span><span class="m">50052</span><span class="w"> </span>--httpport<span class="w"> </span><span class="m">18891</span>
 </code></pre></div></p>
 <h2 id="event-subscribe-plugin-deployment">Event Subscribe plugin Deployment<a class="headerlink" href="#event-subscribe-plugin-deployment" title="Permanent link">&para;</a></h2>
 <p>This is an implementation of Tron eventsubscribe model.</p>

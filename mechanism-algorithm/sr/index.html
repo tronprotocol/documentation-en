@@ -169,6 +169,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Integrity Check</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">History</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
@@ -208,8 +210,6 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
                 </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/">Binary Integrity Check</a>
                   </li>
               </ul>
               <ul>
@@ -455,22 +455,22 @@
 </table>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; createproposal id value</span>
-<span class="gp"># </span>id: the serial number <span class="o">(</span><span class="m">0</span> ~ <span class="m">33</span><span class="o">)</span>
-<span class="gp"># </span>value: the parameter value
+<span class="gp"># </span>id:<span class="w"> </span>the<span class="w"> </span>serial<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>~<span class="w"> </span><span class="m">33</span><span class="o">)</span>
+<span class="gp"># </span>value:<span class="w"> </span>the<span class="w"> </span>parameter<span class="w"> </span>value
 </code></pre></div>
 <p>Note: In TRON network, 1 TRX = 1_000_000 SUN</p>
 <h3 id="3-vote-for-a-proposal">3. Vote for a Proposal<a class="headerlink" href="#3-vote-for-a-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; approveProposal id is_or_not_add_approval</span>
-<span class="gp"># </span>id: proposal id
-<span class="gp"># </span>is_or_not_add_approval: YES vote or cancel YES vote
+<span class="gp"># </span>id:<span class="w"> </span>proposal<span class="w"> </span>id
+<span class="gp"># </span>is_or_not_add_approval:<span class="w"> </span>YES<span class="w"> </span>vote<span class="w"> </span>or<span class="w"> </span>cancel<span class="w"> </span>YES<span class="w"> </span>vote
 </code></pre></div>
 <h3 id="4-cancel-proposal">4. Cancel Proposal<a class="headerlink" href="#4-cancel-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal creator can cancel the proposal before it is passed.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; deleteProposal id</span>
-<span class="gp"># </span>id: proposal id
+<span class="gp"># </span>id:<span class="w"> </span>proposal<span class="w"> </span>id
 </code></pre></div>
 <h3 id="5-query-proposal">5. Query Proposal<a class="headerlink" href="#5-query-proposal" title="Permanent link">&para;</a></h3>
 <ul>
