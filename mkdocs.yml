@@ -19,7 +19,7 @@ nav:
     - API:
         - HTTP API: api/http.md
         - gRPC API: api/rpc.md
-    - Core Protocal:
+    - Core Protocol:
         - DPoS: introduction/dpos.md
         - Super Representative: mechanism-algorithm/sr.md
         - Account Model: mechanism-algorithm/account.md
