@@ -5,7 +5,7 @@ Java-tron is a TRON client implemented in Java, it provides completely open sour
 
 * [Getting Started Guide](/documentation-en/getting_started/getting_started_with_javatron/)
 * [Using Java-tron](/documentation-en/using_javatron/installing_javatron/)
-* [Protocal Guide](/documentation-en/introduction/dpos/)
+* [Protocol Guide](/documentation-en/introduction/dpos/)
 * [Java-tron Development](/documentation-en/developers/java-tron/)
 * [DAPP Development](/documentation-en/contracts/compiler/)
 * [APIs](/documentation-en/api/http/)
