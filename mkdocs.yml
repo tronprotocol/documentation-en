@@ -47,6 +47,7 @@ nav:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
         - History:
+            - GreatVoyage-v4.7.0: releases/GreatVoyage-v470.md
             - GreatVoyage-v4.6.0: releases/GreatVoyage-v460.md
             - GreatVoyage-v4.5.2: releases/GreatVoyage-v452.md
             - GreatVoyage-v4.5.1: releases/GreatVoyage-v451.md
