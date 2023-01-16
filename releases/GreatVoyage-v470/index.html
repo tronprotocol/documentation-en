@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/GreatVoyage-v470/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>GreatVoyage-v4.7.0 - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GreatVoyage-v4.7.0";
+        var mkdocs_page_input_path = "releases/GreatVoyage-v470.md";
+        var mkdocs_page_url = "/documentation-en/releases/GreatVoyage-v470/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Plugin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Tools</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/toolkit/">Database Partition</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocol</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/governance/">Governance Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Core Modules</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../developers/code-structure/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../developers/chainbase/">Chainbase</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../developers/network/">Network</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../upgrade-instruction/">Deployment Manual for the New Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../signature_verification/">Integrity Check</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">History</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">GreatVoyage-v4.7.0</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#cores">Cores</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-a-new-stake-model-stake-20">1. A new stake model - Stake 2.0</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2enhance-database-query-performance">2.Enhance database query performance</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-block-production-process">3. Optimize block production process</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-add-transaction-hash-cache">4. Add transaction hash cache</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#5-add-libp2p-module-as-java-tron-p2p-network-protocol-implementation">5. Add libp2p module as Java-tron p2p network protocol implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tvm">TVM</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-add-new-instructions-to-support-stake-20">1. Add new instructions to support Stake 2.0</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-dynamic-energy-model">2. Dynamic energy model</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-the-return-value-of-the-chainid-opcode">3. Optimize the return value of the chainId opcode</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api">API</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-add-apis-to-support-stake-20">1. Add APIs to support Stake 2.0</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-add-energy-estimation-api">2. Add energy estimation API</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes">Other Changes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-gradle-compilation-parameters">1. Optimize Gradle compilation parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-node-conditional-stop-function">2. Optimize node conditional stop function</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-delete-code-related-to-database-v1">3. Delete code related to database v1</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-database-log-output">4. Optimize database log output</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#5-make-snapshot-flush-speed-configurable">5. Make snapshot flush speed configurable</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#6-toolkitjar-integration">6. Toolkit.jar Integration</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v452/">GreatVoyage-v4.5.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v451/">GreatVoyage-v4.5.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v446/">GreatVoyage-v4.4.6</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v445/">GreatVoyage-v4.4.5</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v444/">GreatVoyage-v4.4.4</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v442/">GreatVoyage-v4.4.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v440/">GreatVoyage-v4.4.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v430/">GreatVoyage-v4.3.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v4221/">GreatVoyage-v4.2.2.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v422/">GreatVoyage-v4.2.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v420/">GreatVoyage-v4.2.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v413/">GreatVoyage-v4.1.3</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v412/">GreatVoyage-v4.1.2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v411/">GreatVoyage-v4.1.1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v400/">GreatVoyage-v4.0.0</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v37/">Odyssey-v3.7</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v365/">Odyssey-v3.6.5</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Releases &raquo;</li>
+          <li>History &raquo;</li><li>GreatVoyage-v4.7.0</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/GreatVoyage-v470.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="greatvoyage-v470aristotle">GreatVoyage-v4.7.0(Aristotle)<a class="headerlink" href="#greatvoyage-v470aristotle" title="Permanent link">&para;</a></h1>
+<p>GreatVoyage-v4.7.0 (Aristotle) introduces several important optimizations and updates. The new stake mechanism, Stake 2.0, improves the flexibility of the resource model and the stability of the stake system; the dynamic energy model helps to promote ecologically balanced development; the secondary cache mechanism optimizes the database reading performance, improves transaction execution performance, and expands the network throughput; uses the libp2p library as the Java-tron P2P network module to make the code structure clearer and reduce code coupling; optimizes the log output, redirect the logs of LevelDB and RocksDB to Java-tron log files; integrate more tools and functions into the ‘Toolkit.jar’ toolbox to bring users a more convenient development experience.</p>
+<p>Please see the details below.</p>
+<h2 id="cores">Cores<a class="headerlink" href="#cores" title="Permanent link">&para;</a></h2>
+<h3 id="1-a-new-stake-model-stake-20">1. A new stake model - Stake 2.0<a class="headerlink" href="#1-a-new-stake-model-stake-20" title="Permanent link">&para;</a></h3>
+<p>GreatVoyage-v4.7.0 (Aristotle) version introduces a new stake model, Stake 2.0, aiming to establish a more flexible, efficient and stable stake system. Compared with the current Stake 1.0 model, Stake 2.0 has been improved in the following aspects,</p>
+<ul>
+<li>
+<p>Staking and delegating are separated</p>
+<p>In Stake 1.0, staking and resource delegating are combined in one operation. The resource recipient must be specified in the operation. After the staking is completed, the resource will be delegated to the designated resource recipient. The unstaking and undelegating are also combined in one operation. If you want to cancel the delegating, you must unstake the corresponding TRX as well. Stake 2.0 separates staking and resource delegating into two independent operations. The user executes the staking first, the resource selected is allocated to the owner now. And then executes the delegate operation to assign the resource to the designated address. Unstaking and undelegating are also separated into two operations. If the user wants to cancel the delegating, he or she can directly perform the undelegate operation without unstaking and then can delegate the resource to others again as needed. Separation of staking/unstaking and delegating/undelegating simplifies user operations and reduces operational complexity.</p>
+</li>
+<li>
+<p>Resource Fragmentation Management</p>
+<p>In Stake 1.0, one unstake operation will unstake all the staked TRX, and the specified amount of TRX cannot be unstaked. This is optimized in Stake 2.0 now. We can specify an amount of TRX to unstake, as long as the specified amount is less than or equal to the total staked amount. In Stake 1.0, to cancel a certain resource delegate, you can only cancel all delegated resources at once, and you cannot cancel by specifying an amount. Stake 2.0 has also brought partially undelegate, we can now undelegate part of the delegated resources as needed, which improves the flexibility of resource management.</p>
+</li>
+<li>
+<p>Unstake Lock Period and Delayed Arrival of Unstaked TRX</p>
+<p>In Stake 1.0, after staking TRX, we need to wait 3 days before releasing the TRX. After the release, the TRX staked will immediately arrive in the owner’s account. In Stake 2.0, after the staking is completed, the TRX staked can be released at any time, but it needs to wait for ’N’ days. After the ’N’ days delay, the TRX released could be withdrawn to the owner’s account. ’N’ is the TRON network parameter. When the TRX market fluctuates violently, due to the delayed arrival of funds, it will no longer trigger a large number of stake or unstake operations, which improves the stability of the stake model, and at the same time will not cause a large number of funds to flood into the market and aggravate market volatility. It helps to build a more anticipated future of the entire network circulation for the network participants.</p>
+</li>
+<li>
+<p>TVM Supports Staking and Resource Management</p>
+<p>In Stake 2.0, the TRON virtual machine integrates instructions related to stake and resource management. Users can perform TRX stake/unstake operations in smart contracts, as well as perform resource delegate/undelegate operations.</p>
+</li>
+</ul>
+<p>For more details on Stake 2.0, please refer to  <a href="https://coredevs.medium.com/what-is-stake-2-0-e04f59b948a6">What is Stake 2.0?</a></p>
+<p>The new stake mechanism is a dynamic parameter in the TRON network. After GreatVoyage-v4.7.0 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.</p>
+<ul>
+<li>TIP: <a href="https://github.com/tronprotocol/tips/issues/467">https://github.com/tronprotocol/tips/issues/467</a> </li>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4838">https://github.com/tronprotocol/java-tron/pull/4838</a> </li>
+</ul>
+<h3 id="2enhance-database-query-performance">2.Enhance database query performance<a class="headerlink" href="#2enhance-database-query-performance" title="Permanent link">&para;</a></h3>
+<p>Java-tron uses memory and disk databases for data storage. The solidified block data will be stored in multiple disk databases, and the unsolidified data will be stored in memory. When a block is solidified, the corresponding in-memory data is written to the disk databases. When querying data, first query the data in memory, if not found, then query the disk database. The disk database query is time-consuming. Therefore, the GreatVoyage-v4.7.0 (Aristotle) version optimizes the database query performance and adds a secondary cache before performing the underlying disk database operation. When data is written to the disk, the data is also written to the second-level cache. When the disk database needs to be queried, if the data to be queried exists in the second-level cache, it will be returned directly without querying the disk database. The second-level cache reduces the number of queries to the disk database, improves transaction execution speed, and improves network throughput.</p>
+<ul>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4740">https://github.com/tronprotocol/java-tron/pull/4740</a> </li>
+</ul>
+<h3 id="3-optimize-block-production-process">3. Optimize block production process<a class="headerlink" href="#3-optimize-block-production-process" title="Permanent link">&para;</a></h3>
+<p>When a node produces a block, it will sequentially verify and execute all transactions that can be packaged into the block, and each transaction verification and execution will involve the acquisition of block data, such as block number, block size, block transaction information, etc. In versions prior to GreatVoyage-v4.7.0 (Aristotle), when nodes package transactions, block data is recalculated during the process of verifying and executing each transaction, which includes many repeated calculations.</p>
+<p>In order to improve the efficiency of packaging transactions, the GreatVoyage-v4.7.0 (Aristotle) optimizes the block production process, only calculates the block data once and updates the data only when necessary, thus greatly reducing the number of block data calculations and improving the block packaging efficiency.</p>
+<ul>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4756">https://github.com/tronprotocol/java-tron/pull/4756</a> </li>
+</ul>
+<h3 id="4-add-transaction-hash-cache">4. Add transaction hash cache<a class="headerlink" href="#4-add-transaction-hash-cache" title="Permanent link">&para;</a></h3>
+<p>When a node processes a block, it will use the transaction hash value multiple times. In versions before GreatVoyage-v4.7.0 (Aristotle), the transaction hash value is calculated as it is used, and the calculation of the transaction hash value is time-consuming, which leads to slower block processing. Therefore, GreatVoyage-v4.7.0 (Aristotle) adds a transaction hash cache, the transaction hash will be directly obtained from the cache when used. Only when the transaction data changes, the transaction hash is recalculated. The newly added cache reduces unnecessary transaction hash calculations and improves block processing speed.</p>
+<ul>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4792">https://github.com/tronprotocol/java-tron/pull/4792</a>  </li>
+</ul>
+<h3 id="5-add-libp2p-module-as-java-tron-p2p-network-protocol-implementation">5. Add <code>libp2p</code> module as Java-tron p2p network protocol implementation<a class="headerlink" href="#5-add-libp2p-module-as-java-tron-p2p-network-protocol-implementation" title="Permanent link">&para;</a></h3>
+<p>Starting from GreatVoyage-v4.7.0 (Aristotle), the libp2p library will be directly used as the P2P network module of Java-tron, instead of using the original p2p network stack, so that the code structure is clearer, the code coupling is lower, and is easy to maintain.</p>
+<ul>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4791">https://github.com/tronprotocol/java-tron/pull/4791</a> </li>
+</ul>
+<h2 id="tvm">TVM<a class="headerlink" href="#tvm" title="Permanent link">&para;</a></h2>
+<h3 id="1-add-new-instructions-to-support-stake-20">1. Add new instructions to support Stake 2.0<a class="headerlink" href="#1-add-new-instructions-to-support-stake-20" title="Permanent link">&para;</a></h3>
+<p>GreatVoyage-v4.7.0 (Aristotle) introduces Stake 2.0, TVM will support Stake 2.0 related stake and resource delegate instructions simultaneously. Users can perform stake and resource delegate operations through smart contracts, which further enriches the application scenarios of smart contracts on the TRON network. A total of 6 instructions from 0xda to 0xdf have been added to TVM:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>TVM instruction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xda</td>
+<td>FREEZEBALANCEV2</td>
+<td>Performs the same operation as the system contract FreezeBalanceV2 for contract account</td>
+</tr>
+<tr>
+<td>0xdb</td>
+<td>UNFREEZEBALANCEV2</td>
+<td>Performs the same operation as the system contract UnfreezeBalanceV2 for contract account</td>
+</tr>
+<tr>
+<td>0xdc</td>
+<td>CANCELALLUNFREEZEV2</td>
+<td>Cancel all pending unfreeze balances for contract account</td>
+</tr>
+<tr>
+<td>0xdd</td>
+<td>WITHDRAWEXPIREUNFREEZE</td>
+<td>Performs the same operation as the system contract WithdrawExpireUnfreeze for contract account</td>
+</tr>
+<tr>
+<td>0xde</td>
+<td>DELEGATERESOURCE</td>
+<td>Performs the same operation as the system contract DelegateResource for contract account</td>
+</tr>
+<tr>
+<td>0xdf</td>
+<td>UNDELEGATERESOURCE</td>
+<td>Performs the same operation as the system contract UnDelegateResource for contract account</td>
+</tr>
+</tbody>
+</table>
+<p>A total of 11 precompiled contracts from 0x100000b to 0x1000015 have been added to TVM:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Precompiled Contract</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x100000b</td>
+<td>GetChainParameter</td>
+<td>Query the specific chain parameters</td>
+</tr>
+<tr>
+<td>0x100000c</td>
+<td>AvailableUnfreezeV2Size</td>
+<td>Query the size of the available unfreeze queue for target address</td>
+</tr>
+<tr>
+<td>0x100000d</td>
+<td>UnfreezableBalanceV2</td>
+<td>Query the unfreezable balance of a specified resourceType for target address</td>
+</tr>
+<tr>
+<td>0x100000e</td>
+<td>ExpireUnfreezeBalanceV2</td>
+<td>Query the withdrawal balance at the specified timestamp for target address</td>
+</tr>
+<tr>
+<td>0x100000f</td>
+<td>DelegatableResource</td>
+<td>Query the amount of delegatable resources(unit: SUN) of the specified resourceType for the target address</td>
+</tr>
+<tr>
+<td>0x1000010</td>
+<td>ResourceV2</td>
+<td>Query the amount of resources(unit: SUN) of a specific resourceType delegated by from address to target address</td>
+</tr>
+<tr>
+<td>0x1000011</td>
+<td>CheckUnDelegateResource</td>
+<td>Check whether the contract can recycle the specified amount of resources of a specific resourceType that have been delegated to target address, and return the amount of clean resource(unit: SUN), the amount of dirty resource(unit: SUN) and the restore time</td>
+</tr>
+<tr>
+<td>0x1000012</td>
+<td>ResourceUsage</td>
+<td>Query the usage of a specific resourceType of resources for target address, and return the amount of usage(unit: SUN) and the restore time</td>
+</tr>
+<tr>
+<td>0x1000013</td>
+<td>TotalResource</td>
+<td>Query the total amount of resources(unit: SUN) of a specific resourceType for target address</td>
+</tr>
+<tr>
+<td>0x1000014</td>
+<td>TotalDelegatedResource</td>
+<td>Query the amount of delegated resources of a specific resourceType for target address</td>
+</tr>
+<tr>
+<td>0x1000015</td>
+<td>TotalAcquiredResource</td>
+<td>Query the amount of acquired resources(unit: SUN) of a specific resourceType for target address</td>
+</tr>
+</tbody>
+</table>
+<p>Stake 2.0 is a dynamic parameter in the TRON network. After GreatVoyage-v4.7.0 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.</p>
+<ul>
+<li>TIP: <a href="https://github.com/tronprotocol/tips/issues/467">https://github.com/tronprotocol/tips/issues/467</a> </li>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4872">https://github.com/tronprotocol/java-tron/pull/4872</a> </li>
+</ul>
+<h3 id="2-dynamic-energy-model">2. Dynamic energy model<a class="headerlink" href="#2-dynamic-energy-model" title="Permanent link">&para;</a></h3>
+<p>The dynamic energy model is a scheme to dynamically adjust the future energy consumption of the contract based on the known energy usage of the contract. If a contract uses too many resources in one cycle, then the next cycle in this contract, a certain percentage of punitive consumption will be added, and users who send the same transaction to this contract will cost more energy than before. When the contract uses resources reasonably, the energy consumption generated by the user calling the contract will gradually return to normal. Through this mechanism, the allocation of energy resources on the chain will be more reasonable, and excessive concentration of network resources on a few contracts will be prevented. </p>
+<p>For more information about the dynamic energy model: <a href="https://coredevs.medium.com/introduction-to-dynamic-energy-model-31917419b61a">Introduction to Dynamic Energy Model</a></p>
+<p>The dynamic energy model is a dynamic parameter in the TRON network. After GreatVoyage-v4.7.0 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.</p>
+<ul>
+<li>TIP: <a href="https://github.com/tronprotocol/tips/issues/491">https://github.com/tronprotocol/tips/issues/491</a> </li>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4873">https://github.com/tronprotocol/java-tron/pull/4873</a> </li>
+</ul>
+<h3 id="3-optimize-the-return-value-of-the-chainid-opcode">3. Optimize the return value of the <code>chainId</code> opcode<a class="headerlink" href="#3-optimize-the-return-value-of-the-chainid-opcode" title="Permanent link">&para;</a></h3>
+<p>Starting from the GreatVoyage-v4.7.0 (Aristotle) version, the return value of the <code>chainid</code> opcode is changed from the block hash of the genesis block to the last four bytes of the block hash of the genesis block, keeping the return value of the chainid opcode consistent with the return value of the Java-tron JSON-RPC <code>eth_chainId</code> API.</p>
+<p>The return value optimization of the chainId opcode is a dynamic parameter of the TRON network. It is disabled by default after GreatVoyage-v4.7.0 (Aristotle) is deployed, and can be enabled by initiating a proposal.</p>
+<ul>
+<li>TIP: <a href="https://github.com/tronprotocol/tips/issues/474">https://github.com/tronprotocol/tips/issues/474</a> </li>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4863">https://github.com/tronprotocol/java-tron/pull/4863</a> </li>
+</ul>
+<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="1-add-apis-to-support-stake-20">1. Add APIs to support Stake 2.0<a class="headerlink" href="#1-add-apis-to-support-stake-20" title="Permanent link">&para;</a></h3>
+<p>GreatVoyage-v4.7.0 (Aristotle) adds 10 APIs to support Stake 2.0:</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/wallet/freezebalancev2</td>
+<td>Stake TRX to obtain resources</td>
+</tr>
+<tr>
+<td>/wallet/unfreezebalancev2</td>
+<td>Unstake TRX</td>
+</tr>
+<tr>
+<td>/wallet/delegateresource</td>
+<td>Delegate resources to other account</td>
+</tr>
+<tr>
+<td>/wallet/undelegateresource</td>
+<td>Undelegate resource</td>
+</tr>
+<tr>
+<td>/wallet/withdrawexpireunfreeze</td>
+<td>Withdraw the funds that has expired the <code>N</code> lock-up period</td>
+</tr>
+<tr>
+<td>/wallet/getavailableunfreezecount</td>
+<td>Query the remaining times of available unstaking operation</td>
+</tr>
+<tr>
+<td>/wallet/getcanwithdrawunfreezeamount</td>
+<td>Query the withdrawable balance at the specified timestamp</td>
+</tr>
+<tr>
+<td>/wallet/getcandelegatedmaxsize</td>
+<td>Query the amount of delegatable resources of the specified resource type for target address</td>
+</tr>
+<tr>
+<td>/wallet/getdelegatedresourcev2</td>
+<td>Query the resource delegate amount from an address to the target address (unit: sun)</td>
+</tr>
+<tr>
+<td>/wallet/getdelegatedresourceaccountindexv2</td>
+<td>Query the resource delegate amount from an address to the target address (unit: sun)</td>
+</tr>
+</tbody>
+</table>
+<p>For detailed information of new APIs, please refer to: <a href="https://coredevs.medium.com/what-is-stake-2-0-e04f59b948a6">What is Stake 2.0?</a></p>
+<ul>
+<li>TIP: <a href="https://github.com/tronprotocol/tips/issues/467">https://github.com/tronprotocol/tips/issues/467</a> </li>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4838">https://github.com/tronprotocol/java-tron/pull/4838</a> </li>
+</ul>
+<h3 id="2-add-energy-estimation-api">2. Add energy estimation API<a class="headerlink" href="#2-add-energy-estimation-api" title="Permanent link">&para;</a></h3>
+<p>In versions prior to GreatVoyage-v4.7.0 (Aristotle), users can estimate the energy consumption for executing smart contract transactions through the <code>/wallet/triggerconstantcontract</code> interface, and then set the <code>feelimit</code> parameter of the transaction according to the estimated consumption. However, since some smart contract transactions may call other smart contracts, it is possible that the estimated <code>feelimit</code> parameter is inaccurate.</p>
+<p>Therefore, the GreatVoyage-v4.7.0(Aristotle) version adds an energy estimation interface <code>/wallet/estimateenergy</code>, and the <code>feelimit</code> estimated by this interface is reliable in any case. The <code>energy_required</code> field in the return value of this interface indicates the estimated amount of energy required for the successful execution of this smart contract transaction. So user can calculate the <code>feelimit</code> parameter based on this field: <code>feelimit</code> = <code>energy_required</code> * energy unit price, currently the unit price of energy is 420 sun.</p>
+<p>If the execution of the estimated interface call fails for some reason, the value of the <code>energy_required</code> field will be 0, and this field will not be displayed in the return value. At this time, you can check the reason for the execution failure for the estimated interface call through the <code>result</code> field.</p>
+<p>After the GreatVoyage-v4.7.0 (Aristotle) version is successfully deployed, this API is closed by default. To open this interface, the two configuration items <code>vm.estimateEnergy</code> and <code>vm.supportConstant</code> must be enabled in the node configuration file at the same time. The default values of <code>vm.estimateEnergy</code> and <code>vm.supportConstant</code> are both false,</p>
+<ul>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4873">https://github.com/tronprotocol/java-tron/pull/4873</a> </li>
+</ul>
+<h2 id="other-changes">Other Changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h2>
+<h3 id="1-optimize-gradle-compilation-parameters">1. Optimize Gradle compilation parameters<a class="headerlink" href="#1-optimize-gradle-compilation-parameters" title="Permanent link">&para;</a></h3>
+<p>GreatVoyage-v4.7.0(Aristotle) optimizes the compiling parameters of Gradle, configuring JVM minimum heap size to 1GB, which improves the compilation speed of Java-tron.</p>
+<ul>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4837">https://github.com/tronprotocol/java-tron/pull/4837</a> </li>
+</ul>
+<h3 id="2-optimize-node-conditional-stop-function">2. Optimize node conditional stop function<a class="headerlink" href="#2-optimize-node-conditional-stop-function" title="Permanent link">&para;</a></h3>
+<p>In order to facilitate data backup or data statistics for node deployers, starting from GreatVoyage-v4.5.1 (Tertullian), nodes support stopping under specific conditions. Users can set the conditions for node stopping through the node configuration file, and the node will stop running when the conditions are met. It supports three stop conditions to be set at the same time, and the node is stopped when any condition is met. These three conditions include block time, block height, and the number of blocks that need to be synchronized from the start to the stop of the node. However, since multiple stop conditions are allowed to be set at the same time, when the user only needs one condition,  the other 2 conditional configuration items in the configuration file need to be deleted, so if the user forgets to delete, the node may stop on an unexpected block. However, there are actually no application scenarios that require multiple conditions to be set at the same time. Therefore, the GreatVoyage-v4.7.0 (Aristotle) version optimizes the node conditional stop function. The optional configuration parameters remain unchanged, but only one valid parameter is allowed to be set at the same time. If the node deployer sets multiple parameters, the node will report an error and exit run. This optimization simplifies the complexity of users’ settings.</p>
+<ul>
+<li>Source code:  <a href="https://github.com/tronprotocol/java-tron/pull/4853">https://github.com/tronprotocol/java-tron/pull/4853</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/4858">https://github.com/tronprotocol/java-tron/pull/4858</a> </li>
+</ul>
+<h3 id="3-delete-code-related-to-database-v1">3. Delete code related to database v1<a class="headerlink" href="#3-delete-code-related-to-database-v1" title="Permanent link">&para;</a></h3>
+<p>In versions prior to GreatVoyage-v4.7.0 (Aristotle), there are two versions of the database, v1 and v2. Users can choose from them through the configuration item <code>db.version</code>. Since the v2 version adopts the memory + disk database mode, it supports the expansion of the underlying database, the correct data recovery function under abnormal conditions, etc., and has obvious advantages compared with v1. Therefore, in order to make the code structure clearer, starting from GreatVoyage-v4.7.0 (Aristotle), the code related to the database v1 version and the database version configuration item <code>db.version</code> has been deleted. Users no longer need to configure the database version, only v2 is available from now on, which reduces the complexity of configuring nodes.</p>
+<ul>
+<li>Source code:  <a href="https://github.com/tronprotocol/java-tron/pull/4836">https://github.com/tronprotocol/java-tron/pull/4836</a></li>
+</ul>
+<h3 id="4-optimize-database-log-output">4. Optimize database log output<a class="headerlink" href="#4-optimize-database-log-output" title="Permanent link">&para;</a></h3>
+<p>In versions prior to GreatVoyage-v4.7.0 (Aristotle), the node logs do not include the underlying logs output by LevelDB or RocksDB itself, making it difficult to troubleshoot database read and write problems. Therefore, the GreatVoyage-v4.7.0 (Aristotle) optimizes the database log and redirects the output of the underlying log of the LevelDB or RocksDB data module to the node log file, which simplifies the difficulty of database troubleshooting and improves the reliability of node operation and maintenance efficiency.</p>
+<ul>
+<li>Source code:  <a href="https://github.com/tronprotocol/java-tron/pull/4833">https://github.com/tronprotocol/java-tron/pull/4833</a> </li>
+</ul>
+<h3 id="5-make-snapshot-flush-speed-configurable">5. Make snapshot flush speed configurable<a class="headerlink" href="#5-make-snapshot-flush-speed-configurable" title="Permanent link">&para;</a></h3>
+<p>Nodes newly added to the network need to synchronize block data from other nodes, and the nodes will first save the synchronized block data in memory, and then store it on disk. In versions prior to GreatVoyage-v4.7.0 (Aristotle), when a node synchronizes the blocks, a flush operation will write the data of 500 blocks from the memory to the disk, so more than 500 blocks data will be kept in the memory, and each block data is associated through a linked list. When querying data, it will first search in these more than 500 blocks in sequence, and then query the disk database when the data to be queried is not found, but traversing more than 500 block data reduces the efficiency of data query.</p>
+<p>Therefore, starting from the GreatVoyage-v4.7.0 (Aristotle) version, the number of snapshot flush can be configured, and the maximum number of snapshot flush at one time can be set through the configuration item: <code>storage.snapshot.maxFlushCount</code> to maximize the efficiency of database query and improve block processing speed. If the configuration item is not set, the maximum number of snapshots flush into the dish is the default value of 1.</p>
+<ul>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4834">https://github.com/tronprotocol/java-tron/pull/4834</a> </li>
+</ul>
+<h3 id="6-toolkitjar-integration">6. Toolkit.jar Integration<a class="headerlink" href="#6-toolkitjar-integration" title="Permanent link">&para;</a></h3>
+<p><code>DBConvert.jar</code> is a database conversion tool, which can convert LevelDB into RocksDB; <code>LiteFullNodeTool.jar</code> is a light FullNode tool, which can convert FullNode data into LiteFullNode data. Starting from GreatVoyage-v4.7.0 (Aristotle), <code>DBConvert.jar</code> and <code>LiteFullNodeTool.jar</code> have been integrated into the <code>Toolkit.jar</code> toolbox, and a database copy function is added which can realize fast Node database copy. In the future, the tools around Java-tron will be gradually integrated into the <code>Toolkit.jar</code> toolbox in order to facilitate tool maintenance and developer use. The commands for using the new functions of the <code>Toolkit.jar</code> toolbox are as follows:</p>
+<div class="highlight"><pre><span></span><code>// Convert LevelDB data to RocksDB data
+java -jar Toolkit.jar db convert -h
+// convert FullNode data into LiteFullNode data
+java -jar Toolkit.jar db lite -h
+// Database copy
+java -jar Toolkit.jar db copy -h
+</code></pre></div>
+<ul>
+<li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4813">https://github.com/tronprotocol/java-tron/pull/4813</a> </li>
+</ul>
+<hr />
+<p><em>Courage is the first of human qualities because it is the quality that guarantees others.</em> </p>
+<p align="right"> --- Aristotle</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../signature_verification/" class="btn btn-neutral float-left" title="Integrity Check"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../GreatVoyage-v460/" class="btn btn-neutral float-right" title="GreatVoyage-v4.6.0">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../signature_verification/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../GreatVoyage-v460/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
