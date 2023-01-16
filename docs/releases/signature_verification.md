@@ -30,7 +30,7 @@ uid: build@tron.network
 ```
 Import the public key from the GPG public key server to the local according to the public key Hash, the command is:
 ```
-$ gpg --keyserver hkp://keys.openpgp.org --recv-keys 1254F859D2B1BD9F66E7107DF859BCB44A28290B
+$ gpg --keyserver hkp://keys.openpgp.org --recv-keys "1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B"
 ```
 If the import was successful, you will see the return result like this:
 ```
