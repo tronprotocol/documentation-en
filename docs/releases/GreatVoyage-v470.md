@@ -145,7 +145,22 @@ Therefore, the GreatVoyage-v4.7.0(Aristotle) version adds an energy estimation i
 
 If the execution of the estimated interface call fails for some reason, the value of the `energy_required` field will be 0, and this field will not be displayed in the return value. At this time, you can check the reason for the execution failure for the estimated interface call through the `result` field.
 
-After the GreatVoyage-v4.7.0 (Aristotle) version is successfully deployed, this API is closed by default. To open this interface, the two configuration items `vm.estimateEnergy` and `vm.supportConstant` must be enabled in the node configuration file at the same time. The default values of `vm.estimateEnergy` and `vm.supportConstant` are both false,
+After the GreatVoyage-v4.7.0 (Aristotle) version is successfully deployed, this API is closed by default. To open this interface, the two configuration items `vm.estimateEnergy` and `vm.supportConstant` must be enabled in the node configuration file at the same time. The default values of `vm.estimateEnergy` and `vm.supportConstant` are both false.
+
+An example of `/wallet/estimateenergy` call is as follows:
+
+```
+curl --location --request POST 'https://api.nileex.io/wallet/estimateenergy' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+     "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+     "contract_address": "TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj",
+     "function_selector": "transfer(address,uint256)",
+     "parameter": "0000000000000000000000002EEF13ADA48F286066F9066CE84A9AD686A3EA480000000000000000000000000000000000000000000000000000000000000004",
+     "visible": true
+}'
+```
+
 
 * Source code: [https://github.com/tronprotocol/java-tron/pull/4873](https://github.com/tronprotocol/java-tron/pull/4873) 
 
