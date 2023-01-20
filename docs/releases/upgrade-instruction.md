@@ -15,7 +15,7 @@ You can directly download the Java-tron executable file, or download the code of
     
     Directly download the latest version of the executable file FullNode.jar from the release page [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases).
     
-    Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to [Java-tron Consistency Verification](https://tronprotocol.github.io/documentation-en/releases/).
+    Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to [Java-tron Consistency Verification](https://tronprotocol.github.io/documentation-en/releases/signature_verification/).
     
     
 * Way 2: Compile the source code
