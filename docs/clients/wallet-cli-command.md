@@ -283,9 +283,19 @@ Here are all the account resource related commands ：
 
 - [freezeBalance](#freezebalance)
 - [unfreezeBalance](#unfreezebalance)
-- [GetDelegatedResource](#getdelegatedresource)
-- [GetAccountNet](#getaccountnet)
-- [GetAccountResource](#getaccountresource)
+- [getDelegatedResource](#getdelegatedresource)
+- [freezeBalanceV2](#freezebalancev2)
+- [unfreezeBalanceV2](#unfreezebalancev2)
+- [delegateResource](#delegateresource)
+- [unDelegateResource](#undelegateresource)
+- [withdrawExpireUnfreeze](#withdrawexpireunfreeze)
+- [getAvailableUnfreezeCount](#getavailableunfreezecount)
+- [getCanWithdrawUnfreezeAmount](#getcanwithdrawunfreezeamount)
+- [getCanDelegatedMaxSize](#getcandelegatedmaxsize)
+- [getDelegatedResourceV2](#getdelegatedresourcev2)
+- [getDelegatedResourceAccountIndexV2](#getdelegatedresourceaccountindexv2)
+- [getAccountNet](#getaccountnet)
+- [getAccountResource](#getaccountresource)
 
 ### freezeBalance
 Stake an amount of TRX to obtain bandwidth or Energy and TRON Power (voting rights) . Optionally, user can stake TRX to grant Energy or Bandwidth to others. Balance amount in the denomination of sun.
@@ -388,6 +398,344 @@ wallet> getdelegatedresource TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 TXBpeye7UQ4dDZEn
 	]
 }
 ```
+
+### freezeBalanceV2
+Stake 2.0 API: Stake TRX to obtain TRON Power (voting rights) and bandwidth or energy.
+
+```shell
+wallet> freezeBalanceV2 [OwnerAddress] frozen_balance ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER)
+```
+
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
+* `frozen_balance` is the amount of frozen TRX, the unit is the smallest unit (Sun), the minimum is 1000000sun.
+* `ResourceCode` indicates the type of the acquired resource，0 BANDWIDTH and 1 ENERGY.
+
+Example:
+
+```shell
+wallet> freezeBalanceV2 1000000 1
+{
+	"raw_data":{
+		"contract":[
+			{
+				"parameter":{
+					"value":{
+						"resource":"ENERGY",
+						"frozen_balance":1000000,
+						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
+					},
+					"type_url":"type.googleapis.com/protocol.FreezeBalanceV2Contract"
+				},
+				"type":"FreezeBalanceV2Contract"
+			}
+		],
+		"ref_block_bytes":"00bb",
+		"ref_block_hash":"0c237850e9e3c216",
+		"expiration":1676620524000,
+		"timestamp":1676620465372
+	},
+	"raw_data_hex":"0a0200bb22080c237850e9e3c21640e0d3fbf2e5305a59083612550a34747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e467265657a6542616c616e63655632436f6e7472616374121d0a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca10c0843d180170dc89f8f2e530"
+}
+before sign transaction hex string is 0a770a0200bb22080c237850e9e3c21640e0d3fbf2e5305a59083612550a34747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e467265657a6542616c616e63655632436f6e7472616374121d0a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca10c0843d180170dc89f8f2e530
+Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
+y
+Please choose your key for sign.
+The 1th keystore file name is UTC--2023-02-17T02-53-57.163000000Z--THLJLytz6UHwpmDFi5RC43D44dmnh4ZTeL.json
+The 2th keystore file name is UTC--2023-02-17T07-40-47.121000000Z--TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM.json
+Please choose between 1 and 2
+2
+Please input your password.
+password:
+after sign transaction hex string is 0a770a0200bb22080c237850e9e3c21640dbb89efde5305a59083612550a34747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e467265657a6542616c616e63655632436f6e7472616374121d0a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca10c0843d180170dc89f8f2e53012419e46cc7b6706ee6a14a541df5f9c518fae9a71ac7a7cc484c48386eb0997a8ab10c41e09feb905c5cc370fe1d15968d22cec2fd2cdc5916adfd3a78c52f8d47000
+txid is 1743aa098f5e10ac8b68ccbf0ca6b5f1364a63485e442e6cb03fd33e3331e3fb
+freezeBalanceV2 successful !!!
+```
+
+### unfreezeBalanceV2
+Stake 2.0 API: Unstake TRX to release bandwidth and energy and at the same time TRON Power will be reclaimed and corresponding votes will be revoked. 
+
+
+```shell
+wallet> unfreezeBalanceV2 [OwnerAddress] unfreezeBalance ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER)
+```
+
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account. 
+* `unfreezeBalance` Amount of TRX to be unstaked. the unit is sun.
+* `ResourceCode` indicates the type of the acquired resource，0 stands for BANDWIDTH and 1 stands for ENERGY. 
+
+
+Example:
+
+```shell
+wallet> unfreezeBalanceV2 1000000  1
+{
+	"raw_data":{
+		"contract":[
+			{
+				"parameter":{
+					"value":{
+						"resource":"ENERGY",
+						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+						"unfreeze_balance":1000000
+					},
+					"type_url":"type.googleapis.com/protocol.UnfreezeBalanceV2Contract"
+				},
+				"type":"UnfreezeBalanceV2Contract"
+			}
+		],
+		"ref_block_bytes":"0132",
+		"ref_block_hash":"0772c1a1727e2ef0",
+		"expiration":1676620887000,
+		"timestamp":1676620829314
+	},
+	"raw_data_hex":"0a02013222080772c1a1727e2ef040d8e791f3e5305a5b083712570a36747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e556e667265657a6542616c616e63655632436f6e7472616374121d0a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca10c0843d18017082a58ef3e530"
+}
+before sign transaction hex string is 0a790a02013222080772c1a1727e2ef040d8e791f3e5305a5b083712570a36747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e556e667265657a6542616c616e63655632436f6e7472616374121d0a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca10c0843d18017082a58ef3e530
+Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
+y
+Please choose your key for sign.
+The 1th keystore file name is UTC--2023-02-17T02-53-57.163000000Z--THLJLytz6UHwpmDFi5RC43D44dmnh4ZTeL.json
+The 2th keystore file name is UTC--2023-02-17T07-40-47.121000000Z--TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM.json
+Please choose between 1 and 2
+2
+Please input your password.
+password:
+after sign transaction hex string is 0a790a02013222080772c1a1727e2ef040ecd2b4fde5305a5b083712570a36747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e556e667265657a6542616c616e63655632436f6e7472616374121d0a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca10c0843d18017082a58ef3e530124111bac22e9bc35e1a78c13796893e9f2b81dc99eb26d9ce7a95d0c6a0a9b5588739c52b999acd370b255d178f57bf2abef8881891f23e042ddf83c3551b8bd98e01
+txid is f9e114347ea89c5d722d20226817bc41c8a39ea36be756ba216cf450ab3f1fb3
+unfreezeBalanceV2 successful !!!
+```
+
+### delegateResource
+Stake 2.0 API: delegate bandwidth or energy resource to other address.
+```shell
+wallet> delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress [lock]
+```
+
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
+* `balance` Amount of TRX staked for resources to be delegated, unit is sun.
+* `ResourceCode` Resource type, "BANDWIDTH" is 0, "ENERGY" is 1.
+* `ReceiverAddress` Receiver address of resource to be delegated to.
+* `lock` Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days. optional, default is 0, 0-lock, 1-unlock.
+
+Example:
+
+```shell
+wallet> delegateResource 1000000  1 TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g 0
+{
+	"raw_data":{
+		"contract":[
+			{
+				"parameter":{
+					"value":{
+						"balance":1000000,
+						"resource":"ENERGY",
+						"receiver_address":"TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
+					},
+					"type_url":"type.googleapis.com/protocol.DelegateResourceContract"
+				},
+				"type":"DelegateResourceContract"
+			}
+		],
+		"ref_block_bytes":"020c",
+		"ref_block_hash":"54e32e95d11894f8",
+		"expiration":1676621547000,
+		"timestamp":1676621487525
+	},
+	"raw_data_hex":"0a02020c220854e32e95d11894f840f88bbaf3e5305a710839126d0a35747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e44656c65676174655265736f75726365436f6e747261637412340a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca100118c0843d221541fd49eda0f23ff7ec1d03b52c3a45991c24cd440e70a5bbb6f3e530"
+}
+before sign transaction hex string is 0a8f010a02020c220854e32e95d11894f840f88bbaf3e5305a710839126d0a35747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e44656c65676174655265736f75726365436f6e747261637412340a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca100118c0843d221541fd49eda0f23ff7ec1d03b52c3a45991c24cd440e70a5bbb6f3e530
+Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
+y
+Please choose your key for sign.
+The 1th keystore file name is UTC--2023-02-17T02-53-57.163000000Z--THLJLytz6UHwpmDFi5RC43D44dmnh4ZTeL.json
+The 2th keystore file name is UTC--2023-02-17T07-40-47.121000000Z--TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM.json
+Please choose between 1 and 2
+2
+Please input your password.
+password:
+after sign transaction hex string is 0a8f010a02020c220854e32e95d11894f84093e9dcfde5305a710839126d0a35747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e44656c65676174655265736f75726365436f6e747261637412340a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca100118c0843d221541fd49eda0f23ff7ec1d03b52c3a45991c24cd440e70a5bbb6f3e5301241414de060e9c104bb45d745e22b7b7a30b4a89a2635c62aab152fff5d2f10b7443023a9aa487be86652b74974ff6a7d82d3dbf94cea9ac1e0a7e48e682175e3f601
+txid is 0917002d0068dde7ad4ffe46e75303d11192e17bfa78934a5f867c5ae20720ec
+delegateResource successful !!!
+```
+
+### unDelegateResource
+Stake 2.0 API: undelegate resource.
+```shell
+wallet> unDelegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress
+```
+
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
+* `balance` Amount of TRX staked for resource to be undelegated, unit is sun.
+* `ResourceCode` Resource type, "BANDWIDTH" is 0, "ENERGY" is 1.
+* `ReceiverAddress` Receiver address of resource to be delegated to.
+
+
+
+Example:
+
+```shell
+wallet> unDelegateResource 1000000  1 TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g
+{
+	"raw_data":{
+		"contract":[
+			{
+				"parameter":{
+					"value":{
+						"balance":1000000,
+						"resource":"ENERGY",
+						"receiver_address":"TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
+					},
+					"type_url":"type.googleapis.com/protocol.UnDelegateResourceContract"
+				},
+				"type":"UnDelegateResourceContract"
+			}
+		],
+		"ref_block_bytes":"0251",
+		"ref_block_hash":"68ac15256c213e71",
+		"expiration":1676621754000,
+		"timestamp":1676621695001
+	},
+	"raw_data_hex":"0a020251220868ac15256c213e714090ddc6f3e5305a73083a126f0a37747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e556e44656c65676174655265736f75726365436f6e747261637412340a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca100118c0843d221541fd49eda0f23ff7ec1d03b52c3a45991c24cd440e709990c3f3e530"
+}
+before sign transaction hex string is 0a91010a020251220868ac15256c213e714090ddc6f3e5305a73083a126f0a37747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e556e44656c65676174655265736f75726365436f6e747261637412340a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca100118c0843d221541fd49eda0f23ff7ec1d03b52c3a45991c24cd440e709990c3f3e530
+Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
+y
+Please choose your key for sign.
+The 1th keystore file name is UTC--2023-02-17T02-53-57.163000000Z--THLJLytz6UHwpmDFi5RC43D44dmnh4ZTeL.json
+The 2th keystore file name is UTC--2023-02-17T07-40-47.121000000Z--TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM.json
+Please choose between 1 and 2
+2
+Please input your password.
+password:
+after sign transaction hex string is 0a91010a020251220868ac15256c213e7140febde9fde5305a73083a126f0a37747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e556e44656c65676174655265736f75726365436f6e747261637412340a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca100118c0843d221541fd49eda0f23ff7ec1d03b52c3a45991c24cd440e709990c3f3e530124102ebde16d1abaccd976f8ead4b5acf92b05f7d9796c28ca6a26b4e51442e638e5e33e598bb03732da24dc761a39b9d307c045b55323128dc9b07510ffc48933a01
+txid is 537a3f4461ab55c705b77503bc42f469bfc22c0cb8588b8f3641ab40117ebfd8
+unDelegateResource successful !!!
+```
+### withdrawExpireUnfreeze
+Stake 2.0 API: withdraw unfrozen balance.
+
+```shell
+wallet> withdrawExpireUnfreeze [OwnerAddress]
+```
+
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
+
+
+Example:
+
+```shell
+wallet> withdrawExpireUnfreeze 
+```
+
+### getavailableunfreezecount
+Stake 2.0 API: remaining times of executing unstake operation.
+
+```shell
+wallet> getavailableunfreezecount [OwnerAddress]
+```
+
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
+
+
+
+Example:
+
+```shell
+wallet> GetAvailableUnfreezeCount
+{
+	"count": 30
+}
+```
+### getcanwithdrawunfreezeamount
+Stake 2.0 API: query the withdrawable balance at the specified timestamp.
+
+```shell
+wallet> getcanwithdrawunfreezeamount ownerAddress timestamp
+```
+
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
+* `timestamp` query cutoff timestamp, in milliseconds.
+
+Example:
+
+```shell
+wallet> getcanwithdrawunfreezeamount 1776621695001
+{
+	"amount": 4000000
+}
+```
+
+### getcandelegatedmaxsize
+Stake 2.0 API: query the amount of delegatable resources share of the specified resource type for an address, unit is sun.
+
+```shell
+wallet> getcandelegatedmaxsize ownerAddress type
+```
+
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
+* `type` resource type, 0 is bandwidth, 1 is energy
+
+
+Example:
+
+```shell
+wallet> getcandelegatedmaxsize 1
+{
+	"max_size": 11000000
+}
+```
+### getdelegatedresourcev2
+Stake 2.0 API：query the detail of resource share delegated from fromAddress to toAddress.
+
+```shell
+wallet> getdelegatedresourcev2 fromAddress toAddress
+```
+
+* `fromAddress` resource from address.
+* `toAddress`  resource to address.
+
+Example:
+
+```shell
+wallet> getdelegatedresourcev2  TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g
+{
+	"delegatedResource": [
+		{
+			"from": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+			"to": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+			"frozen_balance_for_bandwidth": 7000000,
+			"frozen_balance_for_energy": 3000000
+		}
+	]
+}
+```
+### getdelegatedresourceaccountindexv2
+Stake 2.0 API：query the resource delegation index by an account. Two lists will return, one is the list of addresses the account has delegated its resources(toAddress), and the other is the list of addresses that have delegated resources to the account(fromAddress).
+
+```shell
+wallet> getdelegatedresourceaccountindexv2 ownerAddress
+```
+
+* `OwnerAddress` account address.
+
+Example:
+
+```shell
+wallet> getdelegatedresourceaccountindexv2 TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
+{
+	"account": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+	"fromAccounts": [
+		"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+	],
+	"toAccounts": [
+		"TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g"
+	]
+}
+```
+
+
 ### GetAccountNet
 This command shows the usage of bandwidth for a certain account.
 ```shell
@@ -816,6 +1164,8 @@ Below, please find all the commands for smart contract interactions:
 
 - [DeployContract](#deploycontract)
 - [TriggerContract](#triggercontract)
+- [TriggerConstantContract](#triggerconstantcontract)
+- [EstimateEnergy](#estimateenergy)
 - [GetContract](#getcontract)
 - [UpdateEnergyLimit](#updateenergylimit)
 - [UpdateSetting](#updatesetting)
@@ -906,6 +1256,83 @@ wallet> getTransactionInfoById 7d9c4e765ea53cf6749d8a89ac07d577141b93f83adc4015f
     "resMessage": "REVERT opcode executed"
 }
 ```
+
+### TriggerConstantContract
+Invoke the readonly function (modified by the view or pure modifier) of a contract for contract data query; or Invoke the non-readonly function of a contract for predicting whether the transaction can be successfully executed or estimating the energy consumption.
+
+```
+wallet> TriggerConstantContract ownerAddress(use # if you own) contractAddress method args isHex [value token_value token_id(e.g: TRXTOKEN, use # if don't provided)]
+
+```
+
+* `ownerAddress` Owner address that triggers the contract. If it is the login account, please input #.
+* `contractAddress` Smart contract address.
+* `method` Function call.
+* `args` Parameters, if there is no parameter of `method`, please input #. 
+* `isHex` `args`is hex string or not。
+* `value` TRX amount to be transferred. Optional, if no value, # can be inplaced.
+* `token_value` TRC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
+* `token_id` TRC-10 token id to be transferred. Optional, if no value, # can be inplaced.
+
+Example:
+```shell
+wallet> TriggerConstantContract TTGhREx2pDSxFX555NWz1YwGpiBVPvQA7e  TVSvjZdyDSNocHm7dP3jvCmMNsCnMTPa5W transfer(address,uint256) 0000000000000000000000002ce5de57373427f799cc0a3dd03b841322514a8c00000000000000000000000000000000000000000000000000038d7ea4c68000 true
+
+transfer(address,uint256):a9059cbb
+Execution result = {
+	"constant_result": [
+		"0000000000000000000000000000000000000000000000000000000000000001"
+	],
+	"result": {
+		"result": true
+	},
+	"energy_used": 13253,
+	"logs": [
+		{
+			"address": "LUijWGF4iFrT7hV37Q2Q45DU5TUBvVZb7",
+			"topics": [
+				"ddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+				"000000000000000000000000bdc8ee51fdd1b1e01d71f836481828f88463c838",
+				"0000000000000000000000002ce5de57373427f799cc0a3dd03b841322514a8c"
+			],
+			"data": "00000000000000000000000000000000000000000000000000038d7ea4c68000"
+		}
+	]
+}
+```
+### EstimateEnergy
+Estimate the energy required for the successful execution of smart contract transactions. But for FullNode, enabling the wallet/estimateEnergy API is optional. So please pay attention that when developers call wallet/estimateEnergy, if the error message shows that the node does not support this function when calling the new API (this node does not support estimate energy), it is recommended to continue using the wallet/triggerconstantcontract API to estimate energy consumption.
+
+```
+wallet> EstimateEnergy ownerAddress contractAddress method args isHex [value token_value token_id]
+```
+
+* `ownerAddress` Owner address that triggers the contract. If it is the login account, please input #.
+* `contractAddress` Smart contract address.
+* `method` Function call.
+* `args` Parameters, if there is no parameter of `method`, please input #. 
+* `isHex` `args`is hex string or not。
+* `value` TRX amount to be transferred. Optional, if no value, # can be inplaced.
+* `token_value` TRC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
+* `token_id` TRC-10 token id to be transferred. Optional, if no value, # can be inplaced.
+
+
+Example:
+
+```shell
+wallet> EstimateEnergy TTGhREx2pDSxFX555NWz1YwGpiBVPvQA7e  TVSvjZdyDSNocHm7dP3jvCmMNsCnMTPa5W transfer(address,uint256) 0000000000000000000000002ce5de57373427f799cc0a3dd03b841322514a8c00000000000000000000000000000000000000000000000000038d7ea4c68000 true
+
+transfer(address,uint256):a9059cbb
+Estimate energy result = {
+	"result": {
+		"result": true
+	},
+	"energy_required": 14910
+}
+```
+
+
+
 ### GetContract
 Get the smart contract info by its address.
 ```
