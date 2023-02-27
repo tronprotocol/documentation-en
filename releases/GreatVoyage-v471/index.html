@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/Odyssey-v365/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/GreatVoyage-v471/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Odyssey-v3.6.5 - Java Tron</title>
+    <title>GreatVoyage-v4.7.1 - Java Tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Odyssey-v3.6.5";
-        var mkdocs_page_input_path = "releases/Odyssey-v365.md";
-        var mkdocs_page_url = "/documentation-en/releases/Odyssey-v365/";
+        var mkdocs_page_name = "GreatVoyage-v4.7.1";
+        var mkdocs_page_input_path = "releases/GreatVoyage-v471.md";
+        var mkdocs_page_url = "/documentation-en/releases/GreatVoyage-v471/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -139,7 +139,33 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">History</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v471/">GreatVoyage-v4.7.1</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">GreatVoyage-v4.7.1</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#cores">Cores</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-node-ip-setting">1. Optimize the node IP setting</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-block-synchronization-logic">2. Optimize block synchronization logic</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api">API</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-list-of-solidified-block-apis">1. Optimize the list of solidified block APIs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-resource-delegation-relationship-api">2. Optimize resource delegation relationship API</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes">Other Changes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-litefullnode-detection-logic">1. Optimize LiteFullNode detection logic</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-node-log-output">2. Optimize node log output</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../GreatVoyage-v470/">GreatVoyage-v4.7.0.1</a>
                 </li>
@@ -177,19 +203,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v37/">Odyssey-v3.7</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Odyssey-v3.6.5</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#1-new-delegation-mechanism">1. New delegation mechanism</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-fairer-and-more-efficient-staking-rewards-mechanism">2. Fairer and more efficient staking rewards mechanism</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-fairer-incentive-mechanism">3. Fairer incentive mechanism</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-improvement-and-optimization-of-tvm">4. Improvement and optimization of TVM</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit">5. Improvement of the dynamic adjustment scheme of Energy upper limit</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../Odyssey-v365/">Odyssey-v3.6.5</a>
                 </li>
     </ul>
                   </li>
@@ -213,9 +227,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Releases &raquo;</li>
-          <li>History &raquo;</li><li>Odyssey-v3.6.5</li>
+          <li>History &raquo;</li><li>GreatVoyage-v4.7.1</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/Odyssey-v365.md"
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/GreatVoyage-v471.md"
           class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
@@ -225,32 +239,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="odyssey-v365">Odyssey-v3.6.5<a class="headerlink" href="#odyssey-v365" title="Permanent link">&para;</a></h1>
-<p>Odyssey v3.6.5 Update includes the following new features and improvements   </p>
-<h2 id="1-new-delegation-mechanism">1. New delegation mechanism<a class="headerlink" href="#1-new-delegation-mechanism" title="Permanent link">&para;</a></h2>
-<p>The new delegation mechanism enables SRs to set commission rates by themselves, which will serve as a reference for users when they vote for SRs. Meanwhile, traceability of the SR’s commission rate on the chain makes the amount of rewards that users receive through voting more transparent. Moreover, the new delegation mechanism lays a foundation for more complex consensus mechanisms and incentive schemes in the near future. </p>
-<h2 id="2-fairer-and-more-efficient-staking-rewards-mechanism">2. Fairer and more efficient staking rewards mechanism<a class="headerlink" href="#2-fairer-and-more-efficient-staking-rewards-mechanism" title="Permanent link">&para;</a></h2>
-<p>Staking rewards are now distributed in a fully-decentralized way, a step forward from the old partially-decentralized mechanism. With this change, staking rewards are now distributed entirely through the blockchain, ensuring complete supervision from the chain and thus true decentralization. Moreover, the new mechanism cuts unnecessary reward distribution transactions, signaling lower bandwidth consumption and higher efficiency on the TRON network.</p>
-<h2 id="3-fairer-incentive-mechanism">3. Fairer incentive mechanism<a class="headerlink" href="#3-fairer-incentive-mechanism" title="Permanent link">&para;</a></h2>
-<p>Block rewards decreased from 32 TRX to 16 TRX, while voting rewards increased from 16 TRX to 160 TRX. The adjustment will boost voter turnout in the community, with more TRX locked up by users in the TRON ecosystem. This move is accompanied by the new staking rewards mechanism to guarantee real staking revenues to users.</p>
-<h2 id="4-improvement-and-optimization-of-tvm">4. Improvement and optimization of TVM<a class="headerlink" href="#4-improvement-and-optimization-of-tvm" title="Permanent link">&para;</a></h2>
-<p>(1) Added a new VM instruction ISCONTRACT(0xd4), which has made smart contract development more flexible by allowing developers to identify the type of the target address in VMs when writing contracts. 
-batchvalidatesign(bytes32 hash, bytes[] memory signatures, address[] memory addresses) </p>
-<p>(2) Adopted a multi-thread method for VMs to verify signatures, which is faster than ecrecover of Ethereum while cutting Energy consumption by half.
-Contract address: 0x09. To use it in solidity: batchvalidatesign(bytes32 hash, bytes[] memory signatures, address[] memory addresses) 
-validatemultisign(address accountAddress, uint256 permissionId, bytes32 content, bytes[] signatures)</p>
-<p>(3) Added a new pre-compiled contract to boost multi-signature verification in TVM, speeding up the verification process and reducing Energy consumption.</p>
-<p>(4) Banned transfer TRX to smart contract address by two system contract TransferContract and TransferAssetContract. The transfer would fail if the target address is a smart    address when using TransferContract and TransferAssetContract. This can prevent general users from transferring assets to smart contract address by mistake, avoiding users’ asset loss.</p>
-<p>(5) Allowed automatic activation of inactive accounts when transferring TRX/ TRC10 tokens to accounts in smart contracts. </p>
-<p>(6) Added triggerConstantContract feature for SolidityNode and FullNode so as to improve the functionality of node APIs.</p>
-<h2 id="5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit">5. Improvement of the dynamic adjustment scheme of Energy upper limit<a class="headerlink" href="#5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit" title="Permanent link">&para;</a></h2>
-<p>The method of calculating Energy consumed per unit of time shifted from only calculating the staked Energy consumed to all Energy consumed. With this change, statistics of Energy consumption will be more accurate and effective, providing reference for adjusting Energy upper limit, saving users’ costs of using TRON blockchain network and improving network efficiency.</p>
+                <h1 id="greatvoyage-v471sartre">GreatVoyage-v4.7.1(Sartre)<a class="headerlink" href="#greatvoyage-v471sartre" title="Permanent link">&para;</a></h1>
+<p>GreatVoyage-v4.7.1(Sartre) introduces several important optimizations and updates. The optimized block synchronization logic improves the stability of block synchronization; the optimized node IP setting improves the availability of nodes; the optimized node log improves the maintainability of nodes.</p>
+<p>Please see the details below.</p>
+<h2 id="cores">Cores<a class="headerlink" href="#cores" title="Permanent link">&para;</a></h2>
+<h3 id="1-optimize-the-node-ip-setting">1. Optimize the node IP setting<a class="headerlink" href="#1-optimize-the-node-ip-setting" title="Permanent link">&para;</a></h3>
+<p>When the node starts, it will obtain the local IP of the node, and then use this IP to communicate with other nodes in the network. If the node cannot access the external network, it will not be able to obtain the local IP. At this time, the node will set its local IP to the default value of 0.0.0.0, and this IP will make the node even unable to communicate with other nodes successfully in the LAN. So the GreatVoyage- v4.7.1 (Sartre) version changes the default IP of the node. If the node cannot obtain the local IP, it will set its local IP to 127.0.0.1, so that even if the node cannot access the external network, it can still communicate with other nodes in the LAN normally. </p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4990">https://github.com/tronprotocol/java-tron/pull/4990</a>   </p>
+<h3 id="2-optimize-block-synchronization-logic">2. Optimize block synchronization logic<a class="headerlink" href="#2-optimize-block-synchronization-logic" title="Permanent link">&para;</a></h3>
+<p>During the block synchronization process, the node will maintain a block request list, which contains the IDs of all blocks that have sent requests to other nodes. When the connection between the node and node A is abnormally disconnected with a very small probability, the block ID that is being requested to node A will be deleted from the request list. After that, the node will think that it has not requested the block, and then send the block request to node B and add the block ID to the request list again. Before this node disconnects with node A, the requested block may have already been sent by node A，and it is received by the node after disconnecting. Since the node found that the block is from node A that has already been disconnected, it will discard the block, and delete the block ID from the request list again, this will lead to the node to send a request for the same block to node B again. When Node B receives the repeated block request, it will consider it an illegal message and disconnect from the node.</p>
+<p>In order to improve the efficiency of block synchronization in concurrent scenarios, the GreatVoyage-v4.7.1 (Sartre) version optimized the update mechanism of the block request list, and saved the block ID and node information in the request list at the same time. In the above scenario, after receiving a block from node A that has been disconnected, the same block ID requested from node B will not be deleted from the request list to ensure that it will not be disconnected from node B, thereby improving the stability of block synchronization.</p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4995">https://github.com/tronprotocol/java-tron/pull/4995</a> </p>
+<p>When a node synchronizes blocks from other nodes, it needs to obtain the local block chain summary of the node. The summary includes the IDs of several blocks including the local header block. In versions prior to GreatVoyage-v4.7.1 (Sartre), when obtaining the summary, the node will first query the Dynamic database to obtain the block height, and then query the Block database to obtain the ID of the block according to the block height. However, when the node is processing a block, the writing to each database is not carried out at the same time. The node will first update the Dynamic database, and then update other databases such as Block. As a result, in versions prior to GreatVoyage-v4.7.1 (Sartre), the following scenario will occur with a very small probability: when the latest block information is only written into the Dynamic database, but have not yet been written into the block database, the node starts to obtain the summary. In this situation the corresponding block ID will not be found in the block database according to the head block height obtained from the Dynamic database, leading to the summary reading fail. The GreatVoyage-v4.7.1 (Sartre) version optimizes the block chain summary acquisition logic. The ID of the head block is directly obtained from the Dynamic database instead of the Block database, which improves the stability of summary reading.</p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/5009">https://github.com/tronprotocol/java-tron/pull/5009</a> </p>
+<p>The GreatVoyage-v4.7.1 (Sartre) version optimizes the lock mechanism during block synchronization and improves the stability of the node connection under concurrency.</p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4996">https://github.com/tronprotocol/java-tron/pull/4996</a> </p>
+<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="1-optimize-the-list-of-solidified-block-apis">1. Optimize the list of solidified block APIs<a class="headerlink" href="#1-optimize-the-list-of-solidified-block-apis" title="Permanent link">&para;</a></h3>
+<p>GreatVoyage-v4.7.1(Sartre) version deletes the useless solidified block query API to make the code more clearer.</p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4997">https://github.com/tronprotocol/java-tron/pull/4997</a>  </p>
+<h3 id="2-optimize-resource-delegation-relationship-api">2. Optimize resource delegation relationship API<a class="headerlink" href="#2-optimize-resource-delegation-relationship-api" title="Permanent link">&para;</a></h3>
+<p>GreatVoyage-v4.7.1 (Sartre) version optimizes the resource delegation relationship query API, addes the check to the interface parameters, and makes the interface more stable.</p>
+<h2 id="other-changes">Other Changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h2>
+<h3 id="1-optimize-litefullnode-detection-logic">1. Optimize LiteFullNode detection logic<a class="headerlink" href="#1-optimize-litefullnode-detection-logic" title="Permanent link">&para;</a></h3>
+<p>In versions prior to GreatVoyage-v4.7.1 (Sartre), different modules of the node have different logics for detecting whether the current node is a LiteFullNode. GreatVoyage-v4.7.1 (Sartre) version unifies the logic of light node judgment, making the code more concise.</p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4986">https://github.com/tronprotocol/java-tron/pull/4986</a>  </p>
+<h3 id="2-optimize-node-log-output">2. Optimize node log output<a class="headerlink" href="#2-optimize-node-log-output" title="Permanent link">&para;</a></h3>
+<p><strong>The Database Log</strong></p>
+<p>Starting from GreatVoyage-v4.7.0.1 (Aristotle), the logs of LevelDB or RocksDB databases are redirected to the node log file, which simplifies the difficulty of database troubleshooting. GreatVoyage-v4.7.1 (Sartre) further optimizes the log module, Output database logs to a separate db.log file to make node logs clearer.</p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4985">https://github.com/tronprotocol/java-tron/pull/4985</a> <a href="https://github.com/tronprotocol/java-tron/pull/5001">https://github.com/tronprotocol/java-tron/pull/5001</a> <a href="https://github.com/tronprotocol/java-tron/pull/5010">https://github.com/tronprotocol/java-tron/pull/5010</a></p>
+<p><strong>The Event Service Module Log</strong></p>
+<p>Remove invalid logging output for event service module.</p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4974">https://github.com/tronprotocol/java-tron/pull/4974</a>  </p>
+<p><strong>The network module log</strong> </p>
+<p>Optimized the log output of the network module, outputting Error-level logs for received abnormal blocks, and outputting Warn-level logs for network requests that have already timed out, improving the efficiency of troubleshooting network-related problems.</p>
+<p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4977">https://github.com/tronprotocol/java-tron/pull/4977</a></p>
+<hr />
+<p><em>The more sand that has escaped from the hourglass of our life, the clearer we should see through it.</em> </p>
+<p align="right"> ---Sartre</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Odyssey-v37/" class="btn btn-neutral float-left" title="Odyssey-v3.7"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../glossary/" class="btn btn-neutral float-right" title="Glossary">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../signature_verification/" class="btn btn-neutral float-left" title="Integrity Check"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../GreatVoyage-v470/" class="btn btn-neutral float-right" title="GreatVoyage-v4.7.0.1">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -277,10 +309,10 @@ validatemultisign(address accountAddress, uint256 permissionId, bytes32 content,
         </span>
     
     
-      <span><a href="../Odyssey-v37/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../signature_verification/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../glossary/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../GreatVoyage-v470/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
