@@ -2,7 +2,7 @@
 
 ## TIP
 
-The TIP: [TIP-12:Tron event subscribes model](https://github.com/tronprotocol/tips/blob/master/tip-28.md) .
+The TIP: [TIP-12:Tron event subscribes model](https://github.com/tronprotocol/tips/blob/master/tip-12.md) .
 
 ## Event Type
 
