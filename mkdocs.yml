@@ -10,7 +10,9 @@ nav:
         - Backup & Restore: using_javatron/backup_restore.md
         - Lite Fullnode: developers/litefullnode.md
         - Private Network: using_javatron/private_network.md
-        - Event Plugin: architecture/event.md
+        - Event Subscription:
+            - Using Event Plugin: architecture/event.md
+            - Use the Built-in Message Queue: using_javatron/builtin_message_queue.md
         - Database Configuration: architecture/database.md
         - Network Configuration: using_javatron/connecting_to_tron.md
         - Node Monitoring: using_javatron/metrics.md
