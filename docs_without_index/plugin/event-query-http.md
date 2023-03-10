@@ -23,7 +23,7 @@ subpath: $baseUrl/transactions/{hash}
 parameters   
 hash: transaction id
 
-Example: https://api.tronex.io/9a4f096700672d7420889cd76570ea47bfe9ef815bb2137b0d4c71b3d23309e9
+Example: https://api.tronex.io/transactions/d271047a4cc8773cf31923e3858800f6eaeebb205693ae163f526d67f8b606b7
 ```
 Function: get transfers list
 ```
