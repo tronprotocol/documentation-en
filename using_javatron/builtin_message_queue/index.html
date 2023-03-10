@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/governance/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/builtin_message_queue/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Governance Workflow - Java Tron</title>
+    <title>Use the Built-in Message Queue - Java Tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Governance Workflow";
-        var mkdocs_page_input_path = "developers/governance.md";
-        var mkdocs_page_url = "/documentation-en/developers/governance/";
+        var mkdocs_page_name = "Use the Built-in Message Queue";
+        var mkdocs_page_input_path = "using_javatron/builtin_message_queue.md";
+        var mkdocs_page_url = "/documentation-en/using_javatron/builtin_message_queue/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -46,32 +46,42 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Using Java-tron</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying Java-tron</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../litefullnode/">Lite Fullnode</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../private_network/">Private Network</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Event Subscription</a>
-    <ul>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Event Subscription</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../../architecture/event/">Using Event Plugin</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/builtin_message_queue/">Use the Built-in Message Queue</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Use the Built-in Message Queue</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#configure-node">Configure node</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start-node">Start node</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#prepare-event-subscription-script">Prepare event subscription script</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start-subscriber">Start subscriber</a>
+    </li>
+    </ul>
                 </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../connecting_to_tron/">Network Configuration</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Tools</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/toolkit/">Database Partition</a>
+                <li class="toctree-l2"><a class="reference internal" href="../toolkit/">Database Partition</a>
                 </li>
     </ul>
                   </li>
@@ -101,42 +111,26 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Developer Guide</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs Workflow</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../issue-workflow/">Issue Workflow</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Governance Workflow</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#initiate-a-discussion-on-a-proposal">Initiate a discussion on a proposal</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#title">Title</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#body">Body</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#community-discussion">Community discussion</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#initiate-a-voting-request">Initiate a voting request</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#vote-and-take-effect">Vote and take effect</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/governance/">Governance Workflow</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../run-in-idea/">Configure the IDE</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../demo/">Development Example</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Core Modules</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../code-structure/">Overview</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../developers/code-structure/">Overview</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../chainbase/">Chainbase</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../developers/chainbase/">Chainbase</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../network/">Network</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../developers/network/">Network</a>
                 </li>
     </ul>
                   </li>
@@ -222,9 +216,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>For Java-tron Developers &raquo;</li><li>Governance Workflow</li>
+          <li>Using Java-tron &raquo;</li>
+          <li>Event Subscription &raquo;</li><li>Use the Built-in Message Queue</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/governance.md"
+        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/builtin_message_queue.md"
           class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
@@ -234,52 +229,80 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="governance">Governance<a class="headerlink" href="#governance" title="Permanent link">&para;</a></h1>
-<p>The governance of the TRON network is accomplished by modifying <a href="https://tronscan.org/#/sr/committee">the network parameters</a>. The modification of network parameters is also called a network upgrade. Anyone can propose a discussion on modifying one or several network parameters, however, only super representatives or super representative partners can submit voting requests on-chain. Before the voting deadline, 27 super representatives can vote on the proposal. After the voting deadline arrives and the number of votes meets the requirement, the proposal will take effect.</p>
-<p>You can view the list of the past completed proposals <a href="https://github.com/tronprotocol/tips/tree/master/proposal">here</a>.</p>
-<p>Please according to the following process to propose a voting request:</p>
-<ol>
-<li><a href="#initiate-a-discussion-on-a-proposal">Initiate a discussion on proposal</a></li>
-<li><a href="#community-discussion">Community discussion</a></li>
-<li><a href="#initiate-a-voting-request">Initiate a voting request</a></li>
-<li><a href="#vote-and-take-effect">Voting and taking effective</a></li>
-</ol>
-<h2 id="initiate-a-discussion-on-a-proposal">Initiate a discussion on a proposal<a class="headerlink" href="#initiate-a-discussion-on-a-proposal" title="Permanent link">&para;</a></h2>
-<p>Any TRON network participant can initiate a discussion on a proposal. Please create a proposal discussion issue in <a href="https://github.com/tronprotocol/tips/issues">TIP repository</a>. The Issue is used to introduce the proposal in detail, including the motivation of this proposal, the TRON network parameters to be modified and their values, technical specifications, and the impact of the modification, etc. for a new proposal, please refer to this <a href="https://github.com/tronprotocol/tips/issues/232">example</a> to create an issue for discussion.</p>
-<p>Below are the specifications of how to write an issue for proposal discussion.</p>
-<h3 id="title">Title<a class="headerlink" href="#title" title="Permanent link">&para;</a></h3>
-<p>We hope that all users of the TRON ecosystem can participate in network governance. In order to be able to better publicize in the community, it is recommended to name the proposal and put the name at the beginning of the title. Here is an example:</p>
-<div class="highlight"><pre><span></span><code>Palma Upgrade: proposal to change the unit price of energy to 420 sun
+                <h1 id="using-java-trons-built-in-message-queue-for-event-subscription">Using Java-tron's Built-in Message Queue for Event Subscription<a class="headerlink" href="#using-java-trons-built-in-message-queue-for-event-subscription" title="Permanent link">&para;</a></h1>
+<p>TRON provides event subscription service. Developers can not only obtain on-chain events through event plugin, but also through <a href="https://github.com/tronprotocol/tips/blob/master/tip-28.md">Java-tron’s built-in ZeroMQ message queue</a>. The difference is that event plugin needs to be additionally deployed, which is used to implement event storage: developers can choose appropriate storage tools according to their needs, such as MongoDB, Kafka, etc., and the plugin help complete the storage of subscribed events. Java-tron's built-in ZeroMQ does not require additional deployment operations. Event subscribers can directly connect to the publisher's ip and port, set subscription topics, and receive subscribed events. However, this method does not provide event storage. Therefore, when developers want to subscribe to events directly from nodes for a short period of time, then using the built-in message queue will be a more appropriate choice.</p>
+<p>This article will introduce how to subscribe to events through Java-tron's built-in message queue in detail.</p>
+<h2 id="configure-node">Configure node<a class="headerlink" href="#configure-node" title="Permanent link">&para;</a></h2>
+<p>To use the built-in ZeroMQ of the node for event subscription, you need to set the configuration item <code>useNativeQueue</code> to <code>true</code> in the node configuration file.</p>
+<div class="highlight"><pre><span></span><code>event.subscribe = {
+  native = {
+    useNativeQueue = true // if true, use native message queue, else use event plugin.
+    bindport = 5555 // bind port
+    sendqueuelength = 1000 //max length of send queue
+  }
+
+  ......
+
+  topics = [
+    {
+      triggerName = &quot;block&quot; // block trigger, the value can&#39;t be modified
+      enable = true
+      topic = &quot;block&quot; // plugin topic, the value could be modified
+    },
+    ......
+  ]
+}
 </code></pre></div>
-<h3 id="body">Body<a class="headerlink" href="#body" title="Permanent link">&para;</a></h3>
-<p>In the issue body, the content of the proposal should be introduced in detail, including motivation, estimated time to initiate the proposal vote and effective time of the proposal, how to initiate a proposal vote, technical specifications or background information of the proposal, etc.</p>
-<div class="highlight"><pre><span></span><code># Simple Summary
-Briefly introduce the parameters to be modified by this proposal and their values, and summarize the issue it wants to solve
-
-# Motivation
-Describe the motivation for the proposal, what is the problem encountered now, that is, why one or some dynamic parameters need to be modified.
-
-# Timeline
-Indicate when to initiate the proposal voting request, and the estimated effective date of the proposal. After the issue is proposed, two weeks are generally reserved for community discussion. Therefore, the proposal initiation time set in the Issue should be two weeks after the issue is proposed.
-
-# How to Initialize the Voting Request
-Indicates the command to initiate the proposal voting request.
-
-# Technical Specification / Background
-The specific technical specifications or background information of the proposal
+<ul>
+<li><code>native.useNativeQueue</code>: <code>true</code> is to use the built-in message queue, <code>false</code> is to use the event plugin</li>
+<li><code>native.bindport</code>: ZeroMQ publisher binding port. In this example, it is <code>5555</code>, so the publisher address that the subscriber should connect to is <code>"tcp://127.0.0.1:5555"</code> </li>
+<li><code>native.sendqueuelength</code>: The length of the send queue, that is, when the subscriber receives messages slowly, the maximum number of messages published by the publisher that the TCP buffer can hold. if it exceeds, The message will be discarded if exceeds the capacity</li>
+<li><code>topics</code>: Subscribed <a href="../../architecture/event/#event-type">event type</a> , including block type, transaction type, etc.</li>
+</ul>
+<h2 id="start-node">Start node<a class="headerlink" href="#start-node" title="Permanent link">&para;</a></h2>
+<p>The event subscription service is disabled by default and needs to be enabled by adding the command line parameter <code>--es</code>. The start command of the node that enables the event subscription service is as follows:
+<div class="highlight"><pre><span></span><code>$ java -jar FullNode.jar --es
+</code></pre></div></p>
+<h2 id="prepare-event-subscription-script">Prepare event subscription script<a class="headerlink" href="#prepare-event-subscription-script" title="Permanent link">&para;</a></h2>
+<p>This article takes Nodejs as an example to illustrate how to subscribe to events.</p>
+<p>First, install the zeromq library:
+<div class="highlight"><pre><span></span><code>$ npm install zeromq@5
 </code></pre></div>
-<h2 id="community-discussion">Community discussion<a class="headerlink" href="#community-discussion" title="Permanent link">&para;</a></h2>
-<p>After the proposal issue is initiated, the initiator of the issue should try his best to promote it in the community, attract community users to participate in the discussion on the proposal, and update the proposal according to the results of the discussion.</p>
-<h2 id="initiate-a-voting-request">Initiate a voting request<a class="headerlink" href="#initiate-a-voting-request" title="Permanent link">&para;</a></h2>
-<p>Generally, the initiation time of the voting request set in the proposal is two weeks after the proposed issue is initiated. When the community has already fully discussed on the proposal and formed a community consensus, the super representative or super representative partner will initiate a voting request on the chain.</p>
-<h2 id="vote-and-take-effect">Vote and take effect<a class="headerlink" href="#vote-and-take-effect" title="Permanent link">&para;</a></h2>
-<p>The validity period of the voting request initiated on-chain is 3 days. During the validity period, all 27 super representatives can vote for the proposal. When the voting deadline is reached, if the number of votes obtained is equal to or greater than 18 votes, the proposal will take effect.</p>
+Then, write the subscriber code:
+<div class="highlight"><pre><span></span><code>// subscriber.js
+var zmq = require(&quot;zeromq&quot;),
+var sock = zmq.socket(&quot;sub&quot;);
+
+sock.connect(&quot;tcp://127.0.0.1:5555&quot;);
+sock.subscribe(&quot;block&quot;);
+console.log(&quot;Subscriber connected to port 5555&quot;);
+
+sock.on(&quot;message&quot;, function(topic, message) {
+  console.log(
+    &quot;received a message related to:&quot;,
+    Buffer.from(topic).toString(),
+    &quot;, containing message:&quot;,
+    Buffer.from(message).toString()
+  );
+});
+</code></pre></div>
+This example connects the subscriber to the node event publisher and subscribes to <code>block</code> events.</p>
+<h2 id="start-subscriber">Start subscriber<a class="headerlink" href="#start-subscriber" title="Permanent link">&para;</a></h2>
+<p>Start command of Nodejs is as below:</p>
+<p><div class="highlight"><pre><span></span><code>$ node subscriber.js
+
+&gt; Subscriber connected to port 5555
+</code></pre></div>
+When the node has a new block, the subscriber will receive block event, the output information is as follows:
+<div class="highlight"><pre><span></span><code>received a message related to: blockTrigger, containing message: {&quot;timeStamp&quot;:1678343709000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1361,&quot;blockHash&quot;:&quot;00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1361,&quot;transactionList&quot;:[]}
+received a message related to: blockTrigger, containing message: {&quot;timeStamp&quot;:1678343712000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1362,&quot;blockHash&quot;:&quot;0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1362,&quot;transactionList&quot;:[]}
+</code></pre></div></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../issue-workflow/" class="btn btn-neutral float-left" title="Issue Workflow"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../run-in-idea/" class="btn btn-neutral float-right" title="Configure the IDE">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../architecture/event/" class="btn btn-neutral float-left" title="Using Event Plugin"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../architecture/database/" class="btn btn-neutral float-right" title="Database Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -306,10 +329,10 @@ The specific technical specifications or background information of the proposal
         </span>
     
     
-      <span><a href="../issue-workflow/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../architecture/event/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../run-in-idea/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../architecture/database/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
