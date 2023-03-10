@@ -1,8 +1,10 @@
-# Tron Event Subsystem
+# Using Event Plugin for Event Subscription
 
-## Introduction
+## TIP
 
-The TIP: [TIP-12: Tron event subscribes model](https://github.com/tronprotocol/TIPs/blob/master/tip-12.md).
+The TIP: [TIP-12:Tron event subscribes model](https://github.com/tronprotocol/tips/blob/master/tip-28.md) .
+
+## Event Type
 
 TRON Event Subscription supports 4 types of event:
 

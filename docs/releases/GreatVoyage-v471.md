@@ -33,7 +33,7 @@ GreatVoyage-v4.7.1(Sartre) version deletes the useless solidified block query AP
 
 Source code: [https://github.com/tronprotocol/java-tron/pull/4997](https://github.com/tronprotocol/java-tron/pull/4997)  
 ### 2. Optimize resource delegation relationship API
-GreatVoyage-v4.7.1 (Sartre) version optimizes the resource delegation relationship query API, addes the check to the interface parameters, and makes the interface more stable.
+GreatVoyage-v4.7.1 (Sartre) version optimizes the resource delegation relationship query API, adds the check to the interface parameters, and makes the interface more stable.
 
 
 
