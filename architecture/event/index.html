@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/architecture/event/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Using Event Plugin - Java Tron</title>
+    <title>Event Subscription - Java Tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Using Event Plugin";
+        var mkdocs_page_name = "Event Subscription";
         var mkdocs_page_input_path = "architecture/event.md";
         var mkdocs_page_url = "/documentation-en/architecture/event/";
       </script>
@@ -55,10 +55,10 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Event Subscription</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Event Subscription</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Using Event Plugin</a>
-    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#using-event-plugin-for-event-subscription">Using Event Plugin for Event Subscription</a>
+        <ul>
     <li class="toctree-l3"><a class="reference internal" href="#tip">TIP</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#event-type">Event Type</a>
@@ -83,10 +83,20 @@
     </li>
         </ul>
     </li>
-    </ul>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/builtin_message_queue/">Use the Built-in Message Queue</a>
-                </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-java-trons-built-in-message-queue-for-event-subscription">Using Java-tron's Built-in Message Queue for Event Subscription</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-node">Configure node</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start-node">Start node</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#prepare-event-subscription-script">Prepare event subscription script</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start-subscriber">Start subscriber</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../database/">Database Configuration</a>
@@ -95,11 +105,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Tools</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../using_javatron/toolkit/">Database Partition</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Tools</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
@@ -140,15 +146,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Core Modules</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../developers/code-structure/">Overview</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../developers/chainbase/">Chainbase</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../developers/network/">Network</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For DAPP developers</span></p>
@@ -169,49 +167,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">History</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v471/">GreatVoyage-v4.7.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v470/">GreatVoyage-v4.7.0.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v452/">GreatVoyage-v4.5.2</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v451/">GreatVoyage-v4.5.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v446/">GreatVoyage-v4.4.6</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v445/">GreatVoyage-v4.4.5</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v444/">GreatVoyage-v4.4.4</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v442/">GreatVoyage-v4.4.2</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v440/">GreatVoyage-v4.4.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v430/">GreatVoyage-v4.3.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v4221/">GreatVoyage-v4.2.2.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v422/">GreatVoyage-v4.2.2</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v420/">GreatVoyage-v4.2.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v413/">GreatVoyage-v4.1.3</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v412/">GreatVoyage-v4.1.2</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v411/">GreatVoyage-v4.1.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v400/">GreatVoyage-v4.0.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v37/">Odyssey-v3.7</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
                   </li>
               </ul>
               <ul>
@@ -232,8 +188,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li>
-          <li>Event Subscription &raquo;</li><li>Using Event Plugin</li>
+          <li>Using Java-tron &raquo;</li><li>Event Subscription</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/architecture/event.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -245,12 +200,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="using-event-plugin-for-event-subscription">Using Event Plugin for Event Subscription<a class="headerlink" href="#using-event-plugin-for-event-subscription" title="Permanent link">&para;</a></h1>
-<h2 id="tip">TIP<a class="headerlink" href="#tip" title="Permanent link">&para;</a></h2>
+                <h1 id="event-subscription">Event Subscription<a class="headerlink" href="#event-subscription" title="Permanent link">&para;</a></h1>
+<h2 id="using-event-plugin-for-event-subscription">Using Event Plugin for Event Subscription<a class="headerlink" href="#using-event-plugin-for-event-subscription" title="Permanent link">&para;</a></h2>
+<h3 id="tip">TIP<a class="headerlink" href="#tip" title="Permanent link">&para;</a></h3>
 <p>The TIP: <a href="https://github.com/tronprotocol/tips/blob/master/tip-12.md">TIP-12:Tron event subscribes model</a> .</p>
-<h2 id="event-type">Event Type<a class="headerlink" href="#event-type" title="Permanent link">&para;</a></h2>
+<h3 id="event-type">Event Type<a class="headerlink" href="#event-type" title="Permanent link">&para;</a></h3>
 <p>TRON Event Subscription supports 4 types of event:</p>
-<h3 id="transaction-event">Transaction Event<a class="headerlink" href="#transaction-event" title="Permanent link">&para;</a></h3>
+<h4 id="transaction-event">Transaction Event<a class="headerlink" href="#transaction-event" title="Permanent link">&para;</a></h4>
 <p>The parameters passed to Subscriber:</p>
 <div class="highlight"><pre><span></span><code>transactionId: transaction hash
 blockHash: block hash
@@ -260,7 +216,7 @@ energyFee: energy fee
 originEnergyUsage: origin energy usage
 energyUsageTotal: total energy usage total
 </code></pre></div>
-<h3 id="block-event">Block Event<a class="headerlink" href="#block-event" title="Permanent link">&para;</a></h3>
+<h4 id="block-event">Block Event<a class="headerlink" href="#block-event" title="Permanent link">&para;</a></h4>
 <p>The parameters passed to Subscriber:</p>
 <div class="highlight"><pre><span></span><code>blockHash: block hash
 blockNumber: block number
@@ -268,7 +224,7 @@ transactionSize: the number of transactions in a block
 latestSolidifiedBlockNumber: the latest solidified block number
 transactionList: the transactions hash list
 </code></pre></div>
-<h3 id="contract-event">Contract Event<a class="headerlink" href="#contract-event" title="Permanent link">&para;</a></h3>
+<h4 id="contract-event">Contract Event<a class="headerlink" href="#contract-event" title="Permanent link">&para;</a></h4>
 <p>The parameters passed to Subscriber:</p>
 <div class="highlight"><pre><span></span><code>transactionId: transaction id
 contractAddress: contract address
@@ -280,7 +236,7 @@ topicMap: the map of topic in solidity language
 data: the data information in solidity language
 removed: &#39;true&#39; means the log is removed
 </code></pre></div>
-<h3 id="contract-log-event">Contract Log Event<a class="headerlink" href="#contract-log-event" title="Permanent link">&para;</a></h3>
+<h4 id="contract-log-event">Contract Log Event<a class="headerlink" href="#contract-log-event" title="Permanent link">&para;</a></h4>
 <p>The parameters passed to Subscriber:</p>
 <div class="highlight"><pre><span></span><code>transactionId: transaction hash
 contractAddress: contract address
@@ -301,23 +257,23 @@ contractTopics: contract topics list
 <p class="admonition-title">Note</p>
 <p>Historical data query is not supported.</p>
 </div>
-<h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
+<h3 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Supporting event plug-ins, kafka &amp; mongodb plug-ins have been released, developers can also customize their own plug-ins according to their own needs.</li>
 <li>Supporting subscription of chain data, such as block, transaction, contract log, contract event and so on. For transaction events, developers can get information such as internal transactions, contract info and so on; for contract events, developers could configure the contract addresses list or contract topic list to receive the specified events, and event subscription has a very low latency. The deployed fullnode can receive event information immediately after the contract is executed.</li>
 <li>Event query service tron-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is <a href="https://api.tronex.io">https://api.tronex.io</a>.</li>
 </ol>
-<h2 id="github-project">Github project<a class="headerlink" href="#github-project" title="Permanent link">&para;</a></h2>
+<h3 id="github-project">Github project<a class="headerlink" href="#github-project" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/tronprotocol/event-plugin">tronprotocol/event-plugin</a></li>
 <li><a href="https://github.com/tronprotocol/tron-eventquery">tronprotocol/tron-eventquery</a></li>
 </ul>
-<h3 id="event-plugin">Event plugin<a class="headerlink" href="#event-plugin" title="Permanent link">&para;</a></h3>
+<h4 id="event-plugin">Event plugin<a class="headerlink" href="#event-plugin" title="Permanent link">&para;</a></h4>
 <ul>
 <li><a href="../../developers/deployment/#kafka">Kafka deployment</a></li>
 <li><a href="../../developers/deployment/#mongo">MongoDB deployment</a></li>
 </ul>
-<h3 id="event-query">Event query<a class="headerlink" href="#event-query" title="Permanent link">&para;</a></h3>
+<h4 id="event-query">Event query<a class="headerlink" href="#event-query" title="Permanent link">&para;</a></h4>
 <p>Tron Event Query Service</p>
 <p>TronEventQuery is implemented with Tron's new event subscribe model. It uses same query interface with Tron-Grid. Users can also subscribe block trigger, transaction trigger, contract log trigger, and contract event trigger. TronEvent is independent of a particular branch of java-tron, the new event subscribes model will be released on version 3.5 of java-tron.</p>
 <p>For more information of tron event subscribe model, please refer to <a href="https://github.com/tronprotocol/TIPs/issues/12">TIP-12</a>.</p>
@@ -325,12 +281,80 @@ contractTopics: contract topics list
 <li><a href="https://tronprotocol.github.io/documentation-en/developers/deployment/#event-subscribe-plugin-deployment">Event query deployment</a></li>
 <li><a href="https://github.com/tronprotocol/documentation-en/tree/master/docs_without_index/plugin/event-query-http.md">Event query HTTP API</a></li>
 </ul>
+<h2 id="using-java-trons-built-in-message-queue-for-event-subscription">Using Java-tron's Built-in Message Queue for Event Subscription<a class="headerlink" href="#using-java-trons-built-in-message-queue-for-event-subscription" title="Permanent link">&para;</a></h2>
+<p>TRON provides event subscription service. Developers can not only obtain on-chain events through event plugin, but also through <a href="https://github.com/tronprotocol/tips/blob/master/tip-28.md">Java-tron’s built-in ZeroMQ message queue</a>. The difference is that event plugin needs to be additionally deployed, which is used to implement event storage: developers can choose appropriate storage tools according to their needs, such as MongoDB, Kafka, etc., and the plugin help complete the storage of subscribed events. Java-tron's built-in ZeroMQ does not require additional deployment operations. Event subscribers can directly connect to the publisher's ip and port, set subscription topics, and receive subscribed events. However, this method does not provide event storage. Therefore, when developers want to subscribe to events directly from nodes for a short period of time, then using the built-in message queue will be a more appropriate choice.</p>
+<p>This article will introduce how to subscribe to events through Java-tron's built-in message queue in detail.</p>
+<h3 id="configure-node">Configure node<a class="headerlink" href="#configure-node" title="Permanent link">&para;</a></h3>
+<p>To use the built-in ZeroMQ of the node for event subscription, you need to set the configuration item <code>useNativeQueue</code> to <code>true</code> in the node configuration file.</p>
+<div class="highlight"><pre><span></span><code>event.subscribe = {
+  native = {
+    useNativeQueue = true // if true, use native message queue, else use event plugin.
+    bindport = 5555 // bind port
+    sendqueuelength = 1000 //max length of send queue
+  }
+
+  ......
+
+  topics = [
+    {
+      triggerName = &quot;block&quot; // block trigger, the value can&#39;t be modified
+      enable = true
+      topic = &quot;block&quot; // plugin topic, the value could be modified
+    },
+    ......
+  ]
+}
+</code></pre></div>
+<ul>
+<li><code>native.useNativeQueue</code>: <code>true</code> is to use the built-in message queue, <code>false</code> is to use the event plugin</li>
+<li><code>native.bindport</code>: ZeroMQ publisher binding port. In this example, it is <code>5555</code>, so the publisher address that the subscriber should connect to is <code>"tcp://127.0.0.1:5555"</code> </li>
+<li><code>native.sendqueuelength</code>: The length of the send queue, that is, when the subscriber receives messages slowly, the maximum number of messages published by the publisher that the TCP buffer can hold. if it exceeds, The message will be discarded if exceeds the capacity</li>
+<li><code>topics</code>: Subscribed <a href="../../architecture/event/#event-type">event type</a> , including block type, transaction type, etc.</li>
+</ul>
+<h3 id="start-node">Start node<a class="headerlink" href="#start-node" title="Permanent link">&para;</a></h3>
+<p>The event subscription service is disabled by default and needs to be enabled by adding the command line parameter <code>--es</code>. The start command of the node that enables the event subscription service is as follows:
+<div class="highlight"><pre><span></span><code>$ java -jar FullNode.jar --es
+</code></pre></div></p>
+<h3 id="prepare-event-subscription-script">Prepare event subscription script<a class="headerlink" href="#prepare-event-subscription-script" title="Permanent link">&para;</a></h3>
+<p>This article takes Nodejs as an example to illustrate how to subscribe to events.</p>
+<p>First, install the zeromq library:
+<div class="highlight"><pre><span></span><code>$ npm install zeromq@5
+</code></pre></div>
+Then, write the subscriber code:
+<div class="highlight"><pre><span></span><code>// subscriber.js
+var zmq = require(&quot;zeromq&quot;),
+var sock = zmq.socket(&quot;sub&quot;);
+
+sock.connect(&quot;tcp://127.0.0.1:5555&quot;);
+sock.subscribe(&quot;block&quot;);
+console.log(&quot;Subscriber connected to port 5555&quot;);
+
+sock.on(&quot;message&quot;, function(topic, message) {
+  console.log(
+    &quot;received a message related to:&quot;,
+    Buffer.from(topic).toString(),
+    &quot;, containing message:&quot;,
+    Buffer.from(message).toString()
+  );
+});
+</code></pre></div>
+This example connects the subscriber to the node event publisher and subscribes to <code>block</code> events.</p>
+<h3 id="start-subscriber">Start subscriber<a class="headerlink" href="#start-subscriber" title="Permanent link">&para;</a></h3>
+<p>Start command of Nodejs is as below:</p>
+<p><div class="highlight"><pre><span></span><code>$ node subscriber.js
+
+&gt; Subscriber connected to port 5555
+</code></pre></div>
+When the node has a new block, the subscriber will receive block event, the output information is as follows:
+<div class="highlight"><pre><span></span><code>received a message related to: blockTrigger, containing message: {&quot;timeStamp&quot;:1678343709000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1361,&quot;blockHash&quot;:&quot;00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1361,&quot;transactionList&quot;:[]}
+received a message related to: blockTrigger, containing message: {&quot;timeStamp&quot;:1678343712000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1362,&quot;blockHash&quot;:&quot;0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1362,&quot;transactionList&quot;:[]}
+</code></pre></div></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../../using_javatron/private_network/" class="btn btn-neutral float-left" title="Private Network"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../using_javatron/builtin_message_queue/" class="btn btn-neutral float-right" title="Use the Built-in Message Queue">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../database/" class="btn btn-neutral float-right" title="Database Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -360,7 +384,7 @@ contractTopics: contract topics list
       <span><a href="../../using_javatron/private_network/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../using_javatron/builtin_message_queue/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../database/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

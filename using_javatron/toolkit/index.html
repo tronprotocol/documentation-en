@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Database Partition - Java Tron</title>
+    <title>Tools - Java Tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Database Partition";
+        var mkdocs_page_name = "Tools";
         var mkdocs_page_input_path = "using_javatron/toolkit.md";
         var mkdocs_page_url = "/documentation-en/using_javatron/toolkit/";
       </script>
@@ -55,13 +55,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../private_network/">Private Network</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Event Subscription</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../architecture/event/">Using Event Plugin</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../builtin_message_queue/">Use the Built-in Message Queue</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
                   </li>
@@ -69,28 +63,24 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Tools</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Tools</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Database Partition</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#compile">Compile</a>
+    <li class="toctree-l2"><a class="reference internal" href="#compile">Compile</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#options">Options</a>
+    <li class="toctree-l2"><a class="reference internal" href="#options">Options</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#usage-instructions">Usage Instructions</a>
+    <li class="toctree-l2"><a class="reference internal" href="#usage-instructions">Usage Instructions</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#stop-fullnode-service">Stop FullNode Service</a>
+    <li class="toctree-l3"><a class="reference internal" href="#stop-fullnode-service">Stop FullNode Service</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#configure-for-database-storage-migration">Configure For Database Storage Migration</a>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-for-database-storage-migration">Configure For Database Storage Migration</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#perform-database-migration">Perform Database Migration</a>
+    <li class="toctree-l3"><a class="reference internal" href="#perform-database-migration">Perform Database Migration</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#restart-fullnode-service">Restart FullNode Service</a>
+    <li class="toctree-l3"><a class="reference internal" href="#restart-fullnode-service">Restart FullNode Service</a>
     </li>
         </ul>
     </li>
-    </ul>
-                </li>
     </ul>
                   </li>
               </ul>
@@ -132,15 +122,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Core Modules</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../developers/code-structure/">Overview</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../developers/chainbase/">Chainbase</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../developers/network/">Network</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For DAPP developers</span></p>
@@ -161,49 +143,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">History</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v471/">GreatVoyage-v4.7.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v470/">GreatVoyage-v4.7.0.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v460/">GreatVoyage-v4.6.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v452/">GreatVoyage-v4.5.2</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v451/">GreatVoyage-v4.5.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v446/">GreatVoyage-v4.4.6</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v445/">GreatVoyage-v4.4.5</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v444/">GreatVoyage-v4.4.4</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v442/">GreatVoyage-v4.4.2</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v440/">GreatVoyage-v4.4.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v430/">GreatVoyage-v4.3.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v4221/">GreatVoyage-v4.2.2.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v422/">GreatVoyage-v4.2.2</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v420/">GreatVoyage-v4.2.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v413/">GreatVoyage-v4.1.3</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v412/">GreatVoyage-v4.1.2</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v411/">GreatVoyage-v4.1.1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/GreatVoyage-v400/">GreatVoyage-v4.0.0</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v37/">Odyssey-v3.7</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../releases/Odyssey-v365/">Odyssey-v3.6.5</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
                   </li>
               </ul>
               <ul>
@@ -224,8 +164,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li>
-          <li>Tools &raquo;</li><li>Database Partition</li>
+          <li>Using Java-tron &raquo;</li><li>Tools</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/toolkit.md"
           class="icon icon-github"> Edit on GitHub</a>
