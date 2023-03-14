@@ -10,14 +10,11 @@ nav:
         - Backup & Restore: using_javatron/backup_restore.md
         - Lite Fullnode: developers/litefullnode.md
         - Private Network: using_javatron/private_network.md
-        - Event Subscription:
-            - Using Event Plugin: architecture/event.md
-            - Use the Built-in Message Queue: using_javatron/builtin_message_queue.md
+        - Event Subscription: architecture/event.md
         - Database Configuration: architecture/database.md
         - Network Configuration: using_javatron/connecting_to_tron.md
         - Node Monitoring: using_javatron/metrics.md
-        - Tools:
-            - Database Partition: using_javatron/toolkit.md
+        - Tools: using_javatron/toolkit.md
     - API:
         - HTTP API: api/http.md
         - gRPC API: api/rpc.md
@@ -36,10 +33,7 @@ nav:
         - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md
         - Development Example: developers/demo.md
-        - Core Modules:
-            - Overview: developers/code-structure.md
-            - Chainbase: developers/chainbase.md
-            - Network: developers/network.md
+        - Core Modules: developers/code-structure.md
     - For DAPP developers:
         - Dapp Development Tool: contracts/compiler.md
     - Wallet-cli:
@@ -48,27 +42,7 @@ nav:
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
-        - History:
-            - GreatVoyage-v4.7.1: releases/GreatVoyage-v471.md
-            - GreatVoyage-v4.7.0.1: releases/GreatVoyage-v470.md
-            - GreatVoyage-v4.6.0: releases/GreatVoyage-v460.md
-            - GreatVoyage-v4.5.2: releases/GreatVoyage-v452.md
-            - GreatVoyage-v4.5.1: releases/GreatVoyage-v451.md
-            - GreatVoyage-v4.4.6: releases/GreatVoyage-v446.md
-            - GreatVoyage-v4.4.5: releases/GreatVoyage-v445.md
-            - GreatVoyage-v4.4.4: releases/GreatVoyage-v444.md
-            - GreatVoyage-v4.4.2: releases/GreatVoyage-v442.md
-            - GreatVoyage-v4.4.0: releases/GreatVoyage-v440.md
-            - GreatVoyage-v4.3.0: releases/GreatVoyage-v430.md
-            - GreatVoyage-v4.2.2.1: releases/GreatVoyage-v4221.md
-            - GreatVoyage-v4.2.2: releases/GreatVoyage-v422.md
-            - GreatVoyage-v4.2.0: releases/GreatVoyage-v420.md
-            - GreatVoyage-v4.1.3: releases/GreatVoyage-v413.md
-            - GreatVoyage-v4.1.2: releases/GreatVoyage-v412.md
-            - GreatVoyage-v4.1.1: releases/GreatVoyage-v411.md
-            - GreatVoyage-v4.0.0: releases/GreatVoyage-v400.md
-            - Odyssey-v3.7: releases/Odyssey-v37.md
-            - Odyssey-v3.6.5: releases/Odyssey-v365.md
+        - History: releases/history.md
     - Glossary: glossary.md
 
 theme: readthedocs
