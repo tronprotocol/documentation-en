@@ -734,7 +734,7 @@ Return: Transaction object
 
 - wallet/gettransactionsign
 
-Description: To sign a transaction
+Description: Sign the transaction, it is recommended to sign transactions offline.
 ```console
 $ curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d
 '{
@@ -1073,7 +1073,7 @@ Note: The unit of 'amount' is the smallest unit of the token
 
 - wallet/easytransfer
 
-Description: Easy transfer
+Description: Easy transfer. This interface has been deprecated.
 ```console
 $ curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d
 '{
@@ -1095,7 +1095,7 @@ Note: Using this api may leak out private key, please ensure using this api in a
 
 - wallet/easytransferasset
 
-Description: Easy token transfer
+Description: Easy token transfer. This interface has been deprecated.
 ```console
 demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d
 '{
@@ -1121,7 +1121,8 @@ The unit of 'amount' is the smallest unit of the token
 
 - wallet/createaddress
 
-Description: Create an address with a password
+Description: Creates an address from the specified password string (not the private key).This interface has been deprecated, please generate address offline.
+
 ```console
 $ curl -X POST http://127.0.0.1:8090/wallet/createaddress -d
 '{
@@ -1596,7 +1597,7 @@ Return: The time interval till the next vote round(unit: ms)
 
 - wallet/easytransferbyprivate
 
-Description: TRX Easy transfer
+Description: TRX Easy transfer. This interface has been deprecated.
 ```console
 $ curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d
 '{
@@ -1618,7 +1619,7 @@ Note: Using this api may leak out private key, please ensure using this api in a
 
 - wallet/easytransferassetbyprivate
 
-Description: Token easy transfer
+Description: Token easy transfer. This interface has been deprecated.
 ```console
 $ curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d
 '{
@@ -1644,7 +1645,7 @@ The unit of 'amount' is the smallest unit of the token
 
 - wallet/generateaddress
 
-Description: Generate address and private key
+Description: Generate a random private key and address. This API has been deprecated, please generate address offline.
 ```console
 $ curl -X GET  http://127.0.0.1:8090/wallet/generateaddress
 ```
@@ -2235,7 +2236,7 @@ Return: Transaction object
 
 - wallet/addtransactionsign
 
-Description: To sign the transaction of trigger constant contract
+Description: To sign the transaction of trigger constant contract. (Trongrid has disabled this interface service, please use the interface provided by your local node.)
 ```console
 $ curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d
 '{
