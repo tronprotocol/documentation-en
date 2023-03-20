@@ -2094,15 +2094,36 @@ The unit of 'amount' is the smallest unit of the token</p>
 <ul>
 <li>wallet/addtransactionsign</li>
 </ul>
-<p>Description: To sign the transaction of trigger constant contract. (Trongrid has disabled this interface service, please use the interface provided by your local node.)
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/addtransactionsign<span class="w"> </span>-d
-<span class="go">&#39;{</span>
-<span class="go">    &quot;owner_address&quot;: &quot;41a7d8a35b260395c14aa456297662092ba3b76fc0&quot;,</span>
-<span class="go">    &quot;contract_address&quot;: &quot;417bcb781f4743afaacf9f9528f3ea903b3782339f&quot;</span>
-<span class="go">}&#39;</span>
+<p>Description: To sign the transaction or add signature to the multi-sign transaction. But it is recommended to add signature for transactions offline.
+<div class="highlight"><pre><span></span><code>$ curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d &#39;{
+    &quot;transaction&quot;: {
+        &quot;visible&quot;: true,
+        &quot;txID&quot;: &quot;752cece5a68e40e30eaeeb4c5844b3f4b004d23485ccef42e0609a9a90eeb675&quot;,
+        &quot;raw_data&quot;: {
+            &quot;contract&quot;: [{
+                &quot;parameter&quot;: {
+                    &quot;value&quot;: {
+                        &quot;data&quot;: &quot;a9059cbb0000000000000000000000415a523b449890854c8fc460ab602df9f31fe4293f00000000000000000000000000000000000000000000000000000000000001f4&quot;,
+                        &quot;owner_address&quot;: &quot;TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ&quot;,
+                        &quot;contract_address&quot;: &quot;TVf6sdWWu8zvmtcWfZerMDefoptiVhbhXC&quot;
+                    },
+                    &quot;type_url&quot;: &quot;type.googleapis.com/protocol.TriggerSmartContract&quot;
+                },
+                &quot;type&quot;: &quot;TriggerSmartContract&quot;
+            }],
+            &quot;ref_block_bytes&quot;: &quot;0883&quot;,
+            &quot;ref_block_hash&quot;: &quot;84c32fcee77f6be7&quot;,
+            &quot;expiration&quot;: 1556449785000,
+            &quot;fee_limit&quot;: 10000,
+            &quot;timestamp&quot;: 1556449725625
+        },
+        &quot;raw_data_hex&quot;: &quot;0a020883220884c32fcee77f6be740a8e98b9da62d5aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a1541a7d8a35b260395c14aa456297662092ba3b76fc0121541d7f5e9b3b997006444c1646ecfae6549b5737e622244a9059cbb0000000000000000000000415a523b449890854c8fc460ab602df9f31fe4293f00000000000000000000000000000000000000000000000000000000000001f470b999889da62d9001904e&quot;
+    },
+    &quot;privateKey&quot;: &quot;950139607044677436d29ff1ea2900c9402f783a91547cdc47cf706f1129c76a&quot;
+    }&#39;
 </code></pre></div></p>
-<p>Parameter owner_address: Owner address of the smart contract</p>
-<p>Parameter contract_address: Smart contract address, default hexString</p>
+<p>Parameter transaction: transaction object</p>
+<p>Parameter privateKey: the privatekey of owner_address，hexString</p>
 <p>Return: Transaction object after sign</p>
 <ul>
 <li>wallet/getsignweight</li>
