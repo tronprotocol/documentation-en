@@ -2236,18 +2236,39 @@ Return: Transaction object
 
 - wallet/addtransactionsign
 
-Description: To sign the transaction of trigger constant contract. (Trongrid has disabled this interface service, please use the interface provided by your local node.)
-```console
-$ curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d
-'{
-    "owner_address": "41a7d8a35b260395c14aa456297662092ba3b76fc0",
-    "contract_address": "417bcb781f4743afaacf9f9528f3ea903b3782339f"
-}'
+Description: To sign the transaction or add signature to the multi-sign transaction. But it is recommended to add signature for transactions offline.
+```
+$ curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{
+    "transaction": {
+        "visible": true,
+        "txID": "752cece5a68e40e30eaeeb4c5844b3f4b004d23485ccef42e0609a9a90eeb675",
+        "raw_data": {
+            "contract": [{
+                "parameter": {
+                    "value": {
+                        "data": "a9059cbb0000000000000000000000415a523b449890854c8fc460ab602df9f31fe4293f00000000000000000000000000000000000000000000000000000000000001f4",
+                        "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+                        "contract_address": "TVf6sdWWu8zvmtcWfZerMDefoptiVhbhXC"
+                    },
+                    "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+                },
+                "type": "TriggerSmartContract"
+            }],
+            "ref_block_bytes": "0883",
+            "ref_block_hash": "84c32fcee77f6be7",
+            "expiration": 1556449785000,
+            "fee_limit": 10000,
+            "timestamp": 1556449725625
+        },
+        "raw_data_hex": "0a020883220884c32fcee77f6be740a8e98b9da62d5aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a1541a7d8a35b260395c14aa456297662092ba3b76fc0121541d7f5e9b3b997006444c1646ecfae6549b5737e622244a9059cbb0000000000000000000000415a523b449890854c8fc460ab602df9f31fe4293f00000000000000000000000000000000000000000000000000000000000001f470b999889da62d9001904e"
+    },
+    "privateKey": "950139607044677436d29ff1ea2900c9402f783a91547cdc47cf706f1129c76a"
+    }'
 ```
 
-Parameter owner_address: Owner address of the smart contract
+Parameter transaction: transaction object
 
-Parameter contract_address: Smart contract address, default hexString
+Parameter privateKey: the privatekey of owner_address，hexString
 
 Return: Transaction object after sign
 
