@@ -968,7 +968,7 @@ Description: check the status whether the specified shielded TRC-20 note is spen
 <ul>
 <li>wallet/gettransactionsign</li>
 </ul>
-<p>Description: To sign a transaction
+<p>Description: Sign the transaction, it is recommended to sign transactions offline.
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/gettransactionsign<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;transaction&quot;: {</span>
@@ -1232,7 +1232,7 @@ Return: The balance object of the account in a specific block, the <code>block_i
 <ul>
 <li>wallet/easytransfer</li>
 </ul>
-<p>Description: Easy transfer
+<p>Description: Easy transfer. This interface has been deprecated.
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/easytransfer<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;passPhrase&quot;: &quot;your password&quot;,</span>
@@ -1248,7 +1248,7 @@ Return: The balance object of the account in a specific block, the <code>block_i
 <ul>
 <li>wallet/easytransferasset</li>
 </ul>
-<p>Description: Easy token transfer
+<p>Description: Easy token transfer. This interface has been deprecated.
 <div class="highlight"><pre><span></span><code><span class="go">demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d</span>
 <span class="go">&#39;{</span>
 <span class="go">    &quot;passPhrase&quot;: &quot;your password&quot;,</span>
@@ -1267,12 +1267,12 @@ The unit of 'amount' is the smallest unit of the token</p>
 <ul>
 <li>wallet/createaddress</li>
 </ul>
-<p>Description: Create an address with a password
+<p>Description: Creates an address from the specified password string (not the private key).This interface has been deprecated, please generate address offline.</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/createaddress<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;value&quot;: &quot;3230313271756265696a696e67&quot;</span>
 <span class="go">}&#39;</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Parameter value: Password, default hexString</p>
 <p>Return: An address</p>
 <p>Note: Using this api may leak out private key, please ensure using this api in a secure network</p>
@@ -1625,7 +1625,7 @@ Parameter number: The block number.</p>
 <ul>
 <li>wallet/easytransferbyprivate</li>
 </ul>
-<p>Description: TRX Easy transfer
+<p>Description: TRX Easy transfer. This interface has been deprecated.
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/easytransferbyprivate<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;privateKey&quot;: &quot;D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366&quot;,</span>
@@ -1641,7 +1641,7 @@ Parameter number: The block number.</p>
 <ul>
 <li>wallet/easytransferassetbyprivate</li>
 </ul>
-<p>Description: Token easy transfer
+<p>Description: Token easy transfer. This interface has been deprecated.
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/easytransferassetbyprivate<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;privateKey&quot;: &quot;D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366&quot;,</span>
@@ -1660,7 +1660,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <ul>
 <li>wallet/generateaddress</li>
 </ul>
-<p>Description: Generate address and private key
+<p>Description: Generate a random private key and address. This API has been deprecated, please generate address offline.
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w">  </span>http://127.0.0.1:8090/wallet/generateaddress
 </code></pre></div></p>
 <p>Parameter: No parameter</p>
@@ -2094,7 +2094,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <ul>
 <li>wallet/addtransactionsign</li>
 </ul>
-<p>Description: To sign the transaction of trigger constant contract
+<p>Description: To sign the transaction of trigger constant contract. (Trongrid has disabled this interface service, please use the interface provided by your local node.)
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/addtransactionsign<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41a7d8a35b260395c14aa456297662092ba3b76fc0&quot;,</span>

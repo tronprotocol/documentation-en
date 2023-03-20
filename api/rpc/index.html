@@ -320,6 +320,7 @@ Token update can only be initiated by the token issuer to update token descripti
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>37.&nbsp;To sign a transaction</strong>
+Sign the transaction, it is recommended to sign transactions offline.
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionSign</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
@@ -330,7 +331,8 @@ Nodes: Fullnode</p>
 <p><strong>39.&nbsp;TRX easy transfer</strong>
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">EasyTransfer</span><span class="w"> </span><span class="p">(</span><span class="n">EasyTransferMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">EasyTransferResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
-Nodes: FullNode</p>
+Nodes: FullNode
+Note: This interface has been deprecated.</p>
 <p><strong>40.&nbsp;Deploy a smart contract</strong>
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">DeployContract</span><span class="w"> </span><span class="p">(</span><span class="n">CreateSmartContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
