@@ -182,12 +182,14 @@ rpc getTransactionsToThis (Account) returns (NumberMessage) {}
 Nodes: SolidityNode
 
 **28.&nbsp;Stake TRX**
+This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
 ```protobuf
 rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {}
 ```
 Nodes: FullNode
 
 **29.&nbsp;Unstake TRX**
+Unstake the TRX staked during Stake1.0.
 ```protobuf
 rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {}
 ```
@@ -465,3 +467,32 @@ Nodes: FullNode
 Interface statement:  
 rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
 Nodes: FullNode and SolidityNode
+
+**76.&nbsp;Freeze TRX**
+```protobuf
+rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
+```
+Nodes: FullNode
+**77.&nbsp;UnFreeze TRX**
+```protobuf
+rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
+```
+Nodes: FullNode
+
+**78.&nbsp;Withdraw Staked TRX**
+```protobuf
+rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
+```
+Nodes: FullNode
+
+**79.&nbsp;Delegate Resource**
+```protobuf
+rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
+```
+Nodes: FullNode
+
+**80.&nbsp;UnDelegate Resource**
+```protobuf
+rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
+```
+Nodes: FullNode
