@@ -418,54 +418,64 @@ Nodes: FullNode, SolidityNode
 Nodes: FullNode
 
 
-**66.&nbsp;Create an market order**      
-Interface statement:    
+**66.&nbsp;Create an market order**       
+```
 rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+```
 Nodes: FullNode
  
 **67.&nbsp;Cancel the order**      
-Interface statement:    
+```   
 rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+```
 Nodes: FullNode 
 
 **68.&nbsp;Get all orders for the account**      
-Interface statement:    
+```
 rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+```
 Nodes: FullNode 
 
-**69.&nbsp;Get all trading pairs**      
-Interface statement:    
+**69.&nbsp;Get all trading pairs**         
+```
 rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+```
 Nodes: FullNode 
 
-**70.&nbsp;Get all orders for the trading pair**      
-Interface statement:    
+**70.&nbsp;Get all orders for the trading pair**       
+```
 rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+```
 Nodes: FullNode 
 
 **71.&nbsp;Get all prices for the trading pair**      
-Interface statement:    
+```
 rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+```
 Nodes: FullNode 
 
 **72.&nbsp;Get order by id**      
-Interface statement: 
+```
 rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+```
 Nodes: FullNode 
 
 **73.&nbsp;perform a historical balance lookup**      
-Interface statement:  
+```
 rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
+```
 Nodes: FullNode 
 
 **74.&nbsp;fetch all balance-changing transactions in a block**      
-Interface statement:  
+```
 rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
+```
 Nodes: FullNode 
 
 **75.&nbsp;get the burn trx amount**      
-Interface statement:  
+```
 rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
+```
 Nodes: FullNode and SolidityNode
 
 **76.&nbsp;Freeze TRX**
