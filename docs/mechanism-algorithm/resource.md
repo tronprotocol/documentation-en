@@ -2,13 +2,16 @@
 
 ## Introduction
 
-TRON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by TRON's exclusive RAM model, TRON's RAM resource is almost infinite.
-
-TRON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage.
+Voting Right, bandwidth and energy are important system resources of the TRON network. Among them, voting rights are used to vote for super representatives; Bandwidth is the unit that measures the size of the transaction bytes stored in the blockchain database. The larger the transaction, the more bandwidth resources will be consumed. Energy is the unit that measures the amount of computation required by the TRON virtual machine to perform specific operations on the TRON network. Since smart contract transactions require computing resources to execute, each smart contract transaction requires to pay for the energy fee.
 
 !!! note
     - Ordinary transaction only consumes Bandwidth points
     - Smart contract related transaction not only consumes Bandwidth points, but also Energy
+
+## Voting Right
+Before any account can vote for super representatives, it needs to obtain voting rights, that is, TRON Power (TP). Voting rights can be obtained by staking TRX. In addition to obtaining bandwidth or energy, staking TRX will also obtain voting rights at the same time. Voters who stake 1TRX will receive 1TP. For how to stake, please refer to the [Staking on TRON Network](#staking-on-tron-network) chapter.
+
+Voters can stake multiple times, and the voting rights obtained by multiple stake will be added to the voter's account. Voters can query the total number of voting rights owned by the account and the number of used voting rights through the `wallet/getaccountresource` interface.
 
 ## Bandwidth Points
 
@@ -71,7 +74,7 @@ Stake TRX to get energy.
 Example (Using wallet-cli):
 
 ```text
-freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
+freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
 stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50_000_000_000.
@@ -212,18 +215,73 @@ Assert-style error introduction, refer to [Exception Handling(zh-cn)](https://gi
 
 To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.
 
-## Resource Delegation
-In TRON network, an account can stake TRX for Bandwidth or Energy for other accounts. The primary account owns the staked TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary staking, resource delegation staking is also at least 3 days.
+## Staking on TRON network
 
-+ Example(Using wallet-cli)
-```text
-freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 
-frozen_balance: the amount of TRX to stake (unit SUN)
-frozen_duration: the staking period (currently a fixed 3 days)
-ResourceCode: 0 for Bandwidth, 1 for Energy
-receiverAddress: recipient account address
+### How to stake to obtain system resources
+
+Energy and bandwidth resources are obtained by the account owner through staking, please use `wallet/freezebalancev2` to complete the stake operation through HTTP API, use [Stake2.0 Solidity API](https://developers.tron.network/docs/stake-20-solidity-api) to complete the stake operation through the contract.
+
+TRON allocates resources through the staking mechanism. In addition to obtaining bandwidth or energy resources, staking TRX will also obtain voting rights (TRON Power, TP for short) equal to the amount staked. Staking 1 TRX, you will get 1TP. The energy or bandwidth resources obtained by staking are used to pay transaction fees, and the obtained voting rights are used to vote for super representatives to obtain voting rewards.
+
+The unstaking operation will release the corresponding resources.
+
+### How to delegate resources
+
+After the account obtains energy or bandwidth resources through staking, it can delegate resources to other addresses through `delegateresource`, and can also take back allocated resources through `undelegateresource`. Please pay attention to the following situations when delegating resource:
+
+- Only energy and bandwidth can be delegated to other addresses, voting rights cannot be delegated
+- Only unused resources obtained by staking through Stake2.0 can be delegated to other addresses
+- Energy/Bandwidth can only be delegated to an activated external account address, not to a contract address
+
+You can use the `wallet/getcandelegatedmaxsize` interface to query the available delegation share of a certain resource type in the account. `Time lock` can be used when delegating resources. If time lock is used, after the resource delegating is completed, the resource delegation for the address only can be canceled after 3 days. During the locking period, if the user performs resource delegating for the same address again, it will Reset the 3-days waiting period. If the time lock is not used, the delegation can be canceled immediately after the resource is delegated.
+
+### How to unstake TRX
+
+After completing the TRX staking, you can unstake at any time. After unstaking, you need to wait for 14 days before you can withdraw the unstaked TRX into your account. 14 days is [the No.70 parameter](https://tronscan.org/#/sr/committee) of TRON network which can be voted on by network governance proposals. Please use `unfreezebalancev2` to complete unfreeze balance through HTTP API.
+
+The staked TRX can be partially unstaked multiple times, but only a maximum of 32 unstaking operations are allowed at the same time. That is to say, when a user initiates the first unstake operation, before the TRX of the first unstaking arrives and is ready to be withdrawn to his or her account, he or she can only initiate another 31 unstake operations. The remaining counts of unfreeze can be queried through the `getavailableunfreezecount` interface.
+
+The TRX that have been delegated cannot be unstaked. In addition to losing the same amount of resource shares, the unstaking will also lose the same amount of TP resources.
+
+When unstaking, if there are unclaimed voting rewards, the voting rewards will be automatically withdrawn to the account. If there is a previously unstaked principal that has passed the lock-up period, then this unstake operation will also withdraw the unstaked principal that has passed the lock-up period to the account at the same time. You can use the `gettransactioninfobyid`API to query the voting reward extracted in this transaction in `withdraw_amount` field and the withdrawn amount of unstaked TRX that has expired the lock-up period in `withdraw_expire_amount` field.
+
+#### TRON Power Reclaim
+
+After unstaking the TRX staked in the Stake2.0 stage, the same amount of voting rights will be lost. The system will first reclaim the idle voting rights in the account. If the idle TP is insufficient, it will continue to reclaim the used TP. If the user has voted for multiple super representatives, a certain number of votes will be withdrawn in proportion from each super representative, and the corresponding voting rights will be recovered. The calculation formula for withdrawing votes for each SR is,
+
 ```
+The number of votes withdrawn from the current super representative = total number of votes to be withdrawn  * (number of votes for the current super representative / total number of votes of this account)
+```
+
+
+
+For example, Suppose A staked 2,000TRX and obtained 2,000 TRON Power, of which 1,000 TRON Power voted for 2 super representatives, 600 votes and 400 votes respectively, and 1,000 TRON Power remained in the account. At this time, A unstakes 1,500TRX, which means that 1,500 TRON Power needs to be reclaimed from A’ account. In this case, the idle 1,000 TP in A’s account will be withdrawn first, and the spared 500 TP will be withdrawn from the voted TP,  
+which is 300 TP and 200 TP respectively from the two super representatives. Here's how the votes are calculated:
+
+- Number of votes withdrawn by Super Representative 1 = 500 \* (600 / 1,000) = 300
+- Number of votes withdrawn by Super Representative 2 = 500 \* (400 / 1,000) = 200
+
+At present, the TRON network uses the Stake2.0 stake mechanism, but the resources and votes obtained by Stake1.0 are still valid. The TRX staked at Stake1.0 can still be withdrawal through Stake1.0 API `unfreezebalance`, but it should be noted that if the TRX staked in Stake 1.0 is unstaked, all votes in the account will be revoked.
+
+### API
+
+The following table shows the relevant interfaces of the stake model and their descriptions:
+
+| API                                                                                   | Description                                                                          |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| freezebalancev2                                     | Stake TRX                                                                            |
+| unfreezebalancev2                               | Unstake TRX                                                                          |
+| delegateresource                                    | Delegate resources                                                                   |
+| undelegateresource                              | Undelegate resources                                                                 |
+| withdrawexpireunfreeze                          | Withdraw unfrozen balance                                                            |
+| getavailableunfreezecount                  | Query the remaining times of executing unstake operation                             |
+| getcanwithdrawunfreezeamount             | Query the withdrawable balance                                                       |
+| getcandelegatedmaxsize                    | Query the amount of delegatable resources share of the specified resource Type       |
+| getdelegatedresourcev2                        | Query the amount of resource delegated by fromAddress to toAddress                   |
+| getdelegatedresourceaccountindexv2 | Query the resource delegation index by an account                                    |
+| getaccount                                        | Query the account stake status, resource share, unstake status, and voting status    |
+| getaccountresource                                | Query the total amount of resources, the amount of used, and the amount of available |
 
 ## Other Fees
 
@@ -233,8 +291,7 @@ receiverAddress: recipient account address
 |Issue a token|1024 TRX|
 |Create an account|1 TRX|
 |Create an exchange|1024 TRX|
+|Update the account permission|100 TRX|
+|Transaction note|1 TRX|
+|Multi-sig transaction|1 TRX|
 
-[^1]: The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
-[^2]: TRON may change this policy.
-[^3]: The estimated energy consumption limit for the next execution should be greater than the last one.
-[^4]: 4 TRX = 10^5 energy is a fixed number for burning TRX to get energy, TRON may change it in future.

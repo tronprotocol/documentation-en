@@ -29,7 +29,7 @@ TestNet Configuration:
 Example (Using wallet-cli):
 
 ```text
-freezebalance 10,000,000 3 // stake 10 TRX to get 10 TRON Power(TP)
+freezebalancev2 10,000,000 3 // stake 10 TRX to get 10 TRON Power(TP)
 votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2
 votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2
 ```
@@ -559,7 +559,7 @@ Stake TRX to get energy.
 Example (Using wallet-cli):
 
 ```text
-freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
+freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
 Stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50_000_000_000.
@@ -1014,10 +1014,9 @@ In TRON network, an account can stake TRX for Bandwidth or Energy for other acco
 
 + Example(Using wallet-cli)
 ```text
-freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
+freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 
 frozen_balance: the amount of TRX to stake (unit SUN)
-frozen_duration: the staking period (currently a fixed 3 days)
 ResourceCode: 0 for Bandwidth, 1 for Energy
 receiverAddress: recipient account address
 ```

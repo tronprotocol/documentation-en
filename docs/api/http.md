@@ -17,17 +17,27 @@
 | gettransactioninfobyblocknum  |  accountpermissionupdate           | getrcm                                       |
 |                               |  getdelegatedresource              | getmerkletreevoucherinfo                     |
 |                               |  getdelegatedresourceaccountindex  | isspend                                      |
-|                               |  freezebalance                     | createspendauthsig                           |
-|    **block**                  |  unfreezebalance                   | createshieldnullifier                        |
-| getnowblock                   |  unfreezeasset                     | getshieldtransactionhash                     |
-| getblockbynum                 |  withdrawbalance                   | createshieldedtransaction                    |
-| getblockbyid                  |  votewitnessaccount                | createshieldedtransaction<br>withoutspendauthsig |
-| getblockbylimitnext           |  updatewitness                     | getnewshieldedaddress                        |
-| getblockbylatestnum           |  createwitness                     |                                              |
-| getblockbalance               |  getbrokerage                      |                                              |
+|                               |  freezebalancev2                   | createspendauthsig                           |
+|                      |  unfreezebalance                   | createshieldnullifier                        |
+|                    |  unfreezeasset                     | getshieldtransactionhash                     |
+|                  |  withdrawbalance                   | createshieldedtransaction                    |
+|                   |  votewitnessaccount                | createshieldedtransaction<br>withoutspendauthsig |
+|            |  updatewitness                     | getnewshieldedaddress                        |
+|            |  createwitness                     |                                              |
+|                |  getbrokerage                      |                                              |
 |                               |  getreward                         |                                              |
 |                               |  updateBrokerage                   |                                              |
 |                               |  getaccountbalance                 |                                              |
+|                               |  unfreezebalancev2                 |                                              |
+|                               |  delegateresource                 |                                              |
+|                               |  undelegateresource                 |                                              |
+|                               |  withdrawexpireunfreeze                 |                                              |
+|                               |  getavailableunfreezecount                 |                                              |
+|                               |  getcanwithdrawunfreezeamount                 |                                              |
+|                               |  getcandelegatedmaxsize                 |                                              |
+|                               |  getdelegatedresourcev2                 |                                              |
+|                               |  getdelegatedresourceaccountindexv2                 |                                              |
+
 
 |   asset                        |  exchange               | transfer                        |
 |--------------------------------|-------------------------|---------------------------------|
@@ -51,14 +61,14 @@
 |  proposaldelete                  | updateenergylimit       | gettriggerinputforshieldedtrc20contract |
 |  getapprovedlist                 | updatesetting           |                                  |
 
-|   market                       |  others                 |                       |
+|   market                       |  others                 |        block               |
 |--------------------------------|-------------------------|-----------------------|
-|  marketsellasset               |broadcasttransaction     |                       |
-|  marketcancelorder             |broadcasthex             |                       |
-|  getmarketorderbyaccount       |listnodes                |                       |
-|  getmarketpairlist             |listwitnesses            |                       |
-|  getmarketorderlistbypair      |getnextmaintenancetime   |                       |
-|  getmarketpricebypair          |getnodeinfo              |                       |
+|  marketsellasset               |broadcasttransaction     |        getnowblock                |
+|  marketcancelorder             |broadcasthex             |        getblockbynum              |
+|  getmarketorderbyaccount       |listnodes                |        getblockbylimitnext        |
+|  getmarketpairlist             |listwitnesses            |        getblockbyid               |
+|  getmarketorderlistbypair      |getnextmaintenancetime   |        getblockbylatestnum        |
+|  getmarketpricebypair          |getnodeinfo              |        getblockbalance            |
 |  getmarketorderbyid            |getchainparameters       |                       |
 |                                |getburntrx               |                       |
 
@@ -1165,7 +1175,7 @@ Note: The unit of 'amount' is the smallest unit of the token
 
 - wallet/freezebalance
 
-Description: Stake TRX
+Description: Stake TRX. This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
 ```console
 $ curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d
 '{
@@ -3101,9 +3111,11 @@ Return: the input data for triggering shielded TRC-20 contract.
 
 
 
-wallet/marketsellasset    
+- wallet/marketsellasset    
 Description：Create an market order 
-demo: curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d 
+demo: 
+```
+curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d 
 '{
     "owner_address": "4184894b42f66dce8cb84aec2ed11604c991351ac8",
     "sell_token_id": "5f",
@@ -3111,7 +3123,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d
     "buy_token_id": "31303030303031",
     "buy_token_quantity": 200 
 }'  
-
+```
 Parameter：
 owner_address：owner address, default hexString 
 sell_token_id：sell token id, default hexString     
@@ -3121,70 +3133,204 @@ buy_token_quantity：buy token quantity (min to receive)
 Return：Transaction object   
 
 
-wallet/marketcancelorder    
+- wallet/marketcancelorder    
 Description：Cancel the order
-demo: curl -X POST  http://127.0.0.1:8090/wallet/marketcancelorder -d 
+demo: 
+```
+curl -X POST  http://127.0.0.1:8090/wallet/marketcancelorder -d 
 '{
     "owner_address": "4184894b42f66dce8cb84aec2ed11604c991351ac8",
     "order_id": "0a7af584a53b612bcff1d0fc86feab05f69bc4528f26a4433bb344d453bd6eeb"
-}'   
+}' 
+```  
 Parameter：
 owner_address：owner address, default hexString 
 order_id：order id        
 Return：Transaction object   
 
-wallet/getmarketorderbyaccount    
+- wallet/getmarketorderbyaccount    
 Description：Get all orders for the account
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d 
+demo: 
+```
+curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d 
 '{
     "value": "4184894b42f66dce8cb84aec2ed11604c991351ac8" 
-}'   
+}' 
+```  
 Parameter：
 value：owner address, default hexString     
 Return：order list   
 
-wallet/getmarketpairlist     
+- wallet/getmarketpairlist     
 Description：Get all trading pairs
-demo: curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist  
+demo: 
+```
+curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist  
+```
 Parameter：  none
 Return：makket pair list
 
-wallet/getmarketorderlistbypair   
+- wallet/getmarketorderlistbypair   
 Description：Get all orders for the trading pair
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d 
+demo: 
+```
+curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d 
 '{
     "sell_token_id": "5f" ,
     "buy_token_id": "31303030303031"
-}'   
+}' 
+```  
 Parameter：
 sell_token_id：sell token id, default hexString          
 buy_token_id：buy token id, default hexString         
 Return：order list
 
-wallet/getmarketpricebypair    
+- wallet/getmarketpricebypair    
 Description：Get all prices for the trading pair
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d 
+demo: 
+```
+curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d 
 '{
     "sell_token_id": "5f" 
     "buy_token_id": "31303030303031" 
-}'   
+}' 
+```  
 Parameter：
 sell_token_id：sell token id, default hexString        
 buy_token_id：buy token id, default hexString      
 Return：price list
 
-wallet/getmarketorderbyid    
+- wallet/getmarketorderbyid    
 Description：Get all orders for the account
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d 
+demo: 
+```
+curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d 
 '{
     "value": "orderid" 
-}'   
+}' 
+```  
 Parameter：
 value：order id, default hexString     
 Return：order  
 
-wallet/getburntrx     
+- wallet/getburntrx     
 Description：Get burn trx amount
-demo: curl -X get  http://127.0.0.1:8090/wallet/getburntrx  
+demo: 
+```
+curl -X get  http://127.0.0.1:8090/wallet/getburntrx  
+```
 Parameter：  none
 Return：burn trx amount
+
+- wallet/freezebalancev2
+
+Description: Stake TRX.
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/freezebalancev2 -d
+'{
+    "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+    "frozen_balance": 10000,
+    "resource": "BANDWIDTH"
+}'
+```
+
+Parameter owner_address: Owner address, default hexString
+
+Parameter frozen_balance: TRX stake amount
+
+Parameter resource: TRX stake type, 'BANDWIDTH' or 'ENERGY'
+
+Parameter permission_id: Optional, for multi-signature use
+
+Return: Transaction object
+
+- wallet/unfreezebalancev2
+
+Description: Unstake TRX which staked during Stake 2.0
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
+'{
+    "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+    "unfreeze_balance": 1000000,
+    "resource": "BANDWIDTH"
+}'
+```
+
+Parameter owner_address: Owner address, default hexString
+
+Parameter resource: staked TRX unstake type 'BANDWIDTH' or 'ENERGY'
+
+Parameter unfreeze_balance: unfreeze balance, the unit is sun
+
+Parameter permission_id: Optional, for multi-signature use
+
+Return: Transaction object
+
+- wallet/delegateresource
+
+Description: Delegate bandwidth or energy resources to other accounts
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/delegateresource -d
+'{
+    "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+    "receiver_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292",
+    "balance": 1000000,
+    "resource": "BANDWIDTH",
+    "lock": false
+}'
+```
+
+Parameter owner_address: Owner address, default hexString
+
+Parameter receiver_address: Resource receiver address
+
+Parameter balance: Amount of TRX staked for resources to be delegated, unit is sun
+
+Parameter resource: Resource type: 'BANDWIDTH' or 'ENERGY'
+
+Parameter lock: Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days
+
+Parameter permission_id: Optional, for multi-signature use
+
+Return: Transaction object
+
+- wallet/undelegateresource
+
+Description: Cancel the delegation of bandwidth or energy resources to other account
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/undelegateresource -d
+'{
+    "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+    "receiver_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292",
+    "balance": 1000000,
+    "resource": "BANDWIDTH"
+}'
+```
+
+Parameter owner_address: Owner address, default hexString
+
+Parameter receiver_address: Resource receiver address
+
+Parameter balance: Amount of TRX staked for resources to be delegated, unit is sun
+
+Parameter resource: Resource type: 'BANDWIDTH' or 'ENERGY'
+
+Parameter permission_id: Optional, for multi-signature use
+
+Return: Transaction object
+
+- wallet/withdrawexpireunfreeze
+
+Description: Withdraw unfrozen balance in Stake2.0, the user can call this API to get back their funds after executing /wallet/unfreezebalancev2 transaction and waiting N days, N is a network parameter
+```console
+$ curl -X POST http://127.0.0.1:8090/wallet/withdrawexpireunfreeze -d
+'{
+    "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+}'
+```
+
+Parameter owner_address: Owner address, default hexString
+
+Parameter permission_id: Optional, for multi-signature use
+
+Return: Transaction object

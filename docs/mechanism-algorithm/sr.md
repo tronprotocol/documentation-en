@@ -19,7 +19,7 @@ Note: Only your latest vote will be counted in TRON network which means your pre
 Example (Using wallet-cli):
 
 ```console
-> freezebalance 10,000,000 3 // Stake 10 TRX to get 10 TRON Power(TP)
+> freezebalancev2 10,000,000 3 // Stake 10 TRX to get 10 TRON Power(TP)
 > votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2
 > votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2
 ```

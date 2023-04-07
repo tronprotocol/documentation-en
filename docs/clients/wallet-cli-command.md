@@ -298,7 +298,7 @@ Here are all the account resource related commands ：
 - [getAccountResource](#getaccountresource)
 
 ### freezeBalance
-Stake an amount of TRX to obtain bandwidth or Energy and TRON Power (voting rights) . Optionally, user can stake TRX to grant Energy or Bandwidth to others. Balance amount in the denomination of sun.
+This interface has been deprecated, please use freezeBalanceV2 to stake TRX to obtain resources.
 ```shell
 wallet> freezeBalance [OwnerAddress] [frozen_balance] [frozen_duration] [ResourceCode:0 BANDWIDTH, 1 ENERGY] [receiverAddress]
 ```
@@ -333,6 +333,7 @@ FreezeBalance successful !!!
 
 
 ### unfreezeBalance
+unstake TRX which staked during stake1.o.
 ```shell
 wallet>unfreezeBalance [OwnerAddress] ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER) [receiverAddress]
 ```

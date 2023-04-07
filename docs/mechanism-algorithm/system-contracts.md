@@ -440,3 +440,85 @@ message ReceiveDescription {
 - `owner_address`: The owner of the current account.
 - `contract_address`: The contract address.
 - `origin_energy_limit`: The target energy limit to change.
+
+## FreezeBalanceV2Contract
+
+```protobuf
+     message FreezeBalanceV2Contract {
+      bytes owner_address = 1;
+      int64 frozen_balance = 2;
+      ResourceCode resource = 3;
+      }
+```
+
+   `owner_address`：Owner address
+   `frozen_balance`：TRX stake amount, the unit is sun
+   `resource`： Resource type
+
+## UnfreezeBalanceV2Contract
+
+```protobuf
+      message UnfreezeBalanceV2Contract {
+       bytes owner_address = 1;
+       int64 unfreeze_balance = 2;
+       ResourceCode resource = 3;
+      }
+```
+
+   `owner_address`：Owner address
+   `unfreeze_balance`：The amount of TRX to unstake, in sun
+   `resource`： Resource type
+   
+
+## WithdrawExpireUnfreezeContract
+
+```protobuf
+      message WithdrawExpireUnfreezeContract {
+        bytes owner_address = 1;
+      }
+```
+
+   `owner_address`：Owner address
+   
+## DelegateResourceContract
+
+```protobuf
+      message DelegateResourceContract {
+      bytes owner_address = 1;
+      ResourceCode resource = 2;
+      int64 balance = 3;
+      bytes receiver_address = 4;
+      bool  lock = 5;
+      }
+```
+
+   `owner_address`：Owner address
+   `resource`： Resource type
+   `balance`： Amount of TRX staked for resources to be delegated, unit is sun
+   `receiver_address`：Resource receiver address
+   `lock`：Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days
+   
+   
+## UnDelegateResourceContract
+
+```protobuf
+      message UnDelegateResourceContract {
+      bytes owner_address = 1;
+      ResourceCode resource = 2;
+      int64 balance = 3;
+      bytes receiver_address = 4;
+      }
+```
+
+   `owner_address`：Owner address
+   `resource`： Resource type
+   `balance`：undelegated TRX, unit is sun
+   `receiver_address`：Resource receiver address
+   
+
+
+
+
+
+
+

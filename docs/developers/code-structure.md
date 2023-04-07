@@ -177,7 +177,7 @@ Actuator is the executor of transactions, while applications can be viewed as a 
     |-- vm
 ```
 
-* `actuator/` - The executors of various types of transactions in the TRON network which define the processing logic of different types of transactions. For example, `TransferActuator` is the processing class for transferring TRX, and `FreezeBalanceActuator` is the processing class for staking TRX to obtain resource
+* `actuator/` - The executors of various types of transactions in the TRON network which define the processing logic of different types of transactions. For example, `TransferActuator` is the processing class for transferring TRX, and `FreezeBalanceV2Actuator` is the processing class for staking TRX to obtain resource
 * `utils/` - tools needed to execute transaction
 * `vm/` - TRON virtual machine related code
 
