@@ -473,6 +473,7 @@ Nodes: FullNode and SolidityNode
 rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
+
 **77.&nbsp;UnFreeze TRX**
 ```protobuf
 rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
