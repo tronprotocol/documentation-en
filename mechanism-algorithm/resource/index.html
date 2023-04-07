@@ -85,6 +85,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#voting-right">Voting Right</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#bandwidth-points">Bandwidth Points</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#1-how-to-get-bandwidth-points">1. How to Get Bandwidth Points</a>
@@ -113,7 +115,21 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#resource-delegation">Resource Delegation</a>
+    <li class="toctree-l2"><a class="reference internal" href="#staking-on-tron-network">Staking on TRON network</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-stake-to-obtain-system-resources">How to stake to obtain system resources</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-delegate-resources">How to delegate resources</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-unstake-trx">How to unstake TRX</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#tron-power-reclaim">TRON Power Reclaim</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api">API</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#other-fees">Other Fees</a>
     </li>
@@ -196,8 +212,7 @@
               
                 <h1 id="resource-model">Resource Model<a class="headerlink" href="#resource-model" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>TRON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by TRON's exclusive RAM model, TRON's RAM resource is almost infinite.</p>
-<p>TRON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage.</p>
+<p>Voting Right, bandwidth and energy are important system resources of the TRON network. Among them, voting rights are used to vote for super representatives; Bandwidth is the unit that measures the size of the transaction bytes stored in the blockchain database. The larger the transaction, the more bandwidth resources will be consumed. Energy is the unit that measures the amount of computation required by the TRON virtual machine to perform specific operations on the TRON network. Since smart contract transactions require computing resources to execute, each smart contract transaction requires to pay for the energy fee.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
@@ -205,6 +220,9 @@
 <li>Smart contract related transaction not only consumes Bandwidth points, but also Energy</li>
 </ul>
 </div>
+<h2 id="voting-right">Voting Right<a class="headerlink" href="#voting-right" title="Permanent link">&para;</a></h2>
+<p>Before any account can vote for super representatives, it needs to obtain voting rights, that is, TRON Power (TP). Voting rights can be obtained by staking TRX. In addition to obtaining bandwidth or energy, staking TRX will also obtain voting rights at the same time. Voters who stake 1TRX will receive 1TP. For how to stake, please refer to the <a href="#staking-on-tron-network">Staking on TRON Network</a> chapter.</p>
+<p>Voters can stake multiple times, and the voting rights obtained by multiple stake will be added to the voter's account. Voters can query the total number of voting rights owned by the account and the number of used voting rights through the <code>wallet/getaccountresource</code> interface.</p>
 <h2 id="bandwidth-points">Bandwidth Points<a class="headerlink" href="#bandwidth-points" title="Permanent link">&para;</a></h2>
 <p>The transaction information is stored and transmitted in the form of byte array, Bandwidth Points consumed = the number of bytes of the transaction * Bandwidth Points rate. Currently Bandwidth Points rate = 1.</p>
 <p>Such as if the number of bytes of a transaction is 200, so this transaction consumes 200 Bandwidth Points.</p>
@@ -264,7 +282,7 @@ U^\prime = ( 1 - \frac{T_2 - T_1}{24h} ) * U + u
 <h3 id="1-how-to-get-energy">1. How to Get Energy<a class="headerlink" href="#1-how-to-get-energy" title="Permanent link">&para;</a></h3>
 <p>Stake TRX to get energy.</p>
 <p>Example (Using wallet-cli):</p>
-<div class="highlight"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
+<div class="highlight"><pre><span></span><code>freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 </code></pre></div>
 <p>stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50_000_000_000.</p>
 <p>Example:</p>
@@ -295,17 +313,17 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 <p>Set a rational fee limit can guarantee the smart contract execution. And if the execution of the contract cost great energy, it will not consume too much energy from the caller. Before you set fee limit, you need to know several conception:</p>
 <ol>
 <li>The legal fee limit is a integer between 0 - 10^9, unit is SUN.</li>
-<li>Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount of energy<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. When the contract is triggered, the commands will be executed one by one and consume energy. If it reaches the fee limit, commands will fail to be executed, and energy is not refundable.</li>
-<li>Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. The energy consumed by triggering contract also includes developer's share.</li>
+<li>Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount of energy[^1]. When the contract is triggered, the commands will be executed one by one and consume energy. If it reaches the fee limit, commands will fail to be executed, and energy is not refundable.</li>
+<li>Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[^2]. The energy consumed by triggering contract also includes developer's share.</li>
 <li>For a vicious contract, if it encounters execution timeout or bug crash, all it's energy will be consumed.</li>
-<li>Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX <sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</li>
+<li>Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [^2].</li>
 </ol>
 <p>To encourage caller to trigger the contract, usually developer has enough energy.</p>
 <h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
 <p>How to estimate the fee limit:</p>
-<p>Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+<p>Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[^3]</p>
 <p>According to the staked TRX amount and energy conversion, assume 1 TRX = 400 energy.</p>
-<p>When to burn TRX, 4 TRX = 100000 energy<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
+<p>When to burn TRX, 4 TRX = 100000 energy[^4]</p>
 <p>Assume developer undertake 90% energy consumption, and developer has enough energy.</p>
 <p>Then the way to estimate the fee limit is:</p>
 <ol>
@@ -330,11 +348,11 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
-<li>If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</li>
-<li>We recommend to set caller's energy consumption proportion to 10% ~ 100%<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</li>
+<li>If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[^1].</li>
+<li>We recommend to set caller's energy consumption proportion to 10% ~ 100%[^2].</li>
 </ul>
 </div>
-<p><strong> Example 1 </strong></p>
+<p>** Example 1 **</p>
 <p>A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.</p>
 <p>Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely.</p>
 <p>A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX)</p>
@@ -348,7 +366,7 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 <p>If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.</p>
 <p>If Assert-style error come out, it will consume the whole number of energy set for fee limit.</p>
 <p>Assert-style error introduction, refer to <a href="https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md">Exception Handling(zh-cn)</a></p>
-<p><strong> Example 2 </strong></p>
+<p>** Example 2 **</p>
 <p>A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.</p>
 <p>Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption.</p>
 <p>Developer D stakes 50 TRX to get 500000 energy.</p>
@@ -372,18 +390,95 @@ if (X + Y) / 40% &lt; Z / 60%, the energy A can use is (X + Y) / 40%</p>
 <p>Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef.</p>
 <p>Assert-style error introduction, refer to <a href="https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md">Exception Handling(zh-cn)</a>.</p>
 <p>To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.</p>
-<h2 id="resource-delegation">Resource Delegation<a class="headerlink" href="#resource-delegation" title="Permanent link">&para;</a></h2>
-<p>In TRON network, an account can stake TRX for Bandwidth or Energy for other accounts. The primary account owns the staked TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary staking, resource delegation staking is also at least 3 days.</p>
+<h2 id="staking-on-tron-network">Staking on TRON network<a class="headerlink" href="#staking-on-tron-network" title="Permanent link">&para;</a></h2>
+<h3 id="how-to-stake-to-obtain-system-resources">How to stake to obtain system resources<a class="headerlink" href="#how-to-stake-to-obtain-system-resources" title="Permanent link">&para;</a></h3>
+<p>Energy and bandwidth resources are obtained by the account owner through staking, please use <code>wallet/freezebalancev2</code> to complete the stake operation through HTTP API, use <a href="https://developers.tron.network/docs/stake-20-solidity-api">Stake2.0 Solidity API</a> to complete the stake operation through the contract.</p>
+<p>TRON allocates resources through the staking mechanism. In addition to obtaining bandwidth or energy resources, staking TRX will also obtain voting rights (TRON Power, TP for short) equal to the amount staked. Staking 1 TRX, you will get 1TP. The energy or bandwidth resources obtained by staking are used to pay transaction fees, and the obtained voting rights are used to vote for super representatives to obtain voting rewards.</p>
+<p>The unstaking operation will release the corresponding resources.</p>
+<h3 id="how-to-delegate-resources">How to delegate resources<a class="headerlink" href="#how-to-delegate-resources" title="Permanent link">&para;</a></h3>
+<p>After the account obtains energy or bandwidth resources through staking, it can delegate resources to other addresses through <code>delegateresource</code>, and can also take back allocated resources through <code>undelegateresource</code>. Please pay attention to the following situations when delegating resource:</p>
 <ul>
-<li>Example(Using wallet-cli)
-<div class="highlight"><pre><span></span><code>freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
-
-frozen_balance: the amount of TRX to stake (unit SUN)
-frozen_duration: the staking period (currently a fixed 3 days)
-ResourceCode: 0 for Bandwidth, 1 for Energy
-receiverAddress: recipient account address
-</code></pre></div></li>
+<li>Only energy and bandwidth can be delegated to other addresses, voting rights cannot be delegated</li>
+<li>Only unused resources obtained by staking through Stake2.0 can be delegated to other addresses</li>
+<li>Energy/Bandwidth can only be delegated to an activated external account address, not to a contract address</li>
 </ul>
+<p>You can use the <code>wallet/getcandelegatedmaxsize</code> interface to query the available delegation share of a certain resource type in the account. <code>Time lock</code> can be used when delegating resources. If time lock is used, after the resource delegating is completed, the resource delegation for the address only can be canceled after 3 days. During the locking period, if the user performs resource delegating for the same address again, it will Reset the 3-days waiting period. If the time lock is not used, the delegation can be canceled immediately after the resource is delegated.</p>
+<h3 id="how-to-unstake-trx">How to unstake TRX<a class="headerlink" href="#how-to-unstake-trx" title="Permanent link">&para;</a></h3>
+<p>After completing the TRX staking, you can unstake at any time. After unstaking, you need to wait for 14 days before you can withdraw the unstaked TRX into your account. 14 days is <a href="https://tronscan.org/#/sr/committee">the No.70 parameter</a> of TRON network which can be voted on by network governance proposals. Please use <code>unfreezebalancev2</code> to complete unfreeze balance through HTTP API.</p>
+<p>The staked TRX can be partially unstaked multiple times, but only a maximum of 32 unstaking operations are allowed at the same time. That is to say, when a user initiates the first unstake operation, before the TRX of the first unstaking arrives and is ready to be withdrawn to his or her account, he or she can only initiate another 31 unstake operations. The remaining counts of unfreeze can be queried through the <code>getavailableunfreezecount</code> interface.</p>
+<p>The TRX that have been delegated cannot be unstaked. In addition to losing the same amount of resource shares, the unstaking will also lose the same amount of TP resources.</p>
+<p>When unstaking, if there are unclaimed voting rewards, the voting rewards will be automatically withdrawn to the account. If there is a previously unstaked principal that has passed the lock-up period, then this unstake operation will also withdraw the unstaked principal that has passed the lock-up period to the account at the same time. You can use the <code>gettransactioninfobyid</code>API to query the voting reward extracted in this transaction in <code>withdraw_amount</code> field and the withdrawn amount of unstaked TRX that has expired the lock-up period in <code>withdraw_expire_amount</code> field.</p>
+<h4 id="tron-power-reclaim">TRON Power Reclaim<a class="headerlink" href="#tron-power-reclaim" title="Permanent link">&para;</a></h4>
+<p>After unstaking the TRX staked in the Stake2.0 stage, the same amount of voting rights will be lost. The system will first reclaim the idle voting rights in the account. If the idle TP is insufficient, it will continue to reclaim the used TP. If the user has voted for multiple super representatives, a certain number of votes will be withdrawn in proportion from each super representative, and the corresponding voting rights will be recovered. The calculation formula for withdrawing votes for each SR is,</p>
+<div class="highlight"><pre><span></span><code>The number of votes withdrawn from the current super representative = total number of votes to be withdrawn  * (number of votes for the current super representative / total number of votes of this account)
+</code></pre></div>
+<p>For example, Suppose A staked 2,000TRX and obtained 2,000 TRON Power, of which 1,000 TRON Power voted for 2 super representatives, 600 votes and 400 votes respectively, and 1,000 TRON Power remained in the account. At this time, A unstakes 1,500TRX, which means that 1,500 TRON Power needs to be reclaimed from A’ account. In this case, the idle 1,000 TP in A’s account will be withdrawn first, and the spared 500 TP will be withdrawn from the voted TP,<br />
+which is 300 TP and 200 TP respectively from the two super representatives. Here's how the votes are calculated:</p>
+<ul>
+<li>Number of votes withdrawn by Super Representative 1 = 500 * (600 / 1,000) = 300</li>
+<li>Number of votes withdrawn by Super Representative 2 = 500 * (400 / 1,000) = 200</li>
+</ul>
+<p>At present, the TRON network uses the Stake2.0 stake mechanism, but the resources and votes obtained by Stake1.0 are still valid. The TRX staked at Stake1.0 can still be withdrawal through Stake1.0 API <code>unfreezebalance</code>, but it should be noted that if the TRX staked in Stake 1.0 is unstaked, all votes in the account will be revoked.</p>
+<h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<p>The following table shows the relevant interfaces of the stake model and their descriptions:</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>freezebalancev2</td>
+<td>Stake TRX</td>
+</tr>
+<tr>
+<td>unfreezebalancev2</td>
+<td>Unstake TRX</td>
+</tr>
+<tr>
+<td>delegateresource</td>
+<td>Delegate resources</td>
+</tr>
+<tr>
+<td>undelegateresource</td>
+<td>Undelegate resources</td>
+</tr>
+<tr>
+<td>withdrawexpireunfreeze</td>
+<td>Withdraw unfrozen balance</td>
+</tr>
+<tr>
+<td>getavailableunfreezecount</td>
+<td>Query the remaining times of executing unstake operation</td>
+</tr>
+<tr>
+<td>getcanwithdrawunfreezeamount</td>
+<td>Query the withdrawable balance</td>
+</tr>
+<tr>
+<td>getcandelegatedmaxsize</td>
+<td>Query the amount of delegatable resources share of the specified resource Type</td>
+</tr>
+<tr>
+<td>getdelegatedresourcev2</td>
+<td>Query the amount of resource delegated by fromAddress to toAddress</td>
+</tr>
+<tr>
+<td>getdelegatedresourceaccountindexv2</td>
+<td>Query the resource delegation index by an account</td>
+</tr>
+<tr>
+<td>getaccount</td>
+<td>Query the account stake status, resource share, unstake status, and voting status</td>
+</tr>
+<tr>
+<td>getaccountresource</td>
+<td>Query the total amount of resources, the amount of used, and the amount of available</td>
+</tr>
+</tbody>
+</table>
 <h2 id="other-fees">Other Fees<a class="headerlink" href="#other-fees" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -409,25 +504,20 @@ receiverAddress: recipient account address
 <td style="text-align: left;">Create an exchange</td>
 <td style="text-align: center;">1024 TRX</td>
 </tr>
+<tr>
+<td style="text-align: left;">Update the account permission</td>
+<td style="text-align: center;">100 TRX</td>
+</tr>
+<tr>
+<td style="text-align: left;">Transaction note</td>
+<td style="text-align: center;">1 TRX</td>
+</tr>
+<tr>
+<td style="text-align: left;">Multi-sig transaction</td>
+<td style="text-align: center;">1 TRX</td>
+</tr>
 </tbody>
 </table>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>TRON may change this policy.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>The estimated energy consumption limit for the next execution should be greater than the last one.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
-<li id="fn:4">
-<p>4 TRX = 10^5 energy is a fixed number for burning TRX to get energy, TRON may change it in future.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
               
             </div>
           </div><footer>

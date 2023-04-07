@@ -282,10 +282,12 @@ Nodes: SolidityNode</p>
 </code></pre></div>
 Nodes: SolidityNode</p>
 <p><strong>28.&nbsp;Stake TRX</strong>
+This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">FreezeBalance</span><span class="w"> </span><span class="p">(</span><span class="n">FreezeBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>29.&nbsp;Unstake TRX</strong>
+Unstake the TRX staked during Stake1.0.
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeBalance</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
@@ -437,46 +439,66 @@ Nodes: FullNode, SolidityNode</p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetTriggerInputForShieldedTRC20Contract</span><span class="w"> </span><span class="p">(</span><span class="n">ShieldedTRC20TriggerContractParameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>66.&nbsp;Create an market order</strong>    <br />
-Interface statement:  <br />
-rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+<p><strong>66.&nbsp;Create an market order</strong>     <br />
+<div class="highlight"><pre><span></span><code>rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+</code></pre></div>
 Nodes: FullNode</p>
 <p><strong>67.&nbsp;Cancel the order</strong>    <br />
-Interface statement:  <br />
-rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+<div class="highlight"><pre><span></span><code>rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+</code></pre></div>
 Nodes: FullNode </p>
 <p><strong>68.&nbsp;Get all orders for the account</strong>    <br />
-Interface statement:  <br />
-rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>69.&nbsp;Get all trading pairs</strong>    <br />
-Interface statement:  <br />
-rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+<p><strong>69.&nbsp;Get all trading pairs</strong>       <br />
+<div class="highlight"><pre><span></span><code>rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>70.&nbsp;Get all orders for the trading pair</strong>    <br />
-Interface statement:  <br />
-rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+<p><strong>70.&nbsp;Get all orders for the trading pair</strong>     <br />
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+</code></pre></div>
 Nodes: FullNode </p>
 <p><strong>71.&nbsp;Get all prices for the trading pair</strong>    <br />
-Interface statement:  <br />
-rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+<div class="highlight"><pre><span></span><code>rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+</code></pre></div>
 Nodes: FullNode </p>
 <p><strong>72.&nbsp;Get order by id</strong>    <br />
-Interface statement: 
-rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+</code></pre></div>
 Nodes: FullNode </p>
 <p><strong>73.&nbsp;perform a historical balance lookup</strong>    <br />
-Interface statement:<br />
-rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
+<div class="highlight"><pre><span></span><code>rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
+</code></pre></div>
 Nodes: FullNode </p>
 <p><strong>74.&nbsp;fetch all balance-changing transactions in a block</strong>    <br />
-Interface statement:<br />
-rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
+<div class="highlight"><pre><span></span><code>rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
+</code></pre></div>
 Nodes: FullNode </p>
 <p><strong>75.&nbsp;get the burn trx amount</strong>    <br />
-Interface statement:<br />
-rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
+<div class="highlight"><pre><span></span><code>rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
+</code></pre></div>
 Nodes: FullNode and SolidityNode</p>
+<p><strong>76.&nbsp;Freeze TRX</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">FreezeBalanceV2</span><span class="w"> </span><span class="p">(</span><span class="n">FreezeBalanceV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>77.&nbsp;UnFreeze TRX</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeBalanceV2</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeBalanceV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>78.&nbsp;Withdraw Staked TRX</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">WithdrawExpireUnfreeze</span><span class="w"> </span><span class="p">(</span><span class="n">WithdrawExpireUnfreezeContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>79.&nbsp;Delegate Resource</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">DelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">DelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>80.&nbsp;UnDelegate Resource</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnDelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">UnDelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
               
             </div>
           </div><footer>

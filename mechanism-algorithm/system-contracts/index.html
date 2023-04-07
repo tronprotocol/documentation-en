@@ -624,6 +624,58 @@
 <li><code>contract_address</code>: The contract address.</li>
 <li><code>origin_energy_limit</code>: The target energy limit to change.</li>
 </ul>
+<h2 id="freezebalancev2contract">FreezeBalanceV2Contract<a class="headerlink" href="#freezebalancev2contract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">FreezeBalanceV2Contract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">int64</span><span class="w"> </span><span class="na">frozen_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+</code></pre></div>
+<p><code>owner_address</code>：Owner address
+   <code>frozen_balance</code>：TRX stake amount, the unit is sun
+   <code>resource</code>： Resource type</p>
+<h2 id="unfreezebalancev2contract">UnfreezeBalanceV2Contract<a class="headerlink" href="#unfreezebalancev2contract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UnfreezeBalanceV2Contract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">unfreeze_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">       </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+</code></pre></div>
+<p><code>owner_address</code>：Owner address
+   <code>unfreeze_balance</code>：The amount of TRX to unstake, in sun
+   <code>resource</code>： Resource type</p>
+<h2 id="withdrawexpireunfreezecontract">WithdrawExpireUnfreezeContract<a class="headerlink" href="#withdrawexpireunfreezecontract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">WithdrawExpireUnfreezeContract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+</code></pre></div>
+<p><code>owner_address</code>：Owner address</p>
+<h2 id="delegateresourcecontract">DelegateResourceContract<a class="headerlink" href="#delegateresourcecontract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">DelegateResourceContract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">int64</span><span class="w"> </span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">receiver_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">bool</span><span class="w">  </span><span class="na">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+</code></pre></div>
+<p><code>owner_address</code>：Owner address
+   <code>resource</code>： Resource type
+   <code>balance</code>： Amount of TRX staked for resources to be delegated, unit is sun
+   <code>receiver_address</code>：Resource receiver address
+   <code>lock</code>：Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days</p>
+<h2 id="undelegateresourcecontract">UnDelegateResourceContract<a class="headerlink" href="#undelegateresourcecontract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UnDelegateResourceContract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">int64</span><span class="w"> </span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">receiver_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+</code></pre></div>
+<p><code>owner_address</code>：Owner address
+   <code>resource</code>： Resource type
+   <code>balance</code>：undelegated TRX, unit is sun
+   <code>receiver_address</code>：Resource receiver address</p>
               
             </div>
           </div><footer>

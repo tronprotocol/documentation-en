@@ -473,7 +473,7 @@ kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
 </code></pre></div></p>
 <h3 id="mongo"> Download and install MongoDB </h3>
 
-<p><strong> Suggested Configuration </strong></p>
+<p>** Suggested Configuration **</p>
 <ul>
 <li>CPU/ RAM: 16Core / 32G</li>
 <li>DISK: 500G</li>
@@ -486,10 +486,10 @@ kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
 <li>tar zxvf mongodb-linux-x86_64-4.0.4.tgz</li>
 <li>mv mongodb-linux-x86_64-4.0.4 mongodb</li>
 </ul>
-<p><strong> Set environment </strong>
+<p>** Set environment **
 - export MONGOPATH=/home/java-tron/mongodb/
 - export PATH=<span class="arithmatex"><span class="MathJax_Preview">PATH:</span><script type="math/tex">PATH:</script></span>MONGOPATH/bin</p>
-<p><strong> Create mongodb config </strong>
+<p>** Create mongodb config **
 The path is : /etc/mongodb/mgdb.conf</p>
 <ul>
 <li>cd /etc/mongodb</li>
@@ -497,7 +497,7 @@ The path is : /etc/mongodb/mgdb.conf</p>
 </ul>
 <p>Create data&amp;log folder for mongodb
 Create data, log subfolder in mongodb directory,  and add their absolute path to mgdb.conf</p>
-<p><strong> Example: </strong></p>
+<p>** Example: **</p>
 <ul>
 <li>dbpath=/home/java-tron/mongodb/data</li>
 <li>logpath=/home/java-tron/mongodb/log/mongodb.log</li>
@@ -508,16 +508,16 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 <li>auth=true</li>
 <li>wiredTigerCacheSizeGB=2</li>
 </ul>
-<p><strong> Note: </strong>
+<p>** Note: **
 - bind_ip must be configured to 0.0.0.0，otherwise remote connection will be refused.
 - wiredTigerCacheSizeGB, must be configured to prevent OOM</p>
-<p><strong> Launch MongoDB </strong>
+<p>** Launch MongoDB **
   - mongod  --config /etc/mongodb/mgdb.conf</p>
-<p><strong> Create admin account: </strong>
+<p>** Create admin account: **
 - mongo
 - use admin
 - db.createUser({user:"root",pwd:"admin",roles:[{role:"root",db:"admin"}]})</p>
-<p><strong> Create eventlog and its owner account </strong></p>
+<p>** Create eventlog and its owner account **</p>
 <ul>
 <li>db.auth("root", "admin")</li>
 <li>use eventlog</li>
@@ -526,9 +526,9 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 <blockquote>
 <p>database: eventlog, username:tron, password: 123456</p>
 </blockquote>
-<p><strong> Firewall rule: </strong>
+<p>** Firewall rule: **
 - iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 27017 -j ACCEPT</p>
-<p><strong> Remote connection via mongo: </strong></p>
+<p>** Remote connection via mongo: **</p>
 <ul>
 <li>mongo 47.90.245.68:27017</li>
 <li>use eventlog</li>
@@ -536,11 +536,11 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 <li>show collections</li>
 <li>db.block.find()</li>
 </ul>
-<p><strong> Query block trigger data: </strong></p>
+<p>** Query block trigger data: **</p>
 <ul>
 <li>db.block.find({blockNumber: {$lt: 1000}});  // return records whose blockNumber less than1000</li>
 </ul>
-<p><strong> Set database index to speedup query: </strong></p>
+<p>** Set database index to speedup query: **</p>
 <p>cd /{projectPath}
 sh insertIndex.sh</p>
 <h2 id="event-query-service-deployment">Event query service deployment<a class="headerlink" href="#event-query-service-deployment" title="Permanent link">&para;</a></h2>

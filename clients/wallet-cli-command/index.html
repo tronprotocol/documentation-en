@@ -631,7 +631,7 @@ UpdateAccountPermission<span class="w"> </span>successful<span class="w"> </span
 <li><a href="#getaccountresource">getAccountResource</a></li>
 </ul>
 <h3 id="freezebalance">freezeBalance<a class="headerlink" href="#freezebalance" title="Permanent link">&para;</a></h3>
-<p>Stake an amount of TRX to obtain bandwidth or Energy and TRON Power (voting rights) . Optionally, user can stake TRX to grant Energy or Bandwidth to others. Balance amount in the denomination of sun.
+<p>This interface has been deprecated, please use freezeBalanceV2 to stake TRX to obtain resources.
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>freezeBalance<span class="w"> </span><span class="o">[</span>OwnerAddress<span class="o">]</span><span class="w"> </span><span class="o">[</span>frozen_balance<span class="o">]</span><span class="w"> </span><span class="o">[</span>frozen_duration<span class="o">]</span><span class="w"> </span><span class="o">[</span>ResourceCode:0<span class="w"> </span>BANDWIDTH,<span class="w"> </span><span class="m">1</span><span class="w"> </span>ENERGY<span class="o">]</span><span class="w"> </span><span class="o">[</span>receiverAddress<span class="o">]</span>
 </code></pre></div></p>
 <p><code>OwnerAddress</code>is the address of the account that initiated the transaction, optional, default is the address of the login account.<code>frozen_balance</code>is the amount of frozen TRX, the unit is the smallest unit (Sun), the minimum is 1000000sun.<code>frozen_duration</code> is frozen duration, only be specified as 3 days, indicates that you can unfreeze after 3 days.<code>ResourceCode</code> indicates the type of the acquired resource，0 BANDWIDTH and 1 ENERGY. <code>receiverAddress</code>is the address that will receive the resource.</p>
@@ -659,7 +659,8 @@ txid<span class="w"> </span>is<span class="w"> </span>f45cb5ae425796a492d4a9ecac
 FreezeBalance<span class="w"> </span>successful<span class="w"> </span>!!!
 </code></pre></div></p>
 <h3 id="unfreezebalance">unfreezeBalance<a class="headerlink" href="#unfreezebalance" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wallet&gt;unfreezeBalance<span class="w"> </span><span class="o">[</span>OwnerAddress<span class="o">]</span><span class="w"> </span>ResourceCode<span class="o">(</span><span class="m">0</span><span class="w"> </span>BANDWIDTH,1<span class="w"> </span>ENERGY,2<span class="w"> </span>TRON_POWER<span class="o">)</span><span class="w"> </span><span class="o">[</span>receiverAddress<span class="o">]</span>
+<p>unstake TRX which staked during stake1.o.
+<div class="highlight"><pre><span></span><code>wallet&gt;unfreezeBalance<span class="w"> </span><span class="o">[</span>OwnerAddress<span class="o">]</span><span class="w"> </span>ResourceCode<span class="o">(</span><span class="m">0</span><span class="w"> </span>BANDWIDTH,1<span class="w"> </span>ENERGY,2<span class="w"> </span>TRON_POWER<span class="o">)</span><span class="w"> </span><span class="o">[</span>receiverAddress<span class="o">]</span>
 </code></pre></div>
 <code>OwnerAddress</code>is the address of the account that initiated the transaction, optional, default is the address of the login account. <code>ResourceCode</code>indicates the type of the acquired resource，0 stands for BANDWIDTH and 1 stands for ENERGY. <code>receiverAddress</code>is the address that will receive the resource.</p>
 <div class="highlight"><pre><span></span><code>wallet&gt; unfreezebalance TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 1 TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE

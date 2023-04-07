@@ -250,41 +250,41 @@
 </tr>
 <tr>
 <td></td>
-<td>freezebalance</td>
+<td>freezebalancev2</td>
 <td>createspendauthsig</td>
 </tr>
 <tr>
-<td><strong>block</strong></td>
+<td></td>
 <td>unfreezebalance</td>
 <td>createshieldnullifier</td>
 </tr>
 <tr>
-<td>getnowblock</td>
+<td></td>
 <td>unfreezeasset</td>
 <td>getshieldtransactionhash</td>
 </tr>
 <tr>
-<td>getblockbynum</td>
+<td></td>
 <td>withdrawbalance</td>
 <td>createshieldedtransaction</td>
 </tr>
 <tr>
-<td>getblockbyid</td>
+<td></td>
 <td>votewitnessaccount</td>
 <td>createshieldedtransaction<br>withoutspendauthsig</td>
 </tr>
 <tr>
-<td>getblockbylimitnext</td>
+<td></td>
 <td>updatewitness</td>
 <td>getnewshieldedaddress</td>
 </tr>
 <tr>
-<td>getblockbylatestnum</td>
+<td></td>
 <td>createwitness</td>
 <td></td>
 </tr>
 <tr>
-<td>getblockbalance</td>
+<td></td>
 <td>getbrokerage</td>
 <td></td>
 </tr>
@@ -301,6 +301,51 @@
 <tr>
 <td></td>
 <td>getaccountbalance</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>unfreezebalancev2</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>delegateresource</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>undelegateresource</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>withdrawexpireunfreeze</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>getavailableunfreezecount</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>getcanwithdrawunfreezeamount</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>getcandelegatedmaxsize</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>getdelegatedresourcev2</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>getdelegatedresourceaccountindexv2</td>
 <td></td>
 </tr>
 </tbody>
@@ -412,39 +457,39 @@
 <tr>
 <th>market</th>
 <th>others</th>
-<th></th>
+<th>block</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>marketsellasset</td>
 <td>broadcasttransaction</td>
-<td></td>
+<td>getnowblock</td>
 </tr>
 <tr>
 <td>marketcancelorder</td>
 <td>broadcasthex</td>
-<td></td>
+<td>getblockbynum</td>
 </tr>
 <tr>
 <td>getmarketorderbyaccount</td>
 <td>listnodes</td>
-<td></td>
+<td>getblockbylimitnext</td>
 </tr>
 <tr>
 <td>getmarketpairlist</td>
 <td>listwitnesses</td>
-<td></td>
+<td>getblockbyid</td>
 </tr>
 <tr>
 <td>getmarketorderlistbypair</td>
 <td>getnextmaintenancetime</td>
-<td></td>
+<td>getblockbylatestnum</td>
 </tr>
 <tr>
 <td>getmarketpricebypair</td>
 <td>getnodeinfo</td>
-<td></td>
+<td>getblockbalance</td>
 </tr>
 <tr>
 <td>getmarketorderbyid</td>
@@ -1298,7 +1343,7 @@ The unit of 'amount' is the smallest unit of the token</p>
 <ul>
 <li>wallet/freezebalance</li>
 </ul>
-<p>Description: Stake TRX
+<p>Description: Stake TRX. This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/freezebalance<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
@@ -2767,84 +2812,200 @@ Please refer to <a href="../../mechanism-algorithm/shielded-transaction/">The De
 <p>amount: the amount </p>
 <p>transparent_to_address: the receiver for the <code>burn</code> operation.</p>
 <p>Return: the input data for triggering shielded TRC-20 contract.</p>
+<ul>
+<li>
 <p>wallet/marketsellasset  <br />
 Description：Create an market order 
-demo: curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d 
-'{
-    "owner_address": "4184894b42f66dce8cb84aec2ed11604c991351ac8",
-    "sell_token_id": "5f",
-    "sell_token_quantity": 100,
-    "buy_token_id": "31303030303031",
-    "buy_token_quantity": 200 
-}'  </p>
-<p>Parameter：
+demo: 
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d 
+&#39;{
+    &quot;owner_address&quot;: &quot;4184894b42f66dce8cb84aec2ed11604c991351ac8&quot;,
+    &quot;sell_token_id&quot;: &quot;5f&quot;,
+    &quot;sell_token_quantity&quot;: 100,
+    &quot;buy_token_id&quot;: &quot;31303030303031&quot;,
+    &quot;buy_token_quantity&quot;: 200 
+}&#39;  
+</code></pre></div>
+Parameter：
 owner_address：owner address, default hexString 
 sell_token_id：sell token id, default hexString   <br />
 sell_token_quantity：sell token quantity         <br />
 buy_token_id：buy token id, default hexString       <br />
 buy_token_quantity：buy token quantity (min to receive)     <br />
 Return：Transaction object   </p>
+</li>
+<li>
 <p>wallet/marketcancelorder  <br />
 Description：Cancel the order
-demo: curl -X POST  http://127.0.0.1:8090/wallet/marketcancelorder -d 
-'{
-    "owner_address": "4184894b42f66dce8cb84aec2ed11604c991351ac8",
-    "order_id": "0a7af584a53b612bcff1d0fc86feab05f69bc4528f26a4433bb344d453bd6eeb"
-}' <br />
+demo: 
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/marketcancelorder -d 
+&#39;{
+    &quot;owner_address&quot;: &quot;4184894b42f66dce8cb84aec2ed11604c991351ac8&quot;,
+    &quot;order_id&quot;: &quot;0a7af584a53b612bcff1d0fc86feab05f69bc4528f26a4433bb344d453bd6eeb&quot;
+}&#39; 
+</code></pre></div>
 Parameter：
 owner_address：owner address, default hexString 
 order_id：order id      <br />
 Return：Transaction object   </p>
+</li>
+<li>
 <p>wallet/getmarketorderbyaccount  <br />
 Description：Get all orders for the account
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d 
-'{
-    "value": "4184894b42f66dce8cb84aec2ed11604c991351ac8" 
-}' <br />
+demo: 
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d 
+&#39;{
+    &quot;value&quot;: &quot;4184894b42f66dce8cb84aec2ed11604c991351ac8&quot; 
+}&#39; 
+</code></pre></div>
 Parameter：
 value：owner address, default hexString   <br />
 Return：order list   </p>
+</li>
+<li>
 <p>wallet/getmarketpairlist   <br />
 Description：Get all trading pairs
-demo: curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist<br />
+demo: 
+<div class="highlight"><pre><span></span><code>curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist  
+</code></pre></div>
 Parameter：  none
 Return：makket pair list</p>
+</li>
+<li>
 <p>wallet/getmarketorderlistbypair <br />
 Description：Get all orders for the trading pair
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d 
-'{
-    "sell_token_id": "5f" ,
-    "buy_token_id": "31303030303031"
-}' <br />
+demo: 
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d 
+&#39;{
+    &quot;sell_token_id&quot;: &quot;5f&quot; ,
+    &quot;buy_token_id&quot;: &quot;31303030303031&quot;
+}&#39; 
+</code></pre></div>
 Parameter：
 sell_token_id：sell token id, default hexString        <br />
 buy_token_id：buy token id, default hexString       <br />
 Return：order list</p>
+</li>
+<li>
 <p>wallet/getmarketpricebypair  <br />
 Description：Get all prices for the trading pair
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d 
-'{
-    "sell_token_id": "5f" 
-    "buy_token_id": "31303030303031" 
-}' <br />
+demo: 
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d 
+&#39;{
+    &quot;sell_token_id&quot;: &quot;5f&quot; 
+    &quot;buy_token_id&quot;: &quot;31303030303031&quot; 
+}&#39; 
+</code></pre></div>
 Parameter：
 sell_token_id：sell token id, default hexString      <br />
 buy_token_id：buy token id, default hexString    <br />
 Return：price list</p>
+</li>
+<li>
 <p>wallet/getmarketorderbyid  <br />
 Description：Get all orders for the account
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d 
-'{
-    "value": "orderid" 
-}' <br />
+demo: 
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d 
+&#39;{
+    &quot;value&quot;: &quot;orderid&quot; 
+}&#39; 
+</code></pre></div>
 Parameter：
 value：order id, default hexString   <br />
 Return：order  </p>
+</li>
+<li>
 <p>wallet/getburntrx   <br />
 Description：Get burn trx amount
-demo: curl -X get  http://127.0.0.1:8090/wallet/getburntrx<br />
+demo: 
+<div class="highlight"><pre><span></span><code>curl -X get  http://127.0.0.1:8090/wallet/getburntrx  
+</code></pre></div>
 Parameter：  none
 Return：burn trx amount</p>
+</li>
+<li>
+<p>wallet/freezebalancev2</p>
+</li>
+</ul>
+<p>Description: Stake TRX.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/freezebalancev2<span class="w"> </span>-d
+<span class="go">&#39;{</span>
+<span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
+<span class="go">    &quot;frozen_balance&quot;: 10000,</span>
+<span class="go">    &quot;resource&quot;: &quot;BANDWIDTH&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameter owner_address: Owner address, default hexString</p>
+<p>Parameter frozen_balance: TRX stake amount</p>
+<p>Parameter resource: TRX stake type, 'BANDWIDTH' or 'ENERGY'</p>
+<p>Parameter permission_id: Optional, for multi-signature use</p>
+<p>Return: Transaction object</p>
+<ul>
+<li>wallet/unfreezebalancev2</li>
+</ul>
+<p>Description: Unstake TRX which staked during Stake 2.0
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/unfreezebalancev2<span class="w"> </span>-d
+<span class="go">&#39;{</span>
+<span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
+<span class="go">    &quot;unfreeze_balance&quot;: 1000000,</span>
+<span class="go">    &quot;resource&quot;: &quot;BANDWIDTH&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameter owner_address: Owner address, default hexString</p>
+<p>Parameter resource: staked TRX unstake type 'BANDWIDTH' or 'ENERGY'</p>
+<p>Parameter unfreeze_balance: unfreeze balance, the unit is sun</p>
+<p>Parameter permission_id: Optional, for multi-signature use</p>
+<p>Return: Transaction object</p>
+<ul>
+<li>wallet/delegateresource</li>
+</ul>
+<p>Description: Delegate bandwidth or energy resources to other accounts
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/delegateresource<span class="w"> </span>-d
+<span class="go">&#39;{</span>
+<span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
+<span class="go">    &quot;receiver_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
+<span class="go">    &quot;balance&quot;: 1000000,</span>
+<span class="go">    &quot;resource&quot;: &quot;BANDWIDTH&quot;,</span>
+<span class="go">    &quot;lock&quot;: false</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameter owner_address: Owner address, default hexString</p>
+<p>Parameter receiver_address: Resource receiver address</p>
+<p>Parameter balance: Amount of TRX staked for resources to be delegated, unit is sun</p>
+<p>Parameter resource: Resource type: 'BANDWIDTH' or 'ENERGY'</p>
+<p>Parameter lock: Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days</p>
+<p>Parameter permission_id: Optional, for multi-signature use</p>
+<p>Return: Transaction object</p>
+<ul>
+<li>wallet/undelegateresource</li>
+</ul>
+<p>Description: Cancel the delegation of bandwidth or energy resources to other account
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/undelegateresource<span class="w"> </span>-d
+<span class="go">&#39;{</span>
+<span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
+<span class="go">    &quot;receiver_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
+<span class="go">    &quot;balance&quot;: 1000000,</span>
+<span class="go">    &quot;resource&quot;: &quot;BANDWIDTH&quot;</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameter owner_address: Owner address, default hexString</p>
+<p>Parameter receiver_address: Resource receiver address</p>
+<p>Parameter balance: Amount of TRX staked for resources to be delegated, unit is sun</p>
+<p>Parameter resource: Resource type: 'BANDWIDTH' or 'ENERGY'</p>
+<p>Parameter permission_id: Optional, for multi-signature use</p>
+<p>Return: Transaction object</p>
+<ul>
+<li>wallet/withdrawexpireunfreeze</li>
+</ul>
+<p>Description: Withdraw unfrozen balance in Stake2.0, the user can call this API to get back their funds after executing /wallet/unfreezebalancev2 transaction and waiting N days, N is a network parameter
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/withdrawexpireunfreeze<span class="w"> </span>-d
+<span class="go">&#39;{</span>
+<span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,</span>
+<span class="go">}&#39;</span>
+</code></pre></div></p>
+<p>Parameter owner_address: Owner address, default hexString</p>
+<p>Parameter permission_id: Optional, for multi-signature use</p>
+<p>Return: Transaction object</p>
               
             </div>
           </div><footer>
