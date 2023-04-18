@@ -1,4 +1,68 @@
 # History
+
+## GreatVoyage-v4.7.1.1 (Pittacus)
+GreatVoyage-v4.7.1.1 (Pittacus) version optimized multiple interfaces and removed APIs involving sensitive information.
+
+Please see the details below.
+
+
+### API 
+#### 1. Remove APIs involving sensitive information
+Versions prior to GreatVoyage-v4.7.1.1 (Pittacus) provide APIs related to signature and address generation. Since the input or output of these APIs contains private keys, there are security risks in transmission in the network. At present, public API service providers in the TRON ecosystem have closed these APIs, such as TronGrid, Anker, GetBlock, etc. In the developer document, these APIs have already been tagged as obsolete and it is recommended to sign transactions and create addresses offline using SDK.
+
+GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:
+
+* HTTP
+    * `createaddress`: Create an address based on the specified password
+    * `generateaddress`: Create address randomly
+    * `easytransfer`: Transfer TRX with password
+    * `easytransferbyprivate`: Transfer TRX with private key
+    * `easytransferasset`: Transfer TRC10 token with password
+    * `easytransferassetbyprivate`: Transfer TRC10 token with private key
+    * `gettransactionsign`: Sign transaction with private key
+    * `addtransactionsign`: Sign transaction with private key which is mainly used to sign multi-signature transactions
+* gRPC
+    * `CreateAddress`: Create an address based on the specified password
+    * `GenerateAddress`: Create address randomly
+    * `EasyTransfer`: Transfer TRX with password
+    * `EasyTransferByPrivate`: Transfer TRX with private key
+    * `EasyTransferAsset`: Transfer TRC10 token with password
+    * `EasyTransferAssetByPrivate`: Transfer TRC10 token with private key
+    * `GetTransactionSign`: Sign transaction with private key
+    * `GetTransactionSign2`: Sign transaction with private key
+    * `AddSign`: Sign transaction with private key which is mainly used to sign multi-signature transactions
+
+
+
+TIP: [https://github.com/tronprotocol/tips/issues/534](https://github.com/tronprotocol/tips/issues/534)
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5096](https://github.com/tronprotocol/java-tron/pull/5096)    
+
+#### 2. Optimize resource delegate information query interface
+The `/wallet/getdelegatedresourcev2` interface can query the resources that an address delegates to another address, and [resource delegate](https://developers.tron.network/reference/delegateresource-1) can choose whether to be locked. For 2 resource delegation to the same address, one of them may be locked, and the other may be not locked, so `/wallet/getdelegatedresourcev2` interface will return two sets of information: locked resource delegation data and unlocked resource delegation data. In versions prior to GreatVoyage-v4.7.1.1 (Pittacus), if all the resource delegation by one address to another address are locked, then the non-locked resource delegation data will be 0. In this case, the interface may also return non-locked resource delegation data (0 value which is meaningless). The GreatVoyage-v4.7.1.1 (Pittacus) version optimizes the `/wallet/getdelegatedresourcev2` interface, and only returns resource delegation data with non-zero value, making the returned data more concise and clear.
+
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5123](https://github.com/tronprotocol/java-tron/pull/5123) 
+
+
+### Other Changes
+
+
+#### 1. Optimize the update logic of the `origin_energy_usage` field in the transaction receipt
+The TRON network supports contract deployers to share part of the contract call cost. In order to facilitate users to query the energy consumption of contract transactions, in addition to recording the total energy consumption of the transaction through the `energy_usage_total` field, the transaction receipt will also record the amount of energy paid by the contract deployer through the `origin_energy_usage` field. `energy_usage_total` contains `origin_energy_usage`. 
+
+In versions prior to GreatVoyage-v4.7.1.1 (Pittacus), in rare cases, the `energy_usage_total` field is 0 while the `origin_energy_usage` field is not 0 when querying through `/wallet/gettransactioninfobyid` API. Therefore the GreatVoyage-v4.7.1.1 (Pittacus) version optimizes the update logic of `origin_energy_usage` in the transaction receipt to ensure the accuracy of querying the consumed energy of the contract deployer.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5120](https://github.com/tronprotocol/java-tron/pull/5120)   
+
+
+--- 
+
+*Whatever you do, do it well.* 
+<p align="right"> ---Pittacus</p>
+
 ## GreatVoyage-v4.7.1(Sartre)
 
 GreatVoyage-v4.7.1(Sartre) introduces several important optimizations and updates. The optimized block synchronization logic improves the stability of block synchronization; the optimized node IP setting improves the availability of nodes; the optimized node log improves the maintainability of nodes.
