@@ -306,7 +306,7 @@ checkPath<span class="o">(){</span>
 <span class="w">  </span><span class="k">do</span>
 <span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$flag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">        </span><span class="nv">path</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$p</span><span class="sb">`</span>
-<span class="w">        </span><span class="nb">break</span>
+<span class="w">        </span><span class="k">break</span>
 <span class="w">     </span><span class="k">fi</span>
 <span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;-d&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;--database-directory&#39;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">        </span><span class="nv">path</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
