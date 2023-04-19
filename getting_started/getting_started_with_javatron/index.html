@@ -434,65 +434,8 @@ Returns an unsigned TRX transferring transaction:
     &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
 }
 </code></pre></div>
-Then sign the transaction, for your own node, you can use the http interface <a href="https://developers.tron.network/reference/gettransactionsign"><code>wallet/gettransactionsign</code></a> to sign the transaction, otherwise, because this interface needs to be filled in private key, it has the risk of leaking the private key, so it is recommended to sign transaction offline, but not use this api. </p>
-<p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:16887/wallet/gettransactionsign&#39; \
---header &#39;Content-Type: application/json&#39; \
---data-raw &#39;{&quot;transaction&quot;:{
-    &quot;visible&quot;: true,
-    &quot;txID&quot;: &quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;,
-    &quot;raw_data&quot;: {
-        &quot;contract&quot;: [
-            {
-                &quot;parameter&quot;: {
-                    &quot;value&quot;: {
-                        &quot;amount&quot;: 10000000,
-                        &quot;owner_address&quot;: &quot;TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1&quot;,
-                        &quot;to_address&quot;: &quot;TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf&quot;
-                    },
-                    &quot;type_url&quot;: &quot;type.googleapis.com/protocol.TransferContract&quot;
-                },
-                &quot;type&quot;: &quot;TransferContract&quot;
-            }
-        ],
-        &quot;ref_block_bytes&quot;: &quot;193b&quot;,
-        &quot;ref_block_hash&quot;: &quot;aaecd88e4e0e7528&quot;,
-        &quot;expiration&quot;: 1656580476000,
-        &quot;timestamp&quot;: 1656580418228
-    },
-    &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
-},
-&quot;privateKey&quot;:&quot;e62650acb68caf5cd8fe3d03eb3fb9ca37afb72429f68053f9278f73951591ed&quot;}&#39;
-</code></pre></div>
-Result:
-<div class="highlight"><pre><span></span><code>{
-    &quot;visible&quot;: true,
-    &quot;signature&quot;: [
-        &quot;e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301&quot;
-    ],
-    &quot;txID&quot;: &quot;c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0&quot;,
-    &quot;raw_data&quot;: {
-        &quot;contract&quot;: [
-            {
-                &quot;parameter&quot;: {
-                    &quot;value&quot;: {
-                        &quot;amount&quot;: 10000000,
-                        &quot;owner_address&quot;: &quot;TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1&quot;,
-                        &quot;to_address&quot;: &quot;TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf&quot;
-                    },
-                    &quot;type_url&quot;: &quot;type.googleapis.com/protocol.TransferContract&quot;
-                },
-                &quot;type&quot;: &quot;TransferContract&quot;
-            }
-        ],
-        &quot;ref_block_bytes&quot;: &quot;193b&quot;,
-        &quot;ref_block_hash&quot;: &quot;aaecd88e4e0e7528&quot;,
-        &quot;expiration&quot;: 1656580476000,
-        &quot;timestamp&quot;: 1656580418228
-    },
-    &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
-}
-</code></pre></div>
-Finally, the signed transaction is broadcast to the Java-tron node through the <a href="https://developers.tron.network/reference/broadcasttransaction"><code>wallet/broadcasttransaction</code></a> interface to complete the sending of the TRX transferring transaction.</p>
+Then sign the transaction offline. </p>
+<p>Finally, Broadcast the signed transaction to the Java-tron node through the <a href="https://developers.tron.network/reference/broadcasttransaction"><code>wallet/broadcasttransaction</code></a> interface to complete the sending of the TRX transferring transaction.</p>
 <p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:16887/wallet/broadcasttransaction&#39; \
 --header &#39;Content-Type: application/json&#39; \
 --data-raw &#39;{

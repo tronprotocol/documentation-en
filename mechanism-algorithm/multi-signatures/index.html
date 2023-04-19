@@ -446,14 +446,6 @@ localwitness = [
 <p>Please refer to <a href="../../api/http/">HTTP API</a> and <a href="../../api/rpc/">RPC API</a> for more information.</p>
 <ol>
 <li>
-<p>add signature</p>
-<div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/addtransactionsign -d &#39;</span>
-<span class="go">  {&quot;transaction&quot;: &quot;TransferContract&quot;, &quot;privateKey&quot;: &quot;permissionkey1&quot;}&#39;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">AddSign</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-</li>
-<li>
 <p>query the addresses that already signed a transaction</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/getapprovedlist -d &#39;{&quot;transaction&quot;}&#39;</span>
 </code></pre></div>
