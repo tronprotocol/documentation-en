@@ -240,269 +240,250 @@ rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {}
 ```
 Nodes: FullNode and SolidityNode
 
-**37.&nbsp;To sign a transaction**
-Sign the transaction, it is recommended to sign transactions offline.
-```protobuf
-rpc GetTransactionSign (TransactionSign) returns (Transaction) {}
-```
-Nodes: FullNode
 
 
-**38.&nbsp;Address and private key creation**
-```protobuf
-rpc CreateAdresss (BytesMessage) returns (BytesMessage) {}
-```
-Nodes: Fullnode
-
-**39.&nbsp;TRX easy transfer**
-```protobuf
-rpc EasyTransfer (EasyTransferMessage) returns (EasyTransferResponse) {}
-```
-Nodes: FullNode
-Note: This interface has been deprecated.
-
-**40.&nbsp;Deploy a smart contract**
+**37.&nbsp;Deploy a smart contract**
 ```protobuf
 rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode and SolidityNode
 
-**41.&nbsp;Trigger a smart contract**
+**38.&nbsp;Trigger a smart contract**
 ```protobuf
 rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-**42.&nbsp;Create a shielded transaction**
+**39.&nbsp;Create a shielded transaction**
 ```protobuf
 rpc CreateShieldedTransaction (PrivateParameters) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-**43.&nbsp;Get a Merkle tree information of a note**
+**40.&nbsp;Get a Merkle tree information of a note**
 ```protobuf
 rpc GetMerkleTreeVoucherInfo (OutputPointInfo) returns (IncrementalMerkleVoucherInfo) {}
 ```
 Nodes: FullNode
 
-**44.&nbsp;Scan note by ivk**
+**41.&nbsp;Scan note by ivk**
 ```protobuf
 rpc ScanNoteByIvk (IvkDecryptParameters) returns (DecryptNotes) {}
 ```
 Nodes: FullNode
 
-**45.&nbsp;Scan note by ovk**
+**42.&nbsp;Scan note by ovk**
 ```protobuf
 rpc ScanNoteByOvk (OvkDecryptParameters) returns (DecryptNotes) {}
 ```
 Nodes: FullNode
 
-**46.&nbsp;Get spending key**
+**43.&nbsp;Get spending key**
 ```protobuf
 rpc GetSpendingKey (EmptyMessage) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-**47.&nbsp;Get expanded spending key**
+**44.&nbsp;Get expanded spending key**
 ```protobuf
 rpc GetExpandedSpendingKey (BytesMessage) returns (ExpandedSpendingKeyMessage) {}
 ```
 Nodes: FullNode
 
-**48.&nbsp;Get ak from ask**
+**45.&nbsp;Get ak from ask**
 ```protobuf
 rpc GetAkFromAsk (BytesMessage) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-**49.&nbsp;Get nk from nsk**
+**46.&nbsp;Get nk from nsk**
 ```protobuf
 rpc GetNkFromNsk (BytesMessage) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-**50.&nbsp;Get incoming viewing key**
+**47.&nbsp;Get incoming viewing key**
 ```protobuf
 rpc GetIncomingViewingKey (ViewingKeyMessage) returns (IncomingViewingKeyMessage) {}
 ```
 Nodes: FullNode
 
-**51.&nbsp;Get diversifier**
+**48.&nbsp;Get diversifier**
 ```protobuf
 rpc GetDiversifier (EmptyMessage) returns (DiversifierMessage) {}
 ```
 Nodes: FullNode
 
-**52.&nbsp;Get zen payment address**
+**49.&nbsp;Get zen payment address**
 ```protobuf
 rpc GetZenPaymentAddress (IncomingViewingKeyDiversifierMessage) returns (PaymentAddressMessage) {}
 ```
 Nodes: FullNode
 
-**53.&nbsp;Get rcm**
+**50.&nbsp;Get rcm**
 ```protobuf
 rpc GetRcm (EmptyMessage) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-**54.&nbsp;Get a note status of is spent or not**
+**51.&nbsp;Get a note status of is spent or not**
 ```protobuf
 rpc IsSpend (NoteParameters) returns (SpendResult) {}
 ```
 Nodes: FullNode
 
-**55.&nbsp;Create a shielded transaction without using ask**
+**52.&nbsp;Create a shielded transaction without using ask**
 ```protobuf
 rpc CreateShieldedTransactionWithoutSpendAuthSig (PrivateParametersWithoutAsk) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-**56.&nbsp;Create a shielded transaction hash**
+**53.&nbsp;Create a shielded transaction hash**
 ```protobuf
 rpc GetShieldTransactionHash (Transaction) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-**57.&nbsp;Create a signature for a shielded transaction**
+**54.&nbsp;Create a signature for a shielded transaction**
 ```protobuf
 rpc CreateSpendAuthSig (SpendAuthSigParameters) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-**58.&nbsp;Create a shield nullifier**
+**55.&nbsp;Create a shield nullifier**
 ```protobuf
 rpc CreateShieldNullifier (NfParameters) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-**59.&nbsp;Get new shielded address**
+**56.&nbsp;Get new shielded address**
 ```protobuf
 rpc GetNewShieldedAddress (EmptyMessage) returns (ShieldedAddressInfo){}
 ```
 Nodes: FullNode
 
-**60.&nbsp;Create shielded contract parameters**
+**57.&nbsp;Create shielded contract parameters**
 ```protobuf
 rpc CreateShieldedContractParameters (PrivateShieldedTRC20Parameters) returns (ShieldedTRC20Parameters) {}
 ```
 Nodes: FullNode
 
-**61.&nbsp;Create shielded contract parameters without ask**
+**58.&nbsp;Create shielded contract parameters without ask**
 ```protobuf
 rpc CreateShieldedContractParametersWithoutAsk (PrivateShieldedTRC20ParametersWithoutAsk) returns (ShieldedTRC20Parameters) {}
 ```
 Nodes: FullNode
 
-**62.&nbsp;Scan shielded TRC20 notes by ivk**
+**59.&nbsp;Scan shielded TRC20 notes by ivk**
 ```protobuf
 rpc ScanShieldedTRC20NotesbyIvk (IvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
 ```
 Nodes: FullNode, SolidityNode
 
-**63.&nbsp;Scan shielded TRC20 notes by ovk**
+**60.&nbsp;Scan shielded TRC20 notes by ovk**
 ```protobuf
 rpc ScanShieldedTRC20NotesbyOvk (OvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
 ```
 Nodes: FullNode, SolidityNode
 
-**64.&nbsp;Get the status of shielded TRC20 note of spent or not**
+**61.&nbsp;Get the status of shielded TRC20 note of spent or not**
 ```protobuf
 rpc IsShieldedTRC20ContractNoteSpent (NfTRC20Parameters) returns (NullifierResult) {}
 ```
 Nodes: FullNode, SolidityNode
 
-**65.&nbsp;Get the trigger input for the shielded TRC20**
+**62.&nbsp;Get the trigger input for the shielded TRC20**
 ```protobuf
   rpc GetTriggerInputForShieldedTRC20Contract (ShieldedTRC20TriggerContractParameters) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
 
-**66.&nbsp;Create an market order**       
+**63.&nbsp;Create an market order**       
 ```
 rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
 ```
 Nodes: FullNode
  
-**67.&nbsp;Cancel the order**      
+**64.&nbsp;Cancel the order**      
 ```   
 rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
 ```
 Nodes: FullNode 
 
-**68.&nbsp;Get all orders for the account**      
+**65.&nbsp;Get all orders for the account**      
 ```
 rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
 ```
 Nodes: FullNode 
 
-**69.&nbsp;Get all trading pairs**         
+**66.&nbsp;Get all trading pairs**         
 ```
 rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
 ```
 Nodes: FullNode 
 
-**70.&nbsp;Get all orders for the trading pair**       
+**67.&nbsp;Get all orders for the trading pair**       
 ```
 rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
 ```
 Nodes: FullNode 
 
-**71.&nbsp;Get all prices for the trading pair**      
+**68.&nbsp;Get all prices for the trading pair**      
 ```
 rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
 ```
 Nodes: FullNode 
 
-**72.&nbsp;Get order by id**      
+**69.&nbsp;Get order by id**      
 ```
 rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
 ```
 Nodes: FullNode 
 
-**73.&nbsp;perform a historical balance lookup**      
+**70.&nbsp;perform a historical balance lookup**      
 ```
 rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
 ```
 Nodes: FullNode 
 
-**74.&nbsp;fetch all balance-changing transactions in a block**      
+**71.&nbsp;fetch all balance-changing transactions in a block**      
 ```
 rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
 ```
 Nodes: FullNode 
 
-**75.&nbsp;get the burn trx amount**      
+**72.&nbsp;get the burn trx amount**      
 ```
 rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
 ```
 Nodes: FullNode and SolidityNode
 
-**76.&nbsp;Freeze TRX**
+**73.&nbsp;Freeze TRX**
 ```protobuf
 rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-**77.&nbsp;UnFreeze TRX**
+**74.&nbsp;UnFreeze TRX**
 ```protobuf
 rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-**78.&nbsp;Withdraw Staked TRX**
+**75.&nbsp;Withdraw Staked TRX**
 ```protobuf
 rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-**79.&nbsp;Delegate Resource**
+**76.&nbsp;Delegate Resource**
 ```protobuf
 rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-**80.&nbsp;UnDelegate Resource**
+**77.&nbsp;UnDelegate Resource**
 ```protobuf
 rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
 ```
