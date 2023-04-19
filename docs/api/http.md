@@ -5,16 +5,16 @@
 | transaction                   |  account                           |   shielded transactions                      |
 |-------------------------------|------------------------------------|----------------------------------------------|
 | createtransaction             |  updateaccount                     | getexpandedspendingkey                       |
-| gettransactionsign            |  createaccount                     | getakfromask                                 |
-| gettransactionbyid            |  createaddress                     | getnkfromnsk                                 |
+| gettransactioninfobyblocknum            |  createaccount                     | getakfromask                                 |
+| gettransactionbyid            |  getdelegatedresourceaccountindexv2                    | getnkfromnsk                                 |
 | gettransactioninfobyid        |  getaccountnet                     | getspendingkey                               |
 | gettransactioncountbyblocknum |  getaccount                        | getdiversifier                               |
-| getdeferredtransactionbyid    |  generateaddress                   | getincomingviewingkey                        |
+| getdeferredtransactionbyid    |  getdelegatedresourcev2                   | getincomingviewingkey                        |
 | canceldeferredtransactionbyid |  validateaddress                   | getzenpaymentaddress                         |
 | getdeferredtransactioninfobyid|  getaccountresource                | scannotebyivk                                |
 | getsignweight                 |  setaccountid                      | scanandmarknotebyivk                         |
-| addtransactionsign            |  getaccountbyid                    | scannotebyovk                                |
-| gettransactioninfobyblocknum  |  accountpermissionupdate           | getrcm                                       |
+|             |  getaccountbyid                    | scannotebyovk                                |
+|   |  accountpermissionupdate           | getrcm                                       |
 |                               |  getdelegatedresource              | getmerkletreevoucherinfo                     |
 |                               |  getdelegatedresourceaccountindex  | isspend                                      |
 |                               |  freezebalancev2                   | createspendauthsig                           |
@@ -35,17 +35,15 @@
 |                               |  getavailableunfreezecount                 |                                              |
 |                               |  getcanwithdrawunfreezeamount                 |                                              |
 |                               |  getcandelegatedmaxsize                 |                                              |
-|                               |  getdelegatedresourcev2                 |                                              |
-|                               |  getdelegatedresourceaccountindexv2                 |                                              |
 
 
 |   asset                        |  exchange               | transfer                        |
 |--------------------------------|-------------------------|---------------------------------|
-|  createassetissue              | exchangecreate          | easytransferbyprivate           |
-|  participateassetissue         | exchangeinject          | easytransferassetbyprivate      |
-|  getassetissuebyaccount        | exchangewithdraw        | transferasset                   |
-|  getassetissuebyname           | exchangetransaction     | easytransfer                    |
-|  getassetissuelistbyname       | getexchangebyid         | easytransferasset               |
+|  createassetissue              | exchangecreate          |     transferasset       |
+|  participateassetissue         | exchangeinject          |       |
+|  getassetissuebyaccount        | exchangewithdraw        |                    |
+|  getassetissuebyname           | exchangetransaction     |                     |
+|  getassetissuelistbyname       | getexchangebyid         |                |
 |  getassetissuelist             | getpaginatedexchangelist|                                 |
 |  getpaginatedassetissuelist    | getpaginatedexchangelist|                                 |
 |  getassetissuebyid             | listexchanges           |                                 |
@@ -742,45 +740,6 @@ Parameter permission_id: Optional, for multi-signature use
 
 Return: Transaction object
 
-- wallet/gettransactionsign
-
-Description: Sign the transaction, it is recommended to sign transactions offline.
-```console
-$ curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d
-'{
-    "transaction": {
-        "txID": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
-        "raw_data": {
-            "contract": [
-                {
-                    "parameter": {
-                        "value": {
-                            "amount": 1000,
-                            "owner_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
-                            "to_address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292"
-                        },
-                        "type_url": "type.googleapis.com/protocol.TransferContract"
-                    },
-                    "type": "TransferContract"
-                }
-            ],
-            "ref_block_bytes": "267e",
-            "ref_block_hash": "9a447d222e8de9f2",
-            "expiration": 1530893064000,
-            "timestamp": 1530893006233
-        }
-    },
-    "privateKey": "your private key"
-}'
-```
-
-Parameter transaction: Transaction object
-
-Parameter privateKey: Private key
-
-Return: Transaction after sign
-
-Note: Using this api may leak out private key, please ensure using this api in a secure network
 
 - wallet/broadcasttransaction
 
@@ -1081,70 +1040,6 @@ Return: Transaction object
 
 Note: The unit of 'amount' is the smallest unit of the token
 
-- wallet/easytransfer
-
-Description: Easy transfer. This interface has been deprecated.
-```console
-$ curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d
-'{
-    "passPhrase": "your password",
-    "toAddress": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
-    "amount": 100
-}'
-```
-
-Parameter passPhrase: Password, default hexString
-
-Parameter toAddress: To address, default hexString
-
-Parameter amount: Transfer TRX amount
-
-Return: Transaction object & the result of the broadcast
-
-Note: Using this api may leak out private key, please ensure using this api in a secure network
-
-- wallet/easytransferasset
-
-Description: Easy token transfer. This interface has been deprecated.
-```console
-demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d
-'{
-    "passPhrase": "your password",
-    "toAddress": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
-    "assetId": "1000001",
-    "amount": 100
-}'
-```
-
-Parameter passPhrase: Password, default hexString
-
-Parameter toAddress: To address, default hexString
-
-Parameter assetId: Token id
-
-Parameter amount: Transfer token amount
-
-Return: Transaction object & the result of the broadcast
-
-Note: Using this api may leak out private key, please ensure using this api in a secure network
-The unit of 'amount' is the smallest unit of the token
-
-- wallet/createaddress
-
-Description: Creates an address from the specified password string (not the private key).This interface has been deprecated, please generate address offline.
-
-```console
-$ curl -X POST http://127.0.0.1:8090/wallet/createaddress -d
-'{
-    "value": "3230313271756265696a696e67"
-}'
-```
-
-Parameter value: Password, default hexString
-
-Return: An address
-
-Note: Using this api may leak out private key, please ensure using this api in a secure network
 
 - wallet/participateassetissue
 
@@ -1604,67 +1499,6 @@ $ curl -X GET  http://127.0.0.1:8090/wallet/getnextmaintenancetime
 Parameter: No parameter
 
 Return: The time interval till the next vote round(unit: ms)
-
-- wallet/easytransferbyprivate
-
-Description: TRX Easy transfer. This interface has been deprecated.
-```console
-$ curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d
-'{
-    "privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366",
-    "toAddress": "4112E621D5577311998708F4D7B9F71F86DAE138B5",
-    "amount": 10000
-}'
-```
-
-Parameter privateKey: Private key, default hexString
-
-Parameter toAddress: To address, default hexString
-
-Parameter amount: TRX transfer amount
-
-Return: Transaction object & the result of the broadcast
-
-Note: Using this api may leak out private key, please ensure using this api in a secure network
-
-- wallet/easytransferassetbyprivate
-
-Description: Token easy transfer. This interface has been deprecated.
-```console
-$ curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d
-'{
-    "privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366",
-    "toAddress": "4112E621D5577311998708F4D7B9F71F86DAE138B5",
-    "assetId": "1000001",
-    "amount": 10000
-}'
-```
-
-Parameter privateKey: Private key, default hexString
-
-Parameter toAddress: To address, default hexString
-
-Parameter assetId: Token id
-
-Parameter amount: Token transfer amount
-
-Return: Transaction object & the result of the broadcast
-
-Note: Using this api may leak out private key, please ensure using this api in a secure network
-The unit of 'amount' is the smallest unit of the token
-
-- wallet/generateaddress
-
-Description: Generate a random private key and address. This API has been deprecated, please generate address offline.
-```console
-$ curl -X GET  http://127.0.0.1:8090/wallet/generateaddress
-```
-
-Parameter: No parameter
-
-Return: Address and private key
-
-Note: Using this api may leak out private key, please ensure using this api in a secure network
 
 - wallet/validateaddress
 
@@ -2244,43 +2078,6 @@ Parameter contract_address: Smart contract address, default hexString
 
 Return: Transaction object
 
-- wallet/addtransactionsign
-
-Description: To sign the transaction or add signature to the multi-sign transaction. But it is recommended to add signature for transactions offline.
-```
-$ curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{
-    "transaction": {
-        "visible": true,
-        "txID": "752cece5a68e40e30eaeeb4c5844b3f4b004d23485ccef42e0609a9a90eeb675",
-        "raw_data": {
-            "contract": [{
-                "parameter": {
-                    "value": {
-                        "data": "a9059cbb0000000000000000000000415a523b449890854c8fc460ab602df9f31fe4293f00000000000000000000000000000000000000000000000000000000000001f4",
-                        "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-                        "contract_address": "TVf6sdWWu8zvmtcWfZerMDefoptiVhbhXC"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
-                },
-                "type": "TriggerSmartContract"
-            }],
-            "ref_block_bytes": "0883",
-            "ref_block_hash": "84c32fcee77f6be7",
-            "expiration": 1556449785000,
-            "fee_limit": 10000,
-            "timestamp": 1556449725625
-        },
-        "raw_data_hex": "0a020883220884c32fcee77f6be740a8e98b9da62d5aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a1541a7d8a35b260395c14aa456297662092ba3b76fc0121541d7f5e9b3b997006444c1646ecfae6549b5737e622244a9059cbb0000000000000000000000415a523b449890854c8fc460ab602df9f31fe4293f00000000000000000000000000000000000000000000000000000000000001f470b999889da62d9001904e"
-    },
-    "privateKey": "950139607044677436d29ff1ea2900c9402f783a91547cdc47cf706f1129c76a"
-    }'
-```
-
-Parameter transaction: transaction object
-
-Parameter privateKey: the privatekey of owner_address，hexString
-
-Return: Transaction object after sign
 
 - wallet/getsignweight
 
