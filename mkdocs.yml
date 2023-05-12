@@ -24,6 +24,7 @@ nav:
         - Account Model: mechanism-algorithm/account.md
         - Resource Model: mechanism-algorithm/resource.md
         - Smart Contract: contracts/contract.md
+        - System Contract: mechanism-algorithm/system-contracts.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
         - Multi-Signature: mechanism-algorithm/multi-signatures.md
     - For Java-tron Developers:
