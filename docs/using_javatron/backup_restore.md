@@ -51,11 +51,10 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 
 | Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)   | http://47.89.178.46/     | LevelDB, , exclude internal transactions (About 609G on 28 Oct. 2021)     |
-| Official data source (North America: Virginia)     | http://47.89.178.46:18811/     | RocksDB,  exclude internal transactions (About 601G on 28 Oct. 2021)    |
-| Official data source (Singapore)    | http://47.74.159.117/     | 	LevelDB, exclude internal transactions (About 609G on 28 Oct. 2021)     |
-| Official data source (Singapore)    | http://47.74.159.117/saveInternalTx/     | LevelDB, include internal transactions (About 769G on 28 Oct. 2021)     |
-| Data sources provided by  TronGrid Community     | https://backups.trongrid.io/     | LevelDB, include internal transactions (About 815G on 28 Oct. 2021)     |
+| Official data source (North America: Virginia)   | http://3.219.199.168/     | LevelDB, , exclude internal transactions (About 1314G on 13 Jun. 2023)     |
+| Official data source (Singapore)    | http://52.77.31.45/     | 	LevelDB, exclude internal transactions (About 1321G on 13 Jun. 2023)     |
+| Official data source (Singapore)    | http://52.77.31.45/saveInternalTx/    | LevelDB, include internal transactions (About 1496G on 13 Jun. 2023)     |
+| Data sources provided by  TronGrid Community     | https://backup.trongrid.io/    | LevelDB, include internal transactions (About 1603G on 13 Jun. 2023)     |
 
 
 **Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. 
@@ -70,7 +69,7 @@ The Tron Public Chain has supported the type of the Lite FullNode since the vers
 
 | Lite Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)  | http://47.89.178.46/     | LevelDB, At present, the download of Lite Fullnode data snapshot has been closed, and it is expected to open at the version of GreatVoyage-V4.5.0   |
+| Official data source (North America: Virginia)  | http://3.219.199.168/     | LevelDB, About 31G on 13 Jun. 2023  |
 
 **Tips**: You can split the data from the whole data with the help of the [Lite FullNode Tool](../../developers/litefullnode/#lite-fullnode-tool).
 
