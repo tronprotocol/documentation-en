@@ -2,7 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-|  TBD    |  GreatVoyage-v4.7.2    |  TBD    |   TBD    |  [TBD](https://github.com/tronprotocol/pm/issues/42)   |  TBD    |
+|  Periander    |  GreatVoyage-v4.7.2    |  2023-7-1    |  [TIP-541](https://github.com/tronprotocol/tips/issues/541) <br> [TIP-542](https://github.com/tronprotocol/tips/issues/542) <br> [TIP-543](https://github.com/tronprotocol/tips/issues/543) <br> [TIP-544](https://github.com/tronprotocol/tips/issues/544) <br> [TIP-555](https://github.com/tronprotocol/tips/issues/555) <br> [TIP-547](https://github.com/tronprotocol/tips/issues/547) <br> [TIP-548](https://github.com/tronprotocol/tips/issues/548) <br> [TIP-549](https://github.com/tronprotocol/tips/issues/549) <br> [TIP-550](https://github.com/tronprotocol/tips/issues/550)    |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.2)   |   [Specs](#greatvoyage-v472periander)   |
 |  Pittacus    |  GreatVoyage-v4.7.1.1    |  2023-4-17    |   [TIP-534](https://github.com/tronprotocol/tips/blob/master/tip-534.md)    |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.1.1)    |  [Specs](#greatvoyage-v4711-pittacus)    |
 |  Sartre    |   GreatVoyage-v4.7.1   |  2023-2-27    |  N/A    |   [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.1)   |  [Specs](#greatvoyage-v471sartre)     |
 |  Aristotle    | GreatVoyage-v4.7.0.1     |  2023-1-20    |[TIP-467](https://github.com/tronprotocol/tips/blob/master/tip-467.md) <br>[TIP-474](https://github.com/tronprotocol/tips/blob/master/tip-474.md) <br>[TIP-491](https://github.com/tronprotocol/tips/blob/master/tip-491.md) |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.0.1)    |  [Specs](#greatvoyage-v4701aristotle)    |
@@ -70,6 +70,345 @@
 |   N/A   | Odyssey-v1.0.4    |  2018-4-13    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.4)    |  N/A   |
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
+
+
+## GreatVoyage-v4.7.2(Periander)
+
+The Periander version introduces several important optimizations and updates, adding two governance proposals to optimize Stake 2.0, greatly improving the flexibility of the TRON stake mechanism; adding a governance proposal to implement EIP-3855 `PUSH0 ` Instruction, which not only ensures the compatibility of TRON and Ethereum at the virtual machine level but also reduces the cost of using TRON smart contracts; more friendly smart contracts interfaces to improve the convenience of smart contract development; the P2P network module of TRON has been fully upgraded to support IPV6 protocol, node discovery via DNS, message compression, etc., greatly improving the performance of TRON network infrastructure.
+
+Please see the details below.
+
+
+
+### Core
+#### 1. Upgrade Libp2p to v1.2.0
+Libp2p is a Java version open-source P2P protocol framework developed by the Java-tron core developers and anyone can develop distributed applications with Libp2p, as the underlying P2P network of Java-tron is implemented based on Libp2p. In order to further improve the underlying network performance of Java-tron, Periander upgrades the Libp2p v0.1.4 with the v1.2.0 version.
+
+Libp2p v1.2.0 has the following new features：
+
+
+* Support IPv6 protocol
+
+    IPV6 protocol is the next-generation Internet IP protocol that replaces IPV4. While solving the problem of IP4 address exhaustion, the network performance has also been improved. Currently, mainstream server operating systems support both IPv4 and IPv6. Therefore, Libp2p v1.2.0 supporting dual protocol stacks not only improves the network performance of TRON but also enables nodes that either support one of the protocols or support both of them to join the TRON network.
+
+    This function is disabled by default and needs to be enabled through the node configuration item `node.enableIpv6 = true`.
+
+    * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-549.md](https://github.com/tronprotocol/tips/blob/master/tip-549.md) 
+
+
+* Node Discovery via DNS
+
+    Libp2p v1.2.0 supports node discovery through DNS so that nodes can use not only the Kademlia algorithm but also the DNS servers for node discovery. The nodes supporting the feature can publish nodes to the DNS service and use DNS for node discovery. These functions need to be enabled through node configuration items, see below:
+
+    **Publish Nodes to DNS**
+    
+    The node supports publishing known nodes to the DNS service for other nodes to use. There are two ways to publish nodes: dynamic publishing and static publishing. Dynamic publishing is the node periodically publishing the remote node IP in the K-bucket to DNS. Static publishing is to publish the nodes in the `dns.staticNodes` configuration item to the DNS service at one time, without updating later. If `dns.staticNodes` is not empty, it means to adopt the static publishing way, otherwise, the dynamic publishing way.
+
+    ```
+    node.dns {
+        # enable or disable dns publish, default false
+        publish = true
+        
+        # dns domain to publish nodes, required if publish is enable
+        dnsDomain = "..."
+
+        # dns private key used to publish, required if publish is enable, hex string of length 64
+        dnsPrivate = "..."
+        
+        # dns server to publish, required if publish is enable, only ”aws” or “aliyun” is support
+        serverType = "..."
+    
+        # access key id of aws or aliyun api, required if publish is enable, string
+        accessKeyId = "..."
+
+        # access key secret of aws or aliyun api, required if publish is enable, string
+        accessKeySecret = "..."
+
+        # if publish is enable and serverType is aliyun, it's endpoint of aws dns server, string
+        aliyunDnsEndpoint = "..."
+    
+        # if publish is enable and serverType is aws, it's region of aws api, such as "eu-south-1", string
+        awsRegion = "..."
+        # if publish is enable and serverType is aws, it's host zone id of aws's domain, string
+        awsHostZoneId = "..."
+        
+        # static nodes to published on dns
+        staticNodes = [
+            # Sample entries:
+            # "ip:port",
+            # "ip:port"
+  	    ]
+        
+        # the range is from 1 to 5
+        maxMergeSize = 2
+        
+        changeThreshold = 0.001
+    }
+    ```
+
+    **Node discovery via DNS**
+    
+    To use the function of node discovery via DNS, you need to configure the following configuration items:
+    ```
+    node.dns {
+     # DNS URL to get nodes, URL format tree://{pubkey}@{domain}, default empty
+     treeUrls = [......]
+    }
+    ```
+
+    * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-548.md](https://github.com/tronprotocol/tips/blob/master/tip-548.md) 
+
+
+* Connection precheck before P2P communication 
+
+    Libp2p v0.1.4 chooses whether to establish a connection and synchronize data with a remote node according to the order of the update time of the node. In actual scenarios, the connection may be rejected by the other party for some reason, which will affect data synchronization. In order to improve the efficiency of establishing connections between nodes, Libp2p v1.2.0 supports node connection precheck before the P2P communication, which can check whether the other node can accept the connection in advance.
+
+    The node tries to establish a TCP connection with the other node in advance to know whether it is online. If the TCP connection is established, a pair of interactive messages are used to obtain the relevant information of the other node, including the Libp2p version, the maximum number of connections, the current number of connections, etc., to determine whether the other node can still accept connections. This function avoids invalid connection requests and greatly improves the efficiency of connection establishment.
+
+    This function is disabled by default and needs to be enabled through the node configuration item `node.nodeDetectEnable`.
+
+    * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-547.md](https://github.com/tronprotocol/tips/blob/master/tip-547.md) 
+
+
+* P2P message Snappy compression
+
+    Libp2p v1.2.0 supports TCP message compression. The node compresses the TCP message before transmission and decompresses it after receiving the compressed message. After testing, the time consumption for message compression and decompression is short, less than 1 ms, and this function can significantly reduce the network bandwidth occupation of message transmission, which can save about 40% of the bandwidth.
+
+    * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-550.md](https://github.com/tronprotocol/tips/blob/master/tip-550.md) 
+    * Source Code: [https://github.com/tronprotocol/java-tron/pull/5017](https://github.com/tronprotocol/java-tron/pull/5017)
+
+
+#### 2. Support canceling unstaking in Stake 2.0
+In the versions previous to Periander, after initiating an unstaking transaction through the HTTP API in Stake 2.0, the user needs to wait for a 14-day waiting period before withdrawing the corresponding funds, and the unstaking cannot be canceled.
+
+The Periander version optimizes the Stake 2.0 mechanism, allowing users to cancel unstakings that have been initiated but not completed yet. When canceling unstakings, all unstaked funds still in the waiting period will be re-staked, and the resource obtained through the re-staking remains the same as before. Unstakings that exceeded the 14-day waiting period cannot be canceled, and this part of the unstaked funds will be automatically withdrawn to the owner’s account.
+This feature is controlled by the No. 77 parameter of the TRON network, which needs to be enabled through governance voting. After it is enabled, the nodes will support a new transaction type, and users can use the `wallet/cancelallunfreezev2` API to create an unstaking canceling transaction:
+```
+curl -X POST http://127.0.0.1:8090/wallet/cancelallunfreezev2 -d \
+'{
+  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "visible": true
+}'
+```
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-541.md](https://github.com/tronprotocol/tips/blob/master/tip-541.md)  
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5230](https://github.com/tronprotocol/java-tron/pull/5230) 
+[https://github.com/tronprotocol/java-tron/pull/5260](https://github.com/tronprotocol/java-tron/pull/5260) 
+[https://github.com/tronprotocol/java-tron/pull/5279](https://github.com/tronprotocol/java-tron/pull/5279) 
+
+
+#### 3. Resource delegating supports customizable lock period
+In the versions previous to Periander, users can choose whether to lock or not when delegating resources. If chosen to lock, the resource delegating to the recipient address could not be canceled within 3 days, which is more conducive for users participating in the resource rental market.
+
+The Periander version further optimizes the lock time when delegating resources, changing it from the current fixed value of 3 days to a configurable length of time for users according to their needs.
+
+This feature is controlled by the No.78 parameter of the TRON network. It needs to be enabled through governance voting. When enabling the proposal, a time parameter needs to be specified, indicating the maximum value of the lock time that can be set. Once enabled, a new parameter, `lock_period`, will be added to wallet/delegateresource API:
+
+```
+curl -X POST http://127.0.0.1:8090/wallet/delegateresource -d \
+'{
+  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "receiver_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+  "balance": 1000000,
+  "resource": "ENERGY",
+  "lock": true,
+  "lock_period": 86400,
+  "visible": true
+}'
+```
+
+* lock: whether to lock the delegating
+* lock_period: lock time, only when `lock` is `true`, this field is valid. The owner cannot cancel the delegating before the lock time is up. The unit of lock_period is block interval(3 seconds). This field indicates the time of how many blocks will be produced from the moment the transaction is executed. So the above 86400 means locking for 259200 seconds (3 days). lock_period cannot exceed the maximum lock period (value of the No.78 network parameter).
+
+
+The default value of lock_period is 86400, which is 3 days. That is, when `lock` is `true`, if `lock_period` is not specified or set to 0, `lock_period` will be set to 86400 by default, which will ensure compatibility before and after this feature takes effect.
+
+In addition, the value of `lock_period` cannot be lower than the remaining lock time of this type of resource that was previously delegated to the same recipient address, and the value will overwrite the remaining lock time of the previous delegating.
+
+For example, user A delegates 100 energy shares to B, and `lock_period` is set to 57600 (2 days), and so that the remaining lock time after 1 day is 28800. At this time, when A delegates energy to B again, if choose to lock, `lock_period` should be set to at least 28800 (1 day), otherwise, an exception error will be thrown when creating the delegating transaction: “The lock period for ENERGY this time cannot be less will be thrown when creating a proxy transaction than the remaining time[9600000ms] of the last lock period for ENERGY!.”
+
+* TIP:  [https://github.com/tronprotocol/tips/blob/master/tip-542.md](https://github.com/tronprotocol/tips/blob/master/tip-542.md) 
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5255](https://github.com/tronprotocol/java-tron/pull/5255)
+
+#### 4. Optimize effective peer-acquiring strategy
+
+When the latest block heights of all connected remote nodes are lower than a node’s, then the node will not be able to synchronize blocks from the remote nodes, nor broadcast the transactions. We call this kind of node an "island node". In fact, the island node has no valid peer node.
+
+In order to enable nodes to connect to effective peer nodes, the Periander version optimizes the node acquisition strategy and adds island node detection. If a node finds that it is in an island state, it will look for a node with a higher header block than the local one and establish a connection with it. This strategy prevents the node from being in an isolated state for a long time, ensures that the node can quickly replenish effective connections, enables it to obtain new blocks and broadcast transactions, and improves the stability of the node.
+
+This function is disabled by default and needs to be enabled by setting the node configuration item `node.effectiveCheckEnable`.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5088](https://github.com/tronprotocol/java-tron/pull/5088)
+
+### TVM
+#### 1. Implement EIP-3855 PUSH0 Instruction
+EIP-3855 is included in the Shanghai upgrade of Ethereum, which adds a new instruction called `PUSH0` to the Ethereum Virtual Machine (EVM) to reduce the gas cost of smart contract transactions, and Periander also adds a new governance proposal to be compatible with EIP-3855. On one hand, it can ensure the compatibility between TRON and Ethereum at the virtual machine level, and on the other hand, it also reduces the energy cost of using smart contracts on TRON as well.
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-543.md](https://github.com/tronprotocol/tips/blob/master/tip-543.md) 
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5175](https://github.com/tronprotocol/java-tron/pull/5175)
+
+
+### API
+#### 1. Add API global rate limiter
+Limiting the API access rate can not only effectively allocate node resources, but also ensure the stable running of a node. In previous versions of Periander, a rate limiter only affected a single interface. You can set the maximum number of accesses per second for an interface, the maximum number of accesses per second for an IP to this interface, and the number of concurrent accesses allowed to this interface. But there is no global rate limiter for all interfaces.
+
+In addition to the original rate limit control function for individual interfaces, the Periander version adds a global rate limit for all interfaces. The overall traffic of all HTTP, gRPC and JSON-RPC interfaces can be limited through the configuration item `rate.limiter.global.qps`, and the access rate of an IP to all interfaces can be limited through `rate.limiter.global.ip.qps`.
+
+```
+# QPS rate limit for all interfaces
+rate.limiter.global.qps =10  
+# QPS rate limit to all interfaces from the same IP address
+rate.limiter.global.ip.qps = 5  
+```
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5093](https://github.com/tronprotocol/java-tron/pull/5093)
+
+
+#### 2. Add `call_data` to HTTP Interfaces for Smart Contract Interaction
+The Periander version optimizes the HTTP smart contract calling interfaces `triggersmartcontract`, `triggerconstantcontract` and `estimateenergy`, and adds a `call_data` parameter to them. This optimization not only realizes the contract call directly through the `data` field in the transaction but also enables the `triggerconstantcontract` and `estimateenergy` interfaces to estimate the energy consumption of smart contract deployment transactions, which greatly improves the convenience of smart contract development.
+
+* Calling contract using `function_selector` and `parameter`
+    ```
+    curl --request POST \
+     --url https://api.shasta.trongrid.io/wallet/triggersmartcontract \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+    {
+        "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+      "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
+      "function_selector": "balanceOf(address)",
+      "parameter": "000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c",
+      "visible": true
+    }
+    '
+    ```
+
+* Calling contract through `call_data`
+    ```
+    curl --request POST \
+     --url https://api.shasta.trongrid.io/wallet/triggersmartcontract \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+    {
+      "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+      "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
+      "call_data": "70a08231000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c",
+      "visible": true
+    }'
+    ```
+* Estimate energy consumption of contract deployment transaction
+    ```
+    curl --request POST \
+     --url https://api.shasta.trongrid.io/wallet/triggerconstantcontract \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+    {
+      "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+      "call_data": "608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b506101c18061003a6000396000f3fe608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b50600436106100455760003560e01c8063f8b2cb4f1461004a575b600080fd5b610064600480360381019061005f919061012a565b61007a565b6040516100719190610170565b60405180910390f35b60008173ffffffffffffffffffffffffffffffffffffffff16319050919050565b600080fd5b600074ffffffffffffffffffffffffffffffffffffffffff82169050919050565b6100ca816100a0565b81146100d557600080fd5b50565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000610103826100d8565b9050919050565b600081359050610119816100c1565b610122816100f8565b905092915050565b6000602082840312156101405761013f61009b565b5b600061014e8482850161010a565b91505092915050565b6000819050919050565b61016a81610157565b82525050565b60006020820190506101856000830184610161565b9291505056fea26474726f6e58221220839f9be3efc349a3efd6bb491d0bee7bc34d86313c73f6e6eeddc4719ec69c0064736f6c63430008120033",
+      "visible": true
+    }'
+    ```
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-544.md](https://github.com/tronprotocol/tips/blob/master/tip-544.md) 
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5079](https://github.com/tronprotocol/java-tron/pull/5079)
+
+#### 3. Optimize getStorageAt interface
+In versions previous to Periander, for contracts created by the `create2` instruction, the contract data cannot be queried through the getStorageAt interface. This is due to the difference in index construction of contract data in the underlying storage for contracts created using the `create` instruction and the `create2` instruction. The Periander version optimizes the getStorageAt interface, which will select the corresponding method to construct the index according to the way the contract was created to ensure the availability of the getStorageAt interface.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5061](https://github.com/tronprotocol/java-tron/pull/5061)
+
+
+### Other Changes
+#### 1. Optimize event forwarding logic in event subscription
+Java-tron supports event subscription. In the previous version of Periander, if the solidified transaction event is subscribed, then when the node receives a new block, it would send the transaction information in the latest solidified block to the subscriber. If the network of most SR nodes is unstable, making them unable to synchronize and produce blocks in time, in this case, according to the calculation logic of the latest solidified block of the node, the height of the latest solidified block will not be guaranteed to increase by one each time. So that the latest obtained solidified block forwarded to the subscriber during event forwarding may not be the block next to the one that was forwarded the last time, resulting in data missing. 
+
+Since the conditions for this problem are very strict, it will basically not appear in the main network. However, to avoid this problem occurring in the test network or private chain, the Periander version optimizes the event forwarding logic in the event subscription and records the height of the solidified block forwarded last time, so when the node receives a new block, it will sequentially send the blocks after the last forwarded solidified block to the subscribers, ensuring the integrity of data forwarding.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/5031](https://github.com/tronprotocol/java-tron/pull/5031)
+
+
+#### 2. Support dynamic loading according to node.active and node.passive
+
+Java-tron supports configuring trusted nodes for the local node with `node.active` and `node.passive`. The local node will actively connect to the nodes in `node.active` and accept the connection request of the nodes in `node.passive`. By configuring trusted nodes, you can solve the problem that the node has no valid connections or the number of connections is rather small. However, in the previous version of Periander, you need to stop the node first to change the configuration file, and then restart the node after the update is completed. Restarting the node has a certain impact on some applications. Therefore, starting from the Periander version, the dynamic loading of `node.active` and `node.passive` configuration items are supported, so that the change of the trusted node can be completed without restarting the local node, which improves the online stability of the node.
+
+
+This function is disabled by default and needs to be enabled by modifying the following node configuration items.
+```
+node.dynamicConfig.enable=true
+node.dynamicConfig.checkInterval = 600
+```
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/5090](https://github.com/tronprotocol/java-tron/pull/5090)
+
+#### 3. Optimize block synchronization logic
+
+The Periander version optimizes the block synchronization logic, ensures the correctness of concurrent execution of the block acquisition thread and block synchronization thread, the block summary obtaining thread and chain switching thread through the lock mechanism, and improves the stability of block synchronization and node connection.
+
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5094](https://github.com/tronprotocol/java-tron/pull/5094) 
+[https://github.com/tronprotocol/java-tron/pull/5097](https://github.com/tronprotocol/java-tron/pull/5097) 
+[https://github.com/tronprotocol/java-tron/pull/5102](https://github.com/tronprotocol/java-tron/pull/5102) 
+
+#### 4. Normalize HTTP URLs
+The node supports disabling the specified HTTP APIs, and the node deployer can configure the interfaces to which the node will stop providing services through the `node.disabledApi`. In previous versions of Periander, even if the interface was added to the `node.disabledApi` list, the node would still respond to non-standard URL requests. The Periander version normalizes the requested URL to ensure the validity of the `node.disabledApi` list.
+
+```
+node.disabledApi= [
+   "getaccount",
+    "getnowblock2"
+]
+
+```
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5085](https://github.com/tronprotocol/java-tron/pull/5085) 
+
+#### 5. Optimize block fetching logic
+After a node requests a block from another node, if it does not receive the block within a certain period of time, the request will be considered as a timeout, and then it will request the block from another node that meets the conditions. Of which, one of the conditions for selecting a node is that the node's `block acquisition delay` is lower than the `block timeout period`. Therefore, a low `block timeout` setting may make the node unable to find other remote nodes, resulting in slow block synchronization or stopping the synchronization.
+
+In order to improve block synchronization performance under an unstable network, the Periander version increases the default value of the timeout period for nodes to obtain blocks, from 200ms to 500ms, which not only expands the scope of node selection but also increases the probability of successfully obtaining blocks, greatly improving the efficiency of block synchronization. The node deployer can also adjust the timeout period through the `node.fetchBlock.timeout` configuration item.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5106](https://github.com/tronprotocol/java-tron/pull/5106)
+
+#### 6. Add a new node startup mode
+In order to facilitate data backup or data statistics for node deployers, the client supports stopping running under specific conditions. Users can set the conditions for node stop through the node configuration file. When the conditions are met, the node will stop syncing and exit. However, in the versions previous to Periander, the node only supports stopping under certain conditions and does not support the interface query service after stopping, so users cannot call the interface to query the status of the system. Therefore, the Periander version adds a new node startup mode to support data query services without starting the P2P network module. When the node successfully stops under certain conditions, the user can add `-p2p- disable true` parameter to the command to start the node. At this time, the node will not start the network module, and will not perform node discovery and block synchronization, but will provide interface query services, so that users can query the current system status. Below is the start command:
+
+```
+java -jar FullNode.jar -c config.conf --p2p-disable true 
+```
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/5011](https://github.com/tronprotocol/java-tron/pull/5011)
+
+#### 7. Upgrade JUnit to 4.13.2
+The Periander version upgrades the unit testing framework and upgrades the JUnit dependency library from v4.12 to v4.13.2.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5244](https://github.com/tronprotocol/java-tron/pull/5244) 
+
+#### 8. Add monitoring metrics for JSON-RPC
+The Periander version supports JSON-RPC interface latency monitoring metrics, allowing node deployers to monitor the latency of all types of interfaces.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5222](https://github.com/tronprotocol/java-tron/pull/5222) 
+
+ 
+#### 9. Optimize the database module
+In versions previous to Periander, for nodes using LevelDB as the storage engine, if the LevelDB database is detected to be damaged during the startup period, it will try to repair the data. Although this function can repair the data, it cannot guarantee the integrity of the data. Therefore, the Periander version optimizes the database module and removes the LevelDB data automatic repair function, so that when the node detects that the database is damaged, it immediately reports an error and exits, avoiding invalid synchronization.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5223](https://github.com/tronprotocol/java-tron/pull/5223) 
+
+#### 10. Optimize checkpoint v2 recovery process
+In order to solve the problem of node database corruption caused by the abnormal shutdowns, starting from GreatVoyage-v4.6.0 (Socrates), the Checkpoint V2 mechanism is introduced. The V2 mechanism will save multiple checkpoints on the disk, corresponding to multiple solidified block data, which is used to restore the data when the node database is damaged. 
+
+This function needs to periodically clean up expired checkpoints. Since the operation of deleting expired checkpoints is not an atomic operation, this will lead to the situation that expired checkpoints may not be completely deleted when the machine is abnormally shut down, that is, there may be damaged checkpoints. Therefore, the Periander version optimizes the automatic repair function of checkpoint v2. When restoring data, all expired checkpoints are skipped, avoiding the situation of using damaged checkpoints to repair data, and improving the stability of nodes.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/5224](https://github.com/tronprotocol/java-tron/pull/5224)
+
+
+--- 
+
+*Forethought in all things.* 
+<p align="right"> ---Periander</p>
 
 
 ## GreatVoyage-v4.7.1.1 (Pittacus)
