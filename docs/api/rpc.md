@@ -488,3 +488,26 @@ Nodes: FullNode
 rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
+
+**78.&nbsp;Query transaction information in the pending pool**
+```
+rpc GetTransactionFromPending (BytesMessage) returns (Transaction) {};
+```
+Nodes: FullNode
+
+**79.&nbsp;Query the pending pool transaction id list**
+```
+rpc GetTransactionListFromPending (EmptyMessage) returns (TransactionIdList) {};
+```
+Nodes: FullNode
+
+**80.&nbsp;Query the size of the pending pool**
+```
+rpc GetPendingSize (EmptyMessage) returns (NumberMessage) {};
+Nodes: FullNode
+```
+**81.&nbsp; Cancel UnFreeze**
+```protobuf
+rpc CancelAllUnfreezeV2 (CancelAllUnfreezeV2Contract) returns (TransactionExtention) {}
+```
+Nodes: FullNode
