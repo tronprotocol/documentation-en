@@ -487,6 +487,22 @@ Nodes: FullNode</p>
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnDelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">UnDelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
+<p><strong>78.&nbsp;Query transaction information in the pending pool</strong>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionFromPending (BytesMessage) returns (Transaction) {};
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>79.&nbsp;Query the pending pool transaction id list</strong>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionListFromPending (EmptyMessage) returns (TransactionIdList) {};
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>80.&nbsp;Query the size of the pending pool</strong>
+<div class="highlight"><pre><span></span><code>rpc GetPendingSize (EmptyMessage) returns (NumberMessage) {};
+Nodes: FullNode
+</code></pre></div>
+<strong>81.&nbsp; Cancel UnFreeze</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CancelAllUnfreezeV2</span><span class="w"> </span><span class="p">(</span><span class="n">CancelAllUnfreezeV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
               
             </div>
           </div><footer>

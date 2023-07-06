@@ -124,6 +124,8 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#walletunfreezebalancev2">wallet/unfreezebalancev2</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#walletcancelallunfreezev2">wallet/cancelallunfreezev2</a>
+    </li>
     <li class="toctree-l4"><a class="reference internal" href="#walletdelegateresource">wallet/delegateresource</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#walletundelegateresource">wallet/undelegateresource</a>
@@ -833,6 +835,7 @@ Parameter: Transaction object after sign</p>
 <li><a href="#walletgetdelegatedresourceaccountindex">wallet/getdelegatedresourceaccountindex</a></li>
 <li><a href="#walletfreezebalancev2">wallet/freezebalancev2</a></li>
 <li><a href="#walletunfreezebalancev2">wallet/unfreezebalancev2</a></li>
+<li><a href="#walletcancelallunfreezev2">wallet/cancelallunfreezev2</a></li>
 <li><a href="#walletdelegateresource">wallet/delegateresource</a></li>
 <li><a href="#walletundelegateresource">wallet/undelegateresource</a></li>
 <li><a href="#walletwithdrawexpireunfreeze">wallet/withdrawexpireunfreeze</a></li>
@@ -935,6 +938,19 @@ Parameters: </p>
 <li><code>permission_id</code>: Optional, for multi-signature use</li>
 </ul>
 <p>Return:Unsigned transaction</p>
+<h4 id="walletcancelallunfreezev2">wallet/cancelallunfreezev2<a class="headerlink" href="#walletcancelallunfreezev2" title="Permanent link">&para;</a></h4>
+<p>Description: Cancel unstakings, all unstaked funds still in the waiting period will be re-staked, all unstaked funds that exceeded the 14-day waiting period will be automatically withdrawn to the owner’s account</p>
+<div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
+&#39;{
+    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;
+}&#39;
+</code></pre></div>
+<p>Parameters: </p>
+<ul>
+<li><code>owner_address</code>: Owner address, default hexString</li>
+<li><code>permission_id</code>: Optional, for multi-signature use</li>
+</ul>
+<p>Return:Unsigned transaction</p>
 <h4 id="walletdelegateresource">wallet/delegateresource<a class="headerlink" href="#walletdelegateresource" title="Permanent link">&para;</a></h4>
 <p>Description: Delegate bandwidth or energy resources to other accounts in Stake2.0.</p>
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/delegateresource -d
@@ -953,6 +969,7 @@ Parameters: </p>
 <li><code>balance</code>: Amount of TRX staked for resources to be delegated, unit is sun</li>
 <li><code>resource</code>: Resource type: 'BANDWIDTH' or 'ENERGY'</li>
 <li><code>lock</code>: Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days</li>
+<li><code>lock_period</code>: lock time,The unit is block interval(3 seconds), indicates the time of how many blocks will be produced from the moment the transaction is executed. Only when lock is true, this field is valid. If the delegate lock period is 1 day, the lock_period is: 28800</li>
 <li><code>permission_id</code>: Optional, for multi-signature use</li>
 </ul>
 <p>Return:Unsigned transaction</p>
@@ -1294,11 +1311,12 @@ Parameters: </p>
 <li><code>contract_address</code>: Contract address, default hexString</li>
 <li><code>function_selector</code>: Function call, must not leave a blank space</li>
 <li><code>parameter</code>: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a js tool provided by remix to convert a parameter like [1,2] to the format that VM requires</li>
+<li><code>data</code>: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use <code>function_selector</code> and <code>parameter</code> for contract interaction. When both of <code>data</code> and <code>function_selector</code> exist, <code>function_selector</code> is preferred</li>
 <li><code>fee_limit</code>: The maximum TRX burns for resource consumption</li>
 <li><code>call_value</code>: The TRX transfer to the contract for each call</li>
 <li><code>call_token_value</code>: The amount of  trc10 token transfer to the contract for each call</li>
 <li><code>token_id</code>: The id of trc10 token transfer to the contract</li>
-<li>owner`_address: Owner address that triggers the contract, default hexString</li>
+<li><code>owner_address</code>: Owner address that triggers the contract, default hexString</li>
 <li><code>permission_id</code>: Optional, for multi-signature use</li>
 </ul>
 <p>Return:Unsigned transaction</p>
@@ -1309,7 +1327,6 @@ Parameters: </p>
 <span class="go">    &quot;contract_address&quot;: &quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;,</span>
 <span class="go">    &quot;function_selector&quot;: &quot;set(uint256,uint256)&quot;,</span>
 <span class="go">    &quot;parameter&quot;: &quot;00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002&quot;,</span>
-<span class="go">    &quot;fee_limit&quot;: 10,</span>
 <span class="go">    &quot;call_value&quot;: 100,</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;</span>
 <span class="go">}&#39;</span>
@@ -1319,10 +1336,11 @@ Parameters: </p>
 <li><code>contract_address</code>: Smart contract address, defualt hexString</li>
 <li><code>function_selector</code>:  Function call, must not leave a blank space</li>
 <li><code>parameter</code>: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires</li>
-<li><code>fee_limit</code>: The maximum TRX burns for resource consumption</li>
+<li><code>data</code>: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use <code>function_selector</code> and <code>parameter</code> for contract interaction. When both of <code>data</code> and <code>function_selector</code> exist, <code>function_selector</code> is preferred</li>
 <li><code>call_value</code>: The TRX transfer to the contract for each call</li>
 <li><code>owner_address</code>: Owner address that triggers the contract, default hexString</li>
-<li><code>permission_id</code>: Optional, for multi-signature use</li>
+<li><code>call_token_value</code>: The amount of  trc10 token transfer to the contract for each call</li>
+<li><code>token_id</code>: The id of trc10 token transfer to the contract</li>
 </ul>
 <p>Return: Transaction object</p>
 <p>Note: The unit of TRX in the parameters is SUN</p>
@@ -1388,7 +1406,11 @@ Parameters: </p>
 <li><code>contract_address</code> : Smart contract address. If visible=true, use base58check format, otherwise use hex format.</li>
 <li><code>function_selector</code>: Function call, must not be left blank.</li>
 <li><code>parameter</code>: Parameter encoding needs to be in accordance with the ABI rules, the rules are more complicated, users can use the ethers library to encode</li>
+<li><code>data</code>: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use <code>function_selector</code> and <code>parameter</code> for contract interaction. When both of <code>data</code> and <code>function_selector</code> exist, <code>function_selector</code> is preferred</li>
+<li><code>call_value</code>: The TRX transfer to the contract for each call</li>
 <li><code>owner_address</code>:Owner address that triggers the contract. If visible=true, use base58check format, otherwise use hex </li>
+<li><code>call_token_value</code>: The amount of  trc10 token transfer to the contract for each call</li>
+<li><code>token_id</code>: The id of trc10 token transfer to the contract</li>
 </ul>
 <p>Return:Estimated the energy value</p>
 <h3 id="trc10-token">TRC10 token<a class="headerlink" href="#trc10-token" title="Permanent link">&para;</a></h3>
