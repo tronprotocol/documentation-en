@@ -320,6 +320,7 @@ The following are account resource related APIs:
 - [wallet/getdelegatedresourceaccountindex](#walletgetdelegatedresourceaccountindex)
 - [wallet/freezebalancev2](#walletfreezebalancev2)
 - [wallet/unfreezebalancev2](#walletunfreezebalancev2)
+- [wallet/cancelallunfreezev2](#walletcancelallunfreezev2)
 - [wallet/delegateresource](#walletdelegateresource)
 - [wallet/undelegateresource](#walletundelegateresource)
 - [wallet/withdrawexpireunfreeze](#walletwithdrawexpireunfreeze)
@@ -450,6 +451,24 @@ Parameters:
 
 Return:Unsigned transaction
 
+#### wallet/cancelallunfreezev2
+
+Description: Cancel unstakings, all unstaked funds still in the waiting period will be re-staked, all unstaked funds that exceeded the 14-day waiting period will be automatically withdrawn to the owner’s account
+
+```
+curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
+'{
+    "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1"
+}'
+```
+
+Parameters: 
+
+- `owner_address`: Owner address, default hexString
+- `permission_id`: Optional, for multi-signature use
+
+Return:Unsigned transaction
+
 #### wallet/delegateresource
 
 Description: Delegate bandwidth or energy resources to other accounts in Stake2.0.
@@ -472,6 +491,7 @@ Parameters:
 - `balance`: Amount of TRX staked for resources to be delegated, unit is sun
 - `resource`: Resource type: 'BANDWIDTH' or 'ENERGY'
 - `lock`: Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days
+- `lock_period`: lock time,The unit is block interval(3 seconds), indicates the time of how many blocks will be produced from the moment the transaction is executed. Only when lock is true, this field is valid. If the delegate lock period is 1 day, the lock_period is: 28800
 - `permission_id`: Optional, for multi-signature use
 
 Return:Unsigned transaction
@@ -907,11 +927,12 @@ Parameters:
 - `contract_address`: Contract address, default hexString
 - `function_selector`: Function call, must not leave a blank space
 - `parameter`: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a js tool provided by remix to convert a parameter like [1,2] to the format that VM requires
+- `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
 - `fee_limit`: The maximum TRX burns for resource consumption
 - `call_value`: The TRX transfer to the contract for each call
 - `call_token_value`: The amount of  trc10 token transfer to the contract for each call
 - `token_id`: The id of trc10 token transfer to the contract
-- owner`_address: Owner address that triggers the contract, default hexString
+- `owner_address`: Owner address that triggers the contract, default hexString
 - `permission_id`: Optional, for multi-signature use
 
 
@@ -926,7 +947,6 @@ $ curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d
     "contract_address": "4189139CB1387AF85E3D24E212A008AC974967E561",
     "function_selector": "set(uint256,uint256)",
     "parameter": "00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002",
-    "fee_limit": 10,
     "call_value": 100,
     "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292"
 }'
@@ -936,10 +956,11 @@ Parameters:
 - `contract_address`: Smart contract address, defualt hexString
 - `function_selector`:  Function call, must not leave a blank space
 - `parameter`: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires
-- `fee_limit`: The maximum TRX burns for resource consumption
+- `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
 - `call_value`: The TRX transfer to the contract for each call
 - `owner_address`: Owner address that triggers the contract, default hexString
-- `permission_id`: Optional, for multi-signature use
+- `call_token_value`: The amount of  trc10 token transfer to the contract for each call
+- `token_id`: The id of trc10 token transfer to the contract
 
 Return: Transaction object
 
@@ -1022,7 +1043,11 @@ Parameters:
 - `contract_address` : Smart contract address. If visible=true, use base58check format, otherwise use hex format.
 - `function_selector`: Function call, must not be left blank.
 - `parameter`: Parameter encoding needs to be in accordance with the ABI rules, the rules are more complicated, users can use the ethers library to encode
+- `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
+- `call_value`: The TRX transfer to the contract for each call
 - `owner_address`:Owner address that triggers the contract. If visible=true, use base58check format, otherwise use hex 
+- `call_token_value`: The amount of  trc10 token transfer to the contract for each call
+- `token_id`: The id of trc10 token transfer to the contract
 
 Return:Estimated the energy value
 

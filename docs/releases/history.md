@@ -264,8 +264,8 @@ rate.limiter.global.ip.qps = 5
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/5093](https://github.com/tronprotocol/java-tron/pull/5093)
 
 
-#### 2. Add `call_data` to HTTP Interfaces for Smart Contract Interaction
-The Periander version optimizes the HTTP smart contract calling interfaces `triggersmartcontract`, `triggerconstantcontract` and `estimateenergy`, and adds a `call_data` parameter to them. This optimization not only realizes the contract call directly through the `data` field in the transaction but also enables the `triggerconstantcontract` and `estimateenergy` interfaces to estimate the energy consumption of smart contract deployment transactions, which greatly improves the convenience of smart contract development.
+#### 2. Add `data` to HTTP Interfaces for Smart Contract Interaction
+The Periander version optimizes the HTTP smart contract calling interfaces `triggersmartcontract`, `triggerconstantcontract` and `estimateenergy`, and adds a `data` parameter to them. This optimization not only realizes the contract call directly through the `data` field in the transaction but also enables the `triggerconstantcontract` and `estimateenergy` interfaces to estimate the energy consumption of smart contract deployment transactions, which greatly improves the convenience of smart contract development.
 
 * Calling contract using `function_selector` and `parameter`
     ```
@@ -284,7 +284,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
     '
     ```
 
-* Calling contract through `call_data`
+* Calling contract through `data`
     ```
     curl --request POST \
      --url https://api.shasta.trongrid.io/wallet/triggersmartcontract \
@@ -294,7 +294,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
     {
       "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
       "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
-      "call_data": "70a08231000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c",
+      "data": "70a08231000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c",
       "visible": true
     }'
     ```
@@ -307,7 +307,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
      --data '
     {
       "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
-      "call_data": "608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b506101c18061003a6000396000f3fe608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b50600436106100455760003560e01c8063f8b2cb4f1461004a575b600080fd5b610064600480360381019061005f919061012a565b61007a565b6040516100719190610170565b60405180910390f35b60008173ffffffffffffffffffffffffffffffffffffffff16319050919050565b600080fd5b600074ffffffffffffffffffffffffffffffffffffffffff82169050919050565b6100ca816100a0565b81146100d557600080fd5b50565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000610103826100d8565b9050919050565b600081359050610119816100c1565b610122816100f8565b905092915050565b6000602082840312156101405761013f61009b565b5b600061014e8482850161010a565b91505092915050565b6000819050919050565b61016a81610157565b82525050565b60006020820190506101856000830184610161565b9291505056fea26474726f6e58221220839f9be3efc349a3efd6bb491d0bee7bc34d86313c73f6e6eeddc4719ec69c0064736f6c63430008120033",
+      "data": "608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b506101c18061003a6000396000f3fe608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b50600436106100455760003560e01c8063f8b2cb4f1461004a575b600080fd5b610064600480360381019061005f919061012a565b61007a565b6040516100719190610170565b60405180910390f35b60008173ffffffffffffffffffffffffffffffffffffffff16319050919050565b600080fd5b600074ffffffffffffffffffffffffffffffffffffffffff82169050919050565b6100ca816100a0565b81146100d557600080fd5b50565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000610103826100d8565b9050919050565b600081359050610119816100c1565b610122816100f8565b905092915050565b6000602082840312156101405761013f61009b565b5b600061014e8482850161010a565b91505092915050565b6000819050919050565b61016a81610157565b82525050565b60006020820190506101856000830184610161565b9291505056fea26474726f6e58221220839f9be3efc349a3efd6bb491d0bee7bc34d86313c73f6e6eeddc4719ec69c0064736f6c63430008120033",
       "visible": true
     }'
     ```
