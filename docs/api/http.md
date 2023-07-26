@@ -456,7 +456,7 @@ Return:Unsigned transaction
 Description: Cancel unstakings, all unstaked funds still in the waiting period will be re-staked, all unstaked funds that exceeded the 14-day waiting period will be automatically withdrawn to the owner’s account
 
 ```
-curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
+curl -X POST http://127.0.0.1:8090/wallet/cancelallunfreezev2 -d
 '{
     "owner_address": "41e472f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
