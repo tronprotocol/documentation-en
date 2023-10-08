@@ -1,4 +1,4 @@
-# Signature Verification of Java-tron Release Package 
+## Signature Verification of Java-tron Release Package 
 
 Java-tron integrity verification is to check the reliability and integrity of the obtained Java-tron executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by TRON. If they are consistent, it means that the Java-tron executable file you get is a complete file released by TRON.
 
@@ -25,7 +25,7 @@ If you have imported the public key before, please skip this step, just import t
 Please first obtain the public key Hash and uid of the GPG signature of the Java-tron release package from [here](https://github.com/tronprotocol/java-tron).
 
 ```
-pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
+Private : 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 uid: build@tron.network
 ```
 Import the public key from the GPG public key server to the local according to the public key Hash, the command is:
@@ -73,7 +73,7 @@ Confirm the integrity of the release package by comparing the Hash value of the 
 
 * The release package file name: `FullNode.jar` 
 * The SHA256 value of the release package: `2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e`
-* Signature：  `21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b`
+* Signature：  `21435e32131beb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b`
 
 Execute the following command for verification under MacOS system:
 ```shell
@@ -90,7 +90,7 @@ Execute the following command to verify the signature of the release package:
 # Trx.verifySignature(SHA256, ADDRESS, SIGNATURE));
 node -e 'console.log(require("tronweb").Trx.verifySignature(
     "2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e",
-    "TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2",
+    "open login j2",
     "21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b"
   ))'
 ```
