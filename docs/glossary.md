@@ -18,7 +18,7 @@ The total Energy conumption of the contract developer and the contract caller co
 
 **Feelimit**
 
-When the user triggers or create the contract, this is used to set the usage limit of the Energy consumption got from burning TRX or freezing TRX, Energy got from freezing TRX will be used first.
+When the user triggers or create the contract, this is used to set the usage limit of the Energy consumption got from burning TRX or staking TRX, Energy got from staking TRX will be used first.
 
 **CallValue**
 
@@ -50,7 +50,7 @@ The creation and operation of a smart contract consume CPU resources. It takes t
 
 **TRON Power(TP)**
 
-1 Frozen TRX = 1 TP, TP can be used to vote, 1 TP = 1 vote.
+1 staked TRX = 1 TP, TP can be used to vote, 1 TP = 1 vote.
 
 **Super Representative(SR)**
 

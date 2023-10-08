@@ -35,9 +35,9 @@ Parameter start_time: ICO start time
 Parameter end_time: ICO end time
 Parameter description: Token description, default hexString
 Parameter url: Token official website url, default hexString
-Parameter free_asset_net_limit: Token free asset net limit
-Parameter public_free_asset_net_limit: Token public free asset net limit
-Parameter frozen_supply: Token frozen supply
+Parameter free_asset_net_limit: The free bandwidth limit of each token holder 
+Parameter public_free_asset_net_limit: The total free bandwidth limit of the Token
+Parameter frozen_supply: Token staked supply
 Parameter permission_id: Optional, for multi-signature use
 Return: Transaction object
 Note: The unit of 'trx_num' is SUN

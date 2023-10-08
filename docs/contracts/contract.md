@@ -9,57 +9,57 @@ TRON smart contract support Solidity language in (Ethereum). Currently recommend
 ## Smart Contract Features
 TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
 
-<h3> 1. Smart Contract </h3>
+### 1. Smart Contract 
 TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
-
-    message SmartContract {
-      message ABI {
-        message Entry {
-          enum EntryType {
-            UnknownEntryType = 0;
-            Constructor = 1;
-            Function = 2;
-            Event = 3;
-            Fallback = 4;
-            Receive = 5;
-            Error = 6;
-          }
-          message Param {
-            bool indexed = 1;
-            string name = 2;
-            string type = 3;
-          }
-          enum StateMutabilityType {
-            UnknownMutabilityType = 0;
-            Pure = 1;
-            View = 2;
-            Nonpayable = 3;
-            Payable = 4;
-          }
-
-          bool anonymous = 1;
-          bool constant = 2;
-          string name = 3;
-          repeated Param inputs = 4;
-          repeated Param outputs = 5;
-          EntryType type = 6;
-          bool payable = 7;
-          StateMutabilityType stateMutability = 8;
-        }
-        repeated Entry entrys = 1;
+``` solidity
+message SmartContract {
+  message ABI {
+    message Entry {
+      enum EntryType {
+        UnknownEntryType = 0;
+        Constructor = 1;
+        Function = 2;
+        Event = 3;
+        Fallback = 4;
+        Receive = 5;
+        Error = 6;
       }
-      bytes origin_address = 1;
-      bytes contract_address = 2;
-      ABI abi = 3;
-      bytes bytecode = 4;
-      int64 call_value = 5;
-      int64 consume_user_resource_percent = 6;
-      string name = 7;
-      int64 origin_energy_limit = 8;
-      bytes code_hash = 9;
-      bytes trx_hash = 10;
-    }
+      message Param {
+        bool indexed = 1;
+        string name = 2;
+        string type = 3;
+      }
+      enum StateMutabilityType {
+        UnknownMutabilityType = 0;
+        Pure = 1;
+        View = 2;
+        Nonpayable = 3;
+        Payable = 4;
+      }
 
+      bool anonymous = 1;
+      bool constant = 2;
+      string name = 3;
+      repeated Param inputs = 4;
+      repeated Param outputs = 5;
+      EntryType type = 6;
+      bool payable = 7;
+      StateMutabilityType stateMutability = 8;
+    }
+    repeated Entry entrys = 1;
+  }
+  bytes origin_address = 1;
+  bytes contract_address = 2;
+  ABI abi = 3;
+  bytes bytecode = 4;
+  int64 call_value = 5;
+  int64 consume_user_resource_percent = 6;
+  string name = 7;
+  int64 origin_energy_limit = 8;
+  bytes code_hash = 9;
+  bytes trx_hash = 10;
+}
+```
 origin_address: smart contract creator address
 contract_address: smart contract address
 abi: the api information of the all the function of the smart contract
@@ -71,9 +71,9 @@ origin_energy_limit: energy consumption of the developer limit in one call, must
 
 Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.
 
-<h3> 2. The Usage of the Function of Smart Contract </h3>
+### 2. The Usage of the Function of Smart Contract 
 
-1.&nbsp;constant function and inconstant function
+* **constant function and inconstant function**
 
 There are two types of function according to whether any change will be made to the properties on the chain: constant function and inconstant function
 Constant function uses view/pure/constant to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
@@ -81,21 +81,22 @@ Inconstant function will be broadcasted in the form of a transaction while be ca
 
 Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as inconstant function, be dealt in the form of transaction.
 
-2.&nbsp;message calls
+* **message calls**
 
 Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
 
-3.&nbsp;delegate call/call code/libary
+* **delegate call/call code/libary**
 
 There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, msg.sender and msg.value remain unchanged. This means a contract can dynamically loadcode from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.
 
-4.&nbsp;CREATE command
+* **CREATE command**
 
 This command will create a new contract with a new address. The only difference with Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the defination of nonce is the comtract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
 Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
 
-5.&nbsp;built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+* **built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)**
 
+```  
 1)TVM is compatible with solidity language's transfer format, including:
 - accompany with constructor to call transfer
 - accompany with internal function to call transfer
@@ -104,23 +105,32 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
 
 2)Different accouts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-3)SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-4)SuperNode approves or disappoves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-5)SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-6)SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-7)TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-8)TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-9)Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-10)Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-11)Compatible with all the built-in functions of Ethereum
 
+3)SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+
+4)SuperNode approves or disappoves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+
+5)SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+
+6)SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+
+7)TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+
+8)TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+
+9)Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+
+10)Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+
+11)Compatible with all the built-in functions of Ethereum
+```
 Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
 
-<h3> 3. Contract Address Using in Solidity Language </h3>
+### 3. Contract Address Using in Solidity Language 
 
 Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 
-1.&nbsp;address conversion
+* **address conversion**
 
 Need to convert TRON's address while using in solidity (recommended):
 ```text
@@ -136,7 +146,7 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address){
 ```
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
 
-2.&nbsp;address judgement
+* **address judgement**
 
 Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
 ```text
@@ -151,7 +161,7 @@ function compareAddress(address tronAddress) public view returns (uint256){
 ```
 But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c
 
-3.&nbsp;variable assignment
+* **variable assignment**
 
 Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
 ```text
@@ -163,7 +173,7 @@ function assignAddress() public view {
 ```
 If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
 
-<h3> 4. The Special Constants Differ from Ethereum </h3>
+### 4. The Special Constants Differ from Ethereum 
 
 **Currency**
 

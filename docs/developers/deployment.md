@@ -107,12 +107,12 @@ You should see something similar to this in your logs for block synchronization:
 12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
 ```
 ## Stop Node Gracefully
-Create file stop.sh，use kill -15 to close java-tron.jar(or FullNode.jar、SolidityNode.jar).
-You need to modify pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
+Create file stop.sh，use kill -15 to close FullNode.jar(or SolidityNode.jar).
+You need to modify pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
 ```text
 #!/bin/bash
 while true; do
-  pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'`
+  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
   if [ -n "$pid" ]; then
     kill -15 $pid
     echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."

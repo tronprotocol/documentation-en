@@ -284,18 +284,8 @@ Demo: [MultiSignDemo.java](https://github.com/tronprotocol/wallet-cli/blob/multi
 
 Please refer to [HTTP API](../api/http.md) and [RPC API](../api/rpc.md) for more information.
 
-1. add signature
 
-    ```console
-    > curl -X POST http://127.0.0.1:8090/wallet/addtransactionsign -d '
-      {"transaction": "TransferContract", "privateKey": "permissionkey1"}'
-    ```
-
-    ```protobuf
-    rpc AddSign (TransactionSign) returns (TransactionExtention) {}
-    ```
-
-2. query the addresses that already signed a transaction
+1. query the addresses that already signed a transaction
 
     ```console
     > curl -X POST http://127.0.0.1:8090/wallet/getapprovedlist -d '{"transaction"}'
@@ -305,7 +295,7 @@ Please refer to [HTTP API](../api/http.md) and [RPC API](../api/rpc.md) for more
     rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList) { }
     ```
 
-3. query the signature weigth of a transaction
+2. query the signature weigth of a transaction
 
     ```console
     > curl -X POST http://127.0.0.1:8090/wallet/getsignweight -d '{"transaction"}'
