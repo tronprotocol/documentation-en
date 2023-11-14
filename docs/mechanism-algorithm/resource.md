@@ -55,13 +55,7 @@ Bandwidth points consumption sequence for other transactions:
 
 ### 3. Bandwidth Points Recovery
 
-Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
-
-$$
-U^\prime = ( 1 - \frac{T_2 - T_1}{24h} ) * U + u
-$$
-
-Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.
+After the account's free bandwidth and the bandwidth obtained by staking TRX are consumed, they will gradually recover within 24 hours.
 
 ## Energy
 
@@ -96,16 +90,7 @@ B: 10_000_000_000 and energy_limit is 10_000_000_000
 
 #### Energy Recovery
 
-The energy consumed will reduce to 0 smoothly within 24 hours.
-
-Example:
-
-```text
-at one moment, A has used 72_000_000 Energy
-if there is no continuous consumption or TRX stake
-one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
-24 hours later, the energy consumption amount will be 0 Energy
-```
+After the energy resource of the account is consumed, it will gradually recover within 24 hours.
 
 ### 2. How to Set Fee Limit (Caller Must Read)
 
