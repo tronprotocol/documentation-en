@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Tools - Java Tron</title>
+    <title>Node Maintenance Tool - Java Tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Tools";
+        var mkdocs_page_name = "Node Maintenance Tool";
         var mkdocs_page_input_path = "using_javatron/toolkit.md";
         var mkdocs_page_url = "/documentation-en/using_javatron/toolkit/";
       </script>
@@ -51,7 +51,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../private_network/">Private Network</a>
                   </li>
@@ -63,21 +63,51 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Tools</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Node Maintenance Tool</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#compile">Compile</a>
+    <li class="toctree-l2"><a class="reference internal" href="#obtain-toolkitjar">Obtain Toolkit.jar</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#options">Options</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#usage-instructions">Usage Instructions</a>
+    <li class="toctree-l2"><a class="reference internal" href="#database-partition-tool">Database Partition Tool</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#stop-fullnode-service">Stop FullNode Service</a>
+    <li class="toctree-l3"><a class="reference internal" href="#commands-and-parameters">Commands and parameters</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configure-for-database-storage-migration">Configure For Database Storage Migration</a>
+    <li class="toctree-l3"><a class="reference internal" href="#usage-instructions">Usage Instructions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#stop-fullnode-service">Stop FullNode Service</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#perform-database-migration">Perform Database Migration</a>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-for-database-storage-migration">Configure For Database Storage Migration</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#restart-fullnode-service">Restart FullNode Service</a>
+    <li class="toctree-l4"><a class="reference internal" href="#perform-database-migration">Perform Database Migration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#restart-fullnode-service">Restart FullNode Service</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lite-fullnode-data-pruning">Lite Fullnode Data Pruning</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-and-parameters">Command and parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usage-instructions_1">Usage Instructions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-copy">Data Copy</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-and-parameters_1">Command and parameters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-conversion">Data Conversion</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-and-parameters_2">Command and parameters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#leveldb-startup-optimization">LevelDB Startup Optimization</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-and-parameters_3">Command and parameters</a>
     </li>
         </ul>
     </li>
@@ -166,7 +196,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Tools</li>
+          <li>Using Java-tron &raquo;</li><li>Node Maintenance Tool</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/toolkit.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -178,18 +208,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="database-partition-tool">Database Partition Tool<a class="headerlink" href="#database-partition-tool" title="Permanent link">&para;</a></h1>
-<p>As the data on the chain continues to grow, the pressure on data storage will increase. At present, the FullNode data of the TRON public chain is close to 1T, and the daily data growth is about 1.2G. According to the current data growth rate, the annual growth rate is about 450G. A single disk capacity may be insufficient and need to be replaced by a larger disk. To solve it, a database storage partition tool has been introduced in <code>GreatVoyage-v4.5.2 (Aurelius)</code>. The tool can migrate some databases to other storage disks. When the user encounters insufficient disk space, he only needs to add another disk according to the capacity requirement and does not need to replace the original disk.</p>
-<h2 id="compile">Compile<a class="headerlink" href="#compile" title="Permanent link">&para;</a></h2>
-<p>Under the java-tron project directory, execute the command <code>./gradlew build -x test</code> to compile the tool, and the tool will be generated in <code>build/libs/Toolkit.jar</code>.</p>
-<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h2>
-<p>This tool provides data migration and storage functions. The optional command parameters are as follows:</p>
+                <h1 id="java-tron-node-maintenance-tool-toolkit">Java-tron Node Maintenance Tool - Toolkit<a class="headerlink" href="#java-tron-node-maintenance-tool-toolkit" title="Permanent link">&para;</a></h1>
+<p>The Toolkit integrates a series of tools of java-tron, and more functions will be added into it in the future for the convenience of developers. Currently Toolkit includes the following functions:</p>
 <ul>
-<li><code>-c | --config</code>: [ string ]  This option is used to specify the FullNode configuration file. If not specified, the default value will be <code>config.conf</code>.</li>
-<li><code>-d | --database-directory</code>: [ string ]  This option is used to specify the FullNode database directory. If not specified, the default value will be <code>output-directory</code>.</li>
-<li><code>-h | --help</code>: [ bool ]  This option is used to view help description, default value: false.</li>
+<li><a href="#database-partition-tool">Database Partition Tool</a></li>
+<li><a href="#lite-fullnode-data-pruning">Lite Fullnode Data Pruning</a></li>
+<li><a href="#data-copy">Data Copy</a></li>
+<li><a href="#data-conversion">Data Conversion</a></li>
+<li><a href="#leveldb-startup-optimization">LevelDB Startup Optimization</a></li>
 </ul>
-<h2 id="usage-instructions">Usage Instructions<a class="headerlink" href="#usage-instructions" title="Permanent link">&para;</a></h2>
+<p>The following describes the acquisition and use of the Toolkit toolbox in detail.</p>
+<h2 id="obtain-toolkitjar">Obtain Toolkit.jar<a class="headerlink" href="#obtain-toolkitjar" title="Permanent link">&para;</a></h2>
+<p><code>Toolkit.jar</code> can be obtained from the <a href="https://github.com/tronprotocol/java-tron/releases">released version</a> directly or by compiling the java-tron source code.</p>
+<p>Compile the source code:</p>
+<ol>
+<li>Obtain java-tron source code
+   <div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
+$ git checkout -t origin/master
+</code></pre></div></li>
+<li>Compile</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>$ cd java-tron
+$ ./gradlew clean build -x test
+</code></pre></div>
+    You will find the <code>Toolkit.jar</code> under <code>./java-tron/build/libs/</code> folder if build is successful.</p>
+<h2 id="database-partition-tool">Database Partition Tool<a class="headerlink" href="#database-partition-tool" title="Permanent link">&para;</a></h2>
+<p>As the data on the chain continues to grow, the pressure on data storage will increase. At present, the FullNode data of the TRON public chain has reached 1T, and the daily data growth is about 1.2G. According to the current data growth rate, the annual growth rate is about 450G. A single disk capacity may be insufficient and need to be replaced by a larger disk. To this end the Toolkit toolbox introduces the database storage partitioning tool. The tool can migrate some databases to other storage disks. When the user encounters insufficient disk space, he only needs to add another disk according to the capacity requirement and does not need to replace the original disk.</p>
+<h3 id="commands-and-parameters">Commands and parameters<a class="headerlink" href="#commands-and-parameters" title="Permanent link">&para;</a></h3>
+<p>To use the data partition function provided by Toolkit through the <code>db mv</code> command:</p>
+<div class="highlight"><pre><span></span><code># full command
+java -jar Toolkit.jar db mv [-h] [-c=&lt;config&gt;] [-d=&lt;database&gt;]
+# examples
+java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+</code></pre></div>
+<p>Optional command parameters are as follows:</p>
+<ul>
+<li><code>-c | --config</code>: [ string ] This option is used to specify the FullNode configuration file. If not specified, the default value will be config.conf.</li>
+<li><code>-d | --database-directory</code>: [ string ] This option is used to specify the FullNode database directory. If not specified, the default value will be output-directory.</li>
+<li><code>-h | --help</code>: [ bool ] This option is used to view help description, default value: false.</li>
+</ul>
+<h3 id="usage-instructions">Usage Instructions<a class="headerlink" href="#usage-instructions" title="Permanent link">&para;</a></h3>
 <p>Follow the following steps to use the database partition tool:</p>
 <ol>
 <li><a href="#stop-fullnode-service">Stop FullNode service</a></li>
@@ -197,12 +255,12 @@
 <li><a href="#perform-database-migration">Perform database migration</a></li>
 <li><a href="#restart-fullnode-service">Restart FullNode service</a></li>
 </ol>
-<h3 id="stop-fullnode-service">Stop FullNode Service<a class="headerlink" href="#stop-fullnode-service" title="Permanent link">&para;</a></h3>
-<p>Use the command <code>kill -15 pid</code> to close FullNode.jar, below is the FullNode process pid lookup command:
+<h4 id="stop-fullnode-service">Stop FullNode Service<a class="headerlink" href="#stop-fullnode-service" title="Permanent link">&para;</a></h4>
+<p>Use the command kill -15 pid to close FullNode.jar, below is the FullNode process pid lookup command:</p>
 <div class="highlight"><pre><span></span><code>$ ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
-</code></pre></div></p>
-<h3 id="configure-for-database-storage-migration">Configure For Database Storage Migration<a class="headerlink" href="#configure-for-database-storage-migration" title="Permanent link">&para;</a></h3>
-<p>The configuration of database migration is in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L37">storage.properties</a> field in the Java-tron node configuration file. The following is an example of migrating only the <code>block</code> and <code>trans</code> databases to illustrate how to migrate some databases to other storage disks:</p>
+</code></pre></div>
+<h4 id="configure-for-database-storage-migration">Configure For Database Storage Migration<a class="headerlink" href="#configure-for-database-storage-migration" title="Permanent link">&para;</a></h4>
+<p>The configuration of database migration is in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L36">storage.properties</a> field in the Java-tron node configuration file. The following is an example of migrating only the <code>block</code> and <code>trans</code> databases to illustrate how to migrate some databases to other storage disks:</p>
 <p><div class="highlight"><pre><span></span><code>storage {
  ......
   properties = [
@@ -220,11 +278,11 @@
 }
 </code></pre></div>
 <code>name</code> is the database name which you want to migrate, and <code>path</code> is the destination directory for database migration. The tool will migrate the database specified by <code>name</code> to the directory specified by <code>path</code>, and then create a soft link under the original path pointing to <code>path</code> directory. After <code>FullNode</code> starts, it will find the <code>path</code> directory according to the soft link.</p>
-<h3 id="perform-database-migration">Perform Database Migration<a class="headerlink" href="#perform-database-migration" title="Permanent link">&para;</a></h3>
+<h4 id="perform-database-migration">Perform Database Migration<a class="headerlink" href="#perform-database-migration" title="Permanent link">&para;</a></h4>
 <p>When executed, the current migration progress will be shown.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>mv<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>-d<span class="w"> </span>/data/tron/output-directory
 </code></pre></div>
-<h3 id="restart-fullnode-service">Restart FullNode Service<a class="headerlink" href="#restart-fullnode-service" title="Permanent link">&para;</a></h3>
+<h4 id="restart-fullnode-service">Restart FullNode Service<a class="headerlink" href="#restart-fullnode-service" title="Permanent link">&para;</a></h4>
 <p>After the migration is complete, restart the java-tron node.
 <div class="highlight"><pre><span></span><code># FullNode
 $ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
@@ -237,7 +295,7 @@ $ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
                 -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
                 -jar FullNode.jar -c main_net_config.conf &gt;&gt; start.log 2&gt;&amp;1 &amp;
 
-# Super representative&#39;s FullNode
+# Super representitive&#39;s FullNode
 $ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
                -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
                -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
@@ -248,6 +306,143 @@ $ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
                -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
                -jar FullNode.jar --witness -c main_net_config.conf &gt;&gt; start.log 2&gt;&amp;1 &amp;
 </code></pre></div></p>
+<h2 id="lite-fullnode-data-pruning">Lite Fullnode Data Pruning<a class="headerlink" href="#lite-fullnode-data-pruning" title="Permanent link">&para;</a></h2>
+<p>Toolkit provides data pruning tool, which is mainly used for generating or pruning Lite Fullnode data.</p>
+<p>The data pruning tool can divide the complete FullNode data into a snapshot dataset (Snapshot dataset) or a historical dataset (History dataset) according to the current <code>latest_block_number</code>, the snapshot dataset is used to start the Lite Fullnode (That is the Lite fullnode database), and the historical dataset is used for historical data query. Lite Fullnode started with a snapshot data set do not support querying historical data prior to the latest block height at the time of pruning. The data pruning tool also provides the function of merging historical data set with snapshot data set. The usage scenarios are as follows:</p>
+<ul>
+<li>
+<p><strong>Convert FullNode data into Lite Fullnode data</strong></p>
+<p>The Lite Fullnode starts only based on the snapshot data set, use the data pruning tool to convert the full node data into the snapshot data set, and that will get the Lite Fullnode data</p>
+</li>
+<li>
+<p><strong>Prune Lite Fullnode data regularly</strong></p>
+<p>Since the Lite Fullnode saves the same data as the FullNode after startup, although the data volume of the Lite Fullnode is very small at startup, the data expansion rate in the later period is the same as that of the FullNode, so it may be necessary to periodically prune the data. Clipping the Lite Fullnode data is also to use this tool to cut the Lite Fullnode data into snapshot data set, that is, to obtain the Pruned Lite Fullnode data</p>
+</li>
+<li>
+<p><strong>Convert Lite Fullnode data back to FullNode data</strong></p>
+<p>Since Lite Fullnode does not support historical data query, if you want to support it, you need to change Lite Fullnode data into FullNode data, then the node will change from Lite Fullnode to FullNode. You can directly download the snapshot of the FullNode database, or you can use the data pruning tool: first, convert the FullNode data into historical data set, and then merge the historical data set and the snapshot data set of the Lite Fullnode to obtain the FullNode data.</p>
+</li>
+</ul>
+<p>Note: Before using this tool for any operation, you need to stop the currently running node first.</p>
+<h3 id="command-and-parameters">Command and parameters<a class="headerlink" href="#command-and-parameters" title="Permanent link">&para;</a></h3>
+<p>To use the data pruning tool provided by Toolkit through the <code>db lite</code> command:</p>
+<div class="highlight"><pre><span></span><code># full command
+  java -jar Toolkit.jar db lite [-h] -ds=&lt;datasetPath&gt; -fn=&lt;fnDataPath&gt; [-o=&lt;operate&gt;] [-t=&lt;type&gt;]
+# examples
+  #split and get a snapshot dataset
+  java -jar Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
+  #split and get a history dataset
+  java -jar Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
+  #merge history dataset and snapshot dataset
+  java -jar Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
+</code></pre></div>
+<p>Optional command parameters are as follows:</p>
+<ul>
+<li><code>--operation | -o</code>: [ split | merge ], this parameter specifies the operation as either to split or to merge, default is split.</li>
+<li><code>--type | -t</code>: [ snapshot | history ], this parameter is used only when the operation is <code>split</code>. <code>snapshot</code> means clip to Snapshot Dataset and <code>history</code> means clip to History Dataset. Default is <code>snapshot</code>.</li>
+<li><code>--fn-data-path | -fn</code>: The database path to be split or merged. When the operation type is <code>split</code>, <code>fn-data-path</code> is used to indicate the directory of the data to be pruned; when the operation type is <code>merge</code>, <code>fn-data-path</code> indicates the database directory of the Lite Fullnode or the directory of the snapshot dataset.</li>
+<li><code>--dataset-path | -ds</code>: When operation is <code>split</code>, dataset-path is the path that store the snapshot or history, when operation is <code>merge</code>, dataset-path is the history data path.</li>
+</ul>
+<h3 id="usage-instructions_1">Usage Instructions<a class="headerlink" href="#usage-instructions_1" title="Permanent link">&para;</a></h3>
+<p>The node database is stored in the <code>output-directory/database</code> directory by default. The examples in this chapter will be explained with the default database directory.</p>
+<p>The following three examples illustrate how to use the data pruning tool:</p>
+<ul>
+<li>
+<p><strong>Split and get a <code>Snapshot Dataset</code></strong></p>
+<p>This function can split FullNode data into Lite Fullnode data, and can also be used to regularly trim Lite Fullnode data. The steps are as follows:</p>
+<p>First, stop the FullNode and execute:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># just for simplify, save the snapshot into /tmp directory</span>
+java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>split<span class="w"> </span>-t<span class="w"> </span>snapshot<span class="w"> </span>--fn-data-path<span class="w"> </span>output-directory/database<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp
+</code></pre></div>
+<ul>
+<li>--fn-data-path： The data directory to be trimmed, that is, the node data directory</li>
+<li>--dataset-path： The directory where the output snapshot dataset is stored</li>
+</ul>
+<p>After the command is executed, a <code>snapshot</code> directory will be generated in <code>/tmp</code>, the data in this directory is the Lite Fullnode data, then rename the directory from <code>snapshot</code> to <code>database</code> (the default value of the storage.db.directory is <code>database</code>, make sure rename the snapshot directory to the specified value) and copy the <code>database</code> directory  to the Lite Fullnode database directory to finish the spliting. Finally start the Lite Fullnode. </p>
+</li>
+<li>
+<p><strong>Split and get a <code>History Dataset</code></strong></p>
+<p>The command to split the historical data set is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># just for simplify, save the history into `/tmp` directory,</span>
+java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>split<span class="w"> </span>-t<span class="w"> </span><span class="nb">history</span><span class="w"> </span>--fn-data-path<span class="w"> </span>output-directory/database<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp
+</code></pre></div>
+<ul>
+<li>--fn-data-path： FullNode data directory</li>
+<li>--dataset-path： The directory where the output historical dataset is stored</li>
+</ul>
+<p>After the command is executed, the <code>history</code> directory will be generated under the <code>/tmp</code> directory, and the data in it is the historical dataset.</p>
+</li>
+<li>
+<p><strong>Merge <code>History Dataset</code> and <code>Snapshot Dataset</code></strong></p>
+<p>Both <code>History Dataset</code> and <code>Snapshot Dataset</code> have an <code>info.properties</code> file to identify the block height when they are splitted. Make sure that the <code>split_block_num</code> in <code>History Dataset</code> is not less than the corresponding value in the <code>Snapshot Dataset</code>. After the historical dataset is merged with the snapshot dataset through the merge operation, the Lite Fullnode will become a real FullNode.</p>
+<p>The command to merge the historical dataset and the snapshot dataset is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># just for simplify, assume `History dataset` is locate in /tmp</span>
+java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>merge<span class="w"> </span>--fn-data-path<span class="w"> </span>/tmp/snapshot<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp/history
+</code></pre></div>
+<ul>
+<li>--fn-data-path： snapshot dataset directory</li>
+<li>--dataset-path： history dataset directory</li>
+</ul>
+<p>After the command is executed, the merged data will overwrite the directory where the snapshot data set is located, that is, the directory specified by <code>--fn-data-path</code>, copy the merged data to the node database directory, and the Lite Fullnode becomes a FullNode.</p>
+</li>
+</ul>
+<h2 id="data-copy">Data Copy<a class="headerlink" href="#data-copy" title="Permanent link">&para;</a></h2>
+<p>The node database is large, and the database copy operation is time-consuming. The Toolkit provides a fast database copy function, which can quickly copy the LevelDB or RocksDB database in the same file system by creating a hard link.</p>
+<h3 id="command-and-parameters_1">Command and parameters<a class="headerlink" href="#command-and-parameters_1" title="Permanent link">&para;</a></h3>
+<p>To use the data copy function provided by Toolkit through <code>db copy</code> :</p>
+<div class="highlight"><pre><span></span><code># full command
+  java -jar Toolkit.jar db cp [-h] &lt;src&gt; &lt;dest&gt;
+# examples
+  java -jar Toolkit.jar db cp  output-directory/database /tmp/databse
+</code></pre></div>
+<p>Optional command parameters are as follows:</p>
+<ul>
+<li><code>&lt;src&gt;</code>: Source path for database. Default: output-directory/database</li>
+<li><code>&lt;dest&gt;</code>: Output path for database. Default: output-directory-cp/database</li>
+<li><code>-h | --help</code>：[ bool ] provide the help info. Default: false</li>
+</ul>
+<p>Note: Before using this tool for any operation, you need to stop the currently running node first.</p>
+<h2 id="data-conversion">Data Conversion<a class="headerlink" href="#data-conversion" title="Permanent link">&para;</a></h2>
+<p>Toolkit supports database data conversion function, which can convert LevelDB data into RocksDB data.</p>
+<h3 id="command-and-parameters_2">Command and parameters<a class="headerlink" href="#command-and-parameters_2" title="Permanent link">&para;</a></h3>
+<p>To use the data conversion function provided by Toolkit through <code>db convert</code> command:</p>
+<div class="highlight"><pre><span></span><code># full command
+  java -jar Toolkit.jar db convert [-h] [--safe] &lt;src&gt; &lt;dest&gt;
+# examples
+  java -jar Toolkit.jar db convert  output-directory/database /tmp/database
+</code></pre></div>
+<p>Optional command parameters are as follows:</p>
+<ul>
+<li><code>&lt;src&gt;</code>:  Input path for leveldb, default: output-directory/database.</li>
+<li><code>&lt;dest&gt;</code>: Output path for rocksdb, default: output-directory-dst/database.</li>
+<li><code>--safe</code>：In safe mode, read data from leveldb then put into rocksdb, it's a very time-consuming procedure. If not, just change engine.properties from leveldb to rocksdb, rocksdb is compatible with leveldb for the current version. This may not be the case in the future, default: false.</li>
+<li><code>-h | --help</code>：[ bool ]  Provide the help info, default: false。</li>
+</ul>
+<p>Note: Before using this tool for any operation, you need to stop the currently running node first.</p>
+<h2 id="leveldb-startup-optimization">LevelDB Startup Optimization<a class="headerlink" href="#leveldb-startup-optimization" title="Permanent link">&para;</a></h2>
+<p>with the running of levedb, the manifest file will continue to grow. Excessive manifest file will not only affect the startup speed of the node, moreover, there may be an issue that the service is terminated abnormally due to the continuous growth of memory. To solve this issue, toolkit provides the leveldb startup optimization tool. The tool optimizes the file size of the manifest and the startup process of LevelDB, reduces memory usage, and improves node startup speed.</p>
+<h3 id="command-and-parameters_3">Command and parameters<a class="headerlink" href="#command-and-parameters_3" title="Permanent link">&para;</a></h3>
+<p>To use the LevelDB startup optimization function provided by Toolkit through <code>db archive</code> command:</p>
+<div class="highlight"><pre><span></span><code># full command
+   java -jar Toolkit.jar db archive [-h] [-b=&lt;maxBatchSize&gt;] [-d=&lt;databaseDirectory&gt;] [-m=&lt;maxManifestSize&gt;]
+# examples
+   #1. use default settings
+   java -jar Toolkit.jar db archive 
+   #2. specify the database directory as /tmp/db/database
+   java -jar Toolkit.jar db archive -d /tmp/db/database 
+   #3. specify the batch size to 64000 when optimizing manifest
+   java -jar Toolkit.jar db archive -b 64000
+   #4. specify optimization only when Manifest exceeds 128M
+   java -jar Toolkit.jar db archive -m 128 
+</code></pre></div>
+<p>Optional command parameters are as follows:</p>
+<ul>
+<li><code>-b | --batch-size</code>: Specify the batch manifest size, default: 80000.</li>
+<li><code>-d | --database-directory</code>: Specify the database directory to be processed, default: output-directory/database.</li>
+<li><code>-m | --manifest-size</code>: Specify the minimum required manifest file size, unit: M, default: 0.</li>
+<li><code>-h | --help</code>：[ bool ]  Provide the help info, default: false.</li>
+</ul>
+<p>Note: Before using this tool for any operation, you need to stop the currently running node first. Usage instructions, please refer to <a href="../../developers/archive-manifest/">Leveldb Startup Optimization Plugins</a>.</p>
               
             </div>
           </div><footer>

@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/litefullnode/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Lite Fullnode - Java Tron</title>
+    <title>Lite FullNode - Java Tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Lite Fullnode";
+        var mkdocs_page_name = "Lite FullNode";
         var mkdocs_page_input_path = "developers/litefullnode.md";
         var mkdocs_page_url = "/documentation-en/developers/litefullnode/";
       </script>
@@ -51,8 +51,12 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Lite Fullnode</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Lite FullNode</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#lite-fullnode-deployment">Lite FullNode Deployment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lite-fullnode-maintenance">Lite FullNode Maintenance</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
@@ -65,7 +69,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Tools</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
@@ -150,7 +154,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Lite Fullnode</li>
+          <li>Using Java-tron &raquo;</li><li>Lite FullNode</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/litefullnode.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -163,75 +167,12 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lite-fullnode">Lite FullNode<a class="headerlink" href="#lite-fullnode" title="Permanent link">&para;</a></h1>
-<p>Lite FullNode runs the same code with FullNode, the difference is that Lite FullNode only starts based on state data snapshot, which only contains all account state data and historical data of the last 256 blocks. Moreover, during the running of the node, only the data related to the state data snapshot is stored, and the historical data of blocks and transactions are not saved. Therefore, Lite Fullnode has the advantages of occupying less disk space and startting up fast, but it does not provide historical block and transaction data query, and only provides part of HTTP API and GRPC API of fullnode. For APIs that are not supported by Lite Fullnode, please refer to <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryHttpFilter.java">HTTP</a>, <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryGrpcInterceptor.java">GRPC</a>. These APIs can be forced open by configuring <code>openHistoryQueryWhenLiteFN = true</code> in the configuration file, but this is not recommended.</p>
-<p>Therefore, if developers only need to use nodes for block synchronization, processing and broadcasting transactions, then Lite Fullnoe will be a better choice.</p>
-<p>The deployment steps of a Lite fullnode are the same as fullnode. The difference is that the light node database needs to be obtained. You can directly download the light node data snapshot from the <a href="../../using_javatron/backup_restore/#lite-fullnode-data-snapshot">public backup data</a> and use it directly; you can also use the lite fulnode tool to convert the fullnode database to lite fullnode database. The use of the light node tool will be described in detail below.</p>
-<h1 id="lite-fullnode-tool">Lite FullNode Tool<a class="headerlink" href="#lite-fullnode-tool" title="Permanent link">&para;</a></h1>
-<p>Lite FullNode Tool is used to split the database of a FullNode into a <code>Snapshot dataset</code> and a <code>History dataset</code>.</p>
-<ul>
-<li><code>Snapshot dataset</code>: the minimum dataset for quick startup of the Lite FullNode.</li>
-<li><code>History dataset</code>: the archive dataset that used for historical data queries.</li>
-</ul>
-<p>Before using this tool for any operation, you need to stop the currently running FullNode process first. This tool provides the function of splitting the complete data into two datasets according to the current <code>latest block height</code> (latest_block_number). Lite FullNode launched from snapshot datasets do not support querying historical data prior to this block height. The tool also provides the ability to merge historical datasets with snapshot datasets.</p>
-<p>For more design details, please refer to: <a href="https://github.com/tronprotocol/tips/issues/128">TIP-128</a>.</p>
-<h3 id="obtain-lite-fullnode-tool">Obtain Lite Fullnode Tool<a class="headerlink" href="#obtain-lite-fullnode-tool" title="Permanent link">&para;</a></h3>
-<p>LiteFullNodeTool.jar can be obtained by compiling the java-tron source code, the steps are as follows:</p>
-<ol>
-<li>Obtain java-tron source code
-    <div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
-$ git checkout -t origin/master
-</code></pre></div></li>
-<li>
-<p>Compile
-    <div class="highlight"><pre><span></span><code>$ cd java-tron
-$ ./gradlew clean build -x test
-</code></pre></div></p>
-<p>After compiling, <code>LiteFullNodeTool.jar</code> will be generated in the <code>java-tron/build/libs/</code> directory.</p>
-</li>
-</ol>
-<h3 id="use-lite-fullnode-tool">Use Lite Fullnode tool<a class="headerlink" href="#use-lite-fullnode-tool" title="Permanent link">&para;</a></h3>
-<p><strong>Options</strong></p>
-<p>This tool provides independent cutting of <code>Snapshot Dataset</code> and <code>History Dataset</code> and a merge function.</p>
-<ul>
-<li><code>--operation | -o</code>: [ split | merge ] specifies the operation as either to split or to merge</li>
-<li><code>--type | -t</code>: [ snapshot | history ] is used only with <code>split</code> to specify the type of the dataset to be split; snapshot refers to Snapshot Dataset and history refers to History Dataset.</li>
-<li><code>--fn-data-path</code>: FullNode database directory</li>
-<li><code>--dataset-path</code>: dataset directory, when operation is <code>split</code>, <code>dataset-path</code> is the path that store the <code>Snapshot Dataset</code> or <code>History Dataset</code>,
-otherwise <code>dataset-path</code> should be the <code>History Dataset</code> path.</li>
-</ul>
-<p><strong>Examples</strong></p>
-<p>Start a new FullNode using the default config, then an <code>output-directory</code> will be produced in the current directory.
-<code>output-directory</code> contains a sub-directory named <code>database</code> which is the database to be split.</p>
-<ul>
-<li>
-<p><strong>Split and get a <code>Snapshot Dataset</code></strong></p>
-<p>First, stop the FullNode and execute:
-<div class="highlight"><pre><span></span><code>// just for simplify, locate the snapshot into `/tmp` directory,
-$ java -jar LiteFullNodeTool.jar -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
-</code></pre></div>
-then a <code>snapshot</code> directory will be generated in <code>/tmp</code>, pack this directory and copy it to somewhere that is ready to run a Lite Fullnode.
-Do not forget rename the directory from <code>snapshot</code> to <code>database</code>.
-(the default value of the storage.db.directory is <code>database</code>, make sure rename the snapshot to the specified value)</p>
-</li>
-<li>
-<p><strong>Split and get a <code>History Dataset</code></strong></p>
-<p>If historical data query is needed, <code>History dataset</code> should be generated and merged into Lite FullNode.
-<div class="highlight"><pre><span></span><code>// just for simplify, locate the history into `/tmp` directory,
-$ java -jar LiteFullNodeTool.jar -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
-</code></pre></div>
-A <code>history</code> directory will be generated in <code>/tmp</code>, pack this directory and copy it to a Lite Fullnode.
-<code>History dataset</code> always take a large storage, make sure the disk has enough volume to store the <code>History dataset</code>.</p>
-</li>
-<li>
-<p><strong>Merge <code>History Dataset</code> and <code>Snapshot Dataset</code></strong></p>
-<p>Both <code>History Dataset</code> and <code>Snapshot Dataset</code> have an info.properties file to identify the block height from which they are segmented.
-Make sure that the <code>split_block_num</code> in <code>History Dataset</code> is not less than the corresponding value in the <code>Snapshot Dataset</code>.</p>
-<p>After getting the <code>History dataset</code>, the Lite FullNode can merge the <code>History dataset</code> and become a real FullNode.
-<div class="highlight"><pre><span></span><code>// just for simplify, assume `History dataset` is locate in /tmp
-$ java -jar LiteFullNodeTool.jar -o merge --fn-data-path output-directory/database --dataset-path /tmp/history
-</code></pre></div></p>
-</li>
-</ul>
+<p>Lite FullNode runs the same code with FullNode, the difference is that Lite FullNode only starts based on state data snapshot, which only contains all account state data and historical data of the latest 65536 blocks. The state data snapshot is small, only about 3% of the FullNode data. Therefore, Lite Fullnode has the advantages of occupying less disk space and startting up fast, but it does not provide historical block and transaction data query by default, and only provides part of HTTP API and GRPC API of FullNode. For APIs that are not supported by Lite Fullnode, please refer to <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryHttpFilter.java">HTTP</a>, <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryGrpcInterceptor.java">GRPC</a>. But these APIs can be opened by configuring <code>openHistoryQueryWhenLiteFN = true</code> in the configuration file, because after the Lite Fullnode startup, the saved data by the Lite Fullnode is exactly the same as that of the FullNode, so after this configuration item is turned on, the Lite Fullnode supports querying the block data synchronized after the node startup, but still does not support querying the block data before the node startup.</p>
+<p>Therefore, if developers only need to use node for block synchronization, processing and broadcasting transactions, or only query the blocks and transactions synchronized after the node starts up, then Lite Fullnoe will be a better choice.</p>
+<h2 id="lite-fullnode-deployment">Lite FullNode Deployment<a class="headerlink" href="#lite-fullnode-deployment" title="Permanent link">&para;</a></h2>
+<p>The deployment steps and startup command of a Lite fullnode are the same as fullnode's, please refer to <a href="../../using_javatron/installing_javatron/">Deployment Instructions</a> to deploy a Lite Fullnode. The only difference is the database. You need to obtain the Lite Fullnode database. You can download the Lite Fullnode data snapshot from the <a href="../../using_javatron/backup_restore/#lite-fullnode-data-snapshot">public backup data</a> and use it directly; or use the <a href="../../using_javatron/toolkit/#lite-fullnode-data-pruning">Lite Fulnode data pruning tool</a> to convert the Fullnode database to Lite Fullnode database.</p>
+<h2 id="lite-fullnode-maintenance">Lite FullNode Maintenance<a class="headerlink" href="#lite-fullnode-maintenance" title="Permanent link">&para;</a></h2>
+<p>Since the Lite Fullnode will save the same data as the FullNode's after startup, although the data volume of the Lite Fullnode is very small at startup, the data expansion rate in the later period is the same as that of the FullNode, so it may be necessary to periodically cut the data. Pruning Lite Fullnode data is also to use <a href="../../using_javatron/toolkit/#lite-fullnode-data-pruning">Lite Fullnode data pruning tool</a> to split Lite Fullnode data into snapshot dataset, that is, to obtain the pruned Lite Fullnode data.</p>
               
             </div>
           </div><footer>

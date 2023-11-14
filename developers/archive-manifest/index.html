@@ -51,7 +51,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../litefullnode/">Lite Fullnode</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../litefullnode/">Lite FullNode</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
                   </li>
@@ -63,7 +63,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Tools</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
@@ -176,7 +176,7 @@ For this reason, leveldb startup optimization plugin is introduced since <code>G
 <h3 id="how-to-get">How to get<a class="headerlink" href="#how-to-get" title="Permanent link">&para;</a></h3>
 <ul>
 <li>build by yourself.
-  Under java-tron, execute <code>. /gradlew build</code>, you can get ArchiveManifest.jar under <code>build/libs/</code>.</li>
+  Under java-tron, execute <code>. /gradlew build</code>, you can get Toolkit.jar under <code>build/libs/</code>.</li>
 <li>Download directly.
   <a href="https://github.com/tronprotocol/java-tron/releases">Links</a></li>
 </ul>
@@ -189,7 +189,7 @@ For this reason, leveldb startup optimization plugin is introduced since <code>G
 </li>
 <li>
 <ol>
-<li>Execute the ArchiveManifest plugin.</li>
+<li>Execute the Toolkit command.</li>
 </ol>
 </li>
 <li>
@@ -204,18 +204,18 @@ For this reason, leveldb startup optimization plugin is introduced since <code>G
 <h3 id="how-to-use">How to use<a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h3>
 <p>After FullNode runs, the default database directory: <code>output-directory</code>, the optimization plugin will work with the <code>output-directory/database</code> directory.
 Developers can choose one of the following two ways  according to actual situation.</p>
-<h4 id="1-use-it-independently">1. Use it Independently<a class="headerlink" href="#1-use-it-independently" title="Permanent link">&para;</a></h4>
+<h4 id="use-it-independently">Use it Independently<a class="headerlink" href="#use-it-independently" title="Permanent link">&para;</a></h4>
 <h5 id="1stop-the-fullnode-service">1.Stop the FullNode service<a class="headerlink" href="#1stop-the-fullnode-service" title="Permanent link">&para;</a></h5>
 <p>Use <code>kill -15</code> to shutdown the FullNode.jar .</p>
 <p>Query the pid: <code>ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code></p>
-<h5 id="2execute-the-archivemanifest-plugin">2.Execute the ArchiveManifest plugin<a class="headerlink" href="#2execute-the-archivemanifest-plugin" title="Permanent link">&para;</a></h5>
+<h5 id="2execute-the-toolkit-command">2.Execute the Toolkit command<a class="headerlink" href="#2execute-the-toolkit-command" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="c1"># Full command</span>
-java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>batchSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>databaseDirectory<span class="o">]</span><span class="w"> </span><span class="o">[</span>-m<span class="w"> </span>manifestSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
+java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>batchSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>databaseDirectory<span class="o">]</span><span class="w"> </span><span class="o">[</span>-m<span class="w"> </span>manifestSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
 <span class="c1"># examples</span>
-<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span><span class="c1">#1. use default settings</span>
-<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span>-d<span class="w"> </span>/tmp/db/database<span class="w"> </span><span class="c1">#2. Specify the database directory as /tmp/db/database</span>
-<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span>-b<span class="w"> </span><span class="m">64000</span><span class="w"> </span><span class="c1">#3. Specify the batch size to 64000 when optimizing Manifest</span>
-<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>ArchiveManifest.jar<span class="w"> </span>-m<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="c1">#4. Specify optimization only when Manifest exceeds 128M</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span><span class="c1">#1. use default settings</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>-d<span class="w"> </span>/tmp/db/database<span class="w"> </span><span class="c1">#2. Specify the database directory as /tmp/db/database</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>-b<span class="w"> </span><span class="m">64000</span><span class="w"> </span><span class="c1">#3. Specify the batch size to 64000 when optimizing Manifest</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>-m<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="c1">#4. Specify optimization only when Manifest exceeds 128M</span>
 </code></pre></div>
 <p>After the command is executed, <code>archive.log</code> will be generated in the <code>./logs</code> directory, you can see the result.</p>
 <blockquote>
@@ -230,7 +230,7 @@ nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w">
 <span class="w"> </span><span class="c1">#SR Node</span>
 nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w">  </span>-jar<span class="w"> </span>FullNode.jar<span class="w">  </span>-p<span class="w">  </span>private<span class="w"> </span>key<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>&lt;/dev/null<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<h4 id="2-integrated-startup-script">2. Integrated startup script<a class="headerlink" href="#2-integrated-startup-script" title="Permanent link">&para;</a></h4>
+<h4 id="integrated-startup-script">Integrated startup script<a class="headerlink" href="#integrated-startup-script" title="Permanent link">&para;</a></h4>
 <p><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nv">APP</span><span class="o">=</span><span class="nv">$1</span>
@@ -261,7 +261,7 @@ rebuildManifest<span class="o">()</span><span class="w"> </span><span class="o">
 
 buildManifest<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 
-<span class="w"> </span><span class="nv">ARCHIVE_JAR</span><span class="o">=</span><span class="s1">&#39;ArchiveManifest.jar&#39;</span>
+<span class="w"> </span><span class="nv">ARCHIVE_JAR</span><span class="o">=</span><span class="s1">&#39;Toolkit.jar&#39;</span>
 
 <span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span><span class="nv">$ARCHIVE_JAR</span><span class="w"> </span><span class="nv">$ALL_OPT</span>
 
@@ -395,7 +395,7 @@ stopService
 
 checkPath
 
-<span class="c1">#2.Execute the ArchiveManifest plugin</span>
+<span class="c1">#2.Execute the Toolkit plugin</span>
 <span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">0</span><span class="w"> </span><span class="o">==</span><span class="w">  </span><span class="nv">$?</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w"> </span>rebuildManifest
 <span class="k">else</span>

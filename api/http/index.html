@@ -51,7 +51,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
                   </li>
@@ -63,7 +63,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Tools</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
@@ -940,7 +940,7 @@ Parameters: </p>
 <p>Return:Unsigned transaction</p>
 <h4 id="walletcancelallunfreezev2">wallet/cancelallunfreezev2<a class="headerlink" href="#walletcancelallunfreezev2" title="Permanent link">&para;</a></h4>
 <p>Description: Cancel unstakings, all unstaked funds still in the waiting period will be re-staked, all unstaked funds that exceeded the 14-day waiting period will be automatically withdrawn to the owner’s account</p>
-<div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
+<div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/cancelallunfreezev2 -d
 &#39;{
     &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;
 }&#39;
@@ -2986,7 +2986,7 @@ Parameters:</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../using_javatron/toolkit/" class="btn btn-neutral float-left" title="Tools"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../using_javatron/toolkit/" class="btn btn-neutral float-left" title="Node Maintenance Tool"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../rpc/" class="btn btn-neutral float-right" title="gRPC API">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 

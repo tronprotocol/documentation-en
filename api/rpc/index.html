@@ -51,7 +51,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
                   </li>
@@ -63,7 +63,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Tools</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
@@ -503,6 +503,18 @@ Nodes: FullNode
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CancelAllUnfreezeV2</span><span class="w"> </span><span class="p">(</span><span class="n">CancelAllUnfreezeV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
+<p><strong>82.&nbsp; Get bandwidth unit price</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBandwidthPrices</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode
+<strong>83.&nbsp; Get energy unit price</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetEnergyPrices</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>84.&nbsp; Get transaction memo fee</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetMemoFee</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNodes</p>
               
             </div>
           </div><footer>

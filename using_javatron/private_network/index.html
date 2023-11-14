@@ -51,7 +51,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite Fullnode</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Private Network</a>
     <ul class="current">
@@ -65,7 +65,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../toolkit/">Tools</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../toolkit/">Node Maintenance Tool</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
@@ -300,7 +300,7 @@ var tronWeb = new TronWeb({
         privateKey: &#39;c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc&#39;
     })
 
-var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal([{&quot;key&quot;:9,&quot;value&quot;:1},{&quot;key&quot;:10,&quot;value&quot;:1},{&quot;key&quot;:11,&quot;value&quot;:280},{&quot;key&quot;:19,&quot;value&quot;:90000000000},{&quot;key&quot;:15,&quot;value&quot;:1},{&quot;key&quot;:18,&quot;value&quot;:1},{&quot;key&quot;:16,&quot;value&quot;:1},{&quot;key&quot;:20,&quot;value&quot;:1},{&quot;key&quot;:26,&quot;value&quot;:1},{&quot;key&quot;:30,&quot;value&quot;:1},{&quot;key&quot;:5,&quot;value&quot;:16000000},{&quot;key&quot;:31,&quot;value&quot;:160000000},{&quot;key&quot;:32,&quot;value&quot;:1},{&quot;key&quot;:39,&quot;value&quot;:1},{&quot;key&quot;:41,&quot;value&quot;:1},{&quot;key&quot;:3,&quot;value&quot;:1000},{&quot;key&quot;:47,&quot;value&quot;:10000000000},{&quot;key&quot;:49,&quot;value&quot;:1},{&quot;key&quot;:13,&quot;value&quot;:80},{&quot;key&quot;:7,&quot;value&quot;:1000000},{&quot;key&quot;:61,&quot;value&quot;:1500},{&quot;key&quot;:63,&quot;value&quot;:1}],&quot;41D0B69631440F0A494BB51F7EEE68FF5C593C00F0&quot;)
+var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal([{&quot;key&quot;:9,&quot;value&quot;:1},{&quot;key&quot;:10,&quot;value&quot;:1},{&quot;key&quot;:11,&quot;value&quot;:280},{&quot;key&quot;:19,&quot;value&quot;:90000000000},{&quot;key&quot;:15,&quot;value&quot;:1},{&quot;key&quot;:18,&quot;value&quot;:1},{&quot;key&quot;:16,&quot;value&quot;:1},{&quot;key&quot;:20,&quot;value&quot;:1},{&quot;key&quot;:26,&quot;value&quot;:1},{&quot;key&quot;:30,&quot;value&quot;:1},{&quot;key&quot;:5,&quot;value&quot;:16000000},{&quot;key&quot;:31,&quot;value&quot;:160000000},{&quot;key&quot;:32,&quot;value&quot;:1},{&quot;key&quot;:39,&quot;value&quot;:1},{&quot;key&quot;:41,&quot;value&quot;:1},{&quot;key&quot;:3,&quot;value&quot;:1000},{&quot;key&quot;:47,&quot;value&quot;:10000000000},{&quot;key&quot;:49,&quot;value&quot;:1},{&quot;key&quot;:13,&quot;value&quot;:80},{&quot;key&quot;:7,&quot;value&quot;:1000000},{&quot;key&quot;:61,&quot;value&quot;:600},{&quot;key&quot;:63,&quot;value&quot;:1}],&quot;41D0B69631440F0A494BB51F7EEE68FF5C593C00F0&quot;)
 var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn, &quot;c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc&quot;);
 var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
 
@@ -317,7 +317,7 @@ setTimeout(async function() {
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../developers/litefullnode/" class="btn btn-neutral float-left" title="Lite Fullnode"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../developers/litefullnode/" class="btn btn-neutral float-left" title="Lite FullNode"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../../architecture/event/" class="btn btn-neutral float-right" title="Event Subscription">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
