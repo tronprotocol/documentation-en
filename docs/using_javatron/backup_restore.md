@@ -51,10 +51,11 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 
 | Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)   | http://3.219.199.168/     | LevelDB, , exclude internal transactions (About 1250G on 8 May 2023)     |
-| Official data source (Singapore)    | http://52.77.31.45/    | 	LevelDB, exclude internal transactions (About 1248G on 8 May 2023)     |
-| Official data source (Singapore)    | http://52.77.31.45/saveInternalTx/    | LevelDB, include internal transactions (About 1423G on 8 May 2023)     |
-| Data sources provided by  TronGrid Community     | https://backup.trongrid.io/    | LevelDB, include internal transactions (About 1527G on 8 May 2023)     |
+| Official data source (North America: Virginia)   | http://3.219.199.168/     | LevelDB, , exclude internal transactions (About 1314G on 13 Jun. 2023)     |
+| Official data source (Singapore)    | http://52.77.31.45/     | 	LevelDB, exclude internal transactions (About 1321G on 13 Jun. 2023)     |
+| Official data source (Singapore)    | http://52.77.31.45/saveInternalTx/    | LevelDB, include internal transactions (About 1496G on 13 Jun. 2023)     |
+| Data sources provided by  TronGrid Community     | https://backup.trongrid.io/    | LevelDB, include internal transactions (About 1603G on 13 Jun. 2023)     |
+
 
 
 **Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. 
@@ -69,7 +70,8 @@ The Tron Public Chain has supported the type of the Lite FullNode since the vers
 
 | Lite Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)  | http://3.219.199.168/    | LevelDB    |
+| Official data source (North America: Virginia)  | http://3.219.199.168/     | LevelDB, About 31G on 13 Jun. 2023  |
+
 
 **Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](../../using_javatron/toolkit/#lite-fullnode-data-pruning).
 
