@@ -21,14 +21,14 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 
 ### How to get
 - build by yourself.
-  Under java-tron, execute ``. /gradlew build``, you can get ArchiveManifest.jar under `build/libs/`.
+  Under java-tron, execute ``. /gradlew build``, you can get Toolkit.jar under `build/libs/`.
 - Download directly.
   [Links](https://github.com/tronprotocol/java-tron/releases)
 
 ### Use Steps
 
 - 1. Stop the FullNode service.
-- 2. Execute the ArchiveManifest plugin.
+- 2. Execute the Toolkit command.
 - 3. Start the FullNode service.
 
 > Note: ``Step ii`` is not required every time, but it is recommended to run it every time to optimize the experience.
@@ -38,7 +38,7 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 After FullNode runs, the default database directory: `output-directory`, the optimization plugin will work with the `output-directory/database` directory.
 Developers can choose one of the following two ways  according to actual situation.
 
-#### 1. Use it Independently
+#### Use it Independently
 
 ##### 1.Stop the FullNode service
 
@@ -48,16 +48,16 @@ Query the pid: `ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
 
 
 
-##### 2.Execute the ArchiveManifest plugin
+##### 2.Execute the Toolkit command
 
 ```shell
 # Full command
-java -jar ArchiveManifest.jar [-b batchSize] [-d databaseDirectory] [-m manifestSize] [-h]
+java -jar Toolkit.jar [-b batchSize] [-d databaseDirectory] [-m manifestSize] [-h]
 # examples
-   java -jar ArchiveManifest.jar #1. use default settings
-   java -jar ArchiveManifest.jar -d /tmp/db/database #2. Specify the database directory as /tmp/db/database
-   java -jar ArchiveManifest.jar -b 64000 #3. Specify the batch size to 64000 when optimizing Manifest
-   java -jar ArchiveManifest.jar -m 128 #4. Specify optimization only when Manifest exceeds 128M
+   java -jar Toolkit.jar #1. use default settings
+   java -jar Toolkit.jar -d /tmp/db/database #2. Specify the database directory as /tmp/db/database
+   java -jar Toolkit.jar -b 64000 #3. Specify the batch size to 64000 when optimizing Manifest
+   java -jar Toolkit.jar -m 128 #4. Specify optimization only when Manifest exceeds 128M
 ```
 
 After the command is executed, `archive.log` will be generated in the `./logs` directory, you can see the result.
@@ -78,7 +78,7 @@ nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.
 nohup java -Xmx24g -XX:+UseConcMarkSweepGC  -jar FullNode.jar  -p  private key --witness -c main_net_config.conf </dev/null &>/dev/null &
 ```
 
-#### 2. Integrated startup script
+#### Integrated startup script
 
 
 ```shell
@@ -112,7 +112,7 @@ rebuildManifest() {
 
 buildManifest() {
 
- ARCHIVE_JAR='ArchiveManifest.jar'
+ ARCHIVE_JAR='Toolkit.jar'
 
  java -jar $ARCHIVE_JAR $ALL_OPT
 
@@ -246,7 +246,7 @@ stopService
 
 checkPath
 
-#2.Execute the ArchiveManifest plugin
+#2.Execute the Toolkit plugin
 if [[ 0 ==  $? ]] ; then
  rebuildManifest
 else

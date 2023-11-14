@@ -25,7 +25,7 @@ Such as if the number of bytes of a transaction is 200, so this transaction cons
 ### 1. How to Get Bandwidth Points
 
 1. By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43_200_000_000
-2. Every account has a fixed amount of free Bandwidth Points(1500) every day
+2. Every account has a fixed amount of free Bandwidth Points(600) every day
 
 ### 2. Bandwidth Points Consumption
 

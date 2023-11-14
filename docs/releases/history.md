@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Chilon    |  GreatVoyage-v4.7.3    |  2023-10-25    |  [TIP-586](https://github.com/tronprotocol/tips/blob/master/tip-586.md) <br> [TIP-592](https://github.com/tronprotocol/tips/blob/master/tip-592.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.3)   |   [Specs](#greatvoyage-v473chilon)   |
 |  Periander    |  GreatVoyage-v4.7.2    |  2023-7-1    |  [TIP-541](https://github.com/tronprotocol/tips/issues/541) <br> [TIP-542](https://github.com/tronprotocol/tips/issues/542) <br> [TIP-543](https://github.com/tronprotocol/tips/issues/543) <br> [TIP-544](https://github.com/tronprotocol/tips/issues/544) <br> [TIP-555](https://github.com/tronprotocol/tips/issues/555) <br> [TIP-547](https://github.com/tronprotocol/tips/issues/547) <br> [TIP-548](https://github.com/tronprotocol/tips/issues/548) <br> [TIP-549](https://github.com/tronprotocol/tips/issues/549) <br> [TIP-550](https://github.com/tronprotocol/tips/issues/550)    |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.2)   |   [Specs](#greatvoyage-v472periander)   |
 |  Pittacus    |  GreatVoyage-v4.7.1.1    |  2023-4-17    |   [TIP-534](https://github.com/tronprotocol/tips/blob/master/tip-534.md)    |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.1.1)    |  [Specs](#greatvoyage-v4711-pittacus)    |
 |  Sartre    |   GreatVoyage-v4.7.1   |  2023-2-27    |  N/A    |   [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.1)   |  [Specs](#greatvoyage-v471sartre)     |
@@ -70,6 +71,188 @@
 |   N/A   | Odyssey-v1.0.4    |  2018-4-13    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.4)    |  N/A   |
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
+
+## GreatVoyage-v4.7.3(Chilon)
+
+Chilon is a non-mandatory upgrade version that will introduce multiple important updates. Richer gRPC interfaces and faster node startup speed, bring users a more friendly development experience. Optimized disconnection strategy and synchronization process improve the stability of the connection among nodes. The optimized transaction processing logic and database query performance elevate the transaction packaging efficiency and network throughput.
+
+Please find the details below.
+### Core
+
+#### 1. Add gRPC interfaces for resource price and transaction memo fee query
+
+Chilon adds three new gRPC interfaces. Users can obtain historical bandwidth unit price through `getBandwidthPrices` API, obtain historical energy unit price through `getEnergyPrices` API, and obtain transaction memo fee through `getMemoFee` API. These new gRPC APIs further improve the developer experience.
+
+TIP: [https://github.com/tronprotocol/tips/blob/master/tip-586.md](https://github.com/tronprotocol/tips/blob/master/tip-586.md)  
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5412]([https://github.com/tronprotocol/java-tron/pull/5412)  
+#### 2. Supplement disconnect reasons
+
+When a node fails to process a message from a peer, it may initiatively disconnect from the peer. However, in previous versions of Chilon, in some cases, the node did not inform the other node of the reason for the disconnection, which was not conducive to the analysis and troubleshooting of the connection issue by the other node.
+
+The Chilon version supplements two reasons for disconnection. Node will send the disconnection reasons to the other node before dropping the connection, so as to facilitate efficient handling of node connection problems.
+
+
+TIP: [https://github.com/tronprotocol/tips/blob/master/tip-592.md](https://github.com/tronprotocol/tips/blob/master/tip-592.md)  
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5392 ](https://github.com/tronprotocol/java-tron/pull/5392) 
+#### 3. Discard transactions from bad peers instead of disconnected peers
+
+For a broadcast transaction, the node must determine whether to process it. In previous versions of Chilon, the basis for judgment is whether the transaction comes from a disconnected peer. If so, the transaction will be discarded. However, whether to execute a broadcasted transaction should not be judged based on whether it maintains a connection with the other node, but whether the other node is a malicious node. 
+
+Therefore, the Chilon version optimizes the transaction processing logic and no longer discards transactions from disconnected peers. Instead, it only discards transactions broadcasted from the nodes that have sent illegal transactions. This change improves transaction broadcast and packaging efficiency.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5440](https://github.com/tronprotocol/java-tron/pull/5440)  
+
+
+
+#### 4. Optimize Stake 2.0 codes and error messages
+
+The Chilon version standardizes Stake 2.0-related code and simplifies complex functions， improving the simplicity and readability of the code.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5426](https://github.com/tronprotocol/java-tron/pull/5426)  
+
+
+#### 5. Accelerate bloomFilter initialization for transaction cache
+When a node starts, it will load the transactions of the latest 65536 blocks from the database to build a transaction cache bloomFilter, which is used to determine duplicate transactions when verifying transactions later. In previous versions of Chilon, the loading time of the transaction cache accounted for more than 70% of the node startup time. In order to accelerate the speed of the transaction cache bloomFilter initialization, the Chilon version persists in the transaction cache bloomFilter. When the node exits normally, the transaction cache bloomFilter-related data will be stored on the disk. When the node restarts, there will be no need to read the transaction information in the recent blocks, but directly load the bloomFilter data into the memory, speeding up the initialization process of the transaction cache bloomFilter and greatly improving the node startup speed.
+This feature is disabled by default and can be enabled through the node configuration item `storage.txCache.initOptimization = true`.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5394 ](https://github.com/tronprotocol/java-tron/pull/5394) [https://github.com/tronprotocol/java-tron/pull/5491 ](https://github.com/tronprotocol/java-tron/pull/5491) [https://github.com/tronprotocol/java-tron/pull/5505 ](https://github.com/tronprotocol/java-tron/pull/5505) [https://github.com/tronprotocol/java-tron/pull/5523 ](https://github.com/tronprotocol/java-tron/pull/5523) [https://github.com/tronprotocol/java-tron/pull/5543 ](https://github.com/tronprotocol/java-tron/pull/5543) 
+
+#### 6. Fix concurrency issues when generating chain inventory
+
+In previous versions of Chilon, when node A requests to synchronize blocks from node B, it first sends its own chain summary to node B. After receiving it, node B generates node A's missing block list according to the local chain and returns the list to node A. The list generation process is: first, find the maximum common block height of the two nodes from the chain summary of node A, and then add the IDs of several blocks starting from the maximum common block height to the missing blocks list of node A. Since the generation of the missing block list and chain switching are executed concurrently, if chain switching occurs when generating the missing block list, it may happen that after the maximum common block height is obtained, the corresponding block id cannot be obtained, causing the generated missing block list does not match the chain summary of node A, resulting in dropping the node connection.
+
+The Chilon version optimizes the generation logic of the missing block list. When the ID of the highest common block previously calculated cannot be obtained, the node will retry to ensure that the returned list contains the highest common block information, which improves the stability of connections between nodes.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5393 ](https://github.com/tronprotocol/java-tron/pull/5393) [https://github.com/tronprotocol/java-tron/pull/5532](https://github.com/tronprotocol/java-tron/pull/5532)  
+ 
+#### 7. Correct resource disorder closure behavior on kill -15
+
+In previous versions of Chilon, when the service is shut down, abnormal errors may occur 
+due to the resource release order issue. The Chilon version optimizes the service shutdown logic. When the `kill -15` command is used to shut down the service, it can ensure the accuracy of the release sequence of various types of resources so that the node can exit normally.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5410](ttps://github.com/tronprotocol/java-tron/pull/5410)  [https://github.com/tronprotocol/java-tron/pull/5425 ](ttps://github.com/tronprotocol/java-tron/pull/5425) [https://github.com/tronprotocol/java-tron/pull/5421](https://github.com/tronprotocol/java-tron/pull/5421)  [https://github.com/tronprotocol/java-tron/pull/5429 ](https://github.com/tronprotocol/java-tron/pull/5429) [https://github.com/tronprotocol/java-tron/pull/5447 ](https://github.com/tronprotocol/java-tron/pull/5447) 
+
+
+### API
+
+#### 1. Optimize HTTP interface monitoring
+
+Chilon optimizes the HTTP interface monitoring, it no longer counts requests for APIs that are not supported by the node, making the statistics of successful or failed HTTP interface requests more accurate.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5332](https://github.com/tronprotocol/java-tron/pull/5332)  
+
+#### 2. Provide uniform rate limitation configuration for all HTTP and gRPC APIs
+
+Java-tron supports interface rate limiting. The default qps (queries per second) of each interface is 1000. Node deployers can also limit the traffic of a particular interface. However, in previous versions of Chilon, it was not supported to modify the default qps of each interface, that way, If you want to configure the default qps of each interface to 2000, you need to configure the current limit for each interface respectively. The Chilon version adds a new default interface rate limit configuration `rate.limiter.global.api.qps`. With this configuration, users can change the rate limit of all interfaces, simplifying the configuration complexity.
+
+```
+rate.limiter.global.api.qps = 1000
+```
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5502](https://github.com/tronprotocol/java-tron/pull/5502)  
+
+#### 3. Optimize HTTP interface parameter parsing 
+
+In previous versions of Chilon, for interfaces involving reward queries, if the request passes in invalid parameters or non-JSON formatted parameters, the node will throw an exception. The Chilon version optimizes the HTTP interface parameter parsing logic and returns a 0 value or error message for requests with incorrect parameter formats.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5367](https://github.com/tronprotocol/java-tron/pull/5367)   [https://github.com/tronprotocol/java-tron/pull/5483](https://github.com/tronprotocol/java-tron/pull/5483)  
+
+#### 4. Add solidity query interfaces of resource unit price
+
+Chilon supplements query interfaces of resource unit price for solidity, they are `/walletsolidity/getbandwidthprices` and  `/walletsolidity/getenergyprices`.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5412](https://github.com/tronprotocol/java-tron/pull/5412)  [https://github.com/tronprotocol/java-tron/pull/5451](https://github.com/tronprotocol/java-tron/pull/5451)  
+[https://github.com/tronprotocol/java-tron/pull/5437](https://github.com/tronprotocol/java-tron/pull/5437)   
+
+
+#### 5. Optimize the processing logic of some HTTP interfaces
+
+The Chilon version optimizes some HTTP interfaces to make it consistent with get and post request processing, including parameters check and return value. The interfaces include `/wallet/getavailableunfreezecount`, `/wallet/getcanwithdrawunfreezeamount`, `/wallet/getcandelegatedmaxsize`, and `/wallet/getavailableunfreezecount`. 
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5408](https://github.com/tronprotocol/java-tron/pull/5408)  
+
+
+### Other Changes
+#### 1. Add check for expired transactions when fetching transactions
+
+Chilon adds a check for expired transactions in the broadcast list it receives. For transactions timed out in the list, it will no longer make requests to its remote node, avoiding node connections being disconnected due to transaction processing failures, and improving node connection stability.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5460](https://github.com/tronprotocol/java-tron/pull/5460)  
+
+#### 2. Fix concurrency issue of getHeadBlockId method
+
+During the block synchronization process, the node must obtain the `BlockId` of the latest block through the `getHeadBlockId` method. In previous versions of Chilon, the `BlockId` was obtained through the block number and hash of the latest block. However, due to the concurrent execution of the latest block data acquisition thread and the update thread, getHeadBlockId may start to obtain the BlockId of the latest block before the block number and hash value of the latest block have been updated, which makes it possible for the `getHeadBlockId` method to return an abnormal `BlockId` value. 
+
+Chilon optimizes the `BlockId` acquisition logic of the latest block, and `getHeadBlockId` only obtains `BlockId` through the hash value of the latest block, ensuring the correctness of the block ID acquisition.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5403](https://github.com/tronprotocol/java-tron/pull/5403)  
+
+
+#### 3. Delete unused network configurations
+
+Chilon deleted four unused network parameters, including the three configuration items below, simplifying the complexity of using for developers.
+
+```
+node.discovery.public.home.node
+node.discovery.ping.timeout
+node.p2p.pingInterval
+```
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5441](https://github.com/tronprotocol/java-tron/pull/5441)  
+
+#### 4. Obtain external IP through Libp2p
+
+In previous versions of Chilon, when a node starts, the external IP address would be obtained repeatedly, and Java-tron and lib2p2 each perform the IP acquisition once. To improve the node startup speed, Chilon optimizes the external IP acquisition logic. When a node starts, it directly calls the libp2p module to obtain the external IP, and it can directly assign the external IP to libp2p and repeated obtaining is avoided.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5407](https://github.com/tronprotocol/java-tron/pull/5407)  
+
+#### 5. Add address parsing for stake-related transactions in event subscription
+
+Chilon optimizes the event subscription service and adds the parsing of addresses in stake-related transactions, so that event subscribers can obtain address information in stake, resource delegation, and other transactions.
+
+
+Source Code:[https://github.com/tronprotocol/java-tron/pull/5419](https://github.com/tronprotocol/java-tron/pull/5419)  
+
+#### 6. Adjust default number of CPU cores used in signature validation
+
+In previous versions of Chilon, nodes used 1/2 of the system CPU cores for parallel signature verification by default. To improve the performance of node synchronization and block processing, the Chilon version changed the default value of the number of threads used for signature verification to the maximum number of CPU cores to maximize signature verification performance. Node deployers can also adjust the number of signature verification threads through the `node.validateSignThreadNum` configuration item.
+
+
+Source Code:[https://github.com/tronprotocol/java-tron/pull/5396 ](https://github.com/tronprotocol/java-tron/pull/5396) 
+
+#### 7. Migrate LiteFullNode tool related unit test cases to Plugins module
+
+In the previous version, the code related to the LiteFullNode tool has been integrated into the toolkit in the plugins module. The Chilon version has further integrated and moved the test cases related to the LiteFullNode tool from the framework module to the plugins module. Not only does It make the code structure clearer but also improves the execution efficiency of test cases.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5475](https://github.com/tronprotocol/java-tron/pull/5475)  [https://github.com/tronprotocol/java-tron/pull/5482](https://github.com/tronprotocol/java-tron/pull/5482)  
+
+
+#### 8. Enhance query performance of properties DB
+
+During the block processing process, nodes access the `properties` database more frequently. Better `properties` database query performance will improve the processing speed of the block. Since the property data volume is small and updates are infrequent, Chilon optimizes the query performance of the `properties` database, loading all data into the first-level cache to maximize data query performance and thereby improve transaction processing capabilities.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5378 ](https://github.com/tronprotocol/java-tron/pull/5378) 
+
+
+
+--- 
+
+*Do not desire impossible.* 
+<p align="right"> ---Chilon</p>
 
 
 ## GreatVoyage-v4.7.2(Periander)

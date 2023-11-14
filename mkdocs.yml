@@ -8,13 +8,13 @@ nav:
     - Using Java-tron:
         - Deploying Java-tron: using_javatron/installing_javatron.md
         - Backup & Restore: using_javatron/backup_restore.md
-        - Lite Fullnode: developers/litefullnode.md
+        - Lite FullNode: developers/litefullnode.md
         - Private Network: using_javatron/private_network.md
         - Event Subscription: architecture/event.md
         - Database Configuration: architecture/database.md
         - Network Configuration: using_javatron/connecting_to_tron.md
         - Node Monitoring: using_javatron/metrics.md
-        - Tools: using_javatron/toolkit.md
+        - Node Maintenance Tool: using_javatron/toolkit.md
     - API:
         - HTTP API: api/http.md
         - gRPC API: api/rpc.md

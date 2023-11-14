@@ -511,3 +511,20 @@ Nodes: FullNode
 rpc CancelAllUnfreezeV2 (CancelAllUnfreezeV2Contract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
+
+**82.&nbsp; Get bandwidth unit price**
+```protobuf
+rpc GetBandwidthPrices (EmptyMessage) returns (PricesResponseMessage) {}
+```
+Nodes: FullNode
+**83.&nbsp; Get energy unit price**
+```protobuf
+rpc GetEnergyPrices (EmptyMessage) returns (PricesResponseMessage) {}
+```
+Nodes: FullNode
+
+**84.&nbsp; Get transaction memo fee**
+```protobuf
+rpc GetMemoFee (EmptyMessage) returns (PricesResponseMessage) {}
+```
+Nodes: FullNodes

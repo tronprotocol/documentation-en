@@ -83,7 +83,7 @@ The process of building a node on private chain is the same as that on mainnet. 
             privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
         })
 
-    var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal([{"key":9,"value":1},{"key":10,"value":1},{"key":11,"value":280},{"key":19,"value":90000000000},{"key":15,"value":1},{"key":18,"value":1},{"key":16,"value":1},{"key":20,"value":1},{"key":26,"value":1},{"key":30,"value":1},{"key":5,"value":16000000},{"key":31,"value":160000000},{"key":32,"value":1},{"key":39,"value":1},{"key":41,"value":1},{"key":3,"value":1000},{"key":47,"value":10000000000},{"key":49,"value":1},{"key":13,"value":80},{"key":7,"value":1000000},{"key":61,"value":1500},{"key":63,"value":1}],"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
+    var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal([{"key":9,"value":1},{"key":10,"value":1},{"key":11,"value":280},{"key":19,"value":90000000000},{"key":15,"value":1},{"key":18,"value":1},{"key":16,"value":1},{"key":20,"value":1},{"key":26,"value":1},{"key":30,"value":1},{"key":5,"value":16000000},{"key":31,"value":160000000},{"key":32,"value":1},{"key":39,"value":1},{"key":41,"value":1},{"key":3,"value":1000},{"key":47,"value":10000000000},{"key":49,"value":1},{"key":13,"value":80},{"key":7,"value":1000000},{"key":61,"value":600},{"key":63,"value":1}],"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
     var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn, "c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc");
     var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
 

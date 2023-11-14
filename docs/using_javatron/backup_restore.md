@@ -57,6 +57,7 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 | Data sources provided by  TronGrid Community     | https://backup.trongrid.io/    | LevelDB, include internal transactions (About 1603G on 13 Jun. 2023)     |
 
 
+
 **Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. 
 
 
@@ -71,7 +72,8 @@ The Tron Public Chain has supported the type of the Lite FullNode since the vers
 | -------- | -------- | -------- |
 | Official data source (North America: Virginia)  | http://3.219.199.168/     | LevelDB, About 31G on 13 Jun. 2023  |
 
-**Tips**: You can split the data from the whole data with the help of the [Lite FullNode Tool](../../developers/litefullnode/#lite-fullnode-tool).
+
+**Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](../../using_javatron/toolkit/#lite-fullnode-data-pruning).
 
 ### Use the data snapshot 
 
