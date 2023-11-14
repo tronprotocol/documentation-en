@@ -269,16 +269,7 @@
 </li>
 </ol>
 <h3 id="3-bandwidth-points-recovery">3. Bandwidth Points Recovery<a class="headerlink" href="#3-bandwidth-points-recovery" title="Permanent link">&para;</a></h3>
-<p>Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
-U^\prime = ( 1 - \frac{T_2 - T_1}{24h} ) * U + u
-</div>
-<script type="math/tex; mode=display">
-U^\prime = ( 1 - \frac{T_2 - T_1}{24h} ) * U + u
-</script>
-</div>
-<p>Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.</p>
+<p>After the account's free bandwidth and the bandwidth obtained by staking TRX are consumed, they will gradually recover within 24 hours.</p>
 <h2 id="energy">Energy<a class="headerlink" href="#energy" title="Permanent link">&para;</a></h2>
 <p>Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.</p>
 <h3 id="1-how-to-get-energy">1. How to Get Energy<a class="headerlink" href="#1-how-to-get-energy" title="Permanent link">&para;</a></h3>
@@ -300,13 +291,7 @@ B: 20_000_000_000 and energy_limit is 20_000_000_000
 B: 10_000_000_000 and energy_limit is 10_000_000_000
 </code></pre></div>
 <h4 id="energy-recovery">Energy Recovery<a class="headerlink" href="#energy-recovery" title="Permanent link">&para;</a></h4>
-<p>The energy consumed will reduce to 0 smoothly within 24 hours.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code>at one moment, A has used 72_000_000 Energy
-if there is no continuous consumption or TRX stake
-one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
-24 hours later, the energy consumption amount will be 0 Energy
-</code></pre></div>
+<p>After the energy resource of the account is consumed, it will gradually recover within 24 hours.</p>
 <h3 id="2-how-to-set-fee-limit-caller-must-read">2. How to Set Fee Limit (Caller Must Read)<a class="headerlink" href="#2-how-to-set-fee-limit-caller-must-read" title="Permanent link">&para;</a></h3>
 <hr />
 <p><em>Within the scope of this section, the smart contract developer will be called "developer", the users or other contracts which call the smart contract will be called "caller"</em></p>
