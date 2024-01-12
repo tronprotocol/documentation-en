@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Solon    |  GreatVoyage-v4.7.3.1    |  2024-1-12    |  N/A   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.3.1)   |   [Specs](#greatvoyage-v4731solon)   |
 |  Chilon    |  GreatVoyage-v4.7.3    |  2023-10-25    |  [TIP-586](https://github.com/tronprotocol/tips/blob/master/tip-586.md) <br> [TIP-592](https://github.com/tronprotocol/tips/blob/master/tip-592.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.3)   |   [Specs](#greatvoyage-v473chilon)   |
 |  Periander    |  GreatVoyage-v4.7.2    |  2023-7-1    |  [TIP-541](https://github.com/tronprotocol/tips/issues/541) <br> [TIP-542](https://github.com/tronprotocol/tips/issues/542) <br> [TIP-543](https://github.com/tronprotocol/tips/issues/543) <br> [TIP-544](https://github.com/tronprotocol/tips/issues/544) <br> [TIP-555](https://github.com/tronprotocol/tips/issues/555) <br> [TIP-547](https://github.com/tronprotocol/tips/issues/547) <br> [TIP-548](https://github.com/tronprotocol/tips/issues/548) <br> [TIP-549](https://github.com/tronprotocol/tips/issues/549) <br> [TIP-550](https://github.com/tronprotocol/tips/issues/550)    |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.2)   |   [Specs](#greatvoyage-v472periander)   |
 |  Pittacus    |  GreatVoyage-v4.7.1.1    |  2023-4-17    |   [TIP-534](https://github.com/tronprotocol/tips/blob/master/tip-534.md)    |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.1.1)    |  [Specs](#greatvoyage-v4711-pittacus)    |
@@ -71,6 +72,39 @@
 |   N/A   | Odyssey-v1.0.4    |  2018-4-13    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.4)    |  N/A   |
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
+
+## GreatVoyage-v4.7.3.1(Solon)
+
+Solon is a non-mandatory upgrade version that will introduce two important updates. A more stable HTTP interface and Lite FullNode data pruning tool bring users a more friendly development experience.
+
+Please find the details below.
+
+
+### Other Changes
+
+#### 1. More stable /wallet/getnodeinfo interface
+
+In versions prior to Solon, there was a very small probability that an exception might be triggered when calling the /wallet/getnodeinfo interface due to the concurrent execution of block data object serialization. Therefore, the Solon version modified the serialization logic of block data to ensure the correctness of block data acquisition and make the /wallet/getnodeinfo interface more stable.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5594](https://github.com/tronprotocol/java-tron/pull/5594)  
+
+#### 2. Optimize Lite FullNode data pruning tool
+
+In order to solve the problem of node database corruption caused by the abnormal shutdowns, starting from Socrates version, the Checkpoint V2 mechanism was introduced. The V2 mechanism saves multiple checkpoints on the disk, corresponding to multiple solidified block data, which is used to restore the data when the node database is damaged.
+
+The Lite FullNode data pruning tool should also be compatible with the checkpoint v2 version. When a node stops abnormally, the pruning tool can also restore the node data and complete the data pruning. 
+
+Therefore, Solon optimized the Lite FullNode data pruning tool in the toolkit. When it is found that checkpoint v2 is used, the data will be queried from the checkpoint v2 database, so that even if the node stops abnormally, the tool can restore and prune the data, which improves the usability of the Lite FullNode data pruning tool.
+
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5658](https://github.com/tronprotocol/java-tron/pull/5658)  
+
+
+--- 
+
+*Do not counsel what is most pleasant, but what is best.* 
+<p align="right"> ---Solon</p>
 
 ## GreatVoyage-v4.7.3(Chilon)
 
