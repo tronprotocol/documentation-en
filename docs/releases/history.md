@@ -90,7 +90,7 @@ Source Code: [https://github.com/tronprotocol/java-tron/pull/5594](https://githu
 
 #### 2. Optimize Lite FullNode data pruning tool
 
-In order to solve the problem of node database corruption caused by the abnormal shutdowns, starting from GreatVoyage-v4.6.0 (Socrates), the Checkpoint V2 mechanism was introduced. The V2 mechanism saves multiple checkpoints on the disk, corresponding to multiple solidified block data, which is used to restore the data when the node database is damaged.
+In order to solve the problem of node database corruption caused by the abnormal shutdowns, starting from Socrates version, the Checkpoint V2 mechanism was introduced. The V2 mechanism saves multiple checkpoints on the disk, corresponding to multiple solidified block data, which is used to restore the data when the node database is damaged.
 
 The Lite FullNode data pruning tool should also be compatible with the checkpoint v2 version. When a node stops abnormally, the pruning tool can also restore the node data and complete the data pruning. 
 
