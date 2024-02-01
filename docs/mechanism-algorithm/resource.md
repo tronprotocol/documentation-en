@@ -88,7 +88,7 @@ B: 20_000_000_000 and energy_limit is 20_000_000_000
 C: 10_000_000_000 and energy_limit is 10_000_000_000
 ```
 
-#### Energy Recovery
+ #### Energy Recovery
 
 After the energy resource of the account is consumed, it will gradually recover within 24 hours.
 
