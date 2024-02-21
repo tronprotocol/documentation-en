@@ -22,7 +22,7 @@ Also, there is a chance to display developers' photos at TRON official website.
 
 Reward 2:
 
-Every developer who participates java-tron's developement will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.
+Every developer who participates java-tron's development will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.
 
 
 The following shows the content you can contribute to.
@@ -111,6 +111,6 @@ Points:
 |-----------|-----------|----------|-----------|
 |    20     |    15     |   10     |     < 5   |
 
-In order to get 5 (or more) points, the content of a PR should be creative, pratical, critical or can reflect significant workload.
+In order to get 5 (or more) points, the content of a PR should be creative, practical, critical or can reflect significant workload.
 
 One PR should aim at solving one type of problems, so do not break one type of PR into many small PRs.

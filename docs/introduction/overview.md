@@ -128,7 +128,7 @@ TRON uses account model. An account's identity is address, it needs private key 
 2.&nbsp;Use an account already existed in TRON network to create an account
 
 ## 3.3 Key-pair Generation Algorithm
-Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
+Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
 
 ## 3.4 Address Format
 Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address comes out. Do basecheck to address, here is the final address. All addresses start with 'T'.
@@ -169,7 +169,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.3 SolidityNode
 ### 4.3.1 SolidityNode Introduction
-SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.
+SolidityNode only synchronizes solidified block data from the fullNode it specifies. It also provides api service.
 ### 4.3.2 SolidityNode Deployment
 Please refer to [TRON-Deployment](https://github.com/tronprotocol/tron-deployment)
 ### 4.3.3 Recommended Hardware Configuration
@@ -179,7 +179,7 @@ Recommended requirement:
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.4 TRON Network Instructure
-TRON network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join TRON network as a node.
+TRON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join TRON network as a node.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png)
 
 ## 4.5 FullNode and SolidityNode Fast Deployment
@@ -446,7 +446,7 @@ Note: If you use create command inside a contract (CREATE instruction), even use
 
 Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
 
-3.&nbsp;delegate call/call code/libary
+3.&nbsp;delegate call/call code/library
 
 There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, msg.sender and msg.value remain unchanged. This means a contract can dynamically load code from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.
 
@@ -652,7 +652,7 @@ Note:
 
 1.&nbsp;In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.
 
-2.&nbsp;Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion cna be changed later. If the developer's energy is not enough, it will consume the caller's energy.
+2.&nbsp;Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion can be changed later. If the developer's energy is not enough, it will consume the caller's energy.
 
 3.&nbsp;Currently, the total energy available when trigger a contract is composed of caller fee limit and developer's share
 
@@ -707,7 +707,7 @@ If contract executes successfully without any exception, the energy needed for t
 
 Assert-style error introduction, refer to [https://developers.tron.network/docs/vm-exception](https://developers.tron.network/docs/vm-exception)
 
-Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef.
+Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itself.
 
 To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.
 
@@ -764,7 +764,7 @@ Because TRON's compiler is a little different from Ethereum, so you can not get 
 Download Wallet-Cli and build
 
 ```shell
-# download cource code
+# download source code
 git clone https://github.com/tronprotocol/wallet-cli
 cd  wallet-cli
 # build
@@ -1111,7 +1111,7 @@ private byte[] generateBlockId(long blockNum, byte[] blockHash) {
  }
 ```
 ## 12.4 How to Build a Transaction Locally
-According to the defination of the transaction, you need to fill up all the fields of the transaction.
+According to the definition of the transaction, you need to fill up all the fields of the transaction.
 
 You need to set reference block and expiration time information, so you need to connect to the Mainnet. We recommend to use the latest block on fullnode as the value of reference block, use the latest block time plus N minutes as the value of expiration time.
 

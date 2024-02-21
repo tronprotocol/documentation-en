@@ -32,7 +32,7 @@ CPU: > 32 cores RAM: > 48G, Bandwidth: > 500M, Disk: > 2T
 
 ## SolidityNode
 
-SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.
+SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provide api service.
 
 > NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
 > New developers should deploy FullNode only.

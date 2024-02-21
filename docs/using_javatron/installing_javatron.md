@@ -100,7 +100,7 @@ Instructions for each Linux distributions are as belows:
     $ sudo apt install libgoogle-perftools4
     ```
 
-    In the startup script add the followings:
+    In the startup script add the following:
 
     ```
     export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4"
@@ -108,7 +108,7 @@ Instructions for each Linux distributions are as belows:
     ```
 
 * Ubuntu 16.04 LTS
-    Same install command as above. In the startup script add the followings:
+    Same install command as above. In the startup script add the following:
 
     ```
     export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
@@ -120,7 +120,7 @@ Instructions for each Linux distributions are as belows:
     ```
     $ sudo yum install gperftools-libs
     ```
-    In the startup script add the followings:
+    In the startup script add the following:
     ```
     export LD_PRELOAD="/usr/lib64/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10

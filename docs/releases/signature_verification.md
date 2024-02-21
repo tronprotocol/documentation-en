@@ -69,7 +69,7 @@ If you have already installed tronweb, please skip this step, if not, please ref
 npm install -g tronweb
 ```
 ### Verify the integrity of the release package
-Confirm the integrity of the release package by comparing the Hash value of the excutable file and the hash value in the release information. Take [Odyssey-3.7](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v3.7) version as an example:
+Confirm the integrity of the release package by comparing the Hash value of the executable file and the hash value in the release information. Take [Odyssey-3.7](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v3.7) version as an example:
 
 * The release package file name: `FullNode.jar` 
 * The SHA256 value of the release package: `2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e`

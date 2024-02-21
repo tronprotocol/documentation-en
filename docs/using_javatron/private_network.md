@@ -45,7 +45,7 @@ The process of building a node on private chain is the same as that on mainnet. 
     | needSyncCheck     | false     | true     | Set the first SR’s needSyncCheck to false, other SRs true     |
     | node.discovery.enable     | true     | true     | If it is false, the current node will not be discovered by other nodes    |
     |block.proposalExpireTime|600000 |The same as SR node's |The default proposal effective time is 3 days: 259200000 (ms), if you want to quickly pass the proposal, you can set this item to a smaller value, such as 10 minutes, that is, 600000ms|
-    |block.maintenanceTimeInterval|300000| The same as SR node's | The defaul maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.|
+    |block.maintenanceTimeInterval|300000| The same as SR node's | The default maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.|
     |committee.allowSameTokenName |1|1| Allow same token name|
     |committee.allowTvmTransferTrc10 | 1|1|Allow tvm transfer TRC10|
     

@@ -29,7 +29,7 @@ Start Java-tron node using below command：
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
 ```
 
-## Deply prometheus service
+## Deploy prometheus service
 
 [prometheus](https://prometheus.io/download/) officially provides precompiled binaries and docker images, you can download them directly from the official website or pull the docker images on dockerhub. For more detailed installation and configuration instructions, Please refer to the [prometheus documentation](https://prometheus.io/docs/introduction/overview/). As a simple deployment instruction, this article will adopt the docker image deployment:
 
@@ -104,7 +104,7 @@ The deployment process of the Grafana visualization tool is as follows:
     $ docker pull grafana/grafana-oss
     ```
 
-2. Strat Grafana
+2. Start Grafana
 
     You can use the below command to start Grafana:
     ```
