@@ -1116,7 +1116,7 @@ after<span class="w"> </span>sign<span class="w"> </span>transaction<span class=
 txid<span class="w"> </span>is<span class="w"> </span>ece603ec8ad11578450dc8adf29dd9d9833e733c313fe16a947c8c768f1e4483
 Send<span class="w"> </span><span class="m">10</span><span class="w"> </span>Sun<span class="w"> </span>to<span class="w"> </span>TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE<span class="w"> </span>successful<span class="w"> </span>!!
 </code></pre></div>
-A<code>permission_id</code> is always required, it is "0" by default, which means this transaction only needed to be sign by owner. In the example above, we enter "2" to make a multi-signed transaction this time, needs the two accounts assgined <code>actives</code> permission in <a href="#updateaccountpermission">UpdateAccountPermission</a> section above to sign this transaction.</p>
+A<code>permission_id</code> is always required, it is "0" by default, which means this transaction only needed to be sign by owner. In the example above, we enter "2" to make a multi-signed transaction this time, needs the two accounts assigned <code>actives</code> permission in <a href="#updateaccountpermission">UpdateAccountPermission</a> section above to sign this transaction.</p>
 <p>In the example, we picked the account <code>TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej</code> to sign first,
 after that, it asks you if want to add another sign 
 ,enter y and pick the account <code>TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE</code> to finish multi-signing.</p>
@@ -2153,7 +2153,7 @@ It is expected to acquire the 80 TRX by exchanging 1000001 from the trading pair
 </code></pre></div>
 <code>offset</code> is the number of exchange pair you want to skip.
 <code>limit</code> is the number of exchange pair you want to be listed.</p>
-<p>The parameters in the example below means to skip the first 3 exhange pairs and show the next 2 exhange pairs.
+<p>The parameters in the example below means to skip the first 3 exchange pairs and show the next 2 exchange pairs.
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>listexchangespaginated<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span>
 <span class="o">{</span>
 <span class="w">    </span><span class="s2">&quot;exchanges&quot;</span>:<span class="w"> </span><span class="o">[</span>
@@ -2184,7 +2184,7 @@ It is expected to acquire the 80 TRX by exchanging 1000001 from the trading pair
 </code></pre></div>
 <code>OwnerAddress</code> is the address of the account that initiated the transaction.</p>
 <p><code>sell_token_id</code> and <code>sell_token_quantity</code> are the ID and amount of the token want to sell.</p>
-<p><code>buy_token_id</code>, <code>buy_token_quantity</code> determins the ID and amount of the token want to buy.</p>
+<p><code>buy_token_id</code>, <code>buy_token_quantity</code> determines the ID and amount of the token want to buy.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>MarketSellAsset<span class="w"> </span>TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW<span class="w">  </span><span class="m">1000001</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>_<span class="w"> </span><span class="m">100</span><span class="w">    </span>
 </code></pre></div>
@@ -2284,7 +2284,7 @@ Example:
 ···
 </code></pre></div>
 <h3 id="getmarketorderlistbypair">GetMarketOrderListbyPair<a class="headerlink" href="#getmarketorderlistbypair" title="Permanent link">&para;</a></h3>
-<p>This command is to get market order list by exhange pair,
+<p>This command is to get market order list by c pair,
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>GetMarketOrderListByPair<span class="w"> </span><span class="o">[</span>sell_token_id<span class="o">]</span><span class="w"> </span><span class="o">[</span>buy_token_id<span class="o">]</span>
 </code></pre></div>
 <code>sell_token_id</code> is the ID of the token want to sell.</p>
@@ -2307,7 +2307,7 @@ Example:
 <span class="o">}</span>
 </code></pre></div></p>
 <h3 id="getmarketpricebypair">GetMarketPricebyPair<a class="headerlink" href="#getmarketpricebypair" title="Permanent link">&para;</a></h3>
-<p>Use this command to get market price by exhange pair.
+<p>Use this command to get market price by exchange pair.
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>GetMarketPriceByPair<span class="w"> </span><span class="o">[</span>sell_token_id<span class="o">]</span><span class="w"> </span><span class="o">[</span>buy_token_id<span class="o">]</span>
 </code></pre></div>
 <code>sell_token_id</code> is the ID of the token want to sell.</p>

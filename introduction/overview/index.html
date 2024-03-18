@@ -248,7 +248,7 @@ id: proposal id
 <p>1.&nbsp;Use a wallet to generate the address and private key. To activate the account, you need to transfer TRX or transfer token to the new created account. </p>
 <p>2.&nbsp;Use an account already existed in TRON network to create an account</p>
 <h2 id="33-key-pair-generation-algorithm">3.3 Key-pair Generation Algorithm<a class="headerlink" href="#33-key-pair-generation-algorithm" title="Permanent link">&para;</a></h2>
-<p>Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.</p>
+<p>Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.</p>
 <h2 id="34-address-format">3.4 Address Format<a class="headerlink" href="#34-address-format" title="Permanent link">&para;</a></h2>
 <p>Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address comes out. Do basecheck to address, here is the final address. All addresses start with 'T'.</p>
 <p>basecheck process: first do sha256 calculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.</p>
@@ -279,7 +279,7 @@ Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
 <h2 id="43-soliditynode">4.3 SolidityNode<a class="headerlink" href="#43-soliditynode" title="Permanent link">&para;</a></h2>
 <h3 id="431-soliditynode-introduction">4.3.1 SolidityNode Introduction<a class="headerlink" href="#431-soliditynode-introduction" title="Permanent link">&para;</a></h3>
-<p>SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.</p>
+<p>SolidityNode only synchronizes solidified block data from the fullNode it specifies. It also provides api service.</p>
 <h3 id="432-soliditynode-deployment">4.3.2 SolidityNode Deployment<a class="headerlink" href="#432-soliditynode-deployment" title="Permanent link">&para;</a></h3>
 <p>Please refer to <a href="https://github.com/tronprotocol/tron-deployment">TRON-Deployment</a></p>
 <h3 id="433-recommended-hardware-configuration">4.3.3 Recommended Hardware Configuration<a class="headerlink" href="#433-recommended-hardware-configuration" title="Permanent link">&para;</a></h3>
@@ -288,7 +288,7 @@ CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: &gt; 64 cores RAM: &gt; 64G, Bandwidth: &gt; 500M, Disk: &gt; 20T</p>
 <h2 id="44-tron-network-instructure">4.4 TRON Network Instructure<a class="headerlink" href="#44-tron-network-instructure" title="Permanent link">&para;</a></h2>
-<p>TRON network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join TRON network as a node.
+<p>TRON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join TRON network as a node.
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png" /></p>
 <h2 id="45-fullnode-and-soliditynode-fast-deployment">4.5 FullNode and SolidityNode Fast Deployment<a class="headerlink" href="#45-fullnode-and-soliditynode-fast-deployment" title="Permanent link">&para;</a></h2>
 <p>Download fast deployment script, run the script according to different types of node.
@@ -477,7 +477,7 @@ Inconstant function will be broadcasted in the form of a transaction while being
 <p>Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as inconstant function, be dealt in the form of transaction.</p>
 <p>2.&nbsp;message calls</p>
 <p>Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.</p>
-<p>3.&nbsp;delegate call/call code/libary</p>
+<p>3.&nbsp;delegate call/call code/library</p>
 <p>There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, msg.sender and msg.value remain unchanged. This means a contract can dynamically load code from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.</p>
 <p>4.&nbsp;CREATE command</p>
 <p>This command will create a new contract with a new address. The only difference with Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the comtract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
@@ -621,7 +621,7 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 </code></pre></div></p>
 <h3 id="533-energy-calculation-developer-must-read">5.3.3 Energy Calculation (Developer Must Read)<a class="headerlink" href="#533-energy-calculation-developer-must-read" title="Permanent link">&para;</a></h3>
 <p>1.&nbsp;In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.</p>
-<p>2.&nbsp;Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion cna be changed later. If the developer's energy is not enough, it will consume the caller's energy.</p>
+<p>2.&nbsp;Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion can be changed later. If the developer's energy is not enough, it will consume the caller's energy.</p>
 <p>3.&nbsp;Currently, the total energy available when trigger a contract is composed of caller fee limit and developer's share</p>
 <p>Note:
 - If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[1].
@@ -653,7 +653,7 @@ if (X + Y) / 40% &gt;= Z / 60%, the energy A can use is X + Y + Z
 if (X + Y) / 40% &lt; Z / 60%, the energy A can use is (X + Y) / 40%</p>
 <p>If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.</p>
 <p>Assert-style error introduction, refer to <a href="https://developers.tron.network/docs/vm-exception">https://developers.tron.network/docs/vm-exception</a></p>
-<p>Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef.</p>
+<p>Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itself.</p>
 <p>To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.</p>
 <h2 id="54-smart-contract-development-tool">5.4 Smart Contract Development Tool<a class="headerlink" href="#54-smart-contract-development-tool" title="Permanent link">&para;</a></h2>
 <h3 id="541-tronbox">5.4.1 TronBox<a class="headerlink" href="#541-tronbox" title="Permanent link">&para;</a></h3>
@@ -690,7 +690,7 @@ contract DataStore {
 Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.</p>
 <p><strong>Using Wallet-cli to Deploy</strong></p>
 <p>Download Wallet-Cli and build</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># download cource code</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># download source code</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tronprotocol/wallet-cli
 <span class="nb">cd</span><span class="w">  </span>wallet-cli
 <span class="c1"># build</span>
@@ -987,7 +987,7 @@ buyTokenQuant = (long)balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2
  }
 </code></pre></div>
 <h2 id="124-how-to-build-a-transaction-locally">12.4 How to Build a Transaction Locally<a class="headerlink" href="#124-how-to-build-a-transaction-locally" title="Permanent link">&para;</a></h2>
-<p>According to the defination of the transaction, you need to fill up all the fields of the transaction.</p>
+<p>According to the definition of the transaction, you need to fill up all the fields of the transaction.</p>
 <p>You need to set reference block and expiration time information, so you need to connect to the Mainnet. We recommend to use the latest block on fullnode as the value of reference block, use the latest block time plus N minutes as the value of expiration time.</p>
 <p>The network judgment condition is if (expiration &gt; latest block time and expiration &lt; latest block time + 24 hours) means the transaction is in period of validity. Otherwise, it will be an overdue transaction, will not be accepted by the Mainnet.</p>
 <p>Way to set reference block: set RefBlockHash the bytes from the 8 to 16(not included) of the hash of the latest block, set BlockBytes the bytes from 6 to 8(not included) of the height of the latest block.

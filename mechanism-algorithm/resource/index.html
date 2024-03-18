@@ -326,7 +326,7 @@ B: 10_000_000_000 and energy_limit is 10_000_000_000
 <p>In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.</p>
 </li>
 <li>
-<p>Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion cna be changed later. If the developer's energy is not enough, it will consume the caller's energy.</p>
+<p>Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion can be changed later. If the developer's energy is not enough, it will consume the caller's energy.</p>
 </li>
 <li>
 <p>Currently, the total energy available when trigger a contract is composed of caller fee limit and developer's share</p>
@@ -362,7 +362,7 @@ B: 10_000_000_000 and energy_limit is 10_000_000_000
 <ul>
 <li>A's energy by staking TRX -- X;</li>
 <li>
-<p>The energy converted from the amount of TRX bruning according to a fixed rate -- Y;</p>
+<p>The energy converted from the amount of TRX burning according to a fixed rate -- Y;</p>
 <p>If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy;</p>
 </li>
 <li>
@@ -374,7 +374,7 @@ if (X + Y) / 40% &gt;= Z / 60%, the energy A can use is X + Y + Z
 if (X + Y) / 40% &lt; Z / 60%, the energy A can use is (X + Y) / 40%</p>
 <p>If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.</p>
 <p>If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to <a href="https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md">Exception Handling(zh-cn)</a>.</p>
-<p>Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef.</p>
+<p>Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itself.</p>
 <p>Assert-style error introduction, refer to <a href="https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md">Exception Handling(zh-cn)</a>.</p>
 <p>To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.</p>
 <h2 id="staking-on-tron-network">Staking on TRON network<a class="headerlink" href="#staking-on-tron-network" title="Permanent link">&para;</a></h2>

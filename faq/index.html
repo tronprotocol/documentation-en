@@ -201,7 +201,7 @@
 <li><a href="#deployment">Deployment</a><ul>
 <li><a href="#how-to-test-if-the-deployment-works-normally-if-there-is-a-test-api-or-command-like-redis-get-ping-return-pong">How to test if the deployment works normally, if there is a test api or command like redis: get ping return pong?</a></li>
 <li><a href="#when-to-deploy-private-environment-whats-the-relationship-of-supernode-and-fullnode-should-i-firstly-deploy-a-supernode-and-then-deploy-a-fullnode">When to deploy private environment, what's the relationship of SuperNode and FullNode? Should I firstly deploy a SuperNode, and then deploy a FullNode？</a></li>
-<li><a href="#how-to-know-wether-my-test-supernode-is-running-or-not">How to know wether my test SuperNode is running or not?</a></li>
+<li><a href="#how-to-know-whether-my-test-supernode-is-running-or-not">How to know whether my test SuperNode is running or not?</a></li>
 <li><a href="#can-soliditynode-and-fullnode-be-deployed-in-one-machine-will-they-share-the-data">Can SolidityNode and FullNode be deployed in one machine? Will they share the data?</a></li>
 </ul>
 </li>
@@ -216,7 +216,7 @@
 </li>
 <li><a href="#test-net">Test Net</a><ul>
 <li><a href="#we-want-to-test-our-supernodes-performance-under-test-environment-do-we-need-to-be-voted-to-become-a-sr-under-test-environment">We want to test our SuperNode's performance under test environment, do we need to be voted to become a SR under test environment?</a></li>
-<li><a href="#what-is-the-defferent-between-shasta-and-test-net">What is the defferent between Shasta and Test Net?</a></li>
+<li><a href="#what-is-the-different-between-shasta-and-test-net">What is the different between Shasta and Test Net?</a></li>
 <li><a href="#where-can-i-get-the-test-trx">Where can I get the test TRX?</a></li>
 </ul>
 </li>
@@ -352,7 +352,7 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 </code></pre></div>
 <h3 id="when-to-deploy-private-environment-whats-the-relationship-of-supernode-and-fullnode-should-i-firstly-deploy-a-supernode-and-then-deploy-a-fullnode">When to deploy private environment, what's the relationship of SuperNode and FullNode? Should I firstly deploy a SuperNode, and then deploy a FullNode？<a class="headerlink" href="#when-to-deploy-private-environment-whats-the-relationship-of-supernode-and-fullnode-should-i-firstly-deploy-a-supernode-and-then-deploy-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>Under private environment, there should be at least one SuperNode, there is no amount limit for FullNode.</p>
-<h3 id="how-to-know-wether-my-test-supernode-is-running-or-not">How to know wether my test SuperNode is running or not?<a class="headerlink" href="#how-to-know-wether-my-test-supernode-is-running-or-not" title="Permanent link">&para;</a></h3>
+<h3 id="how-to-know-whether-my-test-supernode-is-running-or-not">How to know whether my test SuperNode is running or not?<a class="headerlink" href="#how-to-know-whether-my-test-supernode-is-running-or-not" title="Permanent link">&para;</a></h3>
 <p>Using the following command</p>
 <div class="highlight"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;Try Produce Block&quot;
 </code></pre></div>
@@ -376,7 +376,7 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 <h2 id="test-net">Test Net<a class="headerlink" href="#test-net" title="Permanent link">&para;</a></h2>
 <h3 id="we-want-to-test-our-supernodes-performance-under-test-environment-do-we-need-to-be-voted-to-become-a-sr-under-test-environment">We want to test our SuperNode's performance under test environment, do we need to be voted to become a SR under test environment?<a class="headerlink" href="#we-want-to-test-our-supernodes-performance-under-test-environment-do-we-need-to-be-voted-to-become-a-sr-under-test-environment" title="Permanent link">&para;</a></h3>
 <p>Yes. Under test environment, we can vote you to become SR.</p>
-<h3 id="what-is-the-defferent-between-shasta-and-test-net">What is the defferent between Shasta and Test Net?<a class="headerlink" href="#what-is-the-defferent-between-shasta-and-test-net" title="Permanent link">&para;</a></h3>
+<h3 id="what-is-the-different-between-shasta-and-test-net">What is the different between Shasta and Test Net?<a class="headerlink" href="#what-is-the-different-between-shasta-and-test-net" title="Permanent link">&para;</a></h3>
 <p>to be answered</p>
 <h3 id="where-can-i-get-the-test-trx">Where can I get the test TRX?<a class="headerlink" href="#where-can-i-get-the-test-trx" title="Permanent link">&para;</a></h3>
 <p><a href="http://testnet.tronex.io/join/getJoinPage">http://testnet.tronex.io/join/getJoinPage</a></p>
@@ -401,7 +401,7 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 <div class="highlight"><pre><span></span><code>17:02:42.699 INFO [o.t.c.s.WitnessService] Try Produce Block
 17:02:42.699 INFO [o.t.c.s.WitnessService] Not sync
 </code></pre></div>
-<p>This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to chek the block height.</p>
+<p>This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to check the block height.</p>
 <div class="highlight"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
 </code></pre></div>
 <h2 id="other-questions">Other Questions<a class="headerlink" href="#other-questions" title="Permanent link">&para;</a></h2>

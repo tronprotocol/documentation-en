@@ -176,14 +176,14 @@ You may custom these items only if you have deep understanding on them, otherwis
   # block_KDB, peers, properties, recent-block, trans,
   # utxo, votes, witness, witness_schedule.
 
-  # Otherwise, db configs will remain defualt and data will be stored in
+  # Otherwise, db configs will remain default and data will be stored in
   # the path of &quot;output-directory&quot; or which is set by &quot;-d&quot; (&quot;--output-directory&quot;).
 
   # Attention: name is a required field that must be set !!!
   properties = [
     {
       name = &quot;account&quot;,
-      path = &quot;/path/to/accout&quot;,   // relative or absolute path
+      path = &quot;/path/to/account&quot;,   // relative or absolute path
       createIfMissing = true,
       paranoidChecks = true,
       verifyChecksums = true,
@@ -197,7 +197,7 @@ You may custom these items only if you have deep understanding on them, otherwis
 
 }
 </code></pre></div>
-<p>As shown in the example above, the data of database <code>accout</code> will be stored in the path of <code>/path/to/accout/database</code> while the index be stored in <code>/path/to/accout/index</code>. And, the example also shows our default value of LevelDB options from <code>createIfMissing</code> to <code>maxOpenFiles</code>. You can just refer to the docs of <a href="https://github.com/google/leveldb/blob/master/doc/index.md#performance">LevelDB</a> to figure out details of these options.</p>
+<p>As shown in the example above, the data of database <code>account</code> will be stored in the path of <code>/path/to/account/database</code> while the index be stored in <code>/path/to/account/index</code>. And, the example also shows our default value of LevelDB options from <code>createIfMissing</code> to <code>maxOpenFiles</code>. You can just refer to the docs of <a href="https://github.com/google/leveldb/blob/master/doc/index.md#performance">LevelDB</a> to figure out details of these options.</p>
 <h2 id="grpc">gRPC<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h2>
 <p>You can custom gPRC options in the <code>node.rpc</code> part of <code>config.conf</code>, which looks like:</p>
 <div class="highlight"><pre><span></span><code>node {

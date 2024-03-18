@@ -1195,7 +1195,7 @@ Parameters: The hash and block number must match.</p>
 }
 </code></pre></div></p>
 <h4 id="walletgettransactionbyid">wallet/gettransactionbyid<a class="headerlink" href="#walletgettransactionbyid" title="Permanent link">&para;</a></h4>
-<p>Description: Query an transaction infromation by transaction id
+<p>Description: Query a transaction information by transaction id
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d &#39;{&quot;value&quot;: &quot;d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62&quot;}&#39;
 </code></pre></div>
 Parameters: Transaction id</p>
@@ -1225,7 +1225,7 @@ Parameters: num is the Block height</p>
 Parameters: N/A</p>
 <p>Return: The list of nodes</p>
 <h4 id="walletgetnodeinfo">wallet/getnodeinfo<a class="headerlink" href="#walletgetnodeinfo" title="Permanent link">&para;</a></h4>
-<p>Description: Query the current node infromation
+<p>Description: Query the current node information
 <div class="highlight"><pre><span></span><code>curl  http://127.0.0.1:8090/wallet/getnodeinfo
 </code></pre></div>
 Return: The node information</p>
@@ -1333,7 +1333,7 @@ Parameters: </p>
 </code></pre></div>
 Parameters: </p>
 <ul>
-<li><code>contract_address</code>: Smart contract address, defualt hexString</li>
+<li><code>contract_address</code>: Smart contract address, default hexString</li>
 <li><code>function_selector</code>:  Function call, must not leave a blank space</li>
 <li><code>parameter</code>: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires</li>
 <li><code>data</code>: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use <code>function_selector</code> and <code>parameter</code> for contract interaction. When both of <code>data</code> and <code>function_selector</code> exist, <code>function_selector</code> is preferred</li>
@@ -2501,7 +2501,7 @@ payment address</p>
 Parameters: N/A</p>
 <p>Return:rcm</p>
 <h4 id="walletgetmerkletreevoucherinfo">wallet/getmerkletreevoucherinfo<a class="headerlink" href="#walletgetmerkletreevoucherinfo" title="Permanent link">&para;</a></h4>
-<p>Description: To get a merkle tree infromation of a note
+<p>Description: To get a merkle tree information of a note
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">  &quot;out_points&quot;:[{</span>
@@ -2774,14 +2774,14 @@ Parameters: </p>
 Parameters: <code>num</code> - The number of blocks expected to return</p>
 <p>Return: List of blocks</p>
 <h4 id="walletgetnodeinfo_1">wallet/getnodeinfo<a class="headerlink" href="#walletgetnodeinfo_1" title="Permanent link">&para;</a></h4>
-<p>Description: Query the current node infromation
+<p>Description: Query the current node information
 <div class="highlight"><pre><span></span><code>curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
 </code></pre></div>
 Parameters: N/A</p>
 <p>Return: NodeInfo of the current node</p>
 <h3 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permanent link">&para;</a></h3>
 <h4 id="walletsoliditygettransactionbyid">walletsolidity/gettransactionbyid<a class="headerlink" href="#walletsoliditygettransactionbyid" title="Permanent link">&para;</a></h4>
-<p>Description: Query an transaction infromation by transaction id
+<p>Description: Query an transaction information by transaction id
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d &#39;{&quot;value&quot; : &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;}&#39;
 </code></pre></div>
 Parameters: <code>value</code> - Transaction id</p>
@@ -2848,7 +2848,7 @@ Parameters: </p>
 Parameters: </p>
 <ul>
 <li><code>start_block_index</code>: The start block height, inclusive</li>
-<li><code>end_block_index</code>: The end block height, exlusive</li>
+<li><code>end_block_index</code>: The end block height, exclusive</li>
 <li><code>ivk</code>: Incoming viewing key</li>
 </ul>
 <p>Return: Notes list
@@ -2867,7 +2867,7 @@ Note: Range limit (end_block_index - start_block_index &lt;= 1000)</p>
 Parameters: </p>
 <ul>
 <li><code>start_block_index</code>: The start block height, inclusive</li>
-<li><code>end_block_index</code>: The end block height, exlusive</li>
+<li><code>end_block_index</code>: The end block height, exclusive</li>
 <li><code>ivk</code>: Incoming viewing key</li>
 <li><code>ak</code>: Ak key</li>
 <li><code>nk</code>: Nk key</li>

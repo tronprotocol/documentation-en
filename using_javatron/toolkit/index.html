@@ -358,7 +358,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 <li>--fn-data-path： The data directory to be trimmed, that is, the node data directory</li>
 <li>--dataset-path： The directory where the output snapshot dataset is stored</li>
 </ul>
-<p>After the command is executed, a <code>snapshot</code> directory will be generated in <code>/tmp</code>, the data in this directory is the Lite Fullnode data, then rename the directory from <code>snapshot</code> to <code>database</code> (the default value of the storage.db.directory is <code>database</code>, make sure rename the snapshot directory to the specified value) and copy the <code>database</code> directory  to the Lite Fullnode database directory to finish the spliting. Finally start the Lite Fullnode. </p>
+<p>After the command is executed, a <code>snapshot</code> directory will be generated in <code>/tmp</code>, the data in this directory is the Lite Fullnode data, then rename the directory from <code>snapshot</code> to <code>database</code> (the default value of the storage.db.directory is <code>database</code>, make sure rename the snapshot directory to the specified value) and copy the <code>database</code> directory  to the Lite Fullnode database directory to finish the splitting. Finally start the Lite Fullnode. </p>
 </li>
 <li>
 <p><strong>Split and get a <code>History Dataset</code></strong></p>
@@ -374,7 +374,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 </li>
 <li>
 <p><strong>Merge <code>History Dataset</code> and <code>Snapshot Dataset</code></strong></p>
-<p>Both <code>History Dataset</code> and <code>Snapshot Dataset</code> have an <code>info.properties</code> file to identify the block height when they are splitted. Make sure that the <code>split_block_num</code> in <code>History Dataset</code> is not less than the corresponding value in the <code>Snapshot Dataset</code>. After the historical dataset is merged with the snapshot dataset through the merge operation, the Lite Fullnode will become a real FullNode.</p>
+<p>Both <code>History Dataset</code> and <code>Snapshot Dataset</code> have an <code>info.properties</code> file to identify the block height when they are split. Make sure that the <code>split_block_num</code> in <code>History Dataset</code> is not less than the corresponding value in the <code>Snapshot Dataset</code>. After the historical dataset is merged with the snapshot dataset through the merge operation, the Lite Fullnode will become a real FullNode.</p>
 <p>The command to merge the historical dataset and the snapshot dataset is as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># just for simplify, assume `History dataset` is locate in /tmp</span>
 java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>merge<span class="w"> </span>--fn-data-path<span class="w"> </span>/tmp/snapshot<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp/history
@@ -393,7 +393,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 <div class="highlight"><pre><span></span><code># full command
   java -jar Toolkit.jar db cp [-h] &lt;src&gt; &lt;dest&gt;
 # examples
-  java -jar Toolkit.jar db cp  output-directory/database /tmp/databse
+  java -jar Toolkit.jar db cp  output-directory/database /tmp/database
 </code></pre></div>
 <p>Optional command parameters are as follows:</p>
 <ul>

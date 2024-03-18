@@ -228,14 +228,14 @@ java -jar .....
     Install</p>
 <div class="highlight"><pre><span></span><code>$ sudo apt install libgoogle-perftools4
 </code></pre></div>
-<p>In the startup script add the followings:</p>
+<p>In the startup script add the following:</p>
 <div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4&quot;
 export TCMALLOC_RELEASE_RATE=10
 </code></pre></div>
 </li>
 <li>
 <p>Ubuntu 16.04 LTS
-    Same install command as above. In the startup script add the followings:</p>
+    Same install command as above. In the startup script add the following:</p>
 <div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib/libtcmalloc.so.4&quot;
 export TCMALLOC_RELEASE_RATE=10
 </code></pre></div>
@@ -245,7 +245,7 @@ export TCMALLOC_RELEASE_RATE=10
   Install
     <div class="highlight"><pre><span></span><code>$ sudo yum install gperftools-libs
 </code></pre></div>
-    In the startup script add the followings:
+    In the startup script add the following:
     <div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib64/libtcmalloc.so.4&quot;
 export TCMALLOC_RELEASE_RATE=10
 </code></pre></div></p>

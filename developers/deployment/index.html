@@ -190,7 +190,7 @@ New developers should deploy FullNode only.</p>
 
 main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
-please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SoliditNode.
+please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SolidityNode.
 
 cp build/libs/FullNode.jar ../fullnode
 
@@ -284,7 +284,7 @@ bash<span class="w"> </span>deploy_tron.sh
 <h3> Deployment of SolidityNode on the one host </h3>
 
 <div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
-<span class="c1"># User can self-configure the IP and Port of GRPC service in the turst-node field of SolidityNode. trust-node is the fullnode you just deploy.</span>
+<span class="c1"># User can self-configure the IP and Port of GRPC service in the trust-node field of SolidityNode. trust-node is the fullnode you just deploy.</span>
 bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span>SolidityNode<span class="w"> </span>--trust-node<span class="w"> </span>&lt;grpc-ip:grpc-port&gt;
 </code></pre></div>
 <h3> Deployment of FullNode and SolidityNode on the same host </h3>
@@ -342,7 +342,7 @@ Use customized configuration：
 <p>This will produce one plugin zip, named <code>plugin-kafka-1.0.0.zip</code>, located in the <code>event-plugin/build/plugins/</code> directory.</p>
 </li>
 </ol>
-<h3> Edit **config.conf** of Java-tron， add the following fileds:</h3>
+<h3> Edit **config.conf** of Java-tron， add the following fields:</h3>
 
 <p><div class="highlight"><pre><span></span><code>event.subscribe = {
     path = &quot;&quot; // absolute path of plugin

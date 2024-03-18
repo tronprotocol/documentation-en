@@ -67,7 +67,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#start-java-tron-node">Start Java-tron node</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#deply-prometheus-service">Deply prometheus service</a>
+    <li class="toctree-l2"><a class="reference internal" href="#deploy-prometheus-service">Deploy prometheus service</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#deploy-grafana">Deploy Grafana</a>
     </li>
@@ -193,7 +193,7 @@
 <p>Start Java-tron node using below command：</p>
 <div class="highlight"><pre><span></span><code>$<span class="w">  </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
 </code></pre></div>
-<h2 id="deply-prometheus-service">Deply prometheus service<a class="headerlink" href="#deply-prometheus-service" title="Permanent link">&para;</a></h2>
+<h2 id="deploy-prometheus-service">Deploy prometheus service<a class="headerlink" href="#deploy-prometheus-service" title="Permanent link">&para;</a></h2>
 <p><a href="https://prometheus.io/download/">prometheus</a> officially provides precompiled binaries and docker images, you can download them directly from the official website or pull the docker images on dockerhub. For more detailed installation and configuration instructions, Please refer to the <a href="https://prometheus.io/docs/introduction/overview/">prometheus documentation</a>. As a simple deployment instruction, this article will adopt the docker image deployment:</p>
 <ol>
 <li>
@@ -257,7 +257,7 @@ You can download and use this template and modify the configuration items <code>
 </code></pre></div>
 </li>
 <li>
-<p>Strat Grafana</p>
+<p>Start Grafana</p>
 <p>You can use the below command to start Grafana:
 <div class="highlight"><pre><span></span><code>$ docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
 </code></pre></div></p>
