@@ -129,9 +129,55 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">History</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v474bias">GreatVoyage-v4.7.4(Bias)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#core">Core</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-voting-reward-withdrawal-performance">1. Optimize voting reward withdrawal performance</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-add-check-function-for-the-number-of-unsolidified-blocks">2. Add check function for the number of unsolidified blocks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api">API</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-supply-block_unsolidified-in-code-for-walletbroadcasttransaction-api">1. Supply BLOCK_UNSOLIDIFIED in code for /wallet/broadcasttransaction API</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes">Other Changes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-add-field-codeversion-to-hellomessage-to-declare-code-version">1. Add field codeVersion to HelloMessage to declare code version</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-bump-libp2p-to-version-221">2. Bump libp2p to version 2.2.1</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-bump-jetty-to-9453v20231009">3. Bump jetty to 9.4.53.v20231009</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-refactor-gradle-dependencies">4. Refactor Gradle dependencies</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#5-provide-grpc-reflection-service">5. Provide gRPC reflection service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#6-delete-the-litefullnodetool-related-code-under-the-framework-module">6. Delete the LiteFullNodeTool related code under the framework module</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#7-remove-configuration-item-nodediscoverybindip">7. Remove configuration item node.discovery.bind.ip</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#8-remove-redundant-ci-scripts">8. Remove redundant CI scripts</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#9-initialize-the-api-service-first-during-the-node-startup">9. Initialize the API service first during the node startup</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#10-optimize-log">10. Optimize log</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#11-add-synchronization-control-when-writing-to-zeromq">11. Add synchronization control when writing to ZeroMQ</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#12optimize-unexpected-exception-capture-process-of-scalingfactor-in-walletcreateshieldedcontractparameters-api">12.Optimize unexpected exception capture process of scalingFactor in /wallet/createshieldedcontractparameters API.</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v4731solon">GreatVoyage-v4.7.3.1(Solon)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_1">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-more-stable-walletgetnodeinfo-interface">1. More stable /wallet/getnodeinfo interface</a>
     </li>
@@ -143,7 +189,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v473chilon">GreatVoyage-v4.7.3(Chilon)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core">Core</a>
+    <li class="toctree-l3"><a class="reference internal" href="#core_1">Core</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-add-grpc-interfaces-for-resource-price-and-transaction-memo-fee-query">1. Add gRPC interfaces for resource price and transaction memo fee query</a>
     </li>
@@ -161,7 +207,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_1">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-http-interface-monitoring">1. Optimize HTTP interface monitoring</a>
     </li>
@@ -175,7 +221,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_1">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_2">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-add-check-for-expired-transactions-when-fetching-transactions">1. Add check for expired transactions when fetching transactions</a>
     </li>
@@ -199,7 +245,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v472periander">GreatVoyage-v4.7.2(Periander)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_1">Core</a>
+    <li class="toctree-l3"><a class="reference internal" href="#core_2">Core</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-upgrade-libp2p-to-v120">1. Upgrade Libp2p to v1.2.0</a>
     </li>
@@ -217,7 +263,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_1">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_2">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-add-api-global-rate-limiter">1. Add API global rate limiter</a>
     </li>
@@ -227,7 +273,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_2">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_3">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-event-forwarding-logic-in-event-subscription">1. Optimize event forwarding logic in event subscription</a>
     </li>
@@ -255,7 +301,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v4711-pittacus">GreatVoyage-v4.7.1.1 (Pittacus)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#api_2">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_3">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-remove-apis-involving-sensitive-information">1. Remove APIs involving sensitive information</a>
     </li>
@@ -263,7 +309,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_3">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_4">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-update-logic-of-the-origin_energy_usage-field-in-the-transaction-receipt">1. Optimize the update logic of the origin_energy_usage field in the transaction receipt</a>
     </li>
@@ -281,7 +327,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_3">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_4">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-list-of-solidified-block-apis">1. Optimize the list of solidified block APIs</a>
     </li>
@@ -289,7 +335,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_4">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_5">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-litefullnode-detection-logic">1. Optimize LiteFullNode detection logic</a>
     </li>
@@ -325,7 +371,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_4">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_5">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-add-apis-to-support-stake-20">1. Add APIs to support Stake 2.0</a>
     </li>
@@ -333,7 +379,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_5">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_6">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-gradle-compilation-parameters">1. Optimize Gradle compilation parameters</a>
     </li>
@@ -353,7 +399,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v460-socrates">GreatVoyage-v4.6.0 (Socrates)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_2">Core</a>
+    <li class="toctree-l3"><a class="reference internal" href="#core_3">Core</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-delegate-relationship-index-structure">1. Optimize delegate relationship index structure</a>
     </li>
@@ -369,7 +415,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_6">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_7">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-merge-archivemanifestjar-into-toolkitjar">1. Merge ArchiveManifest.jar into Toolkit.jar</a>
     </li>
@@ -387,7 +433,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v452aurelius">GreatVoyage-v4.5.2(Aurelius)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_3">Core</a>
+    <li class="toctree-l3"><a class="reference internal" href="#core_4">Core</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-block-processing">1. Optimize block processing</a>
     </li>
@@ -403,7 +449,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_5">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_6">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-new-block-header-query-api">1. New block header query API</a>
     </li>
@@ -411,7 +457,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_7">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_8">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-block-synchronization-logic">1. Optimize block synchronization logic</a>
     </li>
@@ -425,7 +471,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v451tertullian">GreatVoyage-v4.5.1(Tertullian)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_4">Core</a>
+    <li class="toctree-l3"><a class="reference internal" href="#core_5">Core</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-transaction-cache-loading">1. Optimize transaction cache loading</a>
     </li>
@@ -455,7 +501,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v446david">GreatVoyage-v4.4.6(David)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_8">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_9">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-update-the-fastjson-dependency-library-to-the-latest-version">1. Update the fastjson dependency library to the latest version</a>
     </li>
@@ -465,7 +511,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-445cicero">GreatVoyage-4.4.5(Cicero)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_9">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_10">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-query-interface-of-the-node">1. Optimize the query interface of the node</a>
     </li>
@@ -475,7 +521,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-444plotinus">GreatVoyage-4.4.4(Plotinus)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_5">Core</a>
+    <li class="toctree-l3"><a class="reference internal" href="#core_6">Core</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-node-startup-time">1. Optimize node startup time</a>
     </li>
@@ -491,7 +537,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_10">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_11">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-log-storage">1. Optimize log storage</a>
     </li>
@@ -511,13 +557,13 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_6">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_7">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-newly-adding-eth-compatible-log-filter-for-json-rpc-apis">1. Newly Adding ETH compatible log filter for JSON-RPC APIs.</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_11">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_12">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-leveldb-databases-performance-optimization">1. LevelDB Databases Performance Optimization</a>
     </li>
@@ -527,7 +573,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-440rousseau">GreatVoyage-4.4.0(Rousseau)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_6">Core</a>
+    <li class="toctree-l3"><a class="reference internal" href="#core_7">Core</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-block-broadcasting">1. Optimize the block broadcasting</a>
     </li>
@@ -549,7 +595,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_7">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_8">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-support-ethereum-compatible-json-rpc-api">1. Support Ethereum compatible JSON-RPC API</a>
     </li>
@@ -573,7 +619,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-430bacon">GreatVoyage-4.3.0(Bacon)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_7">Core</a>
+    <li class="toctree-l3"><a class="reference internal" href="#core_8">Core</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-add-a-proposal-to-adjust-the-free-net-limit-in-an-account">1. Add a proposal to adjust the free net limit in an account.</a>
     </li>
@@ -591,7 +637,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_8">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_9">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-add-a-new-field-energy_used-in-transactionextention">1. Add a New Field: energy_used in TransactionExtention</a>
     </li>
@@ -637,7 +683,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_12">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_13">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1-system-contract-batchvalidatesign-initialization-process-optimization">1. System Contract BatchValidateSign Initialization Process optimization</a>
     </li>
@@ -659,7 +705,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_13">Other Changes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#other-changes_14">Other Changes</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1optimize-the-block-synchronization">1、Optimize the block synchronization.</a>
     </li>
@@ -675,7 +721,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_9">API</a>
+    <li class="toctree-l3"><a class="reference internal" href="#api_10">API</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#1add-new-api-to-support-transaction-query-in-pending-pool">1.Add new API to support transaction query in pending pool.</a>
     </li>
@@ -827,6 +873,14 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Bias</td>
+<td>GreatVoyage-v4.7.4</td>
+<td>2024-3-15</td>
+<td><a href="https://github.com/tronprotocol/tips/blob/master/tip-635.md">TIP-635</a> <br> <a href="https://github.com/tronprotocol/tips/blob/master/tip-621.md">TIP-621</a></td>
+<td><a href="https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.4">Release Note</a></td>
+<td><a href="#greatvoyage-v474bias">Specs</a></td>
+</tr>
 <tr>
 <td>Solon</td>
 <td>GreatVoyage-v4.7.3.1</td>
@@ -1389,10 +1443,88 @@
 </tr>
 </tbody>
 </table>
+<h2 id="greatvoyage-v474bias">GreatVoyage-v4.7.4(Bias)<a class="headerlink" href="#greatvoyage-v474bias" title="Permanent link">&para;</a></h2>
+<p>The Bias version introduces several important optimizations and updates, including a new proposal to optimize the performance of voting reward withdrawal; the refactored Gradle dependency reduces the complexity of core protocol development; support for gRPC reflection services and optimized logging system brings a more friendly and convenient development experience to users. Please find the details below.</p>
+<h3 id="core">Core<a class="headerlink" href="#core" title="Permanent link">&para;</a></h3>
+<h4 id="1-optimize-voting-reward-withdrawal-performance">1. Optimize voting reward withdrawal performance<a class="headerlink" href="#1-optimize-voting-reward-withdrawal-performance" title="Permanent link">&para;</a></h4>
+<p>TIP-465 aims to improve the calculation performance of TRON voting rewards. By recording the single-vote cumulative reward value of each super representative in each maintenance period, the time complexity of voting reward calculation can be reduced from linear time to constant time. The TIP-465 has been implemented as early as the Socrates version, and No. 82 proposal based on TIP-465 has been officially adopted at 2023-01-20 14:00:00. However, this proposal only optimizes the calculation performance of voting rewards generated after the proposal takes effect (constant time complexity), while the calculation performance of voting rewards generated before the proposal takes effect is still low (linear time complexity).</p>
+<p>The Bias version optimizes the calculation performance of voting rewards generated before the No.82 proposal takes effect. It calculates the single-vote cumulative reward value of each super representative in each maintenance period before the No.82 proposal takes effect in advance through background tasks, and saves the calculation results to the database. This will make the calculation performance of voting rewards generated before and after the No. 82 proposal takes effect consistent, so that any transaction involving reward withdrawal can complete the reward calculation within a constant time, speeding up the execution speed of transactions related to voting rewards withdrawal, improving network throughput.</p>
+<p>This optimization is the No. 79 parameter of the TRON network. After Bias is deployed, it is turned off by default and can be enabled through governance voting.</p>
+<p>TIP: <a href="https://github.com/tronprotocol/tips/issues/635">https://github.com/tronprotocol/tips/issues/635</a><br />
+Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5406">https://github.com/tronprotocol/java-tron/pull/5406</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5654">https://github.com/tronprotocol/java-tron/pull/5654</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5683">https://github.com/tronprotocol/java-tron/pull/5683</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5742">https://github.com/tronprotocol/java-tron/pull/5742</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5748">https://github.com/tronprotocol/java-tron/pull/5748</a>   </p>
+<h4 id="2-add-check-function-for-the-number-of-unsolidified-blocks">2. Add check function for the number of unsolidified blocks<a class="headerlink" href="#2-add-check-function-for-the-number-of-unsolidified-blocks" title="Permanent link">&para;</a></h4>
+<p>The block solidification mechanism of the TRON network is: a block can be solidified only after it is confirmed by 70% of the super representatives, that is, the block data is written to the disk and the data cannot be changed. Blocks that cannot be solidified are always stored in memory. If the number of unsolidified blocks continues to increase, it may cause memory exhaustion and the node to stop running.</p>
+<p>The Bias version adds a check function for the number of unsolidified blocks. When it is detected that the number of unsolidified blocks of a node reaches the threshold, the node will stop broadcasting transactions to avoid too many transactions that cannot be solidified in the network. This can not only reduce the node's memory usage, but also reduce the number of transactions in the block, improve the block execution speed, and facilitate the rapid recovery of the network in the later period..</p>
+<p>This feature is enabled by default, and the threshold is 1000. Node deployers can also turn off this function or configure the threshold through the configuration file.</p>
+<div class="highlight"><pre><span></span><code>node.unsolidifiedBlockCheck = true
+node.maxUnsolidifiedBlocks = 1000
+</code></pre></div>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5643">https://github.com/tronprotocol/java-tron/pull/5643</a>  </p>
+<h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h4 id="1-supply-block_unsolidified-in-code-for-walletbroadcasttransaction-api">1. Supply BLOCK_UNSOLIDIFIED in code for /wallet/broadcasttransaction API<a class="headerlink" href="#1-supply-block_unsolidified-in-code-for-walletbroadcasttransaction-api" title="Permanent link">&para;</a></h4>
+<p>The Bias version adds a check function for the number of unsolidified blocks. When it is detected that the number of unsolidified blocks of a node reaches the threshold, the node will stop broadcasting transactions. In order to provide better feedback on the node status, the Bias version adds a new return code <code>BLOCK_UNSOLIDIFIED</code> for the <code>/wallet/broadcasttransaction</code> API. This code indicates that the node has too many unsolidified blocks and the number has exceeded the threshold, the node cannot broadcast the transaction.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5643">https://github.com/tronprotocol/java-tron/pull/5643</a>  </p>
+<h3 id="other-changes">Other Changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h3>
+<h4 id="1-add-field-codeversion-to-hellomessage-to-declare-code-version">1. Add field codeVersion to HelloMessage to declare code version<a class="headerlink" href="#1-add-field-codeversion-to-hellomessage-to-declare-code-version" title="Permanent link">&para;</a></h4>
+<p>Bias adds a new field <code>codeVersion</code> representing version information in the HelloMessage message, so that nodes can obtain the version information of the other node during the node discovery phase, which is beneficial to troubleshooting and locating problems later.</p>
+<p>TIP: <a href="https://github.com/tronprotocol/tips/issues/621">https://github.com/tronprotocol/tips/issues/621</a><br />
+Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5584">https://github.com/tronprotocol/java-tron/pull/5584</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5667">https://github.com/tronprotocol/java-tron/pull/5667</a>  </p>
+<h4 id="2-bump-libp2p-to-version-221">2. Bump libp2p to version 2.2.1<a class="headerlink" href="#2-bump-libp2p-to-version-221" title="Permanent link">&para;</a></h4>
+<p>Bias upgrades the network module to libp2p v2.2.1. The main contents of this version include: bump snappy-java dependency library to v1.1.10.5, add LAN IP acquisition logic, optimize handshake logic, and adjust some log levels.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5692">https://github.com/tronprotocol/java-tron/pull/5692</a>  </p>
+<h4 id="3-bump-jetty-to-9453v20231009">3. Bump jetty to 9.4.53.v20231009<a class="headerlink" href="#3-bump-jetty-to-9453v20231009" title="Permanent link">&para;</a></h4>
+<p>The Bias version bumps the jetty dependency library to v9.4.53.v20231009. </p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5571">https://github.com/tronprotocol/java-tron/pull/5571</a>  </p>
+<h4 id="4-refactor-gradle-dependencies">4. Refactor Gradle dependencies<a class="headerlink" href="#4-refactor-gradle-dependencies" title="Permanent link">&para;</a></h4>
+<p>The Java-tron code is divided into multiple modules, each module has its own dependencies, but currently there are situations where dependencies are declared multiple times in multiple modules. The Bias version reconstructs the Gradle dependencies of each module and deletes duplicate dependency statements, making the code dependencies clearer and enabling unified management of dependencies to reduce maintenance costs.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5625">https://github.com/tronprotocol/java-tron/pull/5625</a>  </p>
+<h4 id="5-provide-grpc-reflection-service">5. Provide gRPC reflection service<a class="headerlink" href="#5-provide-grpc-reflection-service" title="Permanent link">&para;</a></h4>
+<p>Starting from the Bias version, the gRPC reflection service is supported. Users can directly use the gRPCurl command line tool to make the gPRC interface calls, which improves the ease of use of the gRPC interface.
+This feature needs to be enabled through the following configuration items:
+<div class="highlight"><pre><span></span><code>node.rpc.reflectionService=true
+</code></pre></div>
+Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5583">https://github.com/tronprotocol/java-tron/pull/5583</a>  </p>
+<h4 id="6-delete-the-litefullnodetool-related-code-under-the-framework-module">6. Delete the LiteFullNodeTool related code under the framework module<a class="headerlink" href="#6-delete-the-litefullnodetool-related-code-under-the-framework-module" title="Permanent link">&para;</a></h4>
+<p>In order to facilitate tool maintenance and developer use, TRON has launched the <code>Toolkit.jar</code> toolbox, which includes various TRON development tools. As early as the Aristotle version, the code related to the LiteFullNode data clipping tool has been integrated into the <code>Toolkit</code> toolbox (located under the plugin module), and <code>Tookit</code> can completely replace <code>LiteFullNodeTool</code> (located under the framework module). Therefore, the Bias version deletes the <code>LiteFullNodeTool</code> related code under the framework module, which not only reduces code redundancy, but also makes the division of functional modules clearer. The commands to use the LiteFullNode data pruning function in the <code>Toolkit</code> are as follows:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar Toolkit.jar db lite 
+</code></pre></div>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5711">https://github.com/tronprotocol/java-tron/pull/5711</a>  </p>
+<h4 id="7-remove-configuration-item-nodediscoverybindip">7. Remove configuration item node.discovery.bind.ip<a class="headerlink" href="#7-remove-configuration-item-nodediscoverybindip" title="Permanent link">&para;</a></h4>
+<p>Bias upgrades libp2p to v2.2.1. That makes the node can obtain the node LAN IP directly through libp2p without manual configuration by the deployer. Therefore, the Bias version deletes the no longer used configuration item <code>node.discovery.bind.ip</code>, simplifying the configuration complexity.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5597">https://github.com/tronprotocol/java-tron/pull/5597</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5750">https://github.com/tronprotocol/java-tron/pull/5750</a>  </p>
+<h4 id="8-remove-redundant-ci-scripts">8. Remove redundant CI scripts<a class="headerlink" href="#8-remove-redundant-ci-scripts" title="Permanent link">&para;</a></h4>
+<p>The Bias version removes project build scripts that are no longer used, including checkStyle.sh, codecov.sh, querySonar.sh, sonar.sh.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5580">https://github.com/tronprotocol/java-tron/pull/5580</a>  </p>
+<h4 id="9-initialize-the-api-service-first-during-the-node-startup">9. Initialize the API service first during the node startup<a class="headerlink" href="#9-initialize-the-api-service-first-during-the-node-startup" title="Permanent link">&para;</a></h4>
+<p>The Bias version adjusts the start order of each service, starts the node API service first, and then starts the P2P service and consensus service. This prevents the API service port from being occupied by other services.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5711">https://github.com/tronprotocol/java-tron/pull/5711</a>  </p>
+<h4 id="10-optimize-log">10. Optimize log<a class="headerlink" href="#10-optimize-log" title="Permanent link">&para;</a></h4>
+<p>The Bias version optimizes node logs, adjusts some log levels according to business logic, simplifies expected exception logs, and elaborates unexpected exception logs to facilitate problem location.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5624">https://github.com/tronprotocol/java-tron/pull/5624</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5601">https://github.com/tronprotocol/java-tron/pull/5601</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5660">https://github.com/tronprotocol/java-tron/pull/5660</a>  <br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5687">https://github.com/tronprotocol/java-tron/pull/5687</a><br />
+<a href="https://github.com/tronprotocol/java-tron/pull/5697">https://github.com/tronprotocol/java-tron/pull/5697</a>  </p>
+<h4 id="11-add-synchronization-control-when-writing-to-zeromq">11. Add synchronization control when writing to ZeroMQ<a class="headerlink" href="#11-add-synchronization-control-when-writing-to-zeromq" title="Permanent link">&para;</a></h4>
+<p>Java-tron supports subscribing to events through the built-in ZeroMQ message queue. However, when multiple threads concurrently send events to the ZeroMQ, write exception errors may occur. The Bias version adds synchronization control when writing to ZeroMQ, ensuring the order of concurrent access between threads.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5536">https://github.com/tronprotocol/java-tron/pull/5536</a>  </p>
+<h4 id="12optimize-unexpected-exception-capture-process-of-scalingfactor-in-walletcreateshieldedcontractparameters-api">12.Optimize unexpected exception capture process of scalingFactor in /wallet/createshieldedcontractparameters API.<a class="headerlink" href="#12optimize-unexpected-exception-capture-process-of-scalingfactor-in-walletcreateshieldedcontractparameters-api" title="Permanent link">&para;</a></h4>
+<p>The Bias version optimizes the <code>/wallet/createshieldedcontractparameters</code> interface and adds a legality check for the anonymous contract scaling factor parameter <code>scalingFactor</code>, which must be a positive integer.</p>
+<p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5746">https://github.com/tronprotocol/java-tron/pull/5746</a> </p>
+<hr />
+<p><em>Be slow in considering, but resolute in action.</em> </p>
+<p align="right"> ---Bias</p>
+
 <h2 id="greatvoyage-v4731solon">GreatVoyage-v4.7.3.1(Solon)<a class="headerlink" href="#greatvoyage-v4731solon" title="Permanent link">&para;</a></h2>
 <p>Solon is a non-mandatory upgrade version that will introduce two important updates. A more stable HTTP interface and Lite FullNode data pruning tool bring users a more friendly development experience.</p>
 <p>Please find the details below.</p>
-<h3 id="other-changes">Other Changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_1">Other Changes<a class="headerlink" href="#other-changes_1" title="Permanent link">&para;</a></h3>
 <h4 id="1-more-stable-walletgetnodeinfo-interface">1. More stable /wallet/getnodeinfo interface<a class="headerlink" href="#1-more-stable-walletgetnodeinfo-interface" title="Permanent link">&para;</a></h4>
 <p>In versions prior to Solon, there was a very small probability that an exception might be triggered when calling the /wallet/getnodeinfo interface due to the concurrent execution of block data object serialization. Therefore, the Solon version modified the serialization logic of block data to ensure the correctness of block data acquisition and make the /wallet/getnodeinfo interface more stable.</p>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5594">https://github.com/tronprotocol/java-tron/pull/5594</a>  </p>
@@ -1408,7 +1540,7 @@
 <h2 id="greatvoyage-v473chilon">GreatVoyage-v4.7.3(Chilon)<a class="headerlink" href="#greatvoyage-v473chilon" title="Permanent link">&para;</a></h2>
 <p>Chilon is a non-mandatory upgrade version that will introduce multiple important updates. Richer gRPC interfaces and faster node startup speed, bring users a more friendly development experience. Optimized disconnection strategy and synchronization process improve the stability of the connection among nodes. The optimized transaction processing logic and database query performance elevate the transaction packaging efficiency and network throughput.</p>
 <p>Please find the details below.</p>
-<h3 id="core">Core<a class="headerlink" href="#core" title="Permanent link">&para;</a></h3>
+<h3 id="core_1">Core<a class="headerlink" href="#core_1" title="Permanent link">&para;</a></h3>
 <h4 id="1-add-grpc-interfaces-for-resource-price-and-transaction-memo-fee-query">1. Add gRPC interfaces for resource price and transaction memo fee query<a class="headerlink" href="#1-add-grpc-interfaces-for-resource-price-and-transaction-memo-fee-query" title="Permanent link">&para;</a></h4>
 <p>Chilon adds three new gRPC interfaces. Users can obtain historical bandwidth unit price through <code>getBandwidthPrices</code> API, obtain historical energy unit price through <code>getEnergyPrices</code> API, and obtain transaction memo fee through <code>getMemoFee</code> API. These new gRPC APIs further improve the developer experience.</p>
 <p>TIP: <a href="https://github.com/tronprotocol/tips/blob/master/tip-586.md">https://github.com/tronprotocol/tips/blob/master/tip-586.md</a><br />
@@ -1437,7 +1569,7 @@ This feature is disabled by default and can be enabled through the node configur
 <p>In previous versions of Chilon, when the service is shut down, abnormal errors may occur 
 due to the resource release order issue. The Chilon version optimizes the service shutdown logic. When the <code>kill -15</code> command is used to shut down the service, it can ensure the accuracy of the release sequence of various types of resources so that the node can exit normally.</p>
 <p>Source Code: <a href="ttps://github.com/tronprotocol/java-tron/pull/5410">https://github.com/tronprotocol/java-tron/pull/5410</a>  <a href="ttps://github.com/tronprotocol/java-tron/pull/5425">https://github.com/tronprotocol/java-tron/pull/5425 </a> <a href="https://github.com/tronprotocol/java-tron/pull/5421">https://github.com/tronprotocol/java-tron/pull/5421</a>  <a href="https://github.com/tronprotocol/java-tron/pull/5429">https://github.com/tronprotocol/java-tron/pull/5429 </a> <a href="https://github.com/tronprotocol/java-tron/pull/5447">https://github.com/tronprotocol/java-tron/pull/5447 </a> </p>
-<h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h3 id="api_1">API<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-http-interface-monitoring">1. Optimize HTTP interface monitoring<a class="headerlink" href="#1-optimize-http-interface-monitoring" title="Permanent link">&para;</a></h4>
 <p>Chilon optimizes the HTTP interface monitoring, it no longer counts requests for APIs that are not supported by the node, making the statistics of successful or failed HTTP interface requests more accurate.</p>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5332">https://github.com/tronprotocol/java-tron/pull/5332</a>  </p>
@@ -1456,7 +1588,7 @@ due to the resource release order issue. The Chilon version optimizes the servic
 <h4 id="5-optimize-the-processing-logic-of-some-http-interfaces">5. Optimize the processing logic of some HTTP interfaces<a class="headerlink" href="#5-optimize-the-processing-logic-of-some-http-interfaces" title="Permanent link">&para;</a></h4>
 <p>The Chilon version optimizes some HTTP interfaces to make it consistent with get and post request processing, including parameters check and return value. The interfaces include <code>/wallet/getavailableunfreezecount</code>, <code>/wallet/getcanwithdrawunfreezeamount</code>, <code>/wallet/getcandelegatedmaxsize</code>, and <code>/wallet/getavailableunfreezecount</code>. </p>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5408">https://github.com/tronprotocol/java-tron/pull/5408</a>  </p>
-<h3 id="other-changes_1">Other Changes<a class="headerlink" href="#other-changes_1" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_2">Other Changes<a class="headerlink" href="#other-changes_2" title="Permanent link">&para;</a></h3>
 <h4 id="1-add-check-for-expired-transactions-when-fetching-transactions">1. Add check for expired transactions when fetching transactions<a class="headerlink" href="#1-add-check-for-expired-transactions-when-fetching-transactions" title="Permanent link">&para;</a></h4>
 <p>Chilon adds a check for expired transactions in the broadcast list it receives. For transactions timed out in the list, it will no longer make requests to its remote node, avoiding node connections being disconnected due to transaction processing failures, and improving node connection stability.</p>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5460">https://github.com/tronprotocol/java-tron/pull/5460</a>  </p>
@@ -1493,7 +1625,7 @@ node.p2p.pingInterval
 <h2 id="greatvoyage-v472periander">GreatVoyage-v4.7.2(Periander)<a class="headerlink" href="#greatvoyage-v472periander" title="Permanent link">&para;</a></h2>
 <p>The Periander version introduces several important optimizations and updates, adding two governance proposals to optimize Stake 2.0, greatly improving the flexibility of the TRON stake mechanism; adding a governance proposal to implement EIP-3855 <code>PUSH0</code> Instruction, which not only ensures the compatibility of TRON and Ethereum at the virtual machine level but also reduces the cost of using TRON smart contracts; more friendly smart contracts interfaces to improve the convenience of smart contract development; the P2P network module of TRON has been fully upgraded to support IPV6 protocol, node discovery via DNS, message compression, etc., greatly improving the performance of TRON network infrastructure.</p>
 <p>Please see the details below.</p>
-<h3 id="core_1">Core<a class="headerlink" href="#core_1" title="Permanent link">&para;</a></h3>
+<h3 id="core_2">Core<a class="headerlink" href="#core_2" title="Permanent link">&para;</a></h3>
 <h4 id="1-upgrade-libp2p-to-v120">1. Upgrade Libp2p to v1.2.0<a class="headerlink" href="#1-upgrade-libp2p-to-v120" title="Permanent link">&para;</a></h4>
 <p>Libp2p is a Java version open-source P2P protocol framework developed by the Java-tron core developers and anyone can develop distributed applications with Libp2p, as the underlying P2P network of Java-tron is implemented based on Libp2p. In order to further improve the underlying network performance of Java-tron, Periander upgrades the Libp2p v0.1.4 with the v1.2.0 version.</p>
 <p>Libp2p v1.2.0 has the following new features：</p>
@@ -1636,7 +1768,7 @@ This feature is controlled by the No. 77 parameter of the TRON network, which ne
 <li>TIP: <a href="https://github.com/tronprotocol/tips/blob/master/tip-543.md">https://github.com/tronprotocol/tips/blob/master/tip-543.md</a> </li>
 <li>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5175">https://github.com/tronprotocol/java-tron/pull/5175</a></li>
 </ul>
-<h3 id="api_1">API<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
+<h3 id="api_2">API<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h3>
 <h4 id="1-add-api-global-rate-limiter">1. Add API global rate limiter<a class="headerlink" href="#1-add-api-global-rate-limiter" title="Permanent link">&para;</a></h4>
 <p>Limiting the API access rate can not only effectively allocate node resources, but also ensure the stable running of a node. In previous versions of Periander, a rate limiter only affected a single interface. You can set the maximum number of accesses per second for an interface, the maximum number of accesses per second for an IP to this interface, and the number of concurrent accesses allowed to this interface. But there is no global rate limiter for all interfaces.</p>
 <p>In addition to the original rate limit control function for individual interfaces, the Periander version adds a global rate limit for all interfaces. The overall traffic of all HTTP, gRPC and JSON-RPC interfaces can be limited through the configuration item <code>rate.limiter.global.qps</code>, and the access rate of an IP to all interfaces can be limited through <code>rate.limiter.global.ip.qps</code>.</p>
@@ -1707,7 +1839,7 @@ rate.limiter.global.ip.qps = 5
 <ul>
 <li>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5061">https://github.com/tronprotocol/java-tron/pull/5061</a></li>
 </ul>
-<h3 id="other-changes_2">Other Changes<a class="headerlink" href="#other-changes_2" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_3">Other Changes<a class="headerlink" href="#other-changes_3" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-event-forwarding-logic-in-event-subscription">1. Optimize event forwarding logic in event subscription<a class="headerlink" href="#1-optimize-event-forwarding-logic-in-event-subscription" title="Permanent link">&para;</a></h4>
 <p>Java-tron supports event subscription. In the previous version of Periander, if the solidified transaction event is subscribed, then when the node receives a new block, it would send the transaction information in the latest solidified block to the subscriber. If the network of most SR nodes is unstable, making them unable to synchronize and produce blocks in time, in this case, according to the calculation logic of the latest solidified block of the node, the height of the latest solidified block will not be guaranteed to increase by one each time. So that the latest obtained solidified block forwarded to the subscriber during event forwarding may not be the block next to the one that was forwarded the last time, resulting in data missing. </p>
 <p>Since the conditions for this problem are very strict, it will basically not appear in the main network. However, to avoid this problem occurring in the test network or private chain, the Periander version optimizes the event forwarding logic in the event subscription and records the height of the solidified block forwarded last time, so when the node receives a new block, it will sequentially send the blocks after the last forwarded solidified block to the subscribers, ensuring the integrity of data forwarding.</p>
@@ -1781,7 +1913,7 @@ node.dynamicConfig.checkInterval = 600
 <h2 id="greatvoyage-v4711-pittacus">GreatVoyage-v4.7.1.1 (Pittacus)<a class="headerlink" href="#greatvoyage-v4711-pittacus" title="Permanent link">&para;</a></h2>
 <p>GreatVoyage-v4.7.1.1 (Pittacus) version optimized multiple interfaces and removed APIs involving sensitive information.</p>
 <p>Please see the details below.</p>
-<h3 id="api_2">API<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h3>
+<h3 id="api_3">API<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h3>
 <h4 id="1-remove-apis-involving-sensitive-information">1. Remove APIs involving sensitive information<a class="headerlink" href="#1-remove-apis-involving-sensitive-information" title="Permanent link">&para;</a></h4>
 <p>Versions prior to GreatVoyage-v4.7.1.1 (Pittacus) provide APIs related to signature and address generation. Since the input or output of these APIs contains private keys, there are security risks in transmission in the network. At present, public API service providers in the TRON ecosystem have closed these APIs, such as TronGrid, Anker, GetBlock, etc. In the developer document, these APIs have already been tagged as obsolete and it is recommended to sign transactions and create addresses offline using SDK.</p>
 <p>GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:</p>
@@ -1815,7 +1947,7 @@ node.dynamicConfig.checkInterval = 600
 <h4 id="2-optimize-resource-delegate-information-query-interface">2. Optimize resource delegate information query interface<a class="headerlink" href="#2-optimize-resource-delegate-information-query-interface" title="Permanent link">&para;</a></h4>
 <p>The <code>/wallet/getdelegatedresourcev2</code> interface can query the resources that an address delegates to another address, and <a href="https://developers.tron.network/reference/delegateresource-1">resource delegate</a> can choose whether to be locked. For 2 resource delegation to the same address, one of them may be locked, and the other may be not locked, so <code>/wallet/getdelegatedresourcev2</code> interface will return two sets of information: locked resource delegation data and unlocked resource delegation data. In versions prior to GreatVoyage-v4.7.1.1 (Pittacus), if all the resource delegation by one address to another address are locked, then the non-locked resource delegation data will be 0. In this case, the interface may also return non-locked resource delegation data (0 value which is meaningless). The GreatVoyage-v4.7.1.1 (Pittacus) version optimizes the <code>/wallet/getdelegatedresourcev2</code> interface, and only returns resource delegation data with non-zero value, making the returned data more concise and clear.</p>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5123">https://github.com/tronprotocol/java-tron/pull/5123</a> </p>
-<h3 id="other-changes_3">Other Changes<a class="headerlink" href="#other-changes_3" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_4">Other Changes<a class="headerlink" href="#other-changes_4" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-the-update-logic-of-the-origin_energy_usage-field-in-the-transaction-receipt">1. Optimize the update logic of the <code>origin_energy_usage</code> field in the transaction receipt<a class="headerlink" href="#1-optimize-the-update-logic-of-the-origin_energy_usage-field-in-the-transaction-receipt" title="Permanent link">&para;</a></h4>
 <p>The TRON network supports contract deployers to share part of the contract call cost. In order to facilitate users to query the energy consumption of contract transactions, in addition to recording the total energy consumption of the transaction through the <code>energy_usage_total</code> field, the transaction receipt will also record the amount of energy paid by the contract deployer through the <code>origin_energy_usage</code> field. <code>energy_usage_total</code> contains <code>origin_energy_usage</code>. </p>
 <p>In versions prior to GreatVoyage-v4.7.1.1 (Pittacus), in rare cases, the <code>energy_usage_total</code> field is 0 while the <code>origin_energy_usage</code> field is not 0 when querying through <code>/wallet/gettransactioninfobyid</code> API. Therefore the GreatVoyage-v4.7.1.1 (Pittacus) version optimizes the update logic of <code>origin_energy_usage</code> in the transaction receipt to ensure the accuracy of querying the consumed energy of the contract deployer.</p>
@@ -1839,13 +1971,13 @@ node.dynamicConfig.checkInterval = 600
 <p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/5009">https://github.com/tronprotocol/java-tron/pull/5009</a> </p>
 <p>The GreatVoyage-v4.7.1 (Sartre) version optimizes the lock mechanism during block synchronization and improves the stability of the node connection under concurrency.</p>
 <p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4996">https://github.com/tronprotocol/java-tron/pull/4996</a> </p>
-<h3 id="api_3">API<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h3>
+<h3 id="api_4">API<a class="headerlink" href="#api_4" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-the-list-of-solidified-block-apis">1. Optimize the list of solidified block APIs<a class="headerlink" href="#1-optimize-the-list-of-solidified-block-apis" title="Permanent link">&para;</a></h4>
 <p>GreatVoyage-v4.7.1(Sartre) version deletes the useless solidified block query API to make the code more clearer.</p>
 <p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4997">https://github.com/tronprotocol/java-tron/pull/4997</a>  </p>
 <h4 id="2-optimize-resource-delegation-relationship-api">2. Optimize resource delegation relationship API<a class="headerlink" href="#2-optimize-resource-delegation-relationship-api" title="Permanent link">&para;</a></h4>
 <p>GreatVoyage-v4.7.1 (Sartre) version optimizes the resource delegation relationship query API, adds the check to the interface parameters, and makes the interface more stable.</p>
-<h3 id="other-changes_4">Other Changes<a class="headerlink" href="#other-changes_4" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_5">Other Changes<a class="headerlink" href="#other-changes_5" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-litefullnode-detection-logic">1. Optimize LiteFullNode detection logic<a class="headerlink" href="#1-optimize-litefullnode-detection-logic" title="Permanent link">&para;</a></h4>
 <p>In versions prior to GreatVoyage-v4.7.1 (Sartre), different modules of the node have different logics for detecting whether the current node is a LiteFullNode. GreatVoyage-v4.7.1 (Sartre) version unifies the logic of light node judgment, making the code more concise.</p>
 <p>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4986">https://github.com/tronprotocol/java-tron/pull/4986</a>  </p>
@@ -2045,7 +2177,7 @@ node.dynamicConfig.checkInterval = 600
 <li>TIP: <a href="https://github.com/tronprotocol/tips/issues/474">https://github.com/tronprotocol/tips/issues/474</a> </li>
 <li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4863">https://github.com/tronprotocol/java-tron/pull/4863</a> </li>
 </ul>
-<h3 id="api_4">API<a class="headerlink" href="#api_4" title="Permanent link">&para;</a></h3>
+<h3 id="api_5">API<a class="headerlink" href="#api_5" title="Permanent link">&para;</a></h3>
 <h4 id="1-add-apis-to-support-stake-20">1. Add APIs to support Stake 2.0<a class="headerlink" href="#1-add-apis-to-support-stake-20" title="Permanent link">&para;</a></h4>
 <p>GreatVoyage-v4.7.0.1 (Aristotle) adds 10 APIs to support Stake 2.0:</p>
 <table>
@@ -2122,7 +2254,7 @@ node.dynamicConfig.checkInterval = 600
 <ul>
 <li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4873">https://github.com/tronprotocol/java-tron/pull/4873</a> </li>
 </ul>
-<h3 id="other-changes_5">Other Changes<a class="headerlink" href="#other-changes_5" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_6">Other Changes<a class="headerlink" href="#other-changes_6" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-gradle-compilation-parameters">1. Optimize Gradle compilation parameters<a class="headerlink" href="#1-optimize-gradle-compilation-parameters" title="Permanent link">&para;</a></h4>
 <p>GreatVoyage-v4.7.0.1(Aristotle) optimizes the compiling parameters of Gradle, configuring JVM minimum heap size to 1GB, which improves the compilation speed of Java-tron.</p>
 <ul>
@@ -2169,7 +2301,7 @@ java -jar Toolkit.jar db copy -h
 <h2 id="greatvoyage-v460-socrates">GreatVoyage-v4.6.0 (Socrates)<a class="headerlink" href="#greatvoyage-v460-socrates" title="Permanent link">&para;</a></h2>
 <p>The GreatVoyage-v4.6.0 (Socrates) introduces several important optimizations and updates, such as an optimized database checkpoint mechanism, which improves the stability of node operation; optimized resource delegate relationship index structure, and an updated voting reward algorithm, which speed up the execution speed of transactions and increase network throughput; a new proposal to add transaction memo fees, increasing the cost of transactions with memo to reduce the number of low-value transactions, so that improves the security and reliability of the TRON network. The integrated toolkit, new network-related Prometheus metrics, and new help command line together bring users a more convenient development experience.</p>
 <p>Please check below for details.</p>
-<h3 id="core_2">Core<a class="headerlink" href="#core_2" title="Permanent link">&para;</a></h3>
+<h3 id="core_3">Core<a class="headerlink" href="#core_3" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-delegate-relationship-index-structure">1. Optimize delegate relationship index structure<a class="headerlink" href="#1-optimize-delegate-relationship-index-structure" title="Permanent link">&para;</a></h4>
 <p>In the TRON network, accounts can delegate resources to other accounts through staking, and can also accept resources that other accounts stake for themselves. Therefore, each account needs to maintain a record of the delegate relationship, including all the recipient addresses that the account delegated resources to and all the addresses that delegated resources for the account.</p>
 <p>In versions prior to GreatVoyage-v4.6.0 (Socrates), the delegate relationship is stored in the form of a list. When performing resource delegating, it needs first to check whether the recipient account already exists in the list and then adds the account to the list only if it is not present. If a particular account has delegated resources to multiple accounts or many accounts have delegated the resources to the particular account, then the length of the delegate relationship list for the particular account will be substantial. The lookup operation would be considerably time-consuming, resulting in long transaction execution times. </p>
@@ -2215,7 +2347,7 @@ java -jar Toolkit.jar db copy -h
 <ul>
 <li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4620">https://github.com/tronprotocol/java-tron/pull/4620</a> <a href="https://github.com/tronprotocol/java-tron/pull/4622">https://github.com/tronprotocol/java-tron/pull/4622</a> </li>
 </ul>
-<h3 id="other-changes_6">Other Changes<a class="headerlink" href="#other-changes_6" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_7">Other Changes<a class="headerlink" href="#other-changes_7" title="Permanent link">&para;</a></h3>
 <h4 id="1-merge-archivemanifestjar-into-toolkitjar">1.  Merge ArchiveManifest.jar into Toolkit.jar<a class="headerlink" href="#1-merge-archivemanifestjar-into-toolkitjar" title="Permanent link">&para;</a></h4>
 <p>ArchiveManifest.jar is an independent LevelDB startup optimization tool, which can optimize the file size of LevelDB manifest, thereby reducing memory usage and greatly improving node startup speed. Starting from the GreatVoyage-v4.6.0 (Socrates), the ArchiveManifest.jar tool has been integrated into the Toolkit.jar. In the future, all the tools around Java-tron will be gradually integrated into the Toolkit.jar toolbox to facilitate tool maintenance and developer use.</p>
 <ul>
@@ -2274,7 +2406,7 @@ VIRTUAL MACHINE OPTIONS:
 
 <h2 id="greatvoyage-v452aurelius">GreatVoyage-v4.5.2(Aurelius)<a class="headerlink" href="#greatvoyage-v452aurelius" title="Permanent link">&para;</a></h2>
 <p>The GreatVoyage-v4.5.2 (Aurelius) version introduces several important optimizations. The optimized transaction cache mechanism greatly reduces memory usage and improves node performance; the optimized P2P node connection strategy improves the efficiency of establishing connections between nodes and speeds up the node synchronization process;  the optimized block production and processing logic improve node stability; the newly added database storage partition tool reduces the pressure on data storage; the newly added block header query API and historical bandwidth unit price Query API are to bring users a more convenient development experience.</p>
-<h3 id="core_3">Core<a class="headerlink" href="#core_3" title="Permanent link">&para;</a></h3>
+<h3 id="core_4">Core<a class="headerlink" href="#core_4" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-block-processing">1. Optimize block processing<a class="headerlink" href="#1-optimize-block-processing" title="Permanent link">&para;</a></h4>
 <p>In versions prior to GreatVoyage-v4.5.2 (Aurelius), threads such as block production, block processing, and transaction processing compete for synchronization lock at the same time. In the case of high concurrency and transactions executing much time, the block production thread or the block processing thread will take a long time to get to the synchronization lock, which leads to the occurrence of a small probability of a block loss event. In order to improve node stability, the GreatVoyage-v4.5.2 (Aurelius) version optimizes the synchronization lock in the block processing logic, allowing only one transaction processing thread to compete for the synchronization lock with the block production or processing thread, and when the transaction processing thread finds that block-related threads waiting for the synchronization lock, it will voluntarily give in, which greatly increases the probability of block production and block processing threads acquiring synchronization lock, and ensures high throughput and stable operation of the node.</p>
 <p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-428.md 
@@ -2300,7 +2432,7 @@ Source Code: https://github.com/tronprotocol/java-tron/pull/4549   </p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4545 
 https://github.com/tronprotocol/java-tron/pull/4559 
 https://github.com/tronprotocol/java-tron/pull/4563 </p>
-<h3 id="api_5">API<a class="headerlink" href="#api_5" title="Permanent link">&para;</a></h3>
+<h3 id="api_6">API<a class="headerlink" href="#api_6" title="Permanent link">&para;</a></h3>
 <h4 id="1-new-block-header-query-api">1. New block header query API<a class="headerlink" href="#1-new-block-header-query-api" title="Permanent link">&para;</a></h4>
 <p>From the GreatVoyage-v4.5.2 (Aurelius) version, a new block header query API is added, which only returns the block header information, not the transaction information in the block. Users can obtain the block header information without querying the entire block. This not only reduces the network I/O load of the node, and since the block does not carry transaction information, the serialization time is reduced, the interface delay is reduced, and the query efficiency is improved.</p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4492 
@@ -2308,7 +2440,7 @@ https://github.com/tronprotocol/java-tron/pull/4552 </p>
 <h4 id="2-new-historical-bandwidth-unit-price-query-api">2. New historical bandwidth unit price query API<a class="headerlink" href="#2-new-historical-bandwidth-unit-price-query-api" title="Permanent link">&para;</a></h4>
 <p>According to the bandwidth consumption rules, if the transaction initiator’s  bandwidth obtained by staking TRX or free bandwidth is insufficient, TRX will be burned to pay for the bandwidth fee. At this time, only the bandwidth fee is recorded in the transaction record, but not the bandwidth consumption number. In order to understand bandwidth consumption of historical transactions, starting from GreatVoyage-v4.5.2 (Aurelius), a new historical bandwidth unit price query API <code>/wallet/getbandwidthprices</code> is added. Users can obtain historical records of bandwidth unit price through this API so that they can calculate bandwidth consumption of historical transactions.</p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4556 </p>
-<h3 id="other-changes_7">Other Changes<a class="headerlink" href="#other-changes_7" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_8">Other Changes<a class="headerlink" href="#other-changes_8" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-block-synchronization-logic">1. Optimize block synchronization logic<a class="headerlink" href="#1-optimize-block-synchronization-logic" title="Permanent link">&para;</a></h4>
 <p>The GreatVoyage-v4.5.2 (Aurelius) version optimizes the block synchronization logic, avoids unnecessary node disconnection in the process of synchronizing blocks, and improves node stability.</p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4542 
@@ -2326,7 +2458,7 @@ https://github.com/tronprotocol/java-tron/pull/4556 </p>
 
 <h2 id="greatvoyage-v451tertullian">GreatVoyage-v4.5.1(Tertullian)<a class="headerlink" href="#greatvoyage-v451tertullian" title="Permanent link">&para;</a></h2>
 <p>The GreatVoyage-v4.5.1(Tertullian) version introduces several important optimization updates. The optimized transaction cache loading process shortens the node startup time; the optimized block acquisition logic and light node synchronization logic promote the stability of the node; the optimized account asset structure and TVM cache structure improves the processing speed of transactions, thereby further improving the performance of node; supporting prometheus protocol interface brings users a more convenient development experience and helps to further prosper the TRON ecosystem.</p>
-<h3 id="core_4">Core<a class="headerlink" href="#core_4" title="Permanent link">&para;</a></h3>
+<h3 id="core_5">Core<a class="headerlink" href="#core_5" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-transaction-cache-loading">1. Optimize transaction cache loading<a class="headerlink" href="#1-optimize-transaction-cache-loading" title="Permanent link">&para;</a></h4>
 <p>In versions prior to GreatVoyage-v4.5.1 (Tertullian), it took a long time from node startup to block synchronization, and the loading of the transaction cache took up most of the node startup time. The transaction cache is used by the node to determine whether a transaction is a duplicate transaction, so during the node startup process, the transaction cache needs to be loaded from the database to the memory, and in versions prior to GreatVoyage-v4.5.1 (Tertullian), it adopts transaction as the storage unit to read the database when loading the transaction cache, so the amount of data to be read is large, and the entire reading process is time-consuming.</p>
 <p>In order to speed up the startup of the node, the GreatVoyage-v4.5.1 (Tertullian) version optimizes the loading of the transaction cache. By adopting the block as the storage unit to read the database reduces the times of database reading,  improves the efficiency of transaction cache loading, and improves the speed of node startup.</p>
@@ -2369,7 +2501,7 @@ Source Code: https://github.com/tronprotocol/java-tron/pull/4375 </p>
 
 <h2 id="greatvoyage-v446david">GreatVoyage-v4.4.6(David)<a class="headerlink" href="#greatvoyage-v446david" title="Permanent link">&para;</a></h2>
 <p>GreatVoyage-v4.4.6 (David) updated the version of the dependency library fastjson to ensure the security of using fastjson.</p>
-<h3 id="other-changes_8">Other Changes<a class="headerlink" href="#other-changes_8" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_9">Other Changes<a class="headerlink" href="#other-changes_9" title="Permanent link">&para;</a></h3>
 <h4 id="1-update-the-fastjson-dependency-library-to-the-latest-version">1. Update the fastjson dependency library to the latest version<a class="headerlink" href="#1-update-the-fastjson-dependency-library-to-the-latest-version" title="Permanent link">&para;</a></h4>
 <p>Due to security vulnerabilities in fastjson 1.2.80 and earlier versions, GreatVoyage-v4.4.6 (David) updated the version of the fastjson dependency library to 1.2.83, and enabled the <code>safemode</code> mode of fastjson to ensure the safety of using fastjson.</p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4393 </p>
@@ -2379,7 +2511,7 @@ Source Code: https://github.com/tronprotocol/java-tron/pull/4375 </p>
 
 <h2 id="greatvoyage-445cicero">GreatVoyage-4.4.5(Cicero)<a class="headerlink" href="#greatvoyage-445cicero" title="Permanent link">&para;</a></h2>
 <p>The GreatVoyage-v4.4.5 (Cicero) version optimizes the query interface of the node to filter out invalid fields, which ensures the stability of the interface for parsing data.</p>
-<h3 id="other-changes_9">Other Changes<a class="headerlink" href="#other-changes_9" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_10">Other Changes<a class="headerlink" href="#other-changes_10" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-the-query-interface-of-the-node">1. Optimize the query interface of the node<a class="headerlink" href="#1-optimize-the-query-interface-of-the-node" title="Permanent link">&para;</a></h4>
 <p>The GreatVoyage-v4.5.0 (Cicero) version optimizes the query interface of the node. When parsing the obtained data, the node will filter out invalid fields to ensure to return the correct interface data </p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4349 </p>
@@ -2389,7 +2521,7 @@ Source Code: https://github.com/tronprotocol/java-tron/pull/4375 </p>
 
 <h2 id="greatvoyage-444plotinus">GreatVoyage-4.4.4(Plotinus)<a class="headerlink" href="#greatvoyage-444plotinus" title="Permanent link">&para;</a></h2>
 <p>The GreatVoyage-v4.4.4 (Plotinus) version introduces several important optimization updates, which reduces the node memory usage; speeds up node startup; Optimized network module, block production threads, improve the stability of nodes; Improved java-tron upgrade mechanism achieves more efficient decentralized governance; TVM supports multi-version program executors, which helps make it more compatible with EVM, brings users a more convenient development experience, and helps further flourish the TRON ecosystem.</p>
-<h3 id="core_5">Core<a class="headerlink" href="#core_5" title="Permanent link">&para;</a></h3>
+<h3 id="core_6">Core<a class="headerlink" href="#core_6" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-node-startup-time">1. Optimize node startup time<a class="headerlink" href="#1-optimize-node-startup-time" title="Permanent link">&para;</a></h4>
 <p>Before the GreatVoyage-v4.4.4 (Plotinus), the node will execute about a minute from startup to block synchronization. The block synchronization thread will first delay 30s to wait for the P2P thread to discover remote nodes, then establish TCP connection with the discovered nodes, and finally perform the block synchronization. This delay time occupies most of the startup time. In fact, every newly discovered node will be persisted to the local database, so there is no need to spend extra time waiting for the node to be discovered when node is started for the second time. So in the GreatVoyage-v4.4.4(Plotinus) version, the waiting time for node discovery has been reduced from 30s to 100ms to improve the speed of node startup.</p>
 <p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-366.md 
@@ -2406,7 +2538,7 @@ Source Code: https://github.com/tronprotocol/java-tron/pull/4250 </p>
 <p>In order to enable the TRON network to support various types of smart contract transactions in the future, starting from GreatVoyage-v4.4.4 (Plotinus), TVM code is refactored to support multi-version program  executors, it will select different instruction set to interpret and execute the bytecode of smart contract according to the contract version information.</p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4257 
                              https://github.com/tronprotocol/java-tron/pull/4259 </p>
-<h3 id="other-changes_10">Other Changes<a class="headerlink" href="#other-changes_10" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_11">Other Changes<a class="headerlink" href="#other-changes_11" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-log-storage">1. Optimize log storage<a class="headerlink" href="#1-optimize-log-storage" title="Permanent link">&para;</a></h4>
 <p>The GreatVoyage-v4.4.4 (Plotinus) version modifies the node log retention time from 3 days to 7 days to facilitate users to troubleshoot issues.</p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4245 </p>
@@ -2427,12 +2559,12 @@ Source Code: https://github.com/tronprotocol/java-tron/pull/4250 </p>
 <p>The opcode execution model of the interpreter in TVM is optimized in GreatVoyage-v4.4.2(Augustinus). The performance of TVM is proven to have a great boost through testing.</p>
 <p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-344.md
 Source Code：https://github.com/tronprotocol/java-tron/pull/4157</p>
-<h3 id="api_6">API<a class="headerlink" href="#api_6" title="Permanent link">&para;</a></h3>
+<h3 id="api_7">API<a class="headerlink" href="#api_7" title="Permanent link">&para;</a></h3>
 <h4 id="1-newly-adding-eth-compatible-log-filter-for-json-rpc-apis">1. Newly Adding ETH compatible log filter for JSON-RPC APIs.<a class="headerlink" href="#1-newly-adding-eth-compatible-log-filter-for-json-rpc-apis" title="Permanent link">&para;</a></h4>
 <p>Log filter related APIs are available from GreatVoyage-v4.4.2 for compatibility with Ethereum JSON-RPC API.</p>
 <p>TIP: https://github.com/tronprotocol/tips/issues/343 
 Source Code：https://github.com/tronprotocol/java-tron/pull/4153 </p>
-<h3 id="other-changes_11">Other Changes<a class="headerlink" href="#other-changes_11" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_12">Other Changes<a class="headerlink" href="#other-changes_12" title="Permanent link">&para;</a></h3>
 <h4 id="1-leveldb-databases-performance-optimization">1. LevelDB Databases Performance Optimization<a class="headerlink" href="#1-leveldb-databases-performance-optimization" title="Permanent link">&para;</a></h4>
 <p>Parameters of each LevelDB database have been individualized by the I/O frequencies from GreatVoyage-v4.4.2(Augustinus). This will significantly boost the database performance.</p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4154 </p>
@@ -2442,7 +2574,7 @@ Source Code：https://github.com/tronprotocol/java-tron/pull/4153 </p>
 
 <h2 id="greatvoyage-440rousseau">GreatVoyage-4.4.0(Rousseau)<a class="headerlink" href="#greatvoyage-440rousseau" title="Permanent link">&para;</a></h2>
 <p>The GreatVoyage-v4.4.0 (Rousseau) version introduces several important updates: the optimization of block broadcasting will let the block be broadcast to the entire network faster; the query performance optimization of <code>dynamic store</code> and the optimization of database parameters will be greatly improved Block processing speed, thereby improving the performance of java-tron; API customization in FullNode makes node configuration more flexible for different application scenarios; TVM will also be better compatible with EVM and adapt to the Ethereum London upgrade, the new JSON-RPC API will bring developers a better development experience, help developers to join the TRON ecosystem more easily, and promote the prosperity of the TRON ecosystem.</p>
-<h3 id="core_6">Core<a class="headerlink" href="#core_6" title="Permanent link">&para;</a></h3>
+<h3 id="core_7">Core<a class="headerlink" href="#core_7" title="Permanent link">&para;</a></h3>
 <h4 id="1-optimize-the-block-broadcasting">1. Optimize the block broadcasting<a class="headerlink" href="#1-optimize-the-block-broadcasting" title="Permanent link">&para;</a></h4>
 <p>In the version before GreatVoyage-v4.4.0 (Rousseau), the logic of block processing is: verify block -&gt; process block -&gt; broadcast block. However, due to the long block processing time, there is a delay in block broadcasting. In order to speed up block broadcasting, In GreatVoyage-v4.4.0 (Rousseau) version, the block processing logic is changed to: verify block -&gt; broadcast block -&gt; process block, so that the block can be quickly broadcast to the entire network.</p>
 <p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-289.md 
@@ -2477,7 +2609,7 @@ By default, this feature is disabled, and the super representative or super part
 <h4 id="3-in-constant-mode-energy-limit-supports-customization-and-the-default-value-is-increased">3. In constant mode, <code>Energy limit</code> supports customization and the default value is increased<a class="headerlink" href="#3-in-constant-mode-energy-limit-supports-customization-and-the-default-value-is-increased" title="Permanent link">&para;</a></h4>
 <p>Before the GreatVoyage-v4.4.0 (Rousseau) version, the energy limit in constant mode was a fixed value(<code>3,000,000</code>). The GreatVoyage-v4.4.0 (Rousseau) version changed it to configurable, and increase the default value to <code>100,000,000</code>. after upgraded to the latest version, <code>Energy limit</code> can be configured in startup parameters(<code>--max-energy-limit-for-constant</code>) or in the configuration file(<code>vm.maxEnergyLimitForConstant</code>). </p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4032 </p>
-<h3 id="api_7">API<a class="headerlink" href="#api_7" title="Permanent link">&para;</a></h3>
+<h3 id="api_8">API<a class="headerlink" href="#api_8" title="Permanent link">&para;</a></h3>
 <h4 id="1-support-ethereum-compatible-json-rpc-api">1. Support Ethereum compatible JSON-RPC API<a class="headerlink" href="#1-support-ethereum-compatible-json-rpc-api" title="Permanent link">&para;</a></h4>
 <p>Starting from the GreatVoyage-v4.4.0 (Rousseau) version, the FullNode supports JSON-RPC APIs. For details, please refer to: https://developers.tron.network/reference#json-rpc-api </p>
 <p>Source Code：https://github.com/tronprotocol/java-tron/pull/4046 </p>
@@ -2507,7 +2639,7 @@ By default, this feature is disabled, it will be enabled after the London upgrad
 
 <h2 id="greatvoyage-430bacon">GreatVoyage-4.3.0(Bacon)<a class="headerlink" href="#greatvoyage-430bacon" title="Permanent link">&para;</a></h2>
 <p>The release of GreatVoyage-v4.3.0 (Bacon) includes several significant optimization enhancements. The configurability of the parameters <code>FREE_NET_LIMIT</code> and <code>TOTAL_NET_LIMIT</code> will aid the TRON community in achieving improved on-chain governance; The addition of new TVM instructions and ABI types facilitates the use of smart contracts; the new cryptography library strengthens the TRON network's security; the optimization of the account data storage and transaction verification procedures increases transaction processing speed and block verification speed, greatly improving the TRON network's performance; node startup speed improvement will benefit customers and help the TRON ecosystem grow even further.</p>
-<h3 id="core_7">Core<a class="headerlink" href="#core_7" title="Permanent link">&para;</a></h3>
+<h3 id="core_8">Core<a class="headerlink" href="#core_8" title="Permanent link">&para;</a></h3>
 <h4 id="1-add-a-proposal-to-adjust-the-free-net-limit-in-an-account">1. Add a proposal to adjust the free net limit in an account.<a class="headerlink" href="#1-add-a-proposal-to-adjust-the-free-net-limit-in-an-account" title="Permanent link">&para;</a></h4>
 <p>Prior to GreatVoyage-v4.3.0 (Bacon), the account's daily free bandwidth quota was fixed at 5000. The GreatVoyage-v4.3.0 (Bacon) version includes the #61 proposal <code>FREE_NET_LIMIT</code>, which allows for the customization of the free bandwidth quota. Super representatives and super partners may initiate a vote request for Proposal 61, which modifies the <code>FREE_NET_LIMIT</code> variable, which has the value [0, 100000].</p>
 <ul>
@@ -2550,7 +2682,7 @@ By default, this feature is disabled, and the super representative or super part
 <li>TIP: https://github.com/tronprotocol/tips/blob/master/tip-306.md </li>
 <li>Source Code: https://github.com/tronprotocol/java-tron/pull/3921 </li>
 </ul>
-<h3 id="api_8">API<a class="headerlink" href="#api_8" title="Permanent link">&para;</a></h3>
+<h3 id="api_9">API<a class="headerlink" href="#api_9" title="Permanent link">&para;</a></h3>
 <h4 id="1-add-a-new-field-energy_used-in-transactionextention">1. Add a New Field: <code>energy_used</code> in <code>TransactionExtention</code><a class="headerlink" href="#1-add-a-new-field-energy_used-in-transactionextention" title="Permanent link">&para;</a></h4>
 <p>Users cannot forecast the energy usage of smart contract transactions in versions earlier to GreatVoyage-v4.3.0 (Bacon).
 The version of GreatVoyage-v4.3.0 (Bacon) adds the <code>energy_used</code> field to the <code>TransactionExtension</code>. When the user invokes the contract method via <code>TriggerConstantContract</code>, a sandbox environment based on the most recently synchronized block at the current node is created to supply TVM with this method call. Following the execution, the actual energy consumption figure is written to the <code>energy_used</code> field(this operation will not generate an on-chain transaction, nor will it change the status of the current node).</p>
@@ -2631,7 +2763,7 @@ GreatVoyage-v4.3.0 (Bacon) introduces the <code>leveldb</code> startup optimizat
 <li>TIP: <a href="https://github.com/tronprotocol/tips/blob/master/tip-268.md">TIP-268</a></li>
 <li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/3836">#3836</a></li>
 </ul>
-<h3 id="other-changes_12">Other Changes<a class="headerlink" href="#other-changes_12" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_13">Other Changes<a class="headerlink" href="#other-changes_13" title="Permanent link">&para;</a></h3>
 <h4 id="1-system-contract-batchvalidatesign-initialization-process-optimization">1. System Contract <code>BatchValidateSign</code> Initialization Process optimization<a class="headerlink" href="#1-system-contract-batchvalidatesign-initialization-process-optimization" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/3836">#3836</a></li>
@@ -2663,7 +2795,7 @@ GreatVoyage-v4.3.0 (Bacon) introduces the <code>leveldb</code> startup optimizat
   * The TVM <code>freeze</code> instruction can obtain bandwidth and energy. For TRON POWER, it can be obtained and used after the TVM supports the voting instruction.
   * The <code>receiving</code> address/<code>target</code> address used in the Freeze/Unfreeze instructions must be <code>address payable</code> type, and the <code>receiving</code> address/<code>target</code> address cannot be a contract address other than itself.
   * The inactive account will be automatically activated if the account is the receiver of TVM <code>Freeze</code> instruction, and 25,000 energy will be deducted as the account activation cost.</p>
-<h3 id="other-changes_13">Other Changes<a class="headerlink" href="#other-changes_13" title="Permanent link">&para;</a></h3>
+<h3 id="other-changes_14">Other Changes<a class="headerlink" href="#other-changes_14" title="Permanent link">&para;</a></h3>
 <h4 id="1optimize-the-block-synchronization">1、Optimize the block synchronization.<a class="headerlink" href="#1optimize-the-block-synchronization" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Source code：<a href="https://github.com/tronprotocol/java-tron/pull/3732">#3732</a></li>
@@ -2678,7 +2810,7 @@ GreatVoyage-v4.3.0 (Bacon) introduces the <code>leveldb</code> startup optimizat
 <h4 id="1sorting-the-transactions-in-pending-pool-sr-will-prioritize-the-transactions-with-high-packing-fee">1.Sorting the transactions in pending pool,  SR will prioritize the transactions with high packing fee<a class="headerlink" href="#1sorting-the-transactions-in-pending-pool-sr-will-prioritize-the-transactions-with-high-packing-fee" title="Permanent link">&para;</a></h4>
 <p>In GreatVoyage-4.1.2 and earlier versions, SR packaging transactions are carried out in accordance with the time sequence of the arrival of the transaction.This will easily be attacked by low transaction fees.</p>
 <p>After this optimization, block producers sort the transactions to be packaged according to the cost, and then prioritize the transaction with high cost to prevent low-cost transaction attacks.</p>
-<h3 id="api_9">API<a class="headerlink" href="#api_9" title="Permanent link">&para;</a></h3>
+<h3 id="api_10">API<a class="headerlink" href="#api_10" title="Permanent link">&para;</a></h3>
 <h4 id="1add-new-api-to-support-transaction-query-in-pending-pool">1.Add new API to support transaction query in pending pool.<a class="headerlink" href="#1add-new-api-to-support-transaction-query-in-pending-pool" title="Permanent link">&para;</a></h4>
 <p>It is currently impossible to query the intermediate state information of a certain transaction from after it is issued to before it is on the chain.After a transaction is sent, if it is not on the chain, we cannot know whether it is waiting for packaging or has been discarded.</p>
 <p>In this upgrade, the Fullnode node provides 3 API to obtain detailed information about the pending pool:
