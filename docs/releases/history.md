@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Bias    |  GreatVoyage-v4.7.4    |  2024-3-15    |  [TIP-635](https://github.com/tronprotocol/tips/blob/master/tip-635.md) <br> [TIP-621](https://github.com/tronprotocol/tips/blob/master/tip-621.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.4)   |   [Specs](#greatvoyage-v474bias)   |
 |  Solon    |  GreatVoyage-v4.7.3.1    |  2024-1-12    |  N/A   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.3.1)   |   [Specs](#greatvoyage-v4731solon)   |
 |  Chilon    |  GreatVoyage-v4.7.3    |  2023-10-25    |  [TIP-586](https://github.com/tronprotocol/tips/blob/master/tip-586.md) <br> [TIP-592](https://github.com/tronprotocol/tips/blob/master/tip-592.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.3)   |   [Specs](#greatvoyage-v473chilon)   |
 |  Periander    |  GreatVoyage-v4.7.2    |  2023-7-1    |  [TIP-541](https://github.com/tronprotocol/tips/issues/541) <br> [TIP-542](https://github.com/tronprotocol/tips/issues/542) <br> [TIP-543](https://github.com/tronprotocol/tips/issues/543) <br> [TIP-544](https://github.com/tronprotocol/tips/issues/544) <br> [TIP-555](https://github.com/tronprotocol/tips/issues/555) <br> [TIP-547](https://github.com/tronprotocol/tips/issues/547) <br> [TIP-548](https://github.com/tronprotocol/tips/issues/548) <br> [TIP-549](https://github.com/tronprotocol/tips/issues/549) <br> [TIP-550](https://github.com/tronprotocol/tips/issues/550)    |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.2)   |   [Specs](#greatvoyage-v472periander)   |
@@ -72,6 +73,157 @@
 |   N/A   | Odyssey-v1.0.4    |  2018-4-13    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.4)    |  N/A   |
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
+
+## GreatVoyage-v4.7.4(Bias)
+
+The Bias version introduces several important optimizations and updates, including a new proposal to optimize the performance of voting reward withdrawal; the refactored Gradle dependency reduces the complexity of core protocol development; support for gRPC reflection services and optimized logging system brings a more friendly and convenient development experience to users. Please find the details below.
+
+### Core
+
+#### 1. Optimize voting reward withdrawal performance
+TIP-465 aims to improve the calculation performance of TRON voting rewards. By recording the single-vote cumulative reward value of each super representative in each maintenance period, the time complexity of voting reward calculation can be reduced from linear time to constant time. The TIP-465 has been implemented as early as the Socrates version, and No. 82 proposal based on TIP-465 has been officially adopted at 2023-01-20 14:00:00. However, this proposal only optimizes the calculation performance of voting rewards generated after the proposal takes effect (constant time complexity), while the calculation performance of voting rewards generated before the proposal takes effect is still low (linear time complexity).
+
+The Bias version optimizes the calculation performance of voting rewards generated before the No.82 proposal takes effect. It calculates the single-vote cumulative reward value of each super representative in each maintenance period before the No.82 proposal takes effect in advance through background tasks, and saves the calculation results to the database. This will make the calculation performance of voting rewards generated before and after the No. 82 proposal takes effect consistent, so that any transaction involving reward withdrawal can complete the reward calculation within a constant time, speeding up the execution speed of transactions related to voting rewards withdrawal, improving network throughput.
+
+This optimization is the No. 79 parameter of the TRON network. After Bias is deployed, it is turned off by default and can be enabled through governance voting.
+
+
+TIP: [https://github.com/tronprotocol/tips/issues/635](https://github.com/tronprotocol/tips/issues/635)  
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5406](https://github.com/tronprotocol/java-tron/pull/5406)  
+[https://github.com/tronprotocol/java-tron/pull/5654](https://github.com/tronprotocol/java-tron/pull/5654)  
+[https://github.com/tronprotocol/java-tron/pull/5683](https://github.com/tronprotocol/java-tron/pull/5683)  
+[https://github.com/tronprotocol/java-tron/pull/5742](https://github.com/tronprotocol/java-tron/pull/5742)  
+[https://github.com/tronprotocol/java-tron/pull/5748](https://github.com/tronprotocol/java-tron/pull/5748)   
+
+
+#### 2. Add check function for the number of unsolidified blocks
+The block solidification mechanism of the TRON network is: a block can be solidified only after it is confirmed by 70% of the super representatives, that is, the block data is written to the disk and the data cannot be changed. Blocks that cannot be solidified are always stored in memory. If the number of unsolidified blocks continues to increase, it may cause memory exhaustion and the node to stop running.
+
+The Bias version adds a check function for the number of unsolidified blocks. When it is detected that the number of unsolidified blocks of a node reaches the threshold, the node will stop broadcasting transactions to avoid too many transactions that cannot be solidified in the network. This can not only reduce the node's memory usage, but also reduce the number of transactions in the block, improve the block execution speed, and facilitate the rapid recovery of the network in the later period..
+
+This feature is enabled by default, and the threshold is 1000. Node deployers can also turn off this function or configure the threshold through the configuration file.
+
+
+```
+node.unsolidifiedBlockCheck = true
+node.maxUnsolidifiedBlocks = 1000
+```
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5643](https://github.com/tronprotocol/java-tron/pull/5643)  
+
+### API
+#### 1. Supply BLOCK_UNSOLIDIFIED in code for /wallet/broadcasttransaction API
+
+The Bias version adds a check function for the number of unsolidified blocks. When it is detected that the number of unsolidified blocks of a node reaches the threshold, the node will stop broadcasting transactions. In order to provide better feedback on the node status, the Bias version adds a new return code `BLOCK_UNSOLIDIFIED` for the `/wallet/broadcasttransaction` API. This code indicates that the node has too many unsolidified blocks and the number has exceeded the threshold, the node cannot broadcast the transaction.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5643](https://github.com/tronprotocol/java-tron/pull/5643)  
+
+
+
+
+### Other Changes
+#### 1. Add field codeVersion to HelloMessage to declare code version
+Bias adds a new field `codeVersion` representing version information in the HelloMessage message, so that nodes can obtain the version information of the other node during the node discovery phase, which is beneficial to troubleshooting and locating problems later.
+
+
+TIP: [https://github.com/tronprotocol/tips/issues/621](https://github.com/tronprotocol/tips/issues/621)  
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5584](https://github.com/tronprotocol/java-tron/pull/5584)  
+[https://github.com/tronprotocol/java-tron/pull/5667](https://github.com/tronprotocol/java-tron/pull/5667)  
+
+#### 2. Bump libp2p to version 2.2.1
+Bias upgrades the network module to libp2p v2.2.1. The main contents of this version include: bump snappy-java dependency library to v1.1.10.5, add LAN IP acquisition logic, optimize handshake logic, and adjust some log levels.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5692](https://github.com/tronprotocol/java-tron/pull/5692)  
+#### 3. Bump jetty to 9.4.53.v20231009
+The Bias version bumps the jetty dependency library to v9.4.53.v20231009. 
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5571](https://github.com/tronprotocol/java-tron/pull/5571)  
+#### 4. Refactor Gradle dependencies
+The Java-tron code is divided into multiple modules, each module has its own dependencies, but currently there are situations where dependencies are declared multiple times in multiple modules. The Bias version reconstructs the Gradle dependencies of each module and deletes duplicate dependency statements, making the code dependencies clearer and enabling unified management of dependencies to reduce maintenance costs.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5625](https://github.com/tronprotocol/java-tron/pull/5625)  
+#### 5. Provide gRPC reflection service 
+Starting from the Bias version, the gRPC reflection service is supported. Users can directly use the gRPCurl command line tool to make the gPRC interface calls, which improves the ease of use of the gRPC interface.
+This feature needs to be enabled through the following configuration items:
+```
+node.rpc.reflectionService=true
+```
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5583](https://github.com/tronprotocol/java-tron/pull/5583)  
+
+#### 6. Delete the LiteFullNodeTool related code under the framework module
+In order to facilitate tool maintenance and developer use, TRON has launched the `Toolkit.jar` toolbox, which includes various TRON development tools. As early as the Aristotle version, the code related to the LiteFullNode data clipping tool has been integrated into the `Toolkit` toolbox (located under the plugin module), and `Tookit` can completely replace `LiteFullNodeTool` (located under the framework module). Therefore, the Bias version deletes the `LiteFullNodeTool` related code under the framework module, which not only reduces code redundancy, but also makes the division of functional modules clearer. The commands to use the LiteFullNode data pruning function in the `Toolkit` are as follows:
+
+```
+$ java -jar Toolkit.jar db lite 
+```
+
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5711](https://github.com/tronprotocol/java-tron/pull/5711)  
+#### 7. Remove configuration item node.discovery.bind.ip
+Bias upgrades libp2p to v2.2.1. That makes the node can obtain the node LAN IP directly through libp2p without manual configuration by the deployer. Therefore, the Bias version deletes the no longer used configuration item `node.discovery.bind.ip`, simplifying the configuration complexity.
+
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5597](https://github.com/tronprotocol/java-tron/pull/5597)  
+[https://github.com/tronprotocol/java-tron/pull/5750](https://github.com/tronprotocol/java-tron/pull/5750)  
+
+
+#### 8. Remove redundant CI scripts
+
+The Bias version removes project build scripts that are no longer used, including checkStyle.sh, codecov.sh, querySonar.sh, sonar.sh.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5580](https://github.com/tronprotocol/java-tron/pull/5580)  
+
+#### 9. Initialize the API service first during the node startup
+The Bias version adjusts the start order of each service, starts the node API service first, and then starts the P2P service and consensus service. This prevents the API service port from being occupied by other services.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5711](https://github.com/tronprotocol/java-tron/pull/5711)  
+
+
+
+
+#### 10. Optimize log
+The Bias version optimizes node logs, adjusts some log levels according to business logic, simplifies expected exception logs, and elaborates unexpected exception logs to facilitate problem location.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5624](https://github.com/tronprotocol/java-tron/pull/5624)  
+[https://github.com/tronprotocol/java-tron/pull/5601](https://github.com/tronprotocol/java-tron/pull/5601)  
+[https://github.com/tronprotocol/java-tron/pull/5660](https://github.com/tronprotocol/java-tron/pull/5660)    
+[https://github.com/tronprotocol/java-tron/pull/5687](https://github.com/tronprotocol/java-tron/pull/5687)  
+[https://github.com/tronprotocol/java-tron/pull/5697](https://github.com/tronprotocol/java-tron/pull/5697)  
+ 
+
+#### 11. Add synchronization control when writing to ZeroMQ
+Java-tron supports subscribing to events through the built-in ZeroMQ message queue. However, when multiple threads concurrently send events to the ZeroMQ, write exception errors may occur. The Bias version adds synchronization control when writing to ZeroMQ, ensuring the order of concurrent access between threads.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5536](https://github.com/tronprotocol/java-tron/pull/5536)  
+
+
+
+#### 12.Optimize unexpected exception capture process of scalingFactor in /wallet/createshieldedcontractparameters API.
+The Bias version optimizes the `/wallet/createshieldedcontractparameters` interface and adds a legality check for the anonymous contract scaling factor parameter `scalingFactor`, which must be a positive integer.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5746](https://github.com/tronprotocol/java-tron/pull/5746) 
+
+
+--- 
+
+*Be slow in considering, but resolute in action.* 
+<p align="right"> ---Bias</p>
+
+
+
+
+
 
 ## GreatVoyage-v4.7.3.1(Solon)
 

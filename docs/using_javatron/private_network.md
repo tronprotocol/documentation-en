@@ -74,23 +74,46 @@ The process of building a node on private chain is the same as that on mainnet. 
 
     In order to be the same as the main network environment, the dynamic parameters of the private chain need to be modified to be consistent with those of the main network. The modification of dynamic parameters can be done through proposals. The SR account can use [wallet-cli](https://github.com/tronprotocol/wallet-cli) or fullnode http API  [`wallet/proposalcreate`](https://developers.tron.network/reference/proposalcreate)to create proposals, [`wallet/proposalapprove`](https://developers.tron.network/reference/proposalapprove) to approve proposals. 
    
-    The following are the dynamic parameters and values sorted out according to the proposals passed by the mainnet successively. SR can directly use the following commands to create a proposal to complete the modification of all the dynamic parameters of the private chain at one time.
-    
+    The following are the dynamic parameters and values sorted out according to the proposals passed by the mainnet successively. SR can directly use the following commands to create proposals to complete the modification of all the dynamic parameters of the private chain. Due to the dependencies between some parameters, according to the current parameter values on the main network, the modification of all parameters of the private chain can be divided into two proposals. The first step, SR creates and votes the first proposal according to the following code:
+
     ```
     var TronWeb = require('tronweb');
     var tronWeb = new TronWeb({
-            fullHost: 'http://localhost:16887',
-            privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
-        })
+        fullHost: 'http://localhost:16887',
+        privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
+    })
 
-    var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal([{"key":9,"value":1},{"key":10,"value":1},{"key":11,"value":280},{"key":19,"value":90000000000},{"key":15,"value":1},{"key":18,"value":1},{"key":16,"value":1},{"key":20,"value":1},{"key":26,"value":1},{"key":30,"value":1},{"key":5,"value":16000000},{"key":31,"value":160000000},{"key":32,"value":1},{"key":39,"value":1},{"key":41,"value":1},{"key":3,"value":1000},{"key":47,"value":10000000000},{"key":49,"value":1},{"key":13,"value":80},{"key":7,"value":1000000},{"key":61,"value":600},{"key":63,"value":1}],"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
-    var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn, "c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc");
-    var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
+    // First proposal: "key":30 and "key":70 must be modified first
+    var parametersForProposal1 = [{"key":9,"value":1},{"key":10,"value":1},{"key":11,"value":420},{"key":19,"value":90000000000},{"key":15,"value":1},{"key":18,"value":1},{"key":16,"value":1},{"key":20,"value":1},{"key":26,"value":1},{"key":30,"value":1},{"key":5,"value":16000000},{"key":31,"value":160000000},{"key":32,"value":1},{"key":39,"value":1},{"key":41,"value":1},{"key":3,"value":1000},{"key":47,"value":10000000000},{"key":49,"value":1},{"key":13,"value":80},{"key":7,"value":1000000},{"key":61,"value":600},{"key":63,"value":1},{"key":65,"value":1},{"key":66,"value":1},{"key":67,"value":1},{"key":68,"value":1000000},{"key":69,"value":1},{"key":70,"value":14},{"key":71,"value":1},{"key":76,"value":1}];
+    var parametersForProposal2 = [{"key":47,"value":15000000000},{"key":59,"value":1},{"key":72,"value":1},{"key":73,"value":3000000000},{"key":74,"value":2000},{"key":75,"value":12000},{"key":77,"value":1},{"key":78,"value":864000}];
 
-    setTimeout(async function() { 
-            console.log("Vote proposal!") 
-            var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(1, true, tronWeb.defaultAddress.hex)
-            var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn, "c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc");
+    async function modifyChainParameters(parameters,proposalID){
+    
+        parameters.sort((a, b) => {
+                return a.key.toString() > b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
+            })
+        var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
+        var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
+        var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
+
+        setTimeout(async function() {
+    		console.log(receipt1)
+            console.log("Vote proposal 1 !")
+            var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
+            var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
             var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
         }, 1000)
+
+    }
+
+    modifyChainParameters(parametersForProposal1, 1)
+
+
     ```
+    After creating the proposal through the above code, you can query the proposal's effective time: "expiration_time" through the http://127.0.0.1:xxxx/wallet/listproposals interface. The timestamp is in milliseconds. After the effective time has passed, if the "state" in the return value of the interface is "APPROVED", it means that the proposal has been passed, and you can continue to the next step and create the second proposal. The sample code is as follows:
+
+    ```
+    modifyChainParameters(parametersForProposal2, 2)
+    ```
+    
+    After the proposal takes effect, the dynamic parameters of the private chain will be consistent with the main network. You can query the chain parameters through the /wallet/getchainparameters API.
