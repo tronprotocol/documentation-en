@@ -774,7 +774,7 @@ Return:
 ```
 
 #### wallet/gettransactionbyid
-Description: Query an transaction infromation by transaction id
+Description: Query a transaction information by transaction id
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
 ```
@@ -821,7 +821,7 @@ Return: The list of nodes
 
 
 #### wallet/getnodeinfo
-Description: Query the current node infromation
+Description: Query the current node information
 ```
 curl  http://127.0.0.1:8090/wallet/getnodeinfo
 ```
@@ -953,7 +953,7 @@ $ curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d
 ```
 Parameters: 
 
-- `contract_address`: Smart contract address, defualt hexString
+- `contract_address`: Smart contract address, default hexString
 - `function_selector`:  Function call, must not leave a blank space
 - `parameter`: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires
 - `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
@@ -2401,7 +2401,7 @@ Parameters: N/A
 Return:rcm
 
 #### wallet/getmerkletreevoucherinfo
-Description: To get a merkle tree infromation of a note
+Description: To get a merkle tree information of a note
 ```console
 $ curl -X POST  http://127.0.0.1:8090/wallet/getmerkletreevoucherinfo -d
 '{
@@ -2764,7 +2764,7 @@ Parameters: `num` - The number of blocks expected to return
 Return: List of blocks
 
 #### wallet/getnodeinfo
-Description: Query the current node infromation
+Description: Query the current node information
 ```
 curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
 ```
@@ -2777,7 +2777,7 @@ Return: NodeInfo of the current node
 ### Transactions
 
 #### walletsolidity/gettransactionbyid
-Description: Query an transaction infromation by transaction id
+Description: Query an transaction information by transaction id
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
 ```
@@ -2869,7 +2869,7 @@ curl -X POST  http://127.0.0.1:8090/walletsolidity/scannotebyivk -d
 Parameters: 
 
 - `start_block_index`: The start block height, inclusive
-- `end_block_index`: The end block height, exlusive
+- `end_block_index`: The end block height, exclusive
 - `ivk`: Incoming viewing key
 
 Return: Notes list
@@ -2890,7 +2890,7 @@ curl -X POST  http://127.0.0.1:8090/walletsolidity/scanandmarknotebyivk -d
 Parameters: 
 
 - `start_block_index`: The start block height, inclusive
-- `end_block_index`: The end block height, exlusive
+- `end_block_index`: The end block height, exclusive
 - `ivk`: Incoming viewing key
 - `ak`: Ak key
 - `nk`: Nk key

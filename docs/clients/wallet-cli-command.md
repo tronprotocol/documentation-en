@@ -855,7 +855,7 @@ after sign transaction hex string is 0a85010a029ca12208432ed1fe1357ff7f40a2b3a7f
 txid is ece603ec8ad11578450dc8adf29dd9d9833e733c313fe16a947c8c768f1e4483
 Send 10 Sun to TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE successful !!
 ```
-A`permission_id` is always required, it is "0" by default, which means this transaction only needed to be sign by owner. In the example above, we enter "2" to make a multi-signed transaction this time, needs the two accounts assgined `actives` permission in [UpdateAccountPermission](#updateaccountpermission) section above to sign this transaction.
+A`permission_id` is always required, it is "0" by default, which means this transaction only needed to be sign by owner. In the example above, we enter "2" to make a multi-signed transaction this time, needs the two accounts assigned `actives` permission in [UpdateAccountPermission](#updateaccountpermission) section above to sign this transaction.
 
 In the example, we picked the account `TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej` to sign first,
 after that, it asks you if want to add another sign 
@@ -2093,7 +2093,7 @@ wallet> ListExchangesPaginated [offset] [limit]
 `offset` is the number of exchange pair you want to skip.
 `limit` is the number of exchange pair you want to be listed.
 
-The parameters in the example below means to skip the first 3 exhange pairs and show the next 2 exhange pairs.
+The parameters in the example below means to skip the first 3 exchange pairs and show the next 2 exchange pairs.
 ```shell
 wallet> listexchangespaginated 3 2
 {
@@ -2128,7 +2128,7 @@ wallet> MarketSellAsset [owner_address] [sell_token_id] [sell_token_quantity] [b
 
 `sell_token_id` and `sell_token_quantity` are the ID and amount of the token want to sell.
 
-`buy_token_id`, `buy_token_quantity` determins the ID and amount of the token want to buy.
+`buy_token_id`, `buy_token_quantity` determines the ID and amount of the token want to buy.
 
 Example:
 ```shell
@@ -2243,7 +2243,7 @@ wallet> getmarketpairlist
 ···
 ```
 ### GetMarketOrderListbyPair
-This command is to get market order list by exhange pair,
+This command is to get market order list by c pair,
 ```shell
 wallet> GetMarketOrderListByPair [sell_token_id] [buy_token_id]
 ```
@@ -2270,7 +2270,7 @@ wallet> GetMarketOrderListByPair _ 1000001
 }
 ```
 ### GetMarketPricebyPair
-Use this command to get market price by exhange pair.
+Use this command to get market price by exchange pair.
 ```shell
 wallet> GetMarketPriceByPair [sell_token_id] [buy_token_id]
 ```

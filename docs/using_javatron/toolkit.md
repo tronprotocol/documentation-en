@@ -189,7 +189,7 @@ The following three examples illustrate how to use the data pruning tool:
     * --fn-data-path： The data directory to be trimmed, that is, the node data directory
     * --dataset-path： The directory where the output snapshot dataset is stored
 
-    After the command is executed, a `snapshot` directory will be generated in `/tmp`, the data in this directory is the Lite Fullnode data, then rename the directory from `snapshot` to `database` (the default value of the storage.db.directory is `database`, make sure rename the snapshot directory to the specified value) and copy the `database` directory  to the Lite Fullnode database directory to finish the spliting. Finally start the Lite Fullnode. 
+    After the command is executed, a `snapshot` directory will be generated in `/tmp`, the data in this directory is the Lite Fullnode data, then rename the directory from `snapshot` to `database` (the default value of the storage.db.directory is `database`, make sure rename the snapshot directory to the specified value) and copy the `database` directory  to the Lite Fullnode database directory to finish the splitting. Finally start the Lite Fullnode. 
     
 
 * **Split and get a `History Dataset`**
@@ -208,7 +208,7 @@ The following three examples illustrate how to use the data pruning tool:
     
 * **Merge `History Dataset` and `Snapshot Dataset`**
 
-    Both `History Dataset` and `Snapshot Dataset` have an `info.properties` file to identify the block height when they are splitted. Make sure that the `split_block_num` in `History Dataset` is not less than the corresponding value in the `Snapshot Dataset`. After the historical dataset is merged with the snapshot dataset through the merge operation, the Lite Fullnode will become a real FullNode.
+    Both `History Dataset` and `Snapshot Dataset` have an `info.properties` file to identify the block height when they are split. Make sure that the `split_block_num` in `History Dataset` is not less than the corresponding value in the `Snapshot Dataset`. After the historical dataset is merged with the snapshot dataset through the merge operation, the Lite Fullnode will become a real FullNode.
 
     The command to merge the historical dataset and the snapshot dataset is as follows:
     
@@ -235,7 +235,7 @@ To use the data copy function provided by Toolkit through `db copy` :
 # full command
   java -jar Toolkit.jar db cp [-h] <src> <dest>
 # examples
-  java -jar Toolkit.jar db cp  output-directory/database /tmp/databse
+  java -jar Toolkit.jar db cp  output-directory/database /tmp/database
 ```
 
 Optional command parameters are as follows:

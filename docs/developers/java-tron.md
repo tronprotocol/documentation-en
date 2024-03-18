@@ -195,7 +195,7 @@ Closes #1234
 If the purpose of this submission is to modify one issue, you need to refer to the issue in the footer, starting with the keyword Closes, such as `Closes #1234`, if multiple bugs have been modified, separate them with commas, such as `Closes #123, #245, #992`.
 
 ### Special Situations And How To Deal With Them
-As a reviewer, you may find yourself in one of the sitations below. Here’s how to deal with those:
+As a reviewer, you may find yourself in one of the situations below. Here’s how to deal with those:
 
 * The author doesn’t follow up: ping them after a while (i.e. after a few days). If there is no further response, close the PR or complete the work yourself.
 * Author insists on including refactoring changes alongside bug fixes: We can tolerate small refactorings alongside any change. If you feel lost in the diff, ask the author to submit the refactoring as an independent PR, or at least as an independent commit in the same PR.

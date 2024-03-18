@@ -136,7 +136,7 @@ So, the caller is suggested to set fee limit to 50_000_000 SUN * 10% = 5_000_000
 
 1. In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.
 
-2. Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion cna be changed later. If the developer's energy is not enough, it will consume the caller's energy.
+2. Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion can be changed later. If the developer's energy is not enough, it will consume the caller's energy.
 
 3. Currently, the total energy available when trigger a contract is composed of caller fee limit and developer's share
 
@@ -180,7 +180,7 @@ A triggers C, the fee limit set is 200000000 (unit SUN, 200 TRX).
 So during this trigger the energy A can use is from three parts:
 
 - A's energy by staking TRX -- X;
-- The energy converted from the amount of TRX bruning according to a fixed rate -- Y;
+- The energy converted from the amount of TRX burning according to a fixed rate -- Y;
 
     If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy;
 
@@ -194,7 +194,7 @@ If contract executes successfully without any exception, the energy needed for t
 
 If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to [Exception Handling(zh-cn)](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md).
 
-Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef.
+Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itself.
 
 Assert-style error introduction, refer to [Exception Handling(zh-cn)](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md).
 
