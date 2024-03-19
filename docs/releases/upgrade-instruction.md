@@ -33,7 +33,7 @@ You can directly download the Java-tron executable file, or download the code of
     
 
 ### 2. Shut down the Java-tron process
-Shut down the node process. Note: If this is your first time to deploy a TRON node, please skip to step 5.
+Shut down the node process. Note: If a Java-tron node has not been deployed on this machine before, please skip to step 5.
 
 * First, get the process ID of the Java-tron node through the following command
     ```
