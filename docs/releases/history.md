@@ -101,12 +101,12 @@ The block solidification mechanism of the TRON network is: a block can be solidi
 
 The Bias version adds a check function for the number of unsolidified blocks. When it is detected that the number of unsolidified blocks of a node reaches the threshold, the node will stop broadcasting transactions to avoid too many transactions that cannot be solidified in the network. This can not only reduce the node's memory usage, but also reduce the number of transactions in the block, improve the block execution speed, and facilitate the rapid recovery of the network in the later period..
 
-This feature is enabled by default, and the threshold is 1000. Node deployers can also turn off this function or configure the threshold through the configuration file.
+This feature is disabled by default. Node deployers can turn on it and configure the threshold through the below configuration items.
 
 
 ```
 node.unsolidifiedBlockCheck = true
-node.maxUnsolidifiedBlocks = 1000
+node.maxUnsolidifiedBlocks = 54
 ```
 
 
