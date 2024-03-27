@@ -1459,9 +1459,9 @@ Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5406">https
 <h4 id="2-add-check-function-for-the-number-of-unsolidified-blocks">2. Add check function for the number of unsolidified blocks<a class="headerlink" href="#2-add-check-function-for-the-number-of-unsolidified-blocks" title="Permanent link">&para;</a></h4>
 <p>The block solidification mechanism of the TRON network is: a block can be solidified only after it is confirmed by 70% of the super representatives, that is, the block data is written to the disk and the data cannot be changed. Blocks that cannot be solidified are always stored in memory. If the number of unsolidified blocks continues to increase, it may cause memory exhaustion and the node to stop running.</p>
 <p>The Bias version adds a check function for the number of unsolidified blocks. When it is detected that the number of unsolidified blocks of a node reaches the threshold, the node will stop broadcasting transactions to avoid too many transactions that cannot be solidified in the network. This can not only reduce the node's memory usage, but also reduce the number of transactions in the block, improve the block execution speed, and facilitate the rapid recovery of the network in the later period..</p>
-<p>This feature is enabled by default, and the threshold is 1000. Node deployers can also turn off this function or configure the threshold through the configuration file.</p>
+<p>This feature is disabled by default. Node deployers can turn on it and configure the threshold through the below configuration items.</p>
 <div class="highlight"><pre><span></span><code>node.unsolidifiedBlockCheck = true
-node.maxUnsolidifiedBlocks = 1000
+node.maxUnsolidifiedBlocks = 54
 </code></pre></div>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5643">https://github.com/tronprotocol/java-tron/pull/5643</a>  </p>
 <h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
