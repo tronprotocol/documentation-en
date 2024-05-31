@@ -2008,7 +2008,7 @@ The account historical balance query function can facilitate developers to query
 - Source Code：[#3538](https://github.com/tronprotocol/java-tron/pull/3538)
 - Guide ： https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http.md
 
-###3、Optimzed the blackhole account to improve transaction execution speed
+###3、Optimized the blackhole account to improve transaction execution speed
 
 After the feature is turned on, the transaction fee from burning TRX which charged f for bandwidth and energy will no longer be transferred to the black hole address but will be directly accumulated and recorded in the database.
 

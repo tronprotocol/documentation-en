@@ -40,7 +40,7 @@ download your needed configuration file from https://github.com/tronprotocol/Tro
 
 main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
-please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SoliditNode.
+please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SolidityNode.
 
 cp build/libs/FullNode.jar ../fullnode
 
@@ -166,7 +166,7 @@ bash deploy_tron.sh
 
 ```shell
 wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-# User can self-configure the IP and Port of GRPC service in the turst-node field of SolidityNode. trust-node is the fullnode you just deploy.
+# User can self-configure the IP and Port of GRPC service in the trust-node field of SolidityNode. trust-node is the fullnode you just deploy.
 bash deploy_tron.sh --app SolidityNode --trust-node <grpc-ip:grpc-port>
 ```
 
@@ -235,7 +235,7 @@ This is an implementation of Tron eventsubscribe model.
 * This will produce one plugin zip, named `plugin-kafka-1.0.0.zip`, located in the `event-plugin/build/plugins/` directory.
 
 
-<h3> Edit **config.conf** of Java-tron， add the following fileds:</h3>
+<h3> Edit **config.conf** of Java-tron， add the following fields:</h3>
 
 ```
 event.subscribe = {

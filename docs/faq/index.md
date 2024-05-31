@@ -188,7 +188,7 @@ Java-tron does not provide a default api to test. Once the service start, grpc c
 
 Under private environment, there should be at least one SuperNode, there is no amount limit for FullNode.
 
-### How to know wether my test SuperNode is running or not?
+### How to know whether my test SuperNode is running or not?
 
 Using the following command
 
@@ -236,7 +236,7 @@ Java-tron need more RAM to process transactions.
 
 Yes. Under test environment, we can vote you to become SR.
 
-### What is the defferent between Shasta and Test Net?
+### What is the different between Shasta and Test Net?
 
 to be answered
 
@@ -286,7 +286,7 @@ triggercontract contractaddress balanceOf(address) "youraddress" false 0 0 0 #
 17:02:42.699 INFO [o.t.c.s.WitnessService] Not sync
 ```
 
-This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to chek the block height.
+This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to check the block height.
 
 ```text
 > tail -f logs/tron.log |grep "MyheadBlockNumber"

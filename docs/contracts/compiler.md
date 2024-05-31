@@ -59,7 +59,7 @@ Download Wallet-Cli and build
 
 ```text
 shell
-# download cource code
+# download source code
 git clone https://github.com/tronprotocol/wallet-cli
 cd  wallet-cli
 # build
