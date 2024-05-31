@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Cleobulus    |  GreatVoyage-v4.7.5    |  2024-5-30    |  [TIP-653](https://github.com/tronprotocol/tips/blob/master/tip-653.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.5)   |   [Specs](#greatvoyage-v475cleobulus)   |
 |  Bias    |  GreatVoyage-v4.7.4    |  2024-3-15    |  [TIP-635](https://github.com/tronprotocol/tips/blob/master/tip-635.md) <br> [TIP-621](https://github.com/tronprotocol/tips/blob/master/tip-621.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.4)   |   [Specs](#greatvoyage-v474bias)   |
 |  Solon    |  GreatVoyage-v4.7.3.1    |  2024-1-12    |  N/A   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.3.1)   |   [Specs](#greatvoyage-v4731solon)   |
 |  Chilon    |  GreatVoyage-v4.7.3    |  2023-10-25    |  [TIP-586](https://github.com/tronprotocol/tips/blob/master/tip-586.md) <br> [TIP-592](https://github.com/tronprotocol/tips/blob/master/tip-592.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.3)   |   [Specs](#greatvoyage-v473chilon)   |
@@ -73,6 +74,61 @@
 |   N/A   | Odyssey-v1.0.4    |  2018-4-13    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.4)    |  N/A   |
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
+
+## GreatVoyage-v4.7.5(Cleobulus)
+
+The Cleobulus version introduces multiple important optimizations and updates, including a new proposal to adjust the energy cost of some opcodes in TVM to make the energy cost more reasonable. The enhanced transaction and block verification logic improves the system's fault tolerance. The optimized synchronization logic between threads improves data consistency. You may find the details below.
+
+
+### Core
+
+
+#### 1. Optimize block synchronization and production logic
+The Cleobulus version optimizes the block production logic. After obtaining the block production lock, the node will check whether it meets the conditions for producing blocks to avoid inconsistent state before and after obtaining the block production lock, thereby improving the stability of the TRON network.
+
+Additionally, Cleobulus enhances the block verification logic. All nodes add checks on block size and block time. 
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5833](https://github.com/tronprotocol/java-tron/pull/5833)  [https://github.com/tronprotocol/java-tron/pull/5830](https://github.com/tronprotocol/java-tron/pull/5830)  
+#### 2. Strengthen size check of account creation transactions
+
+The Cleobulus version optimizes the account creation logic, strengthens the size check of account creation transactions, and adds the No.82 TRON network parameter to set the maximum number of bytes allowed for account creation transactions. The parameter ranges from 500 to 10000 and the default value is 1000. The value can be modified by initiating a proposal for a vote.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5835](https://github.com/tronprotocol/java-tron/pull/5835)  
+
+
+
+
+### TVM
+#### 1. Adjust energy cost for some opcodes in TVM 
+Cleobulus adjusts the energy cost of the `VOTEWITNESS` and `SUICIDE` opcodes to make the energy consumption more reasonable based on the resources and time required for the actual execution of each opcode.
+
+This optimization is the No. 81 parameter of the TRON network. After Cleobulus is deployed, it is disabled by default and can be enabled through governance voting.
+
+
+TIP: [https://github.com/tronprotocol/tips/blob/master/tip-653.md](https://github.com/tronprotocol/tips/blob/master/tip-653.md)   
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5837](https://github.com/tronprotocol/java-tron/pull/5837)  
+
+### Other Changes
+#### 1. Optimize synchronization logic among threads
+The Cleobulus version optimizes the block request logic and no longer reads `fetchBlockInfo` data when printing logs, improving the stability of concurrent access to `fetchBlockInfo` object by multiple threads.
+
+Additionally, Cleobulus optimizes the synchronization block processing logic. Regardless of whether the `syncBlockToFetch` queue is empty, the node can process block data normally, improving the efficiency of block synchronization.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5831](https://github.com/tronprotocol/java-tron/pull/5831)  
+[https://github.com/tronprotocol/java-tron/pull/5832](https://github.com/tronprotocol/java-tron/pull/5832)  
+
+#### 2. Remove redundant code
+The Cleobulus version removes redundant code in the block processing logic, improving the readability and maintainability of the code.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5834](https://github.com/tronprotocol/java-tron/pull/5834) 
+
+--- 
+
+*Seek virtue and eschew vice.* 
+<p align="right"> ---Cleobulus</p>
+
 
 ## GreatVoyage-v4.7.4(Bias)
 
