@@ -54,7 +54,7 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 | Official data source (North America: Virginia)   | http://3.219.199.168/     | LevelDB, , exclude internal transactions (About 1314G on 13 Jun. 2023)     |
 | Official data source (Singapore)    | http://52.77.31.45/     | 	LevelDB, exclude internal transactions (About 1321G on 13 Jun. 2023)     |
 | Official data source (Singapore)    | http://52.77.31.45/saveInternalTx/    | LevelDB, include internal transactions (About 1496G on 13 Jun. 2023)     |
-| Data sources provided by  TronGrid Community     | https://backup.trongrid.io/    | LevelDB, include internal transactions (About 1603G on 13 Jun. 2023)     |
+
 
 
 
