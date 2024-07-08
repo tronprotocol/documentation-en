@@ -1,5 +1,13 @@
 # HTTP API
-This article introduces FullNode's HTTP APIs and their usage.
+This article introduces FullNode's HTTP APIs and their usage. 
+
+
+!!! note
+    Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before they use it in any UI. 
+    
+    Here is a typical XSS protection method: Encode all data from the APIs in HTML. Use methods such as `encodeURIComponent()` or `escape()` to encode the data, which can convert special characters into their HTML entities and prevent them from being interpreted as HTML code by the browser. 
+    
+    Please be sure to implement XSS protection for all data from the APIs to ensure the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html).
 
 First, Let's explain the selection of the address format in the HTTP API: Account addresses of the TRON network have two formats: HexString format and Base58 format. The Fullnode HTTP API supports address format selection. Users can set the address format through the `visible` parameter. The default value is `false` and the address format in the parameter and return value is hex format. When `visible` is set to `true`, the address format in the parameter and return value are in Base58 format. If the parameter format does not match the `visible` setting, an error will be reported. Setting method:
 
