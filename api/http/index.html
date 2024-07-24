@@ -566,7 +566,7 @@
 <p>This article introduces FullNode's HTTP APIs and their usage. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before they use it in any UI. </p>
+<p>Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before they use it in any UI, especially when the parameter <code>visible</code> equals true.</p>
 <p>Here is a typical XSS protection method: Encode all data from the APIs in HTML. Use methods such as <code>encodeURIComponent()</code> or <code>escape()</code> to encode the data, which can convert special characters into their HTML entities and prevent them from being interpreted as HTML code by the browser. </p>
 <p>Please be sure to implement XSS protection for all data from the APIs to ensure the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html">OWASP XSS Prevention Cheat Sheet</a>.</p>
 </div>
