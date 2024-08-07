@@ -51,7 +51,7 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 
 | Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)   | http://34.86.86.229/     | LevelDB, , exclude internal transactions (About 1821G on 6 Aug. 2024)     |
+| Official data source (North America: Virginia)   | http://34.86.86.229/     | LevelDB, exclude internal transactions (About 1821G on 6 Aug. 2024)     |
 | Official data source (Singapore)    | http://34.143.247.77/    | 	LevelDB, exclude internal transactions (About 1819G on 5 Aug. 2024)     |
 | Official data source (Singapore)    | http://35.197.17.205/   | RocksDB, exclude internal transactions (About 1799G on 6 Aug. 2024)     |
 | Official data source (Singapore)    | http://35.247.128.170/   | LevelDB, inlcude internal transactions (About 2000G on 6 Aug. 2024)     |
