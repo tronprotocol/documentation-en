@@ -51,11 +51,11 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 
 | Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)   | http://3.219.199.168/     | LevelDB, , exclude internal transactions (About 1314G on 13 Jun. 2023)     |
-| Official data source (Singapore)    | http://52.77.31.45/     | 	LevelDB, exclude internal transactions (About 1321G on 13 Jun. 2023)     |
-| Official data source (Singapore)    | http://52.77.31.45/saveInternalTx/    | LevelDB, include internal transactions (About 1496G on 13 Jun. 2023)     |
-
-
+| Official data source (North America: Virginia)   | http://34.86.86.229/     | LevelDB, exclude internal transactions (About 1821G on 6 Aug. 2024)     |
+| Official data source (Singapore)    | http://34.143.247.77/    | 	LevelDB, exclude internal transactions (About 1819G on 5 Aug. 2024)     |
+| Official data source (Singapore)    | http://35.197.17.205/   | RocksDB, exclude internal transactions (About 1799G on 6 Aug. 2024)     |
+| Official data source (Singapore)    | http://35.247.128.170/   | LevelDB, inlcude internal transactions (About 2000G on 6 Aug. 2024)     |
+| Official data source ((North America: Virginia))    | http://34.48.6.163/   | LevelDB, exclude internal transactions, include account history TRX balance (About 2288G on 6 Aug. 2024)     |
 
 
 **Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. 
