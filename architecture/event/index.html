@@ -257,7 +257,10 @@ contractTopics: contract topics list
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Historical data query is not supported.</p>
+<ol>
+<li>Historical data query is not supported.</li>
+<li>When subscribing to non-solidified events, be sure to use the two parameters <code>blockNumber</code> and <code>blockHash</code> as the criteria to verify that the received events are valid. In special cases such as unstable network connections causing chain reorg, event reorg may occur as well, resulting in stale events.</li>
+</ol>
 </div>
 <h3 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h3>
 <ol>
