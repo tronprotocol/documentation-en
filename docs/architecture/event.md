@@ -77,7 +77,8 @@ contractTopics: contract topics list
 ```
 
 !!! note
-    Historical data query is not supported.
+    1. Historical data query is not supported.
+    2. When subscribing to non-solidified events, be sure to use the two parameters `blockNumber` and `blockHash` as the criteria to verify that the received events are valid. In special cases such as unstable network connections causing chain reorg, event reorg may occur as well, resulting in stale events.
 
 ### New Features
 
