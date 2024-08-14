@@ -28,9 +28,7 @@ Let's see how it's realized in the context of TRON:
 
 - Bookkeeping order: block generation order. The descending order of the 27 witnesseses based on the number of votes they receive.
 
-- Block time: TRON sets block time to be 3 seconds. This means a block is generated every 3 seconds.
-
-- Slot: after each block is generated, it can be put into a slot; and each generated block will take up a slot. For example, there are 20 slots for every minute. When a block is generated during the block time, the corresponding slot will be filled. However, if a block is not generated, then the corresponding slot will be empty. The next block generated will fill in a new corresponding slot.
+- Slot: In TRON, every three seconds is regarded as one slot. Under normal circumstances, each SR will produce a block within the corresponding slot time. Therefore, the average block interval of TRON is approximately three seconds. If an SR fails to produce a block for some reasons, the corresponding slot will be vacant and the next SR will produce a block in the following slot. During the maintenance period, block production will skip two slots.
 
 - Epoch: TRON sets an Epoch to be 6 hours. The last 2 block time of an Epoch is the maintenance period, during which block generating order for the next Epoch will be decided.
 
