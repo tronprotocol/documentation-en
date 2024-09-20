@@ -95,11 +95,21 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#3-bandwidth-points-recovery">3. Bandwidth Points Recovery</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-account-bandwidth-balance-query">4. Account Bandwidth Balance Query</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#energy">Energy</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#1-how-to-get-energy">1. How to Get Energy</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#energy-consumption">Energy Consumption</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#energy-recovery">Energy Recovery</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#account-energy-balance-query">Account Energy Balance Query</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#2-how-to-set-fee-limit-caller-must-read">2. How to Set Fee Limit (Caller Must Read)</a>
         <ul>
@@ -108,6 +118,12 @@
         </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#3-energy-calculation-developer-must-read">3. Energy Calculation (Developer Must Read)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dynamic-energy-model">Dynamic Energy Model</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#principle">Principle</a>
     </li>
         </ul>
     </li>
@@ -123,11 +139,11 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-cancel-unstaking">How to cancel unstaking</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#api">API</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#other-fees">Other Fees</a>
     </li>
     </ul>
                   </li>
@@ -235,8 +251,6 @@
 </ol>
 <h3 id="2-bandwidth-points-consumption">2. Bandwidth Points Consumption<a class="headerlink" href="#2-bandwidth-points-consumption" title="Permanent link">&para;</a></h3>
 <p>Except for query operation, any transaction consumes Bandwidth points.</p>
-<p>There's another situation: When you transfer(TRX or token) to an account that does not exist in the network, this operation will first create that account in the network and then do the transfer. It only consumes Bandwidth points for account creation, no extra Bandwidth points consumption for transfer.</p>
-<p>To create an account, a flat charge of 1 TRX is required. If there are insufficient Bandwidth points obtained by TRX staking, an additional 0.1 TRX will be spent.</p>
 <p>Bandwidth points consumption sequence for TRC-10 transfer:</p>
 <ol>
 <li>
@@ -266,6 +280,13 @@
 </ol>
 <h3 id="3-bandwidth-points-recovery">3. Bandwidth Points Recovery<a class="headerlink" href="#3-bandwidth-points-recovery" title="Permanent link">&para;</a></h3>
 <p>After the account's free bandwidth and the bandwidth obtained by staking TRX are consumed, they will gradually recover within 24 hours.</p>
+<h3 id="4-account-bandwidth-balance-query">4. Account Bandwidth Balance Query<a class="headerlink" href="#4-account-bandwidth-balance-query" title="Permanent link">&para;</a></h3>
+<p>First, call the node HTTP interface <a href="https://developers.tron.network/reference/getaccountresource"><code>wallet/getaccountresource</code></a> to obtain the current resource status of the account, and then calculate the bandwidth balance by the following formula:</p>
+<div class="highlight"><pre><span></span><code>Free bandwidth balance = freeNetLimit - freeNetUsed
+
+Bandwidth balance obtained by staking TRX = NetLimit - NetUsed
+</code></pre></div>
+<p>Note: If the result returned by the interface does not contain the parameters in the above formula, it means that the parameter value is 0.</p>
 <h2 id="energy">Energy<a class="headerlink" href="#energy" title="Permanent link">&para;</a></h2>
 <p>Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.</p>
 <h3 id="1-how-to-get-energy">1. How to Get Energy<a class="headerlink" href="#1-how-to-get-energy" title="Permanent link">&para;</a></h3>
@@ -273,21 +294,34 @@
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code>freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 </code></pre></div>
-<p>stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50_000_000_000.</p>
+<p>stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 150_000_000_000.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 25_000_000_000 and energy_limit is 25_000_000_000
-B: 25_000_000_000 and energy_limit is 25_000_000_000
+A: 75_000_000_000 and energy_limit is 75_000_000_000
+B: 75_000_000_000 and energy_limit is 75_000_000_000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 20_000_000_000 and energy_limit is 20_000_000_000
-B: 20_000_000_000 and energy_limit is 20_000_000_000
-C: 10_000_000_000 and energy_limit is 10_000_000_000
+A: 60_000_000_000 and energy_limit is 60_000_000_000
+B: 60_000_000_000 and energy_limit is 60_000_000_000
+C: 30_000_000_000 and energy_limit is 30_000_000_000
 </code></pre></div>
-<p>#### Energy Recovery</p>
+<h4 id="energy-consumption">Energy Consumption<a class="headerlink" href="#energy-consumption" title="Permanent link">&para;</a></h4>
+<p>When the contract is executed, Energy is calculated and deducted according to instruction one by one. The priority of account energy consumption is as follows:</p>
+<ul>
+<li>Energy obtained by staking TRX</li>
+<li>Burn TRX</li>
+</ul>
+<p>First, the energy obtained by staking TRX will be consumed. If this part of energy is not enough, the account's TRX will continue to be burned to pay for the energy resources required for the transaction, according to the unit price of 0.00021TRX per energy. </p>
+<p>If the contract exits due to throwing a revert exception while execution, only the energy consumed by instructions that have already been executed will be deducted. But for abnormal contracts, such as contract execution timeout, or abnormal exit due to bug, the maximum available energy of this transaction will be deducted. You can limit the maximum energy cost of this transaction by setting the <code>fee_limit</code> parameter of the transaction.</p>
+<h4 id="energy-recovery">Energy Recovery<a class="headerlink" href="#energy-recovery" title="Permanent link">&para;</a></h4>
 <p>After the energy resource of the account is consumed, it will gradually recover within 24 hours.</p>
+<h4 id="account-energy-balance-query">Account Energy Balance Query<a class="headerlink" href="#account-energy-balance-query" title="Permanent link">&para;</a></h4>
+<p>First call the node HTTP interface <a href="https://developers.tron.network/reference/getaccountresource"><code>wallet/getaccountresource</code></a> to obtain the current resource status of the account, and then calculate the energy balance by the following formula:</p>
+<div class="highlight"><pre><span></span><code>Energy Balance = EnergyLimit - EnergyUsed
+</code></pre></div>
+<p>Note: If the result returned by the interface does not contain the parameters in the above formula, it means that the parameter value is 0.</p>
 <h3 id="2-how-to-set-fee-limit-caller-must-read">2. How to Set Fee Limit (Caller Must Read)<a class="headerlink" href="#2-how-to-set-fee-limit-caller-must-read" title="Permanent link">&para;</a></h3>
 <hr />
 <p><em>Within the scope of this section, the smart contract developer will be called "developer", the users or other contracts which call the smart contract will be called "caller"</em></p>
@@ -295,8 +329,8 @@ C: 10_000_000_000 and energy_limit is 10_000_000_000
 <hr />
 <p>Set a rational fee limit can guarantee the smart contract execution. And if the execution of the contract cost great energy, it will not consume too much energy from the caller. Before you set fee limit, you need to know several conception:</p>
 <ol>
-<li>The legal fee limit is a integer between 0 - 10^9, unit is SUN.</li>
-<li>Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount of energy[^1]. When the contract is triggered, the commands will be executed one by one and consume energy. If it reaches the fee limit, commands will fail to be executed, and energy is not refundable.</li>
+<li>The legal fee limit is a integer between 0 - 15*10^9, unit is SUN.</li>
+<li>Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount of energy[^1], however, due to the dynamic energy model mechanism, for popular contracts, different energy may be required for execution at different times. For details, please refer to the <a href="#dynamic-energy-model">Dynamic Energy Model</a> Chapter. When the contract is triggered, the commands will be executed one by one and consume energy. If it reaches the fee limit, commands will fail to be executed, and energy is not refundable.</li>
 <li>Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[^2]. The energy consumed by triggering contract also includes developer's share.</li>
 <li>For a vicious contract, if it encounters execution timeout or bug crash, all it's energy will be consumed.</li>
 <li>Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [^2].</li>
@@ -304,22 +338,21 @@ C: 10_000_000_000 and energy_limit is 10_000_000_000
 <p>To encourage caller to trigger the contract, usually developer has enough energy.</p>
 <h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
 <p>How to estimate the fee limit:</p>
-<p>Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[^3]</p>
-<p>According to the staked TRX amount and energy conversion, assume 1 TRX = 400 energy.</p>
-<p>When to burn TRX, 4 TRX = 100000 energy[^4]</p>
+<ul>
+<li>Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy.</li>
+<li>When to burn TRX, since the unit price of energy is currently 210sun, 21 trx can be exchanged for 100,000 Energy.</li>
+</ul>
 <p>Assume developer undertake 90% energy consumption, and developer has enough energy.</p>
 <p>Then the way to estimate the fee limit is:</p>
 <ol>
-<li>A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,</li>
-<li>B = 20000 energy * (4 TRX / 100000 energy) = 0.8 TRX = 800_000 SUN,</li>
-<li>Take the greater number of A and B, which is 50_000_000 SUN,</li>
+<li>A = 20000 energy * 210sun = 4_200_000 sun = 4.2 trx</li>
 <li>Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,</li>
 </ol>
-<p>So, the caller is suggested to set fee limit to 50_000_000 SUN * 10% = 5_000_000 SUN</p>
+<p>So, the caller is suggested to set fee limit to 4_200_000 sun * 10% = 420_000 sun.</p>
 <h3 id="3-energy-calculation-developer-must-read">3. Energy Calculation (Developer Must Read)<a class="headerlink" href="#3-energy-calculation-developer-must-read" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.</p>
+<p>In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 80ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.</p>
 </li>
 <li>
 <p>Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion can be changed later. If the developer's energy is not enough, it will consume the caller's energy.</p>
@@ -344,11 +377,10 @@ C: 10_000_000_000 and energy_limit is 10_000_000_000
 <li>A's energy by staking TRX;</li>
 <li>The energy converted from the amount of TRX burning according to a fixed rate;</li>
 </ul>
-<p>If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy.</p>
-<p>Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.</p>
+<p>If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 210 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 210 SUN = 95238 energy.</p>
+<p>Finally, in this call, the energy A can use is (100000 + 95238) = 195238 energy.</p>
 <p>If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.</p>
 <p>If Assert-style error come out, it will consume the whole number of energy set for fee limit.</p>
-<p>Assert-style error introduction, refer to <a href="https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md">Exception Handling(zh-cn)</a></p>
 <p>** Example 2 **</p>
 <p>A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.</p>
 <p>Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption.</p>
@@ -359,7 +391,7 @@ C: 10_000_000_000 and energy_limit is 10_000_000_000
 <li>A's energy by staking TRX -- X;</li>
 <li>
 <p>The energy converted from the amount of TRX burning according to a fixed rate -- Y;</p>
-<p>If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy;</p>
+<p>If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 210 sun, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 210 sun = 428571 energy;</p>
 </li>
 <li>
 <p>D's energy by staking TRX -- Z;</p>
@@ -369,10 +401,39 @@ C: 10_000_000_000 and energy_limit is 10_000_000_000
 if (X + Y) / 40% &gt;= Z / 60%, the energy A can use is X + Y + Z
 if (X + Y) / 40% &lt; Z / 60%, the energy A can use is (X + Y) / 40%</p>
 <p>If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.</p>
-<p>If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to <a href="https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md">Exception Handling(zh-cn)</a>.</p>
-<p>Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itself.</p>
-<p>Assert-style error introduction, refer to <a href="https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md">Exception Handling(zh-cn)</a>.</p>
-<p>To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.</p>
+<p>If Assert-style error comes out, it will consume the whole number of energy set for fee limit. </p>
+<p>Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itself. To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.</p>
+<h2 id="dynamic-energy-model">Dynamic Energy Model<a class="headerlink" href="#dynamic-energy-model" title="Permanent link">&para;</a></h2>
+<p>The dynamic energy model is a resource balancing mechanism of the TRON network, which can dynamically adjust the energy consumption of each contract according to the resource occupancy of the contract, so as to make the allocation of energy resources on the chain more reasonable and prevent excessive concentration of network resources on a few popular contracts. For more details, please refer to <a href="https://coredevs.medium.com/introduction-to-dynamic-energy-model-31917419b61a">Introduction to Dynamic Energy Model</a>.</p>
+<h3 id="principle">Principle<a class="headerlink" href="#principle" title="Permanent link">&para;</a></h3>
+<p>If a contract uses too many resources in one <a href="https://developers.tron.network/docs/glossary#maintenance-time-interval">maintenance cycle</a>, then in the next maintenance cycle, a certain percentage of punitive consumption will be added, and users who send the same transaction to this contract will cost more energy than before. When the contract uses resources reasonably, the energy consumption generated by the user calling the contract will gradually return to normal. </p>
+<p>Each contract has an <code>energy_factor</code> field, which indicates the increase ratio of the energy consumption of the smart contract transaction relative to the base energy consumption and the initial value is 0. When the <code>energy_factor</code> of the contract is 0, it means that the contract is using resources reasonably, and there will be no additional energy consumption for calling the contract. When the <code>energy_factor</code> is greater than 0, it means that the contract is already a popular contract, and additional energy will be consumed when calling the contract. The <code>energy_factor</code> of a contract can be queried through the <a href="https://developers.tron.network/reference/getcontractinfo">getcontractinfo</a> API.</p>
+<p>The calculation formula for the final energy consumed by the contract invocation transaction is as follows:</p>
+<div class="highlight"><pre><span></span><code>energy consumption by a contract invocation transaction  = the basic energy consumption generated by the transaction * （1 +  energy_factor）
+</code></pre></div>
+<p>The dynamic energy model introduces the following three parameters of the TRON network , which jointly control the <code>energy_factor</code> field of the contract:</p>
+<ul>
+<li><code>threshold</code>: The threshold of contract basic energy consumption. In a maintenance cycle, if the basic energy consumption of the contract exceeds this threshold, the energy consumption of the contract will increase at the next maintenance cycle.</li>
+<li><code>increase_factor</code>: If the basic energy consumption of the contract exceeds the threshold during a certain maintenance cycle, the <code>energy_factor</code> will increase by a certain percentage according to the <code>increase_factor</code> in the next maintenance cycle.</li>
+<li><code>max_factor</code>: the maximum value of energy_factor.</li>
+</ul>
+<p>There is also a variable <code>decrease_factor</code> used to reduce the <code>energy_factor</code> of the contract:</p>
+<ul>
+<li><code>decrease_factor</code>: 1/4 of <code>increase_factor</code>. After the basic energy consumption of the contract falls below the threshold, <code>energy_factor</code> will be reduced by a certain percentage according to <code>decrease_factor</code>.</li>
+</ul>
+<p>When the basic energy consumption of the contract exceeds <code>threshold</code> during a maintenance cycle, its <code>energy_factor</code> will increase in the next maintenance cycle, but the maximum will not be Exceeding <code>max_factor</code>, the calculation formula is:</p>
+<div class="highlight"><pre><span></span><code>energy_factor = min((1 + energy_factor) * (1 + increaese_factor)-1, max_factor)
+</code></pre></div>
+<p>When the basic energy consumption of the contract drops below the threshold in a maintenance cycle, the <code>energy_factor</code> will decrease in the next maintenance cycle, but the minimum value will not be lower than 0. The calculation formula is as follows:</p>
+<div class="highlight"><pre><span></span><code>energy_factor = max((1 + energy_factor) * (1 - decrease_factor)- 1, 0)
+</code></pre></div>
+<p>The dynamic energy model has been enabled on the main network, and the relevant parameters are set as follows:</p>
+<ul>
+<li><code>threshold</code>：5,000,000,000</li>
+<li><code>increase_factor</code>：0.2</li>
+<li><code>max_factor</code>：3.4</li>
+</ul>
+<p>Since the energy consumption of popular contracts is different in different maintenance cycles, it is necessary to set the appropriate feelimit parameter for the transaction when calling the contract.</p>
 <h2 id="staking-on-tron-network">Staking on TRON network<a class="headerlink" href="#staking-on-tron-network" title="Permanent link">&para;</a></h2>
 <h3 id="how-to-stake-to-obtain-system-resources">How to stake to obtain system resources<a class="headerlink" href="#how-to-stake-to-obtain-system-resources" title="Permanent link">&para;</a></h3>
 <p>Energy and bandwidth resources are obtained by the account owner through staking, please use <code>wallet/freezebalancev2</code> to complete the stake operation through HTTP API, use <a href="https://developers.tron.network/docs/stake-20-solidity-api">Stake2.0 Solidity API</a> to complete the stake operation through the contract.</p>
@@ -402,6 +463,9 @@ which is 300 TP and 200 TP respectively from the two super representatives. Here
 <li>Number of votes withdrawn by Super Representative 2 = 500 * (400 / 1,000) = 200</li>
 </ul>
 <p>At present, the TRON network uses the Stake2.0 stake mechanism, but the resources and votes obtained by Stake1.0 are still valid. The TRX staked at Stake1.0 can still be withdrawal through Stake1.0 API <code>unfreezebalance</code>, but it should be noted that if the TRX staked in Stake 1.0 is unstaked, all votes in the account will be revoked.</p>
+<h3 id="how-to-cancel-unstaking">How to cancel unstaking<a class="headerlink" href="#how-to-cancel-unstaking" title="Permanent link">&para;</a></h3>
+<p>Stake2.0 supports canceling all unstakes after the user unstakes TRX, which will make the assets be used for stake again to obtain corresponding resources, without having to wait for the unstaked funds to pass the lock-up period before withdrawing the funds to the account , and then stake them again. Please use <code>cancelallunfreezev2</code> to cancel all unstaking operations.</p>
+<p>When canceling unstakings, all unstaked funds still in the waiting period will be re-staked, and the resource obtained through the re-staking remains the same as before. Unstakings that exceeded the 14-day waiting period cannot be canceled, and this part of the unstaked funds will be automatically withdrawn to the owner’s account. Users can query the canceled unstaked principal amount <code>cancel_unfreezeV2_amount</code>, and the withdrawn principal amount that has expired the lock-up period <code>withdraw_expire_amount</code> through the <code>gettransactioninfobyid</code> interface.</p>
 <h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <p>The following table shows the relevant interfaces of the stake model and their descriptions:</p>
 <table>
@@ -460,44 +524,9 @@ which is 300 TP and 200 TP respectively from the two super representatives. Here
 <td>getaccountresource</td>
 <td>Query the total amount of resources, the amount of used, and the amount of available</td>
 </tr>
-</tbody>
-</table>
-<h2 id="other-fees">Other Fees<a class="headerlink" href="#other-fees" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
 <tr>
-<th style="text-align: left;">Type</th>
-<th style="text-align: center;">Fee</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Create a witness</td>
-<td style="text-align: center;">9999 TRX</td>
-</tr>
-<tr>
-<td style="text-align: left;">Issue a token</td>
-<td style="text-align: center;">1024 TRX</td>
-</tr>
-<tr>
-<td style="text-align: left;">Create an account</td>
-<td style="text-align: center;">1 TRX</td>
-</tr>
-<tr>
-<td style="text-align: left;">Create an exchange</td>
-<td style="text-align: center;">1024 TRX</td>
-</tr>
-<tr>
-<td style="text-align: left;">Update the account permission</td>
-<td style="text-align: center;">100 TRX</td>
-</tr>
-<tr>
-<td style="text-align: left;">Transaction note</td>
-<td style="text-align: center;">1 TRX</td>
-</tr>
-<tr>
-<td style="text-align: left;">Multi-sig transaction</td>
-<td style="text-align: center;">1 TRX</td>
+<td>cancelallunfreezev2</td>
+<td>Cancel unstaking</td>
 </tr>
 </tbody>
 </table>
