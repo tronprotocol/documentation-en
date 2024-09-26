@@ -209,7 +209,7 @@ This command is used to assign permissions to other accounts, is utilized for **
 * active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for witness purposes.
 * witness: only for witness, block production authorization will be granted to one of the other users.
 
-**NOTE** the parameter`Permission` must written in JSON format and entered in line. If the owner accountis not SR, then do not assign witness permission. 
+**NOTE** the parameter`Permission` must written in JSON format and entered in line. If the owner account is not SR, then do not assign witness permission. 
 ```shell
 wallet> updateaccountpermission TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 {"owner_permission":{"keys":[{"address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8","weight":1}],"threshold":1,"type":0,"permission_name":"owner"},"active_permissions":[{"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000","keys":[{"address":"TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej","weight":1},{"address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE","weight":1}],"threshold":2,"type":2,"permission_name":"active12323"}]}
 {
@@ -1222,7 +1222,7 @@ wallet> TriggerContract [ownerAddress] [contractAddress] [method] [args] [isHex]
 ```
 
 * `OwnerAddress `The address of the account that initiated the transaction, optional, default value is the address of the login account.
-* `ContractAddress` is the smart contarct address.
+* `ContractAddress` is the smart contract address.
 * `method` is the name of the function and parameters, please refer to the example below.
 * `args` is a parameter for placeholding, pass '#' instead when `method` does not need extra parameters.
 * `isHex` controls the format of the parameters method and args, whether they are in hex string or not.
