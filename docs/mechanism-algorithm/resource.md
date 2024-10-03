@@ -79,21 +79,21 @@ Example (Using wallet-cli):
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 150_000_000_000.
+stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180_000_000_000.
 
 Example:
 
 ```text
 If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 75_000_000_000 and energy_limit is 75_000_000_000
-B: 75_000_000_000 and energy_limit is 75_000_000_000
+A: 75_000_000_000 and energy_limit is 90_000_000_000
+B: 75_000_000_000 and energy_limit is 90_000_000_000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 60_000_000_000 and energy_limit is 60_000_000_000
-B: 60_000_000_000 and energy_limit is 60_000_000_000
-C: 30_000_000_000 and energy_limit is 30_000_000_000
+A: 60_000_000_000 and energy_limit is 72_000_000_000
+B: 60_000_000_000 and energy_limit is 72_000_000_000
+C: 30_000_000_000 and energy_limit is 36_000_000_000
 ```
 #### Energy Consumption
 
