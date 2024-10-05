@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Anaximander    |  GreatVoyage-v4.7.6    |  2024-10-04    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.6)   |   [Specs](#greatvoyage-v476anaximander)   |
 |  Cleobulus    |  GreatVoyage-v4.7.5    |  2024-5-30    |  [TIP-653](https://github.com/tronprotocol/tips/blob/master/tip-653.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.5)   |   [Specs](#greatvoyage-v475cleobulus)   |
 |  Bias    |  GreatVoyage-v4.7.4    |  2024-3-15    |  [TIP-635](https://github.com/tronprotocol/tips/blob/master/tip-635.md) <br> [TIP-621](https://github.com/tronprotocol/tips/blob/master/tip-621.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.4)   |   [Specs](#greatvoyage-v474bias)   |
 |  Solon    |  GreatVoyage-v4.7.3.1    |  2024-1-12    |  N/A   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.3.1)   |   [Specs](#greatvoyage-v4731solon)   |
@@ -74,6 +75,76 @@
 |   N/A   | Odyssey-v1.0.4    |  2018-4-13    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.4)    |  N/A   |
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
+
+
+## GreatVoyage-v4.7.6(Anaximander)
+
+The GreatVoyage-4.7.6(Anaximander) introduces several important optimizations and updates, including optimized unit test tasks to improve the stability of test cases execution; newly added TCP and UDP traffic statistics further enriches node monitoring data; optimized peer node idle judgment logic improves the stability of block synchronization; optimized node connection random disconnection logic improves the robustness of node network. Please find the details below.
+
+
+### Other Changes
+#### 1. Optimize the statistical logic of node HTTP request monitoring metric
+
+Java-tron supports node monitoring and provides various metrics data. Anaximander optimizes the statistical logic of node HTTP request monitoring metric to ensure data consistency during concurrent access by multiple threads when counting request data from each mapping address.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5920](https://github.com/tronprotocol/java-tron/pull/5920) 
+
+#### 2. Improve stability of Gradle test task
+Anaximander optimizes the unit test task. The Gradle [test-retry]([https://plugins.gradle.org/plugin/org.gradle.test-retry)  plugin is introduced to allow the failed unit test tasks to be re-executed. The `@Ignore` annotation is used to skip temporarily unused and unstable test cases. This optimization improves the stability of test task execution.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5916](https://github.com/tronprotocol/java-tron/pull/5916)  [https://github.com/tronprotocol/java-tron/pull/5927](https://github.com/tronprotocol/java-tron/pull/5927)  
+
+#### 3. Add TCP outflow monitoring metric for Prometheus and add UDP inflow traffic statistic to `/monitor/getstatsinfo` API
+
+Anaximander adds a new node TCP outflow monitoring metric and adds a UDP inflow statistic to the `/monitor/getstatsinfo` interface, further enriching the node monitoring data.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5942](https://github.com/tronprotocol/java-tron/pull/5942)  
+
+#### 4. Optimize peer node idle judgment logic
+Anaximander optimizes the logic of judging whether the peer node is idle during the block synchronization process, so that block synchronization is not affected by the process of broadcasting blocks/transactions, which improves the efficiency of block synchronization and the stability of the connection between nodes.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5921](https://github.com/tronprotocol/java-tron/pull/5921)  
+
+
+#### 5. Optimize peer sorting logic
+Anaximander optimizes the peers’ sorting logic and adds exception-catching to improve the efficiency of establishing connections between nodes.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5923](https://github.com/tronprotocol/java-tron/pull/5923)  
+
+#### 6. Optimize check logic for fetching block inventory message
+
+Anaximander optimizes the check logic for fetching block inventory messages. The block number requested should be smaller than the largest block number in chain inventory message so that the node can detect illegal messages in time and disconnect from the other node. At the same time, richer node logs are conducive to the troubleshooting and location of connection issues between nodes.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5922](https://github.com/tronprotocol/java-tron/pull/5922)   
+
+
+
+
+#### 7. Optimize block processing logic
+Anaximander optimizes the block processing logic. When processing a received broadcasted block, the node will promptly update the ID and number of  the block which the node with its peer both have to better understand the status of the peers.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5925](https://github.com/tronprotocol/java-tron/pull/5925)   
+
+
+
+#### 8. Optimize random disconnection strategy
+
+When a node’s latest block height is higher than all peers’ that are connected to it, this node will neither be able to synchronize blocks from peers, nor broadcast transactions. We call it an "island node". An island node actually does not have a valid peer. In order to prevent a node from entering the island state, Anaximander optimizes the random disconnection logic of the node, disconnects nodes that have been inactive for a long time, increases the number of valid connections, and improves the robustness of the node network.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5924](https://github.com/tronprotocol/java-tron/pull/5924)   [https://github.com/tronprotocol/java-tron/pull/5944](https://github.com/tronprotocol/java-tron/pull/5944)  
+[https://github.com/tronprotocol/java-tron/pull/5956](https://github.com/tronprotocol/java-tron/pull/5956)  
+[https://github.com/tronprotocol/java-tron/pull/5984](https://github.com/tronprotocol/java-tron/pull/5984)  
+
+
+---
+
+*Nature is eternal and does not age.*
+
+<p align="right">---Anaximander</p>
+
+
 
 ## GreatVoyage-v4.7.5(Cleobulus)
 
