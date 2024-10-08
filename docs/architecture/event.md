@@ -72,7 +72,7 @@ Contract Event and Contract Log Even support event filter function which include
 ```
 fromBlock: the start block number
 toBlock: the end block number
-contractAddress: contract adsresses list
+contractAddress: contract addresses list
 contractTopics: contract topics list
 ```
 
