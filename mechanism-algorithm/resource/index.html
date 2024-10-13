@@ -294,18 +294,18 @@ Bandwidth balance obtained by staking TRX = NetLimit - NetUsed
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code>freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 </code></pre></div>
-<p>stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 150_000_000_000.</p>
+<p>stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180_000_000_000.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 75_000_000_000 and energy_limit is 75_000_000_000
-B: 75_000_000_000 and energy_limit is 75_000_000_000
+A: 75_000_000_000 and energy_limit is 90_000_000_000
+B: 75_000_000_000 and energy_limit is 90_000_000_000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 60_000_000_000 and energy_limit is 60_000_000_000
-B: 60_000_000_000 and energy_limit is 60_000_000_000
-C: 30_000_000_000 and energy_limit is 30_000_000_000
+A: 60_000_000_000 and energy_limit is 72_000_000_000
+B: 60_000_000_000 and energy_limit is 72_000_000_000
+C: 30_000_000_000 and energy_limit is 36_000_000_000
 </code></pre></div>
 <h4 id="energy-consumption">Energy Consumption<a class="headerlink" href="#energy-consumption" title="Permanent link">&para;</a></h4>
 <p>When the contract is executed, Energy is calculated and deducted according to instruction one by one. The priority of account energy consumption is as follows:</p>
