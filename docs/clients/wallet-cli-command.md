@@ -1975,7 +1975,7 @@ wallet> updateBrokerage TZ7U1WVBRLZ2umjizxqz3XfearEHhXKX7h 30
 ---
 ## DEX
 
-The trading and price fluctuations of trading pairs are in accordance with the [Bancor Agreement](https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf).
+The trading and price fluctuations of trading pairs are in accordance with the [Bancor Agreement](https://cryptopapers.info/assets/pdf/bancor.pdf).
 
 Here are all the commands for DEX:
 
