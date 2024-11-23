@@ -79,7 +79,7 @@ There are occasions when Java-tron simply fails to connect to peers. The common 
 * The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.
 
 # Log and network connection verification
-The java-tron node log is located in `/logs/torn.log`. You can use the following commands to view the latest log of the node and check the block synchronization status of the node:
+The Java-tron node log is `/logs/tron.log` in the Java-tron installation directory. Under the Java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
 
 ```
 $ tail -f /logs/tron.log/
