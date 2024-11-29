@@ -2,7 +2,7 @@
 
 ## Introduction
 
-TRON uses account model. An account's identity is address. It needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transferred from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All TRON's activities are based on account.
+TRON uses the account model. The address is the unique identifier of an account, and a private key signature is required to operate an account. An account has many attributes, including TRX & TRC10 token balances, bandwidth, energy, Etc. An account can send transactions to increase or reduce its TRX or TRC10 token balances, deploy smart contracts, and trigger the smart contracts released by itself or others. All TRON accounts can apply to be Super Representatives or vote for the elected Super Representatives. Accounts are the basis of all activities on TRON.
 
 ## How to Create an Account
 
