@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/tronprotocol/tips/issues/697)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
 |  Anaximander    |  GreatVoyage-v4.7.6    |  2024-10-04    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.6)   |   [Specs](#greatvoyage-v476anaximander)   |
 |  Cleobulus    |  GreatVoyage-v4.7.5    |  2024-5-30    |  [TIP-653](https://github.com/tronprotocol/tips/blob/master/tip-653.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.5)   |   [Specs](#greatvoyage-v475cleobulus)   |
 |  Bias    |  GreatVoyage-v4.7.4    |  2024-3-15    |  [TIP-635](https://github.com/tronprotocol/tips/blob/master/tip-635.md) <br> [TIP-621](https://github.com/tronprotocol/tips/blob/master/tip-621.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.4)   |   [Specs](#greatvoyage-v474bias)   |
@@ -76,6 +77,54 @@
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
 
+## GreatVoyage-4.7.7(Epicurus)
+
+GreatVoyage-4.7.7(Epicurus) introduces multiple important optimizations and updates, including a new proposal to upgrade the floating-point power calculation library from `java.lang.Math` to `java.lang.StrictMath`, to expand TRON hardware compatibility and provide users with more flexible hardware platform selection, and save operating costs; optimizing event subscription processing logic to ensure the integrity of event acquisition, and bring users a more user-friendly development experience; adapting to the GRPC asynchronous call mode, and further improve the node monitoring system. You may find the details below.
+
+
+
+### Core
+#### 1. Migrate `pow` operation from java.lang.Math to java.lang.StrictMath for cross-platform computational consistency
+
+In order to enable Java-tron to support multiple platforms and be compatible with new JDK versions, the Epicurus version switches the floating-point power operation library from `java.lang.Math` to `java.lang.StrictMath` to ensure consistency in cross-platform calculations.
+
+Note: This optimization is the No. 87 parameter of the TRON network. After Epicurus is deployed, it is disabled by default and can be enabled through governance voting.
+
+
+TIP: [https://github.com/tronprotocol/tips/issues/697](https://github.com/tronprotocol/tips/issues/697) 
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/6098](https://github.com/tronprotocol/java-tron/pull/6098)  
+
+### Other Changes
+#### 1. Optimize event subscription processing logic
+
+Java-tron provides event subscription service, and developers can subscribe to specific events from node through event plugin. For block events, when a node receives a new block, if it successfully verifies and processes the block, it will save the block data in the memory database. At the same time, if there is a new solidified block, the solidified block data will be written to the disk database. If the node deployer subscribes to block events, after the node completing the above block processing steps, the event sending related logic will be performed, that is, the latest block event and the latest solidified block event will be sent to the event plugin. However, in previous versions of Epicurus, block processing and event sending used the same exception capture logic: the newly received block data was removed from the memory database and an exception was thrown. This would result in the new block data being deleted when the block processing was normal but an exception occurred during event sending, which might temporarily affect block synchronization.
+
+The Epicurus version optimizes the event subscription processing logic and performs separate exception capture on the block event sending logic. When an exception occurs during event sending, an error log is output and the node exits, so that the node deployer can understand the node abnormality in time and ensure the integrity of event acquisition.
+
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/6096](https://github.com/tronprotocol/java-tron/pull/6096)  
+
+#### 2. Support graceful shutdown with signal -15 (SIGTERM) for nodes enabling backup.
+The Epicurus version adjusts the resource release order of the master and backup services, first closing the communication channel between the master and backup nodes, and then closing the thread pool to ensure that the nodes enabling backup can exit gracefully through the `kill -15` command.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/6095](https://github.com/tronprotocol/java-tron/pull/6095)  
+
+
+#### 3. Improve duration metrics accuracy of gRPC interfaces
+
+The Epicurus version optimizes the duration statistics method for GRPC interface calls to adapt to the GRPC asynchronous call mode: a new server-side interceptor is added to record the start time of the GRPC call and monitor the end event of the GRPC call to accurately calculate the time consumption of the GRPC interface asynchronous call.
+
+Source Code: [https://github.com/tronprotocol/java-tron/pull/6097](https://github.com/tronprotocol/java-tron/pull/6097)  
+
+
+
+Not what we have but what we enjoy, constitutes our abundance.
+
+<p align="right">---Epicurus</p>
+
+---
+
 
 ## GreatVoyage-v4.7.6(Anaximander)
 
@@ -138,12 +187,13 @@ Source Code: [https://github.com/tronprotocol/java-tron/pull/5924](https://githu
 [https://github.com/tronprotocol/java-tron/pull/5984](https://github.com/tronprotocol/java-tron/pull/5984)  
 
 
----
+
 
 *Nature is eternal and does not age.*
 
 <p align="right">---Anaximander</p>
 
+---
 
 
 ## GreatVoyage-v4.7.5(Cleobulus)
@@ -195,11 +245,12 @@ The Cleobulus version removes redundant code in the block processing logic, impr
 
 Source Code: [https://github.com/tronprotocol/java-tron/pull/5834](https://github.com/tronprotocol/java-tron/pull/5834) 
 
---- 
+
 
 *Seek virtue and eschew vice.* 
 <p align="right"> ---Cleobulus</p>
 
+--- 
 
 ## GreatVoyage-v4.7.4(Bias)
 
@@ -342,12 +393,12 @@ The Bias version optimizes the `/wallet/createshieldedcontractparameters` interf
 Source Code: [https://github.com/tronprotocol/java-tron/pull/5746](https://github.com/tronprotocol/java-tron/pull/5746) 
 
 
---- 
+
 
 *Be slow in considering, but resolute in action.* 
 <p align="right"> ---Bias</p>
 
-
+--- 
 
 
 

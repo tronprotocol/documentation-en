@@ -2,8 +2,7 @@
 
 ## Background
 
-!!! note
-    **Since v3.5** In the past version, the transactions created in one account can only be signed by one private key, an account can only be managed by one private key. Since V3.5, an account can be managed by several private keys, and the transactions created in one account can be signed by serval private keys.
+Multiple signature functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through TRON's multi-signature implementation and design.
 
 Reference: [TIP-16: Account Multi-signature](https://github.com/tronprotocol/TIPs/blob/master/tip-16.md)
 
@@ -58,7 +57,7 @@ message AccountPermissionUpdateContract {
 - `witness`: Witness permission (if is witness)
 - `actives`: Active permission
 
-This will override the Original account permission.
+This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a witnss account) and active permission also need to be set
 
 #### Permission
 
@@ -305,17 +304,3 @@ Please refer to [HTTP API](../api/http.md) and [RPC API](../api/rpc.md) for more
     rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}
     ```
 
-## Others
-
-Since V3.5, what is the change after a new account is created?
-
-When to create a new account, an owner permission and active permission will be generated automatically. Owner permission only contains one key, the weight and threshold are both 1. Active permission also contains one key, the weight and threshold are both 1, and operations is "7fff1fc0033e0000000000000000000000000000000000000000000000000000", means it support the execution of all contracts except AccountPermissionUpdateContract.
-After V3.5, if there is a new system contract, the default operations value of the newly created account will change. The operations of existing accounts will not change.
-
-Please refer to [wallet-cli](https://github.com/tronprotocol/wallet-cli/blob/master/README.md) to check the usage of multi-signature.
-
-## Fees
-
-If you update your account permission, the fee is 100 TRX.
-
-If a transaction is signed by more than 1 account, the fee is 1 TRX.

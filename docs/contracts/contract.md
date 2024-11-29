@@ -4,7 +4,7 @@
 
 Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
 
-TRON smart contract support Solidity language in (Ethereum). Currently recommend Solidity language version is 0.4.24 ~ 0.4.25. Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
+TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [Tron solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## Smart Contract Features
 TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
