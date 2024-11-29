@@ -115,8 +115,6 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#tools">Tools</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#development">Development</a>
-    </li>
     </ul>
                   </li>
               </ul>
@@ -177,109 +175,13 @@
 <p>Support the build, deploy, transplant, etc. for solidity language written smart contract.
 <a href="https://developers.tron.network/reference/what-is-tronbox">https://developers.tron.network/reference/what-is-tronbox</a></p>
 <h3> 3. TronWeb </h3>
-<p>Provide http api service for the usage of smart contract.
-<a href="https://developers.tron.network/docs/tronweb-1">https://developers.tron.network/docs/tronweb-1</a></p>
+<p>Provide javascript api for the usage of smart contract.
+<a href="https://tronweb.network/docu/docs/intro/">https://tronweb.network/docu/docs/intro/</a></p>
 <h3> 4. TronGrid </h3>
 <p>Provide smart contract event query service.
 <a href="https://developers.tron.network/docs/trongrid">https://developers.tron.network/docs/trongrid</a></p>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to <a href="https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler">SimpleWebCompiler</a> to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:</p>
-<div class="highlight"><pre><span></span><code>pragma solidity ^0.4.0;
-contract DataStore {
-
-    mapping(uint256 =&gt; uint256) data;
-
-    function set(uint256 key, uint256 value) public {
-        data[key] = value;
-    }
-
-    function get(uint256 key) view public returns (uint256 value) {
-        value = data[key];
-    }
-}
-</code></pre></div>
-<p>** Start a Private Net **</p>
-<p>Make sure the fullnode code has been deployed locally, you can check if 'Produce block successfully' log appears in FullNode/logs/tron.log</p>
-<p>** Develop a Smart Contract **</p>
-<p>Copy the code example above to remix to debug.</p>
-<p>** Compile in SimpleWebCompiler for ABI and ByteCode **</p>
-<p>Copy the code example above to SimpleWebCompiler to get ABI and ByteCode.
-Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.</p>
-<p>** Using Wallet-cli to Deploy **</p>
-<p>Download Wallet-Cli and build</p>
-<div class="highlight"><pre><span></span><code>shell
-# download source code
-git clone https://github.com/tronprotocol/wallet-cli
-cd  wallet-cli
-# build
-./gradlew build
-cd  build/libs
-</code></pre></div>
-<p>Note: You need to change the node ip and port in config.conf</p>
-<p>start wallet-cli</p>
-<div class="highlight"><pre><span></span><code>java -jar wallet-cli.jar
-</code></pre></div>
-<p>after started, you can use command lines to operate:</p>
-<div class="highlight"><pre><span></span><code>importwallet
-&lt;input your password twice for your account&gt;
-&lt;input your private key&gt;
-login
-&lt;input your password you set&gt;
-getbalance
-</code></pre></div>
-<p>deploy contract</p>
-<div class="highlight"><pre><span></span><code>Shell
-# contract deployment command
-DeployContract contractName ABI byteCode constructor params isHex fee_limit consume_user_resource_percent &lt;value&gt; &lt;library:address,library:address,...&gt;
-
-# parameters
-contract_name: Contract name
-ABI: ABI from SimpleWebCompiler
-bytecode: ByteCode from SimpleWebCompiler
-constructor: When deploy contract, this will be called. If is needed, write as constructor(uint256,string). If not, just write #
-params: The parameters of the constructor, use &#39;,&#39; to split, like  1, &quot;test&quot;, if no constructor, just write #
-fee_limit: The TRX consumption limit for the deployment, unit is SUN(1 SUN = 10^-6 TRX)
-consume_user_resource_percent: Consume user&#39;s resource percentage. It should be an integer between [0, 100]. if 0, means it does not consume user&#39;s resource until the developer&#39;s resource has been used up
-value: The amount of TRX transfer to the contract when deploy
-library: If the contract contains library, you need to specify the library address
-
-# example
-deploycontract DataStore [{&quot;constant&quot;:false,&quot;inputs&quot;:[{&quot;name&quot;:&quot;key&quot;,&quot;type&quot;:&quot;uint256&quot;},{&quot;name&quot;:&quot;value&quot;,&quot;type&quot;:&quot;uint256&quot;}],&quot;name&quot;:&quot;set&quot;,&quot;outputs&quot;:[],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;nonpayable&quot;,&quot;type&quot;:&quot;function&quot;},{&quot;constant&quot;:true,&quot;inputs&quot;:[{&quot;name&quot;:&quot;key&quot;,&quot;type&quot;:&quot;uint256&quot;}],&quot;name&quot;:&quot;get&quot;,&quot;outputs&quot;:[{&quot;name&quot;:&quot;value&quot;,&quot;type&quot;:&quot;uint256&quot;}],&quot;payable&quot;:false,&quot;stateMutability&quot;:&quot;view&quot;,&quot;type&quot;:&quot;function&quot;}] 608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029 # # false 1000000 30 0
-If it is deployed successfully, it will return &#39;Deploy the contract successfully&#39;
-</code></pre></div>
-<p>get the contract address</p>
-<div class="highlight"><pre><span></span><code>Your smart contract address will be: &lt;contract address&gt;
-
-# in this example
-Your smart contract address will be: TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
-</code></pre></div>
-<p>call the contract to store data, query data</p>
-<div class="highlight"><pre><span></span><code>Shell
-# call contract command
-triggercontract &lt;contract_address&gt; &lt;method&gt; &lt;args&gt; &lt;is_hex&gt; &lt;fee_limit&gt; &lt;value&gt;
-
-# parameters
-contract_address: Contract address, like TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
-method: The method called, like set(uint256,uint256) or fool(), use &#39;,&#39; to split the parameters. Do not leave space between parameters
-args: The parameters passed to the method called, use &#39;,&#39; to split the parameters. Do not leave space between parameters
-is_hex: whether the input parameters is Hex, false or true
-fee_limit: The TRX consumption limit for the trigger, unit is SUN(1 SUN = 10^-6 TRX)
-value: The amount of TRX transfer to the contract when trigger
-
-# trigger example
-## set mapping 1-&gt;1
-triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 set(uint256,uint256) 1,1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
-
-## get mapping key = 1
-triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
-</code></pre></div>
-<p>If the function called is constant or view, wallet-cli will return the result directly.
-If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...</p>
-<div class="highlight"><pre><span></span><code># for instance, using remix to get the bytecode of the contract, like:
-608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073&lt;b&gt;__browser/oneLibrary.sol.Math3__________&lt;\b&gt;634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029
-</code></pre></div>
-<p>The address of the library deployed before is: TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54
-When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 as the parameter of deploycontract.</p>
+<h3> 5. Trident-java </h3>
+<p>Trident-java is a lightweight SDK that includes libraries for working with TRON system contracts and smart contracts.</p>
               
             </div>
           </div><footer>

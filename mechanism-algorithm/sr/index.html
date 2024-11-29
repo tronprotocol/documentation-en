@@ -209,7 +209,7 @@
 </code></pre></div>
 <p>The final output above is: Vote 3 votes for witness1, 7 votes for witness2</p>
 <h3 id="witnesses-brokerage">Witnesses Brokerage<a class="headerlink" href="#witnesses-brokerage" title="Permanent link">&para;</a></h3>
-<p>The default ratio is 20%, which can be modified by the witnesses.</p>
+<p>The default ratio is 20%. Super representatives and super representative partners can query the brokerage ratio through the <code>wallet/getBrokerage</code> interface, and can also modify the brokerage ratio through the <code>wallet/updateBrokerage</code> interface.</p>
 <p>If a witness get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the witness; if set to 0, the rewards are all sent to the voters.</p>
 <h2 id="reward-for-witnesses">Reward for Witnesses<a class="headerlink" href="#reward-for-witnesses" title="Permanent link">&para;</a></h2>
 <h3 id="votes-reward">Votes Reward<a class="headerlink" href="#votes-reward" title="Permanent link">&para;</a></h3>
@@ -231,185 +231,12 @@
 <p>Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.</p>
 <h3 id="2-create-a-proposal">2. Create a Proposal<a class="headerlink" href="#2-create-a-proposal" title="Permanent link">&para;</a></h3>
 <p>Only SRs, Partners and Candidates can create a proposal.</p>
-<p>The network parameters can be modified([min,max]).</p>
-<p>{0,1}: 1 means 'allowed' or 'actived', 0 means 'disallow', 'disable' or 'no'.</p>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Command</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>MaintenanceTimeInterval <br> (To modify the maintenance interval of SR)</td>
-<td>6  Hours <br> [3 * 27, 24 * 3600] s</td>
-</tr>
-<tr>
-<td>1</td>
-<td>AccountUpgradeCost <br> (To modify the cost of applying for SR account)</td>
-<td>9999  TRX <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>2</td>
-<td>CreateAccountFee <br> (To modify the account creation fee)</td>
-<td>0.1  TRX <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>3</td>
-<td>TransactionFee <br> (To modify the amount of TRX used to gain extra bandwidth)</td>
-<td>1000  Sun/Byte <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>4</td>
-<td>AssetIssueFee <br> (To modify asset issuance fee)</td>
-<td>1024  TRX <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>5</td>
-<td>WitnessPayPerBlock <br> (To modify SR block generation reward)</td>
-<td>16 TRX <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>6</td>
-<td>WitnessStandbyAllowance <br> (To modify the rewards given to the top 27 SRs and <br> the following 100 partners)</td>
-<td>115200  TRX <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>7</td>
-<td>CreateNewAccountFeeInSystemContract <br> (To modify the cost of account creation)</td>
-<td>1 TRX</td>
-</tr>
-<tr>
-<td>8</td>
-<td>CreateNewAccountBandwidthRate <br> (To modify the consumption of bandwidth of account creation)</td>
-<td>1&nbsp;Bandwidth/Byte</td>
-</tr>
-<tr>
-<td>9</td>
-<td>AllowCreationOfContracts <br> (To activate the Virtual Machine (VM))</td>
-<td>1 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>10</td>
-<td>RemoveThePowerOfTheGr <br> (To remove the GR Genesis votes)</td>
-<td>1 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>11</td>
-<td>EnergyFee <br> (To modify the fee of 1 energy)</td>
-<td>140 Sun <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>12</td>
-<td>ExchangeCreateFee <br> (To modify the cost of trading pair creation)</td>
-<td>1024 TRX <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>13</td>
-<td>MaxCpuTimeOfOneTx <br> (To modify the maximum execution time of one transaction)</td>
-<td>50 ms <br> [0, 1000] ms</td>
-</tr>
-<tr>
-<td>14</td>
-<td>AllowUpdateAccountName <br> (To allow to change the account name)</td>
-<td>0 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>15</td>
-<td>AllowSameTokenName <br> (To allow the same token name)</td>
-<td>1 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>16</td>
-<td>AllowDelegateResource <br> (To allow resource delegation)</td>
-<td>1 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>18</td>
-<td>AllowTvmTransferTrc10 <br> (To allow the TRC-10 token transfer in smart contracts)</td>
-<td>1 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>19</td>
-<td>TotalEnergyCurrentLimit <br> (To modify current total energy limit)</td>
-<td>50000000000</td>
-</tr>
-<tr>
-<td>20</td>
-<td>AllowMultiSign <br> (To allow the initiation of multi-signature)</td>
-<td>1 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>21</td>
-<td>AllowAdaptiveEnergy <br> (To allow adaptive adjustment for total Energy)</td>
-<td>0 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>22</td>
-<td>UpdateAccountPermissionFee <br> (To modify the fee for updating account permission)</td>
-<td>100 TRX</td>
-</tr>
-<tr>
-<td>23</td>
-<td>MultiSignFee <br> (To modify the fee for multi-signature)</td>
-<td>1 TRX</td>
-</tr>
-<tr>
-<td>24</td>
-<td>AllowProtoFilterNum <br> (To enable protocol optimization)</td>
-<td>0 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>26</td>
-<td>AllowTvmConstantinople <br> (To support the new commands of Constantinople)</td>
-<td>1 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>27</td>
-<td>AllowShieldedTransaction <br> (To enable shielded transaction)</td>
-<td>0 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>28</td>
-<td>ShieldedTransactionFee <br> (To modify shielded transaction fee)</td>
-<td>10 TRX <br> [0, 10000] TRX</td>
-</tr>
-<tr>
-<td>29</td>
-<td>AdaptiveResourceLimitMultiplier <br> (To modify the adaptive energy limit multiplier)</td>
-<td>1000 <br> [1, 10000]</td>
-</tr>
-<tr>
-<td>30</td>
-<td>ChangeDelegation <br> (Propose to support the decentralized vote dividend)</td>
-<td>1 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>31</td>
-<td>Witness127PayPerBlock <br> (Propose to modify the block voting rewards given to <br> the top 27 SRs and the following 100 partners)</td>
-<td>160  TRX <br> [0, 100000000000] TRX</td>
-</tr>
-<tr>
-<td>32</td>
-<td>AllowTvmSolidity059 <br> (To allow TVM to support solidity compiler 0.5.9)</td>
-<td>0 <br> {0, 1}</td>
-</tr>
-<tr>
-<td>33</td>
-<td>AdaptiveResourceLimitTargetRatio <br> (To modify the target energy limit)</td>
-<td>10 <br> [1, 1000]</td>
-</tr>
-</tbody>
-</table>
+<p>Please refer to <a href="https://tronscan.org/#/sr/committee">here</a> for TRON network dynamic parameters and their values.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; createproposal id value</span>
-<span class="gp"># </span>id:<span class="w"> </span>the<span class="w"> </span>serial<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>~<span class="w"> </span><span class="m">33</span><span class="o">)</span>
+<span class="gp"># </span>id:<span class="w"> </span>the<span class="w"> </span>serial<span class="w"> </span>number
 <span class="gp"># </span>value:<span class="w"> </span>the<span class="w"> </span>parameter<span class="w"> </span>value
 </code></pre></div>
-<p>Note: In TRON network, 1 TRX = 1_000_000 SUN</p>
 <h3 id="3-vote-for-a-proposal">3. Vote for a Proposal<a class="headerlink" href="#3-vote-for-a-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.</p>
 <p>Example (Using wallet-cli):</p>

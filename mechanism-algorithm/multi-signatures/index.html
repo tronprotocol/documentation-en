@@ -135,10 +135,6 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#others">Others</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#fees">Fees</a>
-    </li>
     </ul>
                   </li>
               </ul>
@@ -212,10 +208,7 @@
               
                 <h1 id="multi-signature">Multi-signature<a class="headerlink" href="#multi-signature" title="Permanent link">&para;</a></h1>
 <h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Since v3.5</strong> In the past version, the transactions created in one account can only be signed by one private key, an account can only be managed by one private key. Since V3.5, an account can be managed by several private keys, and the transactions created in one account can be signed by serval private keys.</p>
-</div>
+<p>Multiple signature functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through TRON's multi-signature implementation and design.</p>
 <p>Reference: <a href="https://github.com/tronprotocol/TIPs/blob/master/tip-16.md">TIP-16: Account Multi-signature</a></p>
 <h2 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h2>
 <p>There are three types of permission: owner、witness and active. Owner permission has the right to execute all the contracts. Witness permission is for SR. Active permission contains a set of contracts selected execution permissions.</p>
@@ -255,7 +248,7 @@
 <li><code>witness</code>: Witness permission (if is witness)</li>
 <li><code>actives</code>: Active permission</li>
 </ul>
-<p>This will override the Original account permission.</p>
+<p>This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a witnss account) and active permission also need to be set</p>
 <h4 id="permission">Permission<a class="headerlink" href="#permission" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Permission</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">PermissionType</span><span class="w"> </span><span class="p">{</span>
@@ -462,14 +455,6 @@ localwitness = [
 </code></pre></div>
 </li>
 </ol>
-<h2 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h2>
-<p>Since V3.5, what is the change after a new account is created?</p>
-<p>When to create a new account, an owner permission and active permission will be generated automatically. Owner permission only contains one key, the weight and threshold are both 1. Active permission also contains one key, the weight and threshold are both 1, and operations is "7fff1fc0033e0000000000000000000000000000000000000000000000000000", means it support the execution of all contracts except AccountPermissionUpdateContract.
-After V3.5, if there is a new system contract, the default operations value of the newly created account will change. The operations of existing accounts will not change.</p>
-<p>Please refer to <a href="https://github.com/tronprotocol/wallet-cli/blob/master/README.md">wallet-cli</a> to check the usage of multi-signature.</p>
-<h2 id="fees">Fees<a class="headerlink" href="#fees" title="Permanent link">&para;</a></h2>
-<p>If you update your account permission, the fee is 100 TRX.</p>
-<p>If a transaction is signed by more than 1 account, the fee is 1 TRX.</p>
               
             </div>
           </div><footer>
