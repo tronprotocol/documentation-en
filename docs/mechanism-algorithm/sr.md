@@ -18,19 +18,19 @@ Example (Using wallet-cli):
 
 ```console
 > freezebalancev2 10,000,000 3 // Stake 10 TRX to get 10 TRON Power(TP)
-> votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2
-> votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2
+> votewitness SR1 4 SR2 6 // Vote 4 votes for SR1, 6 votes for SR2
+> votewitness SR1 3 SR2 7 // Vote 3 votes for SR1, 7 votes for SR2
 ```
 
-The final output above is: Vote 3 votes for witness1, 7 votes for witness2
+The final output above is: Vote 3 votes for SR1, 7 votes for SR2.
 
-### Witnesses Brokerage
+### Super Representatives Brokerage
 
 The default ratio is 20%. Super representatives and super representative partners can query the brokerage ratio through the `wallet/getBrokerage` interface, and can also modify the brokerage ratio through the `wallet/updateBrokerage` interface.
 
-If a witness get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the witness; if set to 0, the rewards are all sent to the voters.
+If a SR(Super Representatives) get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.
 
-## Reward for Witnesses
+## Reward for SR(Super Representatives)
 
 ### Votes Reward
 
@@ -52,13 +52,13 @@ Reward may be less than the theoretical number due to missed blocks and maintena
 
 ## Reward for Voters
 
-If you vote for a Super Representative:
+If you vote for a SR(Super Representative):
 
-the daily Voter Rewards = (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a witness) / (the total number of votes a witness receives) TRX
+the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a SR) / (the total number of votes a SR receives) TRX
 
 If you vote for a Partner:
 
-the daily Voter Rewards = (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) TRX
+the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX
 
 ## Committee
 
