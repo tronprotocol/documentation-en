@@ -836,7 +836,7 @@ curl  http://127.0.0.1:8090/wallet/getnodeinfo
 Return: The node information
 
 #### wallet/getchainparameters
-Description: Query the parameters of the blockchain used for witnessses to create a proposal
+Description: Query the parameters of the blockchain used for SR(Super Representatives) to create a proposal
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters
 ```
@@ -1318,7 +1318,7 @@ The following are voting and SR related APIs:
 - [wallet/getnextmaintenancetime](#walletgetnextmaintenancetime)
 
 #### wallet/createwitness
-Description: Apply to become a witness
+Description: Apply to become a super representative
 ```console
 $ curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d
 '{
@@ -1337,7 +1337,7 @@ Return: Transaction object
 
 
 #### wallet/updatewitness
-Description: Update the witness' website url
+Description: Update the super representative' website url
 ```console
 $ curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d
 '{
@@ -1356,16 +1356,16 @@ Return: Transaction object
 
 
 #### wallet/listwitnesses
-Description: Qyery the list of the witnesses
+Description: Qyery the list of the super representatives
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
 ```
 Parameters: N/A
 
-Return:witness list
+Return:SR(Super Representatives) list
 
 #### wallet/withdrawbalance
-Description: Withdraw reward to account balance for witnesses
+Description: Withdraw reward to account balance for super representatives
 ```console
 $ curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d
 '{
@@ -1386,7 +1386,7 @@ Note: It can only withdraw once for every 24 hours
 
 
 #### wallet/votewitnessaccount
-Description: Vote for witnesses
+Description: Vote for super representatives
 ```console
 $ curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d
 '{
@@ -1403,21 +1403,21 @@ $ curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d
 Parameters:
 
 - `owner_address`: Owner address, default hexString
-- `votes`: 'vote_address' stands for the address of the witness you want to vote, default hexString, 'vote_count' stands for the number of votes you want to vote
+- `votes`: 'vote_address' stands for the address of the super representative you want to vote, default hexString, 'vote_count' stands for the number of votes you want to vote
 - `permission_id`: Optional, for multi-signature use
 
 Return: Transaction object
 
 #### wallet/getBrokerage
-Description: Query the ratio of brokerage of the witness
+Description: Query the ratio of brokerage of the super representative
 ```console
 $ curl -X GET  http://127.0.0.1:8090/wallet/getBrokerage -d '{
 "address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 ```
 
-Parameter `address`: The address of the witness's account, default hexString
+Parameter `address`: The address of the SR's account, default hexString
 
-Return: The ratio of brokerage of the witness
+Return: The ratio of brokerage of the SR
 
 #### wallet/updateBrokerage
 Description: Update the ratio of brokerage
@@ -1430,7 +1430,7 @@ $ curl -X POST  http://127.0.0.1:8090/wallet/updateBrokerage  -d '{
 
 Parameters:
 
-- `owner_address`: The address of the witness's account, default hexString
+- `owner_address`: The address of the SR's account, default hexString
 - `brokerage`: The ratio of brokerage you want to update to
 
 
@@ -2661,13 +2661,13 @@ Return: Two lists will return, one is the list of addresses the account has dele
 ### Voting & SRs
 
 #### walletsolidity/listwitnesses
-Description: Query the list of witnesses
+Description: Query the list of super representatives
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/listwitnesses
 ```
 Parameters: N/A
 
-Return: List of all witnesses
+Return: List of all super representatives
 
 ### TRC10 Token
 

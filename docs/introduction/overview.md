@@ -30,11 +30,11 @@ Example (Using wallet-cli):
 
 ```text
 freezebalancev2 10,000,000 3 // stake 10 TRX to get 10 TRON Power(TP)
-votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2
-votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2
+votewitness SR1 4 SR2 6 // Vote 4 votes for SR1, 6 votes for SR2
+votewitness SR1 3 SR2 7 // Vote 3 votes for SR1, 7 votes for SR2
 ```
 
-The final output above is: Vote 3 votes for witness1, 7 votes for witness2
+The final output above is: Vote 3 votes for SR1, 7 votes for SR2
 
 ## 2.3 Reward for Super Representatives
 
@@ -1025,7 +1025,7 @@ receiverAddress: recipient account address
 
 |Type|Fee|
 | :------|:------:|
-|Create a witness|9999 TRX|
+|Create a SR(Super Representative)|9999 TRX|
 |Issue a TRC-10 token|1024 TRX|
 |Create an account|1 TRX|
 |Create an exchange|1024 TRX|

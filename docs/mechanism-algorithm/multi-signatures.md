@@ -54,10 +54,10 @@ message AccountPermissionUpdateContract {
 
 - `owner_address`: The account applies multi-signatures
 - `owner`: Owner permission
-- `witness`: Witness permission (if is witness)
+- `witness`: Witness permission (if the account is a SR(Super Representative))
 - `actives`: Active permission
 
-This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a witnss account) and active permission also need to be set
+This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a SR account) and active permission also need to be set
 
 #### Permission
 
@@ -126,7 +126,7 @@ Owner permission's features:
 
 ### Witness Permission
 
-Super representatives can use this permission to manage block producing. Only witness account has this permission.
+Super representatives can use this permission to manage block producing. Only SR(Super Representative) account has this permission.
 
 Usage scenario example:
 A super representative deploys a witness node on cloud server. In order to keep the account on the cloud server safe, you can only give the block producing permission to the account you put on cloud server. Because this account only owns  block producing permission, no TRX transfer permission, so even if the account on the cloud server is leaked, the TRX will not be lost.
@@ -140,10 +140,10 @@ Witness node configuration:
 # config.conf
 
 // Optional.The default is empty.
-// It is used when the witness account has set the witnessPermission.
-// When it is not empty, the localWitnessAccountAddress represents the address of the witness account,
-// and the localwitness is configured with the private key of the witnessPermissionAddress in the witness account.
-// When it is empty,the localwitness is configured with the private key of the witness account.
+// It is used when the SR(Super Representative) account has set the witnessPermission.
+// When it is not empty, the localWitnessAccountAddress represents the address of the SR(Super Representative) account,
+// and the localwitness is configured with the private key of the witnessPermissionAddress in the SR(Super Representatives) account.
+// When it is empty,the localwitness is configured with the private key of the SR(Super Representatives) account.
 
 //localWitnessAccountAddress =
 

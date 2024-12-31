@@ -29,7 +29,7 @@ rpc BroadcastTransaction (Transaction) returns (Return) {}
 Nodes: Fullnode
 
 Description:
-Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after witness verification.
+Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after super representatives verification.
 
 **4.&nbsp;Create an account**
 
@@ -50,7 +50,7 @@ rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction) {}
 ```
 Nodes: FullNode
 
-**7.&nbsp;Query the ratio of brokerage of the witness**
+**7.&nbsp;Query the ratio of brokerage of the super representative**
 ```protobuf
 rpc GetBrokerageInfo (BytesMessage) returns (NumberMessage) {}
 ```
