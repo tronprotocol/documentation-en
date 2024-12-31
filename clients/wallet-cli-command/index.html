@@ -543,10 +543,10 @@ GetAddress<span class="w"> </span>successful<span class="w"> </span>!!
 This command is used to assign permissions to other accounts, is utilized for <strong>multi-signature</strong> transactions, which allows other users to access the account with paritcular permission in order to better manage it. There are three types of permissions:</p>
 <ul>
 <li>owner: access to the owner of account</li>
-<li>active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for witness purposes.</li>
-<li>witness: only for witness, block production authorization will be granted to one of the other users.</li>
+<li>active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for SR purposes.</li>
+<li>witness: only for super representatives, block production authorization will be granted to one of the other users.</li>
 </ul>
-<p><strong>NOTE</strong> the parameter<code>Permission</code> must written in JSON format and entered in line. If the owner accountis not SR, then do not assign witness permission. 
+<p><strong>NOTE</strong> the parameter<code>Permission</code> must written in JSON format and entered in line. If the owner accountis not SR, then do not assign super representative permission. 
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>updateaccountpermission<span class="w"> </span>TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8<span class="w"> </span><span class="o">{</span><span class="s2">&quot;owner_permission&quot;</span>:<span class="o">{</span><span class="s2">&quot;keys&quot;</span>:<span class="o">[{</span><span class="s2">&quot;address&quot;</span>:<span class="s2">&quot;TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8&quot;</span>,<span class="s2">&quot;weight&quot;</span>:1<span class="o">}]</span>,<span class="s2">&quot;threshold&quot;</span>:1,<span class="s2">&quot;type&quot;</span>:0,<span class="s2">&quot;permission_name&quot;</span>:<span class="s2">&quot;owner&quot;</span><span class="o">}</span>,<span class="s2">&quot;active_permissions&quot;</span>:<span class="o">[{</span><span class="s2">&quot;operations&quot;</span>:<span class="s2">&quot;7fff1fc0033e0000000000000000000000000000000000000000000000000000&quot;</span>,<span class="s2">&quot;keys&quot;</span>:<span class="o">[{</span><span class="s2">&quot;address&quot;</span>:<span class="s2">&quot;TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej&quot;</span>,<span class="s2">&quot;weight&quot;</span>:1<span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;address&quot;</span>:<span class="s2">&quot;TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE&quot;</span>,<span class="s2">&quot;weight&quot;</span>:1<span class="o">}]</span>,<span class="s2">&quot;threshold&quot;</span>:2,<span class="s2">&quot;type&quot;</span>:2,<span class="s2">&quot;permission_name&quot;</span>:<span class="s2">&quot;active12323&quot;</span><span class="o">}]}</span>
 <span class="o">{</span>
 <span class="w">    </span><span class="s2">&quot;raw_data&quot;</span>:<span class="o">{</span>
@@ -1998,7 +1998,7 @@ By default, all proposals would be listed from <code>proposal_id</code> 1 to dat
 </code></pre></div></p>
 <h3 id="votewitness">VoteWitness<a class="headerlink" href="#votewitness" title="Permanent link">&para;</a></h3>
 <p>Voting requires Tron Power, which can be obtained by freezing funds.
-<div class="highlight"><pre><span></span><code>wallet&gt; votewitness [witness address] [Tron Power Amount]
+<div class="highlight"><pre><span></span><code>wallet&gt; votewitness [SR(Super Representatives) address] [Tron Power Amount]
 </code></pre></div></p>
 <ul>
 <li>The share calculation method is: 1 unit of share can be obtained for every 1TRX frozen.</li>
@@ -2008,11 +2008,11 @@ By default, all proposals would be listed from <code>proposal_id</code> 1 to dat
 <p>For example:
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>freezeBalance<span class="w"> </span><span class="m">100000000</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>address<span class="w">  </span><span class="c1"># Freeze 10TRX and acquire 10 units of Tron Power</span>
 
-wallet&gt;<span class="w"> </span>votewitness<span class="w"> </span><span class="o">[</span>witness1<span class="o">]</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">[</span>witness2<span class="o">]</span><span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="c1"># Cast 4 votes for witness1 and 6 votes for witness2 at the same time</span>
+wallet&gt;<span class="w"> </span>votewitness<span class="w"> </span><span class="o">[</span>SR1<span class="o">]</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">[</span>SR2<span class="o">]</span><span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="c1"># Cast 4 votes for SR1 and 6 votes for SR2 at the same time</span>
 
-wallet&gt;<span class="w"> </span>votewitness<span class="w"> </span><span class="o">[</span>witness1<span class="o">]</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="c1"># Voted 10 votes for witness1</span>
+wallet&gt;<span class="w"> </span>votewitness<span class="w"> </span><span class="o">[</span>SR1<span class="o">]</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="c1"># Voted 10 votes for SR1</span>
 </code></pre></div>
-The final result of the above command was 10 votes for witness1 and 0 vote for witness2.</p>
+The final result of the above command was 10 votes for SR1 and 0 vote for SR2.</p>
 <h3 id="listwitnesses">ListWitnesses<a class="headerlink" href="#listwitnesses" title="Permanent link">&para;</a></h3>
 <p>Get all miner node information
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>listwitnesses
@@ -2041,10 +2041,10 @@ The final result of the above command was 10 votes for witness1 and 0 vote for w
 ···
 </code></pre></div></p>
 <h3 id="getbrokerage">GetBrokerage<a class="headerlink" href="#getbrokerage" title="Permanent link">&para;</a></h3>
-<p>View the ratio of brokerage of the witness.</p>
-<p>After voting for the witness, you will receive the rewards. The witness has the right to decide the ratio of brokerage. The default ratio is 20%, and the witness can adjust it.</p>
-<p>By default, if a witness is rewarded, he will receive 20% of the whole rewards, and 80% of the rewards will be distributed to his voters.</p>
-<p><code>OwnerAddress</code> is the address of the witness's account, it is a base58check type address.
+<p>View the ratio of brokerage of the SR(Super Representatives).</p>
+<p>After voting for the super representative, you will receive the rewards. The super representative has the right to decide the ratio of brokerage. The default ratio is 20%, and the super representative can adjust it.</p>
+<p>By default, if a super representative is rewarded, he will receive 20% of the whole rewards, and 80% of the rewards will be distributed to his voters.</p>
+<p><code>OwnerAddress</code> is the address of the SR's account, it is a base58check type address.
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>getbrokerage<span class="w"> </span>TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 The<span class="w"> </span>brokerage<span class="w"> </span>is<span class="w"> </span>:<span class="w"> </span><span class="m">20</span>
 </code></pre></div></p>
@@ -2055,10 +2055,10 @@ The<span class="w"> </span>brokerage<span class="w"> </span>is<span class="w"> <
 The<span class="w"> </span>reward<span class="w"> </span>is<span class="w"> </span>:<span class="w"> </span><span class="m">0</span>
 </code></pre></div></p>
 <h3 id="updatebrokerage">UpdateBrokerage<a class="headerlink" href="#updatebrokerage" title="Permanent link">&para;</a></h3>
-<p>Update the ratio of brokerage, this command is usually used by a witness account.
+<p>Update the ratio of brokerage, this command is usually used by a super representative account.
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>updateBrokerage<span class="w"> </span><span class="o">[</span>OwnerAddress<span class="o">]</span><span class="w"> </span><span class="o">[</span>brokerage<span class="o">]</span>
 </code></pre></div>
-<code>OwnerAddress</code> is the address of the witness's account, it is a base58check type address.</p>
+<code>OwnerAddress</code> is the address of the super representative's account, it is a base58check type address.</p>
 <p><code>brokerage</code> is the ratio of brokerage you want to update to, the limit of it: 0-100.</p>
 <p>For example:
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>updateBrokerage<span class="w"> </span>TZ7U1WVBRLZ2umjizxqz3XfearEHhXKX7h<span class="w"> </span><span class="m">30</span>

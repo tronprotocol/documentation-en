@@ -245,10 +245,10 @@
 <ul>
 <li><code>owner_address</code>: The account applies multi-signatures</li>
 <li><code>owner</code>: Owner permission</li>
-<li><code>witness</code>: Witness permission (if is witness)</li>
+<li><code>witness</code>: Witness permission (if the account is a SR(Super Representative))</li>
 <li><code>actives</code>: Active permission</li>
 </ul>
-<p>This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a witnss account) and active permission also need to be set</p>
+<p>This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a SR account) and active permission also need to be set</p>
 <h4 id="permission">Permission<a class="headerlink" href="#permission" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Permission</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">PermissionType</span><span class="w"> </span><span class="p">{</span>
@@ -307,7 +307,7 @@
 <li>If a permissionId is not specified when a contract is executed, using owner permission by default.</li>
 </ol>
 <h3 id="witness-permission">Witness Permission<a class="headerlink" href="#witness-permission" title="Permanent link">&para;</a></h3>
-<p>Super representatives can use this permission to manage block producing. Only witness account has this permission.</p>
+<p>Super representatives can use this permission to manage block producing. Only SR(Super Representative) account has this permission.</p>
 <p>Usage scenario example:
 A super representative deploys a witness node on cloud server. In order to keep the account on the cloud server safe, you can only give the block producing permission to the account you put on cloud server. Because this account only owns  block producing permission, no TRX transfer permission, so even if the account on the cloud server is leaked, the TRX will not be lost.</p>
 <p>Witness node configuration:</p>
@@ -318,10 +318,10 @@ A super representative deploys a witness node on cloud server. In order to keep 
 <div class="highlight"><pre><span></span><code># config.conf
 
 // Optional.The default is empty.
-// It is used when the witness account has set the witnessPermission.
-// When it is not empty, the localWitnessAccountAddress represents the address of the witness account,
-// and the localwitness is configured with the private key of the witnessPermissionAddress in the witness account.
-// When it is empty,the localwitness is configured with the private key of the witness account.
+// It is used when the SR(Super Representative) account has set the witnessPermission.
+// When it is not empty, the localWitnessAccountAddress represents the address of the SR(Super Representative) account,
+// and the localwitness is configured with the private key of the witnessPermissionAddress in the SR(Super Representatives) account.
+// When it is empty,the localwitness is configured with the private key of the SR(Super Representatives) account.
 
 //localWitnessAccountAddress =
 

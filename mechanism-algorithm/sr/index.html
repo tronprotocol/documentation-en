@@ -83,11 +83,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#super-representative-election">Super Representative Election</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#witnesses-brokerage">Witnesses Brokerage</a>
+    <li class="toctree-l3"><a class="reference internal" href="#super-representatives-brokerage">Super Representatives Brokerage</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#reward-for-witnesses">Reward for Witnesses</a>
+    <li class="toctree-l2"><a class="reference internal" href="#reward-for-srsuper-representatives">Reward for SR(Super Representatives)</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#votes-reward">Votes Reward</a>
     </li>
@@ -204,14 +204,14 @@
 <p>Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; freezebalancev2 10,000,000 3 // Stake 10 TRX to get 10 TRON Power(TP)</span>
-<span class="go">&gt; votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2</span>
-<span class="go">&gt; votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2</span>
+<span class="go">&gt; votewitness SR1 4 SR2 6 // Vote 4 votes for SR1, 6 votes for SR2</span>
+<span class="go">&gt; votewitness SR1 3 SR2 7 // Vote 3 votes for SR1, 7 votes for SR2</span>
 </code></pre></div>
-<p>The final output above is: Vote 3 votes for witness1, 7 votes for witness2</p>
-<h3 id="witnesses-brokerage">Witnesses Brokerage<a class="headerlink" href="#witnesses-brokerage" title="Permanent link">&para;</a></h3>
+<p>The final output above is: Vote 3 votes for SR1, 7 votes for SR2.</p>
+<h3 id="super-representatives-brokerage">Super Representatives Brokerage<a class="headerlink" href="#super-representatives-brokerage" title="Permanent link">&para;</a></h3>
 <p>The default ratio is 20%. Super representatives and super representative partners can query the brokerage ratio through the <code>wallet/getBrokerage</code> interface, and can also modify the brokerage ratio through the <code>wallet/updateBrokerage</code> interface.</p>
-<p>If a witness get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the witness; if set to 0, the rewards are all sent to the voters.</p>
-<h2 id="reward-for-witnesses">Reward for Witnesses<a class="headerlink" href="#reward-for-witnesses" title="Permanent link">&para;</a></h2>
+<p>If a SR(Super Representatives) get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.</p>
+<h2 id="reward-for-srsuper-representatives">Reward for SR(Super Representatives)<a class="headerlink" href="#reward-for-srsuper-representatives" title="Permanent link">&para;</a></h2>
 <h3 id="votes-reward">Votes Reward<a class="headerlink" href="#votes-reward" title="Permanent link">&para;</a></h3>
 <p>Vote rewards are 160 TRX every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX.</p>
 <p>For each SR and Partner, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  TRX</p>
@@ -222,10 +222,10 @@
 <p>For each super representative, the daily block <span class="arithmatex"><span class="MathJax_Preview">Rewards_{sr} = (460,800 / 27) \times 20 \% \mathsf{TRX}</span><script type="math/tex">Rewards_{sr} = (460,800 / 27) \times 20 \% \mathsf{TRX}</script></span>.</p>
 <p>Reward may be less than the theoretical number due to missed blocks and maintenance period.</p>
 <h2 id="reward-for-voters">Reward for Voters<a class="headerlink" href="#reward-for-voters" title="Permanent link">&para;</a></h2>
-<p>If you vote for a Super Representative:</p>
-<p>the daily Voter Rewards = (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a witness) / (the total number of votes a witness receives) TRX</p>
+<p>If you vote for a SR(Super Representative):</p>
+<p>the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a SR) / (the total number of votes a SR receives) TRX</p>
 <p>If you vote for a Partner:</p>
-<p>the daily Voter Rewards = (((the number of votes you vote to a witness) * 4,608,000 / total votes) * 80%) TRX</p>
+<p>the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX</p>
 <h2 id="committee">Committee<a class="headerlink" href="#committee" title="Permanent link">&para;</a></h2>
 <h3 id="1-what-is-committee">1. What is Committee<a class="headerlink" href="#1-what-is-committee" title="Permanent link">&para;</a></h3>
 <p>Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.</p>

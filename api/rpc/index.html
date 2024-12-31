@@ -183,7 +183,7 @@ Nodes: Fullnode</p>
 </code></pre></div>
 Nodes: Fullnode</p>
 <p>Description:
-Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after witness verification.</p>
+Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after super representatives verification.</p>
 <p><strong>4.&nbsp;Create an account</strong></p>
 <p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateAccount</span><span class="w"> </span><span class="p">(</span><span class="n">AccountCreateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
@@ -196,7 +196,7 @@ Nodes: Fullnode</p>
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">VoteWitnessAccount</span><span class="w"> </span><span class="p">(</span><span class="n">VoteWitnessContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>7.&nbsp;Query the ratio of brokerage of the witness</strong>
+<p><strong>7.&nbsp;Query the ratio of brokerage of the super representative</strong>
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBrokerageInfo</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>

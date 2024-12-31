@@ -2,257 +2,257 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/glossary/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/architecture/database/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/architecture/event/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/tron-grid/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli-command/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/contracts/compiler/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/contracts/contract/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/contracts/trc20/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/contracts/tvm/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/advanced-configuration/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/archive-manifest/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/code-structure/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/contribution/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/demo/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/deployment/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/governance/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/gpg/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/incentives/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/issue-workflow/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/java-tron/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/litefullnode/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/resources/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/run-in-idea/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/tips/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/faq/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/getting_started/getting_started_with_javatron/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/introduction/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/introduction/dpos/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/introduction/overview/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/account/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/dex/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/multi-signatures/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/shielded-TRC20-contract/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/shielded-transaction/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/sr/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/system-contracts/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/trc10/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/history/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/signature_verification/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/upgrade-instruction/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/connecting_to_tron/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/metrics/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/private_network/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -1236,7 +1236,7 @@ Parameters: N/A</p>
 </code></pre></div>
 Return: The node information</p>
 <h4 id="walletgetchainparameters">wallet/getchainparameters<a class="headerlink" href="#walletgetchainparameters" title="Permanent link">&para;</a></h4>
-<p>Description: Query the parameters of the blockchain used for witnessses to create a proposal
+<p>Description: Query the parameters of the blockchain used for SR(Super Representatives) to create a proposal
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters
 </code></pre></div>
 Return: The list of parameters of the blockchain</p>
@@ -1617,7 +1617,7 @@ Parameters: </p>
 <li><a href="#walletgetnextmaintenancetime">wallet/getnextmaintenancetime</a></li>
 </ul>
 <h4 id="walletcreatewitness">wallet/createwitness<a class="headerlink" href="#walletcreatewitness" title="Permanent link">&para;</a></h4>
-<p>Description: Apply to become a witness
+<p>Description: Apply to become a super representative
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/createwitness<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
@@ -1632,7 +1632,7 @@ Parameters: </p>
 </ul>
 <p>Return: Transaction object</p>
 <h4 id="walletupdatewitness">wallet/updatewitness<a class="headerlink" href="#walletupdatewitness" title="Permanent link">&para;</a></h4>
-<p>Description: Update the witness' website url
+<p>Description: Update the super representative' website url
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/updatewitness<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
@@ -1647,13 +1647,13 @@ Parameters: </p>
 </ul>
 <p>Return: Transaction object</p>
 <h4 id="walletlistwitnesses">wallet/listwitnesses<a class="headerlink" href="#walletlistwitnesses" title="Permanent link">&para;</a></h4>
-<p>Description: Qyery the list of the witnesses
+<p>Description: Qyery the list of the super representatives
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
 </code></pre></div>
 Parameters: N/A</p>
-<p>Return:witness list</p>
+<p>Return:SR(Super Representatives) list</p>
 <h4 id="walletwithdrawbalance">wallet/withdrawbalance<a class="headerlink" href="#walletwithdrawbalance" title="Permanent link">&para;</a></h4>
-<p>Description: Withdraw reward to account balance for witnesses
+<p>Description: Withdraw reward to account balance for super representatives
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://127.0.0.1:8090/wallet/withdrawbalance<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;</span>
@@ -1667,7 +1667,7 @@ Parameters: N/A</p>
 <p>Return: Transaction object</p>
 <p>Note: It can only withdraw once for every 24 hours</p>
 <h4 id="walletvotewitnessaccount">wallet/votewitnessaccount<a class="headerlink" href="#walletvotewitnessaccount" title="Permanent link">&para;</a></h4>
-<p>Description: Vote for witnesses
+<p>Description: Vote for super representatives
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/votewitnessaccount<span class="w"> </span>-d
 <span class="go">&#39;{</span>
 <span class="go">    &quot;owner_address&quot;: &quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,</span>
@@ -1682,17 +1682,17 @@ Parameters: N/A</p>
 <p>Parameters:</p>
 <ul>
 <li><code>owner_address</code>: Owner address, default hexString</li>
-<li><code>votes</code>: 'vote_address' stands for the address of the witness you want to vote, default hexString, 'vote_count' stands for the number of votes you want to vote</li>
+<li><code>votes</code>: 'vote_address' stands for the address of the super representative you want to vote, default hexString, 'vote_count' stands for the number of votes you want to vote</li>
 <li><code>permission_id</code>: Optional, for multi-signature use</li>
 </ul>
 <p>Return: Transaction object</p>
 <h4 id="walletgetbrokerage">wallet/getBrokerage<a class="headerlink" href="#walletgetbrokerage" title="Permanent link">&para;</a></h4>
-<p>Description: Query the ratio of brokerage of the witness
+<p>Description: Query the ratio of brokerage of the super representative
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w">  </span>http://127.0.0.1:8090/wallet/getBrokerage<span class="w"> </span>-d<span class="w"> </span><span class="err">&#39;</span><span class="o">{</span>
 <span class="go">&quot;address&quot;:&quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;}&#39;</span>
 </code></pre></div></p>
-<p>Parameter <code>address</code>: The address of the witness's account, default hexString</p>
-<p>Return: The ratio of brokerage of the witness</p>
+<p>Parameter <code>address</code>: The address of the SR's account, default hexString</p>
+<p>Return: The ratio of brokerage of the SR</p>
 <h4 id="walletupdatebrokerage">wallet/updateBrokerage<a class="headerlink" href="#walletupdatebrokerage" title="Permanent link">&para;</a></h4>
 <p>Description: Update the ratio of brokerage
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w">  </span>http://127.0.0.1:8090/wallet/updateBrokerage<span class="w">  </span>-d<span class="w"> </span><span class="err">&#39;</span><span class="o">{</span>
@@ -1702,7 +1702,7 @@ Parameters: N/A</p>
 </code></pre></div></p>
 <p>Parameters:</p>
 <ul>
-<li><code>owner_address</code>: The address of the witness's account, default hexString</li>
+<li><code>owner_address</code>: The address of the SR's account, default hexString</li>
 <li><code>brokerage</code>: The ratio of brokerage you want to update to</li>
 </ul>
 <p>Return: Transaction object</p>
@@ -2704,11 +2704,11 @@ Parameters: <code>account_id</code> - Account id, default hexString</p>
 <p>Return: Two lists will return, one is the list of addresses the account has delegated its resources(<code>toAddress</code>), and the other is the list of addresses that have delegated resources to the account(<code>fromAddress</code>).</p>
 <h3 id="voting-srs">Voting &amp; SRs<a class="headerlink" href="#voting-srs" title="Permanent link">&para;</a></h3>
 <h4 id="walletsoliditylistwitnesses">walletsolidity/listwitnesses<a class="headerlink" href="#walletsoliditylistwitnesses" title="Permanent link">&para;</a></h4>
-<p>Description: Query the list of witnesses
+<p>Description: Query the list of super representatives
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/listwitnesses
 </code></pre></div>
 Parameters: N/A</p>
-<p>Return: List of all witnesses</p>
+<p>Return: List of all super representatives</p>
 <h3 id="trc10-token_1">TRC10 Token<a class="headerlink" href="#trc10-token_1" title="Permanent link">&para;</a></h3>
 <h4 id="walletsoliditygetassetissuelist">walletsolidity/getassetissuelist<a class="headerlink" href="#walletsoliditygetassetissuelist" title="Permanent link">&para;</a></h4>
 <p>Description: Query the list of all tokens
