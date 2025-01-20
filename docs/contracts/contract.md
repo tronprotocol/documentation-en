@@ -62,12 +62,12 @@ message SmartContract {
 ```
 origin_address: smart contract creator address
 contract_address: smart contract address
-abi: the api information of the all the function of the smart contract
+abi: the api information of all the function of the smart contract
 bytecode: smart contract byte code
 call_value: TRX transferred into smart contract while call the contract
 consume_user_resource_percent: resource consumption percentage set by the developer
 name: smart contract name
-origin_energy_limit: energy consumption of the developer limit in one call, must greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)
+origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)
 
 Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.
 
