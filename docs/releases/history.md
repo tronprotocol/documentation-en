@@ -334,7 +334,7 @@ node.rpc.reflectionService=true
 Source Code: [https://github.com/tronprotocol/java-tron/pull/5583](https://github.com/tronprotocol/java-tron/pull/5583)  
 
 #### 6. Delete the LiteFullNodeTool related code under the framework module
-In order to facilitate tool maintenance and developer use, TRON has launched the `Toolkit.jar` toolbox, which includes various TRON development tools. As early as the Aristotle version, the code related to the LiteFullNode data clipping tool has been integrated into the `Toolkit` toolbox (located under the plugin module), and `Tookit` can completely replace `LiteFullNodeTool` (located under the framework module). Therefore, the Bias version deletes the `LiteFullNodeTool` related code under the framework module, which not only reduces code redundancy, but also makes the division of functional modules clearer. The commands to use the LiteFullNode data pruning function in the `Toolkit` are as follows:
+In order to facilitate tool maintenance and developer use, TRON has launched the `Toolkit.jar` toolbox, which includes various TRON development tools. As early as the Aristotle version, the code related to the LiteFullNode data clipping tool has been integrated into the `Toolkit` toolbox (located under the plugin module), and `Toolkit` can completely replace `LiteFullNodeTool` (located under the framework module). Therefore, the Bias version deletes the `LiteFullNodeTool` related code under the framework module, which not only reduces code redundancy, but also makes the division of functional modules clearer. The commands to use the LiteFullNode data pruning function in the `Toolkit` are as follows:
 
 ```
 $ java -jar Toolkit.jar db lite 
