@@ -206,10 +206,10 @@ wallet>UpdateAccountPermission [ownerAddress] [permissions]
 This command is used to assign permissions to other accounts, is utilized for **multi-signature** transactions, which allows other users to access the account with paritcular permission in order to better manage it. There are three types of permissions:
 
 * owner: access to the owner of account
-* active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for witness purposes.
-* witness: only for witness, block production authorization will be granted to one of the other users.
+* active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for SR purposes.
+* witness: only for super representatives, block production authorization will be granted to one of the other users.
 
-**NOTE** the parameter`Permission` must written in JSON format and entered in line. If the owner account is not SR, then do not assign witness permission. 
+**NOTE** the parameter`Permission` must written in JSON format and entered in line. If the owner account is not SR, then do not assign super representative permission. 
 ```shell
 wallet> updateaccountpermission TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 {"owner_permission":{"keys":[{"address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8","weight":1}],"threshold":1,"type":0,"permission_name":"owner"},"active_permissions":[{"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000","keys":[{"address":"TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej","weight":1},{"address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE","weight":1}],"threshold":2,"type":2,"permission_name":"active12323"}]}
 {
@@ -1886,7 +1886,7 @@ wallet> getproposal 34
 
 Voting requires Tron Power, which can be obtained by freezing funds.
 ```
-wallet> votewitness [witness address] [Tron Power Amount]
+wallet> votewitness [SR(Super Representatives) address] [Tron Power Amount]
 ```
 
 * The share calculation method is: 1 unit of share can be obtained for every 1TRX frozen.
@@ -1898,11 +1898,11 @@ For example:
 ```shell
 wallet> freezeBalance 100000000 3 1 address  # Freeze 10TRX and acquire 10 units of Tron Power
 
-wallet> votewitness [witness1] 4 [witness2] 6  # Cast 4 votes for witness1 and 6 votes for witness2 at the same time
+wallet> votewitness [SR1] 4 [SR2] 6  # Cast 4 votes for SR1 and 6 votes for SR2 at the same time
 
-wallet> votewitness [witness1] 10  # Voted 10 votes for witness1
+wallet> votewitness [SR1] 10  # Voted 10 votes for SR1
 ```
-The final result of the above command was 10 votes for witness1 and 0 vote for witness2.
+The final result of the above command was 10 votes for SR1 and 0 vote for SR2.
 
 ### ListWitnesses
 
@@ -1935,14 +1935,14 @@ wallet> listwitnesses
 ```
 
 ### GetBrokerage
-View the ratio of brokerage of the witness.
+View the ratio of brokerage of the SR(Super Representatives).
 
-After voting for the witness, you will receive the rewards. The witness has the right to decide the ratio of brokerage. The default ratio is 20%, and the witness can adjust it.
+After voting for the super representative, you will receive the rewards. The super representative has the right to decide the ratio of brokerage. The default ratio is 20%, and the super representative can adjust it.
 
-By default, if a witness is rewarded, he will receive 20% of the whole rewards, and 80% of the rewards will be distributed to his voters.
+By default, if a super representative is rewarded, he will receive 20% of the whole rewards, and 80% of the rewards will be distributed to his voters.
 
 
-`OwnerAddress` is the address of the witness's account, it is a base58check type address.
+`OwnerAddress` is the address of the SR's account, it is a base58check type address.
 ```shell
 wallet> getbrokerage TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 The brokerage is : 20
@@ -1959,11 +1959,11 @@ The reward is : 0
 
 
 ### UpdateBrokerage
-Update the ratio of brokerage, this command is usually used by a witness account.
+Update the ratio of brokerage, this command is usually used by a super representative account.
 ``` shell
 wallet> updateBrokerage [OwnerAddress] [brokerage]
 ```
-`OwnerAddress` is the address of the witness's account, it is a base58check type address.
+`OwnerAddress` is the address of the super representative's account, it is a base58check type address.
 
 `brokerage` is the ratio of brokerage you want to update to, the limit of it: 0-100.
 
@@ -1975,7 +1975,7 @@ wallet> updateBrokerage TZ7U1WVBRLZ2umjizxqz3XfearEHhXKX7h 30
 ---
 ## DEX
 
-The trading and price fluctuations of trading pairs are in accordance with the [Bancor Agreement](https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf).
+The trading and price fluctuations of trading pairs are in accordance with the [Bancor Agreement](https://cryptopapers.info/assets/pdf/bancor.pdf).
 
 Here are all the commands for DEX:
 
@@ -2292,5 +2292,3 @@ wallet> GetMarketPriceByPair _ 1000001
 	]
 }
 ```
-
-
