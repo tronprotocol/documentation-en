@@ -4,7 +4,7 @@
 
 Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
 
-TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [Tron solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
+TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [TRON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## Smart Contract Features
 TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
@@ -135,7 +135,7 @@ Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 Need to convert TRON's address while using in solidity (recommended):
 ```text
 /**
-     *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
+     *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
 */

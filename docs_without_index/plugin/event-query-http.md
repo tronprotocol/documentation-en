@@ -1,4 +1,4 @@
-#  Tron Event Query Service
+#  TRON Event Query Service
 ## What is the main HTTP service?
 baseUrl: https://api.tronex.io
 

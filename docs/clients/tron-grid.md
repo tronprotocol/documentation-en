@@ -8,7 +8,7 @@ TronGrid provides TRON clients running in the cloud, so you don't have to run on
 
 TronGrid offers an easy to use hosted API, load balanced full nodes, secure and reliable developer tools with direct access to the TRON Network.
 
-TronGrid uses a set of NodeJS apps to talk with Redis and PostgreSQL to provide a simple, fast and reliable query interface for the Tron API.
+TronGrid uses a set of NodeJS apps to talk with Redis and PostgreSQL to provide a simple, fast and reliable query interface for the TRON API.
 
 TronGrid supports 2 types of api:
 
