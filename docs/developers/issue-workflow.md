@@ -1,5 +1,5 @@
 # Issue Work Flow
-We encourage community contributors to participate in the submission and discussion of Java-tron issues. You can submit your questions or ideas in the form of issues, or participate in issue discussions or help to provide solutions. Your every question or comment is driving Java-tron's development. We thank you for your contribution to Java-tron.
+We encourage community contributors to participate in the submission and discussion of java-tron issues. You can submit your questions or ideas in the form of issues, or participate in issue discussions or help to provide solutions. Your every question or comment is driving java-tron's development. We thank you for your contribution to java-tron.
 
 
 ## Submit an Issue

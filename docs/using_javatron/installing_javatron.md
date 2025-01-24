@@ -1,27 +1,27 @@
-# Deploy a Java-tron Node
+# Deploy a java-tron Node
 
-Java-tron nodes support to be deployed on `Linux` or `MacOS` operating systems, and rely on `Oracle JDK 1.8`, other versions of JDK are not supported.
+java-tron nodes support to be deployed on `Linux` or `MacOS` operating systems, and rely on `Oracle JDK 1.8`, other versions of JDK are not supported.
 
-The minimum hardware configuration required to run a Java-tron node is `8-core CPU`, `16G memory`, `2T SDD`, the recommended configuration is: `16-core CPU`, `32G memory`, `2.5T+ SDD`. The fullnode running by super representative to produce block recommends `32-core CPU` and `64G memory`.
+The minimum hardware configuration required to run a java-tron node is `8-core CPU`, `16G memory`, `2T SDD`, the recommended configuration is: `16-core CPU`, `32G memory`, `2.5T+ SDD`. The fullnode running by super representative to produce block recommends `32-core CPU` and `64G memory`.
 
 
 # Compile the Source Code
-First, clone the Java-tron repository to the local with the following git command, and switch to the `master` branch. Before executing the command, make sure you have installed the `git` tool.
+First, clone the java-tron repository to the local with the following git command, and switch to the `master` branch. Before executing the command, make sure you have installed the `git` tool.
 
 ```
 $ git clone https://github.com/tronprotocol/java-tron.git
 $ git checkout -t origin/master
 ```
 
-Then, compile the Java-tron source code by executing the following command. The parameter `-x test` means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the `java-tron/build/libs/` directory.
+Then, compile the java-tron source code by executing the following command. The parameter `-x test` means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the `java-tron/build/libs/` directory.
 
 ```
 $ cd java-tron
 $ ./gradlew clean build -x test
 ```
 
-## Run a Java-tron Node
-You can choose different configuration files to connect Java-tron nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/tronprotocol/tron-deployment).
+## Run a java-tron Node
+You can choose different configuration files to connect java-tron nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/tronprotocol/tron-deployment).
 
 
 ### Startup a fullnode
@@ -53,7 +53,7 @@ then run the following command to start the node:
 $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
 ```
 
-**Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](../backup_restore/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the tron project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
+**Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](../backup_restore/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
 
 
 # Others

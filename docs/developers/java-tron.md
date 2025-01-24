@@ -2,9 +2,9 @@
 
 Thank you for considering to help out with the source code! We welcome contributions from anyone, and are grateful for even the smallest of fixes!
 
-GitHub is used to track issues and contribute code, suggestions, feature requests or documentation. If you want to participate in Java-tron development, please follow the Github code submission process as follows:
+GitHub is used to track issues and contribute code, suggestions, feature requests or documentation. If you want to participate in java-tron development, please follow the Github code submission process as follows:
 
-* Fork Java-tron repository
+* Fork java-tron repository
 * Fix the code
 * Commit the code
 * Send a pull request
@@ -12,14 +12,14 @@ GitHub is used to track issues and contribute code, suggestions, feature request
 
 For small fixes, you can send a pull request (PR) directly, but make sure the PR includes a detailed description. For more complex changes, you need to submit an issue to the [TIP repository](https://github.com/tronprotocol/tips) detailing your motivations, implementation plans, etc. For how to submit a TIP issue, please refer to [TIP Specification](../tips/).
 
-We encourage Java-tron developers to submit PRs as soon as possible. Even if they are not fully developed, you can submit a PR first, so that other developers can know that the TIP Issue corresponding to this PR is in the state of `In Progress`.
+We encourage java-tron developers to submit PRs as soon as possible. Even if they are not fully developed, you can submit a PR first, so that other developers can know that the TIP Issue corresponding to this PR is in the state of `In Progress`.
 
 Developers should develop and submit a PR based on the `develop` branch, reviewers will review the PR according to [Code Review Guidelines](#code-review-guidelines).
 
 
 
 ## Key Branches
-Java-tron only has `master`, `develop`, `release-*`, `feature-*`, and `hotfix-*` branches, which are described below:
+java-tron only has `master`, `develop`, `release-*`, `feature-*`, and `hotfix-*` branches, which are described below:
 
 * ``develop`` branch
 
@@ -46,7 +46,7 @@ Java-tron only has `master`, `develop`, `release-*`, `feature-*`, and `hotfix-*`
 
 If you want to contribute codes to java-tron, please follow the following steps:
 
-* Fork Java-tron repository
+* Fork java-tron repository
 
     Fork a new repository from [tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) to your personal code repository
     

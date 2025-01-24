@@ -22,7 +22,7 @@ Currently, TVM is compatible with EVM and will be with more mainstream VMs in th
 4.&nbsp;Developer-friendly
 
 Thanks to TVM’s bandwidth setup, developments costs are reduced and developers can focus on the logic of their contract code. TVM also offers all-in-one interfaces for contract deployment, triggering and viewing, for the convenience of developers.
-The following interfaces are available in Tron Wallet-CLI:
+The following interfaces are available in TRON Wallet-CLI:
 
  + deploycontract(password, contractAddress, ABI, code, data, value)
  + triggercontract(password, contractAddress, selector, data, value)
@@ -31,10 +31,10 @@ Developers can call these interfaces to deploy, trigger or check smart contracts
 
 ## How TVM Works
 
-![Flowchart of Tron Virtual Machine](https://raw.githubusercontent.com/tronprotocol/documentation/master/images/Virtual_Machine/虚拟机.png)
+![Flowchart of TRON Virtual Machine](https://raw.githubusercontent.com/tronprotocol/documentation/master/images/Virtual_Machine/虚拟机.png)
 
 The above flowchart shows how TVM works:
-Compilation of Tron smart contract→execution and computing engines of VM→Interoperation service layer for external interfaces.
+Compilation of TRON smart contract→execution and computing engines of VM→Interoperation service layer for external interfaces.
 
 Put simply, the flow is as follows:
 + Currently, TVM is compatible mainly with Solidity. The compiler translates Solidity smart contract into bytecode readable and executable on TVM.
@@ -44,7 +44,7 @@ Put simply, the flow is as follows:
 ## Future Development of TVM
 1.&nbsp;More developer-friendly debugging tools
 
-Tron will be committed to the development of optimized debugging tools and the establishment of standardized symbol and data format, for improved developer efficiency.
+TRON will be committed to the development of optimized debugging tools and the establishment of standardized symbol and data format, for improved developer efficiency.
 
 2.&nbsp;Fulfillment of diversified processing demands
 
@@ -52,7 +52,7 @@ Different from gas consumption mechanism for every transaction on EVM, there is 
 
 3.&nbsp;Improvement of Just-In-Time (JIT) compilation speed and integration of WebAssembly
 
-Improving JIT compilation speed is conducive to faster interpretation and optimized compilation of local code. Meanwhile, Tron is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozilla, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages. Integrating WASM, TVM will be able to provide high performance and high throughput for blockchain to cope with complex scenarios.
+Improving JIT compilation speed is conducive to faster interpretation and optimized compilation of local code. Meanwhile, TRON is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozilla, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages. Integrating WASM, TVM will be able to provide high performance and high throughput for blockchain to cope with complex scenarios.
 
 ## Usage Guide to TVM
 
@@ -82,9 +82,9 @@ pragma solidity^0.4.11;
 3.&nbsp;Deploy contract
 
 Wallet-cli-vm branch: [https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm](https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm)
-Java-tron-vm branch: [https://github.com/tronprotocol/java-tron/tree/develop_vm](https://github.com/tronprotocol/java-tron/tree/develop_vm)
+java-tron-vm branch: [https://github.com/tronprotocol/java-tron/tree/develop_vm](https://github.com/tronprotocol/java-tron/tree/develop_vm)
 Password: password of client-end wallet
-ContractAddress: customized contract address (in Tron’s required format)
+ContractAddress: customized contract address (in TRON’s required format)
 ABI: interface description
 Data: parameters of the initial function
 Value: reserved field
@@ -101,4 +101,4 @@ triggercontract(Password, ContractAddress, Selector, Data, Value)
     getcontract(ContractAddress)
 ```
 
-The above is an introduction of Tron Virtual Machine and a guide to deployment. We welcome everyone to check out TVM and give us your thoughts and suggestions. We will continue to perfect and update TVM for optimal performance on TRON mainnet.
+The above is an introduction of TRON Virtual Machine and a guide to deployment. We welcome everyone to check out TVM and give us your thoughts and suggestions. We will continue to perfect and update TVM for optimal performance on TRON mainnet.

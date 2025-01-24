@@ -113,7 +113,7 @@ id: proposal id
 - Query all the proposals list by pagination (GetPaginatedProposalList)
 - Query a proposal by proposal id (GetProposalById)
 
-For more api detail, please refer to [Tron HTTP API](../api/http.md)
+For more api detail, please refer to [TRON HTTP API](../api/http.md)
 
 # 3. Account Model
 
@@ -128,7 +128,7 @@ TRON uses account model. An account's identity is address, it needs private key 
 2.&nbsp;Use an account already existed in TRON network to create an account
 
 ## 3.3 Key-pair Generation Algorithm
-Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
+TRON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
 
 ## 3.4 Address Format
 Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address comes out. Do basecheck to address, here is the final address. All addresses start with 'T'.
@@ -486,7 +486,7 @@ Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 Need to convert TRON's address while using in solidity (recommended):
 ```text
 /**
-     *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
+     *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
 */

@@ -1884,9 +1884,9 @@ wallet> getproposal 34
 
 ### VoteWitness
 
-Voting requires Tron Power, which can be obtained by freezing funds.
+Voting requires TRON Power, which can be obtained by freezing funds.
 ```
-wallet> votewitness [SR(Super Representatives) address] [Tron Power Amount]
+wallet> votewitness [SR(Super Representatives) address] [TRON Power Amount]
 ```
 
 * The share calculation method is: 1 unit of share can be obtained for every 1TRX frozen.
@@ -1896,7 +1896,7 @@ wallet> votewitness [SR(Super Representatives) address] [Tron Power Amount]
 
 For example:
 ```shell
-wallet> freezeBalance 100000000 3 1 address  # Freeze 10TRX and acquire 10 units of Tron Power
+wallet> freezeBalance 100000000 3 1 address  # Freeze 10TRX and acquire 10 units of TRON Power
 
 wallet> votewitness [SR1] 4 [SR2] 6  # Cast 4 votes for SR1 and 6 votes for SR2 at the same time
 
