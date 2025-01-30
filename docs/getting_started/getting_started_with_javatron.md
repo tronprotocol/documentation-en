@@ -138,7 +138,7 @@ Result:
 	"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
 	"balance": 93643857919,
 	"create_time": 1619681898000,
-	"latest_opration_time": 1655358327000,
+	"latest_operation_time": 1655358327000,
 	"is_witness": true,
 	"asset_issued_name": "TestTRC10T",
 	"latest_consume_free_time": 1652948766000,
