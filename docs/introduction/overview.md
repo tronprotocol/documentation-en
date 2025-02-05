@@ -576,7 +576,7 @@ when C stakes 1 TRX:
 the energy they can get is:
 A: 20,000,000,000 and energy_limit is 20,000,000,000
 B: 20,000,000,000 and energy_limit is 20,000,000,000
-B: 10,000,000,000 and energy_limit is 10,000,000,000
+C: 10,000,000,000 and energy_limit is 10,000,000,000
 ```
 
 ** Energy Recovery **
