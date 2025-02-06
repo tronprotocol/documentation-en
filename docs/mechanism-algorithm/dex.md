@@ -51,7 +51,7 @@ The token price is determined by the ratio of the balance of the two tokens.
 `buyTokenQuant` is the amount of `second_token` you can get.
 
 ```java
-supply = 1_000_000_000_000_000_000L
+supply = 1,000,000,000,000,000,000L
 
 supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/(firstTokenBalance + sellTokenQuant, 0.0005))
 

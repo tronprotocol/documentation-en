@@ -2146,7 +2146,7 @@ After this upgrade, TRON will be fully compatible with the new features introduc
 
 ###2、Make MAX_FEE_LIMIT configurable as a chain property.
 
-After the new version, SR and SRP can initiate a voting request to modify MAX_FEE_LIMIT. The range of MAX_FEE_LIMIT is [0,10000_000_000].
+After the new version, SR and SRP can initiate a voting request to modify MAX_FEE_LIMIT. The range of MAX_FEE_LIMIT is [0,10000000000].
 
 - TIP： [TIP-204](https://github.com/tronprotocol/tips/issues/204) 
 - Source code：  [#3534](https://github.com/tronprotocol/java-tron/pull/3534)
