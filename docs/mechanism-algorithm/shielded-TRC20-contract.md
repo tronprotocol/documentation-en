@@ -24,7 +24,7 @@ The technical implementation is based on zk-SNARK(Zero-Knowledge Succinct Non-In
 
 ### Usage Guide
 
-1.&nbsp;The sender needs to create an ordianry account by api. The account is used to trigger the shielded TRC-20 contract, so it should has some trx to pay the transaction fee.  
+1.&nbsp;The sender needs to create an ordinary account by api. The account is used to trigger the shielded TRC-20 contract, so it should has some trx to pay the transaction fee.  
 
 2.&nbsp;The sender should create the shielded address, which is used to send and receive the shielded TRC-20 notes.
 
