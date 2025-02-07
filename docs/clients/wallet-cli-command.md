@@ -150,7 +150,7 @@ wallet> getaccount TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 	"address": "TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 	"balance": 2665198240,
 	"create_time": 1650363711000,
-	"latest_opration_time": 1653578769000,
+	"latest_operation_time": 1653578769000,
 	"latest_consume_free_time": 1651228080000,
 	"account_resource": {
 		"latest_consume_time_for_energy": 1653578769000
