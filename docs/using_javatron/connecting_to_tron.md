@@ -1,8 +1,8 @@
 # Connecting to the TRON network
 
-The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the Java-Tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
+The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
 
-You need to set the following configuration items to connect Java-tron to one of the TRON networks:
+You need to set the following configuration items to connect java-tron to one of the TRON networks:
 
 * `node.p2p.version` : It is used to set the P2P network id. Only nodes with the same network id can shake hands successfully.
     * TRON mainnet: `node.p2p.version=11111`
@@ -14,9 +14,9 @@ You need to set the following configuration items to connect Java-tron to one of
 
 
 # Finding peers
-Java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. Java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. 
+java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. 
 
-If you want Java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:
+If you want java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:
 
 ```
 node.discovery = {
@@ -71,7 +71,7 @@ There are scenarios where disabling the discovery process is useful, for example
 
 
 # Connectivity problems
-There are occasions when Java-tron simply fails to connect to peers. The common reasons for this are:
+There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
 
 * Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as `sudo ntpdate -s time.nist.gov`.
 * Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring [`node.active`](#active-and-passive-connections) in the case of node discovery invalid.
@@ -79,13 +79,13 @@ There are occasions when Java-tron simply fails to connect to peers. The common 
 * The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.
 
 # Log and network connection verification
-The Java-tron node log is `/logs/tron.log` in the Java-tron installation directory. Under the Java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
+The java-tron node log is `/logs/tron.log` in the java-tron installation directory. Under the java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
 
 ```
 $ tail -f /logs/tron.log/
 ```
 
-You will see the below block synchronization logs if Java-tron is running as expected. 
+You will see the below block synchronization logs if java-tron is running as expected. 
 
 ```
 15:41:48.033 INFO  [nioEventLoopGroup-6-2] [DB](Manager.java:1208) pushBlock block number:76, cost/txs:13/0 false
@@ -134,7 +134,7 @@ Returns：
     "totalFlow": 8735314
 }
 ```
-In order for users to interact with the TRON network, the Java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of `/wallet/getnowblock` queried from the local Java-tron node. If they are equal, it means that the synchronization status of the local node is normal.
+In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of `/wallet/getnowblock` queried from the local java-tron node. If they are equal, it means that the synchronization status of the local node is normal.
 
 
 # Private network
@@ -145,9 +145,9 @@ The private chain network needs to configure the configuration item `node.p2p.ve
 
 
 # Active and passive connections
-Java-tron supports setting its actively connected nodes `node.active` as well as passively connected nodes `node.passive`. Configuring `node.active` and `node.passive` can greatly help improve the stability of the network connection of the node.
+java-tron supports setting its actively connected nodes `node.active` as well as passively connected nodes `node.passive`. Configuring `node.active` and `node.passive` can greatly help improve the stability of the network connection of the node.
 
-When Java-tron starts, it will actively establish a connection with the peer node in `node.active`.
+When java-tron starts, it will actively establish a connection with the peer node in `node.active`.
 
 ```
 node {

@@ -1,8 +1,8 @@
-# Java-tron Core Modules
+# java-tron Core Modules
 ## Code Structure
-Java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a TRON node by starting Java-tron. In this article, we will describe the code structure of Java-tron in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
+java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a TRON node by starting java-tron. In this article, we will describe the code structure of java-tron in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
 
-Java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently Java-tron is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
+java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
 
 
 
@@ -30,7 +30,7 @@ The above protocols adopt the [`Google Protobuf`](https://developers.google.com/
         |-- contract
 ```
 
-* `protos/api/` - The gRPC interface and data structure provided by the Java-tron node externally
+* `protos/api/` - The gRPC interface and data structure provided by the java-tron node externally
 * `protos/core/` - Data structure for communication between nodes and between modules within nodes
     * `Discover.proto` - Node discovers related data structures
     * `TronInventoryItems.proto` - Data structure related to block transferring between nodes
@@ -125,7 +125,7 @@ In addition, the chainbase module features a well-designed abstract interface. A
 
     * `db/` and `db2/` 
     
-        Implemented rollbackable databases, including two rollbackable databases: `AbstractRevokingStore` located in the `db/` directory and `SnapshotManager` located in the `db2/` directory. Compared with `AbstractRevokingStore`, `SnapshotManager` has a more stable data rollback function and supports the extension of the underlying database. Therefore, Java-tron uses `SnapshotManager` to roll back the database. Several important interfaces and implementation classes are as follows:
+        Implemented rollbackable databases, including two rollbackable databases: `AbstractRevokingStore` located in the `db/` directory and `SnapshotManager` located in the `db2/` directory. Compared with `AbstractRevokingStore`, `SnapshotManager` has a more stable data rollback function and supports the extension of the underlying database. Therefore, java-tron uses `SnapshotManager` to roll back the database. Several important interfaces and implementation classes are as follows:
 
         * `RevokingDatabase.java` - It is the interface of the database container, used to manage all rollbackable databases, `SnapshotManager` is an implementation of this interface
         * `TronStoreWithRevoking.java` - It is the base class that supports rollbackable databases. All rollbackable databases are their implementations, such as `BlockStore`, `TransactionStore`, etc
@@ -154,7 +154,7 @@ consensus module divides the consensus process into several important parts that
 4. `validBlock` - define the consensus logic of validating blocks
 5. `applyBlock` - define the consensus logic of processing blocks
 
-Currently, Java-tron implements DPOS consensus and PBFT consensus based on the `ConsensusInterface` interface, which is located in the `dpos/` and `pbft/` directories respectively. Developers can also implement the `ConsensusInterface` interface according to their own business needs to customize the consensus mechanism.
+Currently, java-tron implements DPOS consensus and PBFT consensus based on the `ConsensusInterface` interface, which is located in the `dpos/` and `pbft/` directories respectively. Developers can also implement the `ConsensusInterface` interface according to their own business needs to customize the consensus mechanism.
 
 
 ### actuator
@@ -191,7 +191,7 @@ Actuator module defines the `Actuator` interface, which includes 4 different met
 Depending on their businesses, developers may set up Actuator accordingly and customize the processing of different types of transactions.
  
 ### crypto
-Crypto is a relatively independent module, but it is also a very important module. Data security in Java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
+Crypto is a relatively independent module, but it is also a very important module. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
 
 [crypto](https://github.com/tronprotocol/java-tron/tree/develop/crypto) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/crypto`, its directory structure is as follows:
 ```
@@ -256,7 +256,7 @@ The framework is the core module of java-tron and the entrance of the node. The 
 * `core/db/Manager.java` - Transaction and block verification and processing logic
 
 ### Summary
-This article mainly introduces the code structure of Java-tron, as well as the function, location and directory structure of each functional module. Through this article, you will have a general understanding of the overall structure and key interfaces of Java-tron, which is helpful for subsequent code analysis and development.
+This article mainly introduces the code structure of java-tron, as well as the function, location and directory structure of each functional module. Through this article, you will have a general understanding of the overall structure and key interfaces of java-tron, which is helpful for subsequent code analysis and development.
 
 
 
@@ -266,12 +266,12 @@ As we all know, the blockchain is essentially a non-tamperable distributed ledge
 
 The realization of such an immutable distributed ledger is a very complex system engineering, involving many technical fields: such as p2p networks, smart contracts, databases, cryptography, consensus mechanisms, etc. Among them, the database is the basis of the underlying storage, and various blockchain teams are exploring the design and optimization of the database level.
 
-The database module of Java-tron is also called the ChainBase module. This article mainly introduces some background knowledge and shows developers the implementation details of the ChainBase module by introducing logic such as transaction processing, state rollback, and data persistence.
+The database module of java-tron is also called the ChainBase module. This article mainly introduces some background knowledge and shows developers the implementation details of the ChainBase module by introducing logic such as transaction processing, state rollback, and data persistence.
 
 
 
 ### Prerequisites
-The database is an important part of the blockchain system. It stores all the data on the blockchain and is the basis for the normal operation of the blockchain system. Each fullnode stores a full amount of data, including block data, state data, etc. Java-tron uses the Account model to save the user's account state.
+The database is an important part of the blockchain system. It stores all the data on the blockchain and is the basis for the normal operation of the blockchain system. Each fullnode stores a full amount of data, including block data, state data, etc. java-tron uses the Account model to save the user's account state.
 
 #### Account Models
 There are currently two mainstream account models,
@@ -287,7 +287,7 @@ In the Account Model, user data is stored in the corresponding account, and smar
 
 The current mainstream consensus is PoW, PoS, DPoS, etc. PoW is proof of work, all nodes participate in the calculation of an expected hash result, and the node that first calculates the result has the right to produce a block, but as the computing power continues to increase, the energy consumption required to calculate the hash is also increasing. Moreover, large mining farms monopolize most of the computing power, which also goes against the original intention of decentralization.
 
-To solve the problems faced by PoW, some people proposed PoS (Proof of Stake), which is simply understood as the more coins that the node holds, the greater the probability of obtaining the right to produce blocks, but this will lead to monopoly problems as well. In order to improve, DPoS (Delegated Proof of Stake) is proposed: the decentralization feature is guaranteed by the elected super representative, and the super representative is responsible for the block production in turn to improve the efficiency. Java-tron currently adopts the DPoS consensus mechanism.
+To solve the problems faced by PoW, some people proposed PoS (Proof of Stake), which is simply understood as the more coins that the node holds, the greater the probability of obtaining the right to produce blocks, but this will lead to monopoly problems as well. In order to improve, DPoS (Delegated Proof of Stake) is proposed: the decentralization feature is guaranteed by the elected super representative, and the super representative is responsible for the block production in turn to improve the efficiency. java-tron currently adopts the DPoS consensus mechanism.
 
 To learn more, please refer to [Delegated Proof of Stake](https://en.bitcoinwiki.org/wiki/DPoS).
 
@@ -375,7 +375,7 @@ java-tron maintains a data structure in memory as below,
 
 
 
-Java-tron holds all blocks that have not reached consensus recently. When a forked chain occurs, according to the longest chain principle: if the block height of the forked chain is greater than the current main chain block height, the forked chain needs to be switched to the main chain. Part of the blocks on the previous main chain needs to roll back up to their common parent blocks when switching, and then apply new main chain blocks sequentially from the parent block.
+java-tron holds all blocks that have not reached consensus recently. When a forked chain occurs, according to the longest chain principle: if the block height of the forked chain is greater than the current main chain block height, the forked chain needs to be switched to the main chain. Part of the blocks on the previous main chain needs to roll back up to their common parent blocks when switching, and then apply new main chain blocks sequentially from the parent block.
 
 As shown in the figure, fork A in the dark part was originally the main chain. Because the height of fork B continues to grow and eventually exceeds the height of A, it is necessary to roll back the data in those three blocks with heights 1003, 1002, and 1001 in fork A. Then apply fork blocks 1001', 1002', 1003', and 1004' in B in sequence.
 
@@ -411,7 +411,7 @@ When rolling back, java-tron move the transactions in the pendingTransactionQueu
 
 Why does the pendingTransactionQueue need to be emptied after a new block arrives? First of all, it is clear that the pendingTransactionQueue queue is responsible for providing transaction data when generating blocks, that is to say, it stores validated transactions that can be directly packed into blocks. Since the new block will also change the account state, those validated transactions in pendingTransactionQueue may not pass the validation after applying the new block (the simplest example: a transaction in the new block is that accountA spends a part of the token, resulting in a transaction amount of accountA in the queue that is not enough to pay ). After the transaction is moved to rePushTransactions, a background thread will be responsible for re-validating the transaction in the queue. If nothing is wrong, it will be put into the pendingTransactionQueue again to provide data for block production.
 
-There is a session object in Java-Tron. A session represents the change in the state of a block. The session object is mainly used for rollback. For example,rolling back the state to the state of the previous block needs to be operated throughout the session, as shown in the following figure,
+There is a session object in java-tron. A session represents the change in the state of a block. The session object is mainly used for rollback. For example,rolling back the state to the state of the previous block needs to be operated throughout the session, as shown in the following figure,
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_6.png)
 
@@ -436,9 +436,9 @@ In the process of producing the block, the transaction will be validated again, 
 
 
 ### Block Solidity
-Java-tron adopts the DPoS consensus mechanism. The DPoS of java-tron is to vote for 27 nodes as block producers (also known as SR), SR has the right and obligation to produce blocks, and blocks approved by more than 2/3 of SR are considered to reach a consensus. These blocks, which are no longer rolled back are called solidified blocks. Only solidified blocks can be written to the database.
+java-tron adopts the DPoS consensus mechanism. The DPoS of java-tron is to vote for 27 nodes as block producers (also known as SR), SR has the right and obligation to produce blocks, and blocks approved by more than 2/3 of SR are considered to reach a consensus. These blocks, which are no longer rolled back are called solidified blocks. Only solidified blocks can be written to the database.
 
-SnapshotManager in Java-Tron is the key entry to the storage module, holds references to all current business databases, and stores database references in a list. Each database instance supports adding a new layer of state set on its own called SnapshotImpl. It is an in-memory hashmap, multiple SnapshotImpl are associated in the form of a linked list, and one SnapshotImpl retains the data modification (in-merging or merging) involved in one state change, and SnapshotImpl is independent of each other. They are separated through this data structure, as shown in the following figure,
+SnapshotManager in java-tron is the key entry to the storage module, holds references to all current business databases, and stores database references in a list. Each database instance supports adding a new layer of state set on its own called SnapshotImpl. It is an in-memory hashmap, multiple SnapshotImpl are associated in the form of a linked list, and one SnapshotImpl retains the data modification (in-merging or merging) involved in one state change, and SnapshotImpl is independent of each other. They are separated through this data structure, as shown in the following figure,
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_8.png)
 
@@ -456,13 +456,13 @@ This is obvious. If 'size' > 'maxSize', it means that the blocks corresponding t
 
 #### Atomicity
 
-The database storage of Java-tron is slightly different from other public chains. For example, the Ethereum persistence layer uses only one database instance, and different types of data in Ethereum are distinguished by prefixes and stored in one database instance. However, Java-Tron currently stores data of different business types in its own database instances.
+The database storage of java-tron is slightly different from other public chains. For example, the Ethereum persistence layer uses only one database instance, and different types of data in Ethereum are distinguished by prefixes and stored in one database instance. However, java-tron currently stores data of different business types in its own database instances.
 
 The two implementations have their own advantages. A single instance is easy to maintain and can be written uniformly, but the disadvantages are also obvious. For example, the amount of data in a single database continues to grow over time, and frequent access to some business databases may drag down the read-and-write performance of other businesses. 
 
 Multi-instance does not have the problem of the mutual influence of each business data read and write, and can configure different parameters according to their respective data volume and performance requirements to maximize performance, and can also independently split the database with a large amount of data. Alleviate data bloat problems. But there is a serious problem with multiple database instances: there is no native tool to support atomic writes among multiple database instances.
 
-In order to ensure the atomic writing of multiple database instances, Java-Tron has added a checkpoint mechanism, which writes the changed data to the checkpoint uniformly before the multiple instances are placed on the disk. If an accident occurs in writing to multiple database instances, the changed data will be recovered from the checkpoint when the service is restarted to ensure the atomicity of writing.
+In order to ensure the atomic writing of multiple database instances, java-tron has added a checkpoint mechanism, which writes the changed data to the checkpoint uniformly before the multiple instances are placed on the disk. If an accident occurs in writing to multiple database instances, the changed data will be recovered from the checkpoint when the service is restarted to ensure the atomicity of writing.
 
 The process of writing the snapshotImpl of the solidified block to the database in the previous section mainly includes two steps,
 

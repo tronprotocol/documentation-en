@@ -1,7 +1,7 @@
-# Java-tron Node Metrics Monitoring
+# java-tron Node Metrics Monitoring
 Starting from the GreatVoyage-4.5.1 (Tertullian) version, the node provides a series of interfaces compatible with the prometheus protocol, so that the node deployer can monitor the health status of the node more conveniently. If you want to monitor various indicators of the node, you first need to deploy a prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
 
-## Configure Java-tron 
+## Configure java-tron 
 To use the Prometheus tool to monitor the java-tron node, you first need to enable prometheus metric monitoring in the node configuration file and set the http port:
 
 ```
@@ -21,9 +21,9 @@ node {
 }
 
 ```
-## Start Java-tron node
+## Start java-tron node
 
-Start Java-tron node using below command：
+Start java-tron node using below command：
 
 ```shell
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf

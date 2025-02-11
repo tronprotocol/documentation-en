@@ -1,9 +1,9 @@
 # Development Example
-This article will take adding a new `setPeer` HTTP interface as an example to illustrate how to participate in the development of Java-tron. Before developing, please configure the [InteliJ IDE development environment](../run-in-idea).
+This article will take adding a new `setPeer` HTTP interface as an example to illustrate how to participate in the development of java-tron. Before developing, please configure the [InteliJ IDE development environment](../run-in-idea).
 
-Sometimes Java-tron nodes may not be able to connect to peers due to network reasons, if you can add trusted nodes while the node is running, this will allow the node to connect to the peer even if the node discovery function is not working.
+Sometimes java-tron nodes may not be able to connect to peers due to network reasons, if you can add trusted nodes while the node is running, this will allow the node to connect to the peer even if the node discovery function is not working.
 
-## Fork Java-tron Repository
+## Fork java-tron Repository
 
 Fork a new repository from the [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) project to your personal repository, and then use the following command Clone the code locally:
     
@@ -30,7 +30,7 @@ $ git checkout -b feature/add-new-http-demo develop
 ```
 
 ## Code Development
-Open the Java-tron project in IDEA. Create a new servlet file in the `java-tron/framework/src/main/java/org/tron/core/services/http` directory to process HTTP requests: SetPeerServlet.java, the file should contain two functions `doGet` and `doPost`. `doGet` is used to handle http get requests and `doPost` is used to handle http post requests. If one of these types of requests is not supported, the method content can be empty.
+Open the java-tron project in IDEA. Create a new servlet file in the `java-tron/framework/src/main/java/org/tron/core/services/http` directory to process HTTP requests: SetPeerServlet.java, the file should contain two functions `doGet` and `doPost`. `doGet` is used to handle http get requests and `doPost` is used to handle http post requests. If one of these types of requests is not supported, the method content can be empty.
 
 ```java
 @Component
@@ -137,7 +137,7 @@ public class FullNodeHttpApiService implements Service {
     
 }
 ```
-Then you can debug the above code, start the Java-tron node in IDEA, and interact with the node through the below Curl command in the terminal:
+Then you can debug the above code, start the java-tron node in IDEA, and interact with the node through the below Curl command in the terminal:
 
 ```curl
 $ curl --location --request POST 'http://127.0.0.1:16667/wallet/setpeer' \
@@ -156,11 +156,11 @@ At this point, the code development is complete, and then you need to write unit
 
 ## Write Unit Test
 
-The unit test of the Java-tron project is based on the JUnit framework. For the usage of JUnit, please refer to [JUnit official website](https://junit.org). The following is a brief introduction to the Java-tron unit test case specification and common annotations.
+The unit test of the java-tron project is based on the JUnit framework. For the usage of JUnit, please refer to [JUnit official website](https://junit.org). The following is a brief introduction to the java-tron unit test case specification and common annotations.
 
 
-### Java-tron Unit Test Cases Writing Specification
-When writing Java-tron unit test cases, please follow the below guidelines:
+### java-tron Unit Test Cases Writing Specification
+When writing java-tron unit test cases, please follow the below guidelines:
 
 * All test classes should be placed in the test directory, and the package of the test class should be consistent with the package structure of the tested code. Generally, use `Test` as the suffix of a class name
 * The test method must be decorated with `@Test` and it must be `public` `void` type. Generally, `test` is used as the prefix of the method name

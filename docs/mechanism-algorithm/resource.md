@@ -24,7 +24,7 @@ Such as if the number of bytes of a transaction is 200, so this transaction cons
 
 ### 1. How to Get Bandwidth Points
 
-1. By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43_200_000_000
+1. By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43,200,000,000
 2. Every account has a fixed amount of free Bandwidth Points(600) every day
 
 ### 2. Bandwidth Points Consumption
@@ -39,7 +39,7 @@ Bandwidth points consumption sequence for TRC-10 transfer:
 
 3. Bandwidth points TRX staking.
 
-4. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
+4. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;
 
 Bandwidth points consumption sequence for other transactions:
 
@@ -47,7 +47,7 @@ Bandwidth points consumption sequence for other transactions:
 
 2. Bandwidth points TRX staking.
 
-3. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
+3. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;
 
 ### 3. Bandwidth Points Recovery
 
@@ -79,21 +79,21 @@ Example (Using wallet-cli):
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180_000_000_000.
+stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180,000,000,000.
 
 Example:
 
 ```text
 If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 75_000_000_000 and energy_limit is 90_000_000_000
-B: 75_000_000_000 and energy_limit is 90_000_000_000
+A: 75,000,000,000 and energy_limit is 90,000,000,000
+B: 75,000,000,000 and energy_limit is 90,000,000,000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 60_000_000_000 and energy_limit is 72_000_000_000
-B: 60_000_000_000 and energy_limit is 72_000_000_000
-C: 30_000_000_000 and energy_limit is 36_000_000_000
+A: 60,000,000,000 and energy_limit is 72,000,000,000
+B: 60,000,000,000 and energy_limit is 72,000,000,000
+C: 30,000,000,000 and energy_limit is 36,000,000,000
 ```
 #### Energy Consumption
 
@@ -150,10 +150,10 @@ Assume developer undertake 90% energy consumption, and developer has enough ener
 
 Then the way to estimate the fee limit is:
 
-1. A = 20000 energy * 210sun = 4_200_000 sun = 4.2 trx
+1. A = 20000 energy * 210sun = 4,200,000 sun = 4.2 trx
 2. Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
 
-So, the caller is suggested to set fee limit to 4_200_000 sun * 10% = 420_000 sun.
+So, the caller is suggested to set fee limit to 4,200,000 sun * 10% = 420,000 sun.
 
 ### 3. Energy Calculation (Developer Must Read)
 
