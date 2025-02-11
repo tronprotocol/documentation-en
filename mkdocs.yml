@@ -26,8 +26,8 @@ nav:
         - Smart Contract: contracts/contract.md
         - System Contract: mechanism-algorithm/system-contracts.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
-        - Multi-Signature: mechanism-algorithm/multi-signatures.md
-    - For java-tron Developers:
+        - Account Permission Management: mechanism-algorithm/multi-signatures.md
+    - For Java-tron Developers:
         - Developer Guide: developers/java-tron.md
         - TIPs Workflow: developers/tips.md
         - Issue Workflow: developers/issue-workflow.md

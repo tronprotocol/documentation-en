@@ -1,10 +1,8 @@
-# Multi-signature
+# Account Permission Management
 
 ## Background
 
-Multiple signature functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through TRON's multi-signature implementation and design.
-
-Reference: [TIP-16: Account Multi-signature](https://github.com/tronprotocol/TIPs/blob/master/tip-16.md)
+[Account permission management](https://github.com/tronprotocol/TIPs/blob/master/tip-16.md) functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through TRON's account permission management implementation and design.
 
 ## Concept
 
@@ -52,7 +50,7 @@ message AccountPermissionUpdateContract {
 }
 ```
 
-- `owner_address`: The account applies multi-signatures
+- `owner_address`: The address of the account whose permissions are to be modified
 - `owner`: Owner permission
 - `witness`: Witness permission (if the account is a SR(Super Representative))
 - `actives`: Active permission
@@ -276,8 +274,6 @@ public static void main(String[] args) {
 (n). The last users that signs the transaction broadcast it to the node
 
 (n+1). The node will verify if the sum of the weight of all signatures is bigger than threshold, if true, the transaction is accepted, otherwise, is rejected
-
-Demo: [MultiSignDemo.java](https://github.com/tronprotocol/wallet-cli/blob/multi_sign_V2/src/main/java/org/tron/demo/MultiSignDemo.java)
 
 ### Other APIs
 

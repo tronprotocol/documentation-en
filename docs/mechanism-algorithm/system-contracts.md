@@ -432,9 +432,9 @@ message ReceiveDescription {
 - `c_out`: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.
 - `zkproof`: zero-knowledge proof of the receiver's note.
 
-## 27. Multi Signature
+## 27. Account Permission Management
 
-[Multi-Signature](./multi-signatures.md)
+[Account Permission Management](./multi-signatures.md)
 
 ## 28. ClearABIContract
 ```

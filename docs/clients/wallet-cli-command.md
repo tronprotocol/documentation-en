@@ -203,7 +203,7 @@ Balance = 2665198240
 ```shell
 wallet>UpdateAccountPermission [ownerAddress] [permissions]
 ```
-This command is used to assign permissions to other accounts, is utilized for **multi-signature** transactions, which allows other users to access the account with paritcular permission in order to better manage it. There are three types of permissions:
+This command is used to manage account permissions, assign permissions to other accounts, is utilized for multi-signature transactions, which allows other users to access the account with paritcular permission in order to better manage it. There are three types of permissions:
 
 * owner: access to the owner of account
 * active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for SR purposes.
@@ -861,7 +861,7 @@ In the example, we picked the account `TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej` to si
 after that, it asks you if want to add another sign 
 ,enter y and pick the account `TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE` to finish multi-signing.
 
-The weight of each account is 1 and the granting threshold is 2. When the requirements are met, the transaction is done successfully! This is how multiple accounts user multi-signature when using the same cli. 
+The weight of each account is 1 and the granting threshold is 2. When the requirements are met, the transaction is done successfully! This example shows how to complete a multi-signed transaction using the same client. When using multiple clients, please refer to the following command.
 
 ### AddTransactionSign
 Use the instruction addTransactionSign according to the obtained transaction hex string if signing at multiple cli.
