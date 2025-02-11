@@ -1,4 +1,4 @@
-# Java-tron Node Maintenance Tool - Toolkit
+# java-tron Node Maintenance Tool - Toolkit
 
 The Toolkit integrates a series of tools of java-tron, and more functions will be added into it in the future for the convenience of developers. Currently Toolkit includes the following functions:
 
@@ -67,7 +67,7 @@ $ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
 
 #### Configure For Database Storage Migration
 
-The configuration of database migration is in the [storage.properties](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L36) field in the Java-tron node configuration file. The following is an example of migrating only the `block` and `trans` databases to illustrate how to migrate some databases to other storage disks:
+The configuration of database migration is in the [storage.properties](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L36) field in the java-tron node configuration file. The following is an example of migrating only the `block` and `trans` databases to illustrate how to migrate some databases to other storage disks:
 
 
 ```conf

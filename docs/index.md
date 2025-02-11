@@ -1,12 +1,12 @@
-# Welcome to the Java-tron user manual!
+# Welcome to the java-tron user manual!
 
-Java-tron is a TRON client implemented in Java, it provides completely open source code, you can download the [Java-tron source code](https://github.com/tronprotocol/java-tron) on Github. This article will introduce the knowledge related to Java-tron. Through this article, you will learn how to use Java-tron and how to participate in the development and maintenance of Java-tron, including the following parts:
+java-tron is a TRON client implemented in Java, it provides completely open source code, you can download the [java-tron source code](https://github.com/tronprotocol/java-tron) on Github. This article will introduce the knowledge related to java-tron. Through this article, you will learn how to use java-tron and how to participate in the development and maintenance of java-tron, including the following parts:
 
 
 * [Getting Started Guide](/documentation-en/getting_started/getting_started_with_javatron/)
-* [Using Java-tron](/documentation-en/using_javatron/installing_javatron/)
+* [Using java-tron](/documentation-en/using_javatron/installing_javatron/)
 * [Protocol Guide](/documentation-en/introduction/dpos/)
-* [Java-tron Development](/documentation-en/developers/java-tron/)
+* [java-tron Development](/documentation-en/developers/java-tron/)
 * [DAPP Development](/documentation-en/contracts/compiler/)
 * [APIs](/documentation-en/api/http/)
 * [Wallet-CLI](/documentation-en/clients/wallet-cli/)

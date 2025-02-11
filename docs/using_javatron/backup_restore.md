@@ -1,6 +1,6 @@
 # Data Backup & Restore
 
-Everything `Java-tron` persists gets written inside its data directory. The default data directory is: `/output-directory/`. If you need to specify other directories, you can add `-d` or `--output-directory` parameter to the java-tron node startup command to specify the data storage location.
+Everything `java-tron` persists gets written inside its data directory. The default data directory is: `/output-directory/`. If you need to specify other directories, you can add `-d` or `--output-directory` parameter to the java-tron node startup command to specify the data storage location.
 
 ```
 $ java -jar fullnode.jar -d ./outputdir
@@ -53,8 +53,8 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 | -------- | -------- | -------- |
 | Official data source (North America: Virginia)   | http://34.86.86.229/     | LevelDB, exclude internal transactions (About 1821G on 6 Aug. 2024)     |
 | Official data source (Singapore)    | http://34.143.247.77/    | 	LevelDB, exclude internal transactions (About 1819G on 5 Aug. 2024)     |
-| Official data source (Singapore)    | http://35.197.17.205/   | RocksDB, exclude internal transactions (About 1799G on 6 Aug. 2024)     |
-| Official data source (Singapore)    | http://35.247.128.170/   | LevelDB, inlcude internal transactions (About 2000G on 6 Aug. 2024)     |
+| Official data source (North America: America)    | http://35.197.17.205/   | RocksDB, exclude internal transactions (About 1799G on 6 Aug. 2024)     |
+| Official data source (Singapore)    | http://35.247.128.170/   | LevelDB, include internal transactions (About 2000G on 6 Aug. 2024)     |
 | Official data source ((North America: Virginia))    | http://34.48.6.163/   | LevelDB, exclude internal transactions, include account history TRX balance (About 2288G on 6 Aug. 2024)     |
 
 
@@ -65,7 +65,7 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 ### Lite FullNode Data Snapshot
 
 
-The Tron Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.
+The TRON Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.
 
 
 | Lite Fullnode Data Source | Download site | Description |

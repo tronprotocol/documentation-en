@@ -1,12 +1,12 @@
-site_name: Java Tron
+site_name: java-tron
 site_url: https://tronprotocol.github.io/documentation-en/
 repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
     - Getting Started:
-        - Getting Started with Java-tron: getting_started/getting_started_with_javatron.md
-    - Using Java-tron:
-        - Deploying Java-tron: using_javatron/installing_javatron.md
+        - Getting Started with java-tron: getting_started/getting_started_with_javatron.md
+    - Using java-tron:
+        - Deploying java-tron: using_javatron/installing_javatron.md
         - Backup & Restore: using_javatron/backup_restore.md
         - Lite FullNode: developers/litefullnode.md
         - Private Network: using_javatron/private_network.md

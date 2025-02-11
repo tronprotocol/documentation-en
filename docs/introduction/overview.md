@@ -58,13 +58,13 @@ Only the account of a super representative can create a proposal.
 The network parameters can be modified([min,max]):
 
 - 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000, 24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms
-- 1: ACCOUNT_UPGRADE_COST, [0, 100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 SUN
-- 2: CREATE_ACCOUNT_FEE, [0, 100 000 000 000  000 000] //the fee to create an account, currently 100_000 SUN
-- 3: TRANSACTION_FEE, [0, 100 000 000 000 000 000] //the fee for bandwidth, currently 1_000 SUN/byte
-- 4: ASSET_ISSUE_FEE, [0, 100 000 000 000 000 000] //the fee to issue an asset, currently 1024_000_000 SUN
-- 5: WITNESS_PAY_PER_BLOCK, [0, 100 000 000 000 000 000] //the block producing reward, currently 32_000_000 SUN
-- 6: WITNESS_STANDBY_ALLOWANCE, [0, 100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115_200_000_000 SUN
-- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 1_000_000 SUN
+- 1: ACCOUNT_UPGRADE_COST, [0, 100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9,999,000,000 SUN
+- 2: CREATE_ACCOUNT_FEE, [0, 100 000 000 000  000 000] //the fee to create an account, currently 100,000 SUN
+- 3: TRANSACTION_FEE, [0, 100 000 000 000 000 000] //the fee for bandwidth, currently 1,000 SUN/byte
+- 4: ASSET_ISSUE_FEE, [0, 100 000 000 000 000 000] //the fee to issue an asset, currently 1,024,000,000 SUN
+- 5: WITNESS_PAY_PER_BLOCK, [0, 100 000 000 000 000 000] //the block producing reward, currently 32,000,000 SUN
+- 6: WITNESS_STANDBY_ALLOWANCE, [0, 100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115,200,000,000 SUN
+- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 1,000,000 SUN
 - 8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwidth or TRX while creating an account, using together with #7
 - 9: ALLOW_CREATION_OF_CONTRACTS, //to enable the VM
 - 10: REMOVE_THE_POWER_OF_THE_GR, //to clear the votes of GR
@@ -84,7 +84,7 @@ id: the serial number (0 ~ 18)
 value: the parameter value
 ```
 
-Note: In TRON network, 1 TRX = 1000_000 SUN
+Note: In TRON network, 1 TRX = 1,000,000 SUN
 
 ### 2.4.3 Vote for a Proposal
 
@@ -113,7 +113,7 @@ id: proposal id
 - Query all the proposals list by pagination (GetPaginatedProposalList)
 - Query a proposal by proposal id (GetProposalById)
 
-For more api detail, please refer to [Tron HTTP API](../api/http.md)
+For more api detail, please refer to [TRON HTTP API](../api/http.md)
 
 # 3. Account Model
 
@@ -128,7 +128,7 @@ TRON uses account model. An account's identity is address, it needs private key 
 2.&nbsp;Use an account already existed in TRON network to create an account
 
 ## 3.3 Key-pair Generation Algorithm
-Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
+TRON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
 
 ## 3.4 Address Format
 Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address comes out. Do basecheck to address, here is the final address. All addresses start with 'T'.
@@ -486,7 +486,7 @@ Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 Need to convert TRON's address while using in solidity (recommended):
 ```text
 /**
-     *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
+     *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
 */
@@ -562,21 +562,21 @@ Example (Using wallet-cli):
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-Stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50_000_000_000.
+Stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50,000,000,000.
 
 Example:
 
 ```text
 If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 25_000_000_000 and energy_limit is 25_000_000_000
-B: 25_000_000_000 and energy_limit is 25_000_000_000
+A: 25,000,000,000 and energy_limit is 25,000,000,000
+B: 25,000,000,000 and energy_limit is 25,000,000,000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 20_000_000_000 and energy_limit is 20_000_000_000
-B: 20_000_000_000 and energy_limit is 20_000_000_000
-B: 10_000_000_000 and energy_limit is 10_000_000_000
+A: 20,000,000,000 and energy_limit is 20,000,000,000
+B: 20,000,000,000 and energy_limit is 20,000,000,000
+C: 10,000,000,000 and energy_limit is 10,000,000,000
 ```
 
 ** Energy Recovery **
@@ -586,9 +586,9 @@ The energy consumed will reduce to 0 smoothly within 24 hours.
 Example:
 
 ```text
-at one moment, A has used 72_000_000 Energy
+at one moment, A has used 72,000,000 Energy
 if there is no continuous consumption or TRX stake
-one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
+one hour later, the energy consumption amount will be 72,000,000 - (72,000,000 * (60*60/60*60*24)) Energy = 69,000,000 Energy
 24 hours later, the energy consumption amount will be 0 Energy
 ```
 
@@ -629,16 +629,16 @@ Assume developer undertake 90% energy consumption, and developer has enough ener
 
 Then the way to estimate the fee limit is:
 ```
-1). A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,
+1). A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50,000,000 SUN,
 
-2). B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2_000_000 SUN,
+2). B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2,000,000 SUN,
 
-3). Take the greater number of A and B, which is 50_000_000 SUN,
+3). Take the greater number of A and B, which is 50,000,000 SUN,
 
 4). Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
 ```
 
-So, the caller is suggested to set fee limit to 50_000_000 SUN * 10% = 5_000_000 SUN
+So, the caller is suggested to set fee limit to 50,000,000 SUN * 10% = 5,000,000 SUN
 
 Note:
 ```
@@ -970,7 +970,7 @@ Note: Due to the change of the total amount of the staked TRX in the network and
 
 ## 8.2.1 How to Get Bandwidth Points
 
-1.&nbsp;By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43_200_000_000
+1.&nbsp;By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43,200,000,000
 
 2.&nbsp;Every account has a fixed amount of free Bandwidth Points every day, it is defined in #61 network parameter, user can check the value on tronscan(https://tronscan.org/#/sr/committee).
 
@@ -990,7 +990,7 @@ Bandwidth points consumption sequence for TRC-10 transfer:
 
 3. Bandwidth points TRX staking.
 
-4. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
+4. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;
 
 Bandwidth points consumption sequence for other transactions:
 
@@ -998,7 +998,7 @@ Bandwidth points consumption sequence for other transactions:
 
 2. Bandwidth points TRX staking.
 
-3. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;
+3. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;
 
 ### 8.2.3 Bandwidth Points Recovery
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
@@ -1077,7 +1077,7 @@ The token price is determined by the ratio of the balance of the two tokens.
 ### 9.6.3 Calculate the Amount of Token You Can Get
 sellTokenQuant is the amount of the first_token you want to sell;
 buyTokenQuant is the amount of second_token you can get;
-supply = 1_000_000_000_000_000_000L;
+supply = 1,000,000,000,000,000,000L;
 supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/(firstTokenBalance + sellTokenQuant, 0.0005));
 buyTokenQuant = (long)balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0);
 
