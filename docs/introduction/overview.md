@@ -1082,9 +1082,9 @@ supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/(firstToke
 buyTokenQuant = (long)balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0);
 
 
-# 10. Multi-Signatures
+# 10. Account Permission Management
 Please refer to:
-[Multi-signatures](../mechanism-algorithm/multi-signatures.md)
+[Account Permission Management](../mechanism-algorithm/multi-signatures.md)
 
 # 11. Shielded Transaction
 Please refer to:
