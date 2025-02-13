@@ -76,9 +76,9 @@ The process of building a node on private chain is the same as that on mainnet. 
     
     If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/tronprotocol/tron-docker/tree/main/tools/dbfork) is what you are interested in.
     
-    If you want to modify part of network parameters, there are two ways to choose from.
+    If you want to modify part of network parameters, there are two ways to choose from:
 
-    * configure file  
+    * Configure File  
       The modification of dynamic parameters can be directly set through configure file. These dynamic parameters can be seen [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
       Below is an example of modifying dynamic parameters through configure file.
       ```
@@ -92,39 +92,39 @@ The process of building a node on private chain is the same as that on mainnet. 
       }
       ```
     
-    * committee proposal
-      The modification of dynamic parameters can also be done through committee proposal. The SR account can use [`wallet/proposalcreate`](https://developers.tron.network/reference/proposalcreate)to create proposal, and then use [`wallet/proposalapprove`](https://developers.tron.network/reference/proposalapprove) to approve proposal. 
-      Below is an code example of modifying two dynamic parameters through a committee proposal.
-          ```
-          var TronWeb = require('tronweb');
-          var tronWeb = new TronWeb({
-              fullHost: 'http://localhost:16887',
-              privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
-          })
-      
-        
-          var parametersForProposal = [{"key":9,"value":1},{"key":10,"value":1}];
-        
+    * Committee Proposal
+      The modification of dynamic parameters can also be done through committee proposal. The SR account can use [proposalcreate](https://developers.tron.network/reference/proposalcreate)to create proposal, and then use [proposalapprove](https://developers.tron.network/reference/proposalapprove) to approve proposal. Below is an code example of modifying two dynamic parameters through a committee proposal.
+      ```
+      var TronWeb = require('tronweb');
+      var tronWeb = new TronWeb({
+          fullHost: 'http://localhost:16887',
+          privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
+      })
+
+      var parametersForProposal = [{"key":9,"value":1},{"key":10,"value":1}];
+
       async function modifyChainParameters(parameters,proposalID){
       
-              parameters.sort((a, b) => {
-                      return a.key.toString() > b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
-                  })
-              var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
-              var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
-              var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
-      
-              setTimeout(async function() {
-                  console.log(receipt1)
-                  console.log("Vote proposal 1 !")
-                  var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
-                  var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
-                  var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
-              }, 1000)
-      
-          }
-      
-          modifyChainParameters(parametersForProposal, 1)
+          parameters.sort((a, b) => {
+                  return a.key.toString() > b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
+              })
+          var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
+          var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
+          var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
+
+          setTimeout(async function() {
+              console.log(receipt1)
+              console.log("Vote proposal 1 !")
+              var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
+              var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
+              var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
+          }, 1000)
+
+      }
+
+      modifyChainParameters(parametersForProposal, 1)
       ```
-      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. After the expiration time has passed, if the "state" in the return value of the interface is "APPROVED", it means that the proposal has been approved.
-      Due to the dependencies between some parameters, attention should be paid to the order of proposals.
+
+      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. After expiration time of the proposal has passed, if the "state" in the return value of the interface is "APPROVED", it means that the proposal has been approved.
+
+      Due to the dependencies between some parameters, attention should be paid to the order of proposals involved with interdependent parameters.
