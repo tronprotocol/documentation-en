@@ -78,7 +78,7 @@ The process of building a node on private chain is the same as that on mainnet. 
     
     If you want to modify part of network parameters, there are two ways to choose from:
 
-    * Configure File 
+    * Configure File  
       Some dynamic parameters can be directly set through configure file. These dynamic parameters can be seen [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
       Below is an example of modifying dynamic parameters through configure file.
       ```
@@ -92,7 +92,7 @@ The process of building a node on private chain is the same as that on mainnet. 
       }
       ```
     
-    * Committee Proposal 
+    * Committee Proposal  
       The modification of dynamic parameters can also be done through committee proposal. The SR account can use [proposalcreate](https://developers.tron.network/reference/proposalcreate) to create proposal, and then use [proposalapprove](https://developers.tron.network/reference/proposalapprove) to approve proposal. Below is an code example of modifying two dynamic parameters through a committee proposal.
       ```
       var TronWeb = require('tronweb');
@@ -127,4 +127,4 @@ The process of building a node on private chain is the same as that on mainnet. 
 
       After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. If the "state" in the return value of the interface is "APPROVED" When expiration time of the proposal has passed, it means that the proposal has been approved.
 
-      Dynamic parameters with interdependent relationships cannot be included in one proposal, it is needed to separate them into different proposals and pay attention to order of the proposals.
+      Dynamic parameters with interdependent relationships cannot be included in one proposal, it is needed to separate them into different proposals and pay attention to order of them.
