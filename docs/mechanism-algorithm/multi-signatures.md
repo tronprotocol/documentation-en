@@ -131,22 +131,32 @@ A super representative deploys a witness node on cloud server. In order to keep 
 
 Witness node configuration:
 
-1. if no witness permission is used, no need to configure
-2. if itness permission is used, need to reconfigure:
+1. if no witness permission is used, there is no need to change config file.
+2. if witness permission is used, `localwitness` in config file should be changed and `localWitnessAccountAddress` should be clearly set.
+We know when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), it is needed to fill in the private key of the super representative address to `localwitness` in the config file and the default value of `localWitnessAccountAddress` which represents the address of the SR(Super Representative) account is empty. However, when witness permission is used, the value of `localwitness` need to be changed to the private key of the account which the witness permission is authorized to and the value of `localWitnessAccountAddress` must be clearly set as the address of the SR account. Here is an example of how to configure SR account [TJBtdYunmQkeK5KninwgcjuK1RPDhyUWBZ](https://tronscan.org/#/address/TJBtdYunmQkeK5KninwgcjuK1RPDhyUWBZ) which authorize its witness permission to account TD4zrmdPLT11otnEQd7VriCkvaKnJcHKbu.
 
-```config
+
+if witness permission is not used, it's config file should look like as below:
+```
 # config.conf
-
-// Optional.The default is empty.
-// It is used when the SR(Super Representative) account has set the witnessPermission.
-// When it is not empty, the localWitnessAccountAddress represents the address of the SR(Super Representative) account,
-// and the localwitness is configured with the private key of the witnessPermissionAddress in the SR(Super Representatives) account.
-// When it is empty,the localwitness is configured with the private key of the SR(Super Representatives) account.
-
-//localWitnessAccountAddress =
-
 localwitness = [
-  f4df789d3210ac881cb900464dd30409453044d2777060a0c391cbdf4c6a4f57
+  xxx // private key of TJBtdYunmQkeK5KninwgcjuK1RPDhyUWBZ
+]
+```
+or
+```
+# config.conf
+localWitnessAccountAddress = TJBtdYunmQkeK5KninwgcjuK1RPDhyUWBZ
+localwitness = [
+  xxx // private key of TJBtdYunmQkeK5KninwgcjuK1RPDhyUWBZ
+]
+```
+if witness permission is used, it's config file shold look like as below:
+```
+#config.conf
+localWitnessAccountAddress = TJBtdYunmQkeK5KninwgcjuK1RPDhyUWBZ
+localwitness = [
+  yyy // private key of TD4zrmdPLT11otnEQd7VriCkvaKnJcHKbu
 ]
 ```
 
