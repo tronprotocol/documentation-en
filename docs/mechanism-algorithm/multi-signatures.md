@@ -131,7 +131,7 @@ A super representative deploys a witness node on cloud server. In order to keep 
 
 Witness node configuration:
 
--  if no witness permission is used, there is no need to change config file.  
+-  if witness permission is not used, there is no need to change config file.  
 -  if witness permission is used, `localwitness` in config file should be changed and `localWitnessAccountAddress` should be clearly set.   
     We know when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), it is needed to fill in the private key of the super representative address to `localwitness` in the config file and the default value of `localWitnessAccountAddress` which represents the address of the SR(Super Representative) account is empty. However, when witness permission is used, the value of `localwitness` need to be changed to the private key of the account which the witness permission is authorized to and the value of `localWitnessAccountAddress` must be clearly set as the address of the SR account. Here is an example of how to configure SR account [TJBtdYunmQkeK5KninwgcjuK1RPDhyUWBZ](https://tronscan.org/#/address/TJBtdYunmQkeK5KninwgcjuK1RPDhyUWBZ) which authorize its witness permission to account TD4zrmdPLT11otnEQd7VriCkvaKnJcHKbu.  
 
