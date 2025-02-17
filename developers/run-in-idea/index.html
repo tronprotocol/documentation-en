@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/run-in-idea/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Configure the IDE - Java Tron</title>
+    <title>Configure the IDE - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -108,7 +108,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#configure-the-code-style-check-plugin">Configure the code style check plugin</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#compile-java-tron">Compile Java-tron</a>
+    <li class="toctree-l2"><a class="reference internal" href="#compile-java-tron">Compile java-tron</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#run-and-debug">Run and Debug</a>
     </li>
@@ -151,7 +151,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -171,8 +171,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="configure-the-intellij-idea-ide">Configure the IntelliJ IDEA IDE<a class="headerlink" href="#configure-the-intellij-idea-ide" title="Permanent link">&para;</a></h1>
-<p>For Java development, in order to reduce development difficulty and improve development efficiency, developers should first select and configure a Java integrated development environment, such as IntelliJ IDEA, NetBeans or Eclipse, etc. This article will take InteliJ IDEA as an example to introduce how to configure Java-tron integration development environment.</p>
-<p>This article describes the configuration of the Java-tron integrated development environment in InteliJ IDEA. Java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported. Before configuring the InteliJ IDE development environment, please ensure the following prerequisites:</p>
+<p>For Java development, in order to reduce development difficulty and improve development efficiency, developers should first select and configure a Java integrated development environment, such as IntelliJ IDEA, NetBeans or Eclipse, etc. This article will take InteliJ IDEA as an example to introduce how to configure java-tron integration development environment.</p>
+<p>This article describes the configuration of the java-tron integrated development environment in InteliJ IDEA. java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported. Before configuring the InteliJ IDE development environment, please ensure the following prerequisites:</p>
 <ul>
 <li>Configure the development environment on <code>Linux</code> or <code>MacOS</code> operating system</li>
 <li><code>Oracle JDK 1.8</code>, <code>git</code>, <a href="https://www.jetbrains.com/idea/download/#section=mac">InteliJ IDEA</a> are installed </li>
@@ -182,7 +182,7 @@
 <ul>
 <li>
 <p>Install Lombok plugin</p>
-<p>Search for <code>lombok</code> in [IDEA]-&gt;[Preferences]-&gt;[Plugins] to install <code>Lombok</code> plugin, <code>Lombok</code> makes Java-tron code more concise by adding annotations.</p>
+<p>Search for <code>lombok</code> in [IDEA]-&gt;[Preferences]-&gt;[Plugins] to install <code>Lombok</code> plugin, <code>Lombok</code> makes java-tron code more concise by adding annotations.</p>
 </li>
 <li>
 <p>Enable <code>Enable annotation processing</code> configuration item
@@ -193,15 +193,15 @@
       <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_JDK.png" /></p>
 </li>
 <li>
-<p>Download Java-tron source code</p>
-<p>Clone the Java-tron source code locally and switch to the <code>develop</code> branch.
+<p>Download java-tron source code</p>
+<p>Clone the java-tron source code locally and switch to the <code>develop</code> branch.
 <div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
 $ git checkout -t origin/develop
 </code></pre></div></p>
 </li>
 </ul>
 <h2 id="configure-the-code-style-check-plugin">Configure the code style check plugin<a class="headerlink" href="#configure-the-code-style-check-plugin" title="Permanent link">&para;</a></h2>
-<p>The Java-tron code style needs to meet the <code>Google check style</code> specification. In IDEA, you can use the <code>Checkstyle</code> plugin to check whether the code conforms to the <code>Google check style</code> specification. The installation and configuration process of the plugin is as follows:</p>
+<p>The java-tron code style needs to meet the <code>Google check style</code> specification. In IDEA, you can use the <code>Checkstyle</code> plugin to check whether the code conforms to the <code>Google check style</code> specification. The installation and configuration process of the plugin is as follows:</p>
 <ul>
 <li>
 <p>Search for <code>checkstyle</code> in [IDEA]-&gt;[Preferences]-&gt;[Plugins] to install the plugin
@@ -209,30 +209,30 @@ $ git checkout -t origin/develop
 </li>
 <li>
 <p>Code style configuration</p>
-<p>First, download the <a href="https://github.com/tronprotocol/java-tron/blob/develop/config/checkstyle/checkStyleAll.xml">Java-tron code style check configuration file</a>, then in the Checkstyle configuration page, click "+ ", choose to use the "checkStyleAll.xml" just downloaded, after adding that, you can see this file in the "Configuration Files" list, and finally click "Apply" to complete the configuration.
+<p>First, download the <a href="https://github.com/tronprotocol/java-tron/blob/develop/config/checkstyle/checkStyleAll.xml">java-tron code style check configuration file</a>, then in the Checkstyle configuration page, click "+ ", choose to use the "checkStyleAll.xml" just downloaded, after adding that, you can see this file in the "Configuration Files" list, and finally click "Apply" to complete the configuration.
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkStyleAll.png" /></p>
 <p>After configuring the <code>Checkstyle</code> plugin, you can use <code>Checkstyle</code> to check the code. <code>Checkstyle</code> can check a module or the whole project, and can also check a single file. Select "Check Current File" in the right-click menu of the file editor, and Checkstyle will check the file. If a code problem is detected, you need to modify it according to the prompts. Code can only be submitted when there are no code problems.
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_stylecheck.png" /></p>
 </li>
 </ul>
-<h2 id="compile-java-tron">Compile Java-tron<a class="headerlink" href="#compile-java-tron" title="Permanent link">&para;</a></h2>
-<p>You can use the terminal to compile Java-tron with the following command in the Java-tron project directory:</p>
+<h2 id="compile-java-tron">Compile java-tron<a class="headerlink" href="#compile-java-tron" title="Permanent link">&para;</a></h2>
+<p>You can use the terminal to compile java-tron with the following command in the java-tron project directory:</p>
 <p><div class="highlight"><pre><span></span><code>$ ./gradlew clean build
 </code></pre></div>
 The above compile command will execute all test cases, you can use <code>-x test</code> to skip the execution of test cases:
 <div class="highlight"><pre><span></span><code>$ ./gradlew clean build -x test
 </code></pre></div></p>
-<p>You can also compile Java-tron in IDEA: Open the Java-tron project in IDEA and click "Build" -&gt; "Build Project" to compile the project.</p>
+<p>You can also compile java-tron in IDEA: Open the java-tron project in IDEA and click "Build" -&gt; "Build Project" to compile the project.</p>
 <h2 id="run-and-debug">Run and Debug<a class="headerlink" href="#run-and-debug" title="Permanent link">&para;</a></h2>
-<p>Before running Java-tron, you need to create a working directory to store the database files and log files generated when the node is running.
+<p>Before running java-tron, you need to create a working directory to store the database files and log files generated when the node is running.
 <div class="highlight"><pre><span></span><code>$ mkdir /Users/javatrondeploy
 </code></pre></div></p>
-<p>In the "Run/Debug Configurations" configuration panel, specify the JDK version running Java-tron as <code>java 8</code>, and then configure the command parameters for running Java-tron, for example, specify the node configuration file through the <code>-c</code> parameter as <code>config.conf</code>.</p>
-<p>"Working directory" is configured as the working directory of Java-tron created earlier. When Java-tron starts, it will look for the <code>config.conf</code> configuration file in this directory. Please make sure that <code>config.conf</code> has already been in this directory.</p>
+<p>In the "Run/Debug Configurations" configuration panel, specify the JDK version running java-tron as <code>java 8</code>, and then configure the command parameters for running java-tron, for example, specify the node configuration file through the <code>-c</code> parameter as <code>config.conf</code>.</p>
+<p>"Working directory" is configured as the working directory of java-tron created earlier. When java-tron starts, it will look for the <code>config.conf</code> configuration file in this directory. Please make sure that <code>config.conf</code> has already been in this directory.</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_RunDebug.png" /></p>
-<p>After the setting, click the "Apply" button to complete the configuration. Then you can click "Run"-&gt;"Run FullNode" in IDEA to start the Java-tron node or click "Run"-&gt;"Debug FullNode" to start the node in debug mode. After the node is started, Java-tron logs are stored in the working directory.
+<p>After the setting, click the "Apply" button to complete the configuration. Then you can click "Run"-&gt;"Run FullNode" in IDEA to start the java-tron node or click "Run"-&gt;"Debug FullNode" to start the node in debug mode. After the node is started, java-tron logs are stored in the working directory.
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_runjavatron.png" /></p>
-<p>If you want to debug the Java-tron code, you can set breakpoints in the Java-tron code and start it in debug mode, so that you can trace the debug code line by line.
+<p>If you want to debug the java-tron code, you can set breakpoints in the java-tron code and start it in debug mode, so that you can trace the debug code line by line.
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_debug.png" /></p>
               
             </div>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Integrity Check - Java Tron</title>
+    <title>Integrity Check - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -165,7 +165,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -184,15 +184,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="signature-verification-of-java-tron-release-package">Signature Verification of Java-tron Release Package<a class="headerlink" href="#signature-verification-of-java-tron-release-package" title="Permanent link">&para;</a></h1>
-<p>Java-tron integrity verification is to check the reliability and integrity of the obtained Java-tron executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by TRON. If they are consistent, it means that the Java-tron executable file you get is a complete file released by TRON.</p>
-<p>The version of Java-tron released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified TRON account for signature and verification.</p>
+                <h1 id="signature-verification-of-java-tron-release-package">Signature Verification of java-tron Release Package<a class="headerlink" href="#signature-verification-of-java-tron-release-package" title="Permanent link">&para;</a></h1>
+<p>java-tron integrity verification is to check the reliability and integrity of the obtained java-tron executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by TRON. If they are consistent, it means that the java-tron executable file you get is a complete file released by TRON.</p>
+<p>The version of java-tron released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified TRON account for signature and verification.</p>
 <ul>
 <li>Versions released after January 3, 2023: <a href="#gpg-signature-verification-process">GPG Signature Verification Process</a></li>
 <li>Versions released before January 3, 2023: <a href="#tron-address-signature-verification-process">TRON Address Signature Verification Process</a></li>
 </ul>
 <h2 id="gpg-signature-verification-process">GPG signature verification process<a class="headerlink" href="#gpg-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>The java-tron executable file and its signature file are released together, you can get it at <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, please follow the below process to verify the signature of the Java-tron which released after January 3, 2023.</p>
+<p>The java-tron executable file and its signature file are released together, you can get it at <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, please follow the below process to verify the signature of the java-tron which released after January 3, 2023.</p>
 <h3 id="install-gpg">Install GPG<a class="headerlink" href="#install-gpg" title="Permanent link">&para;</a></h3>
 <p>If you have already installed GPG, please skip this step. If not, please refer to the following command to install it on MacOS:
 <div class="highlight"><pre><span></span><code>$ brew install gpg
@@ -202,7 +202,7 @@ On Debian, Ubuntu and other Linux distributions:
 </code></pre></div></p>
 <h3 id="import-public-key">Import public key<a class="headerlink" href="#import-public-key" title="Permanent link">&para;</a></h3>
 <p>If you have imported the public key before, please skip this step, just import the public key once.</p>
-<p>Please first obtain the public key Hash and uid of the GPG signature of the Java-tron release package from <a href="https://github.com/tronprotocol/java-tron">here</a>.</p>
+<p>Please first obtain the public key Hash and uid of the GPG signature of the java-tron release package from <a href="https://github.com/tronprotocol/java-tron">here</a>.</p>
 <p><div class="highlight"><pre><span></span><code>pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 uid: build@tron.network
 </code></pre></div>
@@ -229,7 +229,7 @@ Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 </code></pre></div>
 If the verification fails, it will display the words <code>gpg: BAD signature from “build_tron &lt;build@tron.network&gt;”</code>.</p>
 <h2 id="tron-address-signature-verification-process">TRON address signature verification process<a class="headerlink" href="#tron-address-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>The Java-tron version released before January 3, 2023 is signed by the TRON account <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the TRON account to sign the sha256 hash value. The sha256 hash value can be viewed in the <a href="#signatures-of-historical-versions">Signatures of historical versions</a> chapter, or in the <a href="https://github.com/tronprotocol/java-tron/releases">https://github.com/tronprotocol/java-tron/releases</a> page; the signature result please check in the <a href="#signatures-of-historical-versions">Signatures of historical versions</a> chapter.</p>
+<p>The java-tron version released before January 3, 2023 is signed by the TRON account <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the TRON account to sign the sha256 hash value. The sha256 hash value can be viewed in the <a href="#signatures-of-historical-versions">Signatures of historical versions</a> chapter, or in the <a href="https://github.com/tronprotocol/java-tron/releases">https://github.com/tronprotocol/java-tron/releases</a> page; the signature result please check in the <a href="#signatures-of-historical-versions">Signatures of historical versions</a> chapter.</p>
 <p><a href="https://developers.tron.network/docs/tronweb-1">tronweb</a> provides the <code>Trx.verifySignature</code> interface to verify the signature. If the verification is passed, it will return true, otherwise, it will return false. Please follow the below process to verify.</p>
 <h3 id="install-tronweb">Install tronweb<a class="headerlink" href="#install-tronweb" title="Permanent link">&para;</a></h3>
 <p>If you have already installed tronweb, please skip this step, if not, please refer to the following command to install.</p>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Node Maintenance Tool - Java Tron</title>
+    <title>Node Maintenance Tool - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
                   </li>
@@ -137,7 +137,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -189,14 +189,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Node Maintenance Tool</li>
+          <li>Using java-tron &raquo;</li><li>Node Maintenance Tool</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/toolkit.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -208,7 +208,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="java-tron-node-maintenance-tool-toolkit">Java-tron Node Maintenance Tool - Toolkit<a class="headerlink" href="#java-tron-node-maintenance-tool-toolkit" title="Permanent link">&para;</a></h1>
+                <h1 id="java-tron-node-maintenance-tool-toolkit">java-tron Node Maintenance Tool - Toolkit<a class="headerlink" href="#java-tron-node-maintenance-tool-toolkit" title="Permanent link">&para;</a></h1>
 <p>The Toolkit integrates a series of tools of java-tron, and more functions will be added into it in the future for the convenience of developers. Currently Toolkit includes the following functions:</p>
 <ul>
 <li><a href="#database-partition-tool">Database Partition Tool</a></li>
@@ -260,7 +260,7 @@ java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directo
 <div class="highlight"><pre><span></span><code>$ ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
 </code></pre></div>
 <h4 id="configure-for-database-storage-migration">Configure For Database Storage Migration<a class="headerlink" href="#configure-for-database-storage-migration" title="Permanent link">&para;</a></h4>
-<p>The configuration of database migration is in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L36">storage.properties</a> field in the Java-tron node configuration file. The following is an example of migrating only the <code>block</code> and <code>trans</code> databases to illustrate how to migrate some databases to other storage disks:</p>
+<p>The configuration of database migration is in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L36">storage.properties</a> field in the java-tron node configuration file. The following is an example of migrating only the <code>block</code> and <code>trans</code> databases to illustrate how to migrate some databases to other storage disks:</p>
 <p><div class="highlight"><pre><span></span><code>storage {
  ......
   properties = [
@@ -295,7 +295,7 @@ $ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
                 -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
                 -jar FullNode.jar -c main_net_config.conf &gt;&gt; start.log 2&gt;&amp;1 &amp;
 
-# Super representitive&#39;s FullNode
+# Super representative&#39;s FullNode
 $ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
                -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
                -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \

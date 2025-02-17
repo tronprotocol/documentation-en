@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/connecting_to_tron/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Network Configuration - Java Tron</title>
+    <title>Network Configuration - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
                   </li>
@@ -91,7 +91,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -143,14 +143,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Network Configuration</li>
+          <li>Using java-tron &raquo;</li><li>Network Configuration</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/connecting_to_tron.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -163,8 +163,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="connecting-to-the-tron-network">Connecting to the TRON network<a class="headerlink" href="#connecting-to-the-tron-network" title="Permanent link">&para;</a></h1>
-<p>The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the Java-Tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.</p>
-<p>You need to set the following configuration items to connect Java-tron to one of the TRON networks:</p>
+<p>The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.</p>
+<p>You need to set the following configuration items to connect java-tron to one of the TRON networks:</p>
 <ul>
 <li><code>node.p2p.version</code> : It is used to set the P2P network id. Only nodes with the same network id can shake hands successfully.<ul>
 <li>TRON mainnet: <code>node.p2p.version=11111</code></li>
@@ -176,8 +176,8 @@
 <li><code>genesis.block</code>: Genesis block settings. To join a network, please ensure that the settings of the genesis block are the same as those of other nodes in the network, otherwise you cannot join the network.</li>
 </ul>
 <h1 id="finding-peers">Finding peers<a class="headerlink" href="#finding-peers" title="Permanent link">&para;</a></h1>
-<p>Java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. Java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. </p>
-<p>If you want Java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:</p>
+<p>java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. </p>
+<p>If you want java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:</p>
 <p><div class="highlight"><pre><span></span><code>node.discovery = {
   enable = true
   ...
@@ -224,7 +224,7 @@ Then, for the new node that joins the TRON network, you can configure the <code>
 </code></pre></div>
 <p>There are scenarios where disabling the discovery process is useful, for example for running a local test node or an experimental test network with known, fixed nodes. This can be configured by <code>node.discovery.enable = false</code> to close the node discovery process.</p>
 <h1 id="connectivity-problems">Connectivity problems<a class="headerlink" href="#connectivity-problems" title="Permanent link">&para;</a></h1>
-<p>There are occasions when Java-tron simply fails to connect to peers. The common reasons for this are:</p>
+<p>There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:</p>
 <ul>
 <li>Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as <code>sudo ntpdate -s time.nist.gov</code>.</li>
 <li>Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring <a href="#active-and-passive-connections"><code>node.active</code></a> in the case of node discovery invalid.</li>
@@ -232,10 +232,10 @@ Then, for the new node that joins the TRON network, you can configure the <code>
 <li>The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.</li>
 </ul>
 <h1 id="log-and-network-connection-verification">Log and network connection verification<a class="headerlink" href="#log-and-network-connection-verification" title="Permanent link">&para;</a></h1>
-<p>The Java-tron node log is <code>/logs/tron.log</code> in the Java-tron installation directory. Under the Java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:</p>
+<p>The java-tron node log is <code>/logs/tron.log</code> in the java-tron installation directory. Under the java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:</p>
 <div class="highlight"><pre><span></span><code>$ tail -f /logs/tron.log/
 </code></pre></div>
-<p>You will see the below block synchronization logs if Java-tron is running as expected. </p>
+<p>You will see the below block synchronization logs if java-tron is running as expected. </p>
 <p><div class="highlight"><pre><span></span><code>15:41:48.033 INFO  [nioEventLoopGroup-6-2] [DB](Manager.java:1208) pushBlock block number:76, cost/txs:13/0 false
 15:41:48.033 INFO  [nioEventLoopGroup-6-2] [net](TronNetDelegate.java:255) Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
 </code></pre></div>
@@ -275,13 +275,13 @@ If no error messages are reported in the node logs, means everything is fine. Yo
     &quot;totalFlow&quot;: 8735314
 }
 </code></pre></div>
-In order for users to interact with the TRON network, the Java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of <code>/wallet/getnowblock</code> queried from the local Java-tron node. If they are equal, it means that the synchronization status of the local node is normal.</p>
+In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of <code>/wallet/getnowblock</code> queried from the local java-tron node. If they are equal, it means that the synchronization status of the local node is normal.</p>
 <h1 id="private-network">Private network<a class="headerlink" href="#private-network" title="Permanent link">&para;</a></h1>
 <p>It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences. </p>
 <p>The private chain network needs to configure the configuration item <code>node.p2p.version</code> in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private chain configuration file</a> to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to <a href="../private_network/">Private Chain Network</a>.</p>
 <h1 id="active-and-passive-connections">Active and passive connections<a class="headerlink" href="#active-and-passive-connections" title="Permanent link">&para;</a></h1>
-<p>Java-tron supports setting its actively connected nodes <code>node.active</code> as well as passively connected nodes <code>node.passive</code>. Configuring <code>node.active</code> and <code>node.passive</code> can greatly help improve the stability of the network connection of the node.</p>
-<p>When Java-tron starts, it will actively establish a connection with the peer node in <code>node.active</code>.</p>
+<p>java-tron supports setting its actively connected nodes <code>node.active</code> as well as passively connected nodes <code>node.passive</code>. Configuring <code>node.active</code> and <code>node.passive</code> can greatly help improve the stability of the network connection of the node.</p>
+<p>When java-tron starts, it will actively establish a connection with the peer node in <code>node.active</code>.</p>
 <div class="highlight"><pre><span></span><code>node {
   active = [
     # Active establish connection in any case

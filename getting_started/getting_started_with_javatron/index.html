@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/getting_started/getting_started_with_javatron/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Getting Started with Java-tron - Java Tron</title>
+    <title>Getting Started with java-tron - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Getting Started with Java-tron";
+        var mkdocs_page_name = "Getting Started with java-tron";
         var mkdocs_page_input_path = "getting_started/getting_started_with_javatron.md";
         var mkdocs_page_url = "/documentation-en/getting_started/getting_started_with_javatron/";
       </script>
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,14 +42,14 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started with Java-tron</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started with java-tron</a>
     <ul class="current">
     </ul>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -91,7 +91,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -143,14 +143,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Getting Started &raquo;</li><li>Getting Started with Java-tron</li>
+          <li>Getting Started &raquo;</li><li>Getting Started with java-tron</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/getting_started/getting_started_with_javatron.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -162,16 +162,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="getting-started-with-java-tron">Getting Started with Java-tron<a class="headerlink" href="#getting-started-with-java-tron" title="Permanent link">&para;</a></h1>
-<p>This page mainly explains how to start the Java-tron node and use the command line tool <code>wallet-cli</code> to execute basic commands to interact with the Java-tron node. Regarding the installation of Java-tron, you can download the runnable file directly or build it from source code. Instructions for installing Java-tron can be found on the <a href="../../using_javatron/installing_javatron/">Install and Build</a> page. This tutorial on this page assumes Java-tron and associated developer tools have been successfully installed.</p>
-<p>This page covers the basics of using Java-tron, which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. Wallet-cli is also used in this document. Wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with Java-tron more conveniently.</p>
-<p>Java-tron is a TRON network client written in Java. This means a computer running Java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. Java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.</p>
+                <h1 id="getting-started-with-java-tron">Getting Started with java-tron<a class="headerlink" href="#getting-started-with-java-tron" title="Permanent link">&para;</a></h1>
+<p>This page mainly explains how to start the java-tron node and use the command line tool <code>wallet-cli</code> to execute basic commands to interact with the java-tron node. Regarding the installation of java-tron, you can download the runnable file directly or build it from source code. Instructions for installing java-tron can be found on the <a href="../../using_javatron/installing_javatron/">Install and Build</a> page. This tutorial on this page assumes java-tron and associated developer tools have been successfully installed.</p>
+<p>This page covers the basics of using java-tron, which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. Wallet-cli is also used in this document. Wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with java-tron more conveniently.</p>
+<p>java-tron is a TRON network client written in Java. This means a computer running java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.</p>
 <h1 id="generating-accounts">Generating accounts<a class="headerlink" href="#generating-accounts" title="Permanent link">&para;</a></h1>
 <p>There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).</p>
 <p>Enter the command <code>java -jar wallet-cli.jar</code> in the terminal to start a wallet-cli:
 <div class="highlight"><pre><span></span><code>$ java -jar wallet-cli.jar
 
-Welcome to Tron Wallet-Cli
+Welcome to TRON Wallet-Cli
 Please type one of the following commands to proceed.
 Login, RegisterWallet or ImportWallet
 
@@ -209,11 +209,11 @@ address = TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz
 wallet&gt; 
 </code></pre></div>
 Then you can use the <code>backupwallet</code> command to view the private key of the account, you need to enter the password according to the prompt. It is recommended to save the private key.</p>
-<h1 id="run-a-java-tron-node">Run a Java-tron node<a class="headerlink" href="#run-a-java-tron-node" title="Permanent link">&para;</a></h1>
-<p>Java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start Java-tron, you need first obtain the Java-tron executable file, please refer to the <a href="../../using_javatron/installing_javatron/">Installation and Deployment</a> chapter, and then run the following command to start Java-tron.
+<h1 id="run-a-java-tron-node">Run a java-tron node<a class="headerlink" href="#run-a-java-tron-node" title="Permanent link">&para;</a></h1>
+<p>java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start java-tron, you need first obtain the java-tron executable file, please refer to the <a href="../../using_javatron/installing_javatron/">Installation and Deployment</a> chapter, and then run the following command to start java-tron.
 <div class="highlight"><pre><span></span><code>$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 </code></pre></div>
-After Java-tron starts, the logs will include the following:
+After java-tron starts, the logs will include the following:
 <div class="highlight"><pre><span></span><code>11:07:58.758 INFO  [main] [app](Args.java:1143) ************************ Net config ************************
 11:07:58.758 INFO  [main] [app](Args.java:1144) P2P version: 201910292
 11:07:58.758 INFO  [main] [app](Args.java:1145) Bind IP: 192.168.20.101
@@ -221,7 +221,7 @@ After Java-tron starts, the logs will include the following:
 11:07:58.758 INFO  [main] [app](Args.java:1147) Listen port: 18888
 11:07:58.758 INFO  [main] [app](Args.java:1148) Discover enable: true
 </code></pre></div></p>
-<p>The above logs indicate that Java-tron has started and connected to the Nile testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
+<p>The above logs indicate that java-tron has started and connected to the Nile testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
 <div class="highlight"><pre><span></span><code>11:08:42.547 INFO  [TronJClientWorker-1] [net](Channel.java:116) Finish handshake with /123.56.3.74:18888.
 11:08:42.547 INFO  [TronJClientWorker-1] [net](ChannelManager.java:161) Add active peer /123.56.3.74:18888 | fea80a0298b465a54fd332ff36819545d850115e77b327858b5306c9a58c6b8c2e7c08df76ab508a7594ed3577a8f4157727108442877077ab499b102b488467, total active peers: 1
 11:08:42.549 INFO  [TronJClientWorker-1] [net](Channel.java:208) Peer /123.56.3.74:18888 status change to SYNCING.
@@ -247,22 +247,22 @@ Num:23113869,ID:000000000160b08d231e450ae1993a72ba19eb8f3c748fa70d105dadd0c9fd5f
 11:08:43.504 INFO  [TronJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
 Num:23113870,ID:000000000160b08e37cb9951d31a4233f106c7e77e0535c597dbb6a16f163699, trx size: 0
 </code></pre></div></p>
-<p>These logs show that Java-tron is running as expected. You can determine whether the node has been started and check the status of the node by sending the following http request to the Java-tron node:
+<p>These logs show that java-tron is running as expected. You can determine whether the node has been started and check the status of the node by sending the following http request to the java-tron node:
 <div class="highlight"><pre><span></span><code>$ curl http://127.0.0.1:16887/wallet/getnodeinfo
 </code></pre></div>
-If no error messages are reported in the node logs, everything is fine. In order for users to interact with the TRON network, the Java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of the local Java-tron node <code>/wallet/getnowblock</code>. If they are equal, it means that the synchronization status of the local node is normal.</p>
-<p>If you want to shut down Java-tron node, please use this command: <code>kill -15 process id</code>.</p>
+If no error messages are reported in the node logs, everything is fine. In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of the local java-tron node <code>/wallet/getnowblock</code>. If they are equal, it means that the synchronization status of the local node is normal.</p>
+<p>If you want to shut down java-tron node, please use this command: <code>kill -15 process id</code>.</p>
 <h1 id="get-trx-on-nile-testnet">Get TRX on Nile testnet<a class="headerlink" href="#get-trx-on-nile-testnet" title="Permanent link">&para;</a></h1>
 <p>In order to make some transactions, the user must fund their account with TRX. On TRON mainnet, TRX can only be obtained in three ways:
 1. Rewards for block production by SRs/rewards for voting for SRs；
 2. Another TRON account transfers TRX to it;
 3. Obtained from the exchange.</p>
 <p>In the TRON testnet, TRX has no real value and can be obtained for free through <a href="https://nileex.io/join/getJoinPage">faucet</a>.</p>
-<h1 id="interact-with-java-tron">Interact with Java-tron<a class="headerlink" href="#interact-with-java-tron" title="Permanent link">&para;</a></h1>
-<h2 id="interacting-with-java-tron-nodes-using-wallet-cli">Interacting with Java-tron nodes using wallet-cli<a class="headerlink" href="#interacting-with-java-tron-nodes-using-wallet-cli" title="Permanent link">&para;</a></h2>
-<p>Java-tron provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.</p>
+<h1 id="interact-with-java-tron">Interact with java-tron<a class="headerlink" href="#interact-with-java-tron" title="Permanent link">&para;</a></h1>
+<h2 id="interacting-with-java-tron-nodes-using-wallet-cli">Interacting with java-tron nodes using wallet-cli<a class="headerlink" href="#interacting-with-java-tron-nodes-using-wallet-cli" title="Permanent link">&para;</a></h2>
+<p>java-tron provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.</p>
 <h3 id="get-account-information">Get account information<a class="headerlink" href="#get-account-information" title="Permanent link">&para;</a></h3>
-<p>After entering the <code>getaccount</code> command in wallet-cli, it will request account information data from the Java-tron node, and then display the result in the terminal.
+<p>After entering the <code>getaccount</code> command in wallet-cli, it will request account information data from the java-tron node, and then display the result in the terminal.
 <div class="highlight"><pre><span></span><code>wallet&gt; getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 </code></pre></div>
 Result:
@@ -315,7 +315,7 @@ wallet&gt;
 before sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240a89aefbf9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 </code></pre></div></p>
-<p>This command returns the transaction of transferring TRX. After confirmation, enter <code>y</code> to confirm, and other letters indicate to cancel the transaction. If you enter <code>y</code>, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signing of the transaction, and wallet-cli will send the signed transaction to the Java-tron node.
+<p>This command returns the transaction of transferring TRX. After confirmation, enter <code>y</code> to confirm, and other letters indicate to cancel the transaction. If you enter <code>y</code>, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signing of the transaction, and wallet-cli will send the signed transaction to the java-tron node.
 <div class="highlight"><pre><span></span><code>Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 y
 Please choose your key for sign.
@@ -381,8 +381,8 @@ wallet&gt;
 }
 wallet&gt; 
 </code></pre></div>
-<h2 id="interacting-with-java-tron-nodes-using-curl">Interacting with Java-tron nodes using Curl<a class="headerlink" href="#interacting-with-java-tron-nodes-using-curl" title="Permanent link">&para;</a></h2>
-<p>The above describes how to use wallet-cli to interact with Java-tron. Compared with sending grpc/http commands directly, this tool provides more friendly interactive commands, allowing users to send commands to Java-tron more conveniently. But, how to send HTTP requests directly to the Java-tron node? Curl is a command line tool for sending HTTP requests. This chapter will explain how to check account balances and send transactions through Curl.</p>
+<h2 id="interacting-with-java-tron-nodes-using-curl">Interacting with java-tron nodes using Curl<a class="headerlink" href="#interacting-with-java-tron-nodes-using-curl" title="Permanent link">&para;</a></h2>
+<p>The above describes how to use wallet-cli to interact with java-tron. Compared with sending grpc/http commands directly, this tool provides more friendly interactive commands, allowing users to send commands to java-tron more conveniently. But, how to send HTTP requests directly to the java-tron node? Curl is a command line tool for sending HTTP requests. This chapter will explain how to check account balances and send transactions through Curl.</p>
 <h3 id="get-account-balance_1">Get account balance<a class="headerlink" href="#get-account-balance_1" title="Permanent link">&para;</a></h3>
 <p>You can query the TRX balance information of the account through the node HTTP interface <code>wallet/getaccount</code>. The <code>balance</code> field in the returned result is the TRX balance, in sun:
 <div class="highlight"><pre><span></span><code> curl -X POST http://127.0.0.1:16887/wallet/getaccount -d 
@@ -400,7 +400,7 @@ Result：
 <li>Sign the transaction</li>
 <li>Broadcast transaction</li>
 </ol>
-<p>The following takes the transferring TRX as an example to illustrate how to send a transaction to Java-tron node.</p>
+<p>The following takes the transferring TRX as an example to illustrate how to send a transaction to java-tron node.</p>
 <p>Create an unsigned TRX transferring transaction through the fullnode HTTP interface <a href="https://developers.tron.network/reference/createtransaction"><code>wallet/createtransaction</code></a>:</p>
 <p><div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d 
     &#39;{
@@ -437,7 +437,7 @@ Returns an unsigned TRX transferring transaction:
 }
 </code></pre></div>
 Then sign the transaction offline. </p>
-<p>Finally, Broadcast the signed transaction to the Java-tron node through the <a href="https://developers.tron.network/reference/broadcasttransaction"><code>wallet/broadcasttransaction</code></a> interface to complete the sending of the TRX transferring transaction.</p>
+<p>Finally, Broadcast the signed transaction to the java-tron node through the <a href="https://developers.tron.network/reference/broadcasttransaction"><code>wallet/broadcasttransaction</code></a> interface to complete the sending of the TRX transferring transaction.</p>
 <p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:16887/wallet/broadcasttransaction&#39; \
 --header &#39;Content-Type: application/json&#39; \
 --data-raw &#39;{
@@ -540,7 +540,7 @@ Result:
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../using_javatron/installing_javatron/" class="btn btn-neutral float-right" title="Deploying Java-tron">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../using_javatron/installing_javatron/" class="btn btn-neutral float-right" title="Deploying java-tron">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

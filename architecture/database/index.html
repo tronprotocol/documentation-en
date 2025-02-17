@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/architecture/database/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Database Configuration - Java Tron</title>
+    <title>Database Configuration - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -91,7 +91,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -143,14 +143,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Database Configuration</li>
+          <li>Using java-tron &raquo;</li><li>Database Configuration</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/architecture/database.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -163,8 +163,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="database-configuration">Database configuration<a class="headerlink" href="#database-configuration" title="Permanent link">&para;</a></h1>
-<p>Java-tron data storage supports LevelDB or RocksDB, and LevelDB is used by default. You can also choose RocksDB, which provides lots of configuration parameters, allowing nodes to be tuned according to their own machine configuration. The node database occupies less disk space than LevelDB. At the same time, RocksDB supports data backup during runtime, and the backup time only takes a few seconds.</p>
-<p>The following describes how to set the storage engine of the Java-tron node to RocksDB, and how to perform data conversion between leveldb and rocksdb.</p>
+<p>java-tron data storage supports LevelDB or RocksDB, and LevelDB is used by default. You can also choose RocksDB, which provides lots of configuration parameters, allowing nodes to be tuned according to their own machine configuration. The node database occupies less disk space than LevelDB. At the same time, RocksDB supports data backup during runtime, and the backup time only takes a few seconds.</p>
+<p>The following describes how to set the storage engine of the java-tron node to RocksDB, and how to perform data conversion between leveldb and rocksdb.</p>
 <h1 id="rocksdb">RocksDB<a class="headerlink" href="#rocksdb" title="Permanent link">&para;</a></h1>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>Use RocksDB as the data storage engine, need to set <code>db.engine</code> to "ROCKSDB".</p>

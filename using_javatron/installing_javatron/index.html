@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Deploying Java-tron - Java Tron</title>
+    <title>Deploying java-tron - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Deploying Java-tron";
+        var mkdocs_page_name = "Deploying java-tron";
         var mkdocs_page_input_path = "using_javatron/installing_javatron.md";
         var mkdocs_page_url = "/documentation-en/using_javatron/installing_javatron/";
       </script>
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Deploying Java-tron</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Deploying java-tron</a>
     <ul class="current">
     </ul>
                   </li>
@@ -91,7 +91,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -143,14 +143,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Deploying Java-tron</li>
+          <li>Using java-tron &raquo;</li><li>Deploying java-tron</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/installing_javatron.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -162,20 +162,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="deploy-a-java-tron-node">Deploy a Java-tron Node<a class="headerlink" href="#deploy-a-java-tron-node" title="Permanent link">&para;</a></h1>
-<p>Java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported.</p>
-<p>The minimum hardware configuration required to run a Java-tron node is <code>8-core CPU</code>, <code>16G memory</code>, <code>2T SDD</code>, the recommended configuration is: <code>16-core CPU</code>, <code>32G memory</code>, <code>2.5T+ SDD</code>. The fullnode running by super representative to produce block recommends <code>32-core CPU</code> and <code>64G memory</code>.</p>
+                <h1 id="deploy-a-java-tron-node">Deploy a java-tron Node<a class="headerlink" href="#deploy-a-java-tron-node" title="Permanent link">&para;</a></h1>
+<p>java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported.</p>
+<p>The minimum hardware configuration required to run a java-tron node is <code>8-core CPU</code>, <code>16G memory</code>, <code>2T SDD</code>, the recommended configuration is: <code>16-core CPU</code>, <code>32G memory</code>, <code>2.5T+ SDD</code>. The fullnode running by super representative to produce block recommends <code>32-core CPU</code> and <code>64G memory</code>.</p>
 <h1 id="compile-the-source-code">Compile the Source Code<a class="headerlink" href="#compile-the-source-code" title="Permanent link">&para;</a></h1>
-<p>First, clone the Java-tron repository to the local with the following git command, and switch to the <code>master</code> branch. Before executing the command, make sure you have installed the <code>git</code> tool.</p>
+<p>First, clone the java-tron repository to the local with the following git command, and switch to the <code>master</code> branch. Before executing the command, make sure you have installed the <code>git</code> tool.</p>
 <div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
 $ git checkout -t origin/master
 </code></pre></div>
-<p>Then, compile the Java-tron source code by executing the following command. The parameter <code>-x test</code> means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the <code>java-tron/build/libs/</code> directory.</p>
+<p>Then, compile the java-tron source code by executing the following command. The parameter <code>-x test</code> means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the <code>java-tron/build/libs/</code> directory.</p>
 <div class="highlight"><pre><span></span><code>$ cd java-tron
 $ ./gradlew clean build -x test
 </code></pre></div>
-<h2 id="run-a-java-tron-node">Run a Java-tron Node<a class="headerlink" href="#run-a-java-tron-node" title="Permanent link">&para;</a></h2>
-<p>You can choose different configuration files to connect Java-tron nodes to different networks. The mainnet configuration file is: <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">main_net_config.conf</a>, other network configuration files can be found <a href="https://github.com/tronprotocol/tron-deployment">here</a>.</p>
+<h2 id="run-a-java-tron-node">Run a java-tron Node<a class="headerlink" href="#run-a-java-tron-node" title="Permanent link">&para;</a></h2>
+<p>You can choose different configuration files to connect java-tron nodes to different networks. The mainnet configuration file is: <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">main_net_config.conf</a>, other network configuration files can be found <a href="https://github.com/tronprotocol/tron-deployment">here</a>.</p>
 <h3 id="startup-a-fullnode">Startup a fullnode<a class="headerlink" href="#startup-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>Fullnode has full historical data, it is the entry point into the TRON network , it provides HTTP API and gRPC API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the <code>-c</code> parameter: </p>
 <div class="highlight"><pre><span></span><code>$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
@@ -194,7 +194,7 @@ $ ./gradlew clean build -x test
 <p>then run the following command to start the node:</p>
 <div class="highlight"><pre><span></span><code>$ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
 </code></pre></div>
-<p><strong>Note</strong>: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use <a href="../backup_restore/#public-backup-data">Data Snapshots</a> to speed up node synchronization. First download the latest data snapshot and extract it to the <code>output-directory</code> directory of the tron project, and then start the node, so that the node will synchronize on the basis of the data snapshot.</p>
+<p><strong>Note</strong>: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use <a href="../backup_restore/#public-backup-data">Data Snapshots</a> to speed up node synchronization. First download the latest data snapshot and extract it to the <code>output-directory</code> directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.</p>
 <h1 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h1>
 <h3 id="how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account">How to use <code>keystore + password</code> to specify the privatekey of witness account<a class="headerlink" href="#how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account" title="Permanent link">&para;</a></h3>
 <ol>
@@ -255,7 +255,7 @@ export TCMALLOC_RELEASE_RATE=10
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../getting_started/getting_started_with_javatron/" class="btn btn-neutral float-left" title="Getting Started with Java-tron"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../getting_started/getting_started_with_javatron/" class="btn btn-neutral float-left" title="Getting Started with java-tron"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../backup_restore/" class="btn btn-neutral float-right" title="Backup & Restore">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/clients/wallet-cli-command/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Wallet Commands - Java Tron</title>
+    <title>Wallet Commands - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -345,7 +345,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -540,13 +540,13 @@ GetAddress<span class="w"> </span>successful<span class="w"> </span>!!
 <h3 id="updateaccountpermission">UpdateAccountPermission<a class="headerlink" href="#updateaccountpermission" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code>wallet&gt;UpdateAccountPermission<span class="w"> </span><span class="o">[</span>ownerAddress<span class="o">]</span><span class="w"> </span><span class="o">[</span>permissions<span class="o">]</span>
 </code></pre></div>
-This command is used to assign permissions to other accounts, is utilized for <strong>multi-signature</strong> transactions, which allows other users to access the account with paritcular permission in order to better manage it. There are three types of permissions:</p>
+This command is used to manage account permissions, assign permissions to other accounts, is utilized for multi-signature transactions, which allows other users to access the account with paritcular permission in order to better manage it. There are three types of permissions:</p>
 <ul>
 <li>owner: access to the owner of account</li>
 <li>active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for SR purposes.</li>
 <li>witness: only for super representatives, block production authorization will be granted to one of the other users.</li>
 </ul>
-<p><strong>NOTE</strong> the parameter<code>Permission</code> must written in JSON format and entered in line. If the owner accountis not SR, then do not assign super representative permission. 
+<p><strong>NOTE</strong> the parameter<code>Permission</code> must written in JSON format and entered in line. If the owner account is not SR, then do not assign super representative permission. 
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>updateaccountpermission<span class="w"> </span>TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8<span class="w"> </span><span class="o">{</span><span class="s2">&quot;owner_permission&quot;</span>:<span class="o">{</span><span class="s2">&quot;keys&quot;</span>:<span class="o">[{</span><span class="s2">&quot;address&quot;</span>:<span class="s2">&quot;TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8&quot;</span>,<span class="s2">&quot;weight&quot;</span>:1<span class="o">}]</span>,<span class="s2">&quot;threshold&quot;</span>:1,<span class="s2">&quot;type&quot;</span>:0,<span class="s2">&quot;permission_name&quot;</span>:<span class="s2">&quot;owner&quot;</span><span class="o">}</span>,<span class="s2">&quot;active_permissions&quot;</span>:<span class="o">[{</span><span class="s2">&quot;operations&quot;</span>:<span class="s2">&quot;7fff1fc0033e0000000000000000000000000000000000000000000000000000&quot;</span>,<span class="s2">&quot;keys&quot;</span>:<span class="o">[{</span><span class="s2">&quot;address&quot;</span>:<span class="s2">&quot;TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej&quot;</span>,<span class="s2">&quot;weight&quot;</span>:1<span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;address&quot;</span>:<span class="s2">&quot;TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE&quot;</span>,<span class="s2">&quot;weight&quot;</span>:1<span class="o">}]</span>,<span class="s2">&quot;threshold&quot;</span>:2,<span class="s2">&quot;type&quot;</span>:2,<span class="s2">&quot;permission_name&quot;</span>:<span class="s2">&quot;active12323&quot;</span><span class="o">}]}</span>
 <span class="o">{</span>
 <span class="w">    </span><span class="s2">&quot;raw_data&quot;</span>:<span class="o">{</span>
@@ -1120,7 +1120,7 @@ A<code>permission_id</code> is always required, it is "0" by default, which mean
 <p>In the example, we picked the account <code>TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej</code> to sign first,
 after that, it asks you if want to add another sign 
 ,enter y and pick the account <code>TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE</code> to finish multi-signing.</p>
-<p>The weight of each account is 1 and the granting threshold is 2. When the requirements are met, the transaction is done successfully! This is how multiple accounts user multi-signature when using the same cli. </p>
+<p>The weight of each account is 1 and the granting threshold is 2. When the requirements are met, the transaction is done successfully! This example shows how to complete a multi-signed transaction using the same client. When using multiple clients, please refer to the following command.</p>
 <h3 id="addtransactionsign">AddTransactionSign<a class="headerlink" href="#addtransactionsign" title="Permanent link">&para;</a></h3>
 <p>Use the instruction addTransactionSign according to the obtained transaction hex string if signing at multiple cli.
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>addtransactionsign<span class="w"> </span>0a83010a0241aa2208b2d2c13c86e8bd884098acb1cf9a305a65080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d684121541e8bd653015895947cec33d1670a88cf67ab277b9180a70e8e1adcf9a30
@@ -1430,7 +1430,7 @@ Get the result of the contract execution with the getTransactionInfoById command
 </code></pre></div></p>
 <ul>
 <li><code>OwnerAddress</code>The address of the account that initiated the transaction, optional, default value is the address of the login account.</li>
-<li><code>ContractAddress</code> is the smart contarct address.</li>
+<li><code>ContractAddress</code> is the smart contract address.</li>
 <li><code>method</code> is the name of the function and parameters, please refer to the example below.</li>
 <li><code>args</code> is a parameter for placeholding, pass '#' instead when <code>method</code> does not need extra parameters.</li>
 <li><code>isHex</code> controls the format of the parameters method and args, whether they are in hex string or not.</li>
@@ -1997,8 +1997,8 @@ By default, all proposals would be listed from <code>proposal_id</code> 1 to dat
 <span class="o">}</span>
 </code></pre></div></p>
 <h3 id="votewitness">VoteWitness<a class="headerlink" href="#votewitness" title="Permanent link">&para;</a></h3>
-<p>Voting requires Tron Power, which can be obtained by freezing funds.
-<div class="highlight"><pre><span></span><code>wallet&gt; votewitness [SR(Super Representatives) address] [Tron Power Amount]
+<p>Voting requires TRON Power, which can be obtained by freezing funds.
+<div class="highlight"><pre><span></span><code>wallet&gt; votewitness [SR(Super Representatives) address] [TRON Power Amount]
 </code></pre></div></p>
 <ul>
 <li>The share calculation method is: 1 unit of share can be obtained for every 1TRX frozen.</li>
@@ -2006,7 +2006,7 @@ By default, all proposals would be listed from <code>proposal_id</code> 1 to dat
 </ul>
 <p><strong>NOTE</strong> The TRON Network only records the status of your last vote, which means that each of your votes will overwrite all previous voting results.</p>
 <p>For example:
-<div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>freezeBalance<span class="w"> </span><span class="m">100000000</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>address<span class="w">  </span><span class="c1"># Freeze 10TRX and acquire 10 units of Tron Power</span>
+<div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>freezeBalance<span class="w"> </span><span class="m">100000000</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>address<span class="w">  </span><span class="c1"># Freeze 10TRX and acquire 10 units of TRON Power</span>
 
 wallet&gt;<span class="w"> </span>votewitness<span class="w"> </span><span class="o">[</span>SR1<span class="o">]</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">[</span>SR2<span class="o">]</span><span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="c1"># Cast 4 votes for SR1 and 6 votes for SR2 at the same time</span>
 
