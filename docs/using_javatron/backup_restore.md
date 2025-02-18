@@ -70,7 +70,7 @@ The TRON Public Chain has supported the type of the Lite FullNode since the vers
 
 | Lite Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)  | http://34.143.247.77/     | LevelDB, About 41G on 5 Aug. 2024  |
+| Official data source (Singapore)  | http://34.143.247.77/     | LevelDB, About 41G on 5 Aug. 2024  |
 
 
 **Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](../../using_javatron/toolkit/#lite-fullnode-data-pruning).
