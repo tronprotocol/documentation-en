@@ -36,8 +36,9 @@ message Transaction {
   }
 }
 ```
+The defination of ContractType can be found [here](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto). Contracttype which can be called SystemContractType is the supported transaction type by java-tron.
 
-AccountPermissionUpdateContract is a new contract type used to update the account permission.
+AccountPermissionUpdateContract is a contract type used to update the account permission.
 
 #### AccountPermissionUpdateContract
 
@@ -52,7 +53,7 @@ message AccountPermissionUpdateContract {
 
 - `owner_address`: The address of the account whose permissions are to be modified
 - `owner`: Owner permission
-- `witness`: Witness permission (if the account is a SR(Super Representative))
+- `witness`: Witness permission (only used by SR(Super Representative))
 - `actives`: Active permission
 
 This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a SR account) and active permission also need to be set
@@ -81,10 +82,11 @@ message Permission {
 - `permission_name`: Permission name, 32 bytes length limit
 - `threshold`: The threshold of the signature weight
 - `parent_id`: Current 0
-- `operations`: 32 bytes (256 b), each bit represent the execution permission of one contract, 1 means it owns the execution permission of the contract.
-
-    For instance, operations=0x0100...00(hex), 100...0(binary), refer to the definition of Transaction.ContractType in proto, the id of AccountCreateContract is 0, means this permission only owns the execution permission of AccountCreateContract
-
+- `operations`: used by active permission, a hexadecimal coded sequence (little-endian byte order), 32 bytes (256 bits), and each bit represents the authority of a ContractType. The nth bit indicates the authority of the ContractType with ID n, its value 1 means that it has the authority to execute the ContractType, its value 0 means it doesn't have the authority.  
+    To make it easier for users to read, take the binary big-endian byte order as an example to illustrate how to calculate the value of operations: The number of digits starts from 0, and corresponds to the ID of the ContractType from left to right. Convert a binary big-endian byte sequence to a hexadecimal little-endian byte sequence, that will be the value of operations. Below is an example of how to calculate the operations according to the operations allowed. 
+    | Operations Allowed  | Binary Code(big-endian) | Binary Code(little-endian) | Hex Code(little-endian) |  
+    | ------------- | ------------- | ------------- | ------------- |  
+    | TransferContract(1) & VoteWitnessContract(4)  | 01001000 00000000 00000000 ...  | 00010010 00000000 00000000 ... | 12 00 00 ... | 
 - `keys`: The accounts and weights that all own the permission, 5 keys at most.
 
 #### Key
