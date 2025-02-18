@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/upgrade-instruction/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Deployment Manual for the New Version - Java Tron</title>
+    <title>Deployment Manual for the New Version - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -129,7 +129,7 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#1-prepare-the-executable-file-of-the-new-version">1. Prepare the executable file of the new version</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-shut-down-the-java-tron-process">2. Shut down the Java-tron process</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-shut-down-the-java-tron-process">2. Shut down the java-tron process</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#3-backup">3. Backup</a>
     </li>
@@ -163,7 +163,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -182,18 +182,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="new-version-deployment-manual-of-java-tron">New Version Deployment Manual of Java-tron<a class="headerlink" href="#new-version-deployment-manual-of-java-tron" title="Permanent link">&para;</a></h1>
+                <h1 id="new-version-deployment-manual-of-java-tron">New Version Deployment Manual of java-tron<a class="headerlink" href="#new-version-deployment-manual-of-java-tron" title="Permanent link">&para;</a></h1>
 <p>For the mandatory upgrade versions, please strictly follow this guide to deploy the new version. For the non-mandatory upgrade ones, you can decide whether to deploy it according to your needs. </p>
-<p>Please directly refer to <a href="#new-version-deployment-process">Java-tron New version deployment Process</a> to upgrade your node. If you have deployed 'Active and Backup nodes', please follow the process of <a href="#active-and-backup-nodes-upgrade-guide">Active and Backup Nodes Upgrade Guide</a>. </p>
+<p>Please directly refer to <a href="#new-version-deployment-process">java-tron New version deployment Process</a> to upgrade your node. If you have deployed 'Active and Backup nodes', please follow the process of <a href="#active-and-backup-nodes-upgrade-guide">Active and Backup Nodes Upgrade Guide</a>. </p>
 <h2 id="new-version-deployment-process">New version deployment Process<a class="headerlink" href="#new-version-deployment-process" title="Permanent link">&para;</a></h2>
 <p>Please follow the below steps to upgrade your FullNode, FullNode that produces blocks to the latest version.</p>
 <h3 id="1-prepare-the-executable-file-of-the-new-version">1. Prepare the executable file of the new version<a class="headerlink" href="#1-prepare-the-executable-file-of-the-new-version" title="Permanent link">&para;</a></h3>
-<p>You can directly download the Java-tron executable file, or download the code of the latest version and compile it to get the executable file of the new version. Please download the latest version of the code or jar file to a file directory other than the Java-tron running directory:</p>
+<p>You can directly download the java-tron executable file, or download the code of the latest version and compile it to get the executable file of the new version. Please download the latest version of the code or jar file to a file directory other than the java-tron running directory:</p>
 <ul>
 <li>
 <p>Way 1: Download the published executable file</p>
 <p>Directly download the latest version of the executable file FullNode.jar from the release page <a href="https://github.com/tronprotocol/java-tron/releases">https://github.com/tronprotocol/java-tron/releases</a>.</p>
-<p>Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to <a href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/">Java-tron Consistency Verification</a>.</p>
+<p>Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to <a href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/">java-tron Consistency Verification</a>.</p>
 </li>
 <li>
 <p>Way 2: Compile the source code</p>
@@ -206,11 +206,11 @@ $ git checkout -b relase_vx.x.x
 </code></pre></div></p>
 </li>
 </ul>
-<h3 id="2-shut-down-the-java-tron-process">2. Shut down the Java-tron process<a class="headerlink" href="#2-shut-down-the-java-tron-process" title="Permanent link">&para;</a></h3>
-<p>Shut down the node process. Note: If a Java-tron node has not been deployed on this machine before, please skip to step 5.</p>
+<h3 id="2-shut-down-the-java-tron-process">2. Shut down the java-tron process<a class="headerlink" href="#2-shut-down-the-java-tron-process" title="Permanent link">&para;</a></h3>
+<p>Shut down the node process. Note: If a java-tron node has not been deployed on this machine before, please skip to step 5.</p>
 <ul>
 <li>
-<p>First, get the process ID of the Java-tron node through the following command
+<p>First, get the process ID of the java-tron node through the following command
     <div class="highlight"><pre><span></span><code>$ ps -ef | grep java
 </code></pre></div></p>
 </li>
@@ -236,10 +236,10 @@ $ git checkout -b relase_vx.x.x
 <h3 id="4-replace-old-version-files">4. Replace old version files<a class="headerlink" href="#4-replace-old-version-files" title="Permanent link">&para;</a></h3>
 <p>After preparing the executable file of the new version and backing up the original node data, please follow the steps below to replace the old files:</p>
 <ol>
-<li>Copy the newest jar package obtained in the previous step to the Java-tron working directory to replace the old executable file.</li>
+<li>Copy the newest jar package obtained in the previous step to the java-tron working directory to replace the old executable file.</li>
 <li>Replace the old configuration file with the latest configuration file. If you need to modify the configuration, such as adding a keystore file, private key, etc, please modify it yourself.</li>
 </ol>
-<p>Note: For the database file, you can use the original database file in the Java-tron working directory, or you can choose to use <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#public-backup-data">database backup snapshot</a>.</p>
+<p>Note: For the database file, you can use the original database file in the java-tron working directory, or you can choose to use <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#public-backup-data">database backup snapshot</a>.</p>
 <h3 id="5-start-the-nodes">5. Start the nodes<a class="headerlink" href="#5-start-the-nodes" title="Permanent link">&para;</a></h3>
 <p>The startup commands of FullNode which produces blocks and ordinary FullNode are different, please choose the startup command according to the actual situation:</p>
 <ul>
@@ -265,7 +265,7 @@ $ git checkout -b relase_vx.x.x
 <ol>
 <li>
 <p>Upgrade the backup node</p>
-<p>Upgrade the backup node according to the <a href="#new-version-deployment-process">Java-tron new version deployment Process</a>.</p>
+<p>Upgrade the backup node according to the <a href="#new-version-deployment-process">java-tron new version deployment Process</a>.</p>
 </li>
 <li>
 <p>Shut down the master node</p>
@@ -273,7 +273,7 @@ $ git checkout -b relase_vx.x.x
 </li>
 <li>
 <p>Upgrade the master node</p>
-<p>If the backup node works normally, follow <a href="#new-version-deployment-process">Java-tron New Version Deployment Process</a> to upgrade the master node. Otherwise, shut down the backup node and start the master node. If an error occurs during the upgrade, please contact TRON technical support team and send the node’s log for root cause analysis.</p>
+<p>If the backup node works normally, follow <a href="#new-version-deployment-process">java-tron New Version Deployment Process</a> to upgrade the master node. Otherwise, shut down the backup node and start the master node. If an error occurs during the upgrade, please contact TRON technical support team and send the node’s log for root cause analysis.</p>
 </li>
 <li>
 <p>Shut down the backup node</p>

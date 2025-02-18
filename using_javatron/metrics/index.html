@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/metrics/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Node Monitoring - Java Tron</title>
+    <title>Node Monitoring - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
                   </li>
@@ -63,9 +63,9 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Node Monitoring</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#configure-java-tron">Configure Java-tron</a>
+    <li class="toctree-l2"><a class="reference internal" href="#configure-java-tron">Configure java-tron</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#start-java-tron-node">Start Java-tron node</a>
+    <li class="toctree-l2"><a class="reference internal" href="#start-java-tron-node">Start java-tron node</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#deploy-prometheus-service">Deploy prometheus service</a>
     </li>
@@ -99,7 +99,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -151,14 +151,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Node Monitoring</li>
+          <li>Using java-tron &raquo;</li><li>Node Monitoring</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/metrics.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -170,9 +170,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="java-tron-node-metrics-monitoring">Java-tron Node Metrics Monitoring<a class="headerlink" href="#java-tron-node-metrics-monitoring" title="Permanent link">&para;</a></h1>
+                <h1 id="java-tron-node-metrics-monitoring">java-tron Node Metrics Monitoring<a class="headerlink" href="#java-tron-node-metrics-monitoring" title="Permanent link">&para;</a></h1>
 <p>Starting from the GreatVoyage-4.5.1 (Tertullian) version, the node provides a series of interfaces compatible with the prometheus protocol, so that the node deployer can monitor the health status of the node more conveniently. If you want to monitor various indicators of the node, you first need to deploy a prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.</p>
-<h2 id="configure-java-tron">Configure Java-tron<a class="headerlink" href="#configure-java-tron" title="Permanent link">&para;</a></h2>
+<h2 id="configure-java-tron">Configure java-tron<a class="headerlink" href="#configure-java-tron" title="Permanent link">&para;</a></h2>
 <p>To use the Prometheus tool to monitor the java-tron node, you first need to enable prometheus metric monitoring in the node configuration file and set the http port:</p>
 <div class="highlight"><pre><span></span><code>node {
   ... ...
@@ -189,8 +189,8 @@
  ####### add for prometheus end.
 }
 </code></pre></div>
-<h2 id="start-java-tron-node">Start Java-tron node<a class="headerlink" href="#start-java-tron-node" title="Permanent link">&para;</a></h2>
-<p>Start Java-tron node using below command：</p>
+<h2 id="start-java-tron-node">Start java-tron node<a class="headerlink" href="#start-java-tron-node" title="Permanent link">&para;</a></h2>
+<p>Start java-tron node using below command：</p>
 <div class="highlight"><pre><span></span><code>$<span class="w">  </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
 </code></pre></div>
 <h2 id="deploy-prometheus-service">Deploy prometheus service<a class="headerlink" href="#deploy-prometheus-service" title="Permanent link">&para;</a></h2>

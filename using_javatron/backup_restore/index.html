@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Backup & Restore - Java Tron</title>
+    <title>Backup & Restore - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Backup & Restore</a>
     <ul class="current">
@@ -91,7 +91,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -143,14 +143,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using Java-tron &raquo;</li><li>Backup & Restore</li>
+          <li>Using java-tron &raquo;</li><li>Backup & Restore</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/backup_restore.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -163,7 +163,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="data-backup-restore">Data Backup &amp; Restore<a class="headerlink" href="#data-backup-restore" title="Permanent link">&para;</a></h1>
-<p>Everything <code>Java-tron</code> persists gets written inside its data directory. The default data directory is: <code>/output-directory/</code>. If you need to specify other directories, you can add <code>-d</code> or <code>--output-directory</code> parameter to the java-tron node startup command to specify the data storage location.</p>
+<p>Everything <code>java-tron</code> persists gets written inside its data directory. The default data directory is: <code>/output-directory/</code>. If you need to specify other directories, you can add <code>-d</code> or <code>--output-directory</code> parameter to the java-tron node startup command to specify the data storage location.</p>
 <div class="highlight"><pre><span></span><code>$ java -jar fullnode.jar -d ./outputdir
 </code></pre></div>
 <h1 id="data-backup">Data Backup<a class="headerlink" href="#data-backup" title="Permanent link">&para;</a></h1>
@@ -213,14 +213,14 @@ done
 <td>LevelDB, exclude internal transactions (About 1819G on 5 Aug. 2024)</td>
 </tr>
 <tr>
-<td>Official data source (Singapore)</td>
+<td>Official data source (North America: America)</td>
 <td>http://35.197.17.205/</td>
 <td>RocksDB, exclude internal transactions (About 1799G on 6 Aug. 2024)</td>
 </tr>
 <tr>
 <td>Official data source (Singapore)</td>
 <td>http://35.247.128.170/</td>
-<td>LevelDB, inlcude internal transactions (About 2000G on 6 Aug. 2024)</td>
+<td>LevelDB, include internal transactions (About 2000G on 6 Aug. 2024)</td>
 </tr>
 <tr>
 <td>Official data source ((North America: Virginia))</td>
@@ -231,7 +231,7 @@ done
 </table>
 <p><strong>Note</strong>：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. </p>
 <h3 id="lite-fullnode-data-snapshot">Lite FullNode Data Snapshot<a class="headerlink" href="#lite-fullnode-data-snapshot" title="Permanent link">&para;</a></h3>
-<p>The Tron Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.</p>
+<p>The TRON Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.</p>
 <table>
 <thead>
 <tr>
@@ -260,7 +260,7 @@ done
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../installing_javatron/" class="btn btn-neutral float-left" title="Deploying Java-tron"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../installing_javatron/" class="btn btn-neutral float-left" title="Deploying java-tron"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../../developers/litefullnode/" class="btn btn-neutral float-right" title="Lite FullNode">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 

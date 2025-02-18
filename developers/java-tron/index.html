@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/java-tron/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Developer Guide - Java Tron</title>
+    <title>Developer Guide - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -169,7 +169,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -190,19 +190,19 @@
               
                 <h1 id="developer-guide">Developer Guide<a class="headerlink" href="#developer-guide" title="Permanent link">&para;</a></h1>
 <p>Thank you for considering to help out with the source code! We welcome contributions from anyone, and are grateful for even the smallest of fixes!</p>
-<p>GitHub is used to track issues and contribute code, suggestions, feature requests or documentation. If you want to participate in Java-tron development, please follow the Github code submission process as follows:</p>
+<p>GitHub is used to track issues and contribute code, suggestions, feature requests or documentation. If you want to participate in java-tron development, please follow the Github code submission process as follows:</p>
 <ul>
-<li>Fork Java-tron repository</li>
+<li>Fork java-tron repository</li>
 <li>Fix the code</li>
 <li>Commit the code</li>
 <li>Send a pull request</li>
 <li>The maintainers review and merge into the main code base</li>
 </ul>
 <p>For small fixes, you can send a pull request (PR) directly, but make sure the PR includes a detailed description. For more complex changes, you need to submit an issue to the <a href="https://github.com/tronprotocol/tips">TIP repository</a> detailing your motivations, implementation plans, etc. For how to submit a TIP issue, please refer to <a href="../tips/">TIP Specification</a>.</p>
-<p>We encourage Java-tron developers to submit PRs as soon as possible. Even if they are not fully developed, you can submit a PR first, so that other developers can know that the TIP Issue corresponding to this PR is in the state of <code>In Progress</code>.</p>
+<p>We encourage java-tron developers to submit PRs as soon as possible. Even if they are not fully developed, you can submit a PR first, so that other developers can know that the TIP Issue corresponding to this PR is in the state of <code>In Progress</code>.</p>
 <p>Developers should develop and submit a PR based on the <code>develop</code> branch, reviewers will review the PR according to <a href="#code-review-guidelines">Code Review Guidelines</a>.</p>
 <h2 id="key-branches">Key Branches<a class="headerlink" href="#key-branches" title="Permanent link">&para;</a></h2>
-<p>Java-tron only has <code>master</code>, <code>develop</code>, <code>release-*</code>, <code>feature-*</code>, and <code>hotfix-*</code> branches, which are described below:</p>
+<p>java-tron only has <code>master</code>, <code>develop</code>, <code>release-*</code>, <code>feature-*</code>, and <code>hotfix-*</code> branches, which are described below:</p>
 <ul>
 <li>
 <p><code>develop</code> branch</p>
@@ -229,7 +229,7 @@
 <p>If you want to contribute codes to java-tron, please follow the following steps:</p>
 <ul>
 <li>
-<p>Fork Java-tron repository</p>
+<p>Fork java-tron repository</p>
 <p>Fork a new repository from <a href="https://github.com/tronprotocol/java-tron">tronprotocol/java-tron</a> to your personal code repository</p>
 <div class="highlight"><pre><span></span><code>$ git clone https://github.com/yourname/java-tron.git
 
@@ -369,7 +369,7 @@ If the purpose of this submission is to modify one issue, you need to refer to t
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../mechanism-algorithm/multi-signatures/" class="btn btn-neutral float-left" title="Multi-Signature"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../mechanism-algorithm/multi-signatures/" class="btn btn-neutral float-left" title="Account Permission Management"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../tips/" class="btn btn-neutral float-right" title="TIPs Workflow">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 

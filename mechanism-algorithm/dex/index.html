@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/mechanism-algorithm/dex/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Decentralized Exchange - Java Tron</title>
+    <title>Decentralized Exchange - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -111,7 +111,7 @@
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -163,7 +163,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -208,7 +208,7 @@
 <h3 id="calculate-the-amount-of-token-you-can-get">Calculate the Amount of Token You Can Get<a class="headerlink" href="#calculate-the-amount-of-token-you-can-get" title="Permanent link">&para;</a></h3>
 <p><code>sellTokenQuant</code> is the amount of the <code>first_token</code> you want to sell.</p>
 <p><code>buyTokenQuant</code> is the amount of <code>second_token</code> you can get.</p>
-<div class="highlight"><pre><span></span><code><span class="n">supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1_000_000_000_000_000_000L</span>
+<div class="highlight"><pre><span></span><code><span class="n">supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000L</span>
 
 <span class="n">supplyQuant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">supply</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">sellTokenQuant</span><span class="o">/</span><span class="p">(</span><span class="n">firstTokenBalance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sellTokenQuant</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0005</span><span class="p">))</span>
 
@@ -219,7 +219,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../system-contracts/" class="btn btn-neutral float-left" title="System Contract"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../multi-signatures/" class="btn btn-neutral float-right" title="Multi-Signature">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../multi-signatures/" class="btn btn-neutral float-right" title="Account Permission Management">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

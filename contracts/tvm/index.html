@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/contracts/tvm/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>TRON Virtual Machine (TVM) - Java Tron</title>
+    <title>TRON Virtual Machine (TVM) - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -141,7 +141,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -172,7 +172,7 @@
 <p>Currently, TVM is compatible with EVM and will be with more mainstream VMs in the future. Thereby, all smart contracts on EVM are executable on TVM. By connecting seamlessly to existing development ecosystem, higher efficiency can be achieved by developers. Needless to learn a new programming language, they can use mainstream programming languages for smart contract such as Solidity to develop, debug and compile smart contracts in the Remix environment, which greatly reduces development costs.</p>
 <p>4.&nbsp;Developer-friendly</p>
 <p>Thanks to TVM’s bandwidth setup, developments costs are reduced and developers can focus on the logic of their contract code. TVM also offers all-in-one interfaces for contract deployment, triggering and viewing, for the convenience of developers.
-The following interfaces are available in Tron Wallet-CLI:</p>
+The following interfaces are available in TRON Wallet-CLI:</p>
 <ul>
 <li>deploycontract(password, contractAddress, ABI, code, data, value)</li>
 <li>triggercontract(password, contractAddress, selector, data, value)</li>
@@ -180,20 +180,20 @@ The following interfaces are available in Tron Wallet-CLI:</p>
 Developers can call these interfaces to deploy, trigger or check smart contracts.</li>
 </ul>
 <h2 id="how-tvm-works">How TVM Works<a class="headerlink" href="#how-tvm-works" title="Permanent link">&para;</a></h2>
-<p><img alt="Flowchart of Tron Virtual Machine" src="https://raw.githubusercontent.com/tronprotocol/documentation/master/images/Virtual_Machine/虚拟机.png" /></p>
+<p><img alt="Flowchart of TRON Virtual Machine" src="https://raw.githubusercontent.com/tronprotocol/documentation/master/images/Virtual_Machine/虚拟机.png" /></p>
 <p>The above flowchart shows how TVM works:
-Compilation of Tron smart contract→execution and computing engines of VM→Interoperation service layer for external interfaces.</p>
+Compilation of TRON smart contract→execution and computing engines of VM→Interoperation service layer for external interfaces.</p>
 <p>Put simply, the flow is as follows:
 + Currently, TVM is compatible mainly with Solidity. The compiler translates Solidity smart contract into bytecode readable and executable on TVM.
 + A virtual machine processes data through opcode, which is equivalent to operating a logic of a stack-based finite state machine.
 + TVM accesses blockchain data and invoke External Data Interface through the Interoperation layer.</p>
 <h2 id="future-development-of-tvm">Future Development of TVM<a class="headerlink" href="#future-development-of-tvm" title="Permanent link">&para;</a></h2>
 <p>1.&nbsp;More developer-friendly debugging tools</p>
-<p>Tron will be committed to the development of optimized debugging tools and the establishment of standardized symbol and data format, for improved developer efficiency.</p>
+<p>TRON will be committed to the development of optimized debugging tools and the establishment of standardized symbol and data format, for improved developer efficiency.</p>
 <p>2.&nbsp;Fulfillment of diversified processing demands</p>
 <p>Different from gas consumption mechanism for every transaction on EVM, there is no charge on TVM. Each operation only occupies bandwidth, which will be released within a certain amount of time after completion of transaction. It takes developers very little to develop smart contracts with more complex logic. It is our belief that besides being used for digital asset transactions, smart contracts could also be suitably applied to areas such as game development, financial risk modeling and scientific computing. The design of TVM inherently supports multi-scenario tasks, and further optimizations of processing speed, response time, and floating point compatibility.</p>
 <p>3.&nbsp;Improvement of Just-In-Time (JIT) compilation speed and integration of WebAssembly</p>
-<p>Improving JIT compilation speed is conducive to faster interpretation and optimized compilation of local code. Meanwhile, Tron is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozilla, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages. Integrating WASM, TVM will be able to provide high performance and high throughput for blockchain to cope with complex scenarios.</p>
+<p>Improving JIT compilation speed is conducive to faster interpretation and optimized compilation of local code. Meanwhile, TRON is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozilla, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages. Integrating WASM, TVM will be able to provide high performance and high throughput for blockchain to cope with complex scenarios.</p>
 <h2 id="usage-guide-to-tvm">Usage Guide to TVM<a class="headerlink" href="#usage-guide-to-tvm" title="Permanent link">&para;</a></h2>
 <p>1.&nbsp;Compile contract</p>
 <p>Contract compilation address: <a href="https://remix.ethereum.org">https://remix.ethereum.org</a></p>
@@ -217,9 +217,9 @@ Compilation of Tron smart contract→execution and computing engines of VM→Int
 </code></pre></div>
 3.&nbsp;Deploy contract</p>
 <p>Wallet-cli-vm branch: <a href="https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm">https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm</a>
-Java-tron-vm branch: <a href="https://github.com/tronprotocol/java-tron/tree/develop_vm">https://github.com/tronprotocol/java-tron/tree/develop_vm</a>
+java-tron-vm branch: <a href="https://github.com/tronprotocol/java-tron/tree/develop_vm">https://github.com/tronprotocol/java-tron/tree/develop_vm</a>
 Password: password of client-end wallet
-ContractAddress: customized contract address (in Tron’s required format)
+ContractAddress: customized contract address (in TRON’s required format)
 ABI: interface description
 Data: parameters of the initial function
 Value: reserved field
@@ -232,7 +232,7 @@ triggercontract(Password, ContractAddress, Selector, Data, Value)</p>
 <div class="highlight"><pre><span></span><code>    getcontract(ContractAddress)
 </code></pre></div>
 
-The above is an introduction of Tron Virtual Machine and a guide to deployment. We welcome everyone to check out TVM and give us your thoughts and suggestions. We will continue to perfect and update TVM for optimal performance on TRON mainnet.</p>
+The above is an introduction of TRON Virtual Machine and a guide to deployment. We welcome everyone to check out TVM and give us your thoughts and suggestions. We will continue to perfect and update TVM for optimal performance on TRON mainnet.</p>
               
             </div>
           </div><footer>

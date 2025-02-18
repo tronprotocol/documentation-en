@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Resource Model - Java Tron</title>
+    <title>Resource Model - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -153,7 +153,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -205,7 +205,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -246,7 +246,7 @@
 </div>
 <h3 id="1-how-to-get-bandwidth-points">1. How to Get Bandwidth Points<a class="headerlink" href="#1-how-to-get-bandwidth-points" title="Permanent link">&para;</a></h3>
 <ol>
-<li>By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43_200_000_000</li>
+<li>By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43,200,000,000</li>
 <li>Every account has a fixed amount of free Bandwidth Points(600) every day</li>
 </ol>
 <h3 id="2-bandwidth-points-consumption">2. Bandwidth Points Consumption<a class="headerlink" href="#2-bandwidth-points-consumption" title="Permanent link">&para;</a></h3>
@@ -263,7 +263,7 @@
 <p>Bandwidth points TRX staking.</p>
 </li>
 <li>
-<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;</p>
+<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;</p>
 </li>
 </ol>
 <p>Bandwidth points consumption sequence for other transactions:</p>
@@ -275,7 +275,7 @@
 <p>Bandwidth points TRX staking.</p>
 </li>
 <li>
-<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;</p>
+<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;</p>
 </li>
 </ol>
 <h3 id="3-bandwidth-points-recovery">3. Bandwidth Points Recovery<a class="headerlink" href="#3-bandwidth-points-recovery" title="Permanent link">&para;</a></h3>
@@ -294,18 +294,18 @@ Bandwidth balance obtained by staking TRX = NetLimit - NetUsed
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code>freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 </code></pre></div>
-<p>stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180_000_000_000.</p>
+<p>stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180,000,000,000.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 75_000_000_000 and energy_limit is 90_000_000_000
-B: 75_000_000_000 and energy_limit is 90_000_000_000
+A: 75,000,000,000 and energy_limit is 90,000,000,000
+B: 75,000,000,000 and energy_limit is 90,000,000,000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 60_000_000_000 and energy_limit is 72_000_000_000
-B: 60_000_000_000 and energy_limit is 72_000_000_000
-C: 30_000_000_000 and energy_limit is 36_000_000_000
+A: 60,000,000,000 and energy_limit is 72,000,000,000
+B: 60,000,000,000 and energy_limit is 72,000,000,000
+C: 30,000,000,000 and energy_limit is 36,000,000,000
 </code></pre></div>
 <h4 id="energy-consumption">Energy Consumption<a class="headerlink" href="#energy-consumption" title="Permanent link">&para;</a></h4>
 <p>When the contract is executed, Energy is calculated and deducted according to instruction one by one. The priority of account energy consumption is as follows:</p>
@@ -345,10 +345,10 @@ C: 30_000_000_000 and energy_limit is 36_000_000_000
 <p>Assume developer undertake 90% energy consumption, and developer has enough energy.</p>
 <p>Then the way to estimate the fee limit is:</p>
 <ol>
-<li>A = 20000 energy * 210sun = 4_200_000 sun = 4.2 trx</li>
+<li>A = 20000 energy * 210sun = 4,200,000 sun = 4.2 trx</li>
 <li>Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,</li>
 </ol>
-<p>So, the caller is suggested to set fee limit to 4_200_000 sun * 10% = 420_000 sun.</p>
+<p>So, the caller is suggested to set fee limit to 4,200,000 sun * 10% = 420,000 sun.</p>
 <h3 id="3-energy-calculation-developer-must-read">3. Energy Calculation (Developer Must Read)<a class="headerlink" href="#3-energy-calculation-developer-must-read" title="Permanent link">&para;</a></h3>
 <ol>
 <li>

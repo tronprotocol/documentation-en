@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/faq/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>The TRON FAQ - Java Tron</title>
+    <title>The TRON FAQ - java-tron</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> Java Tron
+          <a href=".." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -141,7 +141,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">Java Tron</a>
+          <a href="..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -347,7 +347,7 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 <p>Please use './gradlew build -x test' to skip the test cases.</p>
 <h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
 <h3 id="how-to-test-if-the-deployment-works-normally-if-there-is-a-test-api-or-command-like-redis-get-ping-return-pong">How to test if the deployment works normally, if there is a test api or command like redis: get ping return pong?<a class="headerlink" href="#how-to-test-if-the-deployment-works-normally-if-there-is-a-test-api-or-command-like-redis-get-ping-return-pong" title="Permanent link">&para;</a></h3>
-<p>Java-tron does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. You can also use the following command to test:</p>
+<p>java-tron does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. You can also use the following command to test:</p>
 <div class="highlight"><pre><span></span><code>&gt; tail -f logs/tron.log |grep &quot;MyheadBlockNumber&quot;
 </code></pre></div>
 <h3 id="when-to-deploy-private-environment-whats-the-relationship-of-supernode-and-fullnode-should-i-firstly-deploy-a-supernode-and-then-deploy-a-fullnode">When to deploy private environment, what's the relationship of SuperNode and FullNode? Should I firstly deploy a SuperNode, and then deploy a FullNode？<a class="headerlink" href="#when-to-deploy-private-environment-whats-the-relationship-of-supernode-and-fullnode-should-i-firstly-deploy-a-supernode-and-then-deploy-a-fullnode" title="Permanent link">&para;</a></h3>
@@ -372,7 +372,7 @@ comment the configuration: appender-ref ref="ASYNC"</p>
 <h3 id="does-a-node-have-wallet-function">Does a node have wallet function?<a class="headerlink" href="#does-a-node-have-wallet-function" title="Permanent link">&para;</a></h3>
 <p>No, but the node provides wallet rpc api.</p>
 <h3 id="why-does-the-block-process-time-take-so-long">Why does the block process time take so long?<a class="headerlink" href="#why-does-the-block-process-time-take-so-long" title="Permanent link">&para;</a></h3>
-<p>Java-tron need more RAM to process transactions.</p>
+<p>java-tron need more RAM to process transactions.</p>
 <h2 id="test-net">Test Net<a class="headerlink" href="#test-net" title="Permanent link">&para;</a></h2>
 <h3 id="we-want-to-test-our-supernodes-performance-under-test-environment-do-we-need-to-be-voted-to-become-a-sr-under-test-environment">We want to test our SuperNode's performance under test environment, do we need to be voted to become a SR under test environment?<a class="headerlink" href="#we-want-to-test-our-supernodes-performance-under-test-environment-do-we-need-to-be-voted-to-become-a-sr-under-test-environment" title="Permanent link">&para;</a></h3>
 <p>Yes. Under test environment, we can vote you to become SR.</p>

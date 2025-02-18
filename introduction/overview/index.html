@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/introduction/overview/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Overview - Java Tron</title>
+    <title>Overview - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -141,7 +141,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -196,13 +196,13 @@ Every time after a super representative produces a block, it will be reward 32 T
 The network parameters can be modified([min,max]):</p>
 <ul>
 <li>0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000, 24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms</li>
-<li>1: ACCOUNT_UPGRADE_COST, [0, 100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 SUN</li>
-<li>2: CREATE_ACCOUNT_FEE, [0, 100 000 000 000  000 000] //the fee to create an account, currently 100_000 SUN</li>
-<li>3: TRANSACTION_FEE, [0, 100 000 000 000 000 000] //the fee for bandwidth, currently 1_000 SUN/byte</li>
-<li>4: ASSET_ISSUE_FEE, [0, 100 000 000 000 000 000] //the fee to issue an asset, currently 1024_000_000 SUN</li>
-<li>5: WITNESS_PAY_PER_BLOCK, [0, 100 000 000 000 000 000] //the block producing reward, currently 32_000_000 SUN</li>
-<li>6: WITNESS_STANDBY_ALLOWANCE, [0, 100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115_200_000_000 SUN</li>
-<li>7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 1_000_000 SUN</li>
+<li>1: ACCOUNT_UPGRADE_COST, [0, 100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9,999,000,000 SUN</li>
+<li>2: CREATE_ACCOUNT_FEE, [0, 100 000 000 000  000 000] //the fee to create an account, currently 100,000 SUN</li>
+<li>3: TRANSACTION_FEE, [0, 100 000 000 000 000 000] //the fee for bandwidth, currently 1,000 SUN/byte</li>
+<li>4: ASSET_ISSUE_FEE, [0, 100 000 000 000 000 000] //the fee to issue an asset, currently 1,024,000,000 SUN</li>
+<li>5: WITNESS_PAY_PER_BLOCK, [0, 100 000 000 000 000 000] //the block producing reward, currently 32,000,000 SUN</li>
+<li>6: WITNESS_STANDBY_ALLOWANCE, [0, 100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115,200,000,000 SUN</li>
+<li>7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 1,000,000 SUN</li>
 <li>8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwidth or TRX while creating an account, using together with #7</li>
 <li>9: ALLOW_CREATION_OF_CONTRACTS, //to enable the VM</li>
 <li>10: REMOVE_THE_POWER_OF_THE_GR, //to clear the votes of GR</li>
@@ -220,7 +220,7 @@ The network parameters can be modified([min,max]):</p>
 id: the serial number (0 ~ 18)
 value: the parameter value
 </code></pre></div></p>
-<p>Note: In TRON network, 1 TRX = 1000_000 SUN</p>
+<p>Note: In TRON network, 1 TRX = 1,000,000 SUN</p>
 <h3 id="243-vote-for-a-proposal">2.4.3 Vote for a Proposal<a class="headerlink" href="#243-vote-for-a-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.</p>
 <p>Example (Using wallet-cli):
@@ -240,7 +240,7 @@ id: proposal id
 <li>Query all the proposals list by pagination (GetPaginatedProposalList)</li>
 <li>Query a proposal by proposal id (GetProposalById)</li>
 </ul>
-<p>For more api detail, please refer to <a href="../../api/http/">Tron HTTP API</a></p>
+<p>For more api detail, please refer to <a href="../../api/http/">TRON HTTP API</a></p>
 <h1 id="3-account-model">3. Account Model<a class="headerlink" href="#3-account-model" title="Permanent link">&para;</a></h1>
 <h2 id="31-introduction">3.1 Introduction<a class="headerlink" href="#31-introduction" title="Permanent link">&para;</a></h2>
 <p>TRON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transferred from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All TRON's activities are based on account.</p>
@@ -248,7 +248,7 @@ id: proposal id
 <p>1.&nbsp;Use a wallet to generate the address and private key. To activate the account, you need to transfer TRX or transfer token to the new created account. </p>
 <p>2.&nbsp;Use an account already existed in TRON network to create an account</p>
 <h2 id="33-key-pair-generation-algorithm">3.3 Key-pair Generation Algorithm<a class="headerlink" href="#33-key-pair-generation-algorithm" title="Permanent link">&para;</a></h2>
-<p>Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.</p>
+<p>TRON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.</p>
 <h2 id="34-address-format">3.4 Address Format<a class="headerlink" href="#34-address-format" title="Permanent link">&para;</a></h2>
 <p>Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address comes out. Do basecheck to address, here is the final address. All addresses start with 'T'.</p>
 <p>basecheck process: first do sha256 calculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.</p>
@@ -504,7 +504,7 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 <p>1.&nbsp;address conversion</p>
 <p>Need to convert TRON's address while using in solidity (recommended):
 <div class="highlight"><pre><span></span><code>/**
-     *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
+     *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
 */
@@ -564,25 +564,25 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.</
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code>freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 </code></pre></div>
-<p>Stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50_000_000_000.</p>
+<p>Stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50,000,000,000.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 25_000_000_000 and energy_limit is 25_000_000_000
-B: 25_000_000_000 and energy_limit is 25_000_000_000
+A: 25,000,000,000 and energy_limit is 25,000,000,000
+B: 25,000,000,000 and energy_limit is 25,000,000,000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 20_000_000_000 and energy_limit is 20_000_000_000
-B: 20_000_000_000 and energy_limit is 20_000_000_000
-B: 10_000_000_000 and energy_limit is 10_000_000_000
+A: 20,000,000,000 and energy_limit is 20,000,000,000
+B: 20,000,000,000 and energy_limit is 20,000,000,000
+C: 10,000,000,000 and energy_limit is 10,000,000,000
 </code></pre></div>
 <p>** Energy Recovery **</p>
 <p>The energy consumed will reduce to 0 smoothly within 24 hours.</p>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code>at one moment, A has used 72_000_000 Energy
+<div class="highlight"><pre><span></span><code>at one moment, A has used 72,000,000 Energy
 if there is no continuous consumption or TRX stake
-one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
+one hour later, the energy consumption amount will be 72,000,000 - (72,000,000 * (60*60/60*60*24)) Energy = 69,000,000 Energy
 24 hours later, the energy consumption amount will be 0 Energy
 </code></pre></div>
 <h3 id="532-how-to-set-fee-limit-caller-must-read">5.3.2 How to Set Fee Limit (Caller Must Read)<a class="headerlink" href="#532-how-to-set-fee-limit-caller-must-read" title="Permanent link">&para;</a></h3>
@@ -604,15 +604,15 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 <p>When to burn TRX, 1 TRX = 10000 energy[4]</p>
 <p>Assume developer undertake 90% energy consumption, and developer has enough energy.</p>
 <p>Then the way to estimate the fee limit is:
-<div class="highlight"><pre><span></span><code>1). A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,
+<div class="highlight"><pre><span></span><code>1). A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50,000,000 SUN,
 
-2). B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2_000_000 SUN,
+2). B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2,000,000 SUN,
 
-3). Take the greater number of A and B, which is 50_000_000 SUN,
+3). Take the greater number of A and B, which is 50,000,000 SUN,
 
 4). Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
 </code></pre></div></p>
-<p>So, the caller is suggested to set fee limit to 50_000_000 SUN * 10% = 5_000_000 SUN</p>
+<p>So, the caller is suggested to set fee limit to 50,000,000 SUN * 10% = 5,000,000 SUN</p>
 <p>Note:
 <div class="highlight"><pre><span></span><code>[1] The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
 [2] TRON may change this policy.
@@ -853,7 +853,7 @@ Note: The unit of &#39;amount&#39; is the smallest unit of the token
 <p>Such as if the number of bytes of a transaction is 200, so this transaction consumes 200 Bandwidth Points.</p>
 <p>Note: Due to the change of the total amount of the staked TRX in the network and the self-staked TRX amount, the Bandwidth Points an account possesses is not fixed.</p>
 <h2 id="821-how-to-get-bandwidth-points">8.2.1 How to Get Bandwidth Points<a class="headerlink" href="#821-how-to-get-bandwidth-points" title="Permanent link">&para;</a></h2>
-<p>1.&nbsp;By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43_200_000_000</p>
+<p>1.&nbsp;By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43,200,000,000</p>
 <p>2.&nbsp;Every account has a fixed amount of free Bandwidth Points every day, it is defined in #61 network parameter, user can check the value on tronscan(https://tronscan.org/#/sr/committee).</p>
 <h3 id="822-bandwidth-points-consumption">8.2.2 Bandwidth Points Consumption<a class="headerlink" href="#822-bandwidth-points-consumption" title="Permanent link">&para;</a></h3>
 <p>Transactions other than queries consume Bandwidth points.</p>
@@ -871,7 +871,7 @@ Note: The unit of &#39;amount&#39; is the smallest unit of the token
 <p>Bandwidth points TRX staking.</p>
 </li>
 <li>
-<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;</p>
+<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;</p>
 </li>
 </ol>
 <p>Bandwidth points consumption sequence for other transactions:</p>
@@ -883,7 +883,7 @@ Note: The unit of &#39;amount&#39; is the smallest unit of the token
 <p>Bandwidth points TRX staking.</p>
 </li>
 <li>
-<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1_000 SUN;</p>
+<p>Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;</p>
 </li>
 </ol>
 <h3 id="823-bandwidth-points-recovery">8.2.3 Bandwidth Points Recovery<a class="headerlink" href="#823-bandwidth-points-recovery" title="Permanent link">&para;</a></h3>
@@ -962,12 +962,12 @@ GetExchangeById: Query an exchange pair by exchange pair id</p>
 <h3 id="963-calculate-the-amount-of-token-you-can-get">9.6.3 Calculate the Amount of Token You Can Get<a class="headerlink" href="#963-calculate-the-amount-of-token-you-can-get" title="Permanent link">&para;</a></h3>
 <p>sellTokenQuant is the amount of the first_token you want to sell;
 buyTokenQuant is the amount of second_token you can get;
-supply = 1_000_000_000_000_000_000L;
+supply = 1,000,000,000,000,000,000L;
 supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/(firstTokenBalance + sellTokenQuant, 0.0005));
 buyTokenQuant = (long)balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0);</p>
-<h1 id="10-multi-signatures">10. Multi-Signatures<a class="headerlink" href="#10-multi-signatures" title="Permanent link">&para;</a></h1>
+<h1 id="10-account-permission-management">10. Account Permission Management<a class="headerlink" href="#10-account-permission-management" title="Permanent link">&para;</a></h1>
 <p>Please refer to:
-<a href="../../mechanism-algorithm/multi-signatures/">Multi-signatures</a></p>
+<a href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a></p>
 <h1 id="11-shielded-transaction">11. Shielded Transaction<a class="headerlink" href="#11-shielded-transaction" title="Permanent link">&para;</a></h1>
 <p>Please refer to:
 <a href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a></p>

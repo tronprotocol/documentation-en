@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/clients/wallet-cli/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>What is Wallet-CLI - Java Tron</title>
+    <title>What is Wallet-CLI - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -143,7 +143,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -163,9 +163,9 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="what-is-wallet-cli">What is Wallet-CLI?<a class="headerlink" href="#what-is-wallet-cli" title="Permanent link">&para;</a></h2>
-<p>Wallet-Cli is an interactive command-line wallet that supports the TRON network for signing and broadcasting transactions in a secure local environment, as well as access to on-chain data. Wallet-Cli supports key management, you can import the private key into the wallet, Wallet-Cli will encrypt your private key with a symmetric encryption algorithm and store it in a keystore file. Wallet-Cli does not store on-chain data locally. It uses gRPC to communicate with a Java-tron node. You need to configure the Java-tron node to be linked in the configuration file. The following figure shows the process of the use of Wallet-Cli to sign and broadcast when transferring TRX:
+<p>Wallet-Cli is an interactive command-line wallet that supports the TRON network for signing and broadcasting transactions in a secure local environment, as well as access to on-chain data. Wallet-Cli supports key management, you can import the private key into the wallet, Wallet-Cli will encrypt your private key with a symmetric encryption algorithm and store it in a keystore file. Wallet-Cli does not store on-chain data locally. It uses gRPC to communicate with a java-tron node. You need to configure the java-tron node to be linked in the configuration file. The following figure shows the process of the use of Wallet-Cli to sign and broadcast when transferring TRX:
 <img alt="" src="https://i.imgur.com/NRKmZmE.png" /></p>
-<p>The user first runs the <code>Login</code> command to unlock the wallet, and then runs the <code>SendCoin</code> command to send TRX, Wallet-Cli will build and sign the transaction locally, and then call the BroadcastTransaction gRPC API of the Java-tron node to broadcast the transaction to the network. After the broadcast is successful, the Java-tron node will return the transaction hash to Wallet-Cli, and Wallet-Cli will display the transaction hash to the user.</p>
+<p>The user first runs the <code>Login</code> command to unlock the wallet, and then runs the <code>SendCoin</code> command to send TRX, Wallet-Cli will build and sign the transaction locally, and then call the BroadcastTransaction gRPC API of the java-tron node to broadcast the transaction to the network. After the broadcast is successful, the java-tron node will return the transaction hash to Wallet-Cli, and Wallet-Cli will display the transaction hash to the user.</p>
 <p>Install and run: <a href="https://github.com/tronprotocol/wallet-cli">Wallet-Cli</a></p>
               
             </div>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/demo/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Development Example - Java Tron</title>
+    <title>Development Example - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -106,7 +106,7 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Development Example</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#fork-java-tron-repository">Fork Java-tron Repository</a>
+    <li class="toctree-l2"><a class="reference internal" href="#fork-java-tron-repository">Fork java-tron Repository</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#sync-repository">Sync Repository</a>
     </li>
@@ -116,7 +116,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#write-unit-test">Write Unit Test</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#java-tron-unit-test-cases-writing-specification">Java-tron Unit Test Cases Writing Specification</a>
+    <li class="toctree-l3"><a class="reference internal" href="#java-tron-unit-test-cases-writing-specification">java-tron Unit Test Cases Writing Specification</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#common-annotations">Common Annotations</a>
     </li>
@@ -167,7 +167,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -187,9 +187,9 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="development-example">Development Example<a class="headerlink" href="#development-example" title="Permanent link">&para;</a></h1>
-<p>This article will take adding a new <code>setPeer</code> HTTP interface as an example to illustrate how to participate in the development of Java-tron. Before developing, please configure the <a href="../run-in-idea">InteliJ IDE development environment</a>.</p>
-<p>Sometimes Java-tron nodes may not be able to connect to peers due to network reasons, if you can add trusted nodes while the node is running, this will allow the node to connect to the peer even if the node discovery function is not working.</p>
-<h2 id="fork-java-tron-repository">Fork Java-tron Repository<a class="headerlink" href="#fork-java-tron-repository" title="Permanent link">&para;</a></h2>
+<p>This article will take adding a new <code>setPeer</code> HTTP interface as an example to illustrate how to participate in the development of java-tron. Before developing, please configure the <a href="../run-in-idea">InteliJ IDE development environment</a>.</p>
+<p>Sometimes java-tron nodes may not be able to connect to peers due to network reasons, if you can add trusted nodes while the node is running, this will allow the node to connect to the peer even if the node discovery function is not working.</p>
+<h2 id="fork-java-tron-repository">Fork java-tron Repository<a class="headerlink" href="#fork-java-tron-repository" title="Permanent link">&para;</a></h2>
 <p>Fork a new repository from the <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a> project to your personal repository, and then use the following command Clone the code locally:</p>
 <div class="highlight"><pre><span></span><code>$ git clone https://github.com/yourname/java-tron.git
 $ git remote add upstream https://github.com/tronprotocol/java-tron.git
@@ -205,7 +205,7 @@ $ git merge upstream/develop --no-ff
 <div class="highlight"><pre><span></span><code>$ git checkout -b feature/add-new-http-demo develop
 </code></pre></div>
 <h2 id="code-development">Code Development<a class="headerlink" href="#code-development" title="Permanent link">&para;</a></h2>
-<p>Open the Java-tron project in IDEA. Create a new servlet file in the <code>java-tron/framework/src/main/java/org/tron/core/services/http</code> directory to process HTTP requests: SetPeerServlet.java, the file should contain two functions <code>doGet</code> and <code>doPost</code>. <code>doGet</code> is used to handle http get requests and <code>doPost</code> is used to handle http post requests. If one of these types of requests is not supported, the method content can be empty.</p>
+<p>Open the java-tron project in IDEA. Create a new servlet file in the <code>java-tron/framework/src/main/java/org/tron/core/services/http</code> directory to process HTTP requests: SetPeerServlet.java, the file should contain two functions <code>doGet</code> and <code>doPost</code>. <code>doGet</code> is used to handle http get requests and <code>doPost</code> is used to handle http post requests. If one of these types of requests is not supported, the method content can be empty.</p>
 <p><div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
 <span class="nd">@Slf4j</span><span class="p">(</span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;API&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SetPeerServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span><span class="w"> </span><span class="p">{</span>
@@ -300,7 +300,7 @@ After completing the implementation of SetPeerServlet, you also need to register
 
 <span class="p">}</span>
 </code></pre></div>
-Then you can debug the above code, start the Java-tron node in IDEA, and interact with the node through the below Curl command in the terminal:</p>
+Then you can debug the above code, start the java-tron node in IDEA, and interact with the node through the below Curl command in the terminal:</p>
 <p><div class="highlight"><pre><span></span><code>$ curl --location --request POST &#39;http://127.0.0.1:16667/wallet/setpeer&#39; \
 --header &#39;Content-Type: application/json&#39; \
 --data-raw &#39;{
@@ -312,9 +312,9 @@ Return:</p>
 </code></pre></div>
 <p>At this point, the code development is complete, and then you need to write unit tests for the changes. For simple changes, unit tests can be written after the development code is completed, but for larger changes, it is recommended to write unit tests at the same time as development.</p>
 <h2 id="write-unit-test">Write Unit Test<a class="headerlink" href="#write-unit-test" title="Permanent link">&para;</a></h2>
-<p>The unit test of the Java-tron project is based on the JUnit framework. For the usage of JUnit, please refer to <a href="https://junit.org">JUnit official website</a>. The following is a brief introduction to the Java-tron unit test case specification and common annotations.</p>
-<h3 id="java-tron-unit-test-cases-writing-specification">Java-tron Unit Test Cases Writing Specification<a class="headerlink" href="#java-tron-unit-test-cases-writing-specification" title="Permanent link">&para;</a></h3>
-<p>When writing Java-tron unit test cases, please follow the below guidelines:</p>
+<p>The unit test of the java-tron project is based on the JUnit framework. For the usage of JUnit, please refer to <a href="https://junit.org">JUnit official website</a>. The following is a brief introduction to the java-tron unit test case specification and common annotations.</p>
+<h3 id="java-tron-unit-test-cases-writing-specification">java-tron Unit Test Cases Writing Specification<a class="headerlink" href="#java-tron-unit-test-cases-writing-specification" title="Permanent link">&para;</a></h3>
+<p>When writing java-tron unit test cases, please follow the below guidelines:</p>
 <ul>
 <li>All test classes should be placed in the test directory, and the package of the test class should be consistent with the package structure of the tested code. Generally, use <code>Test</code> as the suffix of a class name</li>
 <li>The test method must be decorated with <code>@Test</code> and it must be <code>public</code> <code>void</code> type. Generally, <code>test</code> is used as the prefix of the method name</li>

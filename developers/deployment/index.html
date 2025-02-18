@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/deployment/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Deployment - Java Tron</title>
+    <title>Deployment - java-tron</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Java Tron
+          <a href="../.." class="icon icon-home"> java-tron
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,12 +42,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Getting Started</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
                   </li>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -141,7 +141,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Java Tron</a>
+          <a href="../..">java-tron</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -323,11 +323,11 @@ Use customized configuration：
 <div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_grpc_gateway.sh<span class="w"> </span>--rpchost<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--rpcport<span class="w"> </span><span class="m">50052</span><span class="w"> </span>--httpport<span class="w"> </span><span class="m">18891</span>
 </code></pre></div></p>
 <h2 id="event-subscribe-plugin-deployment">Event Subscribe plugin Deployment<a class="headerlink" href="#event-subscribe-plugin-deployment" title="Permanent link">&para;</a></h2>
-<p>This is an implementation of Tron eventsubscribe model.</p>
+<p>This is an implementation of TRON eventsubscribe model.</p>
 <ul>
-<li><strong>api</strong> module defines IPluginEventListener, a protocol between Java-tron and event plugin.</li>
+<li><strong>api</strong> module defines IPluginEventListener, a protocol between java-tron and event plugin.</li>
 <li><strong>app</strong> module is an example for loading plugin, developers could use it for debugging.</li>
-<li><strong>kafkaplugin</strong> module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from Java-tron and relay events to kafka server.</li>
+<li><strong>kafkaplugin</strong> module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from java-tron and relay events to kafka server.</li>
 <li><strong>mongodbplugin</strong> mongodbplugin module is the implementation for mongodb.</li>
 </ul>
 <h3> Setup/Build </h3>
@@ -342,7 +342,7 @@ Use customized configuration：
 <p>This will produce one plugin zip, named <code>plugin-kafka-1.0.0.zip</code>, located in the <code>event-plugin/build/plugins/</code> directory.</p>
 </li>
 </ol>
-<h3> Edit **config.conf** of Java-tron， add the following fields:</h3>
+<h3> Edit **config.conf** of java-tron， add the following fields:</h3>
 
 <p><div class="highlight"><pre><span></span><code>event.subscribe = {
     path = &quot;&quot; // absolute path of plugin
@@ -451,7 +451,7 @@ kafka-console-consumer.sh --zookeeper localhost:2181 --topic transaction
 kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractlog
 kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
 </code></pre></div></p>
-<h3> Load plugin in Java-tron </h3>
+<h3> Load plugin in java-tron </h3>
 
 <ul>
 <li>add --es to command line, for example:
