@@ -36,9 +36,9 @@ message Transaction {
   }
 }
 ```
-The defination of ContractType can be found [here](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto). Contracttype which can be called SystemContractType is the supported transaction type by java-tron.
+The definition of ContractType can be found [here](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto). Contracttype which can be called SystemContractType is the supported transaction type by java-tron.
 
-AccountPermissionUpdateContract is a contract type used to update the account permission.
+AccountPermissionUpdateContract is a ContractType used to update the account permission.
 
 #### AccountPermissionUpdateContract
 
@@ -133,8 +133,8 @@ A super representative deploys a witness node on cloud server. In order to keep 
 
 Witness node configuration:
 
--  if witness permission is not used, there is no need to change config file.  
--  if witness permission is used, `localwitness` in config file should be changed and `localWitnessAccountAddress` should be clearly set.   
+-  If witness permission is not used, there is no need to change config file.  
+-  If witness permission is used, `localwitness` in config file should be changed and `localWitnessAccountAddress` should be clearly set.   
     We know when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), it is needed to fill in the private key of the super representative address to `localwitness` in the config file and there is no need to set `localWitnessAccountAddress`. However, when witness permission is used, `localwitness` need to be changed to the private key of the account which the witness permission is authorized to and `localWitnessAccountAddress` must be clearly set as the address of the SR account. Here is an example of how to configure SR account [TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj](https://tronscan.org/#/address/TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj) which authorize its witness permission to account TXXvArisGf7YL9TfUbwYj5i16htm8ZjMUs. It's config file should look like as below:  
     ```
     #config.conf
@@ -143,7 +143,7 @@ Witness node configuration:
       yyy // private key of TXXvArisGf7YL9TfUbwYj5i16htm8ZjMUs
     ]
     ```
-    if witness permission is not used, it's config file should look like as below:   
+    If witness permission is not used, it's config file should look like as below:   
     ```
     # config.conf
     //localWitnessAccountAddress = 
