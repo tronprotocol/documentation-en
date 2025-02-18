@@ -83,10 +83,10 @@ message Permission {
 - `threshold`: The threshold of the signature weight
 - `parent_id`: Current 0
 - `operations`: used by active permission, a hexadecimal coded sequence (little-endian byte order), 32 bytes (256 bits), and each bit represents the authority of a ContractType. The nth bit indicates the authority of the ContractType with ID n, its value 1 means that it has the authority to execute the ContractType, its value 0 means it doesn't have the authority.  
-    To make it easier for users to read, take the binary big-endian byte order as an example to illustrate how to calculate the value of operations: The number of digits starts from 0, and corresponds to the ID of the ContractType from left to right. Convert a binary big-endian byte sequence to a hexadecimal little-endian byte sequence, that will be the value of operations. Below is an example of how to calculate the operations according to the operations allowed. 
-    | Operations Allowed  | Binary Code(big-endian) | Binary Code(little-endian) | Hex Code(little-endian) |  
-    | ------------- | ------------- | ------------- | ------------- |  
-    | TransferContract(1) & VoteWitnessContract(4)  | 01001000 00000000 00000000 ...  | 00010010 00000000 00000000 ... | 12 00 00 ... | 
+    To make it easier for users to read, start with the binary big-endian byte order to illustrate how to calculate the value of operations. The number of digits starts from 0, and corresponds to the ID of the ContractType from left to right. Convert a binary big-endian byte sequence to a hexadecimal little-endian byte sequence, that will be the value of operations. Below is an example of how to calculate the operations of active permission with operation TransferContract(ID=1) and operation VoteWitnessContract(ID=4) allowed. 
+    | Operations Allowed  | Binary Code(big-endian) | Binary Code(little-endian) | Hex Code(little-endian) |
+    | ------------- | ------------- | ------------- | ------------- |
+    | TransferContract(1) & VoteWitnessContract(4)  | 01001000 00000000 00000000 ...  | 00010010 00000000 00000000 ... | 12 00 00 ... |
 - `keys`: The accounts and weights that all own the permission, 5 keys at most.
 
 #### Key
@@ -135,7 +135,7 @@ Witness node configuration:
 
 -  if witness permission is not used, there is no need to change config file.  
 -  if witness permission is used, `localwitness` in config file should be changed and `localWitnessAccountAddress` should be clearly set.   
-    We know when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), it is needed to fill in the private key of the super representative address to `localwitness` in the config file and the default value of `localWitnessAccountAddress` which represents the address of the SR(Super Representative) account is empty. However, when witness permission is used, the value of `localwitness` need to be changed to the private key of the account which the witness permission is authorized to and the value of `localWitnessAccountAddress` must be clearly set as the address of the SR account. Here is an example of how to configure SR account [TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj](https://tronscan.org/#/address/TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj) which authorize its witness permission to account TXXvArisGf7YL9TfUbwYj5i16htm8ZjMUs. It's config file should look like as below:  
+    We know when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), it is needed to fill in the private key of the super representative address to `localwitness` in the config file and there is no need to set `localWitnessAccountAddress`. However, when witness permission is used, `localwitness` need to be changed to the private key of the account which the witness permission is authorized to and `localWitnessAccountAddress` must be clearly set as the address of the SR account. Here is an example of how to configure SR account [TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj](https://tronscan.org/#/address/TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj) which authorize its witness permission to account TXXvArisGf7YL9TfUbwYj5i16htm8ZjMUs. It's config file should look like as below:  
     ```
     #config.conf
     localWitnessAccountAddress = TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj
@@ -143,20 +143,14 @@ Witness node configuration:
       yyy // private key of TXXvArisGf7YL9TfUbwYj5i16htm8ZjMUs
     ]
     ```
-    if witness permission is not used, it's config file should look like one of the two as below(the first one is recommended):   
+    if witness permission is not used, it's config file should look like as below:   
     ```
     # config.conf
+    //localWitnessAccountAddress = 
     localwitness = [
       xxx // private key of TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj 
     ]
     ```  
-    ```
-    # config.conf
-    localWitnessAccountAddress = TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj
-    localwitness = [
-      xxx // private key of TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj
-    ]
-    ```
 
 ### Active Permission
 
