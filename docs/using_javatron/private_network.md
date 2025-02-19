@@ -76,7 +76,7 @@ The process of building a node on private chain is the same as that on mainnet. 
     
     If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/tronprotocol/tron-docker/tree/main/tools/dbfork) which could capture the latest status of Mainnet is what you are interested in.
     
-    If you want to modify part of network parameters, there are two ways to choose from:
+    If you want to modify part of dynamic parameters, there are two ways to choose from:
 
     * Configure File  
       Some dynamic parameters can be directly set through configure file. These dynamic parameters can be seen [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
