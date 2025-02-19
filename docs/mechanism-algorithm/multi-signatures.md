@@ -36,7 +36,7 @@ message Transaction {
   }
 }
 ```
-The definition of ContractType can be found [here](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto). Contracttype which can be called SystemContractType is the supported transaction type by java-tron.
+The definition of ContractType can be found [here](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto). ContractType which can be called SystemContractType is the supported transaction type by java-tron.
 
 AccountPermissionUpdateContract is a ContractType used to update the account permission.
 
@@ -53,7 +53,7 @@ message AccountPermissionUpdateContract {
 
 - `owner_address`: The address of the account whose permissions are to be modified
 - `owner`: Owner permission
-- `witness`: Witness permission (only used by SR(Super Representative))
+- `witness`: Witness permission (only used by witness)
 - `actives`: Active permission
 
 This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a SR account) and active permission also need to be set
@@ -83,7 +83,7 @@ message Permission {
 - `threshold`: The threshold of the signature weight
 - `parent_id`: Current 0
 - `operations`: used by active permission, a hexadecimal coded sequence (little-endian byte order), 32 bytes (256 bits), and each bit represents the authority of a ContractType. The nth bit indicates the authority of the ContractType with ID n, its value 1 means that it has the authority to execute the ContractType, its value 0 means it doesn't have the authority.  
-    To make it easier for users to read, start with the binary big-endian byte order to illustrate how to calculate the value of operations. The number of digits starts from 0, and corresponds to the ID of the ContractType from left to right. Convert a binary big-endian byte sequence to a hexadecimal little-endian byte sequence, that will be the value of operations. Below is an example of how to calculate the operations of active permission with operation TransferContract(ID=1) and operation VoteWitnessContract(ID=4) allowed. 
+    To make it easier for users to read, start with the binary big-endian byte order to illustrate how to calculate the value of operations. The number of digits starts from 0, and corresponds to the ID of the ContractType from left to right. Convert a binary big-endian byte sequence to a hexadecimal little-endian byte sequence, that will be the value of operations. Below is an example of how to calculate the operations of active permission with operation TransferContract(ID=1) and operation VoteWitnessContract(ID=4) allowed. The mapping between ContractType and its ID can be seen in the above definition link of ContractType.
     | Operations Allowed  | Binary Code(big-endian) | Binary Code(little-endian) | Hex Code(little-endian) |
     | ------------- | ------------- | ------------- | ------------- |
     | TransferContract(1) & VoteWitnessContract(4)  | 01001000 00000000 00000000 ...  | 00010010 00000000 00000000 ... | 12 00 00 ... |
@@ -135,7 +135,7 @@ Witness node configuration:
 
 -  If witness permission is not used, there is no need to change config file.  
 -  If witness permission is used, `localwitness` in config file should be changed and `localWitnessAccountAddress` should be clearly set.   
-    We know when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), it is needed to fill in the private key of the super representative address to `localwitness` in the config file and there is no need to set `localWitnessAccountAddress`. However, when witness permission is used, `localwitness` need to be changed to the private key of the account which the witness permission is authorized to and `localWitnessAccountAddress` must be clearly set as the address of the SR account. Here is an example of how to configure SR account [TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj](https://tronscan.org/#/address/TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj) which authorize its witness permission to account TXXvArisGf7YL9TfUbwYj5i16htm8ZjMUs. It's config file should look like as below:  
+    We know when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), it is needed to fill in the private key of the super representative address to `localwitness` in the config file and `localWitnessAccountAddress` is commented on. However, when witness permission is used, `localwitness` need to be changed to the private key of the account which the witness permission is authorized to and `localWitnessAccountAddress` must be clearly set as the address of the SR account. Here is an example of how to configure SR account [TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj](https://tronscan.org/#/address/TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj) which authorize its witness permission to account TXXvArisGf7YL9TfUbwYj5i16htm8ZjMUs. It's config file should look like as below:  
     ```
     #config.conf
     localWitnessAccountAddress = TTxrh32VJveqiYRwbLEX2wLTMFCfbpAUQj
