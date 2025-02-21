@@ -92,8 +92,8 @@ The process of building a node on private chain is the same as that on mainnet. 
       }
       ```
     
-    * Committee Proposal  
-      The modification of dynamic parameters can also be done through committee proposal. The committee consists of SR, SR Partner and SR Candidate. Any member of the committee can use [proposalcreate](https://developers.tron.network/reference/proposalcreate) to create proposal, and then SR use [proposalapprove](https://developers.tron.network/reference/proposalapprove) to approve proposal. Below is an code example of modifying two dynamic parameters through a committee proposal. In [proposalcreate](https://developers.tron.network/reference/proposalcreate), dynamic parameters are represented by numbers, the mapping between number and string name of dynamic parameters can be seen [here](https://developers.tron.network/reference/wallet-getchainparameters).
+    * Proposal  
+      Any witness(SR, SR partner, SR candidate) is entitled to create a proposal, SRs also have the right to vote for the proposal. A witness uses [proposalcreate](https://developers.tron.network/reference/proposalcreate) to create a proposal, and then SRs use [proposalapprove](https://developers.tron.network/reference/proposalapprove) to approve the proposal. Below is an code example of modifying two dynamic parameters through a committee proposal. In [proposalcreate](https://developers.tron.network/reference/proposalcreate), dynamic parameters are represented by numbers, the mapping between number and string name of dynamic parameters can be seen [here](https://developers.tron.network/reference/wallet-getchainparameters).
       ```
       var TronWeb = require('tronweb');
       var tronWeb = new TronWeb({
