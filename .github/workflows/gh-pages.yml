@@ -1,9 +1,7 @@
 name: Publish Document
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
   build:
