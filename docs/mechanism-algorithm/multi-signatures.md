@@ -143,6 +143,8 @@ Witness node configuration:
       yyy // private key of TXXvArisGf7YL9TfUbwYj5i16htm8ZjMUs
     ]
     ```
+    Notice: Only one private key can be added to `localwitness` when witness permission is modified.
+
     If witness permission is not used, it's config file should look like as below:   
     ```
     # config.conf
