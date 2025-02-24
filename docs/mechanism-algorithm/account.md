@@ -6,7 +6,7 @@ TRON uses the account model. The address is the unique identifier of an account,
 
 ## How to Create an Account
 
-1. Use a wallet application to generate the address and private key. To active the account, you need to transfer TRX or transfer token to the new created account. [Generate an account](https://www.tronlink.org/)
+1. Use a wallet application([TronLink](https://www.tronlink.org/) is recommended) to generate a pair of address and private key. To active the account, you need to transfer TRX or other token to it.
 2. Use an account already existed in TRON network to create an account
 
 If you have enough staked BandWidth Points, creating an account only consume your staked BandWidth Points, otherwise, it burns 0.1 TRX.
