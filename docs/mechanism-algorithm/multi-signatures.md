@@ -131,11 +131,21 @@ Super representatives can use this permission to manage block producing. Only SR
 Usage scenario example:
 A super representative deploys a witness node on cloud server. In order to keep the account on the cloud server safe, you can only give the block producing permission to the account you put on cloud server. Because this account only owns  block producing permission, no TRX transfer permission, so even if the account on the cloud server is leaked, the TRX will not be lost.
 
-Witness node configuration:
+Witness node configuration: when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), `localwitness` in the config file is filled in with the private key of the witness account and `localWitnessAccountAddress` is commented on as below:
+```
+# config.conf
+//localWitnessAccountAddress = 
+localwitness = [
+  xxx // private key of the witness account
+]
+```  
 
 -  If witness permission is not modified, there is no need to change config file.  
--  If witness permission is modified, `localwitness` in config file should be changed and `localWitnessAccountAddress` should be clearly set.   
-    We know when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), it is needed to fill in the private key of the super representative address to `localwitness` in the config file and `localWitnessAccountAddress` is commented on. However, when witness permission is used, `localwitness` need to be changed to the private key of the account which the witness permission is authorized to and `localWitnessAccountAddress` must be clearly set as the address of the SR account. Here is an example of how to configure SR account [TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk](https://nile.tronscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk) which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ. It's config file should look like as below:  
+-  If witness permission is modified, Two modifications are required as follows:
+    -  `localwitness` needs to be changed to the private key of the account authorized with witness permission
+    - `localWitnessAccountAddress` shoule be explicitly set as the address of the witness account
+   
+    Below is an example of how to configure witness account [TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk](https://nile.tronscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk) which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
     ```
     #config.conf
     localWitnessAccountAddress = TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk
@@ -144,15 +154,6 @@ Witness node configuration:
     ]
     ```
     Notice: Only one private key can be added to `localwitness` when witness permission is modified.
-
-    If witness permission is not used, it's config file should look like as below:   
-    ```
-    # config.conf
-    //localWitnessAccountAddress = 
-    localwitness = [
-      xxx // private key of TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk 
-    ]
-    ```  
 
 ### Active Permission
 
