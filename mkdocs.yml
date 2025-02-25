@@ -64,7 +64,6 @@ plugins:
   - search
   - exclude:
       glob:
-        - index.md
         - clients/tron-grid.md
         - contracts/trc20.md
         - contracts/tvm.md
