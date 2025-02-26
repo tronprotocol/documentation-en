@@ -36,7 +36,7 @@ message Transaction {
   }
 }
 ```
-The definition of ContractType can be found [here](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto). ContractType which can be called SystemContractType is the supported transaction type by java-tron.
+The definition of ContractType can be found [here](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto).
 
 AccountPermissionUpdateContract is a ContractType used to update the account permission.
 
