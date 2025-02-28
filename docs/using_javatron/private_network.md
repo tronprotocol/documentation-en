@@ -72,48 +72,59 @@ The process of building a node on private chain is the same as that on mainnet. 
 
 7. Modify the dynamic parameters of the private chain
 
-    In order to be the same as the main network environment, the dynamic parameters of the private chain need to be modified to be consistent with those of the main network. The modification of dynamic parameters can be done through proposals. The SR account can use [wallet-cli](https://github.com/tronprotocol/wallet-cli) or fullnode http API  [`wallet/proposalcreate`](https://developers.tron.network/reference/proposalcreate)to create proposals, [`wallet/proposalapprove`](https://developers.tron.network/reference/proposalapprove) to approve proposals. 
-   
-    The following are the dynamic parameters and values sorted out according to the proposals passed by the mainnet successively. SR can directly use the following commands to create proposals to complete the modification of all the dynamic parameters of the private chain. Due to the dependencies between some parameters, according to the current parameter values on the main network, the modification of all parameters of the private chain can be divided into two proposals. The first step, SR creates and votes the first proposal according to the following code:
-
-    ```
-    var TronWeb = require('tronweb');
-    var tronWeb = new TronWeb({
-        fullHost: 'http://localhost:16887',
-        privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
-    })
-
-    // First proposal: "key":30 and "key":70 must be modified first
-    var parametersForProposal1 = [{"key":9,"value":1},{"key":10,"value":1},{"key":11,"value":420},{"key":19,"value":90000000000},{"key":15,"value":1},{"key":18,"value":1},{"key":16,"value":1},{"key":20,"value":1},{"key":26,"value":1},{"key":30,"value":1},{"key":5,"value":16000000},{"key":31,"value":160000000},{"key":32,"value":1},{"key":39,"value":1},{"key":41,"value":1},{"key":3,"value":1000},{"key":47,"value":10000000000},{"key":49,"value":1},{"key":13,"value":80},{"key":7,"value":1000000},{"key":61,"value":600},{"key":63,"value":1},{"key":65,"value":1},{"key":66,"value":1},{"key":67,"value":1},{"key":68,"value":1000000},{"key":69,"value":1},{"key":70,"value":14},{"key":71,"value":1},{"key":76,"value":1}];
-    var parametersForProposal2 = [{"key":47,"value":15000000000},{"key":59,"value":1},{"key":72,"value":1},{"key":73,"value":3000000000},{"key":74,"value":2000},{"key":75,"value":12000},{"key":77,"value":1},{"key":78,"value":864000}];
-
-    async function modifyChainParameters(parameters,proposalID){
+    Dynamic parameters can be obtained by [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters). The main network's current dynamic parameters and committee proposals related to them can be seen [here](https://tronscan.org/#/sr/committee), dynamic parameters are called network parameters here.
     
-        parameters.sort((a, b) => {
-                return a.key.toString() > b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
-            })
-        var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
-        var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
-        var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
-
-        setTimeout(async function() {
-    		console.log(receipt1)
-            console.log("Vote proposal 1 !")
-            var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
-            var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
-            var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
-        }, 1000)
-
-    }
-
-    modifyChainParameters(parametersForProposal1, 1)
-
-
-    ```
-    After creating the proposal through the above code, you can query the proposal's effective time: "expiration_time" through the http://127.0.0.1:xxxx/wallet/listproposals interface. The timestamp is in milliseconds. After the effective time has passed, if the "state" in the return value of the interface is "APPROVED", it means that the proposal has been passed, and you can continue to the next step and create the second proposal. The sample code is as follows:
-
-    ```
-    modifyChainParameters(parametersForProposal2, 2)
-    ```
+    If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/tronprotocol/tron-docker/tree/main/tools/dbfork) which could capture the latest status of Mainnet is what you are interested in.
     
-    After the proposal takes effect, the dynamic parameters of the private chain will be consistent with the main network. You can query the chain parameters through the /wallet/getchainparameters API.
+    If you want to modify part of dynamic parameters, there are two ways to choose from:
+
+    * Configure File  
+      Some dynamic parameters can be directly set through configure file. These dynamic parameters can be seen [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
+      Below is an example of modifying dynamic parameters through configure file.
+      ```
+      committee = {
+        allowCreationOfContracts = 1
+        allowAdaptiveEnergy = 0
+        allowMultiSign = 1
+        allowDelegateResource = 1
+        allowSameTokenName = 0
+        allowTvmTransferTrc10 = 1
+      }
+      ```
+    
+    * Proposal  
+      Any witness(SR, SR partner, SR candidate) is entitled to create a proposal, SRs also have the right to vote for the proposal. A witness uses [proposalcreate](https://developers.tron.network/reference/proposalcreate) to create a proposal, and then SRs use [proposalapprove](https://developers.tron.network/reference/proposalapprove) to approve the proposal(Proposals only support voting for yes, super representatives do not vote means they do not agree with the proposal). Below is an code example of modifying two dynamic parameters through a committee proposal. In [proposalcreate](https://developers.tron.network/reference/proposalcreate), dynamic parameters are represented by numbers, the mapping between number and string name of dynamic parameters can be seen [here](https://developers.tron.network/reference/wallet-getchainparameters).
+      ```
+      var TronWeb = require('tronweb');
+      var tronWeb = new TronWeb({
+          fullHost: 'http://localhost:16887',
+          privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
+      })
+
+      var parametersForProposal1 = [{"key":9,"value":1},{"key":10,"value":1}];
+
+      async function modifyChainParameters(parameters,proposalID){
+      
+          parameters.sort((a, b) => {
+                  return a.key.toString() > b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
+              })
+          var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
+          var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
+          var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
+
+          setTimeout(async function() {
+              console.log(receipt1)
+              console.log("Vote proposal 1 !")
+              var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
+              var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
+              var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
+          }, 1000)
+
+      }
+
+      modifyChainParameters(parametersForProposal1, 1)
+      ```
+
+      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. If the "state" in the return value of the interface is "APPROVED" When expiration time of the proposal has passed, it means that the proposal has been approved.
+
+      It should be noted that dynamic parameters with interdependent relationships cannot be included in one proposal, the correct approach is to separate them into different proposals and pay attention to order of them.
