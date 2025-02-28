@@ -72,7 +72,7 @@ The process of building a node on private chain is the same as that on mainnet. 
 
 7. Modify the dynamic parameters of the private chain
 
-    Dynamic parameters can be obtained by [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters). The main network's current dynamic parameters and committee proposals related to them can be seen [here](https://tronscan.io/#/sr/committee), dynamic parameters are called network parameters here.
+    Dynamic parameters can be obtained by [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters). The main network's current dynamic parameters and committee proposals related to them can be seen [here](https://tronscan.org/#/sr/committee), dynamic parameters are called network parameters here.
     
     If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/tronprotocol/tron-docker/tree/main/tools/dbfork) which could capture the latest status of Mainnet is what you are interested in.
     
