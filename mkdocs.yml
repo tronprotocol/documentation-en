@@ -59,3 +59,21 @@ markdown_extensions:
     - pymdownx.tilde
     - pymdownx.tasklist
     - pymdownx.superfences
+
+plugins:
+  - search
+  - exclude:
+      glob:
+        - clients/tron-grid.md
+        - contracts/trc20.md
+        - contracts/tvm.md
+        - developers/archive-manifest.md
+        - developers/contribution.md
+        - developers/gpg.md
+        - developers/incentives.md
+        - developers/resources.md
+        - faq/index.md
+        - introduction/index.md
+        - introduction/overview.md
+        - mechanism-algorithm/shielded-TRC20-contract.md
+        - mechanism-algorithm/trc10.md
