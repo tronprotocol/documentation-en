@@ -124,7 +124,5 @@ The process of building a node on private chain is the same as that on mainnet. 
 
       modifyChainParameters(parametersForProposal1, 1)
       ```
-
-      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. If the "state" in the return value of the interface is "APPROVED" When expiration time of the proposal has passed, it means that the proposal has been approved.
-
+      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. If the "state" in the return value of the interface is "APPROVED" When expiration time of the proposal has passed, it means that the proposal has been approved.  
       It should be noted that dynamic parameters with interdependent relationships cannot be included in one proposal, the correct approach is to separate them into different proposals and pay attention to order of them.
