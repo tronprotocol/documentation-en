@@ -1,0 +1,8 @@
+/* 禁用一级目录的大写转换 */
+.wy-menu-vertical p.caption {
+    text-transform: none;
+}
+
+.wy-dropdown-menu>dd.call-to-action {
+    text-transform: none;
+}

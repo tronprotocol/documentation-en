@@ -2,7 +2,6 @@
 
 **For the specific definition of API, please refer to the following link:**
 [api/api.proto](https://github.com/tronprotocol/protocol/blob/master/api/api.proto)
-[core/Contract.proto](https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto).
 
 !!! note
     SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.

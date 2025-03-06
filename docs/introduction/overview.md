@@ -759,9 +759,9 @@ Copy the code example above to remix to debug.
 Copy the code example above to SimpleWebCompiler to get ABI and ByteCode.
 Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.
 
-**Using Wallet-cli to Deploy**
+**Using wallet-cli to Deploy**
 
-Download Wallet-Cli and build
+Download wallet-cli and build
 
 ```shell
 # download source code
