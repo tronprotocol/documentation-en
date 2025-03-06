@@ -1,5 +1,4 @@
 /* 禁用一级目录的大写转换 */
-/* 禁用一级目录的大写转换 */
 .wy-menu-vertical p.caption {
     text-transform: none;
 }
