@@ -1,6 +1,6 @@
 # Wallet Commands
 
-Below, please find all types of Wallet-Cli commands：
+Below, please find all types of wallet-cli commands：
 
 - [Wallet](#wallet)
 - [Account](#account)

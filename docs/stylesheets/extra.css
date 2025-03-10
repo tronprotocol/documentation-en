@@ -1,0 +1,8 @@
+/* Disable uppercase conversion for top-level directories. */
+.wy-menu-vertical p.caption {
+    text-transform: none;
+}
+
+.wy-dropdown-menu>dd.call-to-action {
+    text-transform: none;
+}
