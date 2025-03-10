@@ -1,4 +1,4 @@
-/* 禁用一级目录的大写转换 */
+/* Disable uppercase conversion for top-level directories. */
 .wy-menu-vertical p.caption {
     text-transform: none;
 }
