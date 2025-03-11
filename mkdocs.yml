@@ -3,11 +3,11 @@ site_url: https://tronprotocol.github.io/documentation-en/
 repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
-    - Getting Started:
-        - Getting Started with java-tron: getting_started/getting_started_with_javatron.md
+    - Getting Started With java-tron:
+        - getting_started/getting_started_with_javatron.md
     - Using java-tron:
-        - Deploying java-tron: using_javatron/installing_javatron.md
-        - Backup & Restore: using_javatron/backup_restore.md
+        - Deploying: using_javatron/installing_javatron.md
+        - Backup and Restore: using_javatron/backup_restore.md
         - Lite FullNode: developers/litefullnode.md
         - Private Network: using_javatron/private_network.md
         - Event Subscription: architecture/event.md
@@ -27,7 +27,7 @@ nav:
         - System Contract: mechanism-algorithm/system-contracts.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
         - Account Permission Management: mechanism-algorithm/multi-signatures.md
-    - For Java-tron Developers:
+    - For java-tron Developers:
         - Developer Guide: developers/java-tron.md
         - TIPs Workflow: developers/tips.md
         - Issue Workflow: developers/issue-workflow.md
@@ -35,20 +35,26 @@ nav:
         - Configure the IDE: developers/run-in-idea.md
         - Development Example: developers/demo.md
         - Core Modules: developers/code-structure.md
-    - For DAPP developers:
+    - For Dapp Developers:
         - Dapp Development Tool: contracts/compiler.md
-    - Wallet-cli:
-        - What is Wallet-CLI: clients/wallet-cli.md
-        - Wallet Commands: clients/wallet-cli-command.md
+    - wallet-cli:
+        - What is wallet-cli: clients/wallet-cli.md
+        - wallet-cli Commands: clients/wallet-cli-command.md
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
         - History: releases/history.md
-    - Glossary: glossary.md
+    - Glossary: 
+        - glossary.md
 
 theme: readthedocs
+
 extra_javascript:
     - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+extra_css:
+    - stylesheets/extra.css
+
 markdown_extensions:
     - admonition
     - footnotes
