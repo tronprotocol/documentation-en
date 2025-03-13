@@ -18,6 +18,7 @@ nav:
     - API:
         - HTTP API: api/http.md
         - gRPC API: api/rpc.md
+        - jsonRPC API: api/json-rpc.md
     - Core Protocol:
         - DPoS: introduction/dpos.md
         - Super Representative: mechanism-algorithm/sr.md
