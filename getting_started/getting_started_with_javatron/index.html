@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../stylesheets/extra.css" rel="stylesheet" />
     
       <script>
         // Current page data
@@ -40,7 +41,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <p class="caption"><span class="caption-text">Getting Started With java-tron</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started with java-tron</a>
     <ul class="current">
@@ -49,9 +50,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Using java-tron</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup and Restore</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
                   </li>
@@ -94,7 +95,7 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <p class="caption"><span class="caption-text">For java-tron Developers</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
                   </li>
@@ -111,16 +112,16 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <p class="caption"><span class="caption-text">For Dapp Developers</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <p class="caption"><span class="caption-text">wallet-cli</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is wallet-cli</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">wallet-cli Commands</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Releases</span></p>
@@ -132,9 +133,10 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Glossary</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
-                </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -150,7 +152,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Getting Started &raquo;</li><li>Getting Started with java-tron</li>
+          <li>Getting Started With java-tron &raquo;</li><li>Getting Started with java-tron</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/getting_started/getting_started_with_javatron.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -164,14 +166,14 @@
               
                 <h1 id="getting-started-with-java-tron">Getting Started with java-tron<a class="headerlink" href="#getting-started-with-java-tron" title="Permanent link">&para;</a></h1>
 <p>This page mainly explains how to start the java-tron node and use the command line tool <code>wallet-cli</code> to execute basic commands to interact with the java-tron node. Regarding the installation of java-tron, you can download the runnable file directly or build it from source code. Instructions for installing java-tron can be found on the <a href="../../using_javatron/installing_javatron/">Install and Build</a> page. This tutorial on this page assumes java-tron and associated developer tools have been successfully installed.</p>
-<p>This page covers the basics of using java-tron, which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. Wallet-cli is also used in this document. Wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with java-tron more conveniently.</p>
+<p>This page covers the basics of using java-tron, which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with java-tron more conveniently.</p>
 <p>java-tron is a TRON network client written in Java. This means a computer running java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.</p>
 <h1 id="generating-accounts">Generating accounts<a class="headerlink" href="#generating-accounts" title="Permanent link">&para;</a></h1>
 <p>There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).</p>
 <p>Enter the command <code>java -jar wallet-cli.jar</code> in the terminal to start a wallet-cli:
 <div class="highlight"><pre><span></span><code>$ java -jar wallet-cli.jar
 
-Welcome to TRON Wallet-Cli
+Welcome to TRON wallet-cli
 Please type one of the following commands to proceed.
 Login, RegisterWallet or ImportWallet
 
@@ -540,7 +542,7 @@ Result:
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../using_javatron/installing_javatron/" class="btn btn-neutral float-right" title="Deploying java-tron">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../using_javatron/installing_javatron/" class="btn btn-neutral float-right" title="Deploying">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
