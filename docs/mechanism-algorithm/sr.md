@@ -62,11 +62,11 @@ the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 /
 
 ## Committee
 
-### 1. What is Committee
+### What is Committee
 
 Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.
 
-### 2. Create a Proposal
+### Create a Proposal
 
 Only SRs, Partners and Candidates can create a proposal.
 
@@ -81,7 +81,7 @@ Example (Using wallet-cli):
 ```
 
 
-### 3. Vote for a Proposal
+### Vote for a Proposal
 
 Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.
 
@@ -93,7 +93,7 @@ Example (Using wallet-cli):
 # is_or_not_add_approval: YES vote or cancel YES vote
 ```
 
-### 4. Cancel Proposal
+### Cancel Proposal
 
 Proposal creator can cancel the proposal before it is passed.
 
@@ -104,7 +104,7 @@ Example (Using wallet-cli):
 # id: proposal id
 ```
 
-### 5. Query Proposal
+### Query Proposal
 
 - Query all the proposals list (ListProposals)
 - Query all the proposals list by pagination (GetPaginatedProposalList)
