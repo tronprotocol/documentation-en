@@ -63,7 +63,7 @@ Nodes: FullNode
 
 **9.&nbsp;Update the ratio of brokerage**
 ```protobuf
-rpc UpdateBrokerage (UpdateBrokerageContract) returns (TransactionExtention) {}
+rpc UpdateBrokerage (UpdateBrokerageContract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
@@ -232,19 +232,19 @@ Nodes: FullNode and SolidityNode
 
 **35.&nbsp;Deploy a smart contract**
 ```protobuf
-rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {}
+rpc DeployContract (CreateSmartContract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode and SolidityNode
 
 **36.&nbsp;Trigger a smart contract**
 ```protobuf
-rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {}
+rpc TriggerContract (TriggerSmartContract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
 **37.&nbsp;Create a shielded transaction**
 ```protobuf
-rpc CreateShieldedTransaction (PrivateParameters) returns (TransactionExtention) {}
+rpc CreateShieldedTransaction (PrivateParameters) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
@@ -322,7 +322,7 @@ Nodes: FullNode
 
 **50.&nbsp;Create a shielded transaction without using ask**
 ```protobuf
-rpc CreateShieldedTransactionWithoutSpendAuthSig (PrivateParametersWithoutAsk) returns (TransactionExtention) {}
+rpc CreateShieldedTransactionWithoutSpendAuthSig (PrivateParametersWithoutAsk) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
@@ -389,13 +389,13 @@ Nodes: FullNode
 
 **61.&nbsp;Create an market order**       
 ```
-rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtension) {};
 ```
 Nodes: FullNode
  
 **62.&nbsp;Cancel the order**      
 ```   
-rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtension) {};
 ```
 Nodes: FullNode 
 
@@ -449,31 +449,31 @@ Nodes: FullNode and SolidityNode
 
 **71.&nbsp;Freeze TRX**
 ```protobuf
-rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
+rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
 **72.&nbsp;UnFreeze TRX**
 ```protobuf
-rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
+rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
 **73.&nbsp;Withdraw Staked TRX**
 ```protobuf
-rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
+rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
 **74.&nbsp;Delegate Resource**
 ```protobuf
-rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
+rpc DelegateResource (DelegateResourceContract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
 **75.&nbsp;UnDelegate Resource**
 ```protobuf
-rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
+rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
@@ -496,7 +496,7 @@ Nodes: FullNode
 ```
 **79.&nbsp; Cancel UnFreeze**
 ```protobuf
-rpc CancelAllUnfreezeV2 (CancelAllUnfreezeV2Contract) returns (TransactionExtention) {}
+rpc CancelAllUnfreezeV2 (CancelAllUnfreezeV2Contract) returns (TransactionExtension) {}
 ```
 Nodes: FullNode
 
