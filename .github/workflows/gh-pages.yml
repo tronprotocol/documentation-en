@@ -15,8 +15,9 @@ jobs:
     - name: Prepare build environment
       run: |
         sudo apt install python3-pip python3-dev python3-setuptools
-        sudo pip3 install -U mkdocs==1.3.0 pygments==2.17.2 pymdown-extensions
+        sudo pip3 install -U pygments==2.17.2 pymdown-extensions
         sudo pip3 install mkdocs-exclude
+        sudo pip3 install mkdocs-material==9.6.8
 
     - name: Build the document
       run: mkdocs build
@@ -24,7 +25,6 @@ jobs:
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: site # The folder the action should deploy.

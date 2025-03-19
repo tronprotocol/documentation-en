@@ -47,9 +47,26 @@ nav:
     - Glossary: 
         - glossary.md
 
-theme: readthedocs
-
+theme:
+  name: material
+  custom_dir: docs/overrides
+  features:
+    - navigation.sections  # 启用左侧导航栏的分组
+    - toc.integrate
+    - search.highlight  # 搜索时高亮匹配内容
+    - search.suggest  # 搜索时显示建议
+    - content.code.annotate  # 代码块注释
+    - content.tooltips  # 内容中的工具提示
+  palette:
+    primary: custom  # 主色调
+    accent: custom  # 强调色
+  font:
+    text: Roboto  # 正文字体
+    code: Roboto Mono  # 代码字体
+ 
 extra_javascript:
+    - javascripts/toc.js
+    - javascripts/nav-toc.js
     - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
 
 extra_css:
@@ -61,6 +78,7 @@ markdown_extensions:
     - codehilite
     - toc:
         permalink: true
+        toc_depth: 3
     - pymdownx.arithmatex
     - pymdownx.tilde
     - pymdownx.tasklist
@@ -83,3 +101,4 @@ plugins:
         - introduction/overview.md
         - mechanism-algorithm/shielded-TRC20-contract.md
         - mechanism-algorithm/trc10.md
+

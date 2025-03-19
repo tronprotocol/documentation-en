@@ -1,8 +1,34 @@
-/* Disable uppercase conversion for top-level directories. */
+:root {
+  --md-primary-fg-color: #ec0b2a;        /* 主色调 */
+  --md-accent-fg-color: #ec0b2a;         /* 强调色 */
+}
+
+/* 禁用一级目录的大写转换 */
 .wy-menu-vertical p.caption {
     text-transform: none;
 }
 
 .wy-dropdown-menu>dd.call-to-action {
     text-transform: none;
+}
+
+/* 为有子目录项的链接添加箭头图标 */
+.md-nav__item.has-children > .md-nav__link {
+  position: relative;
+  padding-right: 20px; /* 为图标留出空间 */
+}
+
+.md-nav__item.has-children > .md-nav__link::after {
+  content: "⟩"; /* 使用尖括号 */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  transition: transform 0.2s ease; /* 添加旋转动画 */
+}
+
+/* 展开时旋转 90 度 */
+.md-nav__item.has-children.is-expanded > .md-nav__link::after {
+  transform: translateY(-50%) rotate(90deg);
 }
