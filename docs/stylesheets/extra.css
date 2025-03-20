@@ -24,7 +24,8 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.8em;
+  font-size: 1em;
+  font-weight: 900;
   transition: transform 0.2s ease; /* Add rotation animation */
 }
 
@@ -32,3 +33,14 @@
 .md-nav__item.has-children.is-expanded > .md-nav__link::after {
   transform: translateY(-50%) rotate(90deg);
 }
+
+/*Set the font color of the first-level navigation to increase the distinction from the second-level navigation*/
+.md-nav--primary .md-nav__item--section > .md-nav__link {
+    color: #444; 
+}
+
+/* Hide the duplicated site name in the left sidebar.*/
+.md-nav__title {
+    display: none;
+}
+

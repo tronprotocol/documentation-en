@@ -4,7 +4,7 @@ repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
     - Getting Started With java-tron:
-        - getting_started/getting_started_with_javatron.md
+        - Getting Started: getting_started/getting_started_with_javatron.md
     - Using java-tron:
         - Deploying: using_javatron/installing_javatron.md
         - Backup and Restore: using_javatron/backup_restore.md
@@ -44,8 +44,8 @@ nav:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
         - History: releases/history.md
-    - Glossary: 
-        - glossary.md
+    - Appendix:
+        - Glossary: glossary.md
 
 theme:
   name: material
