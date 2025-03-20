@@ -106,7 +106,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 **Parameters**
 
-1. Object - The transaction call object, the items in it as below.
+1\. Object - The transaction call object, the items in it as below.
 
 | Item Name | Data Type      | Description                                                   |
 | :-------- | :------------- | :------------------------------------------------------------ |
@@ -117,7 +117,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 | value     | QUANTITY       | Not supported. The value is 0x0                               |
 | data      | DATA           | Hash of the method signature and encoded parameters.          |
 
-2. QUANTITY|TAG - currently, only "latest" is available. 
+2\. QUANTITY|TAG - currently, only "latest" is available. 
 
 **Returns**
 
