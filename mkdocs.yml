@@ -51,19 +51,19 @@ theme:
   name: material
   custom_dir: docs/overrides
   features:
-    - navigation.sections  # 启用左侧导航栏的分组
+    - navigation.sections  # Enable grouping in the left navigation bar
     - toc.integrate
-    - search.highlight  # 搜索时高亮匹配内容
-    - search.suggest  # 搜索时显示建议
-    - content.code.annotate  # 代码块注释
-    - content.tooltips  # 内容中的工具提示
+    - search.highlight  # Highlight matching content during search
+    - search.suggest  # Show suggestions during search
+    - content.code.annotate  # Code block annotations
+    - content.tooltips  # Tooltips in content
   palette:
-    primary: custom  # 主色调
-    accent: custom  # 强调色
+    primary: custom  # Primary color
+    accent: custom  # Accent color
   font:
-    text: Roboto  # 正文字体
-    code: Roboto Mono  # 代码字体
- 
+    text: Roboto  # Body text font
+    code: Roboto Mono  # Code font
+
 extra_javascript:
     - javascripts/toc.js
     - javascripts/nav-toc.js
