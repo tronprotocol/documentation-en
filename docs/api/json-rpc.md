@@ -6,7 +6,7 @@ JSON-RPC is a stateless, lightweight remote procedure call (RPC) protocol. The J
 
 **Please pay attention**
 
-- **The JSON-RPC service needs to be enabled and set the port in the node configuration file. If not configured, the service is disable by default. **
+- The JSON-RPC service needs to be enabled and set the port in the node configuration file. If not configured, the service is disable by default. 
 
 ### How to enable or disable JSON-RPC service of a node
 
@@ -109,19 +109,12 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 1. Object - The transaction call object, the items in it as below.
 
 | Item Name | Data Type      | Description                                                   |
-
 | :-------- | :------------- | :------------------------------------------------------------ |
-
 | from      | DATA, 20 Bytes | Caller address. Hex format address, remove the prefix "41"    |
-
 | to        | DATA, 20 Bytes | Contract address.  Hex format address, remove the prefix "41" |
-
 | gas       | QUANTITY       | Not supported. The value is 0x0                               |
-
 | gasPrice  | QUANTITY       | Not supported. The value is 0x0                               |
-
 | value     | QUANTITY       | Not supported. The value is 0x0                               |
-
 | data      | DATA           | Hash of the method signature and encoded parameters.          |
 
 2. QUANTITY|TAG - currently, only "latest" is available. 
@@ -240,19 +233,12 @@ Result
 object - The transaction call object, the items in it as below
 
 | Item Name | Data Type      | Description                                          |
-
 | :-------- | :------------- | :--------------------------------------------------- |
-
 | from      | DATA, 20 Bytes | address of the sender                                |
-
 | to        | DATA, 20 Bytes | address of the receiver                              |
-
 | gas       | QUANTITY       | unused.                                              |
-
 | gasPrice  | QUANTITY       | unused.                                              |
-
 | value     | QUANTITY       | Integer of the value sent with this transaction      |
-
 | data      | DATA           | Hash of the method signature and encoded parameters. |
 
 **Returns**  
@@ -336,11 +322,8 @@ Returns the balance of the account of the given address.
 **Parameters**
 
 | Index | Data Type      | Description                    |
-
 | :---- | :------------- | :----------------------------- |
-
 | 1     | DATA, 20 Bytes | address to check for balance.  |
-
 | 2     | QUANTITY       | only "latest" is available now |
 
 **Returns**
@@ -381,11 +364,8 @@ Result
 **Parameters**
 
 | Index | Data Type      | Description                                                                                    |
-
 | :---- | :------------- | :--------------------------------------------------------------------------------------------- |
-
 | 1     | DATA, 32 Bytes | hash of a block                                                                                |
-
 | 2     | Boolean        | If true it returns the full transaction objects, if false only the hashes of the transactions. |
 
 **Returns**
@@ -393,45 +373,25 @@ Result
 object - a block object  or null when no block was found. The block includes items as below.
 
 | Item Name        | Data Type       | Description                                                                                         |
-
 | :--------------- | :-------------- | :-------------------------------------------------------------------------------------------------- |
-
 | number           | QUANTITY        | block number                                                                                        |
-
 | hash             | DATA, 32 Bytes  | hash of the block                                                                                   |
-
 | parentHash       | DATA, 32 Bytes  | hash of the parent block                                                                            |
-
 | nonce            | QUANTITY        | unused                                                                                              |
-
 | sha3Uncles       | DATA, 32 Bytes  | SHA3 of the uncles data in the block                                                                |
-
 | logsBloom        | DATA, 256 Bytes | the bloom filter for the logs of the block.                                                         |
-
 | transactionsRoot | DATA, 32 Bytes  | the root of the transaction trie of the block                                                       |
-
 | stateRoot        | DATA, 32 Bytes  | the root of the final state trie of the block                                                       |
-
 | receiptsRoot     | DATA, 32 Bytes  | the root of the receipts trie of the block                                                          |
-
 | miner            | DATA, 20 Bytes  | the address of the beneficiary to whom the mining rewards were given                                |
-
 | difficulty       | QUANTITY        | integer of the difficulty for this block                                                            |
-
 | totalDifficulty  | QUANTITY        | integer of the total difficulty of the chain until this block                                       |
-
 | extraData        | DATA            | the “extra data” field of this block                                                                |
-
 | size             | QUANTITY        | integer the size of this block in bytes                                                             |
-
 | gasLimit         | QUANTITY        | the maximum gas allowed in this block                                                               |
-
 | gasUsed          | QUANTITY        | the total used gas by all transactions in this block                                                |
-
 | timestamp        | QUANTITY        | the unix timestamp for when the block was created, the unit is second.                              |
-
 | transactions     | Array           | Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter. |
-
 | uncles           | Array           | Array of uncle hashes                                                                               |
 
 **Example**
@@ -468,11 +428,8 @@ Result
 **Parameters**
 
 | Index | Data Type     | Description                                                                                    |
-
 | :---- | :------------ | :--------------------------------------------------------------------------------------------- |
-
 | 1     | QUANTITY\|TAG | Integer of a block number, or the string "earliest", "latest"                                  |
-
 | 2     | Boolean       | If true it returns the full transaction objects, if false only the hashes of the transactions. |
 
 **Returns**
@@ -591,11 +548,8 @@ Result
 **Parameters**
 
 | Index | Data Type      | Description                           |
-
 | :---- | :------------- | :------------------------------------ |
-
 | 1     | DATA, 20 Bytes | contract address                      |
-
 | 2     | QUANTITY\|TAG  | currently, only "latest" is available |
 
 **Returns**
@@ -636,13 +590,9 @@ Result
 **Parameters**
 
 | Index | Data Type      | Description                            |
-
 | :---- | :------------- | :------------------------------------- |
-
 | 1     | DATA, 20 Bytes | address                                |
-
 | 2     | QUANTITY       | integer of the position in the storage |
-
 | 3     | QUANTITY\|TAG  | currently only support "latest"        |
 
 **Returns**
@@ -683,11 +633,8 @@ Result
 **Parameters**
 
 | Index | Data Type      | Description                    |
-
 | :---- | :------------- | :----------------------------- |
-
 | 1     | DATA, 32 Bytes | hash of a block                |
-
 | 2     | QUANTITY       | the transaction index position |
 
 **Returns**
@@ -695,35 +642,20 @@ Result
 object - a transaction object  or null when no transaction was found. The transaction includes items as below.
 
 | Item Name        | Data Type      | Description                                             |
-
 | :--------------- | :------------- | :------------------------------------------------------ |
-
 | blockHash        | DATA, 32 Bytes | hash of the block where this transaction was in.        |
-
 | blockNumber      | QUANTITY       | block number where this transaction was in.             |
-
 | from             | DATA, 20 Bytes | address of the sender                                   |
-
 | gas              | QUANTITY       | unused.                                                 |
-
 | gasPrice         | QUANTITY       | energy price                                            |
-
 | hash             | DATA, 32 Bytes | hash of the transaction                                 |
-
 | input            | DATA           | the data sent along with the transaction                |
-
 | nonce            | QUANTITY       | unused                                                  |
-
 | to               | DATA, 20 Bytes | address of the receiver                                 |
-
 | transactionIndex | QUANTITY       | integer of the transactions index position in the block |
-
 | value            | QUANTITY       | value transferred in sun                                |
-
 | v                | QUANTITY       | ECDSA recovery id                                       |
-
 | r                | DATA, 32 Bytes | ECDSA signature r                                       |
-
 | s                | DATA, 32 Bytes | ECDSA signature s                                       |
 
 **Example**
@@ -800,11 +732,8 @@ Result
 **Parameters**
 
 | Index | Data Type     | Description                                         |
-
 | :---- | :------------ | :-------------------------------------------------- |
-
 | 1     | QUANTITY\|TAG | a block number, or the string "earliest", "latest", |
-
 | 2     | QUANTITY      | the transaction index position                      |
 
 **Returns**
@@ -930,33 +859,19 @@ DATA, 32 Bytes - hash of a transaction
 object - A transaction receipt object, or null when no receipt was found. The items in transaction receipt as below.
 
 | Item Name         | Data Type       | Description                                                                               |
-
 | :---------------- | :-------------- | :---------------------------------------------------------------------------------------- |
-
 | transactionHash   | DATA, 32 Bytes  | hash of the transaction                                                                   |
-
 | transactionIndex  | QUANTITY        | integer of the transactions index position in the block                                   |
-
 | blockHash         | DATA, 32 Bytes  | hash of the block where this transaction was in.                                          |
-
 | blockNumber       | QUANTITY        | block number where this transaction was in.                                               |
-
 | from              | DATA, 20 Bytes  | address of the sender                                                                     |
-
 | to                | DATA, 20 Bytes  | address of the receiver                                                                   |
-
 | cumulativeGasUsed | QUANTITY        | The total amount of gas used when this transaction was executed in the block.             |
-
 | gasUsed           | QUANTITY        | The amount of gas used by this specific transaction alone.                                |
-
 | contractAddress   | DATA, 20 Bytes  | The contract address created, if the transaction was a contract creation, otherwise null. |
-
 | logs              | Array           | Array of log objects, which this transaction generated.                                   |
-
 | logsBloom         | DATA, 256 Bytes | Bloom filter for light clients to quickly retrieve related logs.                          |
-
 | root              | DATA            | 32 bytes of post-transaction stateroot (pre Byzantium)                                    |
-
 | status            | QUANTITY        | either 1 (success) or 0 (failure)                                                         |
 
 **Example**
@@ -1037,13 +952,9 @@ None
 Array - Array with the following properties:
 
 | Index | Data Type      | Description       |
-
 | :---- | :------------- | :---------------- |
-
 | 1     | DATA, 32 Bytes | hash of the block |
-
 | 2     | DATA           | unused            |
-
 | 3     | DATA           | unused            |
 
 **Example**
@@ -1123,13 +1034,9 @@ None
 Object|Boolean, An object with sync status data or FALSE, when not syncing, the items in object includes:
 
 |               |          |                                                                                             |
-
 | :------------ | :------- | :------------------------------------------------------------------------------------------ |
-
 | startingBlock | QUANTITY | The block at which the import started (will only be reset, after the sync reached his head) |
-
 | currentBlock  | QUANTITY | The current block                                                                           |
-
 | highestBlock  | QUANTITY | The estimated highest block                                                                 |
 
 **Example**
@@ -1174,15 +1081,10 @@ Result
 Object - The filter options:
 
 | Field     | Type                  | Description                                                               |
-
 | :-------- | :-------------------- | :------------------------------------------------------------------------ |
-
 | fromBlock | QUANTITY\|TAG         | Integer block number, or "latest"                                         |
-
 | toBlock   | QUANTITY\|TAG         | Integer block number, or "latest"                                         |
-
 | address   | DATA\|Array, 20 Bytes | Contract address or a list of addresses from which logs should originate. |
-
 | topics    | Array of DATA         | Topics                                                                    |
 
 **Returns**  
@@ -1248,25 +1150,15 @@ QUANTITY - the filter id.
 - For filters created with eth_newFilte, return logs object list, each log object with following params:
 
 | Field            | Type           | Description                                                                                 |
-
 | :--------------- | :------------- | :------------------------------------------------------------------------------------------ |
-
 | removed          | TAG            | true when the log was removed, due to a chain reorganization. false if its a valid log.     |
-
 | logIndex         | QUANTITY       | Integer of the log index position in the block. null when its pending log.                  |
-
 | transactionIndex | QUANTITY       | Integer of the transactions index position log was created from. null when its pending log. |
-
 | transactionHash  | DATA, 32Bytes  | Hash of the transactions this log was created from.                                         |
-
 | blockHash        | DATA, 32 Bytes | Hash of the block where this log was in. null when its pending.                             |
-
 | blockNumber      | QUANTITY       | The block number where this log was in.                                                     |
-
 | address          | DATA, 32 Bytes | Address from which this log originated.                                                     |
-
 | data             | DATA           | Contains one or more 32 Bytes non-indexed arguments of the log.                             |
-
 | topics           | DATA\[]        | Event topic and indexed arguments.                                                          |
 
 - For filters created with eth_newBlockFilter the return are block hashes (DATA, 32 Bytes).
@@ -1437,17 +1329,11 @@ Result
 Object - The filter options which include below fields:
 
 | Field     | Type                  | Description                                                                                                                      |
-
 | :-------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-
 | fromBlock | QUANTITY\|TAG         | (optional, default: "latest") Integer block number, or "latest" for the last mined block                                         |
-
 | toBlock   | QUANTITY\|TAG         | (optional, default: "latest") Integer block number, or "latest" for the last mined block                                         |
-
 | address   | DATA\|Array, 20 Bytes | (optional) Contract address or a list of addresses from which logs should originate.                                             |
-
 | topics    | Array of DATA         | (optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options. |
-
 | blockhash | DATA, 32 Bytes        | (optional) Block hash                                                                                                            |
 
 **Returns**
@@ -1640,13 +1526,9 @@ Result
 Object - the items in object as below: 
 
 | Param Name | Data Type      | Description                                 |
-
 | :--------- | :------------- | :------------------------------------------ |
-
 | from       | DATA, 20 Bytes | The address the transaction is sent from.   |
-
 | to         | DATA, 20 Bytes | The address the transaction is directed to. |
-
 | value      | DATA           | the transfer amount                         |
 
 **Returns**
@@ -1694,15 +1576,10 @@ Result
 Object - the items in object as below: 
 
 |            |                |                                            |
-
 | :--------- | :------------- | :----------------------------------------- |
-
 | from       | DATA, 20 Bytes | The address the transaction is sent from   |
-
 | to         | DATA, 20 Bytes | The address the transaction is directed to |
-
 | tokenId    | QUANTITY       | Token ID                                   |
-
 | tokenValue | QUANTITY       | The transfer amount of TRC10               |
 
 **Returns**
@@ -1758,27 +1635,16 @@ Result
 Object - the items in object as below: 
 
 |                            |                |                                          |
-
 | :------------------------- | :------------- | :--------------------------------------- |
-
 | from                       | DATA, 20 Bytes | The address the transaction is sent from |
-
 | name                       | DATA           | The name of the smart contract.          |
-
 | gas                        | DATA           | Fee limit                                |
-
 | abi                        | DATA           | The ABI of the smart contract.           |
-
 | data                       | DATA           | The byte code of the smart contract.     |
-
 | consumeUserResourcePercent | QUANTITY       | The consume user resource percent.       |
-
 | originEnergyLimit          | QUANTITY       | The origin energy limit.                 |
-
 | value                      | DATA           | The data passed through call_value.      |
-
 | tokenId                    | QUANTITY       | Token ID                                 |
-
 | tokenValue                 | QUANTITY       | The transfer amount of TRC10             |
 
 **Returns**
@@ -1846,21 +1712,13 @@ Result
 Object - the items in object as below: 
 
 |            |                |                                              |
-
 | :--------- | :------------- | :------------------------------------------- |
-
 | from       | DATA, 20 Bytes | The address the transaction is sent from     |
-
 | to         | DATA, 20 Bytes | The address of the smart contract            |
-
 | data       | DATA           | The invoked contract function and parameters |
-
 | gas        | DATA           | Fee limit                                    |
-
 | value      | DATA           | The data passed through call_value           |
-
 | tokenId    | QUANTITY       | Token ID                                     |
-
 | tokenValue | QUANTITY       | The transfer amount of TRC10                 |
 
 **Returns**
