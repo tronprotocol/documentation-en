@@ -44,3 +44,8 @@
     display: none;
 }
 
+.md-sidebar {
+    padding-top: 0; /* Remove top padding */
+    margin-top: 0;  /* Remove top margin */
+}
+
