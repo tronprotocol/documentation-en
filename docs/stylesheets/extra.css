@@ -1,9 +1,9 @@
 :root {
-  --md-primary-fg-color: #ec0b2a;        /* 主色调 */
-  --md-accent-fg-color: #ec0b2a;         /* 强调色 */
+  --md-primary-fg-color: #ec0b2a;        /* Primary color */
+  --md-accent-fg-color: #ec0b2a;         /* Accent color */
 }
 
-/* 禁用一级目录的大写转换 */
+/* Disable uppercase transformation for first-level menu items */
 .wy-menu-vertical p.caption {
     text-transform: none;
 }
@@ -12,23 +12,23 @@
     text-transform: none;
 }
 
-/* 为有子目录项的链接添加箭头图标 */
+/* Add arrow icon to links with submenu items */
 .md-nav__item.has-children > .md-nav__link {
   position: relative;
-  padding-right: 20px; /* 为图标留出空间 */
+  padding-right: 20px; /* Reserve space for the icon */
 }
 
 .md-nav__item.has-children > .md-nav__link::after {
-  content: "⟩"; /* 使用尖括号 */
+  content: "⟩"; /* Use angle bracket */
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
   font-size: 0.8em;
-  transition: transform 0.2s ease; /* 添加旋转动画 */
+  transition: transform 0.2s ease; /* Add rotation animation */
 }
 
-/* 展开时旋转 90 度 */
+/* Rotate 90 degrees when expanded */
 .md-nav__item.has-children.is-expanded > .md-nav__link::after {
   transform: translateY(-50%) rotate(90deg);
 }

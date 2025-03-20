@@ -1,17 +1,17 @@
 function toggleChildren(event) {
   const link = event.currentTarget;
   const nav = link.nextElementSibling;
-  const listItem = link.parentElement; // 获取父级 <li> 元素
+  const listItem = link.parentElement; // Get the parent <li> element
 
   if (nav && nav.tagName === 'NAV') {
-    // 切换展开/折叠状态
+    // Toggle the expanded/collapsed state
     if (nav.hidden) {
       nav.hidden = false;
-      listItem.classList.add('is-expanded'); // 添加 is-expanded 类名
+      listItem.classList.add('is-expanded'); // Add the is-expanded class
     } else {
       nav.hidden = true;
-      listItem.classList.remove('is-expanded'); // 移除 is-expanded 类名
+      listItem.classList.remove('is-expanded'); // Remove the is-expanded class
     }
-    event.preventDefault(); // 阻止默认跳转行为
+    event.preventDefault(); // Prevent the default link behavior
   }
 }

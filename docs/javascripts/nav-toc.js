@@ -1,35 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 找到包含 TOC 的父导航项
+    // Find the parent navigation item containing the TOC
     const tocParentItem = document.querySelector('.md-nav__item--active');
 
     if (tocParentItem) {
-        // 找到 <a> 元素
+        // Find the <a> element
         const tocLink = tocParentItem.querySelector('.md-nav__link[href="./"]');
 
         if (tocLink) {
-            // 添加点击事件监听器
+            // Add a click event listener
             tocLink.addEventListener('click', function(event) {
-                console.log("add an click event to collapse toc");
+                console.log("Add a click event to collapse the TOC");
 
-                // 检查 TOC 是否已展开
+                // Check if the TOC is expanded
                 if (tocParentItem.classList.contains('md-nav__item--active')) {
                     //console.log("TOC is expanded, executing default behavior first");
 
-                    // 阻止默认行为
+                    // Prevent the default behavior
                     event.preventDefault();
                     event.stopPropagation();
 
-                    // 折叠 TOC
+                    // Collapse the TOC
                     tocParentItem.classList.remove('md-nav__item--active');
-		    // 不阻止默认行为，允许页面跳转
-                    // 在默认行为完成后执行自定义事件
+                    // Do not prevent the default behavior, allow page navigation
+                    // Execute custom action after the default behavior
                     //setTimeout(() => {
                     //    console.log("Executing custom action after default behavior");
 
-                    //    // 折叠 TOC
+                    //    // Collapse the TOC
                     //    tocParentItem.classList.remove('md-nav__item--active');
                     //    console.log("TOC collapsed by removing 'md-nav__item--active' class");
-                    //}, 10); // 延迟 0ms，确保默认行为先执行
+                    //}, 10); // Delay 0ms to ensure the default behavior executes first
                 }
             });
         } else {
