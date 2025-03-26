@@ -10,13 +10,15 @@ JSON-RPC is a stateless, lightweight remote procedure call (RPC) protocol. The J
 
 ### How to enable or disable JSON-RPC service of a node
 
-Add below items in node's configuration file, then enable or disable it:  
+Add below items in node's [configuration file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf), then enable or disable it:  
+```
 node.jsonrpc {  
     httpFullNodeEnable = true  
     httpFullNodePort = 50545  
     httpSolidityEnable = true  
     httpSolidityPort = 50555  
 }
+```
 
 ### HEX value encoding
 
