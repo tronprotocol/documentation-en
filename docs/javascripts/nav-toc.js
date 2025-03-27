@@ -35,7 +35,5 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             console.error("tocLink not found");
         }
-    } else {
-        console.error("tocParentItem not found");
-    }
+    } 
 });
