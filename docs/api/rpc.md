@@ -228,7 +228,6 @@ rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {}
 Nodes: FullNode and SolidityNode
 
 
-
 ## Deploy a smart contract
 ```protobuf
 rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {}
@@ -271,7 +270,7 @@ rpc GetSpendingKey (EmptyMessage) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-## Get expanded spending key
+## Get expanded spending key  
 ```protobuf
 rpc GetExpandedSpendingKey (BytesMessage) returns (ExpandedSpendingKeyMessage) {}
 ```
@@ -493,6 +492,7 @@ Nodes: FullNode
 rpc GetPendingSize (EmptyMessage) returns (NumberMessage) {};
 Nodes: FullNode
 ```
+
 ##  Cancel UnFreeze
 ```protobuf
 rpc CancelAllUnfreezeV2 (CancelAllUnfreezeV2Contract) returns (TransactionExtention) {}
