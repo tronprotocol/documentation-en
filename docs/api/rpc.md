@@ -168,18 +168,6 @@ rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {}
 ```
 Nodes: SolidityNode
 
-## Query the transactions initiated by an account
-```protobuf
-rpc getTransactionsFromThis (Account) returns (TransactionList) {}
-```
-Nodes: SolidityNode
-
-## Query the transactions received by an account
-```protobuf
-rpc getTransactionsToThis (Account) returns (NumberMessage) {}
-```
-Nodes: SolidityNode
-
 ## Stake TRX
 This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
 ```protobuf
