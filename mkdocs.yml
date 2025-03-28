@@ -4,7 +4,7 @@ repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
     - Getting Started With java-tron:
-        - getting_started/getting_started_with_javatron.md
+        - Getting Started: getting_started/getting_started_with_javatron.md
     - Using java-tron:
         - Deploying: using_javatron/installing_javatron.md
         - Backup and Restore: using_javatron/backup_restore.md
@@ -45,12 +45,29 @@ nav:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
         - History: releases/history.md
-    - Glossary: 
-        - glossary.md
+    - Appendix:
+        - Glossary: glossary.md
 
-theme: readthedocs
+theme:
+  name: material
+  custom_dir: docs/overrides
+  features:
+    - navigation.sections  # Enable grouping in the left navigation bar
+    - toc.integrate
+    - search.highlight  # Highlight matching content during search
+    - search.suggest  # Show suggestions during search
+    - content.code.annotate  # Code block annotations
+    - content.tooltips  # Tooltips in content
+  palette:
+    primary: custom  # Primary color
+    accent: custom  # Accent color
+  font:
+    text: Roboto  # Body text font
+    code: Roboto Mono  # Code font
 
 extra_javascript:
+    - javascripts/toc.js
+    - javascripts/nav-toc.js
     - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
 
 extra_css:
@@ -62,6 +79,7 @@ markdown_extensions:
     - codehilite
     - toc:
         permalink: true
+        toc_depth: 3
     - pymdownx.arithmatex
     - pymdownx.tilde
     - pymdownx.tasklist
@@ -83,3 +101,4 @@ plugins:
         - introduction/overview.md
         - mechanism-algorithm/shielded-TRC20-contract.md
         - mechanism-algorithm/trc10.md
+
