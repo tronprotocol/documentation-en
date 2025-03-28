@@ -80,7 +80,6 @@ plugins:
         - developers/incentives.md
         - developers/resources.md
         - faq/index.md
-        - introduction/index.md
         - introduction/overview.md
         - mechanism-algorithm/shielded-TRC20-contract.md
         - mechanism-algorithm/trc10.md
