@@ -73,8 +73,6 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/json-rpc/">jsonRPC API</a>
-                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Core Protocol</span></p>
               <ul class="current">
@@ -102,15 +100,15 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#committee">Committee</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#what-is-committee">What is Committee</a>
+    <li class="toctree-l3"><a class="reference internal" href="#1-what-is-committee">1. What is Committee</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#create-a-proposal">Create a Proposal</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-create-a-proposal">2. Create a Proposal</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#vote-for-a-proposal">Vote for a Proposal</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-vote-for-a-proposal">3. Vote for a Proposal</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#cancel-proposal">Cancel Proposal</a>
+    <li class="toctree-l3"><a class="reference internal" href="#4-cancel-proposal">4. Cancel Proposal</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#query-proposal">Query Proposal</a>
+    <li class="toctree-l3"><a class="reference internal" href="#5-query-proposal">5. Query Proposal</a>
     </li>
         </ul>
     </li>
@@ -231,9 +229,9 @@
 <p>If you vote for a Partner:</p>
 <p>the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX</p>
 <h2 id="committee">Committee<a class="headerlink" href="#committee" title="Permanent link">&para;</a></h2>
-<h3 id="what-is-committee">What is Committee<a class="headerlink" href="#what-is-committee" title="Permanent link">&para;</a></h3>
+<h3 id="1-what-is-committee">1. What is Committee<a class="headerlink" href="#1-what-is-committee" title="Permanent link">&para;</a></h3>
 <p>Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.</p>
-<h3 id="create-a-proposal">Create a Proposal<a class="headerlink" href="#create-a-proposal" title="Permanent link">&para;</a></h3>
+<h3 id="2-create-a-proposal">2. Create a Proposal<a class="headerlink" href="#2-create-a-proposal" title="Permanent link">&para;</a></h3>
 <p>Only SRs, Partners and Candidates can create a proposal.</p>
 <p>Please refer to <a href="https://tronscan.org/#/sr/committee">here</a> for TRON network dynamic parameters and their values.</p>
 <p>Example (Using wallet-cli):</p>
@@ -241,20 +239,20 @@
 <span class="gp"># </span>id:<span class="w"> </span>the<span class="w"> </span>serial<span class="w"> </span>number
 <span class="gp"># </span>value:<span class="w"> </span>the<span class="w"> </span>parameter<span class="w"> </span>value
 </code></pre></div>
-<h3 id="vote-for-a-proposal">Vote for a Proposal<a class="headerlink" href="#vote-for-a-proposal" title="Permanent link">&para;</a></h3>
+<h3 id="3-vote-for-a-proposal">3. Vote for a Proposal<a class="headerlink" href="#3-vote-for-a-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; approveProposal id is_or_not_add_approval</span>
 <span class="gp"># </span>id:<span class="w"> </span>proposal<span class="w"> </span>id
 <span class="gp"># </span>is_or_not_add_approval:<span class="w"> </span>YES<span class="w"> </span>vote<span class="w"> </span>or<span class="w"> </span>cancel<span class="w"> </span>YES<span class="w"> </span>vote
 </code></pre></div>
-<h3 id="cancel-proposal">Cancel Proposal<a class="headerlink" href="#cancel-proposal" title="Permanent link">&para;</a></h3>
+<h3 id="4-cancel-proposal">4. Cancel Proposal<a class="headerlink" href="#4-cancel-proposal" title="Permanent link">&para;</a></h3>
 <p>Proposal creator can cancel the proposal before it is passed.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; deleteProposal id</span>
 <span class="gp"># </span>id:<span class="w"> </span>proposal<span class="w"> </span>id
 </code></pre></div>
-<h3 id="query-proposal">Query Proposal<a class="headerlink" href="#query-proposal" title="Permanent link">&para;</a></h3>
+<h3 id="5-query-proposal">5. Query Proposal<a class="headerlink" href="#5-query-proposal" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Query all the proposals list (ListProposals)</li>
 <li>Query all the proposals list by pagination (GetPaginatedProposalList)</li>
