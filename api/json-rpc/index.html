@@ -1,0 +1,3783 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/api/json-rpc/">
+      
+      
+        <link rel="prev" href="../rpc/">
+      
+      
+        <link rel="next" href="../../introduction/dpos/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>jsonRPC API - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jsonrpc-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              jsonRPC API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item has-children">
+  <a href="#overview" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#how-to-enable-or-disable-json-rpc-service-of-a-node" class="md-nav__link" >
+    <span class="md-ellipsis">
+      How to enable or disable JSON-RPC service of a node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#hex-value-encoding" class="md-nav__link" >
+    <span class="md-ellipsis">
+      HEX value encoding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#eth" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      eth
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="eth" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#eth_accounts" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_accounts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_blocknumber" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_blockNumber
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_call" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_call
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_coinbase" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_coinbase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_estimategas" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_estimateGas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_gasprice" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_gasPrice
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getbalance" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getBalance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getblockbyhash" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getBlockByHash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getblockbynumber" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getBlockByNumber
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getblocktransactioncountbyhash" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getBlockTransactionCountByHash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getblocktransactioncountbynumber" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getBlockTransactionCountByNumber
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getcode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getCode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getstorageat" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getStorageAt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_gettransactionbyblockhashandindex" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getTransactionByBlockHashAndIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_gettransactionbyblocknumberandindex" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getTransactionByBlockNumberAndIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_gettransactionbyhash" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getTransactionByHash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_gettransactionreceipt" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getTransactionReceipt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getwork" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getWork
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_protocolversion" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_protocolVersion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_syncing" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_syncing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_newfilter" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_newFilter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_newblockfilter" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_newBlockFilter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getfilterchanges" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getFilterChanges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getfilterlogs" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getFilterLogs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_uninstallfilter" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_uninstallFilter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#eth_getlogs" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getLogs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#net" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      net
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="net" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#net_listening" class="md-nav__link" >
+    <span class="md-ellipsis">
+      net_listening
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#net_peercount" class="md-nav__link" >
+    <span class="md-ellipsis">
+      net_peerCount
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#net_version" class="md-nav__link" >
+    <span class="md-ellipsis">
+      net_version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#web3" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      web3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="web3" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#web3_clientversion" class="md-nav__link" >
+    <span class="md-ellipsis">
+      web3_clientVersion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#web3_sha3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      web3_sha3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#buildtransaction" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      buildTransaction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="buildTransaction" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#transfercontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TransferContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#transferassetcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TransferAssetContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#createsmartcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      CreateSmartContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#triggersmartcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TriggerSmartContract
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/compiler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dapp Development Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            wallet-cli
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli Commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="jsonrpc-api">jsonRPC API<a class="headerlink" href="#jsonrpc-api" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>JSON-RPC is a stateless, lightweight remote procedure call (RPC) protocol. The JSON-RPC interface supported by the TRON network is compatible with Ethereum's. However, due to the difference in chain mechanism and design, TRON cannot support some interfaces on Ethereum. At the same time, TRON also provides dedicated APIs to create different types of transactions.</p>
+<p><strong>Please pay attention</strong></p>
+<ul>
+<li>The JSON-RPC service needs to be enabled and set the port in the node configuration file. If not configured, the service is disable by default. </li>
+</ul>
+<h3 id="how-to-enable-or-disable-json-rpc-service-of-a-node">How to enable or disable JSON-RPC service of a node<a class="headerlink" href="#how-to-enable-or-disable-json-rpc-service-of-a-node" title="Permanent link">&para;</a></h3>
+<p>Add below items in node's <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">configuration file</a>, then enable or disable it:<br />
+<div class="highlight"><pre><span></span><code>node.jsonrpc {  
+    httpFullNodeEnable = true  
+    httpFullNodePort = 50545  
+    httpSolidityEnable = true  
+    httpSolidityPort = 50555  
+}
+</code></pre></div></p>
+<h3 id="hex-value-encoding">HEX value encoding<a class="headerlink" href="#hex-value-encoding" title="Permanent link">&para;</a></h3>
+<p>At present there are two key data types that are passed over JSON: unformatted byte arrays and quantities. Both are passed with a hex encoding, however with different requirements to formatting:</p>
+<p>When encoding QUANTITIES (integers, numbers): encode as hex, prefix with “0x”, the most compact representation (slight exception: zero should be represented as “0x0”).<br />
+Examples:</p>
+<ul>
+<li>0x41 (65 in decimal)</li>
+<li>0x400 (1024 in decimal)</li>
+<li>WRONG: 0x (should always have at least one digit - zero is “0x0”)</li>
+<li>WRONG: 0x0400 (no leading zeros allowed)</li>
+<li>WRONG: ff (must be prefixed 0x)</li>
+</ul>
+<p>When encoding UNFORMATTED DATA (byte arrays, account addresses, hashes, bytecode arrays): encode as hex, prefix with “0x”, two hex digits per byte.<br />
+Examples:</p>
+<ul>
+<li>0x41 (size 1, “A”)</li>
+<li>0x004200 (size 3, “\0B\0”)</li>
+<li>0x (size 0, “”)</li>
+<li>WRONG: 0xf0f0f (must be even number of digits)</li>
+<li>WRONG: 004200 (must be prefixed 0x)</li>
+</ul>
+<h2 id="eth">eth<a class="headerlink" href="#eth" title="Permanent link">&para;</a></h2>
+<h3 id="eth_accounts">eth_accounts<a class="headerlink" href="#eth_accounts" title="Permanent link">&para;</a></h3>
+<p><em>Returns a list of addresses owned by the client.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>Empty List</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;
+
+{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_accounts&quot;, &quot;params&quot;: []}&#39;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:[]}</span>
+</code></pre></div>
+<h3 id="eth_blocknumber">eth_blockNumber<a class="headerlink" href="#eth_blocknumber" title="Permanent link">&para;</a></h3>
+<p><em>Returns the number of the most recent block.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>The latest block number.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_blockNumber&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x20e0cf0&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_call">eth_call<a class="headerlink" href="#eth_call" title="Permanent link">&para;</a></h3>
+<p><em>Executes a message call immediately without creating a transaction on the block chain.</em></p>
+<p><strong>Parameters</strong></p>
+<p>1. Object - The transaction call object, the items in it as below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Item Name</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">Caller address. Hex format address, remove the prefix "41"</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">Contract address.  Hex format address, remove the prefix "41"</td>
+</tr>
+<tr>
+<td style="text-align: left;">gas</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Not supported. The value is 0x0</td>
+</tr>
+<tr>
+<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Not supported. The value is 0x0</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Not supported. The value is 0x0</td>
+</tr>
+<tr>
+<td style="text-align: left;">data</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">Hash of the method signature and encoded parameters.</td>
+</tr>
+</tbody>
+</table>
+<p>2. QUANTITY|TAG - currently, only "latest" is available. </p>
+<p><strong>Returns</strong></p>
+<p>DATA - the return value of executed contract function.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_call&quot;,
+
+    &quot;params&quot;: [{
+
+        &quot;from&quot;: &quot;0xF0CC5A2A84CD0F68ED1667070934542D673ACBD8&quot;,
+
+        &quot;to&quot;: &quot;0x70082243784DCDF3042034E7B044D6D342A91360&quot;,
+
+        &quot;gas&quot;: &quot;0x0&quot;,
+
+        &quot;gasPrice&quot;: &quot;0x0&quot;,
+
+        &quot;value&quot;: &quot;0x0&quot;,
+
+        &quot;data&quot;: &quot;0x70a08231000000000000000000000041f0cc5a2a84cd0f68ed1667070934542d673acbd8&quot;
+
+    }, &quot;latest&quot;],
+
+    &quot;id&quot;: 1
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x&quot;</span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>### eth_chainId
+
+*Returns the chainId of the TRON network which is the last four bytes of the genesis block hash*
+
+**Parameters**  
+
+None
+
+**Returns**  
+
+DATA - The chainId of the TRON network
+
+**Example**
+
+```curl
+
+curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_chainId&quot;,&quot;params&quot;:[],&quot;id&quot;:79}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">79</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x2b6653dc&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_coinbase">eth_coinbase<a class="headerlink" href="#eth_coinbase" title="Permanent link">&para;</a></h3>
+<p>Returns the super representative address of the current node.</p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>DATA - The super representative address of the node.   (Note: Return the first address If more than one super representative address is configured, return error if there is no valid address or the address did not generate any block, the error will be “etherbase must be explicitly specified” . )</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_coinbase&quot;, &quot;params&quot;: []}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;error&quot;</span><span class="p">:{</span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="mi">-32000</span><span class="p">,</span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;etherbase must be explicitly specified&quot;</span><span class="p">,</span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;{}&quot;</span><span class="p">}}</span>
+</code></pre></div>
+<h3 id="eth_estimategas">eth_estimateGas<a class="headerlink" href="#eth_estimategas" title="Permanent link">&para;</a></h3>
+<p><em>Get the required energy through triggerConstantContract.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>object - The transaction call object, the items in it as below</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Item Name</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">address of the sender</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">address of the receiver</td>
+</tr>
+<tr>
+<td style="text-align: left;">gas</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">unused.</td>
+</tr>
+<tr>
+<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">unused.</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Integer of the value sent with this transaction</td>
+</tr>
+<tr>
+<td style="text-align: left;">data</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">Hash of the method signature and encoded parameters.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>  </p>
+<p>The amount of energy used.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;id&quot;: 1,
+
+    &quot;method&quot;: &quot;eth_estimateGas&quot;,
+
+    &quot;params&quot;: [{
+
+        &quot;from&quot;: &quot;0x41F0CC5A2A84CD0F68ED1667070934542D673ACBD8&quot;,
+
+        &quot;to&quot;: &quot;0x4170082243784DCDF3042034E7B044D6D342A91360&quot;,
+
+        &quot;gas&quot;: &quot;0x01&quot;,
+
+        &quot;gasPrice&quot;: &quot;0x8c&quot;,
+
+        &quot;value&quot;: &quot;0x01&quot;,
+
+        &quot;data&quot;: &quot;0x70a08231000000000000000000000041f0cc5a2a84cd0f68ed1667070934542d673acbd8&quot;
+
+    }]
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x0&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_gasprice">eth_gasPrice<a class="headerlink" href="#eth_gasprice" title="Permanent link">&para;</a></h3>
+<p>Returns the current energy price in sun.</p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>Integer of the current energy price in sun.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_gasPrice&quot;, &quot;params&quot;: []}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x8c&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getbalance">eth_getBalance<a class="headerlink" href="#eth_getbalance" title="Permanent link">&para;</a></h3>
+<p>Returns the balance of the account of the given address.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Index</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">address to check for balance.</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">only "latest" is available now</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>QUANTITY - integer of the current balance in sun.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getBalance&quot;,
+
+    &quot;params&quot;: [&quot;0x41f0cc5a2a84cd0f68ed1667070934542d673acbd8&quot;, &quot;latest&quot;],
+
+    &quot;id&quot;: 64
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x492780&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getblockbyhash">eth_getBlockByHash<a class="headerlink" href="#eth_getblockbyhash" title="Permanent link">&para;</a></h3>
+<p><em>Returns information about a block by hash.</em></p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Index</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of a block</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">If true it returns the full transaction objects, if false only the hashes of the transactions.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>object - a block object  or null when no block was found. The block includes items as below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Item Name</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">block number</td>
+</tr>
+<tr>
+<td style="text-align: left;">hash</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of the block</td>
+</tr>
+<tr>
+<td style="text-align: left;">parentHash</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of the parent block</td>
+</tr>
+<tr>
+<td style="text-align: left;">nonce</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">unused</td>
+</tr>
+<tr>
+<td style="text-align: left;">sha3Uncles</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">SHA3 of the uncles data in the block</td>
+</tr>
+<tr>
+<td style="text-align: left;">logsBloom</td>
+<td style="text-align: left;">DATA, 256 Bytes</td>
+<td style="text-align: left;">the bloom filter for the logs of the block.</td>
+</tr>
+<tr>
+<td style="text-align: left;">transactionsRoot</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">the root of the transaction trie of the block</td>
+</tr>
+<tr>
+<td style="text-align: left;">stateRoot</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">the root of the final state trie of the block</td>
+</tr>
+<tr>
+<td style="text-align: left;">receiptsRoot</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">the root of the receipts trie of the block</td>
+</tr>
+<tr>
+<td style="text-align: left;">miner</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">the address of the beneficiary to whom the mining rewards were given</td>
+</tr>
+<tr>
+<td style="text-align: left;">difficulty</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">integer of the difficulty for this block</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalDifficulty</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">integer of the total difficulty of the chain until this block</td>
+</tr>
+<tr>
+<td style="text-align: left;">extraData</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">the “extra data” field of this block</td>
+</tr>
+<tr>
+<td style="text-align: left;">size</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">integer the size of this block in bytes</td>
+</tr>
+<tr>
+<td style="text-align: left;">gasLimit</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">the maximum gas allowed in this block</td>
+</tr>
+<tr>
+<td style="text-align: left;">gasUsed</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">the total used gas by all transactions in this block</td>
+</tr>
+<tr>
+<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">the unix timestamp for when the block was created, the unit is second.</td>
+</tr>
+<tr>
+<td style="text-align: left;">transactions</td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.</td>
+</tr>
+<tr>
+<td style="text-align: left;">uncles</td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">Array of uncle hashes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getBlockByHash&quot;,
+
+    &quot;params&quot;: [&quot;0x0000000000f9cc56243898cbe88685678855e07f51c5af91322c225ce3693868&quot;, false],
+
+    &quot;id&quot;: 1
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getblockbynumber">eth_getBlockByNumber<a class="headerlink" href="#eth_getblockbynumber" title="Permanent link">&para;</a></h3>
+<p><em>Returns information about a block by hash.</em></p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Index</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">Integer of a block number, or the string "earliest", "latest"</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">If true it returns the full transaction objects, if false only the hashes of the transactions.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>object - a block object  or null when no block was found. See <a href="https://developers.tron.network/reference#eth_getblockbyhash">eth_getBlockByHash</a></p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getBlockByNumber&quot;,
+
+    &quot;params&quot;: [&quot;0xF9CC56&quot;, true],
+
+    &quot;id&quot;: 1
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getblocktransactioncountbyhash">eth_getBlockTransactionCountByHash<a class="headerlink" href="#eth_getblocktransactioncountbyhash" title="Permanent link">&para;</a></h3>
+<p><em>Returns the number of transactions in a block from a block matching the given block hash.</em></p>
+<p><strong>Parameters</strong></p>
+<p>DATA, 32 Bytes - hash of a block</p>
+<p><strong>Returns</strong></p>
+<p>QUANTITY - integer of the number of transactions in this block.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;id&quot;: 1,
+
+    &quot;method&quot;: &quot;eth_getBlockTransactionCountByHash&quot;,
+
+    &quot;params&quot;: [&quot;0x00000000020ef11c87517739090601aa0a7be1de6faebf35ddb14e7ab7d1cc5b&quot;]
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x39&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getblocktransactioncountbynumber">eth_getBlockTransactionCountByNumber<a class="headerlink" href="#eth_getblocktransactioncountbynumber" title="Permanent link">&para;</a></h3>
+<p><em>Returns the number of transactions in a block matching the given block number.</em></p>
+<p><strong>Parameters</strong></p>
+<p>QUANTITY|TAG - integer of a block number, or the string "earliest" or "latest".  </p>
+<p><strong>Returns</strong></p>
+<p>QUANTITY - integer of the number of transactions in this block.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getBlockTransactionCountByNumber&quot;,
+
+    &quot;params&quot;: [&quot;0xF96B0F&quot;],
+
+    &quot;id&quot;: 1
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x23&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getcode">eth_getCode<a class="headerlink" href="#eth_getcode" title="Permanent link">&para;</a></h3>
+<p><em>Returns runtime code of a given smart contract address.</em></p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Index</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">contract address</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">currently, only "latest" is available</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>DATA - the runtime code from the given address.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getCode&quot;,
+
+    &quot;params&quot;: [&quot;0x4170082243784DCDF3042034E7B044D6D342A91360&quot;, &quot;latest&quot;],
+
+    &quot;id&quot;: 64
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getstorageat">eth_getStorageAt<a class="headerlink" href="#eth_getstorageat" title="Permanent link">&para;</a></h3>
+<p><em>Returns the value from a storage position at a given address. It can be used to get the value of a variable in a contract.</em></p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Index</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">address</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">integer of the position in the storage</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">currently only support "latest"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>DATA - the value at this storage position.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getStorageAt&quot;,
+
+    &quot;params&quot;: [&quot;0xE94EAD5F4CA072A25B2E5500934709F1AEE3C64B&quot;, &quot;0x29313b34b1b4beab0d3bad2b8824e9e6317c8625dd4d9e9e0f8f61d7b69d1f26&quot;, &quot;latest&quot;],
+
+    &quot;id&quot;: 1
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex<a class="headerlink" href="#eth_gettransactionbyblockhashandindex" title="Permanent link">&para;</a></h3>
+<p><em>Returns information about a transaction by block hash and transaction index position.</em></p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Index</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of a block</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">the transaction index position</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>object - a transaction object  or null when no transaction was found. The transaction includes items as below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Item Name</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of the block where this transaction was in.</td>
+</tr>
+<tr>
+<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">block number where this transaction was in.</td>
+</tr>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">address of the sender</td>
+</tr>
+<tr>
+<td style="text-align: left;">gas</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">unused.</td>
+</tr>
+<tr>
+<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">energy price</td>
+</tr>
+<tr>
+<td style="text-align: left;">hash</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of the transaction</td>
+</tr>
+<tr>
+<td style="text-align: left;">input</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">the data sent along with the transaction</td>
+</tr>
+<tr>
+<td style="text-align: left;">nonce</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">unused</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">address of the receiver</td>
+</tr>
+<tr>
+<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">integer of the transactions index position in the block</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">value transferred in sun</td>
+</tr>
+<tr>
+<td style="text-align: left;">v</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">ECDSA recovery id</td>
+</tr>
+<tr>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">ECDSA signature r</td>
+</tr>
+<tr>
+<td style="text-align: left;">s</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">ECDSA signature s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getTransactionByBlockHashAndIndex&quot;,
+
+    &quot;params&quot;: [&quot;00000000020ef11c87517739090601aa0a7be1de6faebf35ddb14e7ab7d1cc5b&quot;, &quot;0x0&quot;],
+
+    &quot;id&quot;: 64
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="nt">&quot;blockHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x00000000020ef11c87517739090601aa0a7be1de6faebf35ddb14e7ab7d1cc5b&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;blockNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x20ef11c&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xb4f1b6e3a1461266b01c2c4ff9237191d5c3d5ce&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x8c&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x8dd26d1772231569f022adb42f7d7161dee88b97b4b35eeef6ce73fcd6613bc2&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;r&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x6212a53b962345fb8ab02215879a2de05f32e822c54e257498f0b70d33825cc5&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;s&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x6e04221f5311cf2b70d3aacfc444e43a5cf14d0bf31d9227218efaabd9b5a812&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x047d4a0a1b7a9d495d6503536e2a49bb5cc72cfe&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;transactionIndex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x1b&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x203226&quot;</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_gettransactionbyblocknumberandindex">eth_getTransactionByBlockNumberAndIndex<a class="headerlink" href="#eth_gettransactionbyblocknumberandindex" title="Permanent link">&para;</a></h3>
+<p><em>Returns information about a transaction by block number and transaction index position.</em></p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Index</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">a block number, or the string "earliest", "latest",</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">the transaction index position</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>object - a transaction object  or null when no transaction was found. See <a href="https://developers.tron.network/reference#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a></p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getTransactionByBlockNumberAndIndex&quot;,
+
+    &quot;params&quot;: [&quot;0xfb82f0&quot;, &quot;0x0&quot;],
+
+    &quot;id&quot;: 64
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_gettransactionbyhash">eth_getTransactionByHash<a class="headerlink" href="#eth_gettransactionbyhash" title="Permanent link">&para;</a></h3>
+<p><em>Returns the information about a transaction requested by transaction hash.</em></p>
+<p><strong>Parameters</strong></p>
+<p>DATA, 32 Bytes - hash of a transaction</p>
+<p><strong>Returns</strong></p>
+<p>object - a transaction object  or null when no transaction was found. See <a href="https://developers.tron.network/reference#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a></p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getTransactionByHash&quot;,
+
+    &quot;params&quot;: [&quot;c9af231ad59bcd7e8dcf827afd45020a02112704dce74ec5f72cb090aa07eef0&quot;],
+
+    &quot;id&quot;: 64
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="nt">&quot;blockHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x00000000020ef11c87517739090601aa0a7be1de6faebf35ddb14e7ab7d1cc5b&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;blockNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x20ef11c&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x6eced5214d62c3bc9eaa742e2f86d5c516785e14&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x8c&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xc9af231ad59bcd7e8dcf827afd45020a02112704dce74ec5f72cb090aa07eef0&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;r&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x433eaf0a7df3a08c8828a2180987146d39d44de4ac327c4447d0eeda42230ea8&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;s&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x6f91f63b37f4d1cd9342f570205beefaa5b5ba18d616fec643107f8c1ae1339d&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0697250b9d73b460a9d2bbfd8c4cacebb05dd1f1&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;transactionIndex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x6&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x1b&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x1cb2310&quot;</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_gettransactionreceipt">eth_getTransactionReceipt<a class="headerlink" href="#eth_gettransactionreceipt" title="Permanent link">&para;</a></h3>
+<p><em>Returns the  transaction info: receipt, transaction fee, block height ... by transaction hash. Please refer to http api: <a href="https://developers.tron.network/reference#transaction-info-by-id">wallet/gettransactioninfobyid</a></em></p>
+<p><strong>Parameters</strong></p>
+<p>DATA, 32 Bytes - hash of a transaction</p>
+<p><strong>Returns</strong></p>
+<p>object - A transaction receipt object, or null when no receipt was found. The items in transaction receipt as below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Item Name</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">transactionHash</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of the transaction</td>
+</tr>
+<tr>
+<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">integer of the transactions index position in the block</td>
+</tr>
+<tr>
+<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of the block where this transaction was in.</td>
+</tr>
+<tr>
+<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">block number where this transaction was in.</td>
+</tr>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">address of the sender</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">address of the receiver</td>
+</tr>
+<tr>
+<td style="text-align: left;">cumulativeGasUsed</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The total amount of gas used when this transaction was executed in the block.</td>
+</tr>
+<tr>
+<td style="text-align: left;">gasUsed</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The amount of gas used by this specific transaction alone.</td>
+</tr>
+<tr>
+<td style="text-align: left;">contractAddress</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">The contract address created, if the transaction was a contract creation, otherwise null.</td>
+</tr>
+<tr>
+<td style="text-align: left;">logs</td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">Array of log objects, which this transaction generated.</td>
+</tr>
+<tr>
+<td style="text-align: left;">logsBloom</td>
+<td style="text-align: left;">DATA, 256 Bytes</td>
+<td style="text-align: left;">Bloom filter for light clients to quickly retrieve related logs.</td>
+</tr>
+<tr>
+<td style="text-align: left;">root</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">32 bytes of post-transaction stateroot (pre Byzantium)</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">either 1 (success) or 0 (failure)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getTransactionReceipt&quot;,
+
+    &quot;params&quot;: [&quot;c9af231ad59bcd7e8dcf827afd45020a02112704dce74ec5f72cb090aa07eef0&quot;],
+
+    &quot;id&quot;: 64
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="nt">&quot;blockHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x00000000020ef11c87517739090601aa0a7be1de6faebf35ddb14e7ab7d1cc5b&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;blockNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x20ef11c&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;contractAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;cumulativeGasUsed&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x646e2&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;effectiveGasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x8c&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x6eced5214d62c3bc9eaa742e2f86d5c516785e14&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;gasUsed&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;logs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+
+<span class="w">        </span><span class="nt">&quot;logsBloom&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x1&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0697250b9d73b460a9d2bbfd8c4cacebb05dd1f1&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;transactionHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xc9af231ad59bcd7e8dcf827afd45020a02112704dce74ec5f72cb090aa07eef0&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;transactionIndex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x6&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getwork">eth_getWork<a class="headerlink" href="#eth_getwork" title="Permanent link">&para;</a></h3>
+<p><em>Returns the hash of the current block</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>Array - Array with the following properties:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Index</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">hash of the block</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">unused</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">unused</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getWork&quot;,
+
+    &quot;params&quot;: [],
+
+    &quot;id&quot;: 73
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x00000000020e73915413df0c816e327dc4b9d17069887aef1fff0e854f8d9ad0&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">]</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_protocolversion">eth_protocolVersion<a class="headerlink" href="#eth_protocolversion" title="Permanent link">&para;</a></h3>
+<p><em>Returns the java-tron block version</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>String - The current java-tron block version</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_protocolVersion&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x16&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_syncing">eth_syncing<a class="headerlink" href="#eth_syncing" title="Permanent link">&para;</a></h3>
+<p><em>Returns an object with data about the sync status of the node</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>Object|Boolean, An object with sync status data or FALSE, when not syncing, the items in object includes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">startingBlock</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The block at which the import started (will only be reset, after the sync reached his head)</td>
+</tr>
+<tr>
+<td style="text-align: left;">currentBlock</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The current block</td>
+</tr>
+<tr>
+<td style="text-align: left;">highestBlock</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The estimated highest block</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_syncing&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="nt">&quot;startingBlock&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x20e76cc&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;currentBlock&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x20e76df&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;highestBlock&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x20e76e0&quot;</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_newfilter">eth_newFilter<a class="headerlink" href="#eth_newfilter" title="Permanent link">&para;</a></h3>
+<p><em>Creates a filter object, based on filter options, to notify when the state changes (logs).</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>Object - The filter options:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">fromBlock</td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">Integer block number, or "latest"</td>
+</tr>
+<tr>
+<td style="text-align: left;">toBlock</td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">Integer block number, or "latest"</td>
+</tr>
+<tr>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;">DATA|Array, 20 Bytes</td>
+<td style="text-align: left;">Contract address or a list of addresses from which logs should originate.</td>
+</tr>
+<tr>
+<td style="text-align: left;">topics</td>
+<td style="text-align: left;">Array of DATA</td>
+<td style="text-align: left;">Topics</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>  </p>
+<p>QUANTITY - A filter id.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_newFilter&quot;,&quot;params&quot;:[{&quot;address&quot;:[&quot;cc2e32f2388f0096fae9b055acffd76d4b3e5532&quot;,&quot;E518C608A37E2A262050E10BE0C9D03C7A0877F3&quot;],&quot;fromBlock&quot;:&quot;0x989680&quot;,&quot;toBlock&quot;:&quot;0x9959d0&quot;,&quot;topics&quot;:[&quot;0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef&quot;,null,[&quot;0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7&quot;,&quot;0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758&quot;]]}],&quot;id&quot;:1}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x2bab51aee6345d2748e0a4a3f4569d80&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_newblockfilter">eth_newBlockFilter<a class="headerlink" href="#eth_newblockfilter" title="Permanent link">&para;</a></h3>
+<p><em>Creates a filter in the node, to notify when a new block arrives.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None.</p>
+<p><strong>Returns</strong>  </p>
+<p>QUANTITY - A filter id.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_newBlockFilter&quot;,&quot;params&quot;:[],&quot;id&quot;:1}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x2bab51aee6345d2748e0a4a3f4569d80&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getfilterchanges">eth_getFilterChanges<a class="headerlink" href="#eth_getfilterchanges" title="Permanent link">&para;</a></h3>
+<p><em>Polling method for a filter, which returns an array of logs which occurred since last poll.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>QUANTITY - the filter id.</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li>For filters created with eth_newFilte, return logs object list, each log object with following params:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">removed</td>
+<td style="text-align: left;">TAG</td>
+<td style="text-align: left;">true when the log was removed, due to a chain reorganization. false if its a valid log.</td>
+</tr>
+<tr>
+<td style="text-align: left;">logIndex</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Integer of the log index position in the block. null when its pending log.</td>
+</tr>
+<tr>
+<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Integer of the transactions index position log was created from. null when its pending log.</td>
+</tr>
+<tr>
+<td style="text-align: left;">transactionHash</td>
+<td style="text-align: left;">DATA, 32Bytes</td>
+<td style="text-align: left;">Hash of the transactions this log was created from.</td>
+</tr>
+<tr>
+<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">Hash of the block where this log was in. null when its pending.</td>
+</tr>
+<tr>
+<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The block number where this log was in.</td>
+</tr>
+<tr>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">Address from which this log originated.</td>
+</tr>
+<tr>
+<td style="text-align: left;">data</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">Contains one or more 32 Bytes non-indexed arguments of the log.</td>
+</tr>
+<tr>
+<td style="text-align: left;">topics</td>
+<td style="text-align: left;">DATA[]</td>
+<td style="text-align: left;">Event topic and indexed arguments.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>For filters created with eth_newBlockFilter the return are block hashes (DATA, 32 Bytes).</li>
+</ul>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getFilterChanges&quot;,
+
+    &quot;params&quot;: [
+
+        &quot;0xc11a84d5e906ecb9f5c1eb65ee940b154ad37dce8f5ac29c80764508b901d996&quot;
+
+    ],
+
+    &quot;id&quot;: 71
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-32000</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filter not found&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{}&quot;</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getfilterlogs">eth_getFilterLogs<a class="headerlink" href="#eth_getfilterlogs" title="Permanent link">&para;</a></h3>
+<p><em>Returns an array of all logs matching filter with given id.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>QUANTITY - the filter id.</p>
+<p><strong>Returns</strong></p>
+<p>See <a href="/reference/eth_getfilterchanges">eth_getFilterChanges</a>。</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getFilterLogs&quot;,
+
+    &quot;params&quot;: [
+
+        &quot;0xc11a84d5e906ecb9f5c1eb65ee940b154ad37dce8f5ac29c80764508b901d996&quot;
+
+    ],
+
+    &quot;id&quot;: 71
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-32000</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filter not found&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{}&quot;</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_uninstallfilter">eth_uninstallFilter<a class="headerlink" href="#eth_uninstallfilter" title="Permanent link">&para;</a></h3>
+<p><em>Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally Filters timeout when they aren't requested with eth_getFilterChanges for a period of time.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>QUANTITY - the filter id.</p>
+<p><strong>Returns</strong></p>
+<p>Boolean - true if the filter was successfully uninstalled, otherwise false.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_uninstallFilter&quot;,
+
+    &quot;params&quot;: [
+
+        &quot;0xc11a84d5e906ecb9f5c1eb65ee940b154ad37dce8f5ac29c80764508b901d996&quot;
+
+    ],
+
+    &quot;id&quot;: 71
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getlogs">eth_getLogs<a class="headerlink" href="#eth_getlogs" title="Permanent link">&para;</a></h3>
+<p><em>Returns an array of all logs matching a given filter object.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>Object - The filter options which include below fields:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">fromBlock</td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">(optional, default: "latest") Integer block number, or "latest" for the last mined block</td>
+</tr>
+<tr>
+<td style="text-align: left;">toBlock</td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">(optional, default: "latest") Integer block number, or "latest" for the last mined block</td>
+</tr>
+<tr>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;">DATA|Array, 20 Bytes</td>
+<td style="text-align: left;">(optional) Contract address or a list of addresses from which logs should originate.</td>
+</tr>
+<tr>
+<td style="text-align: left;">topics</td>
+<td style="text-align: left;">Array of DATA</td>
+<td style="text-align: left;">(optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options.</td>
+</tr>
+<tr>
+<td style="text-align: left;">blockhash</td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">(optional) Block hash</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>See <a href="/reference/eth_getfilterchanges">eth_getFilterChanges</a>.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getLogs&quot;,&quot;params&quot;:[{&quot;address&quot;:[&quot;cc2e32f2388f0096fae9b055acffd76d4b3e5532&quot;,&quot;E518C608A37E2A262050E10BE0C9D03C7A0877F3&quot;],&quot;fromBlock&quot;:&quot;0x989680&quot;,&quot;toBlock&quot;:&quot;0x9959d0&quot;,&quot;topics&quot;:[&quot;0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef&quot;,null,[&quot;0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7&quot;,&quot;0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758&quot;]]}],&quot;id&quot;:1}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+
+<span class="w">    </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="net">net<a class="headerlink" href="#net" title="Permanent link">&para;</a></h2>
+<h3 id="net_listening">net_listening<a class="headerlink" href="#net_listening" title="Permanent link">&para;</a></h3>
+<p><em>Returns true if the client is actively listening for network connections.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>Boolean - true when listening, otherwise false.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_listening&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="net_peercount">net_peerCount<a class="headerlink" href="#net_peercount" title="Permanent link">&para;</a></h3>
+<p><em>Returns number of peers currently connected to the client.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>QUANTITY - integer of the number of connected peers.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_peerCount&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x9&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="net_version">net_version<a class="headerlink" href="#net_version" title="Permanent link">&para;</a></h3>
+<p><em>Returns the hash of the genesis block.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>String - The hash of genesis block</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_version&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">64</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x2b6653dc&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="web3">web3<a class="headerlink" href="#web3" title="Permanent link">&para;</a></h2>
+<h3 id="web3_clientversion">web3_clientVersion<a class="headerlink" href="#web3_clientversion" title="Permanent link">&para;</a></h3>
+<p><em>Returns the current client version.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>None</p>
+<p><strong>Returns</strong>  </p>
+<p>String - The current client version</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;web3_clientVersion&quot;, &quot;params&quot;: []}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;TRON/v4.3.0/Linux/Java1.8/GreatVoyage-v4.2.2.1-281-gc1d9dfd6c&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="web3_sha3">web3_sha3<a class="headerlink" href="#web3_sha3" title="Permanent link">&para;</a></h3>
+<p><em>Returns Keccak-256 (not the standardized SHA3-256) of the given data.</em></p>
+<p><strong>Parameters</strong>  </p>
+<p>DATA - the data to convert into a SHA3 hash</p>
+<p><strong>Returns</strong>  </p>
+<p>DATA - The SHA3 result of the given string.</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;web3_sha3&quot;, &quot;params&quot;: [&quot;0x68656c6c6f20776f726c64&quot;]}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="buildtransaction">buildTransaction<a class="headerlink" href="#buildtransaction" title="Permanent link">&para;</a></h2>
+<p><em>Create a transaction, different transaction types have different parameters</em></p>
+<h3 id="transfercontract">TransferContract<a class="headerlink" href="#transfercontract" title="Permanent link">&para;</a></h3>
+<p><strong>Parameters</strong>  </p>
+<p>Object - the items in object as below: </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Param Name</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">The address the transaction is sent from.</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">The address the transaction is directed to.</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">the transfer amount</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>Object - transaction of TransferContract or an error</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;id&quot;: 1337,
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;buildTransaction&quot;,
+
+    &quot;params&quot;: [
+
+        {
+
+            &quot;from&quot;: &quot;0xC4DB2C9DFBCB6AA344793F1DDA7BD656598A06D8&quot;,
+
+            &quot;to&quot;: &quot;0x95FD23D3D2221CFEF64167938DE5E62074719E54&quot;,
+
+            &quot;value&quot;: &quot;0x1f4&quot;
+
+        }]}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1337</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:{</span><span class="nt">&quot;transaction&quot;</span><span class="p">:{</span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="s2">&quot;ae02a80abd985a6f05478b9bbf04706f00cdbf71e38c77d21ed77e44c634cef9&quot;</span><span class="p">,</span><span class="nt">&quot;raw_data&quot;</span><span class="p">:{</span><span class="nt">&quot;contract&quot;</span><span class="p">:[{</span><span class="nt">&quot;parameter&quot;</span><span class="p">:{</span><span class="nt">&quot;value&quot;</span><span class="p">:{</span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="s2">&quot;41c4db2c9dfbcb6aa344793f1dda7bd656598a06d8&quot;</span><span class="p">,</span><span class="nt">&quot;to_address&quot;</span><span class="p">:</span><span class="s2">&quot;4195fd23d3d2221cfef64167938de5e62074719e54&quot;</span><span class="p">},</span><span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="s2">&quot;type.googleapis.com/protocol.TransferContract&quot;</span><span class="p">},</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;TransferContract&quot;</span><span class="p">}],</span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="s2">&quot;957e&quot;</span><span class="p">,</span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="s2">&quot;3922d8c0d28b5283&quot;</span><span class="p">,</span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="mi">1684469286000</span><span class="p">,</span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1684469226841</span><span class="p">},</span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="s2">&quot;0a02957e22083922d8c0d28b528340f088c69183315a66080112620a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412310a1541c4db2c9dfbcb6aa344793f1dda7bd656598a06d812154195fd23d3d2221cfef64167938de5e62074719e5418f40370d9bac2918331&quot;</span><span class="p">}}}</span>
+</code></pre></div>
+<h3 id="transferassetcontract">TransferAssetContract<a class="headerlink" href="#transferassetcontract" title="Permanent link">&para;</a></h3>
+<p><strong>Parameters</strong>  </p>
+<p>Object - the items in object as below: </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">The address the transaction is sent from</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">The address the transaction is directed to</td>
+</tr>
+<tr>
+<td style="text-align: left;">tokenId</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Token ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tokenValue</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The transfer amount of TRC10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>Object - transaction of TransferAssetContract or an error</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;method&quot;: &quot;buildTransaction&quot;,
+
+    &quot;params&quot;: [
+
+        {
+
+            &quot;from&quot;: &quot;0xC4DB2C9DFBCB6AA344793F1DDA7BD656598A06D8&quot;,
+
+            &quot;to&quot;: &quot;0x95FD23D3D2221CFEF64167938DE5E62074719E54&quot;,
+
+            &quot;tokenId&quot;: 1000016,
+
+            &quot;tokenValue&quot;: 20
+
+        }
+
+    ],
+
+    &quot;id&quot;: 44,
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;
+
+}
+
+&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="nt">&quot;error&quot;</span><span class="p">:{</span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="mi">-32600</span><span class="p">,</span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;assetBalance must be greater than 0.&quot;</span><span class="p">,</span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;{}&quot;</span><span class="p">}}</span>
+</code></pre></div>
+<h3 id="createsmartcontract">CreateSmartContract<a class="headerlink" href="#createsmartcontract" title="Permanent link">&para;</a></h3>
+<p><strong>Parameters</strong>  </p>
+<p>Object - the items in object as below: </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">The address the transaction is sent from</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The name of the smart contract.</td>
+</tr>
+<tr>
+<td style="text-align: left;">gas</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">Fee limit</td>
+</tr>
+<tr>
+<td style="text-align: left;">abi</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The ABI of the smart contract.</td>
+</tr>
+<tr>
+<td style="text-align: left;">data</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The byte code of the smart contract.</td>
+</tr>
+<tr>
+<td style="text-align: left;">consumeUserResourcePercent</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The consume user resource percent.</td>
+</tr>
+<tr>
+<td style="text-align: left;">originEnergyLimit</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The origin energy limit.</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The data passed through call_value.</td>
+</tr>
+<tr>
+<td style="text-align: left;">tokenId</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Token ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tokenValue</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The transfer amount of TRC10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>Object - transaction of CreateSmartContract or an error</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;id&quot;: 1337,
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;buildTransaction&quot;,
+
+    &quot;params&quot;: [
+
+        {
+
+            &quot;from&quot;: &quot;0xC4DB2C9DFBCB6AA344793F1DDA7BD656598A06D8&quot;,
+
+            &quot;name&quot;: &quot;transferTokenContract&quot;,
+
+            &quot;gas&quot;: &quot;0x245498&quot;,
+
+            &quot;abi&quot;: &quot;[{\&quot;constant\&quot;:false,\&quot;inputs\&quot;:[],\&quot;name\&quot;:\&quot;getResultInCon\&quot;,\&quot;outputs\&quot;:[{\&quot;name\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;trcToken\&quot;},{\&quot;name\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;},{\&quot;name\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;payable\&quot;:true,\&quot;stateMutability\&quot;:\&quot;payable\&quot;,\&quot;type\&quot;:\&quot;function\&quot;},{\&quot;constant\&quot;:false,\&quot;inputs\&quot;:[{\&quot;name\&quot;:\&quot;toAddress\&quot;,\&quot;type\&quot;:\&quot;address\&quot;},{\&quot;name\&quot;:\&quot;id\&quot;,\&quot;type\&quot;:\&quot;trcToken\&quot;},{\&quot;name\&quot;:\&quot;amount\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;name\&quot;:\&quot;TransferTokenTo\&quot;,\&quot;outputs\&quot;:[],\&quot;payable\&quot;:true,\&quot;stateMutability\&quot;:\&quot;payable\&quot;,\&quot;type\&quot;:\&quot;function\&quot;},{\&quot;constant\&quot;:false,\&quot;inputs\&quot;:[],\&quot;name\&quot;:\&quot;msgTokenValueAndTokenIdTest\&quot;,\&quot;outputs\&quot;:[{\&quot;name\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;trcToken\&quot;},{\&quot;name\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;},{\&quot;name\&quot;:\&quot;\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;payable\&quot;:true,\&quot;stateMutability\&quot;:\&quot;payable\&quot;,\&quot;type\&quot;:\&quot;function\&quot;},{\&quot;inputs\&quot;:[],\&quot;payable\&quot;:true,\&quot;stateMutability\&quot;:\&quot;payable\&quot;,\&quot;type\&quot;:\&quot;constructor\&quot;}]\n&quot;,
+
+            &quot;data&quot;: &quot;6080604052d3600055d2600155346002556101418061001f6000396000f3006080604052600436106100565763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166305c24200811461005b5780633be9ece71461008157806371dc08ce146100aa575b600080fd5b6100636100b2565b60408051938452602084019290925282820152519081900360600190f35b6100a873ffffffffffffffffffffffffffffffffffffffff600435166024356044356100c0565b005b61006361010d565b600054600154600254909192565b60405173ffffffffffffffffffffffffffffffffffffffff84169082156108fc029083908590600081818185878a8ad0945050505050158015610107573d6000803e3d6000fd5b50505050565bd3d2349091925600a165627a7a72305820a2fb39541e90eda9a2f5f9e7905ef98e66e60dd4b38e00b05de418da3154e7570029&quot;,
+
+            &quot;consumeUserResourcePercent&quot;: 100,
+
+            &quot;originEnergyLimit&quot;: 11111111111111,
+
+            &quot;value&quot;: &quot;0x1f4&quot;,
+
+            &quot;tokenId&quot;: 1000033,
+
+            &quot;tokenValue&quot;: 100000
+
+        }
+
+    ]
+
+}
+
+&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1337</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:{</span><span class="nt">&quot;transaction&quot;</span><span class="p">:{</span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="s2">&quot;598d8aafbf9340e92c8f72a38389ce9661b643ff37dd2a609f393336a76025b9&quot;</span><span class="p">,</span><span class="nt">&quot;contract_address&quot;</span><span class="p">:</span><span class="s2">&quot;41dfd93697c0a978db343fe7a92333e11eeb2f967d&quot;</span><span class="p">,</span><span class="nt">&quot;raw_data&quot;</span><span class="p">:{</span><span class="nt">&quot;contract&quot;</span><span class="p">:[{</span><span class="nt">&quot;parameter&quot;</span><span class="p">:{</span><span class="nt">&quot;value&quot;</span><span class="p">:{</span><span class="nt">&quot;token_id&quot;</span><span class="p">:</span><span class="mi">1000033</span><span class="p">,</span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="s2">&quot;41c4db2c9dfbcb6aa344793f1dda7bd656598a06d8&quot;</span><span class="p">,</span><span class="nt">&quot;call_token_value&quot;</span><span class="p">:</span><span class="mi">100000</span><span class="p">,</span><span class="nt">&quot;new_contract&quot;</span><span class="p">:{</span><span class="nt">&quot;bytecode&quot;</span><span class="p">:</span><span class="s2">&quot;6080604052d3600055d2600155346002556101418061001f6000396000f3006080604052600436106100565763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166305c24200811461005b5780633be9ece71461008157806371dc08ce146100aa575b600080fd5b6100636100b2565b60408051938452602084019290925282820152519081900360600190f35b6100a873ffffffffffffffffffffffffffffffffffffffff600435166024356044356100c0565b005b61006361010d565b600054600154600254909192565b60405173ffffffffffffffffffffffffffffffffffffffff84169082156108fc029083908590600081818185878a8ad0945050505050158015610107573d6000803e3d6000fd5b50505050565bd3d2349091925600a165627a7a72305820a2fb39541e90eda9a2f5f9e7905ef98e66e60dd4b38e00b05de418da3154e7570029&quot;</span><span class="p">,</span><span class="nt">&quot;consume_user_resource_percent&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;transferTokenContract&quot;</span><span class="p">,</span><span class="nt">&quot;origin_address&quot;</span><span class="p">:</span><span class="s2">&quot;41c4db2c9dfbcb6aa344793f1dda7bd656598a06d8&quot;</span><span class="p">,</span><span class="nt">&quot;abi&quot;</span><span class="p">:{</span><span class="nt">&quot;entrys&quot;</span><span class="p">:[{</span><span class="nt">&quot;outputs&quot;</span><span class="p">:[{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;trcToken&quot;</span><span class="p">},{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;uint256&quot;</span><span class="p">},{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;uint256&quot;</span><span class="p">}],</span><span class="nt">&quot;payable&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;getResultInCon&quot;</span><span class="p">,</span><span class="nt">&quot;stateMutability&quot;</span><span class="p">:</span><span class="s2">&quot;Payable&quot;</span><span class="p">,</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Function&quot;</span><span class="p">},{</span><span class="nt">&quot;payable&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;inputs&quot;</span><span class="p">:[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;toAddress&quot;</span><span class="p">,</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;address&quot;</span><span class="p">},{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;trcToken&quot;</span><span class="p">},{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;amount&quot;</span><span class="p">,</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;uint256&quot;</span><span class="p">}],</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;TransferTokenTo&quot;</span><span class="p">,</span><span class="nt">&quot;stateMutability&quot;</span><span class="p">:</span><span class="s2">&quot;Payable&quot;</span><span class="p">,</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Function&quot;</span><span class="p">},{</span><span class="nt">&quot;outputs&quot;</span><span class="p">:[{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;trcToken&quot;</span><span class="p">},{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;uint256&quot;</span><span class="p">},{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;uint256&quot;</span><span class="p">}],</span><span class="nt">&quot;payable&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;msgTokenValueAndTokenIdTest&quot;</span><span class="p">,</span><span class="nt">&quot;stateMutability&quot;</span><span class="p">:</span><span class="s2">&quot;Payable&quot;</span><span class="p">,</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Function&quot;</span><span class="p">},{</span><span class="nt">&quot;payable&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;stateMutability&quot;</span><span class="p">:</span><span class="s2">&quot;Payable&quot;</span><span class="p">,</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Constructor&quot;</span><span class="p">}]},</span><span class="nt">&quot;origin_energy_limit&quot;</span><span class="p">:</span><span class="mi">11111111111111</span><span class="p">,</span><span class="nt">&quot;call_value&quot;</span><span class="p">:</span><span class="mi">500</span><span class="p">}},</span><span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="s2">&quot;type.googleapis.com/protocol.CreateSmartContract&quot;</span><span class="p">},</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;CreateSmartContract&quot;</span><span class="p">}],</span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="s2">&quot;80be&quot;</span><span class="p">,</span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="s2">&quot;ac7c3d59c55ac92c&quot;</span><span class="p">,</span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="mi">1634030190000</span><span class="p">,</span><span class="nt">&quot;fee_limit&quot;</span><span class="p">:</span><span class="mi">333333280</span><span class="p">,</span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1634030131693</span><span class="p">},</span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="s2">&quot;0a0280be2208ac7c3d59c55ac92c40b0fba79ec72f5ad805081e12d3050a30747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e437265617465536d617274436f6e7472616374129e050a1541c4db2c9dfbcb6aa344793f1dda7bd656598a06d812fc040a1541c4db2c9dfbcb6aa344793f1dda7bd656598a06d81adb010a381a0e676574526573756c74496e436f6e2a0a1a08747263546f6b656e2a091a0775696e743235362a091a0775696e743235363002380140040a501a0f5472616e73666572546f6b656e546f22141209746f416464726573731a0761646472657373220e120269641a08747263546f6b656e22111206616d6f756e741a0775696e743235363002380140040a451a1b6d7367546f6b656e56616c7565416e64546f6b656e4964546573742a0a1a08747263546f6b656e2a091a0775696e743235362a091a0775696e743235363002380140040a0630013801400422e0026080604052d3600055d2600155346002556101418061001f6000396000f3006080604052600436106100565763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166305c24200811461005b5780633be9ece71461008157806371dc08ce146100aa575b600080fd5b6100636100b2565b60408051938452602084019290925282820152519081900360600190f35b6100a873ffffffffffffffffffffffffffffffffffffffff600435166024356044356100c0565b005b61006361010d565b600054600154600254909192565b60405173ffffffffffffffffffffffffffffffffffffffff84169082156108fc029083908590600081818185878a8ad0945050505050158015610107573d6000803e3d6000fd5b50505050565bd3d2349091925600a165627a7a72305820a2fb39541e90eda9a2f5f9e7905ef98e66e60dd4b38e00b05de418da3154e757002928f40330643a157472616e73666572546f6b656e436f6e747261637440c7e3d28eb0c30218a08d0620e1843d70edb3a49ec72f9001a086f99e01&quot;</span><span class="p">}}}</span>
+</code></pre></div>
+<h3 id="triggersmartcontract">TriggerSmartContract<a class="headerlink" href="#triggersmartcontract" title="Permanent link">&para;</a></h3>
+<p><strong>Parameters</strong>  </p>
+<p>Object - the items in object as below: </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">from</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">The address the transaction is sent from</td>
+</tr>
+<tr>
+<td style="text-align: left;">to</td>
+<td style="text-align: left;">DATA, 20 Bytes</td>
+<td style="text-align: left;">The address of the smart contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">data</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The invoked contract function and parameters</td>
+</tr>
+<tr>
+<td style="text-align: left;">gas</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">Fee limit</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The data passed through call_value</td>
+</tr>
+<tr>
+<td style="text-align: left;">tokenId</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Token ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tokenValue</td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The transfer amount of TRC10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>Object - transaction of TriggerSmartContract or an error</p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;id&quot;: 1337,
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;buildTransaction&quot;,
+
+    &quot;params&quot;: [
+
+        {
+
+            &quot;from&quot;: &quot;0xC4DB2C9DFBCB6AA344793F1DDA7BD656598A06D8&quot;,
+
+            &quot;to&quot;: &quot;0xf859b5c93f789f4bcffbe7cc95a71e28e5e6a5bd&quot;,
+
+            &quot;data&quot;: &quot;0x3be9ece7000000000000000000000000ba8e28bdb6e49fbb3f5cd82a9f5ce8363587f1f600000000000000000000000000000000000000000000000000000000000f42630000000000000000000000000000000000000000000000000000000000000001&quot;,
+
+            &quot;gas&quot;: &quot;0x245498&quot;,
+
+            &quot;value&quot;: &quot;0xA&quot;,
+
+            &quot;tokenId&quot;: 1000035,
+
+            &quot;tokenValue&quot;: 20
+
+        }
+
+    ]
+
+    }
+
+&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1337</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:{</span><span class="nt">&quot;transaction&quot;</span><span class="p">:{</span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="s2">&quot;c3c746beb86ffc366ec0ff8bf6c9504c88f8714e47bc0009e4f7e2b1d49eb967&quot;</span><span class="p">,</span><span class="nt">&quot;raw_data&quot;</span><span class="p">:{</span><span class="nt">&quot;contract&quot;</span><span class="p">:[{</span><span class="nt">&quot;parameter&quot;</span><span class="p">:{</span><span class="nt">&quot;value&quot;</span><span class="p">:{</span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="s2">&quot;41c4db2c9dfbcb6aa344793f1dda7bd656598a06d8&quot;</span><span class="p">,</span><span class="nt">&quot;to_address&quot;</span><span class="p">:</span><span class="s2">&quot;41f859b5c93f789f4bcffbe7cc95a71e28e5e6a5bd&quot;</span><span class="p">},</span><span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="s2">&quot;type.googleapis.com/protocol.TransferContract&quot;</span><span class="p">},</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;TransferContract&quot;</span><span class="p">}],</span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="s2">&quot;958c&quot;</span><span class="p">,</span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="s2">&quot;9d8c6bae734a2281&quot;</span><span class="p">,</span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="mi">1684469328000</span><span class="p">,</span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1684469270364</span><span class="p">},</span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="s2">&quot;0a02958c22089d8c6bae734a22814080d1c89183315a65080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541c4db2c9dfbcb6aa344793f1dda7bd656598a06d8121541f859b5c93f789f4bcffbe7cc95a71e28e5e6a5bd180a70dc8ec5918331&quot;</span><span class="p">}}}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/toc.js"></script>
+      
+        <script src="../../javascripts/nav-toc.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
