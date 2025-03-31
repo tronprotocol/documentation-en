@@ -1,938 +1,2625 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/history/" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>History - java-tron</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
-        <link href="../../stylesheets/extra.css" rel="stylesheet" />
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "History";
-        var mkdocs_page_input_path = "releases/history.md";
-        var mkdocs_page_url = "/documentation-en/releases/history/";
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/history/">
+      
+      
+        <link rel="prev" href="../signature_verification/">
+      
+      
+        <link rel="next" href="../../glossary/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
-    <script src="../../js/jquery-3.6.0.min.js" defer></script>
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
-</head>
+    
+      
+        <title>History - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
 
-<body class="wy-body-for-nav" role="document">
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> java-tron
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Getting Started With java-tron</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Using java-tron</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup and Restore</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">API</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Core Protocol</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contract</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">For java-tron Developers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/governance/">Governance Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">For Dapp Developers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">wallet-cli</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is wallet-cli</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">wallet-cli Commands</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Releases</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../upgrade-instruction/">Deployment Manual for the New Version</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../signature_verification/">Integrity Check</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">History</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-477epicurus">GreatVoyage-4.7.7(Epicurus)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-migrate-pow-operation-from-javalangmath-to-javalangstrictmath-for-cross-platform-computational-consistency">1. Migrate pow operation from java.lang.Math to java.lang.StrictMath for cross-platform computational consistency</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-event-subscription-processing-logic">1. Optimize event subscription processing logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-support-graceful-shutdown-with-signal-15-sigterm-for-nodes-enabling-backup">2. Support graceful shutdown with signal -15 (SIGTERM) for nodes enabling backup.</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-improve-duration-metrics-accuracy-of-grpc-interfaces">3. Improve duration metrics accuracy of gRPC interfaces</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v476anaximander">GreatVoyage-v4.7.6(Anaximander)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_1">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-statistical-logic-of-node-http-request-monitoring-metric">1. Optimize the statistical logic of node HTTP request monitoring metric</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-improve-stability-of-gradle-test-task">2. Improve stability of Gradle test task</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-add-tcp-outflow-monitoring-metric-for-prometheus-and-add-udp-inflow-traffic-statistic-to-monitorgetstatsinfo-api">3. Add TCP outflow monitoring metric for Prometheus and add UDP inflow traffic statistic to /monitor/getstatsinfo API</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-peer-node-idle-judgment-logic">4. Optimize peer node idle judgment logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-optimize-peer-sorting-logic">5. Optimize peer sorting logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-optimize-check-logic-for-fetching-block-inventory-message">6. Optimize check logic for fetching block inventory message</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#7-optimize-block-processing-logic">7. Optimize block processing logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#8-optimize-random-disconnection-strategy">8. Optimize random disconnection strategy</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v475cleobulus">GreatVoyage-v4.7.5(Cleobulus)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_1">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-block-synchronization-and-production-logic">1. Optimize block synchronization and production logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-strengthen-size-check-of-account-creation-transactions">2. Strengthen size check of account creation transactions</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-adjust-energy-cost-for-some-opcodes-in-tvm">1. Adjust energy cost for some opcodes in TVM</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_2">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-synchronization-logic-among-threads">1. Optimize synchronization logic among threads</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-remove-redundant-code">2. Remove redundant code</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v474bias">GreatVoyage-v4.7.4(Bias)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_2">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-voting-reward-withdrawal-performance">1. Optimize voting reward withdrawal performance</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-add-check-function-for-the-number-of-unsolidified-blocks">2. Add check function for the number of unsolidified blocks</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-supply-block_unsolidified-in-code-for-walletbroadcasttransaction-api">1. Supply BLOCK_UNSOLIDIFIED in code for /wallet/broadcasttransaction API</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_3">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-field-codeversion-to-hellomessage-to-declare-code-version">1. Add field codeVersion to HelloMessage to declare code version</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-bump-libp2p-to-version-221">2. Bump libp2p to version 2.2.1</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-bump-jetty-to-9453v20231009">3. Bump jetty to 9.4.53.v20231009</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-refactor-gradle-dependencies">4. Refactor Gradle dependencies</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-provide-grpc-reflection-service">5. Provide gRPC reflection service</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-delete-the-litefullnodetool-related-code-under-the-framework-module">6. Delete the LiteFullNodeTool related code under the framework module</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#7-remove-configuration-item-nodediscoverybindip">7. Remove configuration item node.discovery.bind.ip</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#8-remove-redundant-ci-scripts">8. Remove redundant CI scripts</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#9-initialize-the-api-service-first-during-the-node-startup">9. Initialize the API service first during the node startup</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#10-optimize-log">10. Optimize log</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#11-add-synchronization-control-when-writing-to-zeromq">11. Add synchronization control when writing to ZeroMQ</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#12optimize-unexpected-exception-capture-process-of-scalingfactor-in-walletcreateshieldedcontractparameters-api">12.Optimize unexpected exception capture process of scalingFactor in /wallet/createshieldedcontractparameters API.</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v4731solon">GreatVoyage-v4.7.3.1(Solon)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_4">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-more-stable-walletgetnodeinfo-interface">1. More stable /wallet/getnodeinfo interface</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-lite-fullnode-data-pruning-tool">2. Optimize Lite FullNode data pruning tool</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v473chilon">GreatVoyage-v4.7.3(Chilon)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_3">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-grpc-interfaces-for-resource-price-and-transaction-memo-fee-query">1. Add gRPC interfaces for resource price and transaction memo fee query</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-supplement-disconnect-reasons">2. Supplement disconnect reasons</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-discard-transactions-from-bad-peers-instead-of-disconnected-peers">3. Discard transactions from bad peers instead of disconnected peers</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-stake-20-codes-and-error-messages">4. Optimize Stake 2.0 codes and error messages</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-accelerate-bloomfilter-initialization-for-transaction-cache">5. Accelerate bloomFilter initialization for transaction cache</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-fix-concurrency-issues-when-generating-chain-inventory">6. Fix concurrency issues when generating chain inventory</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#7-correct-resource-disorder-closure-behavior-on-kill-15">7. Correct resource disorder closure behavior on kill -15</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_1">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-http-interface-monitoring">1. Optimize HTTP interface monitoring</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-provide-uniform-rate-limitation-configuration-for-all-http-and-grpc-apis">2. Provide uniform rate limitation configuration for all HTTP and gRPC APIs</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-http-interface-parameter-parsing">3. Optimize HTTP interface parameter parsing</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-add-solidity-query-interfaces-of-resource-unit-price">4. Add solidity query interfaces of resource unit price</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-optimize-the-processing-logic-of-some-http-interfaces">5. Optimize the processing logic of some HTTP interfaces</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_5">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-check-for-expired-transactions-when-fetching-transactions">1. Add check for expired transactions when fetching transactions</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-fix-concurrency-issue-of-getheadblockid-method">2. Fix concurrency issue of getHeadBlockId method</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-delete-unused-network-configurations">3. Delete unused network configurations</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-obtain-external-ip-through-libp2p">4. Obtain external IP through Libp2p</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-add-address-parsing-for-stake-related-transactions-in-event-subscription">5. Add address parsing for stake-related transactions in event subscription</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-adjust-default-number-of-cpu-cores-used-in-signature-validation">6. Adjust default number of CPU cores used in signature validation</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#7-migrate-litefullnode-tool-related-unit-test-cases-to-plugins-module">7. Migrate LiteFullNode tool related unit test cases to Plugins module</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#8-enhance-query-performance-of-properties-db">8. Enhance query performance of properties DB</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v472periander">GreatVoyage-v4.7.2(Periander)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_4">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-upgrade-libp2p-to-v120">1. Upgrade Libp2p to v1.2.0</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-support-canceling-unstaking-in-stake-20">2. Support canceling unstaking in Stake 2.0</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-resource-delegating-supports-customizable-lock-period">3. Resource delegating supports customizable lock period</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-effective-peer-acquiring-strategy">4. Optimize effective peer-acquiring strategy</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm_1">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-implement-eip-3855-push0-instruction">1. Implement EIP-3855 PUSH0 Instruction</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_2">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-api-global-rate-limiter">1. Add API global rate limiter</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-add-data-to-http-interfaces-for-smart-contract-interaction">2. Add data to HTTP Interfaces for Smart Contract Interaction</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-getstorageat-interface">3. Optimize getStorageAt interface</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_6">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-event-forwarding-logic-in-event-subscription">1. Optimize event forwarding logic in event subscription</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-support-dynamic-loading-according-to-nodeactive-and-nodepassive">2. Support dynamic loading according to node.active and node.passive</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-block-synchronization-logic">3. Optimize block synchronization logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-normalize-http-urls">4. Normalize HTTP URLs</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-optimize-block-fetching-logic">5. Optimize block fetching logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-add-a-new-node-startup-mode">6. Add a new node startup mode</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#7-upgrade-junit-to-4132">7. Upgrade JUnit to 4.13.2</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#8-add-monitoring-metrics-for-json-rpc">8. Add monitoring metrics for JSON-RPC</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#9-optimize-the-database-module">9. Optimize the database module</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#10-optimize-checkpoint-v2-recovery-process">10. Optimize checkpoint v2 recovery process</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v4711-pittacus">GreatVoyage-v4.7.1.1 (Pittacus)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#api_3">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-remove-apis-involving-sensitive-information">1. Remove APIs involving sensitive information</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-resource-delegate-information-query-interface">2. Optimize resource delegate information query interface</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_7">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-update-logic-of-the-origin_energy_usage-field-in-the-transaction-receipt">1. Optimize the update logic of the origin_energy_usage field in the transaction receipt</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v471sartre">GreatVoyage-v4.7.1(Sartre)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#cores">Cores</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-node-ip-setting">1. Optimize the node IP setting</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-block-synchronization-logic">2. Optimize block synchronization logic</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_4">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-list-of-solidified-block-apis">1. Optimize the list of solidified block APIs</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-resource-delegation-relationship-api">2. Optimize resource delegation relationship API</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_8">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-litefullnode-detection-logic">1. Optimize LiteFullNode detection logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-node-log-output">2. Optimize node log output</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v4701aristotle">GreatVoyage-v4.7.0.1(Aristotle)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#cores_1">Cores</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-a-new-stake-model-stake-20">1. A new stake model - Stake 2.0</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2enhance-database-query-performance">2.Enhance database query performance</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-block-production-process">3. Optimize block production process</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-add-transaction-hash-cache">4. Add transaction hash cache</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-add-libp2p-module-as-java-tron-p2p-network-protocol-implementation">5. Add libp2p module as java-tron p2p network protocol implementation</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm_2">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-new-instructions-to-support-stake-20">1. Add new instructions to support Stake 2.0</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-dynamic-energy-model">2. Dynamic energy model</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-the-return-value-of-the-chainid-opcode">3. Optimize the return value of the chainId opcode</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_5">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-apis-to-support-stake-20">1. Add APIs to support Stake 2.0</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-add-energy-estimation-api">2. Add energy estimation API</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_9">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-gradle-compilation-parameters">1. Optimize Gradle compilation parameters</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-node-conditional-stop-function">2. Optimize node conditional stop function</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-delete-code-related-to-database-v1">3. Delete code related to database v1</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-database-log-output">4. Optimize database log output</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-make-snapshot-flush-speed-configurable">5. Make snapshot flush speed configurable</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-toolkitjar-integration">6. Toolkit.jar Integration</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v460-socrates">GreatVoyage-v4.6.0 (Socrates)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_5">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-delegate-relationship-index-structure">1. Optimize delegate relationship index structure</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-add-transaction-memo-fee-proposal">2. Add transaction memo fee proposal</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-add-optimized-reward-algorithm-proposal">3. Add optimized reward algorithm proposal</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-upgrade-checkpoint-mechanism-to-v2-in-database-module">4. Upgrade checkpoint mechanism to v2 in database module</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-optimize-block-production-priority-between-active-and-backup-nodes">5. Optimize block production priority between active and backup nodes</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6optimize-the-kademlia-algorithm-for-the-network-module">6.Optimize the Kademlia algorithm for the network module</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_10">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-merge-archivemanifestjar-into-toolkitjar">1. Merge ArchiveManifest.jar into Toolkit.jar</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-add-prometheus-metrics-for-network-module">2. Add prometheus metrics for network module</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-add-the-help-command-option">3. Add the --help command option</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-litefullnodetooljar">4. Optimize LiteFullNodeTool.jar</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-optimize-the-return-value-of-eth_getblockbyhash-and-eth_getblockbynumber-apis">5. Optimize the return value of eth_getBlockByHash and eth_getBlockByNumber APIs</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v452aurelius">GreatVoyage-v4.5.2(Aurelius)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_6">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-block-processing">1. Optimize block processing</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-transaction-cache">2. Optimize transaction cache</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-nodes-connection-strategy">3. Optimize nodes connection strategy</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-block-generating-logic">4. Optimize block generating logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-optimize-fork-switching-logic">5. Optimize fork switching logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-add-database-storage-partition-tool">6. Add database storage partition tool</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_6">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-new-block-header-query-api">1. New block header query API</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-new-historical-bandwidth-unit-price-query-api">2. New historical bandwidth unit price query API</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_11">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-block-synchronization-logic">1. Optimize block synchronization logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-eth_estimategas-and-eth_call-api">2. Optimize eth_estimateGas and eth_call API</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-enhance-the-fault-tolerance-of-the-interface">3. Enhance the fault tolerance of the interface</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v451tertullian">GreatVoyage-v4.5.1(Tertullian)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_7">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-transaction-cache-loading">1. Optimize transaction cache loading</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-account-trc-10-asset-storage-structure">2. Optimize account TRC-10 asset storage structure</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-light-node-synchronization">3. Optimize light node synchronization</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-block-broadcasting">4. Optimize block broadcasting</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-optimize-fetch-block-process">5. Optimize fetch block process</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-support-prometheus-metric-protocol-interface">6. Support prometheus metric protocol interface</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#7-support-node-stop-at-specified-condition">7. Support node stop at specified condition</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm_3">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-adjust-the-upper-limit-that-can-be-set-for-the-maximum-execution-time-of-tvm">1. Adjust the upper limit that can be set for the maximum execution time of TVM</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-the-cache-structure-of-tvm">2. Optimize the cache structure of TVM</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v446david">GreatVoyage-v4.4.6(David)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_12">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-update-the-fastjson-dependency-library-to-the-latest-version">1. Update the fastjson dependency library to the latest version</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-445cicero">GreatVoyage-4.4.5(Cicero)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_13">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-query-interface-of-the-node">1. Optimize the query interface of the node</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-444plotinus">GreatVoyage-4.4.4(Plotinus)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_8">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-node-startup-time">1. Optimize node startup time</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-memory-usage">2. Optimize memory usage</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-the-block-producing-thread">3. Optimize the block-producing thread</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm_4">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-tvm-support-multi-version-program-executors">1. TVM support multi-version program-executors</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_14">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-log-storage">1. Optimize log storage</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-network-service-shutdown-logic">2. Optimize network service shutdown logic</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-improve-the-java-tron-upgrade-mechenism">3. improve the java-tron upgrade mechenism</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-442augustinus">GreatVoyage-4.4.2(Augustinus)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm_5">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-tvm-opcode-execution-model-optimization">1. TVM Opcode Execution Model Optimization</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_7">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-newly-adding-eth-compatible-log-filter-for-json-rpc-apis">1. Newly Adding ETH compatible log filter for JSON-RPC APIs.</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_15">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-leveldb-databases-performance-optimization">1. LevelDB Databases Performance Optimization</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-440rousseau">GreatVoyage-4.4.0(Rousseau)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_9">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-block-broadcasting">1. Optimize the block broadcasting</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-optimize-the-query-performance-of-dynamic-store">2. Optimize the query performance of dynamic store</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-the-transaction-broadcasting-interface">3. Optimize the transaction broadcasting interface</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-the-parameters-of-the-database">4. Optimize the parameters of the database</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm_6">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-provide-compatibility-with-evm">1. Provide compatibility with EVM</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-adapt-to-ethereum-london-release">2. Adapt to Ethereum London Release</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-in-constant-mode-energy-limit-supports-customization-and-the-default-value-is-increased">3. In constant mode, Energy limit supports customization and the default value is increased</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_8">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-support-ethereum-compatible-json-rpc-api">1. Support Ethereum compatible JSON-RPC API</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-fullnode-supports-disabling-apis">2. FullNode supports disabling APIs</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-the-triggerconstantcontract-api">3. Optimize the TriggerConstantContract API</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#changes">Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-upgrade-event-plugin-to-support-bttc-data">1. Upgrade event plugin to support BTTC data</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-increase-the-upper-limit-of-the-maxfeelimit-network-parameter">2. Increase the upper limit of the MaxFeeLimit network parameter.</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-the-quick-start-script-startsh">3. Optimize the quick start script start.sh</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-430bacon">GreatVoyage-4.3.0(Bacon)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core_10">Core</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-a-proposal-to-adjust-the-free-net-limit-in-an-account">1. Add a proposal to adjust the free net limit in an account.</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-add-a-proposal-to-adjust-the-total-net-limit">2. Add a proposal to adjust the total net limit.</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-the-account-data-structure">3. Optimize the Account Data Structure</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm_7">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-vote-instructions-and-precompile-contracts-in-tvm">1. Add Vote Instructions and Precompile Contracts in TVM</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-add-a-new-type-error-in-smart-contract-abi">2. Add a New Type: Error in Smart Contract ABI</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_9">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-add-a-new-field-energy_used-in-transactionextention">1. Add a New Field: energy_used in TransactionExtention</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#changes_1">Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-change-the-cryptography-library-to-bouncy-castle">1. Change the Cryptography Library to Bouncy Castle</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-modify-the-calculation-of-net_usage-value-in-the-transactioninfo-when-creating-new-accounts">2. Modify the Calculation of net_usage Value in the Transactioninfo when Creating New Accounts</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-optimize-the-block-verification">3. Optimize the Block Verification</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#4-optimize-the-node-startup">4. Optimize the Node Startup</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#5-optimize-transaction-processing-flow-to-reduce-memory-usage">5. Optimize Transaction Processing Flow to Reduce Memory Usage</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#6-add-new-plugins-to-optimize-the-performance-of-levedb-startup">6. Add New Plugins to Optimize the Performance of levedb Startup</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-4221epictetus">GreatVoyage-4.2.2.1(Epictetus)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core-protocol">Core Protocol</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-processing-logic-of-pending-transactions">1. Optimize the processing logic of pending transactions.</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-422lucretius">GreatVoyage-4.2.2(Lucretius)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core-protocol_1">Core Protocol</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-block-processing-optimization">1. Block Processing optimization</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-data-query-optimization">2. Data Query optimization</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#3-smart-contract-abi-storage-optimization">3. Smart Contract ABI Storage optimization</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_16">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-system-contract-batchvalidatesign-initialization-process-optimization">1. System Contract BatchValidateSign Initialization Process optimization</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-420plato">GreatVoyage-4.2.0(Plato)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core-protocol_2">Core Protocol</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-optimize-the-resource-model">1. Optimize the resource model</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tvm_8">TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1add-freezeunfreeze-instructions-in-tvm">1、Add Freeze/Unfreeze instructions in TVM</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#other-changes_17">Other Changes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1optimize-the-block-synchronization">1、Optimize the block synchronization.</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-413thales">GreatVoyage-4.1.3(Thales)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#core-protocol_3">Core Protocol</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1sorting-the-transactions-in-pending-pool-sr-will-prioritize-the-transactions-with-high-packing-fee">1.Sorting the transactions in pending pool, SR will prioritize the transactions with high packing fee</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#api_10">API</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1add-new-api-to-support-transaction-query-in-pending-pool">1.Add new API to support transaction query in pending pool.</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#great-voyage-v412">Great Voyage - v4.1.2</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#i-core-protocol">I. Core Protocol</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1reward-srs-with-the-transaction-fees-charged-for-bandwidth-and-energy">1、Reward SRs with the transaction fees charged for bandwidth and energy.</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2support-account-history-balance-query">2、Support account history balance query.</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3optimized-the-blackhole-account-to-improve-transaction-execution-speed">3、Optimized the blackhole account to improve transaction execution speed</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ii-tvm">II. TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1adopt-to-solidity060">1、Adopt to solidity0.6.0.</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2make-max_fee_limit-configurable-as-a-chain-property">2、Make MAX_FEE_LIMIT configurable as a chain property.</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#iii-others-changes">III. Others Changes</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#1use-the-jitpack-repository-to-provide-dependency-support-and-make-it-easy-for-developers-to-use-java-tron-as-a-dependency-for-their-projects">1、Use the jitpack repository to provide dependency support and make it easy for developers to use java-tron as a dependency for their projects.</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v411">GreatVoyage-v4.1.1</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#i-core-protocol_1">I. Core Protocol</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#1-new-consensus-protocol">1. New Consensus Protocol</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#2-new-node-type">2. New Node Type</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ii-tvm_1">II. TVM</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#achieved-compatibility-with-ethereum-istanbul-upgrade">Achieved compatibility with Ethereum Istanbul upgrade</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#iii-mechanism">III. Mechanism</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#iv-other-modifications">IV. Other Modifications</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#greatvoyage-v400">GreatVoyage-v4.0.0</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#notices">Notices</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#new-features">New features</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#changes_2">Changes</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#odyssey-v37">Odyssey-v3.7</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#modularization">Modularization</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#framework">Framework</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#protocol">Protocol</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#consensus">Consensus</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#crypto">Crypto</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#actuator">Actuator</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#chainbase">Chainbase</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#new-event-subscription-trigger-for-solidified-block">New event subscription trigger for solidified block</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#two-new-http-apis-added">Two new HTTP APIs added</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#a-new-rpc-api-added">A new RPC API added</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#odyssey-v365">Odyssey-v3.6.5</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-new-delegation-mechanism">1. New delegation mechanism</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-fairer-and-more-efficient-staking-rewards-mechanism">2. Fairer and more efficient staking rewards mechanism</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-fairer-incentive-mechanism">3. Fairer incentive mechanism</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-improvement-and-optimization-of-tvm">4. Improvement and optimization of TVM</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit">5. Improvement of the dynamic adjustment scheme of Energy upper limit</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Glossary</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
-                  </li>
-              </ul>
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#history" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              History
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">java-tron</a>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
         
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
       </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Releases &raquo;</li><li>History</li>
-    <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/history.md"
-          class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <h1 id="history">History<a class="headerlink" href="#history" title="Permanent link">&para;</a></h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/compiler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dapp Development Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            wallet-cli
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli Commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-477epicurus" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.7.7(Epicurus)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.7.7(Epicurus)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v476anaximander" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.6(Anaximander)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.6(Anaximander)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v475cleobulus" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.5(Cleobulus)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.5(Cleobulus)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tvm" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v474bias" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.4(Bias)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.4(Bias)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v4731solon" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.3.1(Solon)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.3.1(Solon)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_4" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v473chilon" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.3(Chilon)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.3(Chilon)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_5" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v472periander" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.2(Periander)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.2(Periander)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_4" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tvm_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_6" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v4711-pittacus" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.1.1 (Pittacus)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.1.1 (Pittacus)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#api_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_7" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v471sartre" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.1(Sartre)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.1(Sartre)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#cores" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Cores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_4" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_8" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v4701aristotle" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.7.0.1(Aristotle)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.7.0.1(Aristotle)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#cores_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Cores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tvm_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_5" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_9" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v460-socrates" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.6.0 (Socrates)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.6.0 (Socrates)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_5" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_10" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v452aurelius" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.5.2(Aurelius)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.5.2(Aurelius)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_6" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_6" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_11" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v451tertullian" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.5.1(Tertullian)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.5.1(Tertullian)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_7" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tvm_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v446david" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.4.6(David)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.4.6(David)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_12" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-445cicero" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.4.5(Cicero)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.4.5(Cicero)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_13" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-444plotinus" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.4.4(Plotinus)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.4.4(Plotinus)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_8" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tvm_4" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_14" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-442augustinus" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.4.2(Augustinus)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.4.2(Augustinus)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#tvm_5" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_7" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_15" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-440rousseau" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.4.0(Rousseau)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.4.0(Rousseau)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_9" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tvm_6" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_8" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#changes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-430bacon" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.3.0(Bacon)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.3.0(Bacon)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core_10" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tvm_7" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_9" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#changes_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-4221epictetus" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.2.2.1(Epictetus)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.2.2.1(Epictetus)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core-protocol" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core Protocol
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-422lucretius" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.2.2(Lucretius)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.2.2(Lucretius)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core-protocol_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_16" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-420plato" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.2.0(Plato)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.2.0(Plato)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core-protocol_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tvm_8" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#other-changes_17" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-413thales" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-4.1.3(Thales)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-4.1.3(Thales)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#core-protocol_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#api_10" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#great-voyage-v412" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Great Voyage - v4.1.2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Great Voyage - v4.1.2" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#i-core-protocol" class="md-nav__link" >
+    <span class="md-ellipsis">
+      I. Core Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3optimized-the-blackhole-account-to-improve-transaction-execution-speed" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3、Optimized the blackhole account to improve transaction execution speed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#ii-tvm" class="md-nav__link" >
+    <span class="md-ellipsis">
+      II. TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2make-max_fee_limit-configurable-as-a-chain-property" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2、Make MAX_FEE_LIMIT configurable as a chain property.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#iii-others-changes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      III. Others Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#1use-the-jitpack-repository-to-provide-dependency-support-and-make-it-easy-for-developers-to-use-java-tron-as-a-dependency-for-their-projects" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1、Use the jitpack repository to provide dependency support and make it easy for developers to use java-tron as a dependency for their projects.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v411" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.1.1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.1.1" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#i-core-protocol_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      I. Core Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#ii-tvm_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      II. TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#iii-mechanism" class="md-nav__link" >
+    <span class="md-ellipsis">
+      III. Mechanism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#iv-other-modifications" class="md-nav__link" >
+    <span class="md-ellipsis">
+      IV. Other Modifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#greatvoyage-v400" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GreatVoyage-v4.0.0
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GreatVoyage-v4.0.0" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#notices" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Notices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#new-features" class="md-nav__link" >
+    <span class="md-ellipsis">
+      New features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#changes_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#odyssey-v37" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Odyssey-v3.7
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Odyssey-v3.7" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#modularization" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Modularization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#new-event-subscription-trigger-for-solidified-block" class="md-nav__link" >
+    <span class="md-ellipsis">
+      New event subscription trigger for solidified block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#two-new-http-apis-added" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Two new HTTP APIs added
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#a-new-rpc-api-added" class="md-nav__link" >
+    <span class="md-ellipsis">
+      A new RPC API added
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#odyssey-v365" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Odyssey-v3.6.5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Odyssey-v3.6.5" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-new-delegation-mechanism" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. New delegation mechanism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2-fairer-and-more-efficient-staking-rewards-mechanism" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. Fairer and more efficient staking rewards mechanism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3-fairer-incentive-mechanism" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3. Fairer incentive mechanism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#4-improvement-and-optimization-of-tvm" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4. Improvement and optimization of TVM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5. Improvement of the dynamic adjustment scheme of Energy upper limit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="history">History<a class="headerlink" href="#history" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>
@@ -3203,55 +4890,63 @@ validatemultisign(address accountAddress, uint256 permissionId, bytes32 content,
 <p>(6) Added triggerConstantContract feature for SolidityNode and FullNode so as to improve the functionality of node APIs.</p>
 <h3 id="5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit">5. Improvement of the dynamic adjustment scheme of Energy upper limit<a class="headerlink" href="#5-improvement-of-the-dynamic-adjustment-scheme-of-energy-upper-limit" title="Permanent link">&para;</a></h3>
 <p>The method of calculating Energy consumed per unit of time shifted from only calculating the staked Energy consumed to all Energy consumed. With this change, statistics of Energy consumption will be more accurate and effective, providing reference for adjusting Energy upper limit, saving users’ costs of using TRON blockchain network and improving network efficiency.</p>
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../signature_verification/" class="btn btn-neutral float-left" title="Integrity Check"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../glossary/" class="btn btn-neutral float-right" title="Glossary">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="../signature_verification/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../glossary/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme_extra.js" defer></script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-      <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/toc.js"></script>
+      
+        <script src="../../javascripts/nav-toc.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
 </html>
