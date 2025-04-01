@@ -46,6 +46,14 @@
 
 .md-sidebar {
     padding-top: 0; /* Remove top padding */
-    margin-top: 0;  /* Remove top margin */
+}
+
+/*Hide Home nav-item*/
+.md-nav--primary > .md-nav__list > li:first-child:not(.md-nav__item--nested) {
+    display: none;
+}
+
+.md-footer {
+  background-color: var(--md-default-bg-color);
 }
 

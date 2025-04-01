@@ -3,6 +3,7 @@ site_url: https://tronprotocol.github.io/documentation-en/
 repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
+    - Home: index.md
     - Getting Started With java-tron:
         - Getting Started: getting_started/getting_started_with_javatron.md
     - Using java-tron:
@@ -53,6 +54,7 @@ theme:
   custom_dir: docs/overrides
   features:
     - navigation.sections  # Enable grouping in the left navigation bar
+    - navigation.footer
     - toc.integrate
     - search.highlight  # Highlight matching content during search
     - search.suggest  # Show suggestions during search
