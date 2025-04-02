@@ -53,11 +53,11 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 
 | Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)   | [http://34.86.86.229/](http://34.86.86.229/)     | LevelDB, exclude internal transactions (About 1821G on 6 Aug. 2024)     |
-| Official data source (Singapore)    | [http://34.143.247.77/](http://34.143.247.77/)    | 	LevelDB, exclude internal transactions (About 1819G on 5 Aug. 2024)     |
-| Official data source (North America: America)    | [http://35.197.17.205/](http://35.197.17.205/)   | RocksDB, exclude internal transactions (About 1799G on 6 Aug. 2024)     |
-| Official data source (Singapore)    | [http://35.247.128.170/](http://35.247.128.170/)   | LevelDB, include internal transactions (About 2000G on 6 Aug. 2024)     |
-| Official data source ((North America: Virginia))    | [http://34.48.6.163/](http://34.48.6.163/)   | LevelDB, exclude internal transactions, include account history TRX balance (About 2288G on 6 Aug. 2024)     |
+| Official data source (North America: Virginia)   | [http://34.86.86.229/](http://34.86.86.229/)     | LevelDB, exclude internal transactions     |
+| Official data source (Singapore)    | [http://34.143.247.77/](http://34.143.247.77/)    | 	LevelDB, exclude internal transactions     |
+| Official data source (North America: America)    | [http://35.197.17.205/](http://35.197.17.205/)   | RocksDB, exclude internal transactions     |
+| Official data source (Singapore)    | [http://35.247.128.170/](http://35.247.128.170/)   | LevelDB, include internal transactions    |
+| Official data source ((North America: Virginia))    | [http://34.48.6.163/](http://34.48.6.163/)   | LevelDB, exclude internal transactions, include account history TRX balance     |
 
 
 **Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. 
@@ -72,7 +72,7 @@ The TRON Public Chain has supported the type of the Lite FullNode since the vers
 
 | Lite Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (Singapore)  | [http://34.143.247.77/](http://34.143.247.77/)     | LevelDB, About 41G on 5 Aug. 2024  |
+| Official data source (Singapore)  | [http://34.143.247.77/](http://34.143.247.77/)     | LevelDB  |
 
 
 **Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](../../using_javatron/toolkit/#lite-fullnode-data-pruning).
