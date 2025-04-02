@@ -49,7 +49,7 @@
 }
 
 /*Hide Home nav-item*/
-.md-nav--primary > .md-nav__list > li:first-child:not(.md-nav__item--nested) {
+.md-nav--primary > .md-nav__list > li:first-child {
     display: none;
 }
 
@@ -59,7 +59,13 @@
 
 /* add flex alignment */
 .md-footer__link {
-  display: flex;
   align-items: center; 
+}
+
+/* Override the responsive design part of the footer. */
+@media screen and (max-width: 44.984375em) {
+  .md-footer__link--prev .md-footer__title {
+    display: block;    
+  }
 }
 
