@@ -79,7 +79,6 @@ The TRON Public Chain has supported the type of the Lite FullNode since the vers
 
 #### Use the Data Snapshot 
 
-
 The steps for using data snapshots are as follows:
 
 1. Download the corresponding compressed backup database according to your needs.
@@ -88,4 +87,4 @@ The steps for using data snapshots are as follows:
 
 
 ### Nile TestNet Data Snapshot
-Download Nile TestNet Data Snapshot [here](https://database.nileex.io/), for both FullNode and Lite FullNode.
+Download Nile TestNet Data Snapshot [here](https://database.nileex.io/), for both FullNode and Lite FullNode. The usage method is the same as that of the [Main Net](#use-the-data-snapshot).
