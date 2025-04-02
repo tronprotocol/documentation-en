@@ -17,5 +17,3 @@ MainNet Configuration:
 
 TestNet Configuration:
 [GH tronprotocol/TronDeployment/test_net_config.conf](https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf)
-
-<meta http-equiv="refresh" content="0; url=/">
