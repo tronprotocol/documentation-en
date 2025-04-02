@@ -6,7 +6,7 @@ This page covers the basics of using java-tron, which includes generating accoun
 
 java-tron is a TRON network client written in Java. This means a computer running java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
 
-# Generating accounts
+## Generat account
 There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).
 
 Enter the command `java -jar wallet-cli.jar` in the terminal to start a wallet-cli:
@@ -35,7 +35,7 @@ Register a wallet successful, keystore file name is UTC--2022-07-04T06-35-35.304
 wallet> 
 ```
 
-# Login wallet-cli
+## Login wallet-cli
 After the registration is complete, enter the `login` command to log in to wallet-cli.
 ```
 wallet> login
@@ -61,7 +61,7 @@ wallet>
 Then you can use the `backupwallet` command to view the private key of the account, you need to enter the password according to the prompt. It is recommended to save the private key.
 
 
-# Run a java-tron node
+## Run a java-tron node
 java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start java-tron, you need first obtain the java-tron executable file, please refer to the [Installation and Deployment](../using_javatron/installing_javatron.md) chapter, and then run the following command to start java-tron.
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
@@ -114,7 +114,7 @@ If no error messages are reported in the node logs, everything is fine. In order
 
 If you want to shut down java-tron node, please use this command: `kill -15 process id`.
 
-# Get TRX on Nile testnet
+## Obtain TRX
 In order to make some transactions, the user must fund their account with TRX. On TRON mainnet, TRX can only be obtained in three ways:
 1. Rewards for block production by SRs/rewards for voting for SRs；
 2. Another TRON account transfers TRX to it;
@@ -123,11 +123,11 @@ In order to make some transactions, the user must fund their account with TRX. O
 In the TRON testnet, TRX has no real value and can be obtained for free through [faucet](https://nileex.io/join/getJoinPage).
 
 
-# Interact with java-tron
+## Interact with java-tron node
 
-## Interacting with java-tron nodes using wallet-cli
+### Interact by using wallet-cli
 java-tron provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.
-### Get account information
+#### Get account information
 After entering the `getaccount` command in wallet-cli, it will request account information data from the java-tron node, and then display the result in the terminal.
 ```
 wallet> getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
@@ -150,7 +150,7 @@ Result:
 }
 
 ```
-### Get account balance
+#### Get account balance
 Get the balance of an account with the `getbalance` command:
 ```
 wallet> getbalance
@@ -159,7 +159,7 @@ wallet>
 ```
 
 
-### Transferring TRX
+#### Transferring TRX
 To transfer TRX through the `sendcoin` command, enter the transfer address, and the amount:
 ```
 wallet> sendcoin TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
@@ -207,7 +207,7 @@ Send 1000000 Sun to TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf successful !!
 wallet> 
 ```
 
-### Query transaction by transaction id
+#### Query transaction by transaction id
 The above step sends a transferring TRX transaction through the `sendcoin` command, and prints the id of the transaction on the wallet-cli terminal:`21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4`. Next, you can query the transaction through `gettransactionbyid`, or query the result of the transaction through `gettransactioninfobyid`.
 
 ```
@@ -262,11 +262,11 @@ wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca14
 }
 wallet> 
 ```
-## Interacting with java-tron nodes using Curl
+### Interact by using Curl
 The above describes how to use wallet-cli to interact with java-tron. Compared with sending grpc/http commands directly, this tool provides more friendly interactive commands, allowing users to send commands to java-tron more conveniently. But, how to send HTTP requests directly to the java-tron node? Curl is a command line tool for sending HTTP requests. This chapter will explain how to check account balances and send transactions through Curl.
 
 
-### Get account balance
+#### Get account balance
 You can query the TRX balance information of the account through the node HTTP interface `wallet/getaccount`. The `balance` field in the returned result is the TRX balance, in sun:
 ```
  curl -X POST http://127.0.0.1:16887/wallet/getaccount -d 
@@ -279,7 +279,7 @@ Result：
 {"account_name": "testacc2","address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM","balance": 1000000000000000,"account_resource": {}}
 ```
 
-### Send transactions
+#### Send transactions
 Sending a transaction through the http interface requires a total of three steps:
 
 1. Create a transaction
@@ -371,7 +371,7 @@ Result：
 ```
 The return result is true, indicating that the transaction broadcast was successful.
 
-### Query transaction by transaction id
+#### Query transaction by transaction id
 Query the content of the transaction through the http interface `wallet/gettransactionbyid`:
 ```
 curl --location --request POST 'http://127.0.0.1:16887/wallet/gettransactionbyid' \
