@@ -1,7 +1,5 @@
 # Welcome to the java-tron user manual!
-
 java-tron is a TRON client implemented in Java, it provides completely open source code, you can download the [java-tron source code](https://github.com/tronprotocol/java-tron) on Github. This article will introduce the knowledge related to java-tron. Through this article, you will learn how to use java-tron and how to participate in the development and maintenance of java-tron, including the following parts:
-
 
 * [Getting Started With java-tron](getting_started/getting_started_with_javatron/)
 * [Using java-tron](using_javatron/installing_javatron/)
