@@ -6,7 +6,7 @@ Everything `java-tron` persists gets written inside its data directory. The defa
 $ java -jar fullnode.jar -d ./outputdir
 ```
 
-# Data Backup
+## Data Backup
 Please shut down the node process before backing up the node data, for details, please refer to the following steps:
 
 First, use the command `$ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'` to get the process id of java-tron, and then use the command `kill -15 process id` to kill the process. Or use a stop script like this:
@@ -32,7 +32,7 @@ Then, backup the data by the following command.
 $ tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
 ```
 
-# Data Restore
+## Data Restore
 
 When restoring the data, just copy the corresponding backup data to the node directory. Take the database backup file name `output-directory.20220628152402.etgz` as an example, the command to restore the database file is:
 
@@ -40,29 +40,31 @@ When restoring the data, just copy the corresponding backup data to the node dir
 $ tar xzvf output-directory.20220628152402.etgz
 ```
 
-# Public Backup Data 
+## Public Backup Data 
 
 For the TRON mainnet and Nile testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a TRON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.
 
-### FullNode Data Snapshot
+### Main Net Data Snapshot
+
+#### FullNode Data Snapshot
 
 The following table shows the download address of Fullnode data snapshots. Please select a suitable data snapshot according to the location and node database type, and whether you need to query historical internal transactions.
 
 
 | Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (North America: Virginia)   | http://34.86.86.229/     | LevelDB, exclude internal transactions (About 1821G on 6 Aug. 2024)     |
-| Official data source (Singapore)    | http://34.143.247.77/    | 	LevelDB, exclude internal transactions (About 1819G on 5 Aug. 2024)     |
-| Official data source (North America: America)    | http://35.197.17.205/   | RocksDB, exclude internal transactions (About 1799G on 6 Aug. 2024)     |
-| Official data source (Singapore)    | http://35.247.128.170/   | LevelDB, include internal transactions (About 2000G on 6 Aug. 2024)     |
-| Official data source ((North America: Virginia))    | http://34.48.6.163/   | LevelDB, exclude internal transactions, include account history TRX balance (About 2288G on 6 Aug. 2024)     |
+| Official data source (North America: Virginia)   | [http://34.86.86.229/](http://34.86.86.229/)     | LevelDB, exclude internal transactions     |
+| Official data source (Singapore)    | [http://34.143.247.77/](http://34.143.247.77/)    | 	LevelDB, exclude internal transactions     |
+| Official data source (North America: America)    | [http://35.197.17.205/](http://35.197.17.205/)   | RocksDB, exclude internal transactions     |
+| Official data source (Singapore)    | [http://35.247.128.170/](http://35.247.128.170/)   | LevelDB, include internal transactions    |
+| Official data source ((North America: Virginia))    | [http://34.48.6.163/](http://34.48.6.163/)   | LevelDB, exclude internal transactions, include account history TRX balance     |
 
 
 **Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. 
 
 
 
-### Lite FullNode Data Snapshot
+#### Lite FullNode Data Snapshot
 
 
 The TRON Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.
@@ -70,13 +72,12 @@ The TRON Public Chain has supported the type of the Lite FullNode since the vers
 
 | Lite Fullnode Data Source | Download site | Description |
 | -------- | -------- | -------- |
-| Official data source (Singapore)  | http://34.143.247.77/     | LevelDB, About 41G on 5 Aug. 2024  |
+| Official data source (Singapore)  | [http://34.143.247.77/](http://34.143.247.77/)     | LevelDB  |
 
 
 **Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](../../using_javatron/toolkit/#lite-fullnode-data-pruning).
 
-### Use the data snapshot 
-
+#### Use the Data Snapshot 
 
 The steps for using data snapshots are as follows:
 
@@ -84,3 +85,6 @@ The steps for using data snapshots are as follows:
 2. Decompress the compressed file of the backup database to the output-directory directory or to the corresponding directory according to your needs.
 3. Startup the node. The node reads the output-directory directory by default. If you need to specify another directory，please add the `-d directory` parameter when the node starts.
 
+
+### Nile TestNet Data Snapshot
+Download Nile TestNet Data Snapshot [here](https://database.nileex.io/), for both FullNode and Lite FullNode. The usage method is the same as that of the [Main Net](#use-the-data-snapshot).
