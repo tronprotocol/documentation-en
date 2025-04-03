@@ -46,6 +46,26 @@
 
 .md-sidebar {
     padding-top: 0; /* Remove top padding */
-    margin-top: 0;  /* Remove top margin */
+}
+
+/*Hide Home nav-item*/
+.md-nav--primary > .md-nav__list > li:first-child {
+    display: none;
+}
+
+.md-footer {
+  background-color: var(--md-default-bg-color);
+}
+
+/* add flex alignment */
+.md-footer__link {
+  align-items: center; 
+}
+
+/* Override the responsive design part of the footer. */
+@media screen and (max-width: 44.984375em) {
+  .md-footer__link--prev .md-footer__title {
+    display: block;    
+  }
 }
 
