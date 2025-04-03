@@ -10,12 +10,6 @@ java-tron is a TRON client implemented in Java, it provides completely open sour
 * [wallet-cli](clients/wallet-cli/)
 * [Releases](releases/upgrade-instruction/)
 
-Below are some java-tron related projects:
-
-* [tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli) is the official command line wallet.
-* [tronprotocol/tips](https://github.com/tronprotocol/tips) is the TRON Improvement Proposals.
-* [tronprotocol/sun-network](https://github.com/tronprotocol/sun-network) is a project dedicated to building a trustful decentralized sidechain of TRON Main Chain.
-
 
 For other TRON related information, please visit the official website [tron.network](https://tron.network/index?lng=en) or the following resource links:
 
