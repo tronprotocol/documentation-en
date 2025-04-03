@@ -36,7 +36,8 @@
 
 /*Set the font color of the first-level navigation to increase the distinction from the second-level navigation*/
 .md-nav--primary .md-nav__item--section > .md-nav__link {
-    color: #444; 
+    color: #000;
+    font-size: 1.1em;
 }
 
 /* Hide the duplicated site name in the left sidebar.*/
