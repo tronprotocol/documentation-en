@@ -2,8 +2,7 @@
 To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the `Oracle JDK 1.8` first, and then you need to prepare at least two TRON network address and save the address and private key. You can use [wallet-cli](https://github.com/tronprotocol/wallet-cli) or [Tronlink](https://www.tronlink.org/) to create address.
 
 
-
-# Deployment Guide
+## Deployment Guide
 The process of building a node on private chain is the same as that on mainnet. The difference is the content of the node configuration file. The most important step to build a private chain is to modify the configuration items in the configuration file, so that the nodes can form a private network for node discovery, block synchronization and broadcast transactions.
 
 
