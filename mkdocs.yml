@@ -13,7 +13,7 @@ nav:
         - Private Network: using_javatron/private_network.md
         - Event Subscription: architecture/event.md
         - Database Configuration: architecture/database.md
-        - Network Configuration: using_javatron/connecting_to_tron.md
+        - Network Connection: using_javatron/connecting_to_tron.md
         - Node Monitoring: using_javatron/metrics.md
         - Node Maintenance Tool: using_javatron/toolkit.md
     - API:
