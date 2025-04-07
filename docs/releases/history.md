@@ -139,7 +139,7 @@ java-tron supports node monitoring and provides various metrics data. Anaximande
 Source Code: [https://github.com/tronprotocol/java-tron/pull/5920](https://github.com/tronprotocol/java-tron/pull/5920) 
 
 #### 2. Improve stability of Gradle test task
-Anaximander optimizes the unit test task. The Gradle [test-retry]([https://plugins.gradle.org/plugin/org.gradle.test-retry)  plugin is introduced to allow the failed unit test tasks to be re-executed. The `@Ignore` annotation is used to skip temporarily unused and unstable test cases. This optimization improves the stability of test task execution.
+Anaximander optimizes the unit test task. The Gradle [test-retry](https://plugins.gradle.org/plugin/org.gradle.test-retry)  plugin is introduced to allow the failed unit test tasks to be re-executed. The `@Ignore` annotation is used to skip temporarily unused and unstable test cases. This optimization improves the stability of test task execution.
 
 Source Code: [https://github.com/tronprotocol/java-tron/pull/5916](https://github.com/tronprotocol/java-tron/pull/5916)  [https://github.com/tronprotocol/java-tron/pull/5927](https://github.com/tronprotocol/java-tron/pull/5927)  
 
@@ -448,7 +448,7 @@ Please find the details below.
 Chilon adds three new gRPC interfaces. Users can obtain historical bandwidth unit price through `getBandwidthPrices` API, obtain historical energy unit price through `getEnergyPrices` API, and obtain transaction memo fee through `getMemoFee` API. These new gRPC APIs further improve the developer experience.
 
 TIP: [https://github.com/tronprotocol/tips/blob/master/tip-586.md](https://github.com/tronprotocol/tips/blob/master/tip-586.md)  
-Source Code: [https://github.com/tronprotocol/java-tron/pull/5412]([https://github.com/tronprotocol/java-tron/pull/5412)  
+Source Code: [https://github.com/tronprotocol/java-tron/pull/5412](https://github.com/tronprotocol/java-tron/pull/5412)  
 #### 2. Supplement disconnect reasons
 
 When a node fails to process a message from a peer, it may initiatively disconnect from the peer. However, in previous versions of Chilon, in some cases, the node did not inform the other node of the reason for the disconnection, which was not conducive to the analysis and troubleshooting of the connection issue by the other node.

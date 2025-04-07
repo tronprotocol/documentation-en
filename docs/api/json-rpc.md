@@ -1222,7 +1222,7 @@ QUANTITY - the filter id.
 
 **Returns**
 
-See [eth_getFilterChanges](/reference/eth_getfilterchanges)。
+See [eth_getFilterChanges](#eth_getfilterchanges)。
 
 **Example**
 
@@ -1340,7 +1340,7 @@ Object - The filter options which include below fields:
 
 **Returns**
 
- See [eth_getFilterChanges](/reference/eth_getfilterchanges).
+ See [eth_getFilterChanges](#eth_getfilterchanges).
 
 **Example**
 

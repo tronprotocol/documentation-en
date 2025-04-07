@@ -1,5 +1,5 @@
 # Development Example
-This article will take adding a new `setPeer` HTTP interface as an example to illustrate how to participate in the development of java-tron. Before developing, please configure the [InteliJ IDE development environment](../run-in-idea).
+This article will take adding a new `setPeer` HTTP interface as an example to illustrate how to participate in the development of java-tron. Before developing, please configure the [InteliJ IDE development environment](run-in-idea.md).
 
 Sometimes java-tron nodes may not be able to connect to peers due to network reasons, if you can add trusted nodes while the node is running, this will allow the node to connect to the peer even if the node discovery function is not working.
 
@@ -23,7 +23,7 @@ $ git merge upstream/develop --no-ff
 ```
 
 ## Create New Branch
-Pull a new branch from the `develop` branch of your own repository for local development, please refer to [branch naming convention](../java-tron/#branch-naming-conventions). In this example, the name of the new branch is: `feature/ add-new-http-demo`.
+Pull a new branch from the `develop` branch of your own repository for local development, please refer to [branch naming convention](java-tron.md/#branch-naming-conventions). In this example, the name of the new branch is: `feature/ add-new-http-demo`.
 
 ```
 $ git checkout -b feature/add-new-http-demo develop
@@ -247,7 +247,7 @@ Fix the code style warning in the picture, and then check the file again until t
 
 ## Commit Code
 
-Submit the code after development complete, please refer to the [commit specification](../java-tron/#commit-messages).
+Submit the code after development complete, please refer to the [commit specification](java-tron.md/#commit-messages).
 ```
 git add .
 git commit -m 'add a new http api setpeer'
