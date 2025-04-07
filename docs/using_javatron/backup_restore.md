@@ -87,4 +87,4 @@ The steps for using data snapshots are as follows:
 
 
 ### Nile TestNet Data Snapshot
-Download Nile TestNet Data Snapshot [here](https://database.nileex.io/), for both FullNode and Lite FullNode. The usage method is the same as that of the [Main Net](#use-the-data-snapshot).
+For detailed information about the Nile TestNet data snapshot, please refer to the [official website](https://nileex.io/), for both FullNode and Lite FullNode. The usage method is the same as that of the [Main Net](#use-the-data-snapshot).
