@@ -142,7 +142,7 @@ event.subscribe = {
 * `native.useNativeQueue`: `true` is to use the built-in message queue, `false` is to use the event plugin
 * `native.bindport`: ZeroMQ publisher binding port. In this example, it is `5555`, so the publisher address that the subscriber should connect to is `"tcp://127.0.0.1:5555"` 
 * `native.sendqueuelength`: The length of the send queue, that is, when the subscriber receives messages slowly, the maximum number of messages published by the publisher that the TCP buffer can hold. if it exceeds, The message will be discarded if exceeds the capacity
-* `topics`: Subscribed [event type](../../architecture/event/#event-type) , including block type, transaction type, etc.
+* `topics`: Subscribed [event type](#event-type) , including block type, transaction type, etc.
 
 ### Start node
 The event subscription service is disabled by default and needs to be enabled by adding the command line parameter `--es`. The start command of the node that enables the event subscription service is as follows:

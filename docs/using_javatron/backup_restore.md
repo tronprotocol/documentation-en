@@ -75,7 +75,7 @@ The TRON Public Chain has supported the type of the Lite FullNode since the vers
 | Official data source (Singapore)  | [http://34.143.247.77/](http://34.143.247.77/)     | LevelDB  |
 
 
-**Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](../../using_javatron/toolkit/#lite-fullnode-data-pruning).
+**Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](toolkit.md/#lite-fullnode-data-pruning).
 
 #### Use the Data Snapshot 
 
