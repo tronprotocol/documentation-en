@@ -1,15 +1,15 @@
 # Contract
 
-## Smart Contract Introduction
+## Introduction
 
 Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
 
 TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [TRON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
-## Smart Contract Features
+## Features
 TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
 
-### 1. Smart Contract 
+### Defination of Smart Contract 
 TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
 ``` solidity
 message SmartContract {
@@ -71,7 +71,7 @@ origin_energy_limit: energy consumption of the developer limit in one call, must
 
 Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.
 
-### 2. The Usage of the Function of Smart Contract 
+### Usage of the Function of Smart Contract 
 
 * **constant function and inconstant function**
 
@@ -126,7 +126,7 @@ Note: TRON's smart contract is different from TRON's system contract, if the tra
 ```
 Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
 
-### 3. Contract Address Using in Solidity Language 
+### Contract Address Using in Solidity Language 
 
 Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 
@@ -173,15 +173,13 @@ function assignAddress() public view {
 ```
 If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
 
-### 4. The Special Constants Differ from Ethereum 
+### Special Constants Differ from Ethereum 
 
-**Currency**
-
+#### Currency
 Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
-**Block**
-
+#### Block Related
 - block.blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded
 - block.coinbase (address): SuperNode address that produced the current block
 - block.difficulty (uint): current block difficulty, not recommended, set 0
