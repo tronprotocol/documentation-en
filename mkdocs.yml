@@ -9,7 +9,7 @@ nav:
     - Using java-tron:
         - Deploying: using_javatron/installing_javatron.md
         - Backup and Restore: using_javatron/backup_restore.md
-        - Lite FullNode: developers/litefullnode.md
+        - Lite FullNode: using_javatron/litefullnode.md
         - Private Network: using_javatron/private_network.md
         - Event Subscription: architecture/event.md
         - Database Configuration: architecture/database.md
