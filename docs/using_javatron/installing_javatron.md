@@ -53,7 +53,7 @@ then run the following command to start the node:
 $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
 ```
 
-**Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](../backup_restore/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
+**Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](backup_restore.md/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
 
 
 ### Others

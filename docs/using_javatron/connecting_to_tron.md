@@ -178,6 +178,6 @@ There are occasions when java-tron simply fails to connect to peers. The common 
 
 It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences. 
 
-The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](../private_network/).
+The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
 
 

@@ -94,7 +94,6 @@ plugins:
         - clients/tron-grid.md
         - contracts/trc20.md
         - contracts/tvm.md
-        - developers/archive-manifest.md
         - developers/contribution.md
         - developers/gpg.md
         - developers/incentives.md
