@@ -39,9 +39,8 @@ nav:
         - Core Modules: developers/code-structure.md
     - For Dapp Developers:
         - Tools: contracts/tools.md
-    - wallet-cli:
-        - What is wallet-cli: clients/wallet-cli.md
-        - wallet-cli Commands: clients/wallet-cli-command.md
+    - Clients:
+        - wallet-cli: clients/wallet-cli.md
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
