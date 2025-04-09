@@ -1,7 +1,7 @@
 # System Contracts
 The TRON network supports many different types of transactions, such as TRX transfer transactions, TRC10 transfer transactions, creating smart contract transactions, triggering smart contract transactions, staking TRX transactions, and more. To create different types of transactions, you need to call different API. For example, the type of smart contract deployment transaction is `CreateSmartContract`, you need to call `wallet/deploycontractAPI` to create a transaction; the type of stake TRX transactions is `FreezeBalanceV2Contract`, you need to call` wallet/freezebalancev2API` to create transactions, we collectively refer to the implementation of these different transaction types as system contracts, the following are the types of system contracts and their contents:
 
-## 1. AccountCreateContract
+## AccountCreateContract
 ```
     message AccountCreateContract {
       bytes owner_address = 1;
@@ -14,7 +14,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `account_address`: The target address to create.
 - `type`: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.
 
-## 2. TransferContract
+## TransferContract
 ```
     message TransferContract {
       bytes owner_address = 1;
@@ -27,7 +27,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `to_address`: The target address to transfer.
 - `amount`: The amount of TRX to transfer.
 
-## 3. TransferAssetContract
+## TransferAssetContract
 ```
     message TransferAssetContract {
       bytes asset_name = 1;
@@ -42,7 +42,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `to_address`: The target address to transfer.
 - `amount`: The amount of token to transfer.
 
-## 4. VoteWitnessContract
+## VoteWitnessContract
 ```
     message VoteWitnessContract {
       message Vote {
@@ -60,7 +60,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `vote_count`: The votes number.
 - `support`: Constant true, not used.
 
-## 5. WitnessCreateContract
+## WitnessCreateContract
 ```
     message WitnessCreateContract {
       bytes owner_address = 1;
@@ -71,7 +71,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `owner_address`: The owner of the current account.
 - `url`: The website url of the witness.
 
-## 6. AssetIssueContract
+## AssetIssueContract
 ```
     message AssetIssueContract {
       message FrozenSupply {
@@ -116,7 +116,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `public_free_asset_net_usage`: The free bandwidth usage of all the accounts.
 - `public_latest_free_net_time`: The latest bandwidth consumption time of token transfer.
 
-## 7. WitnessUpdateContract
+## WitnessUpdateContract
 ```
     message WitnessUpdateContract {
       bytes owner_address = 1;
@@ -127,7 +127,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `owner_address`: The owner of the current account.
 - `update_url`: The website url of the witness.
 
-## 8. ParticipateAssetIssueContract
+## ParticipateAssetIssueContract
 ```
     message ParticipateAssetIssueContract {
       bytes owner_address = 1;
@@ -142,7 +142,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `account_name`: The token id.
 - `amount`: The amount of token to purchase.
 
-## 9. AccountUpdateContract
+## AccountUpdateContract
 ```
     // Update account name. Account name is unique now.
     message AccountUpdateContract {
@@ -154,7 +154,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `owner_address`: The owner of the current account.
 - `account_name`: Account name.
 
-## 10. FreezeBalanceContract
+## FreezeBalanceContract
 ```
     message FreezeBalanceContract {
       bytes owner_address = 1;
@@ -171,7 +171,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `resource`: The type of resource get by staking TRX.
 - `receiver_address`: The account address to receive resource.
 
-## 11. UnfreezeBalanceContract
+## UnfreezeBalanceContract
 ```
     message UnfreezeBalanceContract {
       bytes owner_address = 1;
@@ -184,7 +184,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `resource`: The type of resource to unfree.
 - `receiver_address`: The account address to receive resource.
 
-## 12. WithdrawBalanceContract
+## WithdrawBalanceContract
 ```
     message WithdrawBalanceContract {
       bytes owner_address = 1;
@@ -193,7 +193,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 
 - `owner_address`: The owner of the current account.
 
-## 13. UnfreezeAssetContract
+## UnfreezeAssetContract
 ```
     message UnfreezeAssetContract {
       bytes owner_address = 1;
@@ -202,7 +202,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 
 - `owner_address`: The owner of the current account.
 
-## 14. UpdateAssetContract
+## UpdateAssetContract
 ```
     message UpdateAssetContract {
       bytes owner_address = 1;
@@ -219,7 +219,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `new_limit`: The bandwidth consumption limit of each account when transfers asset.
 - `new_public_limit`: The bandwidth consumption limit of the accounts.
 
-## 15. ProposalCreateContract
+## ProposalCreateContract
 ```
     message ProposalCreateContract {
       bytes owner_address = 1;
@@ -230,7 +230,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `owner_address`: The owner of the current account.
 - `parameters`: The proposal.
 
-## 16. ProposalApproveContract
+## ProposalApproveContract
 ```
     message ProposalApproveContract {
       bytes owner_address = 1;
@@ -243,7 +243,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `proposal_id`: The proposal id.
 - `is_add_approval`: Whether to approve.
 
-## 17. ProposalDeleteContract
+## ProposalDeleteContract
 ```
     message ProposalDeleteContract {
       bytes owner_address = 1;
@@ -254,7 +254,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `owner_address`: The owner of the current account.
 - `proposal_id`: The proposal id.
 
-## 18. SetAccountIdContract
+## SetAccountIdContract
 ```
     // Set account id if the account has no id. Account id is unique and case insensitive.
     message SetAccountIdContract {
@@ -266,7 +266,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `owner_address`: The owner of the current account.
 - `account_id`: The account id.
 
-## 19. CreateSmartContract
+## CreateSmartContract
 ```
     message CreateSmartContract {
       bytes owner_address = 1;
@@ -281,7 +281,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
 
-## 20. TriggerSmartContract
+## TriggerSmartContract
 ```
     message TriggerSmartContract {
       bytes owner_address = 1;
@@ -300,7 +300,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
 
-## 21. UpdateSettingContract
+## UpdateSettingContract
 ```
     message UpdateSettingContract {
       bytes owner_address = 1;
@@ -313,7 +313,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `contract_address`: The address of the smart contract.
 - `consume_user_resource_percent`: The percentage of resource consumption ratio.
 
-## 22. ExchangeCreateContract
+## ExchangeCreateContract
 ```
     message ExchangeCreateContract {
       bytes owner_address = 1;
@@ -330,7 +330,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `second_token_id`: Second token id.
 - `second_token_balance`: Second token balance.
 
-## 23. ExchangeInjectContract
+## ExchangeInjectContract
 ```
     message ExchangeInjectContract {
       bytes owner_address = 1;
@@ -345,7 +345,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `token_id`: The token id to inject.
 - `quant`: The token amount to inject.
 
-## 24. ExchangeWithdrawContract
+## ExchangeWithdrawContract
 ```
     message ExchangeWithdrawContract {
       bytes owner_address = 1;
@@ -360,7 +360,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `token_id`: The token id to withdraw.
 - `quant`: The token amount to withdraw.
 
-## 25. ExchangeTransactionContract
+## ExchangeTransactionContract
 ```
     message ExchangeTransactionContract {
       bytes owner_address = 1;
@@ -375,7 +375,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `token_id`: The token id to sell.
 - `quant`: The token amount to sell.
 
-## 26. ShieldedTransferContract
+## ShieldedTransferContract
 ```
     message ShieldedTransferContract {
       bytes transparent_from_address = 1;
@@ -432,11 +432,11 @@ message ReceiveDescription {
 - `c_out`: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.
 - `zkproof`: zero-knowledge proof of the receiver's note.
 
-## 27. Account Permission Management
+## Account Permission Management
 
 [Account Permission Management](./multi-signatures.md)
 
-## 28. ClearABIContract
+## ClearABIContract
 ```
     message ClearABIContract {
       bytes owner_address = 1;
@@ -447,7 +447,7 @@ message ReceiveDescription {
 - `owner_address`: The owner of the current account.
 - `account_address`: The target contract address to clear ABI.
 
-## 29. UpdateBrokerageContract
+## UpdateBrokerageContract
 ```
     message UpdateBrokerageContract {
       bytes owner_address = 1;
@@ -458,7 +458,7 @@ message ReceiveDescription {
 - `owner_address`: The owner of the current account.
 - `brokerage`: Commission rate, from 0 to 100,1 mean 1%.
 
-## 30. UpdateEnergyLimitContract
+## UpdateEnergyLimitContract
 ```
     message UpdateEnergyLimitContract {
       bytes owner_address = 1;
@@ -471,7 +471,7 @@ message ReceiveDescription {
 - `contract_address`: The contract address.
 - `origin_energy_limit`: The target energy limit to change.
 
-## 31. FreezeBalanceV2Contract
+## FreezeBalanceV2Contract
 
 ```protobuf
      message FreezeBalanceV2Contract {
@@ -485,7 +485,7 @@ message ReceiveDescription {
 * `frozen_balance`：TRX stake amount, the unit is sun
 * `resource`： Resource type
 
-## 32. UnfreezeBalanceV2Contract
+## UnfreezeBalanceV2Contract
 
 ```protobuf
       message UnfreezeBalanceV2Contract {
@@ -500,7 +500,7 @@ message ReceiveDescription {
 * `resource`： Resource type
    
 
-## 33. WithdrawExpireUnfreezeContract
+## WithdrawExpireUnfreezeContract
 
 ```protobuf
       message WithdrawExpireUnfreezeContract {
@@ -510,7 +510,7 @@ message ReceiveDescription {
 
 * `owner_address`：Owner address
    
-## 34. DelegateResourceContract
+## DelegateResourceContract
 
 ```protobuf
       message DelegateResourceContract {
@@ -529,7 +529,7 @@ message ReceiveDescription {
 * `lock`：Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days
    
    
-## 35. UnDelegateResourceContract
+## UnDelegateResourceContract
 
 ```protobuf
       message UnDelegateResourceContract {
