@@ -21,7 +21,7 @@ nav:
         - gRPC API: api/rpc.md
         - jsonRPC API: api/json-rpc.md
     - Core Protocol:
-        - DPoS: introduction/dpos.md
+        - DPoS: mechanism-algorithm/dpos.md
         - Super Representative: mechanism-algorithm/sr.md
         - Account Model: mechanism-algorithm/account.md
         - Resource Model: mechanism-algorithm/resource.md
