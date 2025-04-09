@@ -6,7 +6,7 @@ java-tron is a TRON client implemented in Java, it provides completely open sour
 * [API](api/http.md)
 * [Core Protocol](introduction/dpos.md)
 * [For java-tron Developers](developers/java-tron.md)
-* [For Dapp Developers](contracts/compiler.md)
+* [For Dapp Developers](contracts/tools.md)
 * [wallet-cli](clients/wallet-cli.md)
 * [Releases](releases/upgrade-instruction.md)
 

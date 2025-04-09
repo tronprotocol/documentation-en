@@ -38,7 +38,7 @@ nav:
         - Development Example: developers/demo.md
         - Core Modules: developers/code-structure.md
     - For Dapp Developers:
-        - Dapp Development Tool: contracts/compiler.md
+        - Tools: contracts/tools.md
     - wallet-cli:
         - What is wallet-cli: clients/wallet-cli.md
         - wallet-cli Commands: clients/wallet-cli-command.md
