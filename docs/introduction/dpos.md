@@ -5,10 +5,6 @@ Blockchain is a distributed accounting system. In a blockchain system, there can
 
 There are several types of consensus, and the most commonly used are POW, POS, and DPoS. Definitely, different blockchain systems will have a unique way of implementation. This article will mainly introduce the DPoS consensus on which TRON based. We will also explain the basic components and mechanisms of DPoS.
 
-## Block Producing Process
-The SR(Super Representatives) of the blockchain network collect the newly generated transactions in the blockchain network and verify the legality of these transactions, then package the transactions in a block, record them as a new page on the ledger, and broadcast the page to the entire blockchain network. Other nodes will receive the new page and verify the legality of the transaction data on the page and add it to their own ledger. The SR(Super Representatives) will repeat this process so all new transaction data in the blockchain system can be recorded in the ledger.
-
-## DPoS overview
 The role of consensus is to select the SR(Super Representatives) in the blockchain system. The SR(Super Representatives) verify the transaction data and keep the account in order to broadcast new accounts to other nodes in the network and obtains the approval of the new accounts from other nodes. As a specific implementation of consensus, DPoS works in the following way:
 
 The DPoS consensus selects some nodes as SR(Super Representatives) in the blockchain system based on the number of votes they receive. First, when the blockchain system starts to operate, a certain number of tokens will be issued, and then the tokens will be given to nodes in the blockchain system. A node can apply to be a super representative candidate in the blockchain system with a portion of the tokens. Any token-holding node in the blockchain system can vote for these candidates. Every t period of time, the votes for all the candidates will be counted. Top N candidate nodes with the most votes will become SR(Super Representatives) for the next t period. After t period of time, the votes will be counted again to elect the new SR(Super Representatives), and the cycle continues.
@@ -36,16 +32,20 @@ Let's see how it's realized in the context of TRON:
 
 ![image](https://github.com/tronprotocol/documentation-en/raw/master/images/sequence_en.jpg)
 
-## Election mechanism
-1. Votes
+
+## Block Producing Process
+The SR(Super Representatives) of the blockchain network collect the newly generated transactions in the blockchain network and verify the legality of these transactions, then package the transactions in a block, record them as a new page on the ledger, and broadcast the page to the entire blockchain network. Other nodes will receive the new page and verify the legality of the transaction data on the page and add it to their own ledger. The SR(Super Representatives) will repeat this process so all new transaction data in the blockchain system can be recorded in the ledger.
+
+## SR Election mechanism
+- Vote
 
 In TRON, 1 TRX equals 1 vote.
 
-2. Voting process
+- Voting process
 
 In TRON, voting for candidates is a special transaction. Nodes can vote for candidates through generating a voting transaction.
 
-3. Vote counting
+- Vote counting
 
 During each maintenance period, the votes for candidates will be counted. The top 27 candidates with the most votes will be the super representatives for the next Epoch.
 
@@ -70,7 +70,7 @@ As mentioned above, the basis for the blockchain system to operate normally is t
 
 **The confirmed block principle**
 
-The newly produced blocks are in unconfirmed state, and only those blocks that are "approved" by more than 70% (i.e. 27 * 70% = 19, rounded down) of the 27 super representatives are considered to be irreversible blocks, commonly referred to as solidified blocks, and the transactions contained in the solidified blocks have been confirmed by the entire blockchain network.  The way to "approve" the unconfirmed state block is that the SR producing subsequent blocks after it, as shown in Figure d, the SR C produces block 103, the SR E produces 104' on the basis of block 103, the block 105', 106', and 107' produced respectively by the SR G, A and B, are also subsequent blocks of the 103rd block, which means these four blocks approve the 103rd block. It can be seen that when the block of height 121 is produced, the 103rd block becomes a solidified block, since by this time the 103rd block has 19 subsequent blocks, and the point to be emphasized here is that the super representatives producing these 19 blocks must be different from each other and from the super representatives producing the 103rd block.
+The newly produced blocks are in unconfirmed state, and only those blocks that are "approved" by more than 2/3 (i.e. 27 * 2/3 = 18) of the 27 super representatives are considered to be irreversible blocks, commonly referred to as solidified blocks, and the transactions contained in the solidified blocks have been confirmed by the entire blockchain network.  The way to "approve" the unconfirmed state block is that the SR producing subsequent blocks after it, as shown in Figure d, the SR C produces block 103, the SR E produces 104' on the basis of block 103, the block 105', 106', and 107' produced respectively by the SR G, A and B, are also subsequent blocks of the 103rd block, which means these four blocks approve the 103rd block. It can be seen that when the block of height 121 is produced, the 103rd block becomes a solidified block, since by this time the 103rd block has 19 subsequent blocks, and the point to be emphasized here is that the super representatives producing these 19 blocks must be different from each other and from the super representatives producing the 103rd block.
 
 **The longest chain principle**
 
