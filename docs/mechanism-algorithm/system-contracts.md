@@ -154,7 +154,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `owner_address`: The owner of the current account.
 - `account_name`: Account name.
 
-## FreezeBalanceContract
+## (Deprecated)FreezeBalanceContract
 ```
     message FreezeBalanceContract {
       bytes owner_address = 1;
