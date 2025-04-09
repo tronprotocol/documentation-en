@@ -68,12 +68,10 @@ In ideal circumstances, the bookkeeping process in a DPoS consensus-based blockc
 
 As mentioned above, the basis for the blockchain system to operate normally is that most of the nodes in the system are honest and reliable. Furthermore, the primary guarantee for the security of the blockchain system is the security of the ledger, meaning that illegal data cannot be written into the ledger maliciously and ledger copies saved on each node should be consistent as well. Based on the DPoS consensus, the bookkeeping process is carried out by super representatives. Therefore, the safety of TRON depends on the reliability of the majority of the super representatives. TRON has put confirmed blocks in the system which are irreversible. At the same time, in order to resist the malicious behaviors of a small number of super representatives nodes, TRON recognizes the longest chain as the main chain based on "the longest chain principle".
 
-**The confirmed block principle**
+### The confirmed block principle
+The newly produced blocks are in unconfirmed state, and only those blocks that are "approved" by more than 2/3 of the 27 super representatives(27 * 2/3 = 18, i.e., a minimum of 19) are considered to be irreversible blocks, commonly referred to as solidified blocks, and the transactions contained in the solidified blocks have been confirmed by the entire blockchain network.  The way to "approve" the unconfirmed state block is that the SR producing subsequent blocks after it, as shown in Figure d, the SR C produces block 103, the SR E produces 104' on the basis of block 103, the block 105', 106', and 107' produced respectively by the SR G, A and B, are also subsequent blocks of the 103rd block, which means these four blocks approve the 103rd block. It can be seen that when the block of height 121 is produced, the 103rd block becomes a solidified block, since by this time the 103rd block has 19 subsequent blocks, and the point to be emphasized here is that the super representatives producing these 19 blocks must be different from each other and from the super representatives producing the 103rd block.
 
-The newly produced blocks are in unconfirmed state, and only those blocks that are "approved" by more than 2/3 (i.e. 27 * 2/3 = 18) of the 27 super representatives are considered to be irreversible blocks, commonly referred to as solidified blocks, and the transactions contained in the solidified blocks have been confirmed by the entire blockchain network.  The way to "approve" the unconfirmed state block is that the SR producing subsequent blocks after it, as shown in Figure d, the SR C produces block 103, the SR E produces 104' on the basis of block 103, the block 105', 106', and 107' produced respectively by the SR G, A and B, are also subsequent blocks of the 103rd block, which means these four blocks approve the 103rd block. It can be seen that when the block of height 121 is produced, the 103rd block becomes a solidified block, since by this time the 103rd block has 19 subsequent blocks, and the point to be emphasized here is that the super representatives producing these 19 blocks must be different from each other and from the super representatives producing the 103rd block.
-
-**The longest chain principle**
-
+### The longest chain principle
 When a fork occurs, an honest super representative would always choose to produce blocks on the longest chain.
 
 ## Incentive model
@@ -84,7 +82,7 @@ To ensure the safe and efficient operation of the blockchain system, TRON sets u
 An important characteristic of DPoS is that any parameter adjustment can be proposed on the chain, and super representatives will decide whether to approve the proposal by starting a vote. The advantage of this method is that it avoids hard fork upgrades when adding new features. For the current dynamic parameters and values ​​of the TRON network, as well as past proposals, please refer to [here](https://tronscan.org/#/sr/committee).
 
 
-## Appendix: Reference Documentations
+## Reference Documentations
 
 - [Delegated Proof of Stake (DPoS) – Total Beginners Guide](https://www.coinbureau.com/education/delegated-proof-stake-dpos/)
 - [Consensus Algorithms: Proof-of-Stake & Cryptoeconomics](https://www.nichanank.com/blog/2018/6/4/consensus-algorithms-pos-dpos)
