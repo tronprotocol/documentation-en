@@ -33,7 +33,7 @@ Let's see how it's realized in the context of TRON:
 ![image](https://github.com/tronprotocol/documentation-en/raw/master/images/sequence_en.jpg)
 
 
-## Block Producing Process
+## Block Production Process
 The SR(Super Representatives) of the blockchain network collect the newly generated transactions in the blockchain network and verify the legality of these transactions, then package the transactions in a block, record them as a new page on the ledger, and broadcast the page to the entire blockchain network. Other nodes will receive the new page and verify the legality of the transaction data on the page and add it to their own ledger. The SR(Super Representatives) will repeat this process so all new transaction data in the blockchain system can be recorded in the ledger.
 
 ## SR Election mechanism

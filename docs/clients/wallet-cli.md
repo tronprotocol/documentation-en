@@ -342,7 +342,7 @@ FreezeBalance successful !!!
 
 
 #### unfreezeBalance
-unstake TRX which staked during stake1.o.
+unstake TRX which staked during stake1.0.
 ```shell
 wallet>unfreezeBalance [OwnerAddress] ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER) [receiverAddress]
 ```

@@ -126,7 +126,7 @@ Note: TRON's smart contract is different from TRON's system contract, if the tra
 ```
 Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
 
-### Contract Address Using in Solidity Language 
+### Contract Address Used in Solidity Language 
 
 Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 
