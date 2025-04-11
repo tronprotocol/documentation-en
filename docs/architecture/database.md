@@ -3,7 +3,7 @@ java-tron data storage supports LevelDB or RocksDB, and LevelDB is used by defau
 
 The following describes how to set the storage engine of the java-tron node to RocksDB, and how to perform data conversion between leveldb and rocksdb.
 
-# RocksDB
+## RocksDB
 
 ### Configuration
 
@@ -25,7 +25,7 @@ Choose RocksDB to be the data storage engine, you can use its data backup functi
 
 Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
 
-### Convert LevelDB data to RocksDB data
+### Convert LevelDB to RocksDB
 
 The data storage structure of LevelDB and RocksDB is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert LevelDB data to RocksDB data.
 
@@ -68,6 +68,6 @@ Example:
 
 All the whole data conversion process may take 10 hours.
 
-### RocksDB vs LevelDB
+## LevelDB
 
-You can refer to the following documents for detailed information::[RocksDB vs LevelDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
+You can refer to the following documents for detailed information about [RocksDB vs LevelDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)

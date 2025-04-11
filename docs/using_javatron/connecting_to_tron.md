@@ -1,4 +1,4 @@
-# Connecting to the TRON network
+# Connect to TRON network
 
 The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
 
@@ -13,7 +13,7 @@ You need to set the following configuration items to connect java-tron to one of
 
 
 
-# Finding peers
+## Find peers
 java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. 
 
 If you want java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:
@@ -69,16 +69,46 @@ seed.node = {
 
 There are scenarios where disabling the discovery process is useful, for example for running a local test node or an experimental test network with known, fixed nodes. This can be configured by `node.discovery.enable = false` to close the node discovery process.
 
+## Peers limit
+`node.maxActiveNodes` indicates the maximum number of connections between the node and other nodes, the default value is 30. Setting a larger value can enable nodes to establish more connections, join the network more efficiently, and broadcast more efficiently. However, the bandwidth required to maintain the connection is also higher and the performance consumption is higher. Therefore, please set it according to the actual situation.
 
-# Connectivity problems
-There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
+```
+node {
+    maxActiveNodes = 30
+}
 
-* Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as `sudo ntpdate -s time.nist.gov`.
-* Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring [`node.active`](#active-and-passive-connections) in the case of node discovery invalid.
-* By configuring [`node.passive`](#active-and-passive-connections) to accept active connections from trusted nodes.
-* The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.
+```
 
-# Log and network connection verification
+## Active and passive connections
+java-tron supports setting its actively connected nodes `node.active` as well as passively connected nodes `node.passive`. Configuring `node.active` and `node.passive` can greatly help improve the stability of the network connection of the node.
+
+When java-tron starts, it will actively establish a connection with the peer node in `node.active`.
+
+```
+node {
+  active = [
+    # Active establish connection in any case
+    # Sample entries:
+    # "ip:port",
+    # "ip:port"
+  ]
+ }
+```
+
+When a node in `node.passive` actively establishes a connection with the current node, the current node will accept it unconditionally.
+
+```
+node {
+  passive = [
+    # Passive accept connection in any case
+    # Sample entries:
+    # "ip:port",
+    # "ip:port"
+  ]
+ }
+```
+
+## Log and network connection verification
 The java-tron node log is `/logs/tron.log` in the java-tron installation directory. Under the java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
 
 ```
@@ -136,49 +166,18 @@ Returns：
 ```
 In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of `/wallet/getnowblock` queried from the local java-tron node. If they are equal, it means that the synchronization status of the local node is normal.
 
+## Connection problems
+There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
 
-# Private network
+* Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as `sudo ntpdate -s time.nist.gov`.
+* Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring [`node.active`](#active-and-passive-connections) in the case of node discovery invalid.
+* By configuring [`node.passive`](#active-and-passive-connections) to accept active connections from trusted nodes.
+* The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.
+
+## Connect to private network
 
 It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences. 
 
 The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
 
-
-# Active and passive connections
-java-tron supports setting its actively connected nodes `node.active` as well as passively connected nodes `node.passive`. Configuring `node.active` and `node.passive` can greatly help improve the stability of the network connection of the node.
-
-When java-tron starts, it will actively establish a connection with the peer node in `node.active`.
-
-```
-node {
-  active = [
-    # Active establish connection in any case
-    # Sample entries:
-    # "ip:port",
-    # "ip:port"
-  ]
- }
-```
-
-When a node in `node.passive` actively establishes a connection with the current node, the current node will accept it unconditionally.
-
-```
-node {
-  passive = [
-    # Passive accept connection in any case
-    # Sample entries:
-    # "ip:port",
-    # "ip:port"
-  ]
- }
-```
-
-# Peer limit
-`node.maxActiveNodes` indicates the maximum number of connections between the node and other nodes, the default value is 30. Setting a larger value can enable nodes to establish more connections, join the network more efficiently, and broadcast more efficiently. However, the bandwidth required to maintain the connection is also higher and the performance consumption is higher. Therefore, please set it according to the actual situation.
-
-```
-node {
-    maxActiveNodes = 30
-}
-```
 

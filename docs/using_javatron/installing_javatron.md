@@ -5,7 +5,7 @@ java-tron nodes support to be deployed on `Linux` or `MacOS` operating systems, 
 The minimum hardware configuration required to run a java-tron node is `8-core CPU`, `16G memory`, `2T SDD`, the recommended configuration is: `16-core CPU`, `32G memory`, `2.5T+ SDD`. The fullnode running by super representative to produce block recommends `32-core CPU` and `64G memory`.
 
 
-# Compile the Source Code
+## Compile the Source Code
 First, clone the java-tron repository to the local with the following git command, and switch to the `master` branch. Before executing the command, make sure you have installed the `git` tool.
 
 ```
@@ -20,7 +20,7 @@ $ cd java-tron
 $ ./gradlew clean build -x test
 ```
 
-## Run a java-tron Node
+## Startup a java-tron Node
 You can choose different configuration files to connect java-tron nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/tronprotocol/tron-deployment).
 
 
@@ -56,8 +56,8 @@ $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_c
 **Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](backup_restore.md/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
 
 
-# Others
-### How to use `keystore + password` to specify the privatekey of witness account
+### Others
+#### How to use `keystore + password` to specify the privatekey of witness account
 
 1. You should not use the nohup command because the interaction is required when running the node. It is recommended to use session keeping tools such as screen, tmux, etc.
 2. Comment the `localwitness` item in main_net_config.conf and uncomment the `localwitnesskeystore` item. Fill in the path of the Keystore file. Note that the Keystore file needs to be placed in the current directory where the startup command is executed or its subdirectory. If the current directory is "A", the directory of the Keystore file is "A/B/localwitnesskeystore.json", it needs to be configured as:
@@ -75,7 +75,7 @@ $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_c
 
 
 
-### Optimize Memory Allocation with tcmalloc
+#### Optimize Memory Allocation with tcmalloc
 
 Memory allocation of java-tron can be optimized with tcmalloc. The method is as follows:
 

@@ -86,7 +86,7 @@ contractTopics: contract topics list
 2. Supporting subscription of chain data, such as block, transaction, contract log, contract event and so on. For transaction events, developers can get information such as internal transactions, contract info and so on; for contract events, developers could configure the contract addresses list or contract topic list to receive the specified events, and event subscription has a very low latency. The deployed fullnode can receive event information immediately after the contract is executed.
 3. Event query service tron-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is [https://api.tronex.io](https://api.tronex.io).
 
-### Github project
+### Github projects
 
 - [tronprotocol/event-plugin](https://github.com/tronprotocol/event-plugin)
 - [tronprotocol/tron-eventquery](https://github.com/tronprotocol/tron-eventquery)
