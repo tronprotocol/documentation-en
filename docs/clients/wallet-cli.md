@@ -290,23 +290,23 @@ UpdateAccountPermission successful !!!
 ### AccountResource
 Here are all the account resource related commands ：
 
-- [freezeBalance](#freezebalance)
-- [unfreezeBalance](#unfreezebalance)
-- [getDelegatedResource](#getdelegatedresource)
-- [freezeBalanceV2](#freezebalancev2)
-- [unfreezeBalanceV2](#unfreezebalancev2)
-- [delegateResource](#delegateresource)
-- [unDelegateResource](#undelegateresource)
-- [withdrawExpireUnfreeze](#withdrawexpireunfreeze)
-- [getAvailableUnfreezeCount](#getavailableunfreezecount)
-- [getCanWithdrawUnfreezeAmount](#getcanwithdrawunfreezeamount)
-- [getCanDelegatedMaxSize](#getcandelegatedmaxsize)
-- [getDelegatedResourceV2](#getdelegatedresourcev2)
-- [getDelegatedResourceAccountIndexV2](#getdelegatedresourceaccountindexv2)
-- [getAccountNet](#getaccountnet)
-- [getAccountResource](#getaccountresource)
+- [FreezeBalance](#freezebalance)
+- [UnfreezeBalance](#unfreezebalance)
+- [GetDelegatedResource](#getdelegatedresource)
+- [FreezeBalanceV2](#freezebalancev2)
+- [UnfreezeBalanceV2](#unfreezebalancev2)
+- [DelegateResource](#delegateresource)
+- [UndelegateResource](#undelegateresource)
+- [WithdrawExpireUnfreeze](#withdrawexpireunfreeze)
+- [GetAvailableUnfreezeCount](#getavailableunfreezecount)
+- [GetCanWithdrawUnfreezeAmount](#getcanwithdrawunfreezeamount)
+- [GetCanDelegatedMaxsize](#getcandelegatedmaxsize)
+- [GetDelegatedResourceV2](#getdelegatedresourcev2)
+- [GetDelegatedResourceAccountIndexV2](#getdelegatedresourceaccountindexv2)
+- [GetAccountNet](#getaccountnet)
+- [GetAccountResource](#getaccountresource)
 
-#### freezeBalance
+#### FreezeBalance
 This interface has been deprecated, please use freezeBalanceV2 to stake TRX to obtain resources.
 ```shell
 wallet> freezeBalance [OwnerAddress] [frozen_balance] [frozen_duration] [ResourceCode:0 BANDWIDTH, 1 ENERGY] [receiverAddress]
@@ -341,7 +341,7 @@ FreezeBalance successful !!!
 ```
 
 
-#### unfreezeBalance
+#### UnfreezeBalance
 unstake TRX which staked during stake1.0.
 ```shell
 wallet>unfreezeBalance [OwnerAddress] ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER) [receiverAddress]
@@ -390,7 +390,7 @@ UnfreezeBalance successful !!!
 
 ```
 
-#### getDelegatedResource 
+#### GetDelegatedResource 
 ```
 wallet>getdelegatedresource [fromAddress] [toAddress]
 ```
@@ -409,7 +409,7 @@ wallet> getdelegatedresource TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 TXBpeye7UQ4dDZEn
 }
 ```
 
-#### freezeBalanceV2
+#### FreezeBalanceV2
 Stake 2.0 API: Stake TRX to obtain TRON Power (voting rights) and bandwidth or energy.
 
 ```shell
@@ -461,7 +461,7 @@ txid is 1743aa098f5e10ac8b68ccbf0ca6b5f1364a63485e442e6cb03fd33e3331e3fb
 freezeBalanceV2 successful !!!
 ```
 
-#### unfreezeBalanceV2
+#### UnfreezeBalanceV2
 Stake 2.0 API: Unstake TRX to release bandwidth and energy and at the same time TRON Power will be reclaimed and corresponding votes will be revoked. 
 
 
@@ -515,7 +515,7 @@ txid is f9e114347ea89c5d722d20226817bc41c8a39ea36be756ba216cf450ab3f1fb3
 unfreezeBalanceV2 successful !!!
 ```
 
-#### delegateResource
+#### DelegateResource
 Stake 2.0 API: delegate bandwidth or energy resource to other address.
 ```shell
 wallet> delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress [lock]
@@ -569,7 +569,7 @@ txid is 0917002d0068dde7ad4ffe46e75303d11192e17bfa78934a5f867c5ae20720ec
 delegateResource successful !!!
 ```
 
-#### unDelegateResource
+#### UndelegateResource
 Stake 2.0 API: undelegate resource.
 ```shell
 wallet> unDelegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress
@@ -623,7 +623,7 @@ after sign transaction hex string is 0a91010a020251220868ac15256c213e7140febde9f
 txid is 537a3f4461ab55c705b77503bc42f469bfc22c0cb8588b8f3641ab40117ebfd8
 unDelegateResource successful !!!
 ```
-#### withdrawExpireUnfreeze
+#### WithdrawExpireUnfreeze
 Stake 2.0 API: withdraw unfrozen balance.
 
 ```shell
@@ -639,7 +639,7 @@ Example:
 wallet> withdrawExpireUnfreeze 
 ```
 
-#### getavailableunfreezecount
+#### GetAvailableUnfreezeCount
 Stake 2.0 API: remaining times of executing unstake operation.
 
 ```shell
@@ -658,7 +658,7 @@ wallet> GetAvailableUnfreezeCount
 	"count": 30
 }
 ```
-#### getcanwithdrawunfreezeamount
+#### GetCanWithdrawUnfreezeAmount
 Stake 2.0 API: query the withdrawable balance at the specified timestamp.
 
 ```shell
@@ -677,7 +677,7 @@ wallet> getcanwithdrawunfreezeamount 1776621695001
 }
 ```
 
-#### getcandelegatedmaxsize
+#### GetCanDelegatedMaxsize
 Stake 2.0 API: query the amount of delegatable resources share of the specified resource type for an address, unit is sun.
 
 ```shell
@@ -696,7 +696,7 @@ wallet> getcandelegatedmaxsize 1
 	"max_size": 11000000
 }
 ```
-#### getdelegatedresourcev2
+#### GetDelegatedResourceV2
 Stake 2.0 API：query the detail of resource share delegated from fromAddress to toAddress.
 
 ```shell
@@ -721,7 +721,7 @@ wallet> getdelegatedresourcev2  TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM TZ4UXDV5ZhNW7
 	]
 }
 ```
-#### getdelegatedresourceaccountindexv2
+#### GetDelegatedResourceAccountIndexV2
 Stake 2.0 API：query the resource delegation index by an account. Two lists will return, one is the list of addresses the account has delegated its resources(toAddress), and the other is the list of addresses that have delegated resources to the account(fromAddress).
 
 ```shell
