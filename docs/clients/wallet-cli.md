@@ -64,7 +64,11 @@ Login successful !!!
 ```
 #### BackupWallet
 
-This will Back up your wallet. You need to enter your wallet password to export the privat key in hex string format, such as: 721d63b074f18d41c147e04c952ec93467777a30b6f16745bc47a8eae5076545
+This will Back up your wallet. You need to enter your wallet password to export the privat key in hex string format, such as:
+```
+721d63b074f18d41c147e04c952ec93467777a30b6f16745bc47a8eae5076545
+```
+
 ```shell
 wallet> backupwallet
 Please input your password.
@@ -74,7 +78,11 @@ BackupWallet successful !!
 ```
 #### BackupWallet2Base64
 
-This will Back up your wallet, you need to enter your wallet password to export the private key in base64 format, as below ch1jsHTxjUHBR+BMlS7JNGd3ejC28WdFvEeo6uUHZUU=
+This will Back up your wallet, you need to enter your wallet password to export the private key in base64 format, as below:
+```
+ch1jsHTxjUHBR+BMlS7JNGd3ejC28WdFvEeo6uUHZUU=
+```
+
 ```shell
 wallet> backupwallet
 Please input your password.
