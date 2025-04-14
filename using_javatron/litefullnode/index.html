@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/contracts/compiler/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/litefullnode/">
       
       
-        <link rel="prev" href="../../developers/code-structure/">
+        <link rel="prev" href="../backup_restore/">
       
       
-        <link rel="next" href="../../clients/wallet-cli/">
+        <link rel="next" href="../private_network/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Dapp Development Tool - java-tron</title>
+        <title>Lite FullNode - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#compiler" class="md-skip">
+        <a href="#lite-fullnode" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dapp Development Tool
+              Lite FullNode
             
           </span>
         </div>
@@ -319,8 +319,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -330,11 +332,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -349,7 +351,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Using java-tron
@@ -363,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../using_javatron/installing_javatron/" class="md-nav__link">
+      <a href="../installing_javatron/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -385,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../using_javatron/backup_restore/" class="md-nav__link">
+      <a href="../backup_restore/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -404,10 +406,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -417,6 +440,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#lite-fullnode-deployment" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Lite FullNode Deployment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#lite-fullnode-maintenance" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Lite FullNode Maintenance
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -429,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../using_javatron/private_network/" class="md-nav__link">
+      <a href="../private_network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -495,11 +556,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../using_javatron/connecting_to_tron/" class="md-nav__link">
+      <a href="../connecting_to_tron/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
@@ -517,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../using_javatron/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -539,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../using_javatron/toolkit/" class="md-nav__link">
+      <a href="../toolkit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -723,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/dpos/" class="md-nav__link">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -811,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contract/" class="md-nav__link">
+      <a href="../../contracts/contract/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1105,8 +1166,6 @@
       
   
   
-    
-  
   
   
     
@@ -1118,11 +1177,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1137,7 +1196,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             For Dapp Developers
@@ -1148,69 +1207,19 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Dapp Development Tool
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item ">
-  <a href="#tools" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Tools
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1249,7 +1258,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1260,7 +1269,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1275,29 +1284,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -1518,24 +1505,13 @@
   
 
 
-<h1 id="compiler">Compiler<a class="headerlink" href="#compiler" title="Permanent link">&para;</a></h1>
-<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h2>
-<h3> 1. TronIDE </h3>
-
-<p>Support the build, debug, run, etc. for solidity language written smart contract.
-<a href="http://www.tronide.io">http://www.tronide.io</a></p>
-<h3> 2. TronBox </h3>
-
-<p>Support the build, deploy, transplant, etc. for solidity language written smart contract.
-<a href="https://developers.tron.network/reference/what-is-tronbox">https://developers.tron.network/reference/what-is-tronbox</a></p>
-<h3> 3. TronWeb </h3>
-<p>Provide javascript api for the usage of smart contract.
-<a href="https://tronweb.network/docu/docs/intro/">https://tronweb.network/docu/docs/intro/</a></p>
-<h3> 4. TronGrid </h3>
-<p>Provide smart contract event query service.
-<a href="https://developers.tron.network/docs/trongrid">https://developers.tron.network/docs/trongrid</a></p>
-<h3> 5. Trident-java </h3>
-<p>Trident-java is a lightweight SDK that includes libraries for working with TRON system contracts and smart contracts.</p>
+<h1 id="lite-fullnode">Lite FullNode<a class="headerlink" href="#lite-fullnode" title="Permanent link">&para;</a></h1>
+<p>Lite FullNode runs the same code with FullNode, the difference is that Lite FullNode only starts based on state data snapshot, which only contains all account state data and historical data of the latest 65536 blocks. The state data snapshot is small, only about 3% of the FullNode data. Therefore, Lite Fullnode has the advantages of occupying less disk space and starting up fast, but it does not provide historical block and transaction data query by default, and only provides part of HTTP API and GRPC API of FullNode. For APIs that are not supported by Lite Fullnode, please refer to <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryHttpFilter.java">HTTP</a>, <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryGrpcInterceptor.java">GRPC</a>. But these APIs can be opened by configuring <code>openHistoryQueryWhenLiteFN = true</code> in the configuration file, because after the Lite Fullnode startup, the saved data by the Lite Fullnode is exactly the same as that of the FullNode, so after this configuration item is turned on, the Lite Fullnode supports querying the block data synchronized after the node startup, but still does not support querying the block data before the node startup.</p>
+<p>Therefore, if developers only need to use node for block synchronization, processing and broadcasting transactions, or only query the blocks and transactions synchronized after the node starts up, then Lite Fullnoe will be a better choice.</p>
+<h2 id="lite-fullnode-deployment">Lite FullNode Deployment<a class="headerlink" href="#lite-fullnode-deployment" title="Permanent link">&para;</a></h2>
+<p>The deployment steps and startup command of a Lite fullnode are the same as fullnode's, please refer to <a href="../installing_javatron/">Deployment Instructions</a> to deploy a Lite Fullnode. The only difference is the database. You need to obtain the Lite Fullnode database. You can download the Lite Fullnode data snapshot from the <a href="../backup_restore/#lite-fullnode-data-snapshot">public backup data</a> and use it directly; or use the <a href="../toolkit/#lite-fullnode-data-pruning">Lite Fullnode data pruning tool</a> to convert the Fullnode database to Lite Fullnode database.</p>
+<h2 id="lite-fullnode-maintenance">Lite FullNode Maintenance<a class="headerlink" href="#lite-fullnode-maintenance" title="Permanent link">&para;</a></h2>
+<p>Since the Lite Fullnode will save the same data as the FullNode's after startup, although the data volume of the Lite Fullnode is very small at startup, the data expansion rate in the later period is the same as that of the FullNode, so it may be necessary to periodically cut the data. Pruning Lite Fullnode data is also to use <a href="../toolkit/#lite-fullnode-data-pruning">Lite Fullnode data pruning tool</a> to split Lite Fullnode data into snapshot dataset, that is, to obtain the pruned Lite Fullnode data.</p>
 
 
 
@@ -1556,7 +1532,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../developers/code-structure/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Core Modules">
+          <a href="../backup_restore/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Backup and Restore">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1566,20 +1542,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Core Modules
+                Backup and Restore
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../clients/wallet-cli/" class="md-footer__link md-footer__link--next" aria-label="Next: What is wallet-cli">
+          <a href="../private_network/" class="md-footer__link md-footer__link--next" aria-label="Next: Private Network">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                What is wallet-cli
+                Private Network
               </div>
             </div>
             <div class="md-footer__button md-icon">

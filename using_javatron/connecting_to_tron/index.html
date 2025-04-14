@@ -22,7 +22,7 @@
     
     
       
-        <title>Network Configuration - java-tron</title>
+        <title>Network Connection - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#connecting-to-the-tron-network" class="md-skip">
+        <a href="#connect-to-tron-network" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Network Configuration
+              Network Connection
             
           </span>
         </div>
@@ -409,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+      <a href="../litefullnode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -506,16 +506,101 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#find-peers" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Find peers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#peers-limit" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Peers limit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#active-and-passive-connections" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Active and passive connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#log-and-network-connection-verification" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Log and network connection verification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#connection-problems" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Connection problems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#connect-to-private-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Connect to private network
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -735,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/dpos/" class="md-nav__link">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1161,11 +1246,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contracts/compiler/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
@@ -1209,7 +1294,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1220,7 +1305,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1235,29 +1320,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -1478,7 +1541,7 @@
   
 
 
-<h1 id="connecting-to-the-tron-network">Connecting to the TRON network<a class="headerlink" href="#connecting-to-the-tron-network" title="Permanent link">&para;</a></h1>
+<h1 id="connect-to-tron-network">Connect to TRON network<a class="headerlink" href="#connect-to-tron-network" title="Permanent link">&para;</a></h1>
 <p>The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.</p>
 <p>You need to set the following configuration items to connect java-tron to one of the TRON networks:</p>
 <ul>
@@ -1491,7 +1554,7 @@
 <li><code>seed.node</code>: set seed node</li>
 <li><code>genesis.block</code>: Genesis block settings. To join a network, please ensure that the settings of the genesis block are the same as those of other nodes in the network, otherwise you cannot join the network.</li>
 </ul>
-<h1 id="finding-peers">Finding peers<a class="headerlink" href="#finding-peers" title="Permanent link">&para;</a></h1>
+<h2 id="find-peers">Find peers<a class="headerlink" href="#find-peers" title="Permanent link">&para;</a></h2>
 <p>java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. </p>
 <p>If you want java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:</p>
 <p><div class="highlight"><pre><span></span><code>node.discovery = {
@@ -1539,15 +1602,35 @@ Then, for the new node that joins the TRON network, you can configure the <code>
 }
 </code></pre></div>
 <p>There are scenarios where disabling the discovery process is useful, for example for running a local test node or an experimental test network with known, fixed nodes. This can be configured by <code>node.discovery.enable = false</code> to close the node discovery process.</p>
-<h1 id="connectivity-problems">Connectivity problems<a class="headerlink" href="#connectivity-problems" title="Permanent link">&para;</a></h1>
-<p>There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:</p>
-<ul>
-<li>Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as <code>sudo ntpdate -s time.nist.gov</code>.</li>
-<li>Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring <a href="#active-and-passive-connections"><code>node.active</code></a> in the case of node discovery invalid.</li>
-<li>By configuring <a href="#active-and-passive-connections"><code>node.passive</code></a> to accept active connections from trusted nodes.</li>
-<li>The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.</li>
-</ul>
-<h1 id="log-and-network-connection-verification">Log and network connection verification<a class="headerlink" href="#log-and-network-connection-verification" title="Permanent link">&para;</a></h1>
+<h2 id="peers-limit">Peers limit<a class="headerlink" href="#peers-limit" title="Permanent link">&para;</a></h2>
+<p><code>node.maxActiveNodes</code> indicates the maximum number of connections between the node and other nodes, the default value is 30. Setting a larger value can enable nodes to establish more connections, join the network more efficiently, and broadcast more efficiently. However, the bandwidth required to maintain the connection is also higher and the performance consumption is higher. Therefore, please set it according to the actual situation.</p>
+<div class="highlight"><pre><span></span><code>node {
+    maxActiveNodes = 30
+}
+</code></pre></div>
+<h2 id="active-and-passive-connections">Active and passive connections<a class="headerlink" href="#active-and-passive-connections" title="Permanent link">&para;</a></h2>
+<p>java-tron supports setting its actively connected nodes <code>node.active</code> as well as passively connected nodes <code>node.passive</code>. Configuring <code>node.active</code> and <code>node.passive</code> can greatly help improve the stability of the network connection of the node.</p>
+<p>When java-tron starts, it will actively establish a connection with the peer node in <code>node.active</code>.</p>
+<div class="highlight"><pre><span></span><code>node {
+  active = [
+    # Active establish connection in any case
+    # Sample entries:
+    # &quot;ip:port&quot;,
+    # &quot;ip:port&quot;
+  ]
+ }
+</code></pre></div>
+<p>When a node in <code>node.passive</code> actively establishes a connection with the current node, the current node will accept it unconditionally.</p>
+<div class="highlight"><pre><span></span><code>node {
+  passive = [
+    # Passive accept connection in any case
+    # Sample entries:
+    # &quot;ip:port&quot;,
+    # &quot;ip:port&quot;
+  ]
+ }
+</code></pre></div>
+<h2 id="log-and-network-connection-verification">Log and network connection verification<a class="headerlink" href="#log-and-network-connection-verification" title="Permanent link">&para;</a></h2>
 <p>The java-tron node log is <code>/logs/tron.log</code> in the java-tron installation directory. Under the java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:</p>
 <div class="highlight"><pre><span></span><code>$ tail -f /logs/tron.log/
 </code></pre></div>
@@ -1592,37 +1675,17 @@ If no error messages are reported in the node logs, means everything is fine. Yo
 }
 </code></pre></div>
 In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of <code>/wallet/getnowblock</code> queried from the local java-tron node. If they are equal, it means that the synchronization status of the local node is normal.</p>
-<h1 id="private-network">Private network<a class="headerlink" href="#private-network" title="Permanent link">&para;</a></h1>
+<h2 id="connection-problems">Connection problems<a class="headerlink" href="#connection-problems" title="Permanent link">&para;</a></h2>
+<p>There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:</p>
+<ul>
+<li>Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as <code>sudo ntpdate -s time.nist.gov</code>.</li>
+<li>Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring <a href="#active-and-passive-connections"><code>node.active</code></a> in the case of node discovery invalid.</li>
+<li>By configuring <a href="#active-and-passive-connections"><code>node.passive</code></a> to accept active connections from trusted nodes.</li>
+<li>The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.</li>
+</ul>
+<h2 id="connect-to-private-network">Connect to private network<a class="headerlink" href="#connect-to-private-network" title="Permanent link">&para;</a></h2>
 <p>It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences. </p>
 <p>The private chain network needs to configure the configuration item <code>node.p2p.version</code> in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private chain configuration file</a> to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to <a href="../private_network/">Private Chain Network</a>.</p>
-<h1 id="active-and-passive-connections">Active and passive connections<a class="headerlink" href="#active-and-passive-connections" title="Permanent link">&para;</a></h1>
-<p>java-tron supports setting its actively connected nodes <code>node.active</code> as well as passively connected nodes <code>node.passive</code>. Configuring <code>node.active</code> and <code>node.passive</code> can greatly help improve the stability of the network connection of the node.</p>
-<p>When java-tron starts, it will actively establish a connection with the peer node in <code>node.active</code>.</p>
-<div class="highlight"><pre><span></span><code>node {
-  active = [
-    # Active establish connection in any case
-    # Sample entries:
-    # &quot;ip:port&quot;,
-    # &quot;ip:port&quot;
-  ]
- }
-</code></pre></div>
-<p>When a node in <code>node.passive</code> actively establishes a connection with the current node, the current node will accept it unconditionally.</p>
-<div class="highlight"><pre><span></span><code>node {
-  passive = [
-    # Passive accept connection in any case
-    # Sample entries:
-    # &quot;ip:port&quot;,
-    # &quot;ip:port&quot;
-  ]
- }
-</code></pre></div>
-<h1 id="peer-limit">Peer limit<a class="headerlink" href="#peer-limit" title="Permanent link">&para;</a></h1>
-<p><code>node.maxActiveNodes</code> indicates the maximum number of connections between the node and other nodes, the default value is 30. Setting a larger value can enable nodes to establish more connections, join the network more efficiently, and broadcast more efficiently. However, the bandwidth required to maintain the connection is also higher and the performance consumption is higher. Therefore, please set it according to the actual situation.</p>
-<div class="highlight"><pre><span></span><code>node {
-    maxActiveNodes = 30
-}
-</code></pre></div>
 
 
 

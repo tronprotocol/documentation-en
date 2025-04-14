@@ -409,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+      <a href="../../using_javatron/litefullnode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -484,6 +484,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -494,6 +506,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item has-children">
+  <a href="#rocksdb" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      RocksDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RocksDB" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#use-rocksdbs-data-backup-function" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Use RocksDB's data backup function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#convert-leveldb-to-rocksdb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Convert LevelDB to RocksDB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#leveldb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      LevelDB
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -511,7 +593,7 @@
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
@@ -735,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/dpos/" class="md-nav__link">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1161,11 +1243,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contracts/compiler/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
@@ -1209,7 +1291,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1220,7 +1302,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1235,29 +1317,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -1481,7 +1541,7 @@
 <h1 id="database-configuration">Database configuration<a class="headerlink" href="#database-configuration" title="Permanent link">&para;</a></h1>
 <p>java-tron data storage supports LevelDB or RocksDB, and LevelDB is used by default. You can also choose RocksDB, which provides lots of configuration parameters, allowing nodes to be tuned according to their own machine configuration. The node database occupies less disk space than LevelDB. At the same time, RocksDB supports data backup during runtime, and the backup time only takes a few seconds.</p>
 <p>The following describes how to set the storage engine of the java-tron node to RocksDB, and how to perform data conversion between leveldb and rocksdb.</p>
-<h1 id="rocksdb">RocksDB<a class="headerlink" href="#rocksdb" title="Permanent link">&para;</a></h1>
+<h2 id="rocksdb">RocksDB<a class="headerlink" href="#rocksdb" title="Permanent link">&para;</a></h2>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>Use RocksDB as the data storage engine, need to set <code>db.engine</code> to "ROCKSDB".</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_engine.png" /></p>
@@ -1492,7 +1552,7 @@
 <p>Choose RocksDB to be the data storage engine, you can use its data backup function while running</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_backup.png" /></p>
 <p>Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.</p>
-<h3 id="convert-leveldb-data-to-rocksdb-data">Convert LevelDB data to RocksDB data<a class="headerlink" href="#convert-leveldb-data-to-rocksdb-data" title="Permanent link">&para;</a></h3>
+<h3 id="convert-leveldb-to-rocksdb">Convert LevelDB to RocksDB<a class="headerlink" href="#convert-leveldb-to-rocksdb" title="Permanent link">&para;</a></h3>
 <p>The data storage structure of LevelDB and RocksDB is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert LevelDB data to RocksDB data.</p>
 <p>Usage:</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; cd /path/to/java-tron/source-code</span>
@@ -1518,8 +1578,8 @@
 <span class="go">&gt; java -jar DBConvert.jar output-directory/database output-directory-dst/database</span>
 </code></pre></div>
 <p>All the whole data conversion process may take 10 hours.</p>
-<h3 id="rocksdb-vs-leveldb">RocksDB vs LevelDB<a class="headerlink" href="#rocksdb-vs-leveldb" title="Permanent link">&para;</a></h3>
-<p>You can refer to the following documents for detailed information::<a href="https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md">RocksDB vs LevelDB</a></p>
+<h2 id="leveldb">LevelDB<a class="headerlink" href="#leveldb" title="Permanent link">&para;</a></h2>
+<p>You can refer to the following documents for detailed information about <a href="https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md">RocksDB vs LevelDB</a></p>
 
 
 
@@ -1557,13 +1617,13 @@
         
         
           
-          <a href="../../using_javatron/connecting_to_tron/" class="md-footer__link md-footer__link--next" aria-label="Next: Network Configuration">
+          <a href="../../using_javatron/connecting_to_tron/" class="md-footer__link md-footer__link--next" aria-label="Next: Network Connection">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Network Configuration
+                Network Connection
               </div>
             </div>
             <div class="md-footer__button md-icon">

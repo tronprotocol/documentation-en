@@ -409,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+      <a href="../../using_javatron/litefullnode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,9 +538,9 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#github-project" class="md-nav__link" >
+  <a href="#github-projects" class="md-nav__link" >
     <span class="md-ellipsis">
-      Github project
+      Github projects
     </span>
   </a>
   
@@ -644,7 +644,7 @@
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
@@ -868,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/dpos/" class="md-nav__link">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1294,11 +1294,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contracts/compiler/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
@@ -1342,7 +1342,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1353,7 +1353,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1368,29 +1368,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -1677,7 +1655,7 @@ contractTopics: contract topics list
 <li>Supporting subscription of chain data, such as block, transaction, contract log, contract event and so on. For transaction events, developers can get information such as internal transactions, contract info and so on; for contract events, developers could configure the contract addresses list or contract topic list to receive the specified events, and event subscription has a very low latency. The deployed fullnode can receive event information immediately after the contract is executed.</li>
 <li>Event query service tron-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is <a href="https://api.tronex.io">https://api.tronex.io</a>.</li>
 </ol>
-<h3 id="github-project">Github project<a class="headerlink" href="#github-project" title="Permanent link">&para;</a></h3>
+<h3 id="github-projects">Github projects<a class="headerlink" href="#github-projects" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/tronprotocol/event-plugin">tronprotocol/event-plugin</a></li>
 <li><a href="https://github.com/tronprotocol/tron-eventquery">tronprotocol/tron-eventquery</a></li>
@@ -1723,7 +1701,7 @@ contractTopics: contract topics list
 <li><code>native.useNativeQueue</code>: <code>true</code> is to use the built-in message queue, <code>false</code> is to use the event plugin</li>
 <li><code>native.bindport</code>: ZeroMQ publisher binding port. In this example, it is <code>5555</code>, so the publisher address that the subscriber should connect to is <code>"tcp://127.0.0.1:5555"</code> </li>
 <li><code>native.sendqueuelength</code>: The length of the send queue, that is, when the subscriber receives messages slowly, the maximum number of messages published by the publisher that the TCP buffer can hold. if it exceeds, The message will be discarded if exceeds the capacity</li>
-<li><code>topics</code>: Subscribed <a href="../../architecture/event/#event-type">event type</a> , including block type, transaction type, etc.</li>
+<li><code>topics</code>: Subscribed <a href="#event-type">event type</a> , including block type, transaction type, etc.</li>
 </ul>
 <h3 id="start-node">Start node<a class="headerlink" href="#start-node" title="Permanent link">&para;</a></h3>
 <p>The event subscription service is disabled by default and needs to be enabled by adding the command line parameter <code>--es</code>. The start command of the node that enables the event subscription service is as follows:

@@ -407,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+      <a href="../../using_javatron/litefullnode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -499,7 +499,7 @@
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
@@ -723,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/dpos/" class="md-nav__link">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1149,11 +1149,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contracts/compiler/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
@@ -1197,7 +1197,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1208,7 +1208,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1223,29 +1223,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -3277,7 +3255,7 @@
 <p>java-tron supports node monitoring and provides various metrics data. Anaximander optimizes the statistical logic of node HTTP request monitoring metric to ensure data consistency during concurrent access by multiple threads when counting request data from each mapping address.</p>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5920">https://github.com/tronprotocol/java-tron/pull/5920</a> </p>
 <h4 id="2-improve-stability-of-gradle-test-task">2. Improve stability of Gradle test task<a class="headerlink" href="#2-improve-stability-of-gradle-test-task" title="Permanent link">&para;</a></h4>
-<p>Anaximander optimizes the unit test task. The Gradle <a href="[https://plugins.gradle.org/plugin/org.gradle.test-retry">test-retry</a>  plugin is introduced to allow the failed unit test tasks to be re-executed. The <code>@Ignore</code> annotation is used to skip temporarily unused and unstable test cases. This optimization improves the stability of test task execution.</p>
+<p>Anaximander optimizes the unit test task. The Gradle <a href="https://plugins.gradle.org/plugin/org.gradle.test-retry">test-retry</a>  plugin is introduced to allow the failed unit test tasks to be re-executed. The <code>@Ignore</code> annotation is used to skip temporarily unused and unstable test cases. This optimization improves the stability of test task execution.</p>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5916">https://github.com/tronprotocol/java-tron/pull/5916</a>  <a href="https://github.com/tronprotocol/java-tron/pull/5927">https://github.com/tronprotocol/java-tron/pull/5927</a>  </p>
 <h4 id="3-add-tcp-outflow-monitoring-metric-for-prometheus-and-add-udp-inflow-traffic-statistic-to-monitorgetstatsinfo-api">3. Add TCP outflow monitoring metric for Prometheus and add UDP inflow traffic statistic to <code>/monitor/getstatsinfo</code> API<a class="headerlink" href="#3-add-tcp-outflow-monitoring-metric-for-prometheus-and-add-udp-inflow-traffic-statistic-to-monitorgetstatsinfo-api" title="Permanent link">&para;</a></h4>
 <p>Anaximander adds a new node TCP outflow monitoring metric and adds a UDP inflow statistic to the <code>/monitor/getstatsinfo</code> interface, further enriching the node monitoring data.</p>
@@ -3433,7 +3411,7 @@ Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5583">https
 <h4 id="1-add-grpc-interfaces-for-resource-price-and-transaction-memo-fee-query">1. Add gRPC interfaces for resource price and transaction memo fee query<a class="headerlink" href="#1-add-grpc-interfaces-for-resource-price-and-transaction-memo-fee-query" title="Permanent link">&para;</a></h4>
 <p>Chilon adds three new gRPC interfaces. Users can obtain historical bandwidth unit price through <code>getBandwidthPrices</code> API, obtain historical energy unit price through <code>getEnergyPrices</code> API, and obtain transaction memo fee through <code>getMemoFee</code> API. These new gRPC APIs further improve the developer experience.</p>
 <p>TIP: <a href="https://github.com/tronprotocol/tips/blob/master/tip-586.md">https://github.com/tronprotocol/tips/blob/master/tip-586.md</a><br />
-Source Code: <a href="[https://github.com/tronprotocol/java-tron/pull/5412">https://github.com/tronprotocol/java-tron/pull/5412</a>  </p>
+Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5412">https://github.com/tronprotocol/java-tron/pull/5412</a>  </p>
 <h4 id="2-supplement-disconnect-reasons">2. Supplement disconnect reasons<a class="headerlink" href="#2-supplement-disconnect-reasons" title="Permanent link">&para;</a></h4>
 <p>When a node fails to process a message from a peer, it may initiatively disconnect from the peer. However, in previous versions of Chilon, in some cases, the node did not inform the other node of the reason for the disconnection, which was not conducive to the analysis and troubleshooting of the connection issue by the other node.</p>
 <p>The Chilon version supplements two reasons for disconnection. Node will send the disconnection reasons to the other node before dropping the connection, so as to facilitate efficient handling of node connection problems.</p>
