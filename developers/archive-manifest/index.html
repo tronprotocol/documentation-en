@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/introduction/dpos/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/archive-manifest/">
       
       
-        <link rel="prev" href="../../api/json-rpc/">
-      
-      
-        <link rel="next" href="../../mechanism-algorithm/sr/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>DPoS - java-tron</title>
+        <title>Leveldb Startup Optimization Plugins - java-tron</title>
       
     
     
@@ -74,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dpos" class="md-skip">
+        <a href="#leveldb-startup-optimization-plugins" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DPoS
+              Leveldb Startup Optimization Plugins
             
           </span>
         </div>
@@ -407,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+      <a href="../../using_javatron/litefullnode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -499,7 +495,7 @@
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
@@ -679,8 +675,6 @@
       
   
   
-    
-  
   
   
     
@@ -692,11 +686,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -711,7 +705,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Core Protocol
@@ -722,31 +716,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    DPoS
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -756,107 +729,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item ">
-  <a href="#overview" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#block-producing-process" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Block Producing Process
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#dpos-overview" class="md-nav__link" >
-    <span class="md-ellipsis">
-      DPoS overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#definition" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Definition
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#election-mechanism" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Election mechanism
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#block-generation-mechanism" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Block generation mechanism
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#incentive-model" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Incentive model
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#proposal-based-parameter-adjustment" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Proposal-based parameter adjustment
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#appendix-reference-documentations" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Appendix: Reference Documentations
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1071,7 +943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/java-tron/" class="md-nav__link">
+      <a href="../java-tron/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1093,7 +965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/tips/" class="md-nav__link">
+      <a href="../tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1115,7 +987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/issue-workflow/" class="md-nav__link">
+      <a href="../issue-workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1137,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/governance/" class="md-nav__link">
+      <a href="../governance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1159,7 +1031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/run-in-idea/" class="md-nav__link">
+      <a href="../run-in-idea/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1181,7 +1053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/demo/" class="md-nav__link">
+      <a href="../demo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1203,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/code-structure/" class="md-nav__link">
+      <a href="../code-structure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1273,11 +1145,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contracts/compiler/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
@@ -1321,7 +1193,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1332,7 +1204,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1347,29 +1219,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -1590,86 +1440,271 @@
   
 
 
-<h1 id="dpos">DPoS<a class="headerlink" href="#dpos" title="Permanent link">&para;</a></h1>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Blockchain is a distributed accounting system. In a blockchain system, there can be thousands of nodes, each of which independently stores the same ledger. If new transaction data is to be written into the ledger,  approvals from these nodes are needed. Achieving this goal in an untrusted distributed environment is a complicated systematic quest. The blockchain system operates normally means each node in the blockchain can always keep the same ledger, provided that most nodes in the system are honest and reliable. In order to ensure that honest and reliable nodes can jointly supervise the transaction data written into the ledgers, each blockchain system needs to build its own consensus, which is equivalent to the constitution of the blockchain. As long as the vast majority of nodes comply with the consensus requirements, it is able to guarantee the results will certainly be credible, even in an untrusted distributed environment. Therefore, the significance of the consensus is that the honest nodes in the blockchain can ultimately achieve the agreement of the ledgers as long as they strictly abide by this consensus.</p>
-<p>There are several types of consensus, and the most commonly used are POW, POS, and DPoS. Definitely, different blockchain systems will have a unique way of implementation. This article will mainly introduce the DPoS consensus on which TRON based. We will also explain the basic components and mechanisms of DPoS.</p>
-<h2 id="block-producing-process">Block Producing Process<a class="headerlink" href="#block-producing-process" title="Permanent link">&para;</a></h2>
-<p>The SR(Super Representatives) of the blockchain network collect the newly generated transactions in the blockchain network and verify the legality of these transactions, then package the transactions in a block, record them as a new page on the ledger, and broadcast the page to the entire blockchain network. Other nodes will receive the new page and verify the legality of the transaction data on the page and add it to their own ledger. The SR(Super Representatives) will repeat this process so all new transaction data in the blockchain system can be recorded in the ledger.</p>
-<h2 id="dpos-overview">DPoS overview<a class="headerlink" href="#dpos-overview" title="Permanent link">&para;</a></h2>
-<p>The role of consensus is to select the SR(Super Representatives) in the blockchain system. The SR(Super Representatives) verify the transaction data and keep the account in order to broadcast new accounts to other nodes in the network and obtains the approval of the new accounts from other nodes. As a specific implementation of consensus, DPoS works in the following way:</p>
-<p>The DPoS consensus selects some nodes as SR(Super Representatives) in the blockchain system based on the number of votes they receive. First, when the blockchain system starts to operate, a certain number of tokens will be issued, and then the tokens will be given to nodes in the blockchain system. A node can apply to be a super representative candidate in the blockchain system with a portion of the tokens. Any token-holding node in the blockchain system can vote for these candidates. Every t period of time, the votes for all the candidates will be counted. Top N candidate nodes with the most votes will become SR(Super Representatives) for the next t period. After t period of time, the votes will be counted again to elect the new SR(Super Representatives), and the cycle continues.</p>
-<p>Let's see how it's realized in the context of TRON:</p>
-<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">&para;</a></h2>
+<h1 id="leveldb-startup-optimization-plugins">Leveldb Startup Optimization Plugins<a class="headerlink" href="#leveldb-startup-optimization-plugins" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>With the operation of levelDB, manifest file will continue to grow, huge manifest file not only affects the node startup speed, but also may cause the problem of system exit with continuous memory growth.
+For this reason, leveldb startup optimization plugin is introduced since <code>GreatVoyage-v4.3.0(Bacon)</code>, which optimizes the file size of manifest and the startup process of LevelDB, reduces the memory occupation and improves the node startup speed.</p>
+<p>Remember stop the FullNode process before any operation. This tool provides the ability to reformat the manifest according to the current <code>database</code>.</p>
+<p>For more design details, please refer to: <a href="https://github.com/tronprotocol/tips/issues/298">TIP298</a>.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="options-for-plug-in">Options For Plug-in<a class="headerlink" href="#options-for-plug-in" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>-b | --batch-size</code>: [ int ]  specify the batch manifest size,default：80000.</li>
+<li><code>-d | --database-directory</code>: [ string ]  Specify the database directory to be processed,default：output-directory/database.</li>
+<li><code>-m | --manifest-size</code>: [ int ] Specify the minimum required manifest file size ，unit:M，default：0.</li>
+<li><code>-h | --help</code>: [ bool ]  for usage help，default：false.</li>
+</ul>
+<h3 id="how-to-get">How to get<a class="headerlink" href="#how-to-get" title="Permanent link">&para;</a></h3>
+<ul>
+<li>build by yourself.
+  Under java-tron, execute <code>. /gradlew build</code>, you can get Toolkit.jar under <code>build/libs/</code>.</li>
+<li>Download directly.
+  <a href="https://github.com/tronprotocol/java-tron/releases">Links</a></li>
+</ul>
+<h3 id="use-steps">Use Steps<a class="headerlink" href="#use-steps" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p>TRON: refers to the TRON network. The document does not distinguish between TRON, TRON blockchain, TRON blockchain system, etc.</p>
+<ol>
+<li>Stop the FullNode service.</li>
+</ol>
 </li>
 <li>
-<p>TRON token: refers to the equity token issued by and circulating in TRON, known as TRX.</p>
+<ol>
+<li>Execute the Toolkit command.</li>
+</ol>
 </li>
 <li>
-<p>super representative candidates: nodes eligible for becoming super representatives in TRON.</p>
-</li>
-<li>
-<p>SR(Super Representatives): nodes in TRON qualified for book-keeping. They are usually called super representatives in DPoS consensus. In TRON, there will be 27 super representatives, which are also called super nodes (or SR). Here, we will not distinguish between bookkeeper, witness, supernode, SR, etc.</p>
-</li>
-<li>
-<p>Bookkeeping: the process of verifying transactions and recording them in a ledger. Because ledgers in TRON are carried by blocks, the bookkeeping process is also called block generation. We will not distinguish between bookkeeping and block generation in the document.</p>
-</li>
-<li>
-<p>Bookkeeping order: block generation order. The descending order of the 27 super representatives based on the number of votes they receive.</p>
-</li>
-<li>
-<p>Slot: In TRON, every three seconds is regarded as one slot. Under normal circumstances, each SR will produce a block within the corresponding slot time. Therefore, the average block interval of TRON is approximately three seconds. If an SR fails to produce a block for some reasons, the corresponding slot will be vacant and the next SR will produce a block in the following slot. During the maintenance period, block production will skip two slots.</p>
-</li>
-<li>
-<p>Epoch: TRON sets an Epoch to be 6 hours. The last 2 block time of an Epoch is the maintenance period, during which block generating order for the next Epoch will be decided.</p>
-</li>
-<li>
-<p>The maintenance period: TRON sets the period to be 2 block time, which is 6 seconds. This period of time is used to count the votes for candidates. There are 4 Epochs in 24 hours, and naturally, 4 maintenance periods. During the maintenance period, no block is generated and block generation order for the next Epoch is decided.</p>
+<ol>
+<li>Start the FullNode service.</li>
+</ol>
 </li>
 </ul>
-<p><img alt="image" src="https://github.com/tronprotocol/documentation-en/raw/master/images/sequence_en.jpg" /></p>
-<h2 id="election-mechanism">Election mechanism<a class="headerlink" href="#election-mechanism" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Votes</li>
-</ol>
-<p>In TRON, 1 TRX equals 1 vote.</p>
-<ol>
-<li>Voting process</li>
-</ol>
-<p>In TRON, voting for candidates is a special transaction. Nodes can vote for candidates through generating a voting transaction.</p>
-<ol>
-<li>Vote counting</li>
-</ol>
-<p>During each maintenance period, the votes for candidates will be counted. The top 27 candidates with the most votes will be the super representatives for the next Epoch.</p>
-<h2 id="block-generation-mechanism">Block generation mechanism<a class="headerlink" href="#block-generation-mechanism" title="Permanent link">&para;</a></h2>
-<p>During each Epoch, the 27 super representatives will take turns to generate blocks according to the bookkeeping order. Each super representative can only generate blocks when it is their turn. Super representatives package the data of multiple verified transactions into each block. The hash of the previous block will be included in each new block as the parentHash. The super representative will sign the data of this block with his/her private key and fill in witness_signature, along with the address of the super representative, the block height, and the time that block is generated, etc.</p>
-<p>Through storing the hash of the previous block, blocks are logically connected. Eventually, they form a chain. A typical blockchain structure is shown in the following picture:</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/blockchain_structure.png" /></p>
-<p>In ideal circumstances, the bookkeeping process in a DPoS consensus-based blockchain system proceeds according to the bookkeeping order calculated in advance. Blocks are generated by super representatives in turn (see figure a). However, in reality, the blockchain network is a distributed and untrusted complex system in the following three ways.
-- Due to poor network environment, blocks generated by some super representatives cannot be received by other super representatives in valid time (see figure b1 and b2).
-- The normal operation of a certain super representative cannot always be guaranteed (see figure c).
-- Some malicious super representatives will generate fork blocks in order to fork the chain (see figure d).</p>
-<p><img alt="image" src="https://github.com/tronprotocol/documentation-en/raw/master/images/longest_chain1_en.jpg" /></p>
-<p><img alt="image" src="https://github.com/tronprotocol/documentation-en/raw/master/images/longest_chain2_en.jpg" /></p>
-<p>As mentioned above, the basis for the blockchain system to operate normally is that most of the nodes in the system are honest and reliable. Furthermore, the primary guarantee for the security of the blockchain system is the security of the ledger, meaning that illegal data cannot be written into the ledger maliciously and ledger copies saved on each node should be consistent as well. Based on the DPoS consensus, the bookkeeping process is carried out by super representatives. Therefore, the safety of TRON depends on the reliability of the majority of the super representatives. TRON has put confirmed blocks in the system which are irreversible. At the same time, in order to resist the malicious behaviors of a small number of super representatives nodes, TRON recognizes the longest chain as the main chain based on "the longest chain principle".</p>
-<p><strong>The confirmed block principle</strong></p>
-<p>The newly produced blocks are in unconfirmed state, and only those blocks that are "approved" by more than 70% (i.e. 27 * 70% = 19, rounded down) of the 27 super representatives are considered to be irreversible blocks, commonly referred to as solidified blocks, and the transactions contained in the solidified blocks have been confirmed by the entire blockchain network.  The way to "approve" the unconfirmed state block is that the SR producing subsequent blocks after it, as shown in Figure d, the SR C produces block 103, the SR E produces 104' on the basis of block 103, the block 105', 106', and 107' produced respectively by the SR G, A and B, are also subsequent blocks of the 103rd block, which means these four blocks approve the 103rd block. It can be seen that when the block of height 121 is produced, the 103rd block becomes a solidified block, since by this time the 103rd block has 19 subsequent blocks, and the point to be emphasized here is that the super representatives producing these 19 blocks must be different from each other and from the super representatives producing the 103rd block.</p>
-<p><strong>The longest chain principle</strong></p>
-<p>When a fork occurs, an honest super representative would always choose to produce blocks on the longest chain.</p>
-<h2 id="incentive-model">Incentive model<a class="headerlink" href="#incentive-model" title="Permanent link">&para;</a></h2>
-<p>To ensure the safe and efficient operation of the blockchain system, TRON sets up an incentive model to encourage more nodes to join the network, thereby expanding the scale of the network. Every time a block is generated by the TRON network, a block reward of 16 TRX will be awarded to the super representative who produced the block, and a voting reward of 160 TRX will be awarded to all super representatives and super partners (super representative candidates who ranking 28th~ 127th are also called super partners), and they share the voting rewards proportionally according to the number of votes they get. At the same time, super representatives and partners will also deduct the rewards according to their commission ratio, and distribute the remaining part to voters according to the voter voting ratio.</p>
-<h2 id="proposal-based-parameter-adjustment">Proposal-based parameter adjustment<a class="headerlink" href="#proposal-based-parameter-adjustment" title="Permanent link">&para;</a></h2>
-<p>An important characteristic of DPoS is that any parameter adjustment can be proposed on the chain, and super representatives will decide whether to approve the proposal by starting a vote. The advantage of this method is that it avoids hard fork upgrades when adding new features. For the current dynamic parameters and values ​​of the TRON network, as well as past proposals, please refer to <a href="https://tronscan.org/#/sr/committee">here</a>.</p>
-<h2 id="appendix-reference-documentations">Appendix: Reference Documentations<a class="headerlink" href="#appendix-reference-documentations" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://www.coinbureau.com/education/delegated-proof-stake-dpos/">Delegated Proof of Stake (DPoS) – Total Beginners Guide</a></li>
-<li><a href="https://www.nichanank.com/blog/2018/6/4/consensus-algorithms-pos-dpos">Consensus Algorithms: Proof-of-Stake &amp; Cryptoeconomics</a></li>
-<li><a href="http://docs.bitshares.org/en/master/technology/dpos.html#role-of-delegates">Role of Delegates</a></li>
-<li><a href="https://hackernoon.com/what-is-delegated-proof-of-stake-897a2f0558f9">What is Delegated Proof of Stake?</a></li>
-</ul>
+<blockquote>
+<p>Note: <code>Step ii</code> is not required every time, but it is recommended to run it every time to optimize the experience.</p>
+</blockquote>
+<h3 id="how-to-use">How to use<a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h3>
+<p>After FullNode runs, the default database directory: <code>output-directory</code>, the optimization plugin will work with the <code>output-directory/database</code> directory.
+Developers can choose one of the following two ways  according to actual situation.</p>
+<h4 id="use-it-independently">Use it Independently<a class="headerlink" href="#use-it-independently" title="Permanent link">&para;</a></h4>
+<h5 id="1stop-the-fullnode-service">1.Stop the FullNode service<a class="headerlink" href="#1stop-the-fullnode-service" title="Permanent link">&para;</a></h5>
+<p>Use <code>kill -15</code> to shutdown the FullNode.jar .</p>
+<p>Query the pid: <code>ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code></p>
+<h5 id="2execute-the-toolkit-command">2.Execute the Toolkit command<a class="headerlink" href="#2execute-the-toolkit-command" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># Full command</span>
+java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>batchSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>databaseDirectory<span class="o">]</span><span class="w"> </span><span class="o">[</span>-m<span class="w"> </span>manifestSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
+<span class="c1"># examples</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span><span class="c1">#1. use default settings</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>-d<span class="w"> </span>/tmp/db/database<span class="w"> </span><span class="c1">#2. Specify the database directory as /tmp/db/database</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>-b<span class="w"> </span><span class="m">64000</span><span class="w"> </span><span class="c1">#3. Specify the batch size to 64000 when optimizing Manifest</span>
+<span class="w">   </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>-m<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="c1">#4. Specify optimization only when Manifest exceeds 128M</span>
+</code></pre></div>
+<p>After the command is executed, <code>archive.log</code> will be generated in the <code>./logs</code> directory, you can see the result.</p>
+<blockquote>
+<p>Note: After the command is executed，If successful, the log will display something similar to the following,
+and will run generally within 120s, depending on how long the FullNode service keeps running,
+and if it fails there will be a corresponding error message</p>
+<p><code>[main] [archive](ArchiveManifest.java:144) DatabaseDirectory:output-directory/database, maxManifestSize:0, maxBatchSize:80000,database reopen use 80 seconds total.</code></p>
+</blockquote>
+<h5 id="3start-the-fullnode-service">3.Start the FullNode service<a class="headerlink" href="#3start-the-fullnode-service" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="c1">#FullNode</span>
+nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>&lt;/dev/null<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="p">&amp;</span>
+<span class="w"> </span><span class="c1">#SR Node</span>
+nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w">  </span>-jar<span class="w"> </span>FullNode.jar<span class="w">  </span>-p<span class="w">  </span>private<span class="w"> </span>key<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>&lt;/dev/null<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<h4 id="integrated-startup-script">Integrated startup script<a class="headerlink" href="#integrated-startup-script" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">APP</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="nv">MANIFEST_OPT</span><span class="o">=</span><span class="nv">$2</span>
+
+<span class="nv">ALL_OPT</span><span class="o">=</span><span class="nv">$*</span>
+
+<span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">0</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;--rewrite--manifest&#39;</span><span class="w"> </span><span class="o">]]</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">   </span><span class="nv">APP</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="w">   </span><span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">1</span>
+
+<span class="w"> </span><span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;--rewrite--manifest&#39;</span><span class="w"> </span><span class="o">]]</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">   </span><span class="nv">NEED_REBUILD</span><span class="o">=</span><span class="m">1</span>
+<span class="w"> </span><span class="k">fi</span>
+
+
+rebuildManifest<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$NEED_REBUILD</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">   </span>buildManifest
+<span class="w"> </span><span class="k">fi</span>
+
+<span class="o">}</span>
+
+
+buildManifest<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+
+<span class="w"> </span><span class="nv">ARCHIVE_JAR</span><span class="o">=</span><span class="s1">&#39;Toolkit.jar&#39;</span>
+
+<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span><span class="nv">$ARCHIVE_JAR</span><span class="w"> </span><span class="nv">$ALL_OPT</span>
+
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">     </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;rebuild manifest success&#39;</span>
+
+<span class="w"> </span><span class="k">else</span>
+
+<span class="w">     </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;rebuild manifest fail, log in logs/archive.log&#39;</span>
+
+<span class="w"> </span><span class="k">fi</span>
+
+<span class="o">}</span>
+
+
+
+<span class="nv">APP</span><span class="o">=</span><span class="si">${</span><span class="nv">APP</span><span class="k">:-</span><span class="s2">&quot;FullNode&quot;</span><span class="si">}</span>
+
+<span class="nv">START_OPT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="p">@:</span><span class="nv">2</span><span class="si">}</span><span class="sb">`</span>
+
+<span class="nv">JAR_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$APP</span><span class="s2">.jar&quot;</span>
+
+<span class="nv">MAX_STOP_TIME</span><span class="o">=</span><span class="m">60</span>
+
+<span class="nv">MEM_OPT</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+
+
+
+
+checkpid<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+
+<span class="w"> </span><span class="nv">pid</span><span class="o">=</span><span class="sb">`</span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nv">$JAR_NAME</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+
+<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nv">$pid</span>
+
+<span class="o">}</span>
+
+checkPath<span class="o">(){</span>
+<span class="w">  </span><span class="nv">path</span><span class="o">=</span><span class="s1">&#39;output-directory/database&#39;</span>
+<span class="w">  </span><span class="nv">flag</span><span class="o">=</span><span class="m">1</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span>p<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">ALL_OPT</span><span class="si">}</span>
+<span class="w">  </span><span class="k">do</span>
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$flag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nv">path</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$p</span><span class="sb">`</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">     </span><span class="k">fi</span>
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;-d&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;--database-directory&#39;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nv">path</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="nv">flag</span><span class="o">=</span><span class="m">0</span>
+<span class="w">     </span><span class="k">fi</span>
+<span class="w">  </span><span class="k">done</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">     </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;-d /path or --database-directory /path&#39;</span>
+<span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span><span class="si">${</span><span class="nv">path</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$path</span><span class="w"> </span><span class="s1">&#39;not exist&#39;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="o">}</span>
+
+
+
+stopService<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+
+<span class="w">  </span><span class="nv">count</span><span class="o">=</span><span class="m">1</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$count</span><span class="w"> </span>-le<span class="w"> </span><span class="nv">$MAX_STOP_TIME</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+
+<span class="w">    </span>checkpid
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$pid</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">       </span><span class="nb">kill</span><span class="w"> </span>-15<span class="w"> </span><span class="nv">$pid</span>
+
+<span class="w">       </span>sleep<span class="w"> </span><span class="m">1</span>
+
+<span class="w">    </span><span class="k">else</span>
+
+<span class="w">       </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;java-tron stop&quot;</span>
+
+<span class="w">       </span><span class="k">return</span>
+
+<span class="w">    </span><span class="k">fi</span>
+
+<span class="w">    </span><span class="nv">count</span><span class="o">=</span>$<span class="o">[</span><span class="nv">$count</span>+1<span class="o">]</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$count</span><span class="w"> </span>-eq<span class="w"> </span><span class="nv">$MAX_STOP_TIME</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">      </span><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span><span class="nv">$pid</span>
+
+<span class="w">      </span>sleep<span class="w"> </span><span class="m">1</span>
+
+<span class="w">    </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="k">done</span>
+
+<span class="o">}</span>
+
+startService<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="sb">`</span>date<span class="sb">`</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>start.log
+
+<span class="w"> </span><span class="nv">total</span><span class="o">=</span><span class="m">16</span>*1024*1024
+
+<span class="w"> </span><span class="nv">xmx</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$total</span><span class="s2">/1024/1024*0.6&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1&quot;g&quot;}&#39;</span><span class="sb">`</span>
+
+<span class="w"> </span><span class="nv">directmem</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$total</span><span class="s2">/1024/1024*0.1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1&quot;g&quot;}&#39;</span><span class="sb">`</span>
+
+<span class="w"> </span><span class="nv">logtime</span><span class="o">=</span><span class="sb">`</span>date<span class="w"> </span>+%Y-%m-%d_%H-%M-%S<span class="sb">`</span>
+
+<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib64/libtcmalloc.so&quot;</span>
+
+<span class="w">  </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xms<span class="nv">$xmx</span><span class="w"> </span>-Xmx<span class="nv">$xmx</span><span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span>-Xloggc:./gc.log<span class="se">\</span>
+<span class="w">  </span>-XX:+PrintGCDateStamps<span class="w"> </span>-XX:+CMSParallelRemarkEnabled<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span>-XX:+UseCodeCacheFlushing<span class="se">\</span>
+<span class="w">  </span><span class="nv">$MEM_OPT</span><span class="w"> </span>-XX:MaxDirectMemorySize<span class="o">=</span><span class="nv">$directmem</span><span class="w"> </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span>-jar<span class="w"> </span><span class="nv">$JAR_NAME</span><span class="w"> </span><span class="nv">$START_OPT</span><span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w">  </span>&gt;&gt;<span class="w"> </span>start.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+
+<span class="w"> </span><span class="nv">pid</span><span class="o">=</span><span class="sb">`</span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="nv">$JAR_NAME</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;start java-tron with pid </span><span class="nv">$pid</span><span class="s2"> on </span><span class="nv">$HOSTNAME</span><span class="s2">&quot;</span>
+
+<span class="o">}</span>
+
+<span class="c1">#1.Stop the FullNode service</span>
+stopService
+
+checkPath
+
+<span class="c1">#2.Execute the Toolkit plugin</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">0</span><span class="w"> </span><span class="o">==</span><span class="w">  </span><span class="nv">$?</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w"> </span>rebuildManifest
+<span class="k">else</span>
+<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>-1
+<span class="k">fi</span>
+
+sleep<span class="w"> </span><span class="m">5</span>
+<span class="c1"># Start the FullNode service</span>
+startService
+</code></pre></div>
+ example</p>
+<blockquote>
+<p>Note: Save above script as start.sh,  In the above script the <code>--rewrite--manifest</code> argument is fixed in the first or second argument.</p>
+<p>OPTIONS</p>
+<div class="codehilite"><pre><span></span><code>       --rewrite--manifest       enable leveldb startup optimization plugins，The above plug-in option `-d -m -b -h` will take effect iff this option(--rewrite--manifest) is turned on
+</code></pre></div>
+
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># Full command</span>
+./start.sh<span class="w"> </span><span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span><span class="w"> </span><span class="o">[</span>--rewrite--manifest<span class="o">]</span><span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>batchSize<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>databaseDirectory<span class="o">]</span><span class="w"> </span><span class="o">[</span>-m<span class="w"> </span>manifestSize<span class="o">]</span>
+<span class="c1"># examples</span>
+<span class="w">  </span>./start.sh<span class="w"> </span><span class="c1">#1. Start the FullNode.jar service without the plugin</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>SolidityNode<span class="w"> </span><span class="c1">#2. Start the SolidityNode.jar service without the plugin</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>FullNode<span class="w"> </span>--rewrite--manifest<span class="w"> </span><span class="c1">#3. Execute the optimization plugin with default settings and start the FullNode.jar service</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>--rewrite--manifest<span class="w"> </span>-d<span class="w"> </span>/tmp/db/database<span class="w"> </span><span class="c1">#4. Specify the database directory as /tmp/db/database, execute the optimization plugin, and start the FullNode.jar service</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>--rewrite--manifest<span class="w"> </span>-b<span class="w"> </span><span class="m">64000</span><span class="w"> </span><span class="c1">#5. Specify the batch size to 64000 when optimizing Manifest, and start the FullNode.jar service</span>
+<span class="w">   </span>./start.sh<span class="w"> </span>--rewrite--manifest<span class="w"> </span>-m<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="c1">#6. Specify that optimization is performed only when the Manifest exceeds 128M, and start the FullNode.jar service</span>
+</code></pre></div>
 
 
 
@@ -1685,44 +1720,6 @@
 		  <hr class="content-footer-divider">  <!-- 添加的水平线 -->
       	    	  <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../../api/json-rpc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: jsonRPC API">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                jsonRPC API
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../../mechanism-algorithm/sr/" class="md-footer__link md-footer__link--next" aria-label="Next: Super Representative">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Super Representative
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <!--div class="md-footer-meta md-typeset">

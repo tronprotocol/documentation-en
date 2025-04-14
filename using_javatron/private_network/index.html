@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">
       
       
-        <link rel="prev" href="../../developers/litefullnode/">
+        <link rel="prev" href="../litefullnode/">
       
       
         <link rel="next" href="../../architecture/event/">
@@ -409,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+      <a href="../litefullnode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -440,6 +440,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -450,6 +462,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#deployment-guide" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Deployment Guide
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -511,7 +551,7 @@
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
@@ -735,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/dpos/" class="md-nav__link">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1161,11 +1201,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contracts/compiler/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
@@ -1209,7 +1249,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1220,7 +1260,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1235,29 +1275,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -1480,7 +1498,7 @@
 
 <h1 id="private-network">Private Network<a class="headerlink" href="#private-network" title="Permanent link">&para;</a></h1>
 <p>To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the <code>Oracle JDK 1.8</code> first, and then you need to prepare at least two TRON network address and save the address and private key. You can use <a href="https://github.com/tronprotocol/wallet-cli">wallet-cli</a> or <a href="https://www.tronlink.org/">Tronlink</a> to create address.</p>
-<h1 id="deployment-guide">Deployment Guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h1>
+<h2 id="deployment-guide">Deployment Guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h2>
 <p>The process of building a node on private chain is the same as that on mainnet. The difference is the content of the node configuration file. The most important step to build a private chain is to modify the configuration items in the configuration file, so that the nodes can form a private network for node discovery, block synchronization and broadcast transactions.</p>
 <ol>
 <li>
@@ -1684,7 +1702,7 @@ modifyChainParameters(parametersForProposal1, 1)
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../developers/litefullnode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lite FullNode">
+          <a href="../litefullnode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lite FullNode">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>

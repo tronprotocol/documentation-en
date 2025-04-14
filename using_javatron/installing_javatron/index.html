@@ -374,6 +374,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -384,6 +396,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#compile-the-source-code" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Compile the Source Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#startup-a-java-tron-node" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Startup a java-tron Node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Startup a java-tron Node" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#startup-a-fullnode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Startup a fullnode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#startup-a-fullnode-that-produces-blocks" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Startup a fullnode that produces blocks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#others" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Others
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -419,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+      <a href="../litefullnode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -511,7 +593,7 @@
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
@@ -735,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/dpos/" class="md-nav__link">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1161,11 +1243,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contracts/compiler/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
@@ -1209,7 +1291,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1220,7 +1302,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1235,29 +1317,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -1481,7 +1541,7 @@
 <h1 id="deploy-a-java-tron-node">Deploy a java-tron Node<a class="headerlink" href="#deploy-a-java-tron-node" title="Permanent link">&para;</a></h1>
 <p>java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported.</p>
 <p>The minimum hardware configuration required to run a java-tron node is <code>8-core CPU</code>, <code>16G memory</code>, <code>2T SDD</code>, the recommended configuration is: <code>16-core CPU</code>, <code>32G memory</code>, <code>2.5T+ SDD</code>. The fullnode running by super representative to produce block recommends <code>32-core CPU</code> and <code>64G memory</code>.</p>
-<h1 id="compile-the-source-code">Compile the Source Code<a class="headerlink" href="#compile-the-source-code" title="Permanent link">&para;</a></h1>
+<h2 id="compile-the-source-code">Compile the Source Code<a class="headerlink" href="#compile-the-source-code" title="Permanent link">&para;</a></h2>
 <p>First, clone the java-tron repository to the local with the following git command, and switch to the <code>master</code> branch. Before executing the command, make sure you have installed the <code>git</code> tool.</p>
 <div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
 $ git checkout -t origin/master
@@ -1490,7 +1550,7 @@ $ git checkout -t origin/master
 <div class="highlight"><pre><span></span><code>$ cd java-tron
 $ ./gradlew clean build -x test
 </code></pre></div>
-<h2 id="run-a-java-tron-node">Run a java-tron Node<a class="headerlink" href="#run-a-java-tron-node" title="Permanent link">&para;</a></h2>
+<h2 id="startup-a-java-tron-node">Startup a java-tron Node<a class="headerlink" href="#startup-a-java-tron-node" title="Permanent link">&para;</a></h2>
 <p>You can choose different configuration files to connect java-tron nodes to different networks. The mainnet configuration file is: <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">main_net_config.conf</a>, other network configuration files can be found <a href="https://github.com/tronprotocol/tron-deployment">here</a>.</p>
 <h3 id="startup-a-fullnode">Startup a fullnode<a class="headerlink" href="#startup-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>Fullnode has full historical data, it is the entry point into the TRON network , it provides HTTP API and gRPC API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the <code>-c</code> parameter: </p>
@@ -1511,8 +1571,8 @@ $ ./gradlew clean build -x test
 <div class="highlight"><pre><span></span><code>$ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
 </code></pre></div>
 <p><strong>Note</strong>: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use <a href="../backup_restore/#public-backup-data">Data Snapshots</a> to speed up node synchronization. First download the latest data snapshot and extract it to the <code>output-directory</code> directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.</p>
-<h1 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h1>
-<h3 id="how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account">How to use <code>keystore + password</code> to specify the privatekey of witness account<a class="headerlink" href="#how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account" title="Permanent link">&para;</a></h3>
+<h3 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h3>
+<h4 id="how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account">How to use <code>keystore + password</code> to specify the privatekey of witness account<a class="headerlink" href="#how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account" title="Permanent link">&para;</a></h4>
 <ol>
 <li>You should not use the nohup command because the interaction is required when running the node. It is recommended to use session keeping tools such as screen, tmux, etc.</li>
 <li>Comment the <code>localwitness</code> item in main_net_config.conf and uncomment the <code>localwitnesskeystore</code> item. Fill in the path of the Keystore file. Note that the Keystore file needs to be placed in the current directory where the startup command is executed or its subdirectory. If the current directory is "A", the directory of the Keystore file is "A/B/localwitnesskeystore.json", it needs to be configured as:
@@ -1526,7 +1586,7 @@ $ ./gradlew clean build -x test
 </code></pre></div></li>
 <li>Enter the password correctly to finish the node startup.</li>
 </ol>
-<h3 id="optimize-memory-allocation-with-tcmalloc">Optimize Memory Allocation with tcmalloc<a class="headerlink" href="#optimize-memory-allocation-with-tcmalloc" title="Permanent link">&para;</a></h3>
+<h4 id="optimize-memory-allocation-with-tcmalloc">Optimize Memory Allocation with tcmalloc<a class="headerlink" href="#optimize-memory-allocation-with-tcmalloc" title="Permanent link">&para;</a></h4>
 <p>Memory allocation of java-tron can be optimized with tcmalloc. The method is as follows:</p>
 <p>First install tcmalloc, then add the following two lines to the startup script, the path of tcmalloc is slightly different for different Linux distributions.</p>
 <div class="highlight"><pre><span></span><code>#!/bin/bash

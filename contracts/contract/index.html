@@ -407,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/litefullnode/" class="md-nav__link">
+      <a href="../../using_javatron/litefullnode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -499,7 +499,7 @@
         
   
   <span class="md-ellipsis">
-    Network Configuration
+    Network Connection
     
   </span>
   
@@ -725,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/dpos/" class="md-nav__link">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -861,55 +861,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#smart-contract-introduction" class="md-nav__link" >
+  <a href="#introduction" class="md-nav__link" >
     <span class="md-ellipsis">
-      Smart Contract Introduction
+      Introduction
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#smart-contract-features" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#features" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Smart Contract Features
+      Features
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Smart Contract Features" hidden>
+    <nav class="md-nav" aria-label="Features" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#1-smart-contract" class="md-nav__link" >
+  <a href="#defination-of-smart-contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      1. Smart Contract
+      Defination of Smart Contract
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#2-the-usage-of-the-function-of-smart-contract" class="md-nav__link" >
+  <a href="#usage-of-the-function-of-smart-contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. The Usage of the Function of Smart Contract
+      Usage of the Function of Smart Contract
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#3-contract-address-using-in-solidity-language" class="md-nav__link" >
+  <a href="#contract-address-used-in-solidity-language" class="md-nav__link" >
     <span class="md-ellipsis">
-      3. Contract Address Using in Solidity Language
+      Contract Address Used in Solidity Language
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#4-the-special-constants-differ-from-ethereum" class="md-nav__link" >
+  <a href="#special-constants-differ-from-ethereum" class="md-nav__link" >
     <span class="md-ellipsis">
-      4. The Special Constants Differ from Ethereum
+      Special Constants Differ from Ethereum
     </span>
   </a>
   
@@ -1252,11 +1252,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../compiler/" class="md-nav__link">
+      <a href="../tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Dapp Development Tool
+    Tools
     
   </span>
   
@@ -1300,7 +1300,7 @@
             
   
   <span class="md-ellipsis">
-    wallet-cli
+    Clients
     
   </span>
   
@@ -1311,7 +1311,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            wallet-cli
+            Clients
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1326,29 +1326,7 @@
         
   
   <span class="md-ellipsis">
-    What is wallet-cli
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    wallet-cli Commands
+    wallet-cli
     
   </span>
   
@@ -1570,12 +1548,12 @@
 
 
 <h1 id="contract">Contract<a class="headerlink" href="#contract" title="Permanent link">&para;</a></h1>
-<h2 id="smart-contract-introduction">Smart Contract Introduction<a class="headerlink" href="#smart-contract-introduction" title="Permanent link">&para;</a></h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.</p>
 <p>TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the <a href="https://github.com/tronprotocol/solidity/releases">TRON solidity repository</a>. Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.</p>
-<h2 id="smart-contract-features">Smart Contract Features<a class="headerlink" href="#smart-contract-features" title="Permanent link">&para;</a></h2>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
 <p>TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.</p>
-<h3 id="1-smart-contract">1. Smart Contract<a class="headerlink" href="#1-smart-contract" title="Permanent link">&para;</a></h3>
+<h3 id="defination-of-smart-contract">Defination of Smart Contract<a class="headerlink" href="#defination-of-smart-contract" title="Permanent link">&para;</a></h3>
 <p>TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
 <div class="highlight"><pre><span></span><code>message<span class="w"> </span>SmartContract<span class="w"> </span><span class="p">{</span>
 <span class="w">  </span>message<span class="w"> </span>ABI<span class="w"> </span><span class="p">{</span>
@@ -1634,7 +1612,7 @@ consume_user_resource_percent: resource consumption percentage set by the develo
 name: smart contract name
 origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)</p>
 <p>Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.</p>
-<h3 id="2-the-usage-of-the-function-of-smart-contract">2. The Usage of the Function of Smart Contract<a class="headerlink" href="#2-the-usage-of-the-function-of-smart-contract" title="Permanent link">&para;</a></h3>
+<h3 id="usage-of-the-function-of-smart-contract">Usage of the Function of Smart Contract<a class="headerlink" href="#usage-of-the-function-of-smart-contract" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>constant function and inconstant function</strong></li>
 </ul>
@@ -1686,7 +1664,7 @@ Note: TRON&#39;s smart contract is different from TRON&#39;s system contract, if
 11)Compatible with all the built-in functions of Ethereum
 </code></pre></div>
 Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.</p>
-<h3 id="3-contract-address-using-in-solidity-language">3. Contract Address Using in Solidity Language<a class="headerlink" href="#3-contract-address-using-in-solidity-language" title="Permanent link">&para;</a></h3>
+<h3 id="contract-address-used-in-solidity-language">Contract Address Used in Solidity Language<a class="headerlink" href="#contract-address-used-in-solidity-language" title="Permanent link">&para;</a></h3>
 <p>Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.</p>
 <ul>
 <li><strong>address conversion</strong></li>
@@ -1728,11 +1706,11 @@ But if you are using wallet-cli, you can use 21 bytes address, like 000000000000
 }
 </code></pre></div>
 If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).</p>
-<h3 id="4-the-special-constants-differ-from-ethereum">4. The Special Constants Differ from Ethereum<a class="headerlink" href="#4-the-special-constants-differ-from-ethereum" title="Permanent link">&para;</a></h3>
-<p><strong>Currency</strong></p>
+<h3 id="special-constants-differ-from-ethereum">Special Constants Differ from Ethereum<a class="headerlink" href="#special-constants-differ-from-ethereum" title="Permanent link">&para;</a></h3>
+<h4 id="currency">Currency<a class="headerlink" href="#currency" title="Permanent link">&para;</a></h4>
 <p>Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
 We recommend to use tron-studio instead of remix to build TRON smart contract.</p>
-<p><strong>Block</strong></p>
+<h4 id="block-related">Block Related<a class="headerlink" href="#block-related" title="Permanent link">&para;</a></h4>
 <ul>
 <li>block.blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded</li>
 <li>block.coinbase (address): SuperNode address that produced the current block</li>
