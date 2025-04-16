@@ -21,6 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Collapse the TOC
                     tocParentItem.classList.remove('md-nav__item--active');
+		    window.scrollTo({
+			top: 0,
+			//behavior: 'smooth' // if necessary, enable smooth jump
+	            });
+
+		    
                     // Do not prevent the default behavior, allow page navigation
                     // Execute custom action after the default behavior
                     //setTimeout(() => {
