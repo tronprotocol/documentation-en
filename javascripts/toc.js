@@ -12,6 +12,6 @@ function toggleChildren(event) {
       nav.hidden = true;
       listItem.classList.remove('is-expanded'); // Remove the is-expanded class
     }
-    event.preventDefault(); // Prevent the default link behavior
+    //event.preventDefault(); // Prevent the default link behavior
   }
 }
