@@ -30,7 +30,7 @@ nav:
         - Decentralized Exchange: mechanism-algorithm/dex.md
         - Account Permission Management: mechanism-algorithm/multi-signatures.md
     - For java-tron Developers:
-        - Developer Guide: developers/java-tron.md
+        - Developer Guide: developers/java-orgon.md
         - TIPs Workflow: developers/tips.md
         - Issue Workflow: developers/issue-workflow.md
         - Governance Workflow: developers/governance.md

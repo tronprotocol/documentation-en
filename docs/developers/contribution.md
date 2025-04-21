@@ -33,7 +33,7 @@ Please check [Submitting a TIP](./tips.md)
 
 ## Coding java-tron
 
-Please check [Coding java-tron](./java-tron.md)
+Please check [Coding java-tron](./java-orgon.md)
 
 ## Reporting Vulnerabilities
 

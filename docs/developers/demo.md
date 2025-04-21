@@ -6,24 +6,24 @@ Sometimes java-tron nodes may not be able to connect to peers due to network rea
 ## Fork java-tron Repository
 
 Fork a new repository from the [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) project to your personal repository, and then use the following command Clone the code locally:
-    
+
 ```
 $ git clone https://github.com/yourname/java-tron.git
 $ git remote add upstream https://github.com/tronprotocol/java-tron.git
 ```
-    
+
 ## Sync Repository
-    
+
 Before developing new features, please synchronize your fork repository with the upstream repository.
-    
+
 ```
-$ git fetch upstream 
-$ git checkout develop 
+$ git fetch upstream
+$ git checkout develop
 $ git merge upstream/develop --no-ff
 ```
 
 ## Create New Branch
-Pull a new branch from the `develop` branch of your own repository for local development, please refer to [branch naming convention](java-tron.md/#branch-naming-conventions). In this example, the name of the new branch is: `feature/ add-new-http-demo`.
+Pull a new branch from the `develop` branch of your own repository for local development, please refer to [branch naming convention](java-orgon.md/#branch-naming-conventions). In this example, the name of the new branch is: `feature/ add-new-http-demo`.
 
 ```
 $ git checkout -b feature/add-new-http-demo develop
@@ -36,9 +36,9 @@ Open the java-tron project in IDEA. Create a new servlet file in the `java-tron/
 @Component
 @Slf4j(topic = "API")
 public class SetPeerServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
     {}
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
     {}
 }
 ```
@@ -56,7 +56,7 @@ The processing logic of the `doPost` method is:
 public class SetPeerServlet extends HttpServlet {
   @Autowired
   private ChannelManager channelManager;
-    
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response) {
     try {
       PostParams params = PostParams.getPostParams(request);
@@ -127,14 +127,14 @@ public class FullNodeHttpApiService implements Service {
     @Autowired
     private SetPeerServlet setPeerServlet;
     .......
-    
+
     @Override
     public void start() {
         ......
         context.addServlet(new ServletHolder(setPeerServlet), "/wallet/setpeer");
         .......
     }
-    
+
 }
 ```
 Then you can debug the above code, start the java-tron node in IDEA, and interact with the node through the below Curl command in the terminal:
@@ -197,7 +197,7 @@ public class demoTest {
 
   }
   @Test
-  public void testDemoMethod() { 
+  public void testDemoMethod() {
   }
 }
 
@@ -213,7 +213,7 @@ public class SetPeerServletTest {
   public static ChannelManager channelManager;
   @Before
   public void init() {
-    
+
     Args.setParam(new String[]{}, Constant.TEST_CONF);
     context = new TronApplicationContext(DefaultConfig.class);
     channelManager = context.getBean(ChannelManager.class);
@@ -247,14 +247,14 @@ Fix the code style warning in the picture, and then check the file again until t
 
 ## Commit Code
 
-Submit the code after development complete, please refer to the [commit specification](java-tron.md/#commit-messages).
+Submit the code after development complete, please refer to the [commit specification](java-orgon.md/#commit-messages).
 ```
 git add .
 git commit -m 'add a new http api setpeer'
 ```
-     
+
 Push the new branch to the personal remote repository:
-     
+
 ```
 git push origin feature/add-new-http-demo
 ```
