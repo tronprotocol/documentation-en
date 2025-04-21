@@ -61,7 +61,7 @@ wallet>
 Then you can use the `backupwallet` command to view the private key of the account, you need to enter the password according to the prompt. It is recommended to save the private key.
 
 
-## Run a java-tron node
+## Run a java-orgon node
 java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start java-tron, you need first obtain the java-tron executable file, please refer to the [Installation and Deployment](../using_javaorgon/installing_javaorgon.md) chapter, and then run the following command to start java-tron.
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
