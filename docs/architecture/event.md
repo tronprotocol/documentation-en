@@ -8,7 +8,7 @@ The TIP: [TIP-12:TRON event subscribes model](https://github.com/tronprotocol/ti
 
 ### Event Type
 
-TRON Event Subscription supports 4 types of event:
+ORGON Event Subscription supports 4 types of event:
 
 #### Transaction Event
 
@@ -84,7 +84,7 @@ contractTopics: contract topics list
 
 1. Supporting event plug-ins, kafka & mongodb plug-ins have been released, developers can also customize their own plug-ins according to their own needs.
 2. Supporting subscription of chain data, such as block, transaction, contract log, contract event and so on. For transaction events, developers can get information such as internal transactions, contract info and so on; for contract events, developers could configure the contract addresses list or contract topic list to receive the specified events, and event subscription has a very low latency. The deployed fullnode can receive event information immediately after the contract is executed.
-3. Event query service tron-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is [https://api.tronex.io](https://api.tronex.io).
+3. Event query service orgon-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is [https://api.tronex.io](https://api.tronex.io).
 
 ### Github projects
 
@@ -98,21 +98,21 @@ contractTopics: contract topics list
 
 #### Event query
 
-TRON Event Query Service
+ORGON Event Query Service
 
-TronEventQuery is implemented with Tron's new event subscribe model. It uses same query interface with Tron-Grid. Users can also subscribe block trigger, transaction trigger, contract log trigger, and contract event trigger. TronEvent is independent of a particular branch of java-tron, the new event subscribes model will be released on version 3.5 of java-tron.
+TronEventQuery is implemented with Orgon's new event subscribe model. It uses same query interface with Orgon-Gate. Users can also subscribe block trigger, transaction trigger, contract log trigger, and contract event trigger. TronEvent is independent of a particular branch of java-orgon, the new event subscribes model will be released on version 3.5 of java-orgon.
 
-For more information of TRON event subscribe model, please refer to [TIP-12](https://github.com/tronprotocol/TIPs/issues/12).
+For more information of ORGON event subscribe model, please refer to [TIP-12](https://github.com/tronprotocol/TIPs/issues/12).
 
 - [Event query deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/#event-subscribe-plugin-deployment)
 - [Event query HTTP API](https://github.com/tronprotocol/documentation-en/tree/master/docs_without_index/plugin/event-query-http.md)
 
 
-## Using java-tron's Built-in Message Queue for Event Subscription
+## Using java-orgon's Built-in Message Queue for Event Subscription
 
-TRON provides event subscription service. Developers can not only obtain on-chain events through event plugin, but also through [java-tron’s built-in ZeroMQ message queue](https://github.com/tronprotocol/tips/blob/master/tip-28.md). The difference is that event plugin needs to be additionally deployed, which is used to implement event storage: developers can choose appropriate storage tools according to their needs, such as MongoDB, Kafka, etc., and the plugin help complete the storage of subscribed events. java-tron's built-in ZeroMQ does not require additional deployment operations. Event subscribers can directly connect to the publisher's ip and port, set subscription topics, and receive subscribed events. However, this method does not provide event storage. Therefore, when developers want to subscribe to events directly from nodes for a short period of time, then using the built-in message queue will be a more appropriate choice.
+ORGON provides event subscription service. Developers can not only obtain on-chain events through event plugin, but also through [java-orgon’s built-in ZeroMQ message queue](https://github.com/tronprotocol/tips/blob/master/tip-28.md). The difference is that event plugin needs to be additionally deployed, which is used to implement event storage: developers can choose appropriate storage tools according to their needs, such as MongoDB, Kafka, etc., and the plugin help complete the storage of subscribed events. java-orgon's built-in ZeroMQ does not require additional deployment operations. Event subscribers can directly connect to the publisher's ip and port, set subscription topics, and receive subscribed events. However, this method does not provide event storage. Therefore, when developers want to subscribe to events directly from nodes for a short period of time, then using the built-in message queue will be a more appropriate choice.
 
-This article will introduce how to subscribe to events through java-tron's built-in message queue in detail.
+This article will introduce how to subscribe to events through java-orgon's built-in message queue in detail.
 
 
 ### Configure node
@@ -127,7 +127,7 @@ event.subscribe = {
   }
 
   ......
- 
+
   topics = [
     {
       triggerName = "block" // block trigger, the value can't be modified
@@ -140,7 +140,7 @@ event.subscribe = {
 ```
 
 * `native.useNativeQueue`: `true` is to use the built-in message queue, `false` is to use the event plugin
-* `native.bindport`: ZeroMQ publisher binding port. In this example, it is `5555`, so the publisher address that the subscriber should connect to is `"tcp://127.0.0.1:5555"` 
+* `native.bindport`: ZeroMQ publisher binding port. In this example, it is `5555`, so the publisher address that the subscriber should connect to is `"tcp://127.0.0.1:5555"`
 * `native.sendqueuelength`: The length of the send queue, that is, when the subscriber receives messages slowly, the maximum number of messages published by the publisher that the TCP buffer can hold. if it exceeds, The message will be discarded if exceeds the capacity
 * `topics`: Subscribed [event type](#event-type) , including block type, transaction type, etc.
 

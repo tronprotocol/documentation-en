@@ -1,7 +1,7 @@
 # Database configuration
-java-tron data storage supports LevelDB or RocksDB, and LevelDB is used by default. You can also choose RocksDB, which provides lots of configuration parameters, allowing nodes to be tuned according to their own machine configuration. The node database occupies less disk space than LevelDB. At the same time, RocksDB supports data backup during runtime, and the backup time only takes a few seconds.
+java-orgon data storage supports LevelDB or RocksDB, and LevelDB is used by default. You can also choose RocksDB, which provides lots of configuration parameters, allowing nodes to be tuned according to their own machine configuration. The node database occupies less disk space than LevelDB. At the same time, RocksDB supports data backup during runtime, and the backup time only takes a few seconds.
 
-The following describes how to set the storage engine of the java-tron node to RocksDB, and how to perform data conversion between leveldb and rocksdb.
+The following describes how to set the storage engine of the java-orgon node to RocksDB, and how to perform data conversion between leveldb and rocksdb.
 
 ## RocksDB
 
@@ -32,7 +32,7 @@ The data storage structure of LevelDB and RocksDB is not compatible, please make
 Usage:
 
 ```console
-> cd /path/to/java-tron/source-code
+> cd /path/to/java-orgon/source-code
 > ./gradlew build  # build the source code
 > java -jar build/libs/DBConvert.jar  # run data conversion command
 ```

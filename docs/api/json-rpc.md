@@ -2,21 +2,21 @@
 
 ## Overview
 
-JSON-RPC is a stateless, lightweight remote procedure call (RPC) protocol. The JSON-RPC interface supported by the TRON network is compatible with Ethereum's. However, due to the difference in chain mechanism and design, TRON cannot support some interfaces on Ethereum. At the same time, TRON also provides dedicated APIs to create different types of transactions.
+JSON-RPC is a stateless, lightweight remote procedure call (RPC) protocol. The JSON-RPC interface supported by the ORGON network is compatible with Ethereum's. However, due to the difference in chain mechanism and design, ORGON cannot support some interfaces on Ethereum. At the same time, ORGON also provides dedicated APIs to create different types of transactions.
 
 **Please pay attention**
 
-- The JSON-RPC service needs to be enabled and set the port in the node configuration file. If not configured, the service is disable by default. 
+- The JSON-RPC service needs to be enabled and set the port in the node configuration file. If not configured, the service is disable by default.
 
 ### How to enable or disable JSON-RPC service of a node
 
-Add below items in node's [configuration file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf), then enable or disable it:  
+Add below items in node's [configuration file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf), then enable or disable it:
 ```
-node.jsonrpc {  
-    httpFullNodeEnable = true  
-    httpFullNodePort = 50545  
-    httpSolidityEnable = true  
-    httpSolidityPort = 50555  
+node.jsonrpc {
+    httpFullNodeEnable = true
+    httpFullNodePort = 50545
+    httpSolidityEnable = true
+    httpSolidityPort = 50555
 }
 ```
 
@@ -24,7 +24,7 @@ node.jsonrpc {
 
 At present there are two key data types that are passed over JSON: unformatted byte arrays and quantities. Both are passed with a hex encoding, however with different requirements to formatting:
 
-When encoding QUANTITIES (integers, numbers): encode as hex, prefix with “0x”, the most compact representation (slight exception: zero should be represented as “0x0”).  
+When encoding QUANTITIES (integers, numbers): encode as hex, prefix with “0x”, the most compact representation (slight exception: zero should be represented as “0x0”).
 Examples:
 
 - 0x41 (65 in decimal)
@@ -33,7 +33,7 @@ Examples:
 - WRONG: 0x0400 (no leading zeros allowed)
 - WRONG: ff (must be prefixed 0x)
 
-When encoding UNFORMATTED DATA (byte arrays, account addresses, hashes, bytecode arrays): encode as hex, prefix with “0x”, two hex digits per byte.  
+When encoding UNFORMATTED DATA (byte arrays, account addresses, hashes, bytecode arrays): encode as hex, prefix with “0x”, two hex digits per byte.
 Examples:
 
 - 0x41 (size 1, “A”)
@@ -50,11 +50,11 @@ Examples:
 
 *Returns a list of addresses owned by the client.*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 Empty List
 
@@ -79,11 +79,11 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '
 
 *Returns the number of the most recent block.*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 The latest block number.
 
@@ -119,7 +119,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 | value     | QUANTITY       | Not supported. The value is 0x0                               |
 | data      | DATA           | Hash of the method signature and encoded parameters.          |
 
-2\. QUANTITY|TAG - currently, only "latest" is available. 
+2\. QUANTITY|TAG - currently, only "latest" is available.
 
 **Returns**
 
@@ -170,15 +170,15 @@ Result
 
 ### eth_chainId
 
-*Returns the chainId of the TRON network which is the last four bytes of the genesis block hash*
+*Returns the chainId of the ORGON network which is the last four bytes of the genesis block hash*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
-DATA - The chainId of the TRON network
+DATA - The chainId of the ORGON network
 
 **Example**
 
@@ -201,11 +201,11 @@ Result
 
 Returns the super representative address of the current node.
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 DATA - The super representative address of the node.   (Note: Return the first address If more than one super representative address is configured, return error if there is no valid address or the address did not generate any block, the error will be “etherbase must be explicitly specified” . )
 
@@ -230,7 +230,7 @@ Result
 
 *Get the required energy through triggerConstantContract.*
 
-**Parameters**  
+**Parameters**
 
 object - The transaction call object, the items in it as below
 
@@ -243,7 +243,7 @@ object - The transaction call object, the items in it as below
 | value     | QUANTITY       | Integer of the value sent with this transaction      |
 | data      | DATA           | Hash of the method signature and encoded parameters. |
 
-**Returns**  
+**Returns**
 
 The amount of energy used.
 
@@ -292,11 +292,11 @@ Result
 
 Returns the current energy price in sun.
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 Integer of the current energy price in sun.
 
@@ -510,7 +510,7 @@ Result
 
 **Parameters**
 
-QUANTITY|TAG - integer of a block number, or the string "earliest" or "latest".  
+QUANTITY|TAG - integer of a block number, or the string "earliest" or "latest".
 
 **Returns**
 
@@ -945,11 +945,11 @@ Result
 
 *Returns the hash of the current block*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 Array - Array with the following properties:
 
@@ -996,15 +996,15 @@ Result
 
 ### eth_protocolVersion
 
-*Returns the java-tron block version*
+*Returns the java-orgon block version*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
-String - The current java-tron block version
+String - The current java-orgon block version
 
 **Example**
 
@@ -1027,11 +1027,11 @@ Result
 
 *Returns an object with data about the sync status of the node*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 Object|Boolean, An object with sync status data or FALSE, when not syncing, the items in object includes:
 
@@ -1078,7 +1078,7 @@ Result
 
 *Creates a filter object, based on filter options, to notify when the state changes (logs).*
 
-**Parameters**  
+**Parameters**
 
 Object - The filter options:
 
@@ -1089,7 +1089,7 @@ Object - The filter options:
 | address   | DATA\|Array, 20 Bytes | Contract address or a list of addresses from which logs should originate. |
 | topics    | Array of DATA         | Topics                                                                    |
 
-**Returns**  
+**Returns**
 
 QUANTITY - A filter id.
 
@@ -1114,11 +1114,11 @@ Result
 
 *Creates a filter in the node, to notify when a new block arrives.*
 
-**Parameters**  
+**Parameters**
 
 None.
 
-**Returns**  
+**Returns**
 
 QUANTITY - A filter id.
 
@@ -1143,7 +1143,7 @@ Result
 
 *Polling method for a filter, which returns an array of logs which occurred since last poll.*
 
-**Parameters**  
+**Parameters**
 
 QUANTITY - the filter id.
 
@@ -1216,7 +1216,7 @@ Result
 
 *Returns an array of all logs matching filter with given id.*
 
-**Parameters**  
+**Parameters**
 
 QUANTITY - the filter id.
 
@@ -1275,7 +1275,7 @@ Result
 
 *Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally Filters timeout when they aren't requested with eth_getFilterChanges for a period of time.*
 
-**Parameters**  
+**Parameters**
 
 QUANTITY - the filter id.
 
@@ -1326,7 +1326,7 @@ Result
 
 *Returns an array of all logs matching a given filter object.*
 
-**Parameters**  
+**Parameters**
 
 Object - The filter options which include below fields:
 
@@ -1373,11 +1373,11 @@ Result
 
 *Returns true if the client is actively listening for network connections.*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 Boolean - true when listening, otherwise false.
 
@@ -1402,11 +1402,11 @@ Result
 
 *Returns number of peers currently connected to the client.*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 QUANTITY - integer of the number of connected peers.
 
@@ -1431,11 +1431,11 @@ Result
 
 *Returns the hash of the genesis block.*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 String - The hash of genesis block
 
@@ -1462,11 +1462,11 @@ Result
 
 *Returns the current client version.*
 
-**Parameters**  
+**Parameters**
 
 None
 
-**Returns**  
+**Returns**
 
 String - The current client version
 
@@ -1482,7 +1482,7 @@ Result
 
 ```json
 
-{"jsonrpc":"2.0","id":1,"result":"TRON/v4.3.0/Linux/Java1.8/GreatVoyage-v4.2.2.1-281-gc1d9dfd6c"}
+{"jsonrpc":"2.0","id":1,"result":"ORGON/v4.3.0/Linux/Java1.8/GreatVoyage-v4.2.2.1-281-gc1d9dfd6c"}
 
 ```
 
@@ -1491,11 +1491,11 @@ Result
 
 *Returns Keccak-256 (not the standardized SHA3-256) of the given data.*
 
-**Parameters**  
+**Parameters**
 
 DATA - the data to convert into a SHA3 hash
 
-**Returns**  
+**Returns**
 
 DATA - The SHA3 result of the given string.
 
@@ -1523,9 +1523,9 @@ Result
 
 ### TransferContract
 
-**Parameters**  
+**Parameters**
 
-Object - the items in object as below: 
+Object - the items in object as below:
 
 | Param Name | Data Type      | Description                                 |
 | :--------- | :------------- | :------------------------------------------ |
@@ -1573,9 +1573,9 @@ Result
 
 ### TransferAssetContract
 
-**Parameters**  
+**Parameters**
 
-Object - the items in object as below: 
+Object - the items in object as below:
 
 |            |                |                                            |
 | :--------- | :------------- | :----------------------------------------- |
@@ -1632,9 +1632,9 @@ Result
 
 ### CreateSmartContract
 
-**Parameters**  
+**Parameters**
 
-Object - the items in object as below: 
+Object - the items in object as below:
 
 |                            |                |                                          |
 | :------------------------- | :------------- | :--------------------------------------- |
@@ -1709,9 +1709,9 @@ Result
 
 ### TriggerSmartContract
 
-**Parameters**  
+**Parameters**
 
-Object - the items in object as below: 
+Object - the items in object as below:
 
 |            |                |                                              |
 | :--------- | :------------- | :------------------------------------------- |

@@ -86,7 +86,7 @@ rpc CreateWitness (WitnessCreateContract) returns (Transaction) {}
 Nodes: FullNode
 
 Description:
-To apply to become TRON’s Super Representative candidate.
+To apply to become ORGON’s Super Representative candidate.
 
 ## Information update of Super Representative candidates
 ```protobuf
@@ -270,7 +270,7 @@ rpc GetSpendingKey (EmptyMessage) returns (BytesMessage) {}
 ```
 Nodes: FullNode
 
-## Get expanded spending key  
+## Get expanded spending key
 ```protobuf
 rpc GetExpandedSpendingKey (BytesMessage) returns (ExpandedSpendingKeyMessage) {}
 ```
@@ -385,63 +385,63 @@ Nodes: FullNode, SolidityNode
 Nodes: FullNode
 
 
-## Create an market order       
+## Create an market order
 ```
 rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
 ```
 Nodes: FullNode
- 
-## Cancel the order      
-```   
+
+## Cancel the order
+```
 rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
 ```
-Nodes: FullNode 
+Nodes: FullNode
 
-## Get all orders for the account      
+## Get all orders for the account
 ```
 rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
 ```
-Nodes: FullNode 
+Nodes: FullNode
 
-## Get all trading pairs         
+## Get all trading pairs
 ```
 rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
 ```
-Nodes: FullNode 
+Nodes: FullNode
 
-## Get all orders for the trading pair       
+## Get all orders for the trading pair
 ```
 rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
 ```
-Nodes: FullNode 
+Nodes: FullNode
 
-## Get all prices for the trading pair      
+## Get all prices for the trading pair
 ```
 rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
 ```
-Nodes: FullNode 
+Nodes: FullNode
 
-## Get order by id      
+## Get order by id
 ```
-rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {};
 ```
-Nodes: FullNode 
+Nodes: FullNode
 
-## perform a historical balance lookup      
+## perform a historical balance lookup
 ```
-rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
+rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){};
 ```
-Nodes: FullNode 
+Nodes: FullNode
 
-## fetch all balance-changing transactions in a block      
+## fetch all balance-changing transactions in a block
 ```
-rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
+rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {};
 ```
-Nodes: FullNode 
+Nodes: FullNode
 
-## get the burn trx amount      
+## get the burn trx amount
 ```
-rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
+rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {};
 ```
 Nodes: FullNode and SolidityNode
 

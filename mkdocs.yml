@@ -1,6 +1,6 @@
-site_name: java-tron
+site_name: java-orgon
 site_url: https://tronprotocol.github.io/documentation-en/
-repo_url: https://github.com/tronprotocol/documentation-en
+repo_url: https://github.com/alexozerov/documentation-en
 
 nav:
     - Home: index.md
@@ -90,7 +90,7 @@ plugins:
   - search
   - exclude:
       glob:
-        - clients/tron-grid.md
+        - clients/orgon-gate.md
         - contracts/trc20.md
         - contracts/tvm.md
         - developers/contribution.md
