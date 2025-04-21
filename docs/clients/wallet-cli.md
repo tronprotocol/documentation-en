@@ -1,7 +1,7 @@
 # wallet-cli
 
 ## Introduction
-wallet-cli is an interactive command-line wallet that supports the TRON network for signing and broadcasting transactions in a secure local environment, as well as access to on-chain data. wallet-cli supports key management, you can import the private key into the wallet, wallet-cli will encrypt your private key with a symmetric encryption algorithm and store it in a keystore file. wallet-cli does not store on-chain data locally. It uses gRPC to communicate with a java-orgon node. You need to configure the java-orgon node to be linked in the configuration file. The following figure shows the process of the use of wallet-cli to sign and broadcast when transferring TRX:
+wallet-cli is an interactive command-line wallet that supports the ORGON network for signing and broadcasting transactions in a secure local environment, as well as access to on-chain data. wallet-cli supports key management, you can import the private key into the wallet, wallet-cli will encrypt your private key with a symmetric encryption algorithm and store it in a keystore file. wallet-cli does not store on-chain data locally. It uses gRPC to communicate with a java-orgon node. You need to configure the java-orgon node to be linked in the configuration file. The following figure shows the process of the use of wallet-cli to sign and broadcast when transferring TRX:
 ![](https://i.imgur.com/NRKmZmE.png)
 
 The user first runs the `Login` command to unlock the wallet, and then runs the `SendCoin` command to send TRX, wallet-cli will build and sign the transaction locally, and then call the BroadcastTransaction gRPC API of the java-orgon node to broadcast the transaction to the network. After the broadcast is successful, the java-orgon node will return the transaction hash to wallet-cli, and wallet-cli will display the transaction hash to the user.
@@ -418,7 +418,7 @@ wallet> getdelegatedresource TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 TXBpeye7UQ4dDZEn
 ```
 
 #### FreezeBalanceV2
-Stake 2.0 API: Stake TRX to obtain TRON Power (voting rights) and bandwidth or energy.
+Stake 2.0 API: Stake TRX to obtain ORGON Power (voting rights) and bandwidth or energy.
 
 ```shell
 wallet> freezeBalanceV2 [OwnerAddress] frozen_balance ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER)
@@ -470,7 +470,7 @@ freezeBalanceV2 successful !!!
 ```
 
 #### UnfreezeBalanceV2
-Stake 2.0 API: Unstake TRX to release bandwidth and energy and at the same time TRON Power will be reclaimed and corresponding votes will be revoked.
+Stake 2.0 API: Unstake TRX to release bandwidth and energy and at the same time ORGON Power will be reclaimed and corresponding votes will be revoked.
 
 
 ```shell
@@ -1748,7 +1748,7 @@ wallet> createProposal [OwnerAddress] [id0] [value0] ... [idN] [valueN]
 ```
 `OwnerAddress` (optional) is the address of the account which initiated the transaction. By default, it is the address of the login account.
 
-`id0` is the serial number of TRON Network Parameter. Of which, each one has a serial number corresponded. Please refer to [http://tronscan.org/#/sr/committee](http://tronscan.org/#/sr/committee).
+`id0` is the serial number of ORGON Network Parameter. Of which, each one has a serial number corresponded. Please refer to [http://tronscan.org/#/sr/committee](http://tronscan.org/#/sr/committee).
 
 `Value0` is the modified value.
 
@@ -1901,7 +1901,7 @@ wallet> getproposal 34
 
 #### VoteWitness
 
-Voting requires TRON Power, which can be obtained by freezing funds.
+Voting requires ORGON Power, which can be obtained by freezing funds.
 ```
 wallet> votewitness [SR(Super Representatives) address] [TRON Power Amount]
 ```

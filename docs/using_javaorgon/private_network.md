@@ -1,5 +1,5 @@
 # Private Network
-To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the `Oracle JDK 1.8` first, and then you need to prepare at least two TRON network address and save the address and private key. You can use [wallet-cli](https://github.com/tronprotocol/wallet-cli) or [Tronlink](https://www.tronlink.org/) to create address.
+To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the `Oracle JDK 1.8` first, and then you need to prepare at least two ORGON network address and save the address and private key. You can use [wallet-cli](https://github.com/tronprotocol/wallet-cli) or [Tronlink](https://www.tronlink.org/) to create address.
 
 
 ## Deployment Guide
@@ -47,7 +47,7 @@ The process of building a node on private chain is the same as that on mainnet. 
     |block.maintenanceTimeInterval|300000| The same as SR node's | The default maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.|
     |committee.allowSameTokenName |1|1| Allow same token name|
     |committee.allowTvmTransferTrc10 | 1|1|Allow tvm transfer TRC10|
-    
+
 
 5. Modify the port in the configuration file, and configure the SR and FullNode with different port numbers. **Note**, this step is only required if SR and FullNode are running on the same machine, otherwise, this step can be skipped.
 
@@ -72,12 +72,12 @@ The process of building a node on private chain is the same as that on mainnet. 
 7. Modify the dynamic parameters of the private chain
 
     Dynamic parameters can be obtained by [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters). The main network's current dynamic parameters and committee proposals related to them can be seen [here](https://tronscan.org/#/sr/committee), dynamic parameters are called network parameters here.
-    
+
     If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/tronprotocol/tron-docker/tree/main/tools/dbfork) which could capture the latest status of Mainnet is what you are interested in.
-    
+
     If you want to modify part of dynamic parameters, there are two ways to choose from:
 
-    * Configure File  
+    * Configure File
       Some dynamic parameters can be directly set through configure file. These dynamic parameters can be seen [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
       Below is an example of modifying dynamic parameters through configure file.
       ```
@@ -90,8 +90,8 @@ The process of building a node on private chain is the same as that on mainnet. 
         allowTvmTransferTrc10 = 1
       }
       ```
-    
-    * Proposal  
+
+    * Proposal
       Any witness(SR, SR partner, SR candidate) is entitled to create a proposal, SRs also have the right to vote for the proposal. A witness uses [proposalcreate](https://developers.tron.network/reference/proposalcreate) to create a proposal, and then SRs use [proposalapprove](https://developers.tron.network/reference/proposalapprove) to approve the proposal(Proposals only support voting for yes, super representatives do not vote means they do not agree with the proposal). Below is an code example of modifying two dynamic parameters through a committee proposal. In [proposalcreate](https://developers.tron.network/reference/proposalcreate), dynamic parameters are represented by numbers, the mapping between number and string name of dynamic parameters can be seen [here](https://developers.tron.network/reference/wallet-getchainparameters).
       ```
       var TronWeb = require('tronweb');
@@ -103,7 +103,7 @@ The process of building a node on private chain is the same as that on mainnet. 
       var parametersForProposal1 = [{"key":9,"value":1},{"key":10,"value":1}];
 
       async function modifyChainParameters(parameters,proposalID){
-      
+
           parameters.sort((a, b) => {
                   return a.key.toString() > b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
               })
@@ -123,5 +123,5 @@ The process of building a node on private chain is the same as that on mainnet. 
 
       modifyChainParameters(parametersForProposal1, 1)
       ```
-      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. If the "state" in the return value of the interface is "APPROVED" When expiration time of the proposal has passed, it means that the proposal has been approved.  
+      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. If the "state" in the return value of the interface is "APPROVED" When expiration time of the proposal has passed, it means that the proposal has been approved.
       It should be noted that dynamic parameters with interdependent relationships cannot be included in one proposal, the correct approach is to separate them into different proposals and pay attention to order of them.

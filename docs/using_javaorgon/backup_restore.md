@@ -17,10 +17,10 @@ while true; do
   pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
   if [ -n "$pid" ]; then
     kill -15 $pid
-    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
+    echo "The java-orgon process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
     sleep 1
   else
-    echo "java-tron killed successfully!"
+    echo "java-orgon killed successfully!"
     break
   fi
 done
@@ -42,7 +42,7 @@ $ tar xzvf output-directory.20220628152402.etgz
 
 ## Public Backup Data
 
-For the TRON mainnet and Nile testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a TRON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.
+For the ORGON mainnet and Nile testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a ORGON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.
 
 ### Main Net Data Snapshot
 
@@ -67,7 +67,7 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 #### Lite FullNode Data Snapshot
 
 
-The TRON Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.
+The ORGON Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. ORGON officially offers database snapshots of the Lite FullNode.
 
 
 | Lite Fullnode Data Source | Download site | Description |

@@ -1,6 +1,6 @@
 # Community Developers Incentives Programme
 
-Bonus point applies in TRON incentives programme. Developers can earn points by contributing to TRON.
+Bonus point applies in ORGON incentives programme. Developers can earn points by contributing to ORGON.
 
 When a issue (or PR) is closed, it will be added into the reward programme. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track.
 
@@ -14,7 +14,7 @@ At the end of every year, we will calculate all points each developer gets in th
 
 The Top 5 developers who win the cash reward will be announced at Tronscan.
 
-Also, there is a chance to display developers' photos at TRON official website.
+Also, there is a chance to display developers' photos at ORGON official website.
 
 | No. 1   |  No. 2    |   No. 3  |   No. 4   |   No. 5   |
 |---------|-----------|----------|-----------|-----------|
@@ -22,7 +22,7 @@ Also, there is a chance to display developers' photos at TRON official website.
 
 Reward 2:
 
-Every developer who participates java-orgon's development will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.
+Every developer who participates java-orgon's development will be honored with a ORGON Honorary Developer Certificate. And we will give a vote of thanks to the developers on ORGON official website.
 
 
 The following shows the content you can contribute to.

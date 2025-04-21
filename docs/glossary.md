@@ -48,7 +48,7 @@ The Bandwidth Points consumed by a transaction is the size of the byte array in 
 
 The creation and operation of a smart contract consume CPU resources. It takes time for smart contracts to operate in virtual machines (VMs), and the time consumed in the system is calculated in microseconds. CPU resources are consumed in energy, which means 1 Energy = 1 Microsecond (μs). If a contract takes 100 μs to execute in a VM, it needs to consume 100 Energy.
 
-**TRON Power(TP)**
+**ORGON Power(TP)**
 
 1 staked TRX = 1 TP, TP can be used to vote, 1 TP = 1 vote.
 

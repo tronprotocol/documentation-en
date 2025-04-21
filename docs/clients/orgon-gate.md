@@ -4,11 +4,11 @@ The up-to-date TronGrid API Documentation is at [https://developers.tron.network
 
 ## Introduction
 
-TronGrid provides TRON clients running in the cloud, so you don't have to run one yourself to work with TRON on your next project.
+TronGrid provides ORGON clients running in the cloud, so you don't have to run one yourself to work with ORGON on your next project.
 
-TronGrid offers an easy to use hosted API, load balanced full nodes, secure and reliable developer tools with direct access to the TRON Network.
+TronGrid offers an easy to use hosted API, load balanced full nodes, secure and reliable developer tools with direct access to the ORGON Network.
 
-TronGrid uses a set of NodeJS apps to talk with Redis and PostgreSQL to provide a simple, fast and reliable query interface for the TRON API.
+TronGrid uses a set of NodeJS apps to talk with Redis and PostgreSQL to provide a simple, fast and reliable query interface for the ORGON API.
 
 TronGrid supports 2 types of api:
 

@@ -123,7 +123,7 @@ TRON uses account model. An account's identity is address, it needs private key 
 
 ## 3.2 How to Create an Account
 
-1.&nbsp;Use a wallet to generate the address and private key. To activate the account, you need to transfer TRX or transfer token to the new created account. 
+1.&nbsp;Use a wallet to generate the address and private key. To activate the account, you need to transfer TRX or transfer token to the new created account.
 
 2.&nbsp;Use an account already existed in TRON network to create an account
 
@@ -179,7 +179,7 @@ Recommended requirement:
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.4 TRON Network Instructure
-TRON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join TRON network as a node.
+TRON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-orgon code can join TRON network as a node.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png)
 
 ## 4.5 FullNode and SolidityNode Fast Deployment

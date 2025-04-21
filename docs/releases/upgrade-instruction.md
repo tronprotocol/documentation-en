@@ -107,7 +107,7 @@ To upgrade the active and backup nodes, please follow the steps below:
 
 3. Upgrade the master node
 
-    If the backup node works normally, follow [java-orgon New Version Deployment Process](#new-version-deployment-process) to upgrade the master node. Otherwise, shut down the backup node and start the master node. If an error occurs during the upgrade, please contact TRON technical support team and send the node’s log for root cause analysis.
+    If the backup node works normally, follow [java-orgon New Version Deployment Process](#new-version-deployment-process) to upgrade the master node. Otherwise, shut down the backup node and start the master node. If an error occurs during the upgrade, please contact ORGON technical support team and send the node’s log for root cause analysis.
 
 4. Shut down the backup node
 

@@ -4,13 +4,13 @@
 
 Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
 
-TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [TRON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
+ORGON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [ORGON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to ORGON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## Features
-TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
+ORGON virtual machine is based on Ethereum solidity language, it also has ORGON's own features.
 
-### Defination of Smart Contract 
-TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
+### Defination of Smart Contract
+ORGON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
 ``` solidity
 message SmartContract {
   message ABI {
@@ -71,7 +71,7 @@ origin_energy_limit: energy consumption of the developer limit in one call, must
 
 Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.
 
-### Usage of the Function of Smart Contract 
+### Usage of the Function of Smart Contract
 
 * **constant function and inconstant function**
 
@@ -83,7 +83,7 @@ Note: If you use create command inside a contract (CREATE instruction), even use
 
 * **message calls**
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meantime, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
+Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common ORGON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meantime, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
 
 * **delegate call/call code/library**
 
@@ -91,18 +91,18 @@ There is a special type of message call, delegate call. The difference with comm
 
 * **CREATE command**
 
-This command will create a new contract with a new address. The only difference with Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the contract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
+This command will create a new contract with a new address. The only difference with Ethereum is the newly generated ORGON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the contract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
 Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
 
 * **built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)**
 
-```  
+```
 1)TVM is compatible with solidity language's transfer format, including:
 - accompany with constructor to call transfer
 - accompany with internal function to call transfer
 - use transfer/send/call/callcode/delegatecall to call transfer
 
-Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
+Note: ORGON's smart contract is different from ORGON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
 
 2)Different accounts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
@@ -126,7 +126,7 @@ Note: TRON's smart contract is different from TRON's system contract, if the tra
 ```
 Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
 
-### Contract Address Used in Solidity Language 
+### Contract Address Used in Solidity Language
 
 Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 
@@ -173,7 +173,7 @@ function assignAddress() public view {
 ```
 If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
 
-### Special Constants Differ from Ethereum 
+### Special Constants Differ from Ethereum
 
 #### Currency
 Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.

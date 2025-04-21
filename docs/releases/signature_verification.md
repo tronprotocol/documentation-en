@@ -1,11 +1,11 @@
 # Signature Verification of java-orgon Release Package
 
-java-orgon integrity verification is to check the reliability and integrity of the obtained java-orgon executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by TRON. If they are consistent, it means that the java-orgon executable file you get is a complete file released by TRON.
+java-orgon integrity verification is to check the reliability and integrity of the obtained java-orgon executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by ORGON. If they are consistent, it means that the java-orgon executable file you get is a complete file released by ORGON.
 
-The version of java-orgon released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified TRON account for signature and verification.
+The version of java-orgon released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified ORGON account for signature and verification.
 
 * Versions released after January 3, 2023: [GPG Signature Verification Process](#gpg-signature-verification-process)
-* Versions released before January 3, 2023: [TRON Address Signature Verification Process](#tron-address-signature-verification-process)
+* Versions released before January 3, 2023: [ORGON Address Signature Verification Process](#tron-address-signature-verification-process)
 
 ## GPG signature verification process
 The java-orgon executable file and its signature file are released together, you can get it at [here](https://github.com/tronprotocol/java-tron/releases), please follow the below process to verify the signature of the java-orgon which released after January 3, 2023.
@@ -57,8 +57,8 @@ Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 ```
 If the verification fails, it will display the words `gpg: BAD signature from “build_tron <build@tron.network>”`.
 
-## TRON address signature verification process
-The java-orgon version released before January 3, 2023 is signed by the TRON account `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the TRON account to sign the sha256 hash value. The sha256 hash value can be viewed in the [Signatures of historical versions](#signatures-of-historical-versions) chapter, or in the [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases) page; the signature result please check in the [Signatures of historical versions](#signatures-of-historical-versions) chapter.
+## ORGON address signature verification process
+The java-orgon version released before January 3, 2023 is signed by the ORGON account `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the ORGON account to sign the sha256 hash value. The sha256 hash value can be viewed in the [Signatures of historical versions](#signatures-of-historical-versions) chapter, or in the [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases) page; the signature result please check in the [Signatures of historical versions](#signatures-of-historical-versions) chapter.
 
 [tronweb](https://developers.tron.network/docs/tronweb-1) provides the `Trx.verifySignature` interface to verify the signature. If the verification is passed, it will return true, otherwise, it will return false. Please follow the below process to verify.
 

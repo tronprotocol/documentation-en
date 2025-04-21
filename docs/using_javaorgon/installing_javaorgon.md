@@ -6,27 +6,27 @@ The minimum hardware configuration required to run a java-orgon node is `8-core 
 
 
 ## Compile the Source Code
-First, clone the java-tron repository to the local with the following git command, and switch to the `master` branch. Before executing the command, make sure you have installed the `git` tool.
+First, clone the java-orgon repository to the local with the following git command, and switch to the `master` branch. Before executing the command, make sure you have installed the `git` tool.
 
 ```
 $ git clone https://github.com/tronprotocol/java-tron.git
 $ git checkout -t origin/master
 ```
 
-Then, compile the java-tron source code by executing the following command. The parameter `-x test` means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the `java-tron/build/libs/` directory.
+Then, compile the java-orgon source code by executing the following command. The parameter `-x test` means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the `java-tron/build/libs/` directory.
 
 ```
 $ cd java-tron
 $ ./gradlew clean build -x test
 ```
 
-## Startup a java-tron Node
-You can choose different configuration files to connect java-tron nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/tronprotocol/tron-deployment).
+## Startup a java-orgon Node
+You can choose different configuration files to connect java-orgon nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/tronprotocol/tron-deployment).
 
 
 ### Startup a fullnode
 
-Fullnode has full historical data, it is the entry point into the TRON network , it provides HTTP API and gRPC API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the `-c` parameter:
+Fullnode has full historical data, it is the entry point into the ORGON network , it provides HTTP API and gRPC API for external query. You can interact with the ORGON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the `-c` parameter:
 
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
@@ -53,7 +53,7 @@ then run the following command to start the node:
 $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
 ```
 
-**Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](backup_restore.md/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
+**Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](backup_restore.md/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the ORGON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
 
 
 ### Others
@@ -77,7 +77,7 @@ $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_c
 
 #### Optimize Memory Allocation with tcmalloc
 
-Memory allocation of java-tron can be optimized with tcmalloc. The method is as follows:
+Memory allocation of java-orgon can be optimized with tcmalloc. The method is as follows:
 
 First install tcmalloc, then add the following two lines to the startup script, the path of tcmalloc is slightly different for different Linux distributions.
 

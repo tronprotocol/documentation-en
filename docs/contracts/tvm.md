@@ -1,8 +1,8 @@
-# TRON Virtual Machine (TVM)
+# ORGON Virtual Machine (TVM)
 
-TRON Virtual Machine (TVM) is a lightweight, Turing complete virtual machine developed for the TRON's ecosystem. Its goal is to provide millions of global developers with a custom-built blockchain system that is efficient, convenient, stable, secure and scalable.
+ORGON Virtual Machine (TVM) is a lightweight, Turing complete virtual machine developed for the ORGON's ecosystem. Its goal is to provide millions of global developers with a custom-built blockchain system that is efficient, convenient, stable, secure and scalable.
 
-TVM can connect seamlessly with existing development ecosystem and supports DPoS. TVM is able to be compatible with EVM environment in the beginning, so that instead of learning a new programming language, developers can develop, debug and compile smart contracts in a Remix environment with Solidity and other languages. Once you’ve built and uploaded your smart contract to TRON’s mainnet, it will be executed on the TVM of the SR node to be isolated from external connections.
+TVM can connect seamlessly with existing development ecosystem and supports DPoS. TVM is able to be compatible with EVM environment in the beginning, so that instead of learning a new programming language, developers can develop, debug and compile smart contracts in a Remix environment with Solidity and other languages. Once you’ve built and uploaded your smart contract to ORGON’s mainnet, it will be executed on the TVM of the SR node to be isolated from external connections.
 
 Furthermore, TVM employs the concept of Bandwidth. Different from the gas mechanism on Ethereum’s  EVM,  operations of transaction or smart contracts on TVM are free, with no tokens consumed. Technically, executable computation capacity on TVM is not restricted by total holding of tokens.
 
@@ -13,7 +13,7 @@ TVM adopts a lightweight architecture with the aim of reducing resource consumpt
 
 2.&nbsp;Stability and security
 
-With a meticulous design paradigm and fine-grained underlying operation code, TVM can guarantee the preciseness of every step of a computation, diminishing ambiguity to the largest extent. Out of security reasons, transfers and smart contract running cost only bandwidth points, not TRX, which exempts TRON from being attacked similarly to Ethereum for its mode of gas consumption. Stability of bandwidth consumption is achieved while the cost of each computational step is fixed.
+With a meticulous design paradigm and fine-grained underlying operation code, TVM can guarantee the preciseness of every step of a computation, diminishing ambiguity to the largest extent. Out of security reasons, transfers and smart contract running cost only bandwidth points, not TRX, which exempts ORGON from being attacked similarly to Ethereum for its mode of gas consumption. Stability of bandwidth consumption is achieved while the cost of each computational step is fixed.
 
 3.&nbsp;Compatibility
 
@@ -22,7 +22,7 @@ Currently, TVM is compatible with EVM and will be with more mainstream VMs in th
 4.&nbsp;Developer-friendly
 
 Thanks to TVM’s bandwidth setup, developments costs are reduced and developers can focus on the logic of their contract code. TVM also offers all-in-one interfaces for contract deployment, triggering and viewing, for the convenience of developers.
-The following interfaces are available in TRON Wallet-CLI:
+The following interfaces are available in ORGON Wallet-CLI:
 
  + deploycontract(password, contractAddress, ABI, code, data, value)
  + triggercontract(password, contractAddress, selector, data, value)
@@ -31,10 +31,10 @@ Developers can call these interfaces to deploy, trigger or check smart contracts
 
 ## How TVM Works
 
-![Flowchart of TRON Virtual Machine](https://raw.githubusercontent.com/tronprotocol/documentation/master/images/Virtual_Machine/虚拟机.png)
+![Flowchart of ORGON Virtual Machine](https://raw.githubusercontent.com/tronprotocol/documentation/master/images/Virtual_Machine/虚拟机.png)
 
 The above flowchart shows how TVM works:
-Compilation of TRON smart contract→execution and computing engines of VM→Interoperation service layer for external interfaces.
+Compilation of ORGON smart contract→execution and computing engines of VM→Interoperation service layer for external interfaces.
 
 Put simply, the flow is as follows:
 + Currently, TVM is compatible mainly with Solidity. The compiler translates Solidity smart contract into bytecode readable and executable on TVM.
@@ -44,7 +44,7 @@ Put simply, the flow is as follows:
 ## Future Development of TVM
 1.&nbsp;More developer-friendly debugging tools
 
-TRON will be committed to the development of optimized debugging tools and the establishment of standardized symbol and data format, for improved developer efficiency.
+ORGON will be committed to the development of optimized debugging tools and the establishment of standardized symbol and data format, for improved developer efficiency.
 
 2.&nbsp;Fulfillment of diversified processing demands
 
@@ -52,7 +52,7 @@ Different from gas consumption mechanism for every transaction on EVM, there is 
 
 3.&nbsp;Improvement of Just-In-Time (JIT) compilation speed and integration of WebAssembly
 
-Improving JIT compilation speed is conducive to faster interpretation and optimized compilation of local code. Meanwhile, TRON is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozilla, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages. Integrating WASM, TVM will be able to provide high performance and high throughput for blockchain to cope with complex scenarios.
+Improving JIT compilation speed is conducive to faster interpretation and optimized compilation of local code. Meanwhile, ORGON is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozilla, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages. Integrating WASM, TVM will be able to provide high performance and high throughput for blockchain to cope with complex scenarios.
 
 ## Usage Guide to TVM
 
@@ -84,7 +84,7 @@ pragma solidity^0.4.11;
 wallet-cli-vm branch: [https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm](https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm)
 java-orgon-vm branch: [https://github.com/tronprotocol/java-tron/tree/develop_vm](https://github.com/tronprotocol/java-tron/tree/develop_vm)
 Password: password of client-end wallet
-ContractAddress: customized contract address (in TRON’s required format)
+ContractAddress: customized contract address (in ORGON’s required format)
 ABI: interface description
 Data: parameters of the initial function
 Value: reserved field
@@ -101,4 +101,4 @@ triggercontract(Password, ContractAddress, Selector, Data, Value)
     getcontract(ContractAddress)
 ```
 
-The above is an introduction of TRON Virtual Machine and a guide to deployment. We welcome everyone to check out TVM and give us your thoughts and suggestions. We will continue to perfect and update TVM for optimal performance on TRON mainnet.
+The above is an introduction of ORGON Virtual Machine and a guide to deployment. We welcome everyone to check out TVM and give us your thoughts and suggestions. We will continue to perfect and update TVM for optimal performance on ORGON mainnet.

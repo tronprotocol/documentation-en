@@ -1,4 +1,4 @@
-# The TRON FAQ
+# The ORGON FAQ
 
 <!-- markdownlint-disable MD026 -->
 
@@ -42,7 +42,7 @@ When the amount of votes you get ranks into top 27, you will become a SR.
 
 It has nothing to do with computing power. The reward is a fixed 32 TRX for each block produced.
 
-### Will there be an over 50% computing power issue in TRON network?
+### Will there be an over 50% computing power issue in ORGON network?
 
 No.
 
@@ -64,7 +64,7 @@ Staked duration must be 3 days now. It means you can not unstake until the 3 day
 
 ### How to watch my account for transactions
 
-To meet your needs, you can use TRON event subscription plugin. For more detail, please refer to [https://tronprotocol.github.io/documentation-en/architecture/plugin/#tron-event-subscription](https://tronprotocol.github.io/documentation-en/architecture/plugin/#tron-event-subscription)
+To meet your needs, you can use ORGON event subscription plugin. For more detail, please refer to [https://tronprotocol.github.io/documentation-en/architecture/plugin/#tron-event-subscription](https://tronprotocol.github.io/documentation-en/architecture/plugin/#tron-event-subscription)
 
 ### How to calculate the transaction fee?
 
@@ -206,9 +206,9 @@ They can be deployed in one machine. You can specify the data storage path in co
 
 If it is related to ip list: You need to update 'seed.ip' in config.conf, if it is the same as your public ip, and your computer is connected to the internet, it will try to connect other nodes, even if it fails to connect, the ip list will be stored into DB. If it is related to block and transaction: Under private environment, you need to modify the p2p version and parent hash. If they are the same as MainNet or TestNet, and the computer is connected to internet, the node will sync data from public node.
 
-### Under private environment, should I submit application information to TRON to become a SR?
+### Under private environment, should I submit application information to ORGON to become a SR?
 
-Under private environment, no need to submit application information to TRON to become a SR.
+Under private environment, no need to submit application information to ORGON to become a SR.
 
 Ask：Which service port should be public to public network?
 

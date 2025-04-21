@@ -1,13 +1,13 @@
-# TRON Improvement Proposals (TIPs)
+# ORGON Improvement Proposals (TIPs)
 
-TIP stands for TRON Improvement Proposal. TIPs record the entire process of TRON improvement, including the process of community making suggestions, discussions, and adoption. A TIP is a design document about a proposal, including the rationale and technical specifications of the proposal. Community users can read the TIP document to learn more about the proposal.
+TIP stands for ORGON Improvement Proposal. TIPs record the entire process of ORGON improvement, including the process of community making suggestions, discussions, and adoption. A TIP is a design document about a proposal, including the rationale and technical specifications of the proposal. Community users can read the TIP document to learn more about the proposal.
 
-TIPs are the unit around which governance happens in TRON，anyone is free to propose one, and then community participants will debate to determine if it should be adopted as a standard or included in a network upgrade. The TIP author is responsible for building consensus within the community and documenting dissenting opinions.
+TIPs are the unit around which governance happens in ORGON，anyone is free to propose one, and then community participants will debate to determine if it should be adopted as a standard or included in a network upgrade. The TIP author is responsible for building consensus within the community and documenting dissenting opinions.
 
 ## TIP Types
 TIPs are mainly divided into `Standard Track` and `Informational`:
 
-* `Standard Track` :  Describes any change that affects most or all TRON implementations, such as a change in block or transaction validity rules, proposed application standards/conventions, or any change or addition that affects the interoperability of applications using TRON. Furthermore, Standard TIPs can be broken down into the following categories.
+* `Standard Track` :  Describes any change that affects most or all ORGON implementations, such as a change in block or transaction validity rules, proposed application standards/conventions, or any change or addition that affects the interoperability of applications using ORGON. Furthermore, Standard TIPs can be broken down into the following categories.
 
     * `Core`:  Improvements requiring a consensus fork, as well as changes that are not necessarily consensus critical but may be relevant to "core dev" discussions.
     * `Networking`: Improvements around network protocol.

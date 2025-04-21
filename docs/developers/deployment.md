@@ -28,7 +28,7 @@ Make sure you have the proper dependencies.
 
 ## Deployment Guide
 
-1.&nbsp;Build the java-tron project
+1.&nbsp;Build the java-orgon project
 ```text
 cd /deploy/java-tron
 ./gradlew build
@@ -115,10 +115,10 @@ while true; do
   pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
   if [ -n "$pid" ]; then
     kill -15 $pid
-    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
+    echo "The java-orgon process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
     sleep 1
   else
-    echo "java-tron killed successfully!"
+    echo "java-orgon killed successfully!"
     break
   fi
 done
@@ -221,9 +221,9 @@ bash deploy_grpc_gateway.sh --rpchost 127.0.0.1 --rpcport 50052 --httpport 18891
 
 This is an implementation of TRON eventsubscribe model.
 
-* **api** module defines IPluginEventListener, a protocol between java-tron and event plugin.
+* **api** module defines IPluginEventListener, a protocol between java-orgon and event plugin.
 * **app** module is an example for loading plugin, developers could use it for debugging.
-* **kafkaplugin** module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from java-tron and relay events to kafka server.
+* **kafkaplugin** module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from java-orgon and relay events to kafka server.
 * **mongodbplugin** mongodbplugin module is the implementation for mongodb.
 
 <h3> Setup/Build </h3>
@@ -365,7 +365,7 @@ kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractlog
 kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
 ```
 
-<h3> Load plugin in java-tron </h3>
+<h3> Load plugin in java-orgon </h3>
 
 * add --es to command line, for example:
 ```

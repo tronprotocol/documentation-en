@@ -1,8 +1,8 @@
 # Connect to TRON network
 
-The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
+The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-orgon client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
 
-You need to set the following configuration items to connect java-tron to one of the TRON networks:
+You need to set the following configuration items to connect java-orgon to one of the TRON networks:
 
 * `node.p2p.version` : It is used to set the P2P network id. Only nodes with the same network id can shake hands successfully.
     * TRON mainnet: `node.p2p.version=11111`
@@ -14,9 +14,9 @@ You need to set the following configuration items to connect java-tron to one of
 
 
 ## Find peers
-java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. 
+java-orgon continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-orgon finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data.
 
-If you want java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:
+If you want java-orgon node to do node discovery, you need to enable the node discovery service in the node configuration file first:
 
 ```
 node.discovery = {
@@ -43,7 +43,7 @@ seed.node = {
     "52.15.93.92:18888",
     "34.220.77.106:18888",
     "15.207.144.3:18888",
-    "13.124.62.58:18888",    
+    "13.124.62.58:18888",
     "54.151.226.240:18888",
     "35.174.93.198:18888",
     "18.210.241.149:18888",
@@ -80,9 +80,9 @@ node {
 ```
 
 ## Active and passive connections
-java-tron supports setting its actively connected nodes `node.active` as well as passively connected nodes `node.passive`. Configuring `node.active` and `node.passive` can greatly help improve the stability of the network connection of the node.
+java-orgon supports setting its actively connected nodes `node.active` as well as passively connected nodes `node.passive`. Configuring `node.active` and `node.passive` can greatly help improve the stability of the network connection of the node.
 
-When java-tron starts, it will actively establish a connection with the peer node in `node.active`.
+When java-orgon starts, it will actively establish a connection with the peer node in `node.active`.
 
 ```
 node {
@@ -109,13 +109,13 @@ node {
 ```
 
 ## Log and network connection verification
-The java-tron node log is `/logs/tron.log` in the java-tron installation directory. Under the java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
+The java-orgon  node log is `/logs/tron.log` in the java-orgon  installation directory. Under the java-orgon  installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
 
 ```
 $ tail -f /logs/tron.log/
 ```
 
-You will see the below block synchronization logs if java-tron is running as expected. 
+You will see the below block synchronization logs if java-orgon  is running as expected.
 
 ```
 15:41:48.033 INFO  [nioEventLoopGroup-6-2] [DB](Manager.java:1208) pushBlock block number:76, cost/txs:13/0 false
@@ -164,10 +164,10 @@ Returns：
     "totalFlow": 8735314
 }
 ```
-In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of `/wallet/getnowblock` queried from the local java-tron node. If they are equal, it means that the synchronization status of the local node is normal.
+In order for users to interact with the TRON network, the java-orgon  node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of `/wallet/getnowblock` queried from the local java-orgon  node. If they are equal, it means that the synchronization status of the local node is normal.
 
 ## Connection problems
-There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
+There are occasions when java-orgon  simply fails to connect to peers. The common reasons for this are:
 
 * Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as `sudo ntpdate -s time.nist.gov`.
 * Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring [`node.active`](#active-and-passive-connections) in the case of node discovery invalid.
@@ -176,7 +176,7 @@ There are occasions when java-tron simply fails to connect to peers. The common 
 
 ## Connect to private network
 
-It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences. 
+It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences.
 
 The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
 

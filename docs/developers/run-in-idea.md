@@ -70,10 +70,10 @@ In the "Run/Debug Configurations" configuration panel, specify the JDK version r
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_RunDebug.png)
 
-After the setting, click the "Apply" button to complete the configuration. Then you can click "Run"->"Run FullNode" in IDEA to start the java-orgon node or click "Run"->"Debug FullNode" to start the node in debug mode. After the node is started, java-tron logs are stored in the working directory.
+After the setting, click the "Apply" button to complete the configuration. Then you can click "Run"->"Run FullNode" in IDEA to start the java-orgon node or click "Run"->"Debug FullNode" to start the node in debug mode. After the node is started, java-orgon logs are stored in the working directory.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_runjavatron.png)
 
 
-If you want to debug the java-tron code, you can set breakpoints in the java-tron code and start it in debug mode, so that you can trace the debug code line by line.
+If you want to debug the java-orgon code, you can set breakpoints in the java-orgon code and start it in debug mode, so that you can trace the debug code line by line.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_debug.png)
 

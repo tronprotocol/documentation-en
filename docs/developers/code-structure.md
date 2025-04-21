@@ -2,7 +2,7 @@
 ## Code Structure
 java-orgon is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a ORGON node by starting java-orgon. In this article, we will describe the code structure of java-orgon in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
 
-java-orgon adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
+java-orgon adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-orgon is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
 
 
 
@@ -14,7 +14,7 @@ For a distributed network such as blockchain, a concise and efficient data inter
 * Communication protocol between modules within the node
 * Agreement for Services Provided Externally
 
-The above protocols adopt the [`Google Protobuf`](https://developers.google.com/protocol-buffers) data exchange format. Compared with JSON and XML, the `Google Protobuf` format is more efficient and flexible and can be compiled by the ProtoBuf compiler to generate language-specific serialization and deserialization source code for the defined protocol files. Protobuf is the basis for java-tron to achieve cross-language and cross-platform.
+The above protocols adopt the [`Google Protobuf`](https://developers.google.com/protocol-buffers) data exchange format. Compared with JSON and XML, the `Google Protobuf` format is more efficient and flexible and can be compiled by the ProtoBuf compiler to generate language-specific serialization and deserialization source code for the defined protocol files. Protobuf is the basis for java-orgon to achieve cross-language and cross-platform.
 
 [protocol](https://github.com/tronprotocol/java-tron/tree/develop/protocol) module's source code is located at:  `https://github.com/tronprotocol/java-tron/tree/develop/protocol` , its directory structure is as follows:
 
@@ -30,7 +30,7 @@ The above protocols adopt the [`Google Protobuf`](https://developers.google.com/
         |-- contract
 ```
 
-* `protos/api/` - The gRPC interface and data structure provided by the java-tron node externally
+* `protos/api/` - The gRPC interface and data structure provided by the java-orgon node externally
 * `protos/core/` - Data structure for communication between nodes and between modules within nodes
     * `Discover.proto` - Node discovers related data structures
     * `TronInventoryItems.proto` - Data structure related to block transferring between nodes
@@ -125,7 +125,7 @@ In addition, the chainbase module features a well-designed abstract interface. A
 
     * `db/` and `db2/`
 
-        Implemented rollbackable databases, including two rollbackable databases: `AbstractRevokingStore` located in the `db/` directory and `SnapshotManager` located in the `db2/` directory. Compared with `AbstractRevokingStore`, `SnapshotManager` has a more stable data rollback function and supports the extension of the underlying database. Therefore, java-tron uses `SnapshotManager` to roll back the database. Several important interfaces and implementation classes are as follows:
+        Implemented rollbackable databases, including two rollbackable databases: `AbstractRevokingStore` located in the `db/` directory and `SnapshotManager` located in the `db2/` directory. Compared with `AbstractRevokingStore`, `SnapshotManager` has a more stable data rollback function and supports the extension of the underlying database. Therefore, java-orgon uses `SnapshotManager` to roll back the database. Several important interfaces and implementation classes are as follows:
 
         * `RevokingDatabase.java` - It is the interface of the database container, used to manage all rollbackable databases, `SnapshotManager` is an implementation of this interface
         * `TronStoreWithRevoking.java` - It is the base class that supports rollbackable databases. All rollbackable databases are their implementations, such as `BlockStore`, `TransactionStore`, etc
@@ -154,12 +154,12 @@ consensus module divides the consensus process into several important parts that
 4. `validBlock` - define the consensus logic of validating blocks
 5. `applyBlock` - define the consensus logic of processing blocks
 
-Currently, java-tron implements DPOS consensus and PBFT consensus based on the `ConsensusInterface` interface, which is located in the `dpos/` and `pbft/` directories respectively. Developers can also implement the `ConsensusInterface` interface according to their own business needs to customize the consensus mechanism.
+Currently, java-orgon implements DPOS consensus and PBFT consensus based on the `ConsensusInterface` interface, which is located in the `dpos/` and `pbft/` directories respectively. Developers can also implement the `ConsensusInterface` interface according to their own business needs to customize the consensus mechanism.
 
 
 ### actuator
 
-Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. This is one of the reasons why java-tron supports the creation of a chain of applications. For the reasons mentioned, java-tron includes a separate module, Actuator, offering application developers a brand new way of development. They can choose to implant their application codes into a chain instead of running them on virtual machines.
+Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. This is one of the reasons why java-orgon supports the creation of a chain of applications. For the reasons mentioned, java-orgon includes a separate module, Actuator, offering application developers a brand new way of development. They can choose to implant their application codes into a chain instead of running them on virtual machines.
 
 Actuator is the executor of transactions, while applications can be viewed as a cluster of different types of transactions, each of which is executed by a corresponding actuator.
 
@@ -191,7 +191,7 @@ Actuator module defines the `Actuator` interface, which includes 4 different met
 Depending on their businesses, developers may set up Actuator accordingly and customize the processing of different types of transactions.
 
 ### crypto
-Crypto is a relatively independent module, but it is also a very important module. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
+Crypto is a relatively independent module, but it is also a very important module. Data security in java-orgon is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
 
 [crypto](https://github.com/tronprotocol/java-tron/tree/develop/crypto) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/crypto`, its directory structure is as follows:
 ```
@@ -213,7 +213,7 @@ Crypto is a relatively independent module, but it is also a very important modul
 
 ### framework
 
-The framework is the core module of java-tron and the entrance of the node. The framework module is responsible for the initialization of each module and business logic. The framework module includes the services provided externally, the node discovery and node management process related to the P2P network, and the block broadcasting and processing procedures.
+The framework is the core module of java-orgon and the entrance of the node. The framework module is responsible for the initialization of each module and business logic. The framework module includes the services provided externally, the node discovery and node management process related to the P2P network, and the block broadcasting and processing procedures.
 
 [framework](https://github.com/tronprotocol/java-tron/tree/develop/framework) module's source code is located at:  `https://github.com/tronprotocol/java-tron/tree/develop/framework`, its directory structure is as follows:
 
@@ -256,7 +256,7 @@ The framework is the core module of java-tron and the entrance of the node. The 
 * `core/db/Manager.java` - Transaction and block verification and processing logic
 
 ### Summary
-This article mainly introduces the code structure of java-tron, as well as the function, location and directory structure of each functional module. Through this article, you will have a general understanding of the overall structure and key interfaces of java-tron, which is helpful for subsequent code analysis and development.
+This article mainly introduces the code structure of java-orgon , as well as the function, location and directory structure of each functional module. Through this article, you will have a general understanding of the overall structure and key interfaces of java-orgon , which is helpful for subsequent code analysis and development.
 
 
 
@@ -266,12 +266,12 @@ As we all know, the blockchain is essentially a non-tamperable distributed ledge
 
 The realization of such an immutable distributed ledger is a very complex system engineering, involving many technical fields: such as p2p networks, smart contracts, databases, cryptography, consensus mechanisms, etc. Among them, the database is the basis of the underlying storage, and various blockchain teams are exploring the design and optimization of the database level.
 
-The database module of java-tron is also called the ChainBase module. This article mainly introduces some background knowledge and shows developers the implementation details of the ChainBase module by introducing logic such as transaction processing, state rollback, and data persistence.
+The database module of java-orgon is also called the ChainBase module. This article mainly introduces some background knowledge and shows developers the implementation details of the ChainBase module by introducing logic such as transaction processing, state rollback, and data persistence.
 
 
 
 ### Prerequisites
-The database is an important part of the blockchain system. It stores all the data on the blockchain and is the basis for the normal operation of the blockchain system. Each fullnode stores a full amount of data, including block data, state data, etc. java-tron uses the Account model to save the user's account state.
+The database is an important part of the blockchain system. It stores all the data on the blockchain and is the basis for the normal operation of the blockchain system. Each fullnode stores a full amount of data, including block data, state data, etc. java-orgon uses the Account model to save the user's account state.
 
 #### Account Models
 There are currently two mainstream account models,
@@ -281,35 +281,35 @@ There are currently two mainstream account models,
 
 The UTXO model is stateless, makes it easier to process transactions concurrently, and has better privacy, but it is not programming-friendly.
 
-In the Account Model, user data is stored in the corresponding account, and smart contracts are also stored in the account in the form of code. This model is more intuitive and easier for developers to understand. For programmability, flexibility, and other considerations, java-tron adopts the Account Model.
+In the Account Model, user data is stored in the corresponding account, and smart contracts are also stored in the account in the form of code. This model is more intuitive and easier for developers to understand. For programmability, flexibility, and other considerations, java-orgon adopts the Account Model.
 
 #### Consensus
 
 The current mainstream consensus is PoW, PoS, DPoS, etc. PoW is proof of work, all nodes participate in the calculation of an expected hash result, and the node that first calculates the result has the right to produce a block, but as the computing power continues to increase, the energy consumption required to calculate the hash is also increasing. Moreover, large mining farms monopolize most of the computing power, which also goes against the original intention of decentralization.
 
-To solve the problems faced by PoW, some people proposed PoS (Proof of Stake), which is simply understood as the more coins that the node holds, the greater the probability of obtaining the right to produce blocks, but this will lead to monopoly problems as well. In order to improve, DPoS (Delegated Proof of Stake) is proposed: the decentralization feature is guaranteed by the elected super representative, and the super representative is responsible for the block production in turn to improve the efficiency. java-tron currently adopts the DPoS consensus mechanism.
+To solve the problems faced by PoW, some people proposed PoS (Proof of Stake), which is simply understood as the more coins that the node holds, the greater the probability of obtaining the right to produce blocks, but this will lead to monopoly problems as well. In order to improve, DPoS (Delegated Proof of Stake) is proposed: the decentralization feature is guaranteed by the elected super representative, and the super representative is responsible for the block production in turn to improve the efficiency. java-orgon currently adopts the DPoS consensus mechanism.
 
 To learn more, please refer to [Delegated Proof of Stake](https://en.bitcoinwiki.org/wiki/DPoS).
 
 #### Persistent Storage
 There are certain differences between blockchain and traditional Internet business. The blockchain does not have particularly complex processing logic at the database level, but there are a large number of key-value read and write operations in the blockchain so there are higher requirements for data read and write performance.
 
-Based on this consideration, java-tron uses LevelDB as the underlying data storage by default, and java-tron has a good architecture design. The interface-oriented programming mode makes the chainbase module have better scalability. All databases implemented the chainbase interface can be used as the underlying storage engine of java-tron. For example, in the chainbase v2 version, a database implementation based on RocksDB is provided.
+Based on this consideration, java-orgon uses LevelDB as the underlying data storage by default, and java-orgon has a good architecture design. The interface-oriented programming mode makes the chainbase module have better scalability. All databases implemented the chainbase interface can be used as the underlying storage engine of java-orgon . For example, in the chainbase v2 version, a database implementation based on RocksDB is provided.
 
 
 #### Transaction Validation
-As we all know, the blockchain mainly stores transaction data. Before introducing the chainbase module, you need to understand the transaction processing logic in java-tron.
+As we all know, the blockchain mainly stores transaction data. Before introducing the chainbase module, you need to understand the transaction processing logic in java-orgon .
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_1.png)
 
 
 The transaction will be distributed to each node through network broadcast. After receiving the transaction, the node will first validate the signature of the transaction. If successful, the transaction needs to be pre-executed to determine whether the transaction is legal.
 
-**Note: The specific implementation of java-tron deviates from the above figure, and for the sake of convenience, this article collectively refers to the FullNode and SR as the nodes.**
+**Note: The specific implementation of java-orgon deviates from the above figure, and for the sake of convenience, this article collectively refers to the FullNode and SR as the nodes.**
 
 For example, to process a transfer transaction: user A transfers 100 TRX to user B, and it needs to validate whether user A has enough balance to make the transfer.
 
-The account library in the database stores the account information of all users, including the user's balance information. How to judge whether this transfer transaction is legal? The logic of java-tron is: when a transaction is received from the network, the transaction operation will be executed immediately, that is, the account information will be modified in the local database: (accountA - 100TRX, accountB + 100TRX). If this operation can be executed successfully, it means that the transaction is legal at least in the current state, and can be packed into the block.
+The account library in the database stores the account information of all users, including the user's balance information. How to judge whether this transfer transaction is legal? The logic of java-orgon is: when a transaction is received from the network, the transaction operation will be executed immediately, that is, the account information will be modified in the local database: (accountA - 100TRX, accountB + 100TRX). If this operation can be executed successfully, it means that the transaction is legal at least in the current state, and can be packed into the block.
 
 
 #### Glossary
@@ -321,21 +321,21 @@ TRX： TRON native token.
 
 
 ### State Rollback
-Above we mentioned that java-tron validates whether the transaction is legal through pre-execution, but what we need to know is that the transaction is successfully validated on a certain node does not mean that the transaction has been successfully chained because the transaction has not been packed into the consensus blocks, there is a risk of being rolled back.
+Above we mentioned that java-orgon validates whether the transaction is legal through pre-execution, but what we need to know is that the transaction is successfully validated on a certain node does not mean that the transaction has been successfully chained because the transaction has not been packed into the consensus blocks, there is a risk of being rolled back.
 
-The consensus of java-tron follows a principle: that is, the transactions in the blocks that are approved by more than 2/3 of the SRs are the ones that are really successful on the chain. can also be understood as below,
+The consensus of java-orgon follows a principle: that is, the transactions in the blocks that are approved by more than 2/3 of the SRs are the ones that are really successful on the chain. can also be understood as below,
 
 
 - transactions are packed into a block
 - the block is approved by more than 2/3 of the SRs
 
-A transaction that satisfies the above two points is a successful transaction on the chain. A transaction in java-tron is finally confirmed through three stages,
+A transaction that satisfies the above two points is a successful transaction on the chain. A transaction in java-orgon is finally confirmed through three stages,
 
 - transaction validating
 - transaction packing into the block
 - block being accepted and applied
 
-This also leads to a problem: in the implementation of java-tron, if a node validates the transaction, its database state changes accordingly. If the transaction is not packed into the block yet or the block it is packed into has not been approved by more than 2/3 of SR, the state of this node will be inconsistent with the state of the entire network.
+This also leads to a problem: in the implementation of java-orgon , if a node validates the transaction, its database state changes accordingly. If the transaction is not packed into the block yet or the block it is packed into has not been approved by more than 2/3 of SR, the state of this node will be inconsistent with the state of the entire network.
 
 
 **Therefore, except for the processing transaction data in blocks approved by more than 2/3 SRs, all other data state changes resulting from transaction processing may need to be rolled back.** There are three kinds of scenarios in total:
@@ -361,7 +361,7 @@ If the account balance of accountA is 100 at the block height is 1000, the node 
 #### Rollback after Producing a New Block
 First of all, readers may have a question: the validated transaction can be directly packed into the block, and it will not change the database state. Why is there a change in the database state?
 
-Because java-tron does a secondary validation of the transaction when it is packed into the block. The secondary validation is due to the timeliness of the transaction. Still taking the above figure as an example, it can be seen from the figure, that after 1001 is received, the transaction t1 was rolled back, and the balance of accountA was deducted by 50. And then, it was the node's turn to produce a block, but t1 had become an illegal transaction at this time because the balance in accountA was not enough to transfer 100 TRX, it is not advisable to directly pack t1 into the block. So the transaction needs to be validated again, which is why the transaction needs to be validated twice when producing a block.
+Because java-orgon does a secondary validation of the transaction when it is packed into the block. The secondary validation is due to the timeliness of the transaction. Still taking the above figure as an example, it can be seen from the figure, that after 1001 is received, the transaction t1 was rolled back, and the balance of accountA was deducted by 50. And then, it was the node's turn to produce a block, but t1 had become an illegal transaction at this time because the balance in accountA was not enough to transfer 100 TRX, it is not advisable to directly pack t1 into the block. So the transaction needs to be validated again, which is why the transaction needs to be validated twice when producing a block.
 
 After the block is packed successfully, the node will broadcast the block to the network and apply the block locally. And the logic of applying will re-check the transactions in the block. So after the block is packed, a rollback operation still needs to be performed.
 
@@ -369,20 +369,20 @@ After the block is packed successfully, the node will broadcast the block to the
 #### Rollback when Forking
 This is the last rollback situation, and the blockchain will inevitably fork, especially the blockchain system based on DPoS with a faster block production speed that is more prone to fork.
 
-java-tron maintains a data structure in memory as below,
+java-orgon maintains a data structure in memory as below,
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_3.png)
 
 
 
-java-tron holds all blocks that have not reached consensus recently. When a forked chain occurs, according to the longest chain principle: if the block height of the forked chain is greater than the current main chain block height, the forked chain needs to be switched to the main chain. Part of the blocks on the previous main chain needs to roll back up to their common parent blocks when switching, and then apply new main chain blocks sequentially from the parent block.
+java-orgon holds all blocks that have not reached consensus recently. When a forked chain occurs, according to the longest chain principle: if the block height of the forked chain is greater than the current main chain block height, the forked chain needs to be switched to the main chain. Part of the blocks on the previous main chain needs to roll back up to their common parent blocks when switching, and then apply new main chain blocks sequentially from the parent block.
 
 As shown in the figure, fork A in the dark part was originally the main chain. Because the height of fork B continues to grow and eventually exceeds the height of A, it is necessary to roll back the data in those three blocks with heights 1003, 1002, and 1001 in fork A. Then apply fork blocks 1001', 1002', 1003', and 1004' in B in sequence.
 
 
 
 ### State Rollback Implementation
-This chapter explains receiving and validating transactions, block production, validating and saving blocks from the perspective of code, to further analyze the chainbase module of java-tron. If there is no further declaration, the default description is dedicated to all the Fullnode (including SR).
+This chapter explains receiving and validating transactions, block production, validating and saving blocks from the perspective of code, to further analyze the chainbase module of java-orgon . If there is no further declaration, the default description is dedicated to all the Fullnode (including SR).
 
 
 #### Receiving Transactions
@@ -407,11 +407,11 @@ A node would receive transactions broadcasted from other nodes before receiving 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_5.png)
 
 
-When rolling back, java-tron move the transactions in the pendingTransactionQueue to rePushTransactions, and clear the pendingTransactionQueue, see the figure for a detailed explanation.
+When rolling back, java-orgon move the transactions in the pendingTransactionQueue to rePushTransactions, and clear the pendingTransactionQueue, see the figure for a detailed explanation.
 
 Why does the pendingTransactionQueue need to be emptied after a new block arrives? First of all, it is clear that the pendingTransactionQueue queue is responsible for providing transaction data when generating blocks, that is to say, it stores validated transactions that can be directly packed into blocks. Since the new block will also change the account state, those validated transactions in pendingTransactionQueue may not pass the validation after applying the new block (the simplest example: a transaction in the new block is that accountA spends a part of the token, resulting in a transaction amount of accountA in the queue that is not enough to pay ). After the transaction is moved to rePushTransactions, a background thread will be responsible for re-validating the transaction in the queue. If nothing is wrong, it will be put into the pendingTransactionQueue again to provide data for block production.
 
-There is a session object in java-tron. A session represents the change in the state of a block. The session object is mainly used for rollback. For example,rolling back the state to the state of the previous block needs to be operated throughout the session, as shown in the following figure,
+There is a session object in java-orgon . A session represents the change in the state of a block. The session object is mainly used for rollback. For example,rolling back the state to the state of the previous block needs to be operated throughout the session, as shown in the following figure,
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_6.png)
 
@@ -436,9 +436,9 @@ In the process of producing the block, the transaction will be validated again, 
 
 
 ### Block Solidity
-java-tron adopts the DPoS consensus mechanism. The DPoS of java-tron is to vote for 27 nodes as block producers (also known as SR), SR has the right and obligation to produce blocks, and blocks approved by more than 2/3 of SR are considered to reach a consensus. These blocks, which are no longer rolled back are called solidified blocks. Only solidified blocks can be written to the database.
+java-orgon adopts the DPoS consensus mechanism. The DPoS of java-orgon is to vote for 27 nodes as block producers (also known as SR), SR has the right and obligation to produce blocks, and blocks approved by more than 2/3 of SR are considered to reach a consensus. These blocks, which are no longer rolled back are called solidified blocks. Only solidified blocks can be written to the database.
 
-SnapshotManager in java-tron is the key entry to the storage module, holds references to all current business databases, and stores database references in a list. Each database instance supports adding a new layer of state set on its own called SnapshotImpl. It is an in-memory hashmap, multiple SnapshotImpl are associated in the form of a linked list, and one SnapshotImpl retains the data modification (in-merging or merging) involved in one state change, and SnapshotImpl is independent of each other. They are separated through this data structure, as shown in the following figure,
+SnapshotManager in java-orgon is the key entry to the storage module, holds references to all current business databases, and stores database references in a list. Each database instance supports adding a new layer of state set on its own called SnapshotImpl. It is an in-memory hashmap, multiple SnapshotImpl are associated in the form of a linked list, and one SnapshotImpl retains the data modification (in-merging or merging) involved in one state change, and SnapshotImpl is independent of each other. They are separated through this data structure, as shown in the following figure,
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_8.png)
 
@@ -456,13 +456,13 @@ This is obvious. If 'size' > 'maxSize', it means that the blocks corresponding t
 
 #### Atomicity
 
-The database storage of java-tron is slightly different from other public chains. For example, the Ethereum persistence layer uses only one database instance, and different types of data in Ethereum are distinguished by prefixes and stored in one database instance. However, java-tron currently stores data of different business types in its own database instances.
+The database storage of java-orgon  is slightly different from other public chains. For example, the Ethereum persistence layer uses only one database instance, and different types of data in Ethereum are distinguished by prefixes and stored in one database instance. However, java-orgon  currently stores data of different business types in its own database instances.
 
 The two implementations have their own advantages. A single instance is easy to maintain and can be written uniformly, but the disadvantages are also obvious. For example, the amount of data in a single database continues to grow over time, and frequent access to some business databases may drag down the read-and-write performance of other businesses.
 
 Multi-instance does not have the problem of the mutual influence of each business data read and write, and can configure different parameters according to their respective data volume and performance requirements to maximize performance, and can also independently split the database with a large amount of data. Alleviate data bloat problems. But there is a serious problem with multiple database instances: there is no native tool to support atomic writes among multiple database instances.
 
-In order to ensure the atomic writing of multiple database instances, java-tron has added a checkpoint mechanism, which writes the changed data to the checkpoint uniformly before the multiple instances are placed on the disk. If an accident occurs in writing to multiple database instances, the changed data will be recovered from the checkpoint when the service is restarted to ensure the atomicity of writing.
+In order to ensure the atomic writing of multiple database instances, java-orgon  has added a checkpoint mechanism, which writes the changed data to the checkpoint uniformly before the multiple instances are placed on the disk. If an accident occurs in writing to multiple database instances, the changed data will be recovered from the checkpoint when the service is restarted to ensure the atomicity of writing.
 
 The process of writing the snapshotImpl of the solidified block to the database in the previous section mainly includes two steps,
 
@@ -488,7 +488,7 @@ This solution can be summarized as,
 - the data set that needs to be guaranteed to be written atomically is first written to a temporary database by atomic writing, and then the data is written to different database instances; if an accident occurs, it can be recovered through the data of the temporary database
 
 ### Summary
-This article analyzes the implementation details of rollback and database writing in the chainbase module through the processing flow of transactions and blocks and also analyzes the principle of atomic writing among multiple instances of the database to prevent database damage caused by accidental downtime. We hope that reading this article can help developers to further understand and develop the java-tron database.
+This article analyzes the implementation details of rollback and database writing in the chainbase module through the processing flow of transactions and blocks and also analyzes the principle of atomic writing among multiple instances of the database to prevent database damage caused by accidental downtime. We hope that reading this article can help developers to further understand and develop the java-orgon  database.
 
 
 
@@ -693,7 +693,7 @@ Node A sends the transaction or block to be broadcast to Node B via the `INVENTO
 After node A receives the `FETCH_INV_DATA` message, it will check whether an "INVENTORY" message has been sent to the peer. If it has been sent, it will send a transaction or block message to node B according to the list data. After node B receives the transaction or block message, it processes the message and triggers the forwarding process.
 
 ### Summary
-This article introduces the implementation details related to the P2P network, the lowest level module of TRON, including node discovery, node connection, block synchronization, and the process of block and transaction broadcasting. I hope that reading this article can help developers to further understand and develop java-tron network-related modules.
+This article introduces the implementation details related to the P2P network, the lowest level module of TRON, including node discovery, node connection, block synchronization, and the process of block and transaction broadcasting. I hope that reading this article can help developers to further understand and develop java-orgon  network-related modules.
 
 
 

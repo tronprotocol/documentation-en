@@ -8,8 +8,8 @@ Sometimes java-orgon nodes may not be able to connect to peers due to network re
 Fork a new repository from the [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) project to your personal repository, and then use the following command Clone the code locally:
 
 ```
-$ git clone https://github.com/yourname/java-tron.git
-$ git remote add upstream https://github.com/tronprotocol/java-tron.git
+$ git clone https://github.com/yourname/java-orgon .git
+$ git remote add upstream https://github.com/tronprotocol/java-orgon .git
 ```
 
 ## Sync Repository
