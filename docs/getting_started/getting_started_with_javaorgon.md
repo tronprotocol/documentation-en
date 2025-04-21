@@ -4,10 +4,10 @@ This page mainly explains how to start the java-orgon node and use the command l
 
 This page covers the basics of using java-orgon , which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with java-orgon more conveniently.
 
-java-orgon is a TRON network client written in Java. This means a computer running java-orgon will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-orgon uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
+java-orgon is a ORGON network client written in Java. This means a computer running java-orgon will become a ORGON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-orgon uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
 
 ## Generat account
-There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).
+There are various ways to generate a ORGON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).
 
 Enter the command `java -jar wallet-cli.jar` in the terminal to start a wallet-cli:
 ```
@@ -22,7 +22,7 @@ You may also use the Help command at anytime to display a full list of commands.
 wallet>
 ```
 
-Enter the command: `registerwallet`, and then enter the password as prompted. This command will generate a TRON network account and register it with wallet-cli, that is, wallet-cli will save the private key of this account, and then you can use the private key to sign transactions.
+Enter the command: `registerwallet`, and then enter the password as prompted. This command will generate a ORGON network account and register it with wallet-cli, that is, wallet-cli will save the private key of this account, and then you can use the private key to sign transactions.
 ```
 wallet> registerwallet
 Please input password.
@@ -62,7 +62,7 @@ Then you can use the `backupwallet` command to view the private key of the accou
 
 
 ## Run a java-orgon node
-java-orgon is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start java-orgon , you need first obtain the java-orgon executable file, please refer to the [Installation and Deployment](../using_javaorgon/installing_javaorgon.md) chapter, and then run the following command to start java-orgon .
+java-orgon is a ORGON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start java-orgon , you need first obtain the java-orgon executable file, please refer to the [Installation and Deployment](../using_javaorgon/installing_javaorgon.md) chapter, and then run the following command to start java-orgon .
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 ```

@@ -18,13 +18,13 @@ TestNet Configuration:
 
  In TRON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.
 
- To prevent vicious attack, TRON network burns 9999 TRX from the account that applies to become a super representative candidate.
+ To prevent vicious attack, ORGON network burns 9999 TRX from the account that applies to become a super representative candidate.
 
 ## 2.2 Super Representatives Election
 
- To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
+ To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in ORGON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
 
- Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.
+ Note: Only your latest vote will be counted in ORGON network which means your previous vote will be over written by your latest vote.
 
 Example (Using wallet-cli):
 
@@ -50,7 +50,7 @@ Every time after a super representative produces a block, the 32 TRX block produ
 
 ### 2.4.1 What is Committee
 
-Committee can modify the TRON network parameters, like transaction fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.
+Committee can modify the ORGON network parameters, like transaction fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.
 
 ### 2.4.2 Create a Proposal
 
@@ -125,7 +125,7 @@ TRON uses account model. An account's identity is address, it needs private key 
 
 1.&nbsp;Use a wallet to generate the address and private key. To activate the account, you need to transfer TRX or transfer token to the new created account.
 
-2.&nbsp;Use an account already existed in TRON network to create an account
+2.&nbsp;Use an account already existed in ORGON network to create an account
 
 ## 3.3 Key-pair Generation Algorithm
 TRON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
@@ -179,7 +179,7 @@ Recommended requirement:
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.4 TRON Network Instructure
-TRON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-orgon code can join TRON network as a node.
+ORGON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-orgon code can join ORGON network as a node.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png)
 
 ## 4.5 FullNode and SolidityNode Fast Deployment
@@ -871,7 +871,7 @@ Please refer to:
 [https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
 
 # 7. TRC-10 Token Introduction
-TRON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.
+ORGON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.
 
 ## 7.1 How to Issue a TRC-10 Token
 HTTP API:
@@ -952,9 +952,9 @@ Note: The unit of 'amount' is the smallest unit of the token
 # 8. Resource Model
 ## 8.1 Resource Model Introduction
 
-TRON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by TRON's exclusive RAM model, TRON's RAM resource is almost infinite.
+ORGON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by TRON's exclusive RAM model, TRON's RAM resource is almost infinite.
 
-TRON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage.
+ORGON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage.
 
 Note:
 - Ordinary transaction only consumes Bandwidth points
@@ -1032,7 +1032,7 @@ receiverAddress: recipient account address
 
 # 9. DEX Introduction
 
-TRON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs.
+ORGON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs.
 
 ## 9.1 What is an Exchange Pair
 The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/TRX.

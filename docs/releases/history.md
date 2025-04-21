@@ -1008,7 +1008,7 @@ Source Code: [https://github.com/tronprotocol/java-tron/pull/5123](https://githu
 
 
 #### 1. Optimize the update logic of the `origin_energy_usage` field in the transaction receipt
-The TRON network supports contract deployers to share part of the contract call cost. In order to facilitate users to query the energy consumption of contract transactions, in addition to recording the total energy consumption of the transaction through the `energy_usage_total` field, the transaction receipt will also record the amount of energy paid by the contract deployer through the `origin_energy_usage` field. `energy_usage_total` contains `origin_energy_usage`.
+The ORGON network supports contract deployers to share part of the contract call cost. In order to facilitate users to query the energy consumption of contract transactions, in addition to recording the total energy consumption of the transaction through the `energy_usage_total` field, the transaction receipt will also record the amount of energy paid by the contract deployer through the `origin_energy_usage` field. `energy_usage_total` contains `origin_energy_usage`.
 
 In versions prior to GreatVoyage-v4.7.1.1 (Pittacus), in rare cases, the `energy_usage_total` field is 0 while the `origin_energy_usage` field is not 0 when querying through `/wallet/gettransactioninfobyid` API. Therefore the GreatVoyage-v4.7.1.1 (Pittacus) version optimizes the update logic of `origin_energy_usage` in the transaction receipt to ensure the accuracy of querying the consumed energy of the contract deployer.
 
@@ -1119,7 +1119,7 @@ GreatVoyage-v4.7.0.1 (Aristotle) version introduces a new stake model, Stake 2.0
 
 * Unstake Lock Period and Delayed Arrival of Unstaked TRX
 
-    In Stake 1.0, after staking TRX, we need to wait 3 days before releasing the TRX. After the release, the TRX staked will immediately arrive in the owner’s account. In Stake 2.0, after the staking is completed, the TRX staked can be released at any time, but it needs to wait for ’N’ days. After the ’N’ days delay, the TRX released could be withdrawn to the owner’s account. ’N’ is the TRON network parameter. When the TRX market fluctuates violently, due to the delayed arrival of funds, it will no longer trigger a large number of stake or unstake operations, which improves the stability of the stake model, and at the same time will not cause a large number of funds to flood into the market and aggravate market volatility. It helps to build a more anticipated future of the entire network circulation for the network participants.
+    In Stake 1.0, after staking TRX, we need to wait 3 days before releasing the TRX. After the release, the TRX staked will immediately arrive in the owner’s account. In Stake 2.0, after the staking is completed, the TRX staked can be released at any time, but it needs to wait for ’N’ days. After the ’N’ days delay, the TRX released could be withdrawn to the owner’s account. ’N’ is the ORGON network parameter. When the TRX market fluctuates violently, due to the delayed arrival of funds, it will no longer trigger a large number of stake or unstake operations, which improves the stability of the stake model, and at the same time will not cause a large number of funds to flood into the market and aggravate market volatility. It helps to build a more anticipated future of the entire network circulation for the network participants.
 
 * TVM Supports Staking and Resource Management
 
@@ -1355,9 +1355,9 @@ The memo fee is a dynamic parameter of the TRON network. After GreatVoyage-v4.6.
 
 
 #### 3. Add optimized reward algorithm proposal
-Many voters in the TRON network will accumulate rewards for a long time before withdrawing them. The interval between two withdrawals of rewards is often very long. In versions prior to GreatVoyage-v4.6.0 (Socrates), for the transaction to withdraw rewards, it will calculate and accumulate rewards for each maintenance period since the last withdrawal of rewards, so the longer the time since the last withdrawal of rewards, the more time-consuming it will be to calculate the reward. Therefore, GreatVoyage-v4.6.0 (Socrates) optimizes the calculation algorithm of voting rewards. Instead of accumulating the rewards of each maintenance period, the sum of unwithdrawn rewards can be obtained by subtracting the total number of rewards recorded in the maintenance period of the last reward withdrawal from the total rewards recorded in the previous maintenance period. This algorithm realizes the calculation of the total number of unclaimed rewards in a constant time, which greatly improves the calculation efficiency and speeds up the execution of reward calculation, thereby improving the throughput of the network.
+Many voters in the ORGON network will accumulate rewards for a long time before withdrawing them. The interval between two withdrawals of rewards is often very long. In versions prior to GreatVoyage-v4.6.0 (Socrates), for the transaction to withdraw rewards, it will calculate and accumulate rewards for each maintenance period since the last withdrawal of rewards, so the longer the time since the last withdrawal of rewards, the more time-consuming it will be to calculate the reward. Therefore, GreatVoyage-v4.6.0 (Socrates) optimizes the calculation algorithm of voting rewards. Instead of accumulating the rewards of each maintenance period, the sum of unwithdrawn rewards can be obtained by subtracting the total number of rewards recorded in the maintenance period of the last reward withdrawal from the total rewards recorded in the previous maintenance period. This algorithm realizes the calculation of the total number of unclaimed rewards in a constant time, which greatly improves the calculation efficiency and speeds up the execution of reward calculation, thereby improving the throughput of the network.
 
-The optimized reward algorithm is a TRON network parameter and is disabled by default once GreatVoyage-v4.6.0 (Socrates) is deployed, and can be enabled by voting through a proposal.
+The optimized reward algorithm is a ORGON network parameter and is disabled by default once GreatVoyage-v4.6.0 (Socrates) is deployed, and can be enabled by voting through a proposal.
 
 * TIP: [https://github.com/tronprotocol/tips/issues/465](https://github.com/tronprotocol/tips/issues/465)
 * Source code: [https://github.com/tronprotocol/java-tron/pull/4694](https://github.com/tronprotocol/java-tron/pull/4694)
@@ -1502,7 +1502,7 @@ In versions prior to GreatVoyage-v4.5.2 (Aurelius), for pre-executed normal tran
 Source Code：https://github.com/tronprotocol/java-tron/pull/4387
 
 #### 5. Optimize fork switching logic
-Micro-forks occur in the TRON network occasionally. The chain switching behavior will occur when a micro-fork happens.  The chain switching will roll back blocks, and the transactions in the rolled back block will be put back into the transaction pending queue. When these transactions are repackaged and executed, the execution results may be inconsistent due to chain switching. In versions prior to GreatVoyage-v4.5.2 (Aurelius), the entire process refers to the same transaction object, so chain switching may lead to the transaction result in the rolled back block being changed. When the chain switching occurs again and the original chain is switched back, the transaction on the original chain will be executed again, at this time, it will report a `Different resultCode` error, which will cause the node to stop synchronizing.
+Micro-forks occur in the ORGON network occasionally. The chain switching behavior will occur when a micro-fork happens.  The chain switching will roll back blocks, and the transactions in the rolled back block will be put back into the transaction pending queue. When these transactions are repackaged and executed, the execution results may be inconsistent due to chain switching. In versions prior to GreatVoyage-v4.5.2 (Aurelius), the entire process refers to the same transaction object, so chain switching may lead to the transaction result in the rolled back block being changed. When the chain switching occurs again and the original chain is switched back, the transaction on the original chain will be executed again, at this time, it will report a `Different resultCode` error, which will cause the node to stop synchronizing.
 
 Therefore, the GreatVoyage-v4.5.2 (Aurelius) version optimizes the chain-switching logic. When a block is rolled back, a new transaction object is created for the transaction in the rolled-back block, so as to avoid the modification of the transaction result and improve the node's stability for fork handling.
 
@@ -1613,7 +1613,7 @@ Source Code: https://github.com/tronprotocol/java-tron/pull/4325
 
 ### TVM
 #### 1. Adjust the upper limit that can be set for the maximum execution time of TVM
-"TVM maximum execution time" is a dynamic parameter of the TRON network, indicating the maximum time allowed for a smart contract to be executed. Super representatives can change this parameter through proposal voting. In versions prior to GreatVoyage-v4.5.1 (Tertullian), the maximum value that this parameter can be modified is 100ms. With the stability of the TRON network infrastructure and the vigorous development of the ecology, the 100ms upper limit confines the complexity of smart contracts. Therefore, GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal that allows to raise the configurable upper limit of "TVM maximum execution time" to 400ms.
+"TVM maximum execution time" is a dynamic parameter of the TRON network, indicating the maximum time allowed for a smart contract to be executed. Super representatives can change this parameter through proposal voting. In versions prior to GreatVoyage-v4.5.1 (Tertullian), the maximum value that this parameter can be modified is 100ms. With the stability of the ORGON network infrastructure and the vigorous development of the ecology, the 100ms upper limit confines the complexity of smart contracts. Therefore, GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal that allows to raise the configurable upper limit of "TVM maximum execution time" to 400ms.
 
 TIP: https://github.com/tronprotocol/tips/blob/master/tip-397.md
 Source Code: https://github.com/tronprotocol/java-tron/pull/4375
@@ -1698,7 +1698,7 @@ Source Code：https://github.com/tronprotocol/java-tron/pull/4219
 ### TVM
 #### 1. TVM support multi-version program-executors
 
-In order to enable the TRON network to support various types of smart contract transactions in the future, starting from GreatVoyage-v4.4.4 (Plotinus), TVM code is refactored to support multi-version program  executors, it will select different instruction set to interpret and execute the bytecode of smart contract according to the contract version information.
+In order to enable the ORGON network to support various types of smart contract transactions in the future, starting from GreatVoyage-v4.4.4 (Plotinus), TVM code is refactored to support multi-version program  executors, it will select different instruction set to interpret and execute the bytecode of smart contract according to the contract version information.
 
 Source Code：https://github.com/tronprotocol/java-tron/pull/4257
                              https://github.com/tronprotocol/java-tron/pull/4259
@@ -1721,7 +1721,7 @@ Source Code：https://github.com/tronprotocol/java-tron/pull/4220
 
 
 #### 3. improve the java-tron upgrade mechenism
-For upgrade mechanism of java-tron,Before the GreatVoyage-v4.4.4 (Plotinus) version,all 27 super representative nodes need to complete the code upgrade, TRON network can be upgraded to the new version,TRON is a completely decentralized governance network,Sometimes the 27 super representative nodes cannot complete the code upgrade within a certain period of time, making the version upgrade process slow.In order to achieve more efficient decentralized governance, in GreatVoyage-v4.4.4 (Plotinus), the upgrade mechanism of java-tron has been improved, only 22 super representative nodes are needed to complete the code upgrade, and the TRON network can complete the upgrade.
+For upgrade mechanism of java-tron,Before the GreatVoyage-v4.4.4 (Plotinus) version,all 27 super representative nodes need to complete the code upgrade, ORGON network can be upgraded to the new version,TRON is a completely decentralized governance network,Sometimes the 27 super representative nodes cannot complete the code upgrade within a certain period of time, making the version upgrade process slow.In order to achieve more efficient decentralized governance, in GreatVoyage-v4.4.4 (Plotinus), the upgrade mechanism of java-tron has been improved, only 22 super representative nodes are needed to complete the code upgrade, and the ORGON network can complete the upgrade.
 
 Source Code：https://github.com/tronprotocol/java-tron/pull/4218
 
@@ -2034,7 +2034,7 @@ In the version of GreatVoyage-v4.2.2 (Lucretius), smart contract ABIs are transf
 
 
 ## GreatVoyage-4.2.0(Plato)
-The GreatVoyage-4.2.0 (Plato) version introduces two important updates. The optimization of the resource model will increase the utilization rate of TRON network resources and make the resource acquisition method more reasonable. The new TVM instructions make the use scenarios of smart contracts more abundant and will further enrich the TRON ecosystem.
+The GreatVoyage-4.2.0 (Plato) version introduces two important updates. The optimization of the resource model will increase the utilization rate of ORGON network resources and make the resource acquisition method more reasonable. The new TVM instructions make the use scenarios of smart contracts more abundant and will further enrich the TRON ecosystem.
 
 ### Core Protocol
 #### 1. Optimize the resource model

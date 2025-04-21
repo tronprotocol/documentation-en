@@ -93,7 +93,7 @@ Points:
 
 **4. Security Related**
 
-Description: To find the security risks and enhance the security of TRON network and ecosystem
+Description: To find the security risks and enhance the security of ORGON network and ecosystem
 Scope: java-tron, TRON ecosystem
 Points:
 

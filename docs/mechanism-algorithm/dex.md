@@ -1,6 +1,6 @@
 # Decentralized Exchange(DEX)
 
-TRON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs. You can find the api below in [HTTP API](../api/http.md).
+ORGON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs. You can find the api below in [HTTP API](../api/http.md).
 
 ## What is an Exchange Pair
 

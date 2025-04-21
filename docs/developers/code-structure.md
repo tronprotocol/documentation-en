@@ -1,6 +1,6 @@
 # java-orgon Core Modules
 ## Code Structure
-java-orgon is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a ORGON node by starting java-orgon. In this article, we will describe the code structure of java-orgon in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
+java-orgon is a ORGON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a ORGON node by starting java-orgon. In this article, we will describe the code structure of java-orgon in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
 
 java-orgon adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-orgon is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
 
@@ -177,7 +177,7 @@ Actuator is the executor of transactions, while applications can be viewed as a 
     |-- vm
 ```
 
-* `actuator/` - The executors of various types of transactions in the TRON network which define the processing logic of different types of transactions. For example, `TransferActuator` is the processing class for transferring TRX, and `FreezeBalanceV2Actuator` is the processing class for staking TRX to obtain resource
+* `actuator/` - The executors of various types of transactions in the ORGON network which define the processing logic of different types of transactions. For example, `TransferActuator` is the processing class for transferring TRX, and `FreezeBalanceV2Actuator` is the processing class for staking TRX to obtain resource
 * `utils/` - tools needed to execute transaction
 * `vm/` - TRON virtual machine related code
 
@@ -526,7 +526,7 @@ Below will separately introduce these four functional parts.
 
 
 ### Node Discovery
-Node discovery is the first step for nodes to access the blockchain network. The blockchain network is a structured P2P network which organizes all nodes in an orderly manner, such as forming a ring network or a tree-like network. Structured networks are generally implemented based on the DHT (Distributed Hash Table) algorithm. Specific implementation algorithms include Chord, Pastry, CAN, Kademlia and so on. The TRON network uses the Kademlia algorithm.
+Node discovery is the first step for nodes to access the blockchain network. The blockchain network is a structured P2P network which organizes all nodes in an orderly manner, such as forming a ring network or a tree-like network. Structured networks are generally implemented based on the DHT (Distributed Hash Table) algorithm. Specific implementation algorithms include Chord, Pastry, CAN, Kademlia and so on. The ORGON network uses the Kademlia algorithm.
 
 #### Kademlia Algorithm
 Kademlia is an implementation of Distributed Hash Table (DHT), it is the core routing technology in the decentralized P2P network and can quickly find target nodes in the network without a central server.

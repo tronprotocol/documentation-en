@@ -10,9 +10,9 @@ The votes will be counted every 6 hours, so super representatives and super repr
 
 ## Super Representative Election
 
-To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
+To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in ORGON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
 
-Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.
+Note: Only your latest vote will be counted in ORGON network which means your previous vote will be over written by your latest vote.
 
 Example (Using wallet-cli):
 
@@ -64,13 +64,13 @@ the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 /
 
 ### What is Committee
 
-Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.
+Committee can modify the ORGON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.
 
 ### Create a Proposal
 
 Only SRs, Partners and Candidates can create a proposal.
 
-Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dynamic parameters and their values.
+Please refer to [here](https://tronscan.org/#/sr/committee) for ORGON network dynamic parameters and their values.
 
 Example (Using wallet-cli):
 

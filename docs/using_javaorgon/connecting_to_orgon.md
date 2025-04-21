@@ -1,6 +1,6 @@
 # Connect to TRON network
 
-The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-orgon client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
+The ORGON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-orgon client software, it can be connected to any ORGON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
 
 You need to set the following configuration items to connect java-orgon to one of the TRON networks:
 

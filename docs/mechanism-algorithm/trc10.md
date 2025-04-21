@@ -1,6 +1,6 @@
 # TRC-10
 
-TRON network supports two types of tokens, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.
+ORGON network supports two types of tokens, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.
 
 ## How to Issue a TRC-10 Token
 
@@ -35,7 +35,7 @@ Parameter start_time: ICO start time
 Parameter end_time: ICO end time
 Parameter description: Token description, default hexString
 Parameter url: Token official website url, default hexString
-Parameter free_asset_net_limit: The free bandwidth limit of each token holder 
+Parameter free_asset_net_limit: The free bandwidth limit of each token holder
 Parameter public_free_asset_net_limit: The total free bandwidth limit of the Token
 Parameter frozen_supply: Token staked supply
 Parameter permission_id: Optional, for multi-signature use
