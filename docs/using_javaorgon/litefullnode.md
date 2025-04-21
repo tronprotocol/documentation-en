@@ -4,7 +4,7 @@ Lite FullNode runs the same code with FullNode, the difference is that Lite Full
 Therefore, if developers only need to use node for block synchronization, processing and broadcasting transactions, or only query the blocks and transactions synchronized after the node starts up, then Lite Fullnoe will be a better choice.
 
 ## Lite FullNode Deployment
-The deployment steps and startup command of a Lite fullnode are the same as fullnode's, please refer to [Deployment Instructions](installing_javatron.md) to deploy a Lite Fullnode. The only difference is the database. You need to obtain the Lite Fullnode database. You can download the Lite Fullnode data snapshot from the [public backup data](backup_restore.md/#lite-fullnode-data-snapshot) and use it directly; or use the [Lite Fullnode data pruning tool](toolkit.md/#lite-fullnode-data-pruning) to convert the Fullnode database to Lite Fullnode database.
+The deployment steps and startup command of a Lite fullnode are the same as fullnode's, please refer to [Deployment Instructions](installing_javaorgon.md) to deploy a Lite Fullnode. The only difference is the database. You need to obtain the Lite Fullnode database. You can download the Lite Fullnode data snapshot from the [public backup data](backup_restore.md/#lite-fullnode-data-snapshot) and use it directly; or use the [Lite Fullnode data pruning tool](toolkit.md/#lite-fullnode-data-pruning) to convert the Fullnode database to Lite Fullnode database.
 
 
 

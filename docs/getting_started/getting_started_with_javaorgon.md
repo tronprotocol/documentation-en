@@ -1,6 +1,6 @@
 # Getting Started with java-tron
 
-This page mainly explains how to start the java-tron node and use the command line tool `wallet-cli` to execute basic commands to interact with the java-tron node. Regarding the installation of java-tron, you can download the runnable file directly or build it from source code. Instructions for installing java-tron can be found on the [Install and Build](../using_javatron/installing_javatron.md) page. This tutorial on this page assumes java-tron and associated developer tools have been successfully installed.
+This page mainly explains how to start the java-tron node and use the command line tool `wallet-cli` to execute basic commands to interact with the java-tron node. Regarding the installation of java-tron, you can download the runnable file directly or build it from source code. Instructions for installing java-tron can be found on the [Install and Build](../using_javaorgon/installing_javaorgon.md) page. This tutorial on this page assumes java-tron and associated developer tools have been successfully installed.
 
 This page covers the basics of using java-tron, which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with java-tron more conveniently.
 
@@ -16,23 +16,23 @@ $ java -jar wallet-cli.jar
 Welcome to TRON wallet-cli
 Please type one of the following commands to proceed.
 Login, RegisterWallet or ImportWallet
- 
+
 You may also use the Help command at anytime to display a full list of commands.
- 
-wallet> 
+
+wallet>
 ```
 
 Enter the command: `registerwallet`, and then enter the password as prompted. This command will generate a TRON network account and register it with wallet-cli, that is, wallet-cli will save the private key of this account, and then you can use the private key to sign transactions.
 ```
 wallet> registerwallet
 Please input password.
-password: 
+password:
 user defined config file doesn't exists, use default config file in jar
 WalletApi getRpcVsersion: 2
 Please input password again.
-password: 
+password:
 Register a wallet successful, keystore file name is UTC--2022-07-04T06-35-35.304000000Z--TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz.json
-wallet> 
+wallet>
 ```
 
 ## Login wallet-cli
@@ -46,9 +46,9 @@ Select the account you want to login, and then enter the password. If the passwo
 Please choose between 1 and 3
 2
 Please input your password.
-password: 
+password:
 Login successful !!!
-wallet> 
+wallet>
 ```
 
 After logging in, you can view the login account address through the `getaddress` command:
@@ -56,13 +56,13 @@ After logging in, you can view the login account address through the `getaddress
 wallet> getaddress
 GetAddress successful !!
 address = TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz
-wallet> 
+wallet>
 ```
 Then you can use the `backupwallet` command to view the private key of the account, you need to enter the password according to the prompt. It is recommended to save the private key.
 
 
 ## Run a java-tron node
-java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start java-tron, you need first obtain the java-tron executable file, please refer to the [Installation and Deployment](../using_javatron/installing_javatron.md) chapter, and then run the following command to start java-tron.
+java-tron is a TRON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start java-tron, you need first obtain the java-tron executable file, please refer to the [Installation and Deployment](../using_javaorgon/installing_javaorgon.md) chapter, and then run the following command to start java-tron.
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 ```
@@ -87,14 +87,14 @@ The above logs indicate that java-tron has started and connected to the Nile tes
 11:08:42.567 INFO  [TronJClientWorker-1] [DB](Manager.java:1642) solidBlockNumber:23113849
 11:08:42.567 INFO  [TronJClientWorker-1] [net](SyncService.java:179) Get block chain summary, low: 23113867, highNoFork: 23113867, high: 23113867, realHigh: 23113867
 11:08:42.572 INFO  [TronJClientWorker-1] [net](MessageQueue.java:106) Send to /123.56.3.74:18888, type: SYNC_BLOCK_CHAIN
-size: 1, start block: Num:23113867,ID:000000000160b08b510b6c501c980a2567bff1229eed62ca79874c9ca7828e9c 
+size: 1, start block: Num:23113867,ID:000000000160b08b510b6c501c980a2567bff1229eed62ca79874c9ca7828e9c
 11:08:42.631 INFO  [TronJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK_CHAIN_INVENTORY
 size: 2001, first blockId: Num:23113867,ID:000000000160b08b510b6c501c980a2567bff1229eed62ca79874c9ca7828e9c, end blockId: Num:23115867,ID:000000000160b85b587ef18d00a1905d8022ec0a8fd174f3980b78f6aacf0ede
 
 ......
 
 11:08:43.478 INFO  [pool-49-thread-1] [net](MessageQueue.java:106) Send to /123.56.3.74:18888, type: FETCH_INV_DATA
-invType: BLOCK, size: 100, First hash: 000000000160b08c6eeba60eced4fb13d7c56e46a3c5220a67bb2801a05e5679, End hash: 000000000160b0efd90560e389d1f6e5b3c8d3877709ce375a8e063f5db73af9 
+invType: BLOCK, size: 100, First hash: 000000000160b08c6eeba60eced4fb13d7c56e46a3c5220a67bb2801a05e5679, End hash: 000000000160b0efd90560e389d1f6e5b3c8d3877709ce375a8e063f5db73af9
 11:08:43.502 INFO  [TronJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
 Num:23113868,ID:000000000160b08c6eeba60eced4fb13d7c56e46a3c5220a67bb2801a05e5679, trx size: 1
 
@@ -145,7 +145,7 @@ Result:
 	"account_resource": {
 		"latest_consume_time_for_energy": 1655358327000
 	},
-    
+
         ......
 }
 
@@ -155,7 +155,7 @@ Get the balance of an account with the `getbalance` command:
 ```
 wallet> getbalance
 Balance = 93642857919
-wallet> 
+wallet>
 ```
 
 
@@ -200,11 +200,11 @@ The 3th keystore file name is UTC--2022-06-21T09-51-26.367000000Z--TUoHaVjx7n5xz
 Please choose between 1 and 3
 3
 Please input your password.
-password: 
+password:
 after sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240dbfc91ca9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c301241241a3ce4797ccc2fedf49ae41af28b49df1e15a476e4948af4df5aadf23a1e940ad5cc2133f501c08f2bab6a2231cdc82a745fed0fc6a012dc19310532d9138600
 txid is 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
 Send 1000000 Sun to TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf successful !!
-wallet> 
+wallet>
 ```
 
 #### Query transaction by transaction id
@@ -243,7 +243,7 @@ wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adc
 	},
 	"raw_data_hex":"0a02cbc322088581ae7e29258a5240dbfc91ca9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30"
 }
-wallet> 
+wallet>
 
 ```
 
@@ -260,7 +260,7 @@ wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca14
 		"net_usage": 267
 	}
 }
-wallet> 
+wallet>
 ```
 ### Interact by using Curl
 The above describes how to use wallet-cli to interact with java-tron. Compared with sending grpc/http commands directly, this tool provides more friendly interactive commands, allowing users to send commands to java-tron more conveniently. But, how to send HTTP requests directly to the java-tron node? Curl is a command line tool for sending HTTP requests. This chapter will explain how to check account balances and send transactions through Curl.
@@ -269,7 +269,7 @@ The above describes how to use wallet-cli to interact with java-tron. Compared w
 #### Get account balance
 You can query the TRX balance information of the account through the node HTTP interface `wallet/getaccount`. The `balance` field in the returned result is the TRX balance, in sun:
 ```
- curl -X POST http://127.0.0.1:16887/wallet/getaccount -d 
+ curl -X POST http://127.0.0.1:16887/wallet/getaccount -d
      '{"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
        "visible": true
      }'
@@ -291,10 +291,10 @@ The following takes the transferring TRX as an example to illustrate how to send
 Create an unsigned TRX transferring transaction through the fullnode HTTP interface [`wallet/createtransaction`](https://developers.tron.network/reference/createtransaction):
 
 ```
-curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d 
+curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d
     '{
-        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf", 
-        "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM", 
+        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf",
+        "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
         "amount": 10000000,
         "visible":true
     }'
@@ -326,7 +326,7 @@ Returns an unsigned TRX transferring transaction:
     "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
 }
 ```
-Then sign the transaction offline. 
+Then sign the transaction offline.
 
 Finally, Broadcast the signed transaction to the java-tron node through the [`wallet/broadcasttransaction`](https://developers.tron.network/reference/broadcasttransaction) interface to complete the sending of the TRX transferring transaction.
 

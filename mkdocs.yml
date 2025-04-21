@@ -5,17 +5,17 @@ repo_url: https://github.com/alexozerov/documentation-en
 nav:
     - Home: index.md
     - Getting Started With java-tron:
-        - Getting Started: getting_started/getting_started_with_javatron.md
-    - Using java-tron:
-        - Deploying: using_javatron/installing_javatron.md
-        - Backup and Restore: using_javatron/backup_restore.md
-        - Lite FullNode: using_javatron/litefullnode.md
-        - Private Network: using_javatron/private_network.md
+        - Getting Started: getting_started/getting_started_with_javaorgon.md
+    - Using java-orgon:
+        - Deploying: using_javaorgon/installing_javaorgon.md
+        - Backup and Restore: using_javaorgon/backup_restore.md
+        - Lite FullNode: using_javaorgon/litefullnode.md
+        - Private Network: using_javaorgon/private_network.md
         - Event Subscription: architecture/event.md
         - Database Configuration: architecture/database.md
-        - Network Connection: using_javatron/connecting_to_tron.md
-        - Node Monitoring: using_javatron/metrics.md
-        - Node Maintenance Tool: using_javatron/toolkit.md
+        - Network Connection: using_javaorgon/connecting_to_orgon.md
+        - Node Monitoring: using_javaorgon/metrics.md
+        - Node Maintenance Tool: using_javaorgon/toolkit.md
     - API:
         - HTTP API: api/http.md
         - gRPC API: api/rpc.md
