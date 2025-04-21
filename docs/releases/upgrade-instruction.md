@@ -1,7 +1,7 @@
-# New Version Deployment Manual of java-tron
-For the mandatory upgrade versions, please strictly follow this guide to deploy the new version. For the non-mandatory upgrade ones, you can decide whether to deploy it according to your needs. 
+# New Version Deployment Manual of java-orgon
+For the mandatory upgrade versions, please strictly follow this guide to deploy the new version. For the non-mandatory upgrade ones, you can decide whether to deploy it according to your needs.
 
-Please directly refer to [java-tron New version deployment Process](#new-version-deployment-process) to upgrade your node. If you have deployed 'Active and Backup nodes', please follow the process of [Active and Backup Nodes Upgrade Guide](#active-and-backup-nodes-upgrade-guide). 
+Please directly refer to [java-orgon New version deployment Process](#new-version-deployment-process) to upgrade your node. If you have deployed 'Active and Backup nodes', please follow the process of [Active and Backup Nodes Upgrade Guide](#active-and-backup-nodes-upgrade-guide).
 
 
 ## New version deployment Process
@@ -9,37 +9,37 @@ Please follow the below steps to upgrade your FullNode, FullNode that produces b
 
 ### 1. Prepare the executable file of the new version
 
-You can directly download the java-tron executable file, or download the code of the latest version and compile it to get the executable file of the new version. Please download the latest version of the code or jar file to a file directory other than the java-tron running directory:
+You can directly download the java-orgon executable file, or download the code of the latest version and compile it to get the executable file of the new version. Please download the latest version of the code or jar file to a file directory other than the java-orgon running directory:
 
 * Way 1: Download the published executable file
-    
+
     Directly download the latest version of the executable file FullNode.jar from the release page [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases).
-    
-    Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to [java-tron Consistency Verification](https://tronprotocol.github.io/documentation-en/releases/signature_verification/).
-    
-    
+
+    Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to [java-orgon Consistency Verification](https://tronprotocol.github.io/documentation-en/releases/signature_verification/).
+
+
 * Way 2: Compile the source code
-    
+
     Download the source code and switch to the branch of the new version.
     ```
     $ git clone https://github.com/tronprotocol/java-tron.git
     $ git checkout -b relase_vx.x.x
     ```
-    
+
     Compile the project: In the code directory of the new version, execute the following command to compile the project, and the compiled executable file will be generated in the `build/libs` directory.
     ```
     $ ./gradlew clean build -x test
     ```
-    
 
-### 2. Shut down the java-tron process
-Shut down the node process. Note: If a java-tron node has not been deployed on this machine before, please skip to step 5.
 
-* First, get the process ID of the java-tron node through the following command
+### 2. Shut down the java-orgon process
+Shut down the node process. Note: If a java-orgon node has not been deployed on this machine before, please skip to step 5.
+
+* First, get the process ID of the java-orgon node through the following command
     ```
     $ ps -ef | grep java
     ```
-    
+
 * Shut down the node process
     ```
     $ kill -15 the process id
@@ -66,10 +66,10 @@ Please back up the executable file, database, and configuration file before the 
 ### 4. Replace old version files
 After preparing the executable file of the new version and backing up the original node data, please follow the steps below to replace the old files:
 
-1. Copy the newest jar package obtained in the previous step to the java-tron working directory to replace the old executable file.
+1. Copy the newest jar package obtained in the previous step to the java-orgon working directory to replace the old executable file.
 2. Replace the old configuration file with the latest configuration file. If you need to modify the configuration, such as adding a keystore file, private key, etc, please modify it yourself.
 
-Note: For the database file, you can use the original database file in the java-tron working directory, or you can choose to use [database backup snapshot](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#public-backup-data).
+Note: For the database file, you can use the original database file in the java-orgon working directory, or you can choose to use [database backup snapshot](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#public-backup-data).
 
 
 ### 5. Start the nodes
@@ -85,7 +85,7 @@ The startup commands of FullNode which produces blocks and ordinary FullNode are
     ```
     nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c   main_net_config.conf </dev/null &>/dev/null &
     ```
-             
+
 ### 6. Wait for syncing completion
 After the node is successfully started, please wait patiently for the node block synchronization to complete.
 ### 7. Upgrade completed
@@ -99,7 +99,7 @@ To upgrade the active and backup nodes, please follow the steps below:
 
 1. Upgrade the backup node
 
-    Upgrade the backup node according to the [java-tron new version deployment Process](#new-version-deployment-process).
+    Upgrade the backup node according to the [java-orgon new version deployment Process](#new-version-deployment-process).
 
 2. Shut down the master node
 
@@ -107,7 +107,7 @@ To upgrade the active and backup nodes, please follow the steps below:
 
 3. Upgrade the master node
 
-    If the backup node works normally, follow [java-tron New Version Deployment Process](#new-version-deployment-process) to upgrade the master node. Otherwise, shut down the backup node and start the master node. If an error occurs during the upgrade, please contact TRON technical support team and send the node’s log for root cause analysis.
+    If the backup node works normally, follow [java-orgon New Version Deployment Process](#new-version-deployment-process) to upgrade the master node. Otherwise, shut down the backup node and start the master node. If an error occurs during the upgrade, please contact TRON technical support team and send the node’s log for root cause analysis.
 
 4. Shut down the backup node
 

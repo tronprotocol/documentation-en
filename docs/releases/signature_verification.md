@@ -1,14 +1,14 @@
-# Signature Verification of java-tron Release Package 
+# Signature Verification of java-orgon Release Package
 
-java-tron integrity verification is to check the reliability and integrity of the obtained java-tron executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by TRON. If they are consistent, it means that the java-tron executable file you get is a complete file released by TRON.
+java-orgon integrity verification is to check the reliability and integrity of the obtained java-orgon executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by TRON. If they are consistent, it means that the java-orgon executable file you get is a complete file released by TRON.
 
-The version of java-tron released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified TRON account for signature and verification.
+The version of java-orgon released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified TRON account for signature and verification.
 
 * Versions released after January 3, 2023: [GPG Signature Verification Process](#gpg-signature-verification-process)
 * Versions released before January 3, 2023: [TRON Address Signature Verification Process](#tron-address-signature-verification-process)
 
 ## GPG signature verification process
-The java-tron executable file and its signature file are released together, you can get it at [here](https://github.com/tronprotocol/java-tron/releases), please follow the below process to verify the signature of the java-tron which released after January 3, 2023.
+The java-orgon executable file and its signature file are released together, you can get it at [here](https://github.com/tronprotocol/java-tron/releases), please follow the below process to verify the signature of the java-orgon which released after January 3, 2023.
 
 ### Install GPG
 If you have already installed GPG, please skip this step. If not, please refer to the following command to install it on MacOS:
@@ -22,7 +22,7 @@ $ sudo apt install gpg
 ### Import public key
 If you have imported the public key before, please skip this step, just import the public key once.
 
-Please first obtain the public key Hash and uid of the GPG signature of the java-tron release package from [here](https://github.com/tronprotocol/java-tron).
+Please first obtain the public key Hash and uid of the GPG signature of the java-orgon release package from [here](https://github.com/tronprotocol/java-orgon).
 
 ```
 pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
@@ -38,7 +38,7 @@ gpg: key 785FB96D2C7C3CA5: public key “build_tron <build@tron.network>” impo
 gpg: Total number processed: 1
 gpg:        imported: 1
 ```
-        
+
 ### Signature verification
 For example, if the executable file of a certain version is `FullNode.jar` and the signature file is `FullNode.jar.sig`, the signature verification command is:
 
@@ -56,9 +56,9 @@ Primary key fingerprint: 07B2 3298 AEA4 E006 BD9A 42DE 785F B96D 2C7C 3CA5
 Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 ```
 If the verification fails, it will display the words `gpg: BAD signature from “build_tron <build@tron.network>”`.
-    
+
 ## TRON address signature verification process
-The java-tron version released before January 3, 2023 is signed by the TRON account `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the TRON account to sign the sha256 hash value. The sha256 hash value can be viewed in the [Signatures of historical versions](#signatures-of-historical-versions) chapter, or in the [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases) page; the signature result please check in the [Signatures of historical versions](#signatures-of-historical-versions) chapter.
+The java-orgon version released before January 3, 2023 is signed by the TRON account `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the TRON account to sign the sha256 hash value. The sha256 hash value can be viewed in the [Signatures of historical versions](#signatures-of-historical-versions) chapter, or in the [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases) page; the signature result please check in the [Signatures of historical versions](#signatures-of-historical-versions) chapter.
 
 [tronweb](https://developers.tron.network/docs/tronweb-1) provides the `Trx.verifySignature` interface to verify the signature. If the verification is passed, it will return true, otherwise, it will return false. Please follow the below process to verify.
 
@@ -71,13 +71,13 @@ npm install -g tronweb
 ### Verify the integrity of the release package
 Confirm the integrity of the release package by comparing the Hash value of the executable file and the hash value in the release information. Take [Odyssey-3.7](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v3.7) version as an example:
 
-* The release package file name: `FullNode.jar` 
+* The release package file name: `FullNode.jar`
 * The SHA256 value of the release package: `2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e`
 * Signature：  `21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b`
 
 Execute the following command for verification under MacOS system:
 ```shell
-$ sha256sum FullNode.jar  
+$ sha256sum FullNode.jar
 ```
 Execute the following command for verification under Debian, Ubuntu and other Linux distributions:
 ```

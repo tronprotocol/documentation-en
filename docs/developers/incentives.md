@@ -22,7 +22,7 @@ Also, there is a chance to display developers' photos at TRON official website.
 
 Reward 2:
 
-Every developer who participates java-tron's development will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.
+Every developer who participates java-orgon's development will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.
 
 
 The following shows the content you can contribute to.

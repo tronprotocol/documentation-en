@@ -2,7 +2,7 @@
 
 TIP stands for TRON Improvement Proposal. TIPs record the entire process of TRON improvement, including the process of community making suggestions, discussions, and adoption. A TIP is a design document about a proposal, including the rationale and technical specifications of the proposal. Community users can read the TIP document to learn more about the proposal.
 
-TIPs are the unit around which governance happens in TRON，anyone is free to propose one, and then community participants will debate to determine if it should be adopted as a standard or included in a network upgrade. The TIP author is responsible for building consensus within the community and documenting dissenting opinions. 
+TIPs are the unit around which governance happens in TRON，anyone is free to propose one, and then community participants will debate to determine if it should be adopted as a standard or included in a network upgrade. The TIP author is responsible for building consensus within the community and documenting dissenting opinions.
 
 ## TIP Types
 TIPs are mainly divided into `Standard Track` and `Informational`:
@@ -26,7 +26,7 @@ Before you submit a TIP, you need to create an issue for comment and add the iss
 2. Add your TIP to your fork of the repository. There is a [TIP template](https://github.com/tronprotocol/TIPs/blob/master/template.md) here.
 3. Submit a Pull Request to TRON's TIPs repository.
 
-Please use `markdown` to write TIP in strict accordance with the requirements of [template](https://github.com/tronprotocol/TIPs/blob/master/template.md). Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole. If a TIP is about the feature development of java-tron, and a PR of the development exists, in your TIP and your java-tron's PR you need to refer each other's github link to make the requirements analysis of new features and development code traceable.
+Please use `markdown` to write TIP in strict accordance with the requirements of [template](https://github.com/tronprotocol/TIPs/blob/master/template.md). Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole. If a TIP is about the feature development of java-orgon, and a PR of the development exists, in your TIP and your java-orgon's PR you need to refer each other's github link to make the requirements analysis of new features and development code traceable.
 
 Your first PR for a new TIP will be in the state of `draft`. It must meet the formatting criteria enforced by the build. An editor will manually review it and assign it a number before merging it.
 
@@ -41,7 +41,7 @@ A TIP may go through the following states:
 - `Draft`: A TIP that is undergoing rapid iteration and changes.
 - `Last Call`:  A TIP that is done with its initial iteration and ready for review by a wide audience.
 - `Accepted`: A core TIP that has been in the `Last Call` for at least 2 weeks and any technical changes that were requested have been addressed by the author. The process for Core Devs to decide whether to encode a TIP into their clients as part of a hard fork is not part of the TIP process. If such a decision is made, the TIP will move to the `final`.
-- `Final (non-Core)`: A TIP that has been in the `Last Call` for at least 2 weeks and any technical changes that were requested have been addressed by the author. 
+- `Final (non-Core)`: A TIP that has been in the `Last Call` for at least 2 weeks and any technical changes that were requested have been addressed by the author.
 - `Final (Core)`: A TIP that the Core Devs have decided to implement and release in a future version or has already been released.
 - `Active`: If the TIPs are never meant to be completed, the TIPs may have a status of `Active`.
 - `Abandoned`: If a TIP is no longer pursued by the original authors or it may not be a (technically) preferred option anymore.
@@ -69,7 +69,7 @@ category (*only required for Standard Track): <Core | Networking | Interface | T
 created: <date created on, in ISO 8601 (yyyy-mm-dd) format>
 requires (*optional): <TIP number(s)>
 replaces (*optional): <TIP number(s)>
----  
+---
 
 ```
 
@@ -81,7 +81,7 @@ TIP body should have the following parts:
 * `Motivation`: (optional) A motivation section is critical for TIPs. It should clearly explain why the existing protocol specification is inadequate to address the problem that the TIP solves. This section may be omitted if the motivation is evident.
 * `Specification`：The technical specification should detail the syntax and semantics of any new feature.
 * `Rationale`：The rationale fleshes out the specification by describing what motivated the design and why particular design decisions were made. It should describe alternate designs that were considered and related work. The rationale should discuss important objections or concerns raised during the discussion around the TIP.
-* `Backwards Compatibility` ：(optional) All TIPs that introduce backward incompatibilities must include a section describing these incompatibilities and their consequences. The TIP must explain how the author proposes to deal with these incompatibilities. 
+* `Backwards Compatibility` ：(optional) All TIPs that introduce backward incompatibilities must include a section describing these incompatibilities and their consequences. The TIP must explain how the author proposes to deal with these incompatibilities.
 * `Test Cases` ：(optional) Test cases for an implementation are mandatory for TIPs that are affecting consensus changes. This section may be omitted for non-Core proposals.
 * `Implementation`：The implementations must be completed before any TIP is given the status `Final`, but it need not be completed before the TIP is `accepted`. The principle of "rough consensus and running code" is still useful when it comes to resolving many discussions of API details.
 

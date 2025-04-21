@@ -170,7 +170,7 @@ genesis.block = {
 
 ## Compile and Build
 
-### java-tron build failed with unit test issue
+### java-orgon build failed with unit test issue
 
 Please use './gradlew build -x test' to skip the test cases.
 
@@ -178,7 +178,7 @@ Please use './gradlew build -x test' to skip the test cases.
 
 ### How to test if the deployment works normally, if there is a test api or command like redis: get ping return pong?
 
-java-tron does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. You can also use the following command to test:
+java-orgon does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. You can also use the following command to test:
 
 ```text
 > tail -f logs/tron.log |grep "MyheadBlockNumber"
@@ -228,7 +228,7 @@ No, but the node provides wallet rpc api.
 
 ### Why does the block process time take so long?
 
-java-tron need more RAM to process transactions.
+java-orgon need more RAM to process transactions.
 
 ## Test Net
 

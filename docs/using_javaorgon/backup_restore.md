@@ -1,6 +1,6 @@
 # Data Backup & Restore
 
-Everything `java-tron` persists gets written inside its data directory. The default data directory is: `/output-directory/`. If you need to specify other directories, you can add `-d` or `--output-directory` parameter to the java-tron node startup command to specify the data storage location.
+Everything `java-orgon` persists gets written inside its data directory. The default data directory is: `/output-directory/`. If you need to specify other directories, you can add `-d` or `--output-directory` parameter to the java-orgon node startup command to specify the data storage location.
 
 ```
 $ java -jar fullnode.jar -d ./outputdir
@@ -40,7 +40,7 @@ When restoring the data, just copy the corresponding backup data to the node dir
 $ tar xzvf output-directory.20220628152402.etgz
 ```
 
-## Public Backup Data 
+## Public Backup Data
 
 For the TRON mainnet and Nile testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a TRON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.
 
@@ -60,7 +60,7 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 | Official data source ((North America: Virginia))    | [http://34.48.6.163/](http://34.48.6.163/)   | LevelDB, exclude internal transactions, include account history TRX balance     |
 
 
-**Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. 
+**Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB.
 
 
 
@@ -77,7 +77,7 @@ The TRON Public Chain has supported the type of the Lite FullNode since the vers
 
 **Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](toolkit.md/#lite-fullnode-data-pruning).
 
-#### Use the Data Snapshot 
+#### Use the Data Snapshot
 
 The steps for using data snapshots are as follows:
 

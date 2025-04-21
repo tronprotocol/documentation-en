@@ -1,10 +1,10 @@
 # wallet-cli
 
 ## Introduction
-wallet-cli is an interactive command-line wallet that supports the TRON network for signing and broadcasting transactions in a secure local environment, as well as access to on-chain data. wallet-cli supports key management, you can import the private key into the wallet, wallet-cli will encrypt your private key with a symmetric encryption algorithm and store it in a keystore file. wallet-cli does not store on-chain data locally. It uses gRPC to communicate with a java-tron node. You need to configure the java-tron node to be linked in the configuration file. The following figure shows the process of the use of wallet-cli to sign and broadcast when transferring TRX:
+wallet-cli is an interactive command-line wallet that supports the TRON network for signing and broadcasting transactions in a secure local environment, as well as access to on-chain data. wallet-cli supports key management, you can import the private key into the wallet, wallet-cli will encrypt your private key with a symmetric encryption algorithm and store it in a keystore file. wallet-cli does not store on-chain data locally. It uses gRPC to communicate with a java-orgon node. You need to configure the java-orgon node to be linked in the configuration file. The following figure shows the process of the use of wallet-cli to sign and broadcast when transferring TRX:
 ![](https://i.imgur.com/NRKmZmE.png)
 
-The user first runs the `Login` command to unlock the wallet, and then runs the `SendCoin` command to send TRX, wallet-cli will build and sign the transaction locally, and then call the BroadcastTransaction gRPC API of the java-tron node to broadcast the transaction to the network. After the broadcast is successful, the java-tron node will return the transaction hash to wallet-cli, and wallet-cli will display the transaction hash to the user.
+The user first runs the `Login` command to unlock the wallet, and then runs the `SendCoin` command to send TRX, wallet-cli will build and sign the transaction locally, and then call the BroadcastTransaction gRPC API of the java-orgon node to broadcast the transaction to the network. After the broadcast is successful, the java-orgon node will return the transaction hash to wallet-cli, and wallet-cli will display the transaction hash to the user.
 
 Install and run: [wallet-cli](https://github.com/tronprotocol/wallet-cli)
 
@@ -39,11 +39,11 @@ This section introduces commands related to wallet management. Let's start with`
 #### RegisterWallet
 To register your wallet, you need to set the wallet password and generate the address and private key. A .json keystore file will be generated under the path of `wallet-cli/wallet`. The file will be used for `login` and `backupwallet` later.
 ```shell
-wallet> RegisterWallet 
+wallet> RegisterWallet
 Please input password.
-password: 
+password:
 Please input password again.
-password: 
+password:
 Register a wallet successful, keystore file name is UTC--2022-06-27T07-37-47.601000000Z--TWyDBTHsWJFhgywWkTNW7vh7jSUxeBaiAw.json
 ```
 #### Login
@@ -59,7 +59,7 @@ The 5th keystore file name is UTC--2022-04-07T09-03-38.307000000Z--TXBpeye7UQ4dD
 Please choose between 1 and 5
 4
 Please input your password.
-password: 
+password:
 Login successful !!!
 ```
 #### BackupWallet
@@ -72,7 +72,7 @@ This will Back up your wallet. You need to enter your wallet password to export 
 ```shell
 wallet> backupwallet
 Please input your password.
-password: 
+password:
 BackupWallet successful !!
 721d63b074f18d41c147e04c952ec93467777a30b6f16745bc47a8eae5076545
 ```
@@ -86,7 +86,7 @@ ch1jsHTxjUHBR+BMlS7JNGd3ejC28WdFvEeo6uUHZUU=
 ```shell
 wallet> backupwallet
 Please input your password.
-password: 
+password:
 BackupWallet successful !!
 ch1jsHTxjUHBR+BMlS7JNGd3ejC28WdFvEeo6uUHZUU=
 ```
@@ -96,12 +96,12 @@ Modify the password of an account
 ```shell
 wallet> changepassword
 Please input old password.
-password: 
+password:
 Please input new password.
 Please input password.
-password: 
+password:
 Please input password again.
-password: 
+password:
 The 1th keystore file name is .DS_Store
 The 2th keystore file name is UTC--2022-06-27T10-58-59.306000000Z--TBnPDbw99BLzPUZuW8Rrcc3RGGQT3cnSfF.json
 Please choose between 1 and 2
@@ -115,9 +115,9 @@ Import a wallet, you need to set a password first and then enter your hex string
 ```shell
 wallet> importwallet
 Please input password.
-password: 
+password:
 Please input password again.
-password: 
+password:
 Please input private key. Max retry time:3
 bd1ff0f4f852db45316bf08755bf6eee45d0678bfbf852a00020a13d42a1fb5b
 Import a wallet successful, keystore file name is UTC--2022-06-28T06-52-56.928000000Z--TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej.json
@@ -127,16 +127,16 @@ To import a wallet, you need to set a password first and then enter your private
 ```shell
 wallet> importwalletbybase64
 Please input password.
-password: 
+password:
 Please input password again.
-password: 
+password:
 Please input private key by base64. Max retry time:3
-vR/w9PhS20Uxa/CHVb9u7kXQZ4v7+FKgACChPUKh+1s=   
+vR/w9PhS20Uxa/CHVb9u7kXQZ4v7+FKgACChPUKh+1s=
 Import a wallet successful, keystore file name is UTC--2022-06-28T06-51-56.154000000Z--TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej.json
 
 ```
 
-### Account 
+### Account
 Here are all the account related commands ：
 
 - [GenerateAddress](#generateaddress)
@@ -226,7 +226,7 @@ This command is used to manage account permissions, assign permissions to other 
 * active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for SR purposes.
 * witness: only for super representatives, block production authorization will be granted to one of the other users.
 
-**NOTE** the parameter`Permission` must written in JSON format and entered in line. If the owner account is not SR, then do not assign super representative permission. 
+**NOTE** the parameter`Permission` must written in JSON format and entered in line. If the owner account is not SR, then do not assign super representative permission.
 ```shell
 wallet> updateaccountpermission TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 {"owner_permission":{"keys":[{"address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8","weight":1}],"threshold":1,"type":0,"permission_name":"owner"},"active_permissions":[{"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000","keys":[{"address":"TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej","weight":1},{"address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE","weight":1}],"threshold":2,"type":2,"permission_name":"active12323"}]}
 {
@@ -288,7 +288,7 @@ The 4th keystore file name is UTC--2022-04-07T09-03-38.307000000Z--TXBpeye7UQ4dD
 Please choose between 1 and 4
 3
 Please input your password.
-password: 
+password:
 after sign transaction hex string is 0a8d020a024e88220811a47859be13f6894096bcb5de9a305aee01082e12e9010a3c747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e4163636f756e745065726d697373696f6e557064617465436f6e747261637412a8010a1541babecec4d9f58f0df77f0728b9c53abb1f21d68412241a056f776e657220013a190a1541babecec4d9f58f0df77f0728b9c53abb1f21d6841001226908021a0b6163746976653132333233200232207fff1fc0033e00000000000000000000000000000000000000000000000000003a190a15410cfaec7164cbfe78dbb8d8fba7e23b4d745ed81310013a190a1541e8bd653015895947cec33d1670a88cf67ab277b9100170ea8d8fd49a301241881b00f8e8828d9347469fcbcec730093841c2363561243b7162a9669439266049ab82f20f97a136adc88feff0a4d5aa57b11f762eaa7e05105d27ec5d55a33900
 txid is 3dce7f18f6cf6962c38904678947b3b32f9e94ba6460874679d8ed063bb1c0eb
 UpdateAccountPermission successful !!!
@@ -342,7 +342,7 @@ The 2th keystore file name is UTC--2022-06-27T07-37-47.601000000Z--TWyDBTHsWJFhg
 Please choose between 1 and 2
 2
 Please input your password.
-password: 
+password:
 after sign transaction hex string is 0a8e010a02a9b822081db2070d39d2316640e0f7ffab9a305a70080b126c0a32747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e467265657a6542616c616e6365436f6e747261637412360a1541e65aca838a9e15dd81bd9532d2ad61300e58cf7110c0843d180350017a15411fafb1e96dfe4f609e2259bfaf8c77b60c535b9370c6c8d9a19a301241c45742648e6970e01b242c9b6eca2549c8721b860ced71abd331b9fe925f3c0f184768e0d2e3b580ce787cc6f67d186a0d583226fdb69c2cc8cfc6ec42e389f600
 txid is f45cb5ae425796a492d4a9ecac8d60fd48bf78dbcdbe1d92725047c5dfbffba2
 FreezeBalance successful !!!
@@ -382,7 +382,7 @@ wallet> unfreezebalance TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 1 TXBpeye7UQ4dDZEnmGD
 }
 before sign transaction hex string is 0a8a010a02c8b722088842722f2845274d40c8f5debe9c305a6c080c12680a34747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e556e667265657a6542616c616e6365436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d68450017a1541e8bd653015895947cec33d1670a88cf67ab277b970bcaedbbe9c30
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
-y               
+y
 Please choose your key for sign.
 The 1th keystore file name is UTC--2022-06-28T06-52-56.928000000Z--TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej.json
 The 2th keystore file name is .DS_Store
@@ -391,14 +391,14 @@ The 4th keystore file name is UTC--2022-04-07T09-03-38.307000000Z--TXBpeye7UQ4dD
 Please choose between 1 and 4
 3
 Please input your password.
-password: 
+password:
 after sign transaction hex string is 0a8a010a02c8b722088842722f2845274d40e8dd81c99c305a6c080c12680a34747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e556e667265657a6542616c616e6365436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d68450017a1541e8bd653015895947cec33d1670a88cf67ab277b970bcaedbbe9c301241593a94650274df29619a6a6946258ea32a22f24a33445f943e3d72cd7d9b8ce7234d188f4bf3a6f0c90cb60af36fc77dc8d376afac9ed840f36dfd68c429fb7e00
 txid is 3ea58b3ac2cb05868e70d40f58916312d927c40fd1e4c549554dc3e520c1efde
 UnfreezeBalance successful !!!
 
 ```
 
-#### GetDelegatedResource 
+#### GetDelegatedResource
 ```
 wallet>getdelegatedresource [fromAddress] [toAddress]
 ```
@@ -470,16 +470,16 @@ freezeBalanceV2 successful !!!
 ```
 
 #### UnfreezeBalanceV2
-Stake 2.0 API: Unstake TRX to release bandwidth and energy and at the same time TRON Power will be reclaimed and corresponding votes will be revoked. 
+Stake 2.0 API: Unstake TRX to release bandwidth and energy and at the same time TRON Power will be reclaimed and corresponding votes will be revoked.
 
 
 ```shell
 wallet> unfreezeBalanceV2 [OwnerAddress] unfreezeBalance ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER)
 ```
 
-* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account. 
+* `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
 * `unfreezeBalance` Amount of TRX to be unstaked. the unit is sun.
-* `ResourceCode` indicates the type of the acquired resource，0 stands for BANDWIDTH and 1 stands for ENERGY. 
+* `ResourceCode` indicates the type of the acquired resource，0 stands for BANDWIDTH and 1 stands for ENERGY.
 
 
 Example:
@@ -644,7 +644,7 @@ wallet> withdrawExpireUnfreeze [OwnerAddress]
 Example:
 
 ```shell
-wallet> withdrawExpireUnfreeze 
+wallet> withdrawExpireUnfreeze
 ```
 
 #### GetAvailableUnfreezeCount
@@ -815,7 +815,7 @@ The 4th keystore file name is UTC--2022-04-07T09-03-38.307000000Z--TXBpeye7UQ4dD
 Please choose between 1 and 4
 1
 Please input your password.
-password: 
+password:
 Current signWeight is:
 {
 	"result":{
@@ -867,7 +867,7 @@ The 4th keystore file name is UTC--2022-04-07T09-03-38.307000000Z--TXBpeye7UQ4dD
 Please choose between 1 and 4
 4
 Please input your password.
-password: 
+password:
 after sign transaction hex string is 0a85010a029ca12208432ed1fe1357ff7f40a2b3a7fb9a305a67080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d684121541e8bd653015895947cec33d1670a88cf67ab277b9180a2802708a8481f19a301241990001e909e638bbaa5de9b392121971d25cabde1391f5e164cd8a14608812df01a273e867c2329b8adb233599c5d353c435e789c777fd3e0b9fe83f0737a91101124141ba3ffe9c7bb1ed184df8bf635d8c987982b2f4b22c447666ac82726f4a97cb2ef4d3fabd64137b8d59239bd7173c74264733ed140ccd04934a88c438de1cab00
 txid is ece603ec8ad11578450dc8adf29dd9d9833e733c313fe16a947c8c768f1e4483
 Send 10 Sun to TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE successful !!
@@ -875,7 +875,7 @@ Send 10 Sun to TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE successful !!
 A`permission_id` is always required, it is "0" by default, which means this transaction only needed to be sign by owner. In the example above, we enter "2" to make a multi-signed transaction this time, needs the two accounts assigned `actives` permission in [UpdateAccountPermission](#updateaccountpermission) section above to sign this transaction.
 
 In the example, we picked the account `TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej` to sign first,
-after that, it asks you if want to add another sign 
+after that, it asks you if want to add another sign
 ,enter y and pick the account `TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE` to finish multi-signing.
 
 The weight of each account is 1 and the granting threshold is 2. When the requirements are met, the transaction is done successfully! This example shows how to complete a multi-signed transaction using the same client. When using multiple clients, please refer to the following command.
@@ -894,7 +894,7 @@ The 4th keystore file name is UTC--2022-04-07T09-03-38.307000000Z--TXBpeye7UQ4dD
 Please choose between 1 and 4
 3
 Please input your password.
-password: 
+password:
 {
 	"signature":[
 		"dbfe007bb44e8db164f4c0cf9b586a8d6a65f0612c4d9ec5350adeae6cd97c7874e7254bbf4156b545a90c34e48c8f28bdb5c8f9258514233b9201b2844d7f9201"
@@ -942,7 +942,7 @@ wallet> getTransactionApprovedList
 0a8c010a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d1241c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b0112413d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101
 {
 	"result":{
-		
+
 	},
 	"approved_list":[
 		"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8"
@@ -1135,7 +1135,7 @@ wallet> gettransactioninfobyblocknum [blockNum]
 #### GetTransactionSignWeight
 Get the sign weight by transaction hex string.
 ```
->getTransactionSignWeight 
+>getTransactionSignWeight
 0a83010a0241aa2208b2d2c13c86e8bd8840d9f0d9d99a305a65080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d684121541e8bd653015895947cec33d1670a88cf67ab277b9180a70e8e1adcf9a301241dbfe007bb44e8db164f4c0cf9b586a8d6a65f0612c4d9ec5350adeae6cd97c7874e7254bbf4156b545a90c34e48c8f28bdb5c8f9258514233b9201b2844d7f9201
 ```
 The information displays as follows:
@@ -1143,7 +1143,7 @@ The information displays as follows:
 ```
 {
 	"result":{
-		
+
 	},
 	"approved_list":[
 		"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8"
@@ -1190,7 +1190,7 @@ Below, please find all the commands for smart contract interactions:
 
 
 #### DeployContract
-```shell 
+```shell
 wallet> DeployContract [ownerAddress] [contractName] [ABI] [byteCode] [constructor] [params] [isHex] [fee_limit] [consume_user_resource_percent] [origin_energy_limit] [value] [token_value] [token_id](e.g: TRXTOKEN, use # if don't provided) <library:address,library:address,...> <lib_compiler_version(e.g:v5)> library:address,...>
 ```
 
@@ -1286,7 +1286,7 @@ wallet> TriggerConstantContract ownerAddress(use # if you own) contractAddress m
 * `ownerAddress` Owner address that triggers the contract. If it is the login account, please input #.
 * `contractAddress` Smart contract address.
 * `method` Function call.
-* `args` Parameters, if there is no parameter of `method`, please input #. 
+* `args` Parameters, if there is no parameter of `method`, please input #.
 * `isHex` `args`is hex string or not。
 * `value` TRX amount to be transferred. Optional, if no value, # can be inplaced.
 * `token_value` TRC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
@@ -1328,7 +1328,7 @@ wallet> EstimateEnergy ownerAddress contractAddress method args isHex [value tok
 * `ownerAddress` Owner address that triggers the contract. If it is the login account, please input #.
 * `contractAddress` Smart contract address.
 * `method` Function call.
-* `args` Parameters, if there is no parameter of `method`, please input #. 
+* `args` Parameters, if there is no parameter of `method`, please input #.
 * `isHex` `args`is hex string or not。
 * `value` TRX amount to be transferred. Optional, if no value, # can be inplaced.
 * `token_value` TRC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
@@ -1436,14 +1436,14 @@ wallet> AssetIssue [OwnerAddress] [AssetName] [AbbrName] [TotalSupply] [TrxNum] 
 
 `TotalSupply` is total issuing amount of TRC-10 token.
 
-* TotalSupply = Account Balance of Issuer + All Frozen Token Amount 
+* TotalSupply = Account Balance of Issuer + All Frozen Token Amount
 * Account Balance Of Issuer: balance at the time of issuance
 * All Frozen Token Amount: Before asset transfer and the issuance
 
-`TrxNum`, `AssetNum` are two parameters determine the exchange rate when the token is issued. 
+`TrxNum`, `AssetNum` are two parameters determine the exchange rate when the token is issued.
 
-* Exchange Rate = TrxNum / AssetNum 
-* `AssetNum`: Unit in the base unit of the issued token 
+* Exchange Rate = TrxNum / AssetNum
+* `AssetNum`: Unit in the base unit of the issued token
 * `TrxNum`: Unit in SUN (0.000001 TRX)
 
 `Precision` indicates how many decimal places there is.
@@ -1641,7 +1641,7 @@ wallet> getassetissuebyaccount TUwjpfqW7NG6BF3GCTrKy1aDvfchwSG4tN
 			"num": 1000000,
 			"start_time": 1656374400000,
 			"end_time": 1656460800000,
-			"description": "Automated gaming platform. 
+			"description": "Automated gaming platform.
 TRC10 token h0966.
 More info on website.  TRC10 token h0966.
 More info on website.  More info on website.",
@@ -1667,7 +1667,7 @@ wallet> GetAssetIssueById 1004901
 	"num": 1000000,
 	"start_time": 1656374400000,
 	"end_time": 1656460800000,
-	"description": "Automated gaming platform. 
+	"description": "Automated gaming platform.
 TRC10 token h0966.
 More info on website.TRC10 token h0966.
 More info on website.More info on website.",
@@ -1691,7 +1691,7 @@ wallet> GetAssetIssueByname h00966
 	"num": 1000000,
 	"start_time": 1656374400000,
 	"end_time": 1656460800000,
-	"description": "Automated gaming platform. 
+	"description": "Automated gaming platform.
 TRC10 token h0966.
 More info on website.TRC10 token h0966.
 More info on website.More info on website.",
@@ -1839,9 +1839,9 @@ wallet> listproposals
 ```
 #### ListProposalsPaginated
 
-Use the paging mode to obtain the initiated proposal. 
+Use the paging mode to obtain the initiated proposal.
 ```
-wallet> ListProposalsPaginated [offset] [limit] 
+wallet> ListProposalsPaginated [offset] [limit]
 ```
 `offset` is the number of proposals you want to skip.
 `limit` is the number of proposals you want to be listed.
@@ -1972,7 +1972,7 @@ Query unclaimed reward.
 ```shell
 wallet> getreward TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 The reward is : 0
-``` 
+```
 
 
 #### UpdateBrokerage
@@ -2149,11 +2149,11 @@ wallet> MarketSellAsset [owner_address] [sell_token_id] [sell_token_quantity] [b
 
 Example:
 ```shell
-wallet> MarketSellAsset TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW  1000001 200 _ 100    
+wallet> MarketSellAsset TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW  1000001 200 _ 100
 ```
 Then we use the command getTransactionInfoById to check the result of the contract execution as below,
 ```shell
-wallet> getTransactionInfoById 10040f993cd9452b25bf367f38edadf11176355802baf61f3c49b96b4480d374   
+wallet> getTransactionInfoById 10040f993cd9452b25bf367f38edadf11176355802baf61f3c49b96b4480d374
 
 {
 	"id": "10040f993cd9452b25bf367f38edadf11176355802baf61f3c49b96b4480d374",
@@ -2165,7 +2165,7 @@ wallet> getTransactionInfoById 10040f993cd9452b25bf367f38edadf11176355802baf61f3
 	"receipt": {
 		"net_usage": 264
 	}
-} 
+}
 ```
 #### MarketCancelOrder
 This command cancels the order.
@@ -2178,11 +2178,11 @@ wallet> MarketCancelOrder [owner_address] [order_id]
 
 Example:
 ```shell
-wallet> MarketCancelOrder TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0  
+wallet> MarketCancelOrder TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0
 ```
 Get the result of the contract execution with the getTransactionInfoById command:
 ```shell
-wallet> getTransactionInfoById b375787a098498623403c755b1399e82910385251b643811936d914c9f37bd27   
+wallet> getTransactionInfoById b375787a098498623403c755b1399e82910385251b643811936d914c9f37bd27
 {
 	"id": "b375787a098498623403c755b1399e82910385251b643811936d914c9f37bd27",
 	"blockNumber": 1582,
@@ -2204,7 +2204,7 @@ wallet> GetMarketOrderByAccount [ownerAddress]
 
 Example:
 ```shell
-wallet> GetMarketOrderByAccount TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW   
+wallet> GetMarketOrderByAccount TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 {
 	"orders": [
 		{
@@ -2218,7 +2218,7 @@ wallet> GetMarketOrderByAccount TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 			"sell_token_quantity_remain": 100
 		}
 	]
-}  
+}
 ```
 #### GetMarketOrderbyID
 Get the specific order by order_id
@@ -2227,7 +2227,7 @@ wallet> GetMarketOrderById [orderId]
 ```
 Example:
 ```shell
-wallet> GetMarketOrderById fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0   
+wallet> GetMarketOrderById fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0
 {
 	"order_id": "fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0",
 	"owner_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
@@ -2270,7 +2270,7 @@ wallet> GetMarketOrderListByPair [sell_token_id] [buy_token_id]
 
 Example:
 ```shell
-wallet> GetMarketOrderListByPair _ 1000001   
+wallet> GetMarketOrderListByPair _ 1000001
 {
 	"orders": [
 		{
@@ -2297,7 +2297,7 @@ wallet> GetMarketPriceByPair [sell_token_id] [buy_token_id]
 
 Example:
 ```shell
-wallet> GetMarketPriceByPair _ 1000001   
+wallet> GetMarketPriceByPair _ 1000001
 {
 	"sell_token_id": "_",
 	"buy_token_id": "1000001",

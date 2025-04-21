@@ -2,9 +2,9 @@
 
 Thank you for considering to help out with the source code! We welcome contributions from anyone, and are grateful for even the smallest of fixes!
 
-GitHub is used to track issues and contribute code, suggestions, feature requests or documentation. If you want to participate in java-tron development, please follow the Github code submission process as follows:
+GitHub is used to track issues and contribute code, suggestions, feature requests or documentation. If you want to participate in java-orgon development, please follow the Github code submission process as follows:
 
-* Fork java-tron repository
+* Fork java-orgon repository
 * Fix the code
 * Commit the code
 * Send a pull request
@@ -12,23 +12,23 @@ GitHub is used to track issues and contribute code, suggestions, feature request
 
 For small fixes, you can send a pull request (PR) directly, but make sure the PR includes a detailed description. For more complex changes, you need to submit an issue to the [TIP repository](https://github.com/tronprotocol/tips) detailing your motivations, implementation plans, etc. For how to submit a TIP issue, please refer to [TIP Specification](tips.md).
 
-We encourage java-tron developers to submit PRs as soon as possible. Even if they are not fully developed, you can submit a PR first, so that other developers can know that the TIP Issue corresponding to this PR is in the state of `In Progress`.
+We encourage java-orgon developers to submit PRs as soon as possible. Even if they are not fully developed, you can submit a PR first, so that other developers can know that the TIP Issue corresponding to this PR is in the state of `In Progress`.
 
 Developers should develop and submit a PR based on the `develop` branch, reviewers will review the PR according to [Code Review Guidelines](#code-review-guidelines).
 
 
 
 ## Key Branches
-java-tron only has `master`, `develop`, `release-*`, `feature-*`, and `hotfix-*` branches, which are described below:
+java-orgon only has `master`, `develop`, `release-*`, `feature-*`, and `hotfix-*` branches, which are described below:
 
 * ``develop`` branch
 
     The `develop` branch only accepts merge requests from other forked branches or`release_*` branches. It is not allowed to directly push changes to the `develop` branch. A `release_*` branch has to be pulled from the develop branch when a new build is to be released.
-    
+
 * ``master`` branch
 
     `release_*` branches and `hotfix/*` branches should only be merged into the `master` branch when a new build is released.
-    
+
 * ``release`` branch
 
     `release_*` is a branch pulled from the `develop` branch for release. It should be merged into `master` after a regression test and will be permanently kept in the repository. If a bug is identified in a `release_*` branch, its fixes should be directly merged into the `release_*` branch. After the fixes passing the regression test, the `release_*` branch should be merged back into the `develop` branch. Essentially, a `release_*` branch serves as a snapshot for each release.
@@ -41,7 +41,7 @@ java-tron only has `master`, `develop`, `release-*`, `feature-*`, and `hotfix-*`
 - ``hotfix`` branch
 
     It is pulled from the `master` branch and should be merged back into the `master` branch and the `develop` branch. Only pull requests of the fork repository (pull requests for bug fixes) should be merged into the `hotfix/` branch. `hotfix/` branches are used only for fixing bugs found after release.
-    
+
 ## Submitting Code
 
 If you want to contribute codes to java-tron, please follow the following steps:
@@ -49,23 +49,23 @@ If you want to contribute codes to java-tron, please follow the following steps:
 * Fork java-tron repository
 
     Fork a new repository from [tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) to your personal code repository
-    
+
     ```
     $ git clone https://github.com/yourname/java-tron.git
 
-    $ git remote add upstream https://github.com/tronprotocol/java-tron.git   ("upstream" refers to upstream projects repositories, namely tronprotocol's repositories, and can be named as you like it. We usually call it "upstream" for convenience) 
+    $ git remote add upstream https://github.com/tronprotocol/java-tron.git   ("upstream" refers to upstream projects repositories, namely tronprotocol's repositories, and can be named as you like it. We usually call it "upstream" for convenience)
     ```
-    
-* Edit the code in the fork repository 
-    
+
+* Edit the code in the fork repository
+
     Before developing new features, please synchronize your fork repository with the upstream repository.
-    
+
     ```
-    git fetch upstream 
-    git checkout develop 
+    git fetch upstream
+    git checkout develop
     git merge upstream/develop --no-ff   (Add --no-ff to turn off the default fast merge mode)
     ```
-    
+
      Pull a new branch from the develop branch of your repository for local development. Please refer to [Branch Naming Conventions](#branch-naming-conventions)。
 
     ```
@@ -77,9 +77,9 @@ If you want to contribute codes to java-tron, please follow the following steps:
     git add .
     git commit -m 'commit message'
     ```
-     
+
     Commit the new branch to your personal remote repository
-     
+
     ```
     git push origin new_feature
     ```

@@ -21,7 +21,7 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 
 ### How to get
 - build by yourself.
-  Under java-tron, execute ``. /gradlew build``, you can get Toolkit.jar under `build/libs/`.
+  Under java-orgon, execute ``. /gradlew build``, you can get Toolkit.jar under `build/libs/`.
 - Download directly.
   [Links](https://github.com/tronprotocol/java-tron/releases)
 
@@ -198,7 +198,7 @@ stopService() {
 
     else
 
-       echo "java-tron stop"
+       echo "java-orgon stop"
 
        return
 
@@ -237,7 +237,7 @@ startService() {
 
  pid=`ps -ef |grep $JAR_NAME |grep -v grep |awk '{print $2}'`
 
- echo "start java-tron with pid $pid on $HOSTNAME"
+ echo "start java-orgon with pid $pid on $HOSTNAME"
 
 }
 

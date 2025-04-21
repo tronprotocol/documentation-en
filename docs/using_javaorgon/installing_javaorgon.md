@@ -1,8 +1,8 @@
-# Deploy a java-tron Node
+# Deploy a java-orgon Node
 
-java-tron nodes support to be deployed on `Linux` or `MacOS` operating systems, and rely on `Oracle JDK 1.8`, other versions of JDK are not supported.
+java-orgon nodes support to be deployed on `Linux` or `MacOS` operating systems, and rely on `Oracle JDK 1.8`, other versions of JDK are not supported.
 
-The minimum hardware configuration required to run a java-tron node is `8-core CPU`, `16G memory`, `2T SDD`, the recommended configuration is: `16-core CPU`, `32G memory`, `2.5T+ SDD`. The fullnode running by super representative to produce block recommends `32-core CPU` and `64G memory`.
+The minimum hardware configuration required to run a java-orgon node is `8-core CPU`, `16G memory`, `2T SDD`, the recommended configuration is: `16-core CPU`, `32G memory`, `2.5T+ SDD`. The fullnode running by super representative to produce block recommends `32-core CPU` and `64G memory`.
 
 
 ## Compile the Source Code
@@ -26,19 +26,19 @@ You can choose different configuration files to connect java-tron nodes to diffe
 
 ### Startup a fullnode
 
-Fullnode has full historical data, it is the entry point into the TRON network , it provides HTTP API and gRPC API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the `-c` parameter: 
+Fullnode has full historical data, it is the entry point into the TRON network , it provides HTTP API and gRPC API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the `-c` parameter:
 
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
 ```
 
-* -XX:+UseConcMarkSweepGC  ：Specifies parallel garbage collection. To be placed before the -jar parameter, not at the end. 
+* -XX:+UseConcMarkSweepGC  ：Specifies parallel garbage collection. To be placed before the -jar parameter, not at the end.
 * -Xmx  ：The maximum value of the JVM heap, which can be set to 80% of the physical memory.
 
-### Startup a fullnode that produces blocks 
+### Startup a fullnode that produces blocks
 
 Adding the `--witness` parameter to the startup command, fullnode will run as a node which produces blocks. In addition to supporting all the functions of fullnode, the block-producing fullnode also supports block production and transaction packaging. Please make sure you have a super representative account and get the votes of others. If the votes ranks in the top 27, you need to start a full node that produces blocks to participate in block production.
-  
+
 Fill in the private key of the super representative address into the `localwitness` list in the main_net_config.conf, below is an example. But if you don't want to use this way of specifying the private key in plain text, you can use the keystore + password method, please refer to [Others](#others) chapter.
 
 ```
@@ -46,9 +46,9 @@ localwitness = [
     650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812
 ]
 ```
-  
+
 then run the following command to start the node:
-  
+
 ```
 $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
 ```
@@ -83,10 +83,10 @@ First install tcmalloc, then add the following two lines to the startup script, 
 
 ```
 #!/bin/bash
-  
+
 export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
 export TCMALLOC_RELEASE_RATE=10
-  
+
 # original start command
 java -jar .....
 ```

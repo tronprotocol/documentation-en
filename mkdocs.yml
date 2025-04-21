@@ -1,10 +1,10 @@
 site_name: java-orgon
-site_url: https://tronprotocol.github.io/documentation-en/
+site_url: https://alexozerov.github.io/documentation-en/
 repo_url: https://github.com/alexozerov/documentation-en
 
 nav:
     - Home: index.md
-    - Getting Started With java-tron:
+    - Getting Started With java-orgon:
         - Getting Started: getting_started/getting_started_with_javaorgon.md
     - Using java-orgon:
         - Deploying: using_javaorgon/installing_javaorgon.md
@@ -29,7 +29,7 @@ nav:
         - System Contract: mechanism-algorithm/system-contracts.md
         - Decentralized Exchange: mechanism-algorithm/dex.md
         - Account Permission Management: mechanism-algorithm/multi-signatures.md
-    - For java-tron Developers:
+    - For java-orgon Developers:
         - Developer Guide: developers/java-orgon.md
         - TIPs Workflow: developers/tips.md
         - Issue Workflow: developers/issue-workflow.md

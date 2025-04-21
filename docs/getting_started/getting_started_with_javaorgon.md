@@ -13,7 +13,7 @@ Enter the command `java -jar wallet-cli.jar` in the terminal to start a wallet-c
 ```
 $ java -jar wallet-cli.jar
 
-Welcome to TRON wallet-cli
+Welcome to ORGON wallet-cli
 Please type one of the following commands to proceed.
 Login, RegisterWallet or ImportWallet
 

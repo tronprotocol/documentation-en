@@ -1,8 +1,8 @@
-# java-tron Core Modules
+# java-orgon Core Modules
 ## Code Structure
-java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a TRON node by starting java-tron. In this article, we will describe the code structure of java-tron in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
+java-orgon is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a ORGON node by starting java-orgon. In this article, we will describe the code structure of java-orgon in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
 
-java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
+java-orgon adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
 
 
 
@@ -76,7 +76,7 @@ The common module encapsulates common components and tools, such as exception ha
 
 ### chainbase
 
-Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. Because of this, chainbase defines an interface standard supporting databases that can roll back. This interface requires databases to have a state rollback mechanism, a checkpoint-based disaster tolerant mechanism and so on. 
+Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. Because of this, chainbase defines an interface standard supporting databases that can roll back. This interface requires databases to have a state rollback mechanism, a checkpoint-based disaster tolerant mechanism and so on.
 
 In addition, the chainbase module features a well-designed abstract interface. Any database that implements the interface can be used for underlying storage on the blockchain, granting more flexibility to developers. LevelDB and RocksDB are two default implementations.
 
@@ -115,21 +115,21 @@ In addition, the chainbase module features a well-designed abstract interface. A
     * `storage/leveldb/` Implemented the use of LevelDB as the underlying storage database
     * `storage/rocksdb/` Implemented the use of RocksDB as the underlying storage database
 * `core/` - The core code of the chainbase module
-    * `capsule/` 
+    * `capsule/`
 
         The encapsulation class of each data structure, such as AccountCapsule, BlockCapsule, etc. AccountCapsule is the encapsulation class of Account data structure, which provides modification and query of account data; BlockCapsule is the encapsulation class of Block data structure, which provides modification and query of block data.
 
-    * `store/` 
+    * `store/`
 
         Various databases, such as `AccountStore`, `ProposalStore`, etc. `AccountStore` is the account database, the database name is `account`, which stores all account information in the TRON network; `ProposalStore` is the proposal database, and the database name is `proposal`, which stores all the proposal information in the TRON network.
 
-    * `db/` and `db2/` 
-    
+    * `db/` and `db2/`
+
         Implemented rollbackable databases, including two rollbackable databases: `AbstractRevokingStore` located in the `db/` directory and `SnapshotManager` located in the `db2/` directory. Compared with `AbstractRevokingStore`, `SnapshotManager` has a more stable data rollback function and supports the extension of the underlying database. Therefore, java-tron uses `SnapshotManager` to roll back the database. Several important interfaces and implementation classes are as follows:
 
         * `RevokingDatabase.java` - It is the interface of the database container, used to manage all rollbackable databases, `SnapshotManager` is an implementation of this interface
         * `TronStoreWithRevoking.java` - It is the base class that supports rollbackable databases. All rollbackable databases are their implementations, such as `BlockStore`, `TransactionStore`, etc
-    
+
 
 ### consensus
 
@@ -159,7 +159,7 @@ Currently, java-tron implements DPOS consensus and PBFT consensus based on the `
 
 ### actuator
 
-Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. This is one of the reasons why java-tron supports the creation of a chain of applications. For the reasons mentioned, java-tron includes a separate module, Actuator, offering application developers a brand new way of development. They can choose to implant their application codes into a chain instead of running them on virtual machines. 
+Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. This is one of the reasons why java-tron supports the creation of a chain of applications. For the reasons mentioned, java-tron includes a separate module, Actuator, offering application developers a brand new way of development. They can choose to implant their application codes into a chain instead of running them on virtual machines.
 
 Actuator is the executor of transactions, while applications can be viewed as a cluster of different types of transactions, each of which is executed by a corresponding actuator.
 
@@ -189,7 +189,7 @@ Actuator module defines the `Actuator` interface, which includes 4 different met
 * `calcFee` - define the logic of calculating transaction fees
 
 Depending on their businesses, developers may set up Actuator accordingly and customize the processing of different types of transactions.
- 
+
 ### crypto
 Crypto is a relatively independent module, but it is also a very important module. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
 
@@ -416,7 +416,7 @@ There is a session object in java-tron. A session represents the change in the s
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_6.png)
 
 
-In the above figure, you can see that there are many different types of databases in persistent storage. These data are jointly organized into a complete blockchain. For example, blocks are stored in khasodb and blockStore, and account information is stored in accountStore... 
+In the above figure, you can see that there are many different types of databases in persistent storage. These data are jointly organized into a complete blockchain. For example, blocks are stored in khasodb and blockStore, and account information is stored in accountStore...
 
 The node maintains a session chain table, which stores the change information corresponding to the block/transaction, and the node can roll back through the change information. In the above figure, session1 is the status change of the current highest block. When a transaction is received, a new session2 will be generated. Each transaction that comes later will generate a temporary tmpSession, and after the transaction is validated, the tmpSession corresponded will be merged to session2. Before a new block is received again, all status changes generated by transaction validation will be saved in session2. When a new block arrives, directly execute the reset method of the session2 to roll back the state to the previous block.
 
@@ -458,7 +458,7 @@ This is obvious. If 'size' > 'maxSize', it means that the blocks corresponding t
 
 The database storage of java-tron is slightly different from other public chains. For example, the Ethereum persistence layer uses only one database instance, and different types of data in Ethereum are distinguished by prefixes and stored in one database instance. However, java-tron currently stores data of different business types in its own database instances.
 
-The two implementations have their own advantages. A single instance is easy to maintain and can be written uniformly, but the disadvantages are also obvious. For example, the amount of data in a single database continues to grow over time, and frequent access to some business databases may drag down the read-and-write performance of other businesses. 
+The two implementations have their own advantages. A single instance is easy to maintain and can be written uniformly, but the disadvantages are also obvious. For example, the amount of data in a single database continues to grow over time, and frequent access to some business databases may drag down the read-and-write performance of other businesses.
 
 Multi-instance does not have the problem of the mutual influence of each business data read and write, and can configure different parameters according to their respective data volume and performance requirements to maximize performance, and can also independently split the database with a large amount of data. Alleviate data bloat problems. But there is a serious problem with multiple database instances: there is no native tool to support atomic writes among multiple database instances.
 
@@ -479,7 +479,7 @@ A checkpoint data structure,
 
 
 
-Checkpoint stores all data of a state change in one database. Different types of data are distinguished by prefixes. In order to ensure that all changed data can be placed on disk this time, the bottom layer of the database calls writeBatch() when writing. 
+Checkpoint stores all data of a state change in one database. Different types of data are distinguished by prefixes. In order to ensure that all changed data can be placed on disk this time, the bottom layer of the database calls writeBatch() when writing.
 
 
 This solution can be summarized as,
@@ -647,7 +647,7 @@ After node A receives the `BLOCK_CHAIN_INVENTORY` message, it gets the missing b
 After node B receives the `FETCH_INV_DATA` message from node A, it sends the block to node A through the `BLOCK` message. After node A receives the `BLOCK` message, it asynchronously processes the block.
 
 #### Blockchain Summary and List of Missing Blocks
-Below will take several different block synchronization scenarios as examples to illustrate the generation of the blockchain summary and the lost block ID list. 
+Below will take several different block synchronization scenarios as examples to illustrate the generation of the blockchain summary and the lost block ID list.
 
 * Blockchain summary: an ordered list of block IDs, including the highest solidified block, the highest non-solidified block, and the blocks corresponding to the dichotomy.
 * List of missing blocks: The neighbor node compares its own chain with the received blockchain summary, determines the missing blocks list of peers, and returns a set of consecutive block IDs and the number of remaining blocks.

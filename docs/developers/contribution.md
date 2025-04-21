@@ -16,7 +16,7 @@ We encourage a PR early approach, meaning you create the PR the earliest even wi
 
 ** Developer Community **
 
-* [java-tron gitter channel](https://gitter.im/tronprotocol/allcoredev)
+* [java-orgon gitter channel](https://gitter.im/tronprotocol/allcoredev)
 This channel is for TRON network issues.
 * [wallet-cli gitter channel](https://gitter.im/tronprotocol/wallet-cli)
 This channel is for the client of TRON network issues.
