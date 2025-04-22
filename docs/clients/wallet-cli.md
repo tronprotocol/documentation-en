@@ -1,10 +1,10 @@
 # wallet-cli
 
 ## Introduction
-wallet-cli is an interactive command-line wallet that supports the ORGON network for signing and broadcasting transactions in a secure local environment, as well as access to on-chain data. wallet-cli supports key management, you can import the private key into the wallet, wallet-cli will encrypt your private key with a symmetric encryption algorithm and store it in a keystore file. wallet-cli does not store on-chain data locally. It uses gRPC to communicate with a java-orgon node. You need to configure the java-orgon node to be linked in the configuration file. The following figure shows the process of the use of wallet-cli to sign and broadcast when transferring TRX:
+wallet-cli is an interactive command-line wallet that supports the ORGON network for signing and broadcasting transactions in a secure local environment, as well as access to on-chain data. wallet-cli supports key management, you can import the private key into the wallet, wallet-cli will encrypt your private key with a symmetric encryption algorithm and store it in a keystore file. wallet-cli does not store on-chain data locally. It uses gRPC to communicate with a java-orgon node. You need to configure the java-orgon node to be linked in the configuration file. The following figure shows the process of the use of wallet-cli to sign and broadcast when transferring ORGON:
 ![](https://i.imgur.com/NRKmZmE.png)
 
-The user first runs the `Login` command to unlock the wallet, and then runs the `SendCoin` command to send TRX, wallet-cli will build and sign the transaction locally, and then call the BroadcastTransaction gRPC API of the java-orgon node to broadcast the transaction to the network. After the broadcast is successful, the java-orgon node will return the transaction hash to wallet-cli, and wallet-cli will display the transaction hash to the user.
+The user first runs the `Login` command to unlock the wallet, and then runs the `SendCoin` command to send ORGON, wallet-cli will build and sign the transaction locally, and then call the BroadcastTransaction gRPC API of the java-orgon node to broadcast the transaction to the network. After the broadcast is successful, the java-orgon node will return the transaction hash to wallet-cli, and wallet-cli will display the transaction hash to the user.
 
 Install and run: [wallet-cli](https://github.com/tronprotocol/wallet-cli)
 
@@ -210,7 +210,7 @@ address = TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 ```
 
 #### GetBalance
-Get the TRX balance of the current account
+Get the ORGON balance of the current account
 ```shell
 wallet> getbalance
 Balance = 2665198240
@@ -315,14 +315,14 @@ Here are all the account resource related commands ：
 - [GetAccountResource](#getaccountresource)
 
 #### FreezeBalance
-This interface has been deprecated, please use freezeBalanceV2 to stake TRX to obtain resources.
+This interface has been deprecated, please use freezeBalanceV2 to stake ORGON to obtain resources.
 ```shell
 wallet> freezeBalance [OwnerAddress] [frozen_balance] [frozen_duration] [ResourceCode:0 BANDWIDTH, 1 ENERGY] [receiverAddress]
 ```
 
-`OwnerAddress`is the address of the account that initiated the transaction, optional, default is the address of the login account.`frozen_balance`is the amount of frozen TRX, the unit is the smallest unit (Sun), the minimum is 1000000sun.`frozen_duration` is frozen duration, only be specified as 3 days, indicates that you can unfreeze after 3 days.`ResourceCode` indicates the type of the acquired resource，0 BANDWIDTH and 1 ENERGY. `receiverAddress`is the address that will receive the resource.
+`OwnerAddress`is the address of the account that initiated the transaction, optional, default is the address of the login account.`frozen_balance`is the amount of frozen ORGON, the unit is the smallest unit (Sun), the minimum is 1000000sun.`frozen_duration` is frozen duration, only be specified as 3 days, indicates that you can unfreeze after 3 days.`ResourceCode` indicates the type of the acquired resource，0 BANDWIDTH and 1 ENERGY. `receiverAddress`is the address that will receive the resource.
 
-`ResourceCode` and `receiverAddress`  are optional parameters. If `ResourceCode` is not set，default is 0. If `receiverAddress` is not set, the TRX is frozen to obtain resources for its `OwnerAddress` use; if it is not empty, the acquired resources are used by receiverAddress.
+`ResourceCode` and `receiverAddress`  are optional parameters. If `ResourceCode` is not set，default is 0. If `receiverAddress` is not set, the ORGON is frozen to obtain resources for its `OwnerAddress` use; if it is not empty, the acquired resources are used by receiverAddress.
 
 Example:
 ```shell
@@ -350,7 +350,7 @@ FreezeBalance successful !!!
 
 
 #### UnfreezeBalance
-unstake TRX which staked during stake1.0.
+unstake ORGON which staked during stake1.0.
 ```shell
 wallet>unfreezeBalance [OwnerAddress] ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER) [receiverAddress]
 ```
@@ -418,14 +418,14 @@ wallet> getdelegatedresource TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 TXBpeye7UQ4dDZEn
 ```
 
 #### FreezeBalanceV2
-Stake 2.0 API: Stake TRX to obtain ORGON Power (voting rights) and bandwidth or energy.
+Stake 2.0 API: Stake ORGON to obtain ORGON Power (voting rights) and bandwidth or energy.
 
 ```shell
 wallet> freezeBalanceV2 [OwnerAddress] frozen_balance ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER)
 ```
 
 * `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
-* `frozen_balance` is the amount of frozen TRX, the unit is the smallest unit (Sun), the minimum is 1000000sun.
+* `frozen_balance` is the amount of frozen ORGON, the unit is the smallest unit (Sun), the minimum is 1000000sun.
 * `ResourceCode` indicates the type of the acquired resource，0 BANDWIDTH and 1 ENERGY.
 
 Example:
@@ -470,7 +470,7 @@ freezeBalanceV2 successful !!!
 ```
 
 #### UnfreezeBalanceV2
-Stake 2.0 API: Unstake TRX to release bandwidth and energy and at the same time ORGON Power will be reclaimed and corresponding votes will be revoked.
+Stake 2.0 API: Unstake ORGON to release bandwidth and energy and at the same time ORGON Power will be reclaimed and corresponding votes will be revoked.
 
 
 ```shell
@@ -478,7 +478,7 @@ wallet> unfreezeBalanceV2 [OwnerAddress] unfreezeBalance ResourceCode(0 BANDWIDT
 ```
 
 * `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
-* `unfreezeBalance` Amount of TRX to be unstaked. the unit is sun.
+* `unfreezeBalance` Amount of ORGON to be unstaked. the unit is sun.
 * `ResourceCode` indicates the type of the acquired resource，0 stands for BANDWIDTH and 1 stands for ENERGY.
 
 
@@ -530,7 +530,7 @@ wallet> delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERG
 ```
 
 * `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
-* `balance` Amount of TRX staked for resources to be delegated, unit is sun.
+* `balance` Amount of ORGON staked for resources to be delegated, unit is sun.
 * `ResourceCode` Resource type, "BANDWIDTH" is 0, "ENERGY" is 1.
 * `ReceiverAddress` Receiver address of resource to be delegated to.
 * `lock` Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days. optional, default is 0, 0-lock, 1-unlock.
@@ -584,7 +584,7 @@ wallet> unDelegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENE
 ```
 
 * `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
-* `balance` Amount of TRX staked for resource to be undelegated, unit is sun.
+* `balance` Amount of ORGON staked for resource to be undelegated, unit is sun.
 * `ResourceCode` Resource type, "BANDWIDTH" is 0, "ENERGY" is 1.
 * `ReceiverAddress` Receiver address of resource to be delegated to.
 
@@ -1199,7 +1199,7 @@ wallet> DeployContract [ownerAddress] [contractName] [ABI] [byteCode] [construct
 * `ABI` is ABI code generated when compiling.
 * `byteCode` is byte code generated when compiling.
 * `constructor`, `params`, `isHex` These three parameters define the format of the bytecode, which determines the way to parse byteCode from parameters.
-* `fee_limit` determines the limit of consumed TRX for each transaction.
+* `fee_limit` determines the limit of consumed ORGON for each transaction.
 * `consume_user_resource_percent` is the percentage of user consumed resource, in the range between [0, 100%].
 * `origin_energy_limit` is the most amount of developer energy consumed by triggering the contract once.
 * `value` is the amount of trx transferred to the contract account.
@@ -1288,7 +1288,7 @@ wallet> TriggerConstantContract ownerAddress(use # if you own) contractAddress m
 * `method` Function call.
 * `args` Parameters, if there is no parameter of `method`, please input #.
 * `isHex` `args`is hex string or not。
-* `value` TRX amount to be transferred. Optional, if no value, # can be inplaced.
+* `value` ORGON amount to be transferred. Optional, if no value, # can be inplaced.
 * `token_value` TRC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
 * `token_id` TRC-10 token id to be transferred. Optional, if no value, # can be inplaced.
 
@@ -1330,7 +1330,7 @@ wallet> EstimateEnergy ownerAddress contractAddress method args isHex [value tok
 * `method` Function call.
 * `args` Parameters, if there is no parameter of `method`, please input #.
 * `isHex` `args`is hex string or not。
-* `value` TRX amount to be transferred. Optional, if no value, # can be inplaced.
+* `value` ORGON amount to be transferred. Optional, if no value, # can be inplaced.
 * `token_value` TRC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
 * `token_id` TRC-10 token id to be transferred. Optional, if no value, # can be inplaced.
 
@@ -1444,13 +1444,13 @@ wallet> AssetIssue [OwnerAddress] [AssetName] [AbbrName] [TotalSupply] [TrxNum] 
 
 * Exchange Rate = TrxNum / AssetNum
 * `AssetNum`: Unit in the base unit of the issued token
-* `TrxNum`: Unit in SUN (0.000001 TRX)
+* `TrxNum`: Unit in SUN (0.000001 ORGON)
 
 `Precision` indicates how many decimal places there is.
 
-`FreeNetLimitPerAccount` determines the maximum amount of bandwidth each account is allowed to use. Token issuers can freeze TRX to obtain bandwidth (TransferAssetContract only)
+`FreeNetLimitPerAccount` determines the maximum amount of bandwidth each account is allowed to use. Token issuers can freeze ORGON to obtain bandwidth (TransferAssetContract only)
 
-`PublicFreeNetLimit` is the maximum total amount of bandwidth which is allowed to use for all accounts. Token issuers can freeze TRX to obtain bandwidth (TransferAssetContract only)
+`PublicFreeNetLimit` is the maximum total amount of bandwidth which is allowed to use for all accounts. Token issuers can freeze ORGON to obtain bandwidth (TransferAssetContract only)
 
 `StartDate`, `EndDate` is the start and end date of token issuance. Within this period time, other users can participate in token issuance.
 
@@ -1458,14 +1458,14 @@ wallet> AssetIssue [OwnerAddress] [AssetName] [AbbrName] [TotalSupply] [TrxNum] 
 
 Example:
 ```shell
-wallet> AssetIssue TestTRX TRX 75000000000000000 1 1 2 "2019-10-02 15:10:00" "2020-07-11" "just for test121212" www.test.com 100 100000 10000 10 10000 1
+wallet> AssetIssue TestTRX ORGON 75000000000000000 1 1 2 "2019-10-02 15:10:00" "2020-07-11" "just for test121212" www.test.com 100 100000 10000 10 10000 1
 wallet> GetAssetIssueByAccount TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ  # View published information
 {
     "assetIssue": [
         {
             "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
             "name": "TestTRX",
-            "abbr": "TRX",
+            "abbr": "ORGON",
             "total_supply": 75000000000000000,
             "frozen_supply": [
                 {
@@ -1506,7 +1506,7 @@ wallet> GetAssetIssueByAccount TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ  # to check th
         {
             "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
             "name": "TestTRX",
-            "abbr": "TRX",
+            "abbr": "ORGON",
             "total_supply": 75000000000000000,
             "frozen_supply": [
                 {
@@ -2021,12 +2021,12 @@ wallet> exchangeCreate [OwnerAddress][first_token_id] [first_token_balance] [sec
 
 `second_token_id`, `second_token_balance` is the ID and amount of the second token.
 
-The ID is the ID of the issued TRC10 token. If it is TRX, the ID is "". The amount must be greater than 0, and less than 1,000,000,000,000,000.
+The ID is the ID of the issued TRC10 token. If it is ORGON, the ID is "". The amount must be greater than 0, and less than 1,000,000,000,000,000.
 
 Example:
 ```shell
 wallet> exchangeCreate 1000001 10000 _ 10000
-# Create trading pairs with the IDs of 1000001 and TRX, with amount 10000 for both.
+# Create trading pairs with the IDs of 1000001 and ORGON, with amount 10000 for both.
 ```
 #### ExchangeInject
 Capital injection
@@ -2058,7 +2058,7 @@ Example：
 ```
 wallet> ExchangeTransaction 1 1000001 100 80
 ```
-It is expected to acquire the 80 TRX by exchanging 1000001 from the trading pair ID of 1, and the amount is 100.(Equivalent to selling an amount of 100 tokenID - 1000001, at a price of 80 TRX, in trading pair ID - 1).
+It is expected to acquire the 80 ORGON by exchanging 1000001 from the trading pair ID of 1, and the amount is 100.(Equivalent to selling an amount of 100 tokenID - 1000001, at a price of 80 ORGON, in trading pair ID - 1).
 
 #### ExchangeWithdraw
 ```

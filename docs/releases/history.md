@@ -973,8 +973,8 @@ GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:
 * HTTP
     * `createaddress`: Create an address based on the specified password
     * `generateaddress`: Create address randomly
-    * `easytransfer`: Transfer TRX with password
-    * `easytransferbyprivate`: Transfer TRX with private key
+    * `easytransfer`: Transfer ORGON with password
+    * `easytransferbyprivate`: Transfer ORGON with private key
     * `easytransferasset`: Transfer TRC10 token with password
     * `easytransferassetbyprivate`: Transfer TRC10 token with private key
     * `gettransactionsign`: Sign transaction with private key
@@ -982,8 +982,8 @@ GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:
 * gRPC
     * `CreateAddress`: Create an address based on the specified password
     * `GenerateAddress`: Create address randomly
-    * `EasyTransfer`: Transfer TRX with password
-    * `EasyTransferByPrivate`: Transfer TRX with private key
+    * `EasyTransfer`: Transfer ORGON with password
+    * `EasyTransferByPrivate`: Transfer ORGON with private key
     * `EasyTransferAsset`: Transfer TRC10 token with password
     * `EasyTransferAssetByPrivate`: Transfer TRC10 token with private key
     * `GetTransactionSign`: Sign transaction with private key
@@ -1111,19 +1111,19 @@ GreatVoyage-v4.7.0.1 (Aristotle) version introduces a new stake model, Stake 2.0
 
 * Staking and delegating are separated
 
-    In Stake 1.0, staking and resource delegating are combined in one operation. The resource recipient must be specified in the operation. After the staking is completed, the resource will be delegated to the designated resource recipient. The unstaking and undelegating are also combined in one operation. If you want to cancel the delegating, you must unstake the corresponding TRX as well. Stake 2.0 separates staking and resource delegating into two independent operations. The user executes the staking first, the resource selected is allocated to the owner now. And then executes the delegate operation to assign the resource to the designated address. Unstaking and undelegating are also separated into two operations. If the user wants to cancel the delegating, he or she can directly perform the undelegate operation without unstaking and then can delegate the resource to others again as needed. Separation of staking/unstaking and delegating/undelegating simplifies user operations and reduces operational complexity.
+    In Stake 1.0, staking and resource delegating are combined in one operation. The resource recipient must be specified in the operation. After the staking is completed, the resource will be delegated to the designated resource recipient. The unstaking and undelegating are also combined in one operation. If you want to cancel the delegating, you must unstake the corresponding ORGON as well. Stake 2.0 separates staking and resource delegating into two independent operations. The user executes the staking first, the resource selected is allocated to the owner now. And then executes the delegate operation to assign the resource to the designated address. Unstaking and undelegating are also separated into two operations. If the user wants to cancel the delegating, he or she can directly perform the undelegate operation without unstaking and then can delegate the resource to others again as needed. Separation of staking/unstaking and delegating/undelegating simplifies user operations and reduces operational complexity.
 
 * Resource Fragmentation Management
 
-    In Stake 1.0, one unstake operation will unstake all the staked TRX, and the specified amount of TRX cannot be unstaked. This is optimized in Stake 2.0 now. We can specify an amount of TRX to unstake, as long as the specified amount is less than or equal to the total staked amount. In Stake 1.0, to cancel a certain resource delegate, you can only cancel all delegated resources at once, and you cannot cancel by specifying an amount. Stake 2.0 has also brought partially undelegate, we can now undelegate part of the delegated resources as needed, which improves the flexibility of resource management.
+    In Stake 1.0, one unstake operation will unstake all the staked ORGON, and the specified amount of ORGON cannot be unstaked. This is optimized in Stake 2.0 now. We can specify an amount of ORGON to unstake, as long as the specified amount is less than or equal to the total staked amount. In Stake 1.0, to cancel a certain resource delegate, you can only cancel all delegated resources at once, and you cannot cancel by specifying an amount. Stake 2.0 has also brought partially undelegate, we can now undelegate part of the delegated resources as needed, which improves the flexibility of resource management.
 
-* Unstake Lock Period and Delayed Arrival of Unstaked TRX
+* Unstake Lock Period and Delayed Arrival of Unstaked ORGON
 
-    In Stake 1.0, after staking TRX, we need to wait 3 days before releasing the TRX. After the release, the TRX staked will immediately arrive in the owner’s account. In Stake 2.0, after the staking is completed, the TRX staked can be released at any time, but it needs to wait for ’N’ days. After the ’N’ days delay, the TRX released could be withdrawn to the owner’s account. ’N’ is the ORGON network parameter. When the TRX market fluctuates violently, due to the delayed arrival of funds, it will no longer trigger a large number of stake or unstake operations, which improves the stability of the stake model, and at the same time will not cause a large number of funds to flood into the market and aggravate market volatility. It helps to build a more anticipated future of the entire network circulation for the network participants.
+    In Stake 1.0, after staking ORGON, we need to wait 3 days before releasing the ORGON. After the release, the ORGON staked will immediately arrive in the owner’s account. In Stake 2.0, after the staking is completed, the ORGON staked can be released at any time, but it needs to wait for ’N’ days. After the ’N’ days delay, the ORGON released could be withdrawn to the owner’s account. ’N’ is the ORGON network parameter. When the ORGON market fluctuates violently, due to the delayed arrival of funds, it will no longer trigger a large number of stake or unstake operations, which improves the stability of the stake model, and at the same time will not cause a large number of funds to flood into the market and aggravate market volatility. It helps to build a more anticipated future of the entire network circulation for the network participants.
 
 * TVM Supports Staking and Resource Management
 
-    In Stake 2.0, the ORGON virtual machine integrates instructions related to stake and resource management. Users can perform TRX stake/unstake operations in smart contracts, as well as perform resource delegate/undelegate operations.
+    In Stake 2.0, the ORGON virtual machine integrates instructions related to stake and resource management. Users can perform ORGON stake/unstake operations in smart contracts, as well as perform resource delegate/undelegate operations.
 
 
 For more details on Stake 2.0, please refer to  [What is Stake 2.0?](https://coredevs.medium.com/what-is-stake-2-0-e04f59b948a6)
@@ -1222,8 +1222,8 @@ GreatVoyage-v4.7.0.1 (Aristotle) adds 10 APIs to support Stake 2.0:
 
 |  API |  Description |
 | -------- | -------- |
-| /wallet/freezebalancev2     | Stake TRX to obtain resources     |
-| /wallet/unfreezebalancev2     | Unstake TRX     |
+| /wallet/freezebalancev2     | Stake ORGON to obtain resources     |
+| /wallet/unfreezebalancev2     | Unstake ORGON     |
 | /wallet/delegateresource     | Delegate resources to other account     |
 | /wallet/undelegateresource     | Undelegate resource     |
 | /wallet/withdrawexpireunfreeze     | Withdraw the funds that has expired the `N` lock-up period     |
@@ -1347,7 +1347,7 @@ The delegate relationship storage optimization is a dynamic parameter of the ORG
 #### 2. Add transaction memo fee proposal
 Starting from GreatVoyage-v4.6.0 (Socrates), a memo fee will be charged for transactions with a memo. By increasing the cost, the fee will reduce the number of low-value transactions, so as to improve the security and reliability of the ORGON network.
 
-The memo fee is a dynamic parameter of the ORGON network. After GreatVoyage-v4.6.0 (Socrates) is deployed, the default value is ‘0’, and the unit is ‘sun’. It can be enabled by specifying a non-zero value by initiating a proposal, for example, ‘1000000’, indicating that the transaction with memo will require an additional 1 TRX fee.
+The memo fee is a dynamic parameter of the ORGON network. After GreatVoyage-v4.6.0 (Socrates) is deployed, the default value is ‘0’, and the unit is ‘sun’. It can be enabled by specifying a non-zero value by initiating a proposal, for example, ‘1000000’, indicating that the transaction with memo will require an additional 1 ORGON fee.
 
 * TIP: [https://github.com/tronprotocol/tips/issues/387](https://github.com/tronprotocol/tips/issues/387)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4758](https://github.com/alexozerov/java-orgon/pull/4758)
@@ -1528,7 +1528,7 @@ Source Code：https://github.com/alexozerov/java-orgon/pull/4492
 https://github.com/alexozerov/java-orgon/pull/4552
 
 #### 2. New historical bandwidth unit price query API
-According to the bandwidth consumption rules, if the transaction initiator’s  bandwidth obtained by staking TRX or free bandwidth is insufficient, TRX will be burned to pay for the bandwidth fee. At this time, only the bandwidth fee is recorded in the transaction record, but not the bandwidth consumption number. In order to understand bandwidth consumption of historical transactions, starting from GreatVoyage-v4.5.2 (Aurelius), a new historical bandwidth unit price query API `/wallet/getbandwidthprices` is added. Users can obtain historical records of bandwidth unit price through this API so that they can calculate bandwidth consumption of historical transactions.
+According to the bandwidth consumption rules, if the transaction initiator’s  bandwidth obtained by staking ORGON or free bandwidth is insufficient, ORGON will be burned to pay for the bandwidth fee. At this time, only the bandwidth fee is recorded in the transaction record, but not the bandwidth consumption number. In order to understand bandwidth consumption of historical transactions, starting from GreatVoyage-v4.5.2 (Aurelius), a new historical bandwidth unit price query API `/wallet/getbandwidthprices` is added. Users can obtain historical records of bandwidth unit price through this API so that they can calculate bandwidth consumption of historical transactions.
 
 Source Code：https://github.com/alexozerov/java-orgon/pull/4556
 
@@ -1794,7 +1794,7 @@ https://github.com/alexozerov/java-orgon/pull/3992
 The GreatVoyage-v4.4.0 (Rousseau) version provides compatibility solution for those instructions that are different from EVM, so that the newly deployed contract supports the following features:
 - The `GASPRICE` instruction returns the unit price of energy.
 - The `try/catch-statement` supports catching all types of TVM exceptions.
-- Forbid the system contract “TransferContract” to transfer TRX to the smart contract account.
+- Forbid the system contract “TransferContract” to transfer ORGON to the smart contract account.
 
 TIP: https://github.com/tronprotocol/tips/blob/master/tip-272.md
 Source Code：https://github.com/alexozerov/java-orgon/pull/4032
@@ -1877,8 +1877,8 @@ Prior to GreatVoyage-v4.3.0 (Bacon), the account's daily free bandwidth quota wa
 The account's daily free bandwidth quota  is not changed now. The super representative or super partner will initiate a vote request to change the value in the future.
 
 #### 2. Add a proposal to adjust the total net limit.
-Prior to GreatVoyage-v4.3.0 (Bacon), the total bandwidth obtained by staking TRX throughout the entire network was fixed at 43,200,000,000.
-The GreatVoyage-v4.3.0 (Bacon) version incorporates proposal #62 `TOTAL_NET_LIMIT`, which allows for configuring the total bandwidth available by staking TRX over the entire network. Super representatives and super partners may initiate a voting request for Proposal 62, which amends `TOTAL_NET_LIMIT`. `TOTAL_NET_LIMIT` has a range of [0, 1000000000000].
+Prior to GreatVoyage-v4.3.0 (Bacon), the total bandwidth obtained by staking ORGON throughout the entire network was fixed at 43,200,000,000.
+The GreatVoyage-v4.3.0 (Bacon) version incorporates proposal #62 `TOTAL_NET_LIMIT`, which allows for configuring the total bandwidth available by staking ORGON over the entire network. Super representatives and super partners may initiate a voting request for Proposal 62, which amends `TOTAL_NET_LIMIT`. `TOTAL_NET_LIMIT` has a range of [0, 1000000000000].
 
 * TIP: https://github.com/tronprotocol/tips/blob/master/tip-293.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3917
@@ -1887,7 +1887,7 @@ The GreatVoyage-v4.3.0 (Bacon) version incorporates proposal #62 `TOTAL_NET_LIMI
 The total net limit is not changed now. The super representative or super partner will initiate a vote request to change the value in the future.
 
 #### 3. Optimize the Account Data Structure
-Account is a database that receives numerous accesses during the node's operation, necessitating frequent deserialization operations on the account data structure. Prior to GreatVoyage-v4.3.0 (Bacon), Account contained not only the account's basic data, but also user TRC-10 asset data. However, for TRX transfers and smart contract-related transactions, only the Account's basic data is used. An excessively large TRC-10 asset list will have a significant impact on the Account data structure's deserialization performance.
+Account is a database that receives numerous accesses during the node's operation, necessitating frequent deserialization operations on the account data structure. Prior to GreatVoyage-v4.3.0 (Bacon), Account contained not only the account's basic data, but also user TRC-10 asset data. However, for ORGON transfers and smart contract-related transactions, only the Account's basic data is used. An excessively large TRC-10 asset list will have a significant impact on the Account data structure's deserialization performance.
 GreatVoyage-v4.3.0 (Bacon) improves the Account database's storage structure by separating TRC-10 asset data from the Account and storing it independently in the `AccountAssetIssue`. Reduce the amount of data that is deserialized during Account deserialization and increase the deserialization speed.
 
 * TIP: https://github.com/tronprotocol/tips/blob/master/tip-295.md
@@ -1899,7 +1899,7 @@ By default, this feature is disabled, and the super representative or super part
 ### TVM
 
 #### 1. Add Vote Instructions and Precompile Contracts in TVM
-Ordinary accounts can earn block rewards and voting rewards in versions prior to GreatVoyage-v4.3.0 (Bacon) by voting for super representatives or super representative candidates. However, because TVM does not accept voting instructions, TRX assets in smart contract accounts are unable to generate revenue via voting.
+Ordinary accounts can earn block rewards and voting rewards in versions prior to GreatVoyage-v4.3.0 (Bacon) by voting for super representatives or super representative candidates. However, because TVM does not accept voting instructions, ORGON assets in smart contract accounts are unable to generate revenue via voting.
 The GreatVoyage-v4.3.0 (Bacon) version adds voting instructions to TVM: `VOTE` / `WITHDRAWBALANCE`, allowing smart contract accounts to vote for super representatives or super representative candidates.
 
 * TIP: https://github.com/tronprotocol/tips/blob/master/tip-271.md
@@ -2039,7 +2039,7 @@ The GreatVoyage-4.2.0 (Plato) version introduces two important updates. The opti
 ### Core Protocol
 #### 1. Optimize the resource model
 
-Before the GreatVoyage-4.2.0 (Plato) version, while users obtained a large amount of ORGON power by staking TRX, they also obtained a large amount of energy and bandwidth. The utilization rate of these energies and bandwidth is extremely low, and most of them are not used at all, which increases the cost of obtaining resources. In order to improve the utilization rate of these resources, the GreatVoyage-4.2.0(Plato) version proposes an optimization of the resource model, where staking TRX can only obtain one of the three resources, namely bandwidth, energy, and ORGON power. After optimization, users can obtain the corresponding resources based on their own needs, thereby improving the utilization rate of resources.
+Before the GreatVoyage-4.2.0 (Plato) version, while users obtained a large amount of ORGON power by staking ORGON, they also obtained a large amount of energy and bandwidth. The utilization rate of these energies and bandwidth is extremely low, and most of them are not used at all, which increases the cost of obtaining resources. In order to improve the utilization rate of these resources, the GreatVoyage-4.2.0(Plato) version proposes an optimization of the resource model, where staking ORGON can only obtain one of the three resources, namely bandwidth, energy, and ORGON power. After optimization, users can obtain the corresponding resources based on their own needs, thereby improving the utilization rate of resources.
 
 - TIP： [TIP-207](https://github.com/tronprotocol/tips/blob/master/tip-207.md)
 - Source Code:  [#3726](https://github.com/alexozerov/java-orgon/pull/3726)
@@ -2052,7 +2052,7 @@ Before the GreatVoyage-4.2.0 (Plato) version, while users obtained a large amoun
 #### 1、Add Freeze/Unfreeze instructions in TVM
 
 
-In the ORGON network, one non-contract account can stake TRX to obtain resources such as bandwidth, energy, ORGON power, and reasonable use of these resources can bring certain benefits to users. At the same time, although smart contract accounts do have TRX, there is no way to stake these TRX to obtain resources.  In order to solve this inconsistency, the GreatVoyage-4.2.0(Plato) version introduces Freeze/Unfreeze instructions in TVM, so that smart contracts can also support staking TRX to obtain resources.
+In the ORGON network, one non-contract account can stake ORGON to obtain resources such as bandwidth, energy, ORGON power, and reasonable use of these resources can bring certain benefits to users. At the same time, although smart contract accounts do have ORGON, there is no way to stake these ORGON to obtain resources.  In order to solve this inconsistency, the GreatVoyage-4.2.0(Plato) version introduces Freeze/Unfreeze instructions in TVM, so that smart contracts can also support staking ORGON to obtain resources.
 
 - TIP: [TIP-157](https://github.com/tronprotocol/tips/blob/master/tip-157.md)
 - Source Code： [#3728](https://github.com/alexozerov/java-orgon/pull/3728)
@@ -2110,7 +2110,7 @@ GreatVoyage-version 4.1.2 is released with the following new features and modifi
 ### I. Core Protocol
 #### 1、Reward SRs with the transaction fees charged for bandwidth and energy.
 
-After this feature is turned on, the transaction fee from burning TRX which charged for bandwidth/energy (except OUT_OF_TIME) will be transferred to TRANSACTION_FEE_POOL. At the end of each block, the fee of all transactions in this block is rewarded to the block SR and its voters. At the same time, in "transactioninfo", the "packingFee" field is added to indicate the available fees to the current SR and SR voters.
+After this feature is turned on, the transaction fee from burning ORGON which charged for bandwidth/energy (except OUT_OF_TIME) will be transferred to TRANSACTION_FEE_POOL. At the end of each block, the fee of all transactions in this block is rewarded to the block SR and its voters. At the same time, in "transactioninfo", the "packingFee" field is added to indicate the available fees to the current SR and SR voters.
 
 - TIP: [TIP-196](https://github.com/tronprotocol/tips/issues/196)
 - Source Code:  [#3532](https://github.com/alexozerov/java-orgon/pull/3532)
@@ -2132,7 +2132,7 @@ The account historical balance query function can facilitate developers to query
 
 ###3、Optimized the blackhole account to improve transaction execution speed
 
-After the feature is turned on, the transaction fee from burning TRX which charged f for bandwidth and energy will no longer be transferred to the black hole address but will be directly accumulated and recorded in the database.
+After the feature is turned on, the transaction fee from burning ORGON which charged f for bandwidth and energy will no longer be transferred to the black hole address but will be directly accumulated and recorded in the database.
 
 - Source code： [#3617](https://github.com/alexozerov/java-orgon/pull/3617)
 
@@ -2192,7 +2192,7 @@ BN128Pairing: from (80000 \* pairs + 100000) Energy to (34000 \* pairs + 45000) 
 - Source code: [#3351](https://github.com/alexozerov/java-orgon/pull/3351)
 
 ### III. Mechanism
-1. Added two new system contracts, namely MarketSellAssetContract and MarketCancelOrderContract, for on-chain TRX/TRC10 transactions in decentralized exchanges.
+1. Added two new system contracts, namely MarketSellAssetContract and MarketCancelOrderContract, for on-chain ORGON/TRC10 transactions in decentralized exchanges.
 - TIP: [TIP-127](https://github.com/tronprotocol/tips/blob/master/tip-127.md)
 - Source code: [#3302](https://github.com/alexozerov/java-orgon/pull/3302)
 
@@ -2339,7 +2339,7 @@ Staking rewards are now distributed in a fully-decentralized way, a step forward
 
 ### 3. Fairer incentive mechanism
 
-Block rewards decreased from 32 TRX to 16 TRX, while voting rewards increased from 16 TRX to 160 TRX. The adjustment will boost voter turnout in the community, with more TRX locked up by users in the ORGON ecosystem. This move is accompanied by the new staking rewards mechanism to guarantee real staking revenues to users.
+Block rewards decreased from 32 ORGON to 16 ORGON, while voting rewards increased from 16 ORGON to 160 ORGON. The adjustment will boost voter turnout in the community, with more ORGON locked up by users in the ORGON ecosystem. This move is accompanied by the new staking rewards mechanism to guarantee real staking revenues to users.
 
 ### 4. Improvement and optimization of TVM
 
@@ -2352,9 +2352,9 @@ validatemultisign(address accountAddress, uint256 permissionId, bytes32 content,
 
 (3) Added a new pre-compiled contract to boost multi-signature verification in TVM, speeding up the verification process and reducing Energy consumption.
 
-(4) Banned transfer TRX to smart contract address by two system contract TransferContract and TransferAssetContract. The transfer would fail if the target address is a smart 	 address when using TransferContract and TransferAssetContract. This can prevent general users from transferring assets to smart contract address by mistake, avoiding users’ asset loss.
+(4) Banned transfer ORGON to smart contract address by two system contract TransferContract and TransferAssetContract. The transfer would fail if the target address is a smart 	 address when using TransferContract and TransferAssetContract. This can prevent general users from transferring assets to smart contract address by mistake, avoiding users’ asset loss.
 
-(5) Allowed automatic activation of inactive accounts when transferring TRX/ TRC10 tokens to accounts in smart contracts.
+(5) Allowed automatic activation of inactive accounts when transferring ORGON/ TRC10 tokens to accounts in smart contracts.
 
 (6) Added triggerConstantContract feature for SolidityNode and FullNode so as to improve the functionality of node APIs.
 

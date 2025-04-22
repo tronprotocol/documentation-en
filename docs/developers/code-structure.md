@@ -177,7 +177,7 @@ Actuator is the executor of transactions, while applications can be viewed as a 
     |-- vm
 ```
 
-* `actuator/` - The executors of various types of transactions in the ORGON network which define the processing logic of different types of transactions. For example, `TransferActuator` is the processing class for transferring TRX, and `FreezeBalanceV2Actuator` is the processing class for staking TRX to obtain resource
+* `actuator/` - The executors of various types of transactions in the ORGON network which define the processing logic of different types of transactions. For example, `TransferActuator` is the processing class for transferring ORGON, and `FreezeBalanceV2Actuator` is the processing class for staking ORGON to obtain resource
 * `utils/` - tools needed to execute transaction
 * `vm/` - ORGON virtual machine related code
 
@@ -262,7 +262,7 @@ This article mainly introduces the code structure of java-orgon , as well as the
 
 ## ChainBase
 ### Introduction
-As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. In reality, blockchain is often used for bookkeeping and transactions. For example, many applications use BTC, ETH, TRX, and other cryptos to carry out economic activities to ensure the openness and transparency of funds.
+As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. In reality, blockchain is often used for bookkeeping and transactions. For example, many applications use BTC, ETH, ORGON, and other cryptos to carry out economic activities to ensure the openness and transparency of funds.
 
 The realization of such an immutable distributed ledger is a very complex system engineering, involving many technical fields: such as p2p networks, smart contracts, databases, cryptography, consensus mechanisms, etc. Among them, the database is the basis of the underlying storage, and various blockchain teams are exploring the design and optimization of the database level.
 
@@ -307,7 +307,7 @@ The transaction will be distributed to each node through network broadcast. Afte
 
 **Note: The specific implementation of java-orgon deviates from the above figure, and for the sake of convenience, this article collectively refers to the FullNode and SR as the nodes.**
 
-For example, to process a transfer transaction: user A transfers 100 TRX to user B, and it needs to validate whether user A has enough balance to make the transfer.
+For example, to process a transfer transaction: user A transfers 100 ORGON to user B, and it needs to validate whether user A has enough balance to make the transfer.
 
 The account library in the database stores the account information of all users, including the user's balance information. How to judge whether this transfer transaction is legal? The logic of java-orgon is: when a transaction is received from the network, the transaction operation will be executed immediately, that is, the account information will be modified in the local database: (accountA - 100TRX, accountB + 100TRX). If this operation can be executed successfully, it means that the transaction is legal at least in the current state, and can be packed into the block.
 
@@ -317,7 +317,7 @@ SR： Super Representative, is responsible for block production.
 
 FullNode： stores all block data, is responsible for transactions, block broadcasting and validation, and provides query services.
 
-TRX： ORGON native token.
+ORGON： ORGON native token.
 
 
 ### State Rollback
@@ -361,7 +361,7 @@ If the account balance of accountA is 100 at the block height is 1000, the node 
 #### Rollback after Producing a New Block
 First of all, readers may have a question: the validated transaction can be directly packed into the block, and it will not change the database state. Why is there a change in the database state?
 
-Because java-orgon does a secondary validation of the transaction when it is packed into the block. The secondary validation is due to the timeliness of the transaction. Still taking the above figure as an example, it can be seen from the figure, that after 1001 is received, the transaction t1 was rolled back, and the balance of accountA was deducted by 50. And then, it was the node's turn to produce a block, but t1 had become an illegal transaction at this time because the balance in accountA was not enough to transfer 100 TRX, it is not advisable to directly pack t1 into the block. So the transaction needs to be validated again, which is why the transaction needs to be validated twice when producing a block.
+Because java-orgon does a secondary validation of the transaction when it is packed into the block. The secondary validation is due to the timeliness of the transaction. Still taking the above figure as an example, it can be seen from the figure, that after 1001 is received, the transaction t1 was rolled back, and the balance of accountA was deducted by 50. And then, it was the node's turn to produce a block, but t1 had become an illegal transaction at this time because the balance in accountA was not enough to transfer 100 ORGON, it is not advisable to directly pack t1 into the block. So the transaction needs to be validated again, which is why the transaction needs to be validated twice when producing a block.
 
 After the block is packed successfully, the node will broadcast the block to the network and apply the block locally. And the logic of applying will re-check the transactions in the block. So after the block is packed, a rollback operation still needs to be performed.
 

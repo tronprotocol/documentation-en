@@ -131,7 +131,7 @@ Owner permission's features:
 Super representatives can use this permission to manage block producing. Only SR(Super Representative) account has this permission.
 
 Usage scenario example:
-A super representative deploys a witness node on cloud server. In order to keep the account on the cloud server safe, you can only give the block producing permission to the account you put on cloud server. Because this account only owns  block producing permission, no TRX transfer permission, so even if the account on the cloud server is leaked, the TRX will not be lost.
+A super representative deploys a witness node on cloud server. In order to keep the account on the cloud server safe, you can only give the block producing permission to the account you put on cloud server. Because this account only owns  block producing permission, no ORGON transfer permission, so even if the account on the cloud server is leaked, the ORGON will not be lost.
 
 Witness node configuration: when [start a fullnode as witness](https://dev.orgon.space/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), `localwitness` in the config file is filled in with the private key of the witness account and `localWitnessAccountAddress` is commented on as below:
 ```
@@ -172,7 +172,7 @@ Active permission's features:
 ### Fee
 
 1. Using AccountPermissionUpdateContract costs 100TRX
-2. If a transaction contains 2 or more than 2 signatures, it charges an extra 1 TRX besides the transaction fee
+2. If a transaction contains 2 or more than 2 signatures, it charges an extra 1 ORGON besides the transaction fee
 3. The fee can be modified by proposing
 
 ## API

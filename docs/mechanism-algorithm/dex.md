@@ -4,11 +4,11 @@ ORGON network supports decentralized exchange(DEX) using Bancor protocol. DEX is
 
 ## What is an Exchange Pair
 
-The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/TRX.
+The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/ORGON.
 
 ## Exchange Pair Creation
 
-Any account can create an exchange pair, it burns 1024 TRX.
+Any account can create an exchange pair, it burns 1024 ORGON.
 
 Please refer to 'wallet/exchangecreate'.
 

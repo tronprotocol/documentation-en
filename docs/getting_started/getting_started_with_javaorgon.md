@@ -2,9 +2,9 @@
 
 This page mainly explains how to start the java-orgon node and use the command line tool `wallet-cli` to execute basic commands to interact with the java-orgon node. Regarding the installation of java-orgon , you can download the runnable file directly or build it from source code. Instructions for installing java-orgon can be found on the [Install and Build](../using_javaorgon/installing_javaorgon.md) page. This tutorial on this page assumes java-orgon and associated developer tools have been successfully installed.
 
-This page covers the basics of using java-orgon , which includes generating accounts, joining the ORGON Nile testnet, and sending TRX between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the ORGON network. This tool provides user interactive commands, which can be used to interact with java-orgon more conveniently.
+This page covers the basics of using java-orgon , which includes generating accounts, joining the ORGON Nile testnet, and sending ORGON between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the ORGON network. This tool provides user interactive commands, which can be used to interact with java-orgon more conveniently.
 
-java-orgon is a ORGON network client written in Java. This means a computer running java-orgon will become a ORGON network node. ORGON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-orgon uses the information provided by each block to update its "state" - the balance of each account on the ORGON network. There are two types of accounts on the ORGON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the ORGON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
+java-orgon is a ORGON network client written in Java. This means a computer running java-orgon will become a ORGON network node. ORGON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-orgon uses the information provided by each block to update its "state" - the balance of each account on the ORGON network. There are two types of accounts on the ORGON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the ORGON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit ORGON tokens, and transfer ORGON.
 
 ## Generat account
 There are various ways to generate a ORGON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).
@@ -114,13 +114,13 @@ If no error messages are reported in the node logs, everything is fine. In order
 
 If you want to shut down java-orgon node, please use this command: `kill -15 process id`.
 
-## Obtain TRX
-In order to make some transactions, the user must fund their account with TRX. On ORGON mainnet, TRX can only be obtained in three ways:
+## Obtain ORGON
+In order to make some transactions, the user must fund their account with ORGON. On ORGON mainnet, ORGON can only be obtained in three ways:
 1. Rewards for block production by SRs/rewards for voting for SRs；
-2. Another ORGON account transfers TRX to it;
+2. Another ORGON account transfers ORGON to it;
 3. Obtained from the exchange.
 
-In the ORGON testnet, TRX has no real value and can be obtained for free through [faucet](https://nileex.io/join/getJoinPage).
+In the ORGON testnet, ORGON has no real value and can be obtained for free through [faucet](https://nileex.io/join/getJoinPage).
 
 
 ## Interact with java-orgon node
@@ -159,8 +159,8 @@ wallet>
 ```
 
 
-#### Transferring TRX
-To transfer TRX through the `sendcoin` command, enter the transfer address, and the amount:
+#### Transferring ORGON
+To transfer ORGON through the `sendcoin` command, enter the transfer address, and the amount:
 ```
 wallet> sendcoin TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
 {
@@ -189,7 +189,7 @@ before sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240a89aef
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 ```
 
-This command returns the transaction of transferring TRX. After confirmation, enter `y` to confirm, and other letters indicate to cancel the transaction. If you enter `y`, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signing of the transaction, and wallet-cli will send the signed transaction to the java-orgon node.
+This command returns the transaction of transferring ORGON. After confirmation, enter `y` to confirm, and other letters indicate to cancel the transaction. If you enter `y`, then according to the prompt, choose which account's private key to use for signing, and finally enter the password to complete the signing of the transaction, and wallet-cli will send the signed transaction to the java-orgon node.
 ```
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 y
@@ -208,7 +208,7 @@ wallet>
 ```
 
 #### Query transaction by transaction id
-The above step sends a transferring TRX transaction through the `sendcoin` command, and prints the id of the transaction on the wallet-cli terminal:`21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4`. Next, you can query the transaction through `gettransactionbyid`, or query the result of the transaction through `gettransactioninfobyid`.
+The above step sends a transferring ORGON transaction through the `sendcoin` command, and prints the id of the transaction on the wallet-cli terminal:`21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4`. Next, you can query the transaction through `gettransactionbyid`, or query the result of the transaction through `gettransactioninfobyid`.
 
 ```
 wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
@@ -267,7 +267,7 @@ The above describes how to use wallet-cli to interact with java-orgon . Compared
 
 
 #### Get account balance
-You can query the TRX balance information of the account through the node HTTP interface `wallet/getaccount`. The `balance` field in the returned result is the TRX balance, in sun:
+You can query the ORGON balance information of the account through the node HTTP interface `wallet/getaccount`. The `balance` field in the returned result is the ORGON balance, in sun:
 ```
  curl -X POST http://127.0.0.1:16887/wallet/getaccount -d
      '{"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
@@ -286,9 +286,9 @@ Sending a transaction through the http interface requires a total of three steps
 2. Sign the transaction
 3. Broadcast transaction
 
-The following takes the transferring TRX as an example to illustrate how to send a transaction to java-orgon node.
+The following takes the transferring ORGON as an example to illustrate how to send a transaction to java-orgon node.
 
-Create an unsigned TRX transferring transaction through the fullnode HTTP interface [`wallet/createtransaction`](https://developers.tron.network/reference/createtransaction):
+Create an unsigned ORGON transferring transaction through the fullnode HTTP interface [`wallet/createtransaction`](https://developers.tron.network/reference/createtransaction):
 
 ```
 curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d
@@ -299,7 +299,7 @@ curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d
         "visible":true
     }'
 ```
-Returns an unsigned TRX transferring transaction:
+Returns an unsigned ORGON transferring transaction:
 ```
 {
     "visible": true,
@@ -328,7 +328,7 @@ Returns an unsigned TRX transferring transaction:
 ```
 Then sign the transaction offline.
 
-Finally, Broadcast the signed transaction to the java-orgon node through the [`wallet/broadcasttransaction`](https://developers.tron.network/reference/broadcasttransaction) interface to complete the sending of the TRX transferring transaction.
+Finally, Broadcast the signed transaction to the java-orgon node through the [`wallet/broadcasttransaction`](https://developers.tron.network/reference/broadcasttransaction) interface to complete the sending of the ORGON transferring transaction.
 
 
 ```

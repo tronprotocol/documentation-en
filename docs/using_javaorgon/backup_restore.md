@@ -57,7 +57,7 @@ The following table shows the download address of Fullnode data snapshots. Pleas
 | Official data source (Singapore)    | [http://34.143.247.77/](http://34.143.247.77/)    | 	LevelDB, exclude internal transactions     |
 | Official data source (North America: America)    | [http://35.197.17.205/](http://35.197.17.205/)   | RocksDB, exclude internal transactions     |
 | Official data source (Singapore)    | [http://35.247.128.170/](http://35.247.128.170/)   | LevelDB, include internal transactions    |
-| Official data source ((North America: Virginia))    | [http://34.48.6.163/](http://34.48.6.163/)   | LevelDB, exclude internal transactions, include account history TRX balance     |
+| Official data source ((North America: Virginia))    | [http://34.48.6.163/](http://34.48.6.163/)   | LevelDB, exclude internal transactions, include account history ORGON balance     |
 
 
 **Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB.

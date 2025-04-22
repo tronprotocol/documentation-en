@@ -18,18 +18,18 @@ TestNet Configuration:
 
  In ORGON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.
 
- To prevent vicious attack, ORGON network burns 9999 TRX from the account that applies to become a super representative candidate.
+ To prevent vicious attack, ORGON network burns 9999 ORGON from the account that applies to become a super representative candidate.
 
 ## 2.2 Super Representatives Election
 
- To vote, you need to have ORGON Power(TP). To get ORGON Power, you need to stake TRX. Every 1 staked TRX accounts for one ORGON Power(TP). Every account in ORGON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding ORGON Power(TP), so your previous vote will be invalid.
+ To vote, you need to have ORGON Power(TP). To get ORGON Power, you need to stake ORGON. Every 1 staked ORGON accounts for one ORGON Power(TP). Every account in ORGON network has the right to vote for a super representative candidate. After you unstake your staked ORGON, you will lose the responding ORGON Power(TP), so your previous vote will be invalid.
 
  Note: Only your latest vote will be counted in ORGON network which means your previous vote will be over written by your latest vote.
 
 Example (Using wallet-cli):
 
 ```text
-freezebalancev2 10,000,000 3 // stake 10 TRX to get 10 ORGON Power(TP)
+freezebalancev2 10,000,000 3 // stake 10 ORGON to get 10 ORGON Power(TP)
 votewitness SR1 4 SR2 6 // Vote 4 votes for SR1, 6 votes for SR2
 votewitness SR1 3 SR2 7 // Vote 3 votes for SR1, 7 votes for SR2
 ```
@@ -39,12 +39,12 @@ The final output above is: Vote 3 votes for SR1, 7 votes for SR2
 ## 2.3 Reward for Super Representatives
 
 **Votes Reward:**
-Every 6 hours, the top 127 super representative candidates with the most votes will share a total amount of 115,200 TRX according to their votes percentage. The annual votes reward is 168,192,000 TRX in total.
+Every 6 hours, the top 127 super representative candidates with the most votes will share a total amount of 115,200 ORGON according to their votes percentage. The annual votes reward is 168,192,000 ORGON in total.
 
 **Block Producing Reward:**
-Every time after a super representative produces a block, it will be reward 32 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 336,384,000 TRX in total.
+Every time after a super representative produces a block, it will be reward 32 ORGON. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 336,384,000 ORGON in total.
 
-Every time after a super representative produces a block, the 32 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
+Every time after a super representative produces a block, the 32 ORGON block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
 
 ## 2.4 Committee
 
@@ -65,7 +65,7 @@ The network parameters can be modified([min,max]):
 - 5: WITNESS_PAY_PER_BLOCK, [0, 100 000 000 000 000 000] //the block producing reward, currently 32,000,000 SUN
 - 6: WITNESS_STANDBY_ALLOWANCE, [0, 100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115,200,000,000 SUN
 - 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, //the fee to create an account in system, currently 1,000,000 SUN
-- 8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwidth or TRX while creating an account, using together with #7
+- 8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwidth or ORGON while creating an account, using together with #7
 - 9: ALLOW_CREATION_OF_CONTRACTS, //to enable the VM
 - 10: REMOVE_THE_POWER_OF_THE_GR, //to clear the votes of GR
 - 11: ENERGY_FEE, [0,100 000 000 000 000 000] //SUN
@@ -84,7 +84,7 @@ id: the serial number (0 ~ 18)
 value: the parameter value
 ```
 
-Note: In ORGON network, 1 TRX = 1,000,000 SUN
+Note: In ORGON network, 1 ORGON = 1,000,000 SUN
 
 ### 2.4.3 Vote for a Proposal
 
@@ -119,11 +119,11 @@ For more api detail, please refer to [ORGON HTTP API](../api/http.md)
 
 ## 3.1 Introduction
 
-ORGON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transferred from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All ORGON's activities are based on account.
+ORGON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like ORGON balance, tokens balance, bandwidth, etc. ORGON and tokens can be transferred from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All ORGON's activities are based on account.
 
 ## 3.2 How to Create an Account
 
-1.&nbsp;Use a wallet to generate the address and private key. To activate the account, you need to transfer TRX or transfer token to the new created account.
+1.&nbsp;Use a wallet to generate the address and private key. To activate the account, you need to transfer ORGON or transfer token to the new created account.
 
 2.&nbsp;Use an account already existed in ORGON network to create an account
 
@@ -355,7 +355,7 @@ Example:
 **4.7.1.4 rocksdb vs leveldb**
 
 You can refer to:
-[ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
+[ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/ORGON/Rocksdb_vs_Leveldb.md)
 
 # 5. Smart Contract
 ## 5.1 ORGON Smart Contract Introduction
@@ -422,7 +422,7 @@ contract_address: smart contract address
 abi: the api information of the all the function of the smart contract
 bytecode: smart contract byte code
 
-call_value: TRX transferred into smart contract while call the contract
+call_value: ORGON transferred into smart contract while call the contract
 consume_user_resource_percent: resource consumption percentage set by the developer
 
 name: smart contract name
@@ -444,7 +444,7 @@ Note: If you use create command inside a contract (CREATE instruction), even use
 
 2.&nbsp;message calls
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common ORGON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
+Message calls can call the functions of other contracts, also can transfer ORGON to the accounts of contract and none-contract. Like the common ORGON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
 
 3.&nbsp;delegate call/call code/library
 
@@ -554,7 +554,7 @@ Each command of smart contract consume system resource while running, we use 'En
 
 ### 5.3.1 How to Get Energy
 
-Stake TRX to get energy.
+Stake ORGON to get energy.
 
 Example (Using wallet-cli):
 
@@ -562,17 +562,17 @@ Example (Using wallet-cli):
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-Stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in ORGON * 50,000,000,000.
+Stake ORGON to get energy, energy obtained = user's ORGON staked amount / total amount of staked ORGON in ORGON * 50,000,000,000.
 
 Example:
 
 ```text
-If there are only two users, A stakes 2 TRX, B stakes 2 TRX
+If there are only two users, A stakes 2 ORGON, B stakes 2 ORGON
 the energy they can get is:
 A: 25,000,000,000 and energy_limit is 25,000,000,000
 B: 25,000,000,000 and energy_limit is 25,000,000,000
 
-when C stakes 1 TRX:
+when C stakes 1 ORGON:
 the energy they can get is:
 A: 20,000,000,000 and energy_limit is 20,000,000,000
 B: 20,000,000,000 and energy_limit is 20,000,000,000
@@ -587,7 +587,7 @@ Example:
 
 ```text
 at one moment, A has used 72,000,000 Energy
-if there is no continuous consumption or TRX stake
+if there is no continuous consumption or ORGON stake
 one hour later, the energy consumption amount will be 72,000,000 - (72,000,000 * (60*60/60*60*24)) Energy = 69,000,000 Energy
 24 hours later, the energy consumption amount will be 0 Energy
 ```
@@ -597,7 +597,7 @@ one hour later, the energy consumption amount will be 72,000,000 - (72,000,000 *
 
 *Within the scope of this section, the smart contract developer will be called "developer", the users or other contracts which call the smart contract will be called "caller"*
 
-*The amount of energy consumed while call the contract can be converted to TRX or SUN, so within the scope of this section, when refer to the consumption of the resource, there's no strict difference between Energy, TRX and SUN, unless they are used as a number unit.*
+*The amount of energy consumed while call the contract can be converted to ORGON or SUN, so within the scope of this section, when refer to the consumption of the resource, there's no strict difference between Energy, ORGON and SUN, unless they are used as a number unit.*
 
 ***
 
@@ -611,7 +611,7 @@ Set a rational fee limit can guarantee the smart contract execution. And if the 
 
 4.&nbsp;For a vicious contract, if it encounters execution timeout or bug crash, all it's energy will be consumed.
 
-5.&nbsp;Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [2].
+5.&nbsp;Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of ORGON [2].
 
 To encourage caller to trigger the contract, usually developer has enough energy.
 
@@ -621,17 +621,17 @@ How to estimate the fee limit:
 
 Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[3]
 
-According to the staked TRX amount and energy conversion, assume 1 TRX = 400 energy.
+According to the staked ORGON amount and energy conversion, assume 1 ORGON = 400 energy.
 
-When to burn TRX, 1 TRX = 10000 energy[4]
+When to burn ORGON, 1 ORGON = 10000 energy[4]
 
 Assume developer undertake 90% energy consumption, and developer has enough energy.
 
 Then the way to estimate the fee limit is:
 ```
-1). A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50,000,000 SUN,
+1). A = 20000 energy * (1 ORGON / 400 energy) = 50 ORGON = 50,000,000 SUN,
 
-2). B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2,000,000 SUN,
+2). B = 20000 energy * (1 ORGON / 10000 energy) = 2 ORGON = 2,000,000 SUN,
 
 3). Take the greater number of A and B, which is 50,000,000 SUN,
 
@@ -645,7 +645,7 @@ Note:
 [1] The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
 [2] ORGON may change this policy.
 [3] The estimated energy consumption limit for the next execution should be greater than the last one.
-[4] 1 TRX = 10^4 energy is a fixed number for burning TRX to get energy, ORGON may change it in future.
+[4] 1 ORGON = 10^4 energy is a fixed number for burning ORGON to get energy, ORGON may change it in future.
 ```
 
 ### 5.3.3 Energy Calculation (Developer Must Read)
@@ -662,17 +662,17 @@ Note:
 
 **Example 1**
 
-A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.
+A has an account with a balance of 90 ORGON(90000000 SUN) and 10 ORGON staked for 100000 energy.
 
 Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely.
 
-A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX)
+A triggers C, the fee limit set is 30000000 (unit SUN, 30 ORGON)
 
 So during this trigger the energy A can use is from two parts:
-- A's energy by staking TRX;
-- The energy converted from the amount of TRX burning according to a fixed rate;
+- A's energy by staking ORGON;
+- The energy converted from the amount of ORGON burning according to a fixed rate;
 
-If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy.
+If fee limit is greater than the energy obtained from staking ORGON, then it will burn ORGON to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) ORGON = 20 ORGON available, so the energy it can keep consuming is 20 ORGON / 100 SUN = 200000 energy.
 
 Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.
 
@@ -684,19 +684,19 @@ Assert-style error introduction, refer to [https://developers.tron.network/docs/
 
 **Example 2**
 
-A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.
+A has an account with a balance of 90 ORGON(90000000 SUN) and 10 ORGON staked for 100000 energy.
 
 Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption.
 
-Developer D stakes 50 TRX to get 500000 energy.
+Developer D stakes 50 ORGON to get 500000 energy.
 
-A triggers C, the fee limit set is 200000000 (unit SUN, 200 TRX).
+A triggers C, the fee limit set is 200000000 (unit SUN, 200 ORGON).
 
 So during this trigger the energy A can use is from three parts:
-- A's energy by staking TRX -- X;
-- The energy converted from the amount of TRX bruning according to a fixed rate -- Y;
-If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy;
-- D's energy by staking TRX -- Z;
+- A's energy by staking ORGON -- X;
+- The energy converted from the amount of ORGON bruning according to a fixed rate -- Y;
+If fee limit is greater than the energy obtained from staking ORGON, then it will burn ORGON to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) ORGON = 190 ORGON available, but A only has 90 ORGON left, so the energy it can keep consuming is 90 ORGON / 100 SUN = 900000 energy;
+- D's energy by staking ORGON -- Z;
 
 There are two situation:
 if (X + Y) / 40% >= Z / 60%, the energy A can use is X + Y + Z
@@ -804,9 +804,9 @@ ABI: ABI from SimpleWebCompiler
 bytecode: ByteCode from SimpleWebCompiler
 constructor: When deploy contract, this will be called. If is needed, write as constructor(uint256,string). If not, just write #
 params: The parameters of the constructor, use ',' to split, like  1, "test", if no constructor, just write #
-fee_limit: The TRX consumption limit for the deployment, unit is SUN(1 SUN = 10^-6 TRX)
+fee_limit: The ORGON consumption limit for the deployment, unit is SUN(1 SUN = 10^-6 ORGON)
 consume_user_resource_percent: Consume user's resource percentage. It should be an integer between [0, 100]. if 0, means it does not consume user's resource until the developer's resource has been used up
-value: The amount of TRX transfer to the contract when deploy
+value: The amount of ORGON transfer to the contract when deploy
 library: If the contract contains library, you need to specify the library address
 
 # example
@@ -835,8 +835,8 @@ contract_address: Contract address, like TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
 method: The method called, like set(uint256,uint256) or fool(), use ',' to split the parameters. Do not leave space between parameters
 args: The parameters passed to the method called, use ',' to split the parameters. Do not leave space between parameters
 is_hex: whether the input parameters is Hex, false or true
-fee_limit: The TRX consumption limit for the trigger, unit is SUN(1 SUN = 10^-6 TRX)
-value: The amount of TRX transfer to the contract when trigger
+fee_limit: The ORGON consumption limit for the trigger, unit is SUN(1 SUN = 10^-6 ORGON)
+value: The amount of ORGON transfer to the contract when trigger
 
 # trigger example
 ## set mapping 1->1
@@ -868,7 +868,7 @@ Please refer to:
 
 ## 6.3 Http API Introduction
 Please refer to:
-[https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
+[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
 
 # 7. TRC-10 Token Introduction
 ORGON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.
@@ -966,11 +966,11 @@ The transaction information is stored and transmitted in the form of byte array,
 
 Such as if the number of bytes of a transaction is 200, so this transaction consumes 200 Bandwidth Points.
 
-Note: Due to the change of the total amount of the staked TRX in the network and the self-staked TRX amount, the Bandwidth Points an account possesses is not fixed.
+Note: Due to the change of the total amount of the staked ORGON in the network and the self-staked ORGON amount, the Bandwidth Points an account possesses is not fixed.
 
 ## 8.2.1 How to Get Bandwidth Points
 
-1.&nbsp;By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43,200,000,000
+1.&nbsp;By staking ORGON to get Bandwidth Points, Bandwidth Points = the amount of ORGON self-staked / the total amount of ORGON staked for Bandwidth Points in the network * 43,200,000,000
 
 2.&nbsp;Every account has a fixed amount of free Bandwidth Points every day, it is defined in #61 network parameter, user can check the value on tronscan(https://tronscan.org/#/sr/committee).
 
@@ -978,9 +978,9 @@ Note: Due to the change of the total amount of the staked TRX in the network and
 
 Transactions other than queries consume Bandwidth points.
 
-A special scenario: When transferring TRX or TRC-10 tokens to an account that does not yet exist, this procedure creates the account prior to the transfer.
+A special scenario: When transferring ORGON or TRC-10 tokens to an account that does not yet exist, this procedure creates the account prior to the transfer.
 
-To create an account, a flat charge of 1 TRX is required. If there are insufficient Bandwidth points obtained by TRX staking, an additional 0.1 TRX will be spent.
+To create an account, a flat charge of 1 ORGON is required. If there are insufficient Bandwidth points obtained by ORGON staking, an additional 0.1 ORGON will be spent.
 
 Bandwidth points consumption sequence for TRC-10 transfer:
 
@@ -988,17 +988,17 @@ Bandwidth points consumption sequence for TRC-10 transfer:
 
 2. TRC-10 issuer's Bandwidth points(if possible.)
 
-3. Bandwidth points TRX staking.
+3. Bandwidth points ORGON staking.
 
-4. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;
+4. Bandwidth points obtained by ORGON burning, the rate = the number of bytes of the transaction * 1,000 SUN;
 
 Bandwidth points consumption sequence for other transactions:
 
 1. Free Bandwidth points.
 
-2. Bandwidth points TRX staking.
+2. Bandwidth points ORGON staking.
 
-3. Bandwidth points obtained by TRX burning, the rate = the number of bytes of the transaction * 1,000 SUN;
+3. Bandwidth points obtained by ORGON burning, the rate = the number of bytes of the transaction * 1,000 SUN;
 
 ### 8.2.3 Bandwidth Points Recovery
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
@@ -1010,13 +1010,13 @@ Every 24 hours, the amount of the usage of Bandwidth points of an account will b
 [5.3 Energy Introduction](#53-energy-introduction)
 
 ## 8.4 Resource Delegation
-In ORGON network, an account can stake TRX for Bandwidth or Energy for other accounts. The primary account owns the staked TRX and ORGON power, the recipient account owns the Bandwidth or Energy. Like ordinary staking, resource delegation staking is also at least 3 days.
+In ORGON network, an account can stake ORGON for Bandwidth or Energy for other accounts. The primary account owns the staked ORGON and ORGON power, the recipient account owns the Bandwidth or Energy. Like ordinary staking, resource delegation staking is also at least 3 days.
 
 + Example(Using wallet-cli)
 ```text
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 
-frozen_balance: the amount of TRX to stake (unit SUN)
+frozen_balance: the amount of ORGON to stake (unit SUN)
 ResourceCode: 0 for Bandwidth, 1 for Energy
 receiverAddress: recipient account address
 ```
@@ -1025,41 +1025,41 @@ receiverAddress: recipient account address
 
 |Type|Fee|
 | :------|:------:|
-|Create a SR(Super Representative)|9999 TRX|
-|Issue a TRC-10 token|1024 TRX|
-|Create an account|1 TRX|
-|Create an exchange|1024 TRX|
+|Create a SR(Super Representative)|9999 ORGON|
+|Issue a TRC-10 token|1024 ORGON|
+|Create an account|1 ORGON|
+|Create an exchange|1024 ORGON|
 
 # 9. DEX Introduction
 
 ORGON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs.
 
 ## 9.1 What is an Exchange Pair
-The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/TRX.
+The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/ORGON.
 
 ## 9.2 Exchange Pair Creation
-Any account can create an exchange pair, it burns 1024 TRX.
+Any account can create an exchange pair, it burns 1024 ORGON.
 
 Please refer to 'wallet/exchangecreate':
-[https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
+[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
 
 ## 9.3 Exchange Pair Transaction
 Any account can trade in the DEX. The trade follows Bancor protocol.
 
 Please refer to 'wallet/exchangetransaction':
-[https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
+[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
 
 ## 9.4 Exchange Pair Injection
 The exchange pair creator can inject more tokens into the exchange pair. Injection can decrease the range of ratio fluctuation. If one token is injected, the other one will be injected automatically to keep the current ratio of the two tokens unchanged.
 
 Please refer to 'wallet/exchangeinject':
-[https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
+[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
 
 ## 9.5 Exchange Pair Withdrawal
 The exchange pair creator can withdraw tokens from the exchange pair. Withdrawal can increase the range of ratio fluctuation. If one token is withdrawn, the other one will be withdrawn automatically to keep the current ratio of the two tokens unchanged.
 
 Please refer to 'wallet/exchangewithdraw':
-[https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)](https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
+[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
 
 ## 9.6 Query
 
@@ -1069,7 +1069,7 @@ GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination
 GetExchangeById: Query an exchange pair by exchange pair id
 
 Please refer to:
-[https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
+[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
 
 ### 9.6.2 Price Calculation
 The token price is determined by the ratio of the balance of the two tokens.

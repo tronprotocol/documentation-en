@@ -13,7 +13,7 @@ TVM adopts a lightweight architecture with the aim of reducing resource consumpt
 
 2.&nbsp;Stability and security
 
-With a meticulous design paradigm and fine-grained underlying operation code, TVM can guarantee the preciseness of every step of a computation, diminishing ambiguity to the largest extent. Out of security reasons, transfers and smart contract running cost only bandwidth points, not TRX, which exempts ORGON from being attacked similarly to Ethereum for its mode of gas consumption. Stability of bandwidth consumption is achieved while the cost of each computational step is fixed.
+With a meticulous design paradigm and fine-grained underlying operation code, TVM can guarantee the preciseness of every step of a computation, diminishing ambiguity to the largest extent. Out of security reasons, transfers and smart contract running cost only bandwidth points, not ORGON, which exempts ORGON from being attacked similarly to Ethereum for its mode of gas consumption. Stability of bandwidth consumption is achieved while the cost of each computational step is fixed.
 
 3.&nbsp;Compatibility
 

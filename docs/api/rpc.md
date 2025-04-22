@@ -13,7 +13,7 @@ rpc GetAccount (Account) returns (Account) {}
 ```
 Nodes: Fullnode and SolidityNode
 
-## TRX transfer
+## ORGON transfer
 
 ```protobuf
 rpc CreateTransaction (TransferContract) returns (Transaction) {}
@@ -168,15 +168,15 @@ rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {}
 ```
 Nodes: SolidityNode
 
-## Stake TRX
-This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
+## Stake ORGON
+This interface has been deprecated, please use FreezeBalanceV2 to stake ORGON to obtain resources.
 ```protobuf
 rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {}
 ```
 Nodes: FullNode
 
-## Unstake TRX
-Unstake the TRX staked during Stake1.0.
+## Unstake ORGON
+Unstake the ORGON staked during Stake1.0.
 ```protobuf
 rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {}
 ```
@@ -445,19 +445,19 @@ rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {};
 ```
 Nodes: FullNode and SolidityNode
 
-## Freeze TRX
+## Freeze ORGON
 ```protobuf
 rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-## UnFreeze TRX
+## UnFreeze ORGON
 ```protobuf
 rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
 ```
 Nodes: FullNode
 
-## Withdraw Staked TRX
+## Withdraw Staked ORGON
 ```protobuf
 rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
 ```

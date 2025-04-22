@@ -6,7 +6,7 @@ The Energy conumption of the contract caller in one contract trigger.
 
 **energyFee**
 
-The number of TRX burned from the contract caller for Energy conumption in one contract trigger.
+The number of ORGON burned from the contract caller for Energy conumption in one contract trigger.
 
 **originEnergyUsage**
 
@@ -18,11 +18,11 @@ The total Energy conumption of the contract developer and the contract caller co
 
 **Feelimit**
 
-When the user triggers or create the contract, this is used to set the usage limit of the Energy consumption got from burning TRX or staking TRX, Energy got from staking TRX will be used first.
+When the user triggers or create the contract, this is used to set the usage limit of the Energy consumption got from burning ORGON or staking ORGON, Energy got from staking ORGON will be used first.
 
 **CallValue**
 
-When the user triggers or create the contract, this can be used to send TRX to the contract.
+When the user triggers or create the contract, this can be used to send ORGON to the contract.
 
 **consume_user_resource_percent**
 
@@ -38,7 +38,7 @@ The Bandwidth consumption in one contract trigger.  (NetFee not included)
 
 **net_fee**
 
-The TRX burned for Bandwidth consumption in one contract trigger.
+The ORGON burned for Bandwidth consumption in one contract trigger.
 
 **Bandwidth**
 
@@ -50,7 +50,7 @@ The creation and operation of a smart contract consume CPU resources. It takes t
 
 **ORGON Power(TP)**
 
-1 staked TRX = 1 TP, TP can be used to vote, 1 TP = 1 vote.
+1 staked ORGON = 1 TP, TP can be used to vote, 1 TP = 1 vote.
 
 **Super Representative(SR)**
 

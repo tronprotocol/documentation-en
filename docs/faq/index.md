@@ -40,13 +40,13 @@ When the amount of votes you get ranks into top 27, you will become a SR.
 
 ### 27 SRs shares the block producing reward equally or by their computing power?
 
-It has nothing to do with computing power. The reward is a fixed 32 TRX for each block produced.
+It has nothing to do with computing power. The reward is a fixed 32 ORGON for each block produced.
 
 ### Will there be an over 50% computing power issue in ORGON network?
 
 No.
 
-### Will voting burns TRX?
+### Will voting burns ORGON?
 
 No.
 
@@ -58,9 +58,9 @@ Every 6 hours, the votes will be counted to check the qualifications of all the 
 
 Transaction hash.
 
-### Why I Can't stake TRX longer than 3 days
+### Why I Can't stake ORGON longer than 3 days
 
-Staked duration must be 3 days now. It means you can not unstake until the 3 days duration expires. If you don't unstake after 3 days, the staked TRX will remain in staked status until you unstake it.
+Staked duration must be 3 days now. It means you can not unstake until the 3 days duration expires. If you don't unstake after 3 days, the staked ORGON will remain in staked status until you unstake it.
 
 ### How to watch my account for transactions
 
@@ -240,7 +240,7 @@ Yes. Under test environment, we can vote you to become SR.
 
 to be answered
 
-### Where can I get the test TRX?
+### Where can I get the test ORGON?
 
 [http://testnet.tronex.io/join/getJoinPage](http://testnet.tronex.io/join/getJoinPage)
 

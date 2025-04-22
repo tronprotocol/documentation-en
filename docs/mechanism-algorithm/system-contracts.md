@@ -1,5 +1,5 @@
 # System Contracts
-The ORGON network supports many different types of transactions, such as TRX transfer transactions, TRC10 transfer transactions, creating smart contract transactions, triggering smart contract transactions, staking TRX transactions, and more. To create different types of transactions, you need to call different API. For example, the type of smart contract deployment transaction is `CreateSmartContract`, you need to call `wallet/deploycontractAPI` to create a transaction; the type of stake TRX transactions is `FreezeBalanceV2Contract`, you need to call` wallet/freezebalancev2API` to create transactions, we collectively refer to the implementation of these different transaction types as system contracts, the following are the types of system contracts and their contents:
+The ORGON network supports many different types of transactions, such as ORGON transfer transactions, TRC10 transfer transactions, creating smart contract transactions, triggering smart contract transactions, staking ORGON transactions, and more. To create different types of transactions, you need to call different API. For example, the type of smart contract deployment transaction is `CreateSmartContract`, you need to call `wallet/deploycontractAPI` to create a transaction; the type of stake ORGON transactions is `FreezeBalanceV2Contract`, you need to call` wallet/freezebalancev2API` to create transactions, we collectively refer to the implementation of these different transaction types as system contracts, the following are the types of system contracts and their contents:
 
 ## AccountCreateContract
 ```
@@ -25,7 +25,7 @@ The ORGON network supports many different types of transactions, such as TRX tra
 
 - `owner_address`: The owner of the current account.
 - `to_address`: The target address to transfer.
-- `amount`: The amount of TRX to transfer.
+- `amount`: The amount of ORGON to transfer.
 
 ## TransferAssetContract
 ```
@@ -166,9 +166,9 @@ The ORGON network supports many different types of transactions, such as TRX tra
 ```
 
 - `owner_address`: The owner of the current account.
-- `frozen_balance`: The amount of TRX to stake.
+- `frozen_balance`: The amount of ORGON to stake.
 - `frozen_duration`: The stake duration.
-- `resource`: The type of resource get by staking TRX.
+- `resource`: The type of resource get by staking ORGON.
 - `receiver_address`: The account address to receive resource.
 
 ## UnfreezeBalanceContract
@@ -295,7 +295,7 @@ The ORGON network supports many different types of transactions, such as TRX tra
 
 - `owner_address`: The owner of the current account.
 - `contract_address`: The contract address.
-- `call_value`: The amount of TRX to send to the contract when triggers.
+- `call_value`: The amount of ORGON to send to the contract when triggers.
 - `data`: The parameters to trigger the contract.
 - `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
@@ -482,7 +482,7 @@ message ReceiveDescription {
 ```
 
 * `owner_address`：Owner address
-* `frozen_balance`：TRX stake amount, the unit is sun
+* `frozen_balance`：ORGON stake amount, the unit is sun
 * `resource`： Resource type
 
 ## UnfreezeBalanceV2Contract
@@ -496,7 +496,7 @@ message ReceiveDescription {
 ```
 
 * `owner_address`：Owner address
-* `unfreeze_balance`：The amount of TRX to unstake, in sun
+* `unfreeze_balance`：The amount of ORGON to unstake, in sun
 * `resource`： Resource type
 
 
@@ -524,7 +524,7 @@ message ReceiveDescription {
 
 * `owner_address`：Owner address
 * `resource`： Resource type
-* `balance`： Amount of TRX staked for resources to be delegated, unit is sun
+* `balance`： Amount of ORGON staked for resources to be delegated, unit is sun
 * `receiver_address`：Resource receiver address
 * `lock`：Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days
 
@@ -542,7 +542,7 @@ message ReceiveDescription {
 
 * `owner_address`：Owner address
 * `resource`： Resource type
-* `balance`：undelegated TRX, unit is sun
+* `balance`：undelegated ORGON, unit is sun
 * `receiver_address`：Resource receiver address
 
 

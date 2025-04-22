@@ -66,7 +66,7 @@ Parameters: address
 Return: the address is correct or not
 
 #### wallet/createaccount
-Description: Create an account. Uses an already activated account to create a new account. If the owner_address has enough bandwidth obtained by freezing TRX, then creating an account will only consume bandwidth , otherwise, 0.1 TRX will be burned to pay for bandwidth, and at the same time, 1 TRX will be required to be created.
+Description: Create an account. Uses an already activated account to create a new account. If the owner_address has enough bandwidth obtained by freezing ORGON, then creating an account will only consume bandwidth , otherwise, 0.1 ORGON will be burned to pay for bandwidth, and at the same time, 1 ORGON will be required to be created.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "account_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0"}'
 ```
@@ -362,11 +362,11 @@ Parameters: `address` - Address, default hexString
 Return: Bandwidth information
 
 #### wallet/freezebalance
-Description: Stake TRX. This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
+Description: Stake ORGON. This interface has been deprecated, please use FreezeBalanceV2 to stake ORGON to obtain resources.
 
 
 #### wallet/unfreezebalance
-Description: Unstake the TRX that staked during stake1.0 phase.
+Description: Unstake the ORGON that staked during stake1.0 phase.
 ```
 curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
@@ -417,7 +417,7 @@ Return:resource delegation index
 
 
 #### wallet/freezebalancev2
-Description: Stake TRX
+Description: Stake ORGON
 
 ```
 curl -X POST http://127.0.0.1:8090/wallet/freezebalancev2 -d
@@ -431,15 +431,15 @@ curl -X POST http://127.0.0.1:8090/wallet/freezebalancev2 -d
 Parameters:
 
 - `owner_address`: Owner address, default hexString
-- `frozen_balance`: TRX stake amount, the unit is sun
-- `resource`: TRX stake type, 'BANDWIDTH' or 'ENERGY'
+- `frozen_balance`: ORGON stake amount, the unit is sun
+- `resource`: ORGON stake type, 'BANDWIDTH' or 'ENERGY'
 - `permission_id`: Optional, for multi-signature use
 
 Return: Unsigned transaction
 
 #### wallet/unfreezebalancev2
 
-Description: Unstake some TRX staked in Stake2.0, release the corresponding amount of bandwidth or energy, and voting rights (TP)
+Description: Unstake some ORGON staked in Stake2.0, release the corresponding amount of bandwidth or energy, and voting rights (TP)
 
 ```
 curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
@@ -454,7 +454,7 @@ Parameters:
 
 - `owner_address`: Owner address, default hexString
 - `resource`: Resource type: 'BANDWIDTH' or 'ENERGY'
-- `unfreeze_balance`: The amount of TRX to unstake, in sun
+- `unfreeze_balance`: The amount of ORGON to unstake, in sun
 - `permission_id`: Optional, for multi-signature use
 
 Return:Unsigned transaction
@@ -496,7 +496,7 @@ Parameters:
 
 - `owner_address`: Account address
 - `receiver_address`: Resource receiver address
-- `balance`: Amount of TRX staked for resources to be delegated, unit is sun
+- `balance`: Amount of ORGON staked for resources to be delegated, unit is sun
 - `resource`: Resource type: 'BANDWIDTH' or 'ENERGY'
 - `lock`: Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days
 - `lock_period`: lock time,The unit is block interval(3 seconds), indicates the time of how many blocks will be produced from the moment the transaction is executed. Only when lock is true, this field is valid. If the delegate lock period is 1 day, the lock_period is: 28800
@@ -523,7 +523,7 @@ Parameters:
 
 - `owner_address`: Account address
 - `receiver_address`: Resource receiver address
-- `balance`: Amount of TRX staked for resources to be delegated, unit is sun
+- `balance`: Amount of ORGON staked for resources to be delegated, unit is sun
 - `resource`: Resource type: 'BANDWIDTH' or 'ENERGY'
 - `permission_id`: Optional, for multi-signature use
 
@@ -857,11 +857,11 @@ curl -X POST  http://127.0.0.1:8090/wallet/getbandwidthprices
 Return: All historical bandwidth unit price information. Each unit price change is separated by a comma. Before the colon is the millisecond timestamp, and after the colon is the bandwidth unit price in sun.
 
 #### wallet/getburntrx
-Description: Query the amount of TRX burned due to on-chain transaction fees since No. 54 Committee Proposal took effect
+Description: Query the amount of ORGON burned due to on-chain transaction fees since No. 54 Committee Proposal took effect
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getburntrx
 ```
-Return: Amount of TRX burned, in sun.
+Return: Amount of ORGON burned, in sun.
 
 
 ### Smart Contracts
@@ -906,8 +906,8 @@ Parameters:
 - `bytecode`:bytecode，hexString
 - `parameter`:The list of the parameters of the constructor, It should be converted hexString after encoded according to ABI encoder. If constructor has no parameter, this can be optional
 - `consume_user_resource_percent`: Consume user's resource percentage. It should be an integer between [0, 100]. if 0, means it does not consume user's resource until the developer's resource has been used up
-- `fee_limit`: The maximum TRX burns for resource consumption
-- `call_value`: The TRX transfer to the contract for each call
+- `fee_limit`: The maximum ORGON burns for resource consumption
+- `call_value`: The ORGON transfer to the contract for each call
 - `owner_address`:Owner address of the contract, default hexString
 - `name`:Contract name
 - `origin_energy_limit`: The maximum resource consumption of the creator in one execution or creation
@@ -936,8 +936,8 @@ Parameters:
 - `function_selector`: Function call, must not leave a blank space
 - `parameter`: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a js tool provided by remix to convert a parameter like [1,2] to the format that VM requires
 - `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
-- `fee_limit`: The maximum TRX burns for resource consumption
-- `call_value`: The TRX transfer to the contract for each call
+- `fee_limit`: The maximum ORGON burns for resource consumption
+- `call_value`: The ORGON transfer to the contract for each call
 - `call_token_value`: The amount of  trc10 token transfer to the contract for each call
 - `token_id`: The id of trc10 token transfer to the contract
 - `owner_address`: Owner address that triggers the contract, default hexString
@@ -965,14 +965,14 @@ Parameters:
 - `function_selector`:  Function call, must not leave a blank space
 - `parameter`: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires
 - `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
-- `call_value`: The TRX transfer to the contract for each call
+- `call_value`: The ORGON transfer to the contract for each call
 - `owner_address`: Owner address that triggers the contract, default hexString
 - `call_token_value`: The amount of  trc10 token transfer to the contract for each call
 - `token_id`: The id of trc10 token transfer to the contract
 
 Return: Transaction object
 
-Note: The unit of TRX in the parameters is SUN
+Note: The unit of ORGON in the parameters is SUN
 
 
 
@@ -1052,7 +1052,7 @@ Parameters:
 - `function_selector`: Function call, must not be left blank.
 - `parameter`: Parameter encoding needs to be in accordance with the ABI rules, the rules are more complicated, users can use the ethers library to encode
 - `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
-- `call_value`: The TRX transfer to the contract for each call
+- `call_value`: The ORGON transfer to the contract for each call
 - `owner_address`:Owner address that triggers the contract. If visible=true, use base58check format, otherwise use hex
 - `call_token_value`: The amount of  trc10 token transfer to the contract for each call
 - `token_id`: The id of trc10 token transfer to the contract

@@ -38,7 +38,7 @@ The process of building a node on private chain is the same as that on mainnet. 
     | :-------- | :-------- | :-------- | :-------- |
     | localwitness     | The private key of witness address     | Please do not fill in data     | Generating blocks requires signing with a private key    |
     | genesis.block.witnesses	     | Witness address     | The same as SR node's | Genesis block related configuration     |
-    | genesis.block.Assets     | Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as needed    | The same as SR node's     | Genesis block related configuration     |
+    | genesis.block.Assets     | Preset ORGON for specific accounts. Add the pre-prepared address to the end and specify its ORGON balance as needed    | The same as SR node's     | Genesis block related configuration     |
     | p2p.version     | any positive integer except for 11111     | the same as SR node's     | Only nodes of the same p2p version can shake hands successfully    |
     | seed.node     | Please do not fill in data     | Change the seed.node ip.list in the configuration file to the IP address and the port (`listen.port`) of the SR     | Enables fullnode to establish connection with SR node and synchronize data     |
     | needSyncCheck     | false     | true     | Set the first SR’s needSyncCheck to false, other SRs true     |

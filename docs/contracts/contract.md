@@ -64,7 +64,7 @@ origin_address: smart contract creator address
 contract_address: smart contract address
 abi: the api information of all the function of the smart contract
 bytecode: smart contract byte code
-call_value: TRX transferred into smart contract while call the contract
+call_value: ORGON transferred into smart contract while call the contract
 consume_user_resource_percent: resource consumption percentage set by the developer
 name: smart contract name
 origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)
@@ -83,7 +83,7 @@ Note: If you use create command inside a contract (CREATE instruction), even use
 
 * **message calls**
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common ORGON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meantime, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
+Message calls can call the functions of other contracts, also can transfer ORGON to the accounts of contract and none-contract. Like the common ORGON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meantime, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
 
 * **delegate call/call code/library**
 
