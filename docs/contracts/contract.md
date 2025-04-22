@@ -114,9 +114,9 @@ Note: ORGON's smart contract is different from ORGON's system contract, if the t
 
 6)SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-7)TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+7)ORGON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-8)TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+8)ORGON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
 9)Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
@@ -124,18 +124,18 @@ Note: ORGON's smart contract is different from ORGON's system contract, if the t
 
 11)Compatible with all the built-in functions of Ethereum
 ```
-Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
+Note: Ethereum's RIPEMD160 function is not recommended, because the return of ORGON is a hash result based on ORGON's sha256, not an accurate Ethereum RIPEMD160.
 
 ### Contract Address Used in Solidity Language
 
-Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
+Ethereum VM address is 20 bytes, but ORGON's VM address is 21 bytes.
 
 * **address conversion**
 
-Need to convert TRON's address while using in solidity (recommended):
+Need to convert ORGON's address while using in solidity (recommended):
 ```text
 /**
-     *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
+     *  @dev    convert uint256 (HexString add 0x at beginning) ORGON address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
 */
@@ -171,13 +171,13 @@ function assignAddress() public view {
         // do something
 }
 ```
-If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
+If you want to use ORGON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
 
 ### Special Constants Differ from Ethereum
 
 #### Currency
-Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
-We recommend to use tron-studio instead of remix to build TRON smart contract.
+Like solidity supports ETH, ORGON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
+We recommend to use tron-studio instead of remix to build ORGON smart contract.
 
 #### Block Related
 - block.blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded

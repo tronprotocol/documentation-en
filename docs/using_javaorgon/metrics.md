@@ -125,7 +125,7 @@ The deployment process of the Grafana visualization tool is as follows:
 
 4. Import Dashboard
 
-    Grafana's dashboard needs to be configured. For the convenience of java-orgon node deployers, the TRON community provides a comprehensive dashboard configuration file [java-tron-template_rev1.json](https://grafana.com/grafana/dashboards/16567), which you can download directly and then import into Grafana.
+    Grafana's dashboard needs to be configured. For the convenience of java-orgon node deployers, the ORGON community provides a comprehensive dashboard configuration file [java-tron-template_rev1.json](https://grafana.com/grafana/dashboards/16567), which you can download directly and then import into Grafana.
 
      Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import the downloaded dashboard configuration file:
 

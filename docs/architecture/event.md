@@ -4,7 +4,7 @@
 
 ### TIP
 
-The TIP: [TIP-12:TRON event subscribes model](https://github.com/tronprotocol/tips/blob/master/tip-12.md) .
+The TIP: [TIP-12:ORGON event subscribes model](https://github.com/tronprotocol/tips/blob/master/tip-12.md) .
 
 ### Event Type
 

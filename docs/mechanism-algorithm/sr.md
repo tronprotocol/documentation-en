@@ -2,7 +2,7 @@
 
 ## How to Become a Super Representative
 
-Block producers in the TRON network, also called super representatives, are elected by voting. Any account can apply to become a super representative candidate by paying 9999 TRX and then participate in the super representative election. Any account can vote for super representative candidates, and the top 27 candidates with the most votes become super representatives, and they have the right to produce blocks. Super representative needs to run a TRON node to participate in block production, and will also receive block rewards and voting rewards. Voters who vote to super representatives will receive voting rewards.
+Block producers in the ORGON network, also called super representatives, are elected by voting. Any account can apply to become a super representative candidate by paying 9999 TRX and then participate in the super representative election. Any account can vote for super representative candidates, and the top 27 candidates with the most votes become super representatives, and they have the right to produce blocks. Super representative needs to run a ORGON node to participate in block production, and will also receive block rewards and voting rewards. Voters who vote to super representatives will receive voting rewards.
 
 The super representative candidates ranked 28th to 127th are also called super representative partners. Super representative partners do not participate in block production and packaging transactions, but will receive voting rewards. Voters who vote to super representative partners will also receive voting rewards.
 
@@ -10,14 +10,14 @@ The votes will be counted every 6 hours, so super representatives and super repr
 
 ## Super Representative Election
 
-To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in ORGON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
+To vote, you need to have ORGON Power(TP). To get ORGON Power, you need to stake TRX. Every 1 staked TRX accounts for one ORGON Power(TP). Every account in ORGON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding ORGON Power(TP), so your previous vote will be invalid.
 
 Note: Only your latest vote will be counted in ORGON network which means your previous vote will be over written by your latest vote.
 
 Example (Using wallet-cli):
 
 ```console
-> freezebalancev2 10,000,000 3 // Stake 10 TRX to get 10 TRON Power(TP)
+> freezebalancev2 10,000,000 3 // Stake 10 TRX to get 10 ORGON Power(TP)
 > votewitness SR1 4 SR2 6 // Vote 4 votes for SR1, 6 votes for SR2
 > votewitness SR1 3 SR2 7 // Vote 3 votes for SR1, 7 votes for SR2
 ```

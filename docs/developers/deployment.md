@@ -73,7 +73,7 @@ Example:
 java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
 ```
 
-This is similar to running a private testnet, except that the IPs in the `config.conf` are officially declared by TRON.
+This is similar to running a private testnet, except that the IPs in the `config.conf` are officially declared by ORGON.
 
 7.&nbsp;Running a Super Representative Node for private testnet
 
@@ -219,7 +219,7 @@ bash deploy_grpc_gateway.sh --rpchost 127.0.0.1 --rpcport 50052 --httpport 18891
 
 ## Event Subscribe plugin Deployment
 
-This is an implementation of TRON eventsubscribe model.
+This is an implementation of ORGON eventsubscribe model.
 
 * **api** module defines IPluginEventListener, a protocol between java-orgon and event plugin.
 * **app** module is an example for loading plugin, developers could use it for debugging.

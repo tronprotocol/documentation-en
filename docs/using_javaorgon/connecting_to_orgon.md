@@ -1,11 +1,11 @@
-# Connect to TRON network
+# Connect to ORGON network
 
 The ORGON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-orgon client software, it can be connected to any ORGON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
 
-You need to set the following configuration items to connect java-orgon to one of the TRON networks:
+You need to set the following configuration items to connect java-orgon to one of the ORGON networks:
 
 * `node.p2p.version` : It is used to set the P2P network id. Only nodes with the same network id can shake hands successfully.
-    * TRON mainnet: `node.p2p.version=11111`
+    * ORGON mainnet: `node.p2p.version=11111`
     * Nile testnet: `node.p2p.version = 201910292`
     * Private network：set to other values
 * `seed.node`: set seed node
@@ -14,7 +14,7 @@ You need to set the following configuration items to connect java-orgon to one o
 
 
 ## Find peers
-java-orgon continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-orgon finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data.
+java-orgon continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-orgon finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange ORGON data.
 
 If you want java-orgon node to do node discovery, you need to enable the node discovery service in the node configuration file first:
 
@@ -24,7 +24,7 @@ node.discovery = {
   ...
 }
 ```
-Then, for the new node that joins the TRON network, you can configure the `seed node` to make it easier for the current node to connect to the peer node, and then obtain the address information of other nodes through the peer node. Generally, the seed nodes are set as stable online fullnodes. For the TRON main network, community public nodes can be used as seed nodes, for example:
+Then, for the new node that joins the ORGON network, you can configure the `seed node` to make it easier for the current node to connect to the peer node, and then obtain the address information of other nodes through the peer node. Generally, the seed nodes are set as stable online fullnodes. For the ORGON main network, community public nodes can be used as seed nodes, for example:
 
 ```
 seed.node = {
@@ -164,20 +164,20 @@ Returns：
     "totalFlow": 8735314
 }
 ```
-In order for users to interact with the TRON network, the java-orgon  node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of `/wallet/getnowblock` queried from the local java-orgon  node. If they are equal, it means that the synchronization status of the local node is normal.
+In order for users to interact with the ORGON network, the java-orgon  node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of `/wallet/getnowblock` queried from the local java-orgon  node. If they are equal, it means that the synchronization status of the local node is normal.
 
 ## Connection problems
 There are occasions when java-orgon  simply fails to connect to peers. The common reasons for this are:
 
-* Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as `sudo ntpdate -s time.nist.gov`.
+* Local time might be incorrect. An accurate clock is required to participate in the ORGON network. The local clock can be resynchronized using commands such as `sudo ntpdate -s time.nist.gov`.
 * Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring [`node.active`](#active-and-passive-connections) in the case of node discovery invalid.
 * By configuring [`node.passive`](#active-and-passive-connections) to accept active connections from trusted nodes.
 * The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.
 
 ## Connect to private network
 
-It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences.
+It is often useful for developers to connect to private test networks rather than public testnets or ORGON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences.
 
-The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
+The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (ORGON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
 
 

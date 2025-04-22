@@ -17,7 +17,7 @@ Any ORGON network participant can initiate a discussion on a proposal. Please cr
 Below are the specifications of how to write an issue for proposal discussion.
 
 ### Title
-We hope that all users of the TRON ecosystem can participate in network governance. In order to be able to better publicize in the community, it is recommended to name the proposal and put the name at the beginning of the title. Here is an example:
+We hope that all users of the ORGON ecosystem can participate in network governance. In order to be able to better publicize in the community, it is recommended to name the proposal and put the name at the beginning of the title. Here is an example:
 
 ```
 Palma Upgrade: proposal to change the unit price of energy to 210 sun

@@ -789,7 +789,7 @@ This function is disabled by default and needs to be enabled by setting the node
 
 ### TVM
 #### 1. Implement EIP-3855 PUSH0 Instruction
-EIP-3855 is included in the Shanghai upgrade of Ethereum, which adds a new instruction called `PUSH0` to the Ethereum Virtual Machine (EVM) to reduce the gas cost of smart contract transactions, and Periander also adds a new governance proposal to be compatible with EIP-3855. On one hand, it can ensure the compatibility between ORGON and Ethereum at the virtual machine level, and on the other hand, it also reduces the energy cost of using smart contracts on TRON as well.
+EIP-3855 is included in the Shanghai upgrade of Ethereum, which adds a new instruction called `PUSH0` to the Ethereum Virtual Machine (EVM) to reduce the gas cost of smart contract transactions, and Periander also adds a new governance proposal to be compatible with EIP-3855. On one hand, it can ensure the compatibility between ORGON and Ethereum at the virtual machine level, and on the other hand, it also reduces the energy cost of using smart contracts on ORGON as well.
 
 * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-543.md](https://github.com/tronprotocol/tips/blob/master/tip-543.md)
 * Source Code: [https://github.com/alexozerov/java-orgon/pull/5175](https://github.com/alexozerov/java-orgon/pull/5175)
@@ -966,7 +966,7 @@ Please see the details below.
 
 ### API
 #### 1. Remove APIs involving sensitive information
-Versions prior to GreatVoyage-v4.7.1.1 (Pittacus) provide APIs related to signature and address generation. Since the input or output of these APIs contains private keys, there are security risks in transmission in the network. At present, public API service providers in the TRON ecosystem have closed these APIs, such as TronGrid, Anker, GetBlock, etc. In the developer document, these APIs have already been tagged as obsolete and it is recommended to sign transactions and create addresses offline using SDK.
+Versions prior to GreatVoyage-v4.7.1.1 (Pittacus) provide APIs related to signature and address generation. Since the input or output of these APIs contains private keys, there are security risks in transmission in the network. At present, public API service providers in the ORGON ecosystem have closed these APIs, such as TronGrid, Anker, GetBlock, etc. In the developer document, these APIs have already been tagged as obsolete and it is recommended to sign transactions and create addresses offline using SDK.
 
 GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:
 
@@ -1123,12 +1123,12 @@ GreatVoyage-v4.7.0.1 (Aristotle) version introduces a new stake model, Stake 2.0
 
 * TVM Supports Staking and Resource Management
 
-    In Stake 2.0, the TRON virtual machine integrates instructions related to stake and resource management. Users can perform TRX stake/unstake operations in smart contracts, as well as perform resource delegate/undelegate operations.
+    In Stake 2.0, the ORGON virtual machine integrates instructions related to stake and resource management. Users can perform TRX stake/unstake operations in smart contracts, as well as perform resource delegate/undelegate operations.
 
 
 For more details on Stake 2.0, please refer to  [What is Stake 2.0?](https://coredevs.medium.com/what-is-stake-2-0-e04f59b948a6)
 
-The new stake mechanism is a dynamic parameter in the TRON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
+The new stake mechanism is a dynamic parameter in the ORGON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
 
 * TIP: [https://github.com/tronprotocol/tips/issues/467](https://github.com/tronprotocol/tips/issues/467)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4838](https://github.com/alexozerov/java-orgon/pull/4838)
@@ -1161,7 +1161,7 @@ Starting from GreatVoyage-v4.7.0.1 (Aristotle), the libp2p library will be direc
 
 ### TVM
 #### 1. Add new instructions to support Stake 2.0
-GreatVoyage-v4.7.0.1 (Aristotle) introduces Stake 2.0, TVM will support Stake 2.0 related stake and resource delegate instructions simultaneously. Users can perform stake and resource delegate operations through smart contracts, which further enriches the application scenarios of smart contracts on the TRON network. A total of 6 instructions from 0xda to 0xdf have been added to TVM:
+GreatVoyage-v4.7.0.1 (Aristotle) introduces Stake 2.0, TVM will support Stake 2.0 related stake and resource delegate instructions simultaneously. Users can perform stake and resource delegate operations through smart contracts, which further enriches the application scenarios of smart contracts on the ORGON network. A total of 6 instructions from 0xda to 0xdf have been added to TVM:
 
 |  ID |  TVM instruction |  Description |
 | -------- | -------- | -------- |
@@ -1190,7 +1190,7 @@ A total of 11 precompiled contracts from 0x100000b to 0x1000015 have been added 
 
 
 
-Stake 2.0 is a dynamic parameter in the TRON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
+Stake 2.0 is a dynamic parameter in the ORGON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
 
 * TIP: [https://github.com/tronprotocol/tips/issues/467](https://github.com/tronprotocol/tips/issues/467)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4872](https://github.com/alexozerov/java-orgon/pull/4872)
@@ -1200,7 +1200,7 @@ The dynamic energy model is a scheme to dynamically adjust the future energy con
 
 For more information about the dynamic energy model: [Introduction to Dynamic Energy Model](https://coredevs.medium.com/introduction-to-dynamic-energy-model-31917419b61a)
 
-The dynamic energy model is a dynamic parameter in the TRON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
+The dynamic energy model is a dynamic parameter in the ORGON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
 
 * TIP: [https://github.com/tronprotocol/tips/issues/491](https://github.com/tronprotocol/tips/issues/491)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4873](https://github.com/alexozerov/java-orgon/pull/4873)
@@ -1209,7 +1209,7 @@ The dynamic energy model is a dynamic parameter in the TRON network. After Great
 
 Starting from the GreatVoyage-v4.7.0.1 (Aristotle) version, the return value of the `chainid` opcode is changed from the block hash of the genesis block to the last four bytes of the block hash of the genesis block, keeping the return value of the chainid opcode consistent with the return value of the java-tron JSON-RPC `eth_chainId` API.
 
-The return value optimization of the chainId opcode is a dynamic parameter of the TRON network. It is disabled by default after GreatVoyage-v4.7.0.1 (Aristotle) is deployed, and can be enabled by initiating a proposal.
+The return value optimization of the chainId opcode is a dynamic parameter of the ORGON network. It is disabled by default after GreatVoyage-v4.7.0.1 (Aristotle) is deployed, and can be enabled by initiating a proposal.
 
 * TIP: [https://github.com/tronprotocol/tips/issues/474](https://github.com/tronprotocol/tips/issues/474)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4863](https://github.com/alexozerov/java-orgon/pull/4863)
@@ -1325,7 +1325,7 @@ java -jar Toolkit.jar db copy -h
 
 ## GreatVoyage-v4.6.0 (Socrates)
 
-The GreatVoyage-v4.6.0 (Socrates) introduces several important optimizations and updates, such as an optimized database checkpoint mechanism, which improves the stability of node operation; optimized resource delegate relationship index structure, and an updated voting reward algorithm, which speed up the execution speed of transactions and increase network throughput; a new proposal to add transaction memo fees, increasing the cost of transactions with memo to reduce the number of low-value transactions, so that improves the security and reliability of the TRON network. The integrated toolkit, new network-related Prometheus metrics, and new help command line together bring users a more convenient development experience.
+The GreatVoyage-v4.6.0 (Socrates) introduces several important optimizations and updates, such as an optimized database checkpoint mechanism, which improves the stability of node operation; optimized resource delegate relationship index structure, and an updated voting reward algorithm, which speed up the execution speed of transactions and increase network throughput; a new proposal to add transaction memo fees, increasing the cost of transactions with memo to reduce the number of low-value transactions, so that improves the security and reliability of the ORGON network. The integrated toolkit, new network-related Prometheus metrics, and new help command line together bring users a more convenient development experience.
 
 Please check below for details.
 
@@ -1333,21 +1333,21 @@ Please check below for details.
 ### Core
 #### 1. Optimize delegate relationship index structure
 
-In the TRON network, accounts can delegate resources to other accounts through staking, and can also accept resources that other accounts stake for themselves. Therefore, each account needs to maintain a record of the delegate relationship, including all the recipient addresses that the account delegated resources to and all the addresses that delegated resources for the account.
+In the ORGON network, accounts can delegate resources to other accounts through staking, and can also accept resources that other accounts stake for themselves. Therefore, each account needs to maintain a record of the delegate relationship, including all the recipient addresses that the account delegated resources to and all the addresses that delegated resources for the account.
 
 In versions prior to GreatVoyage-v4.6.0 (Socrates), the delegate relationship is stored in the form of a list. When performing resource delegating, it needs first to check whether the recipient account already exists in the list and then adds the account to the list only if it is not present. If a particular account has delegated resources to multiple accounts or many accounts have delegated the resources to the particular account, then the length of the delegate relationship list for the particular account will be substantial. The lookup operation would be considerably time-consuming, resulting in long transaction execution times.
 
 Therefore,  GreatVoyage-v4.6.0 (Socrates) optimizes the index storage structure of the resource delegate relationship and changes it from a list to a key-value pair, so as to complete the querying and modification of its data in a constant time, which greatly speeds up the execution speed of the delegation related transactions and improves network throughput.
 
-The delegate relationship storage optimization is a dynamic parameter of the TRON network. It is disabled by default and can be enabled by initiating a proposal.
+The delegate relationship storage optimization is a dynamic parameter of the ORGON network. It is disabled by default and can be enabled by initiating a proposal.
 
 * TIP: [https://github.com/tronprotocol/tips/issues/476](https://github.com/tronprotocol/tips/issues/476)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4788](https://github.com/alexozerov/java-orgon/pull/4788)
 
 #### 2. Add transaction memo fee proposal
-Starting from GreatVoyage-v4.6.0 (Socrates), a memo fee will be charged for transactions with a memo. By increasing the cost, the fee will reduce the number of low-value transactions, so as to improve the security and reliability of the TRON network.
+Starting from GreatVoyage-v4.6.0 (Socrates), a memo fee will be charged for transactions with a memo. By increasing the cost, the fee will reduce the number of low-value transactions, so as to improve the security and reliability of the ORGON network.
 
-The memo fee is a dynamic parameter of the TRON network. After GreatVoyage-v4.6.0 (Socrates) is deployed, the default value is ‘0’, and the unit is ‘sun’. It can be enabled by specifying a non-zero value by initiating a proposal, for example, ‘1000000’, indicating that the transaction with memo will require an additional 1 TRX fee.
+The memo fee is a dynamic parameter of the ORGON network. After GreatVoyage-v4.6.0 (Socrates) is deployed, the default value is ‘0’, and the unit is ‘sun’. It can be enabled by specifying a non-zero value by initiating a proposal, for example, ‘1000000’, indicating that the transaction with memo will require an additional 1 TRX fee.
 
 * TIP: [https://github.com/tronprotocol/tips/issues/387](https://github.com/tronprotocol/tips/issues/387)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4758](https://github.com/alexozerov/java-orgon/pull/4758)
@@ -1422,7 +1422,7 @@ Usage: java -jar FullNode.jar [options] [seedNode <seedNode> ...]
 VERSION:
 4.5.2-d05f766
 
-TRON OPTIONS:
+ORGON OPTIONS:
 -v, --version			Output code version
 -h, --help   			Show help message
 -c, --config 			Config file (default:config.conf)
@@ -1556,7 +1556,7 @@ https://github.com/alexozerov/java-orgon/pull/4556
 
 
 ## GreatVoyage-v4.5.1(Tertullian)
-The GreatVoyage-v4.5.1(Tertullian) version introduces several important optimization updates. The optimized transaction cache loading process shortens the node startup time; the optimized block acquisition logic and light node synchronization logic promote the stability of the node; the optimized account asset structure and TVM cache structure improves the processing speed of transactions, thereby further improving the performance of node; supporting prometheus protocol interface brings users a more convenient development experience and helps to further prosper the TRON ecosystem.
+The GreatVoyage-v4.5.1(Tertullian) version introduces several important optimization updates. The optimized transaction cache loading process shortens the node startup time; the optimized block acquisition logic and light node synchronization logic promote the stability of the node; the optimized account asset structure and TVM cache structure improves the processing speed of transactions, thereby further improving the performance of node; supporting prometheus protocol interface brings users a more convenient development experience and helps to further prosper the ORGON ecosystem.
 
 
 
@@ -1613,7 +1613,7 @@ Source Code: https://github.com/alexozerov/java-orgon/pull/4325
 
 ### TVM
 #### 1. Adjust the upper limit that can be set for the maximum execution time of TVM
-"TVM maximum execution time" is a dynamic parameter of the TRON network, indicating the maximum time allowed for a smart contract to be executed. Super representatives can change this parameter through proposal voting. In versions prior to GreatVoyage-v4.5.1 (Tertullian), the maximum value that this parameter can be modified is 100ms. With the stability of the ORGON network infrastructure and the vigorous development of the ecology, the 100ms upper limit confines the complexity of smart contracts. Therefore, GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal that allows to raise the configurable upper limit of "TVM maximum execution time" to 400ms.
+"TVM maximum execution time" is a dynamic parameter of the ORGON network, indicating the maximum time allowed for a smart contract to be executed. Super representatives can change this parameter through proposal voting. In versions prior to GreatVoyage-v4.5.1 (Tertullian), the maximum value that this parameter can be modified is 100ms. With the stability of the ORGON network infrastructure and the vigorous development of the ecology, the 100ms upper limit confines the complexity of smart contracts. Therefore, GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal that allows to raise the configurable upper limit of "TVM maximum execution time" to 400ms.
 
 TIP: https://github.com/tronprotocol/tips/blob/master/tip-397.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4375
@@ -1667,7 +1667,7 @@ Source Code：https://github.com/alexozerov/java-orgon/pull/4349
 
 
 ## GreatVoyage-4.4.4(Plotinus)
-The GreatVoyage-v4.4.4 (Plotinus) version introduces several important optimization updates, which reduces the node memory usage; speeds up node startup; Optimized network module, block production threads, improve the stability of nodes; Improved java-tron upgrade mechanism achieves more efficient decentralized governance; TVM supports multi-version program executors, which helps make it more compatible with EVM, brings users a more convenient development experience, and helps further flourish the TRON ecosystem.
+The GreatVoyage-v4.4.4 (Plotinus) version introduces several important optimization updates, which reduces the node memory usage; speeds up node startup; Optimized network module, block production threads, improve the stability of nodes; Improved java-tron upgrade mechanism achieves more efficient decentralized governance; TVM supports multi-version program executors, which helps make it more compatible with EVM, brings users a more convenient development experience, and helps further flourish the ORGON ecosystem.
 
 ### Core
 #### 1. Optimize node startup time
@@ -1721,7 +1721,7 @@ Source Code：https://github.com/alexozerov/java-orgon/pull/4220
 
 
 #### 3. improve the java-tron upgrade mechenism
-For upgrade mechanism of java-tron,Before the GreatVoyage-v4.4.4 (Plotinus) version,all 27 super representative nodes need to complete the code upgrade, ORGON network can be upgraded to the new version,TRON is a completely decentralized governance network,Sometimes the 27 super representative nodes cannot complete the code upgrade within a certain period of time, making the version upgrade process slow.In order to achieve more efficient decentralized governance, in GreatVoyage-v4.4.4 (Plotinus), the upgrade mechanism of java-tron has been improved, only 22 super representative nodes are needed to complete the code upgrade, and the ORGON network can complete the upgrade.
+For upgrade mechanism of java-tron,Before the GreatVoyage-v4.4.4 (Plotinus) version,all 27 super representative nodes need to complete the code upgrade, ORGON network can be upgraded to the new version,ORGON is a completely decentralized governance network,Sometimes the 27 super representative nodes cannot complete the code upgrade within a certain period of time, making the version upgrade process slow.In order to achieve more efficient decentralized governance, in GreatVoyage-v4.4.4 (Plotinus), the upgrade mechanism of java-tron has been improved, only 22 super representative nodes are needed to complete the code upgrade, and the ORGON network can complete the upgrade.
 
 Source Code：https://github.com/alexozerov/java-orgon/pull/4218
 
@@ -1763,7 +1763,7 @@ Source Code：https://github.com/alexozerov/java-orgon/pull/4154
 
 
 ## GreatVoyage-4.4.0(Rousseau)
-The GreatVoyage-v4.4.0 (Rousseau) version introduces several important updates: the optimization of block broadcasting will let the block be broadcast to the entire network faster; the query performance optimization of `dynamic store` and the optimization of database parameters will be greatly improved Block processing speed, thereby improving the performance of java-tron; API customization in FullNode makes node configuration more flexible for different application scenarios; TVM will also be better compatible with EVM and adapt to the Ethereum London upgrade, the new JSON-RPC API will bring developers a better development experience, help developers to join the TRON ecosystem more easily, and promote the prosperity of the TRON ecosystem.
+The GreatVoyage-v4.4.0 (Rousseau) version introduces several important updates: the optimization of block broadcasting will let the block be broadcast to the entire network faster; the query performance optimization of `dynamic store` and the optimization of database parameters will be greatly improved Block processing speed, thereby improving the performance of java-tron; API customization in FullNode makes node configuration more flexible for different application scenarios; TVM will also be better compatible with EVM and adapt to the Ethereum London upgrade, the new JSON-RPC API will bring developers a better development experience, help developers to join the ORGON ecosystem more easily, and promote the prosperity of the ORGON ecosystem.
 
 ### Core
 #### 1. Optimize the block broadcasting
@@ -1863,7 +1863,7 @@ The quick start script tool is also upgraded in the GreatVoyage-v4.4.0 (Rousseau
 
 
 ## GreatVoyage-4.3.0(Bacon)
-The release of GreatVoyage-v4.3.0 (Bacon) includes several significant optimization enhancements. The configurability of the parameters `FREE_NET_LIMIT` and `TOTAL_NET_LIMIT` will aid the TRON community in achieving improved on-chain governance; The addition of new TVM instructions and ABI types facilitates the use of smart contracts; the new cryptography library strengthens the TRON network's security; the optimization of the account data storage and transaction verification procedures increases transaction processing speed and block verification speed, greatly improving the TRON network's performance; node startup speed improvement will benefit customers and help the TRON ecosystem grow even further.
+The release of GreatVoyage-v4.3.0 (Bacon) includes several significant optimization enhancements. The configurability of the parameters `FREE_NET_LIMIT` and `TOTAL_NET_LIMIT` will aid the ORGON community in achieving improved on-chain governance; The addition of new TVM instructions and ABI types facilitates the use of smart contracts; the new cryptography library strengthens the ORGON network's security; the optimization of the account data storage and transaction verification procedures increases transaction processing speed and block verification speed, greatly improving the ORGON network's performance; node startup speed improvement will benefit customers and help the ORGON ecosystem grow even further.
 
 ### Core
 
@@ -1980,7 +1980,7 @@ The GreatVoyage-v4.2.2.1(Epictetus) version optimizes the processing logic of `p
 
 - Source code: [#3874](https://github.com/alexozerov/java-orgon/pull/3874 )
 
-The update introduced by the GreatVoyage-v4.2.2.1(Epictetus) version optimizes the processing logic of `pending transaction`, which will greatly improve the stability of the event subscription service, bring a better experience for TRON users, and further prosper the TRON ecosystem.
+The update introduced by the GreatVoyage-v4.2.2.1(Epictetus) version optimizes the processing logic of `pending transaction`, which will greatly improve the stability of the event subscription service, bring a better experience for ORGON users, and further prosper the ORGON ecosystem.
 
  ---
 *No great thing is created suddenly.*
@@ -1989,7 +1989,7 @@ The update introduced by the GreatVoyage-v4.2.2.1(Epictetus) version optimizes t
 
 
 ## GreatVoyage-4.2.2(Lucretius)
-The version of GreatVoyage-v4.2.2 (Lucretius) introduces three important optimizations. The optimization of block processing effectively improves the execution speed of the block, thereby significantly improving the performance of the TRON network. Efficient HTTP/RPC query and excellent TVM performance will bring a better experience to TRON DAPP users and further prosper the TRON ecosystem.
+The version of GreatVoyage-v4.2.2 (Lucretius) introduces three important optimizations. The optimization of block processing effectively improves the execution speed of the block, thereby significantly improving the performance of the ORGON network. Efficient HTTP/RPC query and excellent TVM performance will bring a better experience to ORGON DAPP users and further prosper the ORGON ecosystem.
 
 ### Core Protocol
 
@@ -2034,32 +2034,32 @@ In the version of GreatVoyage-v4.2.2 (Lucretius), smart contract ABIs are transf
 
 
 ## GreatVoyage-4.2.0(Plato)
-The GreatVoyage-4.2.0 (Plato) version introduces two important updates. The optimization of the resource model will increase the utilization rate of ORGON network resources and make the resource acquisition method more reasonable. The new TVM instructions make the use scenarios of smart contracts more abundant and will further enrich the TRON ecosystem.
+The GreatVoyage-4.2.0 (Plato) version introduces two important updates. The optimization of the resource model will increase the utilization rate of ORGON network resources and make the resource acquisition method more reasonable. The new TVM instructions make the use scenarios of smart contracts more abundant and will further enrich the ORGON ecosystem.
 
 ### Core Protocol
 #### 1. Optimize the resource model
 
-Before the GreatVoyage-4.2.0 (Plato) version, while users obtained a large amount of TRON power by staking TRX, they also obtained a large amount of energy and bandwidth. The utilization rate of these energies and bandwidth is extremely low, and most of them are not used at all, which increases the cost of obtaining resources. In order to improve the utilization rate of these resources, the GreatVoyage-4.2.0(Plato) version proposes an optimization of the resource model, where staking TRX can only obtain one of the three resources, namely bandwidth, energy, and TRON power. After optimization, users can obtain the corresponding resources based on their own needs, thereby improving the utilization rate of resources.
+Before the GreatVoyage-4.2.0 (Plato) version, while users obtained a large amount of ORGON power by staking TRX, they also obtained a large amount of energy and bandwidth. The utilization rate of these energies and bandwidth is extremely low, and most of them are not used at all, which increases the cost of obtaining resources. In order to improve the utilization rate of these resources, the GreatVoyage-4.2.0(Plato) version proposes an optimization of the resource model, where staking TRX can only obtain one of the three resources, namely bandwidth, energy, and ORGON power. After optimization, users can obtain the corresponding resources based on their own needs, thereby improving the utilization rate of resources.
 
 - TIP： [TIP-207](https://github.com/tronprotocol/tips/blob/master/tip-207.md)
 - Source Code:  [#3726](https://github.com/alexozerov/java-orgon/pull/3726)
 
 **Notes:**
   * This feature is disabled by default and can be enabled through the proposal system.
-  * After the feature is enabled, the user's previously obtained resources remain unchanged. The TRON power obtained before the proposal passage will be cleared when the user triggers an unstake  transaction (unstake bandwidth, energy, or TRON power).
+  * After the feature is enabled, the user's previously obtained resources remain unchanged. The ORGON power obtained before the proposal passage will be cleared when the user triggers an unstake  transaction (unstake bandwidth, energy, or ORGON power).
 
 ### TVM
 #### 1、Add Freeze/Unfreeze instructions in TVM
 
 
-In the TRON network, one non-contract account can stake TRX to obtain resources such as bandwidth, energy, TRON power, and reasonable use of these resources can bring certain benefits to users. At the same time, although smart contract accounts do have TRX, there is no way to stake these TRX to obtain resources.  In order to solve this inconsistency, the GreatVoyage-4.2.0(Plato) version introduces Freeze/Unfreeze instructions in TVM, so that smart contracts can also support staking TRX to obtain resources.
+In the ORGON network, one non-contract account can stake TRX to obtain resources such as bandwidth, energy, ORGON power, and reasonable use of these resources can bring certain benefits to users. At the same time, although smart contract accounts do have TRX, there is no way to stake these TRX to obtain resources.  In order to solve this inconsistency, the GreatVoyage-4.2.0(Plato) version introduces Freeze/Unfreeze instructions in TVM, so that smart contracts can also support staking TRX to obtain resources.
 
 - TIP: [TIP-157](https://github.com/tronprotocol/tips/blob/master/tip-157.md)
 - Source Code： [#3728](https://github.com/alexozerov/java-orgon/pull/3728)
 
 **Notes:**
   * This feature is disabled by default and can be enabled through the proposal system.
-  * The TVM `freeze` instruction can obtain bandwidth and energy. For TRON POWER, it can be obtained and used after the TVM supports the voting instruction.
+  * The TVM `freeze` instruction can obtain bandwidth and energy. For ORGON POWER, it can be obtained and used after the TVM supports the voting instruction.
   * The `receiving` address/`target` address used in the Freeze/Unfreeze instructions must be `address payable` type, and the `receiving` address/`target` address cannot be a contract address other than itself.
   * The inactive account will be automatically activated if the account is the receiver of TVM `Freeze` instruction, and 25,000 energy will be deducted as the account activation cost.
 
@@ -2096,7 +2096,7 @@ In this upgrade, the Fullnode node provides 3 API to obtain detailed information
 - /wallet/getpendingsize: Get the number of transactions in pending pool
 
 
-The optimization of transaction packaging logic of GreatVoyage-4.1.3(Thales)  will effectively reduce low-cost attacks and greatly improve the security of the TRON public chain.
+The optimization of transaction packaging logic of GreatVoyage-4.1.3(Thales)  will effectively reduce low-cost attacks and greatly improve the security of the ORGON public chain.
 
 
 ---
@@ -2139,7 +2139,7 @@ After the feature is turned on, the transaction fee from burning TRX which charg
 ### II. TVM
 #### 1、Adopt to solidity0.6.0.
 
-After this upgrade, TRON will be fully compatible with the new features introduced by solidity 0.6.0, including the new virtual and override keywords, and supporting try/catch. For details, please refer to the TRON Solidity release note: https://github.com/tronprotocol/solidity/releases/tag/tv_0.6.0
+After this upgrade, ORGON will be fully compatible with the new features introduced by solidity 0.6.0, including the new virtual and override keywords, and supporting try/catch. For details, please refer to the ORGON Solidity release note: https://github.com/tronprotocol/solidity/releases/tag/tv_0.6.0
 
 - TIP:  [TIP-209](https://github.com/tronprotocol/tips/issues/209)
 - Source Code： [#3351](https://github.com/alexozerov/java-orgon/pull/3535)
@@ -2164,7 +2164,7 @@ GreatVoyage-version 4.1.1 is released with the following new features and modifi
 
 ### I. Core Protocol
 #### 1. New Consensus Protocol
-The new consensus mechanism combines TRON's existing DPoS consensus with the PBFT consensus mechanism. PBFT's three-phase voting mechanism is adopted to confirm whether a block should be solidified. It will take an average of 1-2 slots (a slot equals 3s) from creation to confirmation of a TRON block, much shorter than the previous 19 slots. This signifies a remarkable increase in the block confirmation speed.
+The new consensus mechanism combines ORGON's existing DPoS consensus with the PBFT consensus mechanism. PBFT's three-phase voting mechanism is adopted to confirm whether a block should be solidified. It will take an average of 1-2 slots (a slot equals 3s) from creation to confirmation of a ORGON block, much shorter than the previous 19 slots. This signifies a remarkable increase in the block confirmation speed.
 TIP: [TICP-Optimized-PBFT](https://github.com/tronprotocol/tips/blob/master/tp/ticp/ticp-optimized-pbft/ticp-Optimized-PBFT.md)
 Source code: [#3082](https://github.com/alexozerov/java-orgon/pull/3082)
 
@@ -2273,7 +2273,7 @@ Odyssey-v3.7 has modularized the code organization structure, making it much eas
 As the core module, Framework performs as both a gateway to the blockchain and an adhesive that effectively connects all other modules. In other words, the framework module initializes each module and facilitates communication between modules.
 
 #### Protocol
-The decentralized TRON protocol can be implemented by any teams without limitation of programming languages. Any clients in accordance with the TRON protocol can communicate with each other.
+The decentralized ORGON protocol can be implemented by any teams without limitation of programming languages. Any clients in accordance with the ORGON protocol can communicate with each other.
 A concise and efficient data transfer protocol is essential to a distributed network, even more for the blockchain. So, the implementation of the protocol is based on the Protocol Buffers, an open-source and excellent software protocol maintained by Google.
 The specific business logic of the blockchain defined by the protocol includes:
 - the data format of message，including block, transaction, proposal, witness, vote, account, exchange and so on.
@@ -2281,14 +2281,14 @@ The specific business logic of the blockchain defined by the protocol includes:
 - the interface protocols that the blockchain provides to the external system or clients
 
 #### Consensus
-The consensus mechanism is an essential part of the blockchain. The TRON blockchain chooses the DPoS as the core consensus mechanism and it has been running steadily for a long time. But replaceable consensus module is essential if we want to redefine the java-tron as the powerful infrastructure for building application-specific blockchains. The developers of blockchain should determine to choose the consensus mechanism that considered to be most suitable to the specific application scenario. The ultimate goal of the replaceable consensus module is that the consensus mechanism can be determined by configuring some necessary parameters. In addition, the developers can implement a customized consensus module as long as several essential interfaces implemented.
+The consensus mechanism is an essential part of the blockchain. The ORGON blockchain chooses the DPoS as the core consensus mechanism and it has been running steadily for a long time. But replaceable consensus module is essential if we want to redefine the java-tron as the powerful infrastructure for building application-specific blockchains. The developers of blockchain should determine to choose the consensus mechanism that considered to be most suitable to the specific application scenario. The ultimate goal of the replaceable consensus module is that the consensus mechanism can be determined by configuring some necessary parameters. In addition, the developers can implement a customized consensus module as long as several essential interfaces implemented.
 
 #### Crypto
 Encryption is also one of the core modules of the blockchain. It is the foundation of the
 blockchain data security. such as public and private key deduction, transaction verification, zero-knowledge proof, etc. The java-tron abstracts the encryption module and supports the replacement of encryption algorithms. A suitable encryption algorithm can be chosen according to different business needs.
 
 #### Actuator
-Actuator is the core module used for handling various kinds of transactions. As you know, every transaction in the TRON blockchain contains a contract. On a high level, there are two types of contracts in the TRON blockchain, the system contract and the smart contract. A large number of applications are implemented by the smart contracts and ran in an internal virtual machine of the blockchain. Unfortunately, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. Customized actuators offer application developers a brand new way of development. They can choose to implant their application codes into the chain instead of running them on virtual machines.
+Actuator is the core module used for handling various kinds of transactions. As you know, every transaction in the ORGON blockchain contains a contract. On a high level, there are two types of contracts in the ORGON blockchain, the system contract and the smart contract. A large number of applications are implemented by the smart contracts and ran in an internal virtual machine of the blockchain. Unfortunately, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. Customized actuators offer application developers a brand new way of development. They can choose to implant their application codes into the chain instead of running them on virtual machines.
 
 #### Chainbase
 Chainbase is specially designed for data storage in the blockchain. Nodes always consider the longest chain to be the correct one and will keep working on extending it. So switching to the longest chain is a common scenario for the blockchain unless it uses a deterministic consensus algorithm like PBFT. For this reason, supporting data rollback is the most distinctive feature of the chainbase module. Several well-designed abstract interfaces are defined in this module. So, the developers can choose the storage engine freely and then implement corresponding interfaces. The LevelDB and RocksDB are two existing implementation.
@@ -2335,11 +2335,11 @@ The new delegation mechanism enables SRs to set commission rates by themselves, 
 
 ### 2. Fairer and more efficient staking rewards mechanism
 
-Staking rewards are now distributed in a fully-decentralized way, a step forward from the old partially-decentralized mechanism. With this change, staking rewards are now distributed entirely through the blockchain, ensuring complete supervision from the chain and thus true decentralization. Moreover, the new mechanism cuts unnecessary reward distribution transactions, signaling lower bandwidth consumption and higher efficiency on the TRON network.
+Staking rewards are now distributed in a fully-decentralized way, a step forward from the old partially-decentralized mechanism. With this change, staking rewards are now distributed entirely through the blockchain, ensuring complete supervision from the chain and thus true decentralization. Moreover, the new mechanism cuts unnecessary reward distribution transactions, signaling lower bandwidth consumption and higher efficiency on the ORGON network.
 
 ### 3. Fairer incentive mechanism
 
-Block rewards decreased from 32 TRX to 16 TRX, while voting rewards increased from 16 TRX to 160 TRX. The adjustment will boost voter turnout in the community, with more TRX locked up by users in the TRON ecosystem. This move is accompanied by the new staking rewards mechanism to guarantee real staking revenues to users.
+Block rewards decreased from 32 TRX to 16 TRX, while voting rewards increased from 16 TRX to 160 TRX. The adjustment will boost voter turnout in the community, with more TRX locked up by users in the ORGON ecosystem. This move is accompanied by the new staking rewards mechanism to guarantee real staking revenues to users.
 
 ### 4. Improvement and optimization of TVM
 
@@ -2360,7 +2360,7 @@ validatemultisign(address accountAddress, uint256 permissionId, bytes32 content,
 
 ### 5. Improvement of the dynamic adjustment scheme of Energy upper limit
 
-The method of calculating Energy consumed per unit of time shifted from only calculating the staked Energy consumed to all Energy consumed. With this change, statistics of Energy consumption will be more accurate and effective, providing reference for adjusting Energy upper limit, saving users’ costs of using TRON blockchain network and improving network efficiency.
+The method of calculating Energy consumed per unit of time shifted from only calculating the staked Energy consumed to all Energy consumed. With this change, statistics of Energy consumption will be more accurate and effective, providing reference for adjusting Energy upper limit, saving users’ costs of using ORGON blockchain network and improving network efficiency.
 
 
 

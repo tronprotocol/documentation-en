@@ -2,14 +2,14 @@
 
 ## Introduction
 
-Voting Right, bandwidth and energy are important system resources of the TRON network. Among them, voting rights are used to vote for super representatives; Bandwidth is the unit that measures the size of the transaction bytes stored in the blockchain database. The larger the transaction, the more bandwidth resources will be consumed. Energy is the unit that measures the amount of computation required by the TRON virtual machine to perform specific operations on the TRON network. Since smart contract transactions require computing resources to execute, each smart contract transaction requires to pay for the energy fee.
+Voting Right, bandwidth and energy are important system resources of the ORGON network. Among them, voting rights are used to vote for super representatives; Bandwidth is the unit that measures the size of the transaction bytes stored in the blockchain database. The larger the transaction, the more bandwidth resources will be consumed. Energy is the unit that measures the amount of computation required by the ORGON virtual machine to perform specific operations on the ORGON network. Since smart contract transactions require computing resources to execute, each smart contract transaction requires to pay for the energy fee.
 
 !!! note
     - Ordinary transaction only consumes Bandwidth points
     - Smart contract related transaction not only consumes Bandwidth points, but also Energy
 
 ## Voting Right
-Before any account can vote for super representatives, it needs to obtain voting rights, that is, TRON Power (TP). Voting rights can be obtained by staking TRX. In addition to obtaining bandwidth or energy, staking TRX will also obtain voting rights at the same time. Voters who stake 1TRX will receive 1TP. For how to stake, please refer to the [Staking on TRON Network](#staking-on-tron-network) chapter.
+Before any account can vote for super representatives, it needs to obtain voting rights, that is, ORGON Power (TP). Voting rights can be obtained by staking TRX. In addition to obtaining bandwidth or energy, staking TRX will also obtain voting rights at the same time. Voters who stake 1TRX will receive 1TP. For how to stake, please refer to the [Staking on ORGON Network](#staking-on-tron-network) chapter.
 
 Voters can stake multiple times, and the voting rights obtained by multiple stake will be added to the voter's account. Voters can query the total number of voting rights owned by the account and the number of used voting rights through the `wallet/getaccountresource` interface.
 
@@ -79,7 +79,7 @@ Example (Using wallet-cli):
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180,000,000,000.
+stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in ORGON * 180,000,000,000.
 
 Example:
 
@@ -220,7 +220,7 @@ Note: when developer create a contract, do not set consume_user_resource_percent
 
 ## Dynamic Energy Model
 
-The dynamic energy model is a resource balancing mechanism of the TRON network, which can dynamically adjust the energy consumption of each contract according to the resource occupancy of the contract, so as to make the allocation of energy resources on the chain more reasonable and prevent excessive concentration of network resources on a few popular contracts. For more details, please refer to [Introduction to Dynamic Energy Model](https://coredevs.medium.com/introduction-to-dynamic-energy-model-31917419b61a).
+The dynamic energy model is a resource balancing mechanism of the ORGON network, which can dynamically adjust the energy consumption of each contract according to the resource occupancy of the contract, so as to make the allocation of energy resources on the chain more reasonable and prevent excessive concentration of network resources on a few popular contracts. For more details, please refer to [Introduction to Dynamic Energy Model](https://coredevs.medium.com/introduction-to-dynamic-energy-model-31917419b61a).
 
 ### Principle
 
@@ -264,14 +264,14 @@ The dynamic energy model has been enabled on the main network, and the relevant 
 
 Since the energy consumption of popular contracts is different in different maintenance cycles, it is necessary to set the appropriate feelimit parameter for the transaction when calling the contract.
 
-## Staking on TRON network
+## Staking on ORGON network
 
 
 ### How to stake to obtain system resources
 
 Energy and bandwidth resources are obtained by the account owner through staking, please use `wallet/freezebalancev2` to complete the stake operation through HTTP API, use [Stake2.0 Solidity API](https://developers.tron.network/docs/stake-20-solidity-api) to complete the stake operation through the contract.
 
-TRON allocates resources through the staking mechanism. In addition to obtaining bandwidth or energy resources, staking TRX will also obtain voting rights (TRON Power, TP for short) equal to the amount staked. Staking 1 TRX, you will get 1TP. The energy or bandwidth resources obtained by staking are used to pay transaction fees, and the obtained voting rights are used to vote for super representatives to obtain voting rewards.
+ORGON allocates resources through the staking mechanism. In addition to obtaining bandwidth or energy resources, staking TRX will also obtain voting rights (ORGON Power, TP for short) equal to the amount staked. Staking 1 TRX, you will get 1TP. The energy or bandwidth resources obtained by staking are used to pay transaction fees, and the obtained voting rights are used to vote for super representatives to obtain voting rewards.
 
 The unstaking operation will release the corresponding resources.
 
@@ -295,7 +295,7 @@ The TRX that have been delegated cannot be unstaked. In addition to losing the s
 
 When unstaking, if there are unclaimed voting rewards, the voting rewards will be automatically withdrawn to the account. If there is a previously unstaked principal that has passed the lock-up period, then this unstake operation will also withdraw the unstaked principal that has passed the lock-up period to the account at the same time. You can use the `gettransactioninfobyid`API to query the voting reward extracted in this transaction in `withdraw_amount` field and the withdrawn amount of unstaked TRX that has expired the lock-up period in `withdraw_expire_amount` field.
 
-#### TRON Power Reclaim
+#### ORGON Power Reclaim
 
 After unstaking the TRX staked in the Stake2.0 stage, the same amount of voting rights will be lost. The system will first reclaim the idle voting rights in the account. If the idle TP is insufficient, it will continue to reclaim the used TP. If the user has voted for multiple super representatives, a certain number of votes will be withdrawn in proportion from each super representative, and the corresponding voting rights will be recovered. The calculation formula for withdrawing votes for each SR is,
 
@@ -305,7 +305,7 @@ The number of votes withdrawn from the current super representative = total numb
 
 
 
-For example, Suppose A staked 2,000TRX and obtained 2,000 TRON Power, of which 1,000 TRON Power voted for 2 super representatives, 600 votes and 400 votes respectively, and 1,000 TRON Power remained in the account. At this time, A unstakes 1,500TRX, which means that 1,500 TRON Power needs to be reclaimed from A’ account. In this case, the idle 1,000 TP in A’s account will be withdrawn first, and the spared 500 TP will be withdrawn from the voted TP,
+For example, Suppose A staked 2,000TRX and obtained 2,000 ORGON Power, of which 1,000 ORGON Power voted for 2 super representatives, 600 votes and 400 votes respectively, and 1,000 ORGON Power remained in the account. At this time, A unstakes 1,500TRX, which means that 1,500 ORGON Power needs to be reclaimed from A’ account. In this case, the idle 1,000 TP in A’s account will be withdrawn first, and the spared 500 TP will be withdrawn from the voted TP,
 which is 300 TP and 200 TP respectively from the two super representatives. Here's how the votes are calculated:
 
 - Number of votes withdrawn by Super Representative 1 = 500 \* (600 / 1,000) = 300

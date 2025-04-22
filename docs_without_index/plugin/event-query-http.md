@@ -1,13 +1,13 @@
-#  TRON Event Query Service
+#  ORGON Event Query Service
 ## What is the main HTTP service?
 baseUrl: https://api.tronex.io
 
-## Main HTTP Service  
+## Main HTTP Service
 Function: get transaction list
 ```
 subpath: $baseUrl/transactions
 
-parameters   
+parameters
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 start: start page, default is 1
@@ -20,16 +20,16 @@ Function: get transaction by hash
 ```
 subpath: $baseUrl/transactions/{hash}
 
-parameters   
+parameters
 hash: transaction id
 
 Example: https://api.tronex.io/transactions/d271047a4cc8773cf31923e3858800f6eaeebb205693ae163f526d67f8b606b7
 ```
 Function: get transfers list
 ```
-subpath: $baseUrl/transfers	
+subpath: $baseUrl/transfers
 
-parameters   
+parameters
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 start: start page, default is 1
@@ -43,7 +43,7 @@ Function: get transfers by transactionId
 ```
 subpath: $baseUrl/transfers/{hash}
 
-parameters   
+parameters
 hash: transfer hash
 
 Example: https://api.tronex.io/transfers/70d655a17e04d6b6b7ee5d53e7f37655974f4e71b0edd6bcb311915a151a4700
@@ -52,7 +52,7 @@ Function: get events list
 ```
 subpath: $baseUrl/events
 
-parameters   
+parameters
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 since: start time of event occurrence, timeStamp >= since will be shown
@@ -65,7 +65,7 @@ Function: get events by transactionId
 ```
 subpath: $baseUrl/events/transaction/{transactionId}
 
-parameters   
+parameters
 transactionId
 
 Example: https://api.tronex.io/events/transaction/cd402e64cad7e69c086649401f6427f5852239f41f51a100abfc7beaa8aa0f9c
@@ -74,7 +74,7 @@ Function: get events by contract address
 ```
 subpath: $baseUrl/events/{contractAddress}
 
-parameters   
+parameters
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 since: start time of event occurrence, timeStamp >= since will be shown
@@ -88,7 +88,7 @@ Function: get events by contract address and event name
 ```
 subpath: $baseUrl/events/contract/{contractAddress}/{eventName}
 
-parameters   
+parameters
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 since: start time of event occurrence, timeStamp >= since will be shown
@@ -102,7 +102,7 @@ Function: get events by contract address, event name and block number
 ```
 subpath: $baseUrl/events/contract/{contractAddress}/{eventName}/{blockNumber}
 
-parameters   
+parameters
 contractAddress: contract address
 blockNumber: block number, block number >= block will be shown
 eventName: event name
@@ -114,7 +114,7 @@ Function: get events by timeStamp
 ```
 subpath: $baseUrl/events/timestamp
 
-parameters   
+parameters
 since: start time of event occurrence, timeStamp >= since will be shown
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
@@ -128,7 +128,7 @@ Function: get confirm events list
 ```
 subpath: $baseUrl/events/confirmed
 
-parameters   
+parameters
 since: start time of event occurrence, timeStamp >= since will be shown
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
@@ -141,7 +141,7 @@ Function: get block by block hash
 ```
 subpath: $baseUrl/blocks/{hash}
 
-parameters   
+parameters
 hash: block hash
 
 
@@ -151,11 +151,11 @@ Function: get block list
 ```
 subpath: $baseUrl/blocks
 
-parameters   
+parameters
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 start: start page, default is 1
-block: block number, block number >= block will be shown 
+block: block number, block number >= block will be shown
 
 
 Example: https://api.tronex.io/blocks?limit=1&sort=timeStamp&start=0&block=0
@@ -164,7 +164,7 @@ Function: get latest block number
 ```
 subpath: $baseUrl/blocks/latestSolidifiedBlockNumber
 
-parameters   
+parameters
 none
 
 Example: https://api.tronex.io/blocks/latestSolidifiedBlockNumber
@@ -173,11 +173,11 @@ Function: get contract log list
 ```
 subpath: $baseUrl/contractlogs
 
-parameters   
+parameters
 limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 start: start page, default is 1
-block: block number, block number >= block will be shown 
+block: block number, block number >= block will be shown
 
 Example: https://api.tronex.io/contractlogs
 ```
@@ -185,7 +185,7 @@ Function: get contract log list based on transactionId
 ```
 subpath: $baseUrl/contractlogs/transaction/{transactionId}
 
-parameters   
+parameters
 transactionId
 
 Example: https://api.tronex.io/contractlogs/transaction/{transactionId}
@@ -194,7 +194,7 @@ Function: post abi string and get contract log list based on transactionId(relea
 ```
 subpath: $baseUrl/contract/transaction/{transactionId}
 
-parameters   
+parameters
 transactionId
 body:
 abi: user self upload abi
@@ -205,7 +205,7 @@ Function: get contract log list based on contractAddress
 ```
 subpath: $baseUrl/contractlogs/contract/{contractAddress}
 
-parameters   
+parameters
 contractAddress
 
 Example: https://api.tronex.io/contractlogs/contract/{contractAddress}
@@ -214,7 +214,7 @@ Function: post abi string and get contract log list based on contractAddress(rel
 ```
 subpath: $baseUrl/contract/contractAddress/{contractAddress}
 
-parameters   
+parameters
 contractAddress
 abi: user self upload abi
 
@@ -224,7 +224,7 @@ Function: get contract log list based on uniqueId
 ```
 subpath: $baseUrl/contractlogs/uniqueId/{uniqueId}
 
-parameters   
+parameters
 uniqueId
 
 Example: https://api.tronex.io/contractlogs/uniqueId/{uniqueId}
@@ -233,7 +233,7 @@ Function: post abi string and get contract log list based on uniqueId(release on
 ```
 subpath: $baseUrl/contract/uniqueId/{uniqueId}
 
-parameters   
+parameters
 uniqueId
 abi: user self upload abi
 

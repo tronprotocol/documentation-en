@@ -2,7 +2,7 @@
 
 ## Introduction
 
-TRON uses the account model. The address is the unique identifier of an account, and a private key signature is required to operate an account. An account has many attributes, including TRX & TRC10 token balances, bandwidth, energy, Etc. An account can send transactions to increase or reduce its TRX or TRC10 token balances, deploy smart contracts, and trigger the smart contracts released by itself or others. All TRON accounts can apply to be Super Representatives or vote for the elected Super Representatives. Accounts are the basis of all activities on TRON.
+ORGON uses the account model. The address is the unique identifier of an account, and a private key signature is required to operate an account. An account has many attributes, including TRX & TRC10 token balances, bandwidth, energy, Etc. An account can send transactions to increase or reduce its TRX or TRC10 token balances, deploy smart contracts, and trigger the smart contracts released by itself or others. All ORGON accounts can apply to be Super Representatives or vote for the elected Super Representatives. Accounts are the basis of all activities on ORGON.
 
 ## How to Create an Account
 
@@ -13,7 +13,7 @@ If you have enough staked BandWidth Points, creating an account only consume you
 
 ## Key-pair Generation
 
-TRON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
+ORGON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
 
 ## Address Format
 

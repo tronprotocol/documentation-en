@@ -1903,17 +1903,17 @@ wallet> getproposal 34
 
 Voting requires ORGON Power, which can be obtained by freezing funds.
 ```
-wallet> votewitness [SR(Super Representatives) address] [TRON Power Amount]
+wallet> votewitness [SR(Super Representatives) address] [ORGON Power Amount]
 ```
 
 * The share calculation method is: 1 unit of share can be obtained for every 1TRX frozen.
 * After unfreezing, previous vote will expire. You can avoid the invalidation of the vote by re-freezing and voting.
 
-**NOTE** The TRON Network only records the status of your last vote, which means that each of your votes will overwrite all previous voting results.
+**NOTE** The ORGON Network only records the status of your last vote, which means that each of your votes will overwrite all previous voting results.
 
 For example:
 ```shell
-wallet> freezeBalance 100000000 3 1 address  # Freeze 10TRX and acquire 10 units of TRON Power
+wallet> freezeBalance 100000000 3 1 address  # Freeze 10TRX and acquire 10 units of ORGON Power
 
 wallet> votewitness [SR1] 4 [SR2] 6  # Cast 4 votes for SR1 and 6 votes for SR2 at the same time
 

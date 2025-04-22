@@ -2,9 +2,9 @@
 
 This page mainly explains how to start the java-orgon node and use the command line tool `wallet-cli` to execute basic commands to interact with the java-orgon node. Regarding the installation of java-orgon , you can download the runnable file directly or build it from source code. Instructions for installing java-orgon can be found on the [Install and Build](../using_javaorgon/installing_javaorgon.md) page. This tutorial on this page assumes java-orgon and associated developer tools have been successfully installed.
 
-This page covers the basics of using java-orgon , which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with java-orgon more conveniently.
+This page covers the basics of using java-orgon , which includes generating accounts, joining the ORGON Nile testnet, and sending TRX between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the ORGON network. This tool provides user interactive commands, which can be used to interact with java-orgon more conveniently.
 
-java-orgon is a ORGON network client written in Java. This means a computer running java-orgon will become a ORGON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-orgon uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
+java-orgon is a ORGON network client written in Java. This means a computer running java-orgon will become a ORGON network node. ORGON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-orgon uses the information provided by each block to update its "state" - the balance of each account on the ORGON network. There are two types of accounts on the ORGON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the ORGON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.
 
 ## Generat account
 There are various ways to generate a ORGON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).
@@ -62,7 +62,7 @@ Then you can use the `backupwallet` command to view the private key of the accou
 
 
 ## Run a java-orgon node
-java-orgon is a ORGON network client that enables computers to connect to the TRON network. The network in this tutorial refers to the TRON Nile testnet. To start java-orgon , you need first obtain the java-orgon executable file, please refer to the [Installation and Deployment](../using_javaorgon/installing_javaorgon.md) chapter, and then run the following command to start java-orgon .
+java-orgon is a ORGON network client that enables computers to connect to the ORGON network. The network in this tutorial refers to the ORGON Nile testnet. To start java-orgon , you need first obtain the java-orgon executable file, please refer to the [Installation and Deployment](../using_javaorgon/installing_javaorgon.md) chapter, and then run the following command to start java-orgon .
 ```
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 ```
@@ -110,23 +110,23 @@ These logs show that java-orgon is running as expected. You can determine whethe
 ```
 $ curl http://127.0.0.1:16887/wallet/getnodeinfo
 ```
-If no error messages are reported in the node logs, everything is fine. In order for users to interact with the TRON network, the java-orgon node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of the local java-orgon node `/wallet/getnowblock`. If they are equal, it means that the synchronization status of the local node is normal.
+If no error messages are reported in the node logs, everything is fine. In order for users to interact with the ORGON network, the java-orgon node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of the local java-orgon node `/wallet/getnowblock`. If they are equal, it means that the synchronization status of the local node is normal.
 
 If you want to shut down java-orgon node, please use this command: `kill -15 process id`.
 
 ## Obtain TRX
-In order to make some transactions, the user must fund their account with TRX. On TRON mainnet, TRX can only be obtained in three ways:
+In order to make some transactions, the user must fund their account with TRX. On ORGON mainnet, TRX can only be obtained in three ways:
 1. Rewards for block production by SRs/rewards for voting for SRs；
-2. Another TRON account transfers TRX to it;
+2. Another ORGON account transfers TRX to it;
 3. Obtained from the exchange.
 
-In the TRON testnet, TRX has no real value and can be obtained for free through [faucet](https://nileex.io/join/getJoinPage).
+In the ORGON testnet, TRX has no real value and can be obtained for free through [faucet](https://nileex.io/join/getJoinPage).
 
 
 ## Interact with java-orgon node
 
 ### Interact by using wallet-cli
-java-orgon provides http interface and grpc interface externally, which is convenient for users to interact with TRON network. wallet-cli uses the grpc interface.
+java-orgon provides http interface and grpc interface externally, which is convenient for users to interact with ORGON network. wallet-cli uses the grpc interface.
 #### Get account information
 After entering the `getaccount` command in wallet-cli, it will request account information data from the java-orgon node, and then display the result in the terminal.
 ```

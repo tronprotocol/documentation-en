@@ -1,6 +1,6 @@
 # java-orgon Core Modules
 ## Code Structure
-java-orgon is a ORGON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a ORGON node by starting java-orgon. In this article, we will describe the code structure of java-orgon in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
+java-orgon is a ORGON network client developed based on the Java language. It implements all the functions mentioned in the ORGON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a ORGON node by starting java-orgon. In this article, we will describe the code structure of java-orgon in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
 
 java-orgon adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-orgon is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
 
@@ -121,7 +121,7 @@ In addition, the chainbase module features a well-designed abstract interface. A
 
     * `store/`
 
-        Various databases, such as `AccountStore`, `ProposalStore`, etc. `AccountStore` is the account database, the database name is `account`, which stores all account information in the TRON network; `ProposalStore` is the proposal database, and the database name is `proposal`, which stores all the proposal information in the TRON network.
+        Various databases, such as `AccountStore`, `ProposalStore`, etc. `AccountStore` is the account database, the database name is `account`, which stores all account information in the ORGON network; `ProposalStore` is the proposal database, and the database name is `proposal`, which stores all the proposal information in the ORGON network.
 
     * `db/` and `db2/`
 
@@ -179,7 +179,7 @@ Actuator is the executor of transactions, while applications can be viewed as a 
 
 * `actuator/` - The executors of various types of transactions in the ORGON network which define the processing logic of different types of transactions. For example, `TransferActuator` is the processing class for transferring TRX, and `FreezeBalanceV2Actuator` is the processing class for staking TRX to obtain resource
 * `utils/` - tools needed to execute transaction
-* `vm/` - TRON virtual machine related code
+* `vm/` - ORGON virtual machine related code
 
 Actuator module defines the `Actuator` interface, which includes 4 different methods:
 
@@ -317,7 +317,7 @@ SR： Super Representative, is responsible for block production.
 
 FullNode： stores all block data, is responsible for transactions, block broadcasting and validation, and provides query services.
 
-TRX： TRON native token.
+TRX： ORGON native token.
 
 
 ### State Rollback
@@ -511,11 +511,11 @@ As the foundation of the blockchain, the P2P network brings the following advant
 * Better compatibility and scalability
 
 
-#### TRON Network
-The architecture diagram of TRON is as follows:
+#### ORGON Network
+The architecture diagram of ORGON is as follows:
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_architecture.png)
 
-As the most fundamental module of TRON, the P2P network directly determines the stability of the entire blockchain network. The network module can be divided into the following four parts according to the function:
+As the most fundamental module of ORGON, the P2P network directly determines the stability of the entire blockchain network. The network module can be divided into the following four parts according to the function:
 
 * [Node Discovery](#node-discovery)
 * [Node Connection](#node-connection)
@@ -533,15 +533,15 @@ Kademlia is an implementation of Distributed Hash Table (DHT), it is the core ro
 
 For a detailed introduction to the algorithm, please refer to [Kademlia](https://en.wikipedia.org/wiki/Kademlia).
 
-#### Kademlia Implementation by TRON
-The main points of the Kademlia algorithm implemented by TRON are as follows:
+#### Kademlia Implementation by ORGON
+The main points of the Kademlia algorithm implemented by ORGON are as follows:
 
 * Node ID: Randomly generated 512bit ID
 * Node Distance: The node distance is obtained through the XOR operation of two nodes' ID. The formula is: `Node distance = 256 - the number of leading 0s in the node ID XOR result`, if the calculation result is negative, the distance is equal to 0.
-* K-Bucket: The node routing table. According to the distance between the nodes, the remote nodes are divided into different buckets. The remote nodes with the same distance as the current node are recorded in the same bucket, and each bucket can accommodate up to 16 nodes. According to the calculation formula of node distance, it can be seen that the Kademlia algorithm implemented by TRON maintains a total of 256 buckets.
+* K-Bucket: The node routing table. According to the distance between the nodes, the remote nodes are divided into different buckets. The remote nodes with the same distance as the current node are recorded in the same bucket, and each bucket can accommodate up to 16 nodes. According to the calculation formula of node distance, it can be seen that the Kademlia algorithm implemented by ORGON maintains a total of 256 buckets.
 
 
-The node discovery protocol of TRON includes the following four UDP messages:
+The node discovery protocol of ORGON includes the following four UDP messages:
 
 * `DISCOVER_PING` - used to detect if a node is online
 * `DISCOVER_PONG` - used in response to `DISCOVER_PING` message
@@ -693,7 +693,7 @@ Node A sends the transaction or block to be broadcast to Node B via the `INVENTO
 After node A receives the `FETCH_INV_DATA` message, it will check whether an "INVENTORY" message has been sent to the peer. If it has been sent, it will send a transaction or block message to node B according to the list data. After node B receives the transaction or block message, it processes the message and triggers the forwarding process.
 
 ### Summary
-This article introduces the implementation details related to the P2P network, the lowest level module of TRON, including node discovery, node connection, block synchronization, and the process of block and transaction broadcasting. I hope that reading this article can help developers to further understand and develop java-orgon  network-related modules.
+This article introduces the implementation details related to the P2P network, the lowest level module of ORGON, including node discovery, node connection, block synchronization, and the process of block and transaction broadcasting. I hope that reading this article can help developers to further understand and develop java-orgon  network-related modules.
 
 
 

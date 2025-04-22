@@ -2,7 +2,7 @@
 
 ## Background
 
-[Account permission management](https://github.com/tronprotocol/TIPs/blob/master/tip-16.md) functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through TRON's account permission management implementation and design.
+[Account permission management](https://github.com/tronprotocol/TIPs/blob/master/tip-16.md) functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through ORGON's account permission management implementation and design.
 
 ## Concept
 

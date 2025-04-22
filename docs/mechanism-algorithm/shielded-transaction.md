@@ -2,7 +2,7 @@
 
 ## Introduction
 
-TRON shielded transaction uses zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) to implement a completely anonymous transaction. TronZ is the name of shielded trc10 token.
+ORGON shielded transaction uses zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) to implement a completely anonymous transaction. TronZ is the name of shielded trc10 token.
 
 In shielded transaction of transferring TronZ, the sender and the receiver's address and transfer amount can both be completely confidential.
 
@@ -11,7 +11,7 @@ In shielded transaction of transferring TronZ, there are two types of address:
 - "t-addr" (Transparent Address)
 - "z-addr" (Shielded Address)
 
-"t-addr" address uses TRON account model.
+"t-addr" address uses ORGON account model.
 "z-addr" address uses Anonymous account model.
 
 In shielded transaction of transferring TronZ, there are three types of transfer transaction:
@@ -35,7 +35,7 @@ From "t-addr" to "t-addr" are not supported.
 3.&nbsp;The fee for each shielded transaction is xx.
 
 
-The doc below describes how to use TRON Shielded Transaction with http api.
+The doc below describes how to use ORGON Shielded Transaction with http api.
 
 ### Transfer from transparent address to shielded address
 

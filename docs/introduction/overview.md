@@ -16,20 +16,20 @@ TestNet Configuration:
 
 ## 2.1 How to Become a Super Representative
 
- In TRON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.
+ In ORGON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.
 
  To prevent vicious attack, ORGON network burns 9999 TRX from the account that applies to become a super representative candidate.
 
 ## 2.2 Super Representatives Election
 
- To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in ORGON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
+ To vote, you need to have ORGON Power(TP). To get ORGON Power, you need to stake TRX. Every 1 staked TRX accounts for one ORGON Power(TP). Every account in ORGON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding ORGON Power(TP), so your previous vote will be invalid.
 
  Note: Only your latest vote will be counted in ORGON network which means your previous vote will be over written by your latest vote.
 
 Example (Using wallet-cli):
 
 ```text
-freezebalancev2 10,000,000 3 // stake 10 TRX to get 10 TRON Power(TP)
+freezebalancev2 10,000,000 3 // stake 10 TRX to get 10 ORGON Power(TP)
 votewitness SR1 4 SR2 6 // Vote 4 votes for SR1, 6 votes for SR2
 votewitness SR1 3 SR2 7 // Vote 3 votes for SR1, 7 votes for SR2
 ```
@@ -84,7 +84,7 @@ id: the serial number (0 ~ 18)
 value: the parameter value
 ```
 
-Note: In TRON network, 1 TRX = 1,000,000 SUN
+Note: In ORGON network, 1 TRX = 1,000,000 SUN
 
 ### 2.4.3 Vote for a Proposal
 
@@ -113,13 +113,13 @@ id: proposal id
 - Query all the proposals list by pagination (GetPaginatedProposalList)
 - Query a proposal by proposal id (GetProposalById)
 
-For more api detail, please refer to [TRON HTTP API](../api/http.md)
+For more api detail, please refer to [ORGON HTTP API](../api/http.md)
 
 # 3. Account Model
 
 ## 3.1 Introduction
 
-TRON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transferred from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All TRON's activities are based on account.
+ORGON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transferred from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All ORGON's activities are based on account.
 
 ## 3.2 How to Create an Account
 
@@ -128,7 +128,7 @@ TRON uses account model. An account's identity is address, it needs private key 
 2.&nbsp;Use an account already existed in ORGON network to create an account
 
 ## 3.3 Key-pair Generation Algorithm
-TRON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
+ORGON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.
 
 ## 3.4 Address Format
 Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address comes out. Do basecheck to address, here is the final address. All addresses start with 'T'.
@@ -144,7 +144,7 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 # 4. Network Node
 ## 4.1 SuperNode
 ### 4.1.1 SuperNode Introduction
-Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using [tronscan](https://tronscan.org/#/sr/representatives).
+Super Representative(abbr: SR) is the block producer in ORGON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in ORGON network. The best way to browse is using [tronscan](https://tronscan.org/#/sr/representatives).
 ### 4.1.2 SuperNode Deployment
 [SuperNode Deployment](https://github.com/alexozerov/java-orgon/blob/develop/run.md#running-a-super-representative-node-for-mainnet)
 
@@ -160,7 +160,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 ### 4.2.1 FullNode Introduction
 FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.
 ### 4.2.2 FullNode Deployment
-please refer to [TRON-Deployment](https://github.com/tronprotocol/tron-deployment)
+please refer to [ORGON-Deployment](https://github.com/tronprotocol/tron-deployment)
 ### 4.2.3 Recommended Hardware Configuration
 Minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
@@ -171,14 +171,14 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 ### 4.3.1 SolidityNode Introduction
 SolidityNode only synchronizes solidified block data from the fullNode it specifies. It also provides api service.
 ### 4.3.2 SolidityNode Deployment
-Please refer to [TRON-Deployment](https://github.com/tronprotocol/tron-deployment)
+Please refer to [ORGON-Deployment](https://github.com/tronprotocol/tron-deployment)
 ### 4.3.3 Recommended Hardware Configuration
 Minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
 Recommended requirement:
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
-## 4.4 TRON Network Instructure
+## 4.4 ORGON Network Instructure
 ORGON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-orgon code can join ORGON network as a node.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png)
 
@@ -358,17 +358,17 @@ You can refer to:
 [ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
 
 # 5. Smart Contract
-## 5.1 TRON Smart Contract Introduction
+## 5.1 ORGON Smart Contract Introduction
 
 Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can run in the way it is designed.
 
-TRON smart contract support Solidity language in (Ethereum). Currently recommend Solidity language version is 0.4.24 ~ 0.4.25. Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
+ORGON smart contract support Solidity language in (Ethereum). Currently recommend Solidity language version is 0.4.24 ~ 0.4.25. Write a smart contract, then build the smart contract and deploy it to ORGON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
-## 5.2 TRON Smart Contract Features
-TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
+## 5.2 ORGON Smart Contract Features
+ORGON virtual machine is based on Ethereum solidity language, it also has ORGON's own features.
 
 ### 5.2.1 Smart Contract
-TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
+ORGON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
 ```
 message SmartContract {
   message ABI {
@@ -444,7 +444,7 @@ Note: If you use create command inside a contract (CREATE instruction), even use
 
 2.&nbsp;message calls
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
+Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common ORGON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
 
 3.&nbsp;delegate call/call code/library
 
@@ -452,7 +452,7 @@ There is a special type of message call, delegate call. The difference with comm
 
 4.&nbsp;CREATE command
 
-This command will create a new contract with a new address. The only difference with Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the comtract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
+This command will create a new contract with a new address. The only difference with Ethereum is the newly generated ORGON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the comtract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
 Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
 
 5.&nbsp;built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
@@ -462,31 +462,31 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 - accompany with internal function to call transfer
 - use transfer/send/call/callcode/delegatecall to call transfer
 
-Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
+Note: ORGON's smart contract is different from ORGON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
 
 2)Different accounts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 3)SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 4)SuperNode approves or disapproves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 5)SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 6)SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-7)TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-8)TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+7)ORGON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+8)ORGON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 9)Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 10)Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 11)Compatible with all the built-in functions of Ethereum
 
-Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
+Note: Ethereum's RIPEMD160 function is not recommended, because the return of ORGON is a hash result based on ORGON's sha256, not an accurate Ethereum RIPEMD160.
 
 ### 5.2.3 Contract Address Using in Solidity Language
 
-Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
+Ethereum VM address is 20 bytes, but ORGON's VM address is 21 bytes.
 
 1.&nbsp;address conversion
 
-Need to convert TRON's address while using in solidity (recommended):
+Need to convert ORGON's address while using in solidity (recommended):
 ```text
 /**
-     *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
+     *  @dev    convert uint256 (HexString add 0x at beginning) ORGON address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
 */
@@ -522,14 +522,14 @@ function assignAddress() public view {
         // do something
 }
 ```
-If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
+If you want to use ORGON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
 
 ### 5.2.4 The Special Constants Differ from Ethereum
 
 **Currency**
 
-Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
-We recommend to use tron-studio instead of remix to build TRON smart contract.
+Like solidity supports ETH, ORGON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
+We recommend to use tron-studio instead of remix to build ORGON smart contract.
 
 **Block**
 
@@ -562,7 +562,7 @@ Example (Using wallet-cli):
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-Stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 50,000,000,000.
+Stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in ORGON * 50,000,000,000.
 
 Example:
 
@@ -643,9 +643,9 @@ So, the caller is suggested to set fee limit to 50,000,000 SUN * 10% = 5,000,000
 Note:
 ```
 [1] The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
-[2] TRON may change this policy.
+[2] ORGON may change this policy.
 [3] The estimated energy consumption limit for the next execution should be greater than the last one.
-[4] 1 TRX = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.
+[4] 1 TRX = 10^4 energy is a fixed number for burning TRX to get energy, ORGON may change it in future.
 ```
 
 ### 5.3.3 Energy Calculation (Developer Must Read)
@@ -757,7 +757,7 @@ Copy the code example above to remix to debug.
 **Compile in SimpleWebCompiler for ABI and ByteCode**
 
 Copy the code example above to SimpleWebCompiler to get ABI and ByteCode.
-Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.
+Because ORGON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.
 
 **Using wallet-cli to Deploy**
 
@@ -952,7 +952,7 @@ Note: The unit of 'amount' is the smallest unit of the token
 # 8. Resource Model
 ## 8.1 Resource Model Introduction
 
-ORGON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by TRON's exclusive RAM model, TRON's RAM resource is almost infinite.
+ORGON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by ORGON's exclusive RAM model, ORGON's RAM resource is almost infinite.
 
 ORGON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage.
 
@@ -1010,7 +1010,7 @@ Every 24 hours, the amount of the usage of Bandwidth points of an account will b
 [5.3 Energy Introduction](#53-energy-introduction)
 
 ## 8.4 Resource Delegation
-In TRON network, an account can stake TRX for Bandwidth or Energy for other accounts. The primary account owns the staked TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary staking, resource delegation staking is also at least 3 days.
+In ORGON network, an account can stake TRX for Bandwidth or Energy for other accounts. The primary account owns the staked TRX and ORGON power, the recipient account owns the Bandwidth or Energy. Like ordinary staking, resource delegation staking is also at least 3 days.
 
 + Example(Using wallet-cli)
 ```text

@@ -7,8 +7,8 @@ Github URL: [https://github.com/tronprotocol](https://github.com/tronprotocol).
 - [tronprotocol/java-orgon](https://github.com/alexozerov/java-orgon) is the source code of the MainNet.
 - [tronprotocol/protocol](https://github.com/tronprotocol/protocol) is the definition of the api and data structure.
 - [tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli) is the official command line wallet.
-- [tronprotocol/tips](https://github.com/tronprotocol/tips) is the TRON Improvement Proposals.
-- [tronprotocol/sun-network](https://github.com/tronprotocol/sun-network) is a project dedicated to building a trustful decentralized sidechain of TRON Main Chain.
+- [tronprotocol/tips](https://github.com/tronprotocol/tips) is the ORGON Improvement Proposals.
+- [tronprotocol/sun-network](https://github.com/tronprotocol/sun-network) is a project dedicated to building a trustful decentralized sidechain of ORGON Main Chain.
 
 ## Configuration File for the Net
 

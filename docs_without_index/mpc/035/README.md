@@ -1,4 +1,4 @@
-# Maik (TRON-Family)
+# Maik (ORGON-Family)
 * See [report.asc](./report.asc) for the Mailing list post.
 
 params file:
@@ -7,5 +7,5 @@ params file:
 new_params file:
 * https://mpcfilepub.s3.amazonaws.com/mpc/035/new_params
 
-os: 
+os:
 * macOS 10.15.2

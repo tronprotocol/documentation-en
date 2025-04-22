@@ -31,8 +31,8 @@ The following shows the content you can contribute to.
 
 ** 1. TIP **
 
-Description: TRON Improvement Proposal(TIP)
-Scope: Any improvement related to TRON ecosystem, like a new feature, TRC, protocol improvement, programming tool, etc.
+Description: ORGON Improvement Proposal(TIP)
+Scope: Any improvement related to ORGON ecosystem, like a new feature, TRC, protocol improvement, programming tool, etc.
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
@@ -41,7 +41,7 @@ Points:
 
 ** 2. Documentation  **
 
-Description: To revise, update and add technical documentation related to TRON network.
+Description: To revise, update and add technical documentation related to ORGON network.
 Scope: mechanism and algorithm, network architecture and database, contracts and other technical documentation
 Points:
 
@@ -63,7 +63,7 @@ Points:
 
 ** 1. Feature Development **
 
-Description: To add new features to TRON network
+Description: To add new features to ORGON network
 Scope: java-orgon, wallet-cli
 Points:
 
@@ -73,7 +73,7 @@ Points:
 
 ** 2. Bug Report **
 
-Description: To report bugs in online TRON network
+Description: To report bugs in online ORGON network
 Scope: java-orgon, wallet-cli
 Points:
 
@@ -83,7 +83,7 @@ Points:
 
 **3. Bug Fix**
 
-Description: To fix bugs in online TRON network
+Description: To fix bugs in online ORGON network
 Scope: java-tron, wallet-cli
 Points:
 
@@ -94,7 +94,7 @@ Points:
 **4. Security Related**
 
 Description: To find the security risks and enhance the security of ORGON network and ecosystem
-Scope: java-tron, TRON ecosystem
+Scope: java-tron, ORGON ecosystem
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |

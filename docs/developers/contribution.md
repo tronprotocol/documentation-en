@@ -1,14 +1,14 @@
 # How to contribute
 
-## Getting Started as TRON Community Developers
+## Getting Started as ORGON Community Developers
 
-TRON is a global, open-source platform for decentralized applications.
+ORGON is a global, open-source platform for decentralized applications.
 
 Thank you for considering to help out with the source code! We welcome contributions from anyone on the internet, and are grateful for even the smallest of fixes!
 
 GitHub is used to track issues and contribute code, suggestions, feature requests or documentation.
 
-If you'd like to contribute to TRON, please fork, fix, commit and send a pull request (PR) for the maintainers to review and merge into the main base. If you wish to submit more complex changes though, please check up with the core developers first on our channel to ensure those changes are in line with the general philosophy of the project and/or get some early feedback which can make both your efforts much lighter as well as our review and merge procedures quick and simple.
+If you'd like to contribute to ORGON, please fork, fix, commit and send a pull request (PR) for the maintainers to review and merge into the main base. If you wish to submit more complex changes though, please check up with the core developers first on our channel to ensure those changes are in line with the general philosophy of the project and/or get some early feedback which can make both your efforts much lighter as well as our review and merge procedures quick and simple.
 
 Your PR will be reviewed according to the Code Review Guidelines.
 
@@ -21,11 +21,11 @@ This channel is for ORGON network issues.
 * [wallet-cli gitter channel](https://gitter.im/tronprotocol/wallet-cli)
 This channel is for the client of ORGON network issues.
 * [documentation gitter channel](https://gitter.im/tronprotocol/documentation)
-This channel is for TRON docunentation issues.
+This channel is for ORGON docunentation issues.
 * [tips gitter channel](https://gitter.im/tronprotocol/TIPs)
-This channel is for TRON improment proposal issues.
+This channel is for ORGON improment proposal issues.
 
-Check [TRON Incentives Policy](incentives.md)
+Check [ORGON Incentives Policy](incentives.md)
 
 ## Submitting a TIP
 
@@ -37,7 +37,7 @@ Please check [Coding java-tron](./java-orgon.md)
 
 ## Reporting Vulnerabilities
 
-We think highly of all the security bugs in the TRON project seriously. Thank you for improving the security of TRON project. We really appreciate your efforts and responsible disclosure. We will make every effort to acknowledge your contributions.
+We think highly of all the security bugs in the ORGON project seriously. Thank you for improving the security of ORGON project. We really appreciate your efforts and responsible disclosure. We will make every effort to acknowledge your contributions.
 
 Report security bugs at [https://hackerone.com/tronfoundation](https://hackerone.com/tronfoundation)
 
