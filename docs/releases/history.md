@@ -2170,7 +2170,7 @@ Source code: [#3082](https://github.com/tronprotocol/java-tron/pull/3082)
 
 #### 2. New Node Type
 We added another type of node to the existing FullNode: Lite FullNode. Lite FullNode executes the same code with the FullNode. What sets it apart is that its launch is based on the status data snapshot, which contains all the status data and data history of the latest 256 blocks.
-The status data snapshot can be acquired by executing LiteFullNodeTool.jar (please see: [Use the LiteFullNode Tool](https://tronprotocol.github.io/documentation-en/developers/litefullnode/)).
+The status data snapshot can be acquired by executing LiteFullNodeTool.jar (please see: [Use the LiteFullNode Tool](https://dev.orgon.space/developers/litefullnode/)).
 - TIP: [TIP-128](https://github.com/tronprotocol/tips/blob/master/tip-128.md)
 - Source code: [#3031](https://github.com/tronprotocol/java-tron/pull/3031)
 

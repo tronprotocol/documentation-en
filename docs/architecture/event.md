@@ -104,7 +104,7 @@ TronEventQuery is implemented with Orgon's new event subscribe model. It uses sa
 
 For more information of ORGON event subscribe model, please refer to [TIP-12](https://github.com/tronprotocol/TIPs/issues/12).
 
-- [Event query deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/#event-subscribe-plugin-deployment)
+- [Event query deployment](https://dev.orgon.space/developers/deployment/#event-subscribe-plugin-deployment)
 - [Event query HTTP API](https://github.com/tronprotocol/documentation-en/tree/master/docs_without_index/plugin/event-query-http.md)
 
 

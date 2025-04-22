@@ -82,7 +82,7 @@ message Permission {
 - `permission_name`: Permission name, 32 bytes length limit
 - `threshold`: The threshold of the signature weight
 - `parent_id`: Current 0
-- `operations`: used by active permission, a hexadecimal coded sequence (little-endian byte order), 32 bytes (256 bits), and each bit represents the authority of a ContractType. The nth bit indicates the authority of the ContractType with ID n, its value 1 means that it has the authority to execute the ContractType, its value 0 means it doesn't have the authority.  
+- `operations`: used by active permission, a hexadecimal coded sequence (little-endian byte order), 32 bytes (256 bits), and each bit represents the authority of a ContractType. The nth bit indicates the authority of the ContractType with ID n, its value 1 means that it has the authority to execute the ContractType, its value 0 means it doesn't have the authority.
     To make it easier for users to read, start with the binary big-endian byte order to illustrate how to calculate the value of operations. The number of digits starts from 0, and corresponds to the ID of the ContractType from left to right. Convert a binary big-endian byte sequence to a hexadecimal little-endian byte sequence, that will be the value of operations. Below is an example of how to calculate the operations of active permission with operation TransferContract(ID=1) and operation VoteWitnessContract(ID=4) allowed. The mapping between ContractType and its ID can be seen in the above definition link of ContractType.
 
     | Operations Allowed  | Binary Code(big-endian) | Binary Code(little-endian) | Hex Code(little-endian) |
@@ -133,20 +133,20 @@ Super representatives can use this permission to manage block producing. Only SR
 Usage scenario example:
 A super representative deploys a witness node on cloud server. In order to keep the account on the cloud server safe, you can only give the block producing permission to the account you put on cloud server. Because this account only owns  block producing permission, no TRX transfer permission, so even if the account on the cloud server is leaked, the TRX will not be lost.
 
-Witness node configuration: when [start a fullnode as witness](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), `localwitness` in the config file is filled in with the private key of the witness account and `localWitnessAccountAddress` is commented on as below:
+Witness node configuration: when [start a fullnode as witness](https://dev.orgon.space/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), `localwitness` in the config file is filled in with the private key of the witness account and `localWitnessAccountAddress` is commented on as below:
 ```
 # config.conf
-//localWitnessAccountAddress = 
+//localWitnessAccountAddress =
 localwitness = [
   xxx // private key of the witness account
 ]
-```  
+```
 
--  If witness permission is not modified, there is no need to change config file.  
+-  If witness permission is not modified, there is no need to change config file.
 -  If witness permission is modified, two modifications are required as follows:
     -  `localwitness` needs to be changed to the private key of the account authorized with witness permission
     - `localWitnessAccountAddress` shoule be explicitly set as the address of the witness account
-   
+
     Below is an example of how to configure witness account [TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk](https://nile.tronscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk) which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
     ```
     #config.conf

@@ -15,7 +15,7 @@ You can directly download the java-orgon executable file, or download the code o
 
     Directly download the latest version of the executable file FullNode.jar from the release page [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases).
 
-    Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to [java-orgon Consistency Verification](https://tronprotocol.github.io/documentation-en/releases/signature_verification/).
+    Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to [java-orgon Consistency Verification](https://dev.orgon.space/releases/signature_verification/).
 
 
 * Way 2: Compile the source code
@@ -69,7 +69,7 @@ After preparing the executable file of the new version and backing up the origin
 1. Copy the newest jar package obtained in the previous step to the java-orgon working directory to replace the old executable file.
 2. Replace the old configuration file with the latest configuration file. If you need to modify the configuration, such as adding a keystore file, private key, etc, please modify it yourself.
 
-Note: For the database file, you can use the original database file in the java-orgon working directory, or you can choose to use [database backup snapshot](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#public-backup-data).
+Note: For the database file, you can use the original database file in the java-orgon working directory, or you can choose to use [database backup snapshot](https://dev.orgon.space/using_javatron/backup_restore/#public-backup-data).
 
 
 ### 5. Start the nodes
