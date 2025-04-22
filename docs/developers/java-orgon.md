@@ -48,12 +48,12 @@ If you want to contribute codes to java-tron, please follow the following steps:
 
 * Fork java-orgon repository
 
-    Fork a new repository from [tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) to your personal code repository
+    Fork a new repository from [tronprotocol/java-tron](https://github.com/alexozerov/java-orgon) to your personal code repository
 
     ```
     $ git clone https://github.com/yourname/java-tron.git
 
-    $ git remote add upstream https://github.com/tronprotocol/java-tron.git   ("upstream" refers to upstream projects repositories, namely tronprotocol's repositories, and can be named as you like it. We usually call it "upstream" for convenience)
+    $ git remote add upstream https://github.com/alexozerov/java-orgon.git   ("upstream" refers to upstream projects repositories, namely tronprotocol's repositories, and can be named as you like it. We usually call it "upstream" for convenience)
     ```
 
 * Edit the code in the fork repository

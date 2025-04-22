@@ -9,7 +9,7 @@ The minimum hardware configuration required to run a java-orgon node is `8-core 
 First, clone the java-orgon repository to the local with the following git command, and switch to the `master` branch. Before executing the command, make sure you have installed the `git` tool.
 
 ```
-$ git clone https://github.com/tronprotocol/java-tron.git
+$ git clone https://github.com/alexozerov/java-orgon.git
 $ git checkout -t origin/master
 ```
 

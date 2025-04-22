@@ -97,7 +97,7 @@ java -jar FullNode.jar -c config.conf -d /data/output
 
 Steps to send logs to stdout:
 
-Download [https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml](https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml)
+Download [https://github.com/alexozerov/java-orgon/blob/develop/src/main/resources/logback.xml](https://github.com/alexozerov/java-orgon/blob/develop/src/main/resources/logback.xml)
 
 Uncomment the configuration:
 
@@ -298,4 +298,4 @@ This message means your node does not sync with the network. Before producing bl
 
 Feel free to join our community, just open an Issue on github:
 
-- Github: [tronprotocol/java-tron](https://github.com/tronprotocol/java-tron)
+- Github: [tronprotocol/java-tron](https://github.com/alexozerov/java-orgon)

@@ -52,7 +52,7 @@ Points:
 ** 3. Issue **
 
 Description: Create a topic about a question, enhancement, bug or feature and so on to discuss
-Scope: java-tron, TRON ecosystem
+Scope: java-orgon, ORGON ecosystem
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
@@ -64,7 +64,7 @@ Points:
 ** 1. Feature Development **
 
 Description: To add new features to TRON network
-Scope: java-tron, wallet-cli
+Scope: java-orgon, wallet-cli
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
@@ -74,7 +74,7 @@ Points:
 ** 2. Bug Report **
 
 Description: To report bugs in online TRON network
-Scope: java-tron, wallet-cli
+Scope: java-orgon, wallet-cli
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |

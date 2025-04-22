@@ -13,7 +13,7 @@ You can directly download the java-orgon executable file, or download the code o
 
 * Way 1: Download the published executable file
 
-    Directly download the latest version of the executable file FullNode.jar from the release page [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases).
+    Directly download the latest version of the executable file FullNode.jar from the release page [https://github.com/alexozerov/java-orgon/releases](https://github.com/alexozerov/java-orgon/releases).
 
     Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to [java-orgon Consistency Verification](https://dev.orgon.space/releases/signature_verification/).
 
@@ -22,7 +22,7 @@ You can directly download the java-orgon executable file, or download the code o
 
     Download the source code and switch to the branch of the new version.
     ```
-    $ git clone https://github.com/tronprotocol/java-tron.git
+    $ git clone https://github.com/alexozerov/java-orgon.git
     $ git checkout -b relase_vx.x.x
     ```
 

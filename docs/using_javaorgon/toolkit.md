@@ -11,13 +11,13 @@ The Toolkit integrates a series of tools of java-orgon , and more functions will
 The following describes the acquisition and use of the Toolkit toolbox in detail.
 
 ## Obtain Toolkit.jar
-`Toolkit.jar` can be obtained from the [released version](https://github.com/tronprotocol/java-tron/releases) directly or by compiling the java-orgon  source code.
+`Toolkit.jar` can be obtained from the [released version](https://github.com/alexozerov/java-orgon/releases) directly or by compiling the java-orgon  source code.
 
 Compile the source code:
 
 1. Obtain java-orgon  source code
    ```
-   $ git clone https://github.com/tronprotocol/java-tron.git
+   $ git clone https://github.com/alexozerov/java-orgon.git
    $ git checkout -t origin/master
    ```
 2. Compile

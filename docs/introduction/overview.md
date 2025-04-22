@@ -3,7 +3,7 @@
 # 1. Project Repository
 
 Github Url: [https://github.com/tronprotocol](https://github.com/tronprotocol)
-[java-tron](https://github.com/tronprotocol/java-tron) is the source code of the MainNet.
+[java-tron](https://github.com/alexozerov/java-orgon) is the source code of the MainNet.
 [protocol](https://github.com/tronprotocol/protocol) is the definition of the api and data structure.
 [wallet-cli](https://github.com/tronprotocol/wallet-cli) is the official command line wallet.
 
@@ -146,7 +146,7 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 ### 4.1.1 SuperNode Introduction
 Super Representative(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using [tronscan](https://tronscan.org/#/sr/representatives).
 ### 4.1.2 SuperNode Deployment
-[SuperNode Deployment](https://github.com/tronprotocol/java-tron/blob/develop/run.md#running-a-super-representative-node-for-mainnet)
+[SuperNode Deployment](https://github.com/alexozerov/java-orgon/blob/develop/run.md#running-a-super-representative-node-for-mainnet)
 
 ### 4.1.3 Recommended Hardware Configuration
 

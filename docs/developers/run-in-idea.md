@@ -24,7 +24,7 @@ The IntelliJ IDEA configuration steps are as follows:
 
     Clone the java-orgon source code locally and switch to the `develop` branch.
     ```
-    $ git clone https://github.com/tronprotocol/java-tron.git
+    $ git clone https://github.com/alexozerov/java-orgon.git
     $ git checkout -t origin/develop
     ```
 
@@ -37,7 +37,7 @@ The java-orgon code style needs to meet the `Google check style` specification. 
 
 * Code style configuration
 
-    First, download the [java-orgon code style check configuration file](https://github.com/tronprotocol/java-tron/blob/develop/config/checkstyle/checkStyleAll.xml), then in the Checkstyle configuration page, click "+ ", choose to use the "checkStyleAll.xml" just downloaded, after adding that, you can see this file in the "Configuration Files" list, and finally click "Apply" to complete the configuration.
+    First, download the [java-orgon code style check configuration file](https://github.com/alexozerov/java-orgon/blob/develop/config/checkstyle/checkStyleAll.xml), then in the Checkstyle configuration page, click "+ ", choose to use the "checkStyleAll.xml" just downloaded, after adding that, you can see this file in the "Configuration Files" list, and finally click "Apply" to complete the configuration.
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkStyleAll.png)
 
     After configuring the `Checkstyle` plugin, you can use `Checkstyle` to check the code. `Checkstyle` can check a module or the whole project, and can also check a single file. Select "Check Current File" in the right-click menu of the file editor, and Checkstyle will check the file. If a code problem is detected, you need to modify it according to the prompts. Code can only be submitted when there are no code problems.

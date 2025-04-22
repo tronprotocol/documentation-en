@@ -23,7 +23,7 @@ For more design details, please refer to: [TIP298](https://github.com/tronprotoc
 - build by yourself.
   Under java-orgon, execute ``. /gradlew build``, you can get Toolkit.jar under `build/libs/`.
 - Download directly.
-  [Links](https://github.com/tronprotocol/java-tron/releases)
+  [Links](https://github.com/alexozerov/java-orgon/releases)
 
 ### Use Steps
 

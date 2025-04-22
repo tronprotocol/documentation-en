@@ -4,7 +4,7 @@
 
 Github URL: [https://github.com/tronprotocol](https://github.com/tronprotocol).
 
-- [tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) is the source code of the MainNet.
+- [tronprotocol/java-orgon](https://github.com/alexozerov/java-orgon) is the source code of the MainNet.
 - [tronprotocol/protocol](https://github.com/tronprotocol/protocol) is the definition of the api and data structure.
 - [tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli) is the official command line wallet.
 - [tronprotocol/tips](https://github.com/tronprotocol/tips) is the TRON Improvement Proposals.

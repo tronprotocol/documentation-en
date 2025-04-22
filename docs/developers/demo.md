@@ -5,7 +5,7 @@ Sometimes java-orgon nodes may not be able to connect to peers due to network re
 
 ## Fork java-orgon Repository
 
-Fork a new repository from the [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) project to your personal repository, and then use the following command Clone the code locally:
+Fork a new repository from the [https://github.com/alexozerov/java-orgon](https://github.com/alexozerov/java-orgon) project to your personal repository, and then use the following command Clone the code locally:
 
 ```
 $ git clone https://github.com/yourname/java-orgon .git
@@ -116,7 +116,7 @@ The logic of the `addPeer` method is:
   }
 }
 ```
-After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, [FullNodeHttpApiService](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java) is the registration entry for the node HTTP API.
+After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, [FullNodeHttpApiService](https://github.com/alexozerov/java-orgon/blob/develop/framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java) is the registration entry for the node HTTP API.
 
 Call the `context.addServlet` method in the `start` function of the `FullNodeHttpApiService` class to register the SetPeerServlet to the service. The name of the HTTP interface is defined as `/wallet/setpeer`.
 

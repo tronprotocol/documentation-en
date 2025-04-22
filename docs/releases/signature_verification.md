@@ -8,7 +8,7 @@ The version of java-orgon released after January 3, 2023 adopts the GPG method f
 * Versions released before January 3, 2023: [ORGON Address Signature Verification Process](#tron-address-signature-verification-process)
 
 ## GPG signature verification process
-The java-orgon executable file and its signature file are released together, you can get it at [here](https://github.com/tronprotocol/java-tron/releases), please follow the below process to verify the signature of the java-orgon which released after January 3, 2023.
+The java-orgon executable file and its signature file are released together, you can get it at [here](https://github.com/alexozerov/java-orgon/releases), please follow the below process to verify the signature of the java-orgon which released after January 3, 2023.
 
 ### Install GPG
 If you have already installed GPG, please skip this step. If not, please refer to the following command to install it on MacOS:
@@ -58,7 +58,7 @@ Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 If the verification fails, it will display the words `gpg: BAD signature from “build_tron <build@tron.network>”`.
 
 ## ORGON address signature verification process
-The java-orgon version released before January 3, 2023 is signed by the ORGON account `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the ORGON account to sign the sha256 hash value. The sha256 hash value can be viewed in the [Signatures of historical versions](#signatures-of-historical-versions) chapter, or in the [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases) page; the signature result please check in the [Signatures of historical versions](#signatures-of-historical-versions) chapter.
+The java-orgon version released before January 3, 2023 is signed by the ORGON account `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the ORGON account to sign the sha256 hash value. The sha256 hash value can be viewed in the [Signatures of historical versions](#signatures-of-historical-versions) chapter, or in the [https://github.com/alexozerov/java-orgon/releases](https://github.com/alexozerov/java-orgon/releases) page; the signature result please check in the [Signatures of historical versions](#signatures-of-historical-versions) chapter.
 
 [tronweb](https://developers.tron.network/docs/tronweb-1) provides the `Trx.verifySignature` interface to verify the signature. If the verification is passed, it will return true, otherwise, it will return false. Please follow the below process to verify.
 
@@ -69,7 +69,7 @@ If you have already installed tronweb, please skip this step, if not, please ref
 npm install -g tronweb
 ```
 ### Verify the integrity of the release package
-Confirm the integrity of the release package by comparing the Hash value of the executable file and the hash value in the release information. Take [Odyssey-3.7](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v3.7) version as an example:
+Confirm the integrity of the release package by comparing the Hash value of the executable file and the hash value in the release information. Take [Odyssey-3.7](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.7) version as an example:
 
 * The release package file name: `FullNode.jar`
 * The SHA256 value of the release package: `2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e`
