@@ -112,8 +112,8 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 | Item Name | Data Type      | Description                                                   |
 | :-------- | :------------- | :------------------------------------------------------------ |
-| from      | DATA, 20 Bytes | Caller address. Hex format address, remove the prefix "41"    |
-| to        | DATA, 20 Bytes | Contract address.  Hex format address, remove the prefix "41" |
+| from      | DATA, 20 Bytes | Caller address. Hex format address, remove the prefix "73"    |
+| to        | DATA, 20 Bytes | Contract address.  Hex format address, remove the prefix "73" |
 | gas       | QUANTITY       | Not supported. The value is 0x0                               |
 | gasPrice  | QUANTITY       | Not supported. The value is 0x0                               |
 | value     | QUANTITY       | Not supported. The value is 0x0                               |
