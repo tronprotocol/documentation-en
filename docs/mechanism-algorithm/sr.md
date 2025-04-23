@@ -10,7 +10,7 @@ The votes will be counted every 6 hours, so super representatives and super repr
 
 ## Super Representative Election
 
-To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
+To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the corresponding TRON Power(TP), so your previous vote will be invalid.
 
 Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.
 
@@ -31,6 +31,7 @@ The default ratio is 20%. Super representatives and super representative partner
 If a SR(Super Representatives) get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.
 
 ## Reward for SR(Super Representatives)
+The following calculations are all based on the situation where brokerage ratio is equal to 20%.
 
 ### Votes Reward
 
@@ -44,9 +45,10 @@ Every time after a super representative produces a block, it will be reward 16 T
 
 Every time after a super representative produces a block, the 16 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
 
-$16 (\mathsf{TRX}/block) \times 28,800 (blocks/day) = 460,800 (\mathsf{TRX}/day)$
+The daily total block producing Reward = 16 (TRX/block) * 28,800 (blocks/day) = 460,800 (TRX/day)
 
-For each super representative, the daily block $Rewards_{sr} = (460,800 / 27) \times 20 \% \mathsf{TRX}$.
+For each super representative, the daily block producing Reward = (460,800 / 27) * 20%TRX.
+
 
 Reward may be less than the theoretical number due to missed blocks and maintenance period.
 
@@ -60,15 +62,17 @@ If you vote for a Partner:
 
 the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX
 
+**Notice:** the above total_votes refers to the combined votes of SRs and SR Partners, not including SR Candidates
+
 ## Committee
 
 ### What is Committee
 
-Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.
+Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every SR has the right to create and vote a proposal. The proposal will be passed after it gets more than 18(at least 19) approves from the super representatives and will become valid in the next maintenance period.
 
 ### Create a Proposal
 
-Only SRs, Partners and Candidates can create a proposal.
+In addition to SR, SR Partner and SR Candidate also have the right to create a pa proposal, and only they have this right.
 
 Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dynamic parameters and their values.
 
