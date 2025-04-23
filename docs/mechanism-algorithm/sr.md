@@ -68,7 +68,7 @@ the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 /
 
 ### What is Committee
 
-Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every SR has the right to create and vote a proposal. The proposal will be passed after it gets more than 18(at least 19) approves from the super representatives and will become valid in the next maintenance period.
+Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every SR has the right to create and vote a proposal. The proposal will be passed after it gets at least 18 approves from the super representatives and will become valid in the next maintenance period.
 
 ### Create a Proposal
 
