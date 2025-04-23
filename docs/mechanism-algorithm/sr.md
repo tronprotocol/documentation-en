@@ -28,41 +28,45 @@ The final output above is: Vote 3 votes for SR1, 7 votes for SR2.
 
 The default ratio is 20%. Super representatives and super representative partners can query the brokerage ratio through the `wallet/getBrokerage` interface, and can also modify the brokerage ratio through the `wallet/updateBrokerage` interface.
 
-If a SR(Super Representatives) get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.
+If a SR(Super Representatives) get 20% of the rewards, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.
 
-## Reward for SR(Super Representatives)
+## Rewards for SR(Super Representatives)
 The following calculations are all based on the situation where brokerage ratio is equal to 20%.
 
-### Votes Reward
+### Vote Rewards
 
-Vote rewards are 160 TRX every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX.
+Vote rewards are 160 TRX for every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX.
 
-For each SR and Partner, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  TRX
+For each SR and Partner, the daily vote rewards = 4,608,000 * ( votes /  total votes) x 20%  TRX
 
-### Block Producing Reward
+### Block Producing Rewards
 
-Every time after a super representative produces a block, it will be reward 16 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 168,192,000 TRX in total.
+Every time after a super representative produces a block, it will be rewarded 16 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing rewards is 168,192,000 TRX in total.
 
-Every time after a super representative produces a block, the 16 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
+Every time after a super representative produces a block, the 16 TRX block producing rewards will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
 
-The daily total block producing Reward = 16 (TRX/block) * 28,800 (blocks/day) = 460,800 (TRX/day)
+The daily total block producing rewards = 16 (TRX/block) * 28,800 (blocks/day) = 460,800 (TRX/day)
 
-For each super representative, the daily block producing Reward = (460,800 / 27) * 20%TRX.
+For each super representative, the daily block producing rewards = (460,800 / 27) * 20%TRX.
 
 
-Reward may be less than the theoretical number due to missed blocks and maintenance period.
+Rewards may be less than the theoretical number due to missed blocks and maintenance period.
 
-## Reward for Voters
+## Rewards for Voter
 
-If you vote for a SR(Super Representative):
+If you vote for a SR(Super Representative), you will have both vote rewards and block producing rewards:
 
-the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a SR) / (the total number of votes a SR receives) TRX
+vote rewards = ((the number of votes you vote to a SR / total votes) * 4,608,000 * 80%) TRX
 
-If you vote for a Partner:
+block producing rewards = ((the number of votes you vote to a SR) / (the total number of votes a SR receives) * ((460,800 / 27) * 80%)) TRX
 
-the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX
+daily rewards for voter = vote rewards + block producing rewards 
 
-**Notice:** the above total_votes refers to the combined votes of SRs and SR Partners, not including SR Candidates
+If you vote for a SR Partner, you will only have vote rewards:
+
+daily rewards for voter = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX
+
+**Notice:** the above **total votes** refers to the combined votes of SRs and SR Partners, not including SR Candidates
 
 ## Committee
 
