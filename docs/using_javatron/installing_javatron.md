@@ -2,7 +2,7 @@
 
 java-tron nodes support to be deployed on `Linux` or `MacOS` operating systems, and rely on `Oracle JDK 1.8`, other versions of JDK are not supported.
 
-The minimum hardware configuration required to run a java-tron node is `8-core CPU`, `16G memory`, `2T SDD`, the recommended configuration is: `16-core CPU`, `32G memory`, `2.5T+ SDD`. The fullnode running by super representative to produce block recommends `32-core CPU` and `64G memory`.
+The minimum hardware configuration required to run a java-tron node is `8-core CPU`, `16G memory`, `3T SDD`, the recommended configuration is: `16-core CPU`, `32G memory`, `3.5T+ SDD`. The fullnode running by super representative to produce block recommends `32-core CPU` and `64G memory`.
 
 
 ## Compile the Source Code
