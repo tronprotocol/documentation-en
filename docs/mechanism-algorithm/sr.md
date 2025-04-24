@@ -64,7 +64,7 @@ daily rewards for voter = vote rewards + block producing rewards
 
 If you vote for a SR Partner, you will only have vote rewards:
 
-daily rewards for voter = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX
+daily rewards for voter = (((the number of votes you vote to a SR Partner) * 4,608,000 / total votes) * 80%) TRX
 
 **Notice:** the above **total votes** refers to the combined votes of SRs and SR Partners, not including SR Candidates
 
