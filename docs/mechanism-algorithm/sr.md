@@ -76,7 +76,7 @@ Committee can modify the TRON network parameters, like transacton fees, block pr
 
 ### Create a Proposal
 
-In addition to SR, SR Partner and SR Candidate also have the right to create a pa proposal, and only they have this right.
+In addition to SR, SR Partner and SR Candidate also have the right to create a proposal, and only they have this right.
 
 Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dynamic parameters and their values.
 
