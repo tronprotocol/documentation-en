@@ -82,9 +82,8 @@
 ## GreatVoyage-4.8.0(Kant)
 The Kant release introduces several important optimizations and updates, including support for the Ethereum Cancun upgrade and enhanced validation in the consensus layer. Detailed information is provided below.
 
-### New Features
-#### Ethereum Cancun Upgrade Support
-##### 1. TIP-650: Implement EIP-1153 Transient Storage Instructions
+### Ethereum Cancun Upgrade Support
+#### 1. TIP-650: Implement EIP-1153 Transient Storage Instructions
 The TRON Virtual Machine (TVM) will support the `TLOAD` and `TSTORE` opcodes, aligning with the Ethereum Cancun upgrade.
 
 | ID | TVM Instruction| Description |
@@ -100,7 +99,7 @@ Note: This feature is governed by TRON network parameter #83. It is disabled by 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6185](https://github.com/tronprotocol/java-tron/pull/6185)  [https://github.com/tronprotocol/java-tron/pull/6195](https://github.com/tronprotocol/java-tron/pull/6195)  [https://github.com/tronprotocol/java-tron/pull/6214](https://github.com/tronprotocol/java-tron/pull/6214)  
 
 
-##### 2. TIP-651: Implement EIP-5656 MCOPY - Memory Copying Instruction
+#### 2. TIP-651: Implement EIP-5656 MCOPY - Memory Copying Instruction
 TVM will support the `MCOPY` instruction, aligning with the Ethereum Cancun upgrade.
 
 | ID | TVM Instruction | Description |
@@ -116,7 +115,7 @@ Note: This feature is governed by TRON network parameter #83. It is disabled by 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6185](https://github.com/tronprotocol/java-tron/pull/6185)  [https://github.com/tronprotocol/java-tron/pull/6194](https://github.com/tronprotocol/java-tron/pull/6194)  
 
 
-##### 3. TIP-745: Introduce EIP-4844 Instruction and EIP-7516 Instruction
+#### 3. TIP-745: Introduce EIP-4844 Instruction and EIP-7516 Instruction
 TVM will support the Ethereum Cancun upgrade's `BLOBHASH` and `BLOBBASEFEE` instructions:
 
 | ID | TVM Instruction | Description |
@@ -172,7 +171,11 @@ In versions prior to Kant, when multiple SRs had identical vote counts, the syst
 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6173](https://github.com/tronprotocol/java-tron/pull/6173) 
 
+### TVM
+#### 1. TIP-652: Announce EIP-6049 Deprecate SELFDESTRUCT 
+Note: Although TIP-652 itself does not modify the behavior of the `SELFDESTRUCT` opcode, it has been officially announced that client developers will change its behavior in a future upgrade. Therefore, any applications that expose the `SELFDESTRUCT` opcode to users must clearly warn them that a semantic change to `SELFDESTRUCT` is imminent.
 
+TIP: [https://github.com/tronprotocol/tips/blob/master/tip-652.md](https://github.com/tronprotocol/tips/blob/master/tip-652.md) 
 
 ### Net
 #### 1. Optimized Block Synchronization Logic
@@ -186,7 +189,8 @@ Kant optimizes the synchronization request mechanism by eliminating requests for
 ##### 1.2 Faster Block Synchronization Task Scheduling for Enhanced Efficiency
 Kant adjusts the scheduling frequency of block synchronization tasks from once per second to once per 100 milliseconds. This accelerates block processing, further improving block synchronization efficiency.
 
-* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6183](https://github.com/tronprotocol/java-tron/pull/6183)     
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6183](https://github.com/tronprotocol/java-tron/pull/6183)    
+ 
 #### 2. Enhanced Transaction Validity Verification by Early Discarding Zero-Contract Transactions
 Kant strengthens transaction validity verification. Upon receiving a transaction message, the node will discard transactions with zero contracts and disconnect from the sender.
 
