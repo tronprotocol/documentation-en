@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Kant    |  GreatVoyage-v4.8.0    |  2025-04-29    |  [TIP-650](https://github.com/tronprotocol/tips/blob/master/tip-650.md) <br> [TIP-651](https://github.com/tronprotocol/tips/blob/master/tip-651.md) <br> [TIP-694](https://github.com/tronprotocol/tips/blob/master/tip-694.md) <br> [TIP-697](https://github.com/tronprotocol/tips/blob/master/tip-697.md) <br> [TIP-745](https://github.com/tronprotocol/tips/blob/master/tip-745.md)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0)   |   [Specs](#greatvoyage-480kant)   |
 |  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/tronprotocol/tips/issues/697)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
 |  Anaximander    |  GreatVoyage-v4.7.6    |  2024-10-04    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.6)   |   [Specs](#greatvoyage-v476anaximander)   |
 |  Cleobulus    |  GreatVoyage-v4.7.5    |  2024-5-30    |  [TIP-653](https://github.com/tronprotocol/tips/blob/master/tip-653.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.5)   |   [Specs](#greatvoyage-v475cleobulus)   |
@@ -76,6 +77,253 @@
 |   N/A   | Odyssey-v1.0.4    |  2018-4-13    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.4)    |  N/A   |
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
+
+
+## GreatVoyage-4.8.0(Kant)
+The Kant release introduces several important optimizations and updates, including support for the Ethereum Cancun upgrade and enhanced validation in the consensus layer. Detailed information is provided below.
+
+### Ethereum Cancun Upgrade Support
+#### 1. TIP-650: Implement EIP-1153 Transient Storage Instructions
+The TRON Virtual Machine (TVM) will support the `TLOAD` and `TSTORE` opcodes, aligning with the Ethereum Cancun upgrade.
+
+| ID | TVM Instruction| Description |
+| -------- | -------- | -------- |
+| 0x5c    | TLOAD    | Read operation for transient storage  |
+| 0x5d   | TSTORE   | Write operation for transient storage  |
+
+Transient storage is a temporary storage mechanism between persistent storage (storage) and memory. It offers a more gas-efficient storage solution that persists for the duration of a transaction. Data in transient storage is automatically cleared upon transaction completion. 
+
+Note: This feature is governed by TRON network parameter #83. It is disabled by default (value: 0) post-Kant deployment and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled. 
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-650.md](https://github.com/tronprotocol/tips/blob/master/tip-650.md) 
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6185](https://github.com/tronprotocol/java-tron/pull/6185)  [https://github.com/tronprotocol/java-tron/pull/6195](https://github.com/tronprotocol/java-tron/pull/6195)  [https://github.com/tronprotocol/java-tron/pull/6214](https://github.com/tronprotocol/java-tron/pull/6214)  
+
+
+#### 2. TIP-651: Implement EIP-5656 MCOPY - Memory Copying Instruction
+TVM will support the `MCOPY` instruction, aligning with the Ethereum Cancun upgrade.
+
+| ID | TVM Instruction | Description |
+| -------- | -------- | -------- |
+| 0x5e   | MCOPY  | Memory copy operation   |
+
+
+Memory copying is an operation that copies data from its original location to a target location in memory. It aims to reduce resource costs for memory area copying, thereby improving copying efficiency.
+
+Note: This feature is governed by TRON network parameter #83. It is disabled by default (value: 0) post-Kant deployment and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled. 
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-651.md](https://github.com/tronprotocol/tips/blob/master/tip-651.md) 
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6185](https://github.com/tronprotocol/java-tron/pull/6185)  [https://github.com/tronprotocol/java-tron/pull/6194](https://github.com/tronprotocol/java-tron/pull/6194)  
+
+
+#### 3. TIP-745: Introduce EIP-4844 Instruction and EIP-7516 Instruction
+TVM will support the Ethereum Cancun upgrade's `BLOBHASH` and `BLOBBASEFEE` instructions:
+
+| ID | TVM Instruction | Description |
+| -------- | -------- | -------- |
+| 0x49   | BLBOHASH   | Retrieves the Blob hash value for a specified index in the current transaction; currently returns 0 by default  |
+| 0x4a  | BLOBBASEFEE  | Retrieves the Blob transaction base fee for the current block; currently returns 0 by default   |
+
+
+The `BLOBHASH` and `BLOBBASEFEE` instructions are associated with Ethereum Blob transactions. Currently, `BLOBHASH` and `BLOBBASEFEE` are implemented as stubs, both returning 0.
+
+Note: This feature is governed by TRON network parameter #89. It is disabled by default (value: 0) post-Kant deployment and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-745.md](https://github.com/tronprotocol/tips/blob/master/tip-745.md) 
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6232](https://github.com/tronprotocol/java-tron/pull/6232) [https://github.com/tronprotocol/java-tron/pull/6247](https://github.com/tronprotocol/java-tron/pull/6247) [https://github.com/tronprotocol/java-tron/pull/6270](https://github.com/tronprotocol/java-tron/pull/6270) [https://github.com/tronprotocol/java-tron/pull/6283](https://github.com/tronprotocol/java-tron/pull/6283) 
+
+
+
+### Core
+
+#### 1. Enhanced Consensus Layer Verification 
+##### 1.1 TIP-694: Enhance Verification of Transaction Limitations at Consensus Layer 
+Prior to Kant, transaction validation was optimized at various points, but only focused on the transaction broadcast phase. The Kant version enhances transaction validation at the consensus layer, further improving transaction processing consistency and validity.
+
+* Strengthened Account Creation Transaction Size Check: Verifies that the transaction size, excluding its results and signatures, does not exceed the maximum byte limit allowed for account creation transactions (parameter #82).
+* Enhanced Transaction Size Validation: Verifies whether the transaction body content exceeds the size limit.
+* Transaction Result List Constraint: Ensures consistency with the contract count (currently limited to 1).
+* Transaction Expiration Time Check: Verifies that the transaction expiration time is later than the next block's slot time.
+
+Note: This enhancement is governed by TRON network parameter #88. It is disabled by default post-Kant deployment and can be enabled through a governance proposal vote.
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-694.md](https://github.com/tronprotocol/tips/blob/master/tip-694.md) 
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6172](https://github.com/tronprotocol/java-tron/pull/6172) [https://github.com/tronprotocol/java-tron/pull/6221](https://github.com/tronprotocol/java-tron/pull/6221) 
+
+
+
+##### 1.2 Enhanced Validation of Block Production during Maintenance Periods
+Maintenance periods are designated for Super Representative (SR) elections and proposal processing. Therefore, SRs must not produce blocks during these periods. However, in prior versions, blocks produced by SRs during maintenance periods could potentially pass validation. The Kant version modifies block production and validation logic to prevent SRs from producing blocks during maintenance periods. Any block produced during this time will fail validation.  
+
+Note: This enhancement is governed by TRON network parameter #88. It is disabled by default post-Kant deployment and can be enabled through a governance proposal vote.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6187](https://github.com/tronprotocol/java-tron/pull/6187)
+
+
+##### 1.3 Enhanced Block Header Validation
+Block time, recorded in the block header, represents the time a block is produced. Given that the TRON network's block slot time is 3 seconds, the block time must be a strict multiple of 3 seconds.
+
+Note: This enhancement is governed by TRON network parameter #88. It is disabled by default post-Kant deployment and can be enabled through a governance proposal vote.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6186](https://github.com/tronprotocol/java-tron/pull/6186) 
+
+##### 1.4 Optimized Super Representative Election Ranking Algorithm
+In versions prior to Kant, when multiple SRs had identical vote counts, the system determined the ranking order based on the hash of the SR's address. However, due to the risk of hash collisions and the potential for impacting ranking performance in extreme cases, the Kant version optimizes the SR ranking rules by implementing a more intuitive and stable lexicographical ordering of addresses (i.e., ranking by address alphanumerically). This approach eliminates hash collision-related performance issues and provides a more transparent and predictable ranking mechanism.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6173](https://github.com/tronprotocol/java-tron/pull/6173) 
+
+### TVM
+#### 1. TIP-652: Announce EIP-6049 Deprecate SELFDESTRUCT 
+Note: Although TIP-652 itself does not modify the behavior of the `SELFDESTRUCT` opcode, it has been officially announced that client developers will change its behavior in a future upgrade. Therefore, any applications that expose the `SELFDESTRUCT` opcode to users must clearly warn them that a semantic change to `SELFDESTRUCT` is imminent.
+
+TIP: [https://github.com/tronprotocol/tips/blob/master/tip-652.md](https://github.com/tronprotocol/tips/blob/master/tip-652.md) 
+
+### Net
+#### 1. Optimized Block Synchronization Logic
+Kant introduces two key optimizations to the block synchronization logic, significantly improving synchronization efficiency:
+
+##### 1.1 Optimized P2P Protocol: Discarding Solidified Block Lists to Conserve Network Bandwidth
+Kant optimizes the synchronization request mechanism by eliminating requests for solidified block data from remote nodes. This prevents redundant requests for existing data, reduces resource waste, and improves synchronization efficiency.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6184](https://github.com/tronprotocol/java-tron/pull/6184) 
+
+##### 1.2 Faster Block Synchronization Task Scheduling for Enhanced Efficiency
+Kant adjusts the scheduling frequency of block synchronization tasks from once per second to once per 100 milliseconds. This accelerates block processing, further improving block synchronization efficiency.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6183](https://github.com/tronprotocol/java-tron/pull/6183)    
+ 
+#### 2. Enhanced Transaction Validity Verification by Early Discarding Zero-Contract Transactions
+Kant strengthens transaction validity verification. Upon receiving a transaction message, the node will discard transactions with zero contracts and disconnect from the sender.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6181](https://github.com/tronprotocol/java-tron/pull/6181)   
+
+
+### Other Changes
+#### 1. Enhanced Event Service Framework (V2.0) Provision
+The previous event service framework (V1.0) lacked support for processing events in historical blocks and intertwined event processing with block processing logic. Consequently, event service exceptions could lead to block processing failures, disrupting block broadcast and synchronization.
+
+Kant introduces a new event service framework (V2.0) that segregates event services from block processing at the thread level. This prevents node disruptions caused by event service exceptions. V2.0 also supports event processing that begins from local historical blocks. Users can specify the starting block height for event synchronization using the event.subscribe.startSyncBlockNum configuration parameter. This feature is disabled if the parameter value is ≤ 0, and enabled otherwise.
+
+Note: Double-check the startSyncBlockNum configuration when restarting the node, since the node will synchronize historical events from the specified block height upon startup.
+The original event service framework is retained to facilitate a gradual migration to the new framework. Post-Kant deployment, the V1.0 version remains the default. To utilize the V2.0 version, modify the following configuration parameter:
+```
+event.subscribe.version = 1  // 1 means v2.0 , 0 means v1.0
+```
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6256](https://github.com/tronprotocol/java-tron/pull/6256) [https://github.com/tronprotocol/java-tron/pull/6245](https://github.com/tronprotocol/java-tron/pull/6245) [https://github.com/tronprotocol/java-tron/pull/6234](https://github.com/tronprotocol/java-tron/pull/6234) [https://github.com/tronprotocol/java-tron/pull/6227](https://github.com/tronprotocol/java-tron/pull/6227)
+[https://github.com/tronprotocol/java-tron/pull/6223](https://github.com/tronprotocol/java-tron/pull/6223) [https://github.com/tronprotocol/java-tron/pull/6206](https://github.com/tronprotocol/java-tron/pull/6206) [https://github.com/tronprotocol/java-tron/pull/6192](https://github.com/tronprotocol/java-tron/pull/6192) 
+
+#### 2. Cross-Platform Consistent `java.lang.StrictMath` Replacement for `java.lang.Math`
+
+The mathematical operation library is migrated from `java.lang.Math` to `java.lang.StrictMath`, to further enhance Java-tron's cross-platform compatibility and establish a robust foundation for future support of diverse hardware architectures (including ARM). This ensures consistent computational results across different platforms.
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-697.md](https://github.com/tronprotocol/tips/blob/master/tip-697.md)
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6182](https://github.com/tronprotocol/java-tron/pull/6182) [https://github.com/tronprotocol/java-tron/pull/6210](https://github.com/tronprotocol/java-tron/pull/6210) 
+
+
+#### 3. Optimized Node Exit and Startup Logic 
+##### 3.1 Optimized Node Exit Logic
+Kant standardizes the code logic for process termination while preserving original functionalities, enhancing code consistency and system stability.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6170](https://github.com/tronprotocol/java-tron/pull/6170) [https://github.com/tronprotocol/java-tron/pull/6177](https://github.com/tronprotocol/java-tron/pull/6177) [https://github.com/tronprotocol/java-tron/pull/6205](https://github.com/tronprotocol/java-tron/pull/6205) 
+
+##### 3.2 Optimized Node Startup Logic 
+Kant introduces enhanced service integrity checks for the node startup process. To ensure operational stability, the node will immediately terminate if any core service (including API, P2P, Prometheus, and event plugins) fails to initialize. This prevents operation with incomplete critical services.
+
+Additionally, the Kant version extends the API service with the following four configurable options (all enabled by default), providing node deployers the choice to selectively disable or enable these API service features:
+```
+node.rpc.enable = true
+node.rpc.solidityEnable = true
+node.rpc.PBFTEnable = true
+node.http.PBFTEnable = true
+```
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/5857](https://github.com/tronprotocol/java-tron/pull/5857) [https://github.com/tronprotocol/java-tron/pull/6228](https://github.com/tronprotocol/java-tron/pull/6228) [https://github.com/tronprotocol/java-tron/pull/6233](https://github.com/tronprotocol/java-tron/pull/6233)
+
+#### 4. Dependency Library Security Upgrade
+To enhance system security, Kant has updated several underlying dependency libraries and removed obsolete components. This includes updating the jcommander, pf4j, grpc, logback, and libp2p dependency libraries to secure and stable releases, and removing the deprecated library quartz for task scheduling.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6180](https://github.com/tronprotocol/java-tron/pull/6180) [https://github.com/tronprotocol/java-tron/pull/6207](https://github.com/tronprotocol/java-tron/pull/6207) [https://github.com/tronprotocol/java-tron/pull/6257](https://github.com/tronprotocol/java-tron/pull/6257) 
+
+#### 5. Gradle 7.6.4 Upgrade with Dependency Integrity Verification
+Kant upgrades Gradle to version 7.6.4 and enables security verification of third-party dependency JAR packages. During JAR file packaging and generation, the system automatically validates all referenced external dependencies to ensure they originate from trusted sources and are free from tampering. This prevents the inclusion of potentially vulnerable JAR packages in the final product. This enhancement effectively mitigates supply chain attacks and bolsters the overall build security of the project.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/5869](https://github.com/tronprotocol/java-tron/pull/5869) [https://github.com/tronprotocol/java-tron/pull/5903](https://github.com/tronprotocol/java-tron/pull/5903) [https://github.com/tronprotocol/java-tron/pull/6229](https://github.com/tronprotocol/java-tron/pull/6229) 
+
+#### 6. Null Pointer Exception Fix During Startup
+Kant resolves an intermittent null pointer exception that could occur during node startup. This ensures the consensus service initializes before the network service, preventing startup failures.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6216](https://github.com/tronprotocol/java-tron/pull/6216)
+
+#### 7. Internal Transaction Details Logging for `CANCELALLUNFREEZEV2` Opcode
+Nodes configured to save internal transactions, beginning with the Kant version, will log the unstaking amounts of various resources when processing transactions that include the `CANCELALLUNFREEZEV2` opcode. For example: {"BANDWIDTH":100,"ENERGY":100,"TRON_POWER":0}.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6191](https://github.com/tronprotocol/java-tron/pull/6191)
+
+
+### API
+#### 1. Enhanced Compatibility for Ethereum JSON-RPC Interface
+##### 1.1 Support for Querying Solidified Data via finalized Block Parameter in JSON-RPC API
+Kant's JSON-RPC interface now supports the "finalized" parameter. This allows certain interfaces that use a block number as a parameter to accept "finalized” for querying the latest solidified block information, further improving compatibility with the Ethereum JSON-RPC interface.
+
+Interfaces supporting "finalized" as a parameter:
+
+* eth_getBlockTransactionCountByNumber
+* eth_getBlockByNumber
+* eth_getTransactionByBlockNumberAndIndex
+* eth_getLogs
+
+Interfaces not supporting "finalized" as a parameter:
+
+* eth_getBalance
+* eth_getCode
+* eth_getStorageAt
+* eth_call
+* eth_newFilter
+
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6007](https://github.com/tronprotocol/java-tron/pull/6007) [https://github.com/tronprotocol/java-tron/pull/6238](https://github.com/tronprotocol/java-tron/pull/6238) [https://github.com/tronprotocol/java-tron/pull/6239](https://github.com/tronprotocol/java-tron/pull/6239)
+
+##### 1.2 New Limits on Block Range and “Topics” Quantity for JSON-RPC Log Queries
+Kant introduces a query limit mechanism for JSON-RPC event query interfaces, controlled by the following two configuration parameters:
+
+* `maxBlockRange`: Specifies the maximum block range allowed for log queries. The default value is 5000. The range between the starting block and the ending block cannot exceed this value when related interfaces are called.
+* `maxSubTopics`: Limits the maximum number of “sub topics” that can be set. The default value is 1000, meaning that a maximum of 1000 “sub topics” can be set during interface calls.
+
+Note: The values of the above configuration parameters must be positive integers greater than 0. If a configured value is less than or equal to 0, the corresponding limit is considered disabled, and the relevant interfaces will not perform this validation.
+```
+node.jsonrpc.maxBlockRange = 5000
+node.jsonrpc.maxSubTopics = 1000
+```
+
+Interfaces supporting `maxBlockRange`:
+
+* eth_getLogs
+
+Interfaces supporting `maxSubTopics`:
+
+* eth_getLogs
+* eth_newFilter
+
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6271](https://github.com/tronprotocol/java-tron/pull/6271) [https://github.com/tronprotocol/java-tron/pull/6275](https://github.com/tronprotocol/java-tron/pull/6275) 
+
+##### 1.3 Optimized eth_getLogs to Resolve Data Retrieval Issue in Rare Hash Collisions
+Kant optimizes the eth_getLogs processing logic to resolve the issue where the interface failed to retrieve data in rare hash collision scenarios, thus increasing interface stability.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6203](https://github.com/tronprotocol/java-tron/pull/6203)
+
+
+#### 2. Non-Null Payment Address Validation in Shielded Transaction Creation API
+Kant adds validation to the shielded transaction creation API to ensure a payment address is not empty. If the validation fails, the API returns the reason for the failure, improving the user experience.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6174](https://github.com/tronprotocol/java-tron/pull/6174)
+
+
+
+
+Science is organized knowledge. Wisdom is organized life.
+<p align="right">---Immanuel Kant</p>
+
+
+
 
 ## GreatVoyage-4.7.7(Epicurus)
 
