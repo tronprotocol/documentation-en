@@ -2,7 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-|  Kant    |  GreatVoyage-v4.8.0    |  2025-xx-xx    |  [TIP-650](https://github.com/tronprotocol/tips/blob/master/tip-650.md) <br> [TIP-651](https://github.com/tronprotocol/tips/blob/master/tip-651.md) <br> [TIP-694](https://github.com/tronprotocol/tips/blob/master/tip-694.md) <br> [TIP-697](https://github.com/tronprotocol/tips/blob/master/tip-697.md) <br> [TIP-745](https://github.com/tronprotocol/tips/blob/master/tip-745.md)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0)   |   [Specs](#greatvoyage-480kant)   |
+|  Kant    |  GreatVoyage-v4.8.0    |  2025-04-29    |  [TIP-650](https://github.com/tronprotocol/tips/blob/master/tip-650.md) <br> [TIP-651](https://github.com/tronprotocol/tips/blob/master/tip-651.md) <br> [TIP-694](https://github.com/tronprotocol/tips/blob/master/tip-694.md) <br> [TIP-697](https://github.com/tronprotocol/tips/blob/master/tip-697.md) <br> [TIP-745](https://github.com/tronprotocol/tips/blob/master/tip-745.md)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0)   |   [Specs](#greatvoyage-480kant)   |
 |  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/tronprotocol/tips/issues/697)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
 |  Anaximander    |  GreatVoyage-v4.7.6    |  2024-10-04    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.6)   |   [Specs](#greatvoyage-v476anaximander)   |
 |  Cleobulus    |  GreatVoyage-v4.7.5    |  2024-5-30    |  [TIP-653](https://github.com/tronprotocol/tips/blob/master/tip-653.md)   |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.5)   |   [Specs](#greatvoyage-v475cleobulus)   |
@@ -209,7 +209,7 @@ event.subscribe.version = 1  // 1 means v2.0 , 0 means v1.0
 
 #### 2. Cross-Platform Consistent `java.lang.StrictMath` Replacement for `java.lang.Math`
 
-The mathematical operation library is migrated from java.lang.Math to java.lang.StrictMath, to further enhance Java-tron's cross-platform compatibility and establish a robust foundation for future support of diverse hardware architectures (including ARM). This ensures consistent computational results across different platforms.
+The mathematical operation library is migrated from `java.lang.Math` to `java.lang.StrictMath`, to further enhance Java-tron's cross-platform compatibility and establish a robust foundation for future support of diverse hardware architectures (including ARM). This ensures consistent computational results across different platforms.
 
 * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-697.md](https://github.com/tronprotocol/tips/blob/master/tip-697.md)
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/6182](https://github.com/tronprotocol/java-tron/pull/6182) [https://github.com/tronprotocol/java-tron/pull/6210](https://github.com/tronprotocol/java-tron/pull/6210) 
@@ -248,7 +248,7 @@ Kant resolves an intermittent null pointer exception that could occur during nod
 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6216](https://github.com/tronprotocol/java-tron/pull/6216)
 
-#### 7. Internal Transaction Details Logging for CANCELALLUNFREEZEV2 Opcode
+#### 7. Internal Transaction Details Logging for `CANCELALLUNFREEZEV2` Opcode
 Nodes configured to save internal transactions, beginning with the Kant version, will log the unstaking amounts of various resources when processing transactions that include the `CANCELALLUNFREEZEV2` opcode. For example: {"BANDWIDTH":100,"ENERGY":100,"TRON_POWER":0}.
 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6191](https://github.com/tronprotocol/java-tron/pull/6191)
@@ -274,6 +274,7 @@ Interfaces not supporting "finalized" as a parameter:
 * eth_call
 * eth_newFilter
 
+
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/6007](https://github.com/tronprotocol/java-tron/pull/6007) [https://github.com/tronprotocol/java-tron/pull/6238](https://github.com/tronprotocol/java-tron/pull/6238) [https://github.com/tronprotocol/java-tron/pull/6239](https://github.com/tronprotocol/java-tron/pull/6239)
 
 ##### 1.2 New Limits on Block Range and “Topics” Quantity for JSON-RPC Log Queries
@@ -297,6 +298,7 @@ Interfaces supporting `maxSubTopics`:
 * eth_getLogs
 * eth_newFilter
 
+
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/6271](https://github.com/tronprotocol/java-tron/pull/6271) [https://github.com/tronprotocol/java-tron/pull/6275](https://github.com/tronprotocol/java-tron/pull/6275) 
 
 ##### 1.3 Optimized eth_getLogs to Resolve Data Retrieval Issue in Rare Hash Collisions
@@ -309,6 +311,8 @@ Kant optimizes the eth_getLogs processing logic to resolve the issue where the i
 Kant adds validation to the shielded transaction creation API to ensure a payment address is not empty. If the validation fails, the API returns the reason for the failure, improving the user experience.
 
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/6174](https://github.com/tronprotocol/java-tron/pull/6174)
+
+
 
 
 Science is organized knowledge. Wisdom is organized life.
