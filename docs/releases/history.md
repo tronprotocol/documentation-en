@@ -124,7 +124,7 @@ TVM will support the Ethereum Cancun upgrade's `BLOBHASH` and `BLOBBASEFEE` inst
 | 0x4a  | BLOBBASEFEE  | Retrieves the Blob transaction base fee for the current block; currently returns 0 by default   |
 
 
-The `BLOBHASH` and `BLOBBASEFEE` instructions are associated with Ethereum Blob transactions. Currently, `BLOBHASH` and `BLOBBASEFEE` are implemented as stubs, both returning 0.
+The `BLOBHASH` and `BLOBBASEFEE` instructions are associated with Ethereum Blob transactions. Currently, `BLOBHASH` and `BLOBBASEFEE` are implemented as stubs, both returning 0. The precompile contracts verifying KZG proof are not implemented in Kant since blob transaction is not supported.
 
 Note: This feature is governed by TRON network parameter #89. It is disabled by default (value: 0) post-Kant deployment and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.
 
@@ -190,7 +190,7 @@ Kant optimizes the synchronization request mechanism by eliminating requests for
 Kant adjusts the scheduling frequency of block synchronization tasks from once per second to once per 100 milliseconds. This accelerates block processing, further improving block synchronization efficiency.
 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6183](https://github.com/tronprotocol/java-tron/pull/6183)    
- 
+
 #### 2. Enhanced Transaction Validity Verification by Early Discarding Zero-Contract Transactions
 Kant strengthens transaction validity verification. Upon receiving a transaction message, the node will discard transactions with zero contracts and disconnect from the sender.
 
