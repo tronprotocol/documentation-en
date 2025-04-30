@@ -828,28 +828,28 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#reward-for-srsuper-representatives" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#rewards-for-srsuper-representatives" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Reward for SR(Super Representatives)
+      Rewards for SR(Super Representatives)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Reward for SR(Super Representatives)" hidden>
+    <nav class="md-nav" aria-label="Rewards for SR(Super Representatives)" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#votes-reward" class="md-nav__link" >
+  <a href="#vote-rewards" class="md-nav__link" >
     <span class="md-ellipsis">
-      Votes Reward
+      Vote Rewards
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#block-producing-reward" class="md-nav__link" >
+  <a href="#block-producing-rewards" class="md-nav__link" >
     <span class="md-ellipsis">
-      Block Producing Reward
+      Block Producing Rewards
     </span>
   </a>
   
@@ -861,9 +861,9 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#reward-for-voters" class="md-nav__link" >
+  <a href="#rewards-for-voter" class="md-nav__link" >
     <span class="md-ellipsis">
-      Reward for Voters
+      Rewards for Voter
     </span>
   </a>
   
@@ -1628,7 +1628,7 @@
 <p>The super representative candidates ranked 28th to 127th are also called super representative partners. Super representative partners do not participate in block production and packaging transactions, but will receive voting rewards. Voters who vote to super representative partners will also receive voting rewards.</p>
 <p>The votes will be counted every 6 hours, so super representatives and super representative partners will be changed every 6 hours.</p>
 <h2 id="super-representative-election">Super Representative Election<a class="headerlink" href="#super-representative-election" title="Permanent link">&para;</a></h2>
-<p>To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.</p>
+<p>To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the corresponding TRON Power(TP), so your previous vote will be invalid.</p>
 <p>Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; freezebalancev2 10,000,000 3 // Stake 10 TRX to get 10 TRON Power(TP)</span>
@@ -1638,27 +1638,31 @@
 <p>The final output above is: Vote 3 votes for SR1, 7 votes for SR2.</p>
 <h3 id="super-representatives-brokerage">Super Representatives Brokerage<a class="headerlink" href="#super-representatives-brokerage" title="Permanent link">&para;</a></h3>
 <p>The default ratio is 20%. Super representatives and super representative partners can query the brokerage ratio through the <code>wallet/getBrokerage</code> interface, and can also modify the brokerage ratio through the <code>wallet/updateBrokerage</code> interface.</p>
-<p>If a SR(Super Representatives) get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.</p>
-<h2 id="reward-for-srsuper-representatives">Reward for SR(Super Representatives)<a class="headerlink" href="#reward-for-srsuper-representatives" title="Permanent link">&para;</a></h2>
-<h3 id="votes-reward">Votes Reward<a class="headerlink" href="#votes-reward" title="Permanent link">&para;</a></h3>
-<p>Vote rewards are 160 TRX every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX.</p>
-<p>For each SR and Partner, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  TRX</p>
-<h3 id="block-producing-reward">Block Producing Reward<a class="headerlink" href="#block-producing-reward" title="Permanent link">&para;</a></h3>
-<p>Every time after a super representative produces a block, it will be reward 16 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 168,192,000 TRX in total.</p>
-<p>Every time after a super representative produces a block, the 16 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.</p>
-<p><span class="arithmatex"><span class="MathJax_Preview">16 (\mathsf{TRX}/block) \times 28,800 (blocks/day) = 460,800 (\mathsf{TRX}/day)</span><script type="math/tex">16 (\mathsf{TRX}/block) \times 28,800 (blocks/day) = 460,800 (\mathsf{TRX}/day)</script></span></p>
-<p>For each super representative, the daily block <span class="arithmatex"><span class="MathJax_Preview">Rewards_{sr} = (460,800 / 27) \times 20 \% \mathsf{TRX}</span><script type="math/tex">Rewards_{sr} = (460,800 / 27) \times 20 \% \mathsf{TRX}</script></span>.</p>
-<p>Reward may be less than the theoretical number due to missed blocks and maintenance period.</p>
-<h2 id="reward-for-voters">Reward for Voters<a class="headerlink" href="#reward-for-voters" title="Permanent link">&para;</a></h2>
-<p>If you vote for a SR(Super Representative):</p>
-<p>the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a SR) / (the total number of votes a SR receives) TRX</p>
-<p>If you vote for a Partner:</p>
-<p>the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX</p>
+<p>If a SR(Super Representatives) get 20% of the rewards, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.</p>
+<h2 id="rewards-for-srsuper-representatives">Rewards for SR(Super Representatives)<a class="headerlink" href="#rewards-for-srsuper-representatives" title="Permanent link">&para;</a></h2>
+<p>The following calculations are all based on the situation where brokerage ratio is equal to 20%.</p>
+<h3 id="vote-rewards">Vote Rewards<a class="headerlink" href="#vote-rewards" title="Permanent link">&para;</a></h3>
+<p>Vote rewards are 160 TRX for every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX.</p>
+<p>For each SR and Partner, the daily vote rewards = 4,608,000 * ( votes /  total votes) x 20%  TRX</p>
+<h3 id="block-producing-rewards">Block Producing Rewards<a class="headerlink" href="#block-producing-rewards" title="Permanent link">&para;</a></h3>
+<p>Every time after a super representative produces a block, it will be rewarded 16 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing rewards is 168,192,000 TRX in total.</p>
+<p>Every time after a super representative produces a block, the 16 TRX block producing rewards will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.</p>
+<p>The daily total block producing rewards = 16 (TRX/block) * 28,800 (blocks/day) = 460,800 (TRX/day)</p>
+<p>For each super representative, the daily block producing rewards = (460,800 / 27) * 20%TRX.</p>
+<p>Rewards may be less than the theoretical number due to missed blocks and maintenance period.</p>
+<h2 id="rewards-for-voter">Rewards for Voter<a class="headerlink" href="#rewards-for-voter" title="Permanent link">&para;</a></h2>
+<p>If you vote for a SR(Super Representative), you will have both vote rewards and block producing rewards:</p>
+<p>vote rewards = ((the number of votes you vote to a SR / total votes) * 4,608,000 * 80%) TRX</p>
+<p>block producing rewards = ((the number of votes you vote to a SR) / (the total number of votes a SR receives) * ((460,800 / 27) * 80%)) TRX</p>
+<p>daily rewards for voter = vote rewards + block producing rewards </p>
+<p>If you vote for a SR Partner, you will only have vote rewards:</p>
+<p>daily rewards for voter = (((the number of votes you vote to a SR Partner) * 4,608,000 / total votes) * 80%) TRX</p>
+<p><strong>Notice:</strong> the above <strong>total votes</strong> refers to the combined votes of SRs and SR Partners, not including SR Candidates</p>
 <h2 id="committee">Committee<a class="headerlink" href="#committee" title="Permanent link">&para;</a></h2>
 <h3 id="what-is-committee">What is Committee<a class="headerlink" href="#what-is-committee" title="Permanent link">&para;</a></h3>
-<p>Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.</p>
+<p>Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every SR has the right to create and vote a proposal. The proposal will be passed after it gets at least 18 approves from the super representatives and will become valid in the next maintenance period.</p>
 <h3 id="create-a-proposal">Create a Proposal<a class="headerlink" href="#create-a-proposal" title="Permanent link">&para;</a></h3>
-<p>Only SRs, Partners and Candidates can create a proposal.</p>
+<p>In addition to SR, SR Partner and SR Candidate also have the right to create a proposal, and only they have this right.</p>
 <p>Please refer to <a href="https://tronscan.org/#/sr/committee">here</a> for TRON network dynamic parameters and their values.</p>
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; createproposal id value</span>
