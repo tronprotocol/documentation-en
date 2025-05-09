@@ -1602,15 +1602,17 @@
 <span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">code_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">9</span><span class="p">;</span>
 <span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">trx_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">10</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-origin_address: smart contract creator address
-contract_address: smart contract address
-abi: the api information of all the function of the smart contract
-bytecode: smart contract byte code
-call_value: TRX transferred into smart contract while call the contract
-consume_user_resource_percent: resource consumption percentage set by the developer
-name: smart contract name
-origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)</p>
+</code></pre></div></p>
+<ul>
+<li>origin_address: smart contract creator address</li>
+<li>contract_address: smart contract address</li>
+<li>abi: the api information of all the function of the smart contract</li>
+<li>bytecode: smart contract byte code</li>
+<li>call_value: TRX transferred into smart contract while call the contract</li>
+<li>consume_user_resource_percent: resource consumption percentage set by the developer</li>
+<li>name: smart contract name</li>
+<li>origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)</li>
+</ul>
 <p>Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.</p>
 <h3 id="usage-of-the-function-of-smart-contract">Usage of the Function of Smart Contract<a class="headerlink" href="#usage-of-the-function-of-smart-contract" title="Permanent link">&para;</a></h3>
 <ul>
