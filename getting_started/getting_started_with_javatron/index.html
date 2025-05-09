@@ -343,9 +343,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#generat-account" class="md-nav__link" >
+  <a href="#generate-account" class="md-nav__link" >
     <span class="md-ellipsis">
-      Generat account
+      Generate account
     </span>
   </a>
   
@@ -1560,7 +1560,7 @@
 <p>This page mainly explains how to start the java-tron node and use the command line tool <code>wallet-cli</code> to execute basic commands to interact with the java-tron node. Regarding the installation of java-tron, you can download the runnable file directly or build it from source code. Instructions for installing java-tron can be found on the <a href="../../using_javatron/installing_javatron/">Install and Build</a> page. This tutorial on this page assumes java-tron and associated developer tools have been successfully installed.</p>
 <p>This page covers the basics of using java-tron, which includes generating accounts, joining the TRON Nile testnet, and sending TRX between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the TRON network. This tool provides user interactive commands, which can be used to interact with java-tron more conveniently.</p>
 <p>java-tron is a TRON network client written in Java. This means a computer running java-tron will become a TRON network node. TRON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-tron uses the information provided by each block to update its "state" - the balance of each account on the TRON network. There are two types of accounts on the TRON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the TRON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit TRX tokens, and transfer TRX.</p>
-<h2 id="generat-account">Generat account<a class="headerlink" href="#generat-account" title="Permanent link">&para;</a></h2>
+<h2 id="generate-account">Generate account<a class="headerlink" href="#generate-account" title="Permanent link">&para;</a></h2>
 <p>There are various ways to generate a TRON network account, here we will demonstrate how to generate an account using wallet-cli. An account is a pair of keys (public and private keys).</p>
 <p>Enter the command <code>java -jar wallet-cli.jar</code> in the terminal to start a wallet-cli:
 <div class="highlight"><pre><span></span><code>$ java -jar wallet-cli.jar
