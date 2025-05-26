@@ -2,7 +2,7 @@
 
 ## Background
 
-[Account permission management](https://github.com/tronprotocol/TIPs/blob/master/tip-16.md) functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through ORGON's account permission management implementation and design.
+[Account permission management](https://github.com/alexozerov/TIPs/blob/master/tip-16.md) functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through ORGON's account permission management implementation and design.
 
 ## Concept
 
@@ -85,7 +85,7 @@ message Permission {
 - `operations`: used by active permission, a hexadecimal coded sequence (little-endian byte order), 32 bytes (256 bits), and each bit represents the authority of a ContractType. The nth bit indicates the authority of the ContractType with ID n, its value 1 means that it has the authority to execute the ContractType, its value 0 means it doesn't have the authority.
     To make it easier for users to read, start with the binary big-endian byte order to illustrate how to calculate the value of operations. The number of digits starts from 0, and corresponds to the ID of the ContractType from left to right. Convert a binary big-endian byte sequence to a hexadecimal little-endian byte sequence, that will be the value of operations. Below is an example of how to calculate the operations of active permission with operation TransferContract(ID=1) and operation VoteWitnessContract(ID=4) allowed. The mapping between ContractType and its ID can be seen in the above definition link of ContractType.
 
-    | Operations Allowed  | Binary Code(big-endian) | Binary Code(little-endian) | Hex Code(little-endian) |
+    || Operations Allowed  | Binary Code(big-endian) | Binary Code(little-endian) | Hex Code(little-endian) |
     | ------------- | ------------- | ------------- | ------------- |
     | TransferContract(1) & VoteWitnessContract(4)  | 01001000 00000000 00000000 ...  | 00010010 00000000 00000000 ... | 12 00 00 ... |
 
@@ -133,7 +133,7 @@ Super representatives can use this permission to manage block producing. Only SR
 Usage scenario example:
 A super representative deploys a witness node on cloud server. In order to keep the account on the cloud server safe, you can only give the block producing permission to the account you put on cloud server. Because this account only owns  block producing permission, no ORGON transfer permission, so even if the account on the cloud server is leaked, the ORGON will not be lost.
 
-Witness node configuration: when [start a fullnode as witness](https://dev.orgon.space/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks), `localwitness` in the config file is filled in with the private key of the witness account and `localWitnessAccountAddress` is commented on as below:
+Witness node configuration: when [start a fullnode as witness](https://dev.orgon.space/using_javaorgon/installing_javaorgon/#startup-a-fullnode-that-produces-blocks), `localwitness` in the config file is filled in with the private key of the witness account and `localWitnessAccountAddress` is commented on as below:
 ```
 # config.conf
 //localWitnessAccountAddress =
@@ -147,12 +147,12 @@ localwitness = [
     -  `localwitness` needs to be changed to the private key of the account authorized with witness permission
     - `localWitnessAccountAddress` shoule be explicitly set as the address of the witness account
 
-    Below is an example of how to configure witness account [TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk](https://nile.tronscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk) which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
+    Below is an example of how to configure witness account [oCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk](https://quasar.orgonscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk) which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
     ```
     #config.conf
-    localWitnessAccountAddress = TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk
+    localWitnessAccountAddress = oCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk
     localwitness = [
-      yyy // private key of TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ
+      yyy // private key of oSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ
     ]
     ```
     Notice: Only one private key can be added to `localwitness` when witness permission is modified.
@@ -192,22 +192,22 @@ Demo HTTP request:
 // POST to http://{{host}}:{{port}}/wallet/accountpermissionupdate
 
 {
-  "owner_address": "41ffa9466d5bf6bb6b7e4ab6ef2b1cb9f1f41f9700",
+  "owner_address": "73ffa9466d5bf6bb6b7e4ab6ef2b1cb9f1f41f9700",
   "owner": {
     "type": 0,
     "id": 0,
     "permission_name": "owner",
     "threshold": 2,
     "keys": [{
-        "address": "41F08012B4881C320EB40B80F1228731898824E09D",
+        "address": "73F08012B4881C320EB40B80F1228731898824E09D",
         "weight": 1
       },
       {
-        "address": "41DF309FEF25B311E7895562BD9E11AAB2A58816D2",
+        "address": "73DF309FEF25B311E7895562BD9E11AAB2A58816D2",
         "weight": 1
       },
       {
-        "address": "41BB7322198D273E39B940A5A4C955CB7199A0CDEE",
+        "address": "73BB7322198D273E39B940A5A4C955CB7199A0CDEE",
         "weight": 1
       }
     ]
@@ -218,7 +218,7 @@ Demo HTTP request:
       "permission_name": "witness",
       "threshold": 1,
       "keys": [{
-          "address": "41F08012B4881C320EB40B80F1228731898824E09D",
+          "address": "73F08012B4881C320EB40B80F1228731898824E09D",
           "weight": 1
         }
       ]
@@ -230,15 +230,15 @@ Demo HTTP request:
     "threshold": 3,
     "operations": "7fff1fc0037e0000000000000000000000000000000000000000000000000000",
     "keys": [{
-        "address": "41F08012B4881C320EB40B80F1228731898824E09D",
+        "address": "73F08012B4881C320EB40B80F1228731898824E09D",
         "weight": 1
       },
       {
-        "address": "41DF309FEF25B311E7895562BD9E11AAB2A58816D2",
+        "address": "73DF309FEF25B311E7895562BD9E11AAB2A58816D2",
         "weight": 1
       },
       {
-        "address": "41BB7322198D273E39B940A5A4C955CB7199A0CDEE",
+        "address": "73BB7322198D273E39B940A5A4C955CB7199A0CDEE",
         "weight": 1
       }
     ]
@@ -270,7 +270,7 @@ public static void main(String[] args) {
 
 (1). Create transaction, the same as none multi-signatures
 
-(2). Specify `Permission_id`, default 0, represent owner permission, [demo](https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211)
+(2). Specify `Permission_id`, default 0, represent owner permission, [demo](https://github.com/alexozerov/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211)
 
 (3). User A sign the transaction, and then send it to user B
 

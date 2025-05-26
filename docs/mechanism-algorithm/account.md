@@ -6,7 +6,7 @@ ORGON uses the account model. The address is the unique identifier of an account
 
 ## How to Create an Account
 
-1. Use a wallet application([TronLink](https://www.tronlink.org/) is recommended) to generate a pair of address and private key. To active the account, you need to transfer ORGON or other token to it.
+1. Use a wallet application([OrgonLink](https://www.orgonlink.org/) is recommended) to generate a pair of address and private key. To active the account, you need to transfer ORGON or other token to it.
 2. Use an account already existed in ORGON network to create an account
 
 If you have enough staked BandWidth Points, creating an account only consume your staked BandWidth Points, otherwise, it burns 0.1 ORGON.

@@ -55,7 +55,7 @@ After the account's free bandwidth and the bandwidth obtained by staking ORGON a
 
 ### 4. Account Bandwidth Balance Query
 
-First, call the node HTTP interface [`wallet/getaccountresource`](https://developers.tron.network/reference/getaccountresource) to obtain the current resource status of the account, and then calculate the bandwidth balance by the following formula:
+First, call the node HTTP interface [`wallet/getaccountresource`](https://developers.orgon.network/reference/getaccountresource) to obtain the current resource status of the account, and then calculate the bandwidth balance by the following formula:
 
 ```
 Free bandwidth balance = freeNetLimit - freeNetUsed
