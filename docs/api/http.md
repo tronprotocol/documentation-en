@@ -19,7 +19,7 @@ http://127.0.0.1:8090/wallet/listexchanges?visible=true
 ```json
 curl -X POST http://127.0.0.1:8090/wallet/createtransaction -d
 '{
-    "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+    "owner_address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
     "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
     "amount": 1000000,
     "visible": true
@@ -106,7 +106,7 @@ Description: Update the account's permission.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
 '{
-    "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+    "owner_address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
     "owner": {
         "type": 0,
         "permission_name": "owner",
@@ -265,7 +265,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{
             "parameter": {
                 "value": {
                     "amount": 1000000,
-                    "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+                    "owner_address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
                     "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
                 },
                 "type_url": "type.googleapis.com/protocol.TransferContract"
@@ -298,7 +298,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{
             "parameter": {
                 "value": {
                     "amount": 1000000,
-                    "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+                    "owner_address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
                     "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
                 },
                 "type_url": "type.googleapis.com/protocol.TransferContract"
@@ -554,7 +554,7 @@ Description:Remaining times of executing unstake operation in Stake2.0
 ```
 curl -X POST http://127.0.0.1:8090/wallet/getavailableunfreezecount -d
 '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "visible": true
 }
 '
@@ -572,7 +572,7 @@ Description:Query the withdrawable balance at the specified timestamp In Stake2.
 ```
 curl -X POST http://127.0.0.1:8090/wallet/getcanwithdrawunfreezeamount -d
 '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "timestamp": 1667977444000,
   "visible": true
 }
@@ -593,7 +593,7 @@ Description: In Stake2.0, query the amount of delegatable resources share of the
 ```
 curl -X POST http://127.0.0.1:8090/wallet/getcandelegatedmaxsize -d
 '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "type": 0,
   "visible": true
 }
@@ -1038,7 +1038,7 @@ Return: Transaction object
 Estimate the energy required for the successful execution of smart contract transactions
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/estimateenergy -d '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
   "function_selector": "transfer(address,uint256)",
   "parameter": "00000000000000000000004115208EF33A926919ED270E2FA61367B2DA3753DA0000000000000000000000000000000000000000000000000000000000000032",
@@ -2569,7 +2569,7 @@ Description:Remaining times of executing unstake operation in Stake2.0
 ```
 curl -X POST http://127.0.0.1:8090/walletsolidity/getavailableunfreezecount -d
 '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "visible": true
 }
 '
@@ -2587,7 +2587,7 @@ Description: Query the withdrawable balance at the specified timestamp In Stake2
 ```
 curl -X POST http://127.0.0.1:8090/walletsolidity/getcanwithdrawunfreezeamount -d
 '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "timestamp": 1667977444000,
   "visible": true
 }
@@ -2606,7 +2606,7 @@ Description: In Stake2.0, query the amount of delegatable resources share of the
 ```
 curl -X POST http://127.0.0.1:8090/walletsolidity/getcandelegatedmaxsize -d
 '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "type": 0,
   "visible": true
 }
