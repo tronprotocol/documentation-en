@@ -733,7 +733,7 @@ This feature is controlled by the No. 77 parameter of the ORGON network, which n
 ```
 curl -X POST http://127.0.0.1:8090/wallet/cancelallunfreezev2 -d \
 '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "visible": true
 }'
 ```
@@ -754,7 +754,7 @@ This feature is controlled by the No.78 parameter of the ORGON network. It needs
 ```
 curl -X POST http://127.0.0.1:8090/wallet/delegateresource -d \
 '{
-  "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "receiver_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
   "balance": 1000000,
   "resource": "ENERGY",
@@ -822,7 +822,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
      --header 'content-type: application/json' \
      --data '
     {
-        "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+        "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
       "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
       "function_selector": "balanceOf(address)",
       "parameter": "000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c",
@@ -839,7 +839,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
      --header 'content-type: application/json' \
      --data '
     {
-      "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+      "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
       "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
       "data": "70a08231000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c",
       "visible": true
@@ -853,7 +853,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
      --header 'content-type: application/json' \
      --data '
     {
-      "owner_address": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+      "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
       "data": "608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b506101c18061003a6000396000f3fe608060405234801561001057600080fd5b50d3801561001d57600080fd5b50d2801561002a57600080fd5b50600436106100455760003560e01c8063f8b2cb4f1461004a575b600080fd5b610064600480360381019061005f919061012a565b61007a565b6040516100719190610170565b60405180910390f35b60008173ffffffffffffffffffffffffffffffffffffffff16319050919050565b600080fd5b600074ffffffffffffffffffffffffffffffffffffffffff82169050919050565b6100ca816100a0565b81146100d557600080fd5b50565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000610103826100d8565b9050919050565b600081359050610119816100c1565b610122816100f8565b905092915050565b6000602082840312156101405761013f61009b565b5b600061014e8482850161010a565b91505092915050565b6000819050919050565b61016a81610157565b82525050565b60006020820190506101856000830184610161565b9291505056fea26474726f6e58221220839f9be3efc349a3efd6bb491d0bee7bc34d86313c73f6e6eeddc4719ec69c0064736f6c63430008120033",
       "visible": true
     }'
@@ -1254,7 +1254,7 @@ An example of `/wallet/estimateenergy` call is as follows:
 curl --location --request POST 'https://api.nileex.io/wallet/estimateenergy' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-     "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+     "owner_address": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
      "contract_address": "TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj",
      "function_selector": "transfer(address,uint256)",
      "parameter": "0000000000000000000000002EEF13ADA48F286066F9066CE84A9AD686A3EA480000000000000000000000000000000000000000000000000000000000000004",

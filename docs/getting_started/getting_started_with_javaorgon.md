@@ -293,8 +293,8 @@ Create an unsigned ORGON transferring transaction through the fullnode HTTP inte
 ```
 curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d
     '{
-        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf",
-        "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+        "to_address": "oUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf",
+        "owner_address": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
         "amount": 10000000,
         "visible":true
     }'
@@ -310,8 +310,8 @@ Returns an unsigned ORGON transferring transaction:
                 "parameter": {
                     "value": {
                         "amount": 10000000,
-                        "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
-                        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+                        "owner_address": "oPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+                        "to_address": "oUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
                     },
                     "type_url": "type.googleapis.com/protocol.TransferContract"
                 },
@@ -346,8 +346,8 @@ curl --location --request POST 'http://127.0.0.1:16887/wallet/broadcasttransacti
                 "parameter": {
                     "value": {
                         "amount": 10000000,
-                        "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
-                        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+                        "owner_address": "oPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+                        "to_address": "oUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
                     },
                     "type_url": "type.googleapis.com/protocol.TransferContract"
                 },

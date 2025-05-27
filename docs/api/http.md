@@ -20,7 +20,7 @@ http://127.0.0.1:8090/wallet/listexchanges?visible=true
 curl -X POST http://127.0.0.1:8090/wallet/createtransaction -d
 '{
     "owner_address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-    "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
+    "to_address": "oJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
     "amount": 1000000,
     "visible": true
 }'
@@ -266,7 +266,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{
                 "value": {
                     "amount": 1000000,
                     "owner_address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-                    "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
+                    "to_address": "oJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
                 },
                 "type_url": "type.googleapis.com/protocol.TransferContract"
             },
@@ -299,7 +299,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{
                 "value": {
                     "amount": 1000000,
                     "owner_address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-                    "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
+                    "to_address": "oJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
                 },
                 "type_url": "type.googleapis.com/protocol.TransferContract"
             },
