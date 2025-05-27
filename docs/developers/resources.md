@@ -13,16 +13,16 @@
 
 
 * ORGON Wallet
-[https://github.com/tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli)
+[https://github.com/alexozerov/wallet-cli](https://github.com/alexozerov/wallet-cli)
 
 
 * ORGON Zksnark-java-sdk
-[https://github.com/tronprotocol/zksnark-java-sdk](https://github.com/tronprotocol/zksnark-java-sdk)
+[https://github.com/alexozerov/zksnark-java-sdk](https://github.com/alexozerov/zksnark-java-sdk)
 
 
 * ORGON Sun-network
-[https://github.com/tronprotocol/sun-network](https://github.com/tronprotocol/sun-network)
+[https://github.com/alexozerov/sun-network](https://github.com/alexozerov/sun-network)
 
 
 * ORGON Javascript API
-[https://github.com/tronprotocol/tronweb](https://github.com/tronprotocol/tronweb)
+[https://github.com/alexozerov/tronweb](https://github.com/alexozerov/tronweb)

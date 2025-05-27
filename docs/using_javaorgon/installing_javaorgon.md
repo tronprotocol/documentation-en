@@ -21,7 +21,7 @@ $ ./gradlew clean build -x test
 ```
 
 ## Startup a java-orgon Node
-You can choose different configuration files to connect java-orgon nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/tronprotocol/tron-deployment).
+You can choose different configuration files to connect java-orgon nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/alexozerov/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/alexozerov/tron-deployment).
 
 
 ### Startup a fullnode
@@ -66,7 +66,7 @@ $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_c
           "B/localwitnesskeystore.json"
     ]
     ```
-    **Note**: For `keystore + password` generation, you can use the register wallet command of the [wallet-cli](https://github.com/tronprotocol/wallet-cli.git).
+    **Note**: For `keystore + password` generation, you can use the register wallet command of the [wallet-cli](https://github.com/alexozerov/wallet-cli.git).
 3. Startup the fullnode which produces blocks
     ```
         $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf

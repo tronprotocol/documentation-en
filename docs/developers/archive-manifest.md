@@ -8,7 +8,7 @@ For this reason, leveldb startup optimization plugin is introduced since `GreatV
 
 Remember stop the FullNode process before any operation. This tool provides the ability to reformat the manifest according to the current `database`.
 
-For more design details, please refer to: [TIP298](https://github.com/tronprotocol/tips/issues/298).
+For more design details, please refer to: [TIP298](https://github.com/alexozerov/tips/issues/298).
 
 ## Usage
 

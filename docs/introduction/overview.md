@@ -2,15 +2,15 @@
 
 # 1. Project Repository
 
-Github Url: [https://github.com/tronprotocol](https://github.com/tronprotocol)
+Github Url: [https://github.com/alexozerov](https://github.com/alexozerov)
 [java-tron](https://github.com/alexozerov/java-orgon) is the source code of the MainNet.
-[protocol](https://github.com/tronprotocol/protocol) is the definition of the api and data structure.
-[wallet-cli](https://github.com/tronprotocol/wallet-cli) is the official command line wallet.
+[protocol](https://github.com/alexozerov/protocol) is the definition of the api and data structure.
+[wallet-cli](https://github.com/alexozerov/wallet-cli) is the official command line wallet.
 
 MainNet Configuration:
-[https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf](https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf)
+[https://github.com/alexozerov/TronDeployment/blob/master/main_net_config.conf](https://github.com/alexozerov/TronDeployment/blob/master/main_net_config.conf)
 TestNet Configuration:
-[https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf](https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf)
+[https://github.com/alexozerov/TronDeployment/blob/master/test_net_config.conf](https://github.com/alexozerov/TronDeployment/blob/master/test_net_config.conf)
 
 # 2. SRs and Committee
 
@@ -139,7 +139,7 @@ Character map:
 ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
 ## 3.5 Signature
-[Signature introduction](https://github.com/tronprotocol/documentation/blob/master/English_Documentation/Procedures_of_transaction_signature_generation.md)
+[Signature introduction](https://github.com/alexozerov/documentation/blob/master/English_Documentation/Procedures_of_transaction_signature_generation.md)
 
 # 4. Network Node
 ## 4.1 SuperNode
@@ -160,7 +160,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 ### 4.2.1 FullNode Introduction
 FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.
 ### 4.2.2 FullNode Deployment
-please refer to [ORGON-Deployment](https://github.com/tronprotocol/tron-deployment)
+please refer to [ORGON-Deployment](https://github.com/alexozerov/tron-deployment)
 ### 4.2.3 Recommended Hardware Configuration
 Minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
@@ -171,7 +171,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 ### 4.3.1 SolidityNode Introduction
 SolidityNode only synchronizes solidified block data from the fullNode it specifies. It also provides api service.
 ### 4.3.2 SolidityNode Deployment
-Please refer to [ORGON-Deployment](https://github.com/tronprotocol/tron-deployment)
+Please refer to [ORGON-Deployment](https://github.com/alexozerov/tron-deployment)
 ### 4.3.3 Recommended Hardware Configuration
 Minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
@@ -184,7 +184,7 @@ ORGON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status eq
 
 ## 4.5 FullNode and SolidityNode Fast Deployment
 Download fast deployment script, run the script according to different types of node.
-please refer to [Node Fast Deployment](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
+please refer to [Node Fast Deployment](https://github.com/alexozerov/tron-deployment#deployment-of-soliditynode-on-the-one-host)
 
 ## 4.6 MainNet, TestNet, PrivateNet
 
@@ -192,11 +192,11 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 
 ### 4.6.1 MainNet
 
-[MainNet configuration](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
+[MainNet configuration](https://github.com/alexozerov/tron-deployment/blob/master/main_net_config.conf)
 
 ### 4.6.2 TestNet
 
-[TestNet configuration](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)
+[TestNet configuration](https://github.com/alexozerov/tron-deployment/blob/master/test_net_config.conf)
 
 ### 4.6.3 PrivateNet
 
@@ -355,7 +355,7 @@ Example:
 **4.7.1.4 rocksdb vs leveldb**
 
 You can refer to:
-[ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/ORGON/Rocksdb_vs_Leveldb.md)
+[ROCKSDB vs LEVELDB](https://github.com/alexozerov/documentation/blob/master/ORGON/Rocksdb_vs_Leveldb.md)
 
 # 5. Smart Contract
 ## 5.1 ORGON Smart Contract Introduction
@@ -728,7 +728,7 @@ Provide smart contract event query service.
 
 ## 5.5 Using Command Lines Tool to Develop Smart Contract
 
-First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:
+First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/alexozerov/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:
 
 ```text
 pragma solidity ^0.4.0;
@@ -765,7 +765,7 @@ Download wallet-cli and build
 
 ```shell
 # download source code
-git clone https://github.com/tronprotocol/wallet-cli
+git clone https://github.com/alexozerov/wallet-cli
 cd  wallet-cli
 # build
 ./gradlew build
@@ -860,15 +860,15 @@ When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDd
 # 6. Built-in Contracts and API
 ## 6.1 Built-in Contracts
 Please refer to:
-[https://github.com/tronprotocol/documentation/blob/master/English_Documentation/TRON_Protocol/TX_ContractTypes_Update.MD](https://github.com/tronprotocol/documentation/blob/master/English_Documentation/TRON_Protocol/TX_ContractTypes_Update.MD)
+[https://github.com/alexozerov/documentation/blob/master/English_Documentation/TRON_Protocol/TX_ContractTypes_Update.MD](https://github.com/alexozerov/documentation/blob/master/English_Documentation/TRON_Protocol/TX_ContractTypes_Update.MD)
 
 ## 6.2 GRPC API Introduction
 Please refer to:
-[https://github.com/tronprotocol/documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md](https://github.com/tronprotocol/documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md)
+[https://github.com/alexozerov/documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md](https://github.com/alexozerov/documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md)
 
 ## 6.3 Http API Introduction
 Please refer to:
-[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
 
 # 7. ORC-10 Token Introduction
 ORGON network support two types of token, one is ORC-20 token issued by smart contract, the other one is ORC-10 token issued by system contract.
@@ -1041,25 +1041,25 @@ The term of 'Exchange Pair' describes a trade between one token with another, li
 Any account can create an exchange pair, it burns 1024 ORGON.
 
 Please refer to 'wallet/exchangecreate':
-[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
 
 ## 9.3 Exchange Pair Transaction
 Any account can trade in the DEX. The trade follows Bancor protocol.
 
 Please refer to 'wallet/exchangetransaction':
-[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
 
 ## 9.4 Exchange Pair Injection
 The exchange pair creator can inject more tokens into the exchange pair. Injection can decrease the range of ratio fluctuation. If one token is injected, the other one will be injected automatically to keep the current ratio of the two tokens unchanged.
 
 Please refer to 'wallet/exchangeinject':
-[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
 
 ## 9.5 Exchange Pair Withdrawal
 The exchange pair creator can withdraw tokens from the exchange pair. Withdrawal can increase the range of ratio fluctuation. If one token is withdrawn, the other one will be withdrawn automatically to keep the current ratio of the two tokens unchanged.
 
 Please refer to 'wallet/exchangewithdraw':
-[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
 
 ## 9.6 Query
 
@@ -1069,7 +1069,7 @@ GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination
 GetExchangeById: Query an exchange pair by exchange pair id
 
 Please refer to:
-[https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
 
 ### 9.6.2 Price Calculation
 The token price is determined by the ratio of the balance of the two tokens.
@@ -1093,7 +1093,7 @@ Please refer to:
 # 12. Wallet Introduction
 ## 12.1 wallet-cli Introduction
 Please refer to:
-[https://github.com/tronprotocol/wallet-cli/blob/master/README.md](https://github.com/tronprotocol/wallet-cli/blob/master/README.md)
+[https://github.com/alexozerov/wallet-cli/blob/master/README.md](https://github.com/alexozerov/wallet-cli/blob/master/README.md)
 
 ## 12.2 Get Transaction ID
 
@@ -1162,6 +1162,6 @@ public static Transaction createTransaction(byte[] from, byte[] to, long amount)
 ## 12.5 Related Demo
 
 Build transaction locally, signature demo, please refer to:
-[https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java](https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java)
+[https://github.com/alexozerov/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java](https://github.com/alexozerov/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java)
 nodejs demo, please refer to:
-[https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs](https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs)
+[https://github.com/alexozerov/tron-demo/tree/master/demo/nodejs](https://github.com/alexozerov/tron-demo/tree/master/demo/nodejs)

@@ -67,7 +67,7 @@ $ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
 
 #### Configure For Database Storage Migration
 
-The configuration of database migration is in the [storage.properties](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L36) field in the java-orgon  node configuration file. The following is an example of migrating only the `block` and `trans` databases to illustrate how to migrate some databases to other storage disks:
+The configuration of database migration is in the [storage.properties](https://github.com/alexozerov/tron-deployment/blob/master/main_net_config.conf#L36) field in the java-orgon  node configuration file. The following is an example of migrating only the `block` and `trans` databases to illustrate how to migrate some databases to other storage disks:
 
 
 ```conf

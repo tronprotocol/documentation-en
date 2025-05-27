@@ -178,6 +178,6 @@ There are occasions when java-orgon  simply fails to connect to peers. The commo
 
 It is often useful for developers to connect to private test networks rather than public testnets or ORGON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences.
 
-The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (ORGON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
+The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/alexozerov/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (ORGON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
 
 

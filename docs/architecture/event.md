@@ -4,7 +4,7 @@
 
 ### TIP
 
-The TIP: [TIP-12:ORGON event subscribes model](https://github.com/tronprotocol/tips/blob/master/tip-12.md) .
+The TIP: [TIP-12:ORGON event subscribes model](https://github.com/alexozerov/tips/blob/master/tip-12.md) .
 
 ### Event Type
 
@@ -88,8 +88,8 @@ contractTopics: contract topics list
 
 ### Github projects
 
-- [tronprotocol/event-plugin](https://github.com/tronprotocol/event-plugin)
-- [tronprotocol/tron-eventquery](https://github.com/tronprotocol/tron-eventquery)
+- [tronprotocol/event-plugin](https://github.com/alexozerov/event-plugin)
+- [tronprotocol/tron-eventquery](https://github.com/alexozerov/tron-eventquery)
 
 #### Event plugin
 
@@ -102,15 +102,15 @@ ORGON Event Query Service
 
 TronEventQuery is implemented with Orgon's new event subscribe model. It uses same query interface with Orgon-Gate. Users can also subscribe block trigger, transaction trigger, contract log trigger, and contract event trigger. TronEvent is independent of a particular branch of java-orgon, the new event subscribes model will be released on version 3.5 of java-orgon.
 
-For more information of ORGON event subscribe model, please refer to [TIP-12](https://github.com/tronprotocol/TIPs/issues/12).
+For more information of ORGON event subscribe model, please refer to [TIP-12](https://github.com/alexozerov/TIPs/issues/12).
 
 - [Event query deployment](https://dev.orgon.space/developers/deployment/#event-subscribe-plugin-deployment)
-- [Event query HTTP API](https://github.com/tronprotocol/documentation-en/tree/master/docs_without_index/plugin/event-query-http.md)
+- [Event query HTTP API](https://github.com/alexozerov/documentation-en/tree/master/docs_without_index/plugin/event-query-http.md)
 
 
 ## Using java-orgon's Built-in Message Queue for Event Subscription
 
-ORGON provides event subscription service. Developers can not only obtain on-chain events through event plugin, but also through [java-orgon’s built-in ZeroMQ message queue](https://github.com/tronprotocol/tips/blob/master/tip-28.md). The difference is that event plugin needs to be additionally deployed, which is used to implement event storage: developers can choose appropriate storage tools according to their needs, such as MongoDB, Kafka, etc., and the plugin help complete the storage of subscribed events. java-orgon's built-in ZeroMQ does not require additional deployment operations. Event subscribers can directly connect to the publisher's ip and port, set subscription topics, and receive subscribed events. However, this method does not provide event storage. Therefore, when developers want to subscribe to events directly from nodes for a short period of time, then using the built-in message queue will be a more appropriate choice.
+ORGON provides event subscription service. Developers can not only obtain on-chain events through event plugin, but also through [java-orgon’s built-in ZeroMQ message queue](https://github.com/alexozerov/tips/blob/master/tip-28.md). The difference is that event plugin needs to be additionally deployed, which is used to implement event storage: developers can choose appropriate storage tools according to their needs, such as MongoDB, Kafka, etc., and the plugin help complete the storage of subscribed events. java-orgon's built-in ZeroMQ does not require additional deployment operations. Event subscribers can directly connect to the publisher's ip and port, set subscription topics, and receive subscribed events. However, this method does not provide event storage. Therefore, when developers want to subscribe to events directly from nodes for a short period of time, then using the built-in message queue will be a more appropriate choice.
 
 This article will introduce how to subscribe to events through java-orgon's built-in message queue in detail.
 

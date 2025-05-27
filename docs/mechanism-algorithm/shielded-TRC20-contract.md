@@ -2,7 +2,7 @@
 
 ## Introduction
 
-ORC-20 token contract allows users to issue and transfer tokens, but it can not guarantee the privacy since it leaks the token ownership. When transferring the token, the source address, destination address, and the token amount are  public. The shielded ORC-20 contract ([TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md)) aims to solve this problem and provides users better privacy of token ownership and transactions.
+ORC-20 token contract allows users to issue and transfer tokens, but it can not guarantee the privacy since it leaks the token ownership. When transferring the token, the source address, destination address, and the token amount are  public. The shielded ORC-20 contract ([TIP-135](https://github.com/alexozerov/tips/blob/master/tip-135.md)) aims to solve this problem and provides users better privacy of token ownership and transactions.
 
 The shielded ORC-20 contract has three core functions: `mint`, `transfer` and `burn`.
 
@@ -18,7 +18,7 @@ The technical implementation is based on zk-SNARK(Zero-Knowledge Succinct Non-In
 
    Note: the deployed ORC-20 contract address of `TokenTRC20` on Quasar Testnet is:  [TFUD8x3iAZ9dF7NDCGBtSjznemEomE5rP9](https://quasar.orgonscan.org/#/contract/TFUD8x3iAZ9dF7NDCGBtSjznemEomE5rP9/code).
 
-2. Use the `deployContract` method to deploy the shielded ORC-20 contract. The shielded ORC-20 contract will bind the ORC-20 contract. The `scalingFactor` is also specified when deploying the the shielded ORC-20 contract. For more details about `scalingFactor`, please refer [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md).
+2. Use the `deployContract` method to deploy the shielded ORC-20 contract. The shielded ORC-20 contract will bind the ORC-20 contract. The `scalingFactor` is also specified when deploying the the shielded ORC-20 contract. For more details about `scalingFactor`, please refer [TIP-135](https://github.com/alexozerov/tips/blob/master/tip-135.md).
 
    Note: the deployed shielded ORC-20 contract address of `ShieldedTRC20` on Quasar Testnet is:  [TPcKtz5TRfP4xUZSos81RmXB9K2DBqj2iu](https://quasar.orgonscan.org/#/contract/TPcKtz5TRfP4xUZSos81RmXB9K2DBqj2iu/code) and the corresponding `scalingFactor` is set 10.
 

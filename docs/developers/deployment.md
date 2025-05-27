@@ -36,7 +36,7 @@ cd /deploy/java-tron
 
 2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories
 ```text
-download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
+download your needed configuration file from https://github.com/alexozerov/TronDeployment.
 
 main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
@@ -49,7 +49,7 @@ cp build/libs/SolidityNode.jar ../soliditynode
 
 3.&nbsp;You can now run your FullNode using the following command
 ```text
-java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/alexozerov/TronDeployment
 ```
 
 4.&nbsp;Configure the SolidityNode configuration file
@@ -63,7 +63,7 @@ rpc {
 
 5.&nbsp;You can now run your SolidityNode using the following command：
 ```text
-java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
+java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/alexozerov/TronDeployment
 ```
 
 6.&nbsp;Running a Super Representative Node for mainnet
@@ -183,11 +183,11 @@ bash deploy_tron.sh --app SolidityNode --rpc-port 50041
 
 <h3> Summary </h3>
 
-This script helps you download the code from https://github.com/tronprotocol/grpc-gateway and deploy the code on your environment.
+This script helps you download the code from https://github.com/alexozerov/grpc-gateway and deploy the code on your environment.
 
 <h3> Pre-requests </h3>
 
-Please follow the guide on https://github.com/tronprotocol/grpc-gateway
+Please follow the guide on https://github.com/alexozerov/grpc-gateway
 Install Golang, Protoc, and set $GOPATH environment variable according to your requirement.
 
 <h3> Download and run script </h3>
@@ -228,7 +228,7 @@ This is an implementation of ORGON eventsubscribe model.
 
 <h3> Setup/Build </h3>
 
-1. Clone the repo `git clone https://github.com/tronprotocol/event-plugin.git`
+1. Clone the repo `git clone https://github.com/alexozerov/event-plugin.git`
 2. Go to eventplugin `cd event-plugin`
 3. run `./gradlew build`
 
@@ -476,7 +476,7 @@ sh insertIndex.sh
 
 Download sourcecode
 
-git clone https://github.com/tronprotocol/tron-eventquery.git
+git clone https://github.com/alexozerov/tron-eventquery.git
 cd troneventquery
 
 <h3> Build </h3>

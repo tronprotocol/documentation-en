@@ -4,7 +4,7 @@
 
 Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
 
-ORGON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [ORGON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to ORGON network. When the smart contract is triggered, the corresponding function will be executed automatically.
+ORGON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [ORGON solidity repository](https://github.com/alexozerov/solidity/releases). Write a smart contract, then build the smart contract and deploy it to ORGON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## Features
 ORGON virtual machine is based on Ethereum solidity language, it also has ORGON's own features.

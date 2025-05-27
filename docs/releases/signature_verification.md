@@ -22,7 +22,7 @@ $ sudo apt install gpg
 ### Import public key
 If you have imported the public key before, please skip this step, just import the public key once.
 
-Please first obtain the public key Hash and uid of the GPG signature of the java-orgon release package from [here](https://github.com/tronprotocol/java-orgon).
+Please first obtain the public key Hash and uid of the GPG signature of the java-orgon release package from [here](https://github.com/alexozerov/java-orgon).
 
 ```
 pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B

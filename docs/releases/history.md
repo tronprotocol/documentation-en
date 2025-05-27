@@ -2,43 +2,43 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-|  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/tronprotocol/tips/issues/697)  |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
+|  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/alexozerov/tips/issues/697)  |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
 |  Anaximander    |  GreatVoyage-v4.7.6    |  2024-10-04    |  N/A  |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.6)   |   [Specs](#greatvoyage-v476anaximander)   |
-|  Cleobulus    |  GreatVoyage-v4.7.5    |  2024-5-30    |  [TIP-653](https://github.com/tronprotocol/tips/blob/master/tip-653.md)   |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.5)   |   [Specs](#greatvoyage-v475cleobulus)   |
-|  Bias    |  GreatVoyage-v4.7.4    |  2024-3-15    |  [TIP-635](https://github.com/tronprotocol/tips/blob/master/tip-635.md) <br> [TIP-621](https://github.com/tronprotocol/tips/blob/master/tip-621.md)   |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.4)   |   [Specs](#greatvoyage-v474bias)   |
+|  Cleobulus    |  GreatVoyage-v4.7.5    |  2024-5-30    |  [TIP-653](https://github.com/alexozerov/tips/blob/master/tip-653.md)   |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.5)   |   [Specs](#greatvoyage-v475cleobulus)   |
+|  Bias    |  GreatVoyage-v4.7.4    |  2024-3-15    |  [TIP-635](https://github.com/alexozerov/tips/blob/master/tip-635.md) <br> [TIP-621](https://github.com/alexozerov/tips/blob/master/tip-621.md)   |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.4)   |   [Specs](#greatvoyage-v474bias)   |
 |  Solon    |  GreatVoyage-v4.7.3.1    |  2024-1-12    |  N/A   |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.3.1)   |   [Specs](#greatvoyage-v4731solon)   |
-|  Chilon    |  GreatVoyage-v4.7.3    |  2023-10-25    |  [TIP-586](https://github.com/tronprotocol/tips/blob/master/tip-586.md) <br> [TIP-592](https://github.com/tronprotocol/tips/blob/master/tip-592.md)   |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.3)   |   [Specs](#greatvoyage-v473chilon)   |
-|  Periander    |  GreatVoyage-v4.7.2    |  2023-7-1    |  [TIP-541](https://github.com/tronprotocol/tips/issues/541) <br> [TIP-542](https://github.com/tronprotocol/tips/issues/542) <br> [TIP-543](https://github.com/tronprotocol/tips/issues/543) <br> [TIP-544](https://github.com/tronprotocol/tips/issues/544) <br> [TIP-555](https://github.com/tronprotocol/tips/issues/555) <br> [TIP-547](https://github.com/tronprotocol/tips/issues/547) <br> [TIP-548](https://github.com/tronprotocol/tips/issues/548) <br> [TIP-549](https://github.com/tronprotocol/tips/issues/549) <br> [TIP-550](https://github.com/tronprotocol/tips/issues/550)    |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.2)   |   [Specs](#greatvoyage-v472periander)   |
-|  Pittacus    |  GreatVoyage-v4.7.1.1    |  2023-4-17    |   [TIP-534](https://github.com/tronprotocol/tips/blob/master/tip-534.md)    |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.1.1)    |  [Specs](#greatvoyage-v4711-pittacus)    |
+|  Chilon    |  GreatVoyage-v4.7.3    |  2023-10-25    |  [TIP-586](https://github.com/alexozerov/tips/blob/master/tip-586.md) <br> [TIP-592](https://github.com/alexozerov/tips/blob/master/tip-592.md)   |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.3)   |   [Specs](#greatvoyage-v473chilon)   |
+|  Periander    |  GreatVoyage-v4.7.2    |  2023-7-1    |  [TIP-541](https://github.com/alexozerov/tips/issues/541) <br> [TIP-542](https://github.com/alexozerov/tips/issues/542) <br> [TIP-543](https://github.com/alexozerov/tips/issues/543) <br> [TIP-544](https://github.com/alexozerov/tips/issues/544) <br> [TIP-555](https://github.com/alexozerov/tips/issues/555) <br> [TIP-547](https://github.com/alexozerov/tips/issues/547) <br> [TIP-548](https://github.com/alexozerov/tips/issues/548) <br> [TIP-549](https://github.com/alexozerov/tips/issues/549) <br> [TIP-550](https://github.com/alexozerov/tips/issues/550)    |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.2)   |   [Specs](#greatvoyage-v472periander)   |
+|  Pittacus    |  GreatVoyage-v4.7.1.1    |  2023-4-17    |   [TIP-534](https://github.com/alexozerov/tips/blob/master/tip-534.md)    |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.1.1)    |  [Specs](#greatvoyage-v4711-pittacus)    |
 |  Sartre    |   GreatVoyage-v4.7.1   |  2023-2-27    |  N/A    |   [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.1)   |  [Specs](#greatvoyage-v471sartre)     |
-|  Aristotle    | GreatVoyage-v4.7.0.1     |  2023-1-20    |[TIP-467](https://github.com/tronprotocol/tips/blob/master/tip-467.md) <br>[TIP-474](https://github.com/tronprotocol/tips/blob/master/tip-474.md) <br>[TIP-491](https://github.com/tronprotocol/tips/blob/master/tip-491.md) |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.0.1)    |  [Specs](#greatvoyage-v4701aristotle)    |
-| Socrates     | GreatVoyage-v4.6.0     |  2022-11-21    |[TIP-387](https://github.com/tronprotocol/tips/blob/master/tip-387.md) <br>[TIP-461](https://github.com/tronprotocol/tips/blob/master/tip-461.md) <br> [TIP-465](https://github.com/tronprotocol/tips/blob/master/tip-465.md)<br> [TIP-476](https://github.com/tronprotocol/tips/blob/master/tip-476.md)|  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.6.0)    |  [Specs](#greatvoyage-v460-socrates)    |
-|  Aurelius    | GreatVoyage-v4.5.2    |  2022-8-18    | [TIP-425](https://github.com/tronprotocol/tips/blob/master/tip-425.md) <br> [TIP-428](https://github.com/tronprotocol/tips/blob/master/tip-428.md) <br> [TIP-440](https://github.com/tronprotocol/tips/blob/master/tip-440.md)     |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.5.2)    |  [Specs](#greatvoyage-v452aurelius)    |
-|  Tertullian    | GreatVoyage-v4.5.1     |  2022-1-19    |  [TIP-391](https://github.com/tronprotocol/tips/blob/master/tip-391.md) <br>[TIP-388](https://github.com/tronprotocol/tips/blob/master/tip-388.md) <br> [TIP-383](https://github.com/tronprotocol/tips/blob/master/tip-383.md)<br> [TIP-382](https://github.com/tronprotocol/tips/blob/master/tip-382.md) <br> [TIP-370](https://github.com/tronprotocol/tips/blob/master/tip-370.md)<br>  [TIP-369](https://github.com/tronprotocol/tips/blob/master/tip-369.md)<br> [TIP-397](https://github.com/tronprotocol/tips/blob/master/tip-397.md)|    [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.5.1)    |  [Specs](#greatvoyage-v451tertullian)    |
+|  Aristotle    | GreatVoyage-v4.7.0.1     |  2023-1-20    |[TIP-467](https://github.com/alexozerov/tips/blob/master/tip-467.md) <br>[TIP-474](https://github.com/alexozerov/tips/blob/master/tip-474.md) <br>[TIP-491](https://github.com/alexozerov/tips/blob/master/tip-491.md) |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.7.0.1)    |  [Specs](#greatvoyage-v4701aristotle)    |
+| Socrates     | GreatVoyage-v4.6.0     |  2022-11-21    |[TIP-387](https://github.com/alexozerov/tips/blob/master/tip-387.md) <br>[TIP-461](https://github.com/alexozerov/tips/blob/master/tip-461.md) <br> [TIP-465](https://github.com/alexozerov/tips/blob/master/tip-465.md)<br> [TIP-476](https://github.com/alexozerov/tips/blob/master/tip-476.md)|  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.6.0)    |  [Specs](#greatvoyage-v460-socrates)    |
+|  Aurelius    | GreatVoyage-v4.5.2    |  2022-8-18    | [TIP-425](https://github.com/alexozerov/tips/blob/master/tip-425.md) <br> [TIP-428](https://github.com/alexozerov/tips/blob/master/tip-428.md) <br> [TIP-440](https://github.com/alexozerov/tips/blob/master/tip-440.md)     |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.5.2)    |  [Specs](#greatvoyage-v452aurelius)    |
+|  Tertullian    | GreatVoyage-v4.5.1     |  2022-1-19    |  [TIP-391](https://github.com/alexozerov/tips/blob/master/tip-391.md) <br>[TIP-388](https://github.com/alexozerov/tips/blob/master/tip-388.md) <br> [TIP-383](https://github.com/alexozerov/tips/blob/master/tip-383.md)<br> [TIP-382](https://github.com/alexozerov/tips/blob/master/tip-382.md) <br> [TIP-370](https://github.com/alexozerov/tips/blob/master/tip-370.md)<br>  [TIP-369](https://github.com/alexozerov/tips/blob/master/tip-369.md)<br> [TIP-397](https://github.com/alexozerov/tips/blob/master/tip-397.md)|    [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.5.1)    |  [Specs](#greatvoyage-v451tertullian)    |
 |  David    |  GreatVoyage-v4.4.6    |  2022-5-25    |  N/A    |   [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.6)    |  [Specs](#greatvoyage-v446david)    |
 | Cicero     | GreatVoyage-4.4.5     |  2022-4-27    |  N/A    |  [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.5)    |  [Specs](#greatvoyage-445cicero)    |
-|   Plotinus   | GreatVoyage-4.4.4     |  2022-2-22    |  [TIP-362](https://github.com/tronprotocol/tips/blob/master/tip-362.md) <br> [TIP-366](https://github.com/tronprotocol/tips/blob/master/tip-366.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.4)    |  [Specs](#greatvoyage-444plotinus)    |
+|   Plotinus   | GreatVoyage-4.4.4     |  2022-2-22    |  [TIP-362](https://github.com/alexozerov/tips/blob/master/tip-362.md) <br> [TIP-366](https://github.com/alexozerov/tips/blob/master/tip-366.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.4)    |  [Specs](#greatvoyage-444plotinus)    |
 |   Pythagoras   | GreatVoyage-4.4.3     |  2021-12-17    |  N/A   |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.3)    | N/A   |
-|   Augustinus   | GreatVoyage-4.4.2     |  2021-12-16    |  [TIP-343](https://github.com/tronprotocol/tips/blob/master/tip-343.md) <br> [TIP-344](https://github.com/tronprotocol/tips/blob/master/tip-344.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.2)    |  [Specs](#greatvoyage-442augustinus)    |
+|   Augustinus   | GreatVoyage-4.4.2     |  2021-12-16    |  [TIP-343](https://github.com/alexozerov/tips/blob/master/tip-343.md) <br> [TIP-344](https://github.com/alexozerov/tips/blob/master/tip-344.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.2)    |  [Specs](#greatvoyage-442augustinus)    |
 |   Protagoras   | GreatVoyage-4.4.1     |  2021-10-19    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.1)    |  N/A   |
-|   Rousseau   | GreatVoyage-4.4.0     |  2021-10-15    |  [TIP-289](https://github.com/tronprotocol/tips/blob/master/tip-289.md) <br> [TIP-290](https://github.com/tronprotocol/tips/blob/master/tip-290.md) <br> [TIP-272](https://github.com/tronprotocol/tips/blob/master/tip-272.md)<br>  [TIP-318](https://github.com/tronprotocol/tips/blob/master/tip-318.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.0)    |  [Specs](#greatvoyage-440rousseau)    |
-|   Bacon   | GreatVoyage-4.3.0     |  2021-8-3    |  [TIP-292](https://github.com/tronprotocol/tips/blob/master/tip-292.md) <br> [TIP-293](https://github.com/tronprotocol/tips/blob/master/tip-293.md) <br> [TIP-295](https://github.com/tronprotocol/tips/blob/master/tip-295.md) <br> [TIP-271](https://github.com/tronprotocol/tips/blob/master/tip-271.md) <br> [TIP-306](https://github.com/tronprotocol/tips/blob/master/tip-306.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.3.0)    |  [Specs](#greatvoyage-430bacon)    |
+|   Rousseau   | GreatVoyage-4.4.0     |  2021-10-15    |  [TIP-289](https://github.com/alexozerov/tips/blob/master/tip-289.md) <br> [TIP-290](https://github.com/alexozerov/tips/blob/master/tip-290.md) <br> [TIP-272](https://github.com/alexozerov/tips/blob/master/tip-272.md)<br>  [TIP-318](https://github.com/alexozerov/tips/blob/master/tip-318.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.4.0)    |  [Specs](#greatvoyage-440rousseau)    |
+|   Bacon   | GreatVoyage-4.3.0     |  2021-8-3    |  [TIP-292](https://github.com/alexozerov/tips/blob/master/tip-292.md) <br> [TIP-293](https://github.com/alexozerov/tips/blob/master/tip-293.md) <br> [TIP-295](https://github.com/alexozerov/tips/blob/master/tip-295.md) <br> [TIP-271](https://github.com/alexozerov/tips/blob/master/tip-271.md) <br> [TIP-306](https://github.com/alexozerov/tips/blob/master/tip-306.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.3.0)    |  [Specs](#greatvoyage-430bacon)    |
 |   Epictetus   | GreatVoyage-4.2.2.1     |  2021-6-25    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.2.2.1)    |  [Specs](#greatvoyage-4221epictetus)    |
-|   Lucretius   | GreatVoyage-4.2.2     |  2021-6-22    |  [TIP-268](https://github.com/tronprotocol/tips/blob/master/tip-268.md) <br> [TIP-269](https://github.com/tronprotocol/tips/blob/master/tip-269.md)  <br>[TIP-281](https://github.com/tronprotocol/tips/blob/master/tip-281.md)   |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.2.2)    |  [Specs](#greatvoyage-422lucretius)    |
+|   Lucretius   | GreatVoyage-4.2.2     |  2021-6-22    |  [TIP-268](https://github.com/alexozerov/tips/blob/master/tip-268.md) <br> [TIP-269](https://github.com/alexozerov/tips/blob/master/tip-269.md)  <br>[TIP-281](https://github.com/alexozerov/tips/blob/master/tip-281.md)   |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.2.2)    |  [Specs](#greatvoyage-422lucretius)    |
 |   Origen   | GreatVoyage-4.2.1     |  2021-5-22    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.2.1)    |  N/A   |
-|   Plato   | GreatVoyage-4.2.0     |  2021-4-27    |  [TIP-157](https://github.com/tronprotocol/tips/blob/master/tip-157.md)  <br>[TIP-207](https://github.com/tronprotocol/tips/blob/master/tip-207.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.2.0)    |  [Specs](#greatvoyage-420plato)    |
-|   Thales   | GreatVoyage-4.1.3     |  2021-3-18    |  [TIP-238](https://github.com/tronprotocol/tips/blob/master/tip-238.md)  |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.1.3)    |  [Specs](#greatvoyage-413thales)    |
-|   N/A   | GreatVoyage-4.1.2     |  2021-1-20    |  [TIP-196](https://github.com/tronprotocol/tips/blob/master/tip-196.md)  <br>[TIP-204](https://github.com/tronprotocol/tips/blob/master/tip-204.md) <br> [TIP-209](https://github.com/tronprotocol/tips/blob/master/tip-209.md)  |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.1.2)    |  [Specs](#great-voyage-v412)    |
+|   Plato   | GreatVoyage-4.2.0     |  2021-4-27    |  [TIP-157](https://github.com/alexozerov/tips/blob/master/tip-157.md)  <br>[TIP-207](https://github.com/alexozerov/tips/blob/master/tip-207.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.2.0)    |  [Specs](#greatvoyage-420plato)    |
+|   Thales   | GreatVoyage-4.1.3     |  2021-3-18    |  [TIP-238](https://github.com/alexozerov/tips/blob/master/tip-238.md)  |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.1.3)    |  [Specs](#greatvoyage-413thales)    |
+|   N/A   | GreatVoyage-4.1.2     |  2021-1-20    |  [TIP-196](https://github.com/alexozerov/tips/blob/master/tip-196.md)  <br>[TIP-204](https://github.com/alexozerov/tips/blob/master/tip-204.md) <br> [TIP-209](https://github.com/alexozerov/tips/blob/master/tip-209.md)  |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.1.2)    |  [Specs](#great-voyage-v412)    |
 |   N/A   | GreatVoyage-4.1.1     |  2020-11-9    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.1.1)    |  [Specs](#greatvoyage-v411)    |
-|   N/A   | GreatVoyage-v4.1.0    |  2020-11-2    |  [TIP-127](https://github.com/tronprotocol/tips/blob/master/tip-127.md)  <br>[TIP-128](https://github.com/tronprotocol/tips/blob/master/tip-128.md)    <br> [TIP-174](https://github.com/tronprotocol/tips/blob/master/tip-174.md) <br>[TIP-175](https://github.com/tronprotocol/tips/blob/master/tip-175.md)    <br> [TIP-176](https://github.com/tronprotocol/tips/blob/master/tip-176.md)  |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.1.0)    |  N/A   |
+|   N/A   | GreatVoyage-v4.1.0    |  2020-11-2    |  [TIP-127](https://github.com/alexozerov/tips/blob/master/tip-127.md)  <br>[TIP-128](https://github.com/alexozerov/tips/blob/master/tip-128.md)    <br> [TIP-174](https://github.com/alexozerov/tips/blob/master/tip-174.md) <br>[TIP-175](https://github.com/alexozerov/tips/blob/master/tip-175.md)    <br> [TIP-176](https://github.com/alexozerov/tips/blob/master/tip-176.md)  |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.1.0)    |  N/A   |
 |   N/A   | GreatVoyage-v4.0.2    |  2020-11-2    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.0.2)    |  N/A    |
 |   N/A   | GreatVoyage-v4.0.1     |  2020-3-17    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.0.1)    |  N/A    |
-|   N/A   | GreatVoyage-4.0.0     |  2020-7-7    |  [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md)  <br>[TIP-137](https://github.com/tronprotocol/tips/blob/master/tip-137.md)    <br> [TIP-138](https://github.com/tronprotocol/tips/blob/master/tip-138.md)  |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.0.0)    |  [Specs](#greatvoyage-v400)    |
+|   N/A   | GreatVoyage-4.0.0     |  2020-7-7    |  [TIP-135](https://github.com/alexozerov/tips/blob/master/tip-135.md)  <br>[TIP-137](https://github.com/alexozerov/tips/blob/master/tip-137.md)    <br> [TIP-138](https://github.com/alexozerov/tips/blob/master/tip-138.md)  |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/GreatVoyage-v4.0.0)    |  [Specs](#greatvoyage-v400)    |
 |   N/A   | Odyssey-v3.7     |  2020-3-17    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.7)    |  [Specs](#odyssey-v37)    |
-|   N/A   | Odyssey-v3.6.5     |  2019-10-8    |  [TIP-37](https://github.com/tronprotocol/tips/blob/master/tip-37.md)  <br>[TIP-43](https://github.com/tronprotocol/tips/blob/master/tip-43.md)    <br> [TIP-44](https://github.com/tronprotocol/tips/blob/master/tip-44.md) <br>[TIP-53](https://github.com/tronprotocol/tips/blob/master/tip-53.md)    <br> [TIP-54](https://github.com/tronprotocol/tips/blob/master/tip-54.md) <br>[TIP-60](https://github.com/tronprotocol/tips/blob/master/tip-60.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.6.5)    |  [Specs](#odyssey-v365)    |
+|   N/A   | Odyssey-v3.6.5     |  2019-10-8    |  [TIP-37](https://github.com/alexozerov/tips/blob/master/tip-37.md)  <br>[TIP-43](https://github.com/alexozerov/tips/blob/master/tip-43.md)    <br> [TIP-44](https://github.com/alexozerov/tips/blob/master/tip-44.md) <br>[TIP-53](https://github.com/alexozerov/tips/blob/master/tip-53.md)    <br> [TIP-54](https://github.com/alexozerov/tips/blob/master/tip-54.md) <br>[TIP-60](https://github.com/alexozerov/tips/blob/master/tip-60.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.6.5)    |  [Specs](#odyssey-v365)    |
 |   N/A   | Odyssey-v3.6.2    |  2019-8-8    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.6.2)    |  N/A   |
-|   N/A   | Odyssey-v3.6.1    |  2019-7-10    |  [TIP-41](https://github.com/tronprotocol/tips/blob/master/tip-41.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.6.1)    |  N/A    |
-|   N/A   | Odyssey-v3.6.0     |  2019-6-20    |  [TIP-26](https://github.com/tronprotocol/tips/blob/master/tip-26.md)  <br>[TIP-28](https://github.com/tronprotocol/tips/blob/master/tip-28.md) <br>[TIP-29](https://github.com/tronprotocol/tips/blob/master/tip-29.md)    <br> [TIP-30](https://github.com/tronprotocol/tips/blob/master/tip-30.md) <br>[TIP-31](https://github.com/tronprotocol/tips/blob/master/tip-31.md)    <br> [TIP-32](https://github.com/tronprotocol/tips/blob/master/tip-32.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.6.0)    |  N/A    |
+|   N/A   | Odyssey-v3.6.1    |  2019-7-10    |  [TIP-41](https://github.com/alexozerov/tips/blob/master/tip-41.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.6.1)    |  N/A    |
+|   N/A   | Odyssey-v3.6.0     |  2019-6-20    |  [TIP-26](https://github.com/alexozerov/tips/blob/master/tip-26.md)  <br>[TIP-28](https://github.com/alexozerov/tips/blob/master/tip-28.md) <br>[TIP-29](https://github.com/alexozerov/tips/blob/master/tip-29.md)    <br> [TIP-30](https://github.com/alexozerov/tips/blob/master/tip-30.md) <br>[TIP-31](https://github.com/alexozerov/tips/blob/master/tip-31.md)    <br> [TIP-32](https://github.com/alexozerov/tips/blob/master/tip-32.md)    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.6.0)    |  N/A    |
 |   N/A   | Odyssey-v3.5.1    |  2019-4-10    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.5.1)    |  N/A   |
 |   N/A   | Odyssey-v3.5.0.1    |  2019-3-1    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.5.0.1)    |  N/A   |
 |   N/A   | Odyssey-v3.5    |  2019-3-1    |  N/A    |      [Release Note](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.5)    |  N/A   |
@@ -91,7 +91,7 @@ In order to enable java-tron to support multiple platforms and be compatible wit
 Note: This optimization is the No. 87 parameter of the ORGON network. After Epicurus is deployed, it is disabled by default and can be enabled through governance voting.
 
 
-TIP: [https://github.com/tronprotocol/tips/issues/697](https://github.com/tronprotocol/tips/issues/697)
+TIP: [https://github.com/alexozerov/tips/issues/697](https://github.com/alexozerov/tips/issues/697)
 
 Source Code: [https://github.com/alexozerov/java-orgon/pull/6098](https://github.com/alexozerov/java-orgon/pull/6098)
 
@@ -228,7 +228,7 @@ Cleobulus adjusts the energy cost of the `VOTEWITNESS` and `SUICIDE` opcodes to 
 This optimization is the No. 81 parameter of the ORGON network. After Cleobulus is deployed, it is disabled by default and can be enabled through governance voting.
 
 
-TIP: [https://github.com/tronprotocol/tips/blob/master/tip-653.md](https://github.com/tronprotocol/tips/blob/master/tip-653.md)
+TIP: [https://github.com/alexozerov/tips/blob/master/tip-653.md](https://github.com/alexozerov/tips/blob/master/tip-653.md)
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5837](https://github.com/alexozerov/java-orgon/pull/5837)
 
 ### Other Changes
@@ -266,7 +266,7 @@ The Bias version optimizes the calculation performance of voting rewards generat
 This optimization is the No. 79 parameter of the ORGON network. After Bias is deployed, it is turned off by default and can be enabled through governance voting.
 
 
-TIP: [https://github.com/tronprotocol/tips/issues/635](https://github.com/tronprotocol/tips/issues/635)
+TIP: [https://github.com/alexozerov/tips/issues/635](https://github.com/alexozerov/tips/issues/635)
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5406](https://github.com/alexozerov/java-orgon/pull/5406)
 [https://github.com/alexozerov/java-orgon/pull/5654](https://github.com/alexozerov/java-orgon/pull/5654)
 [https://github.com/alexozerov/java-orgon/pull/5683](https://github.com/alexozerov/java-orgon/pull/5683)
@@ -306,7 +306,7 @@ Source Code: [https://github.com/alexozerov/java-orgon/pull/5643](https://github
 Bias adds a new field `codeVersion` representing version information in the HelloMessage message, so that nodes can obtain the version information of the other node during the node discovery phase, which is beneficial to troubleshooting and locating problems later.
 
 
-TIP: [https://github.com/tronprotocol/tips/issues/621](https://github.com/tronprotocol/tips/issues/621)
+TIP: [https://github.com/alexozerov/tips/issues/621](https://github.com/alexozerov/tips/issues/621)
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5584](https://github.com/alexozerov/java-orgon/pull/5584)
 [https://github.com/alexozerov/java-orgon/pull/5667](https://github.com/alexozerov/java-orgon/pull/5667)
 
@@ -447,7 +447,7 @@ Please find the details below.
 
 Chilon adds three new gRPC interfaces. Users can obtain historical bandwidth unit price through `getBandwidthPrices` API, obtain historical energy unit price through `getEnergyPrices` API, and obtain transaction memo fee through `getMemoFee` API. These new gRPC APIs further improve the developer experience.
 
-TIP: [https://github.com/tronprotocol/tips/blob/master/tip-586.md](https://github.com/tronprotocol/tips/blob/master/tip-586.md)
+TIP: [https://github.com/alexozerov/tips/blob/master/tip-586.md](https://github.com/alexozerov/tips/blob/master/tip-586.md)
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5412](https://github.com/alexozerov/java-orgon/pull/5412)
 #### 2. Supplement disconnect reasons
 
@@ -456,7 +456,7 @@ When a node fails to process a message from a peer, it may initiatively disconne
 The Chilon version supplements two reasons for disconnection. Node will send the disconnection reasons to the other node before dropping the connection, so as to facilitate efficient handling of node connection problems.
 
 
-TIP: [https://github.com/tronprotocol/tips/blob/master/tip-592.md](https://github.com/tronprotocol/tips/blob/master/tip-592.md)
+TIP: [https://github.com/alexozerov/tips/blob/master/tip-592.md](https://github.com/alexozerov/tips/blob/master/tip-592.md)
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5392 ](https://github.com/alexozerov/java-orgon/pull/5392)
 #### 3. Discard transactions from bad peers instead of disconnected peers
 
@@ -640,7 +640,7 @@ Libp2p v1.2.0 has the following new features：
 
     This function is disabled by default and needs to be enabled through the node configuration item `node.enableIpv6 = true`.
 
-    * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-549.md](https://github.com/tronprotocol/tips/blob/master/tip-549.md)
+    * TIP: [https://github.com/alexozerov/tips/blob/master/tip-549.md](https://github.com/alexozerov/tips/blob/master/tip-549.md)
 
 
 * Node Discovery via DNS
@@ -703,7 +703,7 @@ Libp2p v1.2.0 has the following new features：
     }
     ```
 
-    * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-548.md](https://github.com/tronprotocol/tips/blob/master/tip-548.md)
+    * TIP: [https://github.com/alexozerov/tips/blob/master/tip-548.md](https://github.com/alexozerov/tips/blob/master/tip-548.md)
 
 
 * Connection precheck before P2P communication
@@ -714,14 +714,14 @@ Libp2p v1.2.0 has the following new features：
 
     This function is disabled by default and needs to be enabled through the node configuration item `node.nodeDetectEnable`.
 
-    * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-547.md](https://github.com/tronprotocol/tips/blob/master/tip-547.md)
+    * TIP: [https://github.com/alexozerov/tips/blob/master/tip-547.md](https://github.com/alexozerov/tips/blob/master/tip-547.md)
 
 
 * P2P message Snappy compression
 
     Libp2p v1.2.0 supports TCP message compression. The node compresses the TCP message before transmission and decompresses it after receiving the compressed message. After testing, the time consumption for message compression and decompression is short, less than 1 ms, and this function can significantly reduce the network bandwidth occupation of message transmission, which can save about 40% of the bandwidth.
 
-    * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-550.md](https://github.com/tronprotocol/tips/blob/master/tip-550.md)
+    * TIP: [https://github.com/alexozerov/tips/blob/master/tip-550.md](https://github.com/alexozerov/tips/blob/master/tip-550.md)
     * Source Code: [https://github.com/alexozerov/java-orgon/pull/5017](https://github.com/alexozerov/java-orgon/pull/5017)
 
 
@@ -738,7 +738,7 @@ curl -X POST http://127.0.0.1:8090/wallet/cancelallunfreezev2 -d \
 }'
 ```
 
-* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-541.md](https://github.com/tronprotocol/tips/blob/master/tip-541.md)
+* TIP: [https://github.com/alexozerov/tips/blob/master/tip-541.md](https://github.com/alexozerov/tips/blob/master/tip-541.md)
 * Source Code: [https://github.com/alexozerov/java-orgon/pull/5230](https://github.com/alexozerov/java-orgon/pull/5230)
 [https://github.com/alexozerov/java-orgon/pull/5260](https://github.com/alexozerov/java-orgon/pull/5260)
 [https://github.com/alexozerov/java-orgon/pull/5279](https://github.com/alexozerov/java-orgon/pull/5279)
@@ -774,7 +774,7 @@ In addition, the value of `lock_period` cannot be lower than the remaining lock 
 
 For example, user A delegates 100 energy shares to B, and `lock_period` is set to 57600 (2 days), and so that the remaining lock time after 1 day is 28800. At this time, when A delegates energy to B again, if choose to lock, `lock_period` should be set to at least 28800 (1 day), otherwise, an exception error will be thrown when creating the delegating transaction: “The lock period for ENERGY this time cannot be less will be thrown when creating a proxy transaction than the remaining time[9600000ms] of the last lock period for ENERGY!.”
 
-* TIP:  [https://github.com/tronprotocol/tips/blob/master/tip-542.md](https://github.com/tronprotocol/tips/blob/master/tip-542.md)
+* TIP:  [https://github.com/alexozerov/tips/blob/master/tip-542.md](https://github.com/alexozerov/tips/blob/master/tip-542.md)
 * Source Code: [https://github.com/alexozerov/java-orgon/pull/5255](https://github.com/alexozerov/java-orgon/pull/5255)
 
 #### 4. Optimize effective peer-acquiring strategy
@@ -791,7 +791,7 @@ This function is disabled by default and needs to be enabled by setting the node
 #### 1. Implement EIP-3855 PUSH0 Instruction
 EIP-3855 is included in the Shanghai upgrade of Ethereum, which adds a new instruction called `PUSH0` to the Ethereum Virtual Machine (EVM) to reduce the gas cost of smart contract transactions, and Periander also adds a new governance proposal to be compatible with EIP-3855. On one hand, it can ensure the compatibility between ORGON and Ethereum at the virtual machine level, and on the other hand, it also reduces the energy cost of using smart contracts on ORGON as well.
 
-* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-543.md](https://github.com/tronprotocol/tips/blob/master/tip-543.md)
+* TIP: [https://github.com/alexozerov/tips/blob/master/tip-543.md](https://github.com/alexozerov/tips/blob/master/tip-543.md)
 * Source Code: [https://github.com/alexozerov/java-orgon/pull/5175](https://github.com/alexozerov/java-orgon/pull/5175)
 
 
@@ -859,7 +859,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
     }'
     ```
 
-* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-544.md](https://github.com/tronprotocol/tips/blob/master/tip-544.md)
+* TIP: [https://github.com/alexozerov/tips/blob/master/tip-544.md](https://github.com/alexozerov/tips/blob/master/tip-544.md)
 * Source Code: [https://github.com/alexozerov/java-orgon/pull/5079](https://github.com/alexozerov/java-orgon/pull/5079)
 
 #### 3. Optimize getStorageAt interface
@@ -992,7 +992,7 @@ GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:
 
 
 
-TIP: [https://github.com/tronprotocol/tips/issues/534](https://github.com/tronprotocol/tips/issues/534)
+TIP: [https://github.com/alexozerov/tips/issues/534](https://github.com/alexozerov/tips/issues/534)
 
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5096](https://github.com/alexozerov/java-orgon/pull/5096)
 
@@ -1130,7 +1130,7 @@ For more details on Stake 2.0, please refer to  [What is Stake 2.0?](https://cor
 
 The new stake mechanism is a dynamic parameter in the ORGON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
 
-* TIP: [https://github.com/tronprotocol/tips/issues/467](https://github.com/tronprotocol/tips/issues/467)
+* TIP: [https://github.com/alexozerov/tips/issues/467](https://github.com/alexozerov/tips/issues/467)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4838](https://github.com/alexozerov/java-orgon/pull/4838)
 
 #### 2.Enhance database query performance
@@ -1192,7 +1192,7 @@ A total of 11 precompiled contracts from 0x100000b to 0x1000015 have been added 
 
 Stake 2.0 is a dynamic parameter in the ORGON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
 
-* TIP: [https://github.com/tronprotocol/tips/issues/467](https://github.com/tronprotocol/tips/issues/467)
+* TIP: [https://github.com/alexozerov/tips/issues/467](https://github.com/alexozerov/tips/issues/467)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4872](https://github.com/alexozerov/java-orgon/pull/4872)
 
 #### 2. Dynamic energy model
@@ -1202,7 +1202,7 @@ For more information about the dynamic energy model: [Introduction to Dynamic En
 
 The dynamic energy model is a dynamic parameter in the ORGON network. After GreatVoyage-v4.7.0.1 (Aristotle) is deployed, it is disabled by default and can be enabled by initiating a proposal vote.
 
-* TIP: [https://github.com/tronprotocol/tips/issues/491](https://github.com/tronprotocol/tips/issues/491)
+* TIP: [https://github.com/alexozerov/tips/issues/491](https://github.com/alexozerov/tips/issues/491)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4873](https://github.com/alexozerov/java-orgon/pull/4873)
 
 #### 3. Optimize the return value of the `chainId` opcode
@@ -1211,7 +1211,7 @@ Starting from the GreatVoyage-v4.7.0.1 (Aristotle) version, the return value of 
 
 The return value optimization of the chainId opcode is a dynamic parameter of the ORGON network. It is disabled by default after GreatVoyage-v4.7.0.1 (Aristotle) is deployed, and can be enabled by initiating a proposal.
 
-* TIP: [https://github.com/tronprotocol/tips/issues/474](https://github.com/tronprotocol/tips/issues/474)
+* TIP: [https://github.com/alexozerov/tips/issues/474](https://github.com/alexozerov/tips/issues/474)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4863](https://github.com/alexozerov/java-orgon/pull/4863)
 
 
@@ -1236,7 +1236,7 @@ GreatVoyage-v4.7.0.1 (Aristotle) adds 10 APIs to support Stake 2.0:
 
 For detailed information of new APIs, please refer to: [What is Stake 2.0?](https://coredevs.medium.com/what-is-stake-2-0-e04f59b948a6)
 
-* TIP: [https://github.com/tronprotocol/tips/issues/467](https://github.com/tronprotocol/tips/issues/467)
+* TIP: [https://github.com/alexozerov/tips/issues/467](https://github.com/alexozerov/tips/issues/467)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4838](https://github.com/alexozerov/java-orgon/pull/4838)
 
 #### 2. Add energy estimation API
@@ -1341,7 +1341,7 @@ Therefore,  GreatVoyage-v4.6.0 (Socrates) optimizes the index storage structure 
 
 The delegate relationship storage optimization is a dynamic parameter of the ORGON network. It is disabled by default and can be enabled by initiating a proposal.
 
-* TIP: [https://github.com/tronprotocol/tips/issues/476](https://github.com/tronprotocol/tips/issues/476)
+* TIP: [https://github.com/alexozerov/tips/issues/476](https://github.com/alexozerov/tips/issues/476)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4788](https://github.com/alexozerov/java-orgon/pull/4788)
 
 #### 2. Add transaction memo fee proposal
@@ -1349,7 +1349,7 @@ Starting from GreatVoyage-v4.6.0 (Socrates), a memo fee will be charged for tran
 
 The memo fee is a dynamic parameter of the ORGON network. After GreatVoyage-v4.6.0 (Socrates) is deployed, the default value is ‘0’, and the unit is ‘sun’. It can be enabled by specifying a non-zero value by initiating a proposal, for example, ‘1000000’, indicating that the transaction with memo will require an additional 1 ORGON fee.
 
-* TIP: [https://github.com/tronprotocol/tips/issues/387](https://github.com/tronprotocol/tips/issues/387)
+* TIP: [https://github.com/alexozerov/tips/issues/387](https://github.com/alexozerov/tips/issues/387)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4758](https://github.com/alexozerov/java-orgon/pull/4758)
 
 
@@ -1359,7 +1359,7 @@ Many voters in the ORGON network will accumulate rewards for a long time before 
 
 The optimized reward algorithm is a ORGON network parameter and is disabled by default once GreatVoyage-v4.6.0 (Socrates) is deployed, and can be enabled by voting through a proposal.
 
-* TIP: [https://github.com/tronprotocol/tips/issues/465](https://github.com/tronprotocol/tips/issues/465)
+* TIP: [https://github.com/alexozerov/tips/issues/465](https://github.com/alexozerov/tips/issues/465)
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4694](https://github.com/alexozerov/java-orgon/pull/4694)
 
 
@@ -1376,7 +1376,7 @@ In order to solve this problem, GreatVoyage-v4.6.0 (Socrates) upgrades the V2 ve
 
 The  Checkpoint mechanism V2 is disabled by default in the configuration file. This function can be enabled by modifying the configuration. It should be noted that if a node has enabled the checkpoint V2 and has been running for a certain period of time, it would not be able to roll back to V1 anymore.
 
-* TIP: [https://github.com/tronprotocol/tips/issues/461](https://github.com/tronprotocol/tips/issues/461)
+* TIP: [https://github.com/alexozerov/tips/issues/461](https://github.com/alexozerov/tips/issues/461)
 * Source code:  [https://github.com/alexozerov/java-orgon/pull/4614](https://github.com/alexozerov/java-orgon/pull/4614)
 #### 5. Optimize block production priority between active and backup nodes
 
@@ -1473,14 +1473,14 @@ The GreatVoyage-v4.5.2 (Aurelius) version introduces several important optimizat
 In versions prior to GreatVoyage-v4.5.2 (Aurelius), threads such as block production, block processing, and transaction processing compete for synchronization lock at the same time. In the case of high concurrency and transactions executing much time, the block production thread or the block processing thread will take a long time to get to the synchronization lock, which leads to the occurrence of a small probability of a block loss event. In order to improve node stability, the GreatVoyage-v4.5.2 (Aurelius) version optimizes the synchronization lock in the block processing logic, allowing only one transaction processing thread to compete for the synchronization lock with the block production or processing thread, and when the transaction processing thread finds that block-related threads waiting for the synchronization lock, it will voluntarily give in, which greatly increases the probability of block production and block processing threads acquiring synchronization lock, and ensures high throughput and stable operation of the node.
 
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-428.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-428.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4551
 
 #### 2. Optimize transaction cache
 The node uses the transaction cache to determine whether the newly received transaction is a duplicate transaction. In versions prior to GreatVoyage-v4.5.2 (Aurelius), the transaction cache is a hashmap data structure, which saves transactions in the latest 65536 blocks. The hashmap allocates memory for each transaction separately. Therefore, the transaction cache will occupy nearly 2GB of memory during program runtime, meanwhile, frequent memory requests will trigger frequent JVM garbage collection which indirectly affects the performance of the node. To solve this issue, the GreatVoyage-v4.5.2 (Aurelius) version optimizes the implementation of the transaction cache, using the bloom filter instead of the hashmap, the bloom filter uses a fixed and extremely small memory space to record recent historical transactions, which greatly reduces the memory usage of the transaction cache and improve the node performance.
 
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-440.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-440.md
 Source Code：https://github.com/alexozerov/java-orgon/pull/4538
 
 
@@ -1491,7 +1491,7 @@ In versions prior to GreatVoyage-v4.5.2 (Aurelius), when the number of remote no
 
 In order to speed up the connection process between nodes in the network, the GreatVoyage-v4.5.2 (Aurelius) version optimizes the P2P node connection strategy. It will periodically check the number of TCP connections of the node. When the number of  connections is full, a certain disconnection strategy is adopted to disconnect one or two nodes to increase the possibility of a newly added node in the network successfully connecting to it, thereby improving the efficiency of establishing connections between P2P nodes in the network and improving network stability. Please note that the nodes configured in the `node.active` and `node.passive` lists in the configuration file are trusted nodes and will not be disconnected.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-425.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-425.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4549
 
 
@@ -1567,21 +1567,21 @@ In versions prior to GreatVoyage-v4.5.1 (Tertullian), it took a long time from n
 In order to speed up the startup of the node, the GreatVoyage-v4.5.1 (Tertullian) version optimizes the loading of the transaction cache. By adopting the block as the storage unit to read the database reduces the times of database reading,  improves the efficiency of transaction cache loading, and improves the speed of node startup.
 
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-383.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-383.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4319
 
 #### 2. Optimize account ORC-10 asset storage structure
 In versions prior to GreatVoyage-v4.5.1 (Tertullian), when there were too many ORC10 assets in the account, the content of the account stored in the database was large, resulting in the deserialization of the account during the transaction execution process is very time-consuming , therefore, the GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal to optimize the asset structure of the account, allowing ORC-10 assets to be separated from the account and stored separately in a key-value data structure. That will reduce the content of the account structure, speed up the deserialization operation of the account and reduce the execution time of the transaction, thereby increasing the network throughput and improving the network performance.
 
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-382.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-382.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4392
 
 #### 3. Optimize light node synchronization
 Since light nodes do not store complete block data, there is a possibility that a node connects to a light node which does not have the block the node wants to synchronize with, in this situation, the light node will actively disconnect the connection. In versions prior to GreatVoyage-v4.5.1 (Tertullian), nodes may repeatedly establish connections with such light nodes, and then be disconnected by the other part, which greatly affects the efficiency of synchronizing blocks between nodes. Therefore, in the GreatVoyage-v4.5.1 (Tertullian) version, the logic of establishing a connection with light nodes has been optimized, and the two fields of "node type" and "node's lowest block" are added to the handshake message between nodes, and the nodes will save the handshake messages with each node. If the highest block of the current node is lower than the lowest block of the light node, it will actively disconnect from the light node, and the next time it establishes a connection with the node, it will filter out such nodes to avoid more invalidations connection, which improves the efficiency of synchronization between nodes.
 
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-388.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-388.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4323
 
 
@@ -1595,19 +1595,19 @@ Source Code: https://github.com/alexozerov/java-orgon/pull/4336
 #### 5. Optimize fetch block process
 Due to network reasons, the node may not receive the new broadcasted block. In versions before GreatVoyage-v4.5.1 (Tertullian), when the block acquisition times out, the node will acquire the block through the P2P synchronization process, but the process is complicated and time-consuming. Therefore, the GreatVoyage-v4.5.1 (Tertullian) version optimizes the process of obtaining the latest block. The node will first select a node according to the status of each node, and then directly send the block obtaining message `FetchInvDataMessage` to this node to obtain the latest block, which saves most of the time in the block synchronization process, speeds up the acquisition of the latest block, and improves the stability of the node.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-391.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-391.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4326
 
 #### 6. Support prometheus metric protocol interface
 Starting from the GreatVoyage-v4.5.1 (Tertullian) version, the node provides an open source system monitoring tool - prometheus’s protocol interface, and users can monitor the health status of the node more conveniently.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-369.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-369.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4337
 
 #### 7. Support node stop at specified condition
 In order to facilitate node deployers to do data backup or data statistics, starting from the GreatVoyage-v4.5.1 (Tertullian) version, the node could stop running under specific conditions. Users can set the conditions for node stop through the node configuration file, such as the node stop’s block time, block height, and the number of blocks the node needs to synchronize from start to stop. The node will stop running automatically when the set conditions are met.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-370.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-370.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4325
 
 
@@ -1615,7 +1615,7 @@ Source Code: https://github.com/alexozerov/java-orgon/pull/4325
 #### 1. Adjust the upper limit that can be set for the maximum execution time of TVM
 "TVM maximum execution time" is a dynamic parameter of the ORGON network, indicating the maximum time allowed for a smart contract to be executed. Super representatives can change this parameter through proposal voting. In versions prior to GreatVoyage-v4.5.1 (Tertullian), the maximum value that this parameter can be modified is 100ms. With the stability of the ORGON network infrastructure and the vigorous development of the ecology, the 100ms upper limit confines the complexity of smart contracts. Therefore, GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal that allows to raise the configurable upper limit of "TVM maximum execution time" to 400ms.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-397.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-397.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4375
 
 
@@ -1675,14 +1675,14 @@ The GreatVoyage-v4.4.4 (Plotinus) version introduces several important optimizat
 Before the GreatVoyage-v4.4.4 (Plotinus), the node will execute about a minute from startup to block synchronization. The block synchronization thread will first delay 30s to wait for the P2P thread to discover remote nodes, then establish TCP connection with the discovered nodes, and finally perform the block synchronization. This delay time occupies most of the startup time. In fact, every newly discovered node will be persisted to the local database, so there is no need to spend extra time waiting for the node to be discovered when node is started for the second time. So in the GreatVoyage-v4.4.4(Plotinus) version, the waiting time for node discovery has been reduced from 30s to 100ms to improve the speed of node startup.
 
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-366.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-366.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4254
 
 
 #### 2. Optimize memory usage
 In order to avoid repeatedly broadcasting a transaction, the node will cache the transaction data into the broadcast data buffer. However,due to the limitation of the JVM's recycling policy, old cached data cannot be deleted in time until the buffer is full. Therefore, a buffer with a larger capacity will occupy a large amount of memory space. Before the GreatVoyage-v4.4.4 (Plotinus) version, the buffer pool size was 100000 transactions. In order to release the memory occupied by expired transactions in time , the GreatVoyage-v4.4.4 (Plotinus) version changed the buffer size to 20000 to reduce memory usage.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-362.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-362.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4250
 
 
@@ -1738,14 +1738,14 @@ The GreatVoyage-v4.4.2(Augustinus) has three essential updates: The new executio
 #### 1. TVM Opcode Execution Model Optimization
 The opcode execution model of the interpreter in TVM is optimized in GreatVoyage-v4.4.2(Augustinus). The performance of TVM is proven to have a great boost through testing.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-344.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-344.md
 Source Code：https://github.com/alexozerov/java-orgon/pull/4157
 
 ### API
 #### 1. Newly Adding ETH compatible log filter for JSON-RPC APIs.
 Log filter related APIs are available from GreatVoyage-v4.4.2 for compatibility with Ethereum JSON-RPC API.
 
-TIP: https://github.com/tronprotocol/tips/issues/343
+TIP: https://github.com/alexozerov/tips/issues/343
 Source Code：https://github.com/alexozerov/java-orgon/pull/4153
 
 ### Other Changes
@@ -1769,13 +1769,13 @@ The GreatVoyage-v4.4.0 (Rousseau) version introduces several important updates: 
 #### 1. Optimize the block broadcasting
 In the version before GreatVoyage-v4.4.0 (Rousseau), the logic of block processing is: verify block -> process block -> broadcast block. However, due to the long block processing time, there is a delay in block broadcasting. In order to speed up block broadcasting, In GreatVoyage-v4.4.0 (Rousseau) version, the block processing logic is changed to: verify block -> broadcast block -> process block, so that the block can be quickly broadcast to the entire network.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-289.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-289.md
 Source Code:https://github.com/alexozerov/java-orgon/pull/3986
 
 #### 2. Optimize the query performance of `dynamic store`
 During the block processing, The frequency of visits to `dynamic store` is very high. The GreatVoyage-v4.4.0(Rousseau) version optimizes the query performance of the  `dynamic store` by loading all the data of  `dynamic store`  into the first-level cache, the cache hit rate of the `dynamic store`  is improved and the block processing speed is also improved.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-290.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-290.md
 Source Code：https://github.com/alexozerov/java-orgon/pull/3993
 
 #### 3. Optimize the transaction broadcasting interface
@@ -1796,7 +1796,7 @@ The GreatVoyage-v4.4.0 (Rousseau) version provides compatibility solution for th
 - The `try/catch-statement` supports catching all types of TVM exceptions.
 - Forbid the system contract “TransferContract” to transfer ORGON to the smart contract account.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-272.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-272.md
 Source Code：https://github.com/alexozerov/java-orgon/pull/4032
 
 **NOTICE**：
@@ -1806,7 +1806,7 @@ By default, this feature is disabled, and the super representative or super part
 
 In the GreatVoyage-v4.4.0 (Rousseau) version, TVM is also adapted to the Ethereum London upgrade: introduce the `BASEFEE` opcode; the deployment of new contracts starting with 0xEF is prohibited.
 
-TIP: https://github.com/tronprotocol/tips/blob/master/tip-318.md
+TIP: https://github.com/alexozerov/tips/blob/master/tip-318.md
 Source Code：https://github.com/alexozerov/java-orgon/pull/4032
 
 **NOTICE**：
@@ -1870,7 +1870,7 @@ The release of GreatVoyage-v4.3.0 (Bacon) includes several significant optimizat
 #### 1. Add a proposal to adjust the free net limit in an account.
 Prior to GreatVoyage-v4.3.0 (Bacon), the account's daily free bandwidth quota was fixed at 5000. The GreatVoyage-v4.3.0 (Bacon) version includes the #61 proposal `FREE_NET_LIMIT`, which allows for the customization of the free bandwidth quota. Super representatives and super partners may initiate a vote request for Proposal 61, which modifies the `FREE_NET_LIMIT` variable, which has the value [0, 100000].
 
-* TIP: https://github.com/tronprotocol/tips/blob/master/tip-292.md
+* TIP: https://github.com/alexozerov/tips/blob/master/tip-292.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3917
 
 **NOTICE**
@@ -1880,7 +1880,7 @@ The account's daily free bandwidth quota  is not changed now. The super represen
 Prior to GreatVoyage-v4.3.0 (Bacon), the total bandwidth obtained by staking ORGON throughout the entire network was fixed at 43,200,000,000.
 The GreatVoyage-v4.3.0 (Bacon) version incorporates proposal #62 `TOTAL_NET_LIMIT`, which allows for configuring the total bandwidth available by staking ORGON over the entire network. Super representatives and super partners may initiate a voting request for Proposal 62, which amends `TOTAL_NET_LIMIT`. `TOTAL_NET_LIMIT` has a range of [0, 1000000000000].
 
-* TIP: https://github.com/tronprotocol/tips/blob/master/tip-293.md
+* TIP: https://github.com/alexozerov/tips/blob/master/tip-293.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3917
 
 **NOTICE**
@@ -1890,7 +1890,7 @@ The total net limit is not changed now. The super representative or super partne
 Account is a database that receives numerous accesses during the node's operation, necessitating frequent deserialization operations on the account data structure. Prior to GreatVoyage-v4.3.0 (Bacon), Account contained not only the account's basic data, but also user ORC-10 asset data. However, for ORGON transfers and smart contract-related transactions, only the Account's basic data is used. An excessively large ORC-10 asset list will have a significant impact on the Account data structure's deserialization performance.
 GreatVoyage-v4.3.0 (Bacon) improves the Account database's storage structure by separating ORC-10 asset data from the Account and storing it independently in the `AccountAssetIssue`. Reduce the amount of data that is deserialized during Account deserialization and increase the deserialization speed.
 
-* TIP: https://github.com/tronprotocol/tips/blob/master/tip-295.md
+* TIP: https://github.com/alexozerov/tips/blob/master/tip-295.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3906
 
 **NOTICE**
@@ -1902,7 +1902,7 @@ By default, this feature is disabled, and the super representative or super part
 Ordinary accounts can earn block rewards and voting rewards in versions prior to GreatVoyage-v4.3.0 (Bacon) by voting for super representatives or super representative candidates. However, because TVM does not accept voting instructions, ORGON assets in smart contract accounts are unable to generate revenue via voting.
 The GreatVoyage-v4.3.0 (Bacon) version adds voting instructions to TVM: `VOTE` / `WITHDRAWBALANCE`, allowing smart contract accounts to vote for super representatives or super representative candidates.
 
-* TIP: https://github.com/tronprotocol/tips/blob/master/tip-271.md
+* TIP: https://github.com/alexozerov/tips/blob/master/tip-271.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3921
 
 **NOTICE**
@@ -1911,7 +1911,7 @@ By default, this feature is disabled, and the super representative or super part
 #### 2. Add a New Type: `Error` in Smart Contract ABI
 GreatVoyage-v4.3.0 (Bacon) provides a new ABI type Error, which is a custom error type that is compatible with Ethereum solidity 0.8.4's new features.
 
-* TIP: https://github.com/tronprotocol/tips/blob/master/tip-306.md
+* TIP: https://github.com/alexozerov/tips/blob/master/tip-306.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3921
 
 ### API
@@ -1938,13 +1938,13 @@ When a new account is created in GreatVoyage-v4.3.0 (Bacon), the method for calc
 When a node checks a block prior to GreatVoyage-v4.3.0 (Bacon), it verifies each transaction included inside it, regardless of whether it has been verified previously. The transaction verification procedure consumes roughly one-third of the total time required to process a block.
 The GreatVoyage-v4.3.0 (Bacon) release optimizes the block verification logic. If non-`AccountUpdateContract` transactions in the block have been validated previously (`AccountUpdateContract` transactions entail account permission changes), they will no longer be verified to expedite block verification.
 
-* TIP: https://github.com/tronprotocol/tips/blob/master/tip-276.md
+* TIP: https://github.com/alexozerov/tips/blob/master/tip-276.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3910
 
 #### 4. Optimize the Node Startup
 Prior to GreatVoyage-v4.3.0 (Bacon), during node startup, transaction cache and block data from the database are read to complete the RAM transaction cache initialization. The RAM transaction cache initialization process has been streamlined in GreatVoyage-v4.3.0 (Bacon), and some superfluous parsing processes have been deleted. The speed of node startup will be increased following optimization.
 
-* TIP: https://github.com/tronprotocol/tips/blob/master/tip-285.md
+* TIP: https://github.com/alexozerov/tips/blob/master/tip-285.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3907
 
 #### 5. Optimize Transaction Processing Flow to Reduce Memory Usage
@@ -1958,9 +1958,9 @@ The transaction processing flow is streamlined in GreatVoyage-v4.3.0 (Bacon), un
 In the version before GreatVoyage-v4.3.0 (Bacon), with the running of `levedb`, the manifest file will continue to grow. Excessive manifest file will not only affect the startup speed of the node but also may cause the memory to continue to grow and lead to insufficient memory and the service was terminated abnormally.
 GreatVoyage-v4.3.0 (Bacon) introduces the `leveldb` startup optimization plug-in. The plug-in optimizes the file size of the manifest and the startup process of LevelDB, reduces memory usage, and improves node startup speed.
 
-* TIP:  https://github.com/tronprotocol/tips/blob/master/tip-298.md
+* TIP:  https://github.com/alexozerov/tips/blob/master/tip-298.md
 * Source Code:  https://github.com/alexozerov/java-orgon/pull/3925
-* Plug-in Usage Guide: https://github.com/tronprotocol/documentation-en/blob/master/docs/developers/archive-manifest.md
+* Plug-in Usage Guide: https://github.com/alexozerov/documentation-en/blob/master/docs/developers/archive-manifest.md
 
 *Knowledge is power.*
 <p align="right"> --- Francis Bacon </p>
@@ -2000,7 +2000,7 @@ In the versions before GreatVoyage-v4.2.2 (Lucretius), to obtain the witness lis
 The GreatVoyage-v4.2.2 (Lucretius) version simplifies the query of witnesses. In the block processing process, the witness list can be obtained by only one query. After testing, this optimization has dramatically improved the block processing performance.
 
 
-- TIP: [TIP-269](https://github.com/tronprotocol/tips/blob/master/tip-269.md)
+- TIP: [TIP-269](https://github.com/alexozerov/tips/blob/master/tip-269.md)
 - Source code: [#3827](https://github.com/alexozerov/java-orgon/pull/3827)
 
 #### 2. Data Query optimization
@@ -2015,7 +2015,7 @@ In the version before GreatVoyage-v4.2.2 (Lucretius), the ABI other data of the 
 
 In the version of GreatVoyage-v4.2.2 (Lucretius), smart contract ABIs are transferred to a particular ABI database. The ABI data will no longer be read during the execution of the contract, thus significantly improving the performance of TVM.
 
-- TIP: [TIP-268](https://github.com/tronprotocol/tips/blob/master/tip-268.md)
+- TIP: [TIP-268](https://github.com/alexozerov/tips/blob/master/tip-268.md)
 - Source code: [#3836](https://github.com/alexozerov/java-orgon/pull/3836)
 
 ### Other Changes
@@ -2041,7 +2041,7 @@ The GreatVoyage-4.2.0 (Plato) version introduces two important updates. The opti
 
 Before the GreatVoyage-4.2.0 (Plato) version, while users obtained a large amount of ORGON power by staking ORGON, they also obtained a large amount of energy and bandwidth. The utilization rate of these energies and bandwidth is extremely low, and most of them are not used at all, which increases the cost of obtaining resources. In order to improve the utilization rate of these resources, the GreatVoyage-4.2.0(Plato) version proposes an optimization of the resource model, where staking ORGON can only obtain one of the three resources, namely bandwidth, energy, and ORGON power. After optimization, users can obtain the corresponding resources based on their own needs, thereby improving the utilization rate of resources.
 
-- TIP： [TIP-207](https://github.com/tronprotocol/tips/blob/master/tip-207.md)
+- TIP： [TIP-207](https://github.com/alexozerov/tips/blob/master/tip-207.md)
 - Source Code:  [#3726](https://github.com/alexozerov/java-orgon/pull/3726)
 
 **Notes:**
@@ -2054,7 +2054,7 @@ Before the GreatVoyage-4.2.0 (Plato) version, while users obtained a large amoun
 
 In the ORGON network, one non-contract account can stake ORGON to obtain resources such as bandwidth, energy, ORGON power, and reasonable use of these resources can bring certain benefits to users. At the same time, although smart contract accounts do have ORGON, there is no way to stake these ORGON to obtain resources.  In order to solve this inconsistency, the GreatVoyage-4.2.0(Plato) version introduces Freeze/Unfreeze instructions in TVM, so that smart contracts can also support staking ORGON to obtain resources.
 
-- TIP: [TIP-157](https://github.com/tronprotocol/tips/blob/master/tip-157.md)
+- TIP: [TIP-157](https://github.com/alexozerov/tips/blob/master/tip-157.md)
 - Source Code： [#3728](https://github.com/alexozerov/java-orgon/pull/3728)
 
 **Notes:**
@@ -2112,7 +2112,7 @@ GreatVoyage-version 4.1.2 is released with the following new features and modifi
 
 After this feature is turned on, the transaction fee from burning ORGON which charged for bandwidth/energy (except OUT_OF_TIME) will be transferred to TRANSACTION_FEE_POOL. At the end of each block, the fee of all transactions in this block is rewarded to the block SR and its voters. At the same time, in "transactioninfo", the "packingFee" field is added to indicate the available fees to the current SR and SR voters.
 
-- TIP: [TIP-196](https://github.com/tronprotocol/tips/issues/196)
+- TIP: [TIP-196](https://github.com/alexozerov/tips/issues/196)
 - Source Code:  [#3532](https://github.com/alexozerov/java-orgon/pull/3532)
 
 
@@ -2128,7 +2128,7 @@ The account historical balance query function can facilitate developers to query
 2. After the function is enabled, users can only query the historical balance after the enabled time. If users need to query the complete historical balance information, they can use the data snapshot which contains the historical balance information to resynchronize the node.
 
 - Source Code：[#3538](https://github.com/alexozerov/java-orgon/pull/3538)
-- Guide ： https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http.md
+- Guide ： https://github.com/alexozerov/documentation-en/blob/master/docs/api/http.md
 
 ###3、Optimized the blackhole account to improve transaction execution speed
 
@@ -2139,16 +2139,16 @@ After the feature is turned on, the transaction fee from burning ORGON which cha
 ### II. TVM
 #### 1、Adopt to solidity0.6.0.
 
-After this upgrade, ORGON will be fully compatible with the new features introduced by solidity 0.6.0, including the new virtual and override keywords, and supporting try/catch. For details, please refer to the ORGON Solidity release note: https://github.com/tronprotocol/solidity/releases/tag/tv_0.6.0
+After this upgrade, ORGON will be fully compatible with the new features introduced by solidity 0.6.0, including the new virtual and override keywords, and supporting try/catch. For details, please refer to the ORGON Solidity release note: https://github.com/alexozerov/solidity/releases/tag/tv_0.6.0
 
-- TIP:  [TIP-209](https://github.com/tronprotocol/tips/issues/209)
+- TIP:  [TIP-209](https://github.com/alexozerov/tips/issues/209)
 - Source Code： [#3351](https://github.com/alexozerov/java-orgon/pull/3535)
 
 ###2、Make MAX_FEE_LIMIT configurable as a chain property.
 
 After the new version, SR and SRP can initiate a voting request to modify MAX_FEE_LIMIT. The range of MAX_FEE_LIMIT is [0,10000000000].
 
-- TIP： [TIP-204](https://github.com/tronprotocol/tips/issues/204)
+- TIP： [TIP-204](https://github.com/alexozerov/tips/issues/204)
 - Source code：  [#3534](https://github.com/alexozerov/java-orgon/pull/3534)
 
 ### III. Others Changes
@@ -2165,35 +2165,35 @@ GreatVoyage-version 4.1.1 is released with the following new features and modifi
 ### I. Core Protocol
 #### 1. New Consensus Protocol
 The new consensus mechanism combines ORGON's existing DPoS consensus with the PBFT consensus mechanism. PBFT's three-phase voting mechanism is adopted to confirm whether a block should be solidified. It will take an average of 1-2 slots (a slot equals 3s) from creation to confirmation of a ORGON block, much shorter than the previous 19 slots. This signifies a remarkable increase in the block confirmation speed.
-TIP: [TICP-Optimized-PBFT](https://github.com/tronprotocol/tips/blob/master/tp/ticp/ticp-optimized-pbft/ticp-Optimized-PBFT.md)
+TIP: [TICP-Optimized-PBFT](https://github.com/alexozerov/tips/blob/master/tp/ticp/ticp-optimized-pbft/ticp-Optimized-PBFT.md)
 Source code: [#3082](https://github.com/alexozerov/java-orgon/pull/3082)
 
 #### 2. New Node Type
 We added another type of node to the existing FullNode: Lite FullNode. Lite FullNode executes the same code with the FullNode. What sets it apart is that its launch is based on the status data snapshot, which contains all the status data and data history of the latest 256 blocks.
 The status data snapshot can be acquired by executing LiteFullNodeTool.jar (please see: [Use the LiteFullNode Tool](https://dev.orgon.space/developers/litefullnode/)).
-- TIP: [TIP-128](https://github.com/tronprotocol/tips/blob/master/tip-128.md)
+- TIP: [TIP-128](https://github.com/alexozerov/tips/blob/master/tip-128.md)
 - Source code: [#3031](https://github.com/alexozerov/java-orgon/pull/3031)
 
 ### II. TVM
 #### Achieved compatibility with Ethereum Istanbul upgrade
 a. Added new instruction `CHAINID` to fetch the genesis block ID of the current chain, which avoids possible replay attacks of one transaction being repeated on different chains.
-- TIP: [TIP-174](https://github.com/tronprotocol/tips/blob/master/tip-174.md)
+- TIP: [TIP-174](https://github.com/alexozerov/tips/blob/master/tip-174.md)
 - Source code: [#3351](https://github.com/alexozerov/java-orgon/pull/3351)
 
 b. Added new instruction `SELFBALANCE` to fetch the balance of the current contract address in the smart contract. For obtaining the balance of any address, please stick with instruction BALANCE.SELFBALANCE is safer to use. Energy consumption of using `BALANCE` might rise in the future.
-- TIP: [TIP-175](https://github.com/tronprotocol/tips/blob/master/tip-175.md)
+- TIP: [TIP-175](https://github.com/alexozerov/tips/blob/master/tip-175.md)
 - Source code: [#3351](https://github.com/alexozerov/java-orgon/pull/3351)
 
 c. Reduced Energy consumption of three precompiled contract instructions, namely BN128Addition, BN128Multiplication, and BN128Pairing.
 BN128Addition: from 500 Energy to 150 Energy
 BN128Multiplication: from 40000 Energy to 6000 Energy
 BN128Pairing: from (80000 \* pairs + 100000) Energy to (34000 \* pairs + 45000) Energy
-- TIP: [TIP-176](https://github.com/tronprotocol/tips/blob/master/tip-176.md)
+- TIP: [TIP-176](https://github.com/alexozerov/tips/blob/master/tip-176.md)
 - Source code: [#3351](https://github.com/alexozerov/java-orgon/pull/3351)
 
 ### III. Mechanism
 1. Added two new system contracts, namely MarketSellAssetContract and MarketCancelOrderContract, for on-chain ORGON/ORC10 transactions in decentralized exchanges.
-- TIP: [TIP-127](https://github.com/tronprotocol/tips/blob/master/tip-127.md)
+- TIP: [TIP-127](https://github.com/alexozerov/tips/blob/master/tip-127.md)
 - Source code: [#3302](https://github.com/alexozerov/java-orgon/pull/3302)
 
 ### IV. Other Modifications
@@ -2201,7 +2201,7 @@ BN128Pairing: from (80000 \* pairs + 100000) Energy to (34000 \* pairs + 45000) 
 - Source code: [#3350](https://github.com/alexozerov/java-orgon/pull/3350)
 
 2. Added market order detail in the original transactionInfo interface.
-- TIP: [TIP-127](https://github.com/tronprotocol/tips/blob/master/tip-127.md)
+- TIP: [TIP-127](https://github.com/alexozerov/tips/blob/master/tip-127.md)
 - Source code: [#3302](https://github.com/alexozerov/java-orgon/pull/3302)
 
 3. Improved the script for docker deployment.
@@ -2255,9 +2255,9 @@ Forced upgrade
 - Add data field in transaction log trigger class for future memo note (#3200).
 
 The following TIPs are implemented in this release:
-- [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md): Shielded ORC-20 contract standards, guarantee the privacy of the shielded transfer of ORC-20 tokens.
-- [TIP-137](https://github.com/tronprotocol/tips/blob/master/tip-137.md): Implements three zero-knowledge proof instructions in TVM to support the shielded ORC-20 contract (#3172).
-- [TIP-138](https://github.com/tronprotocol/tips/blob/master/tip-138.md): Implements the Pedersen hash computation instruction in TVM to support the shielded ORC-20 contract (#3172).
+- [TIP-135](https://github.com/alexozerov/tips/blob/master/tip-135.md): Shielded ORC-20 contract standards, guarantee the privacy of the shielded transfer of ORC-20 tokens.
+- [TIP-137](https://github.com/alexozerov/tips/blob/master/tip-137.md): Implements three zero-knowledge proof instructions in TVM to support the shielded ORC-20 contract (#3172).
+- [TIP-138](https://github.com/alexozerov/tips/blob/master/tip-138.md): Implements the Pedersen hash computation instruction in TVM to support the shielded ORC-20 contract (#3172).
 
 ### Changes
 - Check if null before getInstance when get transaction info from DB to fix exception of `getTransactioninfoByBlkNum` (#3165).

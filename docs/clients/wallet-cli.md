@@ -6,7 +6,7 @@ wallet-cli is an interactive command-line wallet that supports the ORGON network
 
 The user first runs the `Login` command to unlock the wallet, and then runs the `SendCoin` command to send ORGON, wallet-cli will build and sign the transaction locally, and then call the BroadcastTransaction gRPC API of the java-orgon node to broadcast the transaction to the network. After the broadcast is successful, the java-orgon node will return the transaction hash to wallet-cli, and wallet-cli will display the transaction hash to the user.
 
-Install and run: [wallet-cli](https://github.com/tronprotocol/wallet-cli)
+Install and run: [wallet-cli](https://github.com/alexozerov/wallet-cli)
 
 ## Commands
 Below, please find all types of wallet-cli commands：

@@ -70,4 +70,4 @@ All the whole data conversion process may take 10 hours.
 
 ## LevelDB
 
-You can refer to the following documents for detailed information about [RocksDB vs LevelDB](https://github.com/tronprotocol/documentation/blob/master/ORGON/Rocksdb_vs_Leveldb.md)
+You can refer to the following documents for detailed information about [RocksDB vs LevelDB](https://github.com/alexozerov/documentation/blob/master/ORGON/Rocksdb_vs_Leveldb.md)

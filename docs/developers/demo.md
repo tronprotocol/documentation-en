@@ -9,7 +9,7 @@ Fork a new repository from the [https://github.com/alexozerov/java-orgon](https:
 
 ```
 $ git clone https://github.com/yourname/java-orgon .git
-$ git remote add upstream https://github.com/tronprotocol/java-orgon .git
+$ git remote add upstream https://github.com/alexozerov/java-orgon .git
 ```
 
 ## Sync Repository

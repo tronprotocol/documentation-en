@@ -81,7 +81,7 @@ pragma solidity^0.4.11;
 ```
 3.&nbsp;Deploy contract
 
-wallet-cli-vm branch: [https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm](https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm)
+wallet-cli-vm branch: [https://github.com/alexozerov/wallet-cli/tree/wallet-cli-vm](https://github.com/alexozerov/wallet-cli/tree/wallet-cli-vm)
 java-orgon-vm branch: [https://github.com/alexozerov/java-orgon/tree/develop_vm](https://github.com/alexozerov/java-orgon/tree/develop_vm)
 Password: password of client-end wallet
 ContractAddress: customized contract address (in ORGON’s required format)

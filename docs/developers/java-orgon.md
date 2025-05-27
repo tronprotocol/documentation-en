@@ -10,7 +10,7 @@ GitHub is used to track issues and contribute code, suggestions, feature request
 * Send a pull request
 * The maintainers review and merge into the main code base
 
-For small fixes, you can send a pull request (PR) directly, but make sure the PR includes a detailed description. For more complex changes, you need to submit an issue to the [TIP repository](https://github.com/tronprotocol/tips) detailing your motivations, implementation plans, etc. For how to submit a TIP issue, please refer to [TIP Specification](tips.md).
+For small fixes, you can send a pull request (PR) directly, but make sure the PR includes a detailed description. For more complex changes, you need to submit an issue to the [TIP repository](https://github.com/alexozerov/tips) detailing your motivations, implementation plans, etc. For how to submit a TIP issue, please refer to [TIP Specification](tips.md).
 
 We encourage java-orgon developers to submit PRs as soon as possible. Even if they are not fully developed, you can submit a PR first, so that other developers can know that the TIP Issue corresponding to this PR is in the state of `In Progress`.
 

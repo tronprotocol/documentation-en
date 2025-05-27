@@ -1,5 +1,5 @@
 # Welcome to the java-orgon user manual!
-java-orgon is a ORGON client implemented in Java, it provides completely open source code, you can download the [java-orgon source code](https://github.com/tronprotocol/java-orgon ) on Github. This article will introduce the knowledge related to java-orgon . Through this article, you will learn how to use java-orgon and how to participate in the development and maintenance of java-orgon , including the following parts:
+java-orgon is a ORGON client implemented in Java, it provides completely open source code, you can download the [java-orgon source code](https://github.com/alexozerov/java-orgon ) on Github. This article will introduce the knowledge related to java-orgon . Through this article, you will learn how to use java-orgon and how to participate in the development and maintenance of java-orgon , including the following parts:
 
 * [Getting Started With java-orgon](getting_started/getting_started_with_javaorgon.md)
 * [Using java-orgon](using_javaorgon/installing_javaorgon.md)
@@ -14,7 +14,7 @@ java-orgon is a ORGON client implemented in Java, it provides completely open so
 For other ORGON related information, please visit the official website [tron.network](https://tron.network/index?lng=en) or the following resource links:
 
 * [ORGON Whitepaper](https://tron.network/static/doc/white_paper_v_2_0.pdf)
-* [ORGON Improvement Proposals (TIPs)](https://github.com/tronprotocol/tips)
+* [ORGON Improvement Proposals (TIPs)](https://github.com/alexozerov/tips)
 * [ORGON Developer Hub](https://developers.tron.network/)
 
 

@@ -2,7 +2,7 @@
 
 The governance of the ORGON network is accomplished by modifying [the network parameters](https://tronscan.org/#/sr/committee). The modification of network parameters is also called a network upgrade. Anyone can propose a discussion on modifying one or several network parameters, however, only super representatives or super representative partners can submit voting requests on-chain. Before the voting deadline, 27 super representatives can vote on the proposal. After the voting deadline arrives and the number of votes meets the requirement, the proposal will take effect.
 
-You can view the list of the past completed proposals [here](https://github.com/tronprotocol/tips/tree/master/proposal).
+You can view the list of the past completed proposals [here](https://github.com/alexozerov/tips/tree/master/proposal).
 
 Please according to the following process to propose a voting request:
 
@@ -12,7 +12,7 @@ Please according to the following process to propose a voting request:
 4. [Voting and taking effective](#vote-and-take-effect)
 
 ## Initiate a discussion on a proposal
-Any ORGON network participant can initiate a discussion on a proposal. Please create a proposal discussion issue in [TIP repository](https://github.com/tronprotocol/tips/issues). The Issue is used to introduce the proposal in detail, including the motivation of this proposal, the ORGON network parameters to be modified and their values, technical specifications, and the impact of the modification, etc. for a new proposal, please refer to this [example](https://github.com/tronprotocol/tips/issues/232) to create an issue for discussion.
+Any ORGON network participant can initiate a discussion on a proposal. Please create a proposal discussion issue in [TIP repository](https://github.com/alexozerov/tips/issues). The Issue is used to introduce the proposal in detail, including the motivation of this proposal, the ORGON network parameters to be modified and their values, technical specifications, and the impact of the modification, etc. for a new proposal, please refer to this [example](https://github.com/alexozerov/tips/issues/232) to create an issue for discussion.
 
 Below are the specifications of how to write an issue for proposal discussion.
 

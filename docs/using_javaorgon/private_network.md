@@ -1,5 +1,5 @@
 # Private Network
-To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the `Oracle JDK 1.8` first, and then you need to prepare at least two ORGON network address and save the address and private key. You can use [wallet-cli](https://github.com/tronprotocol/wallet-cli) or [Tronlink](https://www.tronlink.org/) to create address.
+To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the `Oracle JDK 1.8` first, and then you need to prepare at least two ORGON network address and save the address and private key. You can use [wallet-cli](https://github.com/alexozerov/wallet-cli) or [Tronlink](https://www.tronlink.org/) to create address.
 
 
 ## Deployment Guide
@@ -22,7 +22,7 @@ The process of building a node on private chain is the same as that on mainnet. 
      $ cp FullNode.jar ./FullNode
      ```
 
-3. Obtain the node's config file [private_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf)
+3. Obtain the node's config file [private_net_config.conf](https://github.com/alexozerov/tron-deployment/blob/master/private_net_config.conf)
 
     Obtain the node's config file private_net_config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
       ```
@@ -73,7 +73,7 @@ The process of building a node on private chain is the same as that on mainnet. 
 
     Dynamic parameters can be obtained by [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters). The main network's current dynamic parameters and committee proposals related to them can be seen [here](https://tronscan.org/#/sr/committee), dynamic parameters are called network parameters here.
 
-    If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/tronprotocol/tron-docker/tree/main/tools/dbfork) which could capture the latest status of Mainnet is what you are interested in.
+    If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/alexozerov/tron-docker/tree/main/tools/dbfork) which could capture the latest status of Mainnet is what you are interested in.
 
     If you want to modify part of dynamic parameters, there are two ways to choose from:
 

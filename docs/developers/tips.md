@@ -22,11 +22,11 @@ TIPs are mainly divided into `Standard Track` and `Informational`:
 
 Before you submit a TIP, you need to create an issue for comment and add the issue URL to your TIP header. The format of a TIP issue is consistent with the content of TIP. The process of submitting TIP is as follows:
 
-1. Fork the [TIP repository](https://github.com/tronprotocol/TIPs) by clicking "Fork" in the top right.
-2. Add your TIP to your fork of the repository. There is a [TIP template](https://github.com/tronprotocol/TIPs/blob/master/template.md) here.
+1. Fork the [TIP repository](https://github.com/alexozerov/TIPs) by clicking "Fork" in the top right.
+2. Add your TIP to your fork of the repository. There is a [TIP template](https://github.com/alexozerov/TIPs/blob/master/template.md) here.
 3. Submit a Pull Request to ORGON's TIPs repository.
 
-Please use `markdown` to write TIP in strict accordance with the requirements of [template](https://github.com/tronprotocol/TIPs/blob/master/template.md). Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole. If a TIP is about the feature development of java-orgon, and a PR of the development exists, in your TIP and your java-orgon's PR you need to refer each other's github link to make the requirements analysis of new features and development code traceable.
+Please use `markdown` to write TIP in strict accordance with the requirements of [template](https://github.com/alexozerov/TIPs/blob/master/template.md). Make sure you include a discussions-to header with the URL to a discussion forum or open GitHub issue where people can discuss the TIP as a whole. If a TIP is about the feature development of java-orgon, and a PR of the development exists, in your TIP and your java-orgon's PR you need to refer each other's github link to make the requirements analysis of new features and development code traceable.
 
 Your first PR for a new TIP will be in the state of `draft`. It must meet the formatting criteria enforced by the build. An editor will manually review it and assign it a number before merging it.
 

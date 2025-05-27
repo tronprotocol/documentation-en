@@ -1,7 +1,7 @@
 # RPC List
 
 **For the specific definition of API, please refer to the following link:**
-[api/api.proto](https://github.com/tronprotocol/protocol/blob/master/api/api.proto)
+[api/api.proto](https://github.com/alexozerov/protocol/blob/master/api/api.proto)
 
 !!! note
     SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.

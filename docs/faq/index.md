@@ -8,7 +8,7 @@
 
 ### How can I generate an account?
 
-You can use [wallet-cli](https://github.com/tronprotocol/wallet-cli) or [Tronscan](https://tronscan.org/#/wallet/new).
+You can use [wallet-cli](https://github.com/alexozerov/wallet-cli) or [Tronscan](https://tronscan.org/#/wallet/new).
 
 ### What is the network flow?
 
