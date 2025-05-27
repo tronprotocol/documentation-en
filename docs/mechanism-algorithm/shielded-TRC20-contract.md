@@ -1,42 +1,42 @@
-# Shielded TRC-20 Contract
+# Shielded ORC-20 Contract
 
 ## Introduction
 
-TRC-20 token contract allows users to issue and transfer tokens, but it can not guarantee the privacy since it leaks the token ownership. When transferring the token, the source address, destination address, and the token amount are  public. The shielded TRC-20 contract ([TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md)) aims to solve this problem and provides users better privacy of token ownership and transactions.
+ORC-20 token contract allows users to issue and transfer tokens, but it can not guarantee the privacy since it leaks the token ownership. When transferring the token, the source address, destination address, and the token amount are  public. The shielded ORC-20 contract ([TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md)) aims to solve this problem and provides users better privacy of token ownership and transactions.
 
-The shielded TRC-20 contract has three core functions: `mint`, `transfer` and `burn`.
+The shielded ORC-20 contract has three core functions: `mint`, `transfer` and `burn`.
 
--  `mint` is used to transform the public TRC-20 token to shielded token, which makes token ownership invisible. `mint` has only one transparent input and one shielded output.
+-  `mint` is used to transform the public ORC-20 token to shielded token, which makes token ownership invisible. `mint` has only one transparent input and one shielded output.
 -  `transfer` is used for shielded token transactions, which can hide the source address, the destination address, and the transaction amount. `transfer` has at most two shielded input and two shielded output.
-- `burn` is used to transform the shielded token to the public TRC-20 token. `burn` has only one shielded input, one transparent output and zero or one shielded output.
+- `burn` is used to transform the shielded token to the public ORC-20 token. `burn` has only one shielded input, one transparent output and zero or one shielded output.
 
 The technical implementation is based on zk-SNARK(Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) proof system, which is secure and efficient.
 
 ### Contract Deployment
 
-1. Use `deployContract` method in the wallet-cli to deploy the TRC-20 contract.
+1. Use `deployContract` method in the wallet-cli to deploy the ORC-20 contract.
 
-   Note: the deployed TRC-20 contract address of `TokenTRC20` on Quasar Testnet is:  [TFUD8x3iAZ9dF7NDCGBtSjznemEomE5rP9](https://quasar.orgonscan.org/#/contract/TFUD8x3iAZ9dF7NDCGBtSjznemEomE5rP9/code).
+   Note: the deployed ORC-20 contract address of `TokenTRC20` on Quasar Testnet is:  [TFUD8x3iAZ9dF7NDCGBtSjznemEomE5rP9](https://quasar.orgonscan.org/#/contract/TFUD8x3iAZ9dF7NDCGBtSjznemEomE5rP9/code).
 
-2. Use the `deployContract` method to deploy the shielded TRC-20 contract. The shielded TRC-20 contract will bind the TRC-20 contract. The `scalingFactor` is also specified when deploying the the shielded TRC-20 contract. For more details about `scalingFactor`, please refer [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md).
+2. Use the `deployContract` method to deploy the shielded ORC-20 contract. The shielded ORC-20 contract will bind the ORC-20 contract. The `scalingFactor` is also specified when deploying the the shielded ORC-20 contract. For more details about `scalingFactor`, please refer [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md).
 
-   Note: the deployed shielded TRC-20 contract address of `ShieldedTRC20` on Quasar Testnet is:  [TPcKtz5TRfP4xUZSos81RmXB9K2DBqj2iu](https://quasar.orgonscan.org/#/contract/TPcKtz5TRfP4xUZSos81RmXB9K2DBqj2iu/code) and the corresponding `scalingFactor` is set 10.
+   Note: the deployed shielded ORC-20 contract address of `ShieldedTRC20` on Quasar Testnet is:  [TPcKtz5TRfP4xUZSos81RmXB9K2DBqj2iu](https://quasar.orgonscan.org/#/contract/TPcKtz5TRfP4xUZSos81RmXB9K2DBqj2iu/code) and the corresponding `scalingFactor` is set 10.
 
 ### Usage Guide
 
-1.&nbsp;The sender needs to create an ordianry account by api. The account is used to trigger the shielded TRC-20 contract, so it should has some trx to pay the transaction fee.
+1.&nbsp;The sender needs to create an ordianry account by api. The account is used to trigger the shielded ORC-20 contract, so it should has some trx to pay the transaction fee.
 
-2.&nbsp;The sender should create the shielded address, which is used to send and receive the shielded TRC-20 notes.
+2.&nbsp;The sender should create the shielded address, which is used to send and receive the shielded ORC-20 notes.
 
-3.&nbsp;The sender calls the api to create shielded TRC-20 contract parameters for `mint`, `transfer` and `burn`.
+3.&nbsp;The sender calls the api to create shielded ORC-20 contract parameters for `mint`, `transfer` and `burn`.
 
-4.&nbsp;The sender triggers the shielded TRC-20 contract by using the generated parameters and generates the shielded TRC-20 transaction.
+4.&nbsp;The sender triggers the shielded ORC-20 contract by using the generated parameters and generates the shielded ORC-20 transaction.
 
-5.&nbsp;The sender broadcasts the shielded TRC-20 transaction.
+5.&nbsp;The sender broadcasts the shielded ORC-20 transaction.
 
 6.&nbsp;The receiver scans to get the received shielded notes.
 
-The document below describes how to use ORGON Shielded TRC-20 contract with http api.
+The document below describes how to use ORGON Shielded ORC-20 contract with http api.
 
 ### Create the account
 
@@ -248,7 +248,7 @@ Return:
 ```
 
 
-### Create shielded TRC-20 contract parameters for `mint`
+### Create shielded ORC-20 contract parameters for `mint`
 
 **1. Call api: wallet/createshieldedcontractparameters to build the parameters**
 
@@ -270,7 +270,7 @@ Parameters:
     "shielded_TRC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
 }
 ```
-Note: 1. the shielded TRC-20 contract should be deployed before calling the api; 2. the `from_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `from_amount` = `value` * `scalingFactor`. In this example, the value of `scalingFactor` is 100; 3. the `rcm` is a random field element with the length of 32 bytes,  which should be generated by `GetRcm` api.
+Note: 1. the shielded ORC-20 contract should be deployed before calling the api; 2. the `from_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded ORC-20 contract, namely `from_amount` = `value` * `scalingFactor`. In this example, the value of `scalingFactor` is 100; 3. the `rcm` is a random field element with the length of 32 bytes,  which should be generated by `GetRcm` api.
 
 Return:
 
@@ -292,9 +292,9 @@ Return:
 }
 ```
 
-The `trigger_contract_input` can be used as the input data to trigger the `mint` function of the shielded token contract. Before triggering the shielded TRC-20 contract, the user should trigger the `approve` method   of TRC-20 contract, to authorize the shielded TRC-20 contract to transfer the token from TRC-20 contract to shielded TRC-20 contract.
+The `trigger_contract_input` can be used as the input data to trigger the `mint` function of the shielded token contract. Before triggering the shielded ORC-20 contract, the user should trigger the `approve` method   of ORC-20 contract, to authorize the shielded ORC-20 contract to transfer the token from ORC-20 contract to shielded ORC-20 contract.
 
-Note: when the shielded TRC-20 contract is deployed, it will bind the corresponding TRC-20 contract.
+Note: when the shielded ORC-20 contract is deployed, it will bind the corresponding ORC-20 contract.
 
 **2. Call api: wallet/createshieldedcontractparameterswithoutask to build the parameters**
 
@@ -316,7 +316,7 @@ Parameters:
     "shielded_TRC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
 }
 ```
-Note: the `from_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `from_amount` = `value` * `scalingFactor`. In this example, the value of `scalingFactor` is 100.
+Note: the `from_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded ORC-20 contract, namely `from_amount` = `value` * `scalingFactor`. In this example, the value of `scalingFactor` is 100.
 
 Return:
 
@@ -338,7 +338,7 @@ Return:
 }
 ```
 
-The `trigger_contract_input` can be used as the input data to trigger the `mint` function of the shielded TRC-20 contract.
+The `trigger_contract_input` can be used as the input data to trigger the `mint` function of the shielded ORC-20 contract.
 
 
 ### Create shielded contract parameters for `transfer`
@@ -441,9 +441,9 @@ Return:
 }
 ```
 
-The `trigger_contract_input` can be used as the input data to trigger the `transfer` function of the shielded TRC-20 contract.
+The `trigger_contract_input` can be used as the input data to trigger the `transfer` function of the shielded ORC-20 contract.
 
-Note: 1. the notes in `shielded_spends` is obtained by `scanshieldedtrc20notesbyivk` api; 2. the `root` and `path` is obtained by triggering the `getPath` function of the shielded TRC-20 contract.
+Note: 1. the notes in `shielded_spends` is obtained by `scanshieldedtrc20notesbyivk` api; 2. the `root` and `path` is obtained by triggering the `getPath` function of the shielded ORC-20 contract.
 
 **2. Call api: wallet/createshieldedcontractparameterswithoutask to build the parameters**
 
@@ -636,9 +636,9 @@ Return:
 }
 ```
 
-The `value` can be used as the input data to trigger the `transfer` function of the shielded TRC-20 contract.
+The `value` can be used as the input data to trigger the `transfer` function of the shielded ORC-20 contract.
 
-### Create shielded TRC-20 contract parameters for `burn`
+### Create shielded ORC-20 contract parameters for `burn`
 
 **1. Call api: wallet/createshieldedcontractparameters to build the parameters**
 
@@ -680,7 +680,7 @@ Parameters:
     "visible": true
 }
 ```
-Note: the `to_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract. In this example, the value of `scalingFactor` is 100. , namely 60 * 100 =  40 * 100 + 2000.
+Note: the `to_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded ORC-20 contract. In this example, the value of `scalingFactor` is 100. , namely 60 * 100 =  40 * 100 + 2000.
 
 Return:
 
@@ -711,7 +711,7 @@ Return:
 }
 ```
 
-The `trigger_contract_input` can be used as the input data to trigger the `burn` function of the shielded TRC-20 contract.
+The `trigger_contract_input` can be used as the input data to trigger the `burn` function of the shielded ORC-20 contract.
 
 **2. Call api: wallet/createshieldedcontractparameterswithoutask to build the parameters**
 
@@ -752,7 +752,7 @@ Parameters:
     "visible": true
 }
 ```
-Note: the `to_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract. In this example, the value of `scalingFactor` is 100, namely 60 * 100 =  40 * 100 + 2000.
+Note: the `to_amount` is the real value, the `value` in note is the scaled value by `scalingFactor` set in the shielded ORC-20 contract. In this example, the value of `scalingFactor` is 100, namely 60 * 100 =  40 * 100 + 2000.
 
 Return:
 
@@ -782,7 +782,7 @@ Return:
 }
 ```
 
-Because of lacking the `ask`, the api can not generate the `spend_authority_signature`. Here, the `trigger_contract_input ` is some ciphertext used to generate the trigger shielded TRC-20 contract input for `burn`. To generate the `trigger_contract_input`, the user first needs to generate the spend `spend_authority_signature` by calling the api:
+Because of lacking the `ask`, the api can not generate the `spend_authority_signature`. Here, the `trigger_contract_input ` is some ciphertext used to generate the trigger shielded ORC-20 contract input for `burn`. To generate the `trigger_contract_input`, the user first needs to generate the spend `spend_authority_signature` by calling the api:
 
 **wallet/createspendauthsig**
 
@@ -858,10 +858,10 @@ Return:
 }
 ```
 
-The `value` can be used as the input data to trigger the `burn` function of the shielded TRC-20 contract.
+The `value` can be used as the input data to trigger the `burn` function of the shielded ORC-20 contract.
 
-### Trigger the shielded TRC-20 contract
-**Call api: wallet/triggersmartcontract to trigger the shielded TRC-20 contract and generate the shielded TRC-20 transaction**
+### Trigger the shielded ORC-20 contract
+**Call api: wallet/triggersmartcontract to trigger the shielded ORC-20 contract and generate the shielded ORC-20 transaction**
 
 Method: Post
 
@@ -914,7 +914,7 @@ Return:
 
 Note: the above is an example for triggering the `mint` function. For `transfer` and `burn`, it's similar.
 
-### Broadcast the shielded TRC-20 transaction
+### Broadcast the shielded ORC-20 transaction
 
 **Call api: wallet/broadcasttransaction to broadcast this transaction**
 
@@ -954,9 +954,9 @@ Return:
 ```
 Note: before broadcasting the transaction, the sender should sign the transaction by its private key to generate the signature and add it to the transaction.
 
-### Scan shielded TRC-20 notes by `ivk`
+### Scan shielded ORC-20 notes by `ivk`
 
-**Call api: wallet/scanshieldedtrc20notesbyivk to scan the shielded TRC-20 notes**
+**Call api: wallet/scanshieldedtrc20notesbyivk to scan the shielded ORC-20 notes**
 
 Method: Post and Get
 
@@ -990,9 +990,9 @@ Return:
         }]
 }
 ```
-### Scan shielded TRC-20 notes by `ovk`
+### Scan shielded ORC-20 notes by `ovk`
 
-**Call api: wallet/scanshieldedtrc20notesbyovk to scan the shileded TRC-20 notes**
+**Call api: wallet/scanshieldedtrc20notesbyovk to scan the shileded ORC-20 notes**
 
 Method: Post and Get
 
@@ -1038,9 +1038,9 @@ Return:
 }
 ```
 
-### Check the shielded TRC-20 note status
+### Check the shielded ORC-20 note status
 
-**Call api: wallet/isshieldedtrc20contractNoteSpent to check the shielded TRC-20 note status whether it is spent**
+**Call api: wallet/isshieldedtrc20contractNoteSpent to check the shielded ORC-20 note status whether it is spent**
 
 Method: Post
 

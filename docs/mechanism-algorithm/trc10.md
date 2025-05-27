@@ -1,8 +1,8 @@
-# TRC-10
+# ORC-10
 
-ORGON network supports two types of tokens, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.
+ORGON network supports two types of tokens, one is ORC-20 token issued by smart contract, the other one is ORC-10 token issued by system contract.
 
-## How to Issue a TRC-10 Token
+## How to Issue a ORC-10 Token
 
 HTTP API:
 
@@ -43,7 +43,7 @@ Return: Transaction object
 Note: The unit of 'trx_num' is SUN
 ```
 
-## Participate TRC-10 Token Issuing
+## Participate ORC-10 Token Issuing
 
 HTTP API:
 
@@ -66,7 +66,7 @@ Return: Transaction object
 Note: The unit of 'amount' is the smallest unit of the token
 ```
 
-## TRC-10 Token Transfer
+## ORC-10 Token Transfer
 
 HTTP API:
 

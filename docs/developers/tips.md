@@ -12,7 +12,7 @@ TIPs are mainly divided into `Standard Track` and `Informational`:
     * `Core`:  Improvements requiring a consensus fork, as well as changes that are not necessarily consensus critical but may be relevant to "core dev" discussions.
     * `Networking`: Improvements around network protocol.
     * `Interface`:  Improvements around client API/RPC specifications and standards.
-    * `TRC`：Application-level standards and conventions, including contract standards such as token standards (TRC-20).
+    * `TRC`：Application-level standards and conventions, including contract standards such as token standards (ORC-20).
     * `TVM`：mprovements around ORGON Virtual Machine.
 
 * `Informational`: Describes a ORGON design issue, or provides general guidelines or information to the ORGON community, but does not propose a new feature.

@@ -17,7 +17,7 @@ Below, please find all types of wallet-cli commands：
 - [Transaction](#transaction)
 - [On-ChainInquire](#on-chaininquire)
 - [SmartContract](#smartcontract)
-- [TRC-10](#trc-10)
+- [ORC-10](#trc-10)
 - [Governance](#governance)
 - [DEX](#dex)
 
@@ -1203,8 +1203,8 @@ wallet> DeployContract [ownerAddress] [contractName] [ABI] [byteCode] [construct
 * `consume_user_resource_percent` is the percentage of user consumed resource, in the range between [0, 100%].
 * `origin_energy_limit` is the most amount of developer energy consumed by triggering the contract once.
 * `value` is the amount of trx transferred to the contract account.
-* `token_value` is the number of TRC-10 token.
-* `token_id` is TRC-10 Id.
+* `token_value` is the number of ORC-10 token.
+* `token_id` is ORC-10 Id.
 
 Example:
 ```shell
@@ -1244,8 +1244,8 @@ wallet> TriggerContract [ownerAddress] [contractAddress] [method] [args] [isHex]
 * `args` is a parameter for placeholding, pass '#' instead when `method` does not need extra parameters.
 * `isHex` controls the format of the parameters method and args, whether they are in hex string or not.
 * `fee_limit` is the most amount of trx allows for consumption.
-* `token_value` indicate the number of TRC-10 token.
-* `token_id` the TRC-10 token id, If not, use ‘#’ instead.
+* `token_value` indicate the number of ORC-10 token.
+* `token_id` the ORC-10 token id, If not, use ‘#’ instead.
 
 Here is an example:
 ```shell
@@ -1289,8 +1289,8 @@ wallet> TriggerConstantContract ownerAddress(use # if you own) contractAddress m
 * `args` Parameters, if there is no parameter of `method`, please input #.
 * `isHex` `args`is hex string or not。
 * `value` ORGON amount to be transferred. Optional, if no value, # can be inplaced.
-* `token_value` TRC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
-* `token_id` TRC-10 token id to be transferred. Optional, if no value, # can be inplaced.
+* `token_value` ORC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
+* `token_id` ORC-10 token id to be transferred. Optional, if no value, # can be inplaced.
 
 Example:
 ```shell
@@ -1331,8 +1331,8 @@ wallet> EstimateEnergy ownerAddress contractAddress method args isHex [value tok
 * `args` Parameters, if there is no parameter of `method`, please input #.
 * `isHex` `args`is hex string or not。
 * `value` ORGON amount to be transferred. Optional, if no value, # can be inplaced.
-* `token_value` TRC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
-* `token_id` TRC-10 token id to be transferred. Optional, if no value, # can be inplaced.
+* `token_value` ORC-10 token amount to be transferred. Optional, if no value, # can be inplaced.
+* `token_id` ORC-10 token id to be transferred. Optional, if no value, # can be inplaced.
 
 
 Example:
@@ -1406,9 +1406,9 @@ wallet> UpdateSetting [ownerAddress] contract_address consume_user_resource_perc
 
 
 ---
-### TRC-10
+### ORC-10
 
-Below, please find all the commands for TRC-10:
+Below, please find all the commands for ORC-10:
 
 - [AssetIssue](#assetissue)
 - [UpdateAsset](#updateasset)
@@ -1423,18 +1423,18 @@ Below, please find all the commands for TRC-10:
 
 
 #### AssetIssue
-Each account is allowed to issue only **ONE** TRC-10 token.
+Each account is allowed to issue only **ONE** ORC-10 token.
 
 ```shell
 wallet> AssetIssue [OwnerAddress] [AssetName] [AbbrName] [TotalSupply] [TrxNum] [AssetNum] [Precision] [StartDate] [EndDate] [Description Url] [FreeNetLimitPerAccount] [PublicFreeNetLimit] [FrozenAmount0] [FrozenDays0] [...] [FrozenAmountN] [FrozenDaysN]
 ```
 `OwnerAddress` (optional) is the address of the account which initiated the transaction. Default: the address of the login account.
 
-`AssetName` is the name of the issued TRC-10 token.
+`AssetName` is the name of the issued ORC-10 token.
 
-`AbbrName` is the abbreviation of TRC-10 token you want to issue.
+`AbbrName` is the abbreviation of ORC-10 token you want to issue.
 
-`TotalSupply` is total issuing amount of TRC-10 token.
+`TotalSupply` is total issuing amount of ORC-10 token.
 
 * TotalSupply = Account Balance of Issuer + All Frozen Token Amount
 * Account Balance Of Issuer: balance at the time of issuance
@@ -1540,9 +1540,9 @@ wallet> GetAssetIssueByAccount TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ  # to check th
 
 `ToAddress` is the address of the target account.
 
-`AssertName` is the TRC-10 token ID. Example: 1000001
+`AssertName` is the ORC-10 token ID. Example: 1000001
 
-`Amount` is the number of TRC10 token to transfer with.
+`Amount` is the number of ORC10 token to transfer with.
 
 Example:
 ```shell
@@ -1563,13 +1563,13 @@ address: TN3zfjYUmMFK3ZsHSsrdJoNRtGkQmZLBLz
 ```
 `OwnerAddress` (optional) is the address of the account which initiated the transaction. Default: the address of the login account.
 
-`ToAddress` is the account address of TRC10 issuers.
+`ToAddress` is the account address of ORC10 issuers.
 
-`AssertName` is the TRC-10 token ID. Example: 1000001
+`AssertName` is the ORC-10 token ID. Example: 1000001
 
-`Amount` is the number of TRC10 token to transfers with.
+`Amount` is the number of ORC10 token to transfers with.
 
-The participation process must happen during the release of TRC10, otherwise an error may occur.
+The participation process must happen during the release of ORC10, otherwise an error may occur.
 
 Example:
 ```shell
@@ -1586,13 +1586,13 @@ assetV2
 ```
 #### UnfreezeAsset
 
-To unfreeze all TRC10 token which are supposed to be unfrozen after the freezing period.
+To unfreeze all ORC10 token which are supposed to be unfrozen after the freezing period.
 ```
 wallet> unfreezeasset [OwnerAddress]
 ```
 #### ListAssetIssue
 
-Obtain all of the published TRC10 token information.
+Obtain all of the published ORC10 token information.
 ```shell
 wallet> listassetissue
 {
@@ -1623,7 +1623,7 @@ wallet> listassetissue
 ```
 #### GetAssetIssuebyAccount
 
-Obtain TRC10 token information based on owner address.
+Obtain ORC10 token information based on owner address.
 ```
 wallet> getassetissuebyaccount [owneraddress]
 ```
@@ -1642,8 +1642,8 @@ wallet> getassetissuebyaccount TUwjpfqW7NG6BF3GCTrKy1aDvfchwSG4tN
 			"start_time": 1656374400000,
 			"end_time": 1656460800000,
 			"description": "Automated gaming platform.
-TRC10 token h0966.
-More info on website.  TRC10 token h0966.
+ORC10 token h0966.
+More info on website.  ORC10 token h0966.
 More info on website.  More info on website.",
 			"url": "https://h00966.com",
 			"id": "1004901"
@@ -1654,7 +1654,7 @@ More info on website.  More info on website.",
 
 #### GetAssetIssuebyID
 
-Obtain TRC10 token Information based on token ID.
+Obtain ORC10 token Information based on token ID.
 ```shell
 wallet> GetAssetIssueById 1004901
 {
@@ -1668,8 +1668,8 @@ wallet> GetAssetIssueById 1004901
 	"start_time": 1656374400000,
 	"end_time": 1656460800000,
 	"description": "Automated gaming platform.
-TRC10 token h0966.
-More info on website.TRC10 token h0966.
+ORC10 token h0966.
+More info on website.ORC10 token h0966.
 More info on website.More info on website.",
 	"url": "https://h00966.com",
 	"id": "1004901"
@@ -1678,7 +1678,7 @@ More info on website.More info on website.",
 
 #### GetAssetIssuebyName
 
-Obtain TRC10 token Information based on token names.
+Obtain ORC10 token Information based on token names.
 ```shell
 wallet> GetAssetIssueByname h00966
 {
@@ -1692,8 +1692,8 @@ wallet> GetAssetIssueByname h00966
 	"start_time": 1656374400000,
 	"end_time": 1656460800000,
 	"description": "Automated gaming platform.
-TRC10 token h0966.
-More info on website.TRC10 token h0966.
+ORC10 token h0966.
+More info on website.ORC10 token h0966.
 More info on website.More info on website.",
 	"url": "https://h00966.com",
 	"id": "1004901"
@@ -1702,7 +1702,7 @@ More info on website.More info on website.",
 
 #### GetAssetIssueListbyName
 
-Obtain a list of TRC10 token information based on names.
+Obtain a list of ORC10 token information based on names.
 ```
 wallet> GetAssetIssueListByName ROFLOTOKEN
 {
@@ -2021,7 +2021,7 @@ wallet> exchangeCreate [OwnerAddress][first_token_id] [first_token_balance] [sec
 
 `second_token_id`, `second_token_balance` is the ID and amount of the second token.
 
-The ID is the ID of the issued TRC10 token. If it is ORGON, the ID is "". The amount must be greater than 0, and less than 1,000,000,000,000,000.
+The ID is the ID of the issued ORC10 token. If it is ORGON, the ID is "". The amount must be greater than 0, and less than 1,000,000,000,000,000.
 
 Example:
 ```shell

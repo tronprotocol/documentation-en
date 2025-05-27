@@ -36,7 +36,7 @@ The FullNode HTTP API is categorized as follows:
 - [Account Resources](#account-resources)
 - [Query The Network](#query-the-network)
 - [Smart Contracts](#smart-contracts)
-- [TRC-10 Token](#trc10-token)
+- [ORC-10 Token](#trc10-token)
 - [Voting & SRs](#vote-and-sr)
 - [Proposals](#proposals)
 - [DEX Exchange](#dex-exchange)
@@ -1060,8 +1060,8 @@ Parameters:
 Return:Estimated the energy value
 
 
-### TRC10 token
-The following are TRC10 token-related APIs:
+### ORC10 token
+The following are ORC10 token-related APIs:
 
 - [wallet/getassetissuebyaccount](#walletgetassetissuebyaccount)
 - [wallet/getassetissuebyname](#walletgetassetissuebyname)
@@ -2243,7 +2243,7 @@ pkD
 payment address
 
 #### wallet/createshieldedcontractparameters
-Description: create the shielded TRC-20 transaction parameters, which has three types: mint, transfer and burn
+Description: create the shielded ORC-20 transaction parameters, which has three types: mint, transfer and burn
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameters -d
 '{
@@ -2270,15 +2270,15 @@ Parameters:
 - `ovk`: Outgoing view key
 - `from_amount`: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100
 - `shielded_receives`: the shielded notes to be created
-- `shielded_TRC20_contract_address`: shielded TRC-20 contract address
+- `shielded_TRC20_contract_address`: shielded ORC-20 contract address
 
-Return: the shielded TRC-20 transaction parameters
+Return: the shielded ORC-20 transaction parameters
 
-Note: the input parameters will differ according to the variety of shielded TRC-20 transaction type
+Note: the input parameters will differ according to the variety of shielded ORC-20 transaction type
 
 
 #### wallet/createshieldedcontractparameterswithoutask
-Description: create the shielded TRC-20 transaction parameters without Ask, which has three types: mint, transfer and burn
+Description: create the shielded ORC-20 transaction parameters without Ask, which has three types: mint, transfer and burn
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameterswithoutask -d
 '{
@@ -2300,15 +2300,15 @@ Parameters:
 - `ovk`: Outgoing view key
 - `from_amount`: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100
 - `shielded_receives`: the shielded notes to be created
-- `shielded_TRC20_contract_address`: shielded TRC-20 contract address
+- `shielded_TRC20_contract_address`: shielded ORC-20 contract address
 
-Return: the shielded TRC-20 transaction parameters
+Return: the shielded ORC-20 transaction parameters
 
-Note: the input parameters will differ according to the variety of shielded TRC-20 transaction type
+Note: the input parameters will differ according to the variety of shielded ORC-20 transaction type
 
 
 #### wallet/scanshieldedtrc20notesbyivk
-Description: scan the shielded TRC-20 notes by ivk and mark their status of whether spent
+Description: scan the shielded ORC-20 notes by ivk and mark their status of whether spent
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyivk -d
 '{
@@ -2325,7 +2325,7 @@ Parameters:
 
 - `start_block_index`: the start block index, inclusive
 - `end_block_index`: the end block index, exclusive
-- `shielded_TRC20_contract_address`: shielded TRC-20 contract address
+- `shielded_TRC20_contract_address`: shielded ORC-20 contract address
 - `ivk`: Incoming viewing key
 - `ak`: Ak key
 - `nk`: Nk key
@@ -2335,7 +2335,7 @@ Return: notes list
 Note: block limit（end_block_index - start_block_index <= 1000）
 
 #### wallet/scanshieldedtrc20notesbyovk
-Description: scan the shielded TRC-20 notes by ovk
+Description: scan the shielded ORC-20 notes by ovk
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyovk -d
 '{
@@ -2350,7 +2350,7 @@ Parameters:
 
 - `start_block_index`: start block index, inclusive
 - `end_block_index`: end block index, exclusive
-- `shielded_TRC20_contract_address`: shielded TRC-20 contract address
+- `shielded_TRC20_contract_address`: shielded ORC-20 contract address
 - `ovk`: Outgoing viewing key
 
 Return: notes list
@@ -2358,7 +2358,7 @@ Return: notes list
 Note: block limit（end_block_index - start_block_index <= 1000）
 
 #### wallet/isshieldedtrc20contractnotespent
-Description: check the status whether the specified shielded TRC-20 note is spent
+Description: check the status whether the specified shielded ORC-20 note is spent
 
 Parameters:
 
@@ -2366,15 +2366,15 @@ Parameters:
 - `ak`: Ak
 - `nk`: Nk
 - `position`: the leaf position index of note commitment in the Merkle tree
-- `shielded_TRC20_contract_address`: the shielded TRC-20 contract address
+- `shielded_TRC20_contract_address`: the shielded ORC-20 contract address
 
 Return: note status
 
-Note: the `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `real_amount` = `value` * `scalingFactor`.
+Note: the `value` in note is the scaled value by `scalingFactor` set in the shielded ORC-20 contract, namely `real_amount` = `value` * `scalingFactor`.
 
 
 #### wallet/gettriggerinputforshieldedtrc20contract
-Description: get the trigger input data of shielded TRC-20 contract for the shielded TRC-20 parameters without spend authority signature.
+Description: get the trigger input data of shielded ORC-20 contract for the shielded ORC-20 parameters without spend authority signature.
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/gettriggerinputforshieldedtrc20contract -d
 '{
@@ -2391,12 +2391,12 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/gettriggerinputforshieldedtrc20
 
 Parameters:
 
-- `shielded_TRC20_Parameters`: the generated shielded TRC-20 parameters
+- `shielded_TRC20_Parameters`: the generated shielded ORC-20 parameters
 - `spend_authority_signature`: the spend authority signatures
 - `amount`: the amount
 - `transparent_to_address`: the receiver for the `burn` operation.
 
-Return: the input data for triggering shielded TRC-20 contract.
+Return: the input data for triggering shielded ORC-20 contract.
 
 
 #### wallet/getrcm
@@ -2669,7 +2669,7 @@ Parameters: N/A
 
 Return: List of all super representatives
 
-### TRC10 Token
+### ORC10 Token
 
 #### walletsolidity/getassetissuelist
 Description: Query the list of all tokens
@@ -2952,7 +2952,7 @@ Parameters:
 Return: Whether a note has been spent
 
 #### walletsolidity/scanshieldedtrc20notesbyivk
-Description: Scan the shielded TRC-20 notes by ivk, and mark whether it has been spent
+Description: Scan the shielded ORC-20 notes by ivk, and mark whether it has been spent
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyivk -d
 '{
@@ -2968,7 +2968,7 @@ Parameters:
 
 - `start_block_index`: The start block index, inclusive
 - `end_block_index`: The end block index, exclusive
-- `shielded_TRC20_contract_address`: Shielded TRC-20 contract address
+- `shielded_TRC20_contract_address`: Shielded ORC-20 contract address
 - `ivk`: Incoming viewing key
 - `ak`: Ak key
 - `nk`: Nk key
@@ -2977,7 +2977,7 @@ Return: Notes list
 Note: Block limit（end_block_index - start_block_index <= 1000）
 
 #### walletsolidity/scanshieldedtrc20notesbyovk
-Description: Scan the shielded TRC-20 notes by ovk
+Description: Scan the shielded ORC-20 notes by ovk
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyovk -d
 '{
@@ -2991,7 +2991,7 @@ Parameters:
 
 - `start_block_index`: Start block index, inclusive
 - `end_block_index`: Start block index, inclusive
-- `shielded_TRC20_contract_address`: Shielded TRC-20 contract address
+- `shielded_TRC20_contract_address`: Shielded ORC-20 contract address
 - `ovk`: Outgoing viewing key
 
 Return: Notes list
@@ -2999,7 +2999,7 @@ Return: Notes list
 Note: Block limit (end_block_index - start_block_index <= 1000)
 
 #### walletsolidity/isshieldedtrc20contractnotespent
-Description: Check the status whether the specified shielded TRC-20 note is spent
+Description: Check the status whether the specified shielded ORC-20 note is spent
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyovk -d
 '{
@@ -3020,11 +3020,11 @@ Parameters:
 - `ak`: Ak
 - `nk`: Nk
 - `position`: The leaf position index of note commitment in the Merkle tree
-- `shielded_TRC20_contract_address`: The shielded TRC-20 contract address
+- `shielded_TRC20_contract_address`: The shielded ORC-20 contract address
 
 Return: Note status
 
-Note: The `value` in note is the scaled value by `scalingFactor` set in the shielded TRC-20 contract, namely `real_amount = value * scalingFactor`.
+Note: The `value` in note is the scaled value by `scalingFactor` set in the shielded ORC-20 contract, namely `real_amount = value * scalingFactor`.
 
 
 

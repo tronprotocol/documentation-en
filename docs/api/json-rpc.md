@@ -1582,7 +1582,7 @@ Object - the items in object as below:
 | from       | DATA, 20 Bytes | The address the transaction is sent from   |
 | to         | DATA, 20 Bytes | The address the transaction is directed to |
 | tokenId    | QUANTITY       | Token ID                                   |
-| tokenValue | QUANTITY       | The transfer amount of TRC10               |
+| tokenValue | QUANTITY       | The transfer amount of ORC10               |
 
 **Returns**
 
@@ -1647,7 +1647,7 @@ Object - the items in object as below:
 | originEnergyLimit          | QUANTITY       | The origin energy limit.                 |
 | value                      | DATA           | The data passed through call_value.      |
 | tokenId                    | QUANTITY       | Token ID                                 |
-| tokenValue                 | QUANTITY       | The transfer amount of TRC10             |
+| tokenValue                 | QUANTITY       | The transfer amount of ORC10             |
 
 **Returns**
 
@@ -1721,7 +1721,7 @@ Object - the items in object as below:
 | gas        | DATA           | Fee limit                                    |
 | value      | DATA           | The data passed through call_value           |
 | tokenId    | QUANTITY       | Token ID                                     |
-| tokenValue | QUANTITY       | The transfer amount of TRC10                 |
+| tokenValue | QUANTITY       | The transfer amount of ORC10                 |
 
 **Returns**
 

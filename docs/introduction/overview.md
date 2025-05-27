@@ -75,7 +75,7 @@ The network parameters can be modified([min,max]):
 - 15: ALLOW_SAME_TOKEN_NAME, //to allow create a token with duplicate name, currently 1, means true
 - 16: ALLOW_DELEGATE_RESOURCE, //to enable the resource delegation
 - 17: TOTAL_ENERGY_LIMIT, //to modify the energy limit
-- 18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false
+- 18: ALLOW_TVM_TRANSFER_ORC10, //to allow smart contract to transfer ORC-10 token, currently 0, means false
 
 Example (Using wallet-cli):
 ```text
@@ -870,10 +870,10 @@ Please refer to:
 Please refer to:
 [https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md](https://github.com/tronprotocol/documentation/blob/master/ORGON/Tron-http.md)
 
-# 7. TRC-10 Token Introduction
-ORGON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.
+# 7. ORC-10 Token Introduction
+ORGON network support two types of token, one is ORC-20 token issued by smart contract, the other one is ORC-10 token issued by system contract.
 
-## 7.1 How to Issue a TRC-10 Token
+## 7.1 How to Issue a ORC-10 Token
 HTTP API:
 
 ```text
@@ -912,7 +912,7 @@ Return: Transaction object
 Note: The unit of 'trx_num' is SUN
 ```
 
-## 7.2 Participate TRC-10 Token
+## 7.2 Participate ORC-10 Token
 HTTP API:
 
 ```text
@@ -933,7 +933,7 @@ Return: Transaction object
 Note: The unit of 'amount' is the smallest unit of the token
 ```
 
-## 7.3 TRC-10 Token Transfer
+## 7.3 ORC-10 Token Transfer
 HTTP API:
 
 ```text
@@ -978,15 +978,15 @@ Note: Due to the change of the total amount of the staked ORGON in the network a
 
 Transactions other than queries consume Bandwidth points.
 
-A special scenario: When transferring ORGON or TRC-10 tokens to an account that does not yet exist, this procedure creates the account prior to the transfer.
+A special scenario: When transferring ORGON or ORC-10 tokens to an account that does not yet exist, this procedure creates the account prior to the transfer.
 
 To create an account, a flat charge of 1 ORGON is required. If there are insufficient Bandwidth points obtained by ORGON staking, an additional 0.1 ORGON will be spent.
 
-Bandwidth points consumption sequence for TRC-10 transfer:
+Bandwidth points consumption sequence for ORC-10 transfer:
 
 1. Free Bandwidth points.
 
-2. TRC-10 issuer's Bandwidth points(if possible.)
+2. ORC-10 issuer's Bandwidth points(if possible.)
 
 3. Bandwidth points ORGON staking.
 
@@ -1026,7 +1026,7 @@ receiverAddress: recipient account address
 |Type|Fee|
 | :------|:------:|
 |Create a SR(Super Representative)|9999 ORGON|
-|Issue a TRC-10 token|1024 ORGON|
+|Issue a ORC-10 token|1024 ORGON|
 |Create an account|1 ORGON|
 |Create an exchange|1024 ORGON|
 

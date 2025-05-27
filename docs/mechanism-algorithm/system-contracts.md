@@ -1,5 +1,5 @@
 # System Contracts
-The ORGON network supports many different types of transactions, such as ORGON transfer transactions, TRC10 transfer transactions, creating smart contract transactions, triggering smart contract transactions, staking ORGON transactions, and more. To create different types of transactions, you need to call different API. For example, the type of smart contract deployment transaction is `CreateSmartContract`, you need to call `wallet/deploycontractAPI` to create a transaction; the type of stake ORGON transactions is `FreezeBalanceV2Contract`, you need to call` wallet/freezebalancev2API` to create transactions, we collectively refer to the implementation of these different transaction types as system contracts, the following are the types of system contracts and their contents:
+The ORGON network supports many different types of transactions, such as ORGON transfer transactions, ORC10 transfer transactions, creating smart contract transactions, triggering smart contract transactions, staking ORGON transactions, and more. To create different types of transactions, you need to call different API. For example, the type of smart contract deployment transaction is `CreateSmartContract`, you need to call `wallet/deploycontractAPI` to create a transaction; the type of stake ORGON transactions is `FreezeBalanceV2Contract`, you need to call` wallet/freezebalancev2API` to create transactions, we collectively refer to the implementation of these different transaction types as system contracts, the following are the types of system contracts and their contents:
 
 ## AccountCreateContract
 ```
@@ -278,8 +278,8 @@ The ORGON network supports many different types of transactions, such as ORGON t
 
 - `owner_address`: The owner of the current account.
 - `new_contract`: the smart contract.
-- `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
-- `token_id` : The id of the TRC-10 token to be sent to the contract.
+- `call_token_value` : The amount of ORC-10 token to send to the contract when triggers.
+- `token_id` : The id of the ORC-10 token to be sent to the contract.
 
 ## TriggerSmartContract
 ```
@@ -297,8 +297,8 @@ The ORGON network supports many different types of transactions, such as ORGON t
 - `contract_address`: The contract address.
 - `call_value`: The amount of ORGON to send to the contract when triggers.
 - `data`: The parameters to trigger the contract.
-- `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
-- `token_id` : The id of the TRC-10 token to be sent to the contract.
+- `call_token_value` : The amount of ORC-10 token to send to the contract when triggers.
+- `token_id` : The id of the ORC-10 token to be sent to the contract.
 
 ## UpdateSettingContract
 ```

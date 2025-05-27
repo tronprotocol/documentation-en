@@ -975,8 +975,8 @@ GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:
     * `generateaddress`: Create address randomly
     * `easytransfer`: Transfer ORGON with password
     * `easytransferbyprivate`: Transfer ORGON with private key
-    * `easytransferasset`: Transfer TRC10 token with password
-    * `easytransferassetbyprivate`: Transfer TRC10 token with private key
+    * `easytransferasset`: Transfer ORC10 token with password
+    * `easytransferassetbyprivate`: Transfer ORC10 token with private key
     * `gettransactionsign`: Sign transaction with private key
     * `addtransactionsign`: Sign transaction with private key which is mainly used to sign multi-signature transactions
 * gRPC
@@ -984,8 +984,8 @@ GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:
     * `GenerateAddress`: Create address randomly
     * `EasyTransfer`: Transfer ORGON with password
     * `EasyTransferByPrivate`: Transfer ORGON with private key
-    * `EasyTransferAsset`: Transfer TRC10 token with password
-    * `EasyTransferAssetByPrivate`: Transfer TRC10 token with private key
+    * `EasyTransferAsset`: Transfer ORC10 token with password
+    * `EasyTransferAssetByPrivate`: Transfer ORC10 token with private key
     * `GetTransactionSign`: Sign transaction with private key
     * `GetTransactionSign2`: Sign transaction with private key
     * `AddSign`: Sign transaction with private key which is mainly used to sign multi-signature transactions
@@ -1570,8 +1570,8 @@ In order to speed up the startup of the node, the GreatVoyage-v4.5.1 (Tertullian
 TIP: https://github.com/tronprotocol/tips/blob/master/tip-383.md
 Source Code: https://github.com/alexozerov/java-orgon/pull/4319
 
-#### 2. Optimize account TRC-10 asset storage structure
-In versions prior to GreatVoyage-v4.5.1 (Tertullian), when there were too many TRC10 assets in the account, the content of the account stored in the database was large, resulting in the deserialization of the account during the transaction execution process is very time-consuming , therefore, the GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal to optimize the asset structure of the account, allowing TRC-10 assets to be separated from the account and stored separately in a key-value data structure. That will reduce the content of the account structure, speed up the deserialization operation of the account and reduce the execution time of the transaction, thereby increasing the network throughput and improving the network performance.
+#### 2. Optimize account ORC-10 asset storage structure
+In versions prior to GreatVoyage-v4.5.1 (Tertullian), when there were too many ORC10 assets in the account, the content of the account stored in the database was large, resulting in the deserialization of the account during the transaction execution process is very time-consuming , therefore, the GreatVoyage-v4.5.1 (Tertullian) version adds a new proposal to optimize the asset structure of the account, allowing ORC-10 assets to be separated from the account and stored separately in a key-value data structure. That will reduce the content of the account structure, speed up the deserialization operation of the account and reduce the execution time of the transaction, thereby increasing the network throughput and improving the network performance.
 
 
 TIP: https://github.com/tronprotocol/tips/blob/master/tip-382.md
@@ -1887,8 +1887,8 @@ The GreatVoyage-v4.3.0 (Bacon) version incorporates proposal #62 `TOTAL_NET_LIMI
 The total net limit is not changed now. The super representative or super partner will initiate a vote request to change the value in the future.
 
 #### 3. Optimize the Account Data Structure
-Account is a database that receives numerous accesses during the node's operation, necessitating frequent deserialization operations on the account data structure. Prior to GreatVoyage-v4.3.0 (Bacon), Account contained not only the account's basic data, but also user TRC-10 asset data. However, for ORGON transfers and smart contract-related transactions, only the Account's basic data is used. An excessively large TRC-10 asset list will have a significant impact on the Account data structure's deserialization performance.
-GreatVoyage-v4.3.0 (Bacon) improves the Account database's storage structure by separating TRC-10 asset data from the Account and storing it independently in the `AccountAssetIssue`. Reduce the amount of data that is deserialized during Account deserialization and increase the deserialization speed.
+Account is a database that receives numerous accesses during the node's operation, necessitating frequent deserialization operations on the account data structure. Prior to GreatVoyage-v4.3.0 (Bacon), Account contained not only the account's basic data, but also user ORC-10 asset data. However, for ORGON transfers and smart contract-related transactions, only the Account's basic data is used. An excessively large ORC-10 asset list will have a significant impact on the Account data structure's deserialization performance.
+GreatVoyage-v4.3.0 (Bacon) improves the Account database's storage structure by separating ORC-10 asset data from the Account and storing it independently in the `AccountAssetIssue`. Reduce the amount of data that is deserialized during Account deserialization and increase the deserialization speed.
 
 * TIP: https://github.com/tronprotocol/tips/blob/master/tip-295.md
 * Source Code: https://github.com/alexozerov/java-orgon/pull/3906
@@ -2192,7 +2192,7 @@ BN128Pairing: from (80000 \* pairs + 100000) Energy to (34000 \* pairs + 45000) 
 - Source code: [#3351](https://github.com/alexozerov/java-orgon/pull/3351)
 
 ### III. Mechanism
-1. Added two new system contracts, namely MarketSellAssetContract and MarketCancelOrderContract, for on-chain ORGON/TRC10 transactions in decentralized exchanges.
+1. Added two new system contracts, namely MarketSellAssetContract and MarketCancelOrderContract, for on-chain ORGON/ORC10 transactions in decentralized exchanges.
 - TIP: [TIP-127](https://github.com/tronprotocol/tips/blob/master/tip-127.md)
 - Source code: [#3302](https://github.com/alexozerov/java-orgon/pull/3302)
 
@@ -2212,7 +2212,7 @@ BN128Pairing: from (80000 \* pairs + 100000) Energy to (34000 \* pairs + 45000) 
 
 
 ## GreatVoyage-v4.0.0
-Release 4.0.0 has implemented the shielded TRC-20 contract, which can hide the source address, destination address, and the token amount for TRC-20 transactions and provide users with better privacy.  The shielded TRC-20 contract has three core functions: `mint`, `transfer` and `burn`. `mint` is used to transform the public TRC-20 token to shielded token; `transfer` is used for shielded token transactions; `burn` is used to transform the shielded token back to the public TRC-20 token. To support the shielded TRC-20 contract,  four new zero-knowledge instructions (`verifyMintProof`, `verifyTransferProof`, `verifyBurnProof` and `pedersenHash`) are add in TVM, which make it convenient to provide privacy for arbitrary TRC-20 contract.
+Release 4.0.0 has implemented the shielded ORC-20 contract, which can hide the source address, destination address, and the token amount for ORC-20 transactions and provide users with better privacy.  The shielded ORC-20 contract has three core functions: `mint`, `transfer` and `burn`. `mint` is used to transform the public ORC-20 token to shielded token; `transfer` is used for shielded token transactions; `burn` is used to transform the shielded token back to the public ORC-20 token. To support the shielded ORC-20 contract,  four new zero-knowledge instructions (`verifyMintProof`, `verifyTransferProof`, `verifyBurnProof` and `pedersenHash`) are add in TVM, which make it convenient to provide privacy for arbitrary ORC-20 contract.
 
 ### Notices
 Forced upgrade
@@ -2224,7 +2224,7 @@ Forced upgrade
    - `verifyBurnProof`: used to validate  the zero-knowledge proof for `burn` function.
    - `pedersenHash`: used to compute the Pedersen hash.
 - Update the initial parameters of zk-SNARKs scheme generated by the MPC Torch (#3210).
-- Add the APIs to support shielded TRC-20 contract transaction (#3172).
+- Add the APIs to support shielded ORC-20 contract transaction (#3172).
 
    1.&nbsp;Create shielded contract parameters
   ```protobuf
@@ -2255,9 +2255,9 @@ Forced upgrade
 - Add data field in transaction log trigger class for future memo note (#3200).
 
 The following TIPs are implemented in this release:
-- [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md): Shielded TRC-20 contract standards, guarantee the privacy of the shielded transfer of TRC-20 tokens.
-- [TIP-137](https://github.com/tronprotocol/tips/blob/master/tip-137.md): Implements three zero-knowledge proof instructions in TVM to support the shielded TRC-20 contract (#3172).
-- [TIP-138](https://github.com/tronprotocol/tips/blob/master/tip-138.md): Implements the Pedersen hash computation instruction in TVM to support the shielded TRC-20 contract (#3172).
+- [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md): Shielded ORC-20 contract standards, guarantee the privacy of the shielded transfer of ORC-20 tokens.
+- [TIP-137](https://github.com/tronprotocol/tips/blob/master/tip-137.md): Implements three zero-knowledge proof instructions in TVM to support the shielded ORC-20 contract (#3172).
+- [TIP-138](https://github.com/tronprotocol/tips/blob/master/tip-138.md): Implements the Pedersen hash computation instruction in TVM to support the shielded ORC-20 contract (#3172).
 
 ### Changes
 - Check if null before getInstance when get transaction info from DB to fix exception of `getTransactioninfoByBlkNum` (#3165).
@@ -2354,7 +2354,7 @@ validatemultisign(address accountAddress, uint256 permissionId, bytes32 content,
 
 (4) Banned transfer ORGON to smart contract address by two system contract TransferContract and TransferAssetContract. The transfer would fail if the target address is a smart 	 address when using TransferContract and TransferAssetContract. This can prevent general users from transferring assets to smart contract address by mistake, avoiding users’ asset loss.
 
-(5) Allowed automatic activation of inactive accounts when transferring ORGON/ TRC10 tokens to accounts in smart contracts.
+(5) Allowed automatic activation of inactive accounts when transferring ORGON/ ORC10 tokens to accounts in smart contracts.
 
 (6) Added triggerConstantContract feature for SolidityNode and FullNode so as to improve the functionality of node APIs.
 

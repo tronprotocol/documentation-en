@@ -140,7 +140,7 @@ Result:
 	"create_time": 1619681898000,
 	"latest_opration_time": 1655358327000,
 	"is_witness": true,
-	"asset_issued_name": "TestTRC10T",
+	"asset_issued_name": "TestORC10T",
 	"latest_consume_free_time": 1652948766000,
 	"account_resource": {
 		"latest_consume_time_for_energy": 1655358327000

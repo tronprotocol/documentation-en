@@ -2,7 +2,7 @@
 
 ## Introduction
 
-ORGON uses the account model. The address is the unique identifier of an account, and a private key signature is required to operate an account. An account has many attributes, including ORGON & TRC10 token balances, bandwidth, energy, Etc. An account can send transactions to increase or reduce its ORGON or TRC10 token balances, deploy smart contracts, and trigger the smart contracts released by itself or others. All ORGON accounts can apply to be Super Representatives or vote for the elected Super Representatives. Accounts are the basis of all activities on ORGON.
+ORGON uses the account model. The address is the unique identifier of an account, and a private key signature is required to operate an account. An account has many attributes, including ORGON & ORC10 token balances, bandwidth, energy, Etc. An account can send transactions to increase or reduce its ORGON or ORC10 token balances, deploy smart contracts, and trigger the smart contracts released by itself or others. All ORGON accounts can apply to be Super Representatives or vote for the elected Super Representatives. Accounts are the basis of all activities on ORGON.
 
 ## How to Create an Account
 

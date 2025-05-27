@@ -31,11 +31,11 @@ Such as if the number of bytes of a transaction is 200, so this transaction cons
 
 Except for query operation, any transaction consumes Bandwidth points.
 
-Bandwidth points consumption sequence for TRC-10 transfer:
+Bandwidth points consumption sequence for ORC-10 transfer:
 
 1. Free Bandwidth points.
 
-2. TRC-10 issuer's Bandwidth points(if possible.)
+2. ORC-10 issuer's Bandwidth points(if possible.)
 
 3. Bandwidth points ORGON staking.
 
