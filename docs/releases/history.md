@@ -823,7 +823,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
      --data '
     {
         "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
-      "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
+      "contract_address": "oG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
       "function_selector": "balanceOf(address)",
       "parameter": "000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c",
       "visible": true
@@ -840,7 +840,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
      --data '
     {
       "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
-      "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
+      "contract_address": "oG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
       "data": "70a08231000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c",
       "visible": true
     }'
@@ -1255,7 +1255,7 @@ curl --location --request POST 'https://api.quasarex.io/wallet/estimateenergy' \
 --header 'Content-Type: application/json' \
 --data-raw '{
      "owner_address": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-     "contract_address": "TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj",
+     "contract_address": "oXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj",
      "function_selector": "transfer(address,uint256)",
      "parameter": "0000000000000000000000002EEF13ADA48F286066F9066CE84A9AD686A3EA480000000000000000000000000000000000000000000000000000000000000004",
      "visible": true

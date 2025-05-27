@@ -1039,7 +1039,7 @@ Estimate the energy required for the successful execution of smart contract tran
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/estimateenergy -d '{
   "owner_address": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
-  "contract_address": "TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
+  "contract_address": "oG3XXyExBkPp9nzdajDZsozEu4BkaSJozs",
   "function_selector": "transfer(address,uint256)",
   "parameter": "00000000000000000000004115208EF33A926919ED270E2FA61367B2DA3753DA0000000000000000000000000000000000000000000000000000000000000032",
   "visible": true
