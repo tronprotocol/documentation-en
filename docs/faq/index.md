@@ -236,7 +236,7 @@ java-orgon need more RAM to process transactions.
 
 Yes. Under test environment, we can vote you to become SR.
 
-### What is the different between Shasta and Test Net?
+### What is the different between Quazar and Test Net?
 
 to be answered
 

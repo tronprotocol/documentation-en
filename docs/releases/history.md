@@ -817,7 +817,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
 * Calling contract using `function_selector` and `parameter`
     ```
     curl --request POST \
-     --url https://api.shasta.trongrid.io/wallet/triggersmartcontract \
+     --url https://api.quazar.orgongate.org/wallet/triggersmartcontract \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -834,7 +834,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
 * Calling contract through `data`
     ```
     curl --request POST \
-     --url https://api.shasta.trongrid.io/wallet/triggersmartcontract \
+     --url https://api.quazar.orgongate.org/wallet/triggersmartcontract \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -848,7 +848,7 @@ The Periander version optimizes the HTTP smart contract calling interfaces `trig
 * Estimate energy consumption of contract deployment transaction
     ```
     curl --request POST \
-     --url https://api.shasta.trongrid.io/wallet/triggerconstantcontract \
+     --url https://api.quazar.orgongate.org/wallet/triggerconstantcontract \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '

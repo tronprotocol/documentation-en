@@ -62,7 +62,7 @@ Empty List
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '
 
 {"jsonrpc": "2.0", "id": 1, "method": "eth_accounts", "params": []}'
 
@@ -91,7 +91,7 @@ The latest block number.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":64}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":64}'
 
 ```
 
@@ -129,7 +129,7 @@ DATA - the return value of executed contract function.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -184,7 +184,7 @@ DATA - The chainId of the ORGON network
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":79}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":79}'
 
 ```
 
@@ -213,7 +213,7 @@ DATA - The super representative address of the node.   (Note: Return the first a
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_coinbase", "params": []}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_coinbase", "params": []}'
 
 ```
 
@@ -251,7 +251,7 @@ The amount of energy used.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -304,7 +304,7 @@ Integer of the current energy price in sun.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_gasPrice", "params": []}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_gasPrice", "params": []}'
 
 ```
 
@@ -336,7 +336,7 @@ QUANTITY - integer of the current balance in sun.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -400,7 +400,7 @@ object - a block object  or null when no block was found. The block includes ite
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -442,7 +442,7 @@ object - a block object  or null when no block was found. See [eth_getBlockByHas
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -481,7 +481,7 @@ QUANTITY - integer of the number of transactions in this block.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -520,7 +520,7 @@ QUANTITY - integer of the number of transactions in this block.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -562,7 +562,7 @@ DATA - the runtime code from the given address.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -605,7 +605,7 @@ DATA - the value at this storage position.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -664,7 +664,7 @@ object - a transaction object  or null when no transaction was found. The transa
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -746,7 +746,7 @@ object - a transaction object  or null when no transaction was found. See [eth_g
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -785,7 +785,7 @@ object - a transaction object  or null when no transaction was found. See [eth_g
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -880,7 +880,7 @@ object - A transaction receipt object, or null when no receipt was found. The it
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -963,7 +963,7 @@ Array - Array with the following properties:
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
 	"jsonrpc": "2.0",
 
@@ -1010,7 +1010,7 @@ String - The current java-orgon block version
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_protocolVersion","params":[],"id":64}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_protocolVersion","params":[],"id":64}'
 
 ```
 
@@ -1045,7 +1045,7 @@ Object|Boolean, An object with sync status data or FALSE, when not syncing, the 
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":64}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":64}'
 
 ```
 
@@ -1097,7 +1097,7 @@ QUANTITY - A filter id.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"address":["cc2e32f2388f0096fae9b055acffd76d4b3e5532","E518C608A37E2A262050E10BE0C9D03C7A0877F3"],"fromBlock":"0x989680","toBlock":"0x9959d0","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",null,["0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7","0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758"]]}],"id":1}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"address":["cc2e32f2388f0096fae9b055acffd76d4b3e5532","E518C608A37E2A262050E10BE0C9D03C7A0877F3"],"fromBlock":"0x989680","toBlock":"0x9959d0","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",null,["0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7","0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758"]]}],"id":1}'
 
 ```
 
@@ -1126,7 +1126,7 @@ QUANTITY - A filter id.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_newBlockFilter","params":[],"id":1}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_newBlockFilter","params":[],"id":1}'
 
 ```
 
@@ -1169,7 +1169,7 @@ QUANTITY - the filter id.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
     "jsonrpc": "2.0",
 
@@ -1228,7 +1228,7 @@ See [eth_getFilterChanges](#eth_getfilterchanges)。
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
     "jsonrpc": "2.0",
 
@@ -1287,7 +1287,7 @@ QUANTITY - the filter id.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
     "jsonrpc": "2.0",
 
@@ -1346,7 +1346,7 @@ Object - The filter options which include below fields:
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"address":["cc2e32f2388f0096fae9b055acffd76d4b3e5532","E518C608A37E2A262050E10BE0C9D03C7A0877F3"],"fromBlock":"0x989680","toBlock":"0x9959d0","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",null,["0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7","0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758"]]}],"id":1}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"address":["cc2e32f2388f0096fae9b055acffd76d4b3e5532","E518C608A37E2A262050E10BE0C9D03C7A0877F3"],"fromBlock":"0x989680","toBlock":"0x9959d0","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",null,["0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7","0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758"]]}],"id":1}'
 
 ```
 
@@ -1385,7 +1385,7 @@ Boolean - true when listening, otherwise false.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":64}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":64}'
 
 ```
 
@@ -1414,7 +1414,7 @@ QUANTITY - integer of the number of connected peers.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":64}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":64}'
 
 ```
 
@@ -1443,7 +1443,7 @@ String - The hash of genesis block
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":64}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":64}'
 
 ```
 
@@ -1474,7 +1474,7 @@ String - The current client version
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "web3_clientVersion", "params": []}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "web3_clientVersion", "params": []}'
 
 ```
 
@@ -1503,7 +1503,7 @@ DATA - The SHA3 result of the given string.
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "web3_sha3", "params": ["0x68656c6c6f20776f726c64"]}'
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "web3_sha3", "params": ["0x68656c6c6f20776f726c64"]}'
 
 ```
 
@@ -1541,7 +1541,7 @@ Object - transaction of TransferContract or an error
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
     "id": 1337,
 
@@ -1592,7 +1592,7 @@ Object - transaction of TransferAssetContract or an error
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
     "method": "buildTransaction",
 
@@ -1657,7 +1657,7 @@ Object - transaction of CreateSmartContract or an error
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{
 
     "id": 1337,
 
@@ -1731,7 +1731,7 @@ Object - transaction of TriggerSmartContract or an error
 
 ```curl
 
-curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"id": 1337,
+curl -X POST 'https://api.quazar.orgongate.org/jsonrpc' --data '{"id": 1337,
 
     "jsonrpc": "2.0",
 
