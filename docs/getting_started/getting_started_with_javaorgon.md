@@ -2,7 +2,7 @@
 
 This page mainly explains how to start the java-orgon node and use the command line tool `wallet-cli` to execute basic commands to interact with the java-orgon node. Regarding the installation of java-orgon , you can download the runnable file directly or build it from source code. Instructions for installing java-orgon can be found on the [Install and Build](../using_javaorgon/installing_javaorgon.md) page. This tutorial on this page assumes java-orgon and associated developer tools have been successfully installed.
 
-This page covers the basics of using java-orgon , which includes generating accounts, joining the ORGON Nile testnet, and sending ORGON between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the ORGON network. This tool provides user interactive commands, which can be used to interact with java-orgon more conveniently.
+This page covers the basics of using java-orgon , which includes generating accounts, joining the ORGON Quasar testnet, and sending ORGON between accounts. wallet-cli is also used in this document. wallet-cli is a command-line tool of the ORGON network. This tool provides user interactive commands, which can be used to interact with java-orgon more conveniently.
 
 java-orgon is a ORGON network client written in Java. This means a computer running java-orgon will become a ORGON network node. ORGON is a distributed network where information is shared directly between nodes rather than being managed by a central server. After the super representative's node generates a new block, it will send the block to its peers. On receiving a new block, each node checks that it is valid and adds it to their database. java-orgon uses the information provided by each block to update its "state" - the balance of each account on the ORGON network. There are two types of accounts on the ORGON network: externally owned accounts and contract accounts. The contract account executes the contract code when a transaction is received. An external account is an account that a user manages locally in order to sign and submit transactions. Each external account is a public-private key pair, where the public key is used to derive a unique address for the user, and the private key is used to protect the account and securely sign messages. Therefore, in order to use the ORGON network, it is first necessary to generate an external account (hereinafter referred to as "account"). This tutorial will guide users on how to create an account, deposit ORGON tokens, and transfer ORGON.
 
@@ -62,9 +62,9 @@ Then you can use the `backupwallet` command to view the private key of the accou
 
 
 ## Run a java-orgon node
-java-orgon is a ORGON network client that enables computers to connect to the ORGON network. The network in this tutorial refers to the ORGON Nile testnet. To start java-orgon , you need first obtain the java-orgon executable file, please refer to the [Installation and Deployment](../using_javaorgon/installing_javaorgon.md) chapter, and then run the following command to start java-orgon .
+java-orgon is a ORGON network client that enables computers to connect to the ORGON network. The network in this tutorial refers to the ORGON Quasar testnet. To start java-orgon , you need first obtain the java-orgon executable file, please refer to the [Installation and Deployment](../using_javaorgon/installing_javaorgon.md) chapter, and then run the following command to start java-orgon .
 ```
-$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
+$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c quasar_net_config.conf
 ```
 After java-orgon starts, the logs will include the following:
 ```
@@ -77,7 +77,7 @@ After java-orgon starts, the logs will include the following:
 ```
 
 
-The above logs indicate that java-orgon has started and connected to the Nile testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
+The above logs indicate that java-orgon has started and connected to the Quasar testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
 ```
 11:08:42.547 INFO  [TronJClientWorker-1] [net](Channel.java:116) Finish handshake with /123.56.3.74:18888.
 11:08:42.547 INFO  [TronJClientWorker-1] [net](ChannelManager.java:161) Add active peer /123.56.3.74:18888 | fea80a0298b465a54fd332ff36819545d850115e77b327858b5306c9a58c6b8c2e7c08df76ab508a7594ed3577a8f4157727108442877077ab499b102b488467, total active peers: 1
@@ -120,7 +120,7 @@ In order to make some transactions, the user must fund their account with ORGON.
 2. Another ORGON account transfers ORGON to it;
 3. Obtained from the exchange.
 
-In the ORGON testnet, ORGON has no real value and can be obtained for free through [faucet](https://nileex.io/join/getJoinPage).
+In the ORGON testnet, ORGON has no real value and can be obtained for free through [faucet](https://quasarex.io/join/getJoinPage).
 
 
 ## Interact with java-orgon node

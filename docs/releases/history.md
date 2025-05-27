@@ -1251,7 +1251,7 @@ After the GreatVoyage-v4.7.0.1 (Aristotle) version is successfully deployed, thi
 An example of `/wallet/estimateenergy` call is as follows:
 
 ```
-curl --location --request POST 'https://api.nileex.io/wallet/estimateenergy' \
+curl --location --request POST 'https://api.quasarex.io/wallet/estimateenergy' \
 --header 'Content-Type: application/json' \
 --data-raw '{
      "owner_address": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",

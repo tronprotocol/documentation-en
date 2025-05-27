@@ -42,7 +42,7 @@ $ tar xzvf output-directory.20220628152402.etgz
 
 ## Public Backup Data
 
-For the ORGON mainnet and Nile testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a ORGON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.
+For the ORGON mainnet and Quasar testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a ORGON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.
 
 ### Main Net Data Snapshot
 
@@ -86,5 +86,5 @@ The steps for using data snapshots are as follows:
 3. Startup the node. The node reads the output-directory directory by default. If you need to specify another directory，please add the `-d directory` parameter when the node starts.
 
 
-### Nile TestNet Data Snapshot
-For detailed information about the Nile TestNet data snapshot, please refer to the [official website](https://nileex.io/), for both FullNode and Lite FullNode. The usage method is the same as that of the [Main Net](#use-the-data-snapshot).
+### Quasar TestNet Data Snapshot
+For detailed information about the Quasar TestNet data snapshot, please refer to the [official website](https://quasarex.io/), for both FullNode and Lite FullNode. The usage method is the same as that of the [Main Net](#use-the-data-snapshot).

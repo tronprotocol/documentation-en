@@ -14,14 +14,14 @@ TronGrid supports 2 types of api:
 
 - FullNode & SolidityNode api
 
-TronGrid supports all the FullNode and SolidityNode api calls, you only need to add the url: `https://api.trongrid.io/`, like:
+TronGrid supports all the FullNode and SolidityNode api calls, you only need to add the url: `https://api.orgongate.org/`, like:
 
-`https://api.trongrid.io/wallet/getnowblock`
+`https://api.orgongate.org/wallet/getnowblock`
 
 - TronGrid v3 (TG3) api version
 
 As this is the first iteration of the improved TronGrid, it starts with v1.
-Example: `https://api.trongrid.io/v1`
+Example: `https://api.orgongate.org/v1`
 
 **Parameters, Queries, & Return Values**
 
@@ -34,18 +34,18 @@ Example: `https://api.trongrid.io/v1`
 
 1.&nbsp;Get Account Info By Address
 *API:*
-`https://api.trongrid.io/v1/accounts/:address`
+`https://api.orgongate.org/v1/accounts/:address`
 *Params:*
 address: The account’s address in base58 or hex format (0x... and 41...)
 *Options:*
 `only_confirmed` Shows only the situation at latest confirmed block.`true` | `false` default `false`.
 *Example:*
-`https://api.trongrid.io/v1/accounts/TLCuBEirVzB6V4menLZKw1jfBTFMZbuKq7?only_confirmed=false`
+`https://api.orgongate.org/v1/accounts/TLCuBEirVzB6V4menLZKw1jfBTFMZbuKq7?only_confirmed=false`
 
 
 2.&nbsp;Get Transactions By Account Address
 *API:*
-`https://api.trongrid.io/v1/accounts/:address/transactions`
+`https://api.orgongate.org/v1/accounts/:address/transactions`
 *Params:*
 address: The account’s address.
 *Options:*
@@ -58,34 +58,34 @@ address: The account’s address.
 `order_by` Pre sorts the results during the query. `order_by=block_number,asc`, `order_by=block_timestamp,desc`. `min_block_timestamp` The minimum transaction timestamp default `0`. `max_block_timestamp` The maximum transaction timestamp default `now`.
 
 *Example:*
-`https://api.trongrid.io/v1/accounts/TLCuBEirVzB6V4menLZKw1jfBTFMZbuKq/transactions?only_to=true&only_from=true`
+`https://api.orgongate.org/v1/accounts/TLCuBEirVzB6V4menLZKw1jfBTFMZbuKq/transactions?only_to=true&only_from=true`
 
 
 3.&nbsp;Get Account Resources By Address
 *API:*
-`https://api.trongrid.io/v1/accounts/:address/resources`
+`https://api.orgongate.org/v1/accounts/:address/resources`
 *Params:*
 address: The account’s address.
 *Example:*
-`https://api.trongrid.io/v1/accounts/TLCuBEirVzB6V4menLZKw1jfBTFMZbuKq/resources`
+`https://api.orgongate.org/v1/accounts/TLCuBEirVzB6V4menLZKw1jfBTFMZbuKq/resources`
 
 ## Asset APIs
 
 1.&nbsp;Get All Assets
 *API:*
-`https://api.trongrid.io/v1/assets`
+`https://api.orgongate.org/v1/assets`
 *Options:*
 `order_by` Sorts the results. Accepted fields: `total_supply,asc` | `total_supply,desc`, `start_time,asc` | `start_time,desc`, `end_time,asc` | `end_time,desc`, `id,asc` | `id,desc`. Example: `order_by=total_supply,asc`.
 
 2.&nbsp;Get Assets By Identifier
 *API:*
-`https://api.trongrid.io/v1/assets/:identifier`
+`https://api.orgongate.org/v1/assets/:identifier`
 *Params:*
 identifier: The identifier to be used to retrieve the asset. It can be the ID of the asset, or the issuer address.
 
 3.&nbsp;Get Assets By Name
 *API:*
-`https://api.trongrid.io/v1/assets/:name/list`
+`https://api.orgongate.org/v1/assets/:name/list`
 *Params:*
 name: The name of the asset.
 *Options:*
@@ -97,7 +97,7 @@ name: The name of the asset.
 
 1.&nbsp;Returns Events By Block Identifier
 *API:*
-`https://api.trongrid.io/v1/blocks/:identifier/events`
+`https://api.orgongate.org/v1/blocks/:identifier/events`
 *Params:*
 identifier: It can be either latest, a block number or a block id.
 
@@ -105,7 +105,7 @@ identifier: It can be either latest, a block number or a block id.
 
 1.&nbsp;Get Events By Contract Address
 *API:*
-`https://api.trongrid.io/v1/contracts/:address/events`
+`https://api.orgongate.org/v1/contracts/:address/events`
 *Params:*
 address: The address of the deployed contract.
 *Options:*
@@ -121,7 +121,7 @@ address: The address of the deployed contract.
 
 2.&nbsp;Get Transactions By Contract Address
 *API:*
-`https://api.trongrid.io/v1/contracts/:address/transactions`
+`https://api.orgongate.org/v1/contracts/:address/transactions`
 *Params:*
 address: The address of the deployed contract.
 *Options:*
@@ -137,12 +137,12 @@ address: The address of the deployed contract.
 
 1.&nbsp;Get Events By Transaction ID
 *API:*
-`https://api.trongrid.io/v1/transactions/:id/events`
+`https://api.orgongate.org/v1/transactions/:id/events`
 *Params:*
 id: The id of the transaction.
 
 2.&nbsp;Get Transaction By Transaction ID
 *API:*
-`https://api.trongrid.io/v1/transactions/:id/events`
+`https://api.orgongate.org/v1/transactions/:id/events`
 *Params:*
 id: The id of the transaction.

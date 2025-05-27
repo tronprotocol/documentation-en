@@ -1,12 +1,12 @@
 # Connect to ORGON network
 
-The ORGON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-orgon client software, it can be connected to any ORGON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.
+The ORGON network is mainly divided into the main network, the Shasta test network, the Quasar test network and the private network. Therefore, for the java-orgon client software, it can be connected to any ORGON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Quasar testnet supports it.
 
 You need to set the following configuration items to connect java-orgon to one of the ORGON networks:
 
 * `node.p2p.version` : It is used to set the P2P network id. Only nodes with the same network id can shake hands successfully.
     * ORGON mainnet: `node.p2p.version=11111`
-    * Nile testnet: `node.p2p.version = 201910292`
+    * Quasar testnet: `node.p2p.version = 201910292`
     * Private network：set to other values
 * `seed.node`: set seed node
 * `genesis.block`: Genesis block settings. To join a network, please ensure that the settings of the genesis block are the same as those of other nodes in the network, otherwise you cannot join the network.
@@ -172,7 +172,7 @@ There are occasions when java-orgon  simply fails to connect to peers. The commo
 * Local time might be incorrect. An accurate clock is required to participate in the ORGON network. The local clock can be resynchronized using commands such as `sudo ntpdate -s time.nist.gov`.
 * Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring [`node.active`](#active-and-passive-connections) in the case of node discovery invalid.
 * By configuring [`node.passive`](#active-and-passive-connections) to accept active connections from trusted nodes.
-* The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.
+* The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Quasar testnet.
 
 ## Connect to private network
 
