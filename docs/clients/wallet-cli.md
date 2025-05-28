@@ -206,7 +206,7 @@ Get the address of the current account
 ```shell
 wallet> getaddress
 GetAddress successful !!
-address = TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
+address = oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 ```
 
 #### GetBalance

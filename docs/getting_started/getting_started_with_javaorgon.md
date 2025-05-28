@@ -55,7 +55,7 @@ After logging in, you can view the login account address through the `getaddress
 ```
 wallet> getaddress
 GetAddress successful !!
-address = TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz
+address = oQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz
 wallet>
 ```
 Then you can use the `backupwallet` command to view the private key of the account, you need to enter the password according to the prompt. It is recommended to save the private key.
