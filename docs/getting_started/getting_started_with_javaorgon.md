@@ -120,7 +120,7 @@ In order to make some transactions, the user must fund their account with ORGON.
 2. Another ORGON account transfers ORGON to it;
 3. Obtained from the exchange.
 
-In the ORGON testnet, ORGON has no real value and can be obtained for free through [faucet](https://quasarex.io/join/getJoinPage).
+In the ORGON testnet, ORGON has no real value and can be obtained for free through [faucet](https://quasar.orgonscan.org/faucet).
 
 
 ## Interact with java-orgon node
