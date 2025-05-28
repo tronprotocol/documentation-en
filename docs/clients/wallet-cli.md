@@ -228,7 +228,7 @@ This command is used to manage account permissions, assign permissions to other 
 
 **NOTE** the parameter`Permission` must written in JSON format and entered in line. If the owner account is not SR, then do not assign super representative permission.
 ```shell
-wallet> updateaccountpermission TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 {"owner_permission":{"keys":[{"address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8","weight":1}],"threshold":1,"type":0,"permission_name":"owner"},"active_permissions":[{"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000","keys":[{"address":"TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej","weight":1},{"address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE","weight":1}],"threshold":2,"type":2,"permission_name":"active12323"}]}
+wallet> updateaccountpermission TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 {"owner_permission":{"keys":[{"address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8","weight":1}],"threshold":1,"type":0,"permission_name":"owner"},"active_permissions":[{"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000","keys":[{"address":"oB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej","weight":1},{"address":"oXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE","weight":1}],"threshold":2,"type":2,"permission_name":"active12323"}]}
 {
 	"raw_data":{
 		"contract":[
@@ -238,7 +238,7 @@ wallet> updateaccountpermission TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 {"owner_permi
 						"owner":{
 							"keys":[
 								{
-									"address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+									"address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 									"weight":1
 								}
 							],
@@ -251,11 +251,11 @@ wallet> updateaccountpermission TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 {"owner_permi
 								"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000",
 								"keys":[
 									{
-										"address":"TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej",
+										"address":"oB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej",
 										"weight":1
 									},
 									{
-										"address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
+										"address":"oXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
 										"weight":1
 									}
 								],
@@ -828,11 +828,11 @@ Current signWeight is:
 		"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000",
 		"keys":[
 			{
-				"address":"TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej",
+				"address":"oB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej",
 				"weight":1
 			},
 			{
-				"address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
+				"address":"oXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
 				"weight":1
 			}
 		],
@@ -1151,7 +1151,7 @@ The information displays as follows:
 	"permission":{
 		"keys":[
 			{
-				"address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+				"address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 				"weight":1
 			}
 		],
