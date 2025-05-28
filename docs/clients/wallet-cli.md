@@ -17,7 +17,7 @@ Below, please find all types of wallet-cli commands：
 - [Transaction](#transaction)
 - [On-ChainInquire](#on-chaininquire)
 - [SmartContract](#smartcontract)
-- [ORC-10](#trc-10)
+- [ORC-10](#orc-10)
 - [Governance](#governance)
 - [DEX](#dex)
 
