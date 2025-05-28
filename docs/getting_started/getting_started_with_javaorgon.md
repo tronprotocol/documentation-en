@@ -31,7 +31,7 @@ user defined config file doesn't exists, use default config file in jar
 WalletApi getRpcVsersion: 2
 Please input password again.
 password:
-Register a wallet successful, keystore file name is UTC--2022-07-04T06-35-35.304000000Z--TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz.json
+Register a wallet successful, keystore file name is UTC--2022-07-04T06-35-35.304000000Z--oQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz.json
 wallet>
 ```
 
@@ -195,8 +195,8 @@ Please confirm and input your permission id, if input y or Y means default 0, ot
 y
 Please choose your key for sign.
 The 1th keystore file name is .DS_Store
-The 2th keystore file name is UTC--2022-07-04T06-35-35.304000000Z--TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz.json
-The 3th keystore file name is UTC--2022-06-21T09-51-26.367000000Z--TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM.json
+The 2th keystore file name is UTC--2022-07-04T06-35-35.304000000Z--oQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz.json
+The 3th keystore file name is UTC--2022-06-21T09-51-26.367000000Z--oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM.json
 Please choose between 1 and 3
 3
 Please input your password.
