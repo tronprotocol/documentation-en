@@ -135,7 +135,7 @@ wallet> getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 Result:
 ```
 {
-	"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+	"address": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
 	"balance": 93643857919,
 	"create_time": 1619681898000,
 	"latest_opration_time": 1655358327000,
@@ -270,13 +270,13 @@ The above describes how to use wallet-cli to interact with java-orgon . Compared
 You can query the ORGON balance information of the account through the node HTTP interface `wallet/getaccount`. The `balance` field in the returned result is the ORGON balance, in sun:
 ```
  curl -X POST http://127.0.0.1:16887/wallet/getaccount -d
-     '{"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+     '{"address": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
        "visible": true
      }'
 ```
 Result：
 ```
-{"account_name": "testacc2","address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM","balance": 1000000000000000,"account_resource": {}}
+{"account_name": "testacc2","address": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM","balance": 1000000000000000,"account_resource": {}}
 ```
 
 #### Send transactions

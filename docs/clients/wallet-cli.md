@@ -150,7 +150,7 @@ Generate an address and print out the public (address) and private key
 ```shell
 wallet> generateaddress
 {
-	"address": "TQAvi6bemLa1t1irdV1KuaSC5vKc2EswTj",
+	"address": "oQAvi6bemLa1t1irdV1KuaSC5vKc2EswTj",
 	"privateKey": "610a8a809114a96140e1cb040a7813afc74603e58c3d7824c3f68ccc642c297e"
 }
 ```
@@ -164,7 +164,7 @@ wallet> getaccount [address]
 ```shell
 wallet> getaccount TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 {
-	"address": "TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+	"address": "oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 	"balance": 2665198240,
 	"create_time": 1650363711000,
 	"latest_opration_time": 1653578769000,
@@ -177,7 +177,7 @@ wallet> getaccount TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 		"threshold": 1,
 		"keys": [
 			{
-				"address": "TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+				"address": "oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 				"weight": 1
 			}
 		]
@@ -191,7 +191,7 @@ wallet> getaccount TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 			"operations": "7fff1fc0033e3b00000000000000000000000000000000000000000000000000",
 			"keys": [
 				{
-					"address": "TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+					"address": "oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 					"weight": 1
 				}
 			]
@@ -1929,7 +1929,7 @@ wallet> listwitnesses
 {
 	"witnesses": [
 		{
-			"address": "TPffmvjxEcvZefQqS7QYvL1Der3uiguikE",
+			"address": "oPffmvjxEcvZefQqS7QYvL1Der3uiguikE",
 			"voteCount": 324999518,
 			"url": "http://sr-26.com",
 			"totalProduced": 414028,
@@ -1939,7 +1939,7 @@ wallet> listwitnesses
 			"isJobs": true
 		},
 		{
-			"address": "TFFLWM7tmKiwGtbh2mcz2rBssoFjHjSShG",
+			"address": "oFFLWM7tmKiwGtbh2mcz2rBssoFjHjSShG",
 			"voteCount": 324759460,
 			"url": "http://sr-27.com",
 			"totalProduced": 414144,

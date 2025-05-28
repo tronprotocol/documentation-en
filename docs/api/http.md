@@ -112,7 +112,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
         "permission_name": "owner",
         "threshold": 1,
         "keys": [{
-            "address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+            "address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
             "weight": 1
         }]
     },
@@ -121,7 +121,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
         "permission_name": "witness",
         "threshold": 1,
         "keys": [{
-            "address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+            "address": "oRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
             "weight": 1
         }]
     },
@@ -131,10 +131,10 @@ curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
         "threshold": 2,
         "operations": "7fff1fc0033e0000000000000000000000000000000000000000000000000000",
         "keys": [{
-            "address": "TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR",
+            "address": "oNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR",
             "weight": 1
         }, {
-            "address": "TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP",
+            "address": "oKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP",
             "weight": 1
         }]
     }],
@@ -155,7 +155,7 @@ Description： Get the account balance in a specific block.
 curl -X POST  http://127.0.0.1:8090/wallet/getaccountbalance -d
 '{
     "account_identifier": {
-        "address": "TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm"
+        "address": "oLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm"
     },
     "block_identifier": {
         "hash": "0000000000010c4a732d1e215e87466271e425c86945783c3d3f122bfa5affd9",
@@ -755,22 +755,22 @@ Return:
             "operation": [
                 {
                     "operation_identifier": 0,
-                    "address": "TPttBLmFuykRi83y9HxDoEWxTQw6CCcQ4p",
+                    "address": "oPttBLmFuykRi83y9HxDoEWxTQw6CCcQ4p",
                     "amount": -100000
                 },
                 {
                     "operation_identifier": 1,
-                    "address": "TLsV52sRDL79HXGGm9yzwKibb6BeruhUzy",
+                    "address": "oLsV52sRDL79HXGGm9yzwKibb6BeruhUzy",
                     "amount": 100000
                 },
                 {
                     "operation_identifier": 2,
-                    "address": "TPttBLmFuykRi83y9HxDoEWxTQw6CCcQ4p",
+                    "address": "oPttBLmFuykRi83y9HxDoEWxTQw6CCcQ4p",
                     "amount": -10000000
                 },
                 {
                     "operation_identifier": 3,
-                    "address": "TMrysg7DbwR1M8xqhpaPdVCHCuWFhw7uk1",
+                    "address": "oMrysg7DbwR1M8xqhpaPdVCHCuWFhw7uk1",
                     "amount": 10000000
                 }
             ],
