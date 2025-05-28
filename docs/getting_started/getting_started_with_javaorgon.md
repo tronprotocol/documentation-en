@@ -162,7 +162,7 @@ wallet>
 #### Transferring ORGON
 To transfer ORGON through the `sendcoin` command, enter the transfer address, and the amount:
 ```
-wallet> sendcoin TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
+wallet> sendcoin oUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
 {
 	"raw_data":{
 		"contract":[
