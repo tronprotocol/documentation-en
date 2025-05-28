@@ -100,6 +100,6 @@ plugins:
         - faq/index.md
         - introduction/index.md
         - introduction/overview.md
-        - mechanism-algorithm/shielded-TRC20-contract.md
+        - mechanism-algorithm/shielded-ORC20-contract.md
         - mechanism-algorithm/orc10.md
 
