@@ -245,7 +245,7 @@ wallet> updateaccountpermission TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 {"owner_permi
 							"threshold":1,
 							"permission_name":"owner"
 						},
-						"owner_address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+						"owner_address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 						"actives":[
 							{
 								"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000",
@@ -366,7 +366,7 @@ wallet> unfreezebalance TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 1 TXBpeye7UQ4dDZEnmGD
 					"value":{
 						"resource":"ENERGY",
 						"receiver_address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
-						"owner_address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8"
+						"owner_address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8"
 					},
 					"type_url":"type.googleapis.com/protocol.UnfreezeBalanceContract"
 				},
@@ -440,7 +440,7 @@ wallet> freezeBalanceV2 1000000 1
 					"value":{
 						"resource":"ENERGY",
 						"frozen_balance":1000000,
-						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
+						"owner_address":"oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
 					},
 					"type_url":"type.googleapis.com/protocol.FreezeBalanceV2Contract"
 				},
@@ -493,7 +493,7 @@ wallet> unfreezeBalanceV2 1000000  1
 				"parameter":{
 					"value":{
 						"resource":"ENERGY",
-						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+						"owner_address":"oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
 						"unfreeze_balance":1000000
 					},
 					"type_url":"type.googleapis.com/protocol.UnfreezeBalanceV2Contract"
@@ -548,7 +548,7 @@ wallet> delegateResource 1000000  1 TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g 0
 						"balance":1000000,
 						"resource":"ENERGY",
 						"receiver_address":"TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
-						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
+						"owner_address":"oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
 					},
 					"type_url":"type.googleapis.com/protocol.DelegateResourceContract"
 				},
@@ -603,7 +603,7 @@ wallet> unDelegateResource 1000000  1 TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g
 						"balance":1000000,
 						"resource":"ENERGY",
 						"receiver_address":"TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
-						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
+						"owner_address":"oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
 					},
 					"type_url":"type.googleapis.com/protocol.UnDelegateResourceContract"
 				},
@@ -906,7 +906,7 @@ password:
 				"parameter":{
 					"value":{
 						"amount":10,
-						"owner_address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+						"owner_address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 						"to_address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE"
 					},
 					"type_url":"type.googleapis.com/protocol.TransferContract"
@@ -963,7 +963,7 @@ wallet> getTransactionApprovedList
 						"parameter":{
 							"value":{
 								"amount":10,
-								"owner_address":"TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+								"owner_address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 								"to_address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE"
 							},
 							"type_url":"type.googleapis.com/protocol.TransferContract"
