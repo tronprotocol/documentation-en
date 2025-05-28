@@ -5,7 +5,7 @@ java-orgon integrity verification is to check the reliability and integrity of t
 The version of java-orgon released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified ORGON account for signature and verification.
 
 * Versions released after January 3, 2023: [GPG Signature Verification Process](#gpg-signature-verification-process)
-* Versions released before January 3, 2023: [ORGON Address Signature Verification Process](#tron-address-signature-verification-process)
+* Versions released before January 3, 2023: [ORGON Address Signature Verification Process](#oegon-address-signature-verification-process)
 
 ## GPG signature verification process
 The java-orgon executable file and its signature file are released together, you can get it at [here](https://github.com/alexozerov/java-orgon/releases), please follow the below process to verify the signature of the java-orgon which released after January 3, 2023.
