@@ -717,7 +717,7 @@ wallet> getdelegatedresourcev2 fromAddress toAddress
 Example:
 
 ```shell
-wallet> getdelegatedresourcev2  TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g
+wallet> getdelegatedresourcev2  oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g
 {
 	"delegatedResource": [
 		{
@@ -797,7 +797,7 @@ Here are all the transaction related commands ：
 ```
 Here is an example of multi-signed transaction. The accounts permission have assigned as in [UpdateAccountPermission](#updateaccountpermission) section, please check for reference.
 ```shell
-wallet> SendCoin TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE 10
+wallet> SendCoin oXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE 10
 {
 	"raw_data":{
 		"contract":[
