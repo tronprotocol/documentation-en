@@ -614,8 +614,8 @@ In Stake2.0, query the detail of resource share delegated from fromAddress to to
 ```
 curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourcev2 -d
 '{
-  "fromAddress": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
-  "toAddress": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+  "fromAddress": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "toAddress": "oPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
   "visible": true
 }
 '
@@ -633,7 +633,7 @@ In Stake2.0, query the resource delegation index by an account. Two lists will r
 ```
 curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindexv2 -d
 '{
-  "value": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "value": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "visible": true
 }
 '
@@ -2625,8 +2625,8 @@ In Stake2.0, query the detail of resource share delegated from `fromAddress` to 
 ```
 curl -X POST http://127.0.0.1:8090/walletsolidity/getdelegatedresourcev2 -d
 '{
-  "fromAddress": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
-  "toAddress": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+  "fromAddress": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "toAddress": "oPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
   "visible": true
 }
 '
@@ -2645,7 +2645,7 @@ In Stake2.0, query the resource delegation index by an account. Two lists will r
 ```
 curl -X POST http://127.0.0.1:8090/walletsolidity/getdelegatedresourceaccountindexv2 -d
 '{
-  "value": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+  "value": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
   "visible": true
 }
 '

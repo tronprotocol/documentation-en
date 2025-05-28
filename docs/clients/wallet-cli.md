@@ -408,8 +408,8 @@ wallet> getdelegatedresource TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 TXBpeye7UQ4dDZEn
 {
 	"delegatedResource": [
 		{
-			"from": "TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
-			"to": "TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
+			"from": "oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
+			"to": "oXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
 			"frozen_balance_for_energy": 1000000,
 			"expire_time_for_energy": 1656660447000
 		}
@@ -538,7 +538,7 @@ wallet> delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERG
 Example:
 
 ```shell
-wallet> delegateResource 1000000  1 TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g 0
+wallet> delegateResource 1000000  1 oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g 0
 {
 	"raw_data":{
 		"contract":[
@@ -593,7 +593,7 @@ wallet> unDelegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENE
 Example:
 
 ```shell
-wallet> unDelegateResource 1000000  1 TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g
+wallet> unDelegateResource 1000000  1 oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g
 {
 	"raw_data":{
 		"contract":[
@@ -721,8 +721,8 @@ wallet> getdelegatedresourcev2  TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM TZ4UXDV5ZhNW7
 {
 	"delegatedResource": [
 		{
-			"from": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-			"to": "TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+			"from": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+			"to": "oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
 			"frozen_balance_for_bandwidth": 7000000,
 			"frozen_balance_for_energy": 3000000
 		}
@@ -743,7 +743,7 @@ Example:
 ```shell
 wallet> getdelegatedresourceaccountindexv2 TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 {
-	"account": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+	"account": "oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
 	"fromAccounts": [
 		"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
 	],

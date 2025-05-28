@@ -381,7 +381,7 @@ filter = {
        fromblock = "" // the value could be "", "earliest" or a specified block number as the beginning of the queried range
        toblock = "" // the value could be "", "latest" or a specified block number as end of the queried range
        contractAddress = [
-           "TVkNuE1BYxECWq85d8UR9zsv6WppBns9iH" // contract address you want to subscribe, if it's set to "", you will receive contract logs/events with any contract address.
+           "oVkNuE1BYxECWq85d8UR9zsv6WppBns9iH" // contract address you want to subscribe, if it's set to "", you will receive contract logs/events with any contract address.
        ]
 
        contractTopic = [

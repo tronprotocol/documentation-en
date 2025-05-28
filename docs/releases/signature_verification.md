@@ -90,7 +90,7 @@ Execute the following command to verify the signature of the release package:
 # Trx.verifySignature(SHA256, ADDRESS, SIGNATURE));
 node -e 'console.log(require("tronweb").Trx.verifySignature(
     "2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e",
-    "TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2",
+    "oKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2",
     "21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b"
   ))'
 ```
