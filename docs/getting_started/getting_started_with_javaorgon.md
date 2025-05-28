@@ -171,7 +171,7 @@ wallet> sendcoin oUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
 					"value":{
 						"amount":1000000,
 						"owner_address":"oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-						"to_address":"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+						"to_address":"oUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
 					},
 					"type_url":"type.googleapis.com/protocol.TransferContract"
 				},
@@ -229,7 +229,7 @@ wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adc
 					"value":{
 						"amount":1000000,
 						"owner_address":"oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-						"to_address":"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+						"to_address":"oUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
 					},
 					"type_url":"type.googleapis.com/protocol.TransferContract"
 				},

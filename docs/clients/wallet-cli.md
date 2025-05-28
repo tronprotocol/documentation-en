@@ -907,7 +907,7 @@ password:
 					"value":{
 						"amount":10,
 						"owner_address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
-						"to_address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE"
+						"to_address":"oXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE"
 					},
 					"type_url":"type.googleapis.com/protocol.TransferContract"
 				},
@@ -964,7 +964,7 @@ wallet> getTransactionApprovedList
 							"value":{
 								"amount":10,
 								"owner_address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
-								"to_address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE"
+								"to_address":"oXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE"
 							},
 							"type_url":"type.googleapis.com/protocol.TransferContract"
 						},
