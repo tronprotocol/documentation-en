@@ -365,7 +365,7 @@ wallet> unfreezebalance TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 1 TXBpeye7UQ4dDZEnmGD
 				"parameter":{
 					"value":{
 						"resource":"ENERGY",
-						"receiver_address":"TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
+						"receiver_address":"oXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE",
 						"owner_address":"oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8"
 					},
 					"type_url":"type.googleapis.com/protocol.UnfreezeBalanceContract"
@@ -547,7 +547,7 @@ wallet> delegateResource 1000000  1 TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g 0
 					"value":{
 						"balance":1000000,
 						"resource":"ENERGY",
-						"receiver_address":"TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+						"receiver_address":"oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
 						"owner_address":"oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
 					},
 					"type_url":"type.googleapis.com/protocol.DelegateResourceContract"
@@ -602,7 +602,7 @@ wallet> unDelegateResource 1000000  1 TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g
 					"value":{
 						"balance":1000000,
 						"resource":"ENERGY",
-						"receiver_address":"TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
+						"receiver_address":"oZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g",
 						"owner_address":"oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM"
 					},
 					"type_url":"type.googleapis.com/protocol.UnDelegateResourceContract"
