@@ -36,7 +36,7 @@ The FullNode HTTP API is categorized as follows:
 - [Account Resources](#account-resources)
 - [Query The Network](#query-the-network)
 - [Smart Contracts](#smart-contracts)
-- [ORC-10 Token](#trc10-token)
+- [ORC-10 Token](#orc10-token)
 - [Voting & SRs](#vote-and-sr)
 - [Proposals](#proposals)
 - [DEX Exchange](#dex-exchange)
@@ -911,8 +911,8 @@ Parameters:
 - `owner_address`:Owner address of the contract, default hexString
 - `name`:Contract name
 - `origin_energy_limit`: The maximum resource consumption of the creator in one execution or creation
-- `call_token_value`: The amount of trc10 token transfer to the contract for each call (Optional)
-- `token_id`:The id of trc10 token transfer to the contract (Optional)
+- `call_token_value`: The amount of orc10 token transfer to the contract for each call (Optional)
+- `token_id`:The id of orc10 token transfer to the contract (Optional)
 - `Permission_id`: Optional, for multi-signature use
 
 Return:Unsigned transaction
@@ -938,8 +938,8 @@ Parameters:
 - `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
 - `fee_limit`: The maximum ORGON burns for resource consumption
 - `call_value`: The ORGON transfer to the contract for each call
-- `call_token_value`: The amount of  trc10 token transfer to the contract for each call
-- `token_id`: The id of trc10 token transfer to the contract
+- `call_token_value`: The amount of  orc10 token transfer to the contract for each call
+- `token_id`: The id of orc10 token transfer to the contract
 - `owner_address`: Owner address that triggers the contract, default hexString
 - `permission_id`: Optional, for multi-signature use
 
@@ -967,8 +967,8 @@ Parameters:
 - `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
 - `call_value`: The ORGON transfer to the contract for each call
 - `owner_address`: Owner address that triggers the contract, default hexString
-- `call_token_value`: The amount of  trc10 token transfer to the contract for each call
-- `token_id`: The id of trc10 token transfer to the contract
+- `call_token_value`: The amount of  orc10 token transfer to the contract for each call
+- `token_id`: The id of orc10 token transfer to the contract
 
 Return: Transaction object
 
@@ -1054,8 +1054,8 @@ Parameters:
 - `data`: The data for interacting with smart contracts, including the contract function and parameters. You can choose to use this field, or you can choose to use `function_selector` and `parameter` for contract interaction. When both of `data` and `function_selector` exist, `function_selector` is preferred
 - `call_value`: The ORGON transfer to the contract for each call
 - `owner_address`:Owner address that triggers the contract. If visible=true, use base58check format, otherwise use hex
-- `call_token_value`: The amount of  trc10 token transfer to the contract for each call
-- `token_id`: The id of trc10 token transfer to the contract
+- `call_token_value`: The amount of  orc10 token transfer to the contract for each call
+- `token_id`: The id of orc10 token transfer to the contract
 
 Return:Estimated the energy value
 
@@ -1875,10 +1875,10 @@ The following are TRONZ anonymous smart contract related APIs:
 - [wallet/getnewshieldedaddress](#walletgetnewshieldedaddress)
 - [wallet/createshieldedcontractparameters](#walletcreateshieldedcontractparameters)
 - [wallet/createshieldedcontractparameterswithoutask](#walletcreateshieldedcontractparameterswithoutask)
-- [wallet/scanshieldedtrc20notesbyivk](#walletscanshieldedtrc20notesbyivk)
-- [wallet/scanshieldedtrc20notesbyovk](#walletscanshieldedtrc20notesbyovk)
-- [wallet/isshieldedtrc20contractnotespent](#walletisshieldedtrc20contractnotespent)
-- [wallet/gettriggerinputforshieldedtrc20contract](#walletgettriggerinputforshieldedtrc20contract)
+- [wallet/scanshieldedorc20notesbyivk](#walletscanshieldedorc20notesbyivk)
+- [wallet/scanshieldedorc20notesbyovk](#walletscanshieldedorc20notesbyovk)
+- [wallet/isshieldedorc20contractnotespent](#walletisshieldedorc20contractnotespent)
+- [wallet/gettriggerinputforshieldedorc20contract](#walletgettriggerinputforshieldedorc20contract)
 - [wallet/getrcm](#walletgetrcm)
 - [wallet/getmerkletreevoucherinfo](#walletgetmerkletreevoucherinfo)
 - [wallet/isspend](#walletisspend)
@@ -2307,10 +2307,10 @@ Return: the shielded ORC-20 transaction parameters
 Note: the input parameters will differ according to the variety of shielded ORC-20 transaction type
 
 
-#### wallet/scanshieldedtrc20notesbyivk
+#### wallet/scanshieldedorc20notesbyivk
 Description: scan the shielded ORC-20 notes by ivk and mark their status of whether spent
 ```console
-demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyivk -d
+demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedorc20notesbyivk -d
 '{
     "start_block_index": 9200,
     "end_block_index": 9240,
@@ -2334,10 +2334,10 @@ Return: notes list
 
 Note: block limit（end_block_index - start_block_index <= 1000）
 
-#### wallet/scanshieldedtrc20notesbyovk
+#### wallet/scanshieldedorc20notesbyovk
 Description: scan the shielded ORC-20 notes by ovk
 ```console
-demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedtrc20notesbyovk -d
+demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedorc20notesbyovk -d
 '{
     "start_block_index": 9200,
     "end_block_index": 9240,
@@ -2357,7 +2357,7 @@ Return: notes list
 
 Note: block limit（end_block_index - start_block_index <= 1000）
 
-#### wallet/isshieldedtrc20contractnotespent
+#### wallet/isshieldedorc20contractnotespent
 Description: check the status whether the specified shielded ORC-20 note is spent
 
 Parameters:
@@ -2373,10 +2373,10 @@ Return: note status
 Note: the `value` in note is the scaled value by `scalingFactor` set in the shielded ORC-20 contract, namely `real_amount` = `value` * `scalingFactor`.
 
 
-#### wallet/gettriggerinputforshieldedtrc20contract
+#### wallet/gettriggerinputforshieldedorc20contract
 Description: get the trigger input data of shielded ORC-20 contract for the shielded ORC-20 parameters without spend authority signature.
 ```console
-demo: curl -X POST  http://127.0.0.1:8090/wallet/gettriggerinputforshieldedtrc20contract -d
+demo: curl -X POST  http://127.0.0.1:8090/wallet/gettriggerinputforshieldedorc20contract -d
 '{
      "shielded_TRC20_Parameters": {"spend_description": [{"value_commitment": "e3fcc8609ff6a4b00b77a00ef624f305cec5f55cc7312ff5526d0b3057f2ef9e","anchor": "4c9cbebece033dc1d253b93e4a3682187daae4f905515761d10287b801e69816","nullifier": "74edce8798a3976ee41e045bb666f3a121c27235b0f1b44b3456d2c84bc725dc","rk": "9dcf4254aa7c4fb7c8bc6956d4b0c7c6c87c37a2552e7bf4e60c12cb5bc6c8cd","zkproof": "9926045cd1442a7d20153e6abda9f77a6526895f0a29a57cb1bc76ef6b7cacef2d0f4c94aa97c3acacdb95cabb065057b7edb4cbea098149a8aa7114a6a6b340c58007ac64b64e592eb18fdd299de5962a2a32ab0caebb2ab198704c751a9d0e143d68a50257d7c9e2230a7420fa46450299fd167141367e201726532d8e815413d8571d6c8c12937674dec92caf1f4583ebe560ac4c7eba290deee0a1c0da5f72c0b9df89fb3b338c683b654b3dc2373a4c2a4fef7f4fa489b44405fb7d2bfb"}],"binding_signature": "11e949887d9ec92eb32c78f0bc48afdc9a16a2ecbd5a0eca1be070fb900eeda347918bd6e9521d4baf1f74963bee0c1956559623a9e7cbc886941b227341ea06","message_hash": "7e6a00736c4f9e0036cb74c7fa3b1e3cd8f6bf0f038edeb03b668c4c5536a357","parameter_type": "burn"},
      "spend_authority_signature": [
@@ -2951,10 +2951,10 @@ Parameters:
 
 Return: Whether a note has been spent
 
-#### walletsolidity/scanshieldedtrc20notesbyivk
+#### walletsolidity/scanshieldedorc20notesbyivk
 Description: Scan the shielded ORC-20 notes by ivk, and mark whether it has been spent
 ```
-curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyivk -d
+curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedorc20notesbyivk -d
 '{
     "start_block_index": 9200,
     "end_block_index": 9240,
@@ -2976,10 +2976,10 @@ Parameters:
 Return: Notes list
 Note: Block limit（end_block_index - start_block_index <= 1000）
 
-#### walletsolidity/scanshieldedtrc20notesbyovk
+#### walletsolidity/scanshieldedorc20notesbyovk
 Description: Scan the shielded ORC-20 notes by ovk
 ```
-curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyovk -d
+curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedorc20notesbyovk -d
 '{
     "start_block_index": 9200,
     "end_block_index": 9240,
@@ -2998,10 +2998,10 @@ Return: Notes list
 
 Note: Block limit (end_block_index - start_block_index <= 1000)
 
-#### walletsolidity/isshieldedtrc20contractnotespent
+#### walletsolidity/isshieldedorc20contractnotespent
 Description: Check the status whether the specified shielded ORC-20 note is spent
 ```
-curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedtrc20notesbyovk -d
+curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedorc20notesbyovk -d
 '{
    "note": {
        "value": 40,

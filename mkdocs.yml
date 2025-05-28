@@ -91,7 +91,7 @@ plugins:
   - exclude:
       glob:
         - clients/orgon-gate.md
-        - contracts/trc20.md
+        - contracts/orc20.md
         - contracts/tvm.md
         - developers/contribution.md
         - developers/gpg.md
@@ -101,5 +101,5 @@ plugins:
         - introduction/index.md
         - introduction/overview.md
         - mechanism-algorithm/shielded-TRC20-contract.md
-        - mechanism-algorithm/trc10.md
+        - mechanism-algorithm/orc10.md
 
