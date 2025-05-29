@@ -2258,7 +2258,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameter
            "rcm": "74baec30dfac8ed59968955ff245ae002009005194e5b824c35ab88c52e5170e"
         }
      },
-     "shielded_TRC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
+     "shielded_ORC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
  }'
 
 ```
@@ -2270,7 +2270,7 @@ Parameters:
 - `ovk`: Outgoing view key
 - `from_amount`: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100
 - `shielded_receives`: the shielded notes to be created
-- `shielded_TRC20_contract_address`: shielded ORC-20 contract address
+- `shielded_ORC20_contract_address`: shielded ORC-20 contract address
 
 Return: the shielded ORC-20 transaction parameters
 
@@ -2291,7 +2291,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameter
            "rcm": "499e73f2f8aaf05fac41a35b8343bde27f6629cbe66d35da5364a99b94a55a06"
         }
      },
-     "shielded_TRC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
+     "shielded_ORC20_contract_address": "41f3392eaa7d38749176e0671dbc6912f8ef956943"
  }'
 ```
 
@@ -2300,7 +2300,7 @@ Parameters:
 - `ovk`: Outgoing view key
 - `from_amount`: the amount for mint, which is scaled by `scalingfactor` with note `value`, namely `from_amount` = `value` * `scalingFactor`. In the above example, the value of `scalingFactor` is 100
 - `shielded_receives`: the shielded notes to be created
-- `shielded_TRC20_contract_address`: shielded ORC-20 contract address
+- `shielded_ORC20_contract_address`: shielded ORC-20 contract address
 
 Return: the shielded ORC-20 transaction parameters
 
@@ -2314,7 +2314,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedorc20notesbyivk -d
 '{
     "start_block_index": 9200,
     "end_block_index": 9240,
-    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
+    "shielded_ORC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
     "ivk": "9f8e74bb3d7188a2781dc1db38810c6914eef4570a79e8ec8404480948e4e305",
     "ak":"8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64",
     "nk":"590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14"
@@ -2325,7 +2325,7 @@ Parameters:
 
 - `start_block_index`: the start block index, inclusive
 - `end_block_index`: the end block index, exclusive
-- `shielded_TRC20_contract_address`: shielded ORC-20 contract address
+- `shielded_ORC20_contract_address`: shielded ORC-20 contract address
 - `ivk`: Incoming viewing key
 - `ak`: Ak key
 - `nk`: Nk key
@@ -2341,7 +2341,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/scanshieldedorc20notesbyovk -d
 '{
     "start_block_index": 9200,
     "end_block_index": 9240,
-    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
+    "shielded_ORC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
     "ovk": "0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889"
 }'
 ```
@@ -2350,7 +2350,7 @@ Parameters:
 
 - `start_block_index`: start block index, inclusive
 - `end_block_index`: end block index, exclusive
-- `shielded_TRC20_contract_address`: shielded ORC-20 contract address
+- `shielded_ORC20_contract_address`: shielded ORC-20 contract address
 - `ovk`: Outgoing viewing key
 
 Return: notes list
@@ -2366,7 +2366,7 @@ Parameters:
 - `ak`: Ak
 - `nk`: Nk
 - `position`: the leaf position index of note commitment in the Merkle tree
-- `shielded_TRC20_contract_address`: the shielded ORC-20 contract address
+- `shielded_ORC20_contract_address`: the shielded ORC-20 contract address
 
 Return: note status
 
@@ -2378,7 +2378,7 @@ Description: get the trigger input data of shielded ORC-20 contract for the shie
 ```console
 demo: curl -X POST  http://127.0.0.1:8090/wallet/gettriggerinputforshieldedorc20contract -d
 '{
-     "shielded_TRC20_Parameters": {"spend_description": [{"value_commitment": "e3fcc8609ff6a4b00b77a00ef624f305cec5f55cc7312ff5526d0b3057f2ef9e","anchor": "4c9cbebece033dc1d253b93e4a3682187daae4f905515761d10287b801e69816","nullifier": "74edce8798a3976ee41e045bb666f3a121c27235b0f1b44b3456d2c84bc725dc","rk": "9dcf4254aa7c4fb7c8bc6956d4b0c7c6c87c37a2552e7bf4e60c12cb5bc6c8cd","zkproof": "9926045cd1442a7d20153e6abda9f77a6526895f0a29a57cb1bc76ef6b7cacef2d0f4c94aa97c3acacdb95cabb065057b7edb4cbea098149a8aa7114a6a6b340c58007ac64b64e592eb18fdd299de5962a2a32ab0caebb2ab198704c751a9d0e143d68a50257d7c9e2230a7420fa46450299fd167141367e201726532d8e815413d8571d6c8c12937674dec92caf1f4583ebe560ac4c7eba290deee0a1c0da5f72c0b9df89fb3b338c683b654b3dc2373a4c2a4fef7f4fa489b44405fb7d2bfb"}],"binding_signature": "11e949887d9ec92eb32c78f0bc48afdc9a16a2ecbd5a0eca1be070fb900eeda347918bd6e9521d4baf1f74963bee0c1956559623a9e7cbc886941b227341ea06","message_hash": "7e6a00736c4f9e0036cb74c7fa3b1e3cd8f6bf0f038edeb03b668c4c5536a357","parameter_type": "burn"},
+     "shielded_ORC20_Parameters": {"spend_description": [{"value_commitment": "e3fcc8609ff6a4b00b77a00ef624f305cec5f55cc7312ff5526d0b3057f2ef9e","anchor": "4c9cbebece033dc1d253b93e4a3682187daae4f905515761d10287b801e69816","nullifier": "74edce8798a3976ee41e045bb666f3a121c27235b0f1b44b3456d2c84bc725dc","rk": "9dcf4254aa7c4fb7c8bc6956d4b0c7c6c87c37a2552e7bf4e60c12cb5bc6c8cd","zkproof": "9926045cd1442a7d20153e6abda9f77a6526895f0a29a57cb1bc76ef6b7cacef2d0f4c94aa97c3acacdb95cabb065057b7edb4cbea098149a8aa7114a6a6b340c58007ac64b64e592eb18fdd299de5962a2a32ab0caebb2ab198704c751a9d0e143d68a50257d7c9e2230a7420fa46450299fd167141367e201726532d8e815413d8571d6c8c12937674dec92caf1f4583ebe560ac4c7eba290deee0a1c0da5f72c0b9df89fb3b338c683b654b3dc2373a4c2a4fef7f4fa489b44405fb7d2bfb"}],"binding_signature": "11e949887d9ec92eb32c78f0bc48afdc9a16a2ecbd5a0eca1be070fb900eeda347918bd6e9521d4baf1f74963bee0c1956559623a9e7cbc886941b227341ea06","message_hash": "7e6a00736c4f9e0036cb74c7fa3b1e3cd8f6bf0f038edeb03b668c4c5536a357","parameter_type": "burn"},
      "spend_authority_signature": [
        {
          "value": "eeaaecd725ac80ec398b95cf188b769c1be66cc8e76e6c90843b7f23818704595719ce8bf694ffb8cd7aaa8739d50fe8eea7ba39d5026c4b019c973185ca7201"
@@ -2391,7 +2391,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/gettriggerinputforshieldedorc20
 
 Parameters:
 
-- `shielded_TRC20_Parameters`: the generated shielded ORC-20 parameters
+- `shielded_ORC20_Parameters`: the generated shielded ORC-20 parameters
 - `spend_authority_signature`: the spend authority signatures
 - `amount`: the amount
 - `transparent_to_address`: the receiver for the `burn` operation.
@@ -2958,7 +2958,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedorc20notesbyivk -
 '{
     "start_block_index": 9200,
     "end_block_index": 9240,
-    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
+    "shielded_ORC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
     "ivk": "9f8e74bb3d7188a2781dc1db38810c6914eef4570a79e8ec8404480948e4e305",
     "ak":"8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64",
     "nk":"590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14"
@@ -2968,7 +2968,7 @@ Parameters:
 
 - `start_block_index`: The start block index, inclusive
 - `end_block_index`: The end block index, exclusive
-- `shielded_TRC20_contract_address`: Shielded ORC-20 contract address
+- `shielded_ORC20_contract_address`: Shielded ORC-20 contract address
 - `ivk`: Incoming viewing key
 - `ak`: Ak key
 - `nk`: Nk key
@@ -2983,7 +2983,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedorc20notesbyovk -
 '{
     "start_block_index": 9200,
     "end_block_index": 9240,
-    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
+    "shielded_ORC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7",
     "ovk": "0ff58efd75e083fe4fd759c8701e1c8cb6961c4297a12b2c800bdb7b2bcab889"
 }'
 ```
@@ -2991,7 +2991,7 @@ Parameters:
 
 - `start_block_index`: Start block index, inclusive
 - `end_block_index`: Start block index, inclusive
-- `shielded_TRC20_contract_address`: Shielded ORC-20 contract address
+- `shielded_ORC20_contract_address`: Shielded ORC-20 contract address
 - `ovk`: Outgoing viewing key
 
 Return: Notes list
@@ -3011,7 +3011,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedorc20notesbyovk -
     "ak": "8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64",
     "nk": "590bf33f93f792be659fd404df91e75c3b08d38d4e08ee226c3f5219cf598f14",
     "position": 272,
-    "shielded_TRC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7"
+    "shielded_ORC20_contract_address": "41274fc7464fadac5c00c893c58bce6c39bf59e4c7"
 }'
 ```
 Parameters:
@@ -3020,7 +3020,7 @@ Parameters:
 - `ak`: Ak
 - `nk`: Nk
 - `position`: The leaf position index of note commitment in the Merkle tree
-- `shielded_TRC20_contract_address`: The shielded ORC-20 contract address
+- `shielded_ORC20_contract_address`: The shielded ORC-20 contract address
 
 Return: Note status
 

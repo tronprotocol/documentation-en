@@ -2218,7 +2218,7 @@ Release 4.0.0 has implemented the shielded ORC-20 contract, which can hide the s
 Forced upgrade
 
 ### New features
- - Add 4 new instructions (`verifyMintProof`, `verifyTransferProof`, `verifyBurnProof` and `pedersenHash`) in TVM to support TRC20 shielded transactions based on zk-SNARKs (#3172).
+ - Add 4 new instructions (`verifyMintProof`, `verifyTransferProof`, `verifyBurnProof` and `pedersenHash`) in TVM to support ORC20 shielded transactions based on zk-SNARKs (#3172).
    - `verifyMintProof`: used to validate the zero-knowledge proof for `mint` function.
    - `verifyTransferProof`: used to validate the zero-knowledge proof for `transfer` function.
    - `verifyBurnProof`: used to validate  the zero-knowledge proof for `burn` function.
@@ -2228,27 +2228,27 @@ Forced upgrade
 
    1.&nbsp;Create shielded contract parameters
   ```protobuf
-  rpc CreateShieldedContractParameters (PrivateShieldedTRC20Parameters) returns (ShieldedTRC20Parameters) {}
+  rpc CreateShieldedContractParameters (PrivateShieldedORC20Parameters) returns (ShieldedORC20Parameters) {}
   ```
   2.&nbsp;Create shielded contract parameters without ask
   ```protobuf
-  rpc CreateShieldedContractParametersWithoutAsk (PrivateShieldedTRC20ParametersWithoutAsk) returns (ShieldedTRC20Parameters) {}
+  rpc CreateShieldedContractParametersWithoutAsk (PrivateShieldedORC20ParametersWithoutAsk) returns (ShieldedORC20Parameters) {}
   ```
-  3.&nbsp;Scan shielded TRC20 notes by ivk
+  3.&nbsp;Scan shielded ORC20 notes by ivk
   ```protobuf
-  rpc ScanShieldedTRC20NotesByIvk (IvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
+  rpc ScanShieldedORC20NotesByIvk (IvkDecryptORC20Parameters) returns (DecryptNotesORC20) {}
   ```
-  4.&nbsp;Scan shielded TRC20 notes by ovk
+  4.&nbsp;Scan shielded ORC20 notes by ovk
   ```protobuf
-  rpc ScanShieldedTRC20NotesByOvk (OvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
+  rpc ScanShieldedORC20NotesByOvk (OvkDecryptORC20Parameters) returns (DecryptNotesORC20) {}
   ```
-  5.&nbsp;Check if the shielded TRC20 note is spent
+  5.&nbsp;Check if the shielded ORC20 note is spent
   ```protobuf
-  rpc IsShieldedTRC20ContractNoteSpent (NfTRC20Parameters) returns (NullifierResult) {}
+  rpc IsShieldedORC20ContractNoteSpent (NfORC20Parameters) returns (NullifierResult) {}
   ```
-  6.&nbsp;Get the trigger input for the shielded TRC20 contract
+  6.&nbsp;Get the trigger input for the shielded ORC20 contract
   ```protobuf
-    rpc GetTriggerInputForShieldedTRC20Contract (ShieldedTRC20TriggerContractParameters) returns (BytesMessage) {}
+    rpc GetTriggerInputForShieldedORC20Contract (ShieldedORC20TriggerContractParameters) returns (BytesMessage) {}
   ```
 - Support the `ovk` to scan the transparent output of  `burn` transaction (#3203).
 - Support the `burn` transaction with zero or one shielded output (#3224).
