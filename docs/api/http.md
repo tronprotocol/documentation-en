@@ -2009,7 +2009,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspend
         {
             "note": {
                 "value": 500000000,
-                "payment_address": "ztron1jld8fmvujrz2vgkc867zuwklmewy4ypw0wtwgweqs2paee0uhc8f3azy90el770arksa2kunl02",
+                "payment_address": "zorgon1jld8fmvujrz2vgkc867zuwklmewy4ypw0wtwgweqs2paee0uhc8f3azy90el770arksa2kunl02",
                 "rcm": "723053bcbfecdf5da66c18ab0376476ef308c61b7abe891b2c01e903bcb87c0e"
             },
             "alpha": "2608999c3a97d005a879ecdaa16fd29ae434fb67b177c5e875b0c829e6a1db04",
@@ -2036,7 +2036,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/createshieldedtransactionwithoutspend
         {
             "note": {
                 "value": 40000000,
-                "payment_address": "ztron1wd46s6fwmz99gulqpxul6zffqtevzfpl93ng3s5834fhwf6e7w5l6zmjhmpvtwsc4wxa7dusmvr",
+                "payment_address": "zorgon1wd46s6fwmz99gulqpxul6zffqtevzfpl93ng3s5834fhwf6e7w5l6zmjhmpvtwsc4wxa7dusmvr",
                 "rcm": "ccced07d36641fc93cba33cddda7064cb82f6962a0bdf15a4240a4a742770e03"
             }
         }
@@ -2130,7 +2130,7 @@ Description: To create a shielded nullifier
 $ curl -X POST  http://127.0.0.1:8090/wallet/createshieldnullifier -d
 '{
     "note": {
-        "payment_address": "ztron1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq",
+        "payment_address": "zorgon1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq",
         "rcm": "74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a",
         "value": 500000000
     },
@@ -2254,7 +2254,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameter
      "shielded_receives": {
         "note": {
            "value": 50,
-           "payment_address": "ztron15js0jkuxczt8caq5hp59rnh6rgf34sek7vqn9u6ljelxv4nuzz2x9qe3ffm2wzz6ck53yxyhxs6",
+           "payment_address": "zorgon15js0jkuxczt8caq5hp59rnh6rgf34sek7vqn9u6ljelxv4nuzz2x9qe3ffm2wzz6ck53yxyhxs6",
            "rcm": "74baec30dfac8ed59968955ff245ae002009005194e5b824c35ab88c52e5170e"
         }
      },
@@ -2287,7 +2287,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createshieldedcontractparameter
      "shielded_receives": {
         "note": {
            "value": 50,
-           "payment_address": "ztron13lvfnt4rau4ad9mmgztd3aftw49e3amz8gm2kvyzrsaw0ugz2grxwkvcfys5e2gkchj7cnnetjz",
+           "payment_address": "zorgon13lvfnt4rau4ad9mmgztd3aftw49e3amz8gm2kvyzrsaw0ugz2grxwkvcfys5e2gkchj7cnnetjz",
            "rcm": "499e73f2f8aaf05fac41a35b8343bde27f6629cbe66d35da5364a99b94a55a06"
         }
      },
@@ -2432,7 +2432,7 @@ $ curl -X POST  http://127.0.0.1:8090/wallet/isspend -d
     "ak": "a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129",
     "nk": "62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e",
     "note": {
-        "payment_address": "ztron1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq",
+        "payment_address": "zorgon1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq",
         "rcm": "74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a",
         "value": 500000000
     },
@@ -2933,7 +2933,7 @@ curl -X POST  http://127.0.0.1:8090/walletsolidity/isspend -d
     "ak": "a3e65d509b675aaa2aeda977ceff11eebd76218079b6f543d78a615e396ca129",
     "nk": "62cfda9bea09a53cf2a21022057913734a8458969e11e0bb9c59ead48fbce83e",
     "note": {
-        "payment_address": "ztron1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq",
+        "payment_address": "zorgon1aqgauawtkelxfu2w6s48cwh0mchjt6kwpj44l4wym3pullx0294j4r4v7kpm75wnclzycsw73mq",
         "rcm": "74a16c1b27ec7fbf06881d9d35ddaab1554838b1bddcd54f6bd8a9fb4ba0b80a",
         "value": 500000000
     },
@@ -3005,7 +3005,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/scanshieldedorc20notesbyovk -
 '{
    "note": {
        "value": 40,
-       "payment_address":"ztron1768kf7dy4qquefp46szk978d65eeua66yhr4zv260c0uzj68t3tfjl3en9lhyyfxalv4jus30xs",
+       "payment_address":"zorgon1768kf7dy4qquefp46szk978d65eeua66yhr4zv260c0uzj68t3tfjl3en9lhyyfxalv4jus30xs",
        "rcm": "296070782a94c6936b0b4f6daf8d7c7605a4374fe595b96148dc0f4b59015d0d"
     },
     "ak": "8072d9110c9de9d9ade33d5d0f5890a7aa65b0cde42af7816d187297caf2fd64",

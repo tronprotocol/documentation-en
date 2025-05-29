@@ -84,11 +84,11 @@ $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.con
 
     Click "Status" -> "Configuration" to check whether the configuration file used by the container is correct:
 
-     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_config.png)
+     ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/metrics_config.png)
 
      Click "Status" -> "Targets" to view the status of each monitored java-orgon node:
 
-     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_targets.png)
+     ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/metrics_targets.png)
 
      In this example, the status of the first endpoint is `UP`, which means that Prometheus can fetch the data of this node normally. The second endpoint, whose status is `DOWN`, indicates an exception. For details, please refer to the description in "Error".
 
@@ -115,25 +115,25 @@ The deployment process of the Grafana visualization tool is as follows:
 
     After startup, you can login the Grafana web UI through `http://localhost:3000/`. The initial user name and password are both `admin`. After login, change the password according to the prompts, and then you can enter the main interface. Click the settings icon on the left side of the main page and select "Data Sources" to configure Grafana's data sources:
 
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_datasource.png)
+    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/metrics_datasource.png)
 
     Enter the ip and port of the prometheus service in `URL`:
 
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_prometheus.png)
+    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/metrics_prometheus.png)
 
     Then click the "Save & test" button at the bottom of the page to save the settings. After clicking save, Grafana will detect the connection with the data source, and if the connection is successful, you will find the words `Data source is working`.
 
 4. Import Dashboard
 
-    Grafana's dashboard needs to be configured. For the convenience of java-orgon node deployers, the ORGON community provides a comprehensive dashboard configuration file [java-tron-template_rev1.json](https://grafana.com/grafana/dashboards/16567), which you can download directly and then import into Grafana.
+    Grafana's dashboard needs to be configured. For the convenience of java-orgon node deployers, the ORGON community provides a comprehensive dashboard configuration file [java-orgon-template_rev1.json](https://grafana.com/grafana/dashboards/16567), which you can download directly and then import into Grafana.
 
      Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import the downloaded dashboard configuration file:
 
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png)
+    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/metrics_import.png)
 
     Then you can see the following types of monitoring metrics on the dashboard, and monitor the running status of the nodes in real time:
 
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_dashboard.png)
+    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/metrics_dashboard.png)
 
 
 

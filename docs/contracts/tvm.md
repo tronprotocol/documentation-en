@@ -31,7 +31,7 @@ Developers can call these interfaces to deploy, trigger or check smart contracts
 
 ## How TVM Works
 
-![Flowchart of ORGON Virtual Machine](https://raw.githubusercontent.com/tronprotocol/documentation/master/images/Virtual_Machine/虚拟机.png)
+![Flowchart of ORGON Virtual Machine](https://raw.githubusercontent.com/orgonprotocol/documentation/master/images/Virtual_Machine/虚拟机.png)
 
 The above flowchart shows how TVM works:
 Compilation of ORGON smart contract→execution and computing engines of VM→Interoperation service layer for external interfaces.
@@ -64,13 +64,13 @@ Contract compilation address: [https://remix.ethereum.org](https://remix.ethereu
 ```text
 pragma solidity^0.4.11;
 
-    contract Tron {
-            uint256 tron;
+    contract Orgon {
+            uint256 orgon;
             constructor() public { }
 
 
             function set(uint256 number) public returns(bool){
-                tron = number;
+                orgon = number;
                 return true;
             }
         }

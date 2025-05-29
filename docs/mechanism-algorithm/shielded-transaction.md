@@ -51,7 +51,7 @@ Parameters:
         "note":
         {
              "value": 500000000,
-             "payment_address": "ztron1jld8fmvujrz2vgkc867zuwklmewy4ypw0wtwgweqs2paee0uhc8f3azy90el770arksa2kunl02",
+             "payment_address": "zorgon1jld8fmvujrz2vgkc867zuwklmewy4ypw0wtwgweqs2paee0uhc8f3azy90el770arksa2kunl02",
              "rcm": "723053bcbfecdf5da66c18ab0376476ef308c61b7abe891b2c01e903bcb87c0e"
         }
     }]
@@ -108,7 +108,7 @@ Parameter:
         {
             "note": {
                 "value": 90000000,
-                "payment_address": "ztron1jld8fmvujrz2vgkc867zuwklmewy4ypw0wtwgweqs2paee0uhc8f3azy90el770arksa2kunl02",
+                "payment_address": "zorgon1jld8fmvujrz2vgkc867zuwklmewy4ypw0wtwgweqs2paee0uhc8f3azy90el770arksa2kunl02",
                 "rcm": "e48836a3cfae0e1b27b5230460199b46ebd88ad650fa9db5ac1eafb20b516302"
             },
 
@@ -123,7 +123,7 @@ Parameter:
         {
             "note": {
                 "value": 80000000,
-                "payment_address": "ztron1wd46s6fwmz99gulqpxul6zffqtevzfpl93ng3s5834fhwf6e7w5l6zmjhmpvtwsc4wxa7dusmvr",
+                "payment_address": "zorgon1wd46s6fwmz99gulqpxul6zffqtevzfpl93ng3s5834fhwf6e7w5l6zmjhmpvtwsc4wxa7dusmvr",
                 "rcm": "ccced07d36641fc93cba33cddda7064cb82f6962a0bdf15a4240a4a742770e03"
             }
         }
@@ -177,7 +177,7 @@ Parameter:
         {
             "note": {
                 "value": 80000000,
-                "payment_address": "ztron1wd46s6fwmz99gulqpxul6zffqtevzfpl93ng3s5834fhwf6e7w5l6zmjhmpvtwsc4wxa7dusmvr",
+                "payment_address": "zorgon1wd46s6fwmz99gulqpxul6zffqtevzfpl93ng3s5834fhwf6e7w5l6zmjhmpvtwsc4wxa7dusmvr",
                 "rcm": "ccced07d36641fc93cba33cddda7064cb82f6962a0bdf15a4240a4a742770e03"
             },
             "alpha": "3ad5406efd6efcd81d27696d5f91efc07ba5c98ea6fb0f787b93e557b51df405",

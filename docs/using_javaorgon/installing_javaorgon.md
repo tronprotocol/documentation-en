@@ -13,15 +13,15 @@ $ git clone https://github.com/alexozerov/java-orgon.git
 $ git checkout -t origin/master
 ```
 
-Then, compile the java-orgon source code by executing the following command. The parameter `-x test` means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the `java-tron/build/libs/` directory.
+Then, compile the java-orgon source code by executing the following command. The parameter `-x test` means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the `java-orgon/build/libs/` directory.
 
 ```
-$ cd java-tron
+$ cd java-orgon
 $ ./gradlew clean build -x test
 ```
 
 ## Startup a java-orgon Node
-You can choose different configuration files to connect java-orgon nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/alexozerov/tron-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/alexozerov/tron-deployment).
+You can choose different configuration files to connect java-orgon nodes to different networks. The mainnet configuration file is: [main_net_config.conf](https://github.com/alexozerov/orgon-deployment/blob/master/main_net_config.conf), other network configuration files can be found [here](https://github.com/alexozerov/orgon-deployment).
 
 
 ### Startup a fullnode

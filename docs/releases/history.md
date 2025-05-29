@@ -86,7 +86,7 @@ GreatVoyage-4.7.7(Epicurus) introduces multiple important optimizations and upda
 ### Core
 #### 1. Migrate `pow` operation from java.lang.Math to java.lang.StrictMath for cross-platform computational consistency
 
-In order to enable java-tron to support multiple platforms and be compatible with new JDK versions, the Epicurus version switches the floating-point power operation library from `java.lang.Math` to `java.lang.StrictMath` to ensure consistency in cross-platform calculations.
+In order to enable java-orgon to support multiple platforms and be compatible with new JDK versions, the Epicurus version switches the floating-point power operation library from `java.lang.Math` to `java.lang.StrictMath` to ensure consistency in cross-platform calculations.
 
 Note: This optimization is the No. 87 parameter of the ORGON network. After Epicurus is deployed, it is disabled by default and can be enabled through governance voting.
 
@@ -98,7 +98,7 @@ Source Code: [https://github.com/alexozerov/java-orgon/pull/6098](https://github
 ### Other Changes
 #### 1. Optimize event subscription processing logic
 
-java-tron provides event subscription service, and developers can subscribe to specific events from node through event plugin. For block events, when a node receives a new block, if it successfully verifies and processes the block, it will save the block data in the memory database. At the same time, if there is a new solidified block, the solidified block data will be written to the disk database. If the node deployer subscribes to block events, after the node completing the above block processing steps, the event sending related logic will be performed, that is, the latest block event and the latest solidified block event will be sent to the event plugin. However, in previous versions of Epicurus, block processing and event sending used the same exception capture logic: the newly received block data was removed from the memory database and an exception was thrown. This would result in the new block data being deleted when the block processing was normal but an exception occurred during event sending, which might temporarily affect block synchronization.
+java-orgon provides event subscription service, and developers can subscribe to specific events from node through event plugin. For block events, when a node receives a new block, if it successfully verifies and processes the block, it will save the block data in the memory database. At the same time, if there is a new solidified block, the solidified block data will be written to the disk database. If the node deployer subscribes to block events, after the node completing the above block processing steps, the event sending related logic will be performed, that is, the latest block event and the latest solidified block event will be sent to the event plugin. However, in previous versions of Epicurus, block processing and event sending used the same exception capture logic: the newly received block data was removed from the memory database and an exception was thrown. This would result in the new block data being deleted when the block processing was normal but an exception occurred during event sending, which might temporarily affect block synchronization.
 
 The Epicurus version optimizes the event subscription processing logic and performs separate exception capture on the block event sending logic. When an exception occurs during event sending, an error log is output and the node exits, so that the node deployer can understand the node abnormality in time and ensure the integrity of event acquisition.
 
@@ -134,7 +134,7 @@ The GreatVoyage-4.7.6(Anaximander) introduces several important optimizations an
 ### Other Changes
 #### 1. Optimize the statistical logic of node HTTP request monitoring metric
 
-java-tron supports node monitoring and provides various metrics data. Anaximander optimizes the statistical logic of node HTTP request monitoring metric to ensure data consistency during concurrent access by multiple threads when counting request data from each mapping address.
+java-orgon supports node monitoring and provides various metrics data. Anaximander optimizes the statistical logic of node HTTP request monitoring metric to ensure data consistency during concurrent access by multiple threads when counting request data from each mapping address.
 
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5920](https://github.com/alexozerov/java-orgon/pull/5920)
 
@@ -321,7 +321,7 @@ The Bias version bumps the jetty dependency library to v9.4.53.v20231009.
 
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5571](https://github.com/alexozerov/java-orgon/pull/5571)
 #### 4. Refactor Gradle dependencies
-The java-tron code is divided into multiple modules, each module has its own dependencies, but currently there are situations where dependencies are declared multiple times in multiple modules. The Bias version reconstructs the Gradle dependencies of each module and deletes duplicate dependency statements, making the code dependencies clearer and enabling unified management of dependencies to reduce maintenance costs.
+The java-orgon code is divided into multiple modules, each module has its own dependencies, but currently there are situations where dependencies are declared multiple times in multiple modules. The Bias version reconstructs the Gradle dependencies of each module and deletes duplicate dependency statements, making the code dependencies clearer and enabling unified management of dependencies to reduce maintenance costs.
 
 
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5625](https://github.com/alexozerov/java-orgon/pull/5625)
@@ -379,7 +379,7 @@ Source Code: [https://github.com/alexozerov/java-orgon/pull/5624](https://github
 
 
 #### 11. Add synchronization control when writing to ZeroMQ
-java-tron supports subscribing to events through the built-in ZeroMQ message queue. However, when multiple threads concurrently send events to the ZeroMQ, write exception errors may occur. The Bias version adds synchronization control when writing to ZeroMQ, ensuring the order of concurrent access between threads.
+java-orgon supports subscribing to events through the built-in ZeroMQ message queue. However, when multiple threads concurrently send events to the ZeroMQ, write exception errors may occur. The Bias version adds synchronization control when writing to ZeroMQ, ensuring the order of concurrent access between threads.
 
 
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5536](https://github.com/alexozerov/java-orgon/pull/5536)
@@ -498,7 +498,7 @@ In previous versions of Chilon, when the service is shut down, abnormal errors m
 due to the resource release order issue. The Chilon version optimizes the service shutdown logic. When the `kill -15` command is used to shut down the service, it can ensure the accuracy of the release sequence of various types of resources so that the node can exit normally.
 
 
-Source Code: [https://github.com/alexozerov/java-orgon/pull/5410](ttps://github.com/tronprotocol/java-tron/pull/5410)  [https://github.com/alexozerov/java-orgon/pull/5425 ](ttps://github.com/tronprotocol/java-tron/pull/5425) [https://github.com/alexozerov/java-orgon/pull/5421](https://github.com/alexozerov/java-orgon/pull/5421)  [https://github.com/alexozerov/java-orgon/pull/5429 ](https://github.com/alexozerov/java-orgon/pull/5429) [https://github.com/alexozerov/java-orgon/pull/5447 ](https://github.com/alexozerov/java-orgon/pull/5447)
+Source Code: [https://github.com/alexozerov/java-orgon/pull/5410](ttps://github.com/orgonprotocol/java-orgon/pull/5410)  [https://github.com/alexozerov/java-orgon/pull/5425 ](ttps://github.com/orgonprotocol/java-orgon/pull/5425) [https://github.com/alexozerov/java-orgon/pull/5421](https://github.com/alexozerov/java-orgon/pull/5421)  [https://github.com/alexozerov/java-orgon/pull/5429 ](https://github.com/alexozerov/java-orgon/pull/5429) [https://github.com/alexozerov/java-orgon/pull/5447 ](https://github.com/alexozerov/java-orgon/pull/5447)
 
 
 ### API
@@ -512,7 +512,7 @@ Source Code: [https://github.com/alexozerov/java-orgon/pull/5332](https://github
 
 #### 2. Provide uniform rate limitation configuration for all HTTP and gRPC APIs
 
-java-tron supports interface rate limiting. The default qps (queries per second) of each interface is 1000. Node deployers can also limit the traffic of a particular interface. However, in previous versions of Chilon, it was not supported to modify the default qps of each interface, that way, If you want to configure the default qps of each interface to 2000, you need to configure the current limit for each interface respectively. The Chilon version adds a new default interface rate limit configuration `rate.limiter.global.api.qps`. With this configuration, users can change the rate limit of all interfaces, simplifying the configuration complexity.
+java-orgon supports interface rate limiting. The default qps (queries per second) of each interface is 1000. Node deployers can also limit the traffic of a particular interface. However, in previous versions of Chilon, it was not supported to modify the default qps of each interface, that way, If you want to configure the default qps of each interface to 2000, you need to configure the current limit for each interface respectively. The Chilon version adds a new default interface rate limit configuration `rate.limiter.global.api.qps`. With this configuration, users can change the rate limit of all interfaces, simplifying the configuration complexity.
 
 ```
 rate.limiter.global.api.qps = 1000
@@ -577,7 +577,7 @@ Source Code: [https://github.com/alexozerov/java-orgon/pull/5441](https://github
 
 #### 4. Obtain external IP through Libp2p
 
-In previous versions of Chilon, when a node starts, the external IP address would be obtained repeatedly, and java-tron and lib2p2 each perform the IP acquisition once. To improve the node startup speed, Chilon optimizes the external IP acquisition logic. When a node starts, it directly calls the libp2p module to obtain the external IP, and it can directly assign the external IP to libp2p and repeated obtaining is avoided.
+In previous versions of Chilon, when a node starts, the external IP address would be obtained repeatedly, and java-orgon and lib2p2 each perform the IP acquisition once. To improve the node startup speed, Chilon optimizes the external IP acquisition logic. When a node starts, it directly calls the libp2p module to obtain the external IP, and it can directly assign the external IP to libp2p and repeated obtaining is avoided.
 
 
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5407](https://github.com/alexozerov/java-orgon/pull/5407)
@@ -629,7 +629,7 @@ Please see the details below.
 
 ### Core
 #### 1. Upgrade Libp2p to v1.2.0
-Libp2p is a Java version open-source P2P protocol framework developed by the java-tron core developers and anyone can develop distributed applications with Libp2p, as the underlying P2P network of java-tron is implemented based on Libp2p. In order to further improve the underlying network performance of java-tron, Periander upgrades the Libp2p v0.1.4 with the v1.2.0 version.
+Libp2p is a Java version open-source P2P protocol framework developed by the java-orgon core developers and anyone can develop distributed applications with Libp2p, as the underlying P2P network of java-orgon is implemented based on Libp2p. In order to further improve the underlying network performance of java-orgon, Periander upgrades the Libp2p v0.1.4 with the v1.2.0 version.
 
 Libp2p v1.2.0 has the following new features：
 
@@ -870,7 +870,7 @@ In versions previous to Periander, for contracts created by the `create2` instru
 
 ### Other Changes
 #### 1. Optimize event forwarding logic in event subscription
-java-tron supports event subscription. In the previous version of Periander, if the solidified transaction event is subscribed, then when the node receives a new block, it would send the transaction information in the latest solidified block to the subscriber. If the network of most SR nodes is unstable, making them unable to synchronize and produce blocks in time, in this case, according to the calculation logic of the latest solidified block of the node, the height of the latest solidified block will not be guaranteed to increase by one each time. So that the latest obtained solidified block forwarded to the subscriber during event forwarding may not be the block next to the one that was forwarded the last time, resulting in data missing.
+java-orgon supports event subscription. In the previous version of Periander, if the solidified transaction event is subscribed, then when the node receives a new block, it would send the transaction information in the latest solidified block to the subscriber. If the network of most SR nodes is unstable, making them unable to synchronize and produce blocks in time, in this case, according to the calculation logic of the latest solidified block of the node, the height of the latest solidified block will not be guaranteed to increase by one each time. So that the latest obtained solidified block forwarded to the subscriber during event forwarding may not be the block next to the one that was forwarded the last time, resulting in data missing.
 
 Since the conditions for this problem are very strict, it will basically not appear in the main network. However, to avoid this problem occurring in the test network or private chain, the Periander version optimizes the event forwarding logic in the event subscription and records the height of the solidified block forwarded last time, so when the node receives a new block, it will sequentially send the blocks after the last forwarded solidified block to the subscribers, ensuring the integrity of data forwarding.
 
@@ -879,7 +879,7 @@ Since the conditions for this problem are very strict, it will basically not app
 
 #### 2. Support dynamic loading according to node.active and node.passive
 
-java-tron supports configuring trusted nodes for the local node with `node.active` and `node.passive`. The local node will actively connect to the nodes in `node.active` and accept the connection request of the nodes in `node.passive`. By configuring trusted nodes, you can solve the problem that the node has no valid connections or the number of connections is rather small. However, in the previous version of Periander, you need to stop the node first to change the configuration file, and then restart the node after the update is completed. Restarting the node has a certain impact on some applications. Therefore, starting from the Periander version, the dynamic loading of `node.active` and `node.passive` configuration items are supported, so that the change of the trusted node can be completed without restarting the local node, which improves the online stability of the node.
+java-orgon supports configuring trusted nodes for the local node with `node.active` and `node.passive`. The local node will actively connect to the nodes in `node.active` and accept the connection request of the nodes in `node.passive`. By configuring trusted nodes, you can solve the problem that the node has no valid connections or the number of connections is rather small. However, in the previous version of Periander, you need to stop the node first to change the configuration file, and then restart the node after the update is completed. Restarting the node has a certain impact on some applications. Therefore, starting from the Periander version, the dynamic loading of `node.active` and `node.passive` configuration items are supported, so that the change of the trusted node can be completed without restarting the local node, which improves the online stability of the node.
 
 
 This function is disabled by default and needs to be enabled by modifying the following node configuration items.
@@ -966,7 +966,7 @@ Please see the details below.
 
 ### API
 #### 1. Remove APIs involving sensitive information
-Versions prior to GreatVoyage-v4.7.1.1 (Pittacus) provide APIs related to signature and address generation. Since the input or output of these APIs contains private keys, there are security risks in transmission in the network. At present, public API service providers in the ORGON ecosystem have closed these APIs, such as TronGrid, Anker, GetBlock, etc. In the developer document, these APIs have already been tagged as obsolete and it is recommended to sign transactions and create addresses offline using SDK.
+Versions prior to GreatVoyage-v4.7.1.1 (Pittacus) provide APIs related to signature and address generation. Since the input or output of these APIs contains private keys, there are security risks in transmission in the network. At present, public API service providers in the ORGON ecosystem have closed these APIs, such as OrgonGate, Anker, GetBlock, etc. In the developer document, these APIs have already been tagged as obsolete and it is recommended to sign transactions and create addresses offline using SDK.
 
 GreatVoyage-v4.7.1.1(Pittacus) officially removes these APIs:
 
@@ -997,7 +997,7 @@ TIP: [https://github.com/alexozerov/tips/issues/534](https://github.com/alexozer
 Source Code: [https://github.com/alexozerov/java-orgon/pull/5096](https://github.com/alexozerov/java-orgon/pull/5096)
 
 #### 2. Optimize resource delegate information query interface
-The `/wallet/getdelegatedresourcev2` interface can query the resources that an address delegates to another address, and [resource delegate](https://developers.tron.network/reference/delegateresource-1) can choose whether to be locked. For 2 resource delegation to the same address, one of them may be locked, and the other may be not locked, so `/wallet/getdelegatedresourcev2` interface will return two sets of information: locked resource delegation data and unlocked resource delegation data. In versions prior to GreatVoyage-v4.7.1.1 (Pittacus), if all the resource delegation by one address to another address are locked, then the non-locked resource delegation data will be 0. In this case, the interface may also return non-locked resource delegation data (0 value which is meaningless). The GreatVoyage-v4.7.1.1 (Pittacus) version optimizes the `/wallet/getdelegatedresourcev2` interface, and only returns resource delegation data with non-zero value, making the returned data more concise and clear.
+The `/wallet/getdelegatedresourcev2` interface can query the resources that an address delegates to another address, and [resource delegate](https://developers.orgon.network/reference/delegateresource-1) can choose whether to be locked. For 2 resource delegation to the same address, one of them may be locked, and the other may be not locked, so `/wallet/getdelegatedresourcev2` interface will return two sets of information: locked resource delegation data and unlocked resource delegation data. In versions prior to GreatVoyage-v4.7.1.1 (Pittacus), if all the resource delegation by one address to another address are locked, then the non-locked resource delegation data will be 0. In this case, the interface may also return non-locked resource delegation data (0 value which is meaningless). The GreatVoyage-v4.7.1.1 (Pittacus) version optimizes the `/wallet/getdelegatedresourcev2` interface, and only returns resource delegation data with non-zero value, making the returned data more concise and clear.
 
 
 
@@ -1101,7 +1101,7 @@ Source code: [https://github.com/alexozerov/java-orgon/pull/4977](https://github
 
 ## GreatVoyage-v4.7.0.1(Aristotle)
 
-GreatVoyage-v4.7.0.1 (Aristotle) introduces several important optimizations and updates. The new stake mechanism, Stake 2.0, improves the flexibility of the resource model and the stability of the stake system; the dynamic energy model helps to promote ecologically balanced development; the secondary cache mechanism optimizes the database reading performance, improves transaction execution performance, and expands the network throughput; uses the libp2p library as the java-tron P2P network module to make the code structure clearer and reduce code coupling; optimizes the log output, redirect the logs of LevelDB and RocksDB to java-tron log files; integrate more tools and functions into the ‘Toolkit.jar’ toolbox to bring users a more convenient development experience.
+GreatVoyage-v4.7.0.1 (Aristotle) introduces several important optimizations and updates. The new stake mechanism, Stake 2.0, improves the flexibility of the resource model and the stability of the stake system; the dynamic energy model helps to promote ecologically balanced development; the secondary cache mechanism optimizes the database reading performance, improves transaction execution performance, and expands the network throughput; uses the libp2p library as the java-orgon P2P network module to make the code structure clearer and reduce code coupling; optimizes the log output, redirect the logs of LevelDB and RocksDB to java-orgon log files; integrate more tools and functions into the ‘Toolkit.jar’ toolbox to bring users a more convenient development experience.
 
 Please see the details below.
 
@@ -1134,7 +1134,7 @@ The new stake mechanism is a dynamic parameter in the ORGON network. After Great
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4838](https://github.com/alexozerov/java-orgon/pull/4838)
 
 #### 2.Enhance database query performance
-java-tron uses memory and disk databases for data storage. The solidified block data will be stored in multiple disk databases, and the unsolidified data will be stored in memory. When a block is solidified, the corresponding in-memory data is written to the disk databases. When querying data, first query the data in memory, if not found, then query the disk database. The disk database query is time-consuming. Therefore, the GreatVoyage-v4.7.0.1 (Aristotle) version optimizes the database query performance and adds a secondary cache before performing the underlying disk database operation. When data is written to the disk, the data is also written to the second-level cache. When the disk database needs to be queried, if the data to be queried exists in the second-level cache, it will be returned directly without querying the disk database. The second-level cache reduces the number of queries to the disk database, improves transaction execution speed, and improves network throughput.
+java-orgon uses memory and disk databases for data storage. The solidified block data will be stored in multiple disk databases, and the unsolidified data will be stored in memory. When a block is solidified, the corresponding in-memory data is written to the disk databases. When querying data, first query the data in memory, if not found, then query the disk database. The disk database query is time-consuming. Therefore, the GreatVoyage-v4.7.0.1 (Aristotle) version optimizes the database query performance and adds a secondary cache before performing the underlying disk database operation. When data is written to the disk, the data is also written to the second-level cache. When the disk database needs to be queried, if the data to be queried exists in the second-level cache, it will be returned directly without querying the disk database. The second-level cache reduces the number of queries to the disk database, improves transaction execution speed, and improves network throughput.
 
 
 
@@ -1152,8 +1152,8 @@ When a node processes a block, it will use the transaction hash value multiple t
 
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4792](https://github.com/alexozerov/java-orgon/pull/4792)
 
-#### 5. Add `libp2p` module as java-tron p2p network protocol implementation
-Starting from GreatVoyage-v4.7.0.1 (Aristotle), the libp2p library will be directly used as the P2P network module of java-tron, instead of using the original p2p network stack, so that the code structure is clearer, the code coupling is lower, and is easy to maintain.
+#### 5. Add `libp2p` module as java-orgon p2p network protocol implementation
+Starting from GreatVoyage-v4.7.0.1 (Aristotle), the libp2p library will be directly used as the P2P network module of java-orgon, instead of using the original p2p network stack, so that the code structure is clearer, the code coupling is lower, and is easy to maintain.
 
 
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4791](https://github.com/alexozerov/java-orgon/pull/4791)
@@ -1207,7 +1207,7 @@ The dynamic energy model is a dynamic parameter in the ORGON network. After Grea
 
 #### 3. Optimize the return value of the `chainId` opcode
 
-Starting from the GreatVoyage-v4.7.0.1 (Aristotle) version, the return value of the `chainid` opcode is changed from the block hash of the genesis block to the last four bytes of the block hash of the genesis block, keeping the return value of the chainid opcode consistent with the return value of the java-tron JSON-RPC `eth_chainId` API.
+Starting from the GreatVoyage-v4.7.0.1 (Aristotle) version, the return value of the `chainid` opcode is changed from the block hash of the genesis block to the last four bytes of the block hash of the genesis block, keeping the return value of the chainid opcode consistent with the return value of the java-orgon JSON-RPC `eth_chainId` API.
 
 The return value optimization of the chainId opcode is a dynamic parameter of the ORGON network. It is disabled by default after GreatVoyage-v4.7.0.1 (Aristotle) is deployed, and can be enabled by initiating a proposal.
 
@@ -1269,7 +1269,7 @@ curl --location --request POST 'https://api.quasarex.io/wallet/estimateenergy' \
 
 ### Other Changes
 #### 1. Optimize Gradle compilation parameters
-GreatVoyage-v4.7.0.1(Aristotle) optimizes the compiling parameters of Gradle, configuring JVM minimum heap size to 1GB, which improves the compilation speed of java-tron.
+GreatVoyage-v4.7.0.1(Aristotle) optimizes the compiling parameters of Gradle, configuring JVM minimum heap size to 1GB, which improves the compilation speed of java-orgon.
 
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4837](https://github.com/alexozerov/java-orgon/pull/4837)
 
@@ -1298,7 +1298,7 @@ Therefore, starting from the GreatVoyage-v4.7.0.1 (Aristotle) version, the numbe
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4834](https://github.com/alexozerov/java-orgon/pull/4834)
 
 #### 6. Toolkit.jar Integration
-`DBConvert.jar` is a database conversion tool, which can convert LevelDB into RocksDB; `LiteFullNodeTool.jar` is a light FullNode tool, which can convert FullNode data into LiteFullNode data. Starting from GreatVoyage-v4.7.0.1 (Aristotle), `DBConvert.jar` and `LiteFullNodeTool.jar` have been integrated into the `Toolkit.jar` toolbox, and a database copy function is added which can realize fast Node database copy. In the future, the tools around java-tron will be gradually integrated into the `Toolkit.jar` toolbox in order to facilitate tool maintenance and developer use. The commands for using the new functions of the `Toolkit.jar` toolbox are as follows:
+`DBConvert.jar` is a database conversion tool, which can convert LevelDB into RocksDB; `LiteFullNodeTool.jar` is a light FullNode tool, which can convert FullNode data into LiteFullNode data. Starting from GreatVoyage-v4.7.0.1 (Aristotle), `DBConvert.jar` and `LiteFullNodeTool.jar` have been integrated into the `Toolkit.jar` toolbox, and a database copy function is added which can realize fast Node database copy. In the future, the tools around java-orgon will be gradually integrated into the `Toolkit.jar` toolbox in order to facilitate tool maintenance and developer use. The commands for using the new functions of the `Toolkit.jar` toolbox are as follows:
 
 
 
@@ -1366,7 +1366,7 @@ The optimized reward algorithm is a ORGON network parameter and is disabled by d
 
 #### 4. Upgrade checkpoint mechanism to v2 in database module
 
-The Checkpoint is a recovery mechanism established to prevent database damage caused by the exceptional shutdown. java-tron uses memory and multi-disk databases for data storage. The data of the solidified block will be stored in multiple business databases. Unsolidified data is stored in the memory. When a block is solidified, the corresponding memory data will be written to relevant databases. However, since the writing to multiple business databases is not an atomic operation, if there is an unexpected downtime due to some reason, then all the data in the block may not be able to be written to the disk, and the node will not be able to restart due to database corruption.
+The Checkpoint is a recovery mechanism established to prevent database damage caused by the exceptional shutdown. java-orgon uses memory and multi-disk databases for data storage. The data of the solidified block will be stored in multiple business databases. Unsolidified data is stored in the memory. When a block is solidified, the corresponding memory data will be written to relevant databases. However, since the writing to multiple business databases is not an atomic operation, if there is an unexpected downtime due to some reason, then all the data in the block may not be able to be written to the disk, and the node will not be able to restart due to database corruption.
 
 Therefore, before the memory data is written to the disk, a checkpoint would be created. The checkpoint contains all the data that needs to be written to each business database this time. After the checkpoint is created, first writes the checkpoint data to an independent Checkpoint database, and then performs the operation of writing the business database, and the Checkpoint database always retains the latest solidified block data. If the business database is damaged due to system shutdown, after the node restarts, the business database will be recovered through the data previously saved in the checkpoint database.
 
@@ -1389,7 +1389,7 @@ The GreatVoyage-v4.6.0 (Socrates) optimizes the priority of block production log
 
 
 #### 6.Optimize the Kademlia algorithm for the network module
-The java-tron node ID is a random number, which will be regenerated every time the node is started. In the implementation of the Kademlia algorithm of java-tron, the distance of the node will be calculated according to the node ID, and then the node information will be put into the corresponding K bucket according to the distance. If the node in the K bucket is restarted for some reason, the node ID will change. When it is detected that the node is offline again, the distance calculated according to the latest node ID has been unable to locate the original K bucket, therefore it is not able to delete the node from the bucket. Too many such nodes restarted will cause too much invalid data to be stored in the K bucket of the node.
+The java-orgon node ID is a random number, which will be regenerated every time the node is started. In the implementation of the Kademlia algorithm of java-orgon, the distance of the node will be calculated according to the node ID, and then the node information will be put into the corresponding K bucket according to the distance. If the node in the K bucket is restarted for some reason, the node ID will change. When it is detected that the node is offline again, the distance calculated according to the latest node ID has been unable to locate the original K bucket, therefore it is not able to delete the node from the bucket. Too many such nodes restarted will cause too much invalid data to be stored in the K bucket of the node.
 
 Therefore, the GreatVoyage-v4.6.0 (Socrates) optimizes the Kademlia algorithm, and uses a hash table to record the discovered nodes. The distance of a node is only calculated once when it is written into the K bucket for the first time and is assigned to the ‘distance’ field of the node, and then the node is added to the hash table. In the future, the node distance will be obtained directly through this field. Even if the node ID changes after the node is restarted, the distance of the node in the Hash table will not be updated. When the node is detected to be offline, the corresponding node can be found from the hash table according to the node IP, and then the distance to the node can be obtained through the node distance field, at last the node information can be deleted from the K bucket.
 
@@ -1398,7 +1398,7 @@ Therefore, the GreatVoyage-v4.6.0 (Socrates) optimizes the Kademlia algorithm, a
 
 ### Other Changes
 #### 1.  Merge ArchiveManifest.jar into Toolkit.jar
-ArchiveManifest.jar is an independent LevelDB startup optimization tool, which can optimize the file size of LevelDB manifest, thereby reducing memory usage and greatly improving node startup speed. Starting from the GreatVoyage-v4.6.0 (Socrates), the ArchiveManifest.jar tool has been integrated into the Toolkit.jar. In the future, all the tools around java-tron will be gradually integrated into the Toolkit.jar toolbox to facilitate tool maintenance and developer use.
+ArchiveManifest.jar is an independent LevelDB startup optimization tool, which can optimize the file size of LevelDB manifest, thereby reducing memory usage and greatly improving node startup speed. Starting from the GreatVoyage-v4.6.0 (Socrates), the ArchiveManifest.jar tool has been integrated into the Toolkit.jar. In the future, all the tools around java-orgon will be gradually integrated into the Toolkit.jar toolbox to facilitate tool maintenance and developer use.
 
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4603](https://github.com/alexozerov/java-orgon/pull/4603)
 
@@ -1415,7 +1415,7 @@ GreatVoyage-v4.6.0(Socrates) adds ‘help’ command line options to check all p
 $ java -jar FullNode.jar --help
 
 Name:
-	FullNode - the java-tron command line interface
+	FullNode - the java-orgon command line interface
 
 Usage: java -jar FullNode.jar [options] [seedNode <seedNode> ...]
 
@@ -1446,7 +1446,7 @@ VIRTUAL MACHINE OPTIONS:
 
 
 #### 4. Optimize LiteFullNodeTool.jar
-LiteFullNodeTool.jar is a light node tool of java-tron. Its main function is to convert the fullnode database into a light node database. GreatVoyage-v4.6.0 (Socrates) optimizes the tool and improves the convenience and stability of the tool.
+LiteFullNodeTool.jar is a light node tool of java-orgon. Its main function is to convert the fullnode database into a light node database. GreatVoyage-v4.6.0 (Socrates) optimizes the tool and improves the convenience and stability of the tool.
 
 * Source code: [https://github.com/alexozerov/java-orgon/pull/4607](https://github.com/alexozerov/java-orgon/pull/4607)
 
@@ -1667,7 +1667,7 @@ Source Code：https://github.com/alexozerov/java-orgon/pull/4349
 
 
 ## GreatVoyage-4.4.4(Plotinus)
-The GreatVoyage-v4.4.4 (Plotinus) version introduces several important optimization updates, which reduces the node memory usage; speeds up node startup; Optimized network module, block production threads, improve the stability of nodes; Improved java-tron upgrade mechanism achieves more efficient decentralized governance; TVM supports multi-version program executors, which helps make it more compatible with EVM, brings users a more convenient development experience, and helps further flourish the ORGON ecosystem.
+The GreatVoyage-v4.4.4 (Plotinus) version introduces several important optimization updates, which reduces the node memory usage; speeds up node startup; Optimized network module, block production threads, improve the stability of nodes; Improved java-orgon upgrade mechanism achieves more efficient decentralized governance; TVM supports multi-version program executors, which helps make it more compatible with EVM, brings users a more convenient development experience, and helps further flourish the ORGON ecosystem.
 
 ### Core
 #### 1. Optimize node startup time
@@ -1720,8 +1720,8 @@ The GreatVoyage-v4.4.4(Plotinus) version optimizes the network service shutdown 
 Source Code：https://github.com/alexozerov/java-orgon/pull/4220
 
 
-#### 3. improve the java-tron upgrade mechenism
-For upgrade mechanism of java-tron,Before the GreatVoyage-v4.4.4 (Plotinus) version,all 27 super representative nodes need to complete the code upgrade, ORGON network can be upgraded to the new version,ORGON is a completely decentralized governance network,Sometimes the 27 super representative nodes cannot complete the code upgrade within a certain period of time, making the version upgrade process slow.In order to achieve more efficient decentralized governance, in GreatVoyage-v4.4.4 (Plotinus), the upgrade mechanism of java-tron has been improved, only 22 super representative nodes are needed to complete the code upgrade, and the ORGON network can complete the upgrade.
+#### 3. improve the java-orgon upgrade mechenism
+For upgrade mechanism of java-orgon,Before the GreatVoyage-v4.4.4 (Plotinus) version,all 27 super representative nodes need to complete the code upgrade, ORGON network can be upgraded to the new version,ORGON is a completely decentralized governance network,Sometimes the 27 super representative nodes cannot complete the code upgrade within a certain period of time, making the version upgrade process slow.In order to achieve more efficient decentralized governance, in GreatVoyage-v4.4.4 (Plotinus), the upgrade mechanism of java-orgon has been improved, only 22 super representative nodes are needed to complete the code upgrade, and the ORGON network can complete the upgrade.
 
 Source Code：https://github.com/alexozerov/java-orgon/pull/4218
 
@@ -1763,7 +1763,7 @@ Source Code：https://github.com/alexozerov/java-orgon/pull/4154
 
 
 ## GreatVoyage-4.4.0(Rousseau)
-The GreatVoyage-v4.4.0 (Rousseau) version introduces several important updates: the optimization of block broadcasting will let the block be broadcast to the entire network faster; the query performance optimization of `dynamic store` and the optimization of database parameters will be greatly improved Block processing speed, thereby improving the performance of java-tron; API customization in FullNode makes node configuration more flexible for different application scenarios; TVM will also be better compatible with EVM and adapt to the Ethereum London upgrade, the new JSON-RPC API will bring developers a better development experience, help developers to join the ORGON ecosystem more easily, and promote the prosperity of the ORGON ecosystem.
+The GreatVoyage-v4.4.0 (Rousseau) version introduces several important updates: the optimization of block broadcasting will let the block be broadcast to the entire network faster; the query performance optimization of `dynamic store` and the optimization of database parameters will be greatly improved Block processing speed, thereby improving the performance of java-orgon; API customization in FullNode makes node configuration more flexible for different application scenarios; TVM will also be better compatible with EVM and adapt to the Ethereum London upgrade, the new JSON-RPC API will bring developers a better development experience, help developers to join the ORGON ecosystem more easily, and promote the prosperity of the ORGON ecosystem.
 
 ### Core
 #### 1. Optimize the block broadcasting
@@ -1820,7 +1820,7 @@ Source Code：https://github.com/alexozerov/java-orgon/pull/4032
 
 ### API
 #### 1. Support Ethereum compatible JSON-RPC API
-Starting from the GreatVoyage-v4.4.0 (Rousseau) version, the FullNode supports JSON-RPC APIs. For details, please refer to: https://developers.tron.network/reference#json-rpc-api
+Starting from the GreatVoyage-v4.4.0 (Rousseau) version, the FullNode supports JSON-RPC APIs. For details, please refer to: https://developers.orgon.network/reference#json-rpc-api
 
 Source Code：https://github.com/alexozerov/java-orgon/pull/4046
 
@@ -2152,7 +2152,7 @@ After the new version, SR and SRP can initiate a voting request to modify MAX_FE
 - Source code：  [#3534](https://github.com/alexozerov/java-orgon/pull/3534)
 
 ### III. Others Changes
-###1、Use the jitpack repository to provide dependency support and make it easy for developers to use java-tron as a dependency for their projects.
+###1、Use the jitpack repository to provide dependency support and make it easy for developers to use java-orgon as a dependency for their projects.
 
 - Source code: [#3554](https://github.com/alexozerov/java-orgon/pull/3554)
 
@@ -2281,11 +2281,11 @@ The specific business logic of the blockchain defined by the protocol includes:
 - the interface protocols that the blockchain provides to the external system or clients
 
 #### Consensus
-The consensus mechanism is an essential part of the blockchain. The ORGON blockchain chooses the DPoS as the core consensus mechanism and it has been running steadily for a long time. But replaceable consensus module is essential if we want to redefine the java-tron as the powerful infrastructure for building application-specific blockchains. The developers of blockchain should determine to choose the consensus mechanism that considered to be most suitable to the specific application scenario. The ultimate goal of the replaceable consensus module is that the consensus mechanism can be determined by configuring some necessary parameters. In addition, the developers can implement a customized consensus module as long as several essential interfaces implemented.
+The consensus mechanism is an essential part of the blockchain. The ORGON blockchain chooses the DPoS as the core consensus mechanism and it has been running steadily for a long time. But replaceable consensus module is essential if we want to redefine the java-orgon as the powerful infrastructure for building application-specific blockchains. The developers of blockchain should determine to choose the consensus mechanism that considered to be most suitable to the specific application scenario. The ultimate goal of the replaceable consensus module is that the consensus mechanism can be determined by configuring some necessary parameters. In addition, the developers can implement a customized consensus module as long as several essential interfaces implemented.
 
 #### Crypto
 Encryption is also one of the core modules of the blockchain. It is the foundation of the
-blockchain data security. such as public and private key deduction, transaction verification, zero-knowledge proof, etc. The java-tron abstracts the encryption module and supports the replacement of encryption algorithms. A suitable encryption algorithm can be chosen according to different business needs.
+blockchain data security. such as public and private key deduction, transaction verification, zero-knowledge proof, etc. The java-orgon abstracts the encryption module and supports the replacement of encryption algorithms. A suitable encryption algorithm can be chosen according to different business needs.
 
 #### Actuator
 Actuator is the core module used for handling various kinds of transactions. As you know, every transaction in the ORGON blockchain contains a contract. On a high level, there are two types of contracts in the ORGON blockchain, the system contract and the smart contract. A large number of applications are implemented by the smart contracts and ran in an internal virtual machine of the blockchain. Unfortunately, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. Customized actuators offer application developers a brand new way of development. They can choose to implant their application codes into the chain instead of running them on virtual machines.

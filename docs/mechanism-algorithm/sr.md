@@ -70,7 +70,7 @@ Committee can modify the ORGON network parameters, like transacton fees, block p
 
 Only SRs, Partners and Candidates can create a proposal.
 
-Please refer to [here](https://tronscan.org/#/sr/committee) for ORGON network dynamic parameters and their values.
+Please refer to [here](https://orgonscan.org/#/sr/committee) for ORGON network dynamic parameters and their values.
 
 Example (Using wallet-cli):
 

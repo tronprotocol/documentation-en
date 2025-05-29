@@ -11,10 +11,10 @@ java-orgon is a ORGON client implemented in Java, it provides completely open so
 * [Releases](releases/upgrade-instruction.md)
 
 
-For other ORGON related information, please visit the official website [tron.network](https://tron.network/index?lng=en) or the following resource links:
+For other ORGON related information, please visit the official website [orgon.network](https://orgon.network/index?lng=en) or the following resource links:
 
-* [ORGON Whitepaper](https://tron.network/static/doc/white_paper_v_2_0.pdf)
+* [ORGON Whitepaper](https://orgon.network/static/doc/white_paper_v_2_0.pdf)
 * [ORGON Improvement Proposals (TIPs)](https://github.com/alexozerov/tips)
-* [ORGON Developer Hub](https://developers.tron.network/)
+* [ORGON Developer Hub](https://developers.orgon.network/)
 
 

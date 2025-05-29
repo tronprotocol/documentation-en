@@ -109,17 +109,17 @@ node {
 ```
 
 ## Log and network connection verification
-The java-orgon  node log is `/logs/tron.log` in the java-orgon  installation directory. Under the java-orgon  installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
+The java-orgon  node log is `/logs/orgon.log` in the java-orgon  installation directory. Under the java-orgon  installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
 
 ```
-$ tail -f /logs/tron.log/
+$ tail -f /logs/orgon.log/
 ```
 
 You will see the below block synchronization logs if java-orgon  is running as expected.
 
 ```
 15:41:48.033 INFO  [nioEventLoopGroup-6-2] [DB](Manager.java:1208) pushBlock block number:76, cost/txs:13/0 false
-15:41:48.033 INFO  [nioEventLoopGroup-6-2] [net](TronNetDelegate.java:255) Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
+15:41:48.033 INFO  [nioEventLoopGroup-6-2] [net](OrgonNetDelegate.java:255) Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
 ```
 For the super representative's fullnode, you will see the following producing blocks log:
 
@@ -164,7 +164,7 @@ Returns：
     "totalFlow": 8735314
 }
 ```
-In order for users to interact with the ORGON network, the java-orgon  node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of `/wallet/getnowblock` queried from the local java-orgon  node. If they are equal, it means that the synchronization status of the local node is normal.
+In order for users to interact with the ORGON network, the java-orgon  node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Orgonscan and compare it with the result of `/wallet/getnowblock` queried from the local java-orgon  node. If they are equal, it means that the synchronization status of the local node is normal.
 
 ## Connection problems
 There are occasions when java-orgon  simply fails to connect to peers. The common reasons for this are:
@@ -178,6 +178,6 @@ There are occasions when java-orgon  simply fails to connect to peers. The commo
 
 It is often useful for developers to connect to private test networks rather than public testnets or ORGON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences.
 
-The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/alexozerov/tron-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (ORGON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
+The private chain network needs to configure the configuration item `node.p2p.version` in the [private chain configuration file](https://github.com/alexozerov/orgon-deployment/blob/master/private_net_config.conf) to a value which is not used by any other existing public network (ORGON mainnet, testnet). For detailed instructions on private chain construction, please refer to [Private Chain Network](private_network.md).
 
 

@@ -136,12 +136,12 @@ Need to convert ORGON's address while using in solidity (recommended):
 ```text
 /**
      *  @dev    convert uint256 (HexString add 0x at beginning) ORGON address to solidity address type
-     *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
+     *  @param  orgonAddress uint256 orgonAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
 */
 
-function convertFromTronInt(uint256 tronAddress) public view returns(address){
-        return address(tronAddress);
+function convertFromOrgonInt(uint256 orgonAddress) public view returns(address){
+        return address(orgonAddress);
 }
 ```
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
@@ -150,9 +150,9 @@ This is similar with the grammar of the conversion from other types converted to
 
 Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
 ```text
-function compareAddress(address tronAddress) public view returns (uint256){
-        // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
-        if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
+function compareAddress(address orgonAddress) public view returns (uint256){
+        // if (orgonAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
+        if (orgonAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
             return 1;
         } else {
             return 0;
@@ -176,8 +176,8 @@ If you want to use ORGON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeT
 ### Special Constants Differ from Ethereum
 
 #### Currency
-Like solidity supports ETH, ORGON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
-We recommend to use tron-studio instead of remix to build ORGON smart contract.
+Like solidity supports ETH, ORGON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. orgon-studio supports trx and sun, remix does not support trx and sun.
+We recommend to use orgon-studio instead of remix to build ORGON smart contract.
 
 #### Block Related
 - block.blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded

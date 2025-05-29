@@ -3,14 +3,14 @@
 # 1. Project Repository
 
 Github Url: [https://github.com/alexozerov](https://github.com/alexozerov)
-[java-tron](https://github.com/alexozerov/java-orgon) is the source code of the MainNet.
+[java-orgon](https://github.com/alexozerov/java-orgon) is the source code of the MainNet.
 [protocol](https://github.com/alexozerov/protocol) is the definition of the api and data structure.
 [wallet-cli](https://github.com/alexozerov/wallet-cli) is the official command line wallet.
 
 MainNet Configuration:
-[https://github.com/alexozerov/TronDeployment/blob/master/main_net_config.conf](https://github.com/alexozerov/TronDeployment/blob/master/main_net_config.conf)
+[https://github.com/alexozerov/OrgonDeployment/blob/master/main_net_config.conf](https://github.com/alexozerov/OrgonDeployment/blob/master/main_net_config.conf)
 TestNet Configuration:
-[https://github.com/alexozerov/TronDeployment/blob/master/test_net_config.conf](https://github.com/alexozerov/TronDeployment/blob/master/test_net_config.conf)
+[https://github.com/alexozerov/OrgonDeployment/blob/master/test_net_config.conf](https://github.com/alexozerov/OrgonDeployment/blob/master/test_net_config.conf)
 
 # 2. SRs and Committee
 
@@ -144,7 +144,7 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 # 4. Network Node
 ## 4.1 SuperNode
 ### 4.1.1 SuperNode Introduction
-Super Representative(abbr: SR) is the block producer in ORGON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in ORGON network. The best way to browse is using [tronscan](https://tronscan.org/#/sr/representatives).
+Super Representative(abbr: SR) is the block producer in ORGON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in ORGON network. The best way to browse is using [orgonscan](https://orgonscan.org/#/sr/representatives).
 ### 4.1.2 SuperNode Deployment
 [SuperNode Deployment](https://github.com/alexozerov/java-orgon/blob/develop/run.md#running-a-super-representative-node-for-mainnet)
 
@@ -160,7 +160,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 ### 4.2.1 FullNode Introduction
 FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.
 ### 4.2.2 FullNode Deployment
-please refer to [ORGON-Deployment](https://github.com/alexozerov/tron-deployment)
+please refer to [ORGON-Deployment](https://github.com/alexozerov/orgon-deployment)
 ### 4.2.3 Recommended Hardware Configuration
 Minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
@@ -171,7 +171,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 ### 4.3.1 SolidityNode Introduction
 SolidityNode only synchronizes solidified block data from the fullNode it specifies. It also provides api service.
 ### 4.3.2 SolidityNode Deployment
-Please refer to [ORGON-Deployment](https://github.com/alexozerov/tron-deployment)
+Please refer to [ORGON-Deployment](https://github.com/alexozerov/orgon-deployment)
 ### 4.3.3 Recommended Hardware Configuration
 Minimum requirement:
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T
@@ -180,11 +180,11 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.4 ORGON Network Instructure
 ORGON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-orgon code can join ORGON network as a node.
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network.png)
+![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network.png)
 
 ## 4.5 FullNode and SolidityNode Fast Deployment
 Download fast deployment script, run the script according to different types of node.
-please refer to [Node Fast Deployment](https://github.com/alexozerov/tron-deployment#deployment-of-soliditynode-on-the-one-host)
+please refer to [Node Fast Deployment](https://github.com/alexozerov/orgon-deployment#deployment-of-soliditynode-on-the-one-host)
 
 ## 4.6 MainNet, TestNet, PrivateNet
 
@@ -192,11 +192,11 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 
 ### 4.6.1 MainNet
 
-[MainNet configuration](https://github.com/alexozerov/tron-deployment/blob/master/main_net_config.conf)
+[MainNet configuration](https://github.com/alexozerov/orgon-deployment/blob/master/main_net_config.conf)
 
 ### 4.6.2 TestNet
 
-[TestNet configuration](https://github.com/alexozerov/tron-deployment/blob/master/test_net_config.conf)
+[TestNet configuration](https://github.com/alexozerov/orgon-deployment/blob/master/test_net_config.conf)
 
 ### 4.6.3 PrivateNet
 
@@ -214,7 +214,7 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
  1.&nbsp;download private_net_config.conf
 
 ```text
-wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+wget https://raw.githubusercontent.com/orgonprotocol/orgon-deployment/master/private_net_config.conf
 ```
  2.&nbsp;add your private key in localwitness
  3.&nbsp;set genesis.block.witnesses as the private key's corresponding address
@@ -238,16 +238,16 @@ command line parameters introduction:
  The parameters in configuration file that need to modify:
  localwitness:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/localwitness.jpg)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/localwitness.jpg)
  witnesses:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/witness.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/witness.png)
  version:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/p2p_version.png)
  enable:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/discovery_enable.png)
 
 
 **4.6.3.2.2  Step 2: FullNode Deployment**
@@ -255,7 +255,7 @@ command line parameters introduction:
  1.&nbsp;Download private_net_config.conf
 
 ```shell
-wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/private_net_config.conf
+wget https://raw.githubusercontent.com/orgonprotocol/orgon-deployment/master/private_net_config.conf
 ```
 
  2.&nbsp;set seed.node ip.list with SR's ip and port
@@ -285,35 +285,35 @@ wget https://raw.githubusercontent.com/tronprotocol/tron-deployment/master/priva
  The parameters in configuration file that need to modify:
  ip.list:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/ip_list.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/ip_list.png)
  p2p.version:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/p2p_version.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/p2p_version.png)
  genesis.block:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/genesis_block.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/genesis_block.png)
  needSyncCheck:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/need_sync_check.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/need_sync_check.png)
  node.discovery.enable:
 
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/discovery_enable.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/discovery_enable.png)
 
 ## 4.7 DB Engine
 ### 4.7.1 Rocksdb
 **4.7.1.1 Configuration**
 
  Use rocksdb as the data storage engine, need to set db.engine to "ROCKSDB"
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_engine.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/db_engine.png)
  Note: rocksdb only support db.version=2, do not support db.version=1
 
  The optimization parameters rocksdb support:
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/rocksdb_tuning_parameters.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/rocksdb_tuning_parameters.png)
 
 **4.7.1.2 Use rocksdb's data backup function**
 
  Choose rocksdb to be the data storage engine, you can use it's data backup function while running
- ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_backup.png)
+ ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/db_backup.png)
 
  Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
 
@@ -487,12 +487,12 @@ Need to convert ORGON's address while using in solidity (recommended):
 ```text
 /**
      *  @dev    convert uint256 (HexString add 0x at beginning) ORGON address to solidity address type
-     *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
+     *  @param  orgonAddress uint256 orgonAddress, begin with 0x, followed by HexString
      *  @return Solidity address type
 */
 
-function convertFromTronInt(uint256 tronAddress) public view returns(address){
-        return address(tronAddress);
+function convertFromOrgonInt(uint256 orgonAddress) public view returns(address){
+        return address(orgonAddress);
 }
 ```
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
@@ -501,9 +501,9 @@ This is similar with the grammar of the conversion from other types converted to
 
 Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
 ```text
-function compareAddress(address tronAddress) public view returns (uint256){
-        // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
-        if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
+function compareAddress(address orgonAddress) public view returns (uint256){
+        // if (orgonAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
+        if (orgonAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
             return 1;
         } else {
             return 0;
@@ -528,8 +528,8 @@ If you want to use ORGON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeT
 
 **Currency**
 
-Like solidity supports ETH, ORGON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
-We recommend to use tron-studio instead of remix to build ORGON smart contract.
+Like solidity supports ETH, ORGON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. orgon-studio supports trx and sun, remix does not support trx and sun.
+We recommend to use orgon-studio instead of remix to build ORGON smart contract.
 
 **Block**
 
@@ -680,7 +680,7 @@ If contract executes successfully without any exception, the energy needed for t
 
 If Assert-style error come out, it will consume the whole number of energy set for fee limit.
 
-Assert-style error introduction, refer to [https://developers.tron.network/docs/vm-exception](https://developers.tron.network/docs/vm-exception)
+Assert-style error introduction, refer to [https://developers.orgon.network/docs/vm-exception](https://developers.orgon.network/docs/vm-exception)
 
 **Example 2**
 
@@ -705,7 +705,7 @@ if (X + Y) / 40% < Z / 60%, the energy A can use is (X + Y) / 40%
 If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.
 
 
-Assert-style error introduction, refer to [https://developers.tron.network/docs/vm-exception](https://developers.tron.network/docs/vm-exception)
+Assert-style error introduction, refer to [https://developers.orgon.network/docs/vm-exception](https://developers.orgon.network/docs/vm-exception)
 
 Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itself.
 
@@ -713,22 +713,22 @@ To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_per
 
 ## 5.4 Smart Contract Development Tool
 
-### 5.4.1 TronBox
+### 5.4.1 OrgonBox
 
 Support the build, deploy, transplant, etc. for solidity language written smart contract.
-[https://developers.tron.network/docs/tron-box-user-guide](https://developers.tron.network/docs/tron-box-user-guide)
+[https://developers.orgon.network/docs/orgon-box-user-guide](https://developers.orgon.network/docs/orgon-box-user-guide)
 
-### 5.4.2 TronWeb
+### 5.4.2 OrgonWeb
 Provide http api service for the usage of smart contract.
-[https://developers.tron.network/docs/tron-web-intro](https://developers.tron.network/docs/tron-web-intro)
+[https://developers.orgon.network/docs/orgon-web-intro](https://developers.orgon.network/docs/orgon-web-intro)
 
-### 5.4.3 TronGrid
+### 5.4.3 OrgonGate
 Provide smart contract event query service.
-[https://developers.tron.network/docs/tron-grid-intro](https://developers.tron.network/docs/tron-grid-intro)
+[https://developers.orgon.network/docs/orgon-grid-intro](https://developers.orgon.network/docs/orgon-grid-intro)
 
 ## 5.5 Using Command Lines Tool to Develop Smart Contract
 
-First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/alexozerov/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:
+First you can use OrgonStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/alexozerov/orgon-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:
 
 ```text
 pragma solidity ^0.4.0;
@@ -748,7 +748,7 @@ contract DataStore {
 
 **Start a Private Net**
 
-Make sure the fullnode code has been deployed locally, you can check if 'Produce block successfully' log appears in FullNode/logs/tron.log
+Make sure the fullnode code has been deployed locally, you can check if 'Produce block successfully' log appears in FullNode/logs/orgon.log
 
 **Develop a Smart Contract**
 
@@ -860,15 +860,15 @@ When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDd
 # 6. Built-in Contracts and API
 ## 6.1 Built-in Contracts
 Please refer to:
-[https://github.com/alexozerov/documentation/blob/master/English_Documentation/TRON_Protocol/TX_ContractTypes_Update.MD](https://github.com/alexozerov/documentation/blob/master/English_Documentation/TRON_Protocol/TX_ContractTypes_Update.MD)
+[https://github.com/alexozerov/documentation/blob/master/English_Documentation/ORGON_Protocol/TX_ContractTypes_Update.MD](https://github.com/alexozerov/documentation/blob/master/English_Documentation/ORGON_Protocol/TX_ContractTypes_Update.MD)
 
 ## 6.2 GRPC API Introduction
 Please refer to:
-[https://github.com/alexozerov/documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md](https://github.com/alexozerov/documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md)
+[https://github.com/alexozerov/documentation/blob/master/English_Documentation/ORGON_Protocol/ORGON_Wallet_RPC-API.md](https://github.com/alexozerov/documentation/blob/master/English_Documentation/ORGON_Protocol/ORGON_Wallet_RPC-API.md)
 
 ## 6.3 Http API Introduction
 Please refer to:
-[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md)
 
 # 7. ORC-10 Token Introduction
 ORGON network support two types of token, one is ORC-20 token issued by smart contract, the other one is ORC-10 token issued by system contract.
@@ -972,7 +972,7 @@ Note: Due to the change of the total amount of the staked ORGON in the network a
 
 1.&nbsp;By staking ORGON to get Bandwidth Points, Bandwidth Points = the amount of ORGON self-staked / the total amount of ORGON staked for Bandwidth Points in the network * 43,200,000,000
 
-2.&nbsp;Every account has a fixed amount of free Bandwidth Points every day, it is defined in #61 network parameter, user can check the value on tronscan(https://tronscan.org/#/sr/committee).
+2.&nbsp;Every account has a fixed amount of free Bandwidth Points every day, it is defined in #61 network parameter, user can check the value on orgonscan(https://orgonscan.org/#/sr/committee).
 
 ### 8.2.2 Bandwidth Points Consumption
 
@@ -1002,7 +1002,7 @@ Bandwidth points consumption sequence for other transactions:
 
 ### 8.2.3 Bandwidth Points Recovery
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/bandwidthRestoreEqn.gif)
+![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/bandwidthRestoreEqn.gif)
 
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.
 
@@ -1041,25 +1041,25 @@ The term of 'Exchange Pair' describes a trade between one token with another, li
 Any account can create an exchange pair, it burns 1024 ORGON.
 
 Please refer to 'wallet/exchangecreate':
-[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md)
 
 ## 9.3 Exchange Pair Transaction
 Any account can trade in the DEX. The trade follows Bancor protocol.
 
 Please refer to 'wallet/exchangetransaction':
-[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md)
 
 ## 9.4 Exchange Pair Injection
 The exchange pair creator can inject more tokens into the exchange pair. Injection can decrease the range of ratio fluctuation. If one token is injected, the other one will be injected automatically to keep the current ratio of the two tokens unchanged.
 
 Please refer to 'wallet/exchangeinject':
-[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md)
 
 ## 9.5 Exchange Pair Withdrawal
 The exchange pair creator can withdraw tokens from the exchange pair. Withdrawal can increase the range of ratio fluctuation. If one token is withdrawn, the other one will be withdrawn automatically to keep the current ratio of the two tokens unchanged.
 
 Please refer to 'wallet/exchangewithdraw':
-[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md)](https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md)
 
 ## 9.6 Query
 
@@ -1069,7 +1069,7 @@ GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination
 GetExchangeById: Query an exchange pair by exchange pair id
 
 Please refer to:
-[https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/Tron-http.md)
+[https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md](https://github.com/alexozerov/documentation/blob/master/ORGON/orgon-http.md)
 
 ### 9.6.2 Price Calculation
 The token price is determined by the ratio of the balance of the two tokens.
@@ -1162,6 +1162,6 @@ public static Transaction createTransaction(byte[] from, byte[] to, long amount)
 ## 12.5 Related Demo
 
 Build transaction locally, signature demo, please refer to:
-[https://github.com/alexozerov/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java](https://github.com/alexozerov/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java)
+[https://github.com/alexozerov/wallet-cli/blob/master/src/main/java/org/orgon/demo/TransactionSignDemo.java](https://github.com/alexozerov/wallet-cli/blob/master/src/main/java/org/orgon/demo/TransactionSignDemo.java)
 nodejs demo, please refer to:
-[https://github.com/alexozerov/tron-demo/tree/master/demo/nodejs](https://github.com/alexozerov/tron-demo/tree/master/demo/nodejs)
+[https://github.com/alexozerov/orgon-demo/tree/master/demo/nodejs](https://github.com/alexozerov/orgon-demo/tree/master/demo/nodejs)

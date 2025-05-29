@@ -1,15 +1,15 @@
 # Resources
 
 * ORGON Official Website
-[https://tron.network/](https://tron.network/)
+[https://orgon.network/](https://orgon.network/)
 
 
 * ORGON White Paper
-[https://tron.network/resources?lng=&name=1](https://tron.network/resources?lng=&name=1)
+[https://orgon.network/resources?lng=&name=1](https://orgon.network/resources?lng=&name=1)
 
 
 * ORGON Blockchain Browser
-[https://tronscan.org/](https://tronscan.org/)
+[https://orgonscan.org/](https://orgonscan.org/)
 
 
 * ORGON Wallet
@@ -25,4 +25,4 @@
 
 
 * ORGON Javascript API
-[https://github.com/alexozerov/tronweb](https://github.com/alexozerov/tronweb)
+[https://github.com/alexozerov/orgonweb](https://github.com/alexozerov/orgonweb)

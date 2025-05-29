@@ -4,7 +4,7 @@ Bonus point applies in ORGON incentives programme. Developers can earn points by
 
 When a issue (or PR) is closed, it will be added into the reward programme. The core devs will discuss and comment the issue (or PR), the points of a issue (or PR) received will be added in the comment to track.
 
-You can find your points ranking at [Tronscan](https://tronscan.org/#/developersreward).
+You can find your points ranking at [Orgonscan](https://orgonscan.org/#/developersreward).
 
 Reward 1:
 
@@ -12,7 +12,7 @@ At the end of every month, we will calculate all points each developer gets in t
 
 At the end of every year, we will calculate all points each developer gets in the current year and who finish in Top 5 will be rewarded with cash.
 
-The Top 5 developers who win the cash reward will be announced at Tronscan.
+The Top 5 developers who win the cash reward will be announced at Orgonscan.
 
 Also, there is a chance to display developers' photos at ORGON official website.
 
@@ -84,7 +84,7 @@ Points:
 **3. Bug Fix**
 
 Description: To fix bugs in online ORGON network
-Scope: java-tron, wallet-cli
+Scope: java-orgon, wallet-cli
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
@@ -94,7 +94,7 @@ Points:
 **4. Security Related**
 
 Description: To find the security risks and enhance the security of ORGON network and ecosystem
-Scope: java-tron, ORGON ecosystem
+Scope: java-orgon, ORGON ecosystem
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |
@@ -104,7 +104,7 @@ Points:
 **5. Others**
 
 Description: Code improvements, etc.
-Scope: java-tron, wallet-cli
+Scope: java-orgon, wallet-cli
 Points:
 
 | Critical  |   High    |  Medium  |     Low   |

@@ -13,7 +13,7 @@ Github URL: [https://github.com/alexozerov](https://github.com/alexozerov).
 ## Configuration File for the Net
 
 MainNet Configuration:
-[GH alexozerov/TronDeployment/main_net_config.conf](https://github.com/alexozerov/TronDeployment/blob/master/main_net_config.conf)
+[GH alexozerov/OrgonDeployment/main_net_config.conf](https://github.com/alexozerov/OrgonDeployment/blob/master/main_net_config.conf)
 
 TestNet Configuration:
-[GH alexozerov/TronDeployment/test_net_config.conf](https://github.com/alexozerov/TronDeployment/blob/master/test_net_config.conf)
+[GH alexozerov/OrgonDeployment/test_net_config.conf](https://github.com/alexozerov/OrgonDeployment/blob/master/test_net_config.conf)

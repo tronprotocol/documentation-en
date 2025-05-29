@@ -16,13 +16,13 @@ We encourage a PR early approach, meaning you create the PR the earliest even wi
 
 ** Developer Community **
 
-* [java-orgon gitter channel](https://gitter.im/tronprotocol/allcoredev)
+* [java-orgon gitter channel](https://gitter.im/orgonprotocol/allcoredev)
 This channel is for ORGON network issues.
-* [wallet-cli gitter channel](https://gitter.im/tronprotocol/wallet-cli)
+* [wallet-cli gitter channel](https://gitter.im/orgonprotocol/wallet-cli)
 This channel is for the client of ORGON network issues.
-* [documentation gitter channel](https://gitter.im/tronprotocol/documentation)
+* [documentation gitter channel](https://gitter.im/orgonprotocol/documentation)
 This channel is for ORGON docunentation issues.
-* [tips gitter channel](https://gitter.im/tronprotocol/TIPs)
+* [tips gitter channel](https://gitter.im/orgonprotocol/TIPs)
 This channel is for ORGON improment proposal issues.
 
 Check [ORGON Incentives Policy](incentives.md)
@@ -31,15 +31,15 @@ Check [ORGON Incentives Policy](incentives.md)
 
 Please check [Submitting a TIP](./tips.md)
 
-## Coding java-tron
+## Coding java-orgon
 
-Please check [Coding java-tron](./java-orgon.md)
+Please check [Coding java-orgon](./java-orgon.md)
 
 ## Reporting Vulnerabilities
 
 We think highly of all the security bugs in the ORGON project seriously. Thank you for improving the security of ORGON project. We really appreciate your efforts and responsible disclosure. We will make every effort to acknowledge your contributions.
 
-Report security bugs at [https://hackerone.com/tronfoundation](https://hackerone.com/tronfoundation)
+Report security bugs at [https://hackerone.com/orgonfoundation](https://hackerone.com/orgonfoundation)
 
 A developer from the core devs will follow up the issue. Firstly, we will confirm the bug and determine the affected versions. Secondly, we will try to find any potential similar bugs. Then we will do the fix and prepare for the release.
 

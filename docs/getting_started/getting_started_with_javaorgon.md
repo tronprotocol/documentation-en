@@ -79,29 +79,29 @@ After java-orgon starts, the logs will include the following:
 
 The above logs indicate that java-orgon has started and connected to the Quasar testnet, then it will look for peers to connect to. Once it has found peers, it can request blocks from them, and the logs confirm this:
 ```
-11:08:42.547 INFO  [TronJClientWorker-1] [net](Channel.java:116) Finish handshake with /123.56.3.74:18888.
-11:08:42.547 INFO  [TronJClientWorker-1] [net](ChannelManager.java:161) Add active peer /123.56.3.74:18888 | fea80a0298b465a54fd332ff36819545d850115e77b327858b5306c9a58c6b8c2e7c08df76ab508a7594ed3577a8f4157727108442877077ab499b102b488467, total active peers: 1
-11:08:42.549 INFO  [TronJClientWorker-1] [net](Channel.java:208) Peer /123.56.3.74:18888 status change to SYNCING.
-11:08:42.566 INFO  [TronJClientWorker-1] [DB](Manager.java:1636) headNumber:23113867
-11:08:42.566 INFO  [TronJClientWorker-1] [DB](Manager.java:1638) syncBeginNumber:23113867
-11:08:42.567 INFO  [TronJClientWorker-1] [DB](Manager.java:1642) solidBlockNumber:23113849
-11:08:42.567 INFO  [TronJClientWorker-1] [net](SyncService.java:179) Get block chain summary, low: 23113867, highNoFork: 23113867, high: 23113867, realHigh: 23113867
-11:08:42.572 INFO  [TronJClientWorker-1] [net](MessageQueue.java:106) Send to /123.56.3.74:18888, type: SYNC_BLOCK_CHAIN
+11:08:42.547 INFO  [OrgonJClientWorker-1] [net](Channel.java:116) Finish handshake with /123.56.3.74:18888.
+11:08:42.547 INFO  [OrgonJClientWorker-1] [net](ChannelManager.java:161) Add active peer /123.56.3.74:18888 | fea80a0298b465a54fd332ff36819545d850115e77b327858b5306c9a58c6b8c2e7c08df76ab508a7594ed3577a8f4157727108442877077ab499b102b488467, total active peers: 1
+11:08:42.549 INFO  [OrgonJClientWorker-1] [net](Channel.java:208) Peer /123.56.3.74:18888 status change to SYNCING.
+11:08:42.566 INFO  [OrgonJClientWorker-1] [DB](Manager.java:1636) headNumber:23113867
+11:08:42.566 INFO  [OrgonJClientWorker-1] [DB](Manager.java:1638) syncBeginNumber:23113867
+11:08:42.567 INFO  [OrgonJClientWorker-1] [DB](Manager.java:1642) solidBlockNumber:23113849
+11:08:42.567 INFO  [OrgonJClientWorker-1] [net](SyncService.java:179) Get block chain summary, low: 23113867, highNoFork: 23113867, high: 23113867, realHigh: 23113867
+11:08:42.572 INFO  [OrgonJClientWorker-1] [net](MessageQueue.java:106) Send to /123.56.3.74:18888, type: SYNC_BLOCK_CHAIN
 size: 1, start block: Num:23113867,ID:000000000160b08b510b6c501c980a2567bff1229eed62ca79874c9ca7828e9c
-11:08:42.631 INFO  [TronJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK_CHAIN_INVENTORY
+11:08:42.631 INFO  [OrgonJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK_CHAIN_INVENTORY
 size: 2001, first blockId: Num:23113867,ID:000000000160b08b510b6c501c980a2567bff1229eed62ca79874c9ca7828e9c, end blockId: Num:23115867,ID:000000000160b85b587ef18d00a1905d8022ec0a8fd174f3980b78f6aacf0ede
 
 ......
 
 11:08:43.478 INFO  [pool-49-thread-1] [net](MessageQueue.java:106) Send to /123.56.3.74:18888, type: FETCH_INV_DATA
 invType: BLOCK, size: 100, First hash: 000000000160b08c6eeba60eced4fb13d7c56e46a3c5220a67bb2801a05e5679, End hash: 000000000160b0efd90560e389d1f6e5b3c8d3877709ce375a8e063f5db73af9
-11:08:43.502 INFO  [TronJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
+11:08:43.502 INFO  [OrgonJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
 Num:23113868,ID:000000000160b08c6eeba60eced4fb13d7c56e46a3c5220a67bb2801a05e5679, trx size: 1
 
-11:08:43.504 INFO  [TronJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
+11:08:43.504 INFO  [OrgonJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
 Num:23113869,ID:000000000160b08d231e450ae1993a72ba19eb8f3c748fa70d105dadd0c9fd5f, trx size: 0
 
-11:08:43.504 INFO  [TronJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
+11:08:43.504 INFO  [OrgonJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
 Num:23113870,ID:000000000160b08e37cb9951d31a4233f106c7e77e0535c597dbb6a16f163699, trx size: 0
 ```
 
@@ -110,7 +110,7 @@ These logs show that java-orgon is running as expected. You can determine whethe
 ```
 $ curl http://127.0.0.1:16887/wallet/getnodeinfo
 ```
-If no error messages are reported in the node logs, everything is fine. In order for users to interact with the ORGON network, the java-orgon node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of the local java-orgon node `/wallet/getnowblock`. If they are equal, it means that the synchronization status of the local node is normal.
+If no error messages are reported in the node logs, everything is fine. In order for users to interact with the ORGON network, the java-orgon node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Orgonscan and compare it with the result of the local java-orgon node `/wallet/getnowblock`. If they are equal, it means that the synchronization status of the local node is normal.
 
 If you want to shut down java-orgon node, please use this command: `kill -15 process id`.
 
@@ -288,7 +288,7 @@ Sending a transaction through the http interface requires a total of three steps
 
 The following takes the transferring ORGON as an example to illustrate how to send a transaction to java-orgon node.
 
-Create an unsigned ORGON transferring transaction through the fullnode HTTP interface [`wallet/createtransaction`](https://developers.tron.network/reference/createtransaction):
+Create an unsigned ORGON transferring transaction through the fullnode HTTP interface [`wallet/createtransaction`](https://developers.orgon.network/reference/createtransaction):
 
 ```
 curl -X POST  http://127.0.0.1:16887/wallet/createtransaction -d
@@ -328,7 +328,7 @@ Returns an unsigned ORGON transferring transaction:
 ```
 Then sign the transaction offline.
 
-Finally, Broadcast the signed transaction to the java-orgon node through the [`wallet/broadcasttransaction`](https://developers.tron.network/reference/broadcasttransaction) interface to complete the sending of the ORGON transferring transaction.
+Finally, Broadcast the signed transaction to the java-orgon node through the [`wallet/broadcasttransaction`](https://developers.orgon.network/reference/broadcasttransaction) interface to complete the sending of the ORGON transferring transaction.
 
 
 ```

@@ -1,5 +1,5 @@
 # Private Network
-To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the `Oracle JDK 1.8` first, and then you need to prepare at least two ORGON network address and save the address and private key. You can use [wallet-cli](https://github.com/alexozerov/wallet-cli) or [Tronlink](https://www.tronlink.org/) to create address.
+To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the `Oracle JDK 1.8` first, and then you need to prepare at least two ORGON network address and save the address and private key. You can use [wallet-cli](https://github.com/alexozerov/wallet-cli) or [Orgonlink](https://www.orgonlink.org/) to create address.
 
 
 ## Deployment Guide
@@ -22,7 +22,7 @@ The process of building a node on private chain is the same as that on mainnet. 
      $ cp FullNode.jar ./FullNode
      ```
 
-3. Obtain the node's config file [private_net_config.conf](https://github.com/alexozerov/tron-deployment/blob/master/private_net_config.conf)
+3. Obtain the node's config file [private_net_config.conf](https://github.com/alexozerov/orgon-deployment/blob/master/private_net_config.conf)
 
     Obtain the node's config file private_net_config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
       ```
@@ -71,14 +71,14 @@ The process of building a node on private chain is the same as that on mainnet. 
 
 7. Modify the dynamic parameters of the private chain
 
-    Dynamic parameters can be obtained by [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters). The main network's current dynamic parameters and committee proposals related to them can be seen [here](https://tronscan.org/#/sr/committee), dynamic parameters are called network parameters here.
+    Dynamic parameters can be obtained by [getchainparameters](https://developers.orgon.network/reference/wallet-getchainparameters). The main network's current dynamic parameters and committee proposals related to them can be seen [here](https://orgonscan.org/#/sr/committee), dynamic parameters are called network parameters here.
 
-    If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/alexozerov/tron-docker/tree/main/tools/dbfork) which could capture the latest status of Mainnet is what you are interested in.
+    If you want all the dynamic parameters of your private network to be the same with the main network, maybe [dbfork](https://github.com/alexozerov/orgon-docker/tree/main/tools/dbfork) which could capture the latest status of Mainnet is what you are interested in.
 
     If you want to modify part of dynamic parameters, there are two ways to choose from:
 
     * Configure File
-      Some dynamic parameters can be directly set through configure file. These dynamic parameters can be seen [here](https://github.com/alexozerov/java-orgon/blob/develop/common/src/main/java/org/tron/core/Constant.java).
+      Some dynamic parameters can be directly set through configure file. These dynamic parameters can be seen [here](https://github.com/alexozerov/java-orgon/blob/develop/common/src/main/java/org/orgon/core/Constant.java).
       Below is an example of modifying dynamic parameters through configure file.
       ```
       committee = {
@@ -92,10 +92,10 @@ The process of building a node on private chain is the same as that on mainnet. 
       ```
 
     * Proposal
-      Any witness(SR, SR partner, SR candidate) is entitled to create a proposal, SRs also have the right to vote for the proposal. A witness uses [proposalcreate](https://developers.tron.network/reference/proposalcreate) to create a proposal, and then SRs use [proposalapprove](https://developers.tron.network/reference/proposalapprove) to approve the proposal(Proposals only support voting for yes, super representatives do not vote means they do not agree with the proposal). Below is an code example of modifying two dynamic parameters through a committee proposal. In [proposalcreate](https://developers.tron.network/reference/proposalcreate), dynamic parameters are represented by numbers, the mapping between number and string name of dynamic parameters can be seen [here](https://developers.tron.network/reference/wallet-getchainparameters).
+      Any witness(SR, SR partner, SR candidate) is entitled to create a proposal, SRs also have the right to vote for the proposal. A witness uses [proposalcreate](https://developers.orgon.network/reference/proposalcreate) to create a proposal, and then SRs use [proposalapprove](https://developers.orgon.network/reference/proposalapprove) to approve the proposal(Proposals only support voting for yes, super representatives do not vote means they do not agree with the proposal). Below is an code example of modifying two dynamic parameters through a committee proposal. In [proposalcreate](https://developers.orgon.network/reference/proposalcreate), dynamic parameters are represented by numbers, the mapping between number and string name of dynamic parameters can be seen [here](https://developers.orgon.network/reference/wallet-getchainparameters).
       ```
-      var TronWeb = require('tronweb');
-      var tronWeb = new TronWeb({
+      var OrgonWeb = require('orgonweb');
+      var orgonWeb = new OrgonWeb({
           fullHost: 'http://localhost:16887',
           privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
       })
@@ -107,21 +107,21 @@ The process of building a node on private chain is the same as that on mainnet. 
           parameters.sort((a, b) => {
                   return a.key.toString() > b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
               })
-          var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
-          var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
-          var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
+          var unsignedProposal1Txn = await orgonWeb.transactionBuilder.createProposal(parameters,"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0")
+          var signedProposal1Txn = await orgonWeb.trx.sign(unsignedProposal1Txn);
+          var receipt1 = await orgonWeb.trx.sendRawTransaction(signedProposal1Txn);
 
           setTimeout(async function() {
               console.log(receipt1)
               console.log("Vote proposal 1 !")
-              var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
-              var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
-              var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
+              var unsignedVoteP1Txn = await orgonWeb.transactionBuilder.voteProposal(proposalID, true, orgonWeb.defaultAddress.hex)
+              var signedVoteP1Txn = await orgonWeb.trx.sign(unsignedVoteP1Txn);
+              var rtn1 = await orgonWeb.trx.sendRawTransaction(signedVoteP1Txn);
           }, 1000)
 
       }
 
       modifyChainParameters(parametersForProposal1, 1)
       ```
-      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.tron.network/reference/wallet-listproposals) interface. If the "state" in the return value of the interface is "APPROVED" When expiration time of the proposal has passed, it means that the proposal has been approved.
+      After creating the proposal through the above code, you can check whether the proposal has been approved through [listproposals](https://developers.orgon.network/reference/wallet-listproposals) interface. If the "state" in the return value of the interface is "APPROVED" When expiration time of the proposal has passed, it means that the proposal has been approved.
       It should be noted that dynamic parameters with interdependent relationships cannot be included in one proposal, the correct approach is to separate them into different proposals and pay attention to order of them.

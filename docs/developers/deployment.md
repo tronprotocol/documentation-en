@@ -15,7 +15,7 @@ Create two folders for fullnode and soliditynode.
 
 Clone the latest master branch of [https://github.com/alexozerov/java-orgon](https://github.com/alexozerov/java-orgon) and extract it to
 ```text
-/deploy/java-tron
+/deploy/java-orgon
 ```
 
 Make sure you have the proper dependencies.
@@ -30,13 +30,13 @@ Make sure you have the proper dependencies.
 
 1.&nbsp;Build the java-orgon project
 ```text
-cd /deploy/java-tron
+cd /deploy/java-orgon
 ./gradlew build
 ```
 
 2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories
 ```text
-download your needed configuration file from https://github.com/alexozerov/TronDeployment.
+download your needed configuration file from https://github.com/alexozerov/OrgonDeployment.
 
 main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
@@ -49,7 +49,7 @@ cp build/libs/SolidityNode.jar ../soliditynode
 
 3.&nbsp;You can now run your FullNode using the following command
 ```text
-java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/alexozerov/TronDeployment
+java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/alexozerov/OrgonDeployment
 ```
 
 4.&nbsp;Configure the SolidityNode configuration file
@@ -63,14 +63,14 @@ rpc {
 
 5.&nbsp;You can now run your SolidityNode using the following command：
 ```text
-java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/alexozerov/TronDeployment
+java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/alexozerov/OrgonDeployment
 ```
 
 6.&nbsp;Running a Super Representative Node for mainnet
 ```text
-java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-tron/config.conf)
+java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-orgon/config.conf)
 Example:
-java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-orgon/config.conf
 ```
 
 This is similar to running a private testnet, except that the IPs in the `config.conf` are officially declared by ORGON.
@@ -86,15 +86,15 @@ You should modify the config.conf:
 
 ```text
 cd build/libs
-java -jar FullNode.jar -p your private key --witness -c your config.conf (Example：/data/java-tron/config.conf)
+java -jar FullNode.jar -p your private key --witness -c your config.conf (Example：/data/java-orgon/config.conf)
 Example:
-java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-orgon/config.conf
 ```
 
 
 ## Logging and Network Connection Verification
 
-Logs for both nodes are located in `/deploy/\*/logs/tron.log`. Use `tail -f /logs/tron.log/` to follow along with the block syncing.
+Logs for both nodes are located in `/deploy/\*/logs/orgon.log`. Use `tail -f /logs/orgon.log/` to follow along with the block syncing.
 
 You should see something similar to this in your logs for block synchronization:
 
@@ -136,13 +136,13 @@ Just Support FullNode and SolidityNode.
 <h3>Download and run script</h3>
 
 ```shell
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+wget https://raw.githubusercontent.com/orgonprotocol/OrgonDeployment/master/deploy_orgon.sh -O deploy_orgon.sh
 ```
 
 <h3>Parameter Illustration</h3>
 
 ```shell
-bash deploy_tron.sh --app [FullNode|SolidityNode] --net [mainnet|testnet|privatenet] --db [keep|remove|backup] --heap-size <heapsize>
+bash deploy_orgon.sh --app [FullNode|SolidityNode] --net [mainnet|testnet|privatenet] --db [keep|remove|backup] --heap-size <heapsize>
 
 --app Optional, Running application. The default node is Fullnode and it could be FullNode or SolidityNode.
 --net Optional, Connecting network. The default network is mainnet and it could be mainnet, testnet.
@@ -158,25 +158,25 @@ bash deploy_tron.sh --app [FullNode|SolidityNode] --net [mainnet|testnet|private
 <h3> Deployment of FullNode on the one host </h3>
 
 ```shell
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-bash deploy_tron.sh
+wget https://raw.githubusercontent.com/orgonprotocol/OrgonDeployment/master/deploy_orgon.sh -O deploy_orgon.sh
+bash deploy_orgon.sh
 ```
 
 <h3> Deployment of SolidityNode on the one host </h3>
 
 ```shell
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+wget https://raw.githubusercontent.com/orgonprotocol/OrgonDeployment/master/deploy_orgon.sh -O deploy_orgon.sh
 # User can self-configure the IP and Port of GRPC service in the trust-node field of SolidityNode. trust-node is the fullnode you just deploy.
-bash deploy_tron.sh --app SolidityNode --trust-node <grpc-ip:grpc-port>
+bash deploy_orgon.sh --app SolidityNode --trust-node <grpc-ip:grpc-port>
 ```
 
 <h3> Deployment of FullNode and SolidityNode on the same host </h3>
 
 ```shell
 # You need to configure different gRPC ports on the same host because gRPC port is available on SolidityNode and FullNodeConfigure and it cannot be set as default value 50051. In this case the default value of rpc port is set as 50041.
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-bash deploy_tron.sh --app FullNode
-bash deploy_tron.sh --app SolidityNode --rpc-port 50041
+wget https://raw.githubusercontent.com/orgonprotocol/OrgonDeployment/master/deploy_orgon.sh -O deploy_orgon.sh
+bash deploy_orgon.sh --app FullNode
+bash deploy_orgon.sh --app SolidityNode --rpc-port 50041
 ```
 
 ## Grpc Gateway Deployment
@@ -193,7 +193,7 @@ Install Golang, Protoc, and set $GOPATH environment variable according to your r
 <h3> Download and run script </h3>
 
 ```shell
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+wget https://raw.githubusercontent.com/orgonprotocol/OrgonDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
 ```
 
 <h3> Parameter Illustration </h3>
@@ -235,7 +235,7 @@ This is an implementation of ORGON eventsubscribe model.
 * This will produce one plugin zip, named `plugin-kafka-1.0.0.zip`, located in the `event-plugin/build/plugins/` directory.
 
 
-<h3> Edit **config.conf** of java-tron， add the following fields:</h3>
+<h3> Edit **config.conf** of java-orgon， add the following fields:</h3>
 
 ```
 event.subscribe = {
@@ -401,13 +401,13 @@ filter = {
 
 The version of MongoDB is **4.0.4**, below is the command:
 
-- cd /home/java-tron
+- cd /home/java-orgon
 - curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
 - tar zxvf mongodb-linux-x86_64-4.0.4.tgz
 - mv mongodb-linux-x86_64-4.0.4 mongodb
 
 ** Set environment **
-- export MONGOPATH=/home/java-tron/mongodb/
+- export MONGOPATH=/home/java-orgon/mongodb/
 - export PATH=$PATH:$MONGOPATH/bin
 
 ** Create mongodb config **
@@ -421,8 +421,8 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 
 ** Example: **
 
-- dbpath=/home/java-tron/mongodb/data
-- logpath=/home/java-tron/mongodb/log/mongodb.log
+- dbpath=/home/java-orgon/mongodb/data
+- logpath=/home/java-orgon/mongodb/log/mongodb.log
 - port=27017
 - logappend=true
 - fork=true
@@ -446,9 +446,9 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 
 - db.auth("root", "admin")
 - use eventlog
-- db.createUser({user:"tron",pwd:"123456",roles:[{role:"dbOwner",db:"eventlog"}]})
+- db.createUser({user:"orgon",pwd:"123456",roles:[{role:"dbOwner",db:"eventlog"}]})
 
-> database: eventlog, username:tron, password: 123456
+> database: eventlog, username:orgon, password: 123456
 
 ** Firewall rule: **
 - iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 27017 -j ACCEPT
@@ -457,7 +457,7 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 
 - mongo 47.90.245.68:27017
 - use eventlog
-- db.auth("tron", "123456")
+- db.auth("orgon", "123456")
 - show collections
 - db.block.find()
 
@@ -476,25 +476,25 @@ sh insertIndex.sh
 
 Download sourcecode
 
-git clone https://github.com/alexozerov/tron-eventquery.git
-cd troneventquery
+git clone https://github.com/alexozerov/orgon-eventquery.git
+cd orgoneventquery
 
 <h3> Build </h3>
 
 - mvn package
 
-After the build command is executed successfully, troneventquery jar to release will be generated under troneventquery/target directory.
+After the build command is executed successfully, orgoneventquery jar to release will be generated under orgoneventquery/target directory.
 
-Configuration of mongodb "config.conf" should be created for storing mongodb configuration, such as database name, username, password, and so on. We provided an example in sourcecode, which is " troneventquery/config.conf ". Replace with your specified configuration if needed.
+Configuration of mongodb "config.conf" should be created for storing mongodb configuration, such as database name, username, password, and so on. We provided an example in sourcecode, which is " orgoneventquery/config.conf ". Replace with your specified configuration if needed.
 
 **Note**:
 
-Make sure the relative path of config.conf and troneventquery jar. The config.conf 's path is the parent of troneventquery jar.
+Make sure the relative path of config.conf and orgoneventquery jar. The config.conf 's path is the parent of orgoneventquery jar.
 
  - mongo.host=IP
  - mongo.port=27017
  - mongo.dbname=eventlog
- - mongo.username=tron
+ - mongo.username=orgon
  - mongo.password=123456
  - mongo.connectionsPerHost=8
  - mongo.threadsAllowedToBlockForConnectionMultiplier=4
@@ -503,8 +503,8 @@ Any configuration could be modified except **mongo.dbname**, "**eventlog**" is t
 
 <h3> Run </h3>
 
-- troneventquery/deploy.sh is used to deploy troneventquery
-- troneventquery/insertIndex.sh is used to setup mongodb index to speedup query.
+- orgoneventquery/deploy.sh is used to deploy orgoneventquery
+- orgoneventquery/insertIndex.sh is used to setup mongodb index to speedup query.
 
 
 ## Advanced Configurations

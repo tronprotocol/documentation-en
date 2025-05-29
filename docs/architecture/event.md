@@ -88,8 +88,8 @@ contractTopics: contract topics list
 
 ### Github projects
 
-- [tronprotocol/event-plugin](https://github.com/alexozerov/event-plugin)
-- [tronprotocol/tron-eventquery](https://github.com/alexozerov/tron-eventquery)
+- [orgonprotocol/event-plugin](https://github.com/alexozerov/event-plugin)
+- [orgonprotocol/orgon-eventquery](https://github.com/alexozerov/orgon-eventquery)
 
 #### Event plugin
 
@@ -100,7 +100,7 @@ contractTopics: contract topics list
 
 ORGON Event Query Service
 
-TronEventQuery is implemented with Orgon's new event subscribe model. It uses same query interface with Orgon-Gate. Users can also subscribe block trigger, transaction trigger, contract log trigger, and contract event trigger. TronEvent is independent of a particular branch of java-orgon, the new event subscribes model will be released on version 3.5 of java-orgon.
+OrgonEventQuery is implemented with Orgon's new event subscribe model. It uses same query interface with Orgon-Gate. Users can also subscribe block trigger, transaction trigger, contract log trigger, and contract event trigger. OrgonEvent is independent of a particular branch of java-orgon, the new event subscribes model will be released on version 3.5 of java-orgon.
 
 For more information of ORGON event subscribe model, please refer to [TIP-12](https://github.com/alexozerov/TIPs/issues/12).
 

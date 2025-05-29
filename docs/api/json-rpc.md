@@ -436,7 +436,7 @@ Result
 
 **Returns**
 
-object - a block object  or null when no block was found. See [eth_getBlockByHash](https://developers.tron.network/reference#eth_getblockbyhash)
+object - a block object  or null when no block was found. See [eth_getBlockByHash](https://developers.orgon.network/reference#eth_getblockbyhash)
 
 **Example**
 
@@ -740,7 +740,7 @@ Result
 
 **Returns**
 
-object - a transaction object  or null when no transaction was found. See [eth_getTransactionByBlockHashAndIndex](https://developers.tron.network/reference#eth_gettransactionbyblockhashandindex)
+object - a transaction object  or null when no transaction was found. See [eth_getTransactionByBlockHashAndIndex](https://developers.orgon.network/reference#eth_gettransactionbyblockhashandindex)
 
 **Example**
 
@@ -779,7 +779,7 @@ DATA, 32 Bytes - hash of a transaction
 
 **Returns**
 
-object - a transaction object  or null when no transaction was found. See [eth_getTransactionByBlockHashAndIndex](https://developers.tron.network/reference#eth_gettransactionbyblockhashandindex)
+object - a transaction object  or null when no transaction was found. See [eth_getTransactionByBlockHashAndIndex](https://developers.orgon.network/reference#eth_gettransactionbyblockhashandindex)
 
 **Example**
 
@@ -850,7 +850,7 @@ Result
 
 ### eth_getTransactionReceipt
 
-*Returns the  transaction info: receipt, transaction fee, block height ... by transaction hash. Please refer to http api: [wallet/gettransactioninfobyid](https://developers.tron.network/reference#transaction-info-by-id)*
+*Returns the  transaction info: receipt, transaction fee, block height ... by transaction hash. Please refer to http api: [wallet/gettransactioninfobyid](https://developers.orgon.network/reference#transaction-info-by-id)*
 
 **Parameters**
 

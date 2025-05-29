@@ -1,6 +1,6 @@
 # Governance
 
-The governance of the ORGON network is accomplished by modifying [the network parameters](https://tronscan.org/#/sr/committee). The modification of network parameters is also called a network upgrade. Anyone can propose a discussion on modifying one or several network parameters, however, only super representatives or super representative partners can submit voting requests on-chain. Before the voting deadline, 27 super representatives can vote on the proposal. After the voting deadline arrives and the number of votes meets the requirement, the proposal will take effect.
+The governance of the ORGON network is accomplished by modifying [the network parameters](https://orgonscan.org/#/sr/committee). The modification of network parameters is also called a network upgrade. Anyone can propose a discussion on modifying one or several network parameters, however, only super representatives or super representative partners can submit voting requests on-chain. Before the voting deadline, 27 super representatives can vote on the proposal. After the voting deadline arrives and the number of votes meets the requirement, the proposal will take effect.
 
 You can view the list of the past completed proposals [here](https://github.com/alexozerov/tips/tree/master/proposal).
 

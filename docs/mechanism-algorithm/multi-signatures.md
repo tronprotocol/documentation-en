@@ -36,7 +36,7 @@ message Transaction {
   }
 }
 ```
-The definition of ContractType can be found [here](https://github.com/alexozerov/java-orgon/blob/master/protocol/src/main/protos/core/Tron.proto).
+The definition of ContractType can be found [here](https://github.com/alexozerov/java-orgon/blob/master/protocol/src/main/protos/core/Orgon.proto).
 
 AccountPermissionUpdateContract is a ContractType used to update the account permission.
 

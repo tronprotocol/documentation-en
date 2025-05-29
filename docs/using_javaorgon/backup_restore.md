@@ -9,7 +9,7 @@ $ java -jar fullnode.jar -d ./outputdir
 ## Data Backup
 Please shut down the node process before backing up the node data, for details, please refer to the following steps:
 
-First, use the command `$ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'` to get the process id of java-tron, and then use the command `kill -15 process id` to kill the process. Or use a stop script like this:
+First, use the command `$ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'` to get the process id of java-orgon, and then use the command `kill -15 process id` to kill the process. Or use a stop script like this:
 
 ```
 #!/bin/bash

@@ -38,7 +38,7 @@ To use the data partition function provided by Toolkit through the `db mv` comma
 # full command
 java -jar Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
 # examples
-java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/orgon/output-directory
 ```
 
 Optional command parameters are as follows:
@@ -67,7 +67,7 @@ $ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
 
 #### Configure For Database Storage Migration
 
-The configuration of database migration is in the [storage.properties](https://github.com/alexozerov/tron-deployment/blob/master/main_net_config.conf#L36) field in the java-orgon  node configuration file. The following is an example of migrating only the `block` and `trans` databases to illustrate how to migrate some databases to other storage disks:
+The configuration of database migration is in the [storage.properties](https://github.com/alexozerov/orgon-deployment/blob/master/main_net_config.conf#L36) field in the java-orgon  node configuration file. The following is an example of migrating only the `block` and `trans` databases to illustrate how to migrate some databases to other storage disks:
 
 
 ```conf
@@ -76,12 +76,12 @@ storage {
   properties = [
     {
      name = "block",
-     path = "/data1/tron",
+     path = "/data1/orgon",
 
     },
     {
      name = "trans",
-     path = "/data1/tron",
+     path = "/data1/orgon",
    }
   ]
  ......
@@ -96,7 +96,7 @@ storage {
 When executed, the current migration progress will be shown.
 
 ```bash
-$ java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+$ java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/orgon/output-directory
 ```
 
 #### Restart FullNode Service

@@ -44,16 +44,16 @@ java-orgon only has `master`, `develop`, `release-*`, `feature-*`, and `hotfix-*
 
 ## Submitting Code
 
-If you want to contribute codes to java-tron, please follow the following steps:
+If you want to contribute codes to java-orgon, please follow the following steps:
 
 * Fork java-orgon repository
 
-    Fork a new repository from [tronprotocol/java-tron](https://github.com/alexozerov/java-orgon) to your personal code repository
+    Fork a new repository from [orgonprotocol/java-orgon](https://github.com/alexozerov/java-orgon) to your personal code repository
 
     ```
-    $ git clone https://github.com/yourname/java-tron.git
+    $ git clone https://github.com/yourname/java-orgon.git
 
-    $ git remote add upstream https://github.com/alexozerov/java-orgon.git   ("upstream" refers to upstream projects repositories, namely tronprotocol's repositories, and can be named as you like it. We usually call it "upstream" for convenience)
+    $ git remote add upstream https://github.com/alexozerov/java-orgon.git   ("upstream" refers to upstream projects repositories, namely orgonprotocol's repositories, and can be named as you like it. We usually call it "upstream" for convenience)
     ```
 
 * Edit the code in the fork repository
@@ -86,9 +86,9 @@ If you want to contribute codes to java-tron, please follow the following steps:
 
 * Push code
 
-    Submit a pull request (PR) from your repository to `tronprotocol/java-tron`.
-    Please be sure to click on the link in the red box shown below. Select the base branch for tronprotocol and the compare branch for your personal fork repository.
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png)
+    Submit a pull request (PR) from your repository to `orgonprotocol/java-orgon`.
+    Please be sure to click on the link in the red box shown below. Select the base branch for orgonprotocol and the compare branch for your personal fork repository.
+    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/javaorgon_pr.png)
 
 
 
@@ -117,7 +117,7 @@ We would like all developers to follow a standard development flow and coding st
 2. Review the code before submission.
 3. Run standardized tests.
 
-`Sonar`-scanner and `Travis CI` continuous integration scanner will be automatically triggered when a pull request has been submitted. When a PR passes all the checks, the **java-tron** maintainers will then review the PR and offer feedback and modifications when necessary.  Once adopted, the PR will be closed and merged into the `develop` branch.
+`Sonar`-scanner and `Travis CI` continuous integration scanner will be automatically triggered when a pull request has been submitted. When a PR passes all the checks, the **java-orgon** maintainers will then review the PR and offer feedback and modifications when necessary.  Once adopted, the PR will be closed and merged into the `develop` branch.
 
 We are glad to receive your pull requests and will try our best to review them as soon as we can. Any pull request is welcome, even if it is for a typo.
 

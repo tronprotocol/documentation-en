@@ -26,7 +26,7 @@ Please first obtain the public key Hash and uid of the GPG signature of the java
 
 ```
 pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
-uid: build@tron.network
+uid: build@orgon.network
 ```
 Import the public key from the GPG public key server to the local according to the public key Hash, the command is:
 ```
@@ -34,7 +34,7 @@ $ gpg --keyserver hkp://keys.openpgp.org --recv-keys "1254 F859 D2B1 BD9F 66
 ```
 If the import was successful, you will see the return result like this:
 ```
-gpg: key 785FB96D2C7C3CA5: public key “build_tron <build@tron.network>” imported
+gpg: key 785FB96D2C7C3CA5: public key “build_ <build@orgon.network>” imported
 gpg: Total number processed: 1
 gpg:        imported: 1
 ```
@@ -49,24 +49,24 @@ If the signature verification is passed, the following will be returned:
 ```
 gpg: Signature made Fri. 1/ 6 12:21:51 2023 CST
 gpg:        using RSA key 1254F859D2B1BD9F66E7107DF859BCB44A28290B
-gpg: Good signature from “build_tron <build@tron.network>” [unknown]
+gpg: Good signature from “build_orgon <build@orgon.network>” [unknown]
 gpg: WARNING: This key is not certified with a trusted signature!
 gpg:     There is no indication that the signature belongs to the owner.
 Primary key fingerprint: 07B2 3298 AEA4 E006 BD9A 42DE 785F B96D 2C7C 3CA5
 Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 ```
-If the verification fails, it will display the words `gpg: BAD signature from “build_tron <build@tron.network>”`.
+If the verification fails, it will display the words `gpg: BAD signature from “build_orgon <build@orgon.network>”`.
 
 ## ORGON address signature verification process
 The java-orgon version released before January 3, 2023 is signed by the ORGON account `TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2`. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the ORGON account to sign the sha256 hash value. The sha256 hash value can be viewed in the [Signatures of historical versions](#signatures-of-historical-versions) chapter, or in the [https://github.com/alexozerov/java-orgon/releases](https://github.com/alexozerov/java-orgon/releases) page; the signature result please check in the [Signatures of historical versions](#signatures-of-historical-versions) chapter.
 
-[tronweb](https://developers.tron.network/docs/tronweb-1) provides the `Trx.verifySignature` interface to verify the signature. If the verification is passed, it will return true, otherwise, it will return false. Please follow the below process to verify.
+[orgonweb](https://developers.orgon.network/docs/orgonweb-1) provides the `Trx.verifySignature` interface to verify the signature. If the verification is passed, it will return true, otherwise, it will return false. Please follow the below process to verify.
 
-### Install tronweb
-If you have already installed tronweb, please skip this step, if not, please refer to the following command to install.
+### Install orgonweb
+If you have already installed orgonweb, please skip this step, if not, please refer to the following command to install.
 
 ```
-npm install -g tronweb
+npm install -g orgonweb
 ```
 ### Verify the integrity of the release package
 Confirm the integrity of the release package by comparing the Hash value of the executable file and the hash value in the release information. Take [Odyssey-3.7](https://github.com/alexozerov/java-orgon/releases/tag/Odyssey-v3.7) version as an example:
@@ -88,7 +88,7 @@ $ shasum -a 256 FullNode.jar (macOS)
 Execute the following command to verify the signature of the release package:
 ```js
 # Trx.verifySignature(SHA256, ADDRESS, SIGNATURE));
-node -e 'console.log(require("tronweb").Trx.verifySignature(
+node -e 'console.log(require("orgonweb").Trx.verifySignature(
     "2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e",
     "oKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2",
     "21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b"

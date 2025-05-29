@@ -51,7 +51,7 @@ Please back up the executable file, database, and configuration file before the 
 
 * Backup the current executable jar file
     ```
-    $ mv $JAVA_TRON.jar $JAVA_TRON.jar.`date "+%Y%m%d%H%M%S"`
+    $ mv $JAVA_ORGON.jar $JAVA_ORGON.jar.`date "+%Y%m%d%H%M%S"`
     ```
 * Backup the current database `output-directory`
     ```
@@ -69,7 +69,7 @@ After preparing the executable file of the new version and backing up the origin
 1. Copy the newest jar package obtained in the previous step to the java-orgon working directory to replace the old executable file.
 2. Replace the old configuration file with the latest configuration file. If you need to modify the configuration, such as adding a keystore file, private key, etc, please modify it yourself.
 
-Note: For the database file, you can use the original database file in the java-orgon working directory, or you can choose to use [database backup snapshot](https://dev.orgon.space/using_javatron/backup_restore/#public-backup-data).
+Note: For the database file, you can use the original database file in the java-orgon working directory, or you can choose to use [database backup snapshot](https://dev.orgon.space/using_javaorgon/backup_restore/#public-backup-data).
 
 
 ### 5. Start the nodes

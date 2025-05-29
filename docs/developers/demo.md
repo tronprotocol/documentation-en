@@ -30,7 +30,7 @@ $ git checkout -b feature/add-new-http-demo develop
 ```
 
 ## Code Development
-Open the java-orgon project in IDEA. Create a new servlet file in the `java-orgon/framework/src/main/java/org/tron/core/services/http` directory to process HTTP requests: SetPeerServlet.java, the file should contain two functions `doGet` and `doPost`. `doGet` is used to handle http get requests and `doPost` is used to handle http post requests. If one of these types of requests is not supported, the method content can be empty.
+Open the java-orgon project in IDEA. Create a new servlet file in the `java-orgon/framework/src/main/java/org/orgon/core/services/http` directory to process HTTP requests: SetPeerServlet.java, the file should contain two functions `doGet` and `doPost`. `doGet` is used to handle http get requests and `doPost` is used to handle http post requests. If one of these types of requests is not supported, the method content can be empty.
 
 ```java
 @Component
@@ -116,7 +116,7 @@ The logic of the `addPeer` method is:
   }
 }
 ```
-After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, [FullNodeHttpApiService](https://github.com/alexozerov/java-orgon/blob/develop/framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java) is the registration entry for the node HTTP API.
+After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, [FullNodeHttpApiService](https://github.com/alexozerov/java-orgon/blob/develop/framework/src/main/java/org/orgon/core/services/http/FullNodeHttpApiService.java) is the registration entry for the node HTTP API.
 
 Call the `context.addServlet` method in the `start` function of the `FullNodeHttpApiService` class to register the SetPeerServlet to the service. The name of the HTTP interface is defined as `/wallet/setpeer`.
 
@@ -203,19 +203,19 @@ public class demoTest {
 
 ```
 
-For this example in the article, a new file should be created in the `framework/src/test/java/org/tron/core/services/http/` directory: SetPeerServletTest.java used to write test cases.
+For this example in the article, a new file should be created in the `framework/src/test/java/org/orgon/core/services/http/` directory: SetPeerServletTest.java used to write test cases.
 
 
 ```java
 public class SetPeerServletTest {
-  private static TronApplicationContext context;
+  private static OrgonApplicationContext context;
   private static Application appT;
   public static ChannelManager channelManager;
   @Before
   public void init() {
 
     Args.setParam(new String[]{}, Constant.TEST_CONF);
-    context = new TronApplicationContext(DefaultConfig.class);
+    context = new OrgonApplicationContext(DefaultConfig.class);
     channelManager = context.getBean(ChannelManager.class);
     appT = ApplicationFactory.create(context);
     appT.initServices(Args.getInstance());
@@ -241,9 +241,9 @@ public class SetPeerServletTest {
 ## Code Style Check
 Check the modified files one by one, and select `Check Current File` in the right-click menu. If there are code style problems, please modify them one by one according to the prompts.
 
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/demo_codestyle_error.png)
+![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/demo_codestyle_error.png)
 Fix the code style warning in the picture, and then check the file again until there is no warning.
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/demo_codestyle.png)
+![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/demo_codestyle.png)
 
 ## Commit Code
 
@@ -261,7 +261,7 @@ git push origin feature/add-new-http-demo
 
 ## Submit Pull Request
 
-Submit a pull request (PR) from your repository to `tronprotocol/java-tron`.
+Submit a pull request (PR) from your repository to `orgonprotocol/java-orgon`.
 
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png)
+![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/javaorgon_pr.png)
 

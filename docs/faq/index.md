@@ -8,7 +8,7 @@
 
 ### How can I generate an account?
 
-You can use [wallet-cli](https://github.com/alexozerov/wallet-cli) or [Tronscan](https://tronscan.org/#/wallet/new).
+You can use [wallet-cli](https://github.com/alexozerov/wallet-cli) or [Orgonscan](https://orgonscan.org/#/wallet/new).
 
 ### What is the network flow?
 
@@ -20,7 +20,7 @@ You need to wait till the time reaches the start time of participation you set w
 
 ### Is there a place to see if all the SuperNodes are producing blocks?
 
-Please refer to [Tronscan](https://tronscan.org/#/sr/representatives)
+Please refer to [Orgonscan](https://orgonscan.org/#/sr/representatives)
 
 ### Is the block producing time interval always remain the same?
 
@@ -64,7 +64,7 @@ Staked duration must be 3 days now. It means you can not unstake until the 3 day
 
 ### How to watch my account for transactions
 
-To meet your needs, you can use ORGON event subscription plugin. For more detail, please refer to [https://dev.orgon.space/architecture/plugin/#tron-event-subscription](https://dev.orgon.space/architecture/plugin/#tron-event-subscription)
+To meet your needs, you can use ORGON event subscription plugin. For more detail, please refer to [https://dev.orgon.space/architecture/plugin/#orgon-event-subscription](https://dev.orgon.space/architecture/plugin/#orgon-event-subscription)
 
 ### How to calculate the transaction fee?
 
@@ -80,7 +80,7 @@ You need to vote again, set your votes number to 0.
 
 ## Node Configuration
 
-### If I replace the field value of 'genesis.block.witnesses' with the address generated in [Tronscan](https://tronscan.org/) in config.conf, do I need to delete other addresses? Do I need to delete the field 'url' and 'voteCount'?
+### If I replace the field value of 'genesis.block.witnesses' with the address generated in [Orgonscan](https://orgonscan.org/) in config.conf, do I need to delete other addresses? Do I need to delete the field 'url' and 'voteCount'?
 
 No need to delete other addresses, these addresses will be a part of your net, but if you do not own the private keys of these addresses, they will act like abandoned addresses.
 Note: The addresses of Zion、Sun and Blackhole can not be deleted, but can be modified.
@@ -181,7 +181,7 @@ Please use './gradlew build -x test' to skip the test cases.
 java-orgon does not provide a default api to test. Once the service start, grpc commands can be sent. Based on that, there are several ways to test if the deployment is successful. You can also use the following command to test:
 
 ```text
-> tail -f logs/tron.log |grep "MyheadBlockNumber"
+> tail -f logs/orgon.log |grep "MyheadBlockNumber"
 ```
 
 ### When to deploy private environment, what's the relationship of SuperNode and FullNode? Should I firstly deploy a SuperNode, and then deploy a FullNode？
@@ -193,7 +193,7 @@ Under private environment, there should be at least one SuperNode, there is no a
 Using the following command
 
 ```text
-> tail -f logs/tron.log |grep "Try Produce Block"
+> tail -f logs/orgon.log |grep "Try Produce Block"
 ```
 
 ### Can SolidityNode and FullNode be deployed in one machine? Will they share the data?
@@ -242,7 +242,7 @@ to be answered
 
 ### Where can I get the test ORGON?
 
-[http://testnet.tronex.io/join/getJoinPage](http://testnet.tronex.io/join/getJoinPage)
+[http://testnet.orgonex.io/join/getJoinPage](http://testnet.orgonex.io/join/getJoinPage)
 
 ## Smart Contract
 
@@ -251,9 +251,9 @@ to be answered
 
 ### How to sign transaction from offline node and broadcast to online node?
 
-You can use [tronweb](https://developers.tron.network/docs/api-sign-flow)
+You can use [orgonweb](https://developers.orgon.network/docs/api-sign-flow)
 
-### How to sync wallet-cli with wallet on Tronscan?
+### How to sync wallet-cli with wallet on Orgonscan?
 
 By using wallet-cli api 'ImportWallet'.
 
@@ -289,7 +289,7 @@ triggercontract contractaddress balanceOf(address) "youraddress" false 0 0 0 #
 This message means your node does not sync with the network. Before producing blocks, it needs to sync data. You can use the following command to check the block height.
 
 ```text
-> tail -f logs/tron.log |grep "MyheadBlockNumber"
+> tail -f logs/orgon.log |grep "MyheadBlockNumber"
 ```
 
 ## Other Questions
@@ -298,4 +298,4 @@ This message means your node does not sync with the network. Before producing bl
 
 Feel free to join our community, just open an Issue on github:
 
-- Github: [tronprotocol/java-tron](https://github.com/alexozerov/java-orgon)
+- Github: [orgonprotocol/java-orgon](https://github.com/alexozerov/java-orgon)

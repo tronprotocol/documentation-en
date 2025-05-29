@@ -352,7 +352,7 @@ FreezeBalance successful !!!
 #### UnfreezeBalance
 unstake ORGON which staked during stake1.0.
 ```shell
-wallet>unfreezeBalance [OwnerAddress] ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER) [receiverAddress]
+wallet>unfreezeBalance [OwnerAddress] ResourceCode(0 BANDWIDTH,1 ENERGY,2 ORGON_POWER) [receiverAddress]
 ```
 `OwnerAddress`is the address of the account that initiated the transaction, optional, default is the address of the login account. `ResourceCode`indicates the type of the acquired resource，0 stands for BANDWIDTH and 1 stands for ENERGY. `receiverAddress`is the address that will receive the resource.
 
@@ -421,7 +421,7 @@ wallet> getdelegatedresource TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8 TXBpeye7UQ4dDZEn
 Stake 2.0 API: Stake ORGON to obtain ORGON Power (voting rights) and bandwidth or energy.
 
 ```shell
-wallet> freezeBalanceV2 [OwnerAddress] frozen_balance ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER)
+wallet> freezeBalanceV2 [OwnerAddress] frozen_balance ResourceCode(0 BANDWIDTH,1 ENERGY,2 ORGON_POWER)
 ```
 
 * `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
@@ -474,7 +474,7 @@ Stake 2.0 API: Unstake ORGON to release bandwidth and energy and at the same tim
 
 
 ```shell
-wallet> unfreezeBalanceV2 [OwnerAddress] unfreezeBalance ResourceCode(0 BANDWIDTH,1 ENERGY,2 TRON_POWER)
+wallet> unfreezeBalanceV2 [OwnerAddress] unfreezeBalance ResourceCode(0 BANDWIDTH,1 ENERGY,2 ORGON_POWER)
 ```
 
 * `OwnerAddress` is the address of the account that initiated the transaction, optional, default is the address of the login account.
@@ -775,7 +775,7 @@ wallet> getaccountresource TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 	"freeNetLimit": 1500,
 	"TotalNetLimit": 43200000000,
 	"TotalNetWeight": 8725123062,
-	"tronPowerLimit": 1,
+	"orgonPowerLimit": 1,
 	"TotalEnergyLimit": 90000000000,
 	"TotalEnergyWeight": 328098231
 }
@@ -1599,8 +1599,8 @@ wallet> listassetissue
 	"assetIssue": [
 		{
 			"owner_address": "oMWXhuxiT1KczhBxCseCDDsrhmpYGUcoA9",
-			"name": "tronlink_token",
-			"abbr": "tronlink_token",
+			"name": "orgonlink_token",
+			"abbr": "orgonlink_token",
 			"total_supply": 1000000000000000,
 			"frozen_supply": [
 				{
@@ -1748,7 +1748,7 @@ wallet> createProposal [OwnerAddress] [id0] [value0] ... [idN] [valueN]
 ```
 `OwnerAddress` (optional) is the address of the account which initiated the transaction. By default, it is the address of the login account.
 
-`id0` is the serial number of ORGON Network Parameter. Of which, each one has a serial number corresponded. Please refer to [http://tronscan.org/#/sr/committee](http://tronscan.org/#/sr/committee).
+`id0` is the serial number of ORGON Network Parameter. Of which, each one has a serial number corresponded. Please refer to [http://orgonscan.org/#/sr/committee](http://orgonscan.org/#/sr/committee).
 
 `Value0` is the modified value.
 
