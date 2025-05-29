@@ -40,7 +40,7 @@ The FullNode HTTP API is categorized as follows:
 - [Voting & SRs](#vote-and-sr)
 - [Proposals](#proposals)
 - [DEX Exchange](#dex-exchange)
-- [TRONZ Shielded Smart Contract](#tronz-shielded-smart-contract)
+- [ORGONZ Shielded Smart Contract](#orgonz-shielded-smart-contract)
 - [Pending Pool](#pending-pool)
 
 
@@ -1855,8 +1855,8 @@ Return：order
 
 
 
-### TRONZ Shielded Smart Contract
-The following are TRONZ anonymous smart contract related APIs:
+### ORGONZ Shielded Smart Contract
+The following are ORGONZ anonymous smart contract related APIs:
 
 - [wallet/getexpandedspendingkey](#walletgetexpandedspendingkey)
 - [wallet/getakfromask](#walletgetakfromask)
@@ -2844,7 +2844,7 @@ Parameters: N/A
 Return: The list of all the exchange pairs
 
 
-### TRONZ Shielded Smart Contract
+### ORGONZ Shielded Smart Contract
 
 
 #### walletsolidity/getmerkletreevoucherinfo
