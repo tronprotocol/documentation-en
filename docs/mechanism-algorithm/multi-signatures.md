@@ -147,7 +147,7 @@ localwitness = [
     -  `localwitness` needs to be changed to the private key of the account authorized with witness permission
     - `localWitnessAccountAddress` shoule be explicitly set as the address of the witness account
 
-    Below is an example of how to configure witness account [oCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk](https://quasar.orgonscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk) which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
+    Below is an example of how to configure witness account [oCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk](https://quasar.orgonscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk) which authorize its witness permission to account oSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
     ```
     #config.conf
     localWitnessAccountAddress = oCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk

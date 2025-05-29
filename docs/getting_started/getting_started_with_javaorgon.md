@@ -130,7 +130,7 @@ java-orgon provides http interface and grpc interface externally, which is conve
 #### Get account information
 After entering the `getaccount` command in wallet-cli, it will request account information data from the java-orgon node, and then display the result in the terminal.
 ```
-wallet> getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
+wallet> getaccount oUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 ```
 Result:
 ```

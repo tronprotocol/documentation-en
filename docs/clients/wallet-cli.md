@@ -162,7 +162,7 @@ Get account information by an address
 wallet> getaccount [address]
 ```
 ```shell
-wallet> getaccount TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
+wallet> getaccount oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8
 {
 	"address": "oSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8",
 	"balance": 2665198240,
@@ -1547,7 +1547,7 @@ wallet> GetAssetIssueByAccount TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ  # to check th
 Example:
 ```shell
 wallet> TransferAsset TN3zfjYUmMFK3ZsHSsrdJoNRtGkQmZLBLz 1000001 1000
-wallet> getaccount TN3zfjYUmMFK3ZsHSsrdJoNRtGkQmZLBLz  # to check target account information after the transfer
+wallet> getaccount oN3zfjYUmMFK3ZsHSsrdJoNRtGkQmZLBLz  # to check target account information after the transfer
 address: TN3zfjYUmMFK3ZsHSsrdJoNRtGkQmZLBLz
     assetV2
     {
@@ -1574,7 +1574,7 @@ The participation process must happen during the release of ORC10, otherwise an 
 Example:
 ```shell
 wallet> ParticipateAssetIssue TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ 1000001 1000
-wallet> getaccount TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW  # View remaining balance
+wallet> getaccount oJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW  # View remaining balance
 address: TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 assetV2
     {
@@ -1628,7 +1628,7 @@ Obtain ORC10 token information based on owner address.
 wallet> getassetissuebyaccount [owneraddress]
 ```
 ```shell
-wallet> getassetissuebyaccount TUwjpfqW7NG6BF3GCTrKy1aDvfchwSG4tN
+wallet> getassetissuebyaccount oUwjpfqW7NG6BF3GCTrKy1aDvfchwSG4tN
 {
 	"assetIssue": [
 		{
