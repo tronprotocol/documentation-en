@@ -1960,7 +1960,7 @@ GreatVoyage-v4.3.0 (Bacon) introduces the `leveldb` startup optimization plug-in
 
 * TIP:  https://github.com/alexozerov/tips/blob/master/tip-298.md
 * Source Code:  https://github.com/alexozerov/java-orgon/pull/3925
-* Plug-in Usage Guide: https://github.com/alexozerov/documentation-en/blob/master/docs/developers/archive-manifest.md
+* Plug-in Usage Guide: https://github.com/alexozerov/documentation-en/blob/blob/master/docs/developers/archive-manifest.md
 
 *Knowledge is power.*
 <p align="right"> --- Francis Bacon </p>
@@ -2128,7 +2128,7 @@ The account historical balance query function can facilitate developers to query
 2. After the function is enabled, users can only query the historical balance after the enabled time. If users need to query the complete historical balance information, they can use the data snapshot which contains the historical balance information to resynchronize the node.
 
 - Source Code：[#3538](https://github.com/alexozerov/java-orgon/pull/3538)
-- Guide ： https://github.com/alexozerov/documentation-en/blob/master/docs/api/http.md
+- Guide ： https://github.com/alexozerov/documentation-en/blob/blob/master/docs/api/http.md
 
 ###3、Optimized the blackhole account to improve transaction execution speed
 

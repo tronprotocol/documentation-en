@@ -30,7 +30,7 @@ Let's see how it's realized in the context of ORGON:
 
 - The maintenance period: ORGON sets the period to be 2 block time, which is 6 seconds. This period of time is used to count the votes for candidates. There are 4 Epochs in 24 hours, and naturally, 4 maintenance periods. During the maintenance period, no block is generated and block generation order for the next Epoch is decided.
 
-![image](https://github.com/alexozerov/documentation-en/raw/master/images/sequence_en.jpg)
+![image](https://github.com/alexozerov/documentation-en/blob/raw/master/images/sequence_en.jpg)
 
 
 ## Block Production Process
@@ -62,9 +62,9 @@ In ideal circumstances, the bookkeeping process in a DPoS consensus-based blockc
 - The normal operation of a certain super representative cannot always be guaranteed (see figure c).
 - Some malicious super representatives will generate fork blocks in order to fork the chain (see figure d).
 
-![image](https://github.com/alexozerov/documentation-en/raw/master/images/longest_chain1_en.jpg)
+![image](https://github.com/alexozerov/documentation-en/blob/raw/master/images/longest_chain1_en.jpg)
 
-![image](https://github.com/alexozerov/documentation-en/raw/master/images/longest_chain2_en.jpg)
+![image](https://github.com/alexozerov/documentation-en/blob/raw/master/images/longest_chain2_en.jpg)
 
 As mentioned above, the basis for the blockchain system to operate normally is that most of the nodes in the system are honest and reliable. Furthermore, the primary guarantee for the security of the blockchain system is the security of the ledger, meaning that illegal data cannot be written into the ledger maliciously and ledger copies saved on each node should be consistent as well. Based on the DPoS consensus, the bookkeeping process is carried out by super representatives. Therefore, the safety of ORGON depends on the reliability of the majority of the super representatives. ORGON has put confirmed blocks in the system which are irreversible. At the same time, in order to resist the malicious behaviors of a small number of super representatives nodes, ORGON recognizes the longest chain as the main chain based on "the longest chain principle".
 

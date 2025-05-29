@@ -241,9 +241,9 @@ public class SetPeerServletTest {
 ## Code Style Check
 Check the modified files one by one, and select `Check Current File` in the right-click menu. If there are code style problems, please modify them one by one according to the prompts.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/demo_codestyle_error.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/demo_codestyle_error.png)
 Fix the code style warning in the picture, and then check the file again until there is no warning.
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/demo_codestyle.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/demo_codestyle.png)
 
 ## Commit Code
 
@@ -263,5 +263,5 @@ git push origin feature/add-new-http-demo
 
 Submit a pull request (PR) from your repository to `orgonprotocol/java-orgon`.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/javaorgon_pr.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/javaorgon_pr.png)
 

@@ -16,9 +16,9 @@ The IntelliJ IDEA configuration steps are as follows:
     Search for `lombok` in [IDEA]->[Preferences]->[Plugins] to install `Lombok` plugin, `Lombok` makes java-orgon code more concise by adding annotations.
 
 * Enable `Enable annotation processing` configuration item
-      ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/IDE_annotation.png)
+      ![image](https://github.com/alexozerov/documentation-en/blob/master/images/IDE_annotation.png)
 * Check the JDK version and make sure that `Oracle JDK 1.8` is used in IntelliJ IDEA
-      ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/IDE_JDK.png)
+      ![image](https://github.com/alexozerov/documentation-en/blob/master/images/IDE_JDK.png)
 
 * Download java-orgon source code
 
@@ -33,15 +33,15 @@ The IntelliJ IDEA configuration steps are as follows:
 The java-orgon code style needs to meet the `Google check style` specification. In IDEA, you can use the `Checkstyle` plugin to check whether the code conforms to the `Google check style` specification. The installation and configuration process of the plugin is as follows:
 
 * Search for `checkstyle` in [IDEA]->[Preferences]->[Plugins] to install the plugin
-    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/IDE_checkstyle.png)
+    ![image](https://github.com/alexozerov/documentation-en/blob/master/images/IDE_checkstyle.png)
 
 * Code style configuration
 
     First, download the [java-orgon code style check configuration file](https://github.com/alexozerov/java-orgon/blob/develop/config/checkstyle/checkStyleAll.xml), then in the Checkstyle configuration page, click "+ ", choose to use the "checkStyleAll.xml" just downloaded, after adding that, you can see this file in the "Configuration Files" list, and finally click "Apply" to complete the configuration.
-    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/IDE_checkStyleAll.png)
+    ![image](https://github.com/alexozerov/documentation-en/blob/master/images/IDE_checkStyleAll.png)
 
     After configuring the `Checkstyle` plugin, you can use `Checkstyle` to check the code. `Checkstyle` can check a module or the whole project, and can also check a single file. Select "Check Current File" in the right-click menu of the file editor, and Checkstyle will check the file. If a code problem is detected, you need to modify it according to the prompts. Code can only be submitted when there are no code problems.
-    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/IDE_stylecheck.png)
+    ![image](https://github.com/alexozerov/documentation-en/blob/master/images/IDE_stylecheck.png)
 
 
 ## Compile java-orgon
@@ -68,12 +68,12 @@ In the "Run/Debug Configurations" configuration panel, specify the JDK version r
 
 "Working directory" is configured as the working directory of java-orgon created earlier. When java-orgon starts, it will look for the `config.conf` configuration file in this directory. Please make sure that `config.conf` has already been in this directory.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/IDE_RunDebug.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/IDE_RunDebug.png)
 
 After the setting, click the "Apply" button to complete the configuration. Then you can click "Run"->"Run FullNode" in IDEA to start the java-orgon node or click "Run"->"Debug FullNode" to start the node in debug mode. After the node is started, java-orgon logs are stored in the working directory.
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/IDE_runjavaorgon.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/IDE_runjavaorgon.png)
 
 
 If you want to debug the java-orgon code, you can set breakpoints in the java-orgon code and start it in debug mode, so that you can trace the debug code line by line.
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/IDE_debug.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/IDE_debug.png)
 

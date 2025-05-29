@@ -300,7 +300,7 @@ Based on this consideration, java-orgon uses LevelDB as the underlying data stor
 #### Transaction Validation
 As we all know, the blockchain mainly stores transaction data. Before introducing the chainbase module, you need to understand the transaction processing logic in java-orgon .
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_1.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_1.png)
 
 
 The transaction will be distributed to each node through network broadcast. After receiving the transaction, the node will first validate the signature of the transaction. If successful, the transaction needs to be pre-executed to determine whether the transaction is legal.
@@ -350,7 +350,7 @@ The data state changes caused by these three scenarios may need to be rolled bac
 #### Rollback after Receiving a New Block
 When receiving a new block, the node needs to roll back to the state at the end of the previous block and roll back all transactions validated afterward. As shown below,
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_2.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_2.png)
 
 
 
@@ -371,7 +371,7 @@ This is the last rollback situation, and the blockchain will inevitably fork, es
 
 java-orgon maintains a data structure in memory as below,
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_3.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_3.png)
 
 
 
@@ -386,7 +386,7 @@ This chapter explains receiving and validating transactions, block production, v
 
 
 #### Receiving Transactions
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_4.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_4.png)
 
 
 After the node receives a transaction, it puts the transaction into the local pushTransactionQueue cache queue by calling the `pushTransaction(final TransactionCapsule trx)` function of the manager class and validates the transaction at the same time. And the return of this method is sort of elegant:
@@ -404,7 +404,7 @@ After the transaction validation is successful, the transactions without problem
 
 A node would receive transactions broadcasted from other nodes before receiving a new block, the transactions need to be validated to determine whether they can be executed correctly. Validation means that the state needs to be changed, and a successful validation does not mean that the transaction will be finally executed, and it will be considered successful after packing into a block and the block become solidified. This step can be considered to filter out those obviously wrong transactions in advance. This is just validation. When a new block arrives, the state changed by transaction validations should be rolled back. Only the state changed when applying new blocks will not be rolled back.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_5.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_5.png)
 
 
 When rolling back, java-orgon move the transactions in the pendingTransactionQueue to rePushTransactions, and clear the pendingTransactionQueue, see the figure for a detailed explanation.
@@ -413,7 +413,7 @@ Why does the pendingTransactionQueue need to be emptied after a new block arrive
 
 There is a session object in java-orgon . A session represents the change in the state of a block. The session object is mainly used for rollback. For example,rolling back the state to the state of the previous block needs to be operated throughout the session, as shown in the following figure,
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_6.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_6.png)
 
 
 In the above figure, you can see that there are many different types of databases in persistent storage. These data are jointly organized into a complete blockchain. For example, blocks are stored in khasodb and blockStore, and account information is stored in accountStore...
@@ -429,7 +429,7 @@ SR needs to roll back before producing blocks. The reasons are more complicated.
 
 However, there is a problem with this scheme: if the SR node has just received and applied a new block, the pendingTransactionQueue will be cleared. At this time, it is the turn of the SR to pack the block, but there is no transaction in pendingTransactionQueue. Therefore, the real implementation is that not only reads transactions from pendingTransactionQueue when generating blocks but also reads transactions from rePushTransactions and puts them into blocks if there are few transactions in pendingTransactionQueue. The above analysis shows that transactions in rePushTransactions may not be possible to pass the validation, so the transactions need to be validated again. Due to this validation logic, the state needs to be rolled back before the block is produced.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_7.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_7.png)
 
 In the process of producing the block, the transaction will be validated again, so there will be a state change, but this is just block production, and the block needs to be broadcast as well, and those blocks who received the broadcast will actually change the state, so the state changes incurred by block production also need to be rolled back. As shown in the figure above, when the block production is completed, session2" needs to be rolled back.
 
@@ -440,7 +440,7 @@ java-orgon adopts the DPoS consensus mechanism. The DPoS of java-orgon is to vot
 
 SnapshotManager in java-orgon is the key entry to the storage module, holds references to all current business databases, and stores database references in a list. Each database instance supports adding a new layer of state set on its own called SnapshotImpl. It is an in-memory hashmap, multiple SnapshotImpl are associated in the form of a linked list, and one SnapshotImpl retains the data modification (in-merging or merging) involved in one state change, and SnapshotImpl is independent of each other. They are separated through this data structure, as shown in the following figure,
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_8.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_8.png)
 
 
 The SnapshotRoot in the above figure is the encapsulation class for the persistent database, which is responsible for storing the solidified data.
@@ -475,7 +475,7 @@ The operation of creating a checkpoint is more critical. A checkpoint is to pers
 
 A checkpoint data structure,
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/chainbase_9.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/chainbase_9.png)
 
 
 
@@ -513,7 +513,7 @@ As the foundation of the blockchain, the P2P network brings the following advant
 
 #### ORGON Network
 The architecture diagram of ORGON is as follows:
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_architecture.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_architecture.png)
 
 As the most fundamental module of ORGON, the P2P network directly determines the stability of the entire blockchain network. The network module can be divided into the following four parts according to the function:
 
@@ -552,16 +552,16 @@ The node discovery protocol of ORGON includes the following four UDP messages:
 After the node is started, it will read the seed nodes configured in the node configuration file and the peer nodes recorded in the database, and then send `DISCOVER_PING` message to them respectively. If the reply message `DISCOVER_PONG` from a peer is received, and at the condition that the K bucket is not full, it will then write the peer node into the K bucket; But if the corresponding bucket has already been full (that is the bucket has reached 16 nodes), it will challenge to the earliest node in the bucket. If the challenge is successful, the old node will be deleted, and the new node will be added to the K bucket. That is the K bucket initialization process, then the node discovery process is performed.
 
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_discoverinit.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_discoverinit.png)
 
 ##### Send DISCOVER_FIND_NODE to Find More Nodes
 
 The node discovery service will start two scheduled tasks (`DiscoverTask` and `RefreshTask`) to periodically perform the node discovery process to update k buckets.
 
 * `DiscoverTask` is to discover more nodes that are closer to myself. It is executed every 30s. The execution flow is as follows:
-    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_discovertask.png)
+    ![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_discovertask.png)
 * `RefreshTask` is to expand the local k-bucket by random node ID, that is, to find nodes that are closer to the random node ID. It is executed every 7.2s. The execution process is as follows:
-    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_refreshtask.png)
+    ![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_refreshtask.png)
 
 
 The node discovery algorithm used in `DiscoverTask` and `RefreshTask` will be executed 8 rounds in one call, and each round sends `DISCOVER_FIND_NODE` message to the 3 nodes closest to the target node ID in the K bucket, and waits for a reply.
@@ -570,7 +570,7 @@ The node discovery algorithm used in `DiscoverTask` and `RefreshTask` will be ex
 ##### Receive Neighbors' Messages and Update K Bucket
 When the local node receives the `DISCOVER_NEIGHBORS` message replied by the remote node, it will send the `DISCOVER_PING` message to the received neighbor node in turn, and then if it receives the reply message `DISCOVER_PONG`, it will judge whether the corresponding K-bucket is full, if the K-bucket is not full, it will add the new node to the K bucket, if the K bucket is full, it will challenge one of the nodes, if the challenge is successful (send a `DISCOVER_PING` message to the old node, if it fails to receive the reply message `DISCOVER_PONG`, the challenge is successful, otherwise the challenge fails), the old node will be deleted from the K bucket, and the new node will be added to the K bucket.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_updatek.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_updatek.png)
 
 
 Nodes periodically perform node discovery tasks, continuously update K-buckets, and build their own node routing tables. The next step is to establish a connection with nodes.
@@ -591,7 +591,7 @@ The local node needs to manage and classify peer nodes for efficient and stable 
 #### Establish TCP Connection with Peers
 After the node is started, a scheduled task `poolLoopExecutor` will be created to establish a TCP connection with nodes. It will select nodes and establish connections with them. The working process is as follows:
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_connect.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_connect.png)
 
 The TCP connection can be mainly divided into two steps: first, determine the node list which the node will establish a connection with. The list needs to contain the active nodes that have not successfully established a connection, and then calculate the number of connections that also need to be established, and filter out the nodes from discovered neighbors according to the [node filtering strategy](#node-filtering-strategy), then score and sort them according to the [node scoring strategy](#node-scoring-strategy), and the corresponding number of nodes with the highest score is added to the request list. Finally, TCP connections are established with the nodes in the request list.
 
@@ -606,7 +606,7 @@ When establishing a node connection, it is necessary to filter out the following
 
 But for trusted nodes, some filtering policies are ignored and connections are always established.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_filterrule.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_filterrule.png)
 
 
 
@@ -638,7 +638,7 @@ Channel keep-alive is accomplished through `P2P_PING`, `P2P_PONG` TCP messages. 
 
 After completing the handshake with the peer node, if the peer node's blockchain is longer than the local blockchain, the block synchronization process `syncService.startSync` will be triggered according to the longest chain principle. The message interaction during the synchronization process is as follows:
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_syncflow.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_syncflow.png)
 
 Node A sends an `SYNC_BLOCK_CHAIN` message to peer node B to announce the blockchain summary information of the local chain. After the peer node B receives it, it calculates the list of missing blocks of node A, and sends the lost block ID list to node A through the `BLOCK_CHAIN_INVENTORY` message, carrying a maximum of 2000 block ids at a time.
 
@@ -658,7 +658,7 @@ The height of the local header block is 1018, and the height of the solidified b
 
 After node B receives the blockchain summary of node A, combined with the local chain, it can produce the list of blocks that node A lacks: 1018, 1019, 1020, and 1021. Then, node A requests to synchronize blocks 1019, 1020, and 1021 according to the list of missing blocks.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_sync1.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_sync1.png)
 
 
 ##### Chain-Switching Scene
@@ -667,19 +667,19 @@ The head block height of the local main chain is 1018, and the height of the sol
 
 After node B receives the chain summary of node A, it finds that the local main chain is not the same as the main chain of node A, compares the chain summary of node A and finds that the common block height is 1015, then it computes the list of blocks that node A lacks are 1015, 1016', 1017', 1018', and 1019'. Then, node A requests to synchronize blocks 1018' and 1019' according to the list of missing blocks.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_sync2.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_sync2.png)
 
 In another switching chain scenario, the height of the local main chain header block is 1018, the height of the solidified block is 1000, and the common block is 1017', which is located on the fork chain. The local blockchain summary of node A obtained by the dichotomy is 1000, 1009, 1014, 1016', and 1017'.
 
 After node B receives the chain summary of node A, combined with the local chain, it can produce the list of blocks that node A lacks 1017', 1018', and 1019'. Then, node A requests to synchronize blocks 1018', and 1019' according to the list of missing blocks.
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_sync3.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_sync3.png)
 
 ### Block and Transaction Broadcast
 
 When the super representative node produces a new block, or the fullnode receives a new transaction initiated by the user, the transaction & block broadcasting process will be initiated. When a node receives a new block or new transaction, it will forward the corresponding block or transaction, and the forwarding process is the same as that of broadcasting. The message interaction is shown in the following figure:
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network_broadcastflow.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network_broadcastflow.png)
 
 The types of messages involved include:
 

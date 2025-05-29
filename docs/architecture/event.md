@@ -105,7 +105,7 @@ OrgonEventQuery is implemented with Orgon's new event subscribe model. It uses s
 For more information of ORGON event subscribe model, please refer to [TIP-12](https://github.com/alexozerov/TIPs/issues/12).
 
 - [Event query deployment](https://dev.orgon.space/developers/deployment/#event-subscribe-plugin-deployment)
-- [Event query HTTP API](https://github.com/alexozerov/documentation-en/tree/master/docs_without_index/plugin/event-query-http.md)
+- [Event query HTTP API](https://github.com/alexozerov/documentation-en/blob/tree/master/docs_without_index/plugin/event-query-http.md)
 
 
 ## Using java-orgon's Built-in Message Queue for Event Subscription

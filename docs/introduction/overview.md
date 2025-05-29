@@ -180,7 +180,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.4 ORGON Network Instructure
 ORGON network uses Peer-to-Peer(P2P) network infrastructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-orgon code can join ORGON network as a node.
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/network.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/network.png)
 
 ## 4.5 FullNode and SolidityNode Fast Deployment
 Download fast deployment script, run the script according to different types of node.
@@ -238,16 +238,16 @@ command line parameters introduction:
  The parameters in configuration file that need to modify:
  localwitness:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/localwitness.jpg)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/localwitness.jpg)
  witnesses:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/witness.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/witness.png)
  version:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/p2p_version.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/p2p_version.png)
  enable:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/discovery_enable.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/discovery_enable.png)
 
 
 **4.6.3.2.2  Step 2: FullNode Deployment**
@@ -285,35 +285,35 @@ wget https://raw.githubusercontent.com/orgonprotocol/orgon-deployment/master/pri
  The parameters in configuration file that need to modify:
  ip.list:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/ip_list.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/ip_list.png)
  p2p.version:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/p2p_version.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/p2p_version.png)
  genesis.block:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/genesis_block.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/genesis_block.png)
  needSyncCheck:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/need_sync_check.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/need_sync_check.png)
  node.discovery.enable:
 
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/discovery_enable.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/discovery_enable.png)
 
 ## 4.7 DB Engine
 ### 4.7.1 Rocksdb
 **4.7.1.1 Configuration**
 
  Use rocksdb as the data storage engine, need to set db.engine to "ROCKSDB"
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/db_engine.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/db_engine.png)
  Note: rocksdb only support db.version=2, do not support db.version=1
 
  The optimization parameters rocksdb support:
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/rocksdb_tuning_parameters.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/rocksdb_tuning_parameters.png)
 
 **4.7.1.2 Use rocksdb's data backup function**
 
  Choose rocksdb to be the data storage engine, you can use it's data backup function while running
- ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/db_backup.png)
+ ![image](https://github.com/alexozerov/documentation-en/blob/master/images/db_backup.png)
 
  Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
 
@@ -1002,7 +1002,7 @@ Bandwidth points consumption sequence for other transactions:
 
 ### 8.2.3 Bandwidth Points Recovery
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/bandwidthRestoreEqn.gif)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/bandwidthRestoreEqn.gif)
 
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.
 

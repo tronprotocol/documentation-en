@@ -9,19 +9,19 @@ The following describes how to set the storage engine of the java-orgon node to 
 
 Use RocksDB as the data storage engine, need to set `db.engine` to "ROCKSDB".
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/db_engine.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/db_engine.png)
 
 Note: RocksDB only supports `db.version=2`, yet does not supports `db.version=1`
 
 The optimization parameters RocksDB support:
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/rocksdb_tuning_parameters.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/rocksdb_tuning_parameters.png)
 
 ### Use RocksDB's data backup function
 
 Choose RocksDB to be the data storage engine, you can use its data backup function while running
 
-![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/db_backup.png)
+![image](https://github.com/alexozerov/documentation-en/blob/master/images/db_backup.png)
 
 Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
 

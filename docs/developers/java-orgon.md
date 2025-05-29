@@ -88,7 +88,7 @@ If you want to contribute codes to java-orgon, please follow the following steps
 
     Submit a pull request (PR) from your repository to `orgonprotocol/java-orgon`.
     Please be sure to click on the link in the red box shown below. Select the base branch for orgonprotocol and the compare branch for your personal fork repository.
-    ![image](https://raw.githubusercontent.com/orgonprotocol/documentation-en/master/images/javaorgon_pr.png)
+    ![image](https://github.com/alexozerov/documentation-en/blob/master/images/javaorgon_pr.png)
 
 
 
