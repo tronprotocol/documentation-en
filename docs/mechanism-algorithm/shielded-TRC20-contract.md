@@ -1,3 +1,4 @@
+[TROZN Yeni TOKEN üretimi ve bilgilendirme süreçleri hakkında : md.babel-leader]:
 # Shielded TRC-20 Contract
 
 ## Introduction
