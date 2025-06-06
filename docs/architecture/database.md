@@ -12,7 +12,7 @@ Use RocksDB as the data storage engine, need to set `db.engine` to "ROCKSDB":
 ```
 storage {
   # Directory for storing persistent data
-  db.engine = "LEVELDB",
+  db.engine = "ROCKSDB",
   db.sync = false,
   db.directory = "database",
   index.directory = "index",
