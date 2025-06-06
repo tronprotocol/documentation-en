@@ -7,21 +7,46 @@ The following describes how to set the storage engine of the java-tron node to R
 
 ### Configuration
 
-Use RocksDB as the data storage engine, need to set `db.engine` to "ROCKSDB".
+Use RocksDB as the data storage engine, need to set `db.engine` to "ROCKSDB":
 
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_engine.png)
-
-Note: RocksDB only supports `db.version=2`, yet does not supports `db.version=1`
+```
+storage {
+  # Directory for storing persistent data
+  db.engine = "LEVELDB",
+  db.sync = false,
+  db.directory = "database",
+  index.directory = "index",
+  transHistory.switch = "on",
+```
 
 The optimization parameters RocksDB support:
 
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/rocksdb_tuning_parameters.png)
+```
+dbSettings = {
+    levelNumber = 7
+    //compactThreads = 32
+    blocksize = 64  // n * KB
+    maxBytesForLevelBase = 256  // n * MB
+    maxBytesForLevelMultiplier = 10
+    level0FileNumCompactionTrigger = 4
+    targetFileSizeBase = 256  // n * MB
+    targetFileSizeMultiplier = 1
+  }
+```
 
 ### Use RocksDB's data backup function
 
-Choose RocksDB to be the data storage engine, you can use its data backup function while running
+Choose RocksDB to be the data storage engine, you can use its data backup function while running:
 
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_backup.png)
+```
+backup = {
+    enable = false  // indicate whether enable the backup plugin
+    propPath = "prop.properties" // record which bak directory is valid
+    bak1path = "bak1/database" // you must set two backup directories to prevent application halt unexpected(e.g. kill -9).
+    bak2path = "bak2/database"
+    frequency = 10000   // indicate backup db once every 10000 blocks processed.
+  }
+```
 
 Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
 
