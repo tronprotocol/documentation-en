@@ -33,12 +33,12 @@ If a SR(Super Representatives) get 20% of the rewards, and the other 80% will be
 
 |  | **Block Production Rewards** | **Voting Rewards** |
 | :--- | :--- | :--- |
-| Total Rewards | On-chain parameter modifiable by proposal, currently 8 TRX | On-chain parameter modifiable by proposal, currently 128 TRX |
-| Related On-chain Parameter ID | #5 (requires activation of #30 chain parameter) | #31 (requires activation of #30 chain parameter) |
-| Related On-chain Parameter Name | getWitnessPayPerBlock | getWitness127PayPerBlock |
-| Rewards Distribution Target | SR, its voters | SRs/SR partners, their voters |
-| Rewards Distribution Time | SR: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br><span style="margin-left: 1em;">VoteWitnessContract<br><span style="margin-left: 1em;">WithdrawBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceV2Contract | SRs/SR partners: Same as SR<br>Voters: Same as voters of SR|
-| Specific Rewards | SR: 8 * brokerageRate<br>Each voter: 8 * (1-brokerageRate) * (votes/total votes received by SR) | Each SR/SR partner: (128 * brokerageRate)/127<br>Each voter: 128 * (1-brokerageRate) * (votes /total votes received by SRs & partners) |
+| **Total Rewards** | On-chain parameter modifiable by proposal, currently 8 TRX | On-chain parameter modifiable by proposal, currently 128 TRX |
+| **Related On-chain Parameter ID** | #5 (requires activation of #30 chain parameter) | #31 (requires activation of #30 chain parameter) |
+| **Related On-chain Parameter Name** | getWitnessPayPerBlock | getWitness127PayPerBlock |
+| **Rewards Distribution Target** | SR, its voters | SRs/SR partners, their voters |
+| **Rewards Distribution Time** | SR: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br><span style="margin-left: 1em;">VoteWitnessContract<br><span style="margin-left: 1em;">WithdrawBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceV2Contract | SRs/SR partners: Same as SR<br>Voters: Same as voters of SR |
+| **Specific Rewards** | SR: 8 * brokerageRate<br>Each voter: 8 * (1-brokerageRate) * (votes/total votes received by SR) | Each SR/SR partner: (128 * brokerageRate)/127<br>Each voter: 128 * (1-brokerageRate) * (votes /total votes received by SRs & partners) |
 
 **Note**:
 
