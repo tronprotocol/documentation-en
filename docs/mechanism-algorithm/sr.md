@@ -43,7 +43,7 @@ If a SR(Super Representatives) get 20% of the rewards, and the other 80% will be
 **Note**:
 
 - SRs and SR partners: Top 127 witnesses
-- Voters for SRs receive both block production and voting rewards, voters for SR partners only receive voting rewards
+- Voters for SRs receive both block production and voting rewards, but block production rewards are only earned when the SR they voted for is scheduled to produce block. Voters for SR partners only receive voting rewards.
 
 
 ## Committee
