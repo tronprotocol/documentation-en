@@ -167,7 +167,7 @@ So, the caller is suggested to set fee limit to 4,200,000 sun * 10% = 420,000 su
     - If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[^1].
     - We recommend to set caller's energy consumption proportion to 10% ~ 100%[^2].
 
-** Example 1 **
+**Example 1**
 
 A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.
 
@@ -189,7 +189,7 @@ If contract executes successfully without any exception, the energy needed for t
 If Assert-style error come out, it will consume the whole number of energy set for fee limit.
 
 
-** Example 2 **
+**Example 2**
 
 A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.
 
