@@ -31,17 +31,21 @@ The default ratio is 20%. Super representatives and super representative partner
 
 If a SR(Super Representatives) get 20% of the rewards, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.
 
+### Block Production Rewards and Voting Rewards
+Rewards are categorized into block production rewards and voting rewards, with their differences outlined as follows:
+
 |  | **Block Production Rewards** | **Voting Rewards** |
 | :--- | :--- | :--- |
 | **Total Rewards** | On-chain parameter modifiable by proposal, currently 8 TRX | On-chain parameter modifiable by proposal, currently 128 TRX |
 | **Related On-chain Parameter ID** | #5 (requires activation of #30 chain parameter) | #31 (requires activation of #30 chain parameter) |
 | **Related On-chain Parameter Name** | getWitnessPayPerBlock | getWitness127PayPerBlock |
 | **Rewards Distribution Target** | SR, its voters | SRs/SR partners, their voters |
-| **Rewards Distribution Time** | SR: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br><span style="margin-left: 1em;">VoteWitnessContract<br><span style="margin-left: 1em;">WithdrawBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceV2Contract | SRs/SR partners: Same as SR<br>Voters: Same as voters of SR |
-| **Specific Rewards** | SR: 8 * brokerageRate<br>Each voter: 8 * (1-brokerageRate) * (votes/total votes received by SR) | Each SR/SR partner: (128 * brokerageRate)/127<br>Each voter: 128 * (1-brokerageRate) * (votes /total votes received by SRs & partners) |
+| **Rewards Distribution Time** | SR: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br><span style="margin-left: 1em;">VoteWitnessContract<br><span style="margin-left: 1em;">WithdrawBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceV2Contract | SRs/SR partners: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br><span style="margin-left: 1em;">VoteWitnessContract<br><span style="margin-left: 1em;">WithdrawBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceContract<br><span style="margin-left: 1em;">UnfreezeBalanceV2Contract |
+| **Specific Rewards** | SR: 8 * brokerageRate<br>Each voter: 8 * (1-brokerageRate) * (votes/total votes received by SR) | Each SR/SR partner: (128 * brokerageRate)/127<br>Each voter: 128 * (1-brokerageRate) * (votes /total votes received by SRs & SR partners) |
 
-**Note**:
+**Notices**:
 
+- on-chain parameter's ID and name can be seen [here](https://tronscan.org/#/sr/committee)
 - SRs and SR partners: Top 127 witnesses
 - Voters for SRs receive both block production and voting rewards, but block production rewards are only earned when the SR they voted for is scheduled to produce block. Voters for SR partners only receive voting rewards.
 
