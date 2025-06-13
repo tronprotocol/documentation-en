@@ -24,49 +24,31 @@ Example (Using wallet-cli):
 
 The final output above is: Vote 3 votes for SR1, 7 votes for SR2.
 
-### Super Representatives Brokerage
+## Rewards 
+### Brokerage of SRs and SR partners
 
 The default ratio is 20%. Super representatives and super representative partners can query the brokerage ratio through the `wallet/getBrokerage` interface, and can also modify the brokerage ratio through the `wallet/updateBrokerage` interface.
 
 If a SR(Super Representatives) get 20% of the rewards, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.
 
-## Rewards for SR(Super Representatives)
-The following calculations are all based on the situation where brokerage ratio is equal to 20%.
+### Block Production Rewards and Voting Rewards
+Rewards are categorized into block production rewards and voting rewards, with their differences outlined as follows:
 
-### Vote Rewards
+|  | **Block Production Rewards** | **Voting Rewards** |
+| :--- | :--- | :--- |
+| **Total Rewards** | On-chain parameter modifiable by proposal, currently 8 TRX | On-chain parameter modifiable by proposal, currently 128 TRX |
+| **Related On-chain Parameter ID** | #5 (requires activation of #30 chain parameter) | #31 (requires activation of #30 chain parameter) |
+| **Related On-chain Parameter Name** | getWitnessPayPerBlock | getWitness127PayPerBlock |
+| **Rewards Distribution Target** | SR, its voters | SRs/SR partners, their voters |
+| **Rewards Distribution Time** | SR: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br>- VoteWitnessContract<br>- WithdrawBalanceContract<br>- UnfreezeBalanceContract<br>- UnfreezeBalanceV2Contract | SRs/SR partners: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br>- VoteWitnessContract<br>- WithdrawBalanceContract<br>- UnfreezeBalanceContract<br>- UnfreezeBalanceV2Contract |
+| **Specific Rewards** | SR: 8 * brokerageRate<br>Each voter: 8 * (1-brokerageRate) * (votes/total votes received by SR) | Each SR/SR partner: (128 * brokerageRate)/127<br>Each voter: 128 * (1-brokerageRate) * (votes /total votes received by SRs & SR partners) |
 
-Vote rewards are 160 TRX for every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX.
+**Notices**:
 
-For each SR and Partner, the daily vote rewards = 4,608,000 * ( votes /  total votes) x 20%  TRX
+- on-chain parameter's ID and name can be seen [here](https://tronscan.org/#/sr/committee)
+- SRs and SR partners: Top 127 witnesses
+- Voters for SRs receive both block production and voting rewards, but block production rewards are only earned when the SR they voted for is scheduled to produce block. Voters for SR partners only receive voting rewards.
 
-### Block Producing Rewards
-
-Every time after a super representative produces a block, it will be rewarded 16 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing rewards is 168,192,000 TRX in total.
-
-Every time after a super representative produces a block, the 16 TRX block producing rewards will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
-
-The daily total block producing rewards = 16 (TRX/block) * 28,800 (blocks/day) = 460,800 (TRX/day)
-
-For each super representative, the daily block producing rewards = (460,800 / 27) * 20%TRX.
-
-
-Rewards may be less than the theoretical number due to missed blocks and maintenance period.
-
-## Rewards for Voter
-
-If you vote for a SR(Super Representative), you will have both vote rewards and block producing rewards:
-
-vote rewards = ((the number of votes you vote to a SR / total votes) * 4,608,000 * 80%) TRX
-
-block producing rewards = ((the number of votes you vote to a SR) / (the total number of votes a SR receives) * ((460,800 / 27) * 80%)) TRX
-
-daily rewards for voter = vote rewards + block producing rewards 
-
-If you vote for a SR Partner, you will only have vote rewards:
-
-daily rewards for voter = (((the number of votes you vote to a SR Partner) * 4,608,000 / total votes) * 80%) TRX
-
-**Notice:** the above **total votes** refers to the combined votes of SRs and SR Partners, not including SR Candidates
 
 ## Committee
 
