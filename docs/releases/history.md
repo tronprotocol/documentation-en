@@ -2081,7 +2081,7 @@ Source code：https://github.com/tronprotocol/java-tron/pull/4045
 In GreatVoyage-v4.4.0 (Rousseau), the following optimizations have been introduced to the `TriggerConstantContract` interface:
 -  Execute contract creation when `ContractAddress` is empty
 -  Remove the check of the incoming parameters `callvalue` and `tokenvalue`
--  The log list and internal transaction list are added to `TransactionExtention`
+-  The log list and internal transaction list are added to `TransactionExtension`
 
 Source Code： https://github.com/tronprotocol/java-tron/pull/4032 
 
@@ -2164,7 +2164,7 @@ GreatVoyage-v4.3.0 (Bacon) provides a new ABI type Error, which is a custom erro
 
 ### API
 
-#### 1. Add a New Field: `energy_used` in `TransactionExtention`
+#### 1. Add a New Field: `energy_used` in `TransactionExtension`
 Users cannot forecast the energy usage of smart contract transactions in versions earlier to GreatVoyage-v4.3.0 (Bacon).
 The version of GreatVoyage-v4.3.0 (Bacon) adds the `energy_used` field to the `TransactionExtension`. When the user invokes the contract method via `TriggerConstantContract`, a sandbox environment based on the most recently synchronized block at the current node is created to supply TVM with this method call. Following the execution, the actual energy consumption figure is written to the `energy_used` field(this operation will not generate an on-chain transaction, nor will it change the status of the current node).
 
