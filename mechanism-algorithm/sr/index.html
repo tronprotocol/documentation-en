@@ -1654,8 +1654,8 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Specific Rewards</strong></td>
-<td style="text-align: left;">SR: 8 * brokerageRate<br>Each voter: 8 * (1-brokerageRate) * (votes/total votes received by SR)</td>
-<td style="text-align: left;">Each SR/SR partner: (128 * brokerageRate)/127<br>Each voter: 128 * (1-brokerageRate) * (votes /total votes received by SRs &amp; SR partners)</td>
+<td style="text-align: left;">SR: 8 * brokerageRate<br>voter: 8 * (1-brokerageRate) * (votes of this voter) / (total votes received by this SR)</td>
+<td style="text-align: left;">SR/SR partner: 128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs &amp; SR partners)<br>voter: 128 * (1-brokerageRate) * (votes of this voter) / (total votes received by all SRs &amp; SR partners)</td>
 </tr>
 </tbody>
 </table>
