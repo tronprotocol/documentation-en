@@ -48,7 +48,7 @@ backup = {
   }
 ```
 
-Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
+**Note:** FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
 
 ### Convert LevelDB to RocksDB
 
@@ -62,7 +62,7 @@ Usage:
 > java -jar build/libs/DBConvert.jar  # run data conversion command
 ```
 
-Note: If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:
+**Note:** If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:
 
 - **src_db_path**: specify LevelDB source directory, default output-directory/database
 - **dst_db_path**: specify RocksDb source directory, default output-directory-dst/database
@@ -79,7 +79,7 @@ then, you should run DBConvert.jar this way:
 > java -jar build/libs/DBConvert.jar your_database_dir/database output-directory-dst/database
 ```
 
-Note: You have to stop the running of the node, and then to run the data conversion script.
+**Note:** You have to stop the running of the node, and then to run the data conversion script.
 
 If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node. Run DBConvert.jar in the previous directory of the new directory, and specify the parameters: `src_db_path` and `dst_db_path`.
 
