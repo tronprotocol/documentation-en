@@ -1543,14 +1543,37 @@
 <p>The following describes how to set the storage engine of the java-tron node to RocksDB, and how to perform data conversion between leveldb and rocksdb.</p>
 <h2 id="rocksdb">RocksDB<a class="headerlink" href="#rocksdb" title="Permanent link">&para;</a></h2>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
-<p>Use RocksDB as the data storage engine, need to set <code>db.engine</code> to "ROCKSDB".</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_engine.png" /></p>
-<p>Note: RocksDB only supports <code>db.version=2</code>, yet does not supports <code>db.version=1</code></p>
+<p>Use RocksDB as the data storage engine, need to set <code>db.engine</code> to "ROCKSDB":</p>
+<div class="highlight"><pre><span></span><code>storage {
+  # Directory for storing persistent data
+  db.engine = &quot;ROCKSDB&quot;,
+  db.sync = false,
+  db.directory = &quot;database&quot;,
+  index.directory = &quot;index&quot;,
+  transHistory.switch = &quot;on&quot;,
+</code></pre></div>
 <p>The optimization parameters RocksDB support:</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/rocksdb_tuning_parameters.png" /></p>
+<div class="highlight"><pre><span></span><code>dbSettings = {
+    levelNumber = 7
+    //compactThreads = 32
+    blocksize = 64  // n * KB
+    maxBytesForLevelBase = 256  // n * MB
+    maxBytesForLevelMultiplier = 10
+    level0FileNumCompactionTrigger = 4
+    targetFileSizeBase = 256  // n * MB
+    targetFileSizeMultiplier = 1
+  }
+</code></pre></div>
 <h3 id="use-rocksdbs-data-backup-function">Use RocksDB's data backup function<a class="headerlink" href="#use-rocksdbs-data-backup-function" title="Permanent link">&para;</a></h3>
-<p>Choose RocksDB to be the data storage engine, you can use its data backup function while running</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/db_backup.png" /></p>
+<p>Choose RocksDB to be the data storage engine, you can use its data backup function while running:</p>
+<div class="highlight"><pre><span></span><code>backup = {
+    enable = false  // indicate whether enable the backup plugin
+    propPath = &quot;prop.properties&quot; // record which bak directory is valid
+    bak1path = &quot;bak1/database&quot; // you must set two backup directories to prevent application halt unexpected(e.g. kill -9).
+    bak2path = &quot;bak2/database&quot;
+    frequency = 10000   // indicate backup db once every 10000 blocks processed.
+  }
+</code></pre></div>
 <p>Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.</p>
 <h3 id="convert-leveldb-to-rocksdb">Convert LevelDB to RocksDB<a class="headerlink" href="#convert-leveldb-to-rocksdb" title="Permanent link">&para;</a></h3>
 <p>The data storage structure of LevelDB and RocksDB is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert LevelDB data to RocksDB data.</p>

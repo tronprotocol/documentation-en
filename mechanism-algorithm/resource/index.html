@@ -1826,7 +1826,7 @@ C: 30,000,000,000 and energy_limit is 36,000,000,000
 <li>We recommend to set caller's energy consumption proportion to 10% ~ 100%[^2].</li>
 </ul>
 </div>
-<p>** Example 1 **</p>
+<p><strong>Example 1</strong></p>
 <p>A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.</p>
 <p>Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely.</p>
 <p>A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX)</p>
@@ -1839,7 +1839,7 @@ C: 30,000,000,000 and energy_limit is 36,000,000,000
 <p>Finally, in this call, the energy A can use is (100000 + 95238) = 195238 energy.</p>
 <p>If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.</p>
 <p>If Assert-style error come out, it will consume the whole number of energy set for fee limit.</p>
-<p>** Example 2 **</p>
+<p><strong>Example 2</strong></p>
 <p>A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX staked for 100000 energy.</p>
 <p>Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption.</p>
 <p>Developer D stakes 50 TRX to get 500000 energy.</p>
