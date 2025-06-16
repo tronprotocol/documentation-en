@@ -1574,7 +1574,7 @@
     frequency = 10000   // indicate backup db once every 10000 blocks processed.
   }
 </code></pre></div>
-<p>Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.</p>
+<p><strong>Note:</strong> FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.</p>
 <h3 id="convert-leveldb-to-rocksdb">Convert LevelDB to RocksDB<a class="headerlink" href="#convert-leveldb-to-rocksdb" title="Permanent link">&para;</a></h3>
 <p>The data storage structure of LevelDB and RocksDB is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert LevelDB data to RocksDB data.</p>
 <p>Usage:</p>
@@ -1582,7 +1582,7 @@
 <span class="go">&gt; ./gradlew build  # build the source code</span>
 <span class="go">&gt; java -jar build/libs/DBConvert.jar  # run data conversion command</span>
 </code></pre></div>
-<p>Note: If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:</p>
+<p><strong>Note:</strong> If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:</p>
 <ul>
 <li><strong>src_db_path</strong>: specify LevelDB source directory, default output-directory/database</li>
 <li><strong>dst_db_path</strong>: specify RocksDb source directory, default output-directory-dst/database</li>
@@ -1593,7 +1593,7 @@
 <p>then, you should run DBConvert.jar this way:</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; java -jar build/libs/DBConvert.jar your_database_dir/database output-directory-dst/database</span>
 </code></pre></div>
-<p>Note: You have to stop the running of the node, and then to run the data conversion script.</p>
+<p><strong>Note:</strong> You have to stop the running of the node, and then to run the data conversion script.</p>
 <p>If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node. Run DBConvert.jar in the previous directory of the new directory, and specify the parameters: <code>src_db_path</code> and <code>dst_db_path</code>.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; cp -rf output-directory /tmp/output-directory</span>
