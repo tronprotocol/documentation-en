@@ -41,7 +41,7 @@ Rewards are categorized into block production rewards and voting rewards, with t
 | **Related On-chain Parameter Name** | getWitnessPayPerBlock | getWitness127PayPerBlock |
 | **Rewards Distribution Target** | SR, its voters | SRs/SR partners, their voters |
 | **Rewards Distribution Time** | SR: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br>- VoteWitnessContract<br>- WithdrawBalanceContract<br>- UnfreezeBalanceContract<br>- UnfreezeBalanceV2Contract | SRs/SR partners: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br>- VoteWitnessContract<br>- WithdrawBalanceContract<br>- UnfreezeBalanceContract<br>- UnfreezeBalanceV2Contract |
-| **Specific Rewards** | SR: 8 * brokerageRate<br>Each voter: 8 * (1-brokerageRate) * (votes/total votes received by SR) | Each SR/SR partner: (128 * brokerageRate)/127<br>Each voter: 128 * (1-brokerageRate) * (votes /total votes received by SRs & SR partners) |
+| **Specific Rewards** | SR: 8 * brokerageRate<br>voter: 8 * (1-brokerageRate) * (votes of this voter) / (total votes received by this SR) | SR/SR partner: 128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs & SR partners)<br>voter: 128 * (1-brokerageRate) * (votes of this voter) / (total votes received by all SRs & SR partners) |
 
 **Notices**:
 
