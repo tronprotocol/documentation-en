@@ -367,6 +367,7 @@ The TRON network supports many different types of transactions, such as TRX tran
       int64 exchange_id = 2;
       bytes token_id = 3;
       int64 quant = 4;
+      int64 expected = 5;
     }
 ```
 
@@ -374,6 +375,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to sell.
 - `quant`: The token amount to sell.
+- `expected`: The expected token amount to buy.
 
 ## ShieldedTransferContract
 ```
