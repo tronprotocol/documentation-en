@@ -375,7 +375,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to sell.
 - `quant`: The token amount to sell.
-- `expected`: The expected token amount to buy.
+- `expected`: The expected token amount to buy, if the calculated actual token amount that can be bought is less than this value, the transaction will fail.
 
 ## ShieldedTransferContract
 ```
