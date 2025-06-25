@@ -10,7 +10,7 @@ The votes will be counted every 6 hours, so super representatives and super repr
 
 ## Super Representative Election
 
-To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
+To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the corresponding TRON Power(TP), so your previous vote will be invalid.
 
 Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.
 
@@ -24,51 +24,41 @@ Example (Using wallet-cli):
 
 The final output above is: Vote 3 votes for SR1, 7 votes for SR2.
 
-### Super Representatives Brokerage
+## Rewards 
+### Brokerage of SRs and SR partners
 
 The default ratio is 20%. Super representatives and super representative partners can query the brokerage ratio through the `wallet/getBrokerage` interface, and can also modify the brokerage ratio through the `wallet/updateBrokerage` interface.
 
-If a SR(Super Representatives) get 20% of the reward, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.
+If a SR(Super Representatives) get 20% of the rewards, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.
 
-## Reward for SR(Super Representatives)
+### Block Production Rewards and Voting Rewards
+Rewards are categorized into block production rewards and voting rewards, with their differences outlined as follows:
 
-### Votes Reward
+|  | **Block Production Rewards** | **Voting Rewards** |
+| :--- | :--- | :--- |
+| **Total Rewards** | On-chain parameter modifiable by proposal, currently 8 TRX | On-chain parameter modifiable by proposal, currently 128 TRX |
+| **Related On-chain Parameter ID** | #5 (requires activation of #30 chain parameter) | #31 (requires activation of #30 chain parameter) |
+| **Related On-chain Parameter Name** | getWitnessPayPerBlock | getWitness127PayPerBlock |
+| **Rewards Distribution Target** | SR, its voters | SRs/SR partners, their voters |
+| **Rewards Distribution Time** | SR: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br>- VoteWitnessContract<br>- WithdrawBalanceContract<br>- UnfreezeBalanceContract<br>- UnfreezeBalanceV2Contract | SRs/SR partners: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br>- VoteWitnessContract<br>- WithdrawBalanceContract<br>- UnfreezeBalanceContract<br>- UnfreezeBalanceV2Contract |
+| **Specific Rewards** | SR: 8 * brokerageRate<br>voter: 8 * (1-brokerageRate) * (votes of this voter) / (total votes received by this SR) | SR/SR partner: 128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs & SR partners)<br>voter: 128 * (1-brokerageRate) * (votes of this voter) / (total votes received by all SRs & SR partners) |
 
-Vote rewards are 160 TRX every block, with a block generated every 3 seconds, the total vote rewards per day is  4,608,000 TRX.
+**Notices**:
 
-For each SR and Partner, the daily Vote Rewards = 4,608,000 * ( votes /  total votes) x 20%  TRX
+- on-chain parameter's ID and name can be seen [here](https://tronscan.org/#/sr/committee)
+- SRs and SR partners: Top 127 witnesses
+- Voters for SRs receive both block production and voting rewards, but block production rewards are only earned when the SR they voted for is scheduled to produce block. Voters for SR partners only receive voting rewards.
 
-### Block Producing Reward
-
-Every time after a super representative produces a block, it will be reward 16 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 168,192,000 TRX in total.
-
-Every time after a super representative produces a block, the 16 TRX block producing reward will be sent to it's sub-account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
-
-$16 (\mathsf{TRX}/block) \times 28,800 (blocks/day) = 460,800 (\mathsf{TRX}/day)$
-
-For each super representative, the daily block $Rewards_{sr} = (460,800 / 27) \times 20 \% \mathsf{TRX}$.
-
-Reward may be less than the theoretical number due to missed blocks and maintenance period.
-
-## Reward for Voters
-
-If you vote for a SR(Super Representative):
-
-the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) + ((460,800 / 27) * 80%) * (the number of votes you vote to a SR) / (the total number of votes a SR receives) TRX
-
-If you vote for a Partner:
-
-the daily Voter Rewards = (((the number of votes you vote to a SR) * 4,608,000 / total votes) * 80%) TRX
 
 ## Committee
 
 ### What is Committee
 
-Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 18 approves from the super representatives and will become valid in the next maintenance period.
+Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every SR has the right to create and vote a proposal. The proposal will be passed after it gets at least 18 approves from the super representatives and will become valid in the next maintenance period.
 
 ### Create a Proposal
 
-Only SRs, Partners and Candidates can create a proposal.
+In addition to SR, SR Partner and SR Candidate also have the right to create a proposal, and only they have this right.
 
 Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dynamic parameters and their values.
 
