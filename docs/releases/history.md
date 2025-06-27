@@ -2208,7 +2208,7 @@ GreatVoyage-v4.3.0 (Bacon) introduces the `leveldb` startup optimization plug-in
 
 * TIP:  https://github.com/tronprotocol/tips/blob/master/tip-298.md 
 * Source Code:  https://github.com/tronprotocol/java-tron/pull/3925
-* Plug-in Usage Guide: https://github.com/tronprotocol/documentation-en/blob/master/docs/developers/archive-manifest.md
+* Plug-in Usage Guide: https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/#leveldb-startup-optimization
 
 *Knowledge is power.* 
 <p align="right"> --- Francis Bacon </p>

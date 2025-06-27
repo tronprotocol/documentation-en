@@ -298,4 +298,4 @@ Optional command parameters are as follows:
 - `-m | --manifest-size`: Specify the minimum required manifest file size, unit: M, default: 0.
 - `-h | --help`：[ bool ]  Provide the help info, default: false.
 
-Note: Before using this tool for any operation, you need to stop the currently running node first. Usage instructions, please refer to [Leveldb Startup Optimization Plugins](../developers/archive-manifest.md).
+Note: Before using this tool for any operation, you need to stop the currently running node first.
