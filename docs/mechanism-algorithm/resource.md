@@ -24,7 +24,7 @@ Such as if the number of bytes of a transaction is 200, so this transaction cons
 
 ### 1. How to Get Bandwidth Points
 
-1. By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43,200,000,000
+1. The Bandwidth Points obtained by staking TRX = (the TRX staked to obtain Bandwidth Points / the total TRX staked by the entire network to obtain Bandwidth Points) * (the upper limit of Bandwidth Points). That is, all users equally divide the fixed quota of Bandwidth Points (the upper limit of Bandwidth Points) according to the number of TRX staked. The upper limit of Bandwidth Points is the [#62](https://tronscan.io/#/sr/committee) network parameter which can be modified through a proposal, the current value is 43,200,000,000.
 2. Every account has a fixed amount of free Bandwidth Points(600) every day
 
 ### 2. Bandwidth Points Consumption
@@ -79,21 +79,21 @@ Example (Using wallet-cli):
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180,000,000,000.
+The Energy obtained by staking TRX = (the TRX staked for Energy / the total TRX staked by the entire network for Energy) * (the upper limit of Energy). That is, all users equally divide the fixed quota of Energy (the upper limit of Energy) according to the number of TRX staked. The upper limit of Energy is the [#19](https://tronscan.io/#/sr/committee) network parameter which can be modified through a proposal, the current value is 180,000,000,000, corresponding to Proposal [#97](https://tronscan.io/#/proposal/97).
 
 Example:
 
 ```text
 If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 75,000,000,000 and energy_limit is 90,000,000,000
-B: 75,000,000,000 and energy_limit is 90,000,000,000
+A: 90,000,000,000
+B: 90,000,000,000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 60,000,000,000 and energy_limit is 72,000,000,000
-B: 60,000,000,000 and energy_limit is 72,000,000,000
-C: 30,000,000,000 and energy_limit is 36,000,000,000
+A: 72,000,000,000
+B: 72,000,000,000
+C: 36,000,000,000
 ```
 #### Energy Consumption
 
