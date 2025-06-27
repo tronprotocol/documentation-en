@@ -2145,6 +2145,7 @@
       int64 exchange_id = 2;
       bytes token_id = 3;
       int64 quant = 4;
+      int64 expected = 5;
     }
 </code></pre></div>
 <ul>
@@ -2152,6 +2153,7 @@
 <li><code>exchange_id</code>: The token pair id.</li>
 <li><code>token_id</code>: The token id to sell.</li>
 <li><code>quant</code>: The token amount to sell.</li>
+<li><code>expected</code>: The expected token amount to buy, if the calculated actual token amount that can be bought is less than this value, the transaction will fail.</li>
 </ul>
 <h2 id="shieldedtransfercontract">ShieldedTransferContract<a class="headerlink" href="#shieldedtransfercontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message ShieldedTransferContract {

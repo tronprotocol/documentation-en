@@ -2,154 +2,154 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/glossary/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/architecture/database/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/architecture/event/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/contracts/contract/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/contracts/tools/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/advanced-configuration/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/code-structure/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/demo/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/deployment/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/governance/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/issue-workflow/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/java-tron/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/run-in-idea/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/tips/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/getting_started/getting_started_with_javatron/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/account/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/dex/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/dpos/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/multi-signatures/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/shielded-transaction/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/sr/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/system-contracts/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/history/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/signature_verification/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/upgrade-instruction/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/connecting_to_tron/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/litefullnode/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/metrics/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/private_network/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/</loc>
-         <lastmod>2025-06-16</lastmod>
+         <lastmod>2025-06-27</lastmod>
     </url>
 </urlset>

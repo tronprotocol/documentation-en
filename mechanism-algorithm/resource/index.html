@@ -1704,7 +1704,7 @@
 </div>
 <h3 id="1-how-to-get-bandwidth-points">1. How to Get Bandwidth Points<a class="headerlink" href="#1-how-to-get-bandwidth-points" title="Permanent link">&para;</a></h3>
 <ol>
-<li>By staking TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-staked / the total amount of TRX staked for Bandwidth Points in the network * 43,200,000,000</li>
+<li>The Bandwidth Points obtained by staking TRX = (the TRX staked to obtain Bandwidth Points / the total TRX staked by the entire network to obtain Bandwidth Points) * (the upper limit of Bandwidth Points). That is, all users equally divide the fixed quota of Bandwidth Points (the upper limit of Bandwidth Points) according to the number of TRX staked. The upper limit of Bandwidth Points is the <a href="https://tronscan.io/#/sr/committee">#62</a> network parameter which can be modified through a proposal, the current value is 43,200,000,000.</li>
 <li>Every account has a fixed amount of free Bandwidth Points(600) every day</li>
 </ol>
 <h3 id="2-bandwidth-points-consumption">2. Bandwidth Points Consumption<a class="headerlink" href="#2-bandwidth-points-consumption" title="Permanent link">&para;</a></h3>
@@ -1752,18 +1752,18 @@ Bandwidth balance obtained by staking TRX = NetLimit - NetUsed
 <p>Example (Using wallet-cli):</p>
 <div class="highlight"><pre><span></span><code>freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 </code></pre></div>
-<p>stake TRX to get energy, energy obtained = user's TRX staked amount / total amount of staked TRX in TRON * 180,000,000,000.</p>
+<p>The Energy obtained by staking TRX = (the TRX staked for Energy / the total TRX staked by the entire network for Energy) * (the upper limit of Energy). That is, all users equally divide the fixed quota of Energy (the upper limit of Energy) according to the number of TRX staked. The upper limit of Energy is the <a href="https://tronscan.io/#/sr/committee">#19</a> network parameter which can be modified through a proposal, the current value is 180,000,000,000, corresponding to Proposal <a href="https://tronscan.io/#/proposal/97">#97</a>.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>If there are only two users, A stakes 2 TRX, B stakes 2 TRX
 the energy they can get is:
-A: 75,000,000,000 and energy_limit is 90,000,000,000
-B: 75,000,000,000 and energy_limit is 90,000,000,000
+A: 90,000,000,000
+B: 90,000,000,000
 
 when C stakes 1 TRX:
 the energy they can get is:
-A: 60,000,000,000 and energy_limit is 72,000,000,000
-B: 60,000,000,000 and energy_limit is 72,000,000,000
-C: 30,000,000,000 and energy_limit is 36,000,000,000
+A: 72,000,000,000
+B: 72,000,000,000
+C: 36,000,000,000
 </code></pre></div>
 <h4 id="energy-consumption">Energy Consumption<a class="headerlink" href="#energy-consumption" title="Permanent link">&para;</a></h4>
 <p>When the contract is executed, Energy is calculated and deducted according to instruction one by one. The priority of account energy consumption is as follows:</p>
