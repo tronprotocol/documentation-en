@@ -145,7 +145,7 @@ localwitness = [
 -  If witness permission is not modified, there is no need to change config file.  
 -  If witness permission is modified, two modifications are required as follows:
     -  `localwitness` needs to be changed to the private key of the account authorized with witness permission
-    - `localWitnessAccountAddress` shoule be explicitly set as the address of the witness account
+    - `localWitnessAccountAddress` should be explicitly set as the address of the witness account
    
     Below is an example of how to configure witness account [TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk](https://nile.tronscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk) which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
     ```
