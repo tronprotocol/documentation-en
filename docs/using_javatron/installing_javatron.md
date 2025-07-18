@@ -91,7 +91,7 @@ export TCMALLOC_RELEASE_RATE=10
 java -jar .....
 ```
 
-Instructions for each Linux distributions are as belows:
+Instructions for each Linux distributions are as below:
 
 * Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable
     Install
