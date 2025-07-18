@@ -25,7 +25,7 @@ Such as if the number of bytes of a transaction is 200, so this transaction cons
 ### 1. How to Get Bandwidth Points
 
 1. The Bandwidth Points obtained by staking TRX = (the TRX staked to obtain Bandwidth Points / the total TRX staked by the entire network to obtain Bandwidth Points) * (the upper limit of Bandwidth Points). That is, all users equally divide the fixed quota of Bandwidth Points (the upper limit of Bandwidth Points) according to the number of TRX staked. The upper limit of Bandwidth Points is the [#62](https://tronscan.io/#/sr/committee) network parameter which can be modified through a proposal, the current value is 43,200,000,000.
-2. Every account has a fixed amount of free Bandwidth Points(600) every day
+2. Every account has a fixed amount of free Bandwidth Points every day. The fixed amount of free Bandwidth Points is the [#61](https://tronscan.io/#/sr/committee) network parameter which can be modified through a proposal, the current value is 600. 
 
 ### 2. Bandwidth Points Consumption
 
