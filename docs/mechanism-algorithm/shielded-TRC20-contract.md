@@ -18,7 +18,7 @@ The technical implementation is based on zk-SNARK(Zero-Knowledge Succinct Non-In
 
    Note: the deployed TRC-20 contract address of `TokenTRC20` on Nile Testnet is:  [TFUD8x3iAZ9dF7NDCGBtSjznemEomE5rP9](https://nile.tronscan.org/#/contract/TFUD8x3iAZ9dF7NDCGBtSjznemEomE5rP9/code).
 
-2. Use the `deployContract` method to deploy the shielded TRC-20 contract. The shielded TRC-20 contract will bind the TRC-20 contract. The `scalingFactor` is also specified when deploying the the shielded TRC-20 contract. For more details about `scalingFactor`, please refer [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md).
+2. Use the `deployContract` method to deploy the shielded TRC-20 contract. The shielded TRC-20 contract will bind the TRC-20 contract. The `scalingFactor` is also specified when deploying the shielded TRC-20 contract. For more details about `scalingFactor`, please refer [TIP-135](https://github.com/tronprotocol/tips/blob/master/tip-135.md).
 
    Note: the deployed shielded TRC-20 contract address of `ShieldedTRC20` on Nile Testnet is:  [TPcKtz5TRfP4xUZSos81RmXB9K2DBqj2iu](https://nile.tronscan.org/#/contract/TPcKtz5TRfP4xUZSos81RmXB9K2DBqj2iu/code) and the corresponding `scalingFactor` is set 10.
 
