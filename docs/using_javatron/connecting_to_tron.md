@@ -71,15 +71,11 @@ If you want to get the latest seed, you can check the [official configuration fi
 There are scenarios where disabling the discovery process is useful, for example for running a local test node or an experimental test network with known, fixed nodes. This can be configured by `node.discovery.enable = false` to close the node discovery process.
 
 ## Peers limit
-`node.maxConnections` indicates the maximum number of connections a node can have with other nodes, with a default value of 30. `node.minConnections` refers to the minimum number of connections between a node and other nodes, and its default value is 8. Setting larger values allows the node to establish more connections, which improves the efficiency of joining the network and enhances the broadcasting efficiency. However, relatively more bandwidth is required to maintain these connections, and there will also be greater performance consumption. Therefore, please set these values according to the actual situation.
-
-`node.minActiveConnections` represents the minimum number of active connections, with a default value of 3. The meaning of an active connection is as shown in the [following text](#active-and-passive-connections).
+`node.maxConnections` indicates the maximum number of connections a node can have with other nodes, with a default value of 30. Setting larger values allows the node to establish more connections, which improves the efficiency of joining the network and enhances the broadcasting efficiency. However, relatively more bandwidth is required to maintain these connections, and there will also be greater performance consumption. Therefore, please set these values according to the actual situation.
 
 ```
 node {
     maxConnections = 30
-    minConnections = 8
-    minActiveConnections = 3
 
 ```
 
