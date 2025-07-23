@@ -55,8 +55,8 @@ $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_c
 
 **Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](backup_restore.md/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
 
-### Backup block-producing fullnode  
-To minimize the impact on block production when an abnormal situation occurs with the block-producing fullnode, backup fullnodes can be deployed. When an account with block-producing permission deploys two or more nodes, the `node.backup` configuration in the configuration file must be properly set. The configuration items for `node.backup` are as follows:  
+### Block-producing fullnodes in Master-Slave Mode
+To enhance the reliability of block-producing fullnode, you can deploy multiple block-producing fullnodes under the same account to form a master-slave mode. When deploying two or more nodes for an account with block-producing permission, the `node.backup` configuration in the configuration file of each node must be properly set. The configuration items for `node.backup` are as follows:  
 
 ```
 node.backup {
