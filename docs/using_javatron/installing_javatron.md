@@ -56,7 +56,7 @@ $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_c
 **Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](backup_restore.md/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
 
 ### Backup block-producing fullnode  
-To minimize the impact on block production when an abnormal situation occurs with the block-producing fullnode, backup fullnodes can be deployed. When an account with block-producing authority deploys two or more nodes, the `node.backup` configuration in the configuration file must be properly set. The configuration items for `node.backup` are as follows:  
+To minimize the impact on block production when an abnormal situation occurs with the block-producing fullnode, backup fullnodes can be deployed. When an account with block-producing permission deploys two or more nodes, the `node.backup` configuration in the configuration file must be properly set. The configuration items for `node.backup` are as follows:  
 
 ```
 node.backup {
@@ -76,7 +76,7 @@ node.backup {
   ]
 }
 ```
-For example, if an account with block production authority deploys three nodes with IP addresses 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be set as follows:
+For example, if an account with block production permission deploys three nodes with IP addresses 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be set as follows:
 
 - ip = 192.168.0.100
 ```
