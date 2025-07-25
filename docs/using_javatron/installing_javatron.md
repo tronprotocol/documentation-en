@@ -55,6 +55,74 @@ $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_c
 
 **Note**: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use [Data Snapshots](backup_restore.md/#public-backup-data) to speed up node synchronization. First download the latest data snapshot and extract it to the `output-directory` directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.
 
+### Block-producing fullnodes in Master-Slave Mode
+To enhance the reliability of block-producing fullnode, you can deploy multiple block-producing fullnodes under the same account to form a master-slave mode. When deploying two or more nodes for an account with block-producing permission, the `node.backup` configuration in the configuration file of each node must be properly set. The configuration items for `node.backup` are as follows:  
+
+```
+node.backup {
+  # udp listen port, each member should have the same configuration
+  port = 10001
+
+  # my priority, each member should use different priority
+  priority = 8
+
+  # time interval to send keepAlive message, each member should have the same configuration unit: ms
+  keepAliveInterval = 3000
+
+  # peer's ip list, can't contain myself
+  members = [
+    # "ip",
+    # "ip"
+  ]
+}
+```
+For example, if an account with block production permission deploys three nodes with IP addresses 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be set as follows:
+
+- ip = 192.168.0.100
+```
+node.backup {
+  port = 10001
+  priority = 8
+  keepAliveInterval = 3000
+  members = [
+    "192.168.0.101",
+    "192.168.0.102"
+  ]
+}
+```
+
+- ip = 192.168.0.101
+```
+node.backup {
+  port = 10001
+  priority = 7
+  keepAliveInterval = 3000
+  members = [
+    "192.168.0.100",
+    "192.168.0.102"
+  ]
+}
+```
+
+- ip = 192.168.0.102
+```
+node.backup {
+  port = 10001
+  priority = 6
+  keepAliveInterval = 3000
+  members = [
+    "192.168.0.100",
+    "192.168.0.101"
+  ]
+}
+```
+**Notes:**
+
+- The backup service of a node will only be activated when it has synchronized to the latest state. The latest state is defined as:  `(node's system time - timestamp of the latest successfully synchronized block) < block production interval`, block production interval: slot time(currently 3 seconds).
+  
+- When a high-priority node fails and loses its master status, other slave nodes will compete to become the new master. If the original high-priority node recovers and meets the block production conditions again, it will not automatically regain master status. It must wait until the current master node fails before it can compete again.
+
+- Time required for master-slave switchover: when the master node fails, the minimum time required for a slave node to switch to master status is `2 × keepAliveTimeout`, where `keepAliveTimeout = keepAliveInterval × 6`. The reason for requiring `2 × keepAliveTimeout` is that the slave node must go through an intermediate `INIT` state during the transition:  `SLAVER`  → `INIT` → `MASTER`(Each backup node has three status: INIT, SLAVER, MASTER)
 
 ### Others
 #### How to use `keystore + password` to specify the privatekey of witness account
