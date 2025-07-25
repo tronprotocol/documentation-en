@@ -66,16 +66,16 @@ seed.node = {
 }
 
 ```
+If you want to get the latest seed, you can check the [official configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf).
 
 There are scenarios where disabling the discovery process is useful, for example for running a local test node or an experimental test network with known, fixed nodes. This can be configured by `node.discovery.enable = false` to close the node discovery process.
 
 ## Peers limit
-`node.maxActiveNodes` indicates the maximum number of connections between the node and other nodes, the default value is 30. Setting a larger value can enable nodes to establish more connections, join the network more efficiently, and broadcast more efficiently. However, the bandwidth required to maintain the connection is also higher and the performance consumption is higher. Therefore, please set it according to the actual situation.
+`node.maxConnections` indicates the maximum number of connections a node can have with other nodes, with a default value of 30. Setting larger values allows the node to establish more connections, which improves the efficiency of joining the network and enhances the broadcasting efficiency. However, relatively more bandwidth is required to maintain these connections, and there will also be greater performance consumption. Therefore, please set these values according to the actual situation.
 
 ```
 node {
-    maxActiveNodes = 30
-}
+    maxConnections = 30
 
 ```
 
