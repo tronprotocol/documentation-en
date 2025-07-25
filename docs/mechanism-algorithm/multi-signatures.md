@@ -166,9 +166,78 @@ Active permission's features:
 1. the account owns owner permission can change active permission
 2. the account owns the execution permission of AccountPermissionUpdateContract can also change active permission
 3. 8 permissions at most
-4. permissionId increases from 2 automatically
-5. when a new account is created, an active permission will be created automatically, and the address will be inserted into it, default weight is 1, keys field only contains this address and weight is 1
+4. when a new account is created, an active permission will be created automatically, and the address will be inserted into it, default weight is 1, keys field only contains this address and weight is 1
+5. permissionId increases from 2 automatically
+6. When initiating a transaction using the Active permission, the permissionId must be explicitly set. The following is an example of a transaction where an account with the Active permission initiates resource delegation via trident, and the permissionId corresponding to this Active permission is 2:
+```
+package org.example;
 
+import org.tron.trident.core.ApiWrapper;
+import org.tron.trident.proto.Chain;
+import org.tron.trident.proto.Contract.DelegateResourceContract;
+import org.tron.trident.proto.Response;
+import org.tron.trident.utils.Convert;
+
+public class Main {
+
+  public static void main(String[] args) {
+    System.out.println("Hello world!");
+
+    String agentPrivateKey = "your private key";
+    String ownerAddress = "xxx";
+    String receiverAddress = "yyy";
+    long trxAmount = 10;
+    int resourceType = 0;
+    int permissionId = 2;
+
+    try {
+      ApiWrapper api = new ApiWrapper("grpc.trongrid.io:50051", "grpc.trongrid.io:50052", agentPrivateKey);
+      long amountSun = Convert.toSun(String.valueOf(trxAmount), Convert.Unit.TRX).longValue();
+
+      DelegateResourceContract contract = DelegateResourceContract.newBuilder()
+          .setOwnerAddress(api.parseAddress(ownerAddress))
+          .setReceiverAddress(api.parseAddress(receiverAddress))
+          .setBalance(amountSun)
+          .setResourceValue(resourceType)
+          .setLock(false)
+          .build();
+
+      // create transaction extension
+      Response.TransactionExtention txnExt = api.createTransactionExtention(
+          contract,
+          Chain.Transaction.Contract.ContractType.DelegateResourceContract
+      );
+
+      // get raw
+      Chain.Transaction.raw.Builder rawBuilder = txnExt.getTransaction().getRawData().toBuilder();
+
+      // set permission
+      Chain.Transaction.Contract.Builder contractBuilder = rawBuilder.getContractBuilder(0)
+          .setPermissionId(permissionId);
+
+      // reset contract
+      rawBuilder.setContract(0, contractBuilder.build());
+
+      Chain.Transaction unsignedTxn = txnExt.getTransaction().toBuilder()
+          .setRawData(rawBuilder.build())
+          .build();
+
+      // sign transaction
+      Chain.Transaction signedTxn = api.signTransaction(unsignedTxn);
+
+      Response.TransactionSignWeight transactionSignWeight = api.getTransactionSignWeight(signedTxn);
+      Response.TransactionApprovedList transactionApprovedList = api.getTransactionApprovedList(signedTxn);
+
+      System.out.println("transaction weight: " + transactionSignWeight);
+      System.out.println("transaction approve list: " + transactionApprovedList);
+
+    } catch (Exception e) {
+      System.err.println("API init: " + e.getMessage());
+      return;
+    }
+  }
+}
+```
 ### Fee
 
 1. Using AccountPermissionUpdateContract costs 100TRX
