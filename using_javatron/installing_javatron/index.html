@@ -450,6 +450,15 @@
 </li>
         
           <li class="md-nav__item ">
+  <a href="#block-producing-fullnodes-in-master-slave-mode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Block-producing fullnodes in Master-Slave Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
   <a href="#others" class="md-nav__link" >
     <span class="md-ellipsis">
       Others
@@ -1571,6 +1580,77 @@ $ ./gradlew clean build -x test
 <div class="highlight"><pre><span></span><code>$ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
 </code></pre></div>
 <p><strong>Note</strong>: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use <a href="../backup_restore/#public-backup-data">Data Snapshots</a> to speed up node synchronization. First download the latest data snapshot and extract it to the <code>output-directory</code> directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.</p>
+<h3 id="block-producing-fullnodes-in-master-slave-mode">Block-producing fullnodes in Master-Slave Mode<a class="headerlink" href="#block-producing-fullnodes-in-master-slave-mode" title="Permanent link">&para;</a></h3>
+<p>To enhance the reliability of block-producing fullnode, you can deploy multiple block-producing fullnodes under the same account to form a master-slave mode. When deploying two or more nodes for an account with block-producing permission, the <code>node.backup</code> configuration in the configuration file of each node must be properly set. The configuration items for <code>node.backup</code> are as follows:  </p>
+<p><div class="highlight"><pre><span></span><code>node.backup {
+  # udp listen port, each member should have the same configuration
+  port = 10001
+
+  # my priority, each member should use different priority
+  priority = 8
+
+  # time interval to send keepAlive message, each member should have the same configuration unit: ms
+  keepAliveInterval = 3000
+
+  # peer&#39;s ip list, can&#39;t contain myself
+  members = [
+    # &quot;ip&quot;,
+    # &quot;ip&quot;
+  ]
+}
+</code></pre></div>
+For example, if an account with block production permission deploys three nodes with IP addresses 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their <code>node.backup</code> configurations should be set as follows:</p>
+<ul>
+<li>
+<p>ip = 192.168.0.100
+<div class="highlight"><pre><span></span><code>node.backup {
+  port = 10001
+  priority = 8
+  keepAliveInterval = 3000
+  members = [
+    &quot;192.168.0.101&quot;,
+    &quot;192.168.0.102&quot;
+  ]
+}
+</code></pre></div></p>
+</li>
+<li>
+<p>ip = 192.168.0.101
+<div class="highlight"><pre><span></span><code>node.backup {
+  port = 10001
+  priority = 7
+  keepAliveInterval = 3000
+  members = [
+    &quot;192.168.0.100&quot;,
+    &quot;192.168.0.102&quot;
+  ]
+}
+</code></pre></div></p>
+</li>
+<li>
+<p>ip = 192.168.0.102
+<div class="highlight"><pre><span></span><code>node.backup {
+  port = 10001
+  priority = 6
+  keepAliveInterval = 3000
+  members = [
+    &quot;192.168.0.100&quot;,
+    &quot;192.168.0.101&quot;
+  ]
+}
+</code></pre></div>
+<strong>Notes:</strong></p>
+</li>
+<li>
+<p>The backup service of a node will only be activated when it has synchronized to the latest state. The latest state is defined as:  <code>(node's system time - timestamp of the latest successfully synchronized block) &lt; block production interval</code>, block production interval: slot time(currently 3 seconds).</p>
+</li>
+<li>
+<p>When a high-priority node fails and loses its master status, other slave nodes will compete to become the new master. If the original high-priority node recovers and meets the block production conditions again, it will not automatically regain master status. It must wait until the current master node fails before it can compete again.</p>
+</li>
+<li>
+<p>Time required for master-slave switchover: when the master node fails, the minimum time required for a slave node to switch to master status is <code>2 × keepAliveTimeout</code>, where <code>keepAliveTimeout = keepAliveInterval × 6</code>. The reason for requiring <code>2 × keepAliveTimeout</code> is that the slave node must go through an intermediate <code>INIT</code> state during the transition:  <code>SLAVER</code>  → <code>INIT</code> → <code>MASTER</code>(Each backup node has three status: INIT, SLAVER, MASTER)</p>
+</li>
+</ul>
 <h3 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h3>
 <h4 id="how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account">How to use <code>keystore + password</code> to specify the privatekey of witness account<a class="headerlink" href="#how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account" title="Permanent link">&para;</a></h4>
 <ol>
@@ -1597,7 +1677,7 @@ export TCMALLOC_RELEASE_RATE=10
 # original start command
 java -jar .....
 </code></pre></div>
-<p>Instructions for each Linux distributions are as belows:</p>
+<p>Instructions for each Linux distributions are as below:</p>
 <ul>
 <li>
 <p>Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable
