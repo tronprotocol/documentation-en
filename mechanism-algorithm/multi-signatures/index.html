@@ -1733,7 +1733,7 @@ localwitness = [
 <p>If witness permission is modified, two modifications are required as follows:</p>
 <ul>
 <li><code>localwitness</code> needs to be changed to the private key of the account authorized with witness permission</li>
-<li><code>localWitnessAccountAddress</code> shoule be explicitly set as the address of the witness account</li>
+<li><code>localWitnessAccountAddress</code> should be explicitly set as the address of the witness account</li>
 </ul>
 <p>Below is an example of how to configure witness account <a href="https://nile.tronscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk">TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk</a> which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
 <div class="highlight"><pre><span></span><code>#config.conf
@@ -1752,8 +1752,77 @@ Notice: Only one private key can be added to <code>localwitness</code> when witn
 <li>the account owns owner permission can change active permission</li>
 <li>the account owns the execution permission of AccountPermissionUpdateContract can also change active permission</li>
 <li>8 permissions at most</li>
-<li>permissionId increases from 2 automatically</li>
 <li>when a new account is created, an active permission will be created automatically, and the address will be inserted into it, default weight is 1, keys field only contains this address and weight is 1</li>
+<li>permissionId increases from 2 automatically</li>
+<li>When initiating a transaction using the Active permission, the permissionId must be explicitly set. The following is an example of a transaction where an account with the Active permission initiates resource delegation via trident, and the permissionId corresponding to this Active permission is 2:
+<div class="highlight"><pre><span></span><code>package org.example;
+
+import org.tron.trident.core.ApiWrapper;
+import org.tron.trident.proto.Chain;
+import org.tron.trident.proto.Contract.DelegateResourceContract;
+import org.tron.trident.proto.Response;
+import org.tron.trident.utils.Convert;
+
+public class Main {
+
+  public static void main(String[] args) {
+    System.out.println(&quot;Hello world!&quot;);
+
+    String agentPrivateKey = &quot;your private key&quot;;
+    String ownerAddress = &quot;xxx&quot;;
+    String receiverAddress = &quot;yyy&quot;;
+    long trxAmount = 10;
+    int resourceType = 0;
+    int permissionId = 2;
+
+    try {
+      ApiWrapper api = new ApiWrapper(&quot;grpc.trongrid.io:50051&quot;, &quot;grpc.trongrid.io:50052&quot;, agentPrivateKey);
+      long amountSun = Convert.toSun(String.valueOf(trxAmount), Convert.Unit.TRX).longValue();
+
+      DelegateResourceContract contract = DelegateResourceContract.newBuilder()
+          .setOwnerAddress(api.parseAddress(ownerAddress))
+          .setReceiverAddress(api.parseAddress(receiverAddress))
+          .setBalance(amountSun)
+          .setResourceValue(resourceType)
+          .setLock(false)
+          .build();
+
+      // create transaction extension
+      Response.TransactionExtention txnExt = api.createTransactionExtention(
+          contract,
+          Chain.Transaction.Contract.ContractType.DelegateResourceContract
+      );
+
+      // get raw
+      Chain.Transaction.raw.Builder rawBuilder = txnExt.getTransaction().getRawData().toBuilder();
+
+      // set permission
+      Chain.Transaction.Contract.Builder contractBuilder = rawBuilder.getContractBuilder(0)
+          .setPermissionId(permissionId);
+
+      // reset contract
+      rawBuilder.setContract(0, contractBuilder.build());
+
+      Chain.Transaction unsignedTxn = txnExt.getTransaction().toBuilder()
+          .setRawData(rawBuilder.build())
+          .build();
+
+      // sign transaction
+      Chain.Transaction signedTxn = api.signTransaction(unsignedTxn);
+
+      Response.TransactionSignWeight transactionSignWeight = api.getTransactionSignWeight(signedTxn);
+      Response.TransactionApprovedList transactionApprovedList = api.getTransactionApprovedList(signedTxn);
+
+      System.out.println(&quot;transaction weight: &quot; + transactionSignWeight);
+      System.out.println(&quot;transaction approve list: &quot; + transactionApprovedList);
+
+    } catch (Exception e) {
+      System.err.println(&quot;API init: &quot; + e.getMessage());
+      return;
+    }
+  }
+}
+</code></pre></div></li>
 </ol>
 <h3 id="fee">Fee<a class="headerlink" href="#fee" title="Permanent link">&para;</a></h3>
 <ol>
