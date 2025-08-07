@@ -127,21 +127,27 @@ node.backup {
 ### Others
 #### How to use `keystore + password` to specify the privatekey of witness account
 
-1. You should not use the nohup command because the interaction is required when running the node. It is recommended to use session keeping tools such as screen, tmux, etc.
-2. Comment the `localwitness` item in main_net_config.conf and uncomment the `localwitnesskeystore` item. Fill in the path of the Keystore file. Note that the Keystore file needs to be placed in the current directory where the startup command is executed or its subdirectory. If the current directory is "A", the directory of the Keystore file is "A/B/localwitnesskeystore.json", it needs to be configured as:
+1. Modify the configuration file
+    - Comment out the `localwitness` configuration item in the configuration file
+    - Uncomment the `localwitnesskeystore` configuration item and fill in the path to the keystore file. Note that the keystore file needs to be placed in the current directory where the startup command is executed or its subdirectory. For example, if the current directory is A and the keystore file directory is A/B/localwitnesskeystore.json, it should be configured as:
     ```
     localwitnesskeystore = [
-          "B/localwitnesskeystore.json"
+      "B/localwitnesskeystore.json"
     ]
     ```
-    **Note**: For `keystore + password` generation, you can use the register wallet command of the [wallet-cli](https://github.com/tronprotocol/wallet-cli.git).
-3. Startup the fullnode which produces blocks
-    ```
-        $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
-    ```
-4. Enter the password correctly to finish the node startup.
+**Note**: You can use the `RegisterWallet` command of the [wallet-cli](https://github.com/tronprotocol/wallet-cli.git) project to generate the keystore file and password.
 
-
+2. Startup the node
+    - Startup the node in an interactive way without using the nohup command, which requires manual password input
+        1. Startup the block-producing fullnode
+        ```
+          $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
+        ```
+        2. Enter the password correctly to complete the node startup.
+    - Use the nohup command and pass the password directly through `--password` in the command line
+        ```
+          $ nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf --password "password" > start.log 2>&1 &
+        ```
 
 #### Optimize Memory Allocation with tcmalloc
 
