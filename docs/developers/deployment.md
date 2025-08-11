@@ -1,512 +1,200 @@
-# Deployment
+# Deploying a `java-tron` Node
 
-## Premise
-Create separate directories for fullnode and soliditynode
+This document guides developers on how to deploy a TRON `java-tron` node on `Linux` or `macOS` operating systems. 
 
-> NOTE: SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode.
-> New developers should deploy FullNode only.
+**Requirement:** The `java-tron` node currently requires **Oracle JDK 1.8**. Other JDK versions are not supported.
 
-```text
-/deploy/fullnode
-/deploy/soliditynode
+
+## Hardware Configuration Requirements
+
+The minimum hardware configuration required to run a `java-tron` node is as follows:
+* **CPU**: 8 Cores
+* **Memory**: 16 GB
+* **SSD**: 3 TB
+* **Network Bandwidth**: 100 Mbps
+
+The recommended configuration is:
+* **CPU**: 16 Cores
+* **Memory**: 32 GB
+* **SSD**: 3.5 TB+
+* **Network Bandwidth**: 100 Mbps
+
+To run a Super Representative (SR) node for **block production**, the recommended configuration is:
+* **CPU**: 32 Cores
+* **Memory**: 64 GB
+* **SSD**: 3.5 TB+
+* **Network Bandwidth**: 100 Mbps
+
+## Obtaining the `java-tron` Client
+
+You can directly download the official client [here](https://github.com/tronprotocol/java-tron/releases), or you can compile the source code yourself to package the client.
+
+### Compiling `java-tron` Source Code
+
+Before you begin compiling, ensure that **git** is installed on your system.
+
+1. First, clone the `java-tron` source code to your local machine using the `git` command and switch to the `master` branch:
+
+```shell!
+git clone https://github.com/tronprotocol/java-tron.git
+git checkout -t origin/master
 ```
 
-Create two folders for fullnode and soliditynode.
+2. Then, execute the following commands to compile the `java-tron` source code:
 
-Clone the latest master branch of [https://github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) and extract it to
-```text
-/deploy/java-tron
+```shell!
+cd java-tron
+./gradlew clean build -x test
 ```
 
-Make sure you have the proper dependencies.
-
-* JDK 1.8 (JDK 1.9+ is not supported yet)
-* On Linux Ubuntu system (e.g. Ubuntu 16.04.4 LTS), ensure that the machine has [__Oracle JDK 8__](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04), instead of having __Open JDK 8__ in the system. If you are building the source code by using __Open JDK 8__, you will get [__Build Failed__](https://github.com/tronprotocol/java-tron/issues/337) result.
-* Open **UDP** ports for connection to the network
-* **MINIMUM** 2 CPU Cores
+* The parameter `-x test` indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.
+* After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
 
-## Deployment Guide
+## Starting a `java-tron` Node
 
-1.&nbsp;Build the java-tron project
-```text
-cd /deploy/java-tron
-./gradlew build
-```
+You can choose different configuration files to connect the `java-tron` node to different TRON networks:
 
-2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories
-```text
-download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
+* For Mainnet FullNode configuration file: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
+* For other network node configuration:
+    * Nile Testnet: https://nileex.io/
+    * Private Network: https://github.com/tronprotocol/tron-deployment
 
-main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
+### Starting a FullNode
 
-please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SolidityNode.
+A **FullNode** serves as an entry point to the TRON network, possesses complete historical data, and provides external access via **HTTP API**, **gRPC API**, and **JSON-RPC API**. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.
 
-cp build/libs/FullNode.jar ../fullnode
-
-cp build/libs/SolidityNode.jar ../soliditynode
-```
-
-3.&nbsp;You can now run your FullNode using the following command
-```text
-java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
-```
-
-4.&nbsp;Configure the SolidityNode configuration file
-
-You need to edit `config.conf` to connect to your local FullNode. Change  `trustNode` in `node` to local `127.0.0.1:50051`, which is the default rpc port. Set `listen.port` to any number within the range of 1024-65535. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services. Also change `rpc port` to `50052` or something to avoid conflicts. **Please forward the UDP port 18888 for FullNode.**
-```text
-rpc {
-      port = 50052
-    }
-```
-
-5.&nbsp;You can now run your SolidityNode using the following command：
-```text
-java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
-```
-
-6.&nbsp;Running a Super Representative Node for mainnet
-```text
-java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-tron/config.conf)
-Example:
-java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
-```
-
-This is similar to running a private testnet, except that the IPs in the `config.conf` are officially declared by TRON.
-
-7.&nbsp;Running a Super Representative Node for private testnet
-
-You should modify the config.conf:
-
-- Replace existing entry in genesis.block.witnesses with your address
-- Replace existing entry in seed.node ip.list with your ip list
-- The first Super Node start, needSyncCheck should be set false
-- Set p2pversion to 61
-
-```text
-cd build/libs
-java -jar FullNode.jar -p your private key --witness -c your config.conf (Example：/data/java-tron/config.conf)
-Example:
-java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
-```
-
-
-## Logging and Network Connection Verification
-
-Logs for both nodes are located in `/deploy/\*/logs/tron.log`. Use `tail -f /logs/tron.log/` to follow along with the block syncing.
-
-You should see something similar to this in your logs for block synchronization:
-
-**FullNode**
-```text
-12:00:57.658 INFO  [pool-7-thread-1] [o.t.c.n.n.NodeImpl](NodeImpl.java:830) Success handle block Num:236610,ID:0000000000039c427569efa27cc2493c1fff243cc1515aa6665c617c45d2e1bf
-```
-**SolidityNode**
-```text
-12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
-```
-## Stop Node Gracefully
-Create file stop.sh，use kill -15 to close FullNode.jar(or SolidityNode.jar).
-You need to modify pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
-```text
-#!/bin/bash
-while true; do
-  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
-  if [ -n "$pid" ]; then
-    kill -15 $pid
-    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
-    sleep 1
-  else
-    echo "java-tron killed successfully!"
-    break
-  fi
-done
-```
-
-## FullNode and SolidityNode Fast Deployment
-
-Download fast deployment script, run the script according to different types of node.
-
-<h3>Scope of use</h3>
-
-This script could be used on Linux/MacOS, but not on Windows.
-Just Support FullNode and SolidityNode.
-
-<h3>Download and run script</h3>
+Below is the command to start a **Mainnet FullNode**, specifying the configuration file with the `-c` parameter:
 
 ```shell
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
 ```
 
-<h3>Parameter Illustration</h3>
+* `-XX:+UseConcMarkSweepGC`: Specifies the **Concurrent Mark Sweep (CMS) garbage collector**. This parameter must be placed before the `-jar` parameter.
+* `-Xmx`: Sets the maximum Java Virtual Machine (JVM) heap size, typically recommended to be **80% of physical memory**.
+* To start a **Nile Testnet FullNode** or **Private network FullNode**, use the corresponding configuration file links provided at the beginning of this section.
+
+
+### Starting a Super Representative Node
+
+By adding the `--witness` parameter to the FullNode startup command above, the `FullNode` will run as an **SR Node**. In addition to supporting all FullNode functionalities, an SR Node also supports **block production** and **transaction packaging**.
+
+**Important Notes**:
+* Ensure that you own an **SR account** and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production. 
+    * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; it can begin producing blocks immediately once its ranking reaches the top 27. 
+* Fill in the **private key** of your Super Representative account in the `localwitness` list of `main_net_config.conf`.
+
+Here is an example of the `localwitness` configuration:
+
+```json
+localwitness = [
+    650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812
+]
+```
+
+Then execute the following command to start the SR Node:
 
 ```shell
-bash deploy_tron.sh --app [FullNode|SolidityNode] --net [mainnet|testnet|privatenet] --db [keep|remove|backup] --heap-size <heapsize>
-
---app Optional, Running application. The default node is Fullnode and it could be FullNode or SolidityNode.
---net Optional, Connecting network. The default network is mainnet and it could be mainnet, testnet.
---db  Optional, The way of data processing could be keep, remove and backup. Default is keep. If you launch two different networks, like from mainnet to testnet or from testnet to mainnet, you need to delete database.
---trust-node  Optional, It only works when deploying SolidityNode. Default is 127.0.0.1:50051. The specified gRPC service of Fullnode, like 127.0.0.1:50051 or 13.125.249.129:50051.
---rpc-port  Optional, Port of grpc. Default is 50051. If you deploy SolidityNode and FullNode on the same host，you need to configure different ports.
---commit  Optional, commitid of project.
---branch  Optional, branch of project.  Mainnet default is latest release and Testnet default is master.
---heap-size  Optional, jvm option: Xmx. The default heap-size is 0.8 * memory size.
---work_space  Optional, default is current directory.
+java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
 ```
 
-<h3> Deployment of FullNode on the one host </h3>
+## Optimizations and Considerations
 
-```shell
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-bash deploy_tron.sh
-```
+### Speeding Up Node Data Synchronization
 
-<h3> Deployment of SolidityNode on the one host </h3>
+For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#main-net-data-snapshot) to accelerate node synchronization.
 
-```shell
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-# User can self-configure the IP and Port of GRPC service in the trust-node field of SolidityNode. trust-node is the fullnode you just deploy.
-bash deploy_tron.sh --app SolidityNode --trust-node <grpc-ip:grpc-port>
-```
+The operational steps are as follows:
+1. Download the latest data snapshot.
+2. Unzip it to the `output-directory` within your `tron` project.
+3. Then start the node; the node will continue to synchronize based on the data snapshot.
 
-<h3> Deployment of FullNode and SolidityNode on the same host </h3>
+### Specifying Super Representative Account Private Key Using Keystore + Password
 
-```shell
-# You need to configure different gRPC ports on the same host because gRPC port is available on SolidityNode and FullNodeConfigure and it cannot be set as default value 50051. In this case the default value of rpc port is set as 50041.
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-bash deploy_tron.sh --app FullNode
-bash deploy_tron.sh --app SolidityNode --rpc-port 50041
-```
+To avoid specifying the private key in plaintext within the configuration file, you can choose to use a `keystore` file and password.
 
-## Grpc Gateway Deployment
+1. **Important Notes**:
+    * This method requires human interaction to enter the password during node startup, so **do not** use the `nohup` command.
+    * It is recommended to use a session persistence tool, such as **screen** or **tmux**.
 
-<h3> Summary </h3>
+2. **Configuration Steps**:
+    * Comment out the `localwitness` configuration item in the node configuration file.
+    * Uncomment the `localwitnesskeystore` configuration item and fill in the path to the `keystore` file.
+    * Note that the `keystore` file needs to be placed in the current directory where the startup command is executed, or in its subdirectory.
+        * For example, if the current directory is `A`, and the `keystore` file path is `A/B/localwitnesskeystore.json`, the configuration should be:
 
-This script helps you download the code from https://github.com/tronprotocol/grpc-gateway and deploy the code on your environment.
-
-<h3> Pre-requests </h3>
-
-Please follow the guide on https://github.com/tronprotocol/grpc-gateway
-Install Golang, Protoc, and set $GOPATH environment variable according to your requirement.
-
-<h3> Download and run script </h3>
-
-```shell
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
-```
-
-<h3> Parameter Illustration </h3>
-
-```shell
-bash deploy_grpc_gateway.sh --rpchost [rpc host ip] --rpcport [rpc port number] --httpport [http port number]
-
---rpchost The fullnode or soliditynode IP where the grpc service is provided. Default value is "localhost".
---rpcport The fullnode or soliditynode port number grpc service is consuming. Default value is 50051.
---httpport The port intends to provide http service provided by grpc gateway. Default value is 18890.
-```
-
-<h3> Example </h3>
-
-Use default configuration：
-```shell
-bash deploy_grpc_gateway.sh
-```
-Use customized configuration：
-```shell
-bash deploy_grpc_gateway.sh --rpchost 127.0.0.1 --rpcport 50052 --httpport 18891
-```
-
-## Event Subscribe plugin Deployment
-
-This is an implementation of TRON eventsubscribe model.
-
-* **api** module defines IPluginEventListener, a protocol between java-tron and event plugin.
-* **app** module is an example for loading plugin, developers could use it for debugging.
-* **kafkaplugin** module is the implementation for kafka, it implements IPluginEventListener, it receives events subscribed from java-tron and relay events to kafka server.
-* **mongodbplugin** mongodbplugin module is the implementation for mongodb.
-
-<h3> Setup/Build </h3>
-
-1. Clone the repo `git clone https://github.com/tronprotocol/event-plugin.git`
-2. Go to eventplugin `cd event-plugin`
-3. run `./gradlew build`
-
-* This will produce one plugin zip, named `plugin-kafka-1.0.0.zip`, located in the `event-plugin/build/plugins/` directory.
-
-
-<h3> Edit **config.conf** of java-tron， add the following fields:</h3>
-
-```
-event.subscribe = {
-    path = "" // absolute path of plugin
-    server = "" // target server address to receive event triggers
-    dbconfig="" // dbname|username|password
-    topics = [
-        {
-          triggerName = "block" // block trigger, the value can't be modified
-          enable = false
-          topic = "block" // plugin topic, the value could be modified
-        },
-        {
-          triggerName = "transaction"
-          enable = false
-          topic = "transaction"
-        },
-        {
-          triggerName = "contractevent"
-          enable = true
-          topic = "contractevent"
-        },
-        {
-          triggerName = "contractlog"
-          enable = true
-          topic = "contractlog"
-        }
+    ```json
+    localwitnesskeystore = [
+      "B/localwitnesskeystore.json"
     ]
+    ```
 
-    filter = {
-       fromblock = "" // the value could be "", "earliest" or a specified block number as the beginning of the queried range
-       toblock = "" // the value could be "", "latest" or a specified block number as end of the queried range
-       contractAddress = [
-           "" // contract address you want to subscribe, if it's set to "", you will receive contract logs/events with any contract address.
-       ]
-
-       contractTopic = [
-           "" // contract topic you want to subscribe, if it's set to "", you will receive contract logs/events with any contract topic.
-       ]
-    }
-}
-
-
-```
- * **path**: is the absolute path of "plugin-kafka-1.0.0.zip"
- * **server**: Kafka server address
- * **topics**: each event type maps to one Kafka topic, we support four event types subscribing, block, transaction, contractlog and contractevent.
- * **dbconfig**: db configuration information for mongodb, if using kafka, delete this one; if using Mongodb, add like that dbname|username|password
- * **triggerName**: the trigger type, the value can't be modified.
- * **enable**: plugin can receive nothing if the value is false.
- * **topic**: the value is the kafka topic to receive events. Make sure it has been created and Kafka process is running
- * **filter**: filter condition for process trigger.
- **note**: if the server is not 127.0.0.1, pls set some properties in config/server.properties file
-           remove comment and set listeners=PLAINTEXT://:9092
-           remove comment and set advertised.listeners to PLAINTEXT://host_ip:9092
-
-<h3 id="kafka"> Install Kafka </h3>
-
-**On Mac**:
-```
-brew install kafka
-```
-
-**On Linux**:
-```
-cd /usr/local
-wget http://archive.apache.org/dist/kafka/0.10.2.2/kafka_2.10-0.10.2.2.tgz
-tar -xzvf kafka_2.10-0.10.2.2.tgz
-mv kafka_2.10-0.10.2.2 kafka
-
-add "export PATH=$PATH:/usr/local/kafka/bin" to end of /etc/profile
-source /etc/profile
-
-
-kafka-server-start.sh /usr/local/kafka/config/server.properties &
-
-```
-**Note**: make sure the version of Kafka is the same as the version set in build.gradle of eventplugin project.(kafka_2.10-0.10.2.2 kafka)
-
-<h3> Run Kafka </h3>
-
-**On Mac**:
-```
-zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
-```
-
-**On Linux**:
-```
-zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties &
-Sleep about 3 seconds
-kafka-server-start.sh /usr/local/kafka/config/server.properties &
-```
-
-<h3> Create topics to receive events, the topic is defined in config.conf </h3>
-
-**On Mac**:
-```
-kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
-kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction
-kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog
-kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent
-```
-
-**On Linux**:
-```
-kafka-topics.sh  --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic block
-kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic transaction
-kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractlog
-kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic contractevent
-```
-
-<h3> Kafka consumer </h3>
-
-**On Mac**:
-```
-kafka-console-consumer --bootstrap-server localhost:9092  --topic block
-kafka-console-consumer --bootstrap-server localhost:9092  --topic transaction
-kafka-console-consumer --bootstrap-server localhost:9092  --topic contractlog
-kafka-console-consumer --bootstrap-server localhost:9092  --topic contractevent
-```
-
-**On Linux**:
-```
-kafka-console-consumer.sh --zookeeper localhost:2181 --topic block
-kafka-console-consumer.sh --zookeeper localhost:2181 --topic transaction
-kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractlog
-kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
-```
-
-<h3> Load plugin in java-tron </h3>
+    * You can generate the `keystore` file and password using the `registerwallet` command from the `wallet-cli` project.
 
-* add --es to command line, for example:
-```
- java -jar FullNode.jar -p privatekey -c config.conf --es
-```
+3. **Starting a SR Node**:
 
+    ```
+    java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
+    ```
 
-<h3> Event filter </h3>
+4. **Entering the Password**:
+    * During node startup, the system will prompt you to enter the password. After correctly entering the password, the node will complete its startup.
 
-which is defined in config.conf, path: event.subscribe
-```
-filter = {
-       fromblock = "" // the value could be "", "earliest" or a specified block number as the beginning of the queried range
-       toblock = "" // the value could be "", "latest" or a specified block number as end of the queried range
-       contractAddress = [
-           "TVkNuE1BYxECWq85d8UR9zsv6WppBns9iH" // contract address you want to subscribe, if it's set to "", you will receive contract logs/events with any contract address.
-       ]
+### Optimizing Memory Usage with `tcmalloc`
 
-       contractTopic = [
-           "f0f1e23ddce8a520eaa7502e02fa767cb24152e9a86a4bf02529637c4e57504b" // contract topic you want to subscribe, if it's set to "", you will receive contract logs/events with any contract topic.
-       ]
-    }
-```
+To achieve optimal memory usage, you can use Google's `tcmalloc` instead of the system's `glibc malloc`.
 
+1. **Install `tcmalloc`**:
 
-<h3 id="mongo"> Download and install MongoDB </h3>
+    * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
 
-** Suggested Configuration **
+    ```shell
+    sudo apt install libgoogle-perftools4
+    ```
 
-- CPU/ RAM: 16Core / 32G
-- DISK: 500G
-- System: CentOS 64
+    * **Ubuntu 16.04 LTS**:
 
-The version of MongoDB is **4.0.4**, below is the command:
+    ```shell
+    sudo apt install libgoogle-perftools4
+    ```
 
-- cd /home/java-tron
-- curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
-- tar zxvf mongodb-linux-x86_64-4.0.4.tgz
-- mv mongodb-linux-x86_64-4.0.4 mongodb
+    * **CentOS 7**:
 
-** Set environment **
-- export MONGOPATH=/home/java-tron/mongodb/
-- export PATH=$PATH:$MONGOPATH/bin
+    ```shell
+    sudo yum install gperftools-libs
+    ```
 
-** Create mongodb config **
-The path is : /etc/mongodb/mgdb.conf
+2. **Modify the Startup Script**:
 
-- cd /etc/mongodb
-- touch mgdb.conf
+    * Add the following two lines to your node's startup script. Please note that the path to `libtcmalloc.so.4` might vary slightly across different Linux distributions.
 
-Create data&log folder for mongodb
-Create data, log subfolder in mongodb directory,  and add their absolute path to mgdb.conf
+    ```bash!
+    #!/bin/bash
 
-** Example: **
+    export LD_PRELOAD="/usr/lib/libtcmalloc.so.4" # Adjust path according to your system
+    export TCMALLOC_RELEASE_RATE=10
 
-- dbpath=/home/java-tron/mongodb/data
-- logpath=/home/java-tron/mongodb/log/mongodb.log
-- port=27017
-- logappend=true
-- fork=true
-- bind_ip=0.0.0.0
-- auth=true
-- wiredTigerCacheSizeGB=2
+    # original start command
+    java -jar .....
+    ```
 
-** Note: **
-- bind_ip must be configured to 0.0.0.0，otherwise remote connection will be refused.
-- wiredTigerCacheSizeGB, must be configured to prevent OOM
+    * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
 
-** Launch MongoDB **
-  - mongod  --config /etc/mongodb/mgdb.conf
+    ```bash!
+    export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4"
+    export TCMALLOC_RELEASE_RATE=10
+    ```
 
-** Create admin account: **
-- mongo
-- use admin
-- db.createUser({user:"root",pwd:"admin",roles:[{role:"root",db:"admin"}]})
+    * **Ubuntu 16.04 LTS**:
 
-** Create eventlog and its owner account **
+    ```bash!
+    export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
+    export TCMALLOC_RELEASE_RATE=10
+    ```
 
-- db.auth("root", "admin")
-- use eventlog
-- db.createUser({user:"tron",pwd:"123456",roles:[{role:"dbOwner",db:"eventlog"}]})
+    * **CentOS 7**:
 
-> database: eventlog, username:tron, password: 123456
-
-** Firewall rule: **
-- iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 27017 -j ACCEPT
-
-** Remote connection via mongo: **
-
-- mongo 47.90.245.68:27017
-- use eventlog
-- db.auth("tron", "123456")
-- show collections
-- db.block.find()
-
-** Query block trigger data: **
-
--  db.block.find({blockNumber: {$lt: 1000}});  // return records whose blockNumber less than1000
-
-** Set database index to speedup query: **
-
-cd /{projectPath}
-sh insertIndex.sh
-
-## Event query service deployment
-
-<h3>Download sourcecode</h3>
-
-Download sourcecode
-
-git clone https://github.com/tronprotocol/tron-eventquery.git
-cd troneventquery
-
-<h3> Build </h3>
-
-- mvn package
-
-After the build command is executed successfully, troneventquery jar to release will be generated under troneventquery/target directory.
-
-Configuration of mongodb "config.conf" should be created for storing mongodb configuration, such as database name, username, password, and so on. We provided an example in sourcecode, which is " troneventquery/config.conf ". Replace with your specified configuration if needed.
-
-**Note**:
-
-Make sure the relative path of config.conf and troneventquery jar. The config.conf 's path is the parent of troneventquery jar.
-
- - mongo.host=IP
- - mongo.port=27017
- - mongo.dbname=eventlog
- - mongo.username=tron
- - mongo.password=123456
- - mongo.connectionsPerHost=8
- - mongo.threadsAllowedToBlockForConnectionMultiplier=4
-
-Any configuration could be modified except **mongo.dbname**, "**eventlog**" is the specified database name for event subscribe.
-
-<h3> Run </h3>
-
-- troneventquery/deploy.sh is used to deploy troneventquery
-- troneventquery/insertIndex.sh is used to setup mongodb index to speedup query.
-
-
-## Advanced Configurations
-
-Read the [Advanced Configuration](./advanced-configuration.md)
+    ```bash!
+    export LD_PRELOAD="/usr/lib64/libtcmalloc.so.4"
+    export TCMALLOC_RELEASE_RATE=10
+    ```
