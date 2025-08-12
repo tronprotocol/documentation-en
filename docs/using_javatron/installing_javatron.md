@@ -60,8 +60,7 @@ You can choose different configuration files to connect the `java-tron` node to 
 * For Mainnet FullNode configuration file: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
 * For other network node configuration:
     * Nile Testnet: https://nileex.io/
-    * Private Network: https://github.com/tronprotocol/tron-deployment
-
+    * Private Network: https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
 ### Starting a FullNode
 
 A **FullNode** serves as an entry point to the TRON network, possesses complete historical data, and provides external access via **HTTP API**, **gRPC API**, and **JSON-RPC API**. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.
