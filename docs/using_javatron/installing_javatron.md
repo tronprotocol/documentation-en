@@ -8,18 +8,21 @@ This document guides developers on how to deploy a TRON `java-tron` node on `Lin
 ## Hardware Configuration Requirements
 
 The minimum hardware configuration required to run a `java-tron` node is as follows:
+
 * **CPU**: 8 Cores
 * **Memory**: 16 GB
 * **SSD**: 3 TB
 * **Network Bandwidth**: 100 Mbps
 
 The recommended configuration is:
+
 * **CPU**: 16 Cores
 * **Memory**: 32 GB
 * **SSD**: 3.5 TB+
 * **Network Bandwidth**: 100 Mbps
 
 For a Super Representative (SR) node acting as a **block production node**, the recommended configuration is:
+
 * **CPU**: 32 Cores
 * **Memory**: 64 GB
 * **SSD**: 3.5 TB+
@@ -51,16 +54,15 @@ cd java-tron
 * The parameter `-x test` indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.
 * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
-
-
 ## Starting a `java-tron` Node
 
 You can choose different configuration files to connect the `java-tron` node to different TRON networks:
 
 * For Mainnet FullNode configuration file: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
 * For other network node configuration:
-    * Nile Testnet: https://nileex.io/
-    * Private Network: https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
+  * Nile Testnet: https://nileex.io/
+  * Private Network: https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
+
 ### Starting a FullNode
 
 A **FullNode** serves as an entry point to the TRON network, possesses complete historical data, and provides external access via **HTTP API**, **gRPC API**, and **JSON-RPC API**. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.
@@ -80,8 +82,9 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
 By adding the `--witness` parameter to the FullNode startup command above, the `FullNode` will run as a **Block Production Node** (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports **block production** and **transaction packaging**.
 
 **Important Notes**:
+
 * Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.
-    * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
+  * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
 * Fill in the **private key** of your Super Representative account in the `localwitness` list of `main_net_config.conf`.
 
 Here is an example of the `localwitness` configuration:
@@ -102,7 +105,7 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_con
 
 To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes, it's necessary to configure `node.backup` in each node's configuration file. The description of `node.backup` configuration items is as follows:
 
-```
+```ini
 node.backup {
   # udp listen port, each member should have the same configuration
   port = 10001
@@ -119,11 +122,11 @@ node.backup {
     # "ip"
   ]
 }
-```
+```ini
 For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be as follows:
 
 - Configuration for IP 192.168.0.100
-```
+```ini
 node.backup {
   port = 10001
   priority = 8
@@ -135,8 +138,9 @@ node.backup {
 }
 ```
 
-- Configuration for IP 192.168.0.101
-```
+* Configuration for IP 192.168.0.101
+
+```ini
 node.backup {
   port = 10001
   priority = 7
@@ -148,8 +152,9 @@ node.backup {
 }
 ```
 
-- Configuration for IP 192.168.0.102
-```
+* Configuration for IP 192.168.0.102
+
+```ini
 node.backup {
   port = 10001
   priority = 6
@@ -167,8 +172,6 @@ node.backup {
 * When a node with high priority fails and loses its master node status, other slave nodes will compete to become the master node. When the high-priority node recovers and meets the conditions for block production again, it will not automatically regain master node status; it needs to wait until the current master node fails before it can compete for the role again.
 * Time required for master-slave switchover: When the master node fails, the time it takes for a slave node to switch to a master node is at least 2 * `keepAliveTimeout`, where `keepAliveTimeout` = `keepAliveInterval` * 6. Two `keepAliveTimeout` periods are needed because the slave node needs to transition through an intermediate "preparatory" state (INIT) to become the master node: Slave -> INIT -> Master.
 
-
-
 ## Optimizations and Considerations
 
 ### Speeding Up Node Data Synchronization
@@ -176,6 +179,7 @@ node.backup {
 For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#main-net-data-snapshot) to accelerate node synchronization.
 
 The operational steps are as follows:
+
 1. Download the latest data snapshot.
 2. Unzip it to the `output-directory` within your `tron` project.
 3. Then start the node; the node will continue to synchronize based on the data snapshot.
@@ -190,24 +194,25 @@ To avoid specifying the private key in plaintext within the configuration file, 
     * Note that the `keystore` file needs to be placed in the current directory where the startup command is executed, or in its subdirectory.
         * For example, if the current directory is `A`, and the `keystore` file path is `A/B/localwitnesskeystore.json`, the configuration should be:
 
-    ```json
-    localwitnesskeystore = [
-      "B/localwitnesskeystore.json"
-    ]
-    ```
+        ```json
+        localwitnesskeystore = ["B/localwitnesskeystore.json"]
+        ```
 
     * You can generate the `keystore` file and password using the `registerwallet` command from the `wallet-cli` project.
 
-2. **Starting a Block Production Node**:
+1. **Starting a Block Production Node**:
 
     * **Starting the node interactively without `nohup` (Recommended)**
         * **Important Notes**: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as `screen` or `tmux`.
+  
         ```shell
         java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
         ```
+
         * During node startup, the system will prompt you to enter the password. After correctly entering the password, the node will complete its startup.
 
     * **Using `nohup` to pass the password directly in the command line via `--password`**
+
         ```shell
         nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf --password "your_password" > start.log 2>&1 &
         ```
