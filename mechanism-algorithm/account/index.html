@@ -835,20 +835,44 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#key-pair-generation" class="md-nav__link" >
+  <a href="#key-pair-generation-algorithm" class="md-nav__link" >
     <span class="md-ellipsis">
-      Key-pair Generation
+      Key Pair Generation Algorithm
     </span>
   </a>
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#address-format" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#tron-address-generation" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Address Format
+      TRON Address Generation
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="TRON Address Generation" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#base58check-calculation-process" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Base58Check Calculation Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tron-address-characteristics" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TRON Address Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -863,15 +887,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#steps" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Steps
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
   <a href="#algorithm" class="md-nav__link" >
     <span class="md-ellipsis">
       Algorithm
@@ -881,9 +896,9 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#demo" class="md-nav__link" >
+  <a href="#example" class="md-nav__link" >
     <span class="md-ellipsis">
-      Demo
+      Example
     </span>
   </a>
   
@@ -891,6 +906,48 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#signature-verification" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Signature Verification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signature Verification" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#algorithm_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#example_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#account-initiating-transactions" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Account Initiating Transactions
+    </span>
+  </a>
   
 </li>
       
@@ -1574,54 +1631,100 @@
 <li>Use an account already existed in TRON network to create an account</li>
 </ol>
 <p>If you have enough staked BandWidth Points, creating an account only consume your staked BandWidth Points, otherwise, it burns 0.1 TRX.</p>
-<h2 id="key-pair-generation">Key-pair Generation<a class="headerlink" href="#key-pair-generation" title="Permanent link">&para;</a></h2>
-<p>TRON signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random number, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then calculate P = d * G as the public key, G is the elliptic curve base point.</p>
-<h2 id="address-format">Address Format<a class="headerlink" href="#address-format" title="Permanent link">&para;</a></h2>
-<p>Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address come out. Do basecheck to address, here is the final address. All addresses start with 'T'.</p>
-<p>basecheck process: first do sha256 calculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.</p>
-<p>character map:
-ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"</p>
-<h2 id="signature">Signature<a class="headerlink" href="#signature" title="Permanent link">&para;</a></h2>
-<h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
+<h2 id="key-pair-generation-algorithm">Key Pair Generation Algorithm<a class="headerlink" href="#key-pair-generation-algorithm" title="Permanent link">&para;</a></h2>
+<p>TRON's signature algorithm is ECDSA, and the selected curve is SECP256K1. Its private key is a random number, and the public key is a point on the elliptic curve. The generation process is as follows: first, generate a random number <code>d</code> as the private key, then calculate <code>P = d × G</code> as the public key, where <code>G</code> is the base point of the elliptic curve, and the base point is public.</p>
+<p>The private key is a 32-byte large number, and the public key consists of two 32-byte large numbers, which are the abscissa and ordinate of the above-mentioned <code>P</code> point respectively.</p>
+<h2 id="tron-address-generation">TRON Address Generation<a class="headerlink" href="#tron-address-generation" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Get the rawdata of the transaction, then transfer it to <code>byte[]</code></li>
-<li>Do sha256 calculation to the rawdata</li>
-<li>Use the private key to sign the result gained from step 2</li>
-<li>Add the signature back into the transaction</li>
+<li>Take the public key <code>P</code> as input, calculate SHA3 to get the result <code>H</code>, and SHA3 uses Keccak256.</li>
+<li>Take the last 20 bytes of <code>H</code>, and prepend a byte <code>0x41</code> to get <code>address</code>.</li>
+<li>Perform base58check calculation on <code>address</code> to get the final address.</li>
 </ol>
+<h3 id="base58check-calculation-process">Base58Check Calculation Process<a class="headerlink" href="#base58check-calculation-process" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Calculate the checksum</p>
+<ol>
+<li>Perform SHA256 hash operation on <code>address</code> to get <code>h1</code></li>
+<li>Perform SHA256 operation on <code>h1</code> again to get <code>h2</code></li>
+<li>Take the first 4 bytes of <code>h2</code> as the checksum <code>check</code></li>
+</ol>
+</li>
+<li>
+<p>Splice data
+Append <code>check</code> to <code>address</code> to get <code>address||check</code></p>
+</li>
+<li>
+<p>Base58 encoding
+Perform Base58 encoding on <code>address||check</code>. The character table for Base58 is: <code>"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"</code>, excluding easily confused characters: <code>0</code> (Arabic numeral 0), <code>O</code> (uppercase letter O), <code>I</code> (uppercase letter I), <code>l</code> (lowercase letter L).</p>
+</li>
+</ol>
+<h3 id="tron-address-characteristics">TRON Address Characteristics<a class="headerlink" href="#tron-address-characteristics" title="Permanent link">&para;</a></h3>
+<p>The principle of Base58 encoding is to convert a large integer with a base of 256 into a representation with a base of 58, and then map it to the character table. Since the first byte of <code>address||check</code> is fixed as <code>0x41</code>, its decimal value <code>N</code> satisfies: <code>65 × 256²⁴ ≤ N &lt; 66 × 256²⁴</code>.</p>
+<ul>
+<li>Length is <code>34</code>: Because <code>58³⁴ &gt; 66 × 256²⁴</code> indicates that length of <code>34</code> are sufficient, and <code>58³³ &lt; 65 × 256²⁴</code> indicates that length of <code>33</code> are insufficient, so the length can only be <code>34</code>.</li>
+<li>The first character is <code>T</code>: First, the length is determined to be <code>34</code>, and since <code>27 × 58³³ &gt; 66 × 256²⁴</code> indicates that the index of first character in base58 character table must be less than <code>27</code>, and <code>26 × 58³³ &lt; 65 × 256²⁴</code> indicates that the index must be greater than or equal to <code>26</code>, so the first index can only be <code>26</code>, and <code>26</code> corresponds to <code>T</code> in the base58 character table (<code>0</code> corresponds to <code>1</code>).</li>
+</ul>
+<h2 id="signature">Signature<a class="headerlink" href="#signature" title="Permanent link">&para;</a></h2>
 <h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h3>
 <ol>
-<li>ECDSA, SECP256K</li>
 <li>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code>priKey:::8e812436a0e3323166e1f0e8ba79e19e217b2c4a53c970d4cca0cfb1078979df
-pubKey::04a5bb3b28466f578e6e93fbfd5f75cee1ae86033aa4bbea690e3312c087181eb366f9a1d1d6a437a9bf9fc65ec853b9fd60fa322be3997c47144eb20da658b3d1
-hash:::159817a085f113d099d3d93c051410e9bfe043cc5c20e43aa9a083bf73660145
-r:::38b7dac5ee932ac1bf2bc62c05b792cd93c3b4af61dc02dbb4b93dacb758123f
-s:::08bf123eabe77480787d664ca280dc1f20d9205725320658c39c6c143fd5642d
-v:::0
-</code></pre></div>
-<p>Note: The size of the signature result is 65 bytes. r 32 bytes, s 32 bytes, v 1 bytes.</p>
+<p>Take the rawdata of the transaction, convert it to byte[] format, and record it as <code>data</code>.</p>
 </li>
 <li>
-<p>fullnode will verify the signature, it generates an address with the value of hash and r、s、v, then it compares with the address in the transaction.</p>
+<p>Perform sha256 operation on <code>data</code> to get the hash value of the transaction, recorded as <code>hash</code>.</p>
+</li>
+<li>
+<p>Use the private key <code>d</code> corresponding to the address in the transaction contract to sign <code>hash</code>. The signature algorithm is the ECDSA algorithm (using the SECP256K1 curve). The signature result includes three values: <code>r</code>, <code>s</code>, and <code>v</code>:</p>
+<ol>
+<li>Calculate the <code>r</code> value: randomly generate a temporary private key <code>k</code>, calculate the temporary public key <code>K = k × G</code> (G: curve base point), <code>r = K_x mod n</code>, that is, the abscissa of <code>K</code> modulo <code>n</code>, where <code>n</code> is the curve order (n and G satisfy <code>n × G = O</code>, and O is the zero point of the elliptic curve group on the finite field). <code>r</code> is 32 bytes.</li>
+<li>Calculate the <code>s</code> value: first calculate the modular inverse of the temporary private key <code>k</code> with respect to n, <code>k⁻¹</code>, that is, <code>k⁻¹</code> satisfies <code>k⁻¹ × k = 1 mod n</code>, then calculate the <code>s</code> value through the transaction's <code>hash</code>, the user's private key <code>d</code>, and the <code>r</code> value, <code>s = (k⁻¹ × (hash + d × r)) mod n</code>. <code>s</code> is 32 bytes.</li>
+<li>Calculate the <code>v</code> value: the <code>v</code> value is the recovery identifier. Due to <code>r</code> value undergoes a modulo operation and the symmetry of the elliptic curve, if there is only the <code>r</code> value, one <code>r</code> can recover up to four <code>K</code>s. The value range of <code>v</code> is four integers: 0, 1, 2, 3. Historically, to be consistent with Ethereum, the final <code>v</code> value will be 27 added to 0, 1, 2, 3, that is, the final value range of <code>v</code> is 27, 28, 29, 30. With a determined <code>v</code>, the unique <code>K</code> can be recovered. <code>v</code> is 1 byte.</li>
+</ol>
+</li>
+<li>
+<p>Append the concatenated signature results <code>r</code>, <code>s</code>, <code>v</code> to the transaction, in the order <code>v || r || s</code>.</p>
 </li>
 </ol>
-<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Transaction</span><span class="w"> </span><span class="nf">sign</span><span class="p">(</span><span class="n">Transaction</span><span class="w"> </span><span class="n">transaction</span><span class="p">,</span><span class="w"> </span><span class="n">ECKey</span><span class="w"> </span><span class="n">myKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Transaction</span><span class="p">.</span><span class="na">Builder</span><span class="w"> </span><span class="n">transactionBuilderSigned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transaction</span><span class="p">.</span><span class="na">toBuilder</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sha256</span><span class="p">(</span><span class="n">transaction</span><span class="p">.</span><span class="na">getRawData</span><span class="p">().</span><span class="na">toByteArray</span><span class="p">());</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Contract</span><span class="o">&gt;</span><span class="w"> </span><span class="n">listContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transaction</span><span class="p">.</span><span class="na">getRawData</span><span class="p">().</span><span class="na">getContractList</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">listContract</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">ECDSASignature</span><span class="w"> </span><span class="n">signature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myKey</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="n">hash</span><span class="p">);</span>
-<span class="w">        </span><span class="n">ByteString</span><span class="w"> </span><span class="n">bsSign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ByteString</span><span class="p">.</span><span class="na">copyFrom</span><span class="p">(</span><span class="n">signature</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">());</span>
-
-<span class="w">        </span><span class="c1">// Each contract may be signed with a different private key in the future.</span>
-<span class="w">        </span><span class="n">transactionBuilderSigned</span><span class="p">.</span><span class="na">addSignature</span><span class="p">(</span><span class="n">bsSign</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>public static Transaction sign(Transaction transaction, ECKey myKey) {
+    Transaction.Builder transactionBuilderSigned = transaction.toBuilder();
+    byte[] hash = sha256(transaction.getRawData().toByteArray());
+    ECDSASignature signature = myKey.sign(hash);
+    ByteString bsSign = ByteString.copyFrom(signature.toByteArray());
+    transactionBuilderSigned.addSignature(bsSign);
+}
 </code></pre></div>
+<h2 id="signature-verification">Signature Verification<a class="headerlink" href="#signature-verification" title="Permanent link">&para;</a></h2>
+<p>After receiving the transaction, the full node will perform signature verification, recover the public key (the <code>P</code> in <a href="#key-pair-generation-algorithm">Key Pair Generation Algorithm</a>) from <code>hash</code>, <code>r</code>, <code>s</code>, and <code>v</code>, then generate a TRON address through base58check encoding, and compare it with the address in the transaction. If they are the same, the signature verification passes.</p>
+<h3 id="algorithm_1">Algorithm<a class="headerlink" href="#algorithm_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Recover the public key point <code>K</code>: The temporary public key point <code>K</code> can be uniquely recovered through <code>v</code> and <code>r</code> in the signature.</p>
+</li>
+<li>
+<p>Derive the public key <code>P</code>:</p>
+<ol>
+<li>Known signature equation:
+ <code>s = k⁻¹(hash + d × r) mod n</code></li>
+<li>Multiply both sides by <code>k</code>:
+ <code>s × k = (hash + d × r) mod n</code></li>
+<li>Multiply both sides by the base point <code>G</code> of the curve (using <code>K = k × G</code> and <code>P = d × G</code>):
+ <code>s × K = hash × G + r × P</code></li>
+<li>Since <code>s</code>, <code>K</code>, <code>hash</code>, <code>G</code>, and <code>r</code> are all known, <code>P</code> can be obtained.</li>
+</ol>
+</li>
+<li>
+<p>Generate TRON address: same as <a href="#tron-address-generation">TRON Address Generation</a></p>
+</li>
+<li>
+<p>Address verification: compare whether the generated TRON address is consistent with the address in the transaction contract.</p>
+</li>
+</ol>
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
+<p>Signature verification is performed by the full node. For <a href="https://github.com/tronprotocol/java-tron/blob/master/crypto/src/main/java/org/tron/common/crypto/ECKey.java">ECDSA algorithm signature verification</a>, you can refer to java-tron, and the core function is <code>signatureToAddress</code>.</p>
+<h2 id="account-initiating-transactions">Account Initiating Transactions<a class="headerlink" href="#account-initiating-transactions" title="Permanent link">&para;</a></h2>
+<p>The above is the theoretical knowledge of the TRON account model. For developers, it is recommended to use the official SDKs (Trident/TronWeb) for accounts to initiate transactions (construction/signature/broadcast). For detailed information, see <a href="https://developers.tron.network/docs/create-offline-transactions-with-trident-and-tronweb">Developer Documentation</a>.</p>
 
 
 
