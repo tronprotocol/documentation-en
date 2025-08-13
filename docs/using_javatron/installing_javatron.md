@@ -36,14 +36,14 @@ Before you begin compiling, ensure that **git** is installed on your system.
 
 1. First, clone the `java-tron` source code to your local machine using the `git` command and switch to the `master` branch:
 
-```shell!
+```shell
 git clone https://github.com/tronprotocol/java-tron.git
 git checkout -t origin/master
 ```
 
 2. Then, execute the following commands to compile the `java-tron` source code:
 
-```shell!
+```shell
 cd java-tron
 ./gradlew clean build -x test
 ```
@@ -239,7 +239,7 @@ To achieve optimal memory usage, you can use Google's `tcmalloc` instead of the 
 
     * Add the following two lines to your node's startup script. Please note that the path to `libtcmalloc.so.4` might vary slightly across different Linux distributions.
 
-    ```bash!
+    ```bash
     #!/bin/bash
 
     export LD_PRELOAD="/usr/lib/libtcmalloc.so.4" # Adjust path according to your system
@@ -251,21 +251,21 @@ To achieve optimal memory usage, you can use Google's `tcmalloc` instead of the 
 
     * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
 
-    ```bash!
+    ```bash
     export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```
 
     * **Ubuntu 16.04 LTS**:
 
-    ```bash!
+    ```bash
     export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```
 
     * **CentOS 7**:
 
-    ```bash!
+    ```bash
     export LD_PRELOAD="/usr/lib64/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```
