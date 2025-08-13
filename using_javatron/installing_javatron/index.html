@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploy-a-java-tron-node" class="md-skip">
+        <a href="#deploying-a-java-tron-node" class="md-skip">
           Skip to content
         </a>
       
@@ -413,55 +413,112 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#compile-the-source-code" class="md-nav__link" >
+  <a href="#hardware-configuration-requirements" class="md-nav__link" >
     <span class="md-ellipsis">
-      Compile the Source Code
+      Hardware Configuration Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#startup-a-java-tron-node" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#obtaining-the-java-tron-client" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Startup a java-tron Node
+      Obtaining the java-tron Client
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Startup a java-tron Node" hidden>
+    <nav class="md-nav" aria-label="Obtaining the java-tron Client" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#startup-a-fullnode" class="md-nav__link" >
+  <a href="#compiling-java-tron-source-code" class="md-nav__link" >
     <span class="md-ellipsis">
-      Startup a fullnode
+      Compiling java-tron Source Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#starting-a-java-tron-node" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Starting a java-tron Node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting a java-tron Node" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#starting-a-fullnode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting a FullNode
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#startup-a-fullnode-that-produces-blocks" class="md-nav__link" >
+  <a href="#starting-a-block-production-node" class="md-nav__link" >
     <span class="md-ellipsis">
-      Startup a fullnode that produces blocks
+      Starting a Block Production Node
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#block-producing-fullnodes-in-master-slave-mode" class="md-nav__link" >
+  <a href="#master-slave-mode-for-block-production-fullnodes" class="md-nav__link" >
     <span class="md-ellipsis">
-      Block-producing fullnodes in Master-Slave Mode
+      Master-Slave Mode for Block Production FullNodes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#optimizations-and-considerations" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Optimizations and Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimizations and Considerations" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#speeding-up-node-data-synchronization" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Speeding Up Node Data Synchronization
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#others" class="md-nav__link" >
+  <a href="#specifying-super-representative-account-private-key-using-keystore-password" class="md-nav__link" >
     <span class="md-ellipsis">
-      Others
+      Specifying Super Representative Account Private Key Using Keystore + Password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#optimizing-memory-usage-with-tcmalloc" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Optimizing Memory Usage with tcmalloc
     </span>
   </a>
   
@@ -1547,41 +1604,81 @@
   
 
 
-<h1 id="deploy-a-java-tron-node">Deploy a java-tron Node<a class="headerlink" href="#deploy-a-java-tron-node" title="Permanent link">&para;</a></h1>
-<p>java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported.</p>
-<p>The minimum hardware configuration required to run a java-tron node is <code>8-core CPU</code>, <code>16G memory</code>, <code>3T SDD</code>, the recommended configuration is: <code>16-core CPU</code>, <code>32G memory</code>, <code>3.5T+ SDD</code>. The fullnode running by super representative to produce block recommends <code>32-core CPU</code> and <code>64G memory</code>.</p>
-<h2 id="compile-the-source-code">Compile the Source Code<a class="headerlink" href="#compile-the-source-code" title="Permanent link">&para;</a></h2>
-<p>First, clone the java-tron repository to the local with the following git command, and switch to the <code>master</code> branch. Before executing the command, make sure you have installed the <code>git</code> tool.</p>
-<div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
-$ git checkout -t origin/master
-</code></pre></div>
-<p>Then, compile the java-tron source code by executing the following command. The parameter <code>-x test</code> means to skip the execution of the test case. You can also remove this parameter to execute the test code during the compilation process, which will make the compilation time longer. After the compilation is complete, FullNode.jar will be generated in the <code>java-tron/build/libs/</code> directory.</p>
-<div class="highlight"><pre><span></span><code>$ cd java-tron
-$ ./gradlew clean build -x test
-</code></pre></div>
-<h2 id="startup-a-java-tron-node">Startup a java-tron Node<a class="headerlink" href="#startup-a-java-tron-node" title="Permanent link">&para;</a></h2>
-<p>You can choose different configuration files to connect java-tron nodes to different networks. The mainnet configuration file is: <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">main_net_config.conf</a>, other network configuration files can be found <a href="https://github.com/tronprotocol/tron-deployment">here</a>.</p>
-<h3 id="startup-a-fullnode">Startup a fullnode<a class="headerlink" href="#startup-a-fullnode" title="Permanent link">&para;</a></h3>
-<p>Fullnode has full historical data, it is the entry point into the TRON network , it provides HTTP API and gRPC API for external query. You can interact with the TRON network through fullnode：transfer assets, deploy contracts, interact with contracts and so on. The mainnet fullnode startup command is as follows, and the configuration file of the fullnode is specified by the <code>-c</code> parameter: </p>
-<div class="highlight"><pre><span></span><code>$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
+<h1 id="deploying-a-java-tron-node">Deploying a <code>java-tron</code> Node<a class="headerlink" href="#deploying-a-java-tron-node" title="Permanent link">&para;</a></h1>
+<p>This document guides developers on how to deploy a TRON <code>java-tron</code> node on <code>Linux</code> or <code>macOS</code> operating systems.</p>
+<p><strong>Important Note:</strong> The <code>java-tron</code> node currently requires <strong>Oracle JDK 1.8</strong>. Other JDK versions are not supported.</p>
+<h2 id="hardware-configuration-requirements">Hardware Configuration Requirements<a class="headerlink" href="#hardware-configuration-requirements" title="Permanent link">&para;</a></h2>
+<p>The minimum hardware configuration required to run a <code>java-tron</code> node is as follows:
+* <strong>CPU</strong>: 8 Cores
+* <strong>Memory</strong>: 16 GB
+* <strong>SSD</strong>: 3 TB
+* <strong>Network Bandwidth</strong>: 100 Mbps</p>
+<p>The recommended configuration is:
+* <strong>CPU</strong>: 16 Cores
+* <strong>Memory</strong>: 32 GB
+* <strong>SSD</strong>: 3.5 TB+
+* <strong>Network Bandwidth</strong>: 100 Mbps</p>
+<p>For a Super Representative (SR) node acting as a <strong>block production node</strong>, the recommended configuration is:
+* <strong>CPU</strong>: 32 Cores
+* <strong>Memory</strong>: 64 GB
+* <strong>SSD</strong>: 3.5 TB+
+* <strong>Network Bandwidth</strong>: 100 Mbps</p>
+<h2 id="obtaining-the-java-tron-client">Obtaining the <code>java-tron</code> Client<a class="headerlink" href="#obtaining-the-java-tron-client" title="Permanent link">&para;</a></h2>
+<p>You can directly download the official client <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, or you can compile the source code yourself to package the client.</p>
+<h3 id="compiling-java-tron-source-code">Compiling <code>java-tron</code> Source Code<a class="headerlink" href="#compiling-java-tron-source-code" title="Permanent link">&para;</a></h3>
+<p>Before you begin compiling, ensure that <strong>git</strong> is installed on your system.</p>
+<ol>
+<li>First, clone the <code>java-tron</code> source code to your local machine using the <code>git</code> command and switch to the <code>master</code> branch:</li>
+</ol>
+<p>```shell!
+git clone https://github.com/tronprotocol/java-tron.git
+git checkout -t origin/master
+<div class="highlight"><pre><span></span><code>2. Then, execute the following commands to compile the `java-tron` source code:
+
+```shell!
+cd java-tron
+./gradlew clean build -x test
+</code></pre></div></p>
+<ul>
+<li>The parameter <code>-x test</code> indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.</li>
+<li>After compilation is complete, the <code>FullNode.jar</code> file will be generated in the <code>java-tron/build/libs/</code> directory.</li>
+</ul>
+<h2 id="starting-a-java-tron-node">Starting a <code>java-tron</code> Node<a class="headerlink" href="#starting-a-java-tron-node" title="Permanent link">&para;</a></h2>
+<p>You can choose different configuration files to connect the <code>java-tron</code> node to different TRON networks:</p>
+<ul>
+<li>For Mainnet FullNode configuration file: <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">main_net_config.conf</a></li>
+<li>For other network node configuration:<ul>
+<li>Nile Testnet: https://nileex.io/</li>
+<li>Private Network: https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf</li>
+</ul>
+</li>
+</ul>
+<h3 id="starting-a-fullnode">Starting a FullNode<a class="headerlink" href="#starting-a-fullnode" title="Permanent link">&para;</a></h3>
+<p>A <strong>FullNode</strong> serves as an entry point to the TRON network, possesses complete historical data, and provides external access via <strong>HTTP API</strong>, <strong>gRPC API</strong>, and <strong>JSON-RPC API</strong>. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.</p>
+<p>Below is the command to start a <strong>Mainnet FullNode</strong>, specifying the configuration file with the <code>-c</code> parameter:</p>
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
 </code></pre></div>
 <ul>
-<li>-XX:+UseConcMarkSweepGC  ：Specifies parallel garbage collection. To be placed before the -jar parameter, not at the end. </li>
-<li>-Xmx  ：The maximum value of the JVM heap, which can be set to 80% of the physical memory.</li>
+<li><code>-XX:+UseConcMarkSweepGC</code>: Specifies the <strong>Concurrent Mark Sweep (CMS) garbage collector</strong>. This parameter must be placed before the <code>-jar</code> parameter.</li>
+<li><code>-Xmx</code>: Sets the maximum Java Virtual Machine (JVM) heap size, typically recommended to be <strong>80% of physical memory</strong>.</li>
+<li>To start a <strong>Nile Testnet FullNode</strong> or <strong>Private Network FullNode</strong>, use the corresponding configuration file links provided at the beginning of this section.</li>
 </ul>
-<h3 id="startup-a-fullnode-that-produces-blocks">Startup a fullnode that produces blocks<a class="headerlink" href="#startup-a-fullnode-that-produces-blocks" title="Permanent link">&para;</a></h3>
-<p>Adding the <code>--witness</code> parameter to the startup command, fullnode will run as a node which produces blocks. In addition to supporting all the functions of fullnode, the block-producing fullnode also supports block production and transaction packaging. Please make sure you have a super representative account and get the votes of others. If the votes ranks in the top 27, you need to start a full node that produces blocks to participate in block production.</p>
-<p>Fill in the private key of the super representative address into the <code>localwitness</code> list in the main_net_config.conf, below is an example. But if you don't want to use this way of specifying the private key in plain text, you can use the keystore + password method, please refer to <a href="#others">Others</a> chapter.</p>
-<div class="highlight"><pre><span></span><code>localwitness = [
-    650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812
-]
+<h3 id="starting-a-block-production-node">Starting a Block Production Node<a class="headerlink" href="#starting-a-block-production-node" title="Permanent link">&para;</a></h3>
+<p>By adding the <code>--witness</code> parameter to the FullNode startup command above, the <code>FullNode</code> will run as a <strong>Block Production Node</strong> (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports <strong>block production</strong> and <strong>transaction packaging</strong>.</p>
+<p><strong>Important Notes</strong>:
+* Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.
+    * Note that even if your node doesn't make it into the top 27, a node started with the <code>--witness</code> parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
+* Fill in the <strong>private key</strong> of your Super Representative account in the <code>localwitness</code> list of <code>main_net_config.conf</code>.</p>
+<p>Here is an example of the <code>localwitness</code> configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="err">localwi</span><span class="kc">tness</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="mi">650950</span><span class="err">B</span><span class="mi">193</span><span class="err">DDDDB</span><span class="mi">35</span><span class="err">B</span><span class="mf">6E48912</span><span class="err">DD</span><span class="mi">28</span><span class="err">F</span><span class="mi">7</span><span class="err">AB</span><span class="mf">0E7140</span><span class="err">C</span><span class="mi">1</span><span class="err">BFDEFD</span><span class="mi">493348</span><span class="err">F</span><span class="mi">02295</span><span class="err">BD</span><span class="mi">812</span>
+<span class="p">]</span>
 </code></pre></div>
-<p>then run the following command to start the node:</p>
-<div class="highlight"><pre><span></span><code>$ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
+<p>Then execute the following command to start the Block Production Node:</p>
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
 </code></pre></div>
-<p><strong>Note</strong>: For the mainnet and nile testnet, since the amount of data to be synchronized is large after the new node is started, it will take a long time to synchronize the data. You can use <a href="../backup_restore/#public-backup-data">Data Snapshots</a> to speed up node synchronization. First download the latest data snapshot and extract it to the <code>output-directory</code> directory of the TRON project, and then start the node, so that the node will synchronize on the basis of the data snapshot.</p>
-<h3 id="block-producing-fullnodes-in-master-slave-mode">Block-producing fullnodes in Master-Slave Mode<a class="headerlink" href="#block-producing-fullnodes-in-master-slave-mode" title="Permanent link">&para;</a></h3>
-<p>To enhance the reliability of block-producing fullnode, you can deploy multiple block-producing fullnodes under the same account to form a master-slave mode. When deploying two or more nodes for an account with block-producing permission, the <code>node.backup</code> configuration in the configuration file of each node must be properly set. The configuration items for <code>node.backup</code> are as follows:  </p>
+<h3 id="master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes<a class="headerlink" href="#master-slave-mode-for-block-production-fullnodes" title="Permanent link">&para;</a></h3>
+<p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes, it's necessary to configure <code>node.backup</code> in each node's configuration file. The description of <code>node.backup</code> configuration items is as follows:</p>
 <p><div class="highlight"><pre><span></span><code>node.backup {
   # udp listen port, each member should have the same configuration
   port = 10001
@@ -1599,10 +1696,10 @@ $ ./gradlew clean build -x test
   ]
 }
 </code></pre></div>
-For example, if an account with block production permission deploys three nodes with IP addresses 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their <code>node.backup</code> configurations should be set as follows:</p>
+For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their <code>node.backup</code> configurations should be as follows:</p>
 <ul>
 <li>
-<p>ip = 192.168.0.100
+<p>Configuration for IP 192.168.0.100
 <div class="highlight"><pre><span></span><code>node.backup {
   port = 10001
   priority = 8
@@ -1615,7 +1712,7 @@ For example, if an account with block production permission deploys three nodes 
 </code></pre></div></p>
 </li>
 <li>
-<p>ip = 192.168.0.101
+<p>Configuration for IP 192.168.0.101
 <div class="highlight"><pre><span></span><code>node.backup {
   port = 10001
   priority = 7
@@ -1628,7 +1725,7 @@ For example, if an account with block production permission deploys three nodes 
 </code></pre></div></p>
 </li>
 <li>
-<p>ip = 192.168.0.102
+<p>Configuration for IP 192.168.0.102
 <div class="highlight"><pre><span></span><code>node.backup {
   port = 10001
   priority = 6
@@ -1638,75 +1735,115 @@ For example, if an account with block production permission deploys three nodes 
     &quot;192.168.0.101&quot;
   ]
 }
-</code></pre></div>
-<strong>Notes:</strong></p>
-</li>
-<li>
-<p>The backup service of a node will only be activated when it has synchronized to the latest state. The latest state is defined as:  <code>(node's system time - timestamp of the latest successfully synchronized block) &lt; block production interval</code>, block production interval: slot time(currently 3 seconds).</p>
-</li>
-<li>
-<p>When a high-priority node fails and loses its master status, other slave nodes will compete to become the new master. If the original high-priority node recovers and meets the block production conditions again, it will not automatically regain master status. It must wait until the current master node fails before it can compete again.</p>
-</li>
-<li>
-<p>Time required for master-slave switchover: when the master node fails, the minimum time required for a slave node to switch to master status is <code>2 × keepAliveTimeout</code>, where <code>keepAliveTimeout = keepAliveInterval × 6</code>. The reason for requiring <code>2 × keepAliveTimeout</code> is that the slave node must go through an intermediate <code>INIT</code> state during the transition:  <code>SLAVER</code>  → <code>INIT</code> → <code>MASTER</code>(Each backup node has three status: INIT, SLAVER, MASTER)</p>
-</li>
-</ul>
-<h3 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h3>
-<h4 id="how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account">How to use <code>keystore + password</code> to specify the privatekey of witness account<a class="headerlink" href="#how-to-use-keystore-password-to-specify-the-privatekey-of-witness-account" title="Permanent link">&para;</a></h4>
-<ol>
-<li>You should not use the nohup command because the interaction is required when running the node. It is recommended to use session keeping tools such as screen, tmux, etc.</li>
-<li>Comment the <code>localwitness</code> item in main_net_config.conf and uncomment the <code>localwitnesskeystore</code> item. Fill in the path of the Keystore file. Note that the Keystore file needs to be placed in the current directory where the startup command is executed or its subdirectory. If the current directory is "A", the directory of the Keystore file is "A/B/localwitnesskeystore.json", it needs to be configured as:
-    <div class="highlight"><pre><span></span><code>localwitnesskeystore = [
-      &quot;B/localwitnesskeystore.json&quot;
-]
-</code></pre></div>
-    <strong>Note</strong>: For <code>keystore + password</code> generation, you can use the register wallet command of the <a href="https://github.com/tronprotocol/wallet-cli.git">wallet-cli</a>.</li>
-<li>Startup the fullnode which produces blocks
-    <div class="highlight"><pre><span></span><code>    $ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
-</code></pre></div></li>
-<li>Enter the password correctly to finish the node startup.</li>
-</ol>
-<h4 id="optimize-memory-allocation-with-tcmalloc">Optimize Memory Allocation with tcmalloc<a class="headerlink" href="#optimize-memory-allocation-with-tcmalloc" title="Permanent link">&para;</a></h4>
-<p>Memory allocation of java-tron can be optimized with tcmalloc. The method is as follows:</p>
-<p>First install tcmalloc, then add the following two lines to the startup script, the path of tcmalloc is slightly different for different Linux distributions.</p>
-<div class="highlight"><pre><span></span><code>#!/bin/bash
-
-export LD_PRELOAD=&quot;/usr/lib/libtcmalloc.so.4&quot;
-export TCMALLOC_RELEASE_RATE=10
-
-# original start command
-java -jar .....
-</code></pre></div>
-<p>Instructions for each Linux distributions are as below:</p>
-<ul>
-<li>
-<p>Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable
-    Install</p>
-<div class="highlight"><pre><span></span><code>$ sudo apt install libgoogle-perftools4
-</code></pre></div>
-<p>In the startup script add the following:</p>
-<div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4&quot;
-export TCMALLOC_RELEASE_RATE=10
-</code></pre></div>
-</li>
-<li>
-<p>Ubuntu 16.04 LTS
-    Same install command as above. In the startup script add the following:</p>
-<div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib/libtcmalloc.so.4&quot;
-export TCMALLOC_RELEASE_RATE=10
-</code></pre></div>
-</li>
-<li>
-<p>CentOS 7
-  Install
-    <div class="highlight"><pre><span></span><code>$ sudo yum install gperftools-libs
-</code></pre></div>
-    In the startup script add the following:
-    <div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib64/libtcmalloc.so.4&quot;
-export TCMALLOC_RELEASE_RATE=10
 </code></pre></div></p>
 </li>
 </ul>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>A node will only start the backup service when it has synchronized to the latest state. The latest state is defined as: (Node's system time - Latest successfully synchronized block time) &lt; Block production interval (time per slot, currently 3s).</li>
+<li>When a node with high priority fails and loses its master node status, other slave nodes will compete to become the master node. When the high-priority node recovers and meets the conditions for block production again, it will not automatically regain master node status; it needs to wait until the current master node fails before it can compete for the role again.</li>
+<li>Time required for master-slave switchover: When the master node fails, the time it takes for a slave node to switch to a master node is at least 2 * <code>keepAliveTimeout</code>, where <code>keepAliveTimeout</code> = <code>keepAliveInterval</code> * 6. Two <code>keepAliveTimeout</code> periods are needed because the slave node needs to transition through an intermediate "preparatory" state (INIT) to become the master node: Slave -&gt; INIT -&gt; Master.</li>
+</ul>
+<h2 id="optimizations-and-considerations">Optimizations and Considerations<a class="headerlink" href="#optimizations-and-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="speeding-up-node-data-synchronization">Speeding Up Node Data Synchronization<a class="headerlink" href="#speeding-up-node-data-synchronization" title="Permanent link">&para;</a></h3>
+<p>For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#main-net-data-snapshot">data snapshots</a> to accelerate node synchronization.</p>
+<p>The operational steps are as follows:
+1. Download the latest data snapshot.
+2. Unzip it to the <code>output-directory</code> within your <code>tron</code> project.
+3. Then start the node; the node will continue to synchronize based on the data snapshot.</p>
+<h3 id="specifying-super-representative-account-private-key-using-keystore-password">Specifying Super Representative Account Private Key Using Keystore + Password<a class="headerlink" href="#specifying-super-representative-account-private-key-using-keystore-password" title="Permanent link">&para;</a></h3>
+<p>To avoid specifying the private key in plaintext within the configuration file, you can choose to use a <code>keystore</code> file and password.</p>
+<ol>
+<li>
+<p><strong>Configuration Steps</strong>:</p>
+<ul>
+<li>Comment out the <code>localwitness</code> configuration item in the node configuration file.</li>
+<li>Uncomment the <code>localwitnesskeystore</code> configuration item and fill in the path to the <code>keystore</code> file.</li>
+<li>Note that the <code>keystore</code> file needs to be placed in the current directory where the startup command is executed, or in its subdirectory.<ul>
+<li>For example, if the current directory is <code>A</code>, and the <code>keystore</code> file path is <code>A/B/localwitnesskeystore.json</code>, the configuration should be:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="err">localwi</span><span class="kc">tness</span><span class="err">keys</span><span class="kc">t</span><span class="err">ore</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;B/localwitnesskeystore.json&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>You can generate the <code>keystore</code> file and password using the <code>registerwallet</code> command from the <code>wallet-cli</code> project.</li>
+</ul>
+</li>
+<li>
+<p><strong>Starting a Block Production Node</strong>:</p>
+<ul>
+<li>
+<p><strong>Starting the node interactively without <code>nohup</code> (Recommended)</strong></p>
+<ul>
+<li><strong>Important Notes</strong>: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as <code>screen</code> or <code>tmux</code>.
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
+</code></pre></div></li>
+<li>During node startup, the system will prompt you to enter the password. After correctly entering the password, the node will complete its startup.</li>
+</ul>
+</li>
+<li>
+<p><strong>Using <code>nohup</code> to pass the password directly in the command line via <code>--password</code></strong>
+    <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;your_password&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="optimizing-memory-usage-with-tcmalloc">Optimizing Memory Usage with <code>tcmalloc</code><a class="headerlink" href="#optimizing-memory-usage-with-tcmalloc" title="Permanent link">&para;</a></h3>
+<p>To achieve optimal memory usage, you can use Google's <code>tcmalloc</code> instead of the system's <code>glibc malloc</code>.</p>
+<ol>
+<li>
+<p><strong>Install <code>tcmalloc</code></strong>:</p>
+<ul>
+<li><strong>Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgoogle-perftools4
+</code></pre></div>
+<ul>
+<li><strong>Ubuntu 16.04 LTS</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgoogle-perftools4
+</code></pre></div>
+<ul>
+<li><strong>CentOS 7</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>gperftools-libs
+</code></pre></div>
+</li>
+<li>
+<p><strong>Modify the Startup Script</strong>:</p>
+<ul>
+<li>Add the following two lines to your node's startup script. Please note that the path to <code>libtcmalloc.so.4</code> might vary slightly across different Linux distributions.</li>
+</ul>
+<p>```bash!</p>
+<h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Permanent link">&para;</a></h1>
+<p>export LD_PRELOAD="/usr/lib/libtcmalloc.so.4" # Adjust path according to your system
+export TCMALLOC_RELEASE_RATE=10</p>
+<h1 id="original-start-command">original start command<a class="headerlink" href="#original-start-command" title="Permanent link">&para;</a></h1>
+<p>java -jar .....
+<div class="highlight"><pre><span></span><code>* **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
+
+```bash!
+export LD_PRELOAD=&quot;/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
+</code></pre></div></p>
+<ul>
+<li><strong>Ubuntu 16.04 LTS</strong>:</li>
+</ul>
+<p>```bash!
+export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
+export TCMALLOC_RELEASE_RATE=10
+<div class="highlight"><pre><span></span><code>* **CentOS 7**:
+
+```bash!
+export LD_PRELOAD=&quot;/usr/lib64/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
+</code></pre></div></p>
+</li>
+</ol>
 
 
 
