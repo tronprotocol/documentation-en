@@ -1608,21 +1608,27 @@
 <p>This document guides developers on how to deploy a TRON <code>java-tron</code> node on <code>Linux</code> or <code>macOS</code> operating systems.</p>
 <p><strong>Important Note:</strong> The <code>java-tron</code> node currently requires <strong>Oracle JDK 1.8</strong>. Other JDK versions are not supported.</p>
 <h2 id="hardware-configuration-requirements">Hardware Configuration Requirements<a class="headerlink" href="#hardware-configuration-requirements" title="Permanent link">&para;</a></h2>
-<p>The minimum hardware configuration required to run a <code>java-tron</code> node is as follows:
-* <strong>CPU</strong>: 8 Cores
-* <strong>Memory</strong>: 16 GB
-* <strong>SSD</strong>: 3 TB
-* <strong>Network Bandwidth</strong>: 100 Mbps</p>
-<p>The recommended configuration is:
-* <strong>CPU</strong>: 16 Cores
-* <strong>Memory</strong>: 32 GB
-* <strong>SSD</strong>: 3.5 TB+
-* <strong>Network Bandwidth</strong>: 100 Mbps</p>
-<p>For a Super Representative (SR) node acting as a <strong>block production node</strong>, the recommended configuration is:
-* <strong>CPU</strong>: 32 Cores
-* <strong>Memory</strong>: 64 GB
-* <strong>SSD</strong>: 3.5 TB+
-* <strong>Network Bandwidth</strong>: 100 Mbps</p>
+<p>The minimum hardware configuration required to run a <code>java-tron</code> node is as follows:</p>
+<ul>
+<li><strong>CPU</strong>: 8 Cores</li>
+<li><strong>Memory</strong>: 16 GB</li>
+<li><strong>SSD</strong>: 3 TB</li>
+<li><strong>Network Bandwidth</strong>: 100 Mbps</li>
+</ul>
+<p>The recommended configuration is:</p>
+<ul>
+<li><strong>CPU</strong>: 16 Cores</li>
+<li><strong>Memory</strong>: 32 GB</li>
+<li><strong>SSD</strong>: 3.5 TB+</li>
+<li><strong>Network Bandwidth</strong>: 100 Mbps</li>
+</ul>
+<p>For a Super Representative (SR) node acting as a <strong>block production node</strong>, the recommended configuration is:</p>
+<ul>
+<li><strong>CPU</strong>: 32 Cores</li>
+<li><strong>Memory</strong>: 64 GB</li>
+<li><strong>SSD</strong>: 3.5 TB+</li>
+<li><strong>Network Bandwidth</strong>: 100 Mbps</li>
+</ul>
 <h2 id="obtaining-the-java-tron-client">Obtaining the <code>java-tron</code> Client<a class="headerlink" href="#obtaining-the-java-tron-client" title="Permanent link">&para;</a></h2>
 <p>You can directly download the official client <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, or you can compile the source code yourself to package the client.</p>
 <h3 id="compiling-java-tron-source-code">Compiling <code>java-tron</code> Source Code<a class="headerlink" href="#compiling-java-tron-source-code" title="Permanent link">&para;</a></h3>
@@ -1630,15 +1636,15 @@
 <ol>
 <li>First, clone the <code>java-tron</code> source code to your local machine using the <code>git</code> command and switch to the <code>master</code> branch:</li>
 </ol>
-<p>```shell!
-git clone https://github.com/tronprotocol/java-tron.git
-git checkout -t origin/master
-<div class="highlight"><pre><span></span><code>2. Then, execute the following commands to compile the `java-tron` source code:
-
-```shell!
-cd java-tron
-./gradlew clean build -x test
-</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tronprotocol/java-tron.git
+git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </span>origin/master
+</code></pre></div>
+<ol>
+<li>Then, execute the following commands to compile the <code>java-tron</code> source code:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>java-tron
+./gradlew<span class="w"> </span>clean<span class="w"> </span>build<span class="w"> </span>-x<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
 <ul>
 <li>The parameter <code>-x test</code> indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.</li>
 <li>After compilation is complete, the <code>FullNode.jar</code> file will be generated in the <code>java-tron/build/libs/</code> directory.</li>
@@ -1647,11 +1653,9 @@ cd java-tron
 <p>You can choose different configuration files to connect the <code>java-tron</code> node to different TRON networks:</p>
 <ul>
 <li>For Mainnet FullNode configuration file: <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">main_net_config.conf</a></li>
-<li>For other network node configuration:<ul>
+<li>For other network node configuration:</li>
 <li>Nile Testnet: https://nileex.io/</li>
 <li>Private Network: https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf</li>
-</ul>
-</li>
 </ul>
 <h3 id="starting-a-fullnode">Starting a FullNode<a class="headerlink" href="#starting-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>A <strong>FullNode</strong> serves as an entry point to the TRON network, possesses complete historical data, and provides external access via <strong>HTTP API</strong>, <strong>gRPC API</strong>, and <strong>JSON-RPC API</strong>. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.</p>
@@ -1665,10 +1669,12 @@ cd java-tron
 </ul>
 <h3 id="starting-a-block-production-node">Starting a Block Production Node<a class="headerlink" href="#starting-a-block-production-node" title="Permanent link">&para;</a></h3>
 <p>By adding the <code>--witness</code> parameter to the FullNode startup command above, the <code>FullNode</code> will run as a <strong>Block Production Node</strong> (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports <strong>block production</strong> and <strong>transaction packaging</strong>.</p>
-<p><strong>Important Notes</strong>:
-* Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.
-    * Note that even if your node doesn't make it into the top 27, a node started with the <code>--witness</code> parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
-* Fill in the <strong>private key</strong> of your Super Representative account in the <code>localwitness</code> list of <code>main_net_config.conf</code>.</p>
+<p><strong>Important Notes</strong>:</p>
+<ul>
+<li>Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.</li>
+<li>Note that even if your node doesn't make it into the top 27, a node started with the <code>--witness</code> parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.</li>
+<li>Fill in the <strong>private key</strong> of your Super Representative account in the <code>localwitness</code> list of <code>main_net_config.conf</code>.</li>
+</ul>
 <p>Here is an example of the <code>localwitness</code> configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="err">localwi</span><span class="kc">tness</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="mi">650950</span><span class="err">B</span><span class="mi">193</span><span class="err">DDDDB</span><span class="mi">35</span><span class="err">B</span><span class="mf">6E48912</span><span class="err">DD</span><span class="mi">28</span><span class="err">F</span><span class="mi">7</span><span class="err">AB</span><span class="mf">0E7140</span><span class="err">C</span><span class="mi">1</span><span class="err">BFDEFD</span><span class="mi">493348</span><span class="err">F</span><span class="mi">02295</span><span class="err">BD</span><span class="mi">812</span>
@@ -1679,65 +1685,63 @@ cd java-tron
 </code></pre></div>
 <h3 id="master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes<a class="headerlink" href="#master-slave-mode-for-block-production-fullnodes" title="Permanent link">&para;</a></h3>
 <p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes, it's necessary to configure <code>node.backup</code> in each node's configuration file. The description of <code>node.backup</code> configuration items is as follows:</p>
-<p><div class="highlight"><pre><span></span><code>node.backup {
-  # udp listen port, each member should have the same configuration
-  port = 10001
+<div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
+<span class="w">  </span><span class="c1"># udp listen port, each member should have the same configuration</span>
+<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
 
-  # my priority, each member should use different priority
-  priority = 8
+<span class="w">  </span><span class="c1"># my priority, each member should use different priority</span>
+<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
 
-  # time interval to send keepAlive message, each member should have the same configuration unit: ms
-  keepAliveInterval = 3000
+<span class="w">  </span><span class="c1"># time interval to send keepAlive message, each member should have the same configuration unit: ms</span>
+<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
 
-  # peer&#39;s ip list, can&#39;t contain myself
-  members = [
-    # &quot;ip&quot;,
-    # &quot;ip&quot;
-  ]
-}
+<span class="w">  </span><span class="c1"># peer&#39;s ip list, can&#39;t contain myself</span>
+<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="c1"># &quot;ip&quot;,</span>
+<span class="w">    </span><span class="c1"># &quot;ip&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="na">}</span>
+<span class="na">```ini</span>
+<span class="na">For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be as follows</span><span class="o">:</span>
+
+<span class="na">- Configuration for IP 192.168.0.100</span>
+<span class="na">```ini</span>
+<span class="na">node.backup {</span>
+<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
+<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
+<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
+<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">&quot;192.168.0.101&quot;,</span>
+<span class="w">    </span><span class="na">&quot;192.168.0.102&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="na">}</span>
 </code></pre></div>
-For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their <code>node.backup</code> configurations should be as follows:</p>
 <ul>
-<li>
-<p>Configuration for IP 192.168.0.100
-<div class="highlight"><pre><span></span><code>node.backup {
-  port = 10001
-  priority = 8
-  keepAliveInterval = 3000
-  members = [
-    &quot;192.168.0.101&quot;,
-    &quot;192.168.0.102&quot;
-  ]
-}
-</code></pre></div></p>
-</li>
-<li>
-<p>Configuration for IP 192.168.0.101
-<div class="highlight"><pre><span></span><code>node.backup {
-  port = 10001
-  priority = 7
-  keepAliveInterval = 3000
-  members = [
-    &quot;192.168.0.100&quot;,
-    &quot;192.168.0.102&quot;
-  ]
-}
-</code></pre></div></p>
-</li>
-<li>
-<p>Configuration for IP 192.168.0.102
-<div class="highlight"><pre><span></span><code>node.backup {
-  port = 10001
-  priority = 6
-  keepAliveInterval = 3000
-  members = [
-    &quot;192.168.0.100&quot;,
-    &quot;192.168.0.101&quot;
-  ]
-}
-</code></pre></div></p>
-</li>
+<li>Configuration for IP 192.168.0.101</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
+<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
+<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7</span>
+<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
+<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">&quot;192.168.0.100&quot;,</span>
+<span class="w">    </span><span class="na">&quot;192.168.0.102&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="na">}</span>
+</code></pre></div>
+<ul>
+<li>Configuration for IP 192.168.0.102</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
+<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
+<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6</span>
+<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
+<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">&quot;192.168.0.100&quot;,</span>
+<span class="w">    </span><span class="na">&quot;192.168.0.101&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="na">}</span>
+</code></pre></div>
 <p><strong>Note</strong>:</p>
 <ul>
 <li>A node will only start the backup service when it has synchronized to the latest state. The latest state is defined as: (Node's system time - Latest successfully synchronized block time) &lt; Block production interval (time per slot, currently 3s).</li>
@@ -1747,10 +1751,12 @@ For example, if an account with block production rights deploys three nodes with
 <h2 id="optimizations-and-considerations">Optimizations and Considerations<a class="headerlink" href="#optimizations-and-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="speeding-up-node-data-synchronization">Speeding Up Node Data Synchronization<a class="headerlink" href="#speeding-up-node-data-synchronization" title="Permanent link">&para;</a></h3>
 <p>For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#main-net-data-snapshot">data snapshots</a> to accelerate node synchronization.</p>
-<p>The operational steps are as follows:
-1. Download the latest data snapshot.
-2. Unzip it to the <code>output-directory</code> within your <code>tron</code> project.
-3. Then start the node; the node will continue to synchronize based on the data snapshot.</p>
+<p>The operational steps are as follows:</p>
+<ol>
+<li>Download the latest data snapshot.</li>
+<li>Unzip it to the <code>output-directory</code> within your <code>tron</code> project.</li>
+<li>Then start the node; the node will continue to synchronize based on the data snapshot.</li>
+</ol>
 <h3 id="specifying-super-representative-account-private-key-using-keystore-password">Specifying Super Representative Account Private Key Using Keystore + Password<a class="headerlink" href="#specifying-super-representative-account-private-key-using-keystore-password" title="Permanent link">&para;</a></h3>
 <p>To avoid specifying the private key in plaintext within the configuration file, you can choose to use a <code>keystore</code> file and password.</p>
 <ol>
@@ -1759,17 +1765,17 @@ For example, if an account with block production rights deploys three nodes with
 <ul>
 <li>Comment out the <code>localwitness</code> configuration item in the node configuration file.</li>
 <li>Uncomment the <code>localwitnesskeystore</code> configuration item and fill in the path to the <code>keystore</code> file.</li>
-<li>Note that the <code>keystore</code> file needs to be placed in the current directory where the startup command is executed, or in its subdirectory.<ul>
+<li>
+<p>Note that the <code>keystore</code> file needs to be placed in the current directory where the startup command is executed, or in its subdirectory.</p>
+<ul>
 <li>For example, if the current directory is <code>A</code>, and the <code>keystore</code> file path is <code>A/B/localwitnesskeystore.json</code>, the configuration should be:</li>
 </ul>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="err">localwi</span><span class="kc">tness</span><span class="err">keys</span><span class="kc">t</span><span class="err">ore</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;B/localwitnesskeystore.json&quot;</span>
-<span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="err">localwi</span><span class="kc">tness</span><span class="err">keys</span><span class="kc">t</span><span class="err">ore</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;B/localwitnesskeystore.json&quot;</span><span class="p">]</span>
 </code></pre></div>
-<ul>
-<li>You can generate the <code>keystore</code> file and password using the <code>registerwallet</code> command from the <code>wallet-cli</code> project.</li>
+</li>
+<li>
+<p>You can generate the <code>keystore</code> file and password using the <code>registerwallet</code> command from the <code>wallet-cli</code> project.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -1778,16 +1784,18 @@ For example, if an account with block production rights deploys three nodes with
 <li>
 <p><strong>Starting the node interactively without <code>nohup</code> (Recommended)</strong></p>
 <ul>
-<li><strong>Important Notes</strong>: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as <code>screen</code> or <code>tmux</code>.
+<li><strong>Important Notes</strong>: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as <code>screen</code> or <code>tmux</code>.</li>
+</ul>
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
-</code></pre></div></li>
+</code></pre></div>
+<ul>
 <li>During node startup, the system will prompt you to enter the password. After correctly entering the password, the node will complete its startup.</li>
 </ul>
 </li>
 <li>
-<p><strong>Using <code>nohup</code> to pass the password directly in the command line via <code>--password</code></strong>
-    <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;your_password&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div></p>
+<p><strong>Using <code>nohup</code> to pass the password directly in the command line via <code>--password</code></strong></p>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;your_password&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
 </li>
 </ul>
 </li>
@@ -1818,30 +1826,32 @@ For example, if an account with block production rights deploys three nodes with
 <ul>
 <li>Add the following two lines to your node's startup script. Please note that the path to <code>libtcmalloc.so.4</code> might vary slightly across different Linux distributions.</li>
 </ul>
-<p>```bash!</p>
-<h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Permanent link">&para;</a></h1>
-<p>export LD_PRELOAD="/usr/lib/libtcmalloc.so.4" # Adjust path according to your system
-export TCMALLOC_RELEASE_RATE=10</p>
-<h1 id="original-start-command">original start command<a class="headerlink" href="#original-start-command" title="Permanent link">&para;</a></h1>
-<p>java -jar .....
-<div class="highlight"><pre><span></span><code>* **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-```bash!
-export LD_PRELOAD=&quot;/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4&quot;
-export TCMALLOC_RELEASE_RATE=10
-</code></pre></div></p>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib/libtcmalloc.so.4&quot;</span><span class="w"> </span><span class="c1"># Adjust path according to your system</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TCMALLOC_RELEASE_RATE</span><span class="o">=</span><span class="m">10</span>
+
+<span class="c1"># original start command</span>
+java<span class="w"> </span>-jar<span class="w"> </span>.....
+</code></pre></div>
+<ul>
+<li><strong>Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TCMALLOC_RELEASE_RATE</span><span class="o">=</span><span class="m">10</span>
+</code></pre></div>
 <ul>
 <li><strong>Ubuntu 16.04 LTS</strong>:</li>
 </ul>
-<p>```bash!
-export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
-export TCMALLOC_RELEASE_RATE=10
-<div class="highlight"><pre><span></span><code>* **CentOS 7**:
-
-```bash!
-export LD_PRELOAD=&quot;/usr/lib64/libtcmalloc.so.4&quot;
-export TCMALLOC_RELEASE_RATE=10
-</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib/libtcmalloc.so.4&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TCMALLOC_RELEASE_RATE</span><span class="o">=</span><span class="m">10</span>
+</code></pre></div>
+<ul>
+<li><strong>CentOS 7</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib64/libtcmalloc.so.4&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TCMALLOC_RELEASE_RATE</span><span class="o">=</span><span class="m">10</span>
+</code></pre></div>
 </li>
 </ol>
 
