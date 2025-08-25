@@ -70,7 +70,7 @@ java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is d
 ```text
 java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-tron/config.conf)
 Example:
-java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+java -jar FullNode.jar -p 650950B1...295BD812 --witness -c /data/java-tron/config.conf
 ```
 
 This is similar to running a private testnet, except that the IPs in the `config.conf` are officially declared by TRON.
@@ -88,7 +88,7 @@ You should modify the config.conf:
 cd build/libs
 java -jar FullNode.jar -p your private key --witness -c your config.conf (Example：/data/java-tron/config.conf)
 Example:
-java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+java -jar FullNode.jar -p 650950B1...295BD812 --witness -c /data/java-tron/config.conf
 ```
 
 
