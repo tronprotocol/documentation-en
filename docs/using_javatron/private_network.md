@@ -22,7 +22,7 @@ The process of building a node on private chain is the same as that on mainnet. 
      $ cp FullNode.jar ./FullNode
      ```
 
-3. Obtain the node's config file [private_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf)
+3. Obtain the node's config file [private_net_config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf). In order to build a private chain network node, please modify the value of `p2p.version` to any value other than `11111` and `20180622`. The configuration is located at [here](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf#L185).
 
     Obtain the node's config file private_net_config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
       ```

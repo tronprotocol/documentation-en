@@ -58,10 +58,11 @@ cd java-tron
 
 You can choose different configuration files to connect the `java-tron` node to different TRON networks:
 
-* For Mainnet FullNode configuration file: [main_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
+* For Mainnet FullNode configuration file: [main_net_config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
 * For other network node configuration:
+  
   * Nile Testnet: https://nileex.io/
-  * Private Network: https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
+  * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
 
 ### Starting a FullNode
 
