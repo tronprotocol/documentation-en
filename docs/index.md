@@ -13,7 +13,7 @@ java-tron is a TRON client implemented in Java, it provides completely open sour
 
 For other TRON related information, please visit the official website [tron.network](https://tron.network/index?lng=en) or the following resource links:
 
-* [TRON Whitepaper](https://tron.network/static/doc/white_paper_v_2_0.pdf)
+* [TRON Whitepaper](https://tron.network/static/doc/white_paper_v_2_1.pdf)
 * [TRON Improvement Proposals (TIPs)](https://github.com/tronprotocol/tips)
 * [TRON Developer Hub](https://developers.tron.network/)
 
