@@ -38,7 +38,7 @@ cd /deploy/java-tron
 ```text
 download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
 
-main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
+config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
 please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SolidityNode.
 
