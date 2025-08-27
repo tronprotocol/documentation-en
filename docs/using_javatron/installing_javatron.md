@@ -58,7 +58,7 @@ cd java-tron
 
 You can choose different configuration files to connect the `java-tron` node to different TRON networks:
 
-* For Mainnet FullNode configuration file: [main_net_config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
+* For Mainnet FullNode configuration file: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
 * For other network node configuration:
   
   * Nile Testnet: https://nileex.io/
@@ -71,7 +71,7 @@ A **FullNode** serves as an entry point to the TRON network, possesses complete 
 Below is the command to start a **Mainnet FullNode**, specifying the configuration file with the `-c` parameter:
 
 ```shell
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c main_net_config.conf
+java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf
 ```
 
 * `-XX:+UseConcMarkSweepGC`: Specifies the **Concurrent Mark Sweep (CMS) garbage collector**. This parameter must be placed before the `-jar` parameter.
@@ -86,7 +86,7 @@ By adding the `--witness` parameter to the FullNode startup command above, the `
 
 * Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.
   * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
-* Fill in the **private key** of your Super Representative account in the `localwitness` list of `main_net_config.conf`.
+* Fill in the **private key** of your Super Representative account in the `localwitness` list of `config.conf`.
 
 Here is an example of the `localwitness` configuration:
 
@@ -99,7 +99,7 @@ localwitness = [
 Then execute the following command to start the Block Production Node:
 
 ```shell
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
+java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
 ```
 
 ### Master-Slave Mode for Block Production FullNodes
@@ -207,7 +207,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
         * **Important Notes**: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as `screen` or `tmux`.
   
         ```shell
-        java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf
+        java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
         ```
 
         * During node startup, the system will prompt you to enter the password. After correctly entering the password, the node will complete its startup.
@@ -215,7 +215,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
     * **Using `nohup` to pass the password directly in the command line via `--password`**
 
         ```shell
-        nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c main_net_config.conf --password "your_password" > start.log 2>&1 &
+        nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf --password "your_password" > start.log 2>&1 &
         ```
 
 ### Optimizing Memory Usage with `tcmalloc`
