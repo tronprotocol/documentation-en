@@ -248,7 +248,7 @@ seed.node = {
 }
 ```
 If the network card supports IPv6, you can use the seed nodes in the IPv6 address format in the above list by removing the comment symbol `#`.
-To obtain the latest seed.node, you can check the official [configuration file](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf).
+To obtain the latest seed.node, you can check the official [configuration file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 
 - Persistent nodes read from the database: Persistent nodes are nodes that maintain good connections during the operation of the node. Persistent nodes require enabling the node persistence service and are generally used when the node restarts. Relevant configuration item:
 ```
