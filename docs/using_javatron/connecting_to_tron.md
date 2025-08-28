@@ -250,7 +250,7 @@ seed.node = {
 If the network card supports IPv6, you can use the seed nodes in the IPv6 address format in the above list by removing the comment symbol `#`.
 To obtain the latest seed.node, you can check the official [configuration file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 
-- Persistent nodes read from the database: Persistent nodes are nodes that maintain good connections during the operation of the node. Persistent nodes require enabling the node persistence service and are generally used when the node restarts. Relevant configuration item:
+- Persistent nodes read from the database. Persistent nodes require enabling the node persistence service. If this service is enabled, the nodes in the [routing table](https://en.wikipedia.org/wiki/Kademlia#Fixed-size_routing_tables) will be written into the database by a scheduled task. When a node starts based on this database, it will read these nodes from the database and use them as seed nodes. Relevant configuration item:
 ```
 node.discovery = {
   ...
@@ -258,8 +258,6 @@ node.discovery = {
   ... 
 }
 ```
-
-As boot nodes, seed nodes are also among the discoverable nodes. If node discovery is not enabled, the current node will not actively connect to these seed nodes.
 
 Node discovery is based on the UDP protocol, and the default bound port is 18888 (other ports can also be bound). Relevant configuration item:
 ```
@@ -269,14 +267,9 @@ node {
   ...
 }
 ```
-If another port (e.g., 19999) is bound, the node can still work normally, but the entire network topology will be as shown in the figure below:
-
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_topology1.png)
 
 In some cases, node discovery does not need to be enabled (e.g., when running a local test node or deploying a test network with fixed nodes). At this time, you can disable node discovery by setting the configuration item to `node.discovery.enable = false`, or by closing the UDP 18888 port through the firewall.
 
-### Network ID
-Among the discovered nodes, only those with the same network ID as the current node will become connectable nodes. For example, if a node of another network is incorrectly configured in the seed node list, during the node discovery process, the current node will determine it as unconnectable because the network ID returned by the other node is different from the network ID configured for the current node.
 
 ## Node Connection
 
@@ -291,9 +284,9 @@ node {
 ```
 
 ### Active Connection
-The target nodes for active connection come from four parts:
+The target nodes for active connection come from three parts:
 
-- Configured active nodes (highest priority): They do not depend on node discovery. Even if node discovery is not enabled, the current node will actively initiate connections to these nodes. Relevant configuration item:
+- Configured active nodes (high priority): They do not depend on node discovery. Even if node discovery is not enabled, the current node will actively initiate connections to these nodes. Relevant configuration item:
 ```
 node {
   ...
@@ -306,13 +299,8 @@ node {
   ...
  }
 ```
-- Detected nodes (high priority): The node detection service needs to be enabled. Node detection conducts further checks on the connectable nodes obtained through the aforementioned node discovery, including the response speed and the number of remaining connections. Node detection is generally not enabled (default value: false). Relevant configuration item:
-```
-#Whether to enable the node detection function, default false
-#nodeDetectEnable = false
-```
 - Connectable nodes obtained through node discovery (medium priority)
-- DNS nodes (lowest priority/backup): These are backup nodes obtained from the DNS tree. They require configuring treeUrls and are used only when the first three sources are insufficient (they are generally not used). Relevant configuration item (usually not configured):
+- DNS nodes (low priority): These are backup nodes obtained from the DNS tree. They require configuring treeUrls and are used only when the first three sources are insufficient (they are generally not used). Relevant configuration item (usually not configured):
 ```
 dns {
   ...
@@ -328,7 +316,7 @@ Compared with the traditional static seed node list, the DNS tree mechanism has 
 It can be seen that currently, the target nodes for active connection only come from two categories: one is the configured active nodes, and the other is the connectable nodes obtained through node discovery.
 
 ### Passive Connection
-When nodes configured in `node.passive` actively establish connections with the current node, the current node will accept them unconditionally.
+- Nodes configured in `node.passive`. When these nodes actively initiate a connection to the current node, the current node will accept the connection unconditionally.
 
 ```
 node {
@@ -343,11 +331,11 @@ node {
  }
 ```
 
-In addition, while a node discovers other nodes, it will also be discovered by other nodes. Therefore, the sources of passive connections include not only the nodes configured above but also other nodes.
+- Other nodes: While a node is discovering other nodes, it will also be discovered by other nodes, and these nodes may also actively initiate connections to the current node.
 
 Unlike node discovery (which is based on the UDP protocol), node connection is based on the TCP protocol. However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:
 
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_topology2.png)
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_topology.png)
 
 ## Log and network connection verification
 The java-tron node log is `/logs/tron.log` in the java-tron installation directory. Under the java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:
