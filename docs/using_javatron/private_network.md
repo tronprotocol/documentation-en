@@ -22,12 +22,12 @@ The process of building a node on private chain is the same as that on mainnet. 
      $ cp FullNode.jar ./FullNode
      ```
 
-3. Obtain the node's config file [private_net_config.conf](https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf)
+3. Obtain the node's config file [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf). In order to build a private chain network node, please modify the value of `p2p.version` to any value other than `11111` and `20180622`. The configuration is located at [here](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf#L185).
 
-    Obtain the node's config file private_net_config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
+    Obtain the node's config file config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
       ```
-      $ cp private_net_config.conf ./SR/supernode.conf
-      $ cp private_net_config.conf ./FullNode/fullnode.conf
+      $ cp config.conf ./SR/supernode.conf
+      $ cp config.conf ./FullNode/fullnode.conf
       ```
 
 4. Modify the configuration file of each node
@@ -97,7 +97,7 @@ The process of building a node on private chain is the same as that on mainnet. 
       var TronWeb = require('tronweb');
       var tronWeb = new TronWeb({
           fullHost: 'http://localhost:16887',
-          privateKey: 'c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc'
+          privateKey: '741f5c0...c7d220dc'
       })
 
       var parametersForProposal1 = [{"key":9,"value":1},{"key":10,"value":1}];
