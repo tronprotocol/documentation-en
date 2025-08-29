@@ -1469,7 +1469,7 @@ New developers should deploy FullNode only.</p>
 <p>2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories
 <div class="highlight"><pre><span></span><code>download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
 
-main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
+config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
 please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SolidityNode.
 
@@ -1492,7 +1492,7 @@ cp build/libs/SolidityNode.jar ../soliditynode
 <p>6.&nbsp;Running a Super Representative Node for mainnet
 <div class="highlight"><pre><span></span><code>java -jar FullNode.jar -p your private key --witness -c your config.conf(Example：/data/java-tron/config.conf)
 Example:
-java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+java -jar FullNode.jar -p 650950B1...295BD812 --witness -c /data/java-tron/config.conf
 </code></pre></div></p>
 <p>This is similar to running a private testnet, except that the IPs in the <code>config.conf</code> are officially declared by TRON.</p>
 <p>7.&nbsp;Running a Super Representative Node for private testnet</p>
@@ -1506,7 +1506,7 @@ java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F
 <div class="highlight"><pre><span></span><code>cd build/libs
 java -jar FullNode.jar -p your private key --witness -c your config.conf (Example：/data/java-tron/config.conf)
 Example:
-java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F02295BD812 --witness -c /data/java-tron/config.conf
+java -jar FullNode.jar -p 650950B1...295BD812 --witness -c /data/java-tron/config.conf
 </code></pre></div>
 <h2 id="logging-and-network-connection-verification">Logging and Network Connection Verification<a class="headerlink" href="#logging-and-network-connection-verification" title="Permanent link">&para;</a></h2>
 <p>Logs for both nodes are located in <code>/deploy/\*/logs/tron.log</code>. Use <code>tail -f /logs/tron.log/</code> to follow along with the block syncing.</p>

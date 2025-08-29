@@ -1516,10 +1516,10 @@ $ cp FullNode.jar ./FullNode
 </code></pre></div></p>
 </li>
 <li>
-<p>Obtain the node's config file <a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private_net_config.conf</a></p>
-<p>Obtain the node's config file private_net_config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
-  <div class="highlight"><pre><span></span><code>$ cp private_net_config.conf ./SR/supernode.conf
-$ cp private_net_config.conf ./FullNode/fullnode.conf
+<p>Obtain the node's config file <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a>. In order to build a private chain network node, please modify the value of <code>p2p.version</code> to any value other than <code>11111</code> and <code>20180622</code>. The configuration is located at <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf#L185">here</a>.</p>
+<p>Obtain the node's config file config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
+  <div class="highlight"><pre><span></span><code>$ cp config.conf ./SR/supernode.conf
+$ cp config.conf ./FullNode/fullnode.conf
 </code></pre></div></p>
 </li>
 <li>
@@ -1650,7 +1650,7 @@ $ cp private_net_config.conf ./FullNode/fullnode.conf
   <div class="highlight"><pre><span></span><code>var TronWeb = require(&#39;tronweb&#39;);
 var tronWeb = new TronWeb({
     fullHost: &#39;http://localhost:16887&#39;,
-    privateKey: &#39;c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc&#39;
+    privateKey: &#39;741f5c0...c7d220dc&#39;
 })
 
 var parametersForProposal1 = [{&quot;key&quot;:9,&quot;value&quot;:1},{&quot;key&quot;:10,&quot;value&quot;:1}];
