@@ -1652,15 +1652,19 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <h2 id="starting-a-java-tron-node">Starting a <code>java-tron</code> Node<a class="headerlink" href="#starting-a-java-tron-node" title="Permanent link">&para;</a></h2>
 <p>You can choose different configuration files to connect the <code>java-tron</code> node to different TRON networks:</p>
 <ul>
-<li>For Mainnet FullNode configuration file: <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf">main_net_config.conf</a></li>
-<li>For other network node configuration:</li>
-<li>Nile Testnet: https://nileex.io/</li>
-<li>Private Network: https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf</li>
+<li>For Mainnet FullNode configuration file: <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a></li>
+<li>
+<p>For other network node configuration:</p>
+</li>
+<li>
+<p>Nile Testnet: https://nileex.io/</p>
+</li>
+<li>Private Network: please refer to <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network</a></li>
 </ul>
 <h3 id="starting-a-fullnode">Starting a FullNode<a class="headerlink" href="#starting-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>A <strong>FullNode</strong> serves as an entry point to the TRON network, possesses complete historical data, and provides external access via <strong>HTTP API</strong>, <strong>gRPC API</strong>, and <strong>JSON-RPC API</strong>. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.</p>
 <p>Below is the command to start a <strong>Mainnet FullNode</strong>, specifying the configuration file with the <code>-c</code> parameter:</p>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>config.conf
 </code></pre></div>
 <ul>
 <li><code>-XX:+UseConcMarkSweepGC</code>: Specifies the <strong>Concurrent Mark Sweep (CMS) garbage collector</strong>. This parameter must be placed before the <code>-jar</code> parameter.</li>
@@ -1673,15 +1677,15 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <ul>
 <li>Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.</li>
 <li>Note that even if your node doesn't make it into the top 27, a node started with the <code>--witness</code> parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.</li>
-<li>Fill in the <strong>private key</strong> of your Super Representative account in the <code>localwitness</code> list of <code>main_net_config.conf</code>.</li>
+<li>Fill in the <strong>private key</strong> of your Super Representative account in the <code>localwitness</code> list of <code>config.conf</code>.</li>
 </ul>
 <p>Here is an example of the <code>localwitness</code> configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="err">localwi</span><span class="kc">tness</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="mi">650950</span><span class="err">B</span><span class="mi">193</span><span class="err">DDDDB</span><span class="mi">35</span><span class="err">B</span><span class="mf">6E48912</span><span class="err">DD</span><span class="mi">28</span><span class="err">F</span><span class="mi">7</span><span class="err">AB</span><span class="mf">0E7140</span><span class="err">C</span><span class="mi">1</span><span class="err">BFDEFD</span><span class="mi">493348</span><span class="err">F</span><span class="mi">02295</span><span class="err">BD</span><span class="mi">812</span>
+<span class="w">    </span><span class="mi">650950</span><span class="err">B</span><span class="mf">1...295</span><span class="err">BD</span><span class="mi">812</span>
 <span class="p">]</span>
 </code></pre></div>
 <p>Then execute the following command to start the Block Production Node:</p>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf
 </code></pre></div>
 <h3 id="master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes<a class="headerlink" href="#master-slave-mode-for-block-production-fullnodes" title="Permanent link">&para;</a></h3>
 <p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes, it's necessary to configure <code>node.backup</code> in each node's configuration file. The description of <code>node.backup</code> configuration items is as follows:</p>
@@ -1786,7 +1790,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <ul>
 <li><strong>Important Notes</strong>: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as <code>screen</code> or <code>tmux</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf
 </code></pre></div>
 <ul>
 <li>During node startup, the system will prompt you to enter the password. After correctly entering the password, the node will complete its startup.</li>
@@ -1794,7 +1798,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 </li>
 <li>
 <p><strong>Using <code>nohup</code> to pass the password directly in the command line via <code>--password</code></strong></p>
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;your_password&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;your_password&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 </li>
 </ul>
