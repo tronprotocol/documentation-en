@@ -102,7 +102,7 @@ When the contract is executed, Energy is calculated and deducted according to in
 - Energy obtained by staking TRX
 - Burn TRX
 
-First, the energy obtained by staking TRX will be consumed. If this part of energy is not enough, the account's TRX will continue to be burned to pay for the energy resources required for the transaction, according to the unit price of 0.00021TRX per energy. 
+First, the energy obtained by staking TRX will be consumed. If this part of energy is not enough, the account's TRX will continue to be burned to pay for the energy resources required for the transaction, according to the unit price of 0.0001 TRX per energy. 
 
 If the contract exits due to throwing a revert exception while execution, only the energy consumed by instructions that have already been executed will be deducted. But for abnormal contracts, such as contract execution timeout, or abnormal exit due to bug, the maximum available energy of this transaction will be deducted. You can limit the maximum energy cost of this transaction by setting the `fee_limit` parameter of the transaction.
 
@@ -144,16 +144,16 @@ To encourage caller to trigger the contract, usually developer has enough energy
 How to estimate the fee limit:
 
 - Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy.
-- When to burn TRX, since the unit price of energy is currently 210sun, 21 trx can be exchanged for 100,000 Energy.
+- When to burn TRX, since the unit price of energy is currently 100sun, 10 trx can be exchanged for 100,000 Energy.
 
 Assume developer undertake 90% energy consumption, and developer has enough energy.
 
 Then the way to estimate the fee limit is:
 
-1. A = 20000 energy * 210sun = 4,200,000 sun = 4.2 trx
+1. A = 20000 energy * 100sun = 2,000,000 sun = 2 trx
 2. Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
 
-So, the caller is suggested to set fee limit to 4,200,000 sun * 10% = 420,000 sun.
+So, the caller is suggested to set fee limit to 2,000,000 sun * 10% = 200,000 sun.
 
 ### 3. Energy Calculation (Developer Must Read)
 
@@ -180,9 +180,9 @@ So during this trigger the energy A can use is from two parts:
 - A's energy by staking TRX;
 - The energy converted from the amount of TRX burning according to a fixed rate;
 
-If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 210 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 210 SUN = 95238 energy.
+If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 sun, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 sun = 200000 energy.
 
-Finally, in this call, the energy A can use is (100000 + 95238) = 195238 energy.
+Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.
 
 If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.
 
@@ -204,7 +204,7 @@ So during this trigger the energy A can use is from three parts:
 - A's energy by staking TRX -- X;
 - The energy converted from the amount of TRX burning according to a fixed rate -- Y;
 
-    If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 210 sun, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 210 sun = 428571 energy;
+    If fee limit is greater than the energy obtained from staking TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 sun, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 sun = 900000 energy;
 
 - D's energy by staking TRX -- Z;
 
@@ -293,7 +293,7 @@ The staked TRX can be partially unstaked multiple times, but only a maximum of 3
 
 The TRX that have been delegated cannot be unstaked. In addition to losing the same amount of resource shares, the unstaking will also lose the same amount of TP resources.
 
-When unstaking, if there are unclaimed voting rewards, the voting rewards will be automatically withdrawn to the account. If there is a previously unstaked principal that has passed the lock-up period, then this unstake operation will also withdraw the unstaked principal that has passed the lock-up period to the account at the same time. You can use the `gettransactioninfobyid`API to query the voting reward extracted in this transaction in `withdraw_amount` field and the withdrawn amount of unstaked TRX that has expired the lock-up period in `withdraw_expire_amount` field.
+When unstaking, if there is a previously unstaked principal that has passed the lock-up period, then this unstake operation will also withdraw the unstaked principal that has passed the lock-up period to the account at the same time. You can use the `gettransactioninfobyid`API to query the withdrawn amount of unstaked TRX that has expired the lock-up period in `withdraw_expire_amount` field.
 
 #### TRON Power Reclaim
 
