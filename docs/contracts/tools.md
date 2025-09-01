@@ -1,22 +1,21 @@
 # Tools
 
 ## TronIDE
-Support the build, debug, run, etc. for solidity language written smart contract.  
-[http://www.tronide.io](http://www.tronide.io)
+A development tool for TRON smart contracts. It provides a visual interface that supports compiling, debugging, and running Solidity smart contracts.
+[https://www.tronide.io/](https://www.tronide.io/)
 
 ## TronBox
-Support the build, deploy, transplant, etc. for solidity language written smart contract.  
-[https://developers.tron.network/reference/what-is-tronbox](https://developers.tron.network/reference/what-is-tronbox)
+A deployment tool for TRON smart contracts. It supports the compilation, deployment, and migration of Solidity smart contracts.
+[https://tronbox.io/#/](https://tronbox.io/#/)
 
 ## TronWeb
-Provide javascript api for the usage of smart contract.  
-[https://tronweb.network/docu/docs/intro/](https://tronweb.network/docu/docs/intro/)
+A Javascript library for developing TRON smart contracts. It provides interfaces for interacting with the TRON Mainnet, as well as for deploying and calling contracts.
+[https://tronweb.network/](https://tronweb.network/)
 
 ## TronGrid
-Provide smart contract event query service.  
-[https://developers.tron.network/docs/trongrid](https://developers.tron.network/docs/trongrid)
+An event query service for TRON smart contracts. It allows you to query event log information written in smart contracts.
+[https://www.trongrid.io/](https://www.trongrid.io/)
 
-## Trident-java
-Trident-java is a lightweight SDK that includes libraries for working with TRON system contracts and smart contracts.   
+## Trident
+A lightweight Java SDK. It includes a series of libraries to help developers easily work with the TRON network's system and smart contracts.
 [https://tronprotocol.github.io/trident/](https://tronprotocol.github.io/trident/)
-
