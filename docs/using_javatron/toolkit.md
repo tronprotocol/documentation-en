@@ -55,10 +55,10 @@ java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directo
 
 To use the database partitioning tool, follow these steps:
 
-1. [Stop the FullNode service](#stop-the-fullnode-service)
-2. [Configure database migration settings](#configure-database-storage-migration)
-3. [Execute the migration command](#execute-the-database-migration)
-4. [Restart the FullNode service](#restart-the-fullnode-service)
+1. [Stop the FullNode service](#1-stop-the-fullnode-service)
+2. [Configure database migration settings](#2-configure-database-storage-migration)
+3. [Execute the migration command](#3-execute-the-database-migration)
+4. [Restart the FullNode service](#4-restart-the-fullnode-service)
 
 
 #### 1. Stop the FullNode Service
@@ -138,7 +138,7 @@ nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
                -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
                -jar FullNode.jar --witness -c main_net_config.conf >> start.log 2>&1 &
 ```
-## Lite Fullnode Data Pruning¶
+## Lite Fullnode Data Pruning
 
 The TRON Toolkit provides a **data pruning tool** primarily used for generating and managing lite FullNode data.
 
