@@ -399,8 +399,8 @@ In order for users to interact with the TRON network, the java-tron node must be
 There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
 
 * Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as `sudo ntpdate -s time.nist.gov`.
-* Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring [`node.active`](#active-and-passive-connections) in the case of node discovery invalid.
-* By configuring [`node.passive`](#active-and-passive-connections) to accept active connections from trusted nodes.
+* Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring `node.active` in the case of node discovery invalid.
+* By configuring `node.passive` to accept active connections from trusted nodes.
 * The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.
 
 ## Connect to private network
