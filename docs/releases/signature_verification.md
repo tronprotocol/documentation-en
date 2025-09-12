@@ -83,7 +83,7 @@ For `java-tron` versions released before January 3, 2023, the release packages w
 
 The SHA256 hash and signature result for the release packages can be found in the **Historical Version Signature Information** section of this document or on the [GitHub Releases page](https://github.com/tronprotocol/java-tron/releases).
 
-Here, we will use the popular TRON JavaScript library, [tronweb](https://developers.tron.network/docs/tronweb-1), to demonstrate the signature verification process. TronWeb provides the `Trx.verifySignature` interface to verify signatures. A successful verification will return `true`; otherwise, it returns `false`. Please follow the process below to verify.
+Here, we will use the popular TRON JavaScript library, [tronweb](https://tronweb.network/docu/docs/intro/), to demonstrate the signature verification process. TronWeb provides the `Trx.verifySignature` interface to verify signatures. A successful verification will return `true`; otherwise, it returns `false`. Please follow the process below to verify.
 
 ### 1. Install TronWeb
 
