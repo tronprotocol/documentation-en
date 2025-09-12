@@ -1,66 +1,80 @@
-# Issue Work Flow
-We encourage community contributors to participate in the submission and discussion of java-tron issues. You can submit your questions or ideas in the form of issues, or participate in issue discussions or help to provide solutions. Your every question or comment is driving java-tron's development. We thank you for your contribution to java-tron.
+# Issue Specification and Guidelines
+
+We encourage community contributors to actively participate in raising and discussing Issues for java-tron. You can submit any problems you encounter or new ideas you have as an Issue Participating in Issue discussions or helping to provide solutions will drive java-tron in a better direction. We sincerely thank you for every contribution you make to java-tron.
 
 
-## Submit an Issue
-If you encounter java-tron related problems or find related bugs, you are welcome to submit an Issue, but please respect the following rules:
+## Submitting an Issue
 
-* Search for existing issues
+If you encounter a problem or find a **Bug** while using java-tron, we welcome you to submit an Issue Please follow these rules to ensure efficient processing:
 
-    Please check to see if someone has already reported your issue or requested your idea, this will not only solve your problem quickly but also avoid duplicate issues.
-    
-* Submit an issue
+### 1. Search Existing Issues
 
-    Please select the type of issue you want to report and fill in the issue content according to the template requirements.
-    
-    * `Ask a question` - Please elaborate on the problem you encountered, the results you expected, and the results you actually saw, so community participants can better understand your problem and come up with a solution faster.
-    * `Report a bug` - In addition to clarifying the problem, the expected behaviour, and the actual behaviour, the steps to reproduce the bug should also be described, and the java-tron log and backtrace when the problem occurs should be attached.
-    * `Request a feature` - Please clarify why should this feature exist，what are the use-cases，do you have ideas regarding the implementation of this feature and are you willing to implement this feature.
+Before submitting a new **Issue**, be sure to check whether someone has already reported the same problem or proposed a similar idea. This will not only help you find a solution faster but also prevent duplicate submissions.
 
+### 2. Choose and Submit an Issue Type
+
+Please select the corresponding **Issue** type based on the problem you are reporting and fill out the **Issue** content according to the template requirements:
+
+* **`Ask a question`**
+  Please describe the problem you are experiencing, the expected outcome, and the actual observed result in detail. A clear description helps community members better understand your problem and provide a solution faster.
+* **`Report a bug`**
+  In addition to describing the problem, expected outcome, and actual result, you should also detail the steps to reproduce the **Bug** and include the java-tron log and `stack trace` from when the problem occurred.
+* **`Request a feature`**
+  Please explain why this feature is needed, its specific use case, the suggested implementation plan, and whether you are willing to participate in implementing it.
 
 
 ## Issue Handling Process
-The issue handling process is as follows:
 
-1. Tag Issues - We hold weekly meetings to categorize Issues and tag Issues with appropriate [Labels](#issue-labels).
-2. Assign an Issue - Assign an Issue to one or several community core developers, and the core developers will participate in Issue investigations and discussions.
-3. Community Discussion - anyone can participate in the investigation and discussion of the Issue, and write their thoughts or opinions in the comments, and the solution to the problem can be obtained from the community discussion.
-4. Close the Issue - Issue submitters can close the Issue at any time. When the issue is resolved, or it has not been discussed by the community for a long time, we will close the Issue. Issue submitters or other users can also reopen the Issue as needed.
+The process for handling an Issue is as follows:
 
-    
-## Issue Labels 
-Use the following labels according to the Issue feature:
+1. **Tagging Issues**
+   New issues will be triaged and labeled by core contributors.
+2. **Assigning Issues**
+   Issues will be assigned to one or more core community developers. These core developers will participate in the investigation and discussion of the Issue
+3. **Community Discussion**
+   All community participants can join the Issue investigation and discussion, posting their thoughts or opinions in the comments section. Through the collective wisdom of the community, we will work together to find solutions to problems.
+4. **Closing Issues**
+   An Issue submitter can close their own submitted Issue at any time. We will also close an Issue when the problem has been resolved, or if the Issue has not been discussed by the community for an extended period. If needed, the Issue submitter or other users can reopen the Issue based on the actual situation.
 
-* topic
-    * `topic: Block/Transaction`
-    * `topic: Build`
-    * `topic: Consensus`
-    * `topic: DB`
-    * `topic: Deployment`
-    * `topic: Documentation`
-    * `topic: Event subscribe`
-    * `topic: gRPC/HTTP api`
-    * `topic: Net`
-    * `topic: Performance`
-    * `topic: Resource manage`
-    * `topic: Shielded Transaction`
-    * `topic: Smart contract`
-    * `topic: Solidity`
-    * `topic: Testnet/Privatenet`
-* type
-    * `type: Announcement`
-    * `type: Bug`
-    * `type: Enhancement`
-    * `type: Feature Request`
-    * `type: Manual`
-    * `type: Other`
-    * `type: Question`
 
-* resolution
-    * `resolution: Duplicated`
-    * `resolution: Needs More Information`
-    * `resolution: Wontfix`
+## Issue Tag Classification
+
+Based on the characteristics of an **Issue**, we use the following tags for classification:
+
+### `topic`
+
+* `topic: Block/Transaction`
+* `topic: Build`
+* `topic: Consensus`
+* `topic: DB`
+* `topic: Deployment`
+* `topic: Documentation`
+* `topic: Event subscribe`
+* `topic: gRPC/HTTP api`
+* `topic: Net`
+* `topic: Performance`
+* `topic: Resource manage`
+* `topic: Shielded Transaction`
+* `topic: Smart contract`
+* `topic: Solidity`
+* `topic: Testnet/Privatenet`
+
+### `type`
+
+* `type: Announcement`
+* `type: Bug`
+* `type: Enhancement`
+* `type: Feature Request`
+* `type: Manual`
+* `type: Other`
+* `type: Question`
+
+### `resolution`
+
+* `resolution: Duplicated`
+* `resolution: Needs More Information`
+* `resolution: Wontfix`
+
+### Other
+
 * `improvement`
-
-
-
