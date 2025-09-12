@@ -39,42 +39,6 @@ The process for handling an Issue is as follows:
 
 ## Issue Tag Classification
 
-Based on the characteristics of an **Issue**, we use the following tags for classification:
+To view all issue classification labels, please visit the following link:
 
-### `topic`
-
-* `topic: Block/Transaction`
-* `topic: Build`
-* `topic: Consensus`
-* `topic: DB`
-* `topic: Deployment`
-* `topic: Documentation`
-* `topic: Event subscribe`
-* `topic: gRPC/HTTP api`
-* `topic: Net`
-* `topic: Performance`
-* `topic: Resource manage`
-* `topic: Shielded Transaction`
-* `topic: Smart contract`
-* `topic: Solidity`
-* `topic: Testnet/Privatenet`
-
-### `type`
-
-* `type: Announcement`
-* `type: Bug`
-* `type: Enhancement`
-* `type: Feature Request`
-* `type: Manual`
-* `type: Other`
-* `type: Question`
-
-### `resolution`
-
-* `resolution: Duplicated`
-* `resolution: Needs More Information`
-* `resolution: Wontfix`
-
-### Other
-
-* `improvement`
+https://github.com/tronprotocol/java-tron/labels
