@@ -51,8 +51,8 @@ The default commission rate for a newly elected SR or Partner is 20%. This means
 - Customizing the Rate
 SRs and Partners can adjust their commission rate at any time via the wallet/updateBrokerage API interface.
 
-  - 100% Commission: All rewards go to the SR/Partner.
-  - 0% Commission: All rewards are distributed to the voters.
+     - 100% Commission: All rewards go to the SR/Partner.
+     - 0% Commission: All rewards are distributed to the voters.
 
 ### Block Production Rewards and Voting Rewards
 
@@ -70,6 +70,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 
 
 **Notes:**
+
  - Chain parameter details can be viewed on TRONSCAN's committee page.
  - `brokerageRate` refers to the commission rate.
  - Super Representatives and Partners are the top 127 witnesses.
@@ -84,8 +85,8 @@ The Committee is the highest governing body of the TRON network, responsible for
  - Composition: The Committee is composed of the current 27 active Super Representatives (SRs).
  - Powers: Each committee member has two core powers: 
 
-   - To create a proposal.
-   - To vote on a proposal.
+     - To create a proposal.
+     - To vote on a proposal.
 
  - Effective Mechanism: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
 
