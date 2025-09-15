@@ -6,6 +6,7 @@ TRON employs an account model for its ledger. All activities on the network, suc
  - **Unique Identifier**: Each account is uniquely identified by its Address, which typically begins with a `T`.
  - **Access Control**: Any operation on an account (such as a transfer) requires a signature from the corresponding Private Key.
  - **Account Assets and Capabilities**: Each account can own and manage various resources, including:
+
     - Assets: TRX, TRC-10, TRC-20, TRC-721/TRC-1155 NFTs, etc.
     - Network Resources: Bandwidth and Energy.
     - Permissions and Activities: Initiating transactions, deploying and calling smart contracts, participating in Super Representative elections (voting or becoming a candidate), and more.
@@ -17,7 +18,7 @@ There are two primary ways to create a new TRON account:
 **Method 1: Offline Generation and On-Chain Activation**
 
    - Generate Address: Use a wallet application (like [TronLink](https://www.tronlink.org/)) to generate a new key pair (private key and address).
-  - Activate Account: At this stage, the account exists only conceptually and must be "activated" to be used on the blockchain. Activation is accomplished by sending any amount of TRX or a TRC-10 token from an existing account to this new address. Once the transaction is successful, the new account is officially created on the TRON network.
+   - Activate Account: At this stage, the account exists only conceptually and must be "activated" to be used on the blockchain. Activation is accomplished by sending any amount of TRX or a TRC-10 token from an existing account to this new address. Once the transaction is successful, the new account is officially created on the TRON network.
 
 **Method 2: Creation via System Contract**
 
@@ -45,9 +46,11 @@ The private key is a 32-byte large number, and the public key consists of two 32
 ### Base58Check Calculation Process
 
 1. Calculate the checksum
+
     a. Perform SHA256 hash operation on `address` to get `h1`  
     b. Perform SHA256 operation on `h1` again to get `h2` 
     c. Take the first 4 bytes of `h2` as the checksum `check`
+
 2. Splice data Append `check` to `address` to get `address||check`
 3. Base58 encoding Perform Base58 encoding on `address||check`. The character table for Base58 is: `"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"`, excluding easily confused characters:` 0` (Arabic numeral 0), `O` (uppercase letter O), `I` (uppercase letter I), `l` (lowercase letter L).
 
@@ -58,11 +61,10 @@ The principle of Base58 encoding is to convert a large integer with a base of 25
 - Length is `34`: Because `58³⁴ > 66 × 256²⁴` indicates that length of `34` are sufficient, and `58³³ < 65 × 256²⁴` indicates that length of `33` are insufficient, so the length can only be `34`.
 - The first character is `T`: First, the length is determined to be `34`, and since `27 × 58³³ > 66 × 256²⁴` indicates that the index of first character in base58 character table must be less than `27`, and `26 × 58³³ < 65 × 256²⁴` indicates that the index must be greater than or equal to `26`, so the first index can only be `26`, and `26` corresponds to `T` in the base58 character table (`0` corresponds to `1`).
 
-
-
 ## Signature Specification
 
 ### Algorithm
+
 1. Take the rawdata of the transaction, convert it to byte[] format, and record it as `data`. (For example, the `byte[]` type in Java.).
 2. Perform `sha256` operation on `data` to get the hash value of the transaction, recorded as `hash`.
 3. Use the private key d corresponding to the address in the transaction contract to sign hash. The signature algorithm is the ECDSA algorithm (using the SECP256K1 curve). The signature result includes three values: `r`, `s`, and `v`:
@@ -92,6 +94,7 @@ When a Fullnode receives a transaction, it uses the transaction hash and signatu
 
 1. Recover the public key point `K`: The temporary public key point `K` can be uniquely recovered through `v` and `r` in the signature.
 2. Derive the public key `P`:
+
    -  Known signature equation:
      `s = k⁻¹(hash + d × r) mod n`
    -  Multiply both sides by `k`:
@@ -99,9 +102,9 @@ When a Fullnode receives a transaction, it uses the transaction hash and signatu
    -  Multiply both sides by the base point `G` of the curve (using `K = k × G` and `P = d × G`):
      `s × K = hash × G + r × P`
    -  Since `s`, `K`, `hash`, `G`, and `r` are all known, `P` can be obtained.
+
 3. Generate TRON address: same as [TRON Address Generation](#tron-address-generation)
 4. Address verification: compare whether the generated TRON address is consistent with the address in the transaction contract.
-
 
 ### Example
 Signature verification is performed by the Fullnode. For [ECDSA algorithm signature verification](https://github.com/tronprotocol/java-tron/blob/master/crypto/src/main/java/org/tron/common/crypto/ECKey.java), you can refer to java-tron, and the core function is `signatureToAddress`.
