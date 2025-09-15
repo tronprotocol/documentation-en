@@ -21,8 +21,12 @@ All accounts in the TRON network have the right to vote for the Super Representa
  - Obtaining Voting Power (TRON Power)
 Your amount of TP is directly linked to the amount of TRX you have staked.
 Calculation Method: For every 1 TRX you stake, you receive 1 TP.
- - Lifecycle of a Vote
-When you unstake your TRX, you will lose the corresponding TP, and any votes previously cast with that TP will immediately become invalid. To ensure your votes remain active, you can stake again and recast your votes.
+ - The Impact of Unstaking on Voting
+    When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system reclaims TP according to the following rules:
+    
+    * Unused TP is reclaimed first.
+    * If the available TP is insufficient, the system automatically retracts a proportional amount from your existing votes to cover the deficit.
+    * If you have voted for multiple SRs, the system will retract votes proportionally from each SR based on your voting distribution.
 
 **Important Note:**
 The TRON network only records the state of your last vote. This means that every new vote you cast will completely overwrite all previous voting effects.
