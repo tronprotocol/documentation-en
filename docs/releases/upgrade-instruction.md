@@ -1,116 +1,142 @@
-# New Version Deployment Manual of java-tron
-For the mandatory upgrade versions, please strictly follow this guide to deploy the new version. For the non-mandatory upgrade ones, you can decide whether to deploy it according to your needs. 
+# java-tron Node Upgrade Guide
 
-Please directly refer to [java-tron New version deployment Process](#new-version-deployment-process) to upgrade your node. If you have deployed 'Active and Backup nodes', please follow the process of [Active and Backup Nodes Upgrade Guide](#active-and-backup-nodes-upgrade-guide). 
+This guide provides detailed instructions on how to safely upgrade your java-tron node to the latest version.
+
+For **mandatory upgrades**, it is crucial to strictly follow this guide to complete the deployment. For **optional upgrades**, you may choose whether to upgrade based on your specific needs.
+
+  * For standard nodes, please refer to the [Standard Node Upgrade Process](#standard_process).
+  * For nodes configured with a primary/backup high-availability setup, please follow the [Primary/Backup Node Upgrade Guide](#primary/backup_upgrade) to ensure a seamless service transition.
+
+-----
+<a id="standard_process"></a>
+## Standard Node Upgrade Process
+
+All Fullnodes, including block-producing Super Representative nodes, should follow these steps to complete the upgrade.
+
+<a id="step1"></a> 
+### Step 1: Prepare the New Version Package
+
+You can either download the compiled java-tron executable directly or download the new version's source code and compile it yourself to obtain the new executable file. Please perform the following operations in a directory outside of the current java-tron running directory.
+
+#### Option 1: Download the Executable (Recommended)
+
+1. Visit the [java-tron GitHub Releases](https://github.com/tronprotocol/java-tron/releases) page to download the latest version of the `FullNode.jar` executable.
+2. **Security Check**: To ensure the integrity and security of the file, it is essential to perform a signature verification on the downloaded JAR file according to the [java-tron Signature Verification](https://tronprotocol.github.io/documentation-en/releases/signature_verification/) guide.
 
 
-## New version deployment Process
-Please follow the below steps to upgrade your FullNode, FullNode that produces blocks to the latest version.
+#### Option 2: Compile from Source Code
 
-### 1. Prepare the executable file of the new version
+1. Clone the `java-tron` repository and switch to the target version's branch.
 
-You can directly download the java-tron executable file, or download the code of the latest version and compile it to get the executable file of the new version. Please download the latest version of the code or jar file to a file directory other than the java-tron running directory:
-
-* Way 1: Download the published executable file
-    
-    Directly download the latest version of the executable file FullNode.jar from the release page [https://github.com/tronprotocol/java-tron/releases](https://github.com/tronprotocol/java-tron/releases).
-    
-    Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to [java-tron Consistency Verification](https://tronprotocol.github.io/documentation-en/releases/signature_verification/).
-    
-    
-* Way 2: Compile the source code
-    
-    Download the source code and switch to the branch of the new version.
     ```
+    # clone the repository
     $ git clone https://github.com/tronprotocol/java-tron.git
-    $ git checkout -b relase_vx.x.x
-    ```
-    
-    Compile the project: In the code directory of the new version, execute the following command to compile the project, and the compiled executable file will be generated in the `build/libs` directory.
-    ```
+
+    # Switch to the specified version branch
+    $ cd java-tron
+    $ git checkout -b release_vx.x.x
+    ```    
+2. Run the build command. Upon successful compilation, the new executable file, `FullNode.jar`, will be generated in the `build/libs/` directory.
+    ```shell
     $ ./gradlew clean build -x test
     ```
-    
 
-### 2. Shut down the java-tron process
-Shut down the node process. Note: If a java-tron node has not been deployed on this machine before, please skip to step 5.
+### Step 2: Stop the Running Node
 
-* First, get the process ID of the java-tron node through the following command
+> **Note**: If this is your first time deploying the node, please skip directly to [Step 5: Start the Node](#step5).
+
+1. Use the following command to find the `PID` of the java-tron process.
+
     ```
     $ ps -ef | grep java
     ```
-    
-* Shut down the node process
+2. Stop the node process.
     ```
-    $ kill -15 the process id
+    $ kill -15 <PID>
     ```
 
+<a id="step3"></a> 
+### Step 3: Back Up Critical Data
 
-### 3. Backup
-Please back up the executable file, database, and configuration file before the upgrade in sequence. The backup data is used to restore to the old version when a problem is encountered that leads to fail deploying during the upgrade.
+A full backup is strongly recommended before upgrading. Please perform the following backup steps in the specified order:
 
-* Backup the current executable jar file
+1. **Back up the current executable file**
     ```
     $ mv $JAVA_TRON.jar $JAVA_TRON.jar.`date "+%Y%m%d%H%M%S"`
     ```
-* Backup the current database `output-directory`
+2. **Back up the current `output-directory` database**
     ```
     $ tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
     ```
-* Backup the current configuration file
+ 3. **Back up the current configuration file**
     ```
     $ mv $config.conf $config.conf.`date "+%Y%m%d%H%M%S"`
     ```
 
+This ensures that if the upgrade fails, you can quickly roll back to the previous version using the backup.
 
-### 4. Replace old version files
-After preparing the executable file of the new version and backing up the original node data, please follow the steps below to replace the old files:
+### Step 4: Replace Old Files
 
-1. Copy the newest jar package obtained in the previous step to the java-tron working directory to replace the old executable file.
-2. Replace the old configuration file with the latest configuration file. If you need to modify the configuration, such as adding a keystore file, private key, etc, please modify it yourself.
+After preparing the new version of the executable file and backing up the original node data, follow these steps to replace the old files:
 
-Note: For the database file, you can use the original database file in the java-tron working directory, or you can choose to use [database backup snapshot](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#public-backup-data).
+1. Copy the new `FullNode.jar` obtained in [Step 1](#step1) to the java-tron working directory.
+2. Update the Configuration File (optional)
+    - We recommend replacing your existing configuration file with the new version from the release. After replacing it, merge your previous custom settings (e.g., private key, keystore path) into the new file.
+    - **Configuration Update Strategy**
+        - **This step is optional**. You can decide whether to update the configuration file based on your specific needs. However, we highly recommend using the latest file to ensure full compatibility and access to new features.
+        - If an update is required for a specific release, it will be explicitly stated in the release notes. Always review the release notes before upgrading.
+  
+> **Note on the Database**: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built [database snapshot](https://tronprotocol.github.io/documentation-zh/using_javatron/backup_restore).
 
+<a id="step5"></a> 
+### Step 5: Start the Node
 
-### 5. Start the nodes
-The startup commands of FullNode which produces blocks and ordinary FullNode are different, please choose the startup command according to the actual situation:
+Please select the appropriate startup command based on your node type.
 
-* For the super representative's FullNode, the startup command is:
+  * **Super Representative (Block-Producing Node)**
+
+    ```shell
+    nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar  -p <your private key> --witness -c config.conf </dev/null &>/dev/null &
     ```
-    nohup java -Xmx24g -XX:+UseConcMarkSweepGC  -jar FullNode.jar  -p  private key --witness -c main_net_config.conf </dev/null &>/dev/null &
+    > **Note**: We recommend managing your private key using a `keystore` file or within the configuration file, rather than passing it directly as a command-line argument.
+    
+  * **Regular Fullnode**
+
     ```
-    Note: It is not necessary to use the above command parameter to set the private key. If you use the keystore file or configure the private key in the configuration file, please set it up your way.
+    nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf </dev/null &>/dev/null &
 
-* For a FullNode, the startup command is:
     ```
-    nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c   main_net_config.conf </dev/null &>/dev/null &
-    ```
-             
-### 6. Wait for syncing completion
-After the node is successfully started, please wait patiently for the node block synchronization to complete.
-### 7. Upgrade completed
-After the node is synchronized to the latest block of the network, it means that the deployment of the new version is completed.
 
-If you encounter any problems during the upgrade leading to fail deploying the new version, please use the data backed up in the third step to restore to the old version, and give your feedback in GitHub or the community in time to help you complete the deployment of the new version as soon as possible.
+### Step 6: Verify and Monitor
 
+1.  **Wait for Node Synchronization**: After the node starts, it will begin to synchronize block data. Please wait patiently for it to catch up to the latest block height of the network.
+2.  **Check the Logs**: Monitor the log output to ensure the node is running normally and without any error messages.
+3.  **Confirm Synchronization Status**: You need to verify that synchronization is complete by comparing the latest block height of your local node with that of the TRON Mainnet. The upgrade is successful when the two heights are nearly identical.
 
-## Active and Backup Nodes Upgrade Guide
-To upgrade the active and backup nodes, please follow the steps below:
+    - To query local node block height, call the `/wallet/getnowblock` API:
+        ```
+        curl http://127.0.0.1:8090/wallet/getnowblock
+        ```
+    - To check the block height on Mainnet in real-time on [TRONSCAN](https://tronscan.org).
 
-1. Upgrade the backup node
+**Contingency Plan**: If you encounter any issues during the upgrade process that prevent the node from starting or running correctly, immediately use the data backed up in [Step 3](#step3) to restore the previous version. Please submit a GitHub Issue or report the problem to the TRON community for assistance.
 
-    Upgrade the backup node according to the [java-tron new version deployment Process](#new-version-deployment-process).
+-----
+<a id="primary/backup_upgrade"></a> 
+## Primary/Backup Node Upgrade Guide
 
-2. Shut down the master node
+To ensure high availability of the service, the upgrade of primary/backup nodes should adopt a rolling upgrade strategy.
 
-    After the backup node is successfully upgraded to the new version, please wait for the completion of synchronization of the backup node before shutting down the master node. At this time, the backup node will automatically take over from the master node and become the active node.
-
-3. Upgrade the master node
-
-    If the backup node works normally, follow [java-tron New Version Deployment Process](#new-version-deployment-process) to upgrade the master node. Otherwise, shut down the backup node and start the master node. If an error occurs during the upgrade, please contact TRON technical support team and send the node’s log for root cause analysis.
-
-4. Shut down the backup node
-
-    After the master node is upgraded and fully synchronized, shut down the backup node. After the backup node shuts down, the master node will take over as the active node again.
-
-5. Start the backup node
+1.  **Upgrade the Backup Node**
+      * First, perform all the steps in the [Standard Node Upgrade Process](#standard_process) on the Backup Node.
+2.  **Perform the Switchover**
+      * After confirming that the Backup Node has been successfully upgraded and has completed block synchronization, stop the process on the **Master Node**.
+      * At this point, the Backup Node will automatically take over, becoming the new **Active Node** and serving traffic.
+3.  **Upgrade the Original Master Node**
+      * After confirming that the new Active Node (the former Backup Node) is running stably, perform the [Standard Node Upgrade Process](#standard_process) on the original Master Node.
+      * **Error Handling**: If the new Active Node fails during this period, immediately stop its upgrade process and restart the original Master Node to restore service. At the same time, please save the complete logs from the failed node for troubleshooting. For further support, please submit a GitHub Issue with the relevant logs or report it to the community.
+4.  **Restore the Primary/Backup Architecture**
+      * After the original Master Node has been upgraded, started, and fully synchronized, stop the currently active node (the former Backup Node).
+      * The original Master Node will automatically take over again, resuming its role as the Active Node.
+5.  **Restart the Backup Node**
+      * Finally, restart the upgraded Backup Node to restore it to its backup status. This completes the entire primary/backup upgrade process.
