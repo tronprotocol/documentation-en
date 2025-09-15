@@ -1,6 +1,9 @@
 name: Publish Document
 
 on:
+  push:
+    branches:
+      - master 
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
@@ -18,14 +21,14 @@ jobs:
         sudo pip3 install -U pygments==2.17.2 pymdown-extensions
         sudo pip3 install mkdocs-exclude
         sudo pip3 install mkdocs-material==9.6.8
+        sudo pip3 install jieba==0.42.1
 
     - name: Build the document
       run: mkdocs build
 
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: site # The folder the action should deploy.
