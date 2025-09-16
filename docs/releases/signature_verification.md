@@ -81,7 +81,7 @@ For `java-tron` versions released before January 3, 2023, the release packages w
 1.  First, the SHA256 hash of the executable file is calculated.
 2.  Then, the SHA256 hash is signed with the private key of the TRON account.
 
-The SHA256 hash and signature result for the release packages can be found in the **Historical Version Signature Information** section of this document or on the [GitHub Releases page](https://github.com/tronprotocol/java-tron/releases).
+The SHA256 hash and signature result for the release packages can be found in the [Historical Version Signature Information](#historical-version-signature-information) section of this document or on the [GitHub Releases page](https://github.com/tronprotocol/java-tron/releases).
 
 Here, we will use the popular TRON JavaScript library, [tronweb](https://tronweb.network/docu/docs/intro/), to demonstrate the signature verification process. TronWeb provides the `Trx.verifySignature` interface to verify signatures. A successful verification will return `true`; otherwise, it returns `false`. Please follow the process below to verify.
 
