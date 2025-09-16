@@ -13,7 +13,7 @@ This guide explains how to configure the java-tron client to connect to these ne
 
 ## Basic Network Configuration
 
-You can connect a java-tron node to a specific network by modifying the following key items in the [config file]((https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf)):
+You can connect a java-tron node to a specific network by modifying the following key items in the [config file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf):
 
 ### Network ID 
 The P2P Network ID(`p2p.version`) specifies the network you want to join. Mainnet configuration:
@@ -328,7 +328,7 @@ node {
 
 - Other nodes: While a node is discovering other nodes, it will also be discovered by other nodes, and these nodes may also initiate connections to the current node actively.
 
-Unlike node discovery, which uses UDP, peer connections use TCP on the same port (18888 by default). However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:
+Unlike node discovery, which uses UDP, peer connections use Transmission Control Protocol (TCP) on the same port (18888 by default). However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_topology.png)
 

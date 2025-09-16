@@ -130,7 +130,7 @@ TRON provides multiple interfaces for querying trading pairs:
 **2. Paginated query of trading pair list:** `GetPaginatedExchangeList`
 **3. Query details of a specific trading pair:** `GetExchangeById`
 
-For detailed API documentation, refer to [TRON RPC-API Documentation](https://github.com/tronprotocol/documentation-en/blob/master/docs/api/rpc.md).
+For detailed API documentation, refer to [RPC-API ](https://tronprotocol.github.io/documentation-en/api/rpc/).
 
 ### Price Calculation
 Suppose in a trading pair:
@@ -153,7 +153,7 @@ Suppose `first_token` is used to exchange for `second_token`:
 - `sellTokenQuant`: The quantity of `first_token` to be sold;
 - `buyTokenQuant`: The quantity of `second_token` obtained through exchange;
 - `balance`: The current balance of `second_token` in the trading pair;
-- `supply = 1,000,000,000,000,000,000L`
+- `supply`: A fixed constant of `10^18` used in the Bancor protocol formula.
 
 The calculation process is as follows:
 
@@ -164,5 +164,5 @@ buyTokenQuant = (long)(balance * (Math.pow(1.0 + (double) supplyQuant / supply, 
 
 >**Note**: Market prices may fluctuate in real-time due to other trading activities on the network.
 
-For more interface details, refer to: [HTTP API Documentation](https://github.com/tronprotocol/documentation-zh/blob/master/docs/api/http.md).
+For more interface details, refer to: [HTTP API Documentation](https://tronprotocol.github.io/documentation-en/api/http/).
 

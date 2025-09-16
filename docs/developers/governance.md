@@ -2,7 +2,7 @@
 # Network Governance
 
 The governance of the TRON network is primarily achieved by modifying [network parameters](https://tronscan.org/#/sr/committee), a process also known as **network upgrade**.  
-Anyone can propose changes to network parameters within the community, but only **Super Representatives (SR)** or **Super Representative Partners** can formally submit voting requests on-chain. During the voting period, the 27 Super Representatives will vote on the proposal. When the voting deadline is reached and the required number of supporting votes is met, the proposal automatically takes effect.
+Anyone can propose changes to network parameters within the community, but only **Super Representatives (SR)** , **Super Representative Partners** and **Super Representative Candidates** can formally submit voting requests on-chain. During the voting period, the Super Representatives will vote on the proposal. When the voting deadline is reached and the required number of supporting votes is met, the proposal automatically takes effect.
 
 You can view the history of completed proposals and voting records [here](https://github.com/tronprotocol/tips/tree/master/proposal).
 
@@ -65,10 +65,10 @@ After the TIP discussion is initiated, the proposer should actively encourage co
 
 ## Submit Voting Request
 
-Typically, two weeks after the proposal is initiated, if the community has fully discussed and reached a basic consensus, a **Super Representative** or **Super Representative Partner** will formally submit the voting request on-chain.
+Typically, if the community has fully discussed and reached a basic consensus, a **Super Representative** , **Super Representative Partner** or  **Super Representative Candidate**, will formally submit the voting request on-chain.
 
 ## Voting and Implementation
 
 - The on-chain voting period lasts for **3 days**.  
-- During this period, all 27 Super Representatives can vote on the TIP.  
-- After the voting deadline, if the number of supporting votes is **greater than or equal to 18**, the proposal is considered passed and automatically takes effect.
+- During this period, all Super Representatives can vote on the TIP.  
+- After the voting deadline, if the number of supporting votes from Super Representatives is **greater than or equal to 18**, the proposal is considered passed and automatically takes effect.

@@ -46,8 +46,8 @@ java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
 ### 2. Optional Parameter Descriptions
 If your node uses a custom data directory, you can include the following parameters when running the conversion script:
 
-- `src_db_path`: LevelDB database path (default: output-directory/database)
-- `dst_db_path`: RocksDB database storage path (default: output-directory-dst/database)
+- `src_db_path`: LevelDB database path (default: `output-directory/database`)
+- `dst_db_path`: RocksDB database storage path (default: `output-directory-dst/database`)
 
 For example, if the node is run as follows:
 ```
