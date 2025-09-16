@@ -143,7 +143,7 @@ mkdir /Users/javatrondeploy
 
 ### Step 2: Configure Run/Debug Options
 
-Next, create a new run configuration in IntelliJ IDEA to define how the IDE launches the java-tron application.
+Next, create a new run configuration in IntelliJ IDEA to define how it launches the java-tron application.
 
 1. In the top-right corner of IDEA, click `Add Configuration...`.
 2. Click `+` -\> `Application` to create a new run configuration.
@@ -154,7 +154,7 @@ Next, create a new run configuration in IntelliJ IDEA to define how the IDE laun
       * **Program Arguments:** Enter the node startup arguments. For example, use `-c config.conf` to specify the configuration file.
       * **Working Directory:** Set this to the directory you created in [Step 1](#rndstep1), e.g., `/Users/javatrondeploy`。
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_RunDebug.png)
-4. Click **Apply** to save the configuration.
+4. Click “Apply” to save the configuration.
 
 ### Step 3: Start the Node
 
