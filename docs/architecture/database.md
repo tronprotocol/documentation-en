@@ -1,98 +1,83 @@
-# Database configuration
-java-tron data storage supports LevelDB or RocksDB, and LevelDB is used by default. You can also choose RocksDB, which provides lots of configuration parameters, allowing nodes to be tuned according to their own machine configuration. The node database occupies less disk space than LevelDB. At the same time, RocksDB supports data backup during runtime, and the backup time only takes a few seconds.
+# Database Configuration Guide
 
-The following describes how to set the storage engine of the java-tron node to RocksDB, and how to perform data conversion between leveldb and rocksdb.
+In the TRON Java implementation (**java-tron**), the node data storage engine offers two options: **LevelDB** and **RocksDB**. By default, **LevelDB is used on x86 platforms, while RocksDB is used on ARM platforms**. If LevelDB is manually configured on an ARM system, the system will print a warning and still enforce the use of RocksDB. Developers can flexibly choose the appropriate storage engine based on the platform environment, hardware conditions, and performance requirements.
 
-## RocksDB
+In comparison, **RocksDB provides richer configuration parameters and generally offers higher storage efficiency**. This article will introduce how to enable RocksDB and how to convert from LevelDB to RocksDB on x86 platforms.
 
-### Configuration
+## Using RocksDB
 
-Use RocksDB as the data storage engine, need to set `db.engine` to "ROCKSDB":
+### 1. Configuring RocksDB as the Storage Engine
+
+To enable RocksDB, set `storage.db.engine` to ``"ROCKSDB"`` in the configuration file:
 
 ```
 storage {
-  # Directory for storing persistent data
-  db.engine = "ROCKSDB",
-  db.sync = false,
-  db.directory = "database",
-  index.directory = "index",
-  transHistory.switch = "on",
+  # Storage engine for persisting data
+  db.engine = "ROCKSDB"
+  db.sync = false
+  db.directory = "database"
+  transHistory.switch = "on"
+}
 ```
-
-The optimization parameters RocksDB support:
-
+### 2. RocksDB Optimization Parameters
+RocksDB supports various tuning parameters that can be configured based on the performance of the node server. Below is an example of recommended parameters:
 ```
 dbSettings = {
-    levelNumber = 7
-    //compactThreads = 32
-    blocksize = 64  // n * KB
-    maxBytesForLevelBase = 256  // n * MB
-    maxBytesForLevelMultiplier = 10
-    level0FileNumCompactionTrigger = 4
-    targetFileSizeBase = 256  // n * MB
-    targetFileSizeMultiplier = 1
-  }
+  levelNumber = 7
+  # compactThreads = 32
+  blocksize = 64                 # Unit: KB
+  maxBytesForLevelBase = 256     # Unit: MB
+  maxBytesForLevelMultiplier = 10
+  level0FileNumCompactionTrigger = 4
+  targetFileSizeBase = 256       # Unit: MB
+  targetFileSizeMultiplier = 1
+  maxOpenFiles= 5000
+}
 ```
 
-### Use RocksDB's data backup function
-
-Choose RocksDB to be the data storage engine, you can use its data backup function while running:
-
+## Migrating from LevelDB to RocksDB on x86 Platforms
+The data formats of LevelDB and RocksDB are not compatible, and direct switching of storage engines between nodes is not supported. To migrate from LevelDB to RocksDB, use the TRON Toolkit `Toolkit.jar`.
+### 1. Data Conversion Steps
 ```
-backup = {
-    enable = false  // indicate whether enable the backup plugin
-    propPath = "prop.properties" // record which bak directory is valid
-    bak1path = "bak1/database" // you must set two backup directories to prevent application halt unexpected(e.g. kill -9).
-    bak2path = "bak2/database"
-    frequency = 10000   // indicate backup db once every 10000 blocks processed.
-  }
+cd java-tron                                   # Source root directory
+./gradlew build -xtest -xcheck                 # Compile the project
+java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
 ```
+### 2. Optional Parameter Descriptions
+If your node uses a custom data directory, you can include the following parameters when running the conversion script:
 
-**Note:** FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
+- `src_db_path`: LevelDB database path (default: output-directory/database)
+- `dst_db_path`: RocksDB database storage path (default: output-directory-dst/database)
 
-### Convert LevelDB to RocksDB
-
-The data storage structure of LevelDB and RocksDB is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert LevelDB data to RocksDB data.
-
-Usage:
-
-```console
-> cd /path/to/java-tron/source-code
-> ./gradlew build  # build the source code
-> java -jar build/libs/DBConvert.jar  # run data conversion command
+For example, if the node is run as follows:
 ```
-
-**Note:** If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:
-
-- **src_db_path**: specify LevelDB source directory, default output-directory/database
-- **dst_db_path**: specify RocksDb source directory, default output-directory-dst/database
-
-Example, if you run the script like this:
-
-```console
-> nohup java -jar FullNode.jar -d your_database_dir </dev/null &>/dev/null &
+nohup java -jar FullNode.jar -d your_database_dir &
 ```
-
-then, you should run DBConvert.jar this way:
-
-```console
-> java -jar build/libs/DBConvert.jar your_database_dir/database output-directory-dst/database
+Then use the following command for conversion:
 ```
-
-**Note:** You have to stop the running of the node, and then to run the data conversion script.
-
-If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node. Run DBConvert.jar in the previous directory of the new directory, and specify the parameters: `src_db_path` and `dst_db_path`.
-
-Example:
-
-```console
-> cp -rf output-directory /tmp/output-directory
-> cd /tmp
-> java -jar DBConvert.jar output-directory/database output-directory-dst/database
+java -jar build/libs/Toolkit.jar db convert  your_database_dir/database output-directory-dst/database
 ```
+### 3. Perform Conversion After Stopping the Node
 
-All the whole data conversion process may take 10 hours.
+>**The node must be stopped before performing the data conversion operation.**
 
-## LevelDB
+To minimize downtime, follow these steps:
 
-You can refer to the following documents for detailed information about [RocksDB vs LevelDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
+1. Stop the node;
+2. Copy the original LevelDB data directory to a new directory;
+3. Restart the node (continuing to use the original directory);
+4. Perform the data conversion in the new directory.
+
+Example commands:
+```
+java -jar build/libs/Toolkit.jar db cp output-directory/database /tmp/output-directory/database
+cd /tmp
+java -jar build/libs/Toolkit.jar db convert output-directory/database output-directory-dst/database
+```
+> Note:
+The entire data conversion process is expected to take approximately **10 hours**, depending on the data volume and disk performance.
+## About LevelDB
+LevelDB is the default data storage engine for java-tron on x86 platforms, suitable for resource-constrained or lightweight deployment scenarios. It has a simple structure and is easy to maintain, but it is less efficient than RocksDB in terms of data compression, backup capabilities, and performance for large-scale nodes.
+
+For a detailed comparison between the two, refer to the documentation:
+📘 [RocksDB vs. LevelDB Comparison](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
