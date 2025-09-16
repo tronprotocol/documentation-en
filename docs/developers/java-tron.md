@@ -18,27 +18,27 @@ If you plan to contribute to java-tron development, please follow the process be
 ## Contribution Process Overview
 
 1. **Fork the Repository**
-Fork the [java-tron repository](https://github.com/tronprotocol/java-tron) to your personal account.
+    Fork the [java-tron repository](https://github.com/tronprotocol/java-tron) to your personal account.
 2. **Modify Code**
-Create a new branch based on the standard and start development.
+    Create a new branch based on the standard and start development.
 3. **Submit Changes**
-Commit your changes with clear commit messages.
+    Commit your changes with clear commit messages.
 4. **Create a Pull Request (PR)**
-Push your changes to your forked repository and submit a PR to the official repository.
+    Push your changes to your forked repository and submit a PR to the official repository.
 5. **Code Review and Merge**
-Maintainers will review your PR based on the [Code Review Guidelines](#code-review-guidelines) and merge it into the main branch if it meets the requirements.
+    Maintainers will review your PR based on the [Code Review Guidelines](#code-review-guidelines) and merge it into the main branch if it meets the requirements.
 
 ## Submission Rules
 
 - **Minor Fixes**
-You can directly submit a PR, but ensure it includes a complete description.
+    You can directly submit a PR, but ensure it includes a complete description.
 - **Complex Changes**
-Please first submit an Issue in the [TIP repository](https://github.com/tronprotocol/tips), detailing the motivation and implementation plan.
+    Please first submit an Issue in the [TIP repository](https://github.com/tronprotocol/tips), detailing the motivation and implementation plan.
 Refer to the [TIP Specification](tips.md).
 - **Early PR Submission**
-We encourage developers to submit PRs early, even if the feature is not yet complete. This allows other developers to know that the related TIP Issue has entered the *In Progress* state.
+    We encourage developers to submit PRs early, even if the feature is not yet complete. This allows other developers to know that the related TIP Issue has entered the *In Progress* state.
 - **Development Branch**
-All development should be based on the `develop` branch, followed by a PR submission.
+    All development should be based on the `develop` branch, followed by a PR submission.
 
 ## Branch Management
 The `java-tron` repository includes the following main branch types:
@@ -134,9 +134,9 @@ Once all checks pass, maintainers will review and merge into `develop`.
 ## Branch Naming Conventions
 
 1. `master` and `develop` are fixed names.
-2. Version development branches are named by version number (e.g., `GreatVoyage-v4.8.0`).
-3. `hotfix/*`: For urgent fixes, e.g., `hotfix/typo`.
-4. `feature/*`: For new feature development, e.g., `feature/new-resource-model`.
+2. Version development branches are named by version number and version name (e.g., `GreatVoyage-v4.8.0(Kant)`).
+3. `hotfix/*`: For urgent fixes ( e.g., `hotfix/typo`).
+4. `feature/*`: For new feature development (e.g., `feature/new-resource-model`).
 
 ## Pull Request Specifications
 
@@ -196,17 +196,3 @@ Closes #1234
 
 ## Conduct
 Please maintain respect and constructiveness to foster a positive community atmosphere.
-
-**Recommended Behaviors**:
-- Use friendly and inclusive language.
-- Respect differing viewpoints and experiences.
-- Be open to constructive criticism.
-- Focus on community development.
-- Show support for other members.
-
-**Prohibited Behaviors**:
-- Offensive language.
-- Malicious attacks, derogatory comments, or personal attacks.
-- Public or private harassment.
-- Disclosing others’ private information without permission.
-- Other inappropriate behaviors.
