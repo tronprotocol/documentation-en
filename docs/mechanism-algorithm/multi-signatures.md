@@ -9,7 +9,7 @@ The TRON network supports fine-grained control of account permissions. By config
 Account permission management allows:
 
 - Setting permission levels for an account;
-- Each permission corresponding to a group of addresses and weights;
+- Associating each permission with a group of addresses and weights;
 - Implementing permission control through a threshold mechanism;
 - Flexibly configuring which addresses can execute which contract types.
 
@@ -73,7 +73,7 @@ Explanation:
 - `id`: Permission ID, automatically assigned by the system;
   - `owner` = 0, `witness` = 1, `active` starts from 2 and increments;
 - `permission_name`: Permission name, maximum 32 bytes;
-- `threshold`: Permission threshold, operation is allowed only when the total key weight ≥ this value;
+- `threshold`: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value;
 - `operations`: Used only for Active permissions, specifies executable contract types;
 - `keys`: Addresses and weights with this permission (up to 5).
 
@@ -101,7 +101,7 @@ message AccountPermissionUpdateContract {
 ```
 
 - This contract is used to **update all account permission structures at once**;
-- Even if only one permission is modified, the remaining fields must be fully set.
+- Even if only one permission is modified, all other existing permissions must be fully specified in the contract.
 
 ### 5. Contract Type Enumeration: `ContractType`
 
@@ -126,7 +126,7 @@ Active permissions configure which `ContractType` can be executed through the `o
 
 ### `witness` Permission (Block Production Permission)
 
-- Available only for Super Representative accounts;
+- Available only for Super Representative， Super Representative Partner and Super Representative Candidate accounts;
 - Controls block-producing nodes, does not have permissions for fund transfers or other operations;
 - Can delegate block production permission to other addresses to enhance account security.
 
@@ -134,18 +134,18 @@ Active permissions configure which `ContractType` can be executed through the `o
 
 ```
 # config.conf
-//localWitnessAccountAddress =
+//localWitnessAccountAddress = TMK5c1jd...m6FXFXEz  # TRON Address
 localwitness = [
-  xxx  # Private key of the authorized address
+  xxx  # Private key of TMK5c1jd...m6FXFXEz
 ]
 ```
 
 If the `witness` permission is modified, then:
 
 ```
-localWitnessAccountAddress = <witness account address>
+localWitnessAccountAddress = TSMC4YzU...PBebBk2E
 localwitness = [
-  yyy  # Private key of the authorized account
+  yyy  # Private key of TSMC4YzU...PBebBk2E
 ]
 ```
 
@@ -234,7 +234,7 @@ System.out.println(ByteArray.toHexString(operations));
 6. The last user signs and broadcasts;
 7. The node verifies if the total signature weight ≥ `threshold`; if yes, accepts the transaction.
 
->Example code reference: [wallet-cli Example](https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211)
+>Example code reference: [wallet-cli Example](https://github.com/tronprotocol/wallet-cli/blob/develop/src/main/java/org/tron/common/utils/TransactionUtils.java)
 
 ## Auxiliary Interfaces
 
