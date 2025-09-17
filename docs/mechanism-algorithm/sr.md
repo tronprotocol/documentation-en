@@ -19,9 +19,11 @@ The TRON network tallies votes once every 6 hours, and the roles of Super Repres
 All accounts in the TRON network have the right to vote for the Super Representative candidates they support. The core of voting is TRON Power (TP), which determines the weight of your vote.
 
  - Obtaining Voting Power (TRON Power)
-Your amount of TP is directly linked to the amount of TRX you have staked.
-Calculation Method: For every 1 TRX you stake, you receive 1 TP.
+
+    Your amount of TP is directly linked to the amount of TRX you have staked. Calculation Method: For every 1 TRX you stake, you receive 1 TP.
+
  - The Impact of Unstaking on Voting
+ 
     When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system reclaims TP according to the following rules:
     
     * Unused TP is reclaimed first.
@@ -47,9 +49,12 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.
 Super Representatives (SRs) and Super Representative Partners can set a Commission Rate (also known as Brokerage Rate) to determine how rewards are distributed between themselves and their voters.
 
 - Default Rate
-The default commission rate for a newly elected SR or Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.
+
+    The default commission rate for a newly elected SR or Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.
+
 - Customizing the Rate
-SRs and Partners can adjust their commission rate at any time via the wallet/updateBrokerage API interface.
+
+    SRs and Partners can adjust their commission rate at any time via the wallet/updateBrokerage API interface.
 
      - 100% Commission: All rewards go to the SR/Partner.
      - 0% Commission: All rewards are distributed to the voters.
@@ -88,7 +93,7 @@ The Committee is the highest governing body of the TRON network, responsible for
      - To create a proposal.
      - To vote on a proposal.
 
- - Effective Mechanism: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
+ - Proposal Effective Mechanism: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
 
 ### Create a Proposal
 

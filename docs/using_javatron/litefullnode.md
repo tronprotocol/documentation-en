@@ -17,6 +17,7 @@ Therefore, if developers only need to use a node for block synchronization, proc
 
 ## Lite Fullnode Deployment
 The deployment steps, configuration file, and startup command for a Lite Fullnode are the same as a Fullnode's. Please refer to the [Deployment Guide](installing_javatron.md) to deploy a Lite Fullnode. The only difference is the database. You have two ways to obtain the required Lite Fullnode database:
+
  - Download the Lite Fullnode data snapshot from the [Public Backup Data](backup_restore.md/#lite-fullnode) and use it directly.
  - Use the [Lite Fullnode Pruning Tool](toolkit.md/#_6) to convert a Fullnode's database into a Lite Fullnode's database.
 
