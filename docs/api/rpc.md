@@ -287,7 +287,9 @@ Nodes: FullNode
 ```
 rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
 ```
-Nodes: FullNode 
+Nodes: FullNode
+
+**Notice**: Only node where `storage.balance.history.lookup= true` is set in the configuration file supports querying the account's historical balance. The supported official nodes can be queried [here](../using_javatron/backup_restore.md/#fullnode-data-snapshot).
 
 ## fetch all balance-changing transactions in a block      
 ```
