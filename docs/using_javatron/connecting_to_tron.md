@@ -32,6 +32,7 @@ In particular:
 
 - Mainnet: version = `11111`
 - Nile Testnet: version = `201910292`
+- Shasta Testnet: version = `1`
 - Private Network: Custom value (set to a different ID)
 
 ### Genesis Block
@@ -215,7 +216,7 @@ node.discovery = {
 ```
 
 ### Boot Nodes
-Java-tron uses the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol to discover peers. Discovery requires boot nodes, which consist of seed nodes and actively configured peers.
+Java-tron uses the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol to discover peers. Discovery requires boot nodes, which consist of seed nodes and actively configured peers, see [Active Connection (Active Peers)](#active-connection-active-peers). 
 
 ### seed.node
 `seed.node` is used to initialize connections. It should point to online and stable Fullnode:
@@ -396,16 +397,16 @@ If the heights match, synchronization is normal.
 There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
 
 - **Local clock offset**
-Sync system time with:
-  ```
-  sudo ntpdate -s time.nist.gov
-  ```
+    Sync system time with:
+    ```
+    sudo ntpdate -s time.nist.gov
+    ```
 - **UDP blocked by firewall**
-Use `node.active` to specify fixed peers.
+    Use `node.active` to specify fixed peers.
 - **Not accepting inbound connections**
-Configure `node.passive` to accept connections from trusted peers.
+    Configure `node.passive` to accept connections from trusted peers.
 - **Shasta Testnet unsupported**
-Use Nile Testnet instead.
+    Use Nile Testnet instead.
 
 ## Connecting to a Private Network
 Developers can deploy a private instance of the TRON network.
@@ -414,4 +415,4 @@ Developers can deploy a private instance of the TRON network.
 - Use a custom `node.p2p.version` to avoid conflicts with existing public networks.
 
 ### Reference Guide:
-- Please refer to [Private Network Setup Guide](https://github.com/tronprotocol/documentation-zh/blob/master/docs/using_javatron/private_network.md) for full instructions.
+- Please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/) for full instructions.
