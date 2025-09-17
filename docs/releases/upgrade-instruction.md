@@ -37,7 +37,7 @@ You can either download the compiled java-tron executable directly or download t
     $ git checkout -b release_vx.x.x
     ```    
 2. Run the build command. Upon successful compilation, the new executable file, `FullNode.jar`, will be generated in the `build/libs/` directory.
-    ```shell
+    ```
     $ ./gradlew clean build -x test
     ```
 
@@ -95,7 +95,7 @@ Please select the appropriate startup command based on your node type.
 
   * **Super Representative (Block-Producing Node)**
 
-    ```shell
+    ```
     nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar  -p <your private key> --witness -c config.conf </dev/null &>/dev/null &
     ```
     > **Note**: We recommend managing your private key using a `keystore` file or within the configuration file, rather than passing it directly as a command-line argument.
