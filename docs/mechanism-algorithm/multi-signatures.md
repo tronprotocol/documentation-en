@@ -8,9 +8,9 @@ The TRON network supports fine-grained control of account permissions. By config
 
 Account permission management allows:
 
-- Setting permission levels for an account;
-- Associating each permission with a group of addresses and weights;
-- Implementing permission control through a threshold mechanism;
+- Setting permission levels for an account.
+- Associating each permission with a group of addresses and weights.
+- Implementing permission control through a threshold mechanism.
 - Flexibly configuring which addresses can execute which contract types.
 
 For detailed specifications, see [TIP-16: Account Permission Management](https://github.com/tronprotocol/tips/blob/master/tip-16.md).
@@ -44,8 +44,8 @@ message Account {
 
 Explanation:
 
-- `owner_permission`: `owner` permission (only one);
-- `witness_permission`: Super Representative permission (only one);
+- `owner_permission`: `owner` permission (only one).
+- `witness_permission`: Super Representative permission (only one).
 - `active_permission`: `active` permission list, supports up to 8.
 
 ### 2. Permission Configuration: `Permission`
@@ -69,12 +69,12 @@ message Permission {
 
 Explanation:
 
-- `type`: Permission type (owner/witness/active);
-- `id`: Permission ID, automatically assigned by the system;
-  - `owner` = 0, `witness` = 1, `active` starts from 2 and increments;
-- `permission_name`: Permission name, maximum 32 bytes;
-- `threshold`: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value;
-- `operations`: Used only for Active permissions, specifies executable contract types;
+- `type`: Permission type (owner/witness/active).
+- `id`: Permission ID, automatically assigned by the system.
+  - `owner` = 0, `witness` = 1, `active` starts from 2 and increments.
+- `permission_name`: Permission name, maximum 32 bytes.
+- `threshold`: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value.
+- `operations`: Used only for Active permissions, specifies executable contract types.
 - `keys`: Addresses and weights with this permission (up to 5).
 
 ### 3. Permission Key Structure: `Key`
@@ -86,7 +86,7 @@ message Key {
 }
 ```
 
-- `address`: Address with permission;
+- `address`: Address with permission.
 - `weight`: Weight of this address under this permission.
 
 ### 4. Permission Update Transaction: `AccountPermissionUpdateContract`
@@ -100,7 +100,7 @@ message AccountPermissionUpdateContract {
 }
 ```
 
-- This contract is used to **update all account permission structures at once**;
+- This contract is used to **update all account permission structures at once**.
 - Even if only one permission is modified, all other existing permissions must be fully specified in the contract.
 
 ### 5. Contract Type Enumeration: `ContractType`
@@ -113,21 +113,21 @@ enum ContractType {
 }
 ```
 
-Active permissions configure which `ContractType` can be executed through the `operations` field; see the calculation method below for details.
+Active permissions configure which `ContractType` can be executed through the `operations` field, see the calculation method below for details.
 
 ## Explanation of Each Permission Type
 
 ### `owner` Permission (Account Master Control)
 
-- Holds full control over the account;
-- Can modify any permission structure (including itself);
-- Automatically set when creating an account, default threshold is 1, includes the account's own address;
+- Holds full control over the account.
+- Can modify any permission structure (including itself).
+- Automatically set when creating an account, default threshold is 1, includes the account's own address.
 - By default, transactions without a specified permission_id use the Owner permission.
 
 ### `witness` Permission (Block Production Permission)
 
-- Available only for Super Representative， Super Representative Partner and Super Representative Candidate accounts;
-- Controls block-producing nodes, does not have permissions for fund transfers or other operations;
+- Available only for Super Representative, Super Representative Partner and Super Representative Candidate accounts.
+- Controls block-producing nodes, does not have permissions for fund transfers or other operations.
 - Can delegate block production permission to other addresses to enhance account security.
 
 #### Super Representative Node Configuration Example:
@@ -153,9 +153,9 @@ localwitness = [
 
 ### Active Permission (Functional Permission Combination)
 
-- Can combine contract permissions, assigning sub-permissions to different roles;
-- Supports up to 8 `active` permission configurations;
-- Permission IDs start from 2 and increment;
+- Can combine contract permissions, assigning sub-permissions to different roles.
+- Supports up to 8 `active` permission configurations.
+- Permission IDs start from 2 and increment.
 - When creating an account by default, one `active` permission is generated, with a default threshold of 1, containing only the account's own address.
 
 ## Operation Fees
@@ -171,9 +171,9 @@ The above fees can be adjusted through proposals.
 
 ### 1. Permission Modification Operation Process
 
-1. Use `getaccount` to query the current account permission structure;
-2. Construct the new permission configuration;
-3. Call `AccountPermissionUpdateContract`;
+1. Use `getaccount` to query the current account permission structure.
+2. Construct the new permission configuration.
+3. Call `AccountPermissionUpdateContract`.
 4. Sign and broadcast the transaction.
 
 #### Example Request:
@@ -226,12 +226,12 @@ System.out.println(ByteArray.toHexString(operations));
 
 ### 3. Transaction Execution Process
 
-1. Create the transaction;
-2. Set `Permission_id` (default is 0, i.e., `owner` permission);
-3. User A signs and forwards to B;
-4. User B signs and forwards to C;
+1. Create the transaction.
+2. Set `Permission_id` (default is 0, i.e., `owner` permission).
+3. User A signs and forwards to B.
+4. User B signs and forwards to C.
 5. ...
-6. The last user signs and broadcasts;
+6. The last user signs and broadcasts.
 7. The node verifies if the total signature weight ≥ `threshold`; if yes, accepts the transaction.
 
 >Example code reference: [wallet-cli Example](https://github.com/tronprotocol/wallet-cli/blob/develop/src/main/java/org/tron/common/utils/TransactionUtils.java)
