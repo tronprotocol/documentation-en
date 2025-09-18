@@ -397,15 +397,19 @@ If the heights match, synchronization is normal.
 There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
 
 - **Local clock offset**
+
     Sync system time with:
     ```
     sudo ntpdate -s time.nist.gov
     ```
 - **UDP blocked by firewall**
+
     Use `node.active` to specify fixed peers.
 - **Not accepting inbound connections**
+
     Configure `node.passive` to accept connections from trusted peers.
 - **Shasta Testnet unsupported**
+
     Use Nile Testnet instead.
 
 ## Connecting to a Private Network
