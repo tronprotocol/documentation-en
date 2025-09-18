@@ -6,7 +6,7 @@ The TRON network natively supports **Decentralized Exchanges (DEX)**, with its c
 
 A trading pair (`Exchange`) represents a trading market between any two TRC-10 tokens, which can be:
 
-- Between any two TRC-10 tokens;
+- Between any two TRC-10 tokens.
 - Between a TRC-10 token and TRX.
 
 Any account can create any combination of trading pairs, even if the same combination already exists on the network. All trading pairs on the TRON network follow the **Bancor protocol** for asset exchange, with the default weight of the two tokens being equal. Therefore, the balance ratio of the two tokens in the trading pair represents the current price.
@@ -14,8 +14,8 @@ Any account can create any combination of trading pairs, even if the same combin
 **Example:**  
 Suppose a trading pair contains two tokens, ABC and DEF:
 
-- ABC balance is `10,000,000`;
-- DEF balance is `1,000,000`;
+- ABC balance is `10,000,000`.
+- DEF balance is `1,000,000`.
 
 Then the current exchange rate is: 10 ABC = 1 DEF
 
@@ -29,9 +29,9 @@ When creating a trading pair, the initial balances of the two tokens must be pro
 
 Parameters are as follows:
 
-- `first_token_id`: The ID of the first token;
-- `first_token_balance`: The initial balance of the first token;
-- `second_token_id`: The ID of the second token;
+- `first_token_id`: The ID of the first token.
+- `first_token_balance`: The initial balance of the first token.
+- `second_token_id`: The ID of the second token.
 - `second_token_balance`: The initial balance of the second token.
 
 > **Note:** If TRX is included, use `_` to represent it; the unit for TRX is `sun` (1 TRX = 1,000,000 sun).
@@ -49,16 +49,16 @@ All accounts can perform instant trades in any trading pair. Trading does not re
 ### Contract: `ExchangeTransactionContract`
 Parameters are as follows:
 
-- `exchange_id`: The ID of the trading pair (the system assigns a unique ID based on creation time);
-- `token_id`: The ID of the token to be sold;
-- `quant`: The quantity to be sold;
+- `exchange_id`: The ID of the trading pair (the system assigns a unique ID based on creation time).
+- `token_id`: The ID of the token to be sold.
+- `quant`: The quantity to be sold.
 - `expected`: The minimum quantity of the other token expected to be received (if the actual amount received is less than this value, the transaction fails).
 
 #### Example:
 Suppose the trading pair ID for `abc` and `TRX` is 1, with the current state:
 
-- abc balance is 10,000,000;
-- TRX balance is 1,000,000;
+- abc balance is 10,000,000.
+- TRX balance is 1,000,000.
 
 If a user wishes to spend 100 TRX (100,000,000 sun) to buy at least 990 abc, they execute:
 ```
@@ -72,21 +72,21 @@ When the balance of one token in a trading pair is low, transactions may cause s
 
 >**Funding Guidelines:**
 >
->- Only the trading pair creator can perform this action;
->- No fees are required;
+>- Only the trading pair creator can perform this action.
+>- No fees are required.
 >- The system calculates the required amount of the other token based on the current price ratio to maintain the price.
 
 ### Contract: `ExchangeInjectContract`
 Parameters are as follows:
 
-- `exchange_id`: The ID of the trading pair;
-- `token_id`: The ID of the token to be injected;
+- `exchange_id`: The ID of the trading pair.
+- `token_id`: The ID of the token to be injected.
 - `quant`: The quantity of the token to be injected.
 
 ### Example:
 Suppose the trading pair ID for `abc` and `TRX` is 1, with the current state:
-- `abc` balance is 10,000,000,
-- `TRX` balance is 1,000,000,
+- `abc` balance is 10,000,000.
+- `TRX` balance is 1,000,000.
 
 If the creator wishes to increase `abc` by 10% (i.e., add 1,000,000 abc), they execute:
 
@@ -99,21 +99,21 @@ If successful, the trading pair will gain 1,000,000 abc and the corresponding pr
 The assets in a trading pair belong entirely to the creator. The creator can withdraw a portion of the assets from the trading pair at any time.
 
 >**Withdrawal Rules:**
->- Only the trading pair creator can perform this action;
->- No fees are required;
+>- Only the trading pair creator can perform this action.
+>- No fees are required.
 >- The system withdraws the other token in proportion to the current token ratio, ensuring the price remains unchanged but increasing price volatility.
 
 ### Contract: `ExchangeWithdrawContract`
 Parameters are as follows:
 
-- `exchange_id`: The ID of the trading pair;
-- `token_id`: The ID of the token to be withdrawn;
+- `exchange_id`: The ID of the trading pair.
+- `token_id`: The ID of the token to be withdrawn.
 - `quant`: The quantity of the token to be withdrawn.
 
 ### Example:
 Suppose the trading pair ID for `abc` and `TRX` is 1, with the current state:
-- `abc` balance is 10,000,000,
-- `TRX` balance is 1,000,000,
+- `abc` balance is 10,000,000.
+- `TRX` balance is 1,000,000.
 
 If the creator wishes to withdraw 10% of abc (i.e., reduce 1,000,000 abc), they execute:
 
@@ -127,7 +127,9 @@ Upon successful transaction, the trading pair will lose 1,000,000 abc and the co
 TRON provides multiple interfaces for querying trading pairs:
 
 **1. Query all trading pair information:** `ListExchanges`
+
 **2. Paginated query of trading pair list:** `GetPaginatedExchangeList`
+
 **3. Query details of a specific trading pair:** `GetExchangeById`
 
 For detailed API documentation, refer to [RPC-API ](https://tronprotocol.github.io/documentation-en/api/rpc/).
@@ -135,9 +137,9 @@ For detailed API documentation, refer to [RPC-API ](https://tronprotocol.github.
 ### Price Calculation
 Suppose in a trading pair:
 
-- `first_token_price = 100 sun`;
-- `first_token_balance = 1,000,000`;
-- `second_token_balance = 2,000,000`;
+- `first_token_price = 100 sun`.
+- `first_token_balance = 1,000,000`.
+- `second_token_balance = 2,000,000`.
 
 Then the `second_token_price` is:
 
@@ -150,9 +152,9 @@ second_token_price = first_token_price * (first_token_balance / second_token_bal
 ### Exchange Quantity Calculation
 Suppose `first_token` is used to exchange for `second_token`:
 
-- `sellTokenQuant`: The quantity of `first_token` to be sold;
-- `buyTokenQuant`: The quantity of `second_token` obtained through exchange;
-- `balance`: The current balance of `second_token` in the trading pair;
+- `sellTokenQuant`: The quantity of `first_token` to be sold.
+- `buyTokenQuant`: The quantity of `second_token` obtained through exchange.
+- `balance`: The current balance of `second_token` in the trading pair.
 - `supply`: A fixed constant of `10^18` used in the Bancor protocol formula.
 
 The calculation process is as follows:
