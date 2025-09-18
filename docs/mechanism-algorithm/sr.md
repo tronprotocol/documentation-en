@@ -19,9 +19,11 @@ The TRON network tallies votes once every 6 hours, and the roles of Super Repres
 All accounts in the TRON network have the right to vote for the Super Representative candidates they support. The core of voting is TRON Power (TP), which determines the weight of your vote.
 
  - Obtaining Voting Power (TRON Power)
-Your amount of TP is directly linked to the amount of TRX you have staked.
-Calculation Method: For every 1 TRX you stake, you receive 1 TP.
+
+    Your amount of TP is directly linked to the amount of TRX you have staked. Calculation Method: For every 1 TRX you stake, you receive 1 TP.
+
  - The Impact of Unstaking on Voting
+ 
     When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system reclaims TP according to the following rules:
     
     * Unused TP is reclaimed first.
@@ -47,11 +49,15 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.
 Super Representatives (SRs) and Super Representative Partners can set a Commission Rate (also known as Brokerage Rate) to determine how rewards are distributed between themselves and their voters.
 
 - Default Rate
-The default commission rate for a newly elected SR or Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.
+
+    The default commission rate for a newly elected SR or Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.
+
 - Customizing the Rate
-SRs and Partners can adjust their commission rate at any time via the wallet/updateBrokerage API interface.
-  - 100% Commission: All rewards go to the SR/Partner.
-  - 0% Commission: All rewards are distributed to the voters.
+
+    SRs and Partners can adjust their commission rate at any time via the wallet/updateBrokerage API interface.
+
+     - 100% Commission: All rewards go to the SR/Partner.
+     - 0% Commission: All rewards are distributed to the voters.
 
 ### Block Production Rewards and Voting Rewards
 
@@ -69,6 +75,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 
 
 **Notes:**
+
  - Chain parameter details can be viewed on TRONSCAN's committee page.
  - `brokerageRate` refers to the commission rate.
  - Super Representatives and Partners are the top 127 witnesses.
@@ -79,11 +86,14 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 ### What is Committee
 
 The Committee is the highest governing body of the TRON network, responsible for modifying the network's core dynamic parameters (such as transaction fees, block rewards, etc.).
+
  - Composition: The Committee is composed of the current 27 active Super Representatives (SRs).
  - Powers: Each committee member has two core powers: 
-   - To create a proposal.
-   - To vote on a proposal.
- - Effective Mechanism: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
+
+     - To create a proposal.
+     - To vote on a proposal.
+
+ - Proposal Effective Mechanism: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
 
 ### Create a Proposal
 
@@ -102,6 +112,7 @@ Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dyn
 ### Vote for a Proposal
 
 The voting process for proposals follows these core rules:
+
 1.  The governance system only supports approval votes. Not voting is equivalent to disapproving.
 2.  A proposal is valid for 3 days from its creation. If it does not receive enough approval votes within this period, it will expire.
 
@@ -116,6 +127,7 @@ The voting process for proposals follows these core rules:
 ### Cancel Proposal
 
 The creator of a proposal can cancel it at any time before it takes effect.
+
 + Example:
 ```shell
 >deleteProposal proposalId
