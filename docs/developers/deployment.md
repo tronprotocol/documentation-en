@@ -35,12 +35,10 @@ cd /deploy/java-tron
 ```
 
 2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories
-```text
-download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
+```shell
+download your needed configuration file from https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf.
 
-config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
-
-please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SolidityNode.
+config.conf is the configuration for MainNet. To set up a testnet node, please modify the parameters in the configuration file.
 
 cp build/libs/FullNode.jar ../fullnode
 
