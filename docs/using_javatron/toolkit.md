@@ -2,7 +2,7 @@
 
 The TRON Toolkit is a comprehensive utility that integrates various ecosystem tools for `java-tron`, designed to streamline node maintenance and management operations. We are committed to expanding its functionality in future releases to improve the developer experience. The Toolkit currently offers the following core features:
 
-* [Database Partitioning](#database-partition-tool): Alleviates storage pressure caused by on-chain data growth.
+* [Database Partitioning](#database-partitioning-tool): Alleviates storage pressure caused by on-chain data growth.
 * [Lite Fullnode Data Pruning](#lite-fullnode-data-pruning): Enables periodic pruning of Lite Fullnode data.
 * [Fast Data Copy](#fast-data-copy-tool): Implements rapid database copying.
 * [Data Conversion](#data-conversion-tool): Supports data format conversion from LevelDB to RocksDB.

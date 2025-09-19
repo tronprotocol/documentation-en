@@ -149,7 +149,7 @@ Parameters:
 Return: Unsigned transaction
 
 #### wallet/getaccountbalance
-Description： Get the account balance in a specific block.
+Description： Get the account balance in a specific block. 
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getaccountbalance -d
 '{
@@ -179,6 +179,7 @@ Return: The balance object of the account in a specific block, the `block_identi
     }
 }
 ```
+**Notice**: Only node where `storage.balance.history.lookup= true` is set in the configuration file supports querying the account's historical balance. The supported official nodes can be queried [here](../using_javatron/backup_restore.md/#fullnode-data-snapshot).
 
 
 #### wallet/setaccountid
