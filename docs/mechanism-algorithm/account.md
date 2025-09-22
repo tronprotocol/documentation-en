@@ -108,3 +108,6 @@ When a Fullnode receives a transaction, it uses the transaction hash and signatu
 
 ### Example
 Signature verification is performed by the Fullnode. For [ECDSA algorithm signature verification](https://github.com/tronprotocol/java-tron/blob/master/crypto/src/main/java/org/tron/common/crypto/ECKey.java), you can refer to java-tron, and the core function is `signatureToAddress`.
+
+### Signature normalization
+`ECDSA` signatures (using the `secp256k1` curve) are malleable, meaning that for a signature $(r, s)$, where $r, s \in [1, n-1]$, the pair $(r, n - s)$ is also a valid signature. Since signatures affect transaction id in both Bitcoin and Ethereum, [BIP-62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki) and [EIP-2](https://eips.ethereum.org/EIPS/eip-2) require signatures to be normalized, i.e., $s \leq n/2$. However, for the TRON network, the transaction id does not include signature information, so there is no strict requirement for signature normalization, and signature verification does not need to check whether the signature is normalized. Although there is no strict restriction, both `java-tron` and `wallet-cli` currently perform signature normalization.
