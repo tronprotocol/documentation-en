@@ -1,193 +1,260 @@
 # Event Subscription
 
-## Using Event Plugin for Event Subscription
+TRON provides a robust event subscription mechanism that allows developers to capture critical on-chain events in real-time. This includes transaction statuses, contract invocations, and block production, facilitating the development of feature-rich decentralized applications (dApps).
 
-### TIP
+## Overview of Subscription Methods
 
-The TIP: [TIP-12:TRON event subscribes model](https://github.com/tronprotocol/tips/blob/master/tip-12.md) .
+TRON offers two primary event subscription methods, each designed to cater to different use cases and technical requirements.
 
-### Event Type
+### 1. Local Event Plugin Subscription (Recommended)
 
-TRON Event Subscription supports 4 types of event:
+This method utilizes an extensible plugin architecture to persistntly store on-chain events in external systems, such as **MongoDB** or **Kafka**, either in real-time or in batches. Designed specifically for production environments, this solution caters to applications requiring high reliability, durable storage, and robust data analysis capabilities.
 
-#### Transaction Event
+This method has the following advantages:
 
-The parameters passed to Subscriber:
+  - **Diverse Plugin Support:** Currently supports Kafka and MongoDB.
+  - **Rich Data Types**: Enables subscriptions to blocks, transactions, smart contract events, and logs.
+  - **Advanced Filtering**: Supports filtering of events based on user-defined criteria.
+  - **Historical Event Replay**: The V2.0 framework allows syncing historical events from any specified block height.
+  - **Production-Grade Reliability**: Ideal for applications requiring high data integrity and dependability.
 
-```
-transactionId: transaction hash
-blockHash: block hash
-blockNumber: block number
-energyUsage: energy usage
-energyFee: energy fee
-originEnergyUsage: origin energy usage
-energyUsageTotal: total energy usage total
-```
+> **Important Note**: In extreme situations such as network forks, non-solidified events might be rolled back. Therefore, in scenarios with high demand for data reliability, subscribing to solidified events is strongly recommended.
 
-#### Block Event
 
-The parameters passed to Subscriber:
+### 2. Built-in Message Queue Subscription (ZeroMQ)
 
-```
-blockHash: block hash
-blockNumber: block number
-transactionSize: the number of transactions in a block
-latestSolidifiedBlockNumber: the latest solidified block number
-transactionList: the transactions hash list
-```
+The java-tron node includes a built-in **ZeroMQ** message queue that provides a lightweight event streaming service. This method requires no external plugins and is ideal for use cases that demand high real-time event delivery but do not require event persistence or historical replay, such as rapid prototyping and testing.
 
-#### Contract Event
+This method has the following advantages:
 
-The parameters passed to Subscriber:
+  - **No Plugin Deployment**: Subscriptions are established by connecting directly to a TRON node.
+  - **Low Latency**: Optimized for real-time event streaming.
+  - **Lightweight**: Well-suited for rapid development and testing environments.
 
-```
-transactionId: transaction id
-contractAddress: contract address
-callerAddress: contract caller address
-blockNumber: the number of the block contract related events recorded
-blockTimestamp: the block time stamp
-eventSignature: event signature
-topicMap: the map of topic in solidity language
-data: the data information in solidity language
-removed: 'true' means the log is removed
-```
 
-#### Contract Log Event
+## Event Service Framework (Based on Local Plugin)
 
-The parameters passed to Subscriber:
+java-tron currently supports two versions of the event service framework: `V1.0` and `V2.0`.
 
-```
-transactionId: transaction hash
-contractAddress: contract address
-callerAddress: contract caller address
-blockNumber: the number of the block contract related events recorded
-blockTimestamp: the block time stamp
-contractTopics: the list of topic in solidity language
-data: the data information in solidity language
-removed: 'true' means the log is removed
-```
+- **V1.0**: Only supports real-time event streaming for newly produced blocks.
+- **V2.0 (Recommended)**:  Introduces a historical event replay feature, enabling synchronization from a specified block height.
 
-Contract Event and Contract Log Even support event filter function which includes:
+For a detailed comparison and guidance, refer to: [Introduction to Event Service Framework V2.0](https://medium.com/tronnetwork/event-service-framework-v2-0-0622f2f07249).
+
+**Workflow**:
+
+1. **Event Capture**: The TRON node extracts event data from on-chain blocks.
+2. **Event Queuing**: Events are encapsulated and added to a buffer queue.
+3. **Plugin Consumption**: The event plugin asynchronously consumes events from the queue.
+4. **Event Delivery**: The plugin pushes the processed data to the target system (e.g., Kafka or MongoDB).
+5. **Application Logic**: Downstream applications continuously process the event data.
+
+
+## Event Types
+
+Developers can flexibly specify the event types they want to subscribe to by modifying the node's configuration file, `config.conf`.
+
+
+### 1. Transaction Event
+
+Subscribes to events related to on-chain transactions.
+
+**Configuration Example：**
 
 ```
-fromBlock: the start block number
-toBlock: the end block number
-contractAddress: contract addresses list
-contractTopics: contract topics list
-```
-
-!!! note
-    1. Historical data query is not supported.
-    2. When subscribing to non-solidified events, be sure to use the two parameters `blockNumber` and `blockHash` as the criteria to verify that the received events are valid. In special cases such as unstable network connections causing chain reorg, event reorg may occur as well, resulting in stale events.
-
-### New Features
-
-1. Supporting event plug-ins, kafka & mongodb plug-ins have been released, developers can also customize their own plug-ins according to their own needs.
-2. Supporting subscription of chain data, such as block, transaction, contract log, contract event and so on. For transaction events, developers can get information such as internal transactions, contract info and so on; for contract events, developers could configure the contract addresses list or contract topic list to receive the specified events, and event subscription has a very low latency. The deployed fullnode can receive event information immediately after the contract is executed.
-3. Event query service tron-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is [https://api.tronex.io](https://api.tronex.io).
-
-### Github projects
-
-- [tronprotocol/event-plugin](https://github.com/tronprotocol/event-plugin)
-- [tronprotocol/tron-eventquery](https://github.com/tronprotocol/tron-eventquery)
-
-#### Event plugin
-
-- [Kafka deployment](../developers/deployment.md#kafka)
-- [MongoDB deployment](../developers/deployment.md#mongo)
-
-#### Event query
-
-TRON Event Query Service
-
-TronEventQuery is implemented with Tron's new event subscribe model. It uses same query interface with Tron-Grid. Users can also subscribe block trigger, transaction trigger, contract log trigger, and contract event trigger. TronEvent is independent of a particular branch of java-tron, the new event subscribes model will be released on version 3.5 of java-tron.
-
-For more information of TRON event subscribe model, please refer to [TIP-12](https://github.com/tronprotocol/TIPs/issues/12).
-
-- [Event query deployment](https://tronprotocol.github.io/documentation-en/developers/deployment/#event-subscribe-plugin-deployment)
-- [Event query HTTP API](https://github.com/tronprotocol/documentation-en/tree/master/docs_without_index/plugin/event-query-http.md)
-
-
-## Using java-tron's Built-in Message Queue for Event Subscription
-
-TRON provides event subscription service. Developers can not only obtain on-chain events through event plugin, but also through [java-tron’s built-in ZeroMQ message queue](https://github.com/tronprotocol/tips/blob/master/tip-28.md). The difference is that event plugin needs to be additionally deployed, which is used to implement event storage: developers can choose appropriate storage tools according to their needs, such as MongoDB, Kafka, etc., and the plugin help complete the storage of subscribed events. java-tron's built-in ZeroMQ does not require additional deployment operations. Event subscribers can directly connect to the publisher's ip and port, set subscription topics, and receive subscribed events. However, this method does not provide event storage. Therefore, when developers want to subscribe to events directly from nodes for a short period of time, then using the built-in message queue will be a more appropriate choice.
-
-This article will introduce how to subscribe to events through java-tron's built-in message queue in detail.
-
-
-### Configure node
-To use the built-in ZeroMQ of the node for event subscription, you need to set the configuration item `useNativeQueue` to `true` in the node configuration file.
-
-```
-event.subscribe = {
-  native = {
-    useNativeQueue = true // if true, use native message queue, else use event plugin.
-    bindport = 5555 // bind port
-    sendqueuelength = 1000 //max length of send queue
+event.subscribe.topics = [
+  {
+    triggerName = "transaction"
+    enable = false
+    topic = "transaction"
+    solidified = false
+    ethCompatible = false
   }
+]
+```
+**Parameters**:
 
-  ......
+- `triggerName`: (String) The event type identifier. For transaction events, this value is fixed to `transaction`.
+- `enable`: (Boolean) Enables or disables the subscription for this event type.
+- `topic`: (String) The name of the topic for receiving this event type in MongoDB or Kafka. This value must be consistent with the configuration in MongoDB or Kafka.
+- `solidified`: (Boolean) If set to `true`, the subscription will only deliver events for transactions included in solidified blocks.
+- `ethCompatible`: (Boolean) If set to `true`, the event payload will include Ethereum-compatible fields (e.g., `transactionIndex`, `logList`).
+
+**Key Fields in Transaction Events:**
+
+- `transactionId`: The transaction hash.
+- `blockNumber`: The block height containing the transaction.
+- `energyUsage`: The total amount of Energy consumed by the transaction.
+- `energyFee`: The total amount of TRX (in sun) consumed by the transaction.
+
+
+For a complete list of fields, see the [TransactionLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/TransactionLogTrigger.java) source code.
+
+### 2. Block Events
+
+Subscribes to events triggered upon the creation of new blocks.
+
+**Configuration Example：**
+
+```
+event.subscribe.topics = [
+  {
+    triggerName = "block"
+    enable = false
+    topic = "block"
+    solidified = false
+  }
+]
+```
+
+**Key Fields in Block Events:**
+
+- `blockHash`: The hash of the block.
+- `blockNumber`: The block height.
+- `transactionSize`: The total number of transactions included in the block.
+- `latestSolidifiedBlockNumber`: The block number of the most recently solidified block at the time of this event.
+- `transactionList`: An array of transaction hashes contained within the block.
+
+
+For a complete list of fields, see the [BlockLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/BlockLogTrigger.java) source code.
+
+### 3. Contract Events and Logs
+
+Subscribes to smart contract events and logs generated during contract execution.
+
+**Configuration Example：**
+
+```
+event.subscribe.topics = [
+  {
+    triggerName = "contractevent"
+    enable = false
+    topic = "contractevent"
+  },
+  {
+    triggerName = "contractlog"
+    enable = false
+    topic = "contractlog"
+  },
+  {
+    triggerName = "solidityevent"
+    enable = false
+    topic = "solidityevent"
+  },
+  {
+    triggerName = "soliditylog"
+    enable = false
+    topic = "soliditylog"
+  }
+]
+```
+
+  - `contractevent`: Subscribes to all contract events from all blocks.
+  - `contractlog`: Subscribes to all contract logs from all blocks.
+  - `solidityevent`: Subscribes only to contract events from solidified blocks.
+  - `soliditylog`: Subscribes only to contract logs from solidified blocks.
+
+**Key Fields in Contract Events**
+
+  - `transactionId`: The hash of the transaction that generated the event.
+  - `contractAddress`: The address of the smart contract.
+  - `blockNumber`: The block height at which the event was included.
+
+For a complete list of fields, see the [ContractEventTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java) and [ContractLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java) source code.
+
+> **Note**: Subscriptions for `contractevent` and `contractlog` support the following filter parameters:
+> ```
+> fromBlock: The starting block number.
+> toBlock: The ending block number.
+> contractAddress: The specific contract address to monitor.
+> contractTopics: An array of indexed event topics for filtering.
+> ```
+
+
+### 4. Solidified Block Notification Events
+
+Subscribes to real-time notifications for the latest solidified block height. This is ideal for applications that need to track the chain's finalized state.
+
+
+**Configuration Example：**
+
+```
+event.subscribe.topics = [
+  {
+    triggerName = "solidity"
+    enable = true
+    topic = "solidity"
+  }
+]
+```
+
+**Key Fields in Solidity Notification Events:**
+
+  - `latestSolidifiedBlockNumber`: The block number of the newly solidified block.
+  - `timestamp`: The timestamp of the solidified block.
+
+For a complete list of fields, see the [SolidityTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/SolidityTrigger.java) source code.
+
+
+## Migrating to V2.0 Event Service Framework
+
+The `V2.0` event service framework introduces a historical event replay feature and includes comprehensive optimizations to the event push mechanism. This guide outlines the procedure for migrating to `V2.0`.
+
+### Pre-Migration Considerations
+
+Before migrating, please consider the following factors:
+
+- **Internal Transaction Log Support**: `V2.0` currently does not support internal transaction logs (the `internalTransactionList` field will be empty). If your application has a dependency on this field, you must remain on `V1.0`.
+- **Plugin Version**: We strongly recommend upgrading the event plugin to the latest version to prevent potential performance degradation when processing large volumes of historical data.
  
-  topics = [
-    {
-      triggerName = "block" // block trigger, the value can't be modified
-      enable = true
-      topic = "block" // plugin topic, the value could be modified
-    },
-    ......
-  ]
-}
-```
+### Migration Procedure
 
-* `native.useNativeQueue`: `true` is to use the built-in message queue, `false` is to use the event plugin
-* `native.bindport`: ZeroMQ publisher binding port. In this example, it is `5555`, so the publisher address that the subscriber should connect to is `"tcp://127.0.0.1:5555"` 
-* `native.sendqueuelength`: The length of the send queue, that is, when the subscriber receives messages slowly, the maximum number of messages published by the publisher that the TCP buffer can hold. if it exceeds, The message will be discarded if exceeds the capacity
-* `topics`: Subscribed [event type](#event-type) , including block type, transaction type, etc.
+#### Step 1: Obtain the New Event Plugin
 
-### Start node
-The event subscription service is disabled by default and needs to be enabled by adding the command line parameter `--es`. The start command of the node that enables the event subscription service is as follows:
-```
-$ java -jar FullNode.jar --es
-```
+You can get the source code from GitHub and build it yourself, or download the officially released version directly.
 
-### Prepare event subscription script
-This article takes Nodejs as an example to illustrate how to subscribe to events.
-
-First, install the zeromq library:
-```
-$ npm install zeromq@5
-```
-Then, write the subscriber code:
-```
-// subscriber.js
-var zmq = require("zeromq"),
-var sock = zmq.socket("sub");
-
-sock.connect("tcp://127.0.0.1:5555");
-sock.subscribe("block");
-console.log("Subscriber connected to port 5555");
-
-sock.on("message", function(topic, message) {
-  console.log(
-    "received a message related to:",
-    Buffer.from(topic).toString(),
-    ", containing message:",
-    Buffer.from(message).toString()
-  );
-});
-```
-This example connects the subscriber to the node event publisher and subscribes to `block` events.
-
-### Start subscriber
-Start command of Nodejs is as below:
+**Build from Source:**
 
 ```
-$ node subscriber.js
+git clone git@github.com:tronprotocol/event-plugin.git
+cd event-plugin
+git checkout master
+./gradlew build
+```
+After the build is complete, the generated `.zip` file is the plugin package.
 
-> Subscriber connected to port 5555
+
+**Download the Official Release:**
+
+Visit the [event-plugin Releases page](https://github.com/tronprotocol/event-plugin/releases) to download the latest plugin package.
+
+#### Step 2: Modify the FullNode Configuration
+
+In your `config.conf` file, set the event service version to `V2.0`, the value is `1`.
+
 ```
-When the node has a new block, the subscriber will receive block event, the output information is as follows:
+event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
 ```
-received a message related to: blockTrigger, containing message: {"timeStamp":1678343709000,"triggerName":"blockTrigger","blockNumber":1361,"blockHash":"00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280","transactionSize":0,"latestSolidifiedBlockNumber":1361,"transactionList":[]}
-received a message related to: blockTrigger, containing message: {"timeStamp":1678343712000,"triggerName":"blockTrigger","blockNumber":1362,"blockHash":"0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0","transactionSize":0,"latestSolidifiedBlockNumber":1362,"transactionList":[]}
+
+#### Step 3: Configure the Event Plugin
+
+The configuration process for the new plugin is mostly identical to the old version. You can refer to the official documentation for deployment:
+
+  - [Deploying the Event Plugin (MongoDB)](/documentation-en/architecture/use-mongodb/)
+  - [Deploying the Event Plugin (Kafka)](/documentation-en/architecture/use-kafka/)
+
+#### Step 4 (Optional): Configure the Starting Point for Historical Sync
+
+If you need to sync historical events starting from a specific block height, add the following setting to your configuration file.
+
+```
+event.subscribe.startSyncBlockNum = <block_height>
+```
+
+#### Step 5: Start the Fullnode and Plugin
+
+After completing the configuration, use the following command to start the `FullNode` and load the event plugin.
+
+```
+java -jar FullNode.jar -c config.conf --es
 ```

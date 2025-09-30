@@ -113,7 +113,7 @@ enum ContractType {
 }
 ```
 
-Active permissions configure which `ContractType` can be executed through the `operations` field, see the calculation method below for details.
+Active permissions configure which `ContractType` can be executed through the `operations` field, for details on how to calculate the value of `operations`, please see [Operations Value Calculation Example](#2-operations-value-calculation-example).
 
 ## Explanation of Each Permission Type
 

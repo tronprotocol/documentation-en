@@ -1,90 +1,121 @@
-# Data Backup & Restore
+# Node Data Backup and Restore
 
-Everything `java-tron` persists gets written inside its data directory. The default data directory is: `/output-directory/`. If you need to specify other directories, you can add `-d` or `--output-directory` parameter to the java-tron node startup command to specify the data storage location.
-
-```
-$ java -jar fullnode.jar -d ./outputdir
-```
-
-## Data Backup
-Please shut down the node process before backing up the node data, for details, please refer to the following steps:
-
-First, use the command `$ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'` to get the process id of java-tron, and then use the command `kill -15 process id` to kill the process. Or use a stop script like this:
+java-tron nodes store their persistent data in a specified data directory, which defaults to `/output-directory/`. You can specify a different data storage location by adding the `-d` or `--output-directory` parameter to the java-tron node startup command. For example:
 
 ```
+java -jar fullnode.jar -d ./outputdir
+```
+
+
+## Backing Up Node Data
+
+Before backing up node data, it's crucial to **shut down the node process**. You can do this by following these steps:
+
+First, get the PID of the java-tron process using the following command:
+
+```
+ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}'
+```
+
+Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the java-tron process and avoid database corruption:
+
+```bash!
 #!/bin/bash
 while true; do
-  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
-  if [ -n "$pid" ]; then
-    kill -15 $pid
-    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
-    sleep 1
-  else
-    echo "java-tron killed successfully!"
-    break
-  fi
+  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
+  if [ -n "$pid" ]; then
+    kill -15 $pid
+    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
+    sleep 1
+  else
+    echo "java-tron killed successfully!"
+    break
+  fi
 done
 ```
 
-Then, backup the data by the following command.
+Once the java-tron process has successfully shut down, you can back up the data using the following command:
 
 ```
-$ tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
+tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
 ```
 
-## Data Restore
 
-When restoring the data, just copy the corresponding backup data to the node directory. Take the database backup file name `output-directory.20220628152402.etgz` as an example, the command to restore the database file is:
+## Restoring Node Data
+
+Restoring data is straightforward: simply copy the backed-up data to the node's data directory.
+
+If your database backup file is named `output-directory.20220628152402.etgz`, you can use the following command to restore the database files:
 
 ```
-$ tar xzvf output-directory.20220628152402.etgz
+tar xzvf output-directory.20220628152402.etgz
 ```
 
-## Public Backup Data 
 
-For the TRON mainnet and Nile testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a TRON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.
+## Using Public Backup Data (Data Snapshots)
 
-### Main Net Data Snapshot
+For the Mainnet and Nile Testnet, new nodes require a significant amount of data to synchronize, leading to a lengthy synchronization process. To facilitate faster node deployment for developers, the TRON community regularly provides **data snapshots**.
 
-#### FullNode Data Snapshot
+A data snapshot is a compressed database backup file of a TRON network node at a specific point in time. Developers can significantly accelerate the node synchronization process by downloading and using these data snapshots.
 
-The following table shows the download address of Fullnode data snapshots. Please select a suitable data snapshot according to the location and node database type, and whether you need to query historical internal transactions.
+### Mainnet Data Snapshots
 
+#### FullNode Data Snapshots
 
-| Fullnode Data Source | Download site | Description |
-| -------- | -------- | -------- |
-| Official data source (North America: Virginia)   | [http://34.86.86.229/](http://34.86.86.229/)     | LevelDB, exclude internal transactions     |
-| Official data source (Singapore)    | [http://34.143.247.77/](http://34.143.247.77/)    | 	LevelDB, exclude internal transactions     |
-| Official data source (North America: America)    | [http://35.197.17.205/](http://35.197.17.205/)   | RocksDB, exclude internal transactions     |
-| Official data source (Singapore)    | [http://35.247.128.170/](http://35.247.128.170/)   | LevelDB, include internal transactions    |
-| Official data source ((North America: Virginia))    | [http://34.48.6.163/](http://34.48.6.163/)   | LevelDB, exclude internal transactions, include account history TRX balance     |
+The table below lists the download addresses for FullNode data snapshots. Please choose the most suitable data snapshot based on your geographical location, node database type, and whether you need to query historical internal transactions.
 
+| FullNode Node Data Source | Download Address | Description |
+| :------------------------ | :--------------- | :---------- |
+| Official Data Source (Americas: Virginia, USA) | [http://34.86.86.229/](http://34.86.86.229/) | LevelDB data, does not include internal transactions |
+| Official Data Source (Asia: Singapore) | [http://34.143.247.77/](http://34.143.247.77/) | LevelDB data, does not include internal transactions |
+| Official Data Source (Americas: USA) | [http://35.197.17.205/](http://35.197.17.205/) | RocksDB data, does not include internal transactions |
+| Official Data Source (Asia: Singapore) | [http://35.247.128.170/](http://35.247.128.170/) | LevelDB data, includes internal transactions |
+| Official Data Source (Americas: Virginia, USA) | [http://34.48.6.163/](http://34.48.6.163/) | LevelDB data, does not include internal transactions, includes historical account balances |
 
-**Note**：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. 
+**Note:** **LevelDB** and **RocksDB** data are not interchangeable. The database type for a FullNode is specified by the `db.engine` configuration item in the configuration file, with selectable values being `LEVELDB` or `ROCKSDB`.
 
+#### Lite FullNode Data Snapshots
 
+The TRON network has supported **Lite FullNode** type nodes since the GreatVoyage-V4.1.0 version. Compared to a regular FullNode, a Lite FullNode has a smaller database and faster startup speed because it only requires state data and necessary historical data to start. The table below lists the download addresses for Lite FullNode data snapshots.
 
-#### Lite FullNode Data Snapshot
+| Lite FullNode Node Data Source | Download Address | Description |
+| :----------------------------- | :--------------- | :---------- |
+| Official Data Source (Asia: Singapore) | [http://34.143.247.77/](http://34.143.247.77/) | LevelDB data |
 
+**Tip:** If you already have full data from a FullNode, you can use the [Lite FullNode Data Trimming Tool](https://tronprotocol.github.io/documentation-zh/using_javatron/toolkit/#_6) to trim your FullNode data into Lite FullNode data yourself.
 
-The TRON Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.
+#### Data Snapshot Decompression Methods
 
+TRON network snapshot data typically exceeds 2TB in size. We strongly recommend using a streaming method (i.e., downloading and decompressing simultaneously) to effectively save disk space. The specific command is as follows:
 
-| Lite Fullnode Data Source | Download site | Description |
-| -------- | -------- | -------- |
-| Official data source (Singapore)  | [http://34.143.247.77/](http://34.143.247.77/)     | LevelDB  |
+```bash
+wget -q -O - SNAPSHOT_URL/FullNode_output-directory.tgz | tar -zxvf -
+```
 
+##### Method 1: Stream Download and Decompress (Recommended, Saves Space)
 
-**Tips**: You can split the data from the whole data with the help of the [Lite FullNode Data Pruning Tool](toolkit.md/#lite-fullnode-data-pruning).
+This method does not require storing the complete compressed archive first. Instead, it directly decompresses the data into the target directory, significantly reducing disk usage.
 
-#### Use the Data Snapshot 
+##### Method 2: Download First, Then Decompress (Requires Ample Storage Space)
 
-The steps for using data snapshots are as follows:
+```
+# 1. Download the complete snapshot file
+wget SNAPSHOT_URL/FullNode_output-directory.tgz
 
-1. Download the corresponding compressed backup database according to your needs.
-2. Decompress the compressed file of the backup database to the output-directory directory or to the corresponding directory according to your needs.
-3. Startup the node. The node reads the output-directory directory by default. If you need to specify another directory，please add the `-d directory` parameter when the node starts.
+# 2. Decompress the file
+tar -zxvf FullNode_output-directory.tgz
+```
 
+This method downloads the complete snapshot file first and then decompresses it. Please note that during decompression, you will need to keep both the compressed archive and the decompressed files. Therefore, it's advisable to prepare at least two 3TB or larger disks (one for the compressed archive and one for the decompressed data. After decompression, you can free up the disk used for the compressed archive, thereby saving costs).
 
-### Nile TestNet Data Snapshot
-For detailed information about the Nile TestNet data snapshot, please refer to the [official website](https://nileex.io/), for both FullNode and Lite FullNode. The usage method is the same as that of the [Main Net](#use-the-data-snapshot).
+#### Data Snapshot Usage Steps
+
+Whether it's a FullNode data snapshot or a Lite FullNode data snapshot, the usage steps are the same:
+
+1.  Download the corresponding compressed backup database file based on your needs.
+2.  Decompress the backed-up database compressed file into the `output-directory`. If you wish to specify another directory, you can decompress it into your designated target directory.
+3.  Start the node. The node will default to reading from the `output-directory`. If your data was decompressed to another directory, add the `-d` parameter and specify the database directory name when starting the node.
+
+### Nile Testnet Data Snapshots
+
+For detailed information on Nile Testnet data snapshots, please refer to the [official website](https://nileex.io/). The usage method is the same as for Mainnet data snapshots.
