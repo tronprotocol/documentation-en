@@ -50,6 +50,7 @@ You can either download the compiled java-tron executable directly or download t
     ```
     $ ps -ef | grep java
     ```
+
 2. Stop the node process.
     ```
     $ kill -15 <PID>
@@ -86,7 +87,7 @@ After preparing the new version of the executable file and backing up the origin
         - **This step is optional**. You can decide whether to update the configuration file based on your specific needs. However, we highly recommend using the latest file to ensure full compatibility and access to new features.
         - If an update is required for a specific release, it will be explicitly stated in the release notes. Always review the release notes before upgrading.
   
-> **Note on the Database**: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built [database snapshot](https://tronprotocol.github.io/documentation-zh/using_javatron/backup_restore).
+> **Note on the Database**: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built [database snapshot](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore).
 
 <a id="step5"></a> 
 ### Step 5: Start the Node
