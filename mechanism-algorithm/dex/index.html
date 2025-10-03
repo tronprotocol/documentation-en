@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#decentralized-exchangedex" class="md-skip">
+        <a href="#decentralized-exchange-dex" class="md-skip">
           Skip to content
         </a>
       
@@ -450,9 +450,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -460,7 +472,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -905,64 +1017,151 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#what-is-an-exchange-pair" class="md-nav__link" >
+  <a href="#what-is-a-trading-pair" class="md-nav__link" >
     <span class="md-ellipsis">
-      What is an Exchange Pair
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#exchange-pair-creation" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Exchange Pair Creation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#exchange-pair-transaction" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Exchange Pair Transaction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#exchange-pair-injection" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Exchange Pair Injection
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#exchange-pair-withdrawal" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Exchange Pair Withdrawal
+      What is a Trading Pair
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#query" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#creating-a-trading-pair" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Query
+      Creating a Trading Pair
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Query" hidden>
+    <nav class="md-nav" aria-label="Creating a Trading Pair" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#transaction-query" class="md-nav__link" >
+  <a href="#contract-exchangecreatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      Transaction Query
+      Contract: ExchangeCreateContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#example" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#trading" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Trading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trading" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#contract-exchangetransactioncontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Contract: ExchangeTransactionContract
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#adding-liquidity-funding" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Adding Liquidity (Funding)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Liquidity (Funding)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#contract-exchangeinjectcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Contract: ExchangeInjectContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#example_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#withdrawing-liquidity-withdraw" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Withdrawing Liquidity (Withdraw)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Withdrawing Liquidity (Withdraw)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#contract-exchangewithdrawcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Contract: ExchangeWithdrawContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#example_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Example:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#queries-and-calculations" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Queries and Calculations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Queries and Calculations" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#querying-trading-pair-information" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Querying Trading Pair Information
     </span>
   </a>
   
@@ -978,9 +1177,9 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#calculate-the-amount-of-token-you-can-get" class="md-nav__link" >
+  <a href="#exchange-quantity-calculation" class="md-nav__link" >
     <span class="md-ellipsis">
-      Calculate the Amount of Token You Can Get
+      Exchange Quantity Calculation
     </span>
   </a>
   
@@ -1574,38 +1773,144 @@
   
 
 
-<h1 id="decentralized-exchangedex">Decentralized Exchange(DEX)<a class="headerlink" href="#decentralized-exchangedex" title="Permanent link">&para;</a></h1>
-<p>TRON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs. You can find the api below in <a href="../../api/http/">HTTP API</a>.</p>
-<h2 id="what-is-an-exchange-pair">What is an Exchange Pair<a class="headerlink" href="#what-is-an-exchange-pair" title="Permanent link">&para;</a></h2>
-<p>The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/TRX.</p>
-<h2 id="exchange-pair-creation">Exchange Pair Creation<a class="headerlink" href="#exchange-pair-creation" title="Permanent link">&para;</a></h2>
-<p>Any account can create an exchange pair, it burns 1024 TRX.</p>
-<p>Please refer to 'wallet/exchangecreate'.</p>
-<h2 id="exchange-pair-transaction">Exchange Pair Transaction<a class="headerlink" href="#exchange-pair-transaction" title="Permanent link">&para;</a></h2>
-<p>Any account can trade in the DEX. The trade follows Bancor protocol.</p>
-<p>Please refer to 'wallet/exchangetransaction'.</p>
-<h2 id="exchange-pair-injection">Exchange Pair Injection<a class="headerlink" href="#exchange-pair-injection" title="Permanent link">&para;</a></h2>
-<p>The exchange pair creator can inject more tokens into the exchange pair. Injection can decrease the range of ratio fluctuation. If one token is injected, the other one will be injected automatically to keep the current ratio of the two tokens unchanged.</p>
-<p>Please refer to 'wallet/exchangeinject'.</p>
-<h2 id="exchange-pair-withdrawal">Exchange Pair Withdrawal<a class="headerlink" href="#exchange-pair-withdrawal" title="Permanent link">&para;</a></h2>
-<p>The exchange pair creator can withdraw tokens from the exchange pair. Withdrawal can increase the range of ratio fluctuation. If one token is withdrawn, the other one will be withdrawn automatically to keep the current ratio of the two tokens unchanged.</p>
-<p>Please refer to 'wallet/exchangewithdraw'.</p>
-<h2 id="query">Query<a class="headerlink" href="#query" title="Permanent link">&para;</a></h2>
-<h3 id="transaction-query">Transaction Query<a class="headerlink" href="#transaction-query" title="Permanent link">&para;</a></h3>
-<p><code>ListExchanges</code>: Query the list of all the exchange pairs.</p>
-<p><code>GetPaginatedExchangeList</code>: Query the list of all the exchange pairs by pagination.</p>
-<p><code>GetExchangeById</code>: Query an exchange pair by exchange pair id.</p>
-<h3 id="price-calculation">Price Calculation<a class="headerlink" href="#price-calculation" title="Permanent link">&para;</a></h3>
-<p>The token price is determined by the ratio of the balance of the two tokens.</p>
-<h3 id="calculate-the-amount-of-token-you-can-get">Calculate the Amount of Token You Can Get<a class="headerlink" href="#calculate-the-amount-of-token-you-can-get" title="Permanent link">&para;</a></h3>
-<p><code>sellTokenQuant</code> is the amount of the <code>first_token</code> you want to sell.</p>
-<p><code>buyTokenQuant</code> is the amount of <code>second_token</code> you can get.</p>
-<div class="highlight"><pre><span></span><code><span class="n">supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000L</span>
-
-<span class="n">supplyQuant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">supply</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">sellTokenQuant</span><span class="o">/</span><span class="p">(</span><span class="n">firstTokenBalance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sellTokenQuant</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0005</span><span class="p">))</span>
-
-<span class="n">buyTokenQuant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">supplyQuant</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">supply</span><span class="p">,</span><span class="w"> </span><span class="mf">2000.0</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
+<h1 id="decentralized-exchange-dex">Decentralized Exchange (DEX)<a class="headerlink" href="#decentralized-exchange-dex" title="Permanent link">&para;</a></h1>
+<p>The TRON network natively supports <strong>Decentralized Exchanges (DEX)</strong>, with its core consisting of multiple trading pairs. This article introduces the basic concepts of trading pairs, creation methods, trading processes, funding and withdrawal mechanisms, and includes common query methods and price calculation methods.</p>
+<h2 id="what-is-a-trading-pair">What is a Trading Pair<a class="headerlink" href="#what-is-a-trading-pair" title="Permanent link">&para;</a></h2>
+<p>A trading pair (<code>Exchange</code>) represents a trading market between any two TRC-10 tokens, which can be:</p>
+<ul>
+<li>Between any two TRC-10 tokens.</li>
+<li>Between a TRC-10 token and TRX.</li>
+</ul>
+<p>Any account can create any combination of trading pairs, even if the same combination already exists on the network. All trading pairs on the TRON network follow the <strong>Bancor protocol</strong> for asset exchange, with the default weight of the two tokens being equal. Therefore, the balance ratio of the two tokens in the trading pair represents the current price.</p>
+<p><strong>Example:</strong><br />
+Suppose a trading pair contains two tokens, ABC and DEF:</p>
+<ul>
+<li>ABC balance is <code>10,000,000</code>.</li>
+<li>DEF balance is <code>1,000,000</code>.</li>
+</ul>
+<p>Then the current exchange rate is: 10 ABC = 1 DEF</p>
+<h2 id="creating-a-trading-pair">Creating a Trading Pair<a class="headerlink" href="#creating-a-trading-pair" title="Permanent link">&para;</a></h2>
+<p>Any account can initiate the creation of a trading pair. <strong>The fee for creating a trading pair is 1024 TRX, which will be burned.</strong>  </p>
+<p>When creating a trading pair, the initial balances of the two tokens must be provided, and upon successful creation, the system will automatically deduct the corresponding tokens from the initiator’s account.</p>
+<h3 id="contract-exchangecreatecontract">Contract: <code>ExchangeCreateContract</code><a class="headerlink" href="#contract-exchangecreatecontract" title="Permanent link">&para;</a></h3>
+<p>Parameters are as follows:</p>
+<ul>
+<li><code>first_token_id</code>: The ID of the first token.</li>
+<li><code>first_token_balance</code>: The initial balance of the first token.</li>
+<li><code>second_token_id</code>: The ID of the second token.</li>
+<li><code>second_token_balance</code>: The initial balance of the second token.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> If TRX is included, use <code>_</code> to represent it; the unit for TRX is <code>sun</code> (1 TRX = 1,000,000 sun).</p>
+</blockquote>
+<h3 id="example">Example:<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>ExchangeCreate abc 10000000 _ 1000000000000
 </code></pre></div>
+The above command creates a trading pair between <code>abc</code> and <code>TRX</code>, with an initial injection of 10,000,000 abc tokens (token precision 0-6) and 1,000,000,000,000 sun (i.e., 1,000,000 TRX). If the account balance is insufficient, the creation transaction will fail.</p>
+<h2 id="trading">Trading<a class="headerlink" href="#trading" title="Permanent link">&para;</a></h2>
+<p>All accounts can perform instant trades in any trading pair. Trading does not require order placement, and the price and quantity are calculated entirely based on the Bancor protocol.</p>
+<h3 id="contract-exchangetransactioncontract">Contract: <code>ExchangeTransactionContract</code><a class="headerlink" href="#contract-exchangetransactioncontract" title="Permanent link">&para;</a></h3>
+<p>Parameters are as follows:</p>
+<ul>
+<li><code>exchange_id</code>: The ID of the trading pair (the system assigns a unique ID based on creation time).</li>
+<li><code>token_id</code>: The ID of the token to be sold.</li>
+<li><code>quant</code>: The quantity to be sold.</li>
+<li><code>expected</code>: The minimum quantity of the other token expected to be received (if the actual amount received is less than this value, the transaction fails).</li>
+</ul>
+<h4 id="example_1">Example:<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h4>
+<p>Suppose the trading pair ID for <code>abc</code> and <code>TRX</code> is 1, with the current state:</p>
+<ul>
+<li>abc balance is 10,000,000.</li>
+<li>TRX balance is 1,000,000.</li>
+</ul>
+<p>If a user wishes to spend 100 TRX (100,000,000 sun) to buy at least 990 abc, they execute:
+<div class="highlight"><pre><span></span><code>ExchangeTransaction 1 _ 100000000 990
+</code></pre></div>
+Upon a successful transaction, the user's TRX balance will <strong>decrease</strong> and their abc balance will <strong>increase</strong>; the trading pair's TRX balance will <strong>increase</strong> and their abc balance will <strong>decrease</strong>.
+The actual amount of <code>abc</code> received by the user can be queried using the <code>gettransactioninfobyid</code> interface, checking the <code>exchange_received_amount</code> field.</p>
+<h2 id="adding-liquidity-funding">Adding Liquidity (Funding)<a class="headerlink" href="#adding-liquidity-funding" title="Permanent link">&para;</a></h2>
+<p>When the balance of one token in a trading pair is low, transactions may cause significant price fluctuations. At this point, <strong>the creator of the trading pair can choose to inject more assets</strong> to improve stability.</p>
+<blockquote>
+<p><strong>Funding Guidelines:</strong></p>
+<ul>
+<li>Only the trading pair creator can perform this action.</li>
+<li>No fees are required.</li>
+<li>The system calculates the required amount of the other token based on the current price ratio to maintain the price.</li>
+</ul>
+</blockquote>
+<h3 id="contract-exchangeinjectcontract">Contract: <code>ExchangeInjectContract</code><a class="headerlink" href="#contract-exchangeinjectcontract" title="Permanent link">&para;</a></h3>
+<p>Parameters are as follows:</p>
+<ul>
+<li><code>exchange_id</code>: The ID of the trading pair.</li>
+<li><code>token_id</code>: The ID of the token to be injected.</li>
+<li><code>quant</code>: The quantity of the token to be injected.</li>
+</ul>
+<h3 id="example_2">Example:<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h3>
+<p>Suppose the trading pair ID for <code>abc</code> and <code>TRX</code> is 1, with the current state:
+- <code>abc</code> balance is 10,000,000.
+- <code>TRX</code> balance is 1,000,000.</p>
+<p>If the creator wishes to increase <code>abc</code> by 10% (i.e., add 1,000,000 abc), they execute:</p>
+<p><div class="highlight"><pre><span></span><code>ExchangeInject 1 abc 1000000
+</code></pre></div>
+If successful, the trading pair will gain 1,000,000 abc and the corresponding proportion amount of 100,000 TRX, which will be deducted from the creator’s account.</p>
+<h2 id="withdrawing-liquidity-withdraw">Withdrawing Liquidity (Withdraw)<a class="headerlink" href="#withdrawing-liquidity-withdraw" title="Permanent link">&para;</a></h2>
+<p>The assets in a trading pair belong entirely to the creator. The creator can withdraw a portion of the assets from the trading pair at any time.</p>
+<blockquote>
+<p><strong>Withdrawal Rules:</strong>
+- Only the trading pair creator can perform this action.
+- No fees are required.
+- The system withdraws the other token in proportion to the current token ratio, ensuring the price remains unchanged but increasing price volatility.</p>
+</blockquote>
+<h3 id="contract-exchangewithdrawcontract">Contract: <code>ExchangeWithdrawContract</code><a class="headerlink" href="#contract-exchangewithdrawcontract" title="Permanent link">&para;</a></h3>
+<p>Parameters are as follows:</p>
+<ul>
+<li><code>exchange_id</code>: The ID of the trading pair.</li>
+<li><code>token_id</code>: The ID of the token to be withdrawn.</li>
+<li><code>quant</code>: The quantity of the token to be withdrawn.</li>
+</ul>
+<h3 id="example_3">Example:<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h3>
+<p>Suppose the trading pair ID for <code>abc</code> and <code>TRX</code> is 1, with the current state:
+- <code>abc</code> balance is 10,000,000.
+- <code>TRX</code> balance is 1,000,000.</p>
+<p>If the creator wishes to withdraw 10% of abc (i.e., reduce 1,000,000 abc), they execute:</p>
+<p><div class="highlight"><pre><span></span><code>ExchangeWithdraw 1 abc 1000000
+</code></pre></div>
+Upon successful transaction, the trading pair will lose 1,000,000 abc and the corresponding proportion of 100,000 TRX, which will be added to the creator’s account.</p>
+<h2 id="queries-and-calculations">Queries and Calculations<a class="headerlink" href="#queries-and-calculations" title="Permanent link">&para;</a></h2>
+<h3 id="querying-trading-pair-information">Querying Trading Pair Information<a class="headerlink" href="#querying-trading-pair-information" title="Permanent link">&para;</a></h3>
+<p>TRON provides multiple interfaces for querying trading pairs:</p>
+<p><strong>1. Query all trading pair information:</strong> <code>ListExchanges</code></p>
+<p><strong>2. Paginated query of trading pair list:</strong> <code>GetPaginatedExchangeList</code></p>
+<p><strong>3. Query details of a specific trading pair:</strong> <code>GetExchangeById</code></p>
+<p>For detailed API documentation, refer to <a href="https://tronprotocol.github.io/documentation-en/api/rpc/">RPC-API </a>.</p>
+<h3 id="price-calculation">Price Calculation<a class="headerlink" href="#price-calculation" title="Permanent link">&para;</a></h3>
+<p>Suppose in a trading pair:</p>
+<ul>
+<li><code>first_token_price = 100 sun</code>.</li>
+<li><code>first_token_balance = 1,000,000</code>.</li>
+<li><code>second_token_balance = 2,000,000</code>.</li>
+</ul>
+<p>Then the <code>second_token_price</code> is:</p>
+<div class="highlight"><pre><span></span><code>second_token_price = first_token_price * (first_token_balance / second_token_balance)
+                   = 100 * (1,000,000 / 2,000,000)
+                   = 50 sun
+</code></pre></div>
+<h3 id="exchange-quantity-calculation">Exchange Quantity Calculation<a class="headerlink" href="#exchange-quantity-calculation" title="Permanent link">&para;</a></h3>
+<p>Suppose <code>first_token</code> is used to exchange for <code>second_token</code>:</p>
+<ul>
+<li><code>sellTokenQuant</code>: The quantity of <code>first_token</code> to be sold.</li>
+<li><code>buyTokenQuant</code>: The quantity of <code>second_token</code> obtained through exchange.</li>
+<li><code>balance</code>: The current balance of <code>second_token</code> in the trading pair.</li>
+<li><code>supply</code>: A fixed constant of <code>10^18</code> used in the Bancor protocol formula.</li>
+</ul>
+<p>The calculation process is as follows:</p>
+<div class="highlight"><pre><span></span><code>supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant / (firstTokenBalance + sellTokenQuant), 0.0005));
+buyTokenQuant = (long)(balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0));
+</code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: Market prices may fluctuate in real-time due to other trading activities on the network.</p>
+</blockquote>
+<p>For more interface details, refer to: <a href="https://tronprotocol.github.io/documentation-en/api/http/">HTTP API Documentation</a>.</p>
 
 
 

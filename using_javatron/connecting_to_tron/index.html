@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#connect-to-tron-network" class="md-skip">
+        <a href="#connect-to-the-tron-network" class="md-skip">
           Skip to content
         </a>
       
@@ -452,9 +452,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -462,7 +474,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -545,6 +657,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item has-children">
+  <a href="#basic-network-configuration" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Basic Network Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Network Configuration" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#network-id" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Network ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#genesis-block" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Genesis Block
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
   <a href="#node-discovery" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       Node Discovery
@@ -555,9 +700,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#enable-and-disable" class="md-nav__link" >
+  <a href="#enable-node-discovery" class="md-nav__link" >
     <span class="md-ellipsis">
-      Enable and Disable
+      Enable Node Discovery
     </span>
   </a>
   
@@ -567,6 +712,33 @@
   <a href="#boot-nodes" class="md-nav__link" >
     <span class="md-ellipsis">
       Boot Nodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#seednode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      seed.node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#persistent-nodes-from-database" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Persistent Nodes from Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#disable-node-discovery" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Disable Node Discovery
     </span>
   </a>
   
@@ -597,18 +769,78 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#active-connection" class="md-nav__link" >
+  <a href="#active-connection-active-peers" class="md-nav__link" >
     <span class="md-ellipsis">
-      Active Connection
+      Active Connection (Active Peers)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#passive-connection" class="md-nav__link" >
+  <a href="#passive-connections" class="md-nav__link" >
     <span class="md-ellipsis">
-      Passive Connection
+      Passive Connections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#logs-and-node-status-verification" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Logs and Node Status Verification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logs and Node Status Verification" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#view-sync-logs" class="md-nav__link" >
+    <span class="md-ellipsis">
+      View Sync Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#example-sync-logs" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Example Sync Logs：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#example-block-production-logs-for-super-representatives" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Example Block Production Logs (for Super Representatives):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#check-node-status" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Check Node Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#verify-node-synchronization" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Verify Node Synchronization
     </span>
   </a>
   
@@ -620,29 +852,44 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#log-and-network-connection-verification" class="md-nav__link" >
+  <a href="#troubleshooting-common-connection-issues" class="md-nav__link" >
     <span class="md-ellipsis">
-      Log and network connection verification
+      Troubleshooting Common Connection Issues
     </span>
   </a>
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#connection-problems" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#connecting-to-a-private-network" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Connection problems
+      Connecting to a Private Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to a Private Network" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#key-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Key Configuration:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#connect-to-private-network" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#reference-guide" class="md-nav__link" >
     <span class="md-ellipsis">
-      Connect to private network
+      Reference Guide:
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1589,29 +1836,36 @@
   
 
 
-<h1 id="connect-to-tron-network">Connect to TRON network<a class="headerlink" href="#connect-to-tron-network" title="Permanent link">&para;</a></h1>
-<p>The TRON network is mainly divided into the Mainnet, Nile Testnet, Shasta Testnet and Private Network. Therefore, for the java-tron client, you can connect it to any TRON network by modifying the configuration items in the configuration file. Currently, among the testnets, the Shasta Testnet does not support node joining, while the Nile Testnet does.</p>
-<p>You need to set the following configuration items to connect java-tron to one of the TRON networks:</p>
+<h1 id="connect-to-the-tron-network">Connect to the TRON Network<a class="headerlink" href="#connect-to-the-tron-network" title="Permanent link">&para;</a></h1>
+<p>The TRON network is mainly divided into:</p>
 <ul>
-<li>
-<p>Network ID (<code>p2p.version</code>): Indicates the network you want to join. Relevant configuration item:
+<li><strong>Mainnet</strong></li>
+<li><strong>Nile Testnet</strong></li>
+<li><strong>Shasta Testnet</strong> (currently does not support node joining)</li>
+<li><strong>Private Network</strong></li>
+</ul>
+<p>This guide explains how to configure the java-tron client to connect to these networks, covering basic network configuration, node discovery, node connection, log and node status verification, and how to troubleshoot connection issues.</p>
+<h2 id="basic-network-configuration">Basic Network Configuration<a class="headerlink" href="#basic-network-configuration" title="Permanent link">&para;</a></h2>
+<p>You can connect a java-tron node to a specific network by modifying the following key items in the <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">config file</a>:</p>
+<h3 id="network-id">Network ID<a class="headerlink" href="#network-id" title="Permanent link">&para;</a></h3>
+<p>The P2P Network ID(<code>p2p.version</code>) specifies the network you want to join. Mainnet configuration:</p>
 <div class="highlight"><pre><span></span><code>node {
   ...
   p2p {
-    version = 11111
+    version = 11111        # Mainnet
   }
   ...
 }
 </code></pre></div>
-In particular:</p>
+<p>In particular:</p>
 <ul>
-<li>Mainnet: <code>version=11111</code></li>
-<li>Nile Testnet: <code>version = 201910292</code></li>
-<li>Private Network: Customize and set to other value</li>
+<li>Mainnet: version = <code>11111</code></li>
+<li>Nile Testnet: version = <code>201910292</code></li>
+<li>Shasta Testnet: version = <code>1</code></li>
+<li>Private Network: Custom value (set to a different ID)</li>
 </ul>
-</li>
-<li>
-<p>Genesis Block: The settings of the genesis block must be consistent with those of other nodes in the network; otherwise, the connection to other nodes cannot be established. Relevant configuration item:
+<h3 id="genesis-block">Genesis Block<a class="headerlink" href="#genesis-block" title="Permanent link">&para;</a></h3>
+<p>The <code>genesis.block</code> configuration must be consistent with other nodes in the target network, otherwise the node will not be able to connect to peers. Mainnet configuration:</p>
 <div class="highlight"><pre><span></span><code>genesis.block = {
   # Reserve balance
   assets = [
@@ -1634,7 +1888,6 @@ In particular:</p>
       balance = &quot;-9223372036854775808&quot;
     }
   ]
-
   witnesses = [
     {
       address: THKJYuUmMKKARNf7s2VT51g5uPY6KEqnat,
@@ -1772,103 +2025,67 @@ In particular:</p>
       voteCount = 100000000
     }
   ]
-
   timestamp = &quot;0&quot; #2017-8-26 12:00:00
-
   parentHash = &quot;0xe58f33f9baf9305dc6f82b9f1934ea8f0ade2defb951258d50167028c780351f&quot;
 }
-</code></pre></div></p>
-</li>
-</ul>
+</code></pre></div>
 <h2 id="node-discovery">Node Discovery<a class="headerlink" href="#node-discovery" title="Permanent link">&para;</a></h2>
-<h3 id="enable-and-disable">Enable and Disable<a class="headerlink" href="#enable-and-disable" title="Permanent link">&para;</a></h3>
-<p>Node discovery is enabled or disabled through the configuration file, and it is usually enabled. The relevant configuration item is as follows:</p>
+<h3 id="enable-node-discovery">Enable Node Discovery<a class="headerlink" href="#enable-node-discovery" title="Permanent link">&para;</a></h3>
+<p>Node discovery is enabled or disabled via the configuration file. It is enabled by default:</p>
 <div class="highlight"><pre><span></span><code>node.discovery = {
   ...
   enable = true
-  ...  
+  ...
 }
 </code></pre></div>
 <h3 id="boot-nodes">Boot Nodes<a class="headerlink" href="#boot-nodes" title="Permanent link">&para;</a></h3>
-<p>java-tron uses the <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> protocol to discover other nodes. Node discovery requires boot nodes, with the help of which other nodes in the TRON network can be discovered. Boot nodes consist of two parts: one part is seed nodes, and the other part is configured active connection nodes. For details, see <a href="#active-connection">Active Connection</a>.</p>
-<p>Seed nodes also consist of two parts:</p>
-<ul>
-<li>
-<p>Configured seed.node:
-<div class="highlight"><pre><span></span><code>seed.node = {
-  # List of the seed nodes
-  # Seed nodes are stable full nodes
-
+<p>Java-tron uses the <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> protocol to discover peers. Discovery requires boot nodes, which consist of seed nodes and actively configured peers, see <a href="#active-connection-active-peers">Active Connection (Active Peers)</a>. </p>
+<h3 id="seednode">seed.node<a class="headerlink" href="#seednode" title="Permanent link">&para;</a></h3>
+<p><code>seed.node</code> is used to initialize connections. It should point to online and stable Fullnode:</p>
+<p><div class="highlight"><pre><span></span><code>seed.node = {
   ip.list = [
     &quot;3.225.171.164:18888&quot;,
     &quot;52.8.46.215:18888&quot;,
-    &quot;3.79.71.167:18888&quot;,
-    &quot;108.128.110.16:18888&quot;,
-    &quot;18.133.82.227:18888&quot;,
-    &quot;35.180.81.133:18888&quot;,
-    &quot;13.210.151.5:18888&quot;,
-    &quot;18.231.27.82:18888&quot;,
-    &quot;3.12.212.122:18888&quot;,
-    &quot;52.24.128.7:18888&quot;,
-    &quot;15.207.144.3:18888&quot;,
-    &quot;3.39.38.55:18888&quot;,    
-    &quot;54.151.226.240:18888&quot;,
-    &quot;35.174.93.198:18888&quot;,
-    &quot;18.210.241.149:18888&quot;,
-    &quot;54.177.115.127:18888&quot;,
-    &quot;54.254.131.82:18888&quot;,
-    &quot;18.167.171.167:18888&quot;,
-    &quot;54.167.11.177:18888&quot;,
-    &quot;35.74.7.196:18888&quot;,
-    &quot;52.196.244.176:18888&quot;,
-    &quot;54.248.129.19:18888&quot;,
-    &quot;43.198.142.160:18888&quot;,
-    &quot;3.0.214.7:18888&quot;,
-    &quot;54.153.59.116:18888&quot;,
-    &quot;54.153.94.160:18888&quot;,
-    &quot;54.82.161.39:18888&quot;,
-    &quot;54.179.207.68:18888&quot;,
-    &quot;18.142.82.44:18888&quot;,
+    ...
     &quot;18.163.230.203:18888&quot;
     #&quot;[2a05:d014:1f2f:2600:1b15:921:d60b:4c60]:18888&quot;, // use this if support ipv6
     #&quot;[2600:1f18:7260:f400:8947:ebf3:78a0:282b]:18888&quot;, // use this if support ipv6
   ]
 }
 </code></pre></div>
-If the network card supports IPv6, you can use the seed nodes in the IPv6 address format in the above list by removing the comment symbol <code>#</code>.
-To obtain the latest seed.node, you can check the official <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">configuration file</a>.</p>
-</li>
-<li>
-<p>Persistent nodes read from the database. Persistent nodes require enabling the node persistence service. If this service is enabled, the nodes in the <a href="https://en.wikipedia.org/wiki/Kademlia#Fixed-size_routing_tables">routing table</a> will be written into the database by a scheduled task. When a node starts based on this database, it will read these nodes from the database and use them as seed nodes. Relevant configuration item:
-<div class="highlight"><pre><span></span><code>node.discovery = {
+For TRON Mainnet, you can use <a href="https://developers.tron.network/docs/networks#public-node">community public nodes</a> as seed nodes. To get the latest <code>seed.node</code> list, refer to the official <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config file</a>.
+If your network interface supports IPv6, you can remove the comment symbol <code>#</code> in the list.</p>
+<h3 id="persistent-nodes-from-database">Persistent Nodes from Database<a class="headerlink" href="#persistent-nodes-from-database" title="Permanent link">&para;</a></h3>
+<p>When persistence is enabled, nodes in the routing table are periodically written to the database and reused on restart:</p>
+<p><div class="highlight"><pre><span></span><code>node.discovery = {
   ...
   persist = true
-  ... 
+  ...
 }
-</code></pre></div></p>
-</li>
-</ul>
-<p>Node discovery is based on the UDP protocol, and the default bound port is 18888 (other ports can also be bound). Relevant configuration item:
+</code></pre></div>
+By default, node discovery uses the User Datagram Protocol (UDP) on port <code>18888</code>:</p>
 <div class="highlight"><pre><span></span><code>node {
   ...
   listen.port = 18888
   ...
 }
-</code></pre></div></p>
-<p>In some cases, node discovery does not need to be enabled (e.g., when running a local test node or deploying a test network with fixed nodes). At this time, you can disable node discovery by setting the configuration item to <code>node.discovery.enable = false</code>, or by closing the UDP 18888 port through the firewall.</p>
+</code></pre></div>
+<h3 id="disable-node-discovery">Disable Node Discovery<a class="headerlink" href="#disable-node-discovery" title="Permanent link">&para;</a></h3>
+<p>In some cases (e.g., local testing or a fixed private network), you may disable discovery by setting:<code>node.discovery.enable = false</code> or by blocking UDP port 18888 via firewall.</p>
 <h2 id="node-connection">Node Connection<a class="headerlink" href="#node-connection" title="Permanent link">&para;</a></h2>
 <h3 id="number-of-node-connections">Number of Node Connections<a class="headerlink" href="#number-of-node-connections" title="Permanent link">&para;</a></h3>
-<p><code>node.maxConnections</code> indicates the maximum number of connections between the current node and other nodes, with a default value of 30. Setting a larger value allows the node to establish more connections, which improves the efficiency of joining the network and the efficiency of broadcasting. However, it also requires higher bandwidth for maintaining connections and leads to greater performance consumption. Therefore, please set this value according to actual conditions.<br />
+<p><code>node.maxConnections</code>  defines the maximum number of peer connections (default: 30). Higher values improve network joining and broadcasting efficiency but require more bandwidth and resources: 
 <div class="highlight"><pre><span></span><code>node {
   ...
-  maxConnections = 30
+  maxConnections = 30           # max connections
   ...
 }
 </code></pre></div></p>
-<h3 id="active-connection">Active Connection<a class="headerlink" href="#active-connection" title="Permanent link">&para;</a></h3>
-<p>The target nodes for active connection come from three parts:</p>
+<h3 id="active-connection-active-peers">Active Connection (Active Peers)<a class="headerlink" href="#active-connection-active-peers" title="Permanent link">&para;</a></h3>
+<p>Active peers come from three sources:</p>
 <ul>
-<li>Configured active nodes (high priority): They do not depend on node discovery. Even if node discovery is not enabled, the current node will actively initiate connections to these nodes. Relevant configuration item:
+<li>Configured active peers (high priority). These connections are made regardless of discovery settings:</li>
+</ul>
 <div class="highlight"><pre><span></span><code>node {
   ...
   active = [
@@ -1879,24 +2096,26 @@ To obtain the latest seed.node, you can check the official <a href="https://gith
   ]
   ...
  }
-</code></pre></div></li>
-<li>Connectable nodes obtained through node discovery (medium priority)</li>
-<li>DNS nodes (low priority): These are backup nodes obtained from the DNS tree. They require configuring treeUrls and are used only when the first three sources are insufficient (they are generally not used). Relevant configuration item (usually not configured):
+</code></pre></div>
+<ul>
+<li>Peers discovered via node discovery (medium priority)</li>
+<li>DNS tree nodes (low priority). Rarely used, requires
+<code>treeUrls</code>：</li>
+</ul>
 <div class="highlight"><pre><span></span><code>dns {
-  ...
-  # dns urls to get nodes, url format tree://{pubkey}@{domain}, default empty
-  treeUrls = [
-    #&quot;tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net&quot;,
-  ]
-  ...
+...
+# dns urls to get nodes, url format tree://{pubkey}@{domain}, default empty
+treeUrls = [
+  #&quot;tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net&quot;,
+]
+...
 }
 </code></pre></div>
-Compared with the traditional static seed node list, the DNS tree mechanism has advantages such as dynamic node update and resistance to attacks in terms of P2P network bootstrapping.</li>
-</ul>
+<p>Compared with the traditional static seed node list, the DNS tree mechanism has advantages in P2P network bootstrapping, such as dynamic node updates and resistance to attacks.</p>
 <p>It can be seen that currently, the target nodes for active connection only come from two categories: one is the configured active nodes, and the other is the connectable nodes obtained through node discovery.</p>
-<h3 id="passive-connection">Passive Connection<a class="headerlink" href="#passive-connection" title="Permanent link">&para;</a></h3>
+<h3 id="passive-connections">Passive Connections<a class="headerlink" href="#passive-connections" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Nodes configured in <code>node.passive</code>. When these nodes actively initiate a connection to the current node, the current node will accept the connection unconditionally.</li>
+<li>The current node will always accept connection requests from nodes listed under <code>node.passive</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code>node {
   ...
@@ -1910,29 +2129,30 @@ Compared with the traditional static seed node list, the DNS tree mechanism has 
  }
 </code></pre></div>
 <ul>
-<li>Other nodes: While a node is discovering other nodes, it will also be discovered by other nodes, and these nodes may also actively initiate connections to the current node.</li>
+<li>Other nodes: While a node is discovering other nodes, it will also be discovered by other nodes, and these nodes may also initiate connections to the current node actively.</li>
 </ul>
-<p>Unlike node discovery (which is based on the UDP protocol), node connection is based on the TCP protocol. However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_topology.png" /></p>
-<h2 id="log-and-network-connection-verification">Log and network connection verification<a class="headerlink" href="#log-and-network-connection-verification" title="Permanent link">&para;</a></h2>
-<p>The java-tron node log is <code>/logs/tron.log</code> in the java-tron installation directory. Under the java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:</p>
-<div class="highlight"><pre><span></span><code>$ tail -f /logs/tron.log/
+<p>Unlike node discovery, which uses UDP, peer connections use Transmission Control Protocol (TCP) on the same port (18888 by default). However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_topology.png" /></p>
+<h2 id="logs-and-node-status-verification">Logs and Node Status Verification<a class="headerlink" href="#logs-and-node-status-verification" title="Permanent link">&para;</a></h2>
+<h3 id="view-sync-logs">View Sync Logs<a class="headerlink" href="#view-sync-logs" title="Permanent link">&para;</a></h3>
+<p>TRON node logs are stored in <code>logs/tron.log</code>：</p>
+<div class="highlight"><pre><span></span><code>$ tail -f logs/tron.log
 </code></pre></div>
-<p>You will see the below block synchronization logs if java-tron is running as expected. </p>
-<p><div class="highlight"><pre><span></span><code>15:41:48.033 INFO  [nioEventLoopGroup-6-2] [DB](Manager.java:1208) pushBlock block number:76, cost/txs:13/0 false
-15:41:48.033 INFO  [nioEventLoopGroup-6-2] [net](TronNetDelegate.java:255) Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
+<h3 id="example-sync-logs">Example Sync Logs：<a class="headerlink" href="#example-sync-logs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>pushBlock block number:76, cost/txs:13/0 false
+Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
 </code></pre></div>
-For the super representative's fullnode, you will see the following producing blocks log:</p>
-<p><div class="highlight"><pre><span></span><code>02:31:33.008 INFO  [DPosMiner] [DB](Manager.java:1383) Generate block 79336 begin
-02:31:33.059 INFO  [DPosMiner] [DB](SnapshotManager.java:315) flush cost:51, create checkpoint cost:49, refresh cost:2
-02:31:33.060 INFO  [DPosMiner] [DB](Manager.java:1492) Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponedCount: 0
+<h3 id="example-block-production-logs-for-super-representatives">Example Block Production Logs (for Super Representatives):<a class="headerlink" href="#example-block-production-logs-for-super-representatives" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Generate block 79336 begin
+Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponedCount: 0
 </code></pre></div>
-If no error messages are reported in the node logs, means everything is fine. You can also send an http request to check whether the node has been started, and to view the status of the node: including the node configuration information, the information about the machine where the node is located, the connection status of the node peers, etc.</p>
-<div class="highlight"><pre><span></span><code>$ curl http://127.0.0.1:16887/wallet/getnodeinfo
+<h3 id="check-node-status">Check Node Status<a class="headerlink" href="#check-node-status" title="Permanent link">&para;</a></h3>
+<p>Use the HTTP API:</p>
+<p><div class="highlight"><pre><span></span><code>$ curl http://127.0.0.1:16887/wallet/getnodeinfo
 </code></pre></div>
-<p>Returns：</p>
-<p><div class="highlight"><pre><span></span><code>{
-    &quot;activeConnectCount&quot;: 3,
+Example response：
+<div class="highlight"><pre><span></span><code>{
+  &quot;activeConnectCount&quot;: 3,
     &quot;beginSyncNum&quot;: 42518346,
     &quot;block&quot;: &quot;Num:42518365,ID:000000000288c75d1967232f1efe606ff90b9dd76660d7de8cc091849be6bf10&quot;,
     &quot;cheatWitnessInfoMap&quot;: {
@@ -1957,19 +2177,44 @@ If no error messages are reported in the node logs, means everything is fine. Yo
     &quot;solidityBlock&quot;: &quot;Num:42518347,ID:000000000288c74b723398aef104c585bad1c7cbade7793c5551466bd916feee&quot;,
     &quot;totalFlow&quot;: 8735314
 }
+</code></pre></div></p>
+<h3 id="verify-node-synchronization">Verify Node Synchronization<a class="headerlink" href="#verify-node-synchronization" title="Permanent link">&para;</a></h3>
+<p>Compare your local block height with <a href="https://tronscan.org/">TRONSCAN</a> ：
+<div class="highlight"><pre><span></span><code>curl http://127.0.0.1:16887/wallet/getnowblock
 </code></pre></div>
-In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of <code>/wallet/getnowblock</code> queried from the local java-tron node. If they are equal, it means that the synchronization status of the local node is normal.</p>
-<h2 id="connection-problems">Connection problems<a class="headerlink" href="#connection-problems" title="Permanent link">&para;</a></h2>
+If the heights match, synchronization is normal.</p>
+<h2 id="troubleshooting-common-connection-issues">Troubleshooting Common Connection Issues<a class="headerlink" href="#troubleshooting-common-connection-issues" title="Permanent link">&para;</a></h2>
 <p>There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:</p>
 <ul>
-<li>Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as <code>sudo ntpdate -s time.nist.gov</code>.</li>
-<li>Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring <a href="#active-and-passive-connections"><code>node.active</code></a> in the case of node discovery invalid.</li>
-<li>By configuring <a href="#active-and-passive-connections"><code>node.passive</code></a> to accept active connections from trusted nodes.</li>
-<li>The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.</li>
+<li>
+<p><strong>Local clock offset</strong></p>
+<p>Sync system time with:
+<div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>UDP blocked by firewall</strong></p>
+<p>Use <code>node.active</code> to specify fixed peers.</p>
+</li>
+<li>
+<p><strong>Not accepting inbound connections</strong></p>
+<p>Configure <code>node.passive</code> to accept connections from trusted peers.</p>
+</li>
+<li>
+<p><strong>Shasta Testnet unsupported</strong></p>
+<p>Use Nile Testnet instead.</p>
+</li>
 </ul>
-<h2 id="connect-to-private-network">Connect to private network<a class="headerlink" href="#connect-to-private-network" title="Permanent link">&para;</a></h2>
-<p>It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences. </p>
-<p>The private chain network needs to configure the configuration item <code>node.p2p.version</code> in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private chain configuration file</a> to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to <a href="../private_network/">Private Chain Network</a>.</p>
+<h2 id="connecting-to-a-private-network">Connecting to a Private Network<a class="headerlink" href="#connecting-to-a-private-network" title="Permanent link">&para;</a></h2>
+<p>Developers can deploy a private instance of the TRON network.</p>
+<h3 id="key-configuration">Key Configuration:<a class="headerlink" href="#key-configuration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use a custom <code>node.p2p.version</code> to avoid conflicts with existing public networks.</li>
+</ul>
+<h3 id="reference-guide">Reference Guide:<a class="headerlink" href="#reference-guide" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Please refer to <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network</a> for full instructions.</li>
+</ul>
 
 
 

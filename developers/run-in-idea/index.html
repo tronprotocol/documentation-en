@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configure-the-intellij-idea-ide" class="md-skip">
+        <a href="#intellij-idea-configuration-for-java-tron" class="md-skip">
           Skip to content
         </a>
       
@@ -450,9 +450,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -460,7 +472,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1085,38 +1197,161 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#configure-intelij-idea" class="md-nav__link" >
+  <a href="#prerequisites" class="md-nav__link" >
     <span class="md-ellipsis">
-      Configure InteliJ IDEA
+      Prerequisites
     </span>
   </a>
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#configure-the-code-style-check-plugin" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#configuring-the-intellij-idea-environment" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Configure the code style check plugin
+      Configuring the IntelliJ IDEA Environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring the IntelliJ IDEA Environment" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#step-1-install-the-lombok-plugin" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Step 1: Install the Lombok Plugin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#compile-java-tron" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#step-2-enable-annotation-processing" class="md-nav__link" >
     <span class="md-ellipsis">
-      Compile java-tron
+      Step 2: Enable Annotation Processing
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#run-and-debug" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#step-3-verify-and-unify-the-jdk-version" class="md-nav__link" >
     <span class="md-ellipsis">
-      Run and Debug
+      Step 3: Verify and Unify the JDK Version
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#getting-and-compiling-the-source-code" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Getting and Compiling the Source Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting and Compiling the Source Code" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#step-1-clone-the-source-code" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Step 1: Clone the Source Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#step-2-compile-java-tron" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Step 2: Compile java-tron
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#configuring-code-style-checks" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Configuring Code Style Checks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Code Style Checks" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#step-1-install-the-checkstyle-plugin" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Step 1: Install the Checkstyle Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#step-2-configure-checkstyle-rules" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Step 2: Configure Checkstyle Rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#running-and-debugging" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Running and Debugging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running and Debugging" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#step-1-create-a-working-directory" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Step 1: Create a Working Directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#step-2-configure-rundebug-options" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Step 2: Configure Run/Debug Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#step-3-start-the-node" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Step 3: Start the Node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1523,70 +1758,137 @@
   
 
 
-<h1 id="configure-the-intellij-idea-ide">Configure the IntelliJ IDEA IDE<a class="headerlink" href="#configure-the-intellij-idea-ide" title="Permanent link">&para;</a></h1>
-<p>For Java development, in order to reduce development difficulty and improve development efficiency, developers should first select and configure a Java integrated development environment, such as IntelliJ IDEA, NetBeans or Eclipse, etc. This article will take InteliJ IDEA as an example to introduce how to configure java-tron integration development environment.</p>
-<p>This article describes the configuration of the java-tron integrated development environment in InteliJ IDEA. java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported. Before configuring the InteliJ IDE development environment, please ensure the following prerequisites:</p>
+<h1 id="intellij-idea-configuration-for-java-tron">IntelliJ IDEA Configuration for java-tron<a class="headerlink" href="#intellij-idea-configuration-for-java-tron" title="Permanent link">&para;</a></h1>
+<p>To simplify the Java development process and improve efficiency, selecting and configuring an Integrated Development Environment (IDE) is a crucial first step. This guide uses IntelliJ IDEA as an example to explain how to set up and configure the java-tron development environment.</p>
+<p>java-tron nodes support deployment on <code>Linux</code> or <code>MacOS</code> operating systems. The JDK version requirements are as follows:</p>
 <ul>
-<li>Configure the development environment on <code>Linux</code> or <code>MacOS</code> operating system</li>
-<li><code>Oracle JDK 1.8</code>, <code>git</code>, <a href="https://www.jetbrains.com/idea/download/#section=mac">InteliJ IDEA</a> are installed </li>
+<li><strong>General Requirement</strong>: <strong>Oracle JDK 1.8</strong></li>
+<li><strong>For <code>v4.8.1</code> and later</strong>: Support is also provided for JDK 17 on the ARM architecture</li>
 </ul>
-<h2 id="configure-intelij-idea">Configure InteliJ IDEA<a class="headerlink" href="#configure-intelij-idea" title="Permanent link">&para;</a></h2>
-<p>The IntelliJ IDEA configuration steps are as follows:</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before you begin, please ensure your development environment meets the following requirements:</p>
 <ul>
-<li>
-<p>Install Lombok plugin</p>
-<p>Search for <code>lombok</code> in [IDEA]-&gt;[Preferences]-&gt;[Plugins] to install <code>Lombok</code> plugin, <code>Lombok</code> makes java-tron code more concise by adding annotations.</p>
-</li>
-<li>
-<p>Enable <code>Enable annotation processing</code> configuration item
-      <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_annotation.png" /></p>
-</li>
-<li>
-<p>Check the JDK version and make sure that <code>Oracle JDK 1.8</code> is used in IntelliJ IDEA
-      <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_JDK.png" /></p>
-</li>
-<li>
-<p>Download java-tron source code</p>
-<p>Clone the java-tron source code locally and switch to the <code>develop</code> branch.
-<div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
-$ git checkout -t origin/develop
-</code></pre></div></p>
-</li>
+<li>Operating System: <code>Linux</code> or <code>MacOS</code></li>
+<li>Oracle JDK 1.8 is installed</li>
+<li><code>git</code> is installed</li>
+<li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> is installed</li>
 </ul>
-<h2 id="configure-the-code-style-check-plugin">Configure the code style check plugin<a class="headerlink" href="#configure-the-code-style-check-plugin" title="Permanent link">&para;</a></h2>
-<p>The java-tron code style needs to meet the <code>Google check style</code> specification. In IDEA, you can use the <code>Checkstyle</code> plugin to check whether the code conforms to the <code>Google check style</code> specification. The installation and configuration process of the plugin is as follows:</p>
-<ul>
-<li>
-<p>Search for <code>checkstyle</code> in [IDEA]-&gt;[Preferences]-&gt;[Plugins] to install the plugin
-    <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkstyle.png" /></p>
-</li>
-<li>
-<p>Code style configuration</p>
-<p>First, download the <a href="https://github.com/tronprotocol/java-tron/blob/develop/config/checkstyle/checkStyleAll.xml">java-tron code style check configuration file</a>, then in the Checkstyle configuration page, click "+ ", choose to use the "checkStyleAll.xml" just downloaded, after adding that, you can see this file in the "Configuration Files" list, and finally click "Apply" to complete the configuration.
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkStyleAll.png" /></p>
-<p>After configuring the <code>Checkstyle</code> plugin, you can use <code>Checkstyle</code> to check the code. <code>Checkstyle</code> can check a module or the whole project, and can also check a single file. Select "Check Current File" in the right-click menu of the file editor, and Checkstyle will check the file. If a code problem is detected, you need to modify it according to the prompts. Code can only be submitted when there are no code problems.
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_stylecheck.png" /></p>
-</li>
-</ul>
-<h2 id="compile-java-tron">Compile java-tron<a class="headerlink" href="#compile-java-tron" title="Permanent link">&para;</a></h2>
-<p>You can use the terminal to compile java-tron with the following command in the java-tron project directory:</p>
-<p><div class="highlight"><pre><span></span><code>$ ./gradlew clean build
+<h2 id="configuring-the-intellij-idea-environment">Configuring the IntelliJ IDEA Environment<a class="headerlink" href="#configuring-the-intellij-idea-environment" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-install-the-lombok-plugin">Step 1: Install the Lombok Plugin<a class="headerlink" href="#step-1-install-the-lombok-plugin" title="Permanent link">&para;</a></h3>
+<p>Lombok simplifies Java code through annotations and is an essential plugin for java-tron development.</p>
+<ol>
+<li>Open IntelliJ IDEA and navigate to <code>Preferences</code> -&gt; <code>Plugins</code>.</li>
+<li>In the Marketplace tab, search for <code>Lombok</code>.</li>
+<li>Click "Install" and restart the IDE when prompted.</li>
+</ol>
+<h3 id="step-2-enable-annotation-processing">Step 2: Enable Annotation Processing<a class="headerlink" href="#step-2-enable-annotation-processing" title="Permanent link">&para;</a></h3>
+<p>To ensure Lombok's annotations work correctly, you must enable the annotation processor.</p>
+<ol>
+<li>Navigate to <code>Preferences</code> -&gt; <code>Build, Execution, Deployment</code> -&gt; <code>Compiler</code> -&gt; <code>Annotation Processors</code>.</li>
+<li>Select the <code>Enable annotation processing</code> checkbox.</li>
+<li>Click "Apply" to save the settings.</li>
+</ol>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_annotation.png" /></p>
+<h3 id="step-3-verify-and-unify-the-jdk-version">Step 3: Verify and Unify the JDK Version<a class="headerlink" href="#step-3-verify-and-unify-the-jdk-version" title="Permanent link">&para;</a></h3>
+<p>To ensure the project compiles and runs correctly, you must set the JDK version to Oracle JDK 1.8 in two key locations within IntelliJ IDEA.</p>
+<h4 id="1-configure-project-sdk">1. Configure Project SDK<a class="headerlink" href="#1-configure-project-sdk" title="Permanent link">&para;</a></h4>
+<p>This is the core JDK used for compiling the project's source code and performing syntax analysis.</p>
+<ol>
+<li>Navigate to <code>File</code> -&gt; <code>Project Structure</code> -&gt;, and select "Project" from the left panel.</li>
+<li>In the <code>Project SDK</code> dropdown menu, confirm that version <code>1.8</code> is selected.</li>
+</ol>
+<h4 id="2-configure-gradle-jvm">2. Configure Gradle JVM<a class="headerlink" href="#2-configure-gradle-jvm" title="Permanent link">&para;</a></h4>
+<p>This is the JDK used to execute Gradle build tasks (e.g., build, clean).</p>
+<ol>
+<li>Navigate to <code>Preferences</code> -&gt; <code>Build, Execution, Deployment</code> -&gt; <code>Build Tools</code> -&gt; <code>Gradle</code>.</li>
+<li>In the Gradle JVM dropdown menu on the right, ensure that the selected version is also <code>1.8</code>, consistent with the Project SDK.</li>
+</ol>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_JDK.png" /></p>
+<blockquote>
+<p><strong>Important Note</strong>: The <strong>Project SDK</strong> and <strong>Gradle JVM</strong> settings must match and both be set to Oracle JDK 1.8. Otherwise, you may encounter unexpected errors during the build process.</p>
+</blockquote>
+<h2 id="getting-and-compiling-the-source-code">Getting and Compiling the Source Code<a class="headerlink" href="#getting-and-compiling-the-source-code" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-clone-the-source-code">Step 1: Clone the Source Code<a class="headerlink" href="#step-1-clone-the-source-code" title="Permanent link">&para;</a></h3>
+<p>Clone the java-tron source code to your local machine and switch to the <code>develop</code> branch.</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/java-tron.git
+cd java-tron
+git checkout -t origin/develop
 </code></pre></div>
-The above compile command will execute all test cases, you can use <code>-x test</code> to skip the execution of test cases:
-<div class="highlight"><pre><span></span><code>$ ./gradlew clean build -x test
-</code></pre></div></p>
-<p>You can also compile java-tron in IDEA: Open the java-tron project in IDEA and click "Build" -&gt; "Build Project" to compile the project.</p>
-<h2 id="run-and-debug">Run and Debug<a class="headerlink" href="#run-and-debug" title="Permanent link">&para;</a></h2>
-<p>Before running java-tron, you need to create a working directory to store the database files and log files generated when the node is running.
-<div class="highlight"><pre><span></span><code>$ mkdir /Users/javatrondeploy
-</code></pre></div></p>
-<p>In the "Run/Debug Configurations" configuration panel, specify the JDK version running java-tron as <code>java 8</code>, and then configure the command parameters for running java-tron, for example, specify the node configuration file through the <code>-c</code> parameter as <code>config.conf</code>.</p>
-<p>"Working directory" is configured as the working directory of java-tron created earlier. When java-tron starts, it will look for the <code>config.conf</code> configuration file in this directory. Please make sure that <code>config.conf</code> has already been in this directory.</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_RunDebug.png" /></p>
-<p>After the setting, click the "Apply" button to complete the configuration. Then you can click "Run"-&gt;"Run FullNode" in IDEA to start the java-tron node or click "Run"-&gt;"Debug FullNode" to start the node in debug mode. After the node is started, java-tron logs are stored in the working directory.
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_runjavatron.png" /></p>
-<p>If you want to debug the java-tron code, you can set breakpoints in the java-tron code and start it in debug mode, so that you can trace the debug code line by line.
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_debug.png" /></p>
+<h3 id="step-2-compile-java-tron">Step 2: Compile java-tron<a class="headerlink" href="#step-2-compile-java-tron" title="Permanent link">&para;</a></h3>
+<p>You can compile the project in two ways:</p>
+<ul>
+<li>
+<p><strong>Compile using the terminal:</strong></p>
+<p>In the root directory of the <code>java-tron</code> project, execute the following Gradle command:</p>
+<p><div class="highlight"><pre><span></span><code># Perform a full build, including all test cases
+./gradlew clean build
+</code></pre></div>
+To speed up the compilation process by skipping unit tests, you can use the <code>-x test</code> argument:</p>
+<p><div class="highlight"><pre><span></span><code># Compile while skipping tests
+./gradlew clean build -x test
+</code></pre></div>
+  * <strong>Compile using the IntelliJ IDEA UI:</strong></p>
+<p>Open the <code>java-tron</code> project in IntelliJ IDEA, then click <code>Build</code> -&gt; <code>Build Project</code> in the top menu bar to compile the entire project.</p>
+</li>
+</ul>
+<h2 id="configuring-code-style-checks">Configuring Code Style Checks<a class="headerlink" href="#configuring-code-style-checks" title="Permanent link">&para;</a></h2>
+<p>java-tron adheres to the <code>Google checkstyle</code> code standard. By configuring the <code>Checkstyle</code> plugin in IDEA, you can check your code style in real-time to ensure the quality of your commits.</p>
+<h3 id="step-1-install-the-checkstyle-plugin">Step 1: Install the Checkstyle Plugin<a class="headerlink" href="#step-1-install-the-checkstyle-plugin" title="Permanent link">&para;</a></h3>
+<ol>
+<li>In IDEA, navigate to <code>Preferences</code> -&gt; <code>Plugins</code>。</li>
+<li>In the Marketplace, search for and install the <code>Checkstyle</code> plugin.</li>
+</ol>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkstyle.png" /></p>
+<h3 id="step-2-configure-checkstyle-rules">Step 2: Configure Checkstyle Rules<a class="headerlink" href="#step-2-configure-checkstyle-rules" title="Permanent link">&para;</a></h3>
+<ol>
+<li>First, locate the code style configuration file. You can use the local <code>config/checkstyle/checkStyleAll.xml</code> file within the project, or download it from the official <a href="https://github.com/tronprotocol/java-tron/blob/develop/config/checkstyle/checkStyleAll.xml">GitHub Repository</a>.</li>
+<li>In IDEA, navigate to <code>Preferences</code> -&gt; <code>Tools</code> -&gt; <code>Checkstyle</code> to open the configuration panel.</li>
+<li>In the <code>Configuration File</code> panel, click the <code>+</code> icon to add a new configuration.
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkStyleAll.png" /></li>
+<li>In the dialog that appears, set the  <code>Description</code> to <code>tron-checkstyle</code> and select the <code>checkStyleAll.xml</code> file you just obtained.</li>
+<li>Select the checkbox for the newly added <code>tron-checkstyle</code> rule and click "Apply" and "OK".</li>
+</ol>
+<p>Once configured, you can use the <code>Checkstyle</code> plugin to check your code style. It supports various scopes, allowing you to analyze the entire project, a single module, or the file you are currently editing. The most common operation is to check the current file:</p>
+<ol>
+<li>Right-click in the code editor.</li>
+<li>Select "Check Current File".</li>
+</ol>
+<p>If any code style issues are detected, <code>Checkstyle</code> will list them in a window at the bottom. Before committing your code, correct all reported issues according to the prompts to maintain codebase consistency.</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_stylecheck.png" /></p>
+<h2 id="running-and-debugging">Running and Debugging<a class="headerlink" href="#running-and-debugging" title="Permanent link">&para;</a></h2>
+<p><a id="rndstep1"></a></p>
+<h3 id="step-1-create-a-working-directory">Step 1: Create a Working Directory<a class="headerlink" href="#step-1-create-a-working-directory" title="Permanent link">&para;</a></h3>
+<p>Before running java-tron, you need to create a working directory to store the database and log files generated by the node at runtime.</p>
+<div class="highlight"><pre><span></span><code>mkdir /Users/javatrondeploy
+</code></pre></div>
+<blockquote>
+<p><strong>Important Note</strong>: java-tron will look for the <code>config.conf</code> file in this directory. Before starting the node, ensure you have placed the correct configuration file in this directory.</p>
+</blockquote>
+<h3 id="step-2-configure-rundebug-options">Step 2: Configure Run/Debug Options<a class="headerlink" href="#step-2-configure-rundebug-options" title="Permanent link">&para;</a></h3>
+<p>Next, create a new run configuration in IntelliJ IDEA to define how it launches the java-tron application.</p>
+<ol>
+<li>In the top-right corner of IDEA, click <code>Add Configuration...</code>.</li>
+<li>Click <code>+</code> -&gt; <code>Application</code> to create a new run configuration.</li>
+<li>Find and set the following options in order:<ul>
+<li><strong>Name:</strong> Give the configuration a name, e.g., <code>Fullnode</code>.</li>
+<li><strong>JDK</strong>: Ensure you select <code>java 8 1.8</code>.</li>
+<li><strong>Main Class:</strong> Set to <code>org.tron.program.FullNode</code>.</li>
+<li><strong>Program Arguments:</strong> Enter the node startup arguments. For example, use <code>-c config.conf</code> to specify the configuration file.</li>
+<li><strong>Working Directory:</strong> Set this to the directory you created in <a href="#rndstep1">Step 1</a>, e.g., <code>/Users/javatrondeploy</code>。
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_RunDebug.png" /></li>
+</ul>
+</li>
+<li>Click “Apply” to save the configuration.</li>
+</ol>
+<h3 id="step-3-start-the-node">Step 3: Start the Node<a class="headerlink" href="#step-3-start-the-node" title="Permanent link">&para;</a></h3>
+<p>Now you can start the java-tron node from within IDEA:</p>
+<ul>
+<li><strong>Run the node:</strong> Click <code>Run</code> -&gt; <code>Run 'FullNode'</code> in the top menu bar.
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_runjavatron.png" /></li>
+<li><strong>Debug the node:</strong> Set breakpoints in your code, then click <code>Run</code> -&gt; <code>Debug 'FullNode'</code>. The program will pause at the breakpoints, which allows you to perform step-by-step debugging.
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_debug.png" /></li>
+</ul>
+<p>After the node starts, relevant log files will be written to the <code>Working directory</code> you configured.</p>
 
 
 

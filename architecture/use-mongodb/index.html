@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/architecture/database/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/architecture/use-mongodb/">
       
       
-        <link rel="prev" href="../use-kafka/">
+        <link rel="prev" href="../use-native-queue/">
       
       
-        <link rel="next" href="../../using_javatron/connecting_to_tron/">
+        <link rel="next" href="../use-kafka/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Database Configuration - java-tron</title>
+        <title>MongoDB Event Subscription Plugin - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#database-configuration-guide" class="md-skip">
+        <a href="#tron-mongodb-plugin-deployment-and-usage" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Database Configuration
+              MongoDB Event Subscription Plugin
             
           </span>
         </div>
@@ -450,6 +450,8 @@
                 
   
   
+    
+  
   
   
     
@@ -458,11 +460,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
           <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
@@ -477,7 +479,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             Event Subscription
@@ -532,10 +534,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../use-mongodb/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -545,6 +568,230 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#recommended-system-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Recommended System Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#system-architecture-and-workflow" class="md-nav__link" >
+    <span class="md-ellipsis">
+      System Architecture and Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#deploying-the-event-subscription-plugin" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Deploying the Event Subscription Plugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying the Event Subscription Plugin" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#31-building-the-plugin" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3.1 Building the Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#32-configuring-the-fullnode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3.2 Configuring the FullNode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#installing-and-configuring-mongodb" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Installing and Configuring MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing and Configuring MongoDB" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#41-installing-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.1 Installing MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#42-setting-environment-variables" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.2 Setting Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#43-configuring-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.3 Configuring MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#44-starting-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.4 Starting MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#45-creating-admin-and-database-users" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.5 Creating Admin and Database Users
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#deploying-the-event-query-service" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Deploying the Event Query Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying the Event Query Service" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#51-downloading-the-source-code" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5.1 Downloading the Source Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#52-building-the-service" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5.2 Building the Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#53-starting-the-tron-event-query-service" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5.3 Starting the TRON Event Query Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#launch-and-verification" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Launch and Verification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch and Verification" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#61-starting-the-fullnode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      6.1 Starting the FullNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#62-verifying-plugin-load" class="md-nav__link" >
+    <span class="md-ellipsis">
+      6.2 Verifying Plugin Load
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#63-verifying-data-persistence-in-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      6.3 Verifying Data Persistence in MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#using-the-tron-event-query-service-api" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Using the TRON Event Query Service API
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -584,31 +831,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Database Configuration
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -618,110 +844,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item has-children">
-  <a href="#using-rocksdb" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      Using RocksDB
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Using RocksDB" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#1-configuring-rocksdb-as-the-storage-engine" class="md-nav__link" >
-    <span class="md-ellipsis">
-      1. Configuring RocksDB as the Storage Engine
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#2-rocksdb-optimization-parameters" class="md-nav__link" >
-    <span class="md-ellipsis">
-      2. RocksDB Optimization Parameters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#migrating-from-leveldb-to-rocksdb-on-x86-platforms" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      Migrating from LevelDB to RocksDB on x86 Platforms
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Migrating from LevelDB to RocksDB on x86 Platforms" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#1-data-conversion-steps" class="md-nav__link" >
-    <span class="md-ellipsis">
-      1. Data Conversion Steps
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#2-optional-parameter-descriptions" class="md-nav__link" >
-    <span class="md-ellipsis">
-      2. Optional Parameter Descriptions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#3-perform-conversion-after-stopping-the-node" class="md-nav__link" >
-    <span class="md-ellipsis">
-      3. Perform Conversion After Stopping the Node
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#about-leveldb" class="md-nav__link" >
-    <span class="md-ellipsis">
-      About LevelDB
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1683,77 +1805,245 @@
   
 
 
-<h1 id="database-configuration-guide">Database Configuration Guide<a class="headerlink" href="#database-configuration-guide" title="Permanent link">&para;</a></h1>
-<p>In the TRON Java implementation (<strong>java-tron</strong>), the node data storage engine offers two options: <strong>LevelDB</strong> and <strong>RocksDB</strong>. By default, <strong>LevelDB is used on x86 platforms, while RocksDB is used on ARM platforms</strong>. If LevelDB is manually configured on an ARM system, the system will print a warning and still enforce the use of RocksDB. Developers can flexibly choose the appropriate storage engine based on the platform environment, hardware conditions, and performance requirements.</p>
-<p>In comparison, <strong>RocksDB provides richer configuration parameters and generally offers higher storage efficiency</strong>. This article will introduce how to enable RocksDB and how to convert from LevelDB to RocksDB on x86 platforms.</p>
-<h2 id="using-rocksdb">Using RocksDB<a class="headerlink" href="#using-rocksdb" title="Permanent link">&para;</a></h2>
-<h3 id="1-configuring-rocksdb-as-the-storage-engine">1. Configuring RocksDB as the Storage Engine<a class="headerlink" href="#1-configuring-rocksdb-as-the-storage-engine" title="Permanent link">&para;</a></h3>
-<p>To enable RocksDB, set <code>storage.db.engine</code> to <code>"ROCKSDB"</code> in the configuration file:</p>
-<div class="highlight"><pre><span></span><code>storage {
-  # Storage engine for persisting data
-  db.engine = &quot;ROCKSDB&quot;
-  db.sync = false
-  db.directory = &quot;database&quot;
-  transHistory.switch = &quot;on&quot;
-}
-</code></pre></div>
-<h3 id="2-rocksdb-optimization-parameters">2. RocksDB Optimization Parameters<a class="headerlink" href="#2-rocksdb-optimization-parameters" title="Permanent link">&para;</a></h3>
-<p>RocksDB supports various tuning parameters that can be configured based on the performance of the node server. Below is an example of recommended parameters:
-<div class="highlight"><pre><span></span><code>dbSettings = {
-  levelNumber = 7
-  # compactThreads = 32
-  blocksize = 64                 # Unit: KB
-  maxBytesForLevelBase = 256     # Unit: MB
-  maxBytesForLevelMultiplier = 10
-  level0FileNumCompactionTrigger = 4
-  targetFileSizeBase = 256       # Unit: MB
-  targetFileSizeMultiplier = 1
-  maxOpenFiles= 5000
-}
-</code></pre></div></p>
-<h2 id="migrating-from-leveldb-to-rocksdb-on-x86-platforms">Migrating from LevelDB to RocksDB on x86 Platforms<a class="headerlink" href="#migrating-from-leveldb-to-rocksdb-on-x86-platforms" title="Permanent link">&para;</a></h2>
-<p>The data formats of LevelDB and RocksDB are not compatible, and direct switching of storage engines between nodes is not supported. To migrate from LevelDB to RocksDB, use the TRON Toolkit <code>Toolkit.jar</code>.</p>
-<h3 id="1-data-conversion-steps">1. Data Conversion Steps<a class="headerlink" href="#1-data-conversion-steps" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>cd java-tron                                   # Source root directory
-./gradlew build -xtest -xcheck                 # Compile the project
-java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
-</code></pre></div>
-<h3 id="2-optional-parameter-descriptions">2. Optional Parameter Descriptions<a class="headerlink" href="#2-optional-parameter-descriptions" title="Permanent link">&para;</a></h3>
-<p>If your node uses a custom data directory, you can include the following parameters when running the conversion script:</p>
+<h1 id="tron-mongodb-plugin-deployment-and-usage">TRON MongoDB Plugin: Deployment and Usage<a class="headerlink" href="#tron-mongodb-plugin-deployment-and-usage" title="Permanent link">&para;</a></h1>
+<p>This guide is designed to help developers quickly deploy and use the TRON MongoDB event subscription plugin to achieve real-time data capture, persistent storage, and querying of on-chain events. The document covers the entire process, including system environment configuration, plugin deployment, database installation, query service setup, and API usage.</p>
+<p>The main steps include:</p>
 <ul>
-<li><code>src_db_path</code>: LevelDB database path (default: <code>output-directory/database</code>)</li>
-<li><code>dst_db_path</code>: RocksDB database storage path (default: <code>output-directory-dst/database</code>)</li>
+<li><a href="#1">Checking System Configuration</a></li>
+<li><a href="#2">Understanding the System Architecture</a></li>
+<li><a href="#3">Deploying the Event Plugin</a></li>
+<li><a href="#4">Deploying the MongoDB</a></li>
+<li><a href="#5">Deploying the Event Query Service</a></li>
+<li><a href="#6">Starting and Verifing</a></li>
+<li><a href="#7">Using the TRON Event Query Service API</a></li>
 </ul>
-<p>For example, if the node is run as follows:
-<div class="highlight"><pre><span></span><code>nohup java -jar FullNode.jar -d your_database_dir &amp;
-</code></pre></div>
-Then use the following command for conversion:
-<div class="highlight"><pre><span></span><code>java -jar build/libs/Toolkit.jar db convert  your_database_dir/database output-directory-dst/database
-</code></pre></div></p>
-<h3 id="3-perform-conversion-after-stopping-the-node">3. Perform Conversion After Stopping the Node<a class="headerlink" href="#3-perform-conversion-after-stopping-the-node" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p><strong>The node must be stopped before performing the data conversion operation.</strong></p>
-</blockquote>
-<p>To minimize downtime, follow these steps:</p>
+<p><a id="1"></a></p>
+<h2 id="recommended-system-configuration">Recommended System Configuration<a class="headerlink" href="#recommended-system-configuration" title="Permanent link">&para;</a></h2>
+<p>To ensure the efficient and stable operation of your TRON node and event service, the following configuration is recommended:</p>
+<ul>
+<li><strong>CPU</strong>: 16 cores or more</li>
+<li><strong>RAM</strong>: 32 GB or higher</li>
+<li><strong>SSD</strong>: 2.5 TB or more</li>
+<li><strong>Operating System</strong>: Linux or macOS</li>
+</ul>
+<p><a id="2"></a></p>
+<h2 id="system-architecture-and-workflow">System Architecture and Workflow<a class="headerlink" href="#system-architecture-and-workflow" title="Permanent link">&para;</a></h2>
+<p>The TRON MongoDB event subscription system consists of three core modules:</p>
 <ol>
-<li>Stop the node;</li>
-<li>Copy the original LevelDB data directory to a new directory;</li>
-<li>Restart the node (continuing to use the original directory);</li>
-<li>Perform the data conversion in the new directory.</li>
+<li><strong>Event Subscription Plugin</strong>: Connects to a TRON node to capture event data and writes it to MongoDB.</li>
+<li><strong>MongoDB Database</strong>: The persistence layer for storing event data.</li>
+<li><strong>Event Query Service</strong>: Provides an HTTP API for external applications to query event data.</li>
 </ol>
-<p>Example commands:
-<div class="highlight"><pre><span></span><code>java -jar build/libs/Toolkit.jar db cp output-directory/database /tmp/output-directory/database
-cd /tmp
-java -jar build/libs/Toolkit.jar db convert output-directory/database output-directory-dst/database
-</code></pre></div></p>
-<blockquote>
-<p>Note:
-The entire data conversion process is expected to take approximately <strong>10 hours</strong>, depending on the data volume and disk performance.</p>
-</blockquote>
-<h2 id="about-leveldb">About LevelDB<a class="headerlink" href="#about-leveldb" title="Permanent link">&para;</a></h2>
-<p>LevelDB is the default data storage engine for java-tron on x86 platforms, suitable for resource-constrained or lightweight deployment scenarios. It has a simple structure and is easy to maintain, but it is less efficient than RocksDB in terms of data compression, backup capabilities, and performance for large-scale nodes.</p>
-<p>For a detailed comparison between the two, refer to the documentation:
-📘 <a href="https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md">RocksDB vs. LevelDB Comparison</a></p>
+<p><a id="3"></a></p>
+<h2 id="deploying-the-event-subscription-plugin">Deploying the Event Subscription Plugin<a class="headerlink" href="#deploying-the-event-subscription-plugin" title="Permanent link">&para;</a></h2>
+<h3 id="31-building-the-plugin">3.1 Building the Plugin<a class="headerlink" href="#31-building-the-plugin" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/event-plugin.git
+cd event-plugin
+./gradlew build
+</code></pre></div>
+<p>After the build is complete, the generated plugin file will be located at:</p>
+<div class="highlight"><pre><span></span><code>event-plugin/build/plugins/plugin-mongodb-*.zip
+</code></pre></div>
+<h3 id="32-configuring-the-fullnode">3.2 Configuring the FullNode<a class="headerlink" href="#32-configuring-the-fullnode" title="Permanent link">&para;</a></h3>
+<p>Add the following content to your FullNode's configuration file, <code>config.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">event</span><span class="p">.</span><span class="nx">subscribe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">startSyncBlockNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="w">  </span>
+
+<span class="w">  </span><span class="kr">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">useNativeQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;127.0.0.1:27017&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">dbconfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eventlog|tron|123456&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">topics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">solidified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span>
+<span class="w">      </span><span class="nx">solidified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">ethCompatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractevent&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractevent&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractlog&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractlog&quot;</span>
+<span class="w">      </span><span class="nx">redundancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidity&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidity&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidityevent&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidityevent&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;soliditylog&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;soliditylog&quot;</span>
+<span class="w">      </span><span class="nx">redundancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+
+<span class="w">  </span><span class="nx">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fromblock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">toblock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">contractAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="nx">contractTopic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Field Descriptions</strong>:</p>
+<ul>
+<li><code>version</code>: The version of the event service framework. <code>1</code> indicates V2.0, while <code>0</code> indicates V1.0. If not configured, it defaults to V1.0.</li>
+<li><code>startSyncBlockNum</code>: A feature introduced in V2.0 that allows processing and pushing events from historical blocks, satisfying the need for historical data subscriptions. If <code>startSyncBlockNum &lt;= 0</code>, this feature is disabled. If <code>startSyncBlockNum &gt; 0</code>, the feature is enabled, and historical event synchronization will begin from the specified block height. <strong>Note</strong>: It is recommended to use the latest version of the event plugin when enabling this feature.</li>
+<li><code>native.useNativeQueue</code>: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. <code>true</code> uses the built-in queue, while <code>false</code> uses the plugin. This must be set to <code>false</code>.</li>
+<li><code>path</code>: The absolute path to the plugin file, e.g., <code>"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"</code>.</li>
+<li><code>server</code>: The target server address, i.e., the address and port for MongoDB, e.g., <code>"127.0.0.1:27017"</code>.</li>
+<li><code>dbconfig</code>: The MongoDB database configuration in the format: <code>database_name|username|password</code>, e.g., <code>"eventlog|tron|123456"</code>.</li>
+<li><code>topics</code>: Seven event types are currently supported: <code>block</code>, <code>transaction</code>, <code>contractevent</code>, <code>contractlog</code>, <code>solidity</code>, <code>solidityevent</code>, and <code>soliditylog</code>. For more details, please refer to the <a href="../event/#event-types">Event Types</a> chapter.<ul>
+<li><code>triggerName</code>: The name of the trigger, which cannot be modified.</li>
+<li><code>enable</code>: Toggles the event subscription. <code>true</code> enables it, <code>false</code> disables it.</li>
+<li><code>topic</code>: The name of the collection in MongoDB that will receive the events. This can be modified.</li>
+</ul>
+</li>
+<li><code>filter</code>: The criteria for filtering events.<ul>
+<li><code>fromblock</code>: The starting block number of the query range. Can be <code>""</code>, <code>"earliest"</code> (to query from the genesis block), or a specific block number.</li>
+<li><code>toblock</code>: The ending block number of the query range. Can be <code>""</code>, <code>"latest"</code> (the most recent block), or a specific block number.</li>
+<li><code>contractAddress</code>: A list of contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.</li>
+<li><code>contractTopic</code>: A list of contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.</li>
+</ul>
+</li>
+</ul>
+<p><a id="4"></a></p>
+<h2 id="installing-and-configuring-mongodb">Installing and Configuring MongoDB<a class="headerlink" href="#installing-and-configuring-mongodb" title="Permanent link">&para;</a></h2>
+<p>MongoDB will be used to store TRON event data. Please follow these steps to install and configure it:</p>
+<h3 id="41-installing-mongodb">4.1 Installing MongoDB<a class="headerlink" href="#41-installing-mongodb" title="Permanent link">&para;</a></h3>
+<p>First, create an installation directory for MongoDB, then download and extract the installation package:</p>
+<div class="highlight"><pre><span></span><code>mkdir /home/java-tron
+cd /home/java-tron
+curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
+tar zxvf mongodb-linux-x86_64-4.0.4.tgz
+mv mongodb-linux-x86_64-4.0.4 mongodb
+</code></pre></div>
+<h3 id="42-setting-environment-variables">4.2 Setting Environment Variables<a class="headerlink" href="#42-setting-environment-variables" title="Permanent link">&para;</a></h3>
+<p>To simplify subsequent operations, please set the environment variables for MongoDB:</p>
+<div class="highlight"><pre><span></span><code>export MONGOPATH=/home/java-tron/mongodb/
+export PATH=$PATH:$MONGOPATH/bin
+</code></pre></div>
+<h3 id="43-configuring-mongodb">4.3 Configuring MongoDB<a class="headerlink" href="#43-configuring-mongodb" title="Permanent link">&para;</a></h3>
+<p>Create the log and data directories for MongoDB and create the configuration file <code>mgdb.conf</code>:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p /home/java-tron/mongodb/{log,data}
+cd /home/java-tron/mongodb/log/ &amp;&amp; touch mongodb.log &amp;&amp; cd -
+vim /home/java-tron/mongodb/mgdb.conf
+</code></pre></div>
+<p>Write the following content into the <code>mgdb.conf</code> file. Ensure that <code>dbpath</code> and <code>logpath</code> use absolute paths:</p>
+<div class="highlight"><pre><span></span><code>dbpath=/home/java-tron/mongodb/data
+logpath=/home/java-tron/mongodb/log/mongodb.log
+port=27017
+logappend=true
+fork=true
+bind_ip=0.0.0.0
+auth=true
+wiredTigerCacheSizeGB=2
+</code></pre></div>
+<p><strong>Important Configuration Notes</strong>:</p>
+<ul>
+<li><code>bind_ip=0.0.0.0</code>: Must be configured to <code>0.0.0.0</code>; otherwise, remote connections will be rejected.</li>
+<li><code>wiredTigerCacheSizeGB</code>: This parameter must be configured to prevent Out Of Memory (OOM) issues.</li>
+</ul>
+<h3 id="44-starting-mongodb">4.4 Starting MongoDB<a class="headerlink" href="#44-starting-mongodb" title="Permanent link">&para;</a></h3>
+<p>Start the MongoDB service using the configuration file:</p>
+<div class="highlight"><pre><span></span><code>mongod --config /home/java-tron/mongodb/mgdb.conf &amp;
+</code></pre></div>
+<h3 id="45-creating-admin-and-database-users">4.5 Creating Admin and Database Users<a class="headerlink" href="#45-creating-admin-and-database-users" title="Permanent link">&para;</a></h3>
+<p>Connect to MongoDB to create an administrative user, then create the database and user for the event subscription service:</p>
+<div class="highlight"><pre><span></span><code>mongo
+use admin
+db.createUser({user:&quot;&lt;admin-username&gt;&quot;,pwd:&quot;&lt;admin-password&gt;&quot;,roles:[{role:&quot;root&quot;,db:&quot;admin&quot;}]})
+
+db.auth(&quot;&lt;admin-username&gt;&quot;, &quot;&lt;admin-password&gt;&quot;)
+use eventlog
+db.createUser({user:&quot;&lt;eventlog-username&gt;&quot;,pwd:&quot;&lt;eventlog-password&gt;&quot;,roles:[{role:&quot;dbOwner&quot;,db:&quot;eventlog&quot;}]})
+</code></pre></div>
+<p><a id="5"></a></p>
+<h2 id="deploying-the-event-query-service">Deploying the Event Query Service<a class="headerlink" href="#deploying-the-event-query-service" title="Permanent link">&para;</a></h2>
+<p>The Event Query Service provides an HTTP interface for querying event data stored in MongoDB. This service requires a Java environment.</p>
+<p><strong>Note</strong>: Please ensure you are using <strong>Oracle JDK 8</strong>, not Open JDK 8.</p>
+<h3 id="51-downloading-the-source-code">5.1 Downloading the Source Code<a class="headerlink" href="#51-downloading-the-source-code" title="Permanent link">&para;</a></h3>
+<p>Clone the <code>tron-eventquery</code> project source code:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/tron-eventquery.git
+cd tron-eventquery
+</code></pre></div>
+<h3 id="52-building-the-service">5.2 Building the Service<a class="headerlink" href="#52-building-the-service" title="Permanent link">&para;</a></h3>
+<p>Download and use Maven to build the <code>tron-eventquery</code> service:</p>
+<div class="highlight"><pre><span></span><code>wget https://mirrors.cnnic.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
+tar zxvf apache-maven-3.5.4-bin.tar.gz
+export M2_HOME=$HOME/maven/apache-maven-3.5.4
+export PATH=$PATH:$M2_HOME/bin
+mvn --version
+mvn package
+</code></pre></div>
+<p>Upon successful execution, a JAR package will be generated in the <code>tron-eventquery/target</code> directory, and a <code>config.conf</code> file will be created in the <code>tron-eventquery/</code> directory. An example of the configuration file content is shown below:</p>
+<div class="highlight"><pre><span></span><code>mongo.host=IP
+mongo.port=27017
+mongo.dbname=eventlog
+mongo.username=tron
+mongo.password=123456
+mongo.connectionsPerHost=8
+mongo.threadsAllowedToBlockForConnectionMultiplier=4
+</code></pre></div>
+<p>Please modify <code>mongo.host</code>, <code>mongo.port</code>, <code>mongo.dbname</code>, <code>mongo.username</code>, and <code>mongo.password</code> according to your MongoDB configuration.</p>
+<h3 id="53-starting-the-tron-event-query-service">5.3 Starting the TRON Event Query Service<a class="headerlink" href="#53-starting-the-tron-event-query-service" title="Permanent link">&para;</a></h3>
+<p>Start the <code>tron-eventquery</code> service and insert the indexes:</p>
+<div class="highlight"><pre><span></span><code>sh deploy.sh
+sh insertIndex.sh
+</code></pre></div>
+<p><strong>Note</strong>: The default port is <code>8080</code>. To change it, edit the <code>deploy.sh</code> script. For example:</p>
+<div class="highlight"><pre><span></span><code>nohup java -jar -Dserver.port=8081 target/troneventquery-1.0.0-SNAPSHOT.jar 2&gt;&amp;1 &amp;
+</code></pre></div>
+<p><a id="6"></a></p>
+<h2 id="launch-and-verification">Launch and Verification<a class="headerlink" href="#launch-and-verification" title="Permanent link">&para;</a></h2>
+<p>After completing the deployment steps, you can start the TRON FullNode and verify that the event subscription service is working correctly.</p>
+<h3 id="61-starting-the-fullnode">6.1 Starting the FullNode<a class="headerlink" href="#61-starting-the-fullnode" title="Permanent link">&para;</a></h3>
+<p><strong>Important</strong>: Before starting the FullNode, ensure that the MongoDB service has been started successfully.</p>
+<p>The command to start the FullNode is as follows:</p>
+<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+</code></pre></div>
+<p>For information on installing a FullNode, please refer to the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/">Deploying a FullNode</a> documentation.</p>
+<h3 id="62-verifying-plugin-load">6.2 Verifying Plugin Load<a class="headerlink" href="#62-verifying-plugin-load" title="Permanent link">&para;</a></h3>
+<p>You can verify that the event plugin has loaded successfully by checking the FullNode logs:</p>
+<div class="highlight"><pre><span></span><code>tail -f logs/tron.log | grep -i eventplugin
+</code></pre></div>
+<p>If you see a message similar to the following, the plugin has loaded successfully:</p>
+<div class="highlight"><pre><span></span><code>o.t.c.l.EventPluginLoader &#39;your plugin path/plugin-kafka-1.0.0.zip&#39; loaded
+</code></pre></div>
+<h3 id="63-verifying-data-persistence-in-mongodb">6.3 Verifying Data Persistence in MongoDB<a class="headerlink" href="#63-verifying-data-persistence-in-mongodb" title="Permanent link">&para;</a></h3>
+<p>Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:</p>
+<div class="highlight"><pre><span></span><code>mongo 47.90.245.68:27017
+use eventlog
+db.auth(&quot;tron&quot;, &quot;123456&quot;)
+show collections
+db.block.find()
+</code></pre></div>
+<p>If data is returned, it means the data has been stored successfully. Otherwise, please review the FullNode logs to troubleshoot the issue.</p>
+<p><a id="7"></a></p>
+<h2 id="using-the-tron-event-query-service-api">Using the TRON Event Query Service API<a class="headerlink" href="#using-the-tron-event-query-service-api" title="Permanent link">&para;</a></h2>
+<p>The TRON Event Query Service provides a series of HTTP API endpoints for querying event data stored in MongoDB. For details on the specific APIs and their usage, please refer to the <a href="https://github.com/tronprotocol/tron-eventquery?tab=readme-ov-file#main-http-service">Event Query Service HTTP API documentation</a>.</p>
 
 
 
@@ -1774,7 +2064,7 @@ The entire data conversion process is expected to take approximately <strong>10 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../use-kafka/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kafka Event Subscription Plugin">
+          <a href="../use-native-queue/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Built-in Message Queue Subscription">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1784,20 +2074,20 @@ The entire data conversion process is expected to take approximately <strong>10 
                 Previous
               </span>
               <div class="md-ellipsis">
-                Kafka Event Subscription Plugin
+                Built-in Message Queue Subscription
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../using_javatron/connecting_to_tron/" class="md-footer__link md-footer__link--next" aria-label="Next: Network Connection">
+          <a href="../use-kafka/" class="md-footer__link md-footer__link--next" aria-label="Next: Kafka Event Subscription Plugin">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Network Connection
+                Kafka Event Subscription Plugin
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -450,9 +450,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -460,7 +472,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -997,20 +1109,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#key-branches" class="md-nav__link" >
+  <a href="#contribution-process-overview" class="md-nav__link" >
     <span class="md-ellipsis">
-      Key Branches
+      Contribution Process Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item ">
-  <a href="#submitting-code" class="md-nav__link" >
+  <a href="#submission-rules" class="md-nav__link" >
     <span class="md-ellipsis">
-      Submitting Code
+      Submission Rules
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#branch-management" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Branch Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#code-submission-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Code Submission Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Submission Process" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-fork-and-clone-the-repository" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. Fork and Clone the Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2-sync-upstream-code" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. Sync Upstream Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3-create-a-development-branch" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3. Create a Development Branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#4-commit-changes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4. Commit Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#5-push-the-branch" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5. Push the Branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#6-create-a-pull-request" class="md-nav__link" >
+    <span class="md-ellipsis">
+      6. Create a Pull Request
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1025,54 +1215,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#the-process" class="md-nav__link" >
+  <a href="#review-process" class="md-nav__link" >
     <span class="md-ellipsis">
-      The Process
+      Review Process
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#functional-checks" class="md-nav__link" >
+  <a href="#feature-validation" class="md-nav__link" >
     <span class="md-ellipsis">
-      Functional Checks
+      Feature Validation
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#code-style" class="md-nav__link" >
+  <a href="#code-specification-requirements" class="md-nav__link" >
     <span class="md-ellipsis">
-      Code Style
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#branch-naming-conventions" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Branch Naming Conventions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#pull-request-guidelines" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Pull Request Guidelines
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#special-situations-and-how-to-deal-with-them" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Special Situations And How To Deal With Them
+      Code Specification Requirements
     </span>
   </a>
   
@@ -1080,6 +1243,66 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#branch-naming-conventions" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Branch Naming Conventions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#pull-request-specifications" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Pull Request Specifications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#commit-message-specifications" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Commit Message Specifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commit Message Specifications" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#commit-types" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Commit Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#subject-specifications" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Subject Specifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#handling-special-cases" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Handling Special Cases
+    </span>
+  </a>
   
 </li>
       
@@ -1584,182 +1807,213 @@
 
 
 <h1 id="developer-guide">Developer Guide<a class="headerlink" href="#developer-guide" title="Permanent link">&para;</a></h1>
-<p>Thank you for considering to help out with the source code! We welcome contributions from anyone, and are grateful for even the smallest of fixes!</p>
-<p>GitHub is used to track issues and contribute code, suggestions, feature requests or documentation. If you want to participate in java-tron development, please follow the Github code submission process as follows:</p>
+<p>Thank you for contributing to the development of java-tron source code!</p>
+<p>Whether it's a small fix or a significant feature improvement, we greatly appreciate your contributions.</p>
+<p>On GitHub, you can:</p>
 <ul>
-<li>Fork java-tron repository</li>
-<li>Fix the code</li>
-<li>Commit the code</li>
-<li>Send a pull request</li>
-<li>The maintainers review and merge into the main code base</li>
+<li>Track issues</li>
+<li>Contribute code</li>
+<li>Suggest improvements</li>
+<li>Request new features</li>
+<li>Collaborate on maintaining documentation</li>
 </ul>
-<p>For small fixes, you can send a pull request (PR) directly, but make sure the PR includes a detailed description. For more complex changes, you need to submit an issue to the <a href="https://github.com/tronprotocol/tips">TIP repository</a> detailing your motivations, implementation plans, etc. For how to submit a TIP issue, please refer to <a href="../tips/">TIP Specification</a>.</p>
-<p>We encourage java-tron developers to submit PRs as soon as possible. Even if they are not fully developed, you can submit a PR first, so that other developers can know that the TIP Issue corresponding to this PR is in the state of <code>In Progress</code>.</p>
-<p>Developers should develop and submit a PR based on the <code>develop</code> branch, reviewers will review the PR according to <a href="#code-review-guidelines">Code Review Guidelines</a>.</p>
-<h2 id="key-branches">Key Branches<a class="headerlink" href="#key-branches" title="Permanent link">&para;</a></h2>
-<p>java-tron only has <code>master</code>, <code>develop</code>, <code>release-*</code>, <code>feature-*</code>, and <code>hotfix-*</code> branches, which are described below:</p>
+<p>If you plan to contribute to java-tron development, please follow the process below.</p>
+<h2 id="contribution-process-overview">Contribution Process Overview<a class="headerlink" href="#contribution-process-overview" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Fork the Repository</strong>
+    Fork the <a href="https://github.com/tronprotocol/java-tron">java-tron repository</a> to your personal account.</li>
+<li><strong>Modify Code</strong>
+    Create a new branch based on the standard and start development.</li>
+<li><strong>Submit Changes</strong>
+    Commit your changes with clear commit messages.</li>
+<li><strong>Create a Pull Request (PR)</strong>
+    Push your changes to your forked repository and submit a PR to the official repository.</li>
+<li><strong>Code Review and Merge</strong>
+    Maintainers will review your PR based on the <a href="#code-review-guidelines">Code Review Guidelines</a> and merge it into the main branch if it meets the requirements.</li>
+</ol>
+<h2 id="submission-rules">Submission Rules<a class="headerlink" href="#submission-rules" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p><code>develop</code> branch</p>
-<p>The <code>develop</code> branch only accepts merge requests from other forked branches or<code>release_*</code> branches. It is not allowed to directly push changes to the <code>develop</code> branch. A <code>release_*</code> branch has to be pulled from the develop branch when a new build is to be released.</p>
+<li><strong>Minor Fixes</strong>
+    You can directly submit a PR, but ensure it includes a complete description.</li>
+<li><strong>Complex Changes</strong>
+    Please first submit an Issue in the <a href="https://github.com/tronprotocol/tips">TIP repository</a>, detailing the motivation and implementation plan.
+Refer to the <a href="../tips/">TIP Specification</a>.</li>
+<li><strong>Early PR Submission</strong>
+    We encourage developers to submit PRs early, even if the feature is not yet complete. This allows other developers to know that the related TIP Issue has entered the <em>In Progress</em> state.</li>
+<li><strong>Development Branch</strong>
+    All development should be based on the <code>develop</code> branch, followed by a PR submission.</li>
+</ul>
+<h2 id="branch-management">Branch Management<a class="headerlink" href="#branch-management" title="Permanent link">&para;</a></h2>
+<p>The <code>java-tron</code> repository includes the following main branch types:</p>
+<ul>
+<li><strong><code>develop</code> Branch</strong><ul>
+<li>Used for daily development</li>
+<li>Only allows merging from forked branches and <code>release-*</code> branches</li>
+<li>When preparing a new release, a <code>release-*</code> branch is created from this branch</li>
+</ul>
 </li>
-<li>
-<p><code>master</code> branch</p>
-<p><code>release_*</code> branches and <code>hotfix/*</code> branches should only be merged into the <code>master</code> branch when a new build is released.</p>
+<li><strong><code>master</code> Branch</strong><ul>
+<li>Used only for releases</li>
+<li>Only merges from <code>release-*</code> and <code>hotfix-*</code> branches</li>
+</ul>
 </li>
-<li>
-<p><code>release</code> branch</p>
-<p><code>release_*</code> is a branch pulled from the <code>develop</code> branch for release. It should be merged into <code>master</code> after a regression test and will be permanently kept in the repository. If a bug is identified in a <code>release_*</code> branch, its fixes should be directly merged into the <code>release_*</code> branch. After the fixes passing the regression test, the <code>release_*</code> branch should be merged back into the <code>develop</code> branch. Essentially, a <code>release_*</code> branch serves as a snapshot for each release.</p>
+<li><strong><code>release-*</code> Branch</strong><ul>
+<li>Created from <code>develop</code> for version finalization and regression testing</li>
+<li>Merged into <code>master</code> branch after regression testing</li>
+<li>Permanently retained as a release snapshot</li>
+<li>Bug fixes are merged directly into this branch and synchronized back to <code>develop</code></li>
+</ul>
 </li>
-<li>
-<p><code>feature</code> branch</p>
-<p><code>feature/*</code> is an important feature branch pulled from the <code>develop</code> branch. After the <code>feature/*</code> branch is code-complete, it should be merged back to the <code>develop</code> branch. The <code>feature/*</code> branch is maintainable.</p>
+<li><strong><code>feature-*</code> Branch</strong><ul>
+<li>Created from <code>develop</code> for new feature development</li>
+<li>Merged back into <code>develop</code> after feature completion</li>
+<li>Can be maintained long-term</li>
+</ul>
 </li>
-<li>
-<p><code>hotfix</code> branch</p>
-<p>It is pulled from the <code>master</code> branch and should be merged back into the <code>master</code> branch and the <code>develop</code> branch. Only pull requests of the fork repository (pull requests for bug fixes) should be merged into the <code>hotfix/</code> branch. <code>hotfix/</code> branches are used only for fixing bugs found after release.</p>
+<li><strong><code>hotfix-*</code> Branch</strong><ul>
+<li>Created from <code>master</code> for urgent bug fixes</li>
+<li>Merged back into both <code>master</code> and <code>develop</code> after fixes are complete</li>
+</ul>
 </li>
 </ul>
-<h2 id="submitting-code">Submitting Code<a class="headerlink" href="#submitting-code" title="Permanent link">&para;</a></h2>
-<p>If you want to contribute codes to java-tron, please follow the following steps:</p>
-<ul>
-<li>
-<p>Fork java-tron repository</p>
-<p>Fork a new repository from <a href="https://github.com/tronprotocol/java-tron">tronprotocol/java-tron</a> to your personal code repository</p>
-<div class="highlight"><pre><span></span><code>$ git clone https://github.com/yourname/java-tron.git
-
-$ git remote add upstream https://github.com/tronprotocol/java-tron.git   (&quot;upstream&quot; refers to upstream projects repositories, namely tronprotocol&#39;s repositories, and can be named as you like it. We usually call it &quot;upstream&quot; for convenience) 
+<h2 id="code-submission-process">Code Submission Process<a class="headerlink" href="#code-submission-process" title="Permanent link">&para;</a></h2>
+<h3 id="1-fork-and-clone-the-repository">1. Fork and Clone the Repository<a class="headerlink" href="#1-fork-and-clone-the-repository" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/yourname/java-tron.git
+cd java-tron
+git remote add upstream https://github.com/tronprotocol/java-tron.git
 </code></pre></div>
-</li>
-<li>
-<p>Edit the code in the fork repository </p>
-<p>Before developing new features, please synchronize your fork repository with the upstream repository.</p>
-<div class="highlight"><pre><span></span><code>git fetch upstream 
-git checkout develop 
-git merge upstream/develop --no-ff   (Add --no-ff to turn off the default fast merge mode)
+<blockquote>
+<p><code>upstream</code> refers to the official repository. The name can be customized, but <code>upstream</code> is the conventional choice</p>
+</blockquote>
+<h3 id="2-sync-upstream-code">2. Sync Upstream Code<a class="headerlink" href="#2-sync-upstream-code" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git fetch upstream
+git checkout develop
+git merge upstream/develop --no-ff
 </code></pre></div>
-<p>Pull a new branch from the develop branch of your repository for local development. Please refer to <a href="#branch-naming-conventions">Branch Naming Conventions</a>。</p>
+<blockquote>
+<p><code>--no-ff</code> avoids fast-forward merges to ensure a clear commit history.</p>
+</blockquote>
+<h3 id="3-create-a-development-branch">3. Create a Development Branch<a class="headerlink" href="#3-create-a-development-branch" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>git checkout -b feature/branch_name develop
 </code></pre></div>
-<p>Write and commit the new code when it is completed. Please refer to <a href="#commit-messages">Commit Messages</a>
+<h3 id="4-commit-changes">4. Commit Changes<a class="headerlink" href="#4-commit-changes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>git add .
-git commit -m &#39;commit message&#39;
-</code></pre></div></p>
-<p>Commit the new branch to your personal remote repository</p>
-<div class="highlight"><pre><span></span><code>git push origin new_feature
+git commit -m &quot;commit message&quot;
 </code></pre></div>
-</li>
-<li>
-<p>Push code</p>
-<p>Submit a pull request (PR) from your repository to <code>tronprotocol/java-tron</code>.
-Please be sure to click on the link in the red box shown below. Select the base branch for tronprotocol and the compare branch for your personal fork repository.
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png" /></p>
-</li>
-</ul>
+<h3 id="5-push-the-branch">5. Push the Branch<a class="headerlink" href="#5-push-the-branch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git push origin feature/branch_name
+</code></pre></div>
+<h3 id="6-create-a-pull-request">6. Create a Pull Request<a class="headerlink" href="#6-create-a-pull-request" title="Permanent link">&para;</a></h3>
+<p>From your own repository, submit a Pull Request (PR) to <code>tronprotocol/java-tron</code>.
+   <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/javatron_pr.png" />
+It’s recommended to select the options in the red box, setting <code>develop</code> branch of the <code>tronprotocol/java-tron</code> as the base branch and your forked repository’s branch as the compare branch.</p>
 <h2 id="code-review-guidelines">Code Review Guidelines<a class="headerlink" href="#code-review-guidelines" title="Permanent link">&para;</a></h2>
-<p>The only way to get code into java-tron is to send a pull request. Those pull requests need to be reviewed by someone. The following guide explains our expectations around PRs for both authors and reviewers.</p>
-<h3 id="the-process">The Process<a class="headerlink" href="#the-process" title="Permanent link">&para;</a></h3>
-<p>The first decision to make for any PR is whether it’s worth including at all. To make the decision we must understand what the PR is about. If there isn’t enough description content or the diff is too large, request an explanation. Anyone can do this part.</p>
-<p>We expect that reviewers check the style and functionality of the PR, providing comments to the author using the GitHub review system. Reviewers should follow up with the PR until it is in good shape, then approve the PR. Approved PRs can be merged by the code maintainer.</p>
-<p>When communicating with authors, be polite and respectful.</p>
-<h3 id="functional-checks">Functional Checks<a class="headerlink" href="#functional-checks" title="Permanent link">&para;</a></h3>
-<p>For PRs that fix an issue, reviewers should try reproduce the issue and verify that the pull request actually fixes it. Authors can help with this by including a unit test that fails without (and passes with) the change.</p>
-<p>For PRs adding new features, reviewers should attempt to use the feature and comment on how it feels to use it. For example: if a PR adds a new command line flag, use the program with the flag and comment on whether the flag feels useful.</p>
-<p>We expect appropriate unit test coverage. Reviewers should verify that new code is covered by unit tests.</p>
-<h3 id="code-style">Code Style<a class="headerlink" href="#code-style" title="Permanent link">&para;</a></h3>
-<p>We would like all developers to follow a standard development flow and coding style. Therefore, we suggest the following:</p>
-<ol>
-<li>Review the code with coding style checkers.</li>
-<li>Review the code before submission.</li>
-<li>Run standardized tests.</li>
-</ol>
-<p><code>Sonar</code>-scanner and <code>Travis CI</code> continuous integration scanner will be automatically triggered when a pull request has been submitted. When a PR passes all the checks, the <strong>java-tron</strong> maintainers will then review the PR and offer feedback and modifications when necessary.  Once adopted, the PR will be closed and merged into the <code>develop</code> branch.</p>
-<p>We are glad to receive your pull requests and will try our best to review them as soon as we can. Any pull request is welcome, even if it is for a typo.</p>
-<p>Please kindly address the issue you find. We would appreciate your contribution.</p>
-<p>Please do not be discouraged if your pull request is not accepted, as it may be an oversight. Please explain your code as detailed as possible to make it easier to understand.</p>
-<p>Please make sure your submission meets the following code style:</p>
+<p>The only way to merge code into <strong>java-tron</strong> is through <strong>a Pull Request (PR)</strong>.
+All PRs must be reviewed before merging.</p>
+<h3 id="review-process">Review Process<a class="headerlink" href="#review-process" title="Permanent link">&para;</a></h3>
 <ul>
-<li>The code must conform to <a href="https://google.github.io/styleguide/javaguide.html">Google Code Style</a>.</li>
-<li>The code must have passed the Sonar scanner test.</li>
-<li>The code has to be pulled from the <code>develop</code> branch.</li>
+<li>Reviewers must understand the motivation and changes of the PR.</li>
+<li>For PRs lacking descriptions or with excessive changes, reviewers may request additional clarification.</li>
+<li>Reviewers check code style, feature completeness, and test coverage.</li>
+<li>Reviewers should remain polite, respectful, and follow up promptly.</li>
 </ul>
-<h3 id="branch-naming-conventions">Branch Naming Conventions<a class="headerlink" href="#branch-naming-conventions" title="Permanent link">&para;</a></h3>
-<p>Branch naming should follow the following guidelines:</p>
+<h3 id="feature-validation">Feature Validation<a class="headerlink" href="#feature-validation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Bug Fix PRs</strong><ul>
+<li>Reviewers should attempt to reproduce the issue and verify the fix.</li>
+<li>It’s recommended that submitters provide unit tests that fail before the fix and pass after.</li>
+</ul>
+</li>
+<li><strong>New Feature PRs</strong><ul>
+<li>Reviewers should test the new feature and provide feedback.</li>
+<li>All new code must include unit tests.</li>
+</ul>
+</li>
+</ul>
+<h3 id="code-specification-requirements">Code Specification Requirements<a class="headerlink" href="#code-specification-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use code formatting tools to check code.</li>
+<li>Self-test before submission.</li>
+<li>Pass standardized tests.</li>
+</ul>
+<p>CI Tools:</p>
+<ul>
+<li>Sonar: Static code analysis</li>
+<li>Travis CI: Continuous integration checks</li>
+</ul>
+<p>Once all checks pass, maintainers will review and merge into <code>develop</code>.</p>
+<blockquote>
+<p><strong>Coding Standards</strong>
+- Follow the <a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a>
+- All PRs must be based on the <code>develop</code> branch</p>
+</blockquote>
+<h2 id="branch-naming-conventions">Branch Naming Conventions<a class="headerlink" href="#branch-naming-conventions" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Always name the <code>master</code> branch and <code>develop</code> branch as "master" and "develop".</li>
-<li>Name the <code>release_*</code> branch using version numbers, which are assigned by the project lead (e.g., Odyssey-v3.1.3, 3.1.3, etc.).</li>
-<li>Use <code>hotfix/</code> as the prefix of the <code>hotfix</code> branch, briefly describe the bug in the name, and connect words with underline (e.g., hotfix/typo, hotfix/null_point_exception, etc.).</li>
-<li>Use <code>feature/</code> as the prefix of the <code>feature</code> branch, briefly describe the feature in the name, and connect words with underline (e.g., feature/new_resource_model, etc.).</li>
+<li><code>master</code> and <code>develop</code> are fixed names.</li>
+<li>Version development branches are named by version number and version name (e.g., <code>GreatVoyage-v4.8.0(Kant)</code>).</li>
+<li><code>hotfix/*</code>: For urgent fixes ( e.g., <code>hotfix/typo</code>).</li>
+<li><code>feature/*</code>: For new feature development (e.g., <code>feature/new-resource-model</code>).</li>
 </ol>
-<h3 id="pull-request-guidelines">Pull Request Guidelines<a class="headerlink" href="#pull-request-guidelines" title="Permanent link">&para;</a></h3>
-<p>Pull Requests should follow the following specifications:</p>
+<h2 id="pull-request-specifications">Pull Request Specifications<a class="headerlink" href="#pull-request-specifications" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Create one PR for one issue.</li>
-<li>Avoid massive PRs.</li>
-<li>Write an overview of the purpose of the PR in its title.</li>
-<li>Write a description of the PR for future reviewers.</li>
-<li>Elaborate on the feedback you need (if any).</li>
+<li>One PR should address a single issue.</li>
+<li>Avoid excessively large changes.</li>
+<li>Title: Briefly describe the PR’s purpose.</li>
+<li>Description: Provide detailed information for reviewers.</li>
+<li>Specify areas where feedback is needed.</li>
 </ol>
-<h4 id="commit-messages">Commit Messages<a class="headerlink" href="#commit-messages" title="Permanent link">&para;</a></h4>
-<p>Commit messages should follow the rule below, we provide a template with corresponding instructions.</p>
-<p>Template:
-<div class="highlight"><pre><span></span><code>&lt;commit type&gt;(&lt;scope&gt;): &lt;subject&gt;
-&lt;BLANK LINE&gt;
+<h2 id="commit-message-specifications">Commit Message Specifications<a class="headerlink" href="#commit-message-specifications" title="Permanent link">&para;</a></h2>
+<p>Recommended format:</p>
+<div class="highlight"><pre><span></span><code>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+
 &lt;body&gt;
-&lt;BLANK LINE&gt;
+
 &lt;footer&gt;
-</code></pre></div></p>
-<p>The message header is a single line that contains a succinct description of the change containing a <code>commit type</code>, an optional <code>scope</code> and a subject.</p>
-<p><code>commit type</code> describes the kind of change that this commit is providing:
-* feat     (new feature)
-* fix      (bug fix)
-* docs     (changes to documentation)
-* style    (formatting, missing semi colons, etc. no code change)
-* refactor (refactoring production code)
-* test     (adding or refactoring tests. no production code change)
-* chore    (updating grunt tasks etc. no production code change)</p>
-<p>The <code>scope</code> can be anything specifying place of the commit change. For example:<code>protobuf</code>,<code>api</code>,<code>test</code>,<code>docs</code>,<code>build</code>,<code>db</code>,<code>net</code>.You can use * if there isn't a more fitting scope.</p>
-<p>The <code>subject</code> contains a succinct description of the change:
-1. Limit the subject line, which briefly describes the purpose of the commit, to 50 characters.
-2. Start with a verb and use first-person present-tense (e.g., use "change" instead of "changed" or "changes").
-3. Do not capitalize the first letter.
-4. Do not end the subject line with a period.
-5. Avoid meaningless commits. It is recommended to use the git rebase command.</p>
-<p>Message body use the imperative, present tense: "change" not "changed" nor "changes". The body should include the motivation for the change and contrast this with previous behavior.</p>
-<p>Here is an example:
+</code></pre></div>
+<h3 id="commit-types">Commit Types<a class="headerlink" href="#commit-types" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>feat</code>: New feature</li>
+<li><code>fix</code>: Bug fix</li>
+<li><code>docs</code>: Documentation changes</li>
+<li><code>style</code>: Formatting changes (no functional changes)</li>
+<li><code>refactor</code>: Code refactoring</li>
+<li><code>test</code>: Test code changes</li>
+<li><code>chore</code>: Other (e.g., task assignments)</li>
+</ul>
+<h3 id="subject-specifications">Subject Specifications<a class="headerlink" href="#subject-specifications" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Maximum 50 characters.</li>
+<li>Start with a verb in the first-person present tense (e.g., <code>change</code>, not <code>changed</code>).</li>
+<li>Start with a lowercase letter.</li>
+<li>No period at the end.</li>
+<li>Avoid meaningless commits.</li>
+</ol>
+<p>Example:
 <div class="highlight"><pre><span></span><code>feat(block): optimize the block-producing logic
 
-1. increase the priority that block producing thread acquires synchronization lock
-2. add the interruption exception handling in block-producing thread
+1. increase the priority for acquiring synchronization lock
+2. add interruption exception handling in block-producing thread
 
 Closes #1234
-</code></pre></div>
-If the purpose of this submission is to modify one issue, you need to refer to the issue in the footer, starting with the keyword Closes, such as <code>Closes #1234</code>, if multiple bugs have been modified, separate them with commas, such as <code>Closes #123, #245, #992</code>.</p>
-<h3 id="special-situations-and-how-to-deal-with-them">Special Situations And How To Deal With Them<a class="headerlink" href="#special-situations-and-how-to-deal-with-them" title="Permanent link">&para;</a></h3>
-<p>As a reviewer, you may find yourself in one of the situations below. Here’s how to deal with those:</p>
+</code></pre></div></p>
+<h2 id="handling-special-cases">Handling Special Cases<a class="headerlink" href="#handling-special-cases" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The author doesn’t follow up: ping them after a while (i.e. after a few days). If there is no further response, close the PR or complete the work yourself.</li>
-<li>Author insists on including refactoring changes alongside bug fixes: We can tolerate small refactorings alongside any change. If you feel lost in the diff, ask the author to submit the refactoring as an independent PR, or at least as an independent commit in the same PR.</li>
-<li>Author keeps rejecting your feedback: You may close the PR.</li>
+<li><strong>Submitter Not Following Up</strong><ul>
+<li>Contact after a few days; if no response, the PR may be closed or continued by others.</li>
+</ul>
+</li>
+<li><strong>Submitter Refactoring While Fixing Bugs</strong><ul>
+<li>Small-scale refactoring is acceptable.</li>
+<li>Large-scale changes should be split into separate PRs or at least separate commits.</li>
+</ul>
+</li>
+<li><strong>Submitter Rejects Feedback</strong><ul>
+<li>Reviewers may close the PR.</li>
+</ul>
+</li>
 </ul>
 <h2 id="conduct">Conduct<a class="headerlink" href="#conduct" title="Permanent link">&para;</a></h2>
-<p>While contributing, please be respectful and constructive, so that participation in our project is a positive experience for everyone.</p>
-<p>Examples of behavior that contributes to creating a positive environment include:</p>
-<ul>
-<li>Using welcoming and inclusive language
-  Being respectful of differing viewpoints and experiences</li>
-<li>Gracefully accepting constructive criticism</li>
-<li>Focusing on what is best for the community</li>
-<li>Showing empathy towards other community members</li>
-</ul>
-<p>Examples of unacceptable behavior include:</p>
-<ul>
-<li>The use of sexualized language or imagery and unwelcome sexual attention or advances</li>
-<li>Trolling, insulting/derogatory comments, and personal or political attacks</li>
-<li>Public or private harassment</li>
-<li>Publishing others’ private information, such as a physical or electronic address, without explicit permission</li>
-<li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
-</ul>
+<p>Please maintain respect and constructiveness to foster a positive community atmosphere.</p>
 
 
 

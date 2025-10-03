@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#governance" class="md-skip">
+        <a href="#network-governance" class="md-skip">
           Skip to content
         </a>
       
@@ -450,9 +450,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -460,7 +472,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1062,29 +1174,29 @@
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
-        <li class="md-nav__item has-children">
-  <a href="#initiate-a-discussion-on-a-proposal" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+        <li class="md-nav__item ">
+  <a href="#proposal-voting-process" class="md-nav__link" >
     <span class="md-ellipsis">
-      Initiate a discussion on a proposal
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Initiate a discussion on a proposal" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#title" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Title
+      Proposal Voting Process
     </span>
   </a>
   
 </li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#initiate-proposal-discussion" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Initiate Proposal Discussion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initiate Proposal Discussion" hidden>
+      <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#body" class="md-nav__link" >
+  <a href="#specification-requirements" class="md-nav__link" >
     <span class="md-ellipsis">
-      Body
+      Specification Requirements
     </span>
   </a>
   
@@ -1098,25 +1210,25 @@
         <li class="md-nav__item ">
   <a href="#community-discussion" class="md-nav__link" >
     <span class="md-ellipsis">
-      Community discussion
+      Community Discussion
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item ">
-  <a href="#initiate-a-voting-request" class="md-nav__link" >
+  <a href="#submit-voting-request" class="md-nav__link" >
     <span class="md-ellipsis">
-      Initiate a voting request
+      Submit Voting Request
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item ">
-  <a href="#vote-and-take-effect" class="md-nav__link" >
+  <a href="#voting-and-implementation" class="md-nav__link" >
     <span class="md-ellipsis">
-      Vote and take effect
+      Voting and Implementation
     </span>
   </a>
   
@@ -1547,46 +1659,62 @@
   
 
 
-<h1 id="governance">Governance<a class="headerlink" href="#governance" title="Permanent link">&para;</a></h1>
-<p>The governance of the TRON network is accomplished by modifying <a href="https://tronscan.org/#/sr/committee">the network parameters</a>. The modification of network parameters is also called a network upgrade. Anyone can propose a discussion on modifying one or several network parameters, however, only super representatives or super representative partners can submit voting requests on-chain. Before the voting deadline, 27 super representatives can vote on the proposal. After the voting deadline arrives and the number of votes meets the requirement, the proposal will take effect.</p>
-<p>You can view the list of the past completed proposals <a href="https://github.com/tronprotocol/tips/tree/master/proposal">here</a>.</p>
-<p>Please according to the following process to propose a voting request:</p>
+<h1 id="network-governance">Network Governance<a class="headerlink" href="#network-governance" title="Permanent link">&para;</a></h1>
+<p>The governance of the TRON network is primarily achieved by modifying <a href="https://tronscan.org/#/sr/committee">network parameters</a>, a process also known as <strong>network upgrade</strong>.<br />
+Anyone can propose changes to network parameters within the community, but only <strong>Super Representatives (SR)</strong> , <strong>Super Representative Partners</strong> and <strong>Super Representative Candidates</strong> can formally submit voting requests on-chain. During the voting period, the Super Representatives will vote on the proposal. When the voting deadline is reached and the required number of supporting votes is met, the proposal automatically takes effect.</p>
+<p>You can view the history of completed proposals and voting records <a href="https://github.com/tronprotocol/tips/tree/master/proposal">here</a>.</p>
+<hr />
+<h2 id="proposal-voting-process">Proposal Voting Process<a class="headerlink" href="#proposal-voting-process" title="Permanent link">&para;</a></h2>
 <ol>
-<li><a href="#initiate-a-discussion-on-a-proposal">Initiate a discussion on proposal</a></li>
-<li><a href="#community-discussion">Community discussion</a></li>
-<li><a href="#initiate-a-voting-request">Initiate a voting request</a></li>
-<li><a href="#vote-and-take-effect">Voting and taking effective</a></li>
+<li><a href="#initiate-proposal-discussion">Initiate Proposal Discussion</a>  </li>
+<li><a href="#community-discussion">Community Discussion</a>  </li>
+<li><a href="#submit-voting-request">Submit Voting Request</a>  </li>
+<li><a href="#voting-and-implementation">Voting and Implementation</a>  </li>
 </ol>
-<h2 id="initiate-a-discussion-on-a-proposal">Initiate a discussion on a proposal<a class="headerlink" href="#initiate-a-discussion-on-a-proposal" title="Permanent link">&para;</a></h2>
-<p>Any TRON network participant can initiate a discussion on a proposal. Please create a proposal discussion issue in <a href="https://github.com/tronprotocol/tips/issues">TIP repository</a>. The Issue is used to introduce the proposal in detail, including the motivation of this proposal, the TRON network parameters to be modified and their values, technical specifications, and the impact of the modification, etc. for a new proposal, please refer to this <a href="https://github.com/tronprotocol/tips/issues/232">example</a> to create an issue for discussion.</p>
-<p>Below are the specifications of how to write an issue for proposal discussion.</p>
-<h3 id="title">Title<a class="headerlink" href="#title" title="Permanent link">&para;</a></h3>
-<p>We hope that all users of the TRON ecosystem can participate in network governance. In order to be able to better publicize in the community, it is recommended to name the proposal and put the name at the beginning of the title. Here is an example:</p>
-<div class="highlight"><pre><span></span><code>Palma Upgrade: proposal to change the unit price of energy to 210 sun
+<hr />
+<h2 id="initiate-proposal-discussion">Initiate Proposal Discussion<a class="headerlink" href="#initiate-proposal-discussion" title="Permanent link">&para;</a></h2>
+<p>Any TRON network participant can initiate a discussion for a TIP vote.<br />
+Please create an <strong>Issue</strong> in the <a href="https://github.com/tronprotocol/tips/issues">TIP repository</a>, providing detailed information about the proposal, including:</p>
+<ul>
+<li>Proposal motivation  </li>
+<li>Network parameters to be modified and their values  </li>
+<li>Technical specifications  </li>
+<li>Expected impact of the changes  </li>
+</ul>
+<p>New proposal discussions can refer to this <a href="https://github.com/tronprotocol/tips/issues/789">example</a>.</p>
+<h3 id="specification-requirements">Specification Requirements<a class="headerlink" href="#specification-requirements" title="Permanent link">&para;</a></h3>
+<h4 id="title">Title<a class="headerlink" href="#title" title="Permanent link">&para;</a></h4>
+<p>To facilitate dissemination and community participation, it is recommended to give the proposal a concise and clear name, placed at the beginning of the title, for example:</p>
+<div class="highlight"><pre><span></span><code>Proposal: Change the unit price of Energy to 100 sun
 </code></pre></div>
-<h3 id="body">Body<a class="headerlink" href="#body" title="Permanent link">&para;</a></h3>
-<p>In the issue body, the content of the proposal should be introduced in detail, including motivation, estimated time to initiate the proposal vote and effective time of the proposal, how to initiate a proposal vote, technical specifications or background information of the proposal, etc.</p>
-<div class="highlight"><pre><span></span><code># Simple Summary
-Briefly introduce the parameters to be modified by this proposal and their values, and summarize the issue it wants to solve
+<h4 id="body-content">Body Content<a class="headerlink" href="#body-content" title="Permanent link">&para;</a></h4>
+<p>The Issue body should include the following main sections:</p>
+<div class="highlight"><pre><span></span><code>## Simple Summary
+Briefly describe the TRON network parameters to be modified and their values, along with a summary of the expected impact.
 
-# Motivation
-Describe the motivation for the proposal, what is the problem encountered now, that is, why one or some dynamic parameters need to be modified.
+## Motivation
+Describe the motivation for the proposal, including the current issues and why certain network parameters need to be modified.
 
-# Timeline
-Indicate when to initiate the proposal voting request, and the estimated effective date of the proposal. After the issue is proposed, two weeks are generally reserved for community discussion. Therefore, the proposal initiation time set in the Issue should be two weeks after the issue is proposed.
+## Timeline
+Specify the date for initiating the proposal vote and the estimated time for the proposal to take effect.
+Generally, after an Issue is raised, about two weeks are allocated for community discussion, so the formal voting request should be initiated after two weeks.
 
-# How to Initialize the Voting Request
-Indicates the command to initiate the proposal voting request.
+## How to Initialize the Voting Request
+Clearly specify the command to initiate the proposal voting request on-chain.
 
-# Technical Specification / Background
-The specific technical specifications or background information of the proposal
+## Technical Specification / Background
+Provide a detailed description of the technical specifications or background information for the proposal.
 </code></pre></div>
-<h2 id="community-discussion">Community discussion<a class="headerlink" href="#community-discussion" title="Permanent link">&para;</a></h2>
-<p>After the proposal issue is initiated, the initiator of the issue should try his best to promote it in the community, attract community users to participate in the discussion on the proposal, and update the proposal according to the results of the discussion.</p>
-<h2 id="initiate-a-voting-request">Initiate a voting request<a class="headerlink" href="#initiate-a-voting-request" title="Permanent link">&para;</a></h2>
-<p>Generally, the initiation time of the voting request set in the proposal is two weeks after the proposed issue is initiated. When the community has already fully discussed on the proposal and formed a community consensus, the super representative or super representative partner will initiate a voting request on the chain.</p>
-<h2 id="vote-and-take-effect">Vote and take effect<a class="headerlink" href="#vote-and-take-effect" title="Permanent link">&para;</a></h2>
-<p>The validity period of the voting request initiated on-chain is 3 days. During the validity period, all 27 super representatives can vote for the proposal. When the voting deadline is reached, if the number of votes obtained is equal to or greater than 18 votes, the proposal will take effect.</p>
+<h2 id="community-discussion">Community Discussion<a class="headerlink" href="#community-discussion" title="Permanent link">&para;</a></h2>
+<p>After the TIP discussion is initiated, the proposer should actively encourage community users to participate in the discussion, collect opinions and feedback, and make appropriate revisions and updates to the proposal based on the discussion results.</p>
+<h2 id="submit-voting-request">Submit Voting Request<a class="headerlink" href="#submit-voting-request" title="Permanent link">&para;</a></h2>
+<p>Typically, if the community has fully discussed and reached a basic consensus, a <strong>Super Representative</strong> , <strong>Super Representative Partner</strong> or  <strong>Super Representative Candidate</strong>, will formally submit the voting request on-chain.</p>
+<h2 id="voting-and-implementation">Voting and Implementation<a class="headerlink" href="#voting-and-implementation" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The on-chain voting period lasts for <strong>3 days</strong>.  </li>
+<li>During this period, all Super Representatives can vote on the TIP.  </li>
+<li>After the voting deadline, if the number of supporting votes from Super Representatives is <strong>greater than or equal to 18</strong>, the proposal is considered passed and automatically takes effect.</li>
+</ul>
 
 
 

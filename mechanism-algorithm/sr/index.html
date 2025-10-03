@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#super-representative" class="md-skip">
+        <a href="#super-representatives-committee" class="md-skip">
           Skip to content
         </a>
       
@@ -450,9 +450,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -460,7 +472,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1598,26 +1710,62 @@
   
 
 
-<h1 id="super-representative">Super Representative<a class="headerlink" href="#super-representative" title="Permanent link">&para;</a></h1>
+<h1 id="super-representatives-committee">Super Representatives &amp; Committee<a class="headerlink" href="#super-representatives-committee" title="Permanent link">&para;</a></h1>
 <h2 id="how-to-become-a-super-representative">How to Become a Super Representative<a class="headerlink" href="#how-to-become-a-super-representative" title="Permanent link">&para;</a></h2>
-<p>Block producers in the TRON network, also called super representatives, are elected by voting. Any account can apply to become a super representative candidate by paying 9999 TRX and then participate in the super representative election. Any account can vote for super representative candidates, and the top 27 candidates with the most votes become super representatives, and they have the right to produce blocks. Super representative needs to run a TRON node to participate in block production, and will also receive block rewards and voting rewards. Voters who vote to super representatives will receive voting rewards.</p>
-<p>The super representative candidates ranked 28th to 127th are also called super representative partners. Super representative partners do not participate in block production and packaging transactions, but will receive voting rewards. Voters who vote to super representative partners will also receive voting rewards.</p>
-<p>The votes will be counted every 6 hours, so super representatives and super representative partners will be changed every 6 hours.</p>
+<p>In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate and participate in the election by paying a fee of 9999 TRX.</p>
+<p>Based on the final vote rankings, candidates are divided into two categories:</p>
+<ul>
+<li><strong>Super Representatives (SRs)</strong>: The top 27 candidates with the most votes. They are the core nodes of the TRON network, responsible for producing blocks and packing transactions. For this, they receive block rewards and vote rewards.</li>
+<li><strong>Super Representative Partners (SR Partners)</strong>: Candidates ranking from 28th to 127th. They act as backup nodes for the network, do not participate in block production, but share in the vote rewards.</li>
+</ul>
+<p>Voters who cast their ballots for both Super Representatives (SRs) and Partners can receive corresponding voting rewards proportional to their votes.</p>
+<p>The TRON network tallies votes once every 6 hours, and the roles of Super Representatives and Partners are updated accordingly in this 6-hour cycle.</p>
 <h2 id="super-representative-election">Super Representative Election<a class="headerlink" href="#super-representative-election" title="Permanent link">&para;</a></h2>
-<p>To vote, you need to have TRON Power(TP). To get TRON Power, you need to stake TRX. Every 1 staked TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unstake your staked TRX, you will lose the corresponding TRON Power(TP), so your previous vote will be invalid.</p>
-<p>Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.</p>
-<p>Example (Using wallet-cli):</p>
-<div class="highlight"><pre><span></span><code><span class="go">&gt; freezebalancev2 10,000,000 3 // Stake 10 TRX to get 10 TRON Power(TP)</span>
-<span class="go">&gt; votewitness SR1 4 SR2 6 // Vote 4 votes for SR1, 6 votes for SR2</span>
-<span class="go">&gt; votewitness SR1 3 SR2 7 // Vote 3 votes for SR1, 7 votes for SR2</span>
+<p>All accounts in the TRON network have the right to vote for the Super Representative candidates they support. The core of voting is TRON Power (TP), which determines the weight of your vote.</p>
+<ul>
+<li>
+<p>Obtaining Voting Power (TRON Power)</p>
+<p>Your amount of TP is directly linked to the amount of TRX you have staked. Calculation Method: For every 1 TRX you stake, you receive 1 TP.</p>
+</li>
+<li>
+<p>The Impact of Unstaking on Voting</p>
+<p>When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system reclaims TP according to the following rules:</p>
+<ul>
+<li>Unused TP is reclaimed first.</li>
+<li>If the available TP is insufficient, the system automatically retracts a proportional amount from your existing votes to cover the deficit.</li>
+<li>If you have voted for multiple SRs, the system will retract votes proportionally from each SR based on your voting distribution.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Important Note:</strong>
+The TRON network only records the state of your last vote. This means that every new vote you cast will completely overwrite all previous voting effects.</p>
+<ul>
+<li><strong>Example:：</strong> </li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>&gt;freezebalancev2<span class="w"> </span><span class="m">10000000</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># Stake 10 TRX to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.</span>
+&gt;votewitness<span class="w"> </span>SR1<span class="w"> </span><span class="m">4</span><span class="w"> </span>SR2<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="c1"># Cast 4 votes for SR1 and 6 votes for SR2.</span>
+&gt;votewitness<span class="w"> </span>SR1<span class="w"> </span><span class="m">3</span><span class="w"> </span>SR2<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="c1"># Cast 3 votes for SR1 and 7 votes for SR2.</span>
 </code></pre></div>
-<p>The final output above is: Vote 3 votes for SR1, 7 votes for SR2.</p>
+The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</p>
 <h2 id="rewards">Rewards<a class="headerlink" href="#rewards" title="Permanent link">&para;</a></h2>
 <h3 id="brokerage-of-srs-and-sr-partners">Brokerage of SRs and SR partners<a class="headerlink" href="#brokerage-of-srs-and-sr-partners" title="Permanent link">&para;</a></h3>
-<p>The default ratio is 20%. Super representatives and super representative partners can query the brokerage ratio through the <code>wallet/getBrokerage</code> interface, and can also modify the brokerage ratio through the <code>wallet/updateBrokerage</code> interface.</p>
-<p>If a SR(Super Representatives) get 20% of the rewards, and the other 80% will be awarded to the voters. If the brokerage ratio is set to 100%, the rewards are all obtained by the SR; if set to 0, the rewards are all sent to the voters.</p>
+<p>Super Representatives (SRs) and Super Representative Partners can set a Commission Rate (also known as Brokerage Rate) to determine how rewards are distributed between themselves and their voters.</p>
+<ul>
+<li>
+<p>Default Rate</p>
+<p>The default commission rate for a newly elected SR or Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.</p>
+</li>
+<li>
+<p>Customizing the Rate</p>
+<p>SRs and Partners can adjust their commission rate at any time via the wallet/updateBrokerage API interface.</p>
+<ul>
+<li>100% Commission: All rewards go to the SR/Partner.</li>
+<li>0% Commission: All rewards are distributed to the voters.</li>
+</ul>
+</li>
+</ul>
 <h3 id="block-production-rewards-and-voting-rewards">Block Production Rewards and Voting Rewards<a class="headerlink" href="#block-production-rewards-and-voting-rewards" title="Permanent link">&para;</a></h3>
-<p>Rewards are categorized into block production rewards and voting rewards, with their differences outlined as follows:</p>
+<p>Rewards are divided into block rewards and vote rewards. The differences are as follows:</p>
 <table>
 <thead>
 <tr>
@@ -1639,63 +1787,87 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Related On-chain Parameter Name</strong></td>
-<td style="text-align: left;">getWitnessPayPerBlock</td>
-<td style="text-align: left;">getWitness127PayPerBlock</td>
+<td style="text-align: left;"><code>getWitnessPayPerBlock</code></td>
+<td style="text-align: left;"><code>getWitness127PayPerBlock</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Rewards Distribution Target</strong></td>
-<td style="text-align: left;">SR, its voters</td>
+<td style="text-align: left;">SRs, their voters</td>
 <td style="text-align: left;">SRs/SR partners, their voters</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Rewards Distribution Time</strong></td>
-<td style="text-align: left;">SR: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br>- VoteWitnessContract<br>- WithdrawBalanceContract<br>- UnfreezeBalanceContract<br>- UnfreezeBalanceV2Contract</td>
-<td style="text-align: left;">SRs/SR partners: After producing each block<br>Voters: Triggered when voters initiate any of these 4 transactions:<br>- VoteWitnessContract<br>- WithdrawBalanceContract<br>- UnfreezeBalanceContract<br>- UnfreezeBalanceV2Contract</td>
+<td style="text-align: left;"><strong>SR</strong>:<br> After producing each block<br><br><strong>Voters</strong>:<br> Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>WithdrawBalanceContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code></td>
+<td style="text-align: left;"><strong>SRs/SR partners</strong>: <br>After producing each block<br><br><strong>Voters</strong>: <br>Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>WithdrawBalanceContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Specific Rewards</strong></td>
-<td style="text-align: left;">SR: 8 * brokerageRate<br>voter: 8 * (1-brokerageRate) * (votes of this voter) / (total votes received by this SR)</td>
-<td style="text-align: left;">SR/SR partner: 128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs &amp; SR partners)<br>voter: 128 * (1-brokerageRate) * (votes of this voter) / (total votes received by all SRs &amp; SR partners)</td>
+<td style="text-align: left;">SR: <br><code>8 * brokerageRate</code><br><br>voter:<br> <code>8 * (1-brokerageRate) * (votes of this voter) / (total votes received by this SR)</code></td>
+<td style="text-align: left;">SR/SR partner:<br> <code>128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs &amp; SR partners)</code><br><br>voter:<br> <code>128 * (1-brokerageRate) * (votes of this voter) / (total votes received by all SRs &amp; SR partners)</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Notices</strong>:</p>
+<p><strong>Notes:</strong></p>
 <ul>
-<li>on-chain parameter's ID and name can be seen <a href="https://tronscan.org/#/sr/committee">here</a></li>
-<li>SRs and SR partners: Top 127 witnesses</li>
-<li>Voters for SRs receive both block production and voting rewards, but block production rewards are only earned when the SR they voted for is scheduled to produce block. Voters for SR partners only receive voting rewards.</li>
+<li>Chain parameter details can be viewed on TRONSCAN's committee page.</li>
+<li><code>brokerageRate</code> refers to the commission rate.</li>
+<li>Super Representatives and Partners are the top 127 witnesses.</li>
+<li>If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.</li>
 </ul>
 <h2 id="committee">Committee<a class="headerlink" href="#committee" title="Permanent link">&para;</a></h2>
 <h3 id="what-is-committee">What is Committee<a class="headerlink" href="#what-is-committee" title="Permanent link">&para;</a></h3>
-<p>Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every SR has the right to create and vote a proposal. The proposal will be passed after it gets at least 18 approves from the super representatives and will become valid in the next maintenance period.</p>
+<p>The Committee is the highest governing body of the TRON network, responsible for modifying the network's core dynamic parameters (such as transaction fees, block rewards, etc.).</p>
+<ul>
+<li>Composition: The Committee is composed of the current 27 active Super Representatives (SRs).</li>
+<li>
+<p>Powers: Each committee member has two core powers: </p>
+<ul>
+<li>To create a proposal.</li>
+<li>To vote on a proposal.</li>
+</ul>
+</li>
+<li>
+<p>Proposal Effective Mechanism: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.</p>
+</li>
+</ul>
 <h3 id="create-a-proposal">Create a Proposal<a class="headerlink" href="#create-a-proposal" title="Permanent link">&para;</a></h3>
-<p>In addition to SR, SR Partner and SR Candidate also have the right to create a proposal, and only they have this right.</p>
+<p>In the TRON network, all Super Representatives, Partners, and candidates have the right to initiate proposals to modify network parameters.</p>
 <p>Please refer to <a href="https://tronscan.org/#/sr/committee">here</a> for TRON network dynamic parameters and their values.</p>
-<p>Example (Using wallet-cli):</p>
-<div class="highlight"><pre><span></span><code><span class="go">&gt; createproposal id value</span>
-<span class="gp"># </span>id:<span class="w"> </span>the<span class="w"> </span>serial<span class="w"> </span>number
-<span class="gp"># </span>value:<span class="w"> </span>the<span class="w"> </span>parameter<span class="w"> </span>value
+<ul>
+<li>Example:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&gt;createproposal<span class="w"> </span>id0<span class="w"> </span>value0<span class="w"> </span>...<span class="w"> </span>idN<span class="w"> </span>valueN
+<span class="c1"># id0_N: Parameter number</span>
+<span class="c1"># value0_N: New parameter value</span>
 </code></pre></div>
 <h3 id="vote-for-a-proposal">Vote for a Proposal<a class="headerlink" href="#vote-for-a-proposal" title="Permanent link">&para;</a></h3>
-<p>Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.</p>
-<p>Example (Using wallet-cli):</p>
-<div class="highlight"><pre><span></span><code><span class="go">&gt; approveProposal id is_or_not_add_approval</span>
-<span class="gp"># </span>id:<span class="w"> </span>proposal<span class="w"> </span>id
-<span class="gp"># </span>is_or_not_add_approval:<span class="w"> </span>YES<span class="w"> </span>vote<span class="w"> </span>or<span class="w"> </span>cancel<span class="w"> </span>YES<span class="w"> </span>vote
+<p>The voting process for proposals follows these core rules:</p>
+<ol>
+<li>The governance system only supports approval votes. Not voting is equivalent to disapproving.</li>
+<li>
+<p>A proposal is valid for 3 days from its creation. If it does not receive enough approval votes within this period, it will expire.</p>
+</li>
+<li>
+<p>Example:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>&gt;approveProposal<span class="w"> </span>id<span class="w"> </span>is_or_not_add_approval
+<span class="c1"># id: proposal id</span>
+<span class="c1"># is_or_not_add_approval: YES vote or cancel YES vote</span>
 </code></pre></div>
 <h3 id="cancel-proposal">Cancel Proposal<a class="headerlink" href="#cancel-proposal" title="Permanent link">&para;</a></h3>
-<p>Proposal creator can cancel the proposal before it is passed.</p>
-<p>Example (Using wallet-cli):</p>
-<div class="highlight"><pre><span></span><code><span class="go">&gt; deleteProposal id</span>
-<span class="gp"># </span>id:<span class="w"> </span>proposal<span class="w"> </span>id
-</code></pre></div>
-<h3 id="query-proposal">Query Proposal<a class="headerlink" href="#query-proposal" title="Permanent link">&para;</a></h3>
+<p>The creator of a proposal can cancel it at any time before it takes effect.</p>
 <ul>
-<li>Query all the proposals list (ListProposals)</li>
-<li>Query all the proposals list by pagination (GetPaginatedProposalList)</li>
-<li>Query a proposal by proposal id (GetProposalById)</li>
+<li>Example:
+<div class="highlight"><pre><span></span><code>&gt;deleteProposal<span class="w"> </span>proposalId
+<span class="c1"># id: proposal id</span>
+</code></pre></div></li>
 </ul>
-<p>For more API detail, please refer to <a href="../../api/http/">HTTP API</a>.</p>
+<h3 id="query-proposal">Query Proposal<a class="headerlink" href="#query-proposal" title="Permanent link">&para;</a></h3>
+<p>Proposals can be queried using the following API interfaces:
++ Query all the proposals list (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletlistproposals">ListProposals</a>)
++ Query all the proposals list by pagination (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletgetpaginatedproposallist">GetPaginatedProposalList</a>)
++ Query a proposal by proposal id (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletgetproposalbyid">GetProposalById</a>)</p>
 
 
 
