@@ -450,9 +450,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -460,7 +472,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1106,74 +1218,122 @@
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
-        <li class="md-nav__item ">
-  <a href="#fork-java-tron-repository" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#1-prepare-the-development-environment" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Fork java-tron Repository
+      1. Prepare the Development Environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Prepare the Development Environment" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#11-fork-the-java-tron-repository" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1.1 Fork the java-tron Repository
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#sync-repository" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#12-synchronize-the-repository" class="md-nav__link" >
     <span class="md-ellipsis">
-      Sync Repository
+      1.2 Synchronize the Repository
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#create-new-branch" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#13-create-a-new-branch" class="md-nav__link" >
     <span class="md-ellipsis">
-      Create New Branch
+      1.3 Create a New Branch
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#code-development" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Code Development
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#write-unit-test" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#2-code-implementation-add-the-setpeer-http-api" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Write Unit Test
+      2. Code Implementation: Add the setPeer HTTP API
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Write Unit Test" hidden>
+    <nav class="md-nav" aria-label="2. Code Implementation: Add the setPeer HTTP API" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#java-tron-unit-test-cases-writing-specification" class="md-nav__link" >
+  <a href="#21-create-setpeerservletjava" class="md-nav__link" >
     <span class="md-ellipsis">
-      java-tron Unit Test Cases Writing Specification
+      2.1 Create SetPeerServlet.java
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#common-annotations" class="md-nav__link" >
+  <a href="#22-register-setpeerservlet-with-the-http-api-service" class="md-nav__link" >
     <span class="md-ellipsis">
-      Common Annotations
+      2.2 Register SetPeerServlet with the HTTP API Service
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#the-composition-of-the-unit-test-class" class="md-nav__link" >
+  <a href="#23-debuging-and-testing" class="md-nav__link" >
     <span class="md-ellipsis">
-      The Composition Of The Unit Test Class
+      2.3 Debuging and Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#3-writing-unit-tests" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      3. Writing Unit Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Writing Unit Tests" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#31-java-tron-unit-test-case-guidelines" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3.1 java-tron Unit Test Case Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#32-common-junit-annotations" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3.2 Common JUnit Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#33-composition-of-a-unit-test-class" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3.3 Composition of a Unit Test Class
     </span>
   </a>
   
@@ -1185,29 +1345,53 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#code-style-check" class="md-nav__link" >
+  <a href="#4-checkstyle-code-style-check" class="md-nav__link" >
     <span class="md-ellipsis">
-      Code Style Check
+      4. CheckStyle Code Style Check
     </span>
   </a>
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#commit-code" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#5-submitting-code-and-creating-a-pull-request" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Commit Code
+      5. Submitting Code and Creating a Pull Request
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Submitting Code and Creating a Pull Request" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#51-submit-a-commit" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5.1 Submit a Commit
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#submit-pull-request" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#52-push-the-new-branch" class="md-nav__link" >
     <span class="md-ellipsis">
-      Submit Pull Request
+      5.2 Push the New Branch
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#53-submit-a-pull-request" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5.3 Submit a Pull Request
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1593,46 +1777,60 @@
 
 
 <h1 id="development-example">Development Example<a class="headerlink" href="#development-example" title="Permanent link">&para;</a></h1>
-<p>This article will take adding a new <code>setPeer</code> HTTP interface as an example to illustrate how to participate in the development of java-tron. Before developing, please configure the <a href="../run-in-idea/">InteliJ IDE development environment</a>.</p>
-<p>Sometimes java-tron nodes may not be able to connect to peers due to network reasons, if you can add trusted nodes while the node is running, this will allow the node to connect to the peer even if the node discovery function is not working.</p>
-<h2 id="fork-java-tron-repository">Fork java-tron Repository<a class="headerlink" href="#fork-java-tron-repository" title="Permanent link">&para;</a></h2>
-<p>Fork a new repository from the <a href="https://github.com/tronprotocol/java-tron">https://github.com/tronprotocol/java-tron</a> project to your personal repository, and then use the following command Clone the code locally:</p>
-<div class="highlight"><pre><span></span><code>$ git clone https://github.com/yourname/java-tron.git
-$ git remote add upstream https://github.com/tronprotocol/java-tron.git
+<p>This document will detail the process of contributing to <code>java-tron</code> development, using the addition of a new <code>setPeer</code> HTTP API as a practical example. Before you begin, please ensure you have configured your development environment, for instance, by following the <a href="../run-in-idea/">IntelliJ IDEA Development Environment Setup Guide</a>.</p>
+<p><strong>Background</strong>: At times, a <code>java-tron</code> node may fail to connect to peers due to network issues. To enhance the stability of the node's network connections, we want to implement a feature that enables you to dynamically add trusted nodes while the node is running, ensuring connectivity even if the node discovery service fails.</p>
+<h2 id="1-prepare-the-development-environment">1. Prepare the Development Environment<a class="headerlink" href="#1-prepare-the-development-environment" title="Permanent link">&para;</a></h2>
+<h3 id="11-fork-the-java-tron-repository">1.1 Fork the <code>java-tron</code> Repository<a class="headerlink" href="#11-fork-the-java-tron-repository" title="Permanent link">&para;</a></h3>
+<p>First, fork the official TRON GitHub repository, <a href="https://github.com/tronprotocol/java-tron">tronprotocol/java-tron</a>, to your personal GitHub account. Then, clone your forked repository to your local machine and add the <code>upstream</code> remote to track official updates:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourname/java-tron.git
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/tronprotocol/java-tron.git
 </code></pre></div>
-<h2 id="sync-repository">Sync Repository<a class="headerlink" href="#sync-repository" title="Permanent link">&para;</a></h2>
-<p>Before developing new features, please synchronize your fork repository with the upstream repository.</p>
-<div class="highlight"><pre><span></span><code>$ git fetch upstream 
-$ git checkout develop 
-$ git merge upstream/develop --no-ff
+<h3 id="12-synchronize-the-repository">1.2 Synchronize the Repository<a class="headerlink" href="#12-synchronize-the-repository" title="Permanent link">&para;</a></h3>
+<p>Before starting development on a new feature, it is crucial to synchronize your personal fork with the <code>upstream</code> repository to get the latest code updates:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>fetch<span class="w"> </span>upstream
+git<span class="w"> </span>checkout<span class="w"> </span>develop
+git<span class="w"> </span>merge<span class="w"> </span>upstream/develop<span class="w"> </span>--no-ff
 </code></pre></div>
-<h2 id="create-new-branch">Create New Branch<a class="headerlink" href="#create-new-branch" title="Permanent link">&para;</a></h2>
-<p>Pull a new branch from the <code>develop</code> branch of your own repository for local development, please refer to <a href="../java-tron/#branch-naming-conventions">branch naming convention</a>. In this example, the name of the new branch is: <code>feature/ add-new-http-demo</code>.</p>
-<div class="highlight"><pre><span></span><code>$ git checkout -b feature/add-new-http-demo develop
+<h3 id="13-create-a-new-branch">1.3 Create a New Branch<a class="headerlink" href="#13-create-a-new-branch" title="Permanent link">&para;</a></h3>
+<p>Create a new branch from your local <code>develop</code> branch for your development work. Please follow the <a href="../java-tron/#branch-naming-conventions">branch naming conventions</a> for naming your branch. For this example, we will use <code>feature/add-new-http-demo</code> as the branch name.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/add-new-http-demo<span class="w"> </span>develop
 </code></pre></div>
-<h2 id="code-development">Code Development<a class="headerlink" href="#code-development" title="Permanent link">&para;</a></h2>
-<p>Open the java-tron project in IDEA. Create a new servlet file in the <code>java-tron/framework/src/main/java/org/tron/core/services/http</code> directory to process HTTP requests: SetPeerServlet.java, the file should contain two functions <code>doGet</code> and <code>doPost</code>. <code>doGet</code> is used to handle http get requests and <code>doPost</code> is used to handle http post requests. If one of these types of requests is not supported, the method content can be empty.</p>
-<p><div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
+<h2 id="2-code-implementation-add-the-setpeer-http-api">2. Code Implementation: Add the <code>setPeer</code> HTTP API<a class="headerlink" href="#2-code-implementation-add-the-setpeer-http-api" title="Permanent link">&para;</a></h2>
+<p>Open the <code>java-tron</code> project in IntelliJ IDEA. Next, we will implement a <code>setPeer</code> HTTP API to allow users to add trusted nodes via a POST request.</p>
+<h3 id="21-create-setpeerservletjava">2.1 Create <code>SetPeerServlet.java</code><a class="headerlink" href="#21-create-setpeerservletjava" title="Permanent link">&para;</a></h3>
+<p>In the <code>java-tron/framework/src/main/java/org/tron/core/services/http</code> directory, create a new <code>Servlet</code> class named <code>SetPeerServlet.java</code>. This class will contain <code>doGet</code> and <code>doPost</code> methods to handle HTTP GET and POST requests, respectively. If a specific request type is not supported, you can leave the corresponding method empty.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.tron.core.services.http</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">lombok.extern.slf4j.Slf4j</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.net.peer.ChannelManager</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.net.peer.Node</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.config.CommonParameter</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.Constant</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.exception.BadItemException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.services.http.fullnode.PostParams</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.services.http.fullnode.Util</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServlet</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletRequest</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.net.InetAddress</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.net.InetSocketAddress</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.alibaba.fastjson.JSONObject</span><span class="p">;</span>
+
+<span class="nd">@Component</span>
 <span class="nd">@Slf4j</span><span class="p">(</span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;API&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SetPeerServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doGet</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span>
-<span class="w">    </span><span class="p">{}</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doPost</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span>
-<span class="w">    </span><span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></div>
-In this example, the setPeer request should be sent by post, so you need to add processing logic in the <code>doPost</code> method, and the content of the <code>doGet</code> method keeps empty.</p>
-<p>The processing logic of the <code>doPost</code> method is:</p>
-<ol>
-<li>Get the incoming parameters</li>
-<li>Add peer information to the list of trusted nodes through the addPeer method</li>
-<li>Return the processing result of addPeer to the front-end user</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
-<span class="nd">@Slf4j</span><span class="p">(</span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;API&quot;</span><span class="p">)</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SetPeerServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">  </span><span class="nd">@Autowired</span>
 <span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">ChannelManager</span><span class="w"> </span><span class="n">channelManager</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doGet</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// GETrequests are not handled in this example</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doPost</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -1657,25 +1855,15 @@ In this example, the setPeer request should be sent by post, so you need to add 
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="p">......</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Put the processing logic of adding trust nodes in the <code>addPeer</code> method, which not only makes the code logic clearer, but also easier to test.</p>
-<p>The logic of the <code>addPeer</code> method is:</p>
-<ol>
-<li>Check the parameters the user entered to ensure that the node ip and port are not empty</li>
-<li>Construct node information through <code>Node.instanceOf(peerIP)</code></li>
-<li>Make sure that the added trust node is not self</li>
-<li>Add the node to the trusted node list</li>
-</ol>
-<p><div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">addPeer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">peerIP</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">addPeer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">peerIP</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">peerIP</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">peerIP</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">peerIP</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Node</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Node</span><span class="p">.</span><span class="na">instanceOf</span><span class="p">(</span><span class="n">peerIP</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">CommonParameter</span><span class="p">.</span><span class="na">PARAMETER</span><span class="p">.</span><span class="na">nodeDiscoveryBindIp</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">getHost</span><span class="p">())</span>
-<span class="w">                </span><span class="o">||</span><span class="w"> </span><span class="n">CommonParameter</span><span class="p">.</span><span class="na">PARAMETER</span><span class="p">.</span><span class="na">nodeExternalIp</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">getHost</span><span class="p">())</span>
-<span class="w">                </span><span class="o">||</span><span class="w"> </span><span class="n">Constant</span><span class="p">.</span><span class="na">LOCAL_HOST</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">getHost</span><span class="p">()))</span>
-<span class="w">                </span><span class="o">||</span><span class="w"> </span><span class="n">CommonParameter</span><span class="p">.</span><span class="na">PARAMETER</span><span class="p">.</span><span class="na">nodeListenPort</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">getPort</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="o">||</span><span class="w"> </span><span class="n">CommonParameter</span><span class="p">.</span><span class="na">PARAMETER</span><span class="p">.</span><span class="na">nodeExternalIp</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">getHost</span><span class="p">())</span>
+<span class="w">            </span><span class="o">||</span><span class="w"> </span><span class="n">Constant</span><span class="p">.</span><span class="na">LOCAL_HOST</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">getHost</span><span class="p">()))</span>
+<span class="w">            </span><span class="o">||</span><span class="w"> </span><span class="n">CommonParameter</span><span class="p">.</span><span class="na">PARAMETER</span><span class="p">.</span><span class="na">nodeListenPort</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">getPort</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">          </span><span class="n">InetAddress</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InetSocketAddress</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">getHost</span><span class="p">(),</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">getPort</span><span class="p">()).</span><span class="na">getAddress</span><span class="p">();</span>
 <span class="w">          </span><span class="n">channelManager</span><span class="p">.</span><span class="na">getTrustNodes</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">);</span>
@@ -1689,123 +1877,175 @@ In this example, the setPeer request should be sent by post, so you need to add 
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-After completing the implementation of SetPeerServlet, you also need to register it in the node HTTP API service, <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java">FullNodeHttpApiService</a> is the registration entry for the node HTTP API.</p>
-<p>Call the <code>context.addServlet</code> method in the <code>start</code> function of the <code>FullNodeHttpApiService</code> class to register the SetPeerServlet to the service. The name of the HTTP interface is defined as <code>/wallet/setpeer</code>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FullNodeHttpApiService</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Service</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">......</span>
-<span class="w">    </span><span class="nd">@Autowired</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SetPeerServlet</span><span class="w"> </span><span class="n">setPeerServlet</span><span class="p">;</span>
-<span class="w">    </span><span class="p">.......</span>
+<p>In the code above:</p>
+<ul>
+<li>The <code>doPost</code> method handles incoming POST requests. It extracts the <code>peer</code> information (an IP address and port in <code>IP:Port</code> format) from the request parameters.</li>
+<li>The <code>addPeer</code> method adds the peer to the list of trusted nodes. The logic of this function is as follows:<ol>
+<li>Check the user-provided parameters to ensure the node's IP and port are not empty.</li>
+<li>Construct the node information using <code>Node.instanceOf(peerIP)</code>.</li>
+<li>Ensure that the trusted node being added is not the current node itself.</li>
+<li>Add the node to the <code>ChannelManager</code>'s trusted nodes list.</li>
+</ol>
+</li>
+</ul>
+<h3 id="22-register-setpeerservlet-with-the-http-api-service">2.2 Register <code>SetPeerServlet</code> with the HTTP API Service<a class="headerlink" href="#22-register-setpeerservlet-with-the-http-api-service" title="Permanent link">&para;</a></h3>
+<p>After implementing <code>SetPeerServlet</code>, you need to register it with the node's HTTP API service. The <code>FullNodeHttpApiService</code> class serves as the entry point for registering all HTTP interfaces. In its <code>start</code> method, use <code>context.addServlet</code> to register <code>SetPeerServlet</code> as an HTTP API at the endpoint <code>/wallet/setpeer</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.tron.core.services.http</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="p">......</span>
-<span class="w">        </span><span class="n">context</span><span class="p">.</span><span class="na">addServlet</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ServletHolder</span><span class="p">(</span><span class="n">setPeerServlet</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;/wallet/setpeer&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">.......</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.jetty.servlet.ServletContextHandler</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.jetty.servlet.ServletHolder</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.services.Service</span><span class="p">;</span>
 
+<span class="nd">@Component</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FullNodeHttpApiService</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Service</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nd">@Autowired</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">SetPeerServlet</span><span class="w"> </span><span class="n">setPeerServlet</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// ... other member variables and methods ...</span>
+
+<span class="w">  </span><span class="nd">@Override</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ... other initialization code ...</span>
+<span class="w">    </span><span class="n">ServletContextHandler</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServletContextHandler</span><span class="p">(</span><span class="n">ServletContextHandler</span><span class="p">.</span><span class="na">SESSIONS</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ... other Servlet registrations ...</span>
+<span class="w">    </span><span class="n">context</span><span class="p">.</span><span class="na">addServlet</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ServletHolder</span><span class="p">(</span><span class="n">setPeerServlet</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;/wallet/setpeer&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ... other startup code...</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// ... other methods ...</span>
 <span class="p">}</span>
 </code></pre></div>
-Then you can debug the above code, start the java-tron node in IDEA, and interact with the node through the below Curl command in the terminal:</p>
-<p><div class="highlight"><pre><span></span><code>$ curl --location --request POST &#39;http://127.0.0.1:16667/wallet/setpeer&#39; \
---header &#39;Content-Type: application/json&#39; \
---data-raw &#39;{
-    &quot;peer&quot;:&quot;192.163.3.2:16667&quot;
-}&#39;
+<h3 id="23-debuging-and-testing">2.3 Debuging and Testing<a class="headerlink" href="#23-debuging-and-testing" title="Permanent link">&para;</a></h3>
+<p>Once the code changes are complete, you can start the <code>java-tron</code> node in IntelliJ IDEA for debugging. Then, use the <code>curl</code> command in your terminal to access the newly added HTTP API:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--location<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;http://127.0.0.1:16667/wallet/setpeer&#39;</span><span class="w"> </span><span class="se">\</span>
+--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+--data-raw<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;peer&quot;:&quot;192.163.3.2:16667&quot;</span>
+<span class="s1">}&#39;</span>
 </code></pre></div>
-Return:</p>
-<div class="highlight"><pre><span></span><code>Success to set trusted peer:192.163.3.2:16667
+<p>If the request is successful, you will receive the following response:</p>
+<p><div class="highlight"><pre><span></span><code>Success to set trusted peer:192.163.3.2:16667
 </code></pre></div>
-<p>At this point, the code development is complete, and then you need to write unit tests for the changes. For simple changes, unit tests can be written after the development code is completed, but for larger changes, it is recommended to write unit tests at the same time as development.</p>
-<h2 id="write-unit-test">Write Unit Test<a class="headerlink" href="#write-unit-test" title="Permanent link">&para;</a></h2>
-<p>The unit test of the java-tron project is based on the JUnit framework. For the usage of JUnit, please refer to <a href="https://junit.org">JUnit official website</a>. The following is a brief introduction to the java-tron unit test case specification and common annotations.</p>
-<h3 id="java-tron-unit-test-cases-writing-specification">java-tron Unit Test Cases Writing Specification<a class="headerlink" href="#java-tron-unit-test-cases-writing-specification" title="Permanent link">&para;</a></h3>
-<p>When writing java-tron unit test cases, please follow the below guidelines:</p>
+At this point, the implementation of the <code>setPeer</code> feature is complete. Next, you need to write unit tests for these changes.</p>
+<h2 id="3-writing-unit-tests">3. Writing Unit Tests<a class="headerlink" href="#3-writing-unit-tests" title="Permanent link">&para;</a></h2>
+<p>The <code>java-tron</code> project uses the JUnit framework for unit testing. For detailed information on using JUnit, please refer to the <a href="https://junit.org">official JUnit documentation</a>. Below is an introduction to the specifications and common annotations for <code>java-tron</code> unit test cases.</p>
+<h3 id="31-java-tron-unit-test-case-guidelines">3.1 <code>java-tron</code>  Unit Test Case Guidelines<a class="headerlink" href="#31-java-tron-unit-test-case-guidelines" title="Permanent link">&para;</a></h3>
+<p>When writing unit tests for <code>java-tron</code>, please adhere to the following guidelines:</p>
 <ul>
-<li>All test classes should be placed in the test directory, and the package of the test class should be consistent with the package structure of the tested code. Generally, use <code>Test</code> as the suffix of a class name</li>
-<li>The test method must be decorated with <code>@Test</code> and it must be <code>public</code> <code>void</code> type. Generally, <code>test</code> is used as the prefix of the method name</li>
-<li>Each test method in the test class must be independently testable, and there must be no dependencies between methods</li>
+<li><strong>Directory and Package Structure</strong>: All test classes should be located in the <code>test</code> directory and maintain the same package structure as the class being tested. We recommend suffixing test class names with <code>Test</code>.</li>
+<li><strong>Test Method Definition</strong>: Test methods must be annotated with <code>@Test</code> and declared as <code>public void</code>. We recommend prefixing method names with <code>test</code> to improve readability.</li>
+<li><strong>Method Independence</strong>: Each method in a test class should be runnable independently. There should be no dependencies between methods, ensuring the stability and maintainability of the tests.</li>
 </ul>
-<h3 id="common-annotations">Common Annotations<a class="headerlink" href="#common-annotations" title="Permanent link">&para;</a></h3>
-<p>The following are descriptions of some commonly used annotations. For other annotations, please refer to <a href="https://junit.org">JUnit official website documentation</a>.</p>
+<h3 id="32-common-junit-annotations">3.2 Common JUnit Annotations<a class="headerlink" href="#32-common-junit-annotations" title="Permanent link">&para;</a></h3>
+<p>The following are commonly used annotations in JUnit. For more details, please consult the <a href="https://junit.org">official JUnit documentation</a>.</p>
 <ul>
-<li><code>@Test</code> - transforms a normal method into a test method</li>
-<li><code>@Ignore</code> - the decorated test method will be ignored by the test runner</li>
-<li><code>@BeforeClass</code> - the method will be executed before all methods, static method (only executed once globally, and it is the first running one)</li>
-<li><code>@AfterClass</code> - the method will be executed after all methods, static methods ( only executed once globally, and it will be the last running one)</li>
-<li><code>@Before</code> - it will be executed once before each test method</li>
-<li><code>@After</code> - it will be executed once after each test method</li>
+<li><code>@Test</code>: Marks a method as a test method that will be executed by the test runner.</li>
+<li><code>@Ignore</code>: Ignores the current test method, preventing it from being executed (useful for temporarily skipping unstable or unfinished tests).</li>
+<li><code>@BeforeClass</code>: Runs once before any of the test methods in the class. Must be a <code>static</code> method (typically used for initializing shared resources).</li>
+<li><code>@AfterClass</code>: Runs once after all test methods in the class have been executed. Must be a <code>static</code> method (typically used for releasing shared resources).</li>
+<li><code>@Before</code>: Runs before each test method (used to prepare the test environment, such as initializing data).</li>
+<li><code>@After</code>: Runs after each test method (used to clean up the test environment, such as closing connections).</li>
 </ul>
-<h3 id="the-composition-of-the-unit-test-class">The Composition Of The Unit Test Class<a class="headerlink" href="#the-composition-of-the-unit-test-class" title="Permanent link">&para;</a></h3>
-<p>A unit test class should contain the following three parts:</p>
+<h3 id="33-composition-of-a-unit-test-class">3.3 Composition of a Unit Test Class<a class="headerlink" href="#33-composition-of-a-unit-test-class" title="Permanent link">&para;</a></h3>
+<p>A typical unit test class consists of the following three parts:</p>
 <ul>
-<li><code>@Before</code> or <code>@BeforeClass</code> decorated function, used for initialization before test case execution</li>
-<li><code>@After</code> or <code>@BeforeClass</code> decorated function, used to process data cleaning after the test case execution</li>
-<li>Test method decorated by <code>@Test</code></li>
+<li><strong>Initialization Method</strong>: A method annotated with <code>@Before</code> or <code>@BeforeClass</code> that performs setup operations before tests are executed, such as preparing test data or configuring the environment.</li>
+<li><strong>Cleanup Method</strong>: A method annotated with <code>@After</code> or <code>@AfterClass</code> that performs cleanup operations after tests are executed, such as releasing resources or restoring data.</li>
+<li><strong>Test Method</strong>: A method annotated with <code>@Test</code> that contains the specific test logic to verify that the code behaves as expected.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">demoTest</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.After</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.Before</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.Test</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DemoTest</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nd">@Before</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Initialization work before test case execution</span>
+<span class="w">    </span><span class="c1">// Initialization work before the test case runs</span>
 <span class="w">  </span><span class="p">}</span>
+
 <span class="w">  </span><span class="nd">@After</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// Destroy work after test case execution</span>
-
+<span class="w">    </span><span class="c1">// Data cleanup work after the test case runs</span>
 <span class="w">  </span><span class="p">}</span>
+
 <span class="w">  </span><span class="nd">@Test</span>
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testDemoMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testDemoMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Test logic</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>For this example in the article, a new file should be created in the <code>framework/src/test/java/org/tron/core/services/http/</code> directory: SetPeerServletTest.java used to write test cases.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SetPeerServletTest</span><span class="w"> </span><span class="p">{</span>
+<p>For this example, we should create a new test class file, <code>SetPeerServletTest.java</code>, in the <code>framework/src/test/java/org/tron/core/services/http/</code> directory to write the corresponding test cases.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.tron.core.services.http</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.After</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.Assert</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.Before</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.Test</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.config.args.Args</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.net.peer.ChannelManager</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.services.http.fullnode.SetPeerServlet</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.db.Manager</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.db.TronApplicationContext</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.Constant</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.services.Application</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.tron.core.services.ApplicationFactory</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SetPeerServletTest</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">TronApplicationContext</span><span class="w"> </span><span class="n">context</span><span class="p">;</span>
 <span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">appT</span><span class="p">;</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">ChannelManager</span><span class="w"> </span><span class="n">channelManager</span><span class="p">;</span>
+
 <span class="w">  </span><span class="nd">@Before</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="n">Args</span><span class="p">.</span><span class="na">setParam</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="p">{},</span><span class="w"> </span><span class="n">Constant</span><span class="p">.</span><span class="na">TEST_CONF</span><span class="p">);</span>
-<span class="w">    </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TronApplicationContext</span><span class="p">(</span><span class="n">DefaultConfig</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TronApplicationContext</span><span class="p">(</span><span class="n">Manager</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 <span class="w">    </span><span class="n">channelManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="n">ChannelManager</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 <span class="w">    </span><span class="n">appT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ApplicationFactory</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
 <span class="w">    </span><span class="n">appT</span><span class="p">.</span><span class="na">initServices</span><span class="p">(</span><span class="n">Args</span><span class="p">.</span><span class="na">getInstance</span><span class="p">());</span>
 <span class="w">    </span><span class="n">appT</span><span class="p">.</span><span class="na">startServices</span><span class="p">();</span>
 <span class="w">    </span><span class="n">appT</span><span class="p">.</span><span class="na">startup</span><span class="p">();</span>
-
 <span class="w">  </span><span class="p">}</span>
+
 <span class="w">  </span><span class="nd">@After</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">destroy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Args</span><span class="p">.</span><span class="na">clearParam</span><span class="p">();</span>
 <span class="w">    </span><span class="n">appT</span><span class="p">.</span><span class="na">shutdownServices</span><span class="p">();</span>
 <span class="w">    </span><span class="n">appT</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
-
 <span class="w">  </span><span class="p">}</span>
+
 <span class="w">  </span><span class="nd">@Test</span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testAddPeer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">SetPeerServlet</span><span class="w"> </span><span class="n">setPeerServlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SetPeerServlet</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Assuming 127.0.0.1 is the local IP, addPeer should return false</span>
+<span class="w">    </span><span class="c1">// because it should not add itself as a trusted peer.</span>
 <span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="na">assertFalse</span><span class="p">(</span><span class="n">setPeerServlet</span><span class="p">.</span><span class="na">addPeer</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">));</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="code-style-check">Code Style Check<a class="headerlink" href="#code-style-check" title="Permanent link">&para;</a></h2>
-<p>Check the modified files one by one, and select <code>Check Current File</code> in the right-click menu. If there are code style problems, please modify them one by one according to the prompts.</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/demo_codestyle_error.png" />
-Fix the code style warning in the picture, and then check the file again until there is no warning.
-<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/demo_codestyle.png" /></p>
-<h2 id="commit-code">Commit Code<a class="headerlink" href="#commit-code" title="Permanent link">&para;</a></h2>
-<p>Submit the code after development complete, please refer to the <a href="../java-tron/#commit-messages">commit specification</a>.
-<div class="highlight"><pre><span></span><code>git add .
-git commit -m &#39;add a new http api setpeer&#39;
-</code></pre></div></p>
-<p>Push the new branch to the personal remote repository:</p>
-<div class="highlight"><pre><span></span><code>git push origin feature/add-new-http-demo
+<h2 id="4-checkstyle-code-style-check">4. CheckStyle Code Style Check<a class="headerlink" href="#4-checkstyle-code-style-check" title="Permanent link">&para;</a></h2>
+<p>Before submitting your code, be sure to run a CheckStyle code style check on the files you have modified. In IntelliJ IDEA, you can right-click a file and select "Check Current File". Fix any code style issues based on the prompts until all warnings are resolved.</p>
+<p><img alt="CheckStyle 代码风格错误示例" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/demo_codestyle_error.png" /></p>
+<p>After fixing the code style issues, run the check again to ensure all warnings have been resolved:</p>
+<p><img alt="CheckStyle 代码风格修复后示例" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/demo_codestyle.png" /></p>
+<h2 id="5-submitting-code-and-creating-a-pull-request">5. Submitting Code and Creating a Pull Request<a class="headerlink" href="#5-submitting-code-and-creating-a-pull-request" title="Permanent link">&para;</a></h2>
+<h3 id="51-submit-a-commit">5.1 Submit a Commit<a class="headerlink" href="#51-submit-a-commit" title="Permanent link">&para;</a></h3>
+<p>After you have finished writing and testing your code, commit your changes. Please refer to the <a href="../java-tron/#commit-messages">Commit Specification</a>.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;feat: add new http api setpeer&#39;</span>
 </code></pre></div>
-<h2 id="submit-pull-request">Submit Pull Request<a class="headerlink" href="#submit-pull-request" title="Permanent link">&para;</a></h2>
-<p>Submit a pull request (PR) from your repository to <code>tronprotocol/java-tron</code>.</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png" /></p>
+<h3 id="52-push-the-new-branch">5.2 Push the New Branch<a class="headerlink" href="#52-push-the-new-branch" title="Permanent link">&para;</a></h3>
+<p>Push your new branch to your personal remote repository:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/add-new-http-demo
+</code></pre></div>
+<h3 id="53-submit-a-pull-request">5.3 Submit a Pull Request<a class="headerlink" href="#53-submit-a-pull-request" title="Permanent link">&para;</a></h3>
+<p>On GitHub, create a Pull Request from your repository to <code>tronprotocol/java-tron</code>. This will propose your changes to the official repository.</p>
+<p><img alt="提交 Pull Request 示例" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png" /></p>
+<p>Please ensure your Pull Request description is clear and includes details about the changes you have made and their purpose.</p>
 
 
 

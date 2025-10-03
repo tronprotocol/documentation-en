@@ -610,9 +610,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -620,7 +632,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1604,11 +1716,11 @@
   
 
 
-<h1 id="deploying-a-java-tron-node">Deploying a <code>java-tron</code> Node<a class="headerlink" href="#deploying-a-java-tron-node" title="Permanent link">&para;</a></h1>
-<p>This document guides developers on how to deploy a TRON <code>java-tron</code> node on <code>Linux</code> or <code>macOS</code> operating systems.</p>
-<p><strong>Important Note:</strong> The <code>java-tron</code> node currently requires <strong>Oracle JDK 1.8</strong>. Other JDK versions are not supported.</p>
+<h1 id="deploying-a-java-tron-node">Deploying a java-tron Node<a class="headerlink" href="#deploying-a-java-tron-node" title="Permanent link">&para;</a></h1>
+<p>This document guides developers on how to deploy a TRON java-tron node on <code>Linux</code> or <code>macOS</code> operating systems.</p>
+<p><strong>Important Note:</strong> The java-tron node currently requires <strong>Oracle JDK 1.8</strong>. Other JDK versions are not supported.</p>
 <h2 id="hardware-configuration-requirements">Hardware Configuration Requirements<a class="headerlink" href="#hardware-configuration-requirements" title="Permanent link">&para;</a></h2>
-<p>The minimum hardware configuration required to run a <code>java-tron</code> node is as follows:</p>
+<p>The minimum hardware configuration required to run a java-tron node is as follows:</p>
 <ul>
 <li><strong>CPU</strong>: 8 Cores</li>
 <li><strong>Memory</strong>: 16 GB</li>
@@ -1629,28 +1741,28 @@
 <li><strong>SSD</strong>: 3.5 TB+</li>
 <li><strong>Network Bandwidth</strong>: 100 Mbps</li>
 </ul>
-<h2 id="obtaining-the-java-tron-client">Obtaining the <code>java-tron</code> Client<a class="headerlink" href="#obtaining-the-java-tron-client" title="Permanent link">&para;</a></h2>
+<h2 id="obtaining-the-java-tron-client">Obtaining the java-tron Client<a class="headerlink" href="#obtaining-the-java-tron-client" title="Permanent link">&para;</a></h2>
 <p>You can directly download the official client <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, or you can compile the source code yourself to package the client.</p>
-<h3 id="compiling-java-tron-source-code">Compiling <code>java-tron</code> Source Code<a class="headerlink" href="#compiling-java-tron-source-code" title="Permanent link">&para;</a></h3>
+<h3 id="compiling-java-tron-source-code">Compiling java-tron Source Code<a class="headerlink" href="#compiling-java-tron-source-code" title="Permanent link">&para;</a></h3>
 <p>Before you begin compiling, ensure that <strong>git</strong> is installed on your system.</p>
 <ol>
-<li>First, clone the <code>java-tron</code> source code to your local machine using the <code>git</code> command and switch to the <code>master</code> branch:</li>
+<li>First, clone the java-tron source code to your local machine using the <code>git</code> command and switch to the <code>master</code> branch:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tronprotocol/java-tron.git
-git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </span>origin/master
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/java-tron.git
+git checkout -t origin/master
 </code></pre></div>
 <ol>
-<li>Then, execute the following commands to compile the <code>java-tron</code> source code:</li>
+<li>Then, execute the following commands to compile the java-tron source code:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>java-tron
-./gradlew<span class="w"> </span>clean<span class="w"> </span>build<span class="w"> </span>-x<span class="w"> </span><span class="nb">test</span>
+<div class="highlight"><pre><span></span><code>cd java-tron
+./gradlew clean build -x test
 </code></pre></div>
 <ul>
 <li>The parameter <code>-x test</code> indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.</li>
 <li>After compilation is complete, the <code>FullNode.jar</code> file will be generated in the <code>java-tron/build/libs/</code> directory.</li>
 </ul>
-<h2 id="starting-a-java-tron-node">Starting a <code>java-tron</code> Node<a class="headerlink" href="#starting-a-java-tron-node" title="Permanent link">&para;</a></h2>
-<p>You can choose different configuration files to connect the <code>java-tron</code> node to different TRON networks:</p>
+<h2 id="starting-a-java-tron-node">Starting a java-tron Node<a class="headerlink" href="#starting-a-java-tron-node" title="Permanent link">&para;</a></h2>
+<p>You can choose different configuration files to connect the java-tron node to different TRON networks:</p>
 <ul>
 <li>For Mainnet FullNode configuration file: <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a></li>
 <li>
@@ -1664,7 +1776,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <h3 id="starting-a-fullnode">Starting a FullNode<a class="headerlink" href="#starting-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>A <strong>FullNode</strong> serves as an entry point to the TRON network, possesses complete historical data, and provides external access via <strong>HTTP API</strong>, <strong>gRPC API</strong>, and <strong>JSON-RPC API</strong>. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.</p>
 <p>Below is the command to start a <strong>Mainnet FullNode</strong>, specifying the configuration file with the <code>-c</code> parameter:</p>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>config.conf
+<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf
 </code></pre></div>
 <ul>
 <li><code>-XX:+UseConcMarkSweepGC</code>: Specifies the <strong>Concurrent Mark Sweep (CMS) garbage collector</strong>. This parameter must be placed before the <code>-jar</code> parameter.</li>
@@ -1680,71 +1792,71 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <li>Fill in the <strong>private key</strong> of your Super Representative account in the <code>localwitness</code> list of <code>config.conf</code>.</li>
 </ul>
 <p>Here is an example of the <code>localwitness</code> configuration:</p>
-<div class="highlight"><pre><span></span><code><span class="err">localwi</span><span class="kc">tness</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="mi">650950</span><span class="err">B</span><span class="mf">1...295</span><span class="err">BD</span><span class="mi">812</span>
-<span class="p">]</span>
+<div class="highlight"><pre><span></span><code>localwitness = [
+    650950B1...295BD812
+]
 </code></pre></div>
 <p>Then execute the following command to start the Block Production Node:</p>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf
+<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
 </code></pre></div>
 <h3 id="master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes<a class="headerlink" href="#master-slave-mode-for-block-production-fullnodes" title="Permanent link">&para;</a></h3>
 <p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes, it's necessary to configure <code>node.backup</code> in each node's configuration file. The description of <code>node.backup</code> configuration items is as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
-<span class="w">  </span><span class="c1"># udp listen port, each member should have the same configuration</span>
-<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
+<div class="highlight"><pre><span></span><code>node.backup {
+  # udp listen port, each member should have the same configuration
+  port = 10001
 
-<span class="w">  </span><span class="c1"># my priority, each member should use different priority</span>
-<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
+  # my priority, each member should use different priority
+  priority = 8
 
-<span class="w">  </span><span class="c1"># time interval to send keepAlive message, each member should have the same configuration unit: ms</span>
-<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
+  # time interval to send keepAlive message, each member should have the same configuration unit: ms
+  keepAliveInterval = 3000
 
-<span class="w">  </span><span class="c1"># peer&#39;s ip list, can&#39;t contain myself</span>
-<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
-<span class="w">    </span><span class="c1"># &quot;ip&quot;,</span>
-<span class="w">    </span><span class="c1"># &quot;ip&quot;</span>
-<span class="w">  </span><span class="na">]</span>
-<span class="na">}</span>
-<span class="na">```ini</span>
-<span class="na">For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be as follows</span><span class="o">:</span>
+  # peer&#39;s ip list, can&#39;t contain myself
+  members = [
+    # &quot;ip&quot;,
+    # &quot;ip&quot;
+  ]
+}
+```ini
+For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be as follows:
 
-<span class="na">- Configuration for IP 192.168.0.100</span>
-<span class="na">```ini</span>
-<span class="na">node.backup {</span>
-<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
-<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
-<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
-<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
-<span class="w">    </span><span class="na">&quot;192.168.0.101&quot;,</span>
-<span class="w">    </span><span class="na">&quot;192.168.0.102&quot;</span>
-<span class="w">  </span><span class="na">]</span>
-<span class="na">}</span>
+- Configuration for IP 192.168.0.100
+```ini
+node.backup {
+  port = 10001
+  priority = 8
+  keepAliveInterval = 3000
+  members = [
+    &quot;192.168.0.101&quot;,
+    &quot;192.168.0.102&quot;
+  ]
+}
 </code></pre></div>
 <ul>
 <li>Configuration for IP 192.168.0.101</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
-<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
-<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7</span>
-<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
-<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
-<span class="w">    </span><span class="na">&quot;192.168.0.100&quot;,</span>
-<span class="w">    </span><span class="na">&quot;192.168.0.102&quot;</span>
-<span class="w">  </span><span class="na">]</span>
-<span class="na">}</span>
+<div class="highlight"><pre><span></span><code>node.backup {
+  port = 10001
+  priority = 7
+  keepAliveInterval = 3000
+  members = [
+    &quot;192.168.0.100&quot;,
+    &quot;192.168.0.102&quot;
+  ]
+}
 </code></pre></div>
 <ul>
 <li>Configuration for IP 192.168.0.102</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
-<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
-<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6</span>
-<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
-<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
-<span class="w">    </span><span class="na">&quot;192.168.0.100&quot;,</span>
-<span class="w">    </span><span class="na">&quot;192.168.0.101&quot;</span>
-<span class="w">  </span><span class="na">]</span>
-<span class="na">}</span>
+<div class="highlight"><pre><span></span><code>node.backup {
+  port = 10001
+  priority = 6
+  keepAliveInterval = 3000
+  members = [
+    &quot;192.168.0.100&quot;,
+    &quot;192.168.0.101&quot;
+  ]
+}
 </code></pre></div>
 <p><strong>Note</strong>:</p>
 <ul>
@@ -1774,7 +1886,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <ul>
 <li>For example, if the current directory is <code>A</code>, and the <code>keystore</code> file path is <code>A/B/localwitnesskeystore.json</code>, the configuration should be:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="err">localwi</span><span class="kc">tness</span><span class="err">keys</span><span class="kc">t</span><span class="err">ore</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;B/localwitnesskeystore.json&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code>localwitnesskeystore = [&quot;B/localwitnesskeystore.json&quot;]
 </code></pre></div>
 </li>
 <li>
@@ -1790,39 +1902,39 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <ul>
 <li><strong>Important Notes</strong>: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as <code>screen</code> or <code>tmux</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf
+<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
 </code></pre></div>
 <ul>
-<li>During node startup, the system will prompt you to enter the password. After correctly entering the password, the node will complete its startup.</li>
+<li>During node startup, the system will prompt you to enter the password. After entering the password correctly, the node will complete its startup.</li>
 </ul>
 </li>
 <li>
 <p><strong>Using <code>nohup</code> to pass the password directly in the command line via <code>--password</code></strong></p>
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;your_password&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>start.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf --password &quot;your_password&quot; &gt; start.log 2&gt;&amp;1 &amp;
 </code></pre></div>
 </li>
 </ul>
 </li>
 </ol>
 <h3 id="optimizing-memory-usage-with-tcmalloc">Optimizing Memory Usage with <code>tcmalloc</code><a class="headerlink" href="#optimizing-memory-usage-with-tcmalloc" title="Permanent link">&para;</a></h3>
-<p>To achieve optimal memory usage, you can use Google's <code>tcmalloc</code> instead of the system's <code>glibc malloc</code>.</p>
+<p>To achieve optimal memory usage, use Google's <code>tcmalloc</code> instead of the system's <code>glibc malloc</code>.</p>
 <ol>
 <li>
 <p><strong>Install <code>tcmalloc</code></strong>:</p>
 <ul>
 <li><strong>Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgoogle-perftools4
+<div class="highlight"><pre><span></span><code>sudo apt install libgoogle-perftools4
 </code></pre></div>
 <ul>
 <li><strong>Ubuntu 16.04 LTS</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgoogle-perftools4
+<div class="highlight"><pre><span></span><code>sudo apt install libgoogle-perftools4
 </code></pre></div>
 <ul>
 <li><strong>CentOS 7</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>gperftools-libs
+<div class="highlight"><pre><span></span><code>sudo yum install gperftools-libs
 </code></pre></div>
 </li>
 <li>
@@ -1830,31 +1942,31 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <ul>
 <li>Add the following two lines to your node's startup script. Please note that the path to <code>libtcmalloc.so.4</code> might vary slightly across different Linux distributions.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
 
-<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib/libtcmalloc.so.4&quot;</span><span class="w"> </span><span class="c1"># Adjust path according to your system</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">TCMALLOC_RELEASE_RATE</span><span class="o">=</span><span class="m">10</span>
+export LD_PRELOAD=&quot;/usr/lib/libtcmalloc.so.4&quot; # Adjust path according to your system
+export TCMALLOC_RELEASE_RATE=10
 
-<span class="c1"># original start command</span>
-java<span class="w"> </span>-jar<span class="w"> </span>.....
+# original start command
+java -jar .....
 </code></pre></div>
 <ul>
 <li><strong>Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">TCMALLOC_RELEASE_RATE</span><span class="o">=</span><span class="m">10</span>
+<div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
 </code></pre></div>
 <ul>
 <li><strong>Ubuntu 16.04 LTS</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib/libtcmalloc.so.4&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">TCMALLOC_RELEASE_RATE</span><span class="o">=</span><span class="m">10</span>
+<div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
 </code></pre></div>
 <ul>
 <li><strong>CentOS 7</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/usr/lib64/libtcmalloc.so.4&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">TCMALLOC_RELEASE_RATE</span><span class="o">=</span><span class="m">10</span>
+<div class="highlight"><pre><span></span><code>export LD_PRELOAD=&quot;/usr/lib64/libtcmalloc.so.4&quot;
+export TCMALLOC_RELEASE_RATE=10
 </code></pre></div>
 </li>
 </ol>
