@@ -446,9 +446,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -456,7 +468,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1467,15 +1579,13 @@ New developers should deploy FullNode only.</p>
 ./gradlew build
 </code></pre></div></p>
 <p>2.&nbsp;Copy the FullNode.jar and SolidityNode.jar along with configuration files into the respective directories
-<div class="highlight"><pre><span></span><code>download your needed configuration file from https://github.com/tronprotocol/TronDeployment.
+<div class="highlight"><pre><span></span><code>download<span class="w"> </span>your<span class="w"> </span>needed<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>from<span class="w"> </span>https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf.
 
-config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
+config.conf<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span><span class="k">for</span><span class="w"> </span>MainNet.<span class="w"> </span>To<span class="w"> </span><span class="nb">set</span><span class="w"> </span>up<span class="w"> </span>a<span class="w"> </span>testnet<span class="w"> </span>node,<span class="w"> </span>please<span class="w"> </span>modify<span class="w"> </span>the<span class="w"> </span>parameters<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span>file.
 
-please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SolidityNode.
+cp<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>../fullnode
 
-cp build/libs/FullNode.jar ../fullnode
-
-cp build/libs/SolidityNode.jar ../soliditynode
+cp<span class="w"> </span>build/libs/SolidityNode.jar<span class="w"> </span>../soliditynode
 </code></pre></div></p>
 <p>3.&nbsp;You can now run your FullNode using the following command
 <div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment

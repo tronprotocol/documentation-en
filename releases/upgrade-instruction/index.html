@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#new-version-deployment-manual-of-java-tron" class="md-skip">
+        <a href="#java-tron-node-upgrade-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -450,9 +450,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -460,7 +472,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1339,73 +1451,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item has-children">
-  <a href="#new-version-deployment-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#standard-node-upgrade-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      New version deployment Process
+      Standard Node Upgrade Process
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="New version deployment Process" hidden>
+    <nav class="md-nav" aria-label="Standard Node Upgrade Process" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#1-prepare-the-executable-file-of-the-new-version" class="md-nav__link" >
+  <a href="#step-1-prepare-the-new-version-package" class="md-nav__link" >
     <span class="md-ellipsis">
-      1. Prepare the executable file of the new version
+      Step 1: Prepare the New Version Package
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#2-shut-down-the-java-tron-process" class="md-nav__link" >
+  <a href="#step-2-stop-the-running-node" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. Shut down the java-tron process
+      Step 2: Stop the Running Node
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#3-backup" class="md-nav__link" >
+  <a href="#step-3-back-up-critical-data" class="md-nav__link" >
     <span class="md-ellipsis">
-      3. Backup
+      Step 3: Back Up Critical Data
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#4-replace-old-version-files" class="md-nav__link" >
+  <a href="#step-4-replace-old-files" class="md-nav__link" >
     <span class="md-ellipsis">
-      4. Replace old version files
+      Step 4: Replace Old Files
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#5-start-the-nodes" class="md-nav__link" >
+  <a href="#step-5-start-the-node" class="md-nav__link" >
     <span class="md-ellipsis">
-      5. Start the nodes
+      Step 5: Start the Node
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#6-wait-for-syncing-completion" class="md-nav__link" >
+  <a href="#step-6-verify-and-monitor" class="md-nav__link" >
     <span class="md-ellipsis">
-      6. Wait for syncing completion
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#7-upgrade-completed" class="md-nav__link" >
-    <span class="md-ellipsis">
-      7. Upgrade completed
+      Step 6: Verify and Monitor
     </span>
   </a>
   
@@ -1417,9 +1520,9 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#active-and-backup-nodes-upgrade-guide" class="md-nav__link" >
+  <a href="#primarybackup-node-upgrade-guide" class="md-nav__link" >
     <span class="md-ellipsis">
-      Active and Backup Nodes Upgrade Guide
+      Primary/Backup Node Upgrade Guide
     </span>
   </a>
   
@@ -1574,105 +1677,149 @@
   
 
 
-<h1 id="new-version-deployment-manual-of-java-tron">New Version Deployment Manual of java-tron<a class="headerlink" href="#new-version-deployment-manual-of-java-tron" title="Permanent link">&para;</a></h1>
-<p>For the mandatory upgrade versions, please strictly follow this guide to deploy the new version. For the non-mandatory upgrade ones, you can decide whether to deploy it according to your needs. </p>
-<p>Please directly refer to <a href="#new-version-deployment-process">java-tron New version deployment Process</a> to upgrade your node. If you have deployed 'Active and Backup nodes', please follow the process of <a href="#active-and-backup-nodes-upgrade-guide">Active and Backup Nodes Upgrade Guide</a>. </p>
-<h2 id="new-version-deployment-process">New version deployment Process<a class="headerlink" href="#new-version-deployment-process" title="Permanent link">&para;</a></h2>
-<p>Please follow the below steps to upgrade your FullNode, FullNode that produces blocks to the latest version.</p>
-<h3 id="1-prepare-the-executable-file-of-the-new-version">1. Prepare the executable file of the new version<a class="headerlink" href="#1-prepare-the-executable-file-of-the-new-version" title="Permanent link">&para;</a></h3>
-<p>You can directly download the java-tron executable file, or download the code of the latest version and compile it to get the executable file of the new version. Please download the latest version of the code or jar file to a file directory other than the java-tron running directory:</p>
+<h1 id="java-tron-node-upgrade-guide">java-tron Node Upgrade Guide<a class="headerlink" href="#java-tron-node-upgrade-guide" title="Permanent link">&para;</a></h1>
+<p>This guide provides detailed instructions on how to safely upgrade your java-tron node to the latest version.</p>
+<p>For <strong>mandatory upgrades</strong>, it is crucial to strictly follow this guide to complete the deployment. For <strong>optional upgrades</strong>, you may choose whether to upgrade based on your specific needs.</p>
 <ul>
+<li>For standard nodes, please refer to the <a href="#standard_process">Standard Node Upgrade Process</a>.</li>
+<li>For nodes configured with a primary/backup high-availability setup, please follow the <a href="#primary/backup_upgrade">Primary/Backup Node Upgrade Guide</a> to ensure a seamless service transition.</li>
+</ul>
+<hr />
+<p><a id="standard_process"></a></p>
+<h2 id="standard-node-upgrade-process">Standard Node Upgrade Process<a class="headerlink" href="#standard-node-upgrade-process" title="Permanent link">&para;</a></h2>
+<p>All Fullnodes, including block-producing Super Representative nodes, should follow these steps to complete the upgrade.</p>
+<p><a id="step1"></a> </p>
+<h3 id="step-1-prepare-the-new-version-package">Step 1: Prepare the New Version Package<a class="headerlink" href="#step-1-prepare-the-new-version-package" title="Permanent link">&para;</a></h3>
+<p>You can either download the compiled java-tron executable directly or download the new version's source code and compile it yourself to obtain the new executable file. Please perform the following operations in a directory outside of the current java-tron running directory.</p>
+<h4 id="option-1-download-the-executable-recommended">Option 1: Download the Executable (Recommended)<a class="headerlink" href="#option-1-download-the-executable-recommended" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Visit the <a href="https://github.com/tronprotocol/java-tron/releases">java-tron GitHub Releases</a> page to download the latest version of the <code>FullNode.jar</code> executable.</li>
+<li><strong>Security Check</strong>: To ensure the integrity and security of the file, it is essential to perform a signature verification on the downloaded JAR file according to the <a href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/">java-tron Signature Verification</a> guide.</li>
+</ol>
+<h4 id="option-2-compile-from-source-code">Option 2: Compile from Source Code<a class="headerlink" href="#option-2-compile-from-source-code" title="Permanent link">&para;</a></h4>
+<ol>
 <li>
-<p>Way 1: Download the published executable file</p>
-<p>Directly download the latest version of the executable file FullNode.jar from the release page <a href="https://github.com/tronprotocol/java-tron/releases">https://github.com/tronprotocol/java-tron/releases</a>.</p>
-<p>Before using it, please verify the file signature first to ensure the consistency and integrity of the jar file. For the verification steps, please refer to <a href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/">java-tron Consistency Verification</a>.</p>
-</li>
-<li>
-<p>Way 2: Compile the source code</p>
-<p>Download the source code and switch to the branch of the new version.
-<div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
-$ git checkout -b relase_vx.x.x
-</code></pre></div></p>
-<p>Compile the project: In the code directory of the new version, execute the following command to compile the project, and the compiled executable file will be generated in the <code>build/libs</code> directory.
+<p>Clone the <code>java-tron</code> repository and switch to the target version's branch.</p>
+<p><div class="highlight"><pre><span></span><code># clone the repository
+$ git clone https://github.com/tronprotocol/java-tron.git
+
+# Switch to the specified version branch
+$ cd java-tron
+$ git checkout -b release_vx.x.x
+</code></pre></div>
+2. Run the build command. Upon successful compilation, the new executable file, <code>FullNode.jar</code>, will be generated in the <code>build/libs/</code> directory.
 <div class="highlight"><pre><span></span><code>$ ./gradlew clean build -x test
 </code></pre></div></p>
 </li>
-</ul>
-<h3 id="2-shut-down-the-java-tron-process">2. Shut down the java-tron process<a class="headerlink" href="#2-shut-down-the-java-tron-process" title="Permanent link">&para;</a></h3>
-<p>Shut down the node process. Note: If a java-tron node has not been deployed on this machine before, please skip to step 5.</p>
-<ul>
+</ol>
+<h3 id="step-2-stop-the-running-node">Step 2: Stop the Running Node<a class="headerlink" href="#step-2-stop-the-running-node" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Note</strong>: If this is your first time deploying the node, please skip directly to <a href="#step5">Step 5: Start the Node</a>.</p>
+</blockquote>
+<ol>
 <li>
-<p>First, get the process ID of the java-tron node through the following command
-    <div class="highlight"><pre><span></span><code>$ ps -ef | grep java
-</code></pre></div></p>
+<p>Use the following command to find the <code>PID</code> of the java-tron process.</p>
+<div class="highlight"><pre><span></span><code>$ ps -ef | grep java
+</code></pre></div>
 </li>
 <li>
-<p>Shut down the node process
-    <div class="highlight"><pre><span></span><code>$ kill -15 the process id
+<p>Stop the node process.
+    <div class="highlight"><pre><span></span><code>$ kill -15 &lt;PID&gt;
 </code></pre></div></p>
 </li>
-</ul>
-<h3 id="3-backup">3. Backup<a class="headerlink" href="#3-backup" title="Permanent link">&para;</a></h3>
-<p>Please back up the executable file, database, and configuration file before the upgrade in sequence. The backup data is used to restore to the old version when a problem is encountered that leads to fail deploying during the upgrade.</p>
-<ul>
-<li>Backup the current executable jar file
+</ol>
+<p><a id="step3"></a> </p>
+<h3 id="step-3-back-up-critical-data">Step 3: Back Up Critical Data<a class="headerlink" href="#step-3-back-up-critical-data" title="Permanent link">&para;</a></h3>
+<p>A full backup is strongly recommended before upgrading. Please perform the following backup steps in the specified order:</p>
+<ol>
+<li><strong>Back up the current executable file</strong>
     <div class="highlight"><pre><span></span><code>$ mv $JAVA_TRON.jar $JAVA_TRON.jar.`date &quot;+%Y%m%d%H%M%S&quot;`
 </code></pre></div></li>
-<li>Backup the current database <code>output-directory</code>
+<li><strong>Back up the current <code>output-directory</code> database</strong>
     <div class="highlight"><pre><span></span><code>$ tar cvzf output-directory.`date &quot;+%Y%m%d%H%M%S&quot;`.etgz output-directory
 </code></pre></div></li>
-<li>Backup the current configuration file
+<li><strong>Back up the current configuration file</strong>
     <div class="highlight"><pre><span></span><code>$ mv $config.conf $config.conf.`date &quot;+%Y%m%d%H%M%S&quot;`
 </code></pre></div></li>
-</ul>
-<h3 id="4-replace-old-version-files">4. Replace old version files<a class="headerlink" href="#4-replace-old-version-files" title="Permanent link">&para;</a></h3>
-<p>After preparing the executable file of the new version and backing up the original node data, please follow the steps below to replace the old files:</p>
-<ol>
-<li>Copy the newest jar package obtained in the previous step to the java-tron working directory to replace the old executable file.</li>
-<li>Replace the old configuration file with the latest configuration file. If you need to modify the configuration, such as adding a keystore file, private key, etc, please modify it yourself.</li>
 </ol>
-<p>Note: For the database file, you can use the original database file in the java-tron working directory, or you can choose to use <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#public-backup-data">database backup snapshot</a>.</p>
-<h3 id="5-start-the-nodes">5. Start the nodes<a class="headerlink" href="#5-start-the-nodes" title="Permanent link">&para;</a></h3>
-<p>The startup commands of FullNode which produces blocks and ordinary FullNode are different, please choose the startup command according to the actual situation:</p>
+<p>This ensures that if the upgrade fails, you can quickly roll back to the previous version using the backup.</p>
+<h3 id="step-4-replace-old-files">Step 4: Replace Old Files<a class="headerlink" href="#step-4-replace-old-files" title="Permanent link">&para;</a></h3>
+<p>After preparing the new version of the executable file and backing up the original node data, follow these steps to replace the old files:</p>
+<ol>
+<li>Copy the new <code>FullNode.jar</code> obtained in <a href="#step1">Step 1</a> to the java-tron working directory.</li>
+<li>Update the Configuration File (optional)<ul>
+<li>We recommend replacing your existing configuration file with the new version from the release. After replacing it, merge your previous custom settings (e.g., private key, keystore path) into the new file.</li>
+<li><strong>Configuration Update Strategy</strong><ul>
+<li><strong>This step is optional</strong>. You can decide whether to update the configuration file based on your specific needs. However, we highly recommend using the latest file to ensure full compatibility and access to new features.</li>
+<li>If an update is required for a specific release, it will be explicitly stated in the release notes. Always review the release notes before upgrading.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note on the Database</strong>: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore">database snapshot</a>.</p>
+</blockquote>
+<p><a id="step5"></a> </p>
+<h3 id="step-5-start-the-node">Step 5: Start the Node<a class="headerlink" href="#step-5-start-the-node" title="Permanent link">&para;</a></h3>
+<p>Please select the appropriate startup command based on your node type.</p>
 <ul>
 <li>
-<p>For the super representative's FullNode, the startup command is:
-    <div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC  -jar FullNode.jar  -p  private key --witness -c main_net_config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
+<p><strong>Super Representative (Block-Producing Node)</strong></p>
+<div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar  -p &lt;your private key&gt; --witness -c config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
 </code></pre></div>
-    Note: It is not necessary to use the above command parameter to set the private key. If you use the keystore file or configure the private key in the configuration file, please set it up your way.</p>
+<blockquote>
+<p><strong>Note</strong>: We recommend managing your private key using a <code>keystore</code> file or within the configuration file, rather than passing it directly as a command-line argument.</p>
+</blockquote>
 </li>
 <li>
-<p>For a FullNode, the startup command is:
-    <div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c   main_net_config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
-</code></pre></div></p>
+<p><strong>Regular Fullnode</strong></p>
+<div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
+</code></pre></div>
 </li>
 </ul>
-<h3 id="6-wait-for-syncing-completion">6. Wait for syncing completion<a class="headerlink" href="#6-wait-for-syncing-completion" title="Permanent link">&para;</a></h3>
-<p>After the node is successfully started, please wait patiently for the node block synchronization to complete.</p>
-<h3 id="7-upgrade-completed">7. Upgrade completed<a class="headerlink" href="#7-upgrade-completed" title="Permanent link">&para;</a></h3>
-<p>After the node is synchronized to the latest block of the network, it means that the deployment of the new version is completed.</p>
-<p>If you encounter any problems during the upgrade leading to fail deploying the new version, please use the data backed up in the third step to restore to the old version, and give your feedback in GitHub or the community in time to help you complete the deployment of the new version as soon as possible.</p>
-<h2 id="active-and-backup-nodes-upgrade-guide">Active and Backup Nodes Upgrade Guide<a class="headerlink" href="#active-and-backup-nodes-upgrade-guide" title="Permanent link">&para;</a></h2>
-<p>To upgrade the active and backup nodes, please follow the steps below:</p>
+<h3 id="step-6-verify-and-monitor">Step 6: Verify and Monitor<a class="headerlink" href="#step-6-verify-and-monitor" title="Permanent link">&para;</a></h3>
 <ol>
+<li><strong>Wait for Node Synchronization</strong>: After the node starts, it will begin to synchronize block data. Please wait patiently for it to catch up to the latest block height of the network.</li>
+<li><strong>Check the Logs</strong>: Monitor the log output to ensure the node is running normally and without any error messages.</li>
 <li>
-<p>Upgrade the backup node</p>
-<p>Upgrade the backup node according to the <a href="#new-version-deployment-process">java-tron new version deployment Process</a>.</p>
+<p><strong>Confirm Synchronization Status</strong>: You need to verify that synchronization is complete by comparing the latest block height of your local node with that of the TRON Mainnet. The upgrade is successful when the two heights are nearly identical.</p>
+<ul>
+<li>To query local node block height, call the <code>/wallet/getnowblock</code> API:
+    <div class="highlight"><pre><span></span><code>curl http://127.0.0.1:8090/wallet/getnowblock
+</code></pre></div></li>
+<li>To check the block height on Mainnet in real-time on <a href="https://tronscan.org">TRONSCAN</a>.</li>
+</ul>
 </li>
-<li>
-<p>Shut down the master node</p>
-<p>After the backup node is successfully upgraded to the new version, please wait for the completion of synchronization of the backup node before shutting down the master node. At this time, the backup node will automatically take over from the master node and become the active node.</p>
+</ol>
+<p><strong>Contingency Plan</strong>: If you encounter any issues during the upgrade process that prevent the node from starting or running correctly, immediately use the data backed up in <a href="#step3">Step 3</a> to restore the previous version. Please submit a GitHub Issue or report the problem to the TRON community for assistance.</p>
+<hr />
+<p><a id="primary/backup_upgrade"></a> </p>
+<h2 id="primarybackup-node-upgrade-guide">Primary/Backup Node Upgrade Guide<a class="headerlink" href="#primarybackup-node-upgrade-guide" title="Permanent link">&para;</a></h2>
+<p>To ensure high availability of the service, the upgrade of primary/backup nodes should adopt a rolling upgrade strategy.</p>
+<ol>
+<li><strong>Upgrade the Backup Node</strong><ul>
+<li>First, perform all the steps in the <a href="#standard_process">Standard Node Upgrade Process</a> on the Backup Node.</li>
+</ul>
 </li>
-<li>
-<p>Upgrade the master node</p>
-<p>If the backup node works normally, follow <a href="#new-version-deployment-process">java-tron New Version Deployment Process</a> to upgrade the master node. Otherwise, shut down the backup node and start the master node. If an error occurs during the upgrade, please contact TRON technical support team and send the node’s log for root cause analysis.</p>
+<li><strong>Perform the Switchover</strong><ul>
+<li>After confirming that the Backup Node has been successfully upgraded and has completed block synchronization, stop the process on the <strong>Master Node</strong>.</li>
+<li>At this point, the Backup Node will automatically take over, becoming the new <strong>Active Node</strong> and serving traffic.</li>
+</ul>
 </li>
-<li>
-<p>Shut down the backup node</p>
-<p>After the master node is upgraded and fully synchronized, shut down the backup node. After the backup node shuts down, the master node will take over as the active node again.</p>
+<li><strong>Upgrade the Original Master Node</strong><ul>
+<li>After confirming that the new Active Node (the former Backup Node) is running stably, perform the <a href="#standard_process">Standard Node Upgrade Process</a> on the original Master Node.</li>
+<li><strong>Error Handling</strong>: If the new Active Node fails during this period, immediately stop its upgrade process and restart the original Master Node to restore service. At the same time, please save the complete logs from the failed node for troubleshooting. For further support, please submit a GitHub Issue with the relevant logs or report it to the community.</li>
+</ul>
 </li>
-<li>
-<p>Start the backup node</p>
+<li><strong>Restore the Primary/Backup Architecture</strong><ul>
+<li>After the original Master Node has been upgraded, started, and fully synchronized, stop the currently active node (the former Backup Node).</li>
+<li>The original Master Node will automatically take over again, resuming its role as the Active Node.</li>
+</ul>
+</li>
+<li><strong>Restart the Backup Node</strong><ul>
+<li>Finally, restart the upgraded Backup Node to restore it to its backup status. This completes the entire primary/backup upgrade process.</li>
+</ul>
 </li>
 </ol>
 

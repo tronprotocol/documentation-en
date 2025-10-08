@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/architecture/use-native-queue/">
       
       
-        <link rel="prev" href="../upgrade-instruction/">
+        <link rel="prev" href="../event/">
       
       
-        <link rel="next" href="../history/">
+        <link rel="next" href="../use-mongodb/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Integrity Check - java-tron</title>
+        <title>Built-in Message Queue Subscription - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#java-tron-release-package-signature-verification" class="md-skip">
+        <a href="#event-subscription-with-built-in-message-queue" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Integrity Check
+              Built-in Message Queue Subscription
             
           </span>
         </div>
@@ -319,8 +319,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -330,11 +332,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -349,7 +351,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Using java-tron
@@ -448,6 +450,8 @@
                 
   
   
+    
+  
   
   
     
@@ -456,11 +460,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
           <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
@@ -475,7 +479,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             Event Subscription
@@ -489,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+      <a href="../event/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -508,10 +512,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -521,6 +546,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#configuring-the-node" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Configuring the Node
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#starting-the-node" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting the Node
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#preparing-the-event-subscription-script" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Preparing the Event Subscription Script
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#starting-the-subscriber" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting the Subscriber
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -533,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+      <a href="../use-mongodb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -555,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
+      <a href="../use-kafka/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -585,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/database/" class="md-nav__link">
+      <a href="../database/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1357,8 +1438,6 @@
       
   
   
-    
-  
   
   
     
@@ -1370,11 +1449,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
@@ -1389,7 +1468,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Releases
@@ -1403,7 +1482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../upgrade-instruction/" class="md-nav__link">
+      <a href="../../releases/upgrade-instruction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1422,31 +1501,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Integrity Check
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../releases/signature_verification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1456,119 +1514,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item has-children">
-  <a href="#gpg-signature-verification-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      GPG Signature Verification Process
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GPG Signature Verification Process" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#1-install-gpg" class="md-nav__link" >
-    <span class="md-ellipsis">
-      1. Install GPG
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#2-import-the-public-key" class="md-nav__link" >
-    <span class="md-ellipsis">
-      2. Import the Public Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#3-verify-the-signature" class="md-nav__link" >
-    <span class="md-ellipsis">
-      3. Verify the Signature
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#tron-address-signature-verification-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      TRON Address Signature Verification Process
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TRON Address Signature Verification Process" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#1-install-tronweb" class="md-nav__link" >
-    <span class="md-ellipsis">
-      1. Install TronWeb
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#2-verify-the-release-packages-integrity" class="md-nav__link" >
-    <span class="md-ellipsis">
-      2. Verify the Release Package's Integrity
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#3-check-the-release-package-signature" class="md-nav__link" >
-    <span class="md-ellipsis">
-      3. Check the Release Package Signature
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#historical-version-signature-information" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Historical Version Signature Information
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1581,7 +1526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../history/" class="md-nav__link">
+      <a href="../../releases/history/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1692,271 +1637,78 @@
   
 
 
-<h1 id="java-tron-release-package-signature-verification">java-tron Release Package Signature Verification<a class="headerlink" href="#java-tron-release-package-signature-verification" title="Permanent link">&para;</a></h1>
-<p>This document provides developers with instructions on how to verify the signature of the TRON java-tron executable file to ensure its <strong>authenticity</strong> and <strong>integrity</strong>. The signature verification process requires three key pieces of information: the executable file to be verified, its digital signature, and the public key corresponding to the private key used for signing. The verification principle is to use the content of the executable file and its signature to derive the signing public key and compare it with the public key officially released on the <a href="https://github.com/tronprotocol/java-tron">java-tron</a> GitHub repository. If they match, it confirms that the java-tron executable you obtained is consistent with the one published on GitHub and has not been tampered with.</p>
-<p>TRON's signing method for java-tron release packages has been adjusted:</p>
+<h1 id="event-subscription-with-built-in-message-queue">Event Subscription with Built-in Message Queue<a class="headerlink" href="#event-subscription-with-built-in-message-queue" title="Permanent link">&para;</a></h1>
+<p>TRON provides flexible event subscription features, allowing developers to either obtain on-chain events via <strong>event plugins</strong> or implement lightweight subscriptions using java-tron's built-in <strong>ZeroMQ message queue</strong>.</p>
+<p>The core differences between the two methods are:</p>
 <ul>
-<li><strong>For new versions released on or after January 3, 2023</strong>: <strong>GPG</strong> is used for signing and verification.</li>
-<li><strong>For versions released before January 3, 2023</strong>: A <strong>specific TRON account's public and private keys</strong> were used for signing and verification.</li>
+<li><strong>Event Plugins</strong> require separate deployment and are suitable for pushing events to external systems (like MongoDB or Kafka) for persistence, analysis, or asynchronous processing.</li>
+<li><strong>ZeroMQ Message Queue</strong> is a built-in implementation in java-tron that requires no additional deployment. An event subscriber simply needs to connect to the node's publishing port and configure the subscription topics to receive events in real-time. However, this method does not support event persistence and is only suitable for short-term listening and immediate processing scenarios.</li>
 </ul>
-<p>This document will detail both of these signature verification processes.</p>
-<h2 id="gpg-signature-verification-process">GPG Signature Verification Process<a class="headerlink" href="#gpg-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>For <code>java-tron</code> versions released after January 3, 2023, you must use GPG for signature verification. The <code>java-tron</code> executable and its corresponding signature file are published together on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>. Please follow the steps below to perform GPG signature verification.</p>
-<h3 id="1-install-gpg">1. Install GPG<a class="headerlink" href="#1-install-gpg" title="Permanent link">&para;</a></h3>
-<p>If you have already installed GPG, you can skip this step. Otherwise, install it using the command for your operating system:</p>
-<p><div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>gpg
+<p>Therefore, when you want to connect to an event stream quickly and at a minimal cost without relying on persistence capabilities, using the <strong>built-in ZeroMQ message queue</strong> is a more lightweight and direct choice. This guide explains how to subscribe to events using this method.</p>
+<h3 id="configuring-the-node">Configuring the Node<a class="headerlink" href="#configuring-the-node" title="Permanent link">&para;</a></h3>
+<p>To enable event subscriptions via java-tron's built-in ZeroMQ, you must enable the feature in the node's configuration file.</p>
+<div class="highlight"><pre><span></span><code>event.subscribe = {
+  native = {
+    useNativeQueue = true  
+    bindport = 5555  
+    sendqueuelength = 1000  
+  }
+
+  ......
+
+  topics = [
+    {
+      triggerName = &quot;block&quot;  
+      enable = true
+      topic = &quot;block&quot;  
+    },
+    ......
+  ]
+}
 </code></pre></div>
-* <strong>Debian, Ubuntu, or other Linux distributions</strong>:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gpg
-</code></pre></div></p>
-<h3 id="2-import-the-public-key">2. Import the Public Key<a class="headerlink" href="#2-import-the-public-key" title="Permanent link">&para;</a></h3>
-<p>If you have previously imported the public key, you can skip this step, as it only needs to be imported once.</p>
-<p>First, get the <strong>public key hash</strong> and <strong>UID</strong> of the <code>java-tron</code> release package GPG signature from the <a href="https://github.com/tronprotocol/java-tron?tab=readme-ov-file#integrity-check">java-tron GitHub repository</a>. For example:</p>
-<div class="highlight"><pre><span></span><code>pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
-uid: build@tron.network
-</code></pre></div>
-<p>Then, import the public key from the GPG public key server to your local machine using the public key hash:</p>
-<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--recv-keys<span class="w"> </span><span class="s2">&quot;1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B&quot;</span>
-</code></pre></div>
-<p>If the public key import is successful, you will see output similar to this:</p>
-<div class="highlight"><pre><span></span><code>gpg: key 785FB96D2C7C3CA5: &quot;build_tron &lt;build@tron.network&gt;&quot; public key imported
-gpg: Total number processed: 1
-gpg:               imported: 1
-</code></pre></div>
-<h3 id="3-verify-the-signature">3. Verify the Signature<a class="headerlink" href="#3-verify-the-signature" title="Permanent link">&para;</a></h3>
-<p>Assuming the executable you want to verify is <code>FullNode.jar</code> and its corresponding signature file is <code>FullNode.jar.sig</code>, run the following command to verify the signature:</p>
-<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--verify<span class="w"> </span>FullNode.jar.sig<span class="w"> </span>FullNode.jar
-</code></pre></div>
-<p>If the signature verification passes, you will see the following text:</p>
-<div class="highlight"><pre><span></span><code>gpg: Signature made Wed Jan  6 12:21:51 2023 CST
-gpg:                using RSA key 1254F859D2B1BD9F66E7107D F859BCB44A28290B
-gpg: Good signature from &quot;build_tron &lt;build@tron.network&gt;&quot; [unknown]
-gpg: WARNING: This key is not certified with a trusted signature!
-gpg:          There is no indication that the signature belongs to the owner.
-Primary key fingerprint: 07B2 3298 AEA4 E006 BD9A  42DE 785F B96D 2C7C 3CA5
-Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7  107D F859 BCB4 4A28 290B
-</code></pre></div>
-<p>If the verification fails, it will display text like <code>Bad signature from "build_tron &lt;build@tron.network&gt;"</code>.</p>
-<h2 id="tron-address-signature-verification-process">TRON Address Signature Verification Process<a class="headerlink" href="#tron-address-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>For <code>java-tron</code> versions released before January 3, 2023, the release packages were signed by the TRON account <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>. The signing process is as follows:</p>
-<ol>
-<li>First, the SHA256 hash of the executable file is calculated.</li>
-<li>Then, the SHA256 hash is signed with the private key of the TRON account.</li>
-</ol>
-<p>The SHA256 hash and signature result for the release packages can be found in the <a href="#historical-version-signature-information">Historical Version Signature Information</a> section of this document or on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</p>
-<p>Here, we will use the popular TRON JavaScript library, <a href="https://tronweb.network/docu/docs/intro/">tronweb</a>, to demonstrate the signature verification process. TronWeb provides the <code>Trx.verifySignature</code> interface to verify signatures. A successful verification will return <code>true</code>; otherwise, it returns <code>false</code>. Please follow the process below to verify.</p>
-<h3 id="1-install-tronweb">1. Install TronWeb<a class="headerlink" href="#1-install-tronweb" title="Permanent link">&para;</a></h3>
-<p>If you have already installed TronWeb, you can skip this step. Otherwise, install it using the following command:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>tronweb
-</code></pre></div>
-<h3 id="2-verify-the-release-packages-integrity">2. Verify the Release Package's Integrity<a class="headerlink" href="#2-verify-the-release-packages-integrity" title="Permanent link">&para;</a></h3>
-<p>To ensure the integrity of the release package, you need to check if its SHA256 hash matches the hash provided in the release information.</p>
-<p>For the <code>Odyssey-3.7</code> version, for example:</p>
 <ul>
-<li>The release package file name is: <code>FullNode.jar</code></li>
-<li>The release package's SHA256 is: <code>2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e</code></li>
-<li>The signature is: <code>21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b</code></li>
+<li><code>native.useNativeQueue</code>: <code>true</code> to use the built-in message queue, <code>false</code> to use event plugins.</li>
+<li><code>native.bindport</code>: The port that the ZeroMQ publisher binds to. In this example, it is <code>5555</code>, so the subscriber should connect to the publisher address <code>"tcp://127.0.0.1:5555"</code>.</li>
+<li><code>native.sendqueuelength</code>: The length of the send queue. This is the maximum number of messages the TCP buffer can hold if the subscriber is slow to receive them. Messages published beyond this limit will be discarded.</li>
+<li><code>topics</code>: The subscribed <a href="../event/#event-types">Event Types</a>, such as block types, transaction types, etc.</li>
 </ul>
-<p>On your system, execute the following command to calculate the SHA256 hash of <code>FullNode.jar</code>:</p>
-<ul>
-<li><strong>macOS</strong>:
-<div class="highlight"><pre><span></span><code>shasum<span class="w"> </span>-a<span class="w"> </span><span class="m">256</span><span class="w"> </span>FullNode.jar
-</code></pre></div></li>
-<li><strong>Debian, Ubuntu, and other Debian-derived systems</strong>:
-<div class="highlight"><pre><span></span><code>sha256sum FullNode.jar
+<h3 id="starting-the-node">Starting the Node<a class="headerlink" href="#starting-the-node" title="Permanent link">&para;</a></h3>
+<p>The event subscription service is disabled by default and must be enabled using the <code>--es</code> command-line argument. The startup command for a node with event subscription enabled is as follows:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar FullNode.jar --es
 </code></pre></div>
-Compare the hash value from the command's output with the hash provided in the release information.</li>
-</ul>
-<h3 id="3-check-the-release-package-signature">3. Check the Release Package Signature<a class="headerlink" href="#3-check-the-release-package-signature" title="Permanent link">&para;</a></h3>
-<p>Use the <code>tronweb</code>'s <code>Trx.verifySignature</code> interface to verify the release package's signature. Execute the following JavaScript code in your command line:</p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Trx</span><span class="p">.</span><span class="nx">verifySignature</span><span class="p">(</span><span class="nx">SHA256</span><span class="p">,</span><span class="w"> </span><span class="nx">ADDRESS</span><span class="p">,</span><span class="w"> </span><span class="nx">SIGNATURE</span><span class="p">));</span>
-<span class="nx">node</span><span class="w"> </span><span class="o">-</span><span class="nx">e</span><span class="w"> </span><span class="s1">&#39;console.log(require(&quot;tronweb&quot;).Trx.verifySignature(</span>
-<span class="s1">    &quot;2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e&quot;,</span>
-<span class="s1">    &quot;TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2&quot;,</span>
-<span class="s1">    &quot;21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b&quot;</span>
-<span class="s1">))&#39;</span>
+<h3 id="preparing-the-event-subscription-script">Preparing the Event Subscription Script<a class="headerlink" href="#preparing-the-event-subscription-script" title="Permanent link">&para;</a></h3>
+<p>This guide uses Node.js as an example to demonstrate how to subscribe to events.</p>
+<p>First, install the <code>ZeroMQ</code> library:</p>
+<div class="highlight"><pre><span></span><code>$ npm install zeromq@5
 </code></pre></div>
-<p>If the signature verification passes, it will output <code>true</code>; otherwise, it will output <code>false</code>.</p>
-<h3 id="historical-version-signature-information">Historical Version Signature Information<a class="headerlink" href="#historical-version-signature-information" title="Permanent link">&para;</a></h3>
-<h4 id="odyssey-37">Odyssey-3.7<a class="headerlink" href="#odyssey-37" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e
-FullNode signature: 21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b
-SolidityNode sha256sum: fcdea8b3e511306218ba442fb0828f0413574012d646c39c212a59f6ba5844bc
-SolidityNode signature: 6dcad6e02f17467e5cfebeefa0f9963da08e7da10feebefdec47d689fecc30f104c9b7f5e784b883e7ceb786fe55188356c42c306d727fb7819eed2a71f788361c
+<p>Next, write the subscriber code:</p>
+<div class="highlight"><pre><span></span><code>// subscriber.js
+var zmq = require(&quot;zeromq&quot;),
+var sock = zmq.socket(&quot;sub&quot;);
+
+sock.connect(&quot;tcp://127.0.0.1:5555&quot;);
+sock.subscribe(&quot;block&quot;);
+console.log(&quot;Subscriber connected to port 5555&quot;);
+
+sock.on(&quot;message&quot;, function(topic, message) {
+  console.log(
+    &quot;received a message related to:&quot;,
+    Buffer.from(topic).toString(),
+    &quot;, containing message:&quot;,
+    Buffer.from(message).toString()
+  );
+});
 </code></pre></div>
-<h4 id="greatvoyage-400">GreatVoyage-4.0.0<a class="headerlink" href="#greatvoyage-400" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: d3f8f9fde64bdefaadae784d09de97172e5e8a3fe539217e12b89963983a530d
-FullNode signature: e788dbaf2fe35f099f65b2403cfb0d7cbe7f4611f8c5ff8151e4bd84ae468d2e541043c9cde9e74500003027ae9f25cdda81a9bcd60abb45ca7a69f965f4dcc71c
-SolidityNode sha256sum: adddf88423c6c31f1f25ed39b10779c24dd7cdcf37f2325c02b2f2ecfc97e1f6
-SolidityNode signature: e3b9859f178f7851dedb7a0a8deb715e5f1e3af10b1064c36f2727ec2b8825510df4fd7b09d7d049204e5df3e8d5b87778e83a15ca96ce786f7977a6cb48bca91b
+<p>This example connects the subscriber to the node's event publisher and subscribes to <code>block</code> events.</p>
+<h3 id="starting-the-subscriber">Starting the Subscriber<a class="headerlink" href="#starting-the-subscriber" title="Permanent link">&para;</a></h3>
+<p>The Node.js startup command is as follows:</p>
+<div class="highlight"><pre><span></span><code>$ node subscriber.js
+
+&gt; Subscriber connected to port 5555
 </code></pre></div>
-<h4 id="greatvoyage-411">GreatVoyage-4.1.1<a class="headerlink" href="#greatvoyage-411" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: 30e716b86b879af1e006c2b463903ae3835e239e32e2b01c2a1b903a153897fe
-FullNode signature: 5faee65a448bb9aa77835992ca3d24e50d8a76b7934f80664ad38e83179c8114278fdef4494de7231f8e40de86461676a7aa4a54c795f4c692e91d90e156ec471b
-SolidityNode sha256sum: 10a160181053b421109ecace74df5fc0f8860bc8a70181add65fd9a292c35a44
-SolidityNode signature: 1d1413b13adf7778f9a720294eca066ac728ad636d166505276f5ff1f63973c100c04778f937f240f10107edb7de477604857867fc4dbdb68238169c978fc3da1b
-</code></pre></div>
-<h4 id="greatvoyage-v412">GreatVoyage-v4.1.2<a class="headerlink" href="#greatvoyage-v412" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: 4ded44b6c1a3dbd25212e14ab413142b5463dcbf30a528f83ded529048542547
-FullNode signature: 57a094c1b8a5ec301ef913eb718de2498b5695eb999530863df05252ba8919ba6866c8490e29d36f7dbf34537c898ece5ef0111efb134419c3a5fd6fc9ec03b81c
-SolidityNode sha256sum: 3db36cadbd1f7641aafc8164983f28df4b7ceff8174e090327ed407012cf12cb
-SolidityNode signature: d07604f6811cbed628dd6e5c07880c2fdd3025848fd5365925531c7748467d5228fea2e18326864acc27f3b51c73b364fa44c450d8ec4b5080a7ddb7566724701c
-</code></pre></div>
-<h4 id="greatvoyage-v413thales">GreatVoyage-v4.1.3(Thales)<a class="headerlink" href="#greatvoyage-v413thales" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: c5fb99ad5b024bb7877118f30fb6065f6e6febd11a3cfa241521cbed73cca181
-FullNode signature: d80ec371e791c4316925d80ff3400cf51b14c8a4d4c696b7817c517eb094823622932b45b9b37f9e9657513c3eddb1134fbbb1ee56727c0957e8a3b40c67409b1c
-SolidityNode sha256sum: 4b941d71b561a8b2e0b97d7498823d900eaf287910eea1eaafc649f5aad14036
-SolidityNode signature: f8a8e8d411b009d02986cad1e19e745f8107384a274f146bcae60c570111b13556ff9ab528eb5d1fb4734bd4ef488ade4038781d06ab6420e35f28be6135fe9b1c
-</code></pre></div>
-<h4 id="greatvoyage-v420plato">GreatVoyage-v4.2.0(Plato)<a class="headerlink" href="#greatvoyage-v420plato" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-bbf103432be016b582452137b4862140af15ccf7c5daa9be738450705317fdb8
-FullNode signature:
-326701699a5eb8d497eb454b5b74c1559961417fb6f262b4e6314052d73f5977312e0450937fa485236f51f706b434acf8659ce1325d704097c5748629e736ef1c
-SolidityNode sha256sum:
-1db544cbca9dc814683ccf9bef28f7d6ca4469289052230394aaf4e3bcd08615
-SolidityNode signature:
-47fea27df940db0d2a4c0abf6d06969882c027bc4f17449205a28ae5cd25b8ba5339e21f105fe1c25e799d0f4ffea64a15046b9baf5b54341411b5180da439011b
-</code></pre></div>
-<h4 id="greatvoyage-v421origen">GreatVoyage-v4.2.1(Origen)<a class="headerlink" href="#greatvoyage-v421origen" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-9888710c915a4027f1bc3dcb1d5d983e0c00d4c438f6fa307d412f62ff6862ea
-FullNode signature:
-6e7d8ef9d033ebf9213118b7511f4ecc5def97442844fbd34de3ef76dd417a0d45da3e2e70fc213475d7fc0a44df1c54732874d858ec980159c5dbffc975680a1c
-SolidityNode sha256sum:
-c70edffa3022e9c25bf845ee978e3500c3ada89b473d895a715acf1738b83f10
-SolidityNode signature:
-0e366acce33bb7c6b02fa143a57d9380c94d3513a9fba8692efe2862a8f7df93156edbddd075f1844f2f81398b14f2db6a03e21f0f6b8ab25649fae4dc16ae731b
-</code></pre></div>
-<h4 id="greatvoyage-v422lucretius">GreatVoyage-v4.2.2(Lucretius)<a class="headerlink" href="#greatvoyage-v422lucretius" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-8a7f8143b3351ea6b5d8e3dfc857b09256d363d4907ba3ab0288f67f77c2a58f
-FullNode signature:
-71c6300ace5cbf16d78a32aa4602c3f129cb768e32acffaecd17b4134b5955bf37efda1d27025e894e521184a21174e5eddf4e7d1f86761657827795cbddfcfd1c
-SolidityNode sha256sum:
-2d0d5334a232b7b74df8ed3211d9e0ac957894f81e9172010732f2159da261ad
-SolidityNode signature:
-0696f8cb3c65324c4b04f9ecf89d939bf7e1b955144e3fe75eeca6bd4c639e463afbe24e31ae38a6889d4d0649ae03fafeeb7c337b34a36fbac33962f64651671b
-</code></pre></div>
-<h4 id="greatvoyage-v4221epictetus">GreatVoyage-v4.2.2.1(Epictetus)<a class="headerlink" href="#greatvoyage-v4221epictetus" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-8bd040a8db16ccba3e957ed3558b82d145928153a53f9688302849658a72f9bc
-FullNode signature:
-3137a8ba8fa5556e4c4a7597aec8f5f46ebb79a64edcf9e2925d2e3314afde3e0f42fd4080e5e4f4d3d1eff263d30478b0322e6dbcc71c43b534f614004b5c561b
-SolidityNode sha256sum:
-ee8abd39732e4901828a61124880f1d2eab62f7f3d97150f1e1921bf7da10e54
-SolidityNode signature:
-092b08184677449dd283a31cc486f994166cd9f5ad312a9c80d3e06689ec540774ac9a1334dffeb6412039ed70ee912ead39c4025dd69b688ea9df4dd831b5771c
-</code></pre></div>
-<h4 id="greatvoyage-v430bacon">GreatVoyage-v4.3.0(Bacon)<a class="headerlink" href="#greatvoyage-v430bacon" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-b5e993800cea5ca040758dd6b3c7438def03cbf1358468beb76ea45399a59298
-FullNode signature:
-8da6ac58129d78d948810e4bc7372dd8aef5232bfbc4c33ad8fb21e88314e3d97dd77509e0f03a98da32679495152ccd4a9d07541589822e5cf5d3d4f61877191b
-SolidityNode sha256sum:
-446a4736901958a450e4e95aaca99a63957163854fb32d25eed84600e6996668
-SolidityNode signature:
-c27ffde8ce88ee14689e15a9d5c3fb2d2a9d180ea43b45046131df8ac5481fae2588621b395ad7031ed49d65ddd020b3ce084537e3f527d8a5a979f8c65265561c
-</code></pre></div>
-<h4 id="greatvoyage-v440rousseau">GreatVoyage-v4.4.0(Rousseau)<a class="headerlink" href="#greatvoyage-v440rousseau" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-bf7f962846f75139dd89ac6da32074cad33b2e172c0749abbed8773cc1ab1a37
-FullNode signature:
-56ed97f3451e3d731f799bad952750d56aa78a9a91a2688b4d6b956328ede7e01bae78037ad6ef1f9c682b566e954dfb958271f006e5cf0dcace5768d76fda6e1b
-SolidityNode sha256sum:
-9dac37763ddf75c07335ec070f837b63ee46b698066dd25c4756ad40f8750d5f
-SolidityNode signature:
-cc4325c085719e3e5045b5c6c2553d7adc9c735419618f7afad06c3a532da0ed46906ae9b2dadb15d7f94150268d5ecdc7fd2741693991586d50da30a8d917071b
-</code></pre></div>
-<h4 id="greatvoyage-v441protagoras">GreatVoyage-v4.4.1(Protagoras)<a class="headerlink" href="#greatvoyage-v441protagoras" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-4a32918849dc8a7fedcb637ff4939389363726cb16c6a581e39253260668ee04
-FullNode signature:
-fd747f61705ef045143bd2d55b278ca347904323711e2e86b11cf1dd203f198443ab1a399767a570005bd5b2ea283187ccc41557ffb79c959b018e8d798b96f81c
-SolidityNode sha256sum:
-b6a06d3b19f41591bd8c01f35e78b316ab8e9ad4c0740128fc95ba52d3106f34
-SolidityNode signature:
-d2836bda30fd25c89494ae7a12b5357bc9e725c9e2c655fb0a9158a4bee881693ea869defe650b0b4f190458a5268f1c121e73c8305cc81a408e62fca0d234c51b
-</code></pre></div>
-<h4 id="greatvoyage-v442augustinus">GreatVoyage-v4.4.2(Augustinus)<a class="headerlink" href="#greatvoyage-v442augustinus" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-70eba12350fa21e1b261927093090e7bdf0765592d19433c594149bd3707ef0a
-FullNode signature:
-14430f463e6fab3dd247aca6267b6aaf2f1869b455d95aee297208bd1561c6c67559d9c535e63e74bbef604141cc4ceec78367a75e6ca4d4ceb6513019329c9b1b
-SolidityNode sha256sum:
-f08438e093cc1091859f0ee9dbc7e79b0d5d9068facd4e6485374baa3acf59d1
-SolidityNode signature:
-f3935dfe4af9601cf102c975ed2eebbd4b42160e8746c0d0b21ffbd2fbd4b6f374257b1bc0e948909a9ef343d2cc70671961c8f7a992b6cd123f9ad3c8c323391c
-</code></pre></div>
-<h4 id="greatvoyage-v443pythagoras">GreatVoyage-v4.4.3(Pythagoras)<a class="headerlink" href="#greatvoyage-v443pythagoras" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-c07637a1a4a9a289218554f4714caef90032e267b068411c7dd818d4af45e39f
-FullNode signature:
-2bf8d65adf556fe2c04b739c1f4e6e73058914cf642a7806ff85e57be2ff122e35cbf3d67b0bc8bad4fb827198ffd8e06f60111a167ecb0b3db0d8e571b8c67b1c
-SolidityNode sha256sum:
-64f4614160b9330d0a9e984686b66fa16e9aecf7ae16e32b8cc7c32f52694eef
-SolidityNode signature:
-dc0f910555a23667d682a6775588de90592ede44f76a32b12ea8f89fa7dcc937274cc3a44b20da49726323cc9f476d42caa318c338858474f02bf98cc398bca81c
-</code></pre></div>
-<h4 id="greatvoyage-v444plotinus">GreatVoyage-v4.4.4(Plotinus)<a class="headerlink" href="#greatvoyage-v444plotinus" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-0264d382489dae5bf1d340030c1892b0a7aeb9364cb9380c034e159c9eb9a269
-FullNode signature:
-70cdece8c3510ce4d7d84d5d2c8b53895397c0134d73d681b6b41d4de80d74ce2c2760fdf080ff0ce8c0989246377fca529cb1a2e85e1936755abef4be64f0971b
-SolidityNode sha256sum:
-b58e7b8b0f97eb2a7a0ce5c5aeb2ce070192ca82c96adc8568aabe4f3407d873
-SolidityNode signature:
-26da2e507bbd7e82e0170039cc1c0e42332fb2dfc755aeb385240f0a93125b6c0f1e943ccf1a4e9bfec7fdd4d8a26375a38e030e0b8b69af3e2c181bf08444111b
-</code></pre></div>
-<h4 id="greatvoyage-v445cicero">GreatVoyage-v4.4.5(Cicero)<a class="headerlink" href="#greatvoyage-v445cicero" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-8115e887e5af5768e8ab967f8e7bc024af94bda31be7f3dbc30934b42489d988
-FullNode signature:
-1a02f26eb6065efe5697123528f32ea352d813f9e5acf5936407ad8899c4019539e31b257cafe34b9f8045602f5a4f381b3dd8252a30bb9daf52aeeb078b54711b
-SolidityNode sha256sum:
-95884a07dcbb1531ec7ae20b7162cab3bb9c4bd2e300447c01c4772e02b24a20
-SolidityNode signature:
-8adab9501bbb2a3d9f3055c91e819f86081df9b92228a86afb7f0a27165a42690dbeb50f0f1fd1f7180b51809a291c5ff3860e49f888cf0ba87b401d3dda6e271c
-</code></pre></div>
-<h4 id="greatvoyage-v446david">GreatVoyage-v4.4.6(David)<a class="headerlink" href="#greatvoyage-v446david" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-eaf213f6e6cd9913f9f27bf72a42209c1a0f0fce9841c1d6bd680d879d7d6f85
-FullNode signature:
-064abe833436b3a2e9b66406abf81d12a20f9d28ef669abe7c87c0d750e58cf10c1e65de6fbd0fc368022f93e4c330b42ea9775ead91962480436985c90ad3b11c
-SolidityNode sha256sum:
-c3e9ccc1a4d2aac4c081ae01db86a0901b6f3506e3f8a953315e47ae274a98c1
-SolidityNode signature:
-a03d5d6f0e6c6b869f2e545d8c3ff8a4fed569508e9abe4219271d8bf25dfb015e242add8fd2ab6b8b412dd6b393639517957877e8eb7c07ff43a1351a88d62f1b
-</code></pre></div>
-<h4 id="greatvoyage-v451tertullian">GreatVoyage-v4.5.1(Tertullian)<a class="headerlink" href="#greatvoyage-v451tertullian" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-db3c75d7854dcf241558c2942b9a582f478c00a88b6f7a7e5ff8a653a8d4c59a
-FullNode signature:
-61ba205f28c3bc7fa228c27e4e3b4d460ef4fad75ca1d38d82540d45eea2d3d720196b607cd45c560db7a749d05bfe8089c61fba5843e98d61fec90f1591f2861b
-SolidityNode sha256sum:
-537a81bd781d416229de5e0875247160f2569c378c8eed703203d0acca5be5f1
-SolidityNode signature:
-a736f9de5425562a2af188c547245f9b4da6d793728bc767242e3df75fa104f61ce978b62fc5cea7f6008bdb51faa9510ff5633702cdb1ddca29cb06a18920d21c
-</code></pre></div>
-<h4 id="greatvoyage-v452-aurelius">GreatVoyage-v4.5.2 (Aurelius)<a class="headerlink" href="#greatvoyage-v452-aurelius" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-60e959ccde3ff90c10b503bb25edf37684845e358df2ad64b2b330712b30c177
-FullNode signature:
-f2f4b6050e639047857c5b5331eb006dcc9c1e0427bac4ae3d934f7436080785472ead691aa16e6a5aed3c2932fb279ce8ab3580449071b878e0d31fdf01f0371c
-SolidityNode sha256sum:
-4783b8abef12a6c7b8319f3e8960c1d3126edcc521ac1fc3429fe2870cab91b0
-SolidityNode signature:
-afb5db2467ce9f5445679df53e2fecfaed3c4a2d0ca2ba88b65e621aa2d37a9e6aab06b30052a9381087d0164cb5c347d710b2b1c59e6f7c7107deacfd1cfc961b
-</code></pre></div>
-<h4 id="greatvoyage-v460-socrates">GreatVoyage-v4.6.0 (Socrates)<a class="headerlink" href="#greatvoyage-v460-socrates" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-598589d428085e25c838552970844b0ba00248ad92873bd2ad25b35f37db7a5b
-FullNode signature:
-d3bcfa1bea64b7e58cb94603563cb0c5e47bc20316f61b0dfc966fb64ae846f21b8f917a63328416993f524f4de55ddf5083f163b1fe1b811a9a6f4532725c8e1c
-SolidityNode sha256sum:
-ee37a425a84677063b6ea44ed073b8260e336586a61debc10ce0b1544bf7db6a
-SolidityNode signature:
-332c273ef1cdae8dc39c76a83b38750a74b3dd1b915e49698e4ae6870cfed49a1449e8d8db995c7a6be2295e2603efedb0f3e8e906ac7681583c5023b28a521d1b
+<p>When the node produces a new block, the subscriber will receive the block event, and the output will look like this:</p>
+<div class="highlight"><pre><span></span><code>received a message related to: block, containing message: {&quot;timeStamp&quot;:1678343709000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1361,&quot;blockHash&quot;:&quot;00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1361,&quot;transactionList&quot;:[]}
+received a message related to: block, containing message: {&quot;timeStamp&quot;:1678343712000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1362,&quot;blockHash&quot;:&quot;0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1362,&quot;transactionList&quot;:[]}
 </code></pre></div>
 
 
@@ -1978,7 +1730,7 @@ SolidityNode signature:
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../upgrade-instruction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deployment Manual for the New Version">
+          <a href="../event/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1988,20 +1740,20 @@ SolidityNode signature:
                 Previous
               </span>
               <div class="md-ellipsis">
-                Deployment Manual for the New Version
+                Overview
               </div>
             </div>
           </a>
         
         
           
-          <a href="../history/" class="md-footer__link md-footer__link--next" aria-label="Next: History">
+          <a href="../use-mongodb/" class="md-footer__link md-footer__link--next" aria-label="Next: MongoDB Event Subscription Plugin">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                History
+                MongoDB Event Subscription Plugin
               </div>
             </div>
             <div class="md-footer__button md-icon">

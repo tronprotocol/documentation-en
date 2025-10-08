@@ -450,9 +450,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -460,7 +472,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -927,64 +1039,73 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#background" class="md-nav__link" >
+  <a href="#function-overview" class="md-nav__link" >
     <span class="md-ellipsis">
-      Background
+      Function Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#permission-level-concepts" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Permission Level Concepts
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#concept" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#permission-structure-definition" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Concept
+      Permission Structure Definition
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Concept" hidden>
+    <nav class="md-nav" aria-label="Permission Structure Definition" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#protocol-definition" class="md-nav__link" >
+  <a href="#1-account-structure-account" class="md-nav__link" >
     <span class="md-ellipsis">
-      Protocol Definition
+      1. Account Structure: Account
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#owner-permission" class="md-nav__link" >
+  <a href="#2-permission-configuration-permission" class="md-nav__link" >
     <span class="md-ellipsis">
-      Owner Permission
+      2. Permission Configuration: Permission
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#witness-permission" class="md-nav__link" >
+  <a href="#3-permission-key-structure-key" class="md-nav__link" >
     <span class="md-ellipsis">
-      Witness Permission
+      3. Permission Key Structure: Key
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#active-permission" class="md-nav__link" >
+  <a href="#4-permission-update-transaction-accountpermissionupdatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      Active Permission
+      4. Permission Update Transaction: AccountPermissionUpdateContract
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#fee" class="md-nav__link" >
+  <a href="#5-contract-type-enumeration-contracttype" class="md-nav__link" >
     <span class="md-ellipsis">
-      Fee
+      5. Contract Type Enumeration: ContractType
     </span>
   </a>
   
@@ -996,37 +1117,37 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#api" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#explanation-of-each-permission-type" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      API
+      Explanation of Each Permission Type
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="API" hidden>
+    <nav class="md-nav" aria-label="Explanation of Each Permission Type" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#change-permission" class="md-nav__link" >
+  <a href="#owner-permission-account-master-control" class="md-nav__link" >
     <span class="md-ellipsis">
-      Change Permission
+      owner Permission (Account Master Control)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#contract-execution" class="md-nav__link" >
+  <a href="#witness-permission-block-production-permission" class="md-nav__link" >
     <span class="md-ellipsis">
-      Contract Execution
+      witness Permission (Block Production Permission)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#other-apis" class="md-nav__link" >
+  <a href="#active-permission-functional-permission-combination" class="md-nav__link" >
     <span class="md-ellipsis">
-      Other APIs
+      Active Permission (Functional Permission Combination)
     </span>
   </a>
   
@@ -1034,6 +1155,99 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#operation-fees" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Operation Fees
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#interfaces-and-operation-examples" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Interfaces and Operation Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interfaces and Operation Examples" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-permission-modification-operation-process" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. Permission Modification Operation Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2-operations-value-calculation-example" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. operations Value Calculation Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3-transaction-execution-process" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3. Transaction Execution Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#auxiliary-interfaces" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Auxiliary Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auxiliary Interfaces" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#query-signed-addresses" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Signed Addresses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-signature-weight" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Signature Weight
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#references" class="md-nav__link" >
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
   
 </li>
       
@@ -1599,346 +1813,247 @@
 
 
 <h1 id="account-permission-management">Account Permission Management<a class="headerlink" href="#account-permission-management" title="Permanent link">&para;</a></h1>
-<h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/tronprotocol/TIPs/blob/master/tip-16.md">Account permission management</a> functions allow for permission grading, and each permission can correspond to multiple private keys. This makes it possible to achieve multi-person joint control of accounts. This guide walks the user through TRON's account permission management implementation and design.</p>
-<h2 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h2>
-<p>There are three types of permission: owner、witness and active. Owner permission has the right to execute all the contracts. Witness permission is for SR. Active permission contains a set of contracts selected execution permissions.</p>
-<h3 id="protocol-definition">Protocol Definition<a class="headerlink" href="#protocol-definition" title="Permanent link">&para;</a></h3>
-<h4 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Account</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// ...</span>
-<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">owner_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">witness_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
-<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="na">active_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Three attributes are added, owner_permission、witness_permission and active_permission. active_permission is a list, the length can not be bigger than 8.</p>
-<h4 id="contracttype">ContractType<a class="headerlink" href="#contracttype" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Transaction</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">message</span><span class="w"> </span><span class="nc">Contract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">enum</span><span class="w"> </span><span class="n">ContractType</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">AccountCreateContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">      </span><span class="c1">// ...</span>
-<span class="w">      </span><span class="na">AccountPermissionUpdateContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">46</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-The definition of ContractType can be found <a href="https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto">here</a>.</p>
-<p>AccountPermissionUpdateContract is a ContractType used to update the account permission.</p>
-<h4 id="accountpermissionupdatecontract">AccountPermissionUpdateContract<a class="headerlink" href="#accountpermissionupdatecontract" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">AccountPermissionUpdateContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">witness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="na">actives</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>The TRON network supports fine-grained control of account permissions. By configuring permissions (owner, witness, active), joint control of accounts, secure delegation, and functional permission separation can be achieved. The following document details the account permission model, contract structure, configuration methods, and common interface calls.</p>
+<h2 id="function-overview">Function Overview<a class="headerlink" href="#function-overview" title="Permanent link">&para;</a></h2>
+<p>Account permission management allows:</p>
 <ul>
-<li><code>owner_address</code>: The address of the account whose permissions are to be modified</li>
-<li><code>owner</code>: Owner permission</li>
-<li><code>witness</code>: Witness permission (only used by witness)</li>
-<li><code>actives</code>: Active permission</li>
+<li>Setting permission levels for an account.</li>
+<li>Associating each permission with a group of addresses and weights.</li>
+<li>Implementing permission control through a threshold mechanism.</li>
+<li>Flexibly configuring which addresses can execute which contract types.</li>
 </ul>
-<p>This will override the Original account permission. Therefore, if you only want to modify the owner permission, witness (if it is a SR account) and active permission also need to be set</p>
-<h4 id="permission">Permission<a class="headerlink" href="#permission" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Permission</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">PermissionType</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="na">Witness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="na">Active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">PermissionType</span><span class="w"> </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">permission_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">parent_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">operations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
-<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="na">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>PermissionType</code>: Permission type</li>
-<li><code>id</code>: Generated by system. Owner id=0, Witness id=1, Active id increases from 2. Specifying using which permission to execute a contract by setting id. For instance, using owner permission, set id=0</li>
-<li><code>permission_name</code>: Permission name, 32 bytes length limit</li>
-<li><code>threshold</code>: The threshold of the signature weight</li>
-<li><code>parent_id</code>: Current 0</li>
-<li>
-<p><code>operations</code>: used by active permission, a hexadecimal coded sequence (little-endian byte order), 32 bytes (256 bits), and each bit represents the authority of a ContractType. The nth bit indicates the authority of the ContractType with ID n, its value 1 means that it has the authority to execute the ContractType, its value 0 means it doesn't have the authority.<br />
-    To make it easier for users to read, start with the binary big-endian byte order to illustrate how to calculate the value of operations. The number of digits starts from 0, and corresponds to the ID of the ContractType from left to right. Convert a binary big-endian byte sequence to a hexadecimal little-endian byte sequence, that will be the value of operations. Below is an example of how to calculate the operations of active permission with operation TransferContract(ID=1) and operation VoteWitnessContract(ID=4) allowed. The mapping between ContractType and its ID can be seen in the above definition link of ContractType.</p>
+<p>For detailed specifications, see <a href="https://github.com/tronprotocol/tips/blob/master/tip-16.md">TIP-16: Account Permission Management</a>.</p>
+<h2 id="permission-level-concepts">Permission Level Concepts<a class="headerlink" href="#permission-level-concepts" title="Permanent link">&para;</a></h2>
+<p>TRON supports three types of permission:</p>
 <table>
 <thead>
 <tr>
-<th>Operations Allowed</th>
-<th>Binary Code(big-endian)</th>
-<th>Binary Code(little-endian)</th>
-<th>Hex Code(little-endian)</th>
+<th>Permission Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>TransferContract(1) &amp; VoteWitnessContract(4)</td>
-<td>01001000 00000000 00000000 ...</td>
-<td>00010010 00000000 00000000 ...</td>
-<td>12 00 00 ...</td>
+<td>owner</td>
+<td>Highest account permission, controls ownership and permission structure</td>
+</tr>
+<tr>
+<td>witness</td>
+<td>Super Representative permission, used only for block production</td>
+</tr>
+<tr>
+<td>active</td>
+<td>Custom permission, can specify functional permission combinations</td>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p><code>keys</code>: The accounts and weights that all own the permission, 5 keys at most.</p>
-</li>
-</ul>
-<h4 id="key">Key<a class="headerlink" href="#key" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Key</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>address</code>: The account address</li>
-<li><code>weight</code>: The signature weight</li>
-</ul>
-<h4 id="transaction">Transaction<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Transaction</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// ...</span>
-<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">Permission_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>Permission_id</code> is added. It is corresponding to <code>Permission.id</code>
-1 is not allowed, because witness permission is only used to produce blocks, not for transaction signature.</p>
-<h3 id="owner-permission">Owner Permission<a class="headerlink" href="#owner-permission" title="Permanent link">&para;</a></h3>
-<p>Owner permission is the top permission of an account. It is used to control account ownership, adjust permission  structure. Owner Permission has the right to execute all the contracts.</p>
-<p>Owner permission's features:</p>
-<ol>
-<li>The account that has owner permission can change the owner permission</li>
-<li>When owner permission is null, the default owner of the account owns the owner permission</li>
-<li>When you create a new account, the address will be insert into owner permission automatically, default weight is 1, keys field only contains this address and also weight is 1.</li>
-<li>If a permissionId is not specified when a contract is executed, using owner permission by default.</li>
-</ol>
-<h3 id="witness-permission">Witness Permission<a class="headerlink" href="#witness-permission" title="Permanent link">&para;</a></h3>
-<p>Super representatives can use this permission to manage block producing. Only SR(Super Representative) account has this permission.</p>
-<p>Usage scenario example:
-A super representative deploys a witness node on cloud server. In order to keep the account on the cloud server safe, you can only give the block producing permission to the account you put on cloud server. Because this account only owns  block producing permission, no TRX transfer permission, so even if the account on the cloud server is leaked, the TRX will not be lost.</p>
-<p>Witness node configuration: when <a href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#startup-a-fullnode-that-produces-blocks">start a fullnode as witness</a>, <code>localwitness</code> in the config file is filled in with the private key of the witness account and <code>localWitnessAccountAddress</code> is commented on as below:
-<div class="highlight"><pre><span></span><code># config.conf
-//localWitnessAccountAddress = 
-localwitness = [
-  xxx // private key of the witness account
-]
-</code></pre></div></p>
-<ul>
-<li>If witness permission is not modified, there is no need to change config file.  </li>
-<li>
-<p>If witness permission is modified, two modifications are required as follows:</p>
-<ul>
-<li><code>localwitness</code> needs to be changed to the private key of the account authorized with witness permission</li>
-<li><code>localWitnessAccountAddress</code> should be explicitly set as the address of the witness account</li>
-</ul>
-<p>Below is an example of how to configure witness account <a href="https://nile.tronscan.org/#/address/TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk">TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk</a> which authorize its witness permission to account TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ.
-<div class="highlight"><pre><span></span><code>#config.conf
-localWitnessAccountAddress = TCbxHgibJutCjVZUprvexKZZ4Rc6sJ4Xrk
-localwitness = [
-  yyy // private key of TSwCH45gi2HvtqDYX3Ff39yHeu5moEqQDJ
-]
-</code></pre></div>
-Notice: Only one private key can be added to <code>localwitness</code> when witness permission is modified.</p>
-</li>
-</ul>
-<h3 id="active-permission">Active Permission<a class="headerlink" href="#active-permission" title="Permanent link">&para;</a></h3>
-<p>Active permission is composed of a set of contract execution permission, like creating an account, transfer function, etc.</p>
-<p>Active permission's features:</p>
-<ol>
-<li>the account owns owner permission can change active permission</li>
-<li>the account owns the execution permission of AccountPermissionUpdateContract can also change active permission</li>
-<li>8 permissions at most</li>
-<li>when a new account is created, an active permission will be created automatically, and the address will be inserted into it, default weight is 1, keys field only contains this address and weight is 1</li>
-<li>permissionId increases from 2 automatically</li>
-<li>When initiating a transaction using the Active permission, the permissionId must be explicitly set. The following is an example of a transaction where an account with the Active permission initiates resource delegation via trident, and the permissionId corresponding to this Active permission is 2:
-<div class="highlight"><pre><span></span><code>package org.example;
-
-import org.tron.trident.core.ApiWrapper;
-import org.tron.trident.proto.Chain;
-import org.tron.trident.proto.Contract.DelegateResourceContract;
-import org.tron.trident.proto.Response;
-import org.tron.trident.utils.Convert;
-
-public class Main {
-
-  public static void main(String[] args) {
-    System.out.println(&quot;Hello world!&quot;);
-
-    String agentPrivateKey = &quot;your private key&quot;;
-    String ownerAddress = &quot;xxx&quot;;
-    String receiverAddress = &quot;yyy&quot;;
-    long trxAmount = 10;
-    int resourceType = 0;
-    int permissionId = 2;
-
-    try {
-      ApiWrapper api = new ApiWrapper(&quot;grpc.trongrid.io:50051&quot;, &quot;grpc.trongrid.io:50052&quot;, agentPrivateKey);
-      long amountSun = Convert.toSun(String.valueOf(trxAmount), Convert.Unit.TRX).longValue();
-
-      DelegateResourceContract contract = DelegateResourceContract.newBuilder()
-          .setOwnerAddress(api.parseAddress(ownerAddress))
-          .setReceiverAddress(api.parseAddress(receiverAddress))
-          .setBalance(amountSun)
-          .setResourceValue(resourceType)
-          .setLock(false)
-          .build();
-
-      // create transaction extension
-      Response.TransactionExtention txnExt = api.createTransactionExtention(
-          contract,
-          Chain.Transaction.Contract.ContractType.DelegateResourceContract
-      );
-
-      // get raw
-      Chain.Transaction.raw.Builder rawBuilder = txnExt.getTransaction().getRawData().toBuilder();
-
-      // set permission
-      Chain.Transaction.Contract.Builder contractBuilder = rawBuilder.getContractBuilder(0)
-          .setPermissionId(permissionId);
-
-      // reset contract
-      rawBuilder.setContract(0, contractBuilder.build());
-
-      Chain.Transaction unsignedTxn = txnExt.getTransaction().toBuilder()
-          .setRawData(rawBuilder.build())
-          .build();
-
-      // sign transaction
-      Chain.Transaction signedTxn = api.signTransaction(unsignedTxn);
-
-      Response.TransactionSignWeight transactionSignWeight = api.getTransactionSignWeight(signedTxn);
-      Response.TransactionApprovedList transactionApprovedList = api.getTransactionApprovedList(signedTxn);
-
-      System.out.println(&quot;transaction weight: &quot; + transactionSignWeight);
-      System.out.println(&quot;transaction approve list: &quot; + transactionApprovedList);
-
-    } catch (Exception e) {
-      System.err.println(&quot;API init: &quot; + e.getMessage());
-      return;
-    }
-  }
+<hr />
+<h2 id="permission-structure-definition">Permission Structure Definition<a class="headerlink" href="#permission-structure-definition" title="Permanent link">&para;</a></h2>
+<h3 id="1-account-structure-account">1. Account Structure: <code>Account</code><a class="headerlink" href="#1-account-structure-account" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>message Account {
+  ...
+  Permission owner_permission = 31;
+  Permission witness_permission = 32;
+  repeated Permission active_permission = 33;
 }
-</code></pre></div></li>
-</ol>
-<h3 id="fee">Fee<a class="headerlink" href="#fee" title="Permanent link">&para;</a></h3>
+</code></pre></div>
+<p>Explanation:</p>
+<ul>
+<li><code>owner_permission</code>: <code>owner</code> permission (only one).</li>
+<li><code>witness_permission</code>: Super Representative permission (only one).</li>
+<li><code>active_permission</code>: <code>active</code> permission list, supports up to 8.</li>
+</ul>
+<h3 id="2-permission-configuration-permission">2. Permission Configuration: <code>Permission</code><a class="headerlink" href="#2-permission-configuration-permission" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>message Permission {
+  enum PermissionType {
+    Owner = 0;
+    Witness = 1;
+    Active = 2;
+  }
+  PermissionType type = 1;
+  int32 id = 2;
+  string permission_name = 3;
+  int64 threshold = 4;
+  int32 parent_id = 5;
+  bytes operations = 6;
+  repeated Key keys = 7;
+}
+</code></pre></div>
+<p>Explanation:</p>
+<ul>
+<li><code>type</code>: Permission type (owner/witness/active).</li>
+<li><code>id</code>: Permission ID, automatically assigned by the system.</li>
+<li><code>owner</code> = 0, <code>witness</code> = 1, <code>active</code> starts from 2 and increments.</li>
+<li><code>permission_name</code>: Permission name, maximum 32 bytes.</li>
+<li><code>threshold</code>: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value.</li>
+<li><code>operations</code>: Used only for Active permissions, specifies executable contract types.</li>
+<li><code>keys</code>: Addresses and weights with this permission (up to 5).</li>
+</ul>
+<h3 id="3-permission-key-structure-key">3. Permission Key Structure: <code>Key</code><a class="headerlink" href="#3-permission-key-structure-key" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>message Key {
+  bytes address = 1;
+  int64 weight = 2;
+}
+</code></pre></div>
+<ul>
+<li><code>address</code>: Address with permission.</li>
+<li><code>weight</code>: Weight of this address under this permission.</li>
+</ul>
+<h3 id="4-permission-update-transaction-accountpermissionupdatecontract">4. Permission Update Transaction: <code>AccountPermissionUpdateContract</code><a class="headerlink" href="#4-permission-update-transaction-accountpermissionupdatecontract" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>message AccountPermissionUpdateContract {
+  bytes owner_address = 1;
+  Permission owner = 2;
+  Permission witness = 3;
+  repeated Permission actives = 4;
+}
+</code></pre></div>
+<ul>
+<li>This contract is used to <strong>update all account permission structures at once</strong>.</li>
+<li>Even if only one permission is modified, all other existing permissions must be fully specified in the contract.</li>
+</ul>
+<h3 id="5-contract-type-enumeration-contracttype">5. Contract Type Enumeration: <code>ContractType</code><a class="headerlink" href="#5-contract-type-enumeration-contracttype" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>enum ContractType {
+  AccountCreateContract = 0;
+  ...
+  AccountPermissionUpdateContract = 46;
+}
+</code></pre></div>
+<p>Active permissions configure which <code>ContractType</code> can be executed through the <code>operations</code> field, for details on how to calculate the value of <code>operations</code>, please see <a href="#2-operations-value-calculation-example">Operations Value Calculation Example</a>.</p>
+<h2 id="explanation-of-each-permission-type">Explanation of Each Permission Type<a class="headerlink" href="#explanation-of-each-permission-type" title="Permanent link">&para;</a></h2>
+<h3 id="owner-permission-account-master-control"><code>owner</code> Permission (Account Master Control)<a class="headerlink" href="#owner-permission-account-master-control" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Holds full control over the account.</li>
+<li>Can modify any permission structure (including itself).</li>
+<li>Automatically set when creating an account, default threshold is 1, includes the account's own address.</li>
+<li>By default, transactions without a specified permission_id use the Owner permission.</li>
+</ul>
+<h3 id="witness-permission-block-production-permission"><code>witness</code> Permission (Block Production Permission)<a class="headerlink" href="#witness-permission-block-production-permission" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Available only for Super Representative, Super Representative Partner and Super Representative Candidate accounts.</li>
+<li>Controls block-producing nodes, does not have permissions for fund transfers or other operations.</li>
+<li>Can delegate block production permission to other addresses to enhance account security.</li>
+</ul>
+<h4 id="super-representative-node-configuration-example">Super Representative Node Configuration Example:<a class="headerlink" href="#super-representative-node-configuration-example" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code># config.conf
+//localWitnessAccountAddress = TMK5c1jd...m6FXFXEz  # TRON Address
+localwitness = [
+  xxx  # Private key of TMK5c1jd...m6FXFXEz
+]
+</code></pre></div>
+<p>If the <code>witness</code> permission is modified, then:</p>
+<div class="highlight"><pre><span></span><code>localWitnessAccountAddress = TSMC4YzU...PBebBk2E
+localwitness = [
+  yyy  # Private key of TSMC4YzU...PBebBk2E
+]
+</code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: Only one private key is allowed in <code>localwitness</code>.</p>
+</blockquote>
+<h3 id="active-permission-functional-permission-combination">Active Permission (Functional Permission Combination)<a class="headerlink" href="#active-permission-functional-permission-combination" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Can combine contract permissions, assigning sub-permissions to different roles.</li>
+<li>Supports up to 8 <code>active</code> permission configurations.</li>
+<li>Permission IDs start from 2 and increment.</li>
+<li>When creating an account by default, one <code>active</code> permission is generated, with a default threshold of 1, containing only the account's own address.</li>
+</ul>
+<h2 id="operation-fees">Operation Fees<a class="headerlink" href="#operation-fees" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Fee Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modify Account Permission</td>
+<td>100 TRX</td>
+</tr>
+<tr>
+<td>Transaction (2 or more signatures)</td>
+<td>Additional 1 TRX</td>
+</tr>
+</tbody>
+</table>
+<p>The above fees can be adjusted through proposals.</p>
+<h2 id="interfaces-and-operation-examples">Interfaces and Operation Examples<a class="headerlink" href="#interfaces-and-operation-examples" title="Permanent link">&para;</a></h2>
+<h3 id="1-permission-modification-operation-process">1. Permission Modification Operation Process<a class="headerlink" href="#1-permission-modification-operation-process" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Using AccountPermissionUpdateContract costs 100TRX</li>
-<li>If a transaction contains 2 or more than 2 signatures, it charges an extra 1 TRX besides the transaction fee</li>
-<li>The fee can be modified by proposing</li>
+<li>Use <code>getaccount</code> to query the current account permission structure.</li>
+<li>Construct the new permission configuration.</li>
+<li>Call <code>AccountPermissionUpdateContract</code>.</li>
+<li>Sign and broadcast the transaction.</li>
 </ol>
-<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
-<h3 id="change-permission">Change Permission<a class="headerlink" href="#change-permission" title="Permanent link">&para;</a></h3>
-<p><code>AccountPermissionUpdateContract</code>, steps:</p>
+<h4 id="example-request">Example Request:<a class="headerlink" href="#example-request" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
+
+{
+  &quot;owner_address&quot;: &quot;41ffa946...&quot;,
+  &quot;owner&quot;: {
+    &quot;type&quot;: 0,
+    &quot;id&quot;: 0,
+    &quot;permission_name&quot;: &quot;owner&quot;,
+    &quot;threshold&quot;: 2,
+    &quot;keys&quot;: [...]
+  },
+  &quot;witness&quot;: {
+    &quot;type&quot;: 1,
+    &quot;id&quot;: 1,
+    &quot;permission_name&quot;: &quot;witness&quot;,
+    &quot;threshold&quot;: 1,
+    &quot;keys&quot;: [...]
+  },
+  &quot;actives&quot;: [
+    {
+      &quot;type&quot;: 2,
+      &quot;id&quot;: 2,
+      &quot;permission_name&quot;: &quot;active0&quot;,
+      &quot;threshold&quot;: 3,
+      &quot;operations&quot;: &quot;7fff1fc0037e...&quot;,
+      &quot;keys&quot;: [...]
+    }
+  ]
+}
+</code></pre></div>
+<h3 id="2-operations-value-calculation-example">2. operations Value Calculation Example<a class="headerlink" href="#2-operations-value-calculation-example" title="Permanent link">&para;</a></h3>
+<p><code>operations</code> is a 32-byte hexadecimal string (little-endian) representing executable contract permissions.
+The following Java example generates permissions for contracts (ID=0-45):</p>
+<div class="highlight"><pre><span></span><code>Integer[] contractId = {0, 1, 2, ..., 45};
+byte[] operations = new byte[32];
+for (int id : contractId) {
+  operations[id / 8] |= (1 &lt;&lt; id % 8);
+}
+System.out.println(ByteArray.toHexString(operations));
+</code></pre></div>
+<h3 id="3-transaction-execution-process">3. Transaction Execution Process<a class="headerlink" href="#3-transaction-execution-process" title="Permanent link">&para;</a></h3>
 <ol>
-<li>call <code>getaccount</code> to query the account, get the original permission</li>
-<li>change permission</li>
-<li>build transaction and sign</li>
-<li>send transaction</li>
+<li>Create the transaction.</li>
+<li>Set <code>Permission_id</code> (default is 0, i.e., <code>owner</code> permission).</li>
+<li>User A signs and forwards to B.</li>
+<li>User B signs and forwards to C.</li>
+<li>...</li>
+<li>The last user signs and broadcasts.</li>
+<li>The node verifies if the total signature weight ≥ <code>threshold</code>; if yes, accepts the transaction.</li>
 </ol>
-<p>Demo HTTP request:</p>
-<div class="highlight"><pre><span></span><code><span class="go">// POST to http://{{host}}:{{port}}/wallet/accountpermissionupdate</span>
+<blockquote>
+<p>Example code reference: <a href="https://github.com/tronprotocol/wallet-cli/blob/develop/src/main/java/org/tron/common/utils/TransactionUtils.java">wallet-cli Example</a></p>
+</blockquote>
+<h2 id="auxiliary-interfaces">Auxiliary Interfaces<a class="headerlink" href="#auxiliary-interfaces" title="Permanent link">&para;</a></h2>
+<h3 id="query-signed-addresses">Query Signed Addresses<a class="headerlink" href="#query-signed-addresses" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>POST /wallet/getapprovedlist
 
-<span class="go">{</span>
-<span class="go">  &quot;owner_address&quot;: &quot;41ffa9466d5bf6bb6b7e4ab6ef2b1cb9f1f41f9700&quot;,</span>
-<span class="go">  &quot;owner&quot;: {</span>
-<span class="go">    &quot;type&quot;: 0,</span>
-<span class="go">    &quot;id&quot;: 0,</span>
-<span class="go">    &quot;permission_name&quot;: &quot;owner&quot;,</span>
-<span class="go">    &quot;threshold&quot;: 2,</span>
-<span class="go">    &quot;keys&quot;: [{</span>
-<span class="go">        &quot;address&quot;: &quot;41F08012B4881C320EB40B80F1228731898824E09D&quot;,</span>
-<span class="go">        &quot;weight&quot;: 1</span>
-<span class="go">      },</span>
-<span class="go">      {</span>
-<span class="go">        &quot;address&quot;: &quot;41DF309FEF25B311E7895562BD9E11AAB2A58816D2&quot;,</span>
-<span class="go">        &quot;weight&quot;: 1</span>
-<span class="go">      },</span>
-<span class="go">      {</span>
-<span class="go">        &quot;address&quot;: &quot;41BB7322198D273E39B940A5A4C955CB7199A0CDEE&quot;,</span>
-<span class="go">        &quot;weight&quot;: 1</span>
-<span class="go">      }</span>
-<span class="go">    ]</span>
-<span class="go">  },</span>
-<span class="go">  &quot;witness&quot;: {</span>
-<span class="go">      &quot;type&quot;: 1,</span>
-<span class="go">      &quot;id&quot;: 1,</span>
-<span class="go">      &quot;permission_name&quot;: &quot;witness&quot;,</span>
-<span class="go">      &quot;threshold&quot;: 1,</span>
-<span class="go">      &quot;keys&quot;: [{</span>
-<span class="go">          &quot;address&quot;: &quot;41F08012B4881C320EB40B80F1228731898824E09D&quot;,</span>
-<span class="go">          &quot;weight&quot;: 1</span>
-<span class="go">        }</span>
-<span class="go">      ]</span>
-<span class="go">    },</span>
-<span class="go">  &quot;actives&quot;: [{</span>
-<span class="go">    &quot;type&quot;: 2,</span>
-<span class="go">    &quot;id&quot;: 2,</span>
-<span class="go">    &quot;permission_name&quot;: &quot;active0&quot;,</span>
-<span class="go">    &quot;threshold&quot;: 3,</span>
-<span class="go">    &quot;operations&quot;: &quot;7fff1fc0037e0000000000000000000000000000000000000000000000000000&quot;,</span>
-<span class="go">    &quot;keys&quot;: [{</span>
-<span class="go">        &quot;address&quot;: &quot;41F08012B4881C320EB40B80F1228731898824E09D&quot;,</span>
-<span class="go">        &quot;weight&quot;: 1</span>
-<span class="go">      },</span>
-<span class="go">      {</span>
-<span class="go">        &quot;address&quot;: &quot;41DF309FEF25B311E7895562BD9E11AAB2A58816D2&quot;,</span>
-<span class="go">        &quot;weight&quot;: 1</span>
-<span class="go">      },</span>
-<span class="go">      {</span>
-<span class="go">        &quot;address&quot;: &quot;41BB7322198D273E39B940A5A4C955CB7199A0CDEE&quot;,</span>
-<span class="go">        &quot;weight&quot;: 1</span>
-<span class="go">      }</span>
-<span class="go">    ]</span>
-<span class="go">  }]</span>
-<span class="go">}</span>
+rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList) {}
 </code></pre></div>
-<h4 id="calculate-the-active-permissions-operations">Calculate the Active Permission's Operations<a class="headerlink" href="#calculate-the-active-permissions-operations" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<h3 id="query-signature-weight">Query Signature Weight<a class="headerlink" href="#query-signature-weight" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>POST /wallet/getsignweight
 
-<span class="w">  </span><span class="c1">//you need to specify the id of the contract you need to give permission to by referring to the definition of Transaction.ContractType in proto to get the id of the contract, below includes all the contract except AccountPermissionUpdateContract(id=46)</span>
-
-<span class="w">  </span><span class="n">Integer</span><span class="o">[]</span><span class="w"> </span><span class="n">contractId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span>
-<span class="w">      </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">};</span>
-<span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">contractId</span><span class="p">));</span>
-<span class="w">  </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">operations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">32</span><span class="o">]</span><span class="p">;</span>
-<span class="w">  </span><span class="n">list</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">operations</span><span class="o">[</span><span class="n">e</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">8</span><span class="o">]</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="c1">//7fff1fc0033e0000000000000000000000000000000000000000000000000000</span>
-<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ByteArray</span><span class="p">.</span><span class="na">toHexString</span><span class="p">(</span><span class="n">operations</span><span class="p">));</span>
-<span class="p">}</span>
+rpc GetTransactionSignWeight(Transaction) returns (TransactionSignWeight) {}
 </code></pre></div>
-<h3 id="contract-execution">Contract Execution<a class="headerlink" href="#contract-execution" title="Permanent link">&para;</a></h3>
-<p>(1). Create transaction, the same as none multi-signatures</p>
-<p>(2). Specify <code>Permission_id</code>, default 0, represent owner permission, <a href="https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211">demo</a></p>
-<p>(3). User A sign the transaction, and then send it to user B</p>
-<p>(4). User B sign the transaction gets from A, and then send it to user C</p>
-<p>......</p>
-<p>(n). The last users that signs the transaction broadcast it to the node</p>
-<p>(n+1). The node will verify if the sum of the weight of all signatures is bigger than threshold, if true, the transaction is accepted, otherwise, is rejected</p>
-<h3 id="other-apis">Other APIs<a class="headerlink" href="#other-apis" title="Permanent link">&para;</a></h3>
-<p>Please refer to <a href="../../api/http/">HTTP API</a> and <a href="../../api/rpc/">RPC API</a> for more information.</p>
-<ol>
-<li>
-<p>query the addresses that already signed a transaction</p>
-<div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/getapprovedlist -d &#39;{&quot;transaction&quot;}&#39;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionApprovedList</span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionApprovedList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-</li>
-<li>
-<p>query the signature weight of a transaction</p>
-<div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/getsignweight -d &#39;{&quot;transaction&quot;}&#39;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionSignWeight</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionSignWeight</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-</li>
-</ol>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/tronprotocol/tips/blob/master/tip-16.md">TIP-16 Permission Management Proposal</a></li>
+<li><a href="https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto">Tron.proto Contract Type Definitions</a></li>
+</ul>
 
 
 

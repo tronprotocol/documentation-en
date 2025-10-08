@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-backup-restore" class="md-skip">
+        <a href="#node-data-backup-and-restore" class="md-skip">
           Skip to content
         </a>
       
@@ -435,53 +435,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#data-backup" class="md-nav__link" >
+  <a href="#backing-up-node-data" class="md-nav__link" >
     <span class="md-ellipsis">
-      Data Backup
+      Backing Up Node Data
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#data-restore" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Data Restore
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#public-backup-data" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      Public Backup Data
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Public Backup Data" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#main-net-data-snapshot" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Main Net Data Snapshot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#nile-testnet-data-snapshot" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Nile TestNet Data Snapshot
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -544,9 +502,21 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -554,7 +524,107 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Event Subscription
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Message Queue Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/use-kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Event Subscription Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1538,103 +1608,97 @@
   
 
 
-<h1 id="data-backup-restore">Data Backup &amp; Restore<a class="headerlink" href="#data-backup-restore" title="Permanent link">&para;</a></h1>
-<p>Everything <code>java-tron</code> persists gets written inside its data directory. The default data directory is: <code>/output-directory/</code>. If you need to specify other directories, you can add <code>-d</code> or <code>--output-directory</code> parameter to the java-tron node startup command to specify the data storage location.</p>
-<div class="highlight"><pre><span></span><code>$ java -jar fullnode.jar -d ./outputdir
+<h1 id="node-data-backup-and-restore">Node Data Backup and Restore<a class="headerlink" href="#node-data-backup-and-restore" title="Permanent link">&para;</a></h1>
+<p>java-tron nodes store their persistent data in a specified data directory, which defaults to <code>/output-directory/</code>. You can specify a different data storage location by adding the <code>-d</code> or <code>--output-directory</code> parameter to the java-tron node startup command. For example:</p>
+<div class="highlight"><pre><span></span><code>java -jar fullnode.jar -d ./outputdir
 </code></pre></div>
-<h2 id="data-backup">Data Backup<a class="headerlink" href="#data-backup" title="Permanent link">&para;</a></h2>
-<p>Please shut down the node process before backing up the node data, for details, please refer to the following steps:</p>
-<p>First, use the command <code>$ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code> to get the process id of java-tron, and then use the command <code>kill -15 process id</code> to kill the process. Or use a stop script like this:</p>
-<div class="highlight"><pre><span></span><code>#!/bin/bash
-while true; do
-  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
-  if [ -n &quot;$pid&quot; ]; then
-    kill -15 $pid
-    echo &quot;The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently...&quot;
-    sleep 1
-  else
-    echo &quot;java-tron killed successfully!&quot;
-    break
-  fi
+<h2 id="backing-up-node-data">Backing Up Node Data<a class="headerlink" href="#backing-up-node-data" title="Permanent link">&para;</a></h2>
+<p>Before backing up node data, it's crucial to <strong>shut down the node process</strong>. You can do this by following these steps:</p>
+<p>First, get the PID of the java-tron process using the following command:</p>
+<div class="highlight"><pre><span></span><code>ps -ef | grep FullNode.jar | grep -v grep | awk &#39;{print $2}&#39;
+</code></pre></div>
+<p>Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the java-tron process and avoid database corruption:</p>
+<p>```bash!</p>
+<h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Permanent link">&para;</a></h1>
+<p>while true; do
+  pid=<code>ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code>
+  if [ -n "$pid" ]; then
+    kill -15 $pid
+    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
+    sleep 1
+  else
+    echo "java-tron killed successfully!"
+    break
+  fi
 done
+<div class="highlight"><pre><span></span><code>Once the java-tron process has successfully shut down, you can back up the data using the following command:
 </code></pre></div>
-<p>Then, backup the data by the following command.</p>
-<div class="highlight"><pre><span></span><code>$ tar cvzf output-directory.`date &quot;+%Y%m%d%H%M%S&quot;`.etgz output-directory
+tar cvzf output-directory.<code>date "+%Y%m%d%H%M%S"</code>.etgz output-directory
+<div class="highlight"><pre><span></span><code>## Restoring Node Data
+
+Restoring data is straightforward: simply copy the backed-up data to the node&#39;s data directory.
+
+If your database backup file is named `output-directory.20220628152402.etgz`, you can use the following command to restore the database files:
 </code></pre></div>
-<h2 id="data-restore">Data Restore<a class="headerlink" href="#data-restore" title="Permanent link">&para;</a></h2>
-<p>When restoring the data, just copy the corresponding backup data to the node directory. Take the database backup file name <code>output-directory.20220628152402.etgz</code> as an example, the command to restore the database file is:</p>
-<div class="highlight"><pre><span></span><code>$ tar xzvf output-directory.20220628152402.etgz
+tar xzvf output-directory.20220628152402.etgz
+<div class="highlight"><pre><span></span><code>## Using Public Backup Data (Data Snapshots)
+
+For the Mainnet and Nile Testnet, new nodes require a significant amount of data to synchronize, leading to a lengthy synchronization process. To facilitate faster node deployment for developers, the TRON community regularly provides **data snapshots**.
+
+A data snapshot is a compressed database backup file of a TRON network node at a specific point in time. Developers can significantly accelerate the node synchronization process by downloading and using these data snapshots.
+
+### Mainnet Data Snapshots
+
+#### FullNode Data Snapshots
+
+The table below lists the download addresses for FullNode data snapshots. Please choose the most suitable data snapshot based on your geographical location, node database type, and whether you need to query historical internal transactions.
+
+| FullNode Node Data Source | Download Address | Description |
+| :------------------------ | :--------------- | :---------- |
+| Official Data Source (Americas: Virginia, USA) | [http://34.86.86.229/](http://34.86.86.229/) | LevelDB data, does not include internal transactions |
+| Official Data Source (Asia: Singapore) | [http://34.143.247.77/](http://34.143.247.77/) | LevelDB data, does not include internal transactions |
+| Official Data Source (Americas: USA) | [http://35.197.17.205/](http://35.197.17.205/) | RocksDB data, does not include internal transactions |
+| Official Data Source (Asia: Singapore) | [http://35.247.128.170/](http://35.247.128.170/) | LevelDB data, includes internal transactions |
+| Official Data Source (Americas: Virginia, USA) | [http://34.48.6.163/](http://34.48.6.163/) | LevelDB data, does not include internal transactions, includes historical account balances |
+
+**Note:** **LevelDB** and **RocksDB** data are not interchangeable. The database type for a FullNode is specified by the `db.engine` configuration item in the configuration file, with selectable values being `LEVELDB` or `ROCKSDB`.
+
+#### Lite FullNode Data Snapshots
+
+The TRON network has supported **Lite FullNode** type nodes since the GreatVoyage-V4.1.0 version. Compared to a regular FullNode, a Lite FullNode has a smaller database and faster startup speed because it only requires state data and necessary historical data to start. The table below lists the download addresses for Lite FullNode data snapshots.
+
+| Lite FullNode Node Data Source | Download Address | Description |
+| :----------------------------- | :--------------- | :---------- |
+| Official Data Source (Asia: Singapore) | [http://34.143.247.77/](http://34.143.247.77/) | LevelDB data |
+
+**Tip:** If you already have full data from a FullNode, you can use the [Lite FullNode Data Trimming Tool](https://tronprotocol.github.io/documentation-zh/using_javatron/toolkit/#_6) to trim your FullNode data into Lite FullNode data yourself.
+
+#### Data Snapshot Decompression Methods
+
+TRON network snapshot data typically exceeds 2TB in size. We strongly recommend using a streaming method (i.e., downloading and decompressing simultaneously) to effectively save disk space. The specific command is as follows:
+
+```bash
+wget -q -O - SNAPSHOT_URL/FullNode_output-directory.tgz | tar -zxvf -
+</code></pre></div></p>
+<h5 id="method-1-stream-download-and-decompress-recommended-saves-space">Method 1: Stream Download and Decompress (Recommended, Saves Space)<a class="headerlink" href="#method-1-stream-download-and-decompress-recommended-saves-space" title="Permanent link">&para;</a></h5>
+<p>This method does not require storing the complete compressed archive first. Instead, it directly decompresses the data into the target directory, significantly reducing disk usage.</p>
+<h5 id="method-2-download-first-then-decompress-requires-ample-storage-space">Method 2: Download First, Then Decompress (Requires Ample Storage Space)<a class="headerlink" href="#method-2-download-first-then-decompress-requires-ample-storage-space" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code># 1. Download the complete snapshot file
+wget SNAPSHOT_URL/FullNode_output-directory.tgz
+
+# 2. Decompress the file
+tar -zxvf FullNode_output-directory.tgz
 </code></pre></div>
-<h2 id="public-backup-data">Public Backup Data<a class="headerlink" href="#public-backup-data" title="Permanent link">&para;</a></h2>
-<p>For the TRON mainnet and Nile testnet, since the amount of data to be synchronized is large after the new node is started, it takes a long time to synchronize the data. In order to facilitate rapid node deployment for developers, the community provides data snapshots on a regular basis. A data snapshot is a compressed file of the database backup of a TRON network node at a certain time. Developers can download and use the data snapshot to speed up the node synchronization process.</p>
-<h3 id="main-net-data-snapshot">Main Net Data Snapshot<a class="headerlink" href="#main-net-data-snapshot" title="Permanent link">&para;</a></h3>
-<h4 id="fullnode-data-snapshot">FullNode Data Snapshot<a class="headerlink" href="#fullnode-data-snapshot" title="Permanent link">&para;</a></h4>
-<p>The following table shows the download address of Fullnode data snapshots. Please select a suitable data snapshot according to the location and node database type, and whether you need to query historical internal transactions.</p>
-<table>
-<thead>
-<tr>
-<th>Fullnode Data Source</th>
-<th>Download site</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Official data source (North America: Virginia)</td>
-<td><a href="http://34.86.86.229/">http://34.86.86.229/</a></td>
-<td>LevelDB, exclude internal transactions</td>
-</tr>
-<tr>
-<td>Official data source (Singapore)</td>
-<td><a href="http://34.143.247.77/">http://34.143.247.77/</a></td>
-<td>LevelDB, exclude internal transactions</td>
-</tr>
-<tr>
-<td>Official data source (North America: America)</td>
-<td><a href="http://35.197.17.205/">http://35.197.17.205/</a></td>
-<td>RocksDB, exclude internal transactions</td>
-</tr>
-<tr>
-<td>Official data source (Singapore)</td>
-<td><a href="http://35.247.128.170/">http://35.247.128.170/</a></td>
-<td>LevelDB, include internal transactions</td>
-</tr>
-<tr>
-<td>Official data source ((North America: Virginia))</td>
-<td><a href="http://34.48.6.163/">http://34.48.6.163/</a></td>
-<td>LevelDB, exclude internal transactions, include account history TRX balance</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Note</strong>：The data of LevelDB and RocksDB are not allowed to be mixed. The database can be specified in the config file of the full node, set db.engine to LEVELDB or ROCKSDB. </p>
-<h4 id="lite-fullnode-data-snapshot">Lite FullNode Data Snapshot<a class="headerlink" href="#lite-fullnode-data-snapshot" title="Permanent link">&para;</a></h4>
-<p>The TRON Public Chain has supported the type of the Lite FullNode since the version of GreatVoyage-v4.1.0 release. All the data required by the Lite FullNode for running is whole of the status data and a little essential block data, so, it is much more lightweight (smaller database and faster startup) than the normal FullNode. TRON officially offers database snapshots of the Lite FullNode.</p>
-<table>
-<thead>
-<tr>
-<th>Lite Fullnode Data Source</th>
-<th>Download site</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Official data source (Singapore)</td>
-<td><a href="http://34.143.247.77/">http://34.143.247.77/</a></td>
-<td>LevelDB</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Tips</strong>: You can split the data from the whole data with the help of the <a href="../toolkit/#lite-fullnode-data-pruning">Lite FullNode Data Pruning Tool</a>.</p>
-<h4 id="use-the-data-snapshot">Use the Data Snapshot<a class="headerlink" href="#use-the-data-snapshot" title="Permanent link">&para;</a></h4>
-<p>The steps for using data snapshots are as follows:</p>
+<p>This method downloads the complete snapshot file first and then decompresses it. Please note that during decompression, you will need to keep both the compressed archive and the decompressed files. Therefore, it's advisable to prepare at least two 3TB or larger disks (one for the compressed archive and one for the decompressed data. After decompression, you can free up the disk used for the compressed archive, thereby saving costs).</p>
+<h4 id="data-snapshot-usage-steps">Data Snapshot Usage Steps<a class="headerlink" href="#data-snapshot-usage-steps" title="Permanent link">&para;</a></h4>
+<p>Whether it's a FullNode data snapshot or a Lite FullNode data snapshot, the usage steps are the same:</p>
 <ol>
-<li>Download the corresponding compressed backup database according to your needs.</li>
-<li>Decompress the compressed file of the backup database to the output-directory directory or to the corresponding directory according to your needs.</li>
-<li>Startup the node. The node reads the output-directory directory by default. If you need to specify another directory，please add the <code>-d directory</code> parameter when the node starts.</li>
+<li>Download the corresponding compressed backup database file based on your needs.</li>
+<li>Decompress the backed-up database compressed file into the <code>output-directory</code>. If you wish to specify another directory, you can decompress it into your designated target directory.</li>
+<li>Start the node. The node will default to reading from the <code>output-directory</code>. If your data was decompressed to another directory, add the <code>-d</code> parameter and specify the database directory name when starting the node.</li>
 </ol>
-<h3 id="nile-testnet-data-snapshot">Nile TestNet Data Snapshot<a class="headerlink" href="#nile-testnet-data-snapshot" title="Permanent link">&para;</a></h3>
-<p>For detailed information about the Nile TestNet data snapshot, please refer to the <a href="https://nileex.io/">official website</a>, for both FullNode and Lite FullNode. The usage method is the same as that of the <a href="#use-the-data-snapshot">Main Net</a>.</p>
+<h3 id="nile-testnet-data-snapshots">Nile Testnet Data Snapshots<a class="headerlink" href="#nile-testnet-data-snapshots" title="Permanent link">&para;</a></h3>
+<p>For detailed information on Nile Testnet data snapshots, please refer to the <a href="https://nileex.io/">official website</a>. The usage method is the same as for Mainnet data snapshots.</p>
 
 
 
