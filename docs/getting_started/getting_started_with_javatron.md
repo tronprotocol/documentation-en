@@ -7,7 +7,7 @@ This guide will walk you through a series of fundamental operations for java-tro
 - [**Start and Run a java-tron Node**](#start-node):
     - Set up your dedicated gateway to the TRON network. Connect your computer to the TRON network, making it a part of the ecosystem. This is crucial for developers who want to maintain the network or require a local, high-availability API service.
 - [**Interact with the TRON Network Using a Java-tron Node**](#interact-with-tron):
-    - Learn how to send transactions and query on-chain data using client tools like `wallet-cli` or `cURL`. (This skill does not require you to run your own node; you can use public node services to complete these operations).
+    - Learn how to send transactions and query on-chain data using client tools like `wallet-cli` or `cURL`. (This skill does not require you to run your own node; you can use public node services to complete these operations.)
 
 ## Core Concepts
 
@@ -129,7 +129,7 @@ wallet>
 
 **3. Back Up the Private Key (Critical Security Step)**:
 
-This is the most crucial step to ensure the security of your assets. We strongly recommend you back up your private key immediately after creating your account to safeguard your assets.
+This is the most crucial step to ensure the security of your assets. We strongly recommend backing up your private key immediately after creating your account to safeguard your assets.
 
 Use the `backupwallet` command and enter your password when prompted to view the account's private key. Be sure to store the private key in an absolutely secure location.
 
@@ -440,7 +440,7 @@ In the returned JSON data, the `balance` field represents the TRX balance of the
 
 Now, let's use a TRX transfer as an example to fully demonstrate the "Create-Sign-Broadcast" three-step process for sending a transaction to java-tron.
 
-Srtep 1 - Create a Transaction
+Step 1 - Create a Transaction
 
   Use the FullNode's `wallet/createtransaction` HTTP endpoint to create an unsigned TRX transfer transaction. In the request body, specify the sender (`owner_address`), recipient (`to_address`), and amount (`amount`).
     
