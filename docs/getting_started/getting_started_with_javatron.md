@@ -2,11 +2,11 @@
 
 This guide will walk you through a series of fundamental operations for java-tron. We recommend learning in the following order:
 
-- [**Create a TRON Account**](#create-account):
+- [Create a TRON Account](#create-account):
     - Obtain your digital identity in the blockchain world. Learn how to securely generate and manage your address and private key, which are your sole credentials for holding TRX assets, sending transactions, and interacting with smart contracts.
-- [**Start and Run a java-tron Node**](#start-node):
+- [Start and Run a java-tron Node](#start-node):
     - Set up your dedicated gateway to the TRON network. Connect your computer to the TRON network, making it a part of the ecosystem. This is crucial for developers who want to maintain the network or require a local, high-availability API service.
-- [**Interact with the TRON Network Using a Java-tron Node**](#interact-with-tron):
+- [Interact with the TRON Network Using a Java-tron Node](#interact-with-tron):
     - Learn how to send transactions and query on-chain data using client tools like `wallet-cli` or `cURL`. (This skill does not require you to run your own node; you can use public node services to complete these operations).
 
 ## Core Concepts
