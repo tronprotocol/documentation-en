@@ -19,7 +19,7 @@ ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}'
 
 Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the java-tron process and avoid database corruption:
 
-```bash!
+```
 #!/bin/bash
 while true; do
   pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
