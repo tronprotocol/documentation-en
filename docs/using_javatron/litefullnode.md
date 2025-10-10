@@ -19,10 +19,10 @@ Therefore, if developers only need to use a node for block synchronization, proc
 The deployment steps, configuration file, and startup command for a Lite Fullnode are the same as a Fullnode's. Please refer to the [Deployment Guide](installing_javatron.md) to deploy a Lite Fullnode. The only difference is the database. You have two ways to obtain the required Lite Fullnode database:
 
  - Download the Lite Fullnode data snapshot from the [Public Backup Data](backup_restore.md/#lite-fullnode) and use it directly.
- - Use the [Lite Fullnode Pruning Tool](toolkit.md/#_6) to convert a Fullnode's database into a Lite Fullnode's database.
+ - Use the [Lite Fullnode Pruning Tool](toolkit.md/#_5) to convert a Fullnode's database into a Lite Fullnode's database.
 
 
 ## Lite Fullnode Maintenance
 Although a Lite Fullnode starts with a very small amount of data, it will continuously sync and save new block data just like a Fullnode after it's running. As a result, its data expansion rate is the same as a Fullnode's, and its disk usage will grow over time.
 
-To manage disk space, you can perform periodic maintenance (pruning) on the Lite Fullnode's data. This maintenance is also done using the Lite Fullnode Pruning Tool, which re-prunes the current node data into a new snapshot dataset containing only the latest state.
+To manage disk space, you can perform periodic maintenance (pruning) on the Lite Fullnode's data. This maintenance is also done using the [Lite Fullnode Pruning Tool](toolkit.md/#_5), which re-prunes the current node data into a new snapshot dataset containing only the latest state.
