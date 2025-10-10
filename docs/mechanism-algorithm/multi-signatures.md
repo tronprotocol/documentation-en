@@ -113,7 +113,7 @@ enum ContractType {
 }
 ```
 
-Active permissions configure which `ContractType` can be executed through the `operations` field, for details on how to calculate the value of `operations`, please see [Operations Value Calculation Example](#2-operations-value-calculation-example).
+Active permissions configure which `ContractType` can be executed through the `operations` field. For details on how to calculate the value of `operations`, please see [Operations Value Calculation Example](#2-operations-value-calculation-example).
 
 ## Explanation of Each Permission Type
 
@@ -122,11 +122,11 @@ Active permissions configure which `ContractType` can be executed through the `o
 - Holds full control over the account.
 - Can modify any permission structure (including itself).
 - Automatically set when creating an account, default threshold is 1, includes the account's own address.
-- By default, transactions without a specified permission_id use the Owner permission.
+- By default, transactions without a specified `Permission_id` use the Owner permission.
 
 ### `witness` Permission (Block Production Permission)
 
-- Available only for Super Representative, Super Representative Partner and Super Representative Candidate accounts.
+- Available only for Super Representative, Super Representative Partner, and Super Representative Candidate accounts.
 - Controls block-producing nodes, does not have permissions for fund transfers or other operations.
 - Can delegate block production permission to other addresses to enhance account security.
 
@@ -210,7 +210,7 @@ POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
 }
 ```
 
-### 2. operations Value Calculation Example
+### 2. Operations Value Calculation Example
 
 `operations` is a 32-byte hexadecimal string (little-endian) representing executable contract permissions.
 The following Java example generates permissions for contracts (ID=0-45):
