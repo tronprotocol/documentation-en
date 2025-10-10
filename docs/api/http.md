@@ -514,7 +514,7 @@ Parameters:
 - `owner_address`: The address of the account staking TRX.
 - `frozen_balance`: The amount of TRX to stake, in sun.
 - `resource`: The type of resource to obtain, can be `BANDWIDTH` or `ENERGY`.
-- `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+- `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 - `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
 
 
@@ -538,7 +538,7 @@ Parameters:
 * `owner_address`: The address of the account unstaking TRX.
 * `resource`: The type of resource being unstaked, BANDWIDTH or ENERGY.
 * `unfreeze_balance`: The amount of TRX to unstake, in sun.
-* `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+* `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: 
@@ -563,7 +563,7 @@ curl -X POST http://127.0.0.1:8090/wallet/cancelallunfreezev2 -d
 Parameters:
 
 - `owner_address`: The account address.
-- `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+- `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 - `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: 
@@ -593,7 +593,7 @@ Parameters:
 * `resource`: The type of resource to delegate, `BANDWIDTH` or `ENERGY`.
 * `lock`: true sets a 3-day lock on the delegation, during which it cannot be canceled. If resources are delegated again to the same address during the lock period, the 3-day timer resets. false means no lock period.
 * `lock_period`: A custom lock period in units of blocks (1 block ≈ 3s). Only effective when lock is true. For a 1-day lock, lock_period would be 28800.
-* `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+* `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value:
@@ -621,7 +621,7 @@ Parameters:
 * `receiver_address`: The recipient account from which resources are being reclaimed.
 * `balance`: The amount of TRX whose corresponding resource share will be undelegated, in sun.
 * `resource`: The type of resource to undelegate, `BANDWIDTH` or `ENERGY`.
-* `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+* `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: 
@@ -639,7 +639,7 @@ curl -X POST http://127.0.0.1:8090/wallet/withdrawexpireunfreeze -d
 
 Parameters:
 * `owner_address`: The address of the transaction initiator.
-* `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+* `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: An unsigned withdraw expired unfreeze transaction object.
@@ -1039,7 +1039,7 @@ name: The contract name.
 - `origin_energy_limit`: The maximum energy that the creator is willing to consume for themselves during a single contract execution or creation, an integer greater than 0.
 - `call_token_value`: The amount of TRC-10 tokens to transfer to the contract during this call. If `token_id` is not set, this should be `0` or not set.
 - `token_id`: The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.
-- `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+- `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 - `visible`: sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an object containing an unsigned deployment transaction.
@@ -1060,7 +1060,7 @@ Parameters：
 - `owner_address`：The account address initiating the `triggercontract`, defaults to HexString format.
 - `call_token_value`:The amount of TRC-10 tokens to transfer to the contract during this call. If `token_id` is not set, this should be `0` or not set.
 - `token_id`:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.
-- `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+- `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 - `visible` :Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an object containing an unsigned deployment transaction.
@@ -1097,7 +1097,7 @@ Parameters：
 - `owner_address`：The owner address of the contract, defaults to HexString format.
 - `contract_address`：The address of the contract to be modified, defaults to HexString format.
 - `consume_user_resource_percent`：The specified percentage of resources consumed by users calling this contract.
-- `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+- `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 - `visible`:Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an object containing an unsigned update transaction.
@@ -1112,7 +1112,7 @@ Parameters：
 * `owner_address`: The owner address of the contract, defaults to HexString format.
 * `contract_address`: The address of the contract to be modified, defaults to HexString format.
 * `origin_energy_limit`: The maximum energy that the creator is willing to consume for themselves during a single contract execution or creation.
-* `permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
+* `Permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
 * `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an object containing an unsigned update transaction.
@@ -1254,7 +1254,7 @@ Parameters:
 *   `to_address`: The recipient's address, defaults to HexString format.
 *   `asset_name`: The TRC-10 token ID, defaults to HexString format.
 *   `amount`: The amount of tokens to transfer.
-*   `permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
+*   `Permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned TRC-10 transfer transaction object.
@@ -1277,7 +1277,7 @@ Parameters:
 *   `owner_address`: The participant's address (buyer), defaults to HexString format.
 *   `amount`: The amount of tokens to participate with.
 *   `asset_name`: The ID of the token to participate in, defaults to HexString format.
-*   `permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
+*   `Permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned participate in crowdsale transaction object.
@@ -1317,7 +1317,7 @@ Parameters:
 *   `free_asset_net_limit`: The total free bandwidth for the Token.
 *   `public_free_asset_net_limit`: The free bandwidth that each token holder can use for this token.
 *   `frozen_supply`: Tokens that the issuer can pledge at the time of issuance.
-*   `permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
+*   `Permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned TRC-10 token issuance transaction object.
@@ -1332,7 +1332,7 @@ curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d '{
 Parameters:
 
 *   `owner_address`: The address of the account unfreezing tokens, defaults to HexString format.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned unfreeze token transaction object.
@@ -1355,7 +1355,7 @@ Parameters:
 *   `url`: The token issuer's official website address, defaults to HexString format.
 *   `new_limit`: The free bandwidth each token holder can use.
 *   `new_public_limit`: The total free bandwidth for this token.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned update token information transaction object.
@@ -1385,7 +1385,7 @@ Parameters:
 
 *   `owner_address`: The account address applying to become a Super Representative, defaults to HexString format.
 *   `url`: The official website address, defaults to HexString format.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned apply for SR transaction object.
@@ -1403,7 +1403,7 @@ Parameters:
 
 *   `owner_address`: The creator's address, defaults to HexString format.
 *   `update_url`: The updated official website URL, defaults to HexString format.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned update URL transaction object.
@@ -1429,7 +1429,7 @@ curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d '{
 Parameters:
 
 *   `owner_address`: The address of the account to withdraw from, defaults to HexString format.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned withdraw reward transaction object.
@@ -1449,7 +1449,7 @@ Parameters:
 *   `owner_address`: The voter's address, defaults to HexString format.
 *   `votes.vote_address`: The address of the Super Representative being voted for, defaults to HexString format.
 *   `vote_count`: The number of votes.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned vote transaction object.
@@ -1527,7 +1527,7 @@ Parameters:
 
 *   `owner_address`: The creator's address.
 *   `parameters`: Proposal parameters.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned create proposal transaction object.
@@ -1561,7 +1561,7 @@ Parameters:
 *   `owner_address`: The approver's address, defaults to HexString format.
 *   `proposal_id`: Proposal ID.
 *   `is_add_approval`: Whether to approve (add approval) or not.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned approve proposal transaction object.
@@ -1575,7 +1575,7 @@ Parameters:
 
 *   `owner_address`: The address of the deleter. Only the proposal owner is allowed to delete proposals, defaults to HexString format.
 *   `proposal_id`: Proposal ID.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned delete proposal transaction object.
@@ -1626,7 +1626,7 @@ Parameters:
 *   `first_token_balance`: The balance of the first token.
 *   `second_token_id`: The ID of the second token, defaults to HexString format.
 *   `second_token_balance`: The balance of the second token.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 
 Return Value: An unsigned create trading pair transaction object.
 
@@ -1641,7 +1641,7 @@ Parameters:
 *   `exchange_id`: The trading pair ID.
 *   `token_id`: The token ID, typically the token name, defaults to HexString format.
 *   `quant`: The quantity of tokens to inject.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned inject capital transaction object.
@@ -1657,10 +1657,10 @@ Parameters:
 *   `exchange_id`: The trading pair ID.
 *   `token_id`: The token ID, typically the token name, must be in HexString format.
 *   `quant`: The quantity of tokens to withdraw.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
-Return Value: An unsigned withdraw capital transaction object.
+Return Value: An unsigned capital withdrawal transaction object.
 
 #### wallet/exchangetransaction
 Description: Participate in a trading pair transaction.
@@ -1674,7 +1674,7 @@ Parameters:
 *   `token_id`: The ID of the token to sell, typically the token name, defaults to HexString format.
 *   `quant`: The quantity of tokens to sell.
 *   `expected`: The expected quantity of tokens to buy.
-*   `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+*   `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 *   `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: An unsigned exchange transaction object.
