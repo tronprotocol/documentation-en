@@ -17,7 +17,7 @@ The core role of the DPoS consensus mechanism in a blockchain system is to elect
 In DPoS consensus, the system selects a subset of nodes as SRs based on the number of votes they receive. The election process is as follows:
 
 1. **Initial Setup:** When the blockchain system launches, a certain amount of **tokens** (e.g., TRON's TRX) are issued.
-2. **Becoming a Candidate:** Nodes can spend a portion of these tokens to apply to become a SR **candidate**.
+2. **Becoming a Candidate:** Nodes can spend a portion of these tokens to apply to become an SR **candidate**.
 3. **Community Voting:** Any node in the network holding tokens can vote for these candidates.
 4. **Vote Tallying and Election:** After a preset **time period** (e.g., `t`), the system tallies the votes for all candidates, and the top `N` candidates by vote count become the SRs for the next time period.
 5. **Cycle Rotation:** After the time period ends, the system re-tallies votes and elects new SRs, and so on.
@@ -115,7 +115,7 @@ To ensure the secure and efficient operation of the TRON blockchain system, TRON
 
 An important feature of DPoS is that any system parameter adjustment can be initiated through an **on-chain proposal**. SRs decide whether a proposal takes effect by voting on it. The benefit of this mechanism is that **no hard fork upgrade is required** when adjusting parameters on-chain.
 
-For current dynamic parameters and their values in the TRON network, as well as past proposal records, please refer to the [TRONSCAN Committee Page](https://tronscan.org/#/sr/committee).
+For current dynamic parameters and their values in the TRON network, as well as past proposal records, please refer to the [TRONSCAN Committee](https://tronscan.org/#/sr/committee) Page.
 
 ## References
 
