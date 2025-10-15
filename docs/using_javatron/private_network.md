@@ -1,5 +1,5 @@
 # Private Network
-This document will guide you through setting up a basic TRON private network. This network will consist of one Super Representative (SR) node responsible for block production and one regular Fullnode used only for syncing block data and broadcasting transactions.
+This document will guide you through setting up a basic TRON private network. This network will consist of one Super Representative (SR) node responsible for block production and one regular FullNode used only for syncing block data and broadcasting transactions.
 
 ## Prerequisites
 
@@ -25,15 +25,13 @@ The operational steps for deploying a private network node are fundamentally the
       # Create the Super Representative (SR) node directory
       $ mkdir SR
       
-      # Create the regular Fullnode directory
+      # Create the regular FullNode directory
       $ mkdir FullNode
       ```
 
-2. Get the `java-tron` Client
+2. Get the java-tron Client
 
-     `java-tron` is the official Java implementation of the TRON network.
-
-    - Download the latest `FullNode.jar` from the `java-tron` [GitHub Releases page](https://github.com/tronprotocol/java-tron/releases).
+    - Download the latest `FullNode.jar` from the [java-tron GitHub Releases](https://github.com/tronprotocol/java-tron/releases) page.
     - Copy the downloaded `JAR` file into each of the two node directories:
 
          ```
@@ -59,17 +57,17 @@ The operational steps for deploying a private network node are fundamentally the
 
      | Config Item | SR Node (`supernode.conf`) | Fullnode (`fullnode.conf`) | Description |
       | :-------- | :-------- | :-------- | :-------- |
-      | `localwitness`     | The private key| Please do not fill in data     | Generating blocks requires signing with a private key    |
-      | `genesis.block.witnesses`	     | SR address     | The same as SR node's | Genesis block related configuration     |
-      | `genesis.block.Assets`     | Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required    | The same as SR node's     | Genesis block related configuration     |
-      | `p2p.version`     | any positive integer except for 11111     | the same as SR node's     | Only nodes of the same p2p version can shake hands successfully    |
-      | `seed.node`     | Please do not fill in data     | Change the `seed.node` `ip.list` in the configuration file to the IP address and the port (`listen.port`) of the SR     | Enables fullnode to establish connection with SR node and synchronize data     |
-      | `needSyncCheck`     | `false`     | `true`     | Set the first SR’s needSyncCheck to `false`, other SRs `true`     |
-      | `node.discovery.enable`     | `true`     | `true`     | If it is `false`, the current node will not be discovered by other nodes    |
-      |`block.proposalExpireTime`|`600000` |The same as SR node's |The default proposal effective time is 3 days: 259200000 (ms), if you want to quickly pass the proposal, you can set this item to a smaller value, such as 10 minutes, that is, 600000ms|
-      |`block.maintenanceTimeInterval`|`300000`| The same as SR node's | The default maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.|
-      |`committee.allowSameTokenName` |`1`|`1`| Allow same token name|
-      |`committee.allowTvmTransferTrc10` | `1`|`1`|Allow tvm transfer TRC-10|
+      | `localwitness`     | The private key of Super Representative (SR) address | Leave empty     | Generating blocks requires signing with a private key   |
+      | `genesis.block.witnesses`	     | SR address(es)    | Same as SR configuration	 | Genesis block-related configuration    |
+      | `genesis.block.Assets`     | Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required    | Same as SR configuration	   | Genesis block related configuration     |
+      | `p2p.version`     | Any positive integer except 11111     | Same as SR configuration   | Only nodes of the same `p2p.version` can shake hands successfully    |
+      | `seed.node`     | Leave empty    | Set `ip.list` to the IP address of the SR node and the port number specified in its `listen.port` configuration   | Enables FullNode to establish connection with SR node for data synchronization     |
+      | `needSyncCheck`     | `false`     | `true`     | Set the first SR’s `needSyncCheck` to `false`, other SRs `true`     |
+      | `node.discovery.enable`     | `true`     | `true`     | If set to `false`, the current node will not be discovered by other nodes    |
+      | `block.proposalExpireTime`|`600000` | Same as SR configuration	 | The default proposal effective time is 3 days: 259200000 (ms). Can be set to a lower value, such as 600,000(ms) (10 minutes), to pass the proposal faster.|
+      | `block.maintenanceTimeInterval`|`300000`| Same as SR configuration	 | The default maintenance time interval is 6 hours: 21600000 (ms). Can be set to a smaller value, such as 300000(ms) (5 minutes), to pass the proposal faster.|
+      | `committee.allowSameTokenName` |`1`|`1`| If set to `1` (true), the creation of tokens with identical names is allowed |
+      | `committee.allowTvmTransferTrc10` | `1`|`1`| If set to 1 (true), the TVM is allowed to execute transfers of TRC-10 tokens via smart contracts. |
       
 5. Adjust Network Ports (If Necessary)
 
@@ -89,7 +87,7 @@ The operational steps for deploying a private network node are fundamentally the
      $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
      ```
     
-     - Start the regular Fullnode:
+     - Start the regular FullNode:
       ```
       $ cd FullNode
       $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
@@ -98,7 +96,7 @@ The operational steps for deploying a private network node are fundamentally the
       
 7. Advanced Operation: Modifying Dynamic Network Parameters
 
-     Dynamic network parameters can be retrieved via the [getchainparameters API](https://developers.tron.network/reference/wallet-getchainparameters). The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN [Parameters & Proposals page](https://tronscan.org/#/sr/committee). If you want your private network's dynamic parameters to match the Mainnet's, you can use the[ dbfork tool](https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md), which can capture the latest state of the Mainnet.
+     Dynamic network parameters can be retrieved via the [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters) API. The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN [Parameters & Proposals page](https://tronscan.org/#/sr/committee). If you want your private network's dynamic parameters to match the Mainnet's, you can use the[ dbfork tool](https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md), which can capture the latest state of the Mainnet.
    
      After your private network is running, you may need to adjust certain network parameters (e.g., transaction fees, energy price). This can be achieved in two ways:
 
@@ -106,7 +104,7 @@ The operational steps for deploying a private network node are fundamentally the
     
          Some dynamic parameters can be set directly in the configuration file. You can find a list of these parameters [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
       
-         Example: Add the following `committee` block to your `.conf` file to enable multi-signature and contract creation.
+         **Example**: Add the following `committee` block to your `.conf` file to enable multi-signature and contract creation:
       
          ```
          committee = {
@@ -121,10 +119,10 @@ The operational steps for deploying a private network node are fundamentally the
 
      - **Method 2: Modify via On-Chain Proposals (For a Running Network)**
 
-        This is the standard method for on-chain governance. Any SR, SR partner, or SR candidate has the right to create a proposal, but only Super Representatives (SRs) have the right to vote for its approval.
+        This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate has the right to create a proposal, but only SRs have the right to vote for its approval.
      
-         - Create a Proposal: Any SR, SR partner, or SR candidate uses the [proposalcreate API](https://developers.tron.network/reference/proposalcreate), specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).
-         - Approve a Proposal: An SR uses the [proposalapprove API](https://developers.tron.network/reference/proposalapprove) to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').
+         - Create a Proposal: Any SR, SR Partner, or SR Candidate uses the [proposalcreate](https://developers.tron.network/reference/proposalcreate) API, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).
+         - Approve a Proposal: An SR uses the [proposalapprove](https://developers.tron.network/reference/proposalapprove) API to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').
          - Related APIs:
              - Get all proposals: [listproposals](https://developers.tron.network/reference/wallet-listproposals)
              - Get a proposal by ID: [getproposalbyid](https://developers.tron.network/reference/getproposalbyid)

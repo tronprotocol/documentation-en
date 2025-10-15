@@ -25,12 +25,11 @@ For example, a transaction with a size of 200 bytes will consume 200 Bandwidth.
 
 > **Note:** Because the total staked funds in the network and an individual account's staked funds can change at any time, the amount of Bandwidth an account possesses is not a fixed value.
 
-### 1\. Obtaining Bandwidth
+### 1. Obtaining Bandwidth
 
 There are three ways to obtain Bandwidth:
 
-  * **Staking TRX:**
-    Users share a fixed total Bandwidth pool in proportion to the amount of TRX they have staked for Bandwidth.
+  * **Staking TRX:** Users share a fixed total Bandwidth pool in proportion to the amount of TRX they have staked for Bandwidth.
 
     ```
     Bandwidth Share = (TRX Staked for Bandwidth / Total TRX Staked for Bandwidth Network-Wide) * Total Bandwidth Limit
@@ -53,10 +52,9 @@ There are three ways to obtain Bandwidth:
     delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress [lock]
     ```
     
-  * **Daily Free Allowance:**
-    Every account receives a fixed daily allowance of free Bandwidth, which can be modified through a committee proposal [#61](https://tronscan.io/#/sr/committee) and is currently set to 600.
+  * **Daily Free Allowance:** Every account receives a fixed daily allowance of free Bandwidth, which can be modified through a committee proposal [#61](https://tronscan.io/#/sr/committee) and is currently set to 600.
 
-### 2\. How Bandwidth is Consumed
+### 2. How Bandwidth is Consumed
 
 All transactions, except for query operations, consume Bandwidth. When you initiate a transaction, the system deducts the Bandwidth fee according to a strict priority order based on the transaction type.
 
@@ -67,7 +65,7 @@ The system attempts to pay the Bandwidth fee in the following order:
 1.  **Staked Bandwidth:** Consumes the Bandwidth obtained by the transaction initiator from staking TRX.
 2.  **Free Bandwidth:** If staked Bandwidth is insufficient, consumes the initiator's 600 daily free allowance.
 3.  **TRX Burning:** If both staked and free Bandwidth are insufficient, burns the initiator's TRX to cover the fee.
-      * *Burn Fee = Transaction Size (bytes) × 1,000 sun*
+    - *Burn Fee = Transaction Size (bytes) × 1,000 sun*
 
 **Scenario 2: New Account Creation Transactions**
 
@@ -82,15 +80,15 @@ TRC-10 token transfers have a unique consumption logic that introduces the "toke
 
 1.  **Issuer's Bandwidth (Highest Priority):** The system first attempts to consume the Bandwidth prepaid by the token issuer. This requires all three of the following conditions to be met (only if all three checks pass will the issuer's Bandwidth be deducted; otherwise, the cost falls to the transaction initiator):
       * The token issuer has a sufficient total free Bandwidth allowance.
-          * Query Method: /wallet/getassetissuebyaccount
+          * Query Method: [/wallet/getassetissuebyaccount](https://developers.tron.network/reference/getassetissuebyaccount)
           * Formula: `public_free_asset_net_limit - public_free_asset_net_usage`
           * Description: The remaining quota the token issuer can pay for this token's transfers.
       * The transaction initiator has a sufficient Bandwidth allowance for that specific token.
-          * Query Method: /wallet/getaccountnet
+          * Query Method: [/wallet/getaccountnet](https://developers.tron.network/reference/getaccountnet) 
           * Formula: `assetNetLimit['assetID'] - assetNetUsed['assetID']`
           * Description: The free Bandwidth quota provided by the issuer that the token holder can still use.
       * The token issuer has sufficient staked Bandwidth. 
-          * Query Method: /wallet/getaccountnet
+          * Query Method: [/wallet/getaccountnet](https://developers.tron.network/reference/getaccountnet)
           * Formula: `NetLimit - NetUsed`
           * Description: The amount of available Bandwidth the issuer has obtained through staking.
 2.  **Initiator's Staked Bandwidth:** Attempts to consume the initiator's staked Bandwidth.
@@ -159,9 +157,9 @@ The amount of Energy you receive is a dynamic value calculated in real-time base
 Your Energy Share = (TRX Staked for Energy / Total TRX Staked for Energy Network-Wide) * Total Energy Limit
 ```
 
-Total Energy Limit is a network parameter set by the committee ([\#19](https://tronscan.io/#/sr/committee)), currently at 180,000,000,000, and can be modified via proposals.
+Total Energy Limit is a network parameter set by the committee ([#19](https://tronscan.io/#/sr/committee)), currently at 180,000,000,000, and can be modified via proposals.
 
-##### Calculation Example
+_**Calculation Example**_
 
 Because your share is tied to the network's total stake, your available Energy will fluctuate as other users stake or unstake.
 
@@ -180,14 +178,14 @@ C: 36,000,000,000
 
 #### Energy Consumption
 
-##### Payment Priority
+_**Payment Priority**_
 
 When a contract transaction consumes Energy, the system deducts the cost in the following order:
 
 1.  **Staked Energy:** First, the system consumes the Energy obtained by the transaction initiator from staking TRX.
 2.  **TRX Burning:** If staked Energy is insufficient to cover all instructions, the system automatically burns the initiator's TRX to cover the difference. The current price is 0.0001 TRX per unit of Energy.
 
-##### Fee Deduction for Exceptions
+_**Fee Deduction for Exceptions**_
 
 Contract execution can be interrupted for various reasons, with different rules for Energy deduction:
 
@@ -201,9 +199,9 @@ Consumed Energy resources gradually recover over a 24-hour period.
 <a id="set-fee-limit"></a>
 ### 2\. How to Set `fee_limit` (Essential for Users)
 
-> In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.
->
-> Since the Energy consumed by a contract can be converted to TRX (or sun), this section uses "Energy" and "TRX" interchangeably to refer to the resource cost. The terms are distinguished only when referring to specific numerical units.
+!!! Note
+    In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.
+    Since the Energy consumed by a contract can be converted to TRX (or sun), this section uses "Energy" and "TRX" interchangeably to refer to the resource cost. The terms are distinguished only when referring to specific numerical units.
 
 `fee_limit` is a critical safety parameter when calling a smart contract. A properly set `fee_limit` ensures that a transaction can execute successfully while preventing excessive TRX consumption if the contract requires unexpectedly high Energy.
 
@@ -224,12 +222,9 @@ Here's how to estimate the `fee_limit` for executing a contract `C`:
 
 The `fee_limit` estimation method is as follows:
 
-- **Step 1: Calculate the Total Transaction Fee**
-First, calculate the total potential cost of the transaction by multiplying the estimated maximum Energy consumption by the current Energy price: `20,000 Energy * 100 sun = 2,000,000 sun (equivalent to 2 TRX)`.
-- **Step 2: Determine the User's Share**
-Next, calculate the portion of the fee the user is responsible for. Given the developer commits to covering 90%, the user's share is 10%: `2,000,000 sun * 10% = 200,000 sun`.
-- **Step 3: Set the Final `fee_limit`**
-Therefore, the recommended `fee_limit` for the user to set is 200,000 sun.
+- **Step 1: Calculate the Total Transaction Fee**: Calculate the total potential cost of the transaction by multiplying the estimated maximum Energy consumption by the current Energy price: `20,000 Energy * 100 sun = 2,000,000 sun (equivalent to 2 TRX)`.
+- **Step 2: Determine the User's Share**: Calculate the portion of the fee the user is responsible for. Given the developer commits to covering 90%, the user's share is 10%: `2,000,000 sun * 10% = 200,000 sun`.
+- **Step 3: Set the Final `fee_limit`**: The recommended `fee_limit` for the user to set is 200,000 sun.
 
 <a id="energy-mechanism"></a>
 ### 3\. Energy Consumption Mechanism
@@ -322,6 +317,8 @@ After an account obtains Energy or Bandwidth through staking, it can choose to d
 
 **Delegation Rules and Key Restrictions**
 
+Before delegating, you must understand the following key rules:
+
   * **Delegable Resources:** Only Energy and Bandwidth can be delegated. TP cannot.
   * **Source of Resources:** Only available resources obtained through Stake 2.0 are eligible for delegation.
   * **Recipient:** The recipient must be an activated external account, not a contract address.
@@ -330,8 +327,8 @@ After an account obtains Energy or Bandwidth through staking, it can choose to d
 
 When delegating, you can choose to enable a time lock, which affects when you can reclaim the resources.
 
-  * **With Time Lock:** The resources are locked for a period. You must wait for this period to end before you can undelegate. 
-      > **Important:** If you delegate to the same address again during this period, the pending period resets.
+  * **With Time Lock:** The resources are locked for a period. You must wait for this period to end before you can undelegate.
+    **Important:** If you delegate to the same address again during this period, the pending period resets.
   * **Without Time Lock:** You can undelegate at any time and reclaim the resources immediately.
 
 **Related API Endpoints**
@@ -344,92 +341,73 @@ When delegating, you can choose to enable a time lock, which affects when you ca
 
 After staking TRX, you can initiate an unstake operation at any time using the `unfreezebalancev2` API. However, this process has a time delay and follows specific rules.
 
-**Core Rule: 14-Day Pending Period**
-
-  * **Pending Period:** After initiating an unstake, your TRX funds enters a 14-day pending period.
-  * **Fund Availability:** You can only withdraw the funds to your account balance after the 14-day period has ended.
-  * **Network Parameter:** This pending period is TRON network parameter [#70](https://tronscan.io/#/sr/committee) and may be changed in the future through network governance.
-
-**Important Notes**
-
-  * **Delegated Resources Cannot Be Unstaked:** 
-You cannot unstake TRX corresponding to resources that are currently delegated. You must first reclaim the resources using `undelegateresource` before you can unstake that portion of TRX.
-  * **Resource Reclamation:** 
-      Unstaking will cause the resources (Energy or Bandwidth) and TRON Power (TP) corresponding to the staked TRX to be synchronously reclaimed by the system. As a result, you will lose the respective Energy or Bandwidth and an equivalent amount of TP.
-  * **Concurrent Operation Limit:** 
-You can have a maximum of 32 unstake operations in the 14-day pending period at any one time. Use the `getavailableunfreezecount` endpoint to check your remaining unstake capacity.
-
-**Automatic Effects of Unstaking**
-
-Calling `unfreezebalancev2` not only initiates a new unstaking process, but it also automatically withdraws any TRX that has already completed its 14-day pending period.
+After staking TRX, you can initiate an unstake operation at any time using the `unfreezebalancev2` API. After initiating an unstake, your TRX enters a 14-day pending period. This pending period is TRON network parameter [#70](https://tronscan.io/#/sr/committee) and can be changed in the future through network governance. After the 14-day period has ended, you can withdraw the funds to your account balance using the `withdrawexpireunfreeze` API.
 
 
-**How to Verify Withdrawn Amount**
+!!! **Important Notes**
+    * **Delegated Resources Cannot Be Unstaked:** You cannot unstake TRX corresponding to resources that are currently delegated. You must first reclaim the resources using `undelegateresource` before you can unstake that portion of TRX.
+    * **Resource Reclamation:** Unstaking will cause the resources (Energy or Bandwidth) and TRON Power (TP) corresponding to the staked TRX to be synchronously reclaimed by the system. As a result, you will lose the respective Energy or Bandwidth and an equivalent amount of TP.
+    * **Concurrent Operation Limit:** You can have a maximum of 32 unstake operations in the 14-day pending period at any one time. Use the `getavailableunfreezecount` endpoint to check your remaining unstake capacity.
 
-To find out exactly how much unstaked TRX was automatically withdrawn during a specific unstaking operation, you can query the details of that unstake transaction using the `gettransactioninfobyid` API and look for the following field:
+**Automatic Effects of Unstaking**: Calling `unfreezebalancev2` not only initiates a new unstaking process, but it also automatically withdraws any TRX that has already completed its 14-day pending period.
 
-- `withdraw_expire_amount`: This field shows the amount of matured unstaked TRX that was automatically withdrawn in this transaction.
+**How to Verify Withdrawn Amount**: To find out exactly how much unstaked TRX was automatically withdrawn during a specific unstaking operation, you can query the details of that unstake transaction using the `gettransactioninfobyid` API and look for the field `withdraw_expire_amount`, which shows the amount of matured unstaked TRX that was automatically withdrawn in this transaction.
 
 #### Reclaiming TRON Power
 
 Under Stake 2.0, unstaking TRX simultaneously reclaims an equivalent amount of TRON Power (TP). If the amount of TP to be reclaimed exceeds your account's idle (unvoted) TP, the system will proportionally revoke your cast votes.
 
-**TP Reclamation Priority**
-
-When the system reclaims TP, it follows the following two-step process:
+_**TP Reclamation Priority**_: When the system reclaims TP, it follows the following two-step process:
 
 1.  **Reclaim Idle TP First:** The system first reclaims all of your account's TP that is not currently being used for voting.
 2.  **Cancel Votes as Needed:** If the idle TP is insufficient to meet the reclamation demand, the system will begin to revoke your cast votes to reclaim the remaining required TP.
 
-**Rules for Calculating Vote Revocation**
+_**Rules for Calculating Vote Revocation**_
 
 The revocation operation is not random. Instead, votes are revoked proportionally and fairly from every Super Representative (SR) and Super Representative Partner you have voted for.
 
-*Formula:*
+- *Formula:*
 
-```
-Votes Revoked from a Given SR = Total Votes to Revoke * (Votes Cast for that SR or SR Partner / Total Votes Cast by the Account)
-```
+    ```
+    Votes Revoked from a Given SR = Total Votes to Revoke * (Votes Cast for that SR or SR Partner / Total Votes Cast by the Account)
+    ```
 
-*Example:*
+- *Example:*
 
-Assume User `A`'s account state is:
+    Assume User `A`'s initial account state is:
+    
+      * Total Staked: 2,000 TRX
+      * Total TP: 2,000 TP
+      * Votes Cast: 1,000 TP (600 for SR1, 400 for SR2)
+      * Unused TP: 1,000 TP
+    
+    Now, User `A` unstakes 1,500 TRX.
+    
+    *System Process:*
+    
+    1.  Reclamation Demand: The system needs to reclaim 1,500 TP.
+    2.  Reclaim Unused TP: First, it reclaims all 1,000 idle TP.
+    3.  Calculate Shortfall: A remaining `1,500 - 1,000 = 500 TP` must be reclaimed by revoking votes.
+    4.  Proportional revocation:
+          * Votes revoked for SR1: `500 * (600 / 1000) = 300` votes.
+          * Votes revoked for SR2: `500 * (400 / 1000) = 200` votes.
+    5.  Final State: User A successfully unstakes 1,500 TRX. Their voting state is updated to: 300 votes for SR1 and 200 votes for SR2.
 
-  * **Total Staked:** 2,000 TRX
-  * **Total TP:** 2,000 TP
-  * **Votes Cast:** 1,000 TP (600 for SR1, 400 for SR2)
-  * **Unused TP:** 1,000 TP
-
-Now, User `A` unstakes **1,500 TRX**.
-
-*System Process:*
-
-1.  **Reclamation Demand:** The system needs to reclaim 1,500 TP.
-2.  **Reclaim Unused TP:** First, it reclaims all 1,000 idle TP.
-3.  **Calculate Shortfall:** A remaining `1,500 - 1,000 = 500 TP` must be reclaimed by revoking votes.
-4.  **Proportional revocation:**
-      * Votes revoked for SR1: `500 * (600 / 1000) = 300` votes.
-      * Votes revoked for SR2: `500 * (400 / 1000) = 200` votes.
-5.  **Final State:** User A successfully unstakes 1,500 TRX. Their voting state is updated to: 300 votes for SR1 and 200 votes for SR2.
-
-> **Important Distinction: Stake 1.0 vs. Stake 2.0**
->
-> Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding `wallet/unfreezebalance` API.
-
-**Note:** Unstaking TRX from Stake 1.0 will revoke **all** of the account's votes.
+!!! Important Distinction: Stake 1.0 vs. Stake 2.0
+    Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding `wallet/unfreezebalance` API.
+    
+    Unstaking TRX from Stake 1.0 will revoke **all** of the account's votes.
 
 ### How to Cancel All Unstaking Requests
 
-If you initiate an unstake but change your mind, Stake 2.0 provides an efficient "cancel" feature. You can use the `cancelallunfreezev2` API to immediately cancel all pending unstake requests, bypassing the 14-day pending period and get your resources back immediately.
+If you initiate an unstake but change your mind, Stake 2.0 provides an efficient "cancel" feature. You can use the `cancelallunfreezev2` API to immediately cancel all pending unstake requests, bypassing the 14-day pending period, and get your resources back immediately.
 
 **Please note**: this endpoint cancels all of your account's unstaking requests that are currently in the 14-day pending period.
 
   * **TRX Status:** The canceled TRX is immediately re-staked.
   * **Resource Type:** The re-staked funds will acquire the same resource type (Energy or Bandwidth) as the original stake.
 
-**Additional Effect: Automatic Withdrawal**
-
-This operation will also automatically withdraw any unstaked fund that has already completed its 14-day pending period and is awaiting withdrawal.
+**Additional Effect - Automatic Withdrawal**: This operation will also automatically withdraw any unstaked TRX that has already completed its 14-day pending period and is awaiting withdrawal.
 
 **How to Verify the Result**
 
@@ -438,22 +416,23 @@ You can query the transaction details using `gettransactioninfobyid` and check t
   * `cancel_unfreezeV2_amount`: The total amount of TRX that was successfully canceled and re-staked.
   * `withdraw_expire_amount`: The total amount of matured unstaked TRX that was automatically withdrawn to your account balance.
 
-### API Summary
+### Relevant API Endpoints
 
-| Description                                                   | API Endpoint                                |
-| ------------------------------------------------------------- | ------------------------------------------- |
-| Stake TRX.                                                    | `wallet/freezebalancev2`                    |
-| Unstake TRX.                                                  | `wallet/unfreezebalancev2`                  |
-| Delegate resources.                                           | `wallet/delegateresource`                   |
-| Undelegate resources.                                         | `wallet/undelegateresource`                 |
-| Withdraw unstaked TRX that has passed the pending period.     | `wallet/withdrawexpireunfreeze`             |
-| Check the remaining number of unstake operations allowed.     | `wallet/getavailableunfreezecount`          |
-| Check the amount of withdrawable unstaked TRX.                | `wallet/getcanwithdrawunfreezeamount`       |
-| Check the maximum amount of delegable resources.              | `wallet/getcandelegatedmaxsize`             |
-| Check resources delegated from one address to another.        | `wallet/getdelegatedresourcev2`             |
-| Check an account's delegation and received delegation status. | `wallet/getdelegatedresourceaccountindexv2` |
-| Check account stake, resources, unstake, and voting status.   | `wallet/getaccount`                         |
-| Check resource totals, usage, and available amounts.          | `wallet/getaccountresource`                 | Cancel all pending unstake requests.                        |
+| API Endpoint | Description |
+| :--- | :--- |
+| `wallet/freezebalancev2` | Stake TRX. |
+| `wallet/unfreezebalancev2` | Unstake TRX. |
+| `wallet/delegateresource` | Delegate resources. |
+| `wallet/undelegateresource` | Undelegate resources. |
+| `wallet/withdrawexpireunfreeze` | Withdraw unstaked TRX that has passed the pending period. |
+| `wallet/getavailableunfreezecount` | Check the remaining number of unstake operations allowed. |
+| `wallet/getcanwithdrawunfreezeamount` | Check the amount of withdrawable unstaked TRX. |
+| `wallet/getcandelegatedmaxsize` | Check the maximum amount of delegable resources. |
+| `wallet/getdelegatedresourcev2` | Check resources delegated from one address to another. |
+| `wallet/getdelegatedresourceaccountindexv2` | Check an account's delegation and received delegation status. |
+| `wallet/getaccount` | Check account stake, resources, unstake, and voting status. |
+| `wallet/getaccountresource` | Check resource totals, usage, and available amounts. |
+| `wallet/cancelallunfreezev2` | Cancel all pending unstake requests. |
 
 [^1]:
     If a developer is unsure about a contract's stability, they should not set the user's cost share to 0%. Otherwise, if the execution is deemed malicious, all of the developer's Energy will be deducted.
