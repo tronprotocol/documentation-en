@@ -72,7 +72,11 @@ The table below lists the download addresses for FullNode data snapshots. Please
 | Official Data Source (Asia: Singapore) | [http://35.247.128.170/](http://35.247.128.170/) | LevelDB data, includes internal transactions |
 | Official Data Source (Americas: Virginia, USA) | [http://34.48.6.163/](http://34.48.6.163/) | LevelDB data, does not include internal transactions, includes historical account balances |
 
-**Note:** **LevelDB** and **RocksDB** data are not interchangeable. The database type for a FullNode is specified by the `db.engine` configuration item in the configuration file, with selectable values being `LEVELDB` or `ROCKSDB`.
+**Note:** 
+
+- **LevelDB** and **RocksDB** data are not interchangeable. The database type for a FullNode is specified by the `db.engine` configuration item in the configuration file, with selectable values being `LEVELDB` or `ROCKSDB`.
+- Internal transactions can be enabled/disabled through the configuration items `vm.saveInternalTx` or `vm.saveFeaturedInternalTx` in the configuration file. Among them, `vm.saveInternalTx` is only applicable to `call`, `create`, and `suicide` transactions, while `vm.saveFeaturedInternalTx` is applicable to all types of transactions. Affected interface: [`gettransactioninfobyid`](https://developers.tron.network/reference/gettransactioninfobyid-1)
+- Historical accont balances can be enabled/disabled through the configuration item `storage.balance.history.lookup` in the configuration file. Affected interface: [`getaccountbalance`](https://developers.tron.network/reference/getaccountbalance)
 
 #### Lite FullNode Data Snapshots
 
