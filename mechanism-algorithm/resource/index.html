@@ -450,21 +450,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -472,107 +460,7 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1132,9 +1020,9 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#api-summary" class="md-nav__link" >
+  <a href="#relevant-api-endpoints" class="md-nav__link" >
     <span class="md-ellipsis">
-      API Summary
+      Relevant API Endpoints
     </span>
   </a>
   
@@ -1820,8 +1708,7 @@
 <p>There are three ways to obtain Bandwidth:</p>
 <ul>
 <li>
-<p><strong>Staking TRX:</strong>
-    Users share a fixed total Bandwidth pool in proportion to the amount of TRX they have staked for Bandwidth.</p>
+<p><strong>Staking TRX:</strong> Users share a fixed total Bandwidth pool in proportion to the amount of TRX they have staked for Bandwidth.</p>
 <div class="highlight"><pre><span></span><code>Bandwidth Share = (TRX Staked for Bandwidth / Total TRX Staked for Bandwidth Network-Wide) * Total Bandwidth Limit
 </code></pre></div>
 <p><strong>Total Bandwidth</strong> is a network parameter that can be modified through a committee proposal (<a href="https://tronscan.io/#/sr/committee">#62</a>) and is currently set to 43,200,000,000.</p>
@@ -1837,8 +1724,7 @@
 </code></pre></div>
 </li>
 <li>
-<p><strong>Daily Free Allowance:</strong>
-    Every account receives a fixed daily allowance of free Bandwidth, which can be modified through a committee proposal <a href="https://tronscan.io/#/sr/committee">#61</a> and is currently set to 600.</p>
+<p><strong>Daily Free Allowance:</strong> Every account receives a fixed daily allowance of free Bandwidth, which can be modified through a committee proposal <a href="https://tronscan.io/#/sr/committee">#61</a> and is currently set to 600.</p>
 </li>
 </ul>
 <h3 id="2-how-bandwidth-is-consumed">2. How Bandwidth is Consumed<a class="headerlink" href="#2-how-bandwidth-is-consumed" title="Permanent link">&para;</a></h3>
@@ -1864,19 +1750,19 @@
 <ol>
 <li><strong>Issuer's Bandwidth (Highest Priority):</strong> The system first attempts to consume the Bandwidth prepaid by the token issuer. This requires all three of the following conditions to be met (only if all three checks pass will the issuer's Bandwidth be deducted; otherwise, the cost falls to the transaction initiator):<ul>
 <li>The token issuer has a sufficient total free Bandwidth allowance.<ul>
-<li>Query Method: /wallet/getassetissuebyaccount</li>
+<li>Query Method: <a href="https://developers.tron.network/reference/getassetissuebyaccount">/wallet/getassetissuebyaccount</a></li>
 <li>Formula: <code>public_free_asset_net_limit - public_free_asset_net_usage</code></li>
 <li>Description: The remaining quota the token issuer can pay for this token's transfers.</li>
 </ul>
 </li>
 <li>The transaction initiator has a sufficient Bandwidth allowance for that specific token.<ul>
-<li>Query Method: /wallet/getaccountnet</li>
+<li>Query Method: <a href="https://developers.tron.network/reference/getaccountnet">/wallet/getaccountnet</a> </li>
 <li>Formula: <code>assetNetLimit['assetID'] - assetNetUsed['assetID']</code></li>
 <li>Description: The free Bandwidth quota provided by the issuer that the token holder can still use.</li>
 </ul>
 </li>
 <li>The token issuer has sufficient staked Bandwidth. <ul>
-<li>Query Method: /wallet/getaccountnet</li>
+<li>Query Method: <a href="https://developers.tron.network/reference/getaccountnet">/wallet/getaccountnet</a></li>
 <li>Formula: <code>NetLimit - NetUsed</code></li>
 <li>Description: The amount of available Bandwidth the issuer has obtained through staking.</li>
 </ul>
@@ -1928,7 +1814,7 @@ Remaining Staked Bandwidth = NetLimit - NetUsed
 <div class="highlight"><pre><span></span><code>Your Energy Share = (TRX Staked for Energy / Total TRX Staked for Energy Network-Wide) * Total Energy Limit
 </code></pre></div>
 <p>Total Energy Limit is a network parameter set by the committee (<a href="https://tronscan.io/#/sr/committee">#19</a>), currently at 180,000,000,000, and can be modified via proposals.</p>
-<h5 id="calculation-example">Calculation Example<a class="headerlink" href="#calculation-example" title="Permanent link">&para;</a></h5>
+<p><em><strong>Calculation Example</strong></em></p>
 <p>Because your share is tied to the network's total stake, your available Energy will fluctuate as other users stake or unstake.</p>
 <div class="highlight"><pre><span></span><code>Assume only two users, A and B, have staked 2 TRX each.
 
@@ -1942,13 +1828,13 @@ B: 72,000,000,000
 C: 36,000,000,000
 </code></pre></div>
 <h4 id="energy-consumption">Energy Consumption<a class="headerlink" href="#energy-consumption" title="Permanent link">&para;</a></h4>
-<h5 id="payment-priority">Payment Priority<a class="headerlink" href="#payment-priority" title="Permanent link">&para;</a></h5>
+<p><em><strong>Payment Priority</strong></em></p>
 <p>When a contract transaction consumes Energy, the system deducts the cost in the following order:</p>
 <ol>
 <li><strong>Staked Energy:</strong> First, the system consumes the Energy obtained by the transaction initiator from staking TRX.</li>
 <li><strong>TRX Burning:</strong> If staked Energy is insufficient to cover all instructions, the system automatically burns the initiator's TRX to cover the difference. The current price is 0.0001 TRX per unit of Energy.</li>
 </ol>
-<h5 id="fee-deduction-for-exceptions">Fee Deduction for Exceptions<a class="headerlink" href="#fee-deduction-for-exceptions" title="Permanent link">&para;</a></h5>
+<p><em><strong>Fee Deduction for Exceptions</strong></em></p>
 <p>Contract execution can be interrupted for various reasons, with different rules for Energy deduction:</p>
 <ul>
 <li><strong>Normal Interruption (<code>REVERT</code>):</strong> If a contract exits due to a <code>REVERT</code> instruction, only the Energy for the instructions executed up to that point is deducted.</li>
@@ -1958,10 +1844,11 @@ C: 36,000,000,000
 <p>Consumed Energy resources gradually recover over a 24-hour period.</p>
 <p><a id="set-fee-limit"></a></p>
 <h3 id="2-how-to-set-fee_limit-essential-for-users">2. How to Set <code>fee_limit</code> (Essential for Users)<a class="headerlink" href="#2-how-to-set-fee_limit-essential-for-users" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.</p>
-<p>Since the Energy consumed by a contract can be converted to TRX (or sun), this section uses "Energy" and "TRX" interchangeably to refer to the resource cost. The terms are distinguished only when referring to specific numerical units.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.
+Since the Energy consumed by a contract can be converted to TRX (or sun), this section uses "Energy" and "TRX" interchangeably to refer to the resource cost. The terms are distinguished only when referring to specific numerical units.</p>
+</div>
 <p><code>fee_limit</code> is a critical safety parameter when calling a smart contract. A properly set <code>fee_limit</code> ensures that a transaction can execute successfully while preventing excessive TRX consumption if the contract requires unexpectedly high Energy.</p>
 <p>Before setting <code>fee_limit</code>, understand these concepts:</p>
 <ol>
@@ -1980,12 +1867,9 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 </ul>
 <p>The <code>fee_limit</code> estimation method is as follows:</p>
 <ul>
-<li><strong>Step 1: Calculate the Total Transaction Fee</strong>
-First, calculate the total potential cost of the transaction by multiplying the estimated maximum Energy consumption by the current Energy price: <code>20,000 Energy * 100 sun = 2,000,000 sun (equivalent to 2 TRX)</code>.</li>
-<li><strong>Step 2: Determine the User's Share</strong>
-Next, calculate the portion of the fee the user is responsible for. Given the developer commits to covering 90%, the user's share is 10%: <code>2,000,000 sun * 10% = 200,000 sun</code>.</li>
-<li><strong>Step 3: Set the Final <code>fee_limit</code></strong>
-Therefore, the recommended <code>fee_limit</code> for the user to set is 200,000 sun.</li>
+<li><strong>Step 1: Calculate the Total Transaction Fee</strong>: Calculate the total potential cost of the transaction by multiplying the estimated maximum Energy consumption by the current Energy price: <code>20,000 Energy * 100 sun = 2,000,000 sun (equivalent to 2 TRX)</code>.</li>
+<li><strong>Step 2: Determine the User's Share</strong>: Calculate the portion of the fee the user is responsible for. Given the developer commits to covering 90%, the user's share is 10%: <code>2,000,000 sun * 10% = 200,000 sun</code>.</li>
+<li><strong>Step 3: Set the Final <code>fee_limit</code></strong>: The recommended <code>fee_limit</code> for the user to set is 200,000 sun.</li>
 </ul>
 <p><a id="energy-mechanism"></a></p>
 <h3 id="3-energy-consumption-mechanism">3. Energy Consumption Mechanism<a class="headerlink" href="#3-energy-consumption-mechanism" title="Permanent link">&para;</a></h3>
@@ -2061,6 +1945,7 @@ Therefore, the recommended <code>fee_limit</code> for the user to set is 200,000
 <h3 id="how-to-delegate-resources">How to Delegate Resources<a class="headerlink" href="#how-to-delegate-resources" title="Permanent link">&para;</a></h3>
 <p>After an account obtains Energy or Bandwidth through staking, it can choose to delegate these resources to other TRON accounts. This allows accounts with a surplus of resources to help those with insufficient resources complete transactions.</p>
 <p><strong>Delegation Rules and Key Restrictions</strong></p>
+<p>Before delegating, you must understand the following key rules:</p>
 <ul>
 <li><strong>Delegable Resources:</strong> Only Energy and Bandwidth can be delegated. TP cannot.</li>
 <li><strong>Source of Resources:</strong> Only available resources obtained through Stake 2.0 are eligible for delegation.</li>
@@ -2069,8 +1954,8 @@ Therefore, the recommended <code>fee_limit</code> for the user to set is 200,000
 <p><strong>Time Lock Option</strong></p>
 <p>When delegating, you can choose to enable a time lock, which affects when you can reclaim the resources.</p>
 <ul>
-<li><strong>With Time Lock:</strong> The resources are locked for a period. You must wait for this period to end before you can undelegate. 
-      &gt; <strong>Important:</strong> If you delegate to the same address again during this period, the pending period resets.</li>
+<li><strong>With Time Lock:</strong> The resources are locked for a period. You must wait for this period to end before you can undelegate.
+    <strong>Important:</strong> If you delegate to the same address again during this period, the pending period resets.</li>
 <li><strong>Without Time Lock:</strong> You can undelegate at any time and reclaim the resources immediately.</li>
 </ul>
 <p><strong>Related API Endpoints</strong></p>
@@ -2081,138 +1966,131 @@ Therefore, the recommended <code>fee_limit</code> for the user to set is 200,000
 </ul>
 <h3 id="how-to-unstake">How to Unstake<a class="headerlink" href="#how-to-unstake" title="Permanent link">&para;</a></h3>
 <p>After staking TRX, you can initiate an unstake operation at any time using the <code>unfreezebalancev2</code> API. However, this process has a time delay and follows specific rules.</p>
-<p><strong>Core Rule: 14-Day Pending Period</strong></p>
-<ul>
-<li><strong>Pending Period:</strong> After initiating an unstake, your TRX funds enters a 14-day pending period.</li>
-<li><strong>Fund Availability:</strong> You can only withdraw the funds to your account balance after the 14-day period has ended.</li>
-<li><strong>Network Parameter:</strong> This pending period is TRON network parameter <a href="https://tronscan.io/#/sr/committee">#70</a> and may be changed in the future through network governance.</li>
-</ul>
-<p><strong>Important Notes</strong></p>
-<ul>
-<li><strong>Delegated Resources Cannot Be Unstaked:</strong> 
-You cannot unstake TRX corresponding to resources that are currently delegated. You must first reclaim the resources using <code>undelegateresource</code> before you can unstake that portion of TRX.</li>
-<li><strong>Resource Reclamation:</strong> 
-      Unstaking will cause the resources (Energy or Bandwidth) and TRON Power (TP) corresponding to the staked TRX to be synchronously reclaimed by the system. As a result, you will lose the respective Energy or Bandwidth and an equivalent amount of TP.</li>
-<li><strong>Concurrent Operation Limit:</strong> 
-You can have a maximum of 32 unstake operations in the 14-day pending period at any one time. Use the <code>getavailableunfreezecount</code> endpoint to check your remaining unstake capacity.</li>
-</ul>
-<p><strong>Automatic Effects of Unstaking</strong></p>
-<p>Calling <code>unfreezebalancev2</code> not only initiates a new unstaking process, but it also automatically withdraws any TRX that has already completed its 14-day pending period.</p>
-<p><strong>How to Verify Withdrawn Amount</strong></p>
-<p>To find out exactly how much unstaked TRX was automatically withdrawn during a specific unstaking operation, you can query the details of that unstake transaction using the <code>gettransactioninfobyid</code> API and look for the following field:</p>
-<ul>
-<li><code>withdraw_expire_amount</code>: This field shows the amount of matured unstaked TRX that was automatically withdrawn in this transaction.</li>
-</ul>
+<p>After staking TRX, you can initiate an unstake operation at any time using the <code>unfreezebalancev2</code> API. After initiating an unstake, your TRX enters a 14-day pending period. This pending period is TRON network parameter <a href="https://tronscan.io/#/sr/committee">#70</a> and can be changed in the future through network governance. After the 14-day period has ended, you can withdraw the funds to your account balance using the <code>withdrawexpireunfreeze</code> API.</p>
+<p>!!! <strong>Important Notes</strong>
+    * <strong>Delegated Resources Cannot Be Unstaked:</strong> You cannot unstake TRX corresponding to resources that are currently delegated. You must first reclaim the resources using <code>undelegateresource</code> before you can unstake that portion of TRX.
+    * <strong>Resource Reclamation:</strong> Unstaking will cause the resources (Energy or Bandwidth) and TRON Power (TP) corresponding to the staked TRX to be synchronously reclaimed by the system. As a result, you will lose the respective Energy or Bandwidth and an equivalent amount of TP.
+    * <strong>Concurrent Operation Limit:</strong> You can have a maximum of 32 unstake operations in the 14-day pending period at any one time. Use the <code>getavailableunfreezecount</code> endpoint to check your remaining unstake capacity.</p>
+<p><strong>Automatic Effects of Unstaking</strong>: Calling <code>unfreezebalancev2</code> not only initiates a new unstaking process, but it also automatically withdraws any TRX that has already completed its 14-day pending period.</p>
+<p><strong>How to Verify Withdrawn Amount</strong>: To find out exactly how much unstaked TRX was automatically withdrawn during a specific unstaking operation, you can query the details of that unstake transaction using the <code>gettransactioninfobyid</code> API and look for the field <code>withdraw_expire_amount</code>, which shows the amount of matured unstaked TRX that was automatically withdrawn in this transaction.</p>
 <h4 id="reclaiming-tron-power">Reclaiming TRON Power<a class="headerlink" href="#reclaiming-tron-power" title="Permanent link">&para;</a></h4>
 <p>Under Stake 2.0, unstaking TRX simultaneously reclaims an equivalent amount of TRON Power (TP). If the amount of TP to be reclaimed exceeds your account's idle (unvoted) TP, the system will proportionally revoke your cast votes.</p>
-<p><strong>TP Reclamation Priority</strong></p>
-<p>When the system reclaims TP, it follows the following two-step process:</p>
+<p><em><strong>TP Reclamation Priority</strong></em>: When the system reclaims TP, it follows the following two-step process:</p>
 <ol>
 <li><strong>Reclaim Idle TP First:</strong> The system first reclaims all of your account's TP that is not currently being used for voting.</li>
 <li><strong>Cancel Votes as Needed:</strong> If the idle TP is insufficient to meet the reclamation demand, the system will begin to revoke your cast votes to reclaim the remaining required TP.</li>
 </ol>
-<p><strong>Rules for Calculating Vote Revocation</strong></p>
+<p><em><strong>Rules for Calculating Vote Revocation</strong></em></p>
 <p>The revocation operation is not random. Instead, votes are revoked proportionally and fairly from every Super Representative (SR) and Super Representative Partner you have voted for.</p>
+<ul>
+<li>
 <p><em>Formula:</em></p>
 <div class="highlight"><pre><span></span><code>Votes Revoked from a Given SR = Total Votes to Revoke * (Votes Cast for that SR or SR Partner / Total Votes Cast by the Account)
 </code></pre></div>
+</li>
+<li>
 <p><em>Example:</em></p>
-<p>Assume User <code>A</code>'s account state is:</p>
+<p>Assume User <code>A</code>'s initial account state is:</p>
 <ul>
-<li><strong>Total Staked:</strong> 2,000 TRX</li>
-<li><strong>Total TP:</strong> 2,000 TP</li>
-<li><strong>Votes Cast:</strong> 1,000 TP (600 for SR1, 400 for SR2)</li>
-<li><strong>Unused TP:</strong> 1,000 TP</li>
+<li>Total Staked: 2,000 TRX</li>
+<li>Total TP: 2,000 TP</li>
+<li>Votes Cast: 1,000 TP (600 for SR1, 400 for SR2)</li>
+<li>Unused TP: 1,000 TP</li>
 </ul>
-<p>Now, User <code>A</code> unstakes <strong>1,500 TRX</strong>.</p>
+<p>Now, User <code>A</code> unstakes 1,500 TRX.</p>
 <p><em>System Process:</em></p>
 <ol>
-<li><strong>Reclamation Demand:</strong> The system needs to reclaim 1,500 TP.</li>
-<li><strong>Reclaim Unused TP:</strong> First, it reclaims all 1,000 idle TP.</li>
-<li><strong>Calculate Shortfall:</strong> A remaining <code>1,500 - 1,000 = 500 TP</code> must be reclaimed by revoking votes.</li>
-<li><strong>Proportional revocation:</strong><ul>
+<li>Reclamation Demand: The system needs to reclaim 1,500 TP.</li>
+<li>Reclaim Unused TP: First, it reclaims all 1,000 idle TP.</li>
+<li>Calculate Shortfall: A remaining <code>1,500 - 1,000 = 500 TP</code> must be reclaimed by revoking votes.</li>
+<li>Proportional revocation:<ul>
 <li>Votes revoked for SR1: <code>500 * (600 / 1000) = 300</code> votes.</li>
 <li>Votes revoked for SR2: <code>500 * (400 / 1000) = 200</code> votes.</li>
 </ul>
 </li>
-<li><strong>Final State:</strong> User A successfully unstakes 1,500 TRX. Their voting state is updated to: 300 votes for SR1 and 200 votes for SR2.</li>
+<li>Final State: User A successfully unstakes 1,500 TRX. Their voting state is updated to: 300 votes for SR1 and 200 votes for SR2.</li>
 </ol>
-<blockquote>
-<p><strong>Important Distinction: Stake 1.0 vs. Stake 2.0</strong></p>
-<p>Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding <code>wallet/unfreezebalance</code> API.</p>
-</blockquote>
-<p><strong>Note:</strong> Unstaking TRX from Stake 1.0 will revoke <strong>all</strong> of the account's votes.</p>
+</li>
+</ul>
+<p>!!! Important Distinction: Stake 1.0 vs. Stake 2.0
+    Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding <code>wallet/unfreezebalance</code> API.</p>
+<div class="codehilite"><pre><span></span><code>Unstaking TRX from Stake 1.0 will revoke **all** of the account&#39;s votes.
+</code></pre></div>
+
 <h3 id="how-to-cancel-all-unstaking-requests">How to Cancel All Unstaking Requests<a class="headerlink" href="#how-to-cancel-all-unstaking-requests" title="Permanent link">&para;</a></h3>
-<p>If you initiate an unstake but change your mind, Stake 2.0 provides an efficient "cancel" feature. You can use the <code>cancelallunfreezev2</code> API to immediately cancel all pending unstake requests, bypassing the 14-day pending period and get your resources back immediately.</p>
+<p>If you initiate an unstake but change your mind, Stake 2.0 provides an efficient "cancel" feature. You can use the <code>cancelallunfreezev2</code> API to immediately cancel all pending unstake requests, bypassing the 14-day pending period, and get your resources back immediately.</p>
 <p><strong>Please note</strong>: this endpoint cancels all of your account's unstaking requests that are currently in the 14-day pending period.</p>
 <ul>
 <li><strong>TRX Status:</strong> The canceled TRX is immediately re-staked.</li>
 <li><strong>Resource Type:</strong> The re-staked funds will acquire the same resource type (Energy or Bandwidth) as the original stake.</li>
 </ul>
-<p><strong>Additional Effect: Automatic Withdrawal</strong></p>
-<p>This operation will also automatically withdraw any unstaked fund that has already completed its 14-day pending period and is awaiting withdrawal.</p>
+<p><strong>Additional Effect - Automatic Withdrawal</strong>: This operation will also automatically withdraw any unstaked TRX that has already completed its 14-day pending period and is awaiting withdrawal.</p>
 <p><strong>How to Verify the Result</strong></p>
 <p>You can query the transaction details using <code>gettransactioninfobyid</code> and check the following fields:</p>
 <ul>
 <li><code>cancel_unfreezeV2_amount</code>: The total amount of TRX that was successfully canceled and re-staked.</li>
 <li><code>withdraw_expire_amount</code>: The total amount of matured unstaked TRX that was automatically withdrawn to your account balance.</li>
 </ul>
-<h3 id="api-summary">API Summary<a class="headerlink" href="#api-summary" title="Permanent link">&para;</a></h3>
+<h3 id="relevant-api-endpoints">Relevant API Endpoints<a class="headerlink" href="#relevant-api-endpoints" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Description</th>
-<th>API Endpoint</th>
+<th style="text-align: left;">API Endpoint</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Stake TRX.</td>
-<td><code>wallet/freezebalancev2</code></td>
+<td style="text-align: left;"><code>wallet/freezebalancev2</code></td>
+<td style="text-align: left;">Stake TRX.</td>
 </tr>
 <tr>
-<td>Unstake TRX.</td>
-<td><code>wallet/unfreezebalancev2</code></td>
+<td style="text-align: left;"><code>wallet/unfreezebalancev2</code></td>
+<td style="text-align: left;">Unstake TRX.</td>
 </tr>
 <tr>
-<td>Delegate resources.</td>
-<td><code>wallet/delegateresource</code></td>
+<td style="text-align: left;"><code>wallet/delegateresource</code></td>
+<td style="text-align: left;">Delegate resources.</td>
 </tr>
 <tr>
-<td>Undelegate resources.</td>
-<td><code>wallet/undelegateresource</code></td>
+<td style="text-align: left;"><code>wallet/undelegateresource</code></td>
+<td style="text-align: left;">Undelegate resources.</td>
 </tr>
 <tr>
-<td>Withdraw unstaked TRX that has passed the pending period.</td>
-<td><code>wallet/withdrawexpireunfreeze</code></td>
+<td style="text-align: left;"><code>wallet/withdrawexpireunfreeze</code></td>
+<td style="text-align: left;">Withdraw unstaked TRX that has passed the pending period.</td>
 </tr>
 <tr>
-<td>Check the remaining number of unstake operations allowed.</td>
-<td><code>wallet/getavailableunfreezecount</code></td>
+<td style="text-align: left;"><code>wallet/getavailableunfreezecount</code></td>
+<td style="text-align: left;">Check the remaining number of unstake operations allowed.</td>
 </tr>
 <tr>
-<td>Check the amount of withdrawable unstaked TRX.</td>
-<td><code>wallet/getcanwithdrawunfreezeamount</code></td>
+<td style="text-align: left;"><code>wallet/getcanwithdrawunfreezeamount</code></td>
+<td style="text-align: left;">Check the amount of withdrawable unstaked TRX.</td>
 </tr>
 <tr>
-<td>Check the maximum amount of delegable resources.</td>
-<td><code>wallet/getcandelegatedmaxsize</code></td>
+<td style="text-align: left;"><code>wallet/getcandelegatedmaxsize</code></td>
+<td style="text-align: left;">Check the maximum amount of delegable resources.</td>
 </tr>
 <tr>
-<td>Check resources delegated from one address to another.</td>
-<td><code>wallet/getdelegatedresourcev2</code></td>
+<td style="text-align: left;"><code>wallet/getdelegatedresourcev2</code></td>
+<td style="text-align: left;">Check resources delegated from one address to another.</td>
 </tr>
 <tr>
-<td>Check an account's delegation and received delegation status.</td>
-<td><code>wallet/getdelegatedresourceaccountindexv2</code></td>
+<td style="text-align: left;"><code>wallet/getdelegatedresourceaccountindexv2</code></td>
+<td style="text-align: left;">Check an account's delegation and received delegation status.</td>
 </tr>
 <tr>
-<td>Check account stake, resources, unstake, and voting status.</td>
-<td><code>wallet/getaccount</code></td>
+<td style="text-align: left;"><code>wallet/getaccount</code></td>
+<td style="text-align: left;">Check account stake, resources, unstake, and voting status.</td>
 </tr>
 <tr>
-<td>Check resource totals, usage, and available amounts.</td>
-<td><code>wallet/getaccountresource</code></td>
+<td style="text-align: left;"><code>wallet/getaccountresource</code></td>
+<td style="text-align: left;">Check resource totals, usage, and available amounts.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>wallet/cancelallunfreezev2</code></td>
+<td style="text-align: left;">Cancel all pending unstake requests.</td>
 </tr>
 </tbody>
 </table>

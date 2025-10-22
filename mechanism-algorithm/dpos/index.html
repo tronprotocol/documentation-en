@@ -450,21 +450,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -472,107 +460,7 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1754,7 +1642,7 @@
 <p>In DPoS consensus, the system selects a subset of nodes as SRs based on the number of votes they receive. The election process is as follows:</p>
 <ol>
 <li><strong>Initial Setup:</strong> When the blockchain system launches, a certain amount of <strong>tokens</strong> (e.g., TRON's TRX) are issued.</li>
-<li><strong>Becoming a Candidate:</strong> Nodes can spend a portion of these tokens to apply to become a SR <strong>candidate</strong>.</li>
+<li><strong>Becoming a Candidate:</strong> Nodes can spend a portion of these tokens to apply to become an SR <strong>candidate</strong>.</li>
 <li><strong>Community Voting:</strong> Any node in the network holding tokens can vote for these candidates.</li>
 <li><strong>Vote Tallying and Election:</strong> After a preset <strong>time period</strong> (e.g., <code>t</code>), the system tallies the votes for all candidates, and the top <code>N</code> candidates by vote count become the SRs for the next time period.</li>
 <li><strong>Cycle Rotation:</strong> After the time period ends, the system re-tallies votes and elects new SRs, and so on.</li>
@@ -1859,7 +1747,7 @@
 </ul>
 <h2 id="proposal-based-parameter-adjustment">Proposal-Based Parameter Adjustment<a class="headerlink" href="#proposal-based-parameter-adjustment" title="Permanent link">&para;</a></h2>
 <p>An important feature of DPoS is that any system parameter adjustment can be initiated through an <strong>on-chain proposal</strong>. SRs decide whether a proposal takes effect by voting on it. The benefit of this mechanism is that <strong>no hard fork upgrade is required</strong> when adjusting parameters on-chain.</p>
-<p>For current dynamic parameters and their values in the TRON network, as well as past proposal records, please refer to the <a href="https://tronscan.org/#/sr/committee">TRONSCAN Committee Page</a>.</p>
+<p>For current dynamic parameters and their values in the TRON network, as well as past proposal records, please refer to the <a href="https://tronscan.org/#/sr/committee">TRONSCAN Committee</a> Page.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://medium.com/tronnetwork/the-basics-of-trons-dpos-consensus-algorithm-db12c52f1e03">The Basics of TRON’s DPoS Consensus Algorithm</a></li>

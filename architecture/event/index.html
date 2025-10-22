@@ -14,7 +14,7 @@
         <link rel="prev" href="../../using_javatron/private_network/">
       
       
-        <link rel="next" href="../use-native-queue/">
+        <link rel="next" href="../database/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Overview - java-tron</title>
+        <title>Event Subscription - java-tron</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Event Subscription
             
           </span>
         </div>
@@ -454,46 +454,6 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Event Subscription
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -506,7 +466,7 @@
           
   
   <span class="md-ellipsis">
-    Overview
+    Event Subscription
     
   </span>
   
@@ -518,7 +478,7 @@
         
   
   <span class="md-ellipsis">
-    Overview
+    Event Subscription
     
   </span>
   
@@ -541,88 +501,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item has-children">
-  <a href="#overview-of-subscription-methods" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#local-event-plugin-subscription-recommended" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Overview of Subscription Methods
+      Local Event Plugin Subscription (Recommended)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview of Subscription Methods" hidden>
+    <nav class="md-nav" aria-label="Local Event Plugin Subscription (Recommended)" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#1-local-event-plugin-subscription-recommended" class="md-nav__link" >
+  <a href="#event-service-framework" class="md-nav__link" >
     <span class="md-ellipsis">
-      1. Local Event Plugin Subscription (Recommended)
+      Event Service Framework
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#2-built-in-message-queue-subscription-zeromq" class="md-nav__link" >
+  <a href="#kafka-plugin-deployment-and-usage" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. Built-in Message Queue Subscription (ZeroMQ)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#event-service-framework-based-on-local-plugin" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Event Service Framework (Based on Local Plugin)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#event-types" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      Event Types
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Event Types" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#1-transaction-event" class="md-nav__link" >
-    <span class="md-ellipsis">
-      1. Transaction Event
+      Kafka Plugin: Deployment and Usage
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#2-block-events" class="md-nav__link" >
+  <a href="#mongodb-plugin-deployment-and-usage" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. Block Events
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#3-contract-events-and-logs" class="md-nav__link" >
-    <span class="md-ellipsis">
-      3. Contract Events and Logs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#4-solidified-block-notification-events" class="md-nav__link" >
-    <span class="md-ellipsis">
-      4. Solidified Block Notification Events
+      MongoDB Plugin: Deployment and Usage
     </span>
   </a>
   
@@ -634,28 +543,46 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#migrating-to-v20-event-service-framework" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#built-in-message-queue-subscription-zeromq" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Migrating to V2.0 Event Service Framework
+      Built-in Message Queue Subscription (ZeroMQ)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Migrating to V2.0 Event Service Framework" hidden>
+    <nav class="md-nav" aria-label="Built-in Message Queue Subscription (ZeroMQ)" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#pre-migration-considerations" class="md-nav__link" >
+  <a href="#configuring-the-node" class="md-nav__link" >
     <span class="md-ellipsis">
-      Pre-Migration Considerations
+      Configuring the Node
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#migration-procedure" class="md-nav__link" >
+  <a href="#starting-the-node" class="md-nav__link" >
     <span class="md-ellipsis">
-      Migration Procedure
+      Starting the Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#preparing-the-event-subscription-script" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Preparing the Event Subscription Script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#starting-the-subscriber" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting the Subscriber
     </span>
   </a>
   
@@ -669,80 +596,6 @@
     </ul>
   
 </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1729,9 +1582,12 @@
 
 <h1 id="event-subscription">Event Subscription<a class="headerlink" href="#event-subscription" title="Permanent link">&para;</a></h1>
 <p>TRON provides a robust event subscription mechanism that allows developers to capture critical on-chain events in real-time. This includes transaction statuses, contract invocations, and block production, facilitating the development of feature-rich decentralized applications (dApps).</p>
-<h2 id="overview-of-subscription-methods">Overview of Subscription Methods<a class="headerlink" href="#overview-of-subscription-methods" title="Permanent link">&para;</a></h2>
-<p>TRON offers two primary event subscription methods, each designed to cater to different use cases and technical requirements.</p>
-<h3 id="1-local-event-plugin-subscription-recommended">1. Local Event Plugin Subscription (Recommended)<a class="headerlink" href="#1-local-event-plugin-subscription-recommended" title="Permanent link">&para;</a></h3>
+<p>TRON offers two primary event subscription methods, allowing developers to choose based on their specific use cases:</p>
+<ul>
+<li><a href="#local-event-plugin-subscription-recommended">Local Event Plugin Subscription</a></li>
+<li><a href="#built-in-message-queue-subscription-zeromq">Built-in Message Queue (ZeroMQ) Subscription</a></li>
+</ul>
+<h2 id="local-event-plugin-subscription-recommended">Local Event Plugin Subscription (Recommended)<a class="headerlink" href="#local-event-plugin-subscription-recommended" title="Permanent link">&para;</a></h2>
 <p>This method utilizes an extensible plugin architecture to persistntly store on-chain events in external systems, such as <strong>MongoDB</strong> or <strong>Kafka</strong>, either in real-time or in batches. Designed specifically for production environments, this solution caters to applications requiring high reliability, durable storage, and robust data analysis capabilities.</p>
 <p>This method has the following advantages:</p>
 <ul>
@@ -1741,25 +1597,14 @@
 <li><strong>Historical Event Replay</strong>: The V2.0 framework allows syncing historical events from any specified block height.</li>
 <li><strong>Production-Grade Reliability</strong>: Ideal for applications requiring high data integrity and dependability.</li>
 </ul>
-<blockquote>
-<p><strong>Important Note</strong>: In extreme situations such as network forks, non-solidified events might be rolled back. Therefore, in scenarios with high demand for data reliability, subscribing to solidified events is strongly recommended.</p>
-</blockquote>
-<h3 id="2-built-in-message-queue-subscription-zeromq">2. Built-in Message Queue Subscription (ZeroMQ)<a class="headerlink" href="#2-built-in-message-queue-subscription-zeromq" title="Permanent link">&para;</a></h3>
-<p>The java-tron node includes a built-in <strong>ZeroMQ</strong> message queue that provides a lightweight event streaming service. This method requires no external plugins and is ideal for use cases that demand high real-time event delivery but do not require event persistence or historical replay, such as rapid prototyping and testing.</p>
-<p>This method has the following advantages:</p>
-<ul>
-<li><strong>No Plugin Deployment</strong>: Subscriptions are established by connecting directly to a TRON node.</li>
-<li><strong>Low Latency</strong>: Optimized for real-time event streaming.</li>
-<li><strong>Lightweight</strong>: Well-suited for rapid development and testing environments.</li>
-</ul>
-<h2 id="event-service-framework-based-on-local-plugin">Event Service Framework (Based on Local Plugin)<a class="headerlink" href="#event-service-framework-based-on-local-plugin" title="Permanent link">&para;</a></h2>
+<h3 id="event-service-framework">Event Service Framework<a class="headerlink" href="#event-service-framework" title="Permanent link">&para;</a></h3>
 <p>java-tron currently supports two versions of the event service framework: <code>V1.0</code> and <code>V2.0</code>.</p>
 <ul>
 <li><strong>V1.0</strong>: Only supports real-time event streaming for newly produced blocks.</li>
 <li><strong>V2.0 (Recommended)</strong>:  Introduces a historical event replay feature, enabling synchronization from a specified block height.</li>
 </ul>
 <p>For a detailed comparison and guidance, refer to: <a href="https://medium.com/tronnetwork/event-service-framework-v2-0-0622f2f07249">Introduction to Event Service Framework V2.0</a>.</p>
-<p><strong>Workflow</strong>:</p>
+<p><strong>Workflow of Event Service</strong>:</p>
 <ol>
 <li><strong>Event Capture</strong>: The TRON node extracts event data from on-chain blocks.</li>
 <li><strong>Event Queuing</strong>: Events are encapsulated and added to a buffer queue.</li>
@@ -1767,11 +1612,127 @@
 <li><strong>Event Delivery</strong>: The plugin pushes the processed data to the target system (e.g., Kafka or MongoDB).</li>
 <li><strong>Application Logic</strong>: Downstream applications continuously process the event data.</li>
 </ol>
-<h2 id="event-types">Event Types<a class="headerlink" href="#event-types" title="Permanent link">&para;</a></h2>
-<p>Developers can flexibly specify the event types they want to subscribe to by modifying the node's configuration file, <code>config.conf</code>.</p>
-<h3 id="1-transaction-event">1. Transaction Event<a class="headerlink" href="#1-transaction-event" title="Permanent link">&para;</a></h3>
+<h4 id="how-to-migrate-to-event-service-framework-v20">How to Migrate to Event Service Framework V2.0<a class="headerlink" href="#how-to-migrate-to-event-service-framework-v20" title="Permanent link">&para;</a></h4>
+<p>The <code>V2.0</code> event service framework introduces a historical event replay feature and includes comprehensive optimizations to the event push mechanism. This guide outlines the procedure for migrating to <code>V2.0</code>.</p>
+<p><strong>Pre-Migration Considerations</strong></p>
+<p>Before migrating, please consider the following factors:</p>
+<ul>
+<li>Internal Transaction Log Support: <code>V2.0</code> currently does not support internal transaction logs (the <code>internalTransactionList</code> field will be empty). If your application has a dependency on this field, you must remain on <code>V1.0</code>.</li>
+<li>Plugin Version: We strongly recommend upgrading the event plugin to the latest version to prevent potential performance degradation when processing large volumes of historical data.</li>
+</ul>
+<p><strong>Migration Procedure</strong></p>
+<h5 id="step-1-obtain-the-new-event-plugin">Step 1: Obtain the New Event Plugin<a class="headerlink" href="#step-1-obtain-the-new-event-plugin" title="Permanent link">&para;</a></h5>
+<p>You can get the source code from GitHub and build it yourself, or download the officially released version directly.</p>
+<ul>
+<li>Build from Source:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>git clone git@github.com:tronprotocol/event-plugin.git
+cd event-plugin
+git checkout master
+./gradlew build
+</code></pre></div>
+After the build is complete, the generated <code>.zip</code> file is the plugin package.</p>
+<ul>
+<li>Download the Official Release:</li>
+</ul>
+<p>Visit the <a href="https://github.com/tronprotocol/event-plugin/releases">event-plugin Releases page</a> to download the latest plugin package.</p>
+<h5 id="step-2-modify-the-fullnode-configuration">Step 2: Modify the FullNode Configuration<a class="headerlink" href="#step-2-modify-the-fullnode-configuration" title="Permanent link">&para;</a></h5>
+<p>In your <code>config.conf</code> file, set the event service version to <code>V2.0</code>, the value is <code>1</code>.</p>
+<div class="highlight"><pre><span></span><code>event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
+</code></pre></div>
+<h5 id="step-3-configure-the-event-plugin">Step 3: Configure the Event Plugin<a class="headerlink" href="#step-3-configure-the-event-plugin" title="Permanent link">&para;</a></h5>
+<p>The configuration process for the new plugin is mostly identical to the old version. You can refer to the official documentation for deployment:</p>
+<ul>
+<li><a href="#mongodb-plugin-deployment-and-usage">Deploying the Event Plugin (MongoDB)</a></li>
+<li><a href="#kafka-plugin-deployment-and-usage">Deploying the Event Plugin (Kafka)</a></li>
+</ul>
+<h5 id="step-4-optional-configure-the-starting-point-for-historical-sync">Step 4 (Optional): Configure the Starting Point for Historical Sync<a class="headerlink" href="#step-4-optional-configure-the-starting-point-for-historical-sync" title="Permanent link">&para;</a></h5>
+<p>If you need to sync historical events starting from a specific block height, add the following setting to your configuration file.</p>
+<div class="highlight"><pre><span></span><code>event.subscribe.startSyncBlockNum = &lt;block_height&gt;
+</code></pre></div>
+<h5 id="step-5-start-the-fullnode-and-plugin">Step 5: Start the Fullnode and Plugin<a class="headerlink" href="#step-5-start-the-fullnode-and-plugin" title="Permanent link">&para;</a></h5>
+<p>After completing the configuration, use the following command to start the <code>FullNode</code> and load the event plugin.</p>
+<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+</code></pre></div>
+<h3 id="kafka-plugin-deployment-and-usage">Kafka Plugin: Deployment and Usage<a class="headerlink" href="#kafka-plugin-deployment-and-usage" title="Permanent link">&para;</a></h3>
+<p>This guide is designed to help developers efficiently use the Kafka event subscription plugin to listen for on-chain events on the TRON network. We will walk you through the entire process step-by-step, from environment setup to deployment, configuration, and final verification.</p>
+<p>The main steps include:</p>
+<ul>
+<li><a href="#recommended-system-configuration">Checking System Configuration</a></li>
+<li><a href="#compiling-the-kafka-event-plugin">Compiling the Event Plugin</a></li>
+<li><a href="#deploying-and-running-kafka">Deploying and Running Kafka</a></li>
+<li><a href="#configuring-event-subscription">Configuring Event Subscription Rules</a></li>
+<li><a href="#creating-a-kafka-subscription-topic">Creating the Kafka Subscription Topic</a></li>
+<li><a href="#starting-the-event-subscription-node">Starting the Event Subscription Node</a></li>
+</ul>
+<h4 id="recommended-system-configuration">Recommended System Configuration<a class="headerlink" href="#recommended-system-configuration" title="Permanent link">&para;</a></h4>
+<p>To ensure the stable operation of your TRON node and event subscription service, the following system configuration is recommended:</p>
+<ul>
+<li><strong>CPU</strong>: 16 cores or higher</li>
+<li><strong>RAM</strong>: 32 GB or higher</li>
+<li><strong>SSD</strong>: 2.5 TB or more of storage space</li>
+<li><strong>Operating System</strong>: Linux or macOS</li>
+</ul>
+<h4 id="compiling-the-kafka-event-plugin">Compiling the Kafka Event Plugin<a class="headerlink" href="#compiling-the-kafka-event-plugin" title="Permanent link">&para;</a></h4>
+<p>First, you need to clone the <code>event-plugin</code> project from its GitHub repository and compile it to generate the plugin's <code>.zip</code> file. Please follow these steps:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/event-plugin.git
+cd event-plugin
+./gradlew build
+</code></pre></div>
+<p>After a successful compilation, you will find the generated <code>.zip</code> plugin file in the <code>event-plugin/build/plugins/</code> directory, for example, <code>plugin-kafka-1.0.0.zip</code>.</p>
+<h4 id="deploying-and-running-kafka">Deploying and Running Kafka<a class="headerlink" href="#deploying-and-running-kafka" title="Permanent link">&para;</a></h4>
+<h5 id="step-1-installing-kafka">Step 1. Installing Kafka<a class="headerlink" href="#step-1-installing-kafka" title="Permanent link">&para;</a></h5>
+<p>In a Linux environment, please follow these steps to install Kafka:</p>
+<div class="highlight"><pre><span></span><code>cd /usr/local
+wget https://downloads.apache.org/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+tar -xzf kafka_2.13-2.8.0.tgz
+</code></pre></div>
+<h5 id="step-2-running-kafka">Step 2: Running Kafka<a class="headerlink" href="#step-2-running-kafka" title="Permanent link">&para;</a></h5>
+<p>In a Linux environment, please follow these steps to start the ZooKeeper and Kafka Broker services:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/usr/local/kafka_2.13-2.8.0
+<span class="c1"># Start the ZooKeeper service</span>
+bin/zookeeper-server-start.sh<span class="w"> </span>config/zookeeper.properties<span class="w"> </span><span class="p">&amp;</span>
+<span class="c1"># Start the Kafka Broker service</span>
+bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<h4 id="configuring-event-subscription">Configuring Event Subscription<a class="headerlink" href="#configuring-event-subscription" title="Permanent link">&para;</a></h4>
+<p>To support Kafka event subscriptions, you need to modify the Fullnode's configuration file (<code>config.conf</code>) by adding the <code>event.subscribe</code> section.</p>
+<div class="highlight"><pre><span></span><code>event.subscribe = {
+  version = 1 
+  startSyncBlockNum = 0 
+
+  native = {
+    useNativeQueue = false 
+  }
+
+  path = &quot;&quot; 
+  server = &quot;&quot; 
+  dbconfig = &quot;&quot; 
+  contractParse = true
+  topics = []
+  filter = {}
+}
+</code></pre></div>
+<p><strong>Field Descriptions</strong>:</p>
+<ul>
+<li><code>version</code>: The version of the event service framework. <code>1</code> indicates V2.0, while <code>0</code> indicates V1.0. If not configured, it defaults to V1.0.</li>
+<li><code>startSyncBlockNum</code>: A new feature in v2.0 designed for historical data subscriptions. It allows the service to start processing and pushing events from a specific historical block height stored on the local node.<ul>
+<li>If <code>startSyncBlockNum &lt;= 0</code>, this feature is disabled.</li>
+<li>If <code>startSyncBlockNum &gt; 0</code>, this feature is enabled, and historical event synchronization will begin from the specified block height. <strong>Note</strong>: We recommend using the latest version of the event plugin when enabling this feature.</li>
+</ul>
+</li>
+<li><code>native.useNativeQueue</code>: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. If you need to support Kafka event subscriptions, ensure this field is set to <code>false</code>; otherwise, Kafka subscriptions will not work.</li>
+<li><code>path</code>: The absolute local path to the <code>plugin-kafka-1.0.0.zip</code> file. Please ensure the path is correct, or the plugin will fail to load.</li>
+<li><code>server</code>: The Kafka server address in <code>ip:port</code> format. The default Kafka port is <code>9092</code>. Please ensure the port number is correct and that the Kafka service is accessible.</li>
+<li><code>dbconfig</code>: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.</li>
+<li><code>topics</code>: Configure the events to subscribe to. For more details, please refer to the <a href="#event-types">Event Types</a> section below.</li>
+<li><code>filter</code>: Filtering parameters. For more details, please refer to the <a href="#event-types">Event Types</a> section below.</li>
+</ul>
+<h6 id="event-types">Event Types<a class="headerlink" href="#event-types" title="Permanent link">&para;</a></h6>
+<p>TRON event subscription supports 7 types of events: <code>block</code>, <code>transaction</code>, <code>contractevent</code>, <code>contractlog</code>, <code>solidity</code>, <code>solidityevent</code>, and <code>soliditylog</code>. Developers should configure these based on their application's specific needs. <strong>We recommend subscribing to only 1-2 event types. Enabling too many triggers can lead to performance degradation.</strong></p>
+<p><strong>1. Transaction Event</strong></p>
 <p>Subscribes to events related to on-chain transactions.</p>
-<p><strong>Configuration Example：</strong></p>
+<p>Configuration Example：</p>
 <p><div class="highlight"><pre><span></span><code>event.subscribe.topics = [
   {
     triggerName = &quot;transaction&quot;
@@ -1782,7 +1743,7 @@
   }
 ]
 </code></pre></div>
-<strong>Parameters</strong>:</p>
+Parameters:</p>
 <ul>
 <li><code>triggerName</code>: (String) The event type identifier. For transaction events, this value is fixed to <code>transaction</code>.</li>
 <li><code>enable</code>: (Boolean) Enables or disables the subscription for this event type.</li>
@@ -1790,7 +1751,7 @@
 <li><code>solidified</code>: (Boolean) If set to <code>true</code>, the subscription will only deliver events for transactions included in solidified blocks.</li>
 <li><code>ethCompatible</code>: (Boolean) If set to <code>true</code>, the event payload will include Ethereum-compatible fields (e.g., <code>transactionIndex</code>, <code>logList</code>).</li>
 </ul>
-<p><strong>Key Fields in Transaction Events:</strong></p>
+<p>Key Fields in Transaction Events:</p>
 <ul>
 <li><code>transactionId</code>: The transaction hash.</li>
 <li><code>blockNumber</code>: The block height containing the transaction.</li>
@@ -1798,9 +1759,9 @@
 <li><code>energyFee</code>: The total amount of TRX (in sun) consumed by the transaction.</li>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/TransactionLogTrigger.java">TransactionLogTrigger</a> source code.</p>
-<h3 id="2-block-events">2. Block Events<a class="headerlink" href="#2-block-events" title="Permanent link">&para;</a></h3>
+<p><strong>2. Block Events</strong></p>
 <p>Subscribes to events triggered upon the creation of new blocks.</p>
-<p><strong>Configuration Example：</strong></p>
+<p>Configuration Example：</p>
 <div class="highlight"><pre><span></span><code>event.subscribe.topics = [
   {
     triggerName = &quot;block&quot;
@@ -1810,7 +1771,7 @@
   }
 ]
 </code></pre></div>
-<p><strong>Key Fields in Block Events:</strong></p>
+<p>Key Fields in Block Events:</p>
 <ul>
 <li><code>blockHash</code>: The hash of the block.</li>
 <li><code>blockNumber</code>: The block height.</li>
@@ -1819,9 +1780,9 @@
 <li><code>transactionList</code>: An array of transaction hashes contained within the block.</li>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/BlockLogTrigger.java">BlockLogTrigger</a> source code.</p>
-<h3 id="3-contract-events-and-logs">3. Contract Events and Logs<a class="headerlink" href="#3-contract-events-and-logs" title="Permanent link">&para;</a></h3>
+<p><strong>3. Contract Events and Logs</strong></p>
 <p>Subscribes to smart contract events and logs generated during contract execution.</p>
-<p><strong>Configuration Example：</strong></p>
+<p>Configuration Example：</p>
 <div class="highlight"><pre><span></span><code>event.subscribe.topics = [
   {
     triggerName = &quot;contractevent&quot;
@@ -1845,13 +1806,14 @@
   }
 ]
 </code></pre></div>
+<p>Parameters:</p>
 <ul>
 <li><code>contractevent</code>: Subscribes to all contract events from all blocks.</li>
 <li><code>contractlog</code>: Subscribes to all contract logs from all blocks.</li>
 <li><code>solidityevent</code>: Subscribes only to contract events from solidified blocks.</li>
 <li><code>soliditylog</code>: Subscribes only to contract logs from solidified blocks.</li>
 </ul>
-<p><strong>Key Fields in Contract Events</strong></p>
+<p>Key Fields in Contract Events</p>
 <ul>
 <li><code>transactionId</code>: The hash of the transaction that generated the event.</li>
 <li><code>contractAddress</code>: The address of the smart contract.</li>
@@ -1859,16 +1821,23 @@
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java">ContractEventTrigger</a> and <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java">ContractLogTrigger</a> source code.</p>
 <blockquote>
-<p><strong>Note</strong>: Subscriptions for <code>contractevent</code> and <code>contractlog</code> support the following filter parameters:
-<div class="highlight"><pre><span></span><code>fromBlock: The starting block number.
-toBlock: The ending block number.
-contractAddress: The specific contract address to monitor.
-contractTopics: An array of indexed event topics for filtering.
+<p><strong>Note</strong>: <code>Contract event</code> and <code>Contract log</code> support event filtering through the <code>filter</code> field. You can specify a block range (<code>fromblock</code> - <code>toblock</code>), specific contract addresses (<code>contractAddress</code>), or specific contract topics (<code>contractTopic</code>) to provide developers with a more efficient and precise event subscription service.
+<div class="highlight"><pre><span></span><code>filter = {
+  fromblock = &quot;&quot; // The starting block number of the query range. Can be an empty string, &quot;earliest&quot;, or a specific block number.
+  toblock = &quot;&quot; // The ending block number of the query range. Can be an empty string, &quot;latest&quot;, or a specific block number.
+  contractAddress = [
+    &quot;&quot; // The contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.
+  ]
+
+  contractTopic = [
+    &quot;&quot; // The contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.
+  ]
+}
 </code></pre></div></p>
 </blockquote>
-<h3 id="4-solidified-block-notification-events">4. Solidified Block Notification Events<a class="headerlink" href="#4-solidified-block-notification-events" title="Permanent link">&para;</a></h3>
+<p><strong>4. Solidified Block Notification Events</strong></p>
 <p>Subscribes to real-time notifications for the latest solidified block height. This is ideal for applications that need to track the chain's finalized state.</p>
-<p><strong>Configuration Example：</strong></p>
+<p>Configuration Example：</p>
 <div class="highlight"><pre><span></span><code>event.subscribe.topics = [
   {
     triggerName = &quot;solidity&quot;
@@ -1877,49 +1846,349 @@ contractTopics: An array of indexed event topics for filtering.
   }
 ]
 </code></pre></div>
-<p><strong>Key Fields in Solidity Notification Events:</strong></p>
+<p>Key Fields in Solidity Notification Events:</p>
 <ul>
 <li><code>latestSolidifiedBlockNumber</code>: The block number of the newly solidified block.</li>
 <li><code>timestamp</code>: The timestamp of the solidified block.</li>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/SolidityTrigger.java">SolidityTrigger</a> source code.</p>
-<h2 id="migrating-to-v20-event-service-framework">Migrating to V2.0 Event Service Framework<a class="headerlink" href="#migrating-to-v20-event-service-framework" title="Permanent link">&para;</a></h2>
-<p>The <code>V2.0</code> event service framework introduces a historical event replay feature and includes comprehensive optimizations to the event push mechanism. This guide outlines the procedure for migrating to <code>V2.0</code>.</p>
-<h3 id="pre-migration-considerations">Pre-Migration Considerations<a class="headerlink" href="#pre-migration-considerations" title="Permanent link">&para;</a></h3>
-<p>Before migrating, please consider the following factors:</p>
+<h4 id="creating-a-kafka-subscription-topic">Creating a Kafka Subscription Topic<a class="headerlink" href="#creating-a-kafka-subscription-topic" title="Permanent link">&para;</a></h4>
+<p>The name of the Kafka subscription topic must match the <code>topic</code> setting in the <code>topics</code> field of your <code>event.subscribe</code> configuration. For example, if you need to subscribe to <code>block</code> events and set the <code>topic</code> field in the <code>block</code> trigger to <code>"block"</code>, you must create a topic named <code>"block"</code> in Kafka to receive block events.</p>
+<p>In a Linux environment, the command to create a Kafka topic is as follows:</p>
+<div class="highlight"><pre><span></span><code>bin/kafka-topics.sh --create --topic block --bootstrap-server localhost:9092
+</code></pre></div>
+<h4 id="starting-the-event-subscription-node">Starting the Event Subscription Node<a class="headerlink" href="#starting-the-event-subscription-node" title="Permanent link">&para;</a></h4>
+<p>After completing the above configuration, you must add the <code>--es</code> parameter when starting the FullNode to enable the event subscription feature.</p>
+<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+</code></pre></div>
+<h5 id="verifying-plugin-load">Verifying Plugin Load<a class="headerlink" href="#verifying-plugin-load" title="Permanent link">&para;</a></h5>
+<p>You can verify that the Kafka event plugin has loaded successfully by checking the Fullnode logs:</p>
+<div class="highlight"><pre><span></span><code>grep -i eventplugin logs/tron.log
+</code></pre></div>
+<p>If you see a message similar to the following in the logs, the event subscription plugin has loaded successfully:</p>
+<div class="highlight"><pre><span></span><code>[o.t.c.l.EventPluginLoader] &#39;your plugin path/plugin-kafka-1.0.0.zip&#39; loaded
+</code></pre></div>
+<h5 id="verifying-event-subscription">Verifying Event Subscription<a class="headerlink" href="#verifying-event-subscription" title="Permanent link">&para;</a></h5>
+<p>Execute the <code>kafka-console-consumer.sh</code> script to retrieve messages from the <code>"block"</code> topic in Kafka to verify that the event subscription is successful.</p>
+<p>In a Linux environment, the command is as follows:</p>
+<div class="highlight"><pre><span></span><code>bin/kafka-console-consumer.sh --topic block --from-beginning --bootstrap-server localhost:9092
+</code></pre></div>
+<p>If you see JSON-formatted output similar to the following in your console, the event subscription is successful:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;timeStamp&quot;: 1539973125000,
+    &quot;triggerName&quot;: &quot;blockTrigger&quot;,
+    &quot;blockNumber&quot;: 3341315,
+    &quot;blockHash&quot;: &quot;000000000032fc03440362c3d42eb05e79e8a1aef77fe31c7879d23a750f2a31&quot;,
+    &quot;transactionSize&quot;: 16,
+    &quot;latestSolidifiedBlockNumber&quot;: 3341297,
+    &quot;transactionList&quot;: [&quot;8757f846e541b51b5692a2370327f4b8031125f4557f8ad4b1037d4452616d39&quot;, &quot;f6adab7814b34e5e756170f93a31a0c3393c5d99eff11e30271916375adc7467&quot;, ..., &quot;89bcbcd063a48ef4a5678a033acf5edbb6b17419a3c91eb0479a3c8598774b43&quot;]
+}
+</code></pre></div>
+<h3 id="mongodb-plugin-deployment-and-usage">MongoDB Plugin: Deployment and Usage<a class="headerlink" href="#mongodb-plugin-deployment-and-usage" title="Permanent link">&para;</a></h3>
+<p>This guide is designed to help developers quickly deploy and use the TRON MongoDB event subscription plugin to achieve real-time data capture, persistent storage, and querying of on-chain events. The document covers the entire process, including system environment configuration, plugin deployment, database installation, query service setup, and API usage.</p>
+<p>The main steps include:</p>
 <ul>
-<li><strong>Internal Transaction Log Support</strong>: <code>V2.0</code> currently does not support internal transaction logs (the <code>internalTransactionList</code> field will be empty). If your application has a dependency on this field, you must remain on <code>V1.0</code>.</li>
-<li><strong>Plugin Version</strong>: We strongly recommend upgrading the event plugin to the latest version to prevent potential performance degradation when processing large volumes of historical data.</li>
+<li><a href="#recommended-system-configuration_1">Checking System Configuration</a></li>
+<li><a href="#system-architecture-and-workflow">Understanding the System Architecture</a></li>
+<li><a href="#deploying-the-event-subscription-plugin">Deploying the Event Plugin</a></li>
+<li><a href="#installing-and-configuring-mongodb">Deploying the MongoDB</a></li>
+<li><a href="#deploying-the-event-query-service">Deploying the Event Query Service</a></li>
+<li><a href="#launch-and-verification">Starting and Verifing</a></li>
+<li><a href="#using-the-tron-event-query-service-api">Using the TRON Event Query Service API</a></li>
 </ul>
-<h3 id="migration-procedure">Migration Procedure<a class="headerlink" href="#migration-procedure" title="Permanent link">&para;</a></h3>
-<h4 id="step-1-obtain-the-new-event-plugin">Step 1: Obtain the New Event Plugin<a class="headerlink" href="#step-1-obtain-the-new-event-plugin" title="Permanent link">&para;</a></h4>
-<p>You can get the source code from GitHub and build it yourself, or download the officially released version directly.</p>
-<p><strong>Build from Source:</strong></p>
-<p><div class="highlight"><pre><span></span><code>git clone git@github.com:tronprotocol/event-plugin.git
+<h4 id="recommended-system-configuration_1">Recommended System Configuration<a class="headerlink" href="#recommended-system-configuration_1" title="Permanent link">&para;</a></h4>
+<p>To ensure the efficient and stable operation of your TRON node and event service, the following configuration is recommended:</p>
+<ul>
+<li><strong>CPU</strong>: 16 cores or more</li>
+<li><strong>RAM</strong>: 32 GB or higher</li>
+<li><strong>SSD</strong>: 2.5 TB or more</li>
+<li><strong>Operating System</strong>: Linux or macOS</li>
+</ul>
+<h4 id="system-architecture-and-workflow">System Architecture and Workflow<a class="headerlink" href="#system-architecture-and-workflow" title="Permanent link">&para;</a></h4>
+<p>The TRON MongoDB event subscription system consists of three core modules:</p>
+<ol>
+<li><strong>Event Subscription Plugin</strong>: Connects to a TRON node to capture event data and writes it to MongoDB.</li>
+<li><strong>MongoDB Database</strong>: The persistence layer for storing event data.</li>
+<li><strong>Event Query Service</strong>: Provides an HTTP API for external applications to query event data.</li>
+</ol>
+<h4 id="deploying-the-event-subscription-plugin">Deploying the Event Subscription Plugin<a class="headerlink" href="#deploying-the-event-subscription-plugin" title="Permanent link">&para;</a></h4>
+<h5 id="1-building-the-plugin">1. Building the Plugin<a class="headerlink" href="#1-building-the-plugin" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/event-plugin.git
 cd event-plugin
-git checkout master
 ./gradlew build
 </code></pre></div>
-After the build is complete, the generated <code>.zip</code> file is the plugin package.</p>
-<p><strong>Download the Official Release:</strong></p>
-<p>Visit the <a href="https://github.com/tronprotocol/event-plugin/releases">event-plugin Releases page</a> to download the latest plugin package.</p>
-<h4 id="step-2-modify-the-fullnode-configuration">Step 2: Modify the FullNode Configuration<a class="headerlink" href="#step-2-modify-the-fullnode-configuration" title="Permanent link">&para;</a></h4>
-<p>In your <code>config.conf</code> file, set the event service version to <code>V2.0</code>, the value is <code>1</code>.</p>
-<div class="highlight"><pre><span></span><code>event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
+<p>After the build is complete, the generated plugin file will be located at:</p>
+<div class="highlight"><pre><span></span><code>event-plugin/build/plugins/plugin-mongodb-*.zip
 </code></pre></div>
-<h4 id="step-3-configure-the-event-plugin">Step 3: Configure the Event Plugin<a class="headerlink" href="#step-3-configure-the-event-plugin" title="Permanent link">&para;</a></h4>
-<p>The configuration process for the new plugin is mostly identical to the old version. You can refer to the official documentation for deployment:</p>
+<h5 id="2-configuring-the-fullnode">2. Configuring the FullNode<a class="headerlink" href="#2-configuring-the-fullnode" title="Permanent link">&para;</a></h5>
+<p>Add the following content to your FullNode's configuration file, <code>config.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">event</span><span class="p">.</span><span class="nx">subscribe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">startSyncBlockNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="w">  </span>
+
+<span class="w">  </span><span class="kr">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">useNativeQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;127.0.0.1:27017&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">dbconfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eventlog|tron|123456&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">topics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">solidified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span>
+<span class="w">      </span><span class="nx">solidified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">ethCompatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractevent&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractevent&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractlog&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractlog&quot;</span>
+<span class="w">      </span><span class="nx">redundancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidity&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidity&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidityevent&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidityevent&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;soliditylog&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;soliditylog&quot;</span>
+<span class="w">      </span><span class="nx">redundancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+
+<span class="w">  </span><span class="nx">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fromblock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">toblock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">contractAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="nx">contractTopic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Field Descriptions</strong>:</p>
 <ul>
-<li><a href="/documentation-en/architecture/use-mongodb/">Deploying the Event Plugin (MongoDB)</a></li>
-<li><a href="/documentation-en/architecture/use-kafka/">Deploying the Event Plugin (Kafka)</a></li>
+<li><code>version</code>: The version of the event service framework. <code>1</code> indicates V2.0, while <code>0</code> indicates V1.0. If not configured, it defaults to V1.0.</li>
+<li><code>startSyncBlockNum</code>: A feature introduced in V2.0 that allows processing and pushing events from historical blocks, satisfying the need for historical data subscriptions. If <code>startSyncBlockNum &lt;= 0</code>, this feature is disabled. If <code>startSyncBlockNum &gt; 0</code>, the feature is enabled, and historical event synchronization will begin from the specified block height. <strong>Note</strong>: It is recommended to use the latest version of the event plugin when enabling this feature.</li>
+<li><code>native.useNativeQueue</code>: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. <code>true</code> uses the built-in queue, while <code>false</code> uses the plugin. This must be set to <code>false</code>.</li>
+<li><code>path</code>: The absolute path to the plugin file, e.g., <code>"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"</code>.</li>
+<li><code>server</code>: The target server address, i.e., the address and port for MongoDB, e.g., <code>"127.0.0.1:27017"</code>.</li>
+<li><code>dbconfig</code>: The MongoDB database configuration in the format: <code>database_name|username|password</code>, e.g., <code>"eventlog|tron|123456"</code>.</li>
+<li><code>topics</code>: Seven event types are currently supported: <code>block</code>, <code>transaction</code>, <code>contractevent</code>, <code>contractlog</code>, <code>solidity</code>, <code>solidityevent</code>, and <code>soliditylog</code>. For more details, please refer to the <a href="#event-types">Event Types</a> chapter.<ul>
+<li><code>triggerName</code>: The name of the trigger, which cannot be modified.</li>
+<li><code>enable</code>: Toggles the event subscription. <code>true</code> enables it, <code>false</code> disables it.</li>
+<li><code>topic</code>: The name of the collection in MongoDB that will receive the events. This can be modified.</li>
 </ul>
-<h4 id="step-4-optional-configure-the-starting-point-for-historical-sync">Step 4 (Optional): Configure the Starting Point for Historical Sync<a class="headerlink" href="#step-4-optional-configure-the-starting-point-for-historical-sync" title="Permanent link">&para;</a></h4>
-<p>If you need to sync historical events starting from a specific block height, add the following setting to your configuration file.</p>
-<div class="highlight"><pre><span></span><code>event.subscribe.startSyncBlockNum = &lt;block_height&gt;
+</li>
+<li><code>filter</code>: The criteria for filtering events.<ul>
+<li><code>fromblock</code>: The starting block number of the query range. Can be <code>""</code>, <code>"earliest"</code> (to query from the genesis block), or a specific block number.</li>
+<li><code>toblock</code>: The ending block number of the query range. Can be <code>""</code>, <code>"latest"</code> (the most recent block), or a specific block number.</li>
+<li><code>contractAddress</code>: A list of contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.</li>
+<li><code>contractTopic</code>: A list of contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.</li>
+</ul>
+</li>
+</ul>
+<h4 id="installing-and-configuring-mongodb">Installing and Configuring MongoDB<a class="headerlink" href="#installing-and-configuring-mongodb" title="Permanent link">&para;</a></h4>
+<p>MongoDB will be used to store TRON event data. Please follow these steps to install and configure it:</p>
+<h5 id="1-installing-mongodb">1. Installing MongoDB<a class="headerlink" href="#1-installing-mongodb" title="Permanent link">&para;</a></h5>
+<p>First, create an installation directory for MongoDB, then download and extract the installation package:</p>
+<div class="highlight"><pre><span></span><code>mkdir /home/java-tron
+cd /home/java-tron
+curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
+tar zxvf mongodb-linux-x86_64-4.0.4.tgz
+mv mongodb-linux-x86_64-4.0.4 mongodb
 </code></pre></div>
-<h4 id="step-5-start-the-fullnode-and-plugin">Step 5: Start the Fullnode and Plugin<a class="headerlink" href="#step-5-start-the-fullnode-and-plugin" title="Permanent link">&para;</a></h4>
-<p>After completing the configuration, use the following command to start the <code>FullNode</code> and load the event plugin.</p>
+<h5 id="2-setting-environment-variables">2. Setting Environment Variables<a class="headerlink" href="#2-setting-environment-variables" title="Permanent link">&para;</a></h5>
+<p>To simplify subsequent operations, please set the environment variables for MongoDB:</p>
+<div class="highlight"><pre><span></span><code>export MONGOPATH=/home/java-tron/mongodb/
+export PATH=$PATH:$MONGOPATH/bin
+</code></pre></div>
+<h5 id="3-configuring-mongodb">3. Configuring MongoDB<a class="headerlink" href="#3-configuring-mongodb" title="Permanent link">&para;</a></h5>
+<p>Create the log and data directories for MongoDB and create the configuration file <code>mgdb.conf</code>:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p /home/java-tron/mongodb/{log,data}
+cd /home/java-tron/mongodb/log/ &amp;&amp; touch mongodb.log &amp;&amp; cd -
+vim /home/java-tron/mongodb/mgdb.conf
+</code></pre></div>
+<p>Write the following content into the <code>mgdb.conf</code> file. Ensure that <code>dbpath</code> and <code>logpath</code> use absolute paths:</p>
+<div class="highlight"><pre><span></span><code>dbpath=/home/java-tron/mongodb/data
+logpath=/home/java-tron/mongodb/log/mongodb.log
+port=27017
+logappend=true
+fork=true
+bind_ip=0.0.0.0
+auth=true
+wiredTigerCacheSizeGB=2
+</code></pre></div>
+<p>Important Configuration Notes:</p>
+<ul>
+<li><code>bind_ip=0.0.0.0</code>: Must be configured to <code>0.0.0.0</code>; otherwise, remote connections will be rejected.</li>
+<li><code>wiredTigerCacheSizeGB</code>: This parameter must be configured to prevent Out Of Memory (OOM) issues.</li>
+</ul>
+<h5 id="4-starting-mongodb">4. Starting MongoDB<a class="headerlink" href="#4-starting-mongodb" title="Permanent link">&para;</a></h5>
+<p>Start the MongoDB service using the configuration file:</p>
+<div class="highlight"><pre><span></span><code>mongod --config /home/java-tron/mongodb/mgdb.conf &amp;
+</code></pre></div>
+<h5 id="5-creating-admin-and-database-users">5. Creating Admin and Database Users<a class="headerlink" href="#5-creating-admin-and-database-users" title="Permanent link">&para;</a></h5>
+<p>Connect to MongoDB to create an administrative user, then create the database and user for the event subscription service:</p>
+<div class="highlight"><pre><span></span><code>mongo
+use admin
+db.createUser({user:&quot;&lt;admin-username&gt;&quot;,pwd:&quot;&lt;admin-password&gt;&quot;,roles:[{role:&quot;root&quot;,db:&quot;admin&quot;}]})
+
+db.auth(&quot;&lt;admin-username&gt;&quot;, &quot;&lt;admin-password&gt;&quot;)
+use eventlog
+db.createUser({user:&quot;&lt;eventlog-username&gt;&quot;,pwd:&quot;&lt;eventlog-password&gt;&quot;,roles:[{role:&quot;dbOwner&quot;,db:&quot;eventlog&quot;}]})
+</code></pre></div>
+<h4 id="deploying-the-event-query-service">Deploying the Event Query Service<a class="headerlink" href="#deploying-the-event-query-service" title="Permanent link">&para;</a></h4>
+<p>The Event Query Service provides an HTTP interface for querying event data stored in MongoDB. This service requires a Java environment.</p>
+<p><strong>Note</strong>: Please ensure you are using <strong>Oracle JDK 8</strong>, not Open JDK 8.</p>
+<h5 id="1-downloading-the-source-code">1. Downloading the Source Code<a class="headerlink" href="#1-downloading-the-source-code" title="Permanent link">&para;</a></h5>
+<p>Clone the <code>tron-eventquery</code> project source code:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/tron-eventquery.git
+cd tron-eventquery
+</code></pre></div>
+<h5 id="2-building-the-service">2. Building the Service<a class="headerlink" href="#2-building-the-service" title="Permanent link">&para;</a></h5>
+<p>Download and use Maven to build the <code>tron-eventquery</code> service:</p>
+<div class="highlight"><pre><span></span><code>wget https://mirrors.cnnic.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
+tar zxvf apache-maven-3.5.4-bin.tar.gz
+export M2_HOME=$HOME/maven/apache-maven-3.5.4
+export PATH=$PATH:$M2_HOME/bin
+mvn --version
+mvn package
+</code></pre></div>
+<p>Upon successful execution, a JAR package will be generated in the <code>tron-eventquery/target</code> directory, and a <code>config.conf</code> file will be created in the <code>tron-eventquery/</code> directory. An example of the configuration file content is shown below:</p>
+<div class="highlight"><pre><span></span><code>mongo.host=IP
+mongo.port=27017
+mongo.dbname=eventlog
+mongo.username=tron
+mongo.password=123456
+mongo.connectionsPerHost=8
+mongo.threadsAllowedToBlockForConnectionMultiplier=4
+</code></pre></div>
+<p>Please modify <code>mongo.host</code>, <code>mongo.port</code>, <code>mongo.dbname</code>, <code>mongo.username</code>, and <code>mongo.password</code> according to your MongoDB configuration.</p>
+<h5 id="3-starting-the-tron-event-query-service">3. Starting the TRON Event Query Service<a class="headerlink" href="#3-starting-the-tron-event-query-service" title="Permanent link">&para;</a></h5>
+<p>Start the <code>tron-eventquery</code> service and insert the indexes:</p>
+<div class="highlight"><pre><span></span><code>sh deploy.sh
+sh insertIndex.sh
+</code></pre></div>
+<p><strong>Note</strong>: The default port is <code>8080</code>. To change it, edit the <code>deploy.sh</code> script. For example:</p>
+<div class="highlight"><pre><span></span><code>nohup java -jar -Dserver.port=8081 target/troneventquery-1.0.0-SNAPSHOT.jar 2&gt;&amp;1 &amp;
+</code></pre></div>
+<h4 id="launch-and-verification">Launch and Verification<a class="headerlink" href="#launch-and-verification" title="Permanent link">&para;</a></h4>
+<p>After completing the deployment steps, you can start the TRON FullNode and verify that the event subscription service is working correctly.</p>
+<h5 id="1-starting-the-fullnode">1. Starting the FullNode<a class="headerlink" href="#1-starting-the-fullnode" title="Permanent link">&para;</a></h5>
+<p><strong>Important</strong>: Before starting the FullNode, ensure that the MongoDB service has been started successfully.</p>
+<p>The command to start the FullNode is as follows:</p>
 <div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+</code></pre></div>
+<p>For information on installing a FullNode, please refer to the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/">Deploying a FullNode</a> documentation.</p>
+<h5 id="2-verifying-plugin-load">2. Verifying Plugin Load<a class="headerlink" href="#2-verifying-plugin-load" title="Permanent link">&para;</a></h5>
+<p>You can verify that the event plugin has loaded successfully by checking the FullNode logs:</p>
+<div class="highlight"><pre><span></span><code>tail -f logs/tron.log | grep -i eventplugin
+</code></pre></div>
+<p>If you see a message similar to the following, the plugin has loaded successfully:</p>
+<div class="highlight"><pre><span></span><code>o.t.c.l.EventPluginLoader &#39;your plugin path/plugin-kafka-1.0.0.zip&#39; loaded
+</code></pre></div>
+<h5 id="3-verifying-data-persistence-in-mongodb">3. Verifying Data Persistence in MongoDB<a class="headerlink" href="#3-verifying-data-persistence-in-mongodb" title="Permanent link">&para;</a></h5>
+<p>Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:</p>
+<div class="highlight"><pre><span></span><code>mongo 47.90.245.68:27017
+use eventlog
+db.auth(&quot;tron&quot;, &quot;123456&quot;)
+show collections
+db.block.find()
+</code></pre></div>
+<p>If data is returned, it means the data has been stored successfully. Otherwise, please review the FullNode logs to troubleshoot the issue.</p>
+<h4 id="using-the-tron-event-query-service-api">Using the TRON Event Query Service API<a class="headerlink" href="#using-the-tron-event-query-service-api" title="Permanent link">&para;</a></h4>
+<p>The TRON Event Query Service provides a series of HTTP API endpoints for querying event data stored in MongoDB. For details on the specific APIs and their usage, please refer to the <a href="https://github.com/tronprotocol/tron-eventquery?tab=readme-ov-file#main-http-service">Event Query Service HTTP API documentation</a>.</p>
+<h2 id="built-in-message-queue-subscription-zeromq">Built-in Message Queue Subscription (ZeroMQ)<a class="headerlink" href="#built-in-message-queue-subscription-zeromq" title="Permanent link">&para;</a></h2>
+<p>The java-tron node includes a built-in <strong>ZeroMQ</strong> message queue that provides a lightweight event streaming service. This method requires no external plugins and is ideal for use cases that demand high real-time event delivery but do not require event persistence or historical replay, such as rapid prototyping and testing.</p>
+<p>This method has the following advantages:</p>
+<ul>
+<li><strong>No Plugin Deployment</strong>: Subscriptions are established by connecting directly to a TRON node.</li>
+<li><strong>Low Latency</strong>: Optimized for real-time event streaming.</li>
+<li><strong>Lightweight</strong>: Well-suited for rapid development and testing environments.</li>
+</ul>
+<p>Therefore, when you want to connect to an event stream quickly and at a minimal cost without relying on persistence capabilities, using the <strong>built-in ZeroMQ message queue</strong> is a more lightweight and direct choice. This guide explains how to subscribe to events using this method.</p>
+<h3 id="configuring-the-node">Configuring the Node<a class="headerlink" href="#configuring-the-node" title="Permanent link">&para;</a></h3>
+<p>To enable event subscriptions via java-tron's built-in ZeroMQ, you must enable the feature in the node's configuration file.</p>
+<div class="highlight"><pre><span></span><code>event.subscribe = {
+  native = {
+    useNativeQueue = true  
+    bindport = 5555  
+    sendqueuelength = 1000  
+  }
+
+  ......
+
+  topics = [
+    {
+      triggerName = &quot;block&quot;  
+      enable = true
+      topic = &quot;block&quot;  
+    },
+    ......
+  ]
+}
+</code></pre></div>
+<ul>
+<li><code>native.useNativeQueue</code>: <code>true</code> to use the built-in message queue, <code>false</code> to use event plugins.</li>
+<li><code>native.bindport</code>: The port that the ZeroMQ publisher binds to. In this example, it is <code>5555</code>, so the subscriber should connect to the publisher address <code>"tcp://127.0.0.1:5555"</code>.</li>
+<li><code>native.sendqueuelength</code>: The length of the send queue. This is the maximum number of messages the TCP buffer can hold if the subscriber is slow to receive them. Messages published beyond this limit will be discarded.</li>
+<li><code>topics</code>: The subscribed <a href="#event-types">Event Types</a>, such as block types, transaction types, etc.</li>
+</ul>
+<h3 id="starting-the-node">Starting the Node<a class="headerlink" href="#starting-the-node" title="Permanent link">&para;</a></h3>
+<p>The event subscription service is disabled by default and must be enabled using the <code>--es</code> command-line argument. The startup command for a node with event subscription enabled is as follows:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar FullNode.jar --es
+</code></pre></div>
+<h3 id="preparing-the-event-subscription-script">Preparing the Event Subscription Script<a class="headerlink" href="#preparing-the-event-subscription-script" title="Permanent link">&para;</a></h3>
+<p>This guide uses Node.js as an example to demonstrate how to subscribe to events.</p>
+<p>First, install the <code>ZeroMQ</code> library:</p>
+<div class="highlight"><pre><span></span><code>$ npm install zeromq@5
+</code></pre></div>
+<p>Next, write the subscriber code:</p>
+<div class="highlight"><pre><span></span><code>// subscriber.js
+var zmq = require(&quot;zeromq&quot;),
+var sock = zmq.socket(&quot;sub&quot;);
+
+sock.connect(&quot;tcp://127.0.0.1:5555&quot;);
+sock.subscribe(&quot;block&quot;);
+console.log(&quot;Subscriber connected to port 5555&quot;);
+
+sock.on(&quot;message&quot;, function(topic, message) {
+  console.log(
+    &quot;received a message related to:&quot;,
+    Buffer.from(topic).toString(),
+    &quot;, containing message:&quot;,
+    Buffer.from(message).toString()
+  );
+});
+</code></pre></div>
+<p>This example connects the subscriber to the node's event publisher and subscribes to <code>block</code> events.</p>
+<h3 id="starting-the-subscriber">Starting the Subscriber<a class="headerlink" href="#starting-the-subscriber" title="Permanent link">&para;</a></h3>
+<p>The Node.js startup command is as follows:</p>
+<div class="highlight"><pre><span></span><code>$ node subscriber.js
+
+&gt; Subscriber connected to port 5555
+</code></pre></div>
+<p>When the node produces a new block, the subscriber will receive the block event, and the output will look like this:</p>
+<div class="highlight"><pre><span></span><code>received a message related to: block, containing message: {&quot;timeStamp&quot;:1678343709000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1361,&quot;blockHash&quot;:&quot;00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1361,&quot;transactionList&quot;:[]}
+received a message related to: block, containing message: {&quot;timeStamp&quot;:1678343712000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1362,&quot;blockHash&quot;:&quot;0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1362,&quot;transactionList&quot;:[]}
 </code></pre></div>
 
 
@@ -1958,13 +2227,13 @@ After the build is complete, the generated <code>.zip</code> file is the plugin 
         
         
           
-          <a href="../use-native-queue/" class="md-footer__link md-footer__link--next" aria-label="Next: Built-in Message Queue Subscription">
+          <a href="../database/" class="md-footer__link md-footer__link--next" aria-label="Next: Database Configuration">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Built-in Message Queue Subscription
+                Database Configuration
               </div>
             </div>
             <div class="md-footer__button md-icon">

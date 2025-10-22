@@ -450,21 +450,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -472,107 +460,7 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1189,7 +1077,7 @@
           <li class="md-nav__item ">
   <a href="#2-operations-value-calculation-example" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. operations Value Calculation Example
+      2. Operations Value Calculation Example
     </span>
   </a>
   
@@ -1918,18 +1806,18 @@
   AccountPermissionUpdateContract = 46;
 }
 </code></pre></div>
-<p>Active permissions configure which <code>ContractType</code> can be executed through the <code>operations</code> field, for details on how to calculate the value of <code>operations</code>, please see <a href="#2-operations-value-calculation-example">Operations Value Calculation Example</a>.</p>
+<p>Active permissions configure which <code>ContractType</code> can be executed through the <code>operations</code> field. For details on how to calculate the value of <code>operations</code>, please see <a href="#2-operations-value-calculation-example">Operations Value Calculation Example</a>.</p>
 <h2 id="explanation-of-each-permission-type">Explanation of Each Permission Type<a class="headerlink" href="#explanation-of-each-permission-type" title="Permanent link">&para;</a></h2>
 <h3 id="owner-permission-account-master-control"><code>owner</code> Permission (Account Master Control)<a class="headerlink" href="#owner-permission-account-master-control" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Holds full control over the account.</li>
 <li>Can modify any permission structure (including itself).</li>
 <li>Automatically set when creating an account, default threshold is 1, includes the account's own address.</li>
-<li>By default, transactions without a specified permission_id use the Owner permission.</li>
+<li>By default, transactions without a specified <code>Permission_id</code> use the Owner permission.</li>
 </ul>
 <h3 id="witness-permission-block-production-permission"><code>witness</code> Permission (Block Production Permission)<a class="headerlink" href="#witness-permission-block-production-permission" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Available only for Super Representative, Super Representative Partner and Super Representative Candidate accounts.</li>
+<li>Available only for Super Representative, Super Representative Partner, and Super Representative Candidate accounts.</li>
 <li>Controls block-producing nodes, does not have permissions for fund transfers or other operations.</li>
 <li>Can delegate block production permission to other addresses to enhance account security.</li>
 </ul>
@@ -2015,7 +1903,7 @@ localwitness = [
   ]
 }
 </code></pre></div>
-<h3 id="2-operations-value-calculation-example">2. operations Value Calculation Example<a class="headerlink" href="#2-operations-value-calculation-example" title="Permanent link">&para;</a></h3>
+<h3 id="2-operations-value-calculation-example">2. Operations Value Calculation Example<a class="headerlink" href="#2-operations-value-calculation-example" title="Permanent link">&para;</a></h3>
 <p><code>operations</code> is a 32-byte hexadecimal string (little-endian) representing executable contract permissions.
 The following Java example generates permissions for contracts (ID=0-45):</p>
 <div class="highlight"><pre><span></span><code>Integer[] contractId = {0, 1, 2, ..., 45};

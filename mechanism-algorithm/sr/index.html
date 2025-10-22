@@ -450,21 +450,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -472,107 +460,7 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -937,7 +825,7 @@
           <li class="md-nav__item ">
   <a href="#brokerage-of-srs-and-sr-partners" class="md-nav__link" >
     <span class="md-ellipsis">
-      Brokerage of SRs and SR partners
+      Brokerage of SRs and SR Partners
     </span>
   </a>
   
@@ -968,9 +856,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#what-is-committee" class="md-nav__link" >
+  <a href="#about-the-committee" class="md-nav__link" >
     <span class="md-ellipsis">
-      What is Committee
+      About the Committee
     </span>
   </a>
   
@@ -1739,27 +1627,25 @@
 </ul>
 <p><strong>Important Note:</strong>
 The TRON network only records the state of your last vote. This means that every new vote you cast will completely overwrite all previous voting effects.</p>
-<ul>
-<li><strong>Example:：</strong> </li>
-</ul>
-<p><div class="highlight"><pre><span></span><code>&gt;freezebalancev2<span class="w"> </span><span class="m">10000000</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># Stake 10 TRX to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.</span>
-&gt;votewitness<span class="w"> </span>SR1<span class="w"> </span><span class="m">4</span><span class="w"> </span>SR2<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="c1"># Cast 4 votes for SR1 and 6 votes for SR2.</span>
-&gt;votewitness<span class="w"> </span>SR1<span class="w"> </span><span class="m">3</span><span class="w"> </span>SR2<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="c1"># Cast 3 votes for SR1 and 7 votes for SR2.</span>
+<p><strong>Example:：</strong> </p>
+<p><div class="highlight"><pre><span></span><code>&gt;freezebalancev2 10000000 1 # Stake 10 TRX to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
+&gt;votewitness SR1 4 SR2 6 # Cast 4 votes for SR1 and 6 votes for SR2.
+&gt;votewitness SR1 3 SR2 7 # Cast 3 votes for SR1 and 7 votes for SR2.
 </code></pre></div>
 The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</p>
 <h2 id="rewards">Rewards<a class="headerlink" href="#rewards" title="Permanent link">&para;</a></h2>
-<h3 id="brokerage-of-srs-and-sr-partners">Brokerage of SRs and SR partners<a class="headerlink" href="#brokerage-of-srs-and-sr-partners" title="Permanent link">&para;</a></h3>
-<p>Super Representatives (SRs) and Super Representative Partners can set a Commission Rate (also known as Brokerage Rate) to determine how rewards are distributed between themselves and their voters.</p>
+<h3 id="brokerage-of-srs-and-sr-partners">Brokerage of SRs and SR Partners<a class="headerlink" href="#brokerage-of-srs-and-sr-partners" title="Permanent link">&para;</a></h3>
+<p>SRs and SR Partners can set a Commission Rate (also known as Brokerage Rate) to determine how rewards are distributed between themselves and their voters.</p>
 <ul>
 <li>
 <p>Default Rate</p>
-<p>The default commission rate for a newly elected SR or Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.</p>
+<p>The default commission rate for a newly elected SR or SR Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.</p>
 </li>
 <li>
 <p>Customizing the Rate</p>
-<p>SRs and Partners can adjust their commission rate at any time via the wallet/updateBrokerage API interface.</p>
+<p>SRs and SR Partners can adjust their commission rate at any time via the <code>wallet/updateBrokerage</code> API interface.</p>
 <ul>
-<li>100% Commission: All rewards go to the SR/Partner.</li>
+<li>100% Commission: All rewards go to the SR/SR Partner.</li>
 <li>0% Commission: All rewards are distributed to the voters.</li>
 </ul>
 </li>
@@ -1797,8 +1683,8 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Rewards Distribution Time</strong></td>
-<td style="text-align: left;"><strong>SR</strong>:<br> After producing each block<br><br><strong>Voters</strong>:<br> Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>WithdrawBalanceContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code></td>
-<td style="text-align: left;"><strong>SRs/SR partners</strong>: <br>After producing each block<br><br><strong>Voters</strong>: <br>Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>WithdrawBalanceContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code></td>
+<td style="text-align: left;"><strong>SR</strong>: After producing each block<br><br><strong>Voters</strong>: Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>WithdrawBalanceContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code></td>
+<td style="text-align: left;"><strong>SRs/SR partners</strong>: After producing each block<br><br><strong>Voters</strong>: Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>WithdrawBalanceContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Specific Rewards</strong></td>
@@ -1809,65 +1695,59 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</
 </table>
 <p><strong>Notes:</strong></p>
 <ul>
-<li>Chain parameter details can be viewed on TRONSCAN's committee page.</li>
+<li>Chain parameter details can be viewed on TRONSCAN's <a href="https://tronscan.org/#/sr/committee">committee</a> page.</li>
 <li><code>brokerageRate</code> refers to the commission rate.</li>
-<li>Super Representatives and Partners are the top 127 witnesses.</li>
+<li>SRs and SR Partners are the top 127 SR candidates.</li>
 <li>If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.</li>
 </ul>
 <h2 id="committee">Committee<a class="headerlink" href="#committee" title="Permanent link">&para;</a></h2>
-<h3 id="what-is-committee">What is Committee<a class="headerlink" href="#what-is-committee" title="Permanent link">&para;</a></h3>
+<h3 id="about-the-committee">About the Committee<a class="headerlink" href="#about-the-committee" title="Permanent link">&para;</a></h3>
 <p>The Committee is the highest governing body of the TRON network, responsible for modifying the network's core dynamic parameters (such as transaction fees, block rewards, etc.).</p>
 <ul>
-<li>Composition: The Committee is composed of the current 27 active Super Representatives (SRs).</li>
+<li><strong>Composition</strong>: The Committee is composed of the current 27 active Super Representatives (SRs).</li>
 <li>
-<p>Powers: Each committee member has two core powers: </p>
+<p><strong>Powers</strong>: Each committee member has two core powers: </p>
 <ul>
-<li>To create a proposal.</li>
-<li>To vote on a proposal.</li>
+<li>To create a proposal: Initiate a proposal to modify network parameters.</li>
+<li>To vote on a proposal: Vote on proposals initiated by other members.</li>
 </ul>
 </li>
 <li>
-<p>Proposal Effective Mechanism: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.</p>
+<p><strong>Proposal Effective Mechanism</strong>: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.</p>
 </li>
 </ul>
 <h3 id="create-a-proposal">Create a Proposal<a class="headerlink" href="#create-a-proposal" title="Permanent link">&para;</a></h3>
-<p>In the TRON network, all Super Representatives, Partners, and candidates have the right to initiate proposals to modify network parameters.</p>
+<p>In the TRON network, all SRs, SR Partners, and SR candidates have the right to initiate proposals to modify network parameters.</p>
 <p>Please refer to <a href="https://tronscan.org/#/sr/committee">here</a> for TRON network dynamic parameters and their values.</p>
-<ul>
-<li>Example:</li>
-</ul>
-<div class="highlight"><pre><span></span><code>&gt;createproposal<span class="w"> </span>id0<span class="w"> </span>value0<span class="w"> </span>...<span class="w"> </span>idN<span class="w"> </span>valueN
-<span class="c1"># id0_N: Parameter number</span>
-<span class="c1"># value0_N: New parameter value</span>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>&gt;createproposal id0 value0 ... idN valueN
+# id0_N: Parameter number
+# value0_N: New parameter value
 </code></pre></div>
 <h3 id="vote-for-a-proposal">Vote for a Proposal<a class="headerlink" href="#vote-for-a-proposal" title="Permanent link">&para;</a></h3>
 <p>The voting process for proposals follows these core rules:</p>
 <ol>
 <li>The governance system only supports approval votes. Not voting is equivalent to disapproving.</li>
-<li>
-<p>A proposal is valid for 3 days from its creation. If it does not receive enough approval votes within this period, it will expire.</p>
-</li>
-<li>
-<p>Example:</p>
-</li>
+<li>A proposal is valid for 3 days from its creation. If it does not receive enough approval votes within this period, it will expire.</li>
 </ol>
-<div class="highlight"><pre><span></span><code>&gt;approveProposal<span class="w"> </span>id<span class="w"> </span>is_or_not_add_approval
-<span class="c1"># id: proposal id</span>
-<span class="c1"># is_or_not_add_approval: YES vote or cancel YES vote</span>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>&gt;approveProposal id is_or_not_add_approval
+# id: proposal id
+# is_or_not_add_approval: YES vote or cancel YES vote
 </code></pre></div>
 <h3 id="cancel-proposal">Cancel Proposal<a class="headerlink" href="#cancel-proposal" title="Permanent link">&para;</a></h3>
 <p>The creator of a proposal can cancel it at any time before it takes effect.</p>
-<ul>
-<li>Example:
-<div class="highlight"><pre><span></span><code>&gt;deleteProposal<span class="w"> </span>proposalId
-<span class="c1"># id: proposal id</span>
-</code></pre></div></li>
-</ul>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code>&gt;deleteProposal proposalId
+# id: proposal id
+</code></pre></div></p>
 <h3 id="query-proposal">Query Proposal<a class="headerlink" href="#query-proposal" title="Permanent link">&para;</a></h3>
-<p>Proposals can be queried using the following API interfaces:
-+ Query all the proposals list (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletlistproposals">ListProposals</a>)
-+ Query all the proposals list by pagination (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletgetpaginatedproposallist">GetPaginatedProposalList</a>)
-+ Query a proposal by proposal id (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletgetproposalbyid">GetProposalById</a>)</p>
+<p>Proposals can be queried using the following API interfaces:</p>
+<ul>
+<li>Query all the proposals list (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletlistproposals">ListProposals</a>)</li>
+<li>Query all the proposals list by pagination (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletgetpaginatedproposallist">GetPaginatedProposalList</a>)</li>
+<li>Query a proposal by proposal id (<a href="https://tronprotocol.github.io/documentation-en/api/http/#walletgetproposalbyid">GetProposalById</a>)</li>
+</ul>
 
 
 
