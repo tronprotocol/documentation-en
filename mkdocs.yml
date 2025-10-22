@@ -11,11 +11,7 @@ nav:
         - Backup and Restore: using_javatron/backup_restore.md
         - Lite FullNode: using_javatron/litefullnode.md
         - Private Network: using_javatron/private_network.md
-        - Event Subscription:
-            - Overview: architecture/event.md
-            - Built-in Message Queue Subscription: architecture/use-native-queue.md
-            - MongoDB Event Subscription Plugin: architecture/use-mongodb.md
-            - Kafka Event Subscription Plugin: architecture/use-kafka.md
+        - Event Subscription: architecture/event.md
         - Database Configuration: architecture/database.md
         - Network Connection: using_javatron/connecting_to_tron.md
         - Node Monitoring: using_javatron/metrics.md
