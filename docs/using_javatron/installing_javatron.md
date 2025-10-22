@@ -38,21 +38,17 @@ You can directly download the official client [here](https://github.com/tronprot
 Before you begin compiling, ensure that **git** is installed on your system.
 
 1. First, clone the java-tron source code to your local machine using the `git` command and switch to the `master` branch:
-
 ```
 git clone https://github.com/tronprotocol/java-tron.git
 git checkout -t origin/master
 ```
-
 2. Then, execute the following commands to compile the java-tron source code:
-
 ```
 cd java-tron
 ./gradlew clean build -x test
 ```
-
-* The parameter `-x test` indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.
-* After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
+    * The parameter `-x test` indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.
+    * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
 ## Starting a java-tron Node
 
@@ -60,9 +56,8 @@ You can choose different configuration files to connect the java-tron node to di
 
 * For Mainnet FullNode configuration file: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
 * For other network node configuration:
-  
-  * Nile Testnet: https://nileex.io/
-  * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
+    * Nile Testnet: https://nileex.io/
+    * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
 
 ### Starting a FullNode
 
