@@ -450,21 +450,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -472,107 +460,7 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1701,22 +1589,22 @@
 </ul>
 <p>This document will detail both of these signature verification processes.</p>
 <h2 id="gpg-signature-verification-process">GPG Signature Verification Process<a class="headerlink" href="#gpg-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>For <code>java-tron</code> versions released after January 3, 2023, you must use GPG for signature verification. The <code>java-tron</code> executable and its corresponding signature file are published together on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>. Please follow the steps below to perform GPG signature verification.</p>
+<p>For java-tron versions released after January 3, 2023, you must use GPG for signature verification. The java-tron executable and its corresponding signature file are published together on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>. Please follow the steps below to perform GPG signature verification.</p>
 <h3 id="1-install-gpg">1. Install GPG<a class="headerlink" href="#1-install-gpg" title="Permanent link">&para;</a></h3>
 <p>If you have already installed GPG, you can skip this step. Otherwise, install it using the command for your operating system:</p>
-<p><div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>gpg
+<p><div class="highlight"><pre><span></span><code>brew install gpg
 </code></pre></div>
 * <strong>Debian, Ubuntu, or other Linux distributions</strong>:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gpg
+<div class="highlight"><pre><span></span><code>sudo apt install gpg
 </code></pre></div></p>
 <h3 id="2-import-the-public-key">2. Import the Public Key<a class="headerlink" href="#2-import-the-public-key" title="Permanent link">&para;</a></h3>
 <p>If you have previously imported the public key, you can skip this step, as it only needs to be imported once.</p>
-<p>First, get the <strong>public key hash</strong> and <strong>UID</strong> of the <code>java-tron</code> release package GPG signature from the <a href="https://github.com/tronprotocol/java-tron?tab=readme-ov-file#integrity-check">java-tron GitHub repository</a>. For example:</p>
+<p>First, get the <strong>public key hash</strong> and <strong>UID</strong> of the java-tron release package GPG signature from the <a href="https://github.com/tronprotocol/java-tron?tab=readme-ov-file#integrity-check">java-tron GitHub repository</a>. For example:</p>
 <div class="highlight"><pre><span></span><code>pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 uid: build@tron.network
 </code></pre></div>
 <p>Then, import the public key from the GPG public key server to your local machine using the public key hash:</p>
-<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--recv-keys<span class="w"> </span><span class="s2">&quot;1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B&quot;</span>
+<div class="highlight"><pre><span></span><code>gpg --recv-keys &quot;1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B&quot;
 </code></pre></div>
 <p>If the public key import is successful, you will see output similar to this:</p>
 <div class="highlight"><pre><span></span><code>gpg: key 785FB96D2C7C3CA5: &quot;build_tron &lt;build@tron.network&gt;&quot; public key imported
@@ -1725,7 +1613,7 @@ gpg:               imported: 1
 </code></pre></div>
 <h3 id="3-verify-the-signature">3. Verify the Signature<a class="headerlink" href="#3-verify-the-signature" title="Permanent link">&para;</a></h3>
 <p>Assuming the executable you want to verify is <code>FullNode.jar</code> and its corresponding signature file is <code>FullNode.jar.sig</code>, run the following command to verify the signature:</p>
-<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--verify<span class="w"> </span>FullNode.jar.sig<span class="w"> </span>FullNode.jar
+<div class="highlight"><pre><span></span><code>gpg --verify FullNode.jar.sig FullNode.jar
 </code></pre></div>
 <p>If the signature verification passes, you will see the following text:</p>
 <div class="highlight"><pre><span></span><code>gpg: Signature made Wed Jan  6 12:21:51 2023 CST
@@ -1738,16 +1626,16 @@ Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7  107D F859 BCB4 4A28 290B
 </code></pre></div>
 <p>If the verification fails, it will display text like <code>Bad signature from "build_tron &lt;build@tron.network&gt;"</code>.</p>
 <h2 id="tron-address-signature-verification-process">TRON Address Signature Verification Process<a class="headerlink" href="#tron-address-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>For <code>java-tron</code> versions released before January 3, 2023, the release packages were signed by the TRON account <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>. The signing process is as follows:</p>
+<p>For java-tron versions released before January 3, 2023, the release packages were signed by the TRON account <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>. The signing process is as follows:</p>
 <ol>
 <li>First, the SHA256 hash of the executable file is calculated.</li>
 <li>Then, the SHA256 hash is signed with the private key of the TRON account.</li>
 </ol>
 <p>The SHA256 hash and signature result for the release packages can be found in the <a href="#historical-version-signature-information">Historical Version Signature Information</a> section of this document or on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</p>
-<p>Here, we will use the popular TRON JavaScript library, <a href="https://tronweb.network/docu/docs/intro/">tronweb</a>, to demonstrate the signature verification process. TronWeb provides the <code>Trx.verifySignature</code> interface to verify signatures. A successful verification will return <code>true</code>; otherwise, it returns <code>false</code>. Please follow the process below to verify.</p>
+<p>Here, we will use the popular TRON JavaScript library, <a href="https://tronweb.network/docu/docs/intro/">TronWeb</a>, to demonstrate the signature verification process. TronWeb provides the <code>Trx.verifySignature</code> interface to verify signatures. A successful verification will return <code>true</code>; otherwise, it returns <code>false</code>. Please follow the process below to verify.</p>
 <h3 id="1-install-tronweb">1. Install TronWeb<a class="headerlink" href="#1-install-tronweb" title="Permanent link">&para;</a></h3>
 <p>If you have already installed TronWeb, you can skip this step. Otherwise, install it using the following command:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>tronweb
+<div class="highlight"><pre><span></span><code>npm install -g tronweb
 </code></pre></div>
 <h3 id="2-verify-the-release-packages-integrity">2. Verify the Release Package's Integrity<a class="headerlink" href="#2-verify-the-release-packages-integrity" title="Permanent link">&para;</a></h3>
 <p>To ensure the integrity of the release package, you need to check if its SHA256 hash matches the hash provided in the release information.</p>
@@ -1760,21 +1648,21 @@ Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7  107D F859 BCB4 4A28 290B
 <p>On your system, execute the following command to calculate the SHA256 hash of <code>FullNode.jar</code>:</p>
 <ul>
 <li><strong>macOS</strong>:
-<div class="highlight"><pre><span></span><code>shasum<span class="w"> </span>-a<span class="w"> </span><span class="m">256</span><span class="w"> </span>FullNode.jar
+<div class="highlight"><pre><span></span><code>shasum -a 256 FullNode.jar
 </code></pre></div></li>
 <li><strong>Debian, Ubuntu, and other Debian-derived systems</strong>:
 <div class="highlight"><pre><span></span><code>sha256sum FullNode.jar
-</code></pre></div>
-Compare the hash value from the command's output with the hash provided in the release information.</li>
+</code></pre></div></li>
 </ul>
+<p>Compare the hash value from the command's output with the hash provided in the release information.</p>
 <h3 id="3-check-the-release-package-signature">3. Check the Release Package Signature<a class="headerlink" href="#3-check-the-release-package-signature" title="Permanent link">&para;</a></h3>
 <p>Use the <code>tronweb</code>'s <code>Trx.verifySignature</code> interface to verify the release package's signature. Execute the following JavaScript code in your command line:</p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Trx</span><span class="p">.</span><span class="nx">verifySignature</span><span class="p">(</span><span class="nx">SHA256</span><span class="p">,</span><span class="w"> </span><span class="nx">ADDRESS</span><span class="p">,</span><span class="w"> </span><span class="nx">SIGNATURE</span><span class="p">));</span>
-<span class="nx">node</span><span class="w"> </span><span class="o">-</span><span class="nx">e</span><span class="w"> </span><span class="s1">&#39;console.log(require(&quot;tronweb&quot;).Trx.verifySignature(</span>
-<span class="s1">    &quot;2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e&quot;,</span>
-<span class="s1">    &quot;TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2&quot;,</span>
-<span class="s1">    &quot;21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b&quot;</span>
-<span class="s1">))&#39;</span>
+<div class="highlight"><pre><span></span><code># Trx.verifySignature(SHA256, ADDRESS, SIGNATURE));
+node -e &#39;console.log(require(&quot;tronweb&quot;).Trx.verifySignature(
+    &quot;2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e&quot;,
+    &quot;TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2&quot;,
+    &quot;21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b&quot;
+))&#39;
 </code></pre></div>
 <p>If the signature verification passes, it will output <code>true</code>; otherwise, it will output <code>false</code>.</p>
 <h3 id="historical-version-signature-information">Historical Version Signature Information<a class="headerlink" href="#historical-version-signature-information" title="Permanent link">&para;</a></h3>

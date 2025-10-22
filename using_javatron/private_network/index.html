@@ -511,21 +511,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -533,107 +521,7 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1618,7 +1506,7 @@
 
 
 <h1 id="private-network">Private Network<a class="headerlink" href="#private-network" title="Permanent link">&para;</a></h1>
-<p>This document will guide you through setting up a basic TRON private network. This network will consist of one Super Representative (SR) node responsible for block production and one regular Fullnode used only for syncing block data and broadcasting transactions.</p>
+<p>This document will guide you through setting up a basic TRON private network. This network will consist of one Super Representative (SR) node responsible for block production and one regular FullNode used only for syncing block data and broadcasting transactions.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before you begin, please ensure your development environment meets the following requirements:</p>
 <ul>
@@ -1641,15 +1529,14 @@
 <div class="highlight"><pre><span></span><code># Create the Super Representative (SR) node directory
 $ mkdir SR
 
-# Create the regular Fullnode directory
+# Create the regular FullNode directory
 $ mkdir FullNode
 </code></pre></div>
 </li>
 <li>
-<p>Get the <code>java-tron</code> Client</p>
-<p><code>java-tron</code> is the official Java implementation of the TRON network.</p>
+<p>Get the java-tron Client</p>
 <ul>
-<li>Download the latest <code>FullNode.jar</code> from the <code>java-tron</code> <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</li>
+<li>Download the latest <code>FullNode.jar</code> from the <a href="https://github.com/tronprotocol/java-tron/releases">java-tron GitHub Releases</a> page.</li>
 <li>
 <p>Copy the downloaded <code>JAR</code> file into each of the two node directories:</p>
 <div class="highlight"><pre><span></span><code>$ cp FullNode.jar ./SR
@@ -1686,69 +1573,69 @@ $ cp private_net_config.conf ./FullNode/fullnode.conf
 <tbody>
 <tr>
 <td style="text-align: left;"><code>localwitness</code></td>
-<td style="text-align: left;">The private key</td>
-<td style="text-align: left;">Please do not fill in data</td>
+<td style="text-align: left;">The private key of Super Representative (SR) address</td>
+<td style="text-align: left;">Leave empty</td>
 <td style="text-align: left;">Generating blocks requires signing with a private key</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>genesis.block.witnesses</code></td>
-<td style="text-align: left;">SR address</td>
-<td style="text-align: left;">The same as SR node's</td>
-<td style="text-align: left;">Genesis block related configuration</td>
+<td style="text-align: left;">SR address(es)</td>
+<td style="text-align: left;">Same as SR configuration</td>
+<td style="text-align: left;">Genesis block-related configuration</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>genesis.block.Assets</code></td>
 <td style="text-align: left;">Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required</td>
-<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">Same as SR configuration</td>
 <td style="text-align: left;">Genesis block related configuration</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>p2p.version</code></td>
-<td style="text-align: left;">any positive integer except for 11111</td>
-<td style="text-align: left;">the same as SR node's</td>
-<td style="text-align: left;">Only nodes of the same p2p version can shake hands successfully</td>
+<td style="text-align: left;">Any positive integer except 11111</td>
+<td style="text-align: left;">Same as SR configuration</td>
+<td style="text-align: left;">Only nodes of the same <code>p2p.version</code> can shake hands successfully</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>seed.node</code></td>
-<td style="text-align: left;">Please do not fill in data</td>
-<td style="text-align: left;">Change the <code>seed.node</code> <code>ip.list</code> in the configuration file to the IP address and the port (<code>listen.port</code>) of the SR</td>
-<td style="text-align: left;">Enables fullnode to establish connection with SR node and synchronize data</td>
+<td style="text-align: left;">Leave empty</td>
+<td style="text-align: left;">Set <code>ip.list</code> to the IP address of the SR node and the port number specified in its <code>listen.port</code> configuration</td>
+<td style="text-align: left;">Enables FullNode to establish connection with SR node for data synchronization</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>needSyncCheck</code></td>
 <td style="text-align: left;"><code>false</code></td>
 <td style="text-align: left;"><code>true</code></td>
-<td style="text-align: left;">Set the first SR’s needSyncCheck to <code>false</code>, other SRs <code>true</code></td>
+<td style="text-align: left;">Set the first SR’s <code>needSyncCheck</code> to <code>false</code>, other SRs <code>true</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>node.discovery.enable</code></td>
 <td style="text-align: left;"><code>true</code></td>
 <td style="text-align: left;"><code>true</code></td>
-<td style="text-align: left;">If it is <code>false</code>, the current node will not be discovered by other nodes</td>
+<td style="text-align: left;">If set to <code>false</code>, the current node will not be discovered by other nodes</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>block.proposalExpireTime</code></td>
 <td style="text-align: left;"><code>600000</code></td>
-<td style="text-align: left;">The same as SR node's</td>
-<td style="text-align: left;">The default proposal effective time is 3 days: 259200000 (ms), if you want to quickly pass the proposal, you can set this item to a smaller value, such as 10 minutes, that is, 600000ms</td>
+<td style="text-align: left;">Same as SR configuration</td>
+<td style="text-align: left;">The default proposal effective time is 3 days: 259200000 (ms). Can be set to a lower value, such as 600,000(ms) (10 minutes), to pass the proposal faster.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>block.maintenanceTimeInterval</code></td>
 <td style="text-align: left;"><code>300000</code></td>
-<td style="text-align: left;">The same as SR node's</td>
-<td style="text-align: left;">The default maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.</td>
+<td style="text-align: left;">Same as SR configuration</td>
+<td style="text-align: left;">The default maintenance time interval is 6 hours: 21600000 (ms). Can be set to a smaller value, such as 300000(ms) (5 minutes), to pass the proposal faster.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>committee.allowSameTokenName</code></td>
 <td style="text-align: left;"><code>1</code></td>
 <td style="text-align: left;"><code>1</code></td>
-<td style="text-align: left;">Allow same token name</td>
+<td style="text-align: left;">If set to <code>1</code> (true), the creation of tokens with identical names is allowed</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>committee.allowTvmTransferTrc10</code></td>
 <td style="text-align: left;"><code>1</code></td>
 <td style="text-align: left;"><code>1</code></td>
-<td style="text-align: left;">Allow tvm transfer TRC-10</td>
+<td style="text-align: left;">If set to 1 (true), the TVM is allowed to execute transfers of TRC-10 tokens via smart contracts.</td>
 </tr>
 </tbody>
 </table>
@@ -1773,7 +1660,7 @@ $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c s
 </code></pre></div></p>
 </li>
 <li>
-<p>Start the regular Fullnode:
+<p>Start the regular FullNode:
   <div class="highlight"><pre><span></span><code>$ cd FullNode
 $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
 # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.
@@ -1783,13 +1670,13 @@ $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.con
 </li>
 <li>
 <p>Advanced Operation: Modifying Dynamic Network Parameters</p>
-<p>Dynamic network parameters can be retrieved via the <a href="https://developers.tron.network/reference/wallet-getchainparameters">getchainparameters API</a>. The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN <a href="https://tronscan.org/#/sr/committee">Parameters &amp; Proposals page</a>. If you want your private network's dynamic parameters to match the Mainnet's, you can use the<a href="https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md"> dbfork tool</a>, which can capture the latest state of the Mainnet.</p>
+<p>Dynamic network parameters can be retrieved via the <a href="https://developers.tron.network/reference/wallet-getchainparameters">getchainparameters</a> API. The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN <a href="https://tronscan.org/#/sr/committee">Parameters &amp; Proposals page</a>. If you want your private network's dynamic parameters to match the Mainnet's, you can use the<a href="https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md"> dbfork tool</a>, which can capture the latest state of the Mainnet.</p>
 <p>After your private network is running, you may need to adjust certain network parameters (e.g., transaction fees, energy price). This can be achieved in two ways:</p>
 <ul>
 <li>
 <p><strong>Method 1: Set via Configuration File (For Initial Deployment)</strong></p>
 <p>Some dynamic parameters can be set directly in the configuration file. You can find a list of these parameters <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java">here</a>.</p>
-<p>Example: Add the following <code>committee</code> block to your <code>.conf</code> file to enable multi-signature and contract creation.</p>
+<p><strong>Example</strong>: Add the following <code>committee</code> block to your <code>.conf</code> file to enable multi-signature and contract creation:</p>
 <div class="highlight"><pre><span></span><code>committee = {
   allowCreationOfContracts = 1
   allowAdaptiveEnergy = 0
@@ -1802,10 +1689,10 @@ $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.con
 </li>
 <li>
 <p><strong>Method 2: Modify via On-Chain Proposals (For a Running Network)</strong></p>
-<p>This is the standard method for on-chain governance. Any SR, SR partner, or SR candidate has the right to create a proposal, but only Super Representatives (SRs) have the right to vote for its approval.</p>
+<p>This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate has the right to create a proposal, but only SRs have the right to vote for its approval.</p>
 <ul>
-<li>Create a Proposal: Any SR, SR partner, or SR candidate uses the <a href="https://developers.tron.network/reference/proposalcreate">proposalcreate API</a>, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).</li>
-<li>Approve a Proposal: An SR uses the <a href="https://developers.tron.network/reference/proposalapprove">proposalapprove API</a> to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').</li>
+<li>Create a Proposal: Any SR, SR Partner, or SR Candidate uses the <a href="https://developers.tron.network/reference/proposalcreate">proposalcreate</a> API, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).</li>
+<li>Approve a Proposal: An SR uses the <a href="https://developers.tron.network/reference/proposalapprove">proposalapprove</a> API to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').</li>
 <li>Related APIs:<ul>
 <li>Get all proposals: <a href="https://developers.tron.network/reference/wallet-listproposals">listproposals</a></li>
 <li>Get a proposal by ID: <a href="https://developers.tron.network/reference/getproposalbyid">getproposalbyid</a></li>
@@ -1886,13 +1773,13 @@ modifyChainParameters(parametersForProposal1, 1)
         
         
           
-          <a href="../../architecture/event/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../../architecture/event/" class="md-footer__link md-footer__link--next" aria-label="Next: Event Subscription">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                Event Subscription
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -450,21 +450,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -472,107 +460,7 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1684,10 +1572,9 @@
 <li>For standard nodes, please refer to the <a href="#standard_process">Standard Node Upgrade Process</a>.</li>
 <li>For nodes configured with a primary/backup high-availability setup, please follow the <a href="#primary/backup_upgrade">Primary/Backup Node Upgrade Guide</a> to ensure a seamless service transition.</li>
 </ul>
-<hr />
 <p><a id="standard_process"></a></p>
 <h2 id="standard-node-upgrade-process">Standard Node Upgrade Process<a class="headerlink" href="#standard-node-upgrade-process" title="Permanent link">&para;</a></h2>
-<p>All Fullnodes, including block-producing Super Representative nodes, should follow these steps to complete the upgrade.</p>
+<p>All FullNodes, including block-producing Super Representative nodes, should follow these steps to complete the upgrade.</p>
 <p><a id="step1"></a> </p>
 <h3 id="step-1-prepare-the-new-version-package">Step 1: Prepare the New Version Package<a class="headerlink" href="#step-1-prepare-the-new-version-package" title="Permanent link">&para;</a></h3>
 <p>You can either download the compiled java-tron executable directly or download the new version's source code and compile it yourself to obtain the new executable file. Please perform the following operations in a directory outside of the current java-tron running directory.</p>
@@ -1698,19 +1585,17 @@
 </ol>
 <h4 id="option-2-compile-from-source-code">Option 2: Compile from Source Code<a class="headerlink" href="#option-2-compile-from-source-code" title="Permanent link">&para;</a></h4>
 <ol>
-<li>
-<p>Clone the <code>java-tron</code> repository and switch to the target version's branch.</p>
-<p><div class="highlight"><pre><span></span><code># clone the repository
+<li>Clone the <code>java-tron</code> repository and switch to the target version's branch.
+    <div class="highlight"><pre><span></span><code># clone the repository
 $ git clone https://github.com/tronprotocol/java-tron.git
 
 # Switch to the specified version branch
 $ cd java-tron
 $ git checkout -b release_vx.x.x
-</code></pre></div>
-2. Run the build command. Upon successful compilation, the new executable file, <code>FullNode.jar</code>, will be generated in the <code>build/libs/</code> directory.
-<div class="highlight"><pre><span></span><code>$ ./gradlew clean build -x test
-</code></pre></div></p>
-</li>
+</code></pre></div></li>
+<li>Run the build command. Upon successful compilation, the new executable file, <code>FullNode.jar</code>, will be generated in the <code>build/libs/</code> directory.
+    <div class="highlight"><pre><span></span><code>$ ./gradlew clean build -x test
+</code></pre></div></li>
 </ol>
 <h3 id="step-2-stop-the-running-node">Step 2: Stop the Running Node<a class="headerlink" href="#step-2-stop-the-running-node" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -1773,7 +1658,7 @@ $ git checkout -b release_vx.x.x
 </blockquote>
 </li>
 <li>
-<p><strong>Regular Fullnode</strong></p>
+<p><strong>Regular FullNode</strong></p>
 <div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
 </code></pre></div>
 </li>
@@ -1788,7 +1673,7 @@ $ git checkout -b release_vx.x.x
 <li>To query local node block height, call the <code>/wallet/getnowblock</code> API:
     <div class="highlight"><pre><span></span><code>curl http://127.0.0.1:8090/wallet/getnowblock
 </code></pre></div></li>
-<li>To check the block height on Mainnet in real-time on <a href="https://tronscan.org">TRONSCAN</a>.</li>
+<li>To check the real-time block height of the Mainnet, use the <a href="https://tronscan.org">TRONSCAN</a> block explorer.</li>
 </ul>
 </li>
 </ol>

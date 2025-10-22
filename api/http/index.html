@@ -450,21 +450,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Event Subscription
@@ -472,107 +460,7 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Event Subscription
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Built-in Message Queue Subscription
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MongoDB Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kafka Event Subscription Plugin
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2228,7 +2116,7 @@ Parameters:</p>
 <li><code>owner_address</code>: The address of the account staking TRX.</li>
 <li><code>frozen_balance</code>: The amount of TRX to stake, in sun.</li>
 <li><code>resource</code>: The type of resource to obtain, can be <code>BANDWIDTH</code> or <code>ENERGY</code>.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
 </ul>
 <p>Return Value: 
@@ -2247,7 +2135,7 @@ Parameters:</p>
 <li><code>owner_address</code>: The address of the account unstaking TRX.</li>
 <li><code>resource</code>: The type of resource being unstaked, BANDWIDTH or ENERGY.</li>
 <li><code>unfreeze_balance</code>: The amount of TRX to unstake, in sun.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value: </p>
@@ -2268,7 +2156,7 @@ Parameters:</p>
 <p>Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The account address.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value: </p>
@@ -2294,7 +2182,7 @@ Parameters:</p>
 <li><code>resource</code>: The type of resource to delegate, <code>BANDWIDTH</code> or <code>ENERGY</code>.</li>
 <li><code>lock</code>: true sets a 3-day lock on the delegation, during which it cannot be canceled. If resources are delegated again to the same address during the lock period, the 3-day timer resets. false means no lock period.</li>
 <li><code>lock_period</code>: A custom lock period in units of blocks (1 block ≈ 3s). Only effective when lock is true. For a 1-day lock, lock_period would be 28800.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value:
@@ -2316,7 +2204,7 @@ Parameters:</p>
 <li><code>receiver_address</code>: The recipient account from which resources are being reclaimed.</li>
 <li><code>balance</code>: The amount of TRX whose corresponding resource share will be undelegated, in sun.</li>
 <li><code>resource</code>: The type of resource to undelegate, <code>BANDWIDTH</code> or <code>ENERGY</code>.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value: 
@@ -2330,7 +2218,7 @@ Parameters:</p>
 </code></pre></div></p>
 <p>Parameters:
 * <code>owner_address</code>: The address of the transaction initiator.
-* <code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
+* <code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 * <code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</p>
 <p>Return Value: An unsigned withdraw expired unfreeze transaction object.</p>
 <h4 id="walletgetavailableunfreezecount">wallet/getavailableunfreezecount<a class="headerlink" href="#walletgetavailableunfreezecount" title="Permanent link">&para;</a></h4>
@@ -2647,7 +2535,7 @@ name: The contract name.</li>
 <li><code>origin_energy_limit</code>: The maximum energy that the creator is willing to consume for themselves during a single contract execution or creation, an integer greater than 0.</li>
 <li><code>call_token_value</code>: The amount of TRC-10 tokens to transfer to the contract during this call. If <code>token_id</code> is not set, this should be <code>0</code> or not set.</li>
 <li><code>token_id</code>: The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: This interface returns an object containing an unsigned deployment transaction.</p>
@@ -2666,7 +2554,7 @@ Parameters：</p>
 <li><code>owner_address</code>：The account address initiating the <code>triggercontract</code>, defaults to HexString format.</li>
 <li><code>call_token_value</code>:The amount of TRC-10 tokens to transfer to the contract during this call. If <code>token_id</code> is not set, this should be <code>0</code> or not set.</li>
 <li><code>token_id</code>:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code> :Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: This interface returns an object containing an unsigned deployment transaction.</p>
@@ -2696,7 +2584,7 @@ Parameters：</p>
 <li><code>owner_address</code>：The owner address of the contract, defaults to HexString format.</li>
 <li><code>contract_address</code>：The address of the contract to be modified, defaults to HexString format.</li>
 <li><code>consume_user_resource_percent</code>：The specified percentage of resources consumed by users calling this contract.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>:Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: This interface returns an object containing an unsigned update transaction.</p>
@@ -2709,7 +2597,7 @@ Parameters：</p>
 <li><code>owner_address</code>: The owner address of the contract, defaults to HexString format.</li>
 <li><code>contract_address</code>: The address of the contract to be modified, defaults to HexString format.</li>
 <li><code>origin_energy_limit</code>: The maximum energy that the creator is willing to consume for themselves during a single contract execution or creation.</li>
-<li><code>permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
+<li><code>Permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: This interface returns an object containing an unsigned update transaction.</p>
@@ -2822,7 +2710,7 @@ Parameters:</p>
 <li><code>to_address</code>: The recipient's address, defaults to HexString format.</li>
 <li><code>asset_name</code>: The TRC-10 token ID, defaults to HexString format.</li>
 <li><code>amount</code>: The amount of tokens to transfer.</li>
-<li><code>permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
+<li><code>Permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned TRC-10 transfer transaction object.</p>
@@ -2841,7 +2729,7 @@ Parameters:</p>
 <li><code>owner_address</code>: The participant's address (buyer), defaults to HexString format.</li>
 <li><code>amount</code>: The amount of tokens to participate with.</li>
 <li><code>asset_name</code>: The ID of the token to participate in, defaults to HexString format.</li>
-<li><code>permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
+<li><code>Permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned participate in crowdsale transaction object.</p>
@@ -2877,7 +2765,7 @@ Parameters:</p>
 <li><code>free_asset_net_limit</code>: The total free bandwidth for the Token.</li>
 <li><code>public_free_asset_net_limit</code>: The free bandwidth that each token holder can use for this token.</li>
 <li><code>frozen_supply</code>: Tokens that the issuer can pledge at the time of issuance.</li>
-<li><code>permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
+<li><code>Permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned TRC-10 token issuance transaction object.</p>
@@ -2890,7 +2778,7 @@ Parameters:</p>
 Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The address of the account unfreezing tokens, defaults to HexString format.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned unfreeze token transaction object.</p>
@@ -2911,7 +2799,7 @@ Parameters:</p>
 <li><code>url</code>: The token issuer's official website address, defaults to HexString format.</li>
 <li><code>new_limit</code>: The free bandwidth each token holder can use.</li>
 <li><code>new_public_limit</code>: The total free bandwidth for this token.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned update token information transaction object.</p>
@@ -2937,7 +2825,7 @@ Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The account address applying to become a Super Representative, defaults to HexString format.</li>
 <li><code>url</code>: The official website address, defaults to HexString format.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned apply for SR transaction object.</p>
@@ -2952,7 +2840,7 @@ Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The creator's address, defaults to HexString format.</li>
 <li><code>update_url</code>: The updated official website URL, defaults to HexString format.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned update URL transaction object.</p>
@@ -2971,7 +2859,7 @@ Parameter: None</p>
 Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The address of the account to withdraw from, defaults to HexString format.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned withdraw reward transaction object.</p>
@@ -2987,7 +2875,7 @@ Parameters:</p>
 <li><code>owner_address</code>: The voter's address, defaults to HexString format.</li>
 <li><code>votes.vote_address</code>: The address of the Super Representative being voted for, defaults to HexString format.</li>
 <li><code>vote_count</code>: The number of votes.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned vote transaction object.</p>
@@ -3052,7 +2940,7 @@ Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The creator's address.</li>
 <li><code>parameters</code>: Proposal parameters.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned create proposal transaction object.</p>
@@ -3077,7 +2965,7 @@ Parameters:</p>
 <li><code>owner_address</code>: The approver's address, defaults to HexString format.</li>
 <li><code>proposal_id</code>: Proposal ID.</li>
 <li><code>is_add_approval</code>: Whether to approve (add approval) or not.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned approve proposal transaction object.</p>
@@ -3089,7 +2977,7 @@ Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The address of the deleter. Only the proposal owner is allowed to delete proposals, defaults to HexString format.</li>
 <li><code>proposal_id</code>: Proposal ID.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned delete proposal transaction object.</p>
@@ -3134,7 +3022,7 @@ Parameters:</p>
 <li><code>first_token_balance</code>: The balance of the first token.</li>
 <li><code>second_token_id</code>: The ID of the second token, defaults to HexString format.</li>
 <li><code>second_token_balance</code>: The balance of the second token.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 </ul>
 <p>Return Value: An unsigned create trading pair transaction object.</p>
 <h4 id="walletexchangeinject">wallet/exchangeinject<a class="headerlink" href="#walletexchangeinject" title="Permanent link">&para;</a></h4>
@@ -3147,7 +3035,7 @@ Parameters:</p>
 <li><code>exchange_id</code>: The trading pair ID.</li>
 <li><code>token_id</code>: The token ID, typically the token name, defaults to HexString format.</li>
 <li><code>quant</code>: The quantity of tokens to inject.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned inject capital transaction object.</p>
@@ -3161,10 +3049,10 @@ Parameters:</p>
 <li><code>exchange_id</code>: The trading pair ID.</li>
 <li><code>token_id</code>: The token ID, typically the token name, must be in HexString format.</li>
 <li><code>quant</code>: The quantity of tokens to withdraw.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
-<p>Return Value: An unsigned withdraw capital transaction object.</p>
+<p>Return Value: An unsigned capital withdrawal transaction object.</p>
 <h4 id="walletexchangetransaction">wallet/exchangetransaction<a class="headerlink" href="#walletexchangetransaction" title="Permanent link">&para;</a></h4>
 <p>Description: Participate in a trading pair transaction.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {&quot;owner_address&quot;:&quot;419844f7600e018fd0d710e2145351d607b3316ce9&quot;, &quot;exchange_id&quot;:1, &quot;token_id&quot;:&quot;74726f6e6e616d65&quot;, &quot;quant&quot;:100,&quot;expected&quot;:10}
@@ -3176,7 +3064,7 @@ Parameters:</p>
 <li><code>token_id</code>: The ID of the token to sell, typically the token name, defaults to HexString format.</li>
 <li><code>quant</code>: The quantity of tokens to sell.</li>
 <li><code>expected</code>: The expected quantity of tokens to buy.</li>
-<li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: An unsigned exchange transaction object.</p>
