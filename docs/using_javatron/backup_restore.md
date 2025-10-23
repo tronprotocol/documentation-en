@@ -109,14 +109,14 @@ The TRON network snapshot data size exceeds 2TB. To save disk space, we recommen
 
 Create a script file named `download_snapshot.sh` and add the following content:
 
-```bash
+```
 #!/bin/bash
 wget -q -O - SNAPSHOT_URL/FullNode_output-directory.tgz | tar -zxvf -
 ```
 
 Run the script:
 
-```Text Bash
+```
 bash download_snapshot.sh
 ```
 
@@ -124,7 +124,7 @@ Note: This method avoids storing the complete compressed file and extracts the d
 
 **Method 2: Full Download Before Extraction (Requires Sufficient Storage Space)**
 
-```bash
+```
 # 1. Download the complete snapshot file
 wget SNAPSHOT_URL/FullNode_output-directory.tgz
 
