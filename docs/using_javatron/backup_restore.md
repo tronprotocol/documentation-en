@@ -3,7 +3,7 @@
 java-tron nodes store their persistent data in a specified data directory, which defaults to `/output-directory/`. You can specify a different data storage location by adding the `-d` or `--output-directory` parameter to the java-tron node startup command. For example:
 
 ```
-java -jar fullnode.jar -d ./outputdir
+java -jar FullNode.jar -d ./outputdir
 ```
 
 
@@ -82,7 +82,7 @@ The TRON network has supported **Lite FullNode** type nodes since the GreatVoyag
 | :----------------------------- | :--------------- | :---------- |
 | Official Data Source (Asia: Singapore) | [http://34.143.247.77/](http://34.143.247.77/) | LevelDB data |
 
-**Tip:** If you already have full data from a FullNode, you can use the [Lite FullNode Data Trimming Tool](https://tronprotocol.github.io/documentation-zh/using_javatron/toolkit/#_6) to trim your FullNode data into Lite FullNode data yourself.
+**Tip:** If you already have full data from a FullNode, you can use the [Lite FullNode Data Trimming Tool](toolkit.md/#lite-fullnode-data-pruning) to trim your FullNode data into Lite FullNode data yourself.
 
 #### Data Snapshot Decompression Methods
 

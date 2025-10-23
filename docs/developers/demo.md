@@ -304,7 +304,7 @@ After fixing the code style issues, run the check again to ensure all warnings h
 
 ### 5.1 Submit a Commit
 
-After you have finished writing and testing your code, commit your changes. Please refer to the [Commit Specification](java-tron.md/#commit-messages).
+After you have finished writing and testing your code, commit your changes. Please refer to the [Commit Specification](java-tron.md/#commit-message-specifications).
 
 ```bash
 git add .
