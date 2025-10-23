@@ -88,38 +88,48 @@ The TRON network has supported **Lite FullNode** type nodes since the GreatVoyag
 
 **Tip:** If you already have full data from a FullNode, you can use the [Lite FullNode Data Trimming Tool](toolkit.md/#lite-fullnode-data-pruning) to trim your FullNode data into Lite FullNode data yourself.
 
-#### Data Snapshot Decompression Methods
-
-TRON network snapshot data typically exceeds 2TB in size. We strongly recommend using a streaming method (i.e., downloading and decompressing simultaneously) to effectively save disk space. The specific command is as follows:
-
-```bash
-wget -q -O - SNAPSHOT_URL/FullNode_output-directory.tgz | tar -zxvf -
-```
-
-##### Method 1: Stream Download and Decompress (Recommended, Saves Space)
-
-This method does not require storing the complete compressed archive first. Instead, it directly decompresses the data into the target directory, significantly reducing disk usage.
-
-##### Method 2: Download First, Then Decompress (Requires Ample Storage Space)
-
-```
-# 1. Download the complete snapshot file
-wget SNAPSHOT_URL/FullNode_output-directory.tgz
-
-# 2. Decompress the file
-tar -zxvf FullNode_output-directory.tgz
-```
-
-This method downloads the complete snapshot file first and then decompresses it. Please note that during decompression, you will need to keep both the compressed archive and the decompressed files. Therefore, it's advisable to prepare at least two 3TB or larger disks (one for the compressed archive and one for the decompressed data. After decompression, you can free up the disk used for the compressed archive, thereby saving costs).
-
-#### Data Snapshot Usage Steps
-
-Whether it's a FullNode data snapshot or a Lite FullNode data snapshot, the usage steps are the same:
-
-1.  Download the corresponding compressed backup database file based on your needs.
-2.  Decompress the backed-up database compressed file into the `output-directory`. If you wish to specify another directory, you can decompress it into your designated target directory.
-3.  Start the node. The node will default to reading from the `output-directory`. If your data was decompressed to another directory, add the `-d` parameter and specify the database directory name when starting the node.
 
 ### Nile Testnet Data Snapshots
 
 For detailed information on Nile Testnet data snapshots, please refer to the [official website](https://nileex.io/). The usage method is the same as for Mainnet data snapshots.
+
+### Data Snapshot Usage Steps
+The steps for using data snapshots are as follows:
+
+1. Download the corresponding compressed backup database based on your needs.
+2. Decompress the compressed file of the backup database to the `output-directory` directory (or specify another target directory as needed). For detailed decompression instructions, refer to the Data Snapshot Decompression Methods
+ section below.
+3. Start the node. The node reads data from the `output-directory` by default. If your data was decompressed into a different directory, add the `-d` parameter and specify the database directory name when starting the node.
+
+#### Data Snapshot Download and Extraction Methods
+
+The TRON network snapshot data size exceeds 2TB. To save disk space, we recommend using the streaming method, which downloads and extracts the data simultaneously. 
+
+**Method 1: Streamed Download and Extract (Recommended, Saves Space)**
+
+Create a script file named `download_snapshot.sh` and add the following content:
+
+```bash
+#!/bin/bash
+wget -q -O - SNAPSHOT_URL/FullNode_output-directory.tgz | tar -zxvf -
+```
+
+Run the script:
+
+```Text Bash
+bash download_snapshot.sh
+```
+
+Note: This method avoids storing the complete compressed file and extracts the data on-the-fly, **significantly reducing disk space requirements**.
+
+**Method 2: Full Download Before Extraction (Requires Sufficient Storage Space)**
+
+```bash
+# 1. Download the complete snapshot file
+wget SNAPSHOT_URL/FullNode_output-directory.tgz
+
+# 2. Extract the file
+tar -zxvf FullNode_output-directory.tgz
+```
+
+Note: During extraction, both the compressed archive and the extracted files must be stored simultaneously. We recommend using two 3TB disks (3TB+ for the archive & 3TB+ for the extracted data. You can release the archive disk after extraction to reduce costs.).
