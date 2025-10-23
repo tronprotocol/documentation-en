@@ -70,7 +70,9 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf
 ```
 
 * `-XX:+UseConcMarkSweepGC`: Specifies the **Concurrent Mark Sweep (CMS) garbage collector**. This parameter must be placed before the `-jar` parameter.
-* `-Xmx`: Sets the maximum Java Virtual Machine (JVM) heap size, typically recommended to be **80% of physical memory**.
+* `-Xms`: initial value of the Java Virtual Machine (JVM) heap size, `-Xmx`: maximum value of the JVM heap size, `-XX:NewRatio`: ratio of the old generation to the young generation in the heap, for example, `-XX:NewRatio=2` means the size of the old generation is twice that of the young generation.
+    * For ordinary FullNode, the recommended setting is: `-Xms12G -Xmx12G -XX:NewRatio=3`
+    * For block-producing FullNode, the recommended setting is: `-Xms24G -Xmx24G -XX:NewRatio=3`
 * To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided at the beginning of this section.
 
 ### Starting a Block Production Node
