@@ -2201,7 +2201,7 @@ Nodes: FullNode </p>
 <p><div class="highlight"><pre><span></span><code>rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>Notice</strong>: Only node where <code>storage.balance.history.lookup= true</code> is set in the configuration file supports querying the account's historical balance. The supported official nodes can be queried <a href="../../using_javatron/backup_restore/#fullnode-data-snapshot">here</a>.</p>
+<p><strong>Notice</strong>: Only node where <code>storage.balance.history.lookup= true</code> is set in the configuration file supports querying the account's historical balance. The supported official nodes can be queried <a href="../../using_javatron/backup_restore/#fullnode-data-snapshots">here</a>.</p>
 <h2 id="fetch-all-balance-changing-transactions-in-a-block">fetch all balance-changing transactions in a block<a class="headerlink" href="#fetch-all-balance-changing-transactions-in-a-block" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code>rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
 </code></pre></div>

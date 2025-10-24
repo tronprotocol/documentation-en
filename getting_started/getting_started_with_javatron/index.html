@@ -1860,9 +1860,8 @@ wallet&gt;
 <li>Use <code>gettransactionbyid &lt;txid&gt;</code> to view the raw content of the transaction:
   <div class="highlight"><pre><span></span><code>wallet&gt; gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
 </code></pre></div>
-  The returned JSON data contains all the transaction details, such as the contract type (<code>TransferContract</code>), transfer amount, sender and recipient addresses, etc. <code>"contractRet":"SUCCESS"</code> indicates that the transaction's contract is syntactically correct.</li>
-</ol>
-<p><div class="highlight"><pre><span></span><code>{
+  The returned JSON data contains all the transaction details, such as the contract type (<code>TransferContract</code>), transfer amount, sender and recipient addresses, etc. <code>"contractRet":"SUCCESS"</code> indicates that the transaction's contract is syntactically correct.
+  <div class="highlight"><pre><span></span><code>{
   &quot;ret&quot;:[
       {
           &quot;contractRet&quot;:&quot;SUCCESS&quot;
@@ -1894,12 +1893,12 @@ wallet&gt;
   &quot;raw_data_hex&quot;:&quot;0a02cbc322088581ae7e29258a5240dbfc91ca9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30&quot;
 }
 wallet&gt; 
+</code></pre></div></li>
+<li>Use <code>gettransactioninfobyid &lt;txid&gt;</code> to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption):
+  <div class="highlight"><pre><span></span><code>wallet&gt; gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
 </code></pre></div>
-2. Use <code>gettransactioninfobyid &lt;txid&gt;</code> to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption):</p>
-<div class="highlight"><pre><span></span><code>wallet&gt; gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
-</code></pre></div>
-<p>In the returned result, the most important field is <code>blockNumber</code>, which indicates the block height at which the transaction was confirmed. If this value exists, the transaction has been successfully recorded on the blockchain. Additionally, the <code>receipt</code> object records the resources consumed by the transaction, such as bandwidth (<code>net_usage</code>).</p>
-<div class="highlight"><pre><span></span><code>{
+  In the returned result, the most important field is <code>blockNumber</code>, which indicates the block height at which the transaction was confirmed. If this value exists, the transaction has been successfully recorded on the blockchain. Additionally, the <code>receipt</code> object records the resources consumed by the transaction, such as bandwidth (<code>net_usage</code>).
+  <div class="highlight"><pre><span></span><code>{
   &quot;id&quot;: &quot;21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4&quot;,
   &quot;blockNumber&quot;: 27773932,
   &quot;blockTimeStamp&quot;: 1656917586000,
@@ -1911,7 +1910,8 @@ wallet&gt;
   }
 }
 wallet&gt; 
-</code></pre></div>
+</code></pre></div></li>
+</ol>
 <h3 id="method-two-using-curl-direct-http-api-call">Method Two: Using <code>cURL</code> (Direct HTTP API Call)<a class="headerlink" href="#method-two-using-curl-direct-http-api-call" title="Permanent link">&para;</a></h3>
 <p>While <code>wallet-cli</code> provides user-friendly interactive commands, more advanced developers or those working in automated scripting scenarios may find it more flexible and efficient to interact with a java-tron node directly via its HTTP API. This section demonstrates how to use <code>cURL</code> (a command-line tool for sending HTTP requests) to call the java-tron node's HTTP API to perform core functions like querying account balances and sending transactions.</p>
 <p>Unlike <code>wallet-cli</code>, which automatically handles signing and broadcasting, sending a transaction by directly calling the API requires you to manually complete a standard three-step process: <strong>Create -&gt; Sign -&gt; Broadcast</strong>. This section will show you how to execute this process.</p>
