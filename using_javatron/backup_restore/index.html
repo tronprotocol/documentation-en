@@ -480,6 +480,15 @@
   
 </li>
         
+          <li class="md-nav__item ">
+  <a href="#data-snapshot-usage-steps" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Data Snapshot Usage Steps
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1540,7 +1549,7 @@
 
 <h1 id="node-data-backup-and-restore">Node Data Backup and Restore<a class="headerlink" href="#node-data-backup-and-restore" title="Permanent link">&para;</a></h1>
 <p>java-tron nodes store their persistent data in a specified data directory, which defaults to <code>/output-directory/</code>. You can specify a different data storage location by adding the <code>-d</code> or <code>--output-directory</code> parameter to the java-tron node startup command. For example:</p>
-<div class="highlight"><pre><span></span><code>java -jar fullnode.jar -d ./outputdir
+<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -d ./outputdir
 </code></pre></div>
 <h2 id="backing-up-node-data">Backing Up Node Data<a class="headerlink" href="#backing-up-node-data" title="Permanent link">&para;</a></h2>
 <p>Before backing up node data, it's crucial to <strong>shut down the node process</strong>. You can do this by following these steps:</p>
@@ -1611,7 +1620,12 @@ done
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> <strong>LevelDB</strong> and <strong>RocksDB</strong> data are not interchangeable. The database type for a FullNode is specified by the <code>db.engine</code> configuration item in the configuration file, with selectable values being <code>LEVELDB</code> or <code>ROCKSDB</code>.</p>
+<p><strong>Note:</strong> </p>
+<ul>
+<li><strong>LevelDB</strong> and <strong>RocksDB</strong> data are not interchangeable. The database type for a FullNode is specified by the <code>db.engine</code> configuration item in the configuration file, with selectable values being <code>LEVELDB</code> or <code>ROCKSDB</code>.</li>
+<li>Internal transactions can be enabled/disabled through the configuration items <code>vm.saveInternalTx</code> or <code>vm.saveFeaturedInternalTx</code> in the configuration file. Internal transactions are saved only when <code>vm.saveInternalTx</code> is enabled. If <code>saveFeaturedInternalTx</code> is also enabled, all types of internal transactions will be saved; otherwise, only <code>call</code>, <code>create</code>, and <code>suicide</code> transactions will be saved. Affected interface: <a href="https://developers.tron.network/reference/gettransactioninfobyid-1"><code>gettransactioninfobyid</code></a></li>
+<li>Historical accont balances can be enabled/disabled through the configuration item <code>storage.balance.history.lookup</code> in the configuration file. Affected interface: <a href="https://developers.tron.network/reference/getaccountbalance"><code>getaccountbalance</code></a></li>
+</ul>
 <h4 id="lite-fullnode-data-snapshots">Lite FullNode Data Snapshots<a class="headerlink" href="#lite-fullnode-data-snapshots" title="Permanent link">&para;</a></h4>
 <p>The TRON network has supported <strong>Lite FullNode</strong> type nodes since the GreatVoyage-V4.1.0 version. Compared to a regular FullNode, a Lite FullNode has a smaller database and faster startup speed because it only requires state data and necessary historical data to start. The table below lists the download addresses for Lite FullNode data snapshots.</p>
 <table>
@@ -1630,30 +1644,36 @@ done
 </tr>
 </tbody>
 </table>
-<p><strong>Tip:</strong> If you already have full data from a FullNode, you can use the <a href="https://tronprotocol.github.io/documentation-zh/using_javatron/toolkit/#_6">Lite FullNode Data Trimming Tool</a> to trim your FullNode data into Lite FullNode data yourself.</p>
-<h4 id="data-snapshot-decompression-methods">Data Snapshot Decompression Methods<a class="headerlink" href="#data-snapshot-decompression-methods" title="Permanent link">&para;</a></h4>
-<p>TRON network snapshot data typically exceeds 2TB in size. We strongly recommend using a streaming method (i.e., downloading and decompressing simultaneously) to effectively save disk space. The specific command is as follows:</p>
-<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>-q<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>SNAPSHOT_URL/FullNode_output-directory.tgz<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-zxvf<span class="w"> </span>-
+<p><strong>Tip:</strong> If you already have full data from a FullNode, you can use the <a href="../toolkit/#lite-fullnode-data-pruning">Lite FullNode Data Trimming Tool</a> to trim your FullNode data into Lite FullNode data yourself.</p>
+<h3 id="nile-testnet-data-snapshots">Nile Testnet Data Snapshots<a class="headerlink" href="#nile-testnet-data-snapshots" title="Permanent link">&para;</a></h3>
+<p>For detailed information on Nile Testnet data snapshots, please refer to the <a href="https://nileex.io/">official website</a>. The usage method is the same as for Mainnet data snapshots.</p>
+<h3 id="data-snapshot-usage-steps">Data Snapshot Usage Steps<a class="headerlink" href="#data-snapshot-usage-steps" title="Permanent link">&para;</a></h3>
+<p>The steps for using data snapshots are as follows:</p>
+<ol>
+<li>Download the corresponding compressed backup database based on your needs.</li>
+<li>Decompress the compressed file of the backup database to the <code>output-directory</code> directory (or specify another target directory as needed). For detailed decompression instructions, refer to the Data Snapshot Decompression Methods
+ section below.</li>
+<li>Start the node. The node reads data from the <code>output-directory</code> by default. If your data was decompressed into a different directory, add the <code>-d</code> parameter and specify the database directory name when starting the node.</li>
+</ol>
+<h4 id="data-snapshot-download-and-extraction-methods">Data Snapshot Download and Extraction Methods<a class="headerlink" href="#data-snapshot-download-and-extraction-methods" title="Permanent link">&para;</a></h4>
+<p>The TRON network snapshot data size exceeds 2TB. To save disk space, we recommend using the streaming method, which downloads and extracts the data simultaneously. </p>
+<p><strong>Method 1: Streamed Download and Extract (Recommended, Saves Space)</strong></p>
+<p>Create a script file named <code>download_snapshot.sh</code> and add the following content:</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+wget -q -O - SNAPSHOT_URL/FullNode_output-directory.tgz | tar -zxvf -
 </code></pre></div>
-<h5 id="method-1-stream-download-and-decompress-recommended-saves-space">Method 1: Stream Download and Decompress (Recommended, Saves Space)<a class="headerlink" href="#method-1-stream-download-and-decompress-recommended-saves-space" title="Permanent link">&para;</a></h5>
-<p>This method does not require storing the complete compressed archive first. Instead, it directly decompresses the data into the target directory, significantly reducing disk usage.</p>
-<h5 id="method-2-download-first-then-decompress-requires-ample-storage-space">Method 2: Download First, Then Decompress (Requires Ample Storage Space)<a class="headerlink" href="#method-2-download-first-then-decompress-requires-ample-storage-space" title="Permanent link">&para;</a></h5>
+<p>Run the script:</p>
+<div class="highlight"><pre><span></span><code>bash download_snapshot.sh
+</code></pre></div>
+<p>Note: This method avoids storing the complete compressed file and extracts the data on-the-fly, <strong>significantly reducing disk space requirements</strong>.</p>
+<p><strong>Method 2: Full Download Before Extraction (Requires Sufficient Storage Space)</strong></p>
 <div class="highlight"><pre><span></span><code># 1. Download the complete snapshot file
 wget SNAPSHOT_URL/FullNode_output-directory.tgz
 
-# 2. Decompress the file
+# 2. Extract the file
 tar -zxvf FullNode_output-directory.tgz
 </code></pre></div>
-<p>This method downloads the complete snapshot file first and then decompresses it. Please note that during decompression, you will need to keep both the compressed archive and the decompressed files. Therefore, it's advisable to prepare at least two 3TB or larger disks (one for the compressed archive and one for the decompressed data. After decompression, you can free up the disk used for the compressed archive, thereby saving costs).</p>
-<h4 id="data-snapshot-usage-steps">Data Snapshot Usage Steps<a class="headerlink" href="#data-snapshot-usage-steps" title="Permanent link">&para;</a></h4>
-<p>Whether it's a FullNode data snapshot or a Lite FullNode data snapshot, the usage steps are the same:</p>
-<ol>
-<li>Download the corresponding compressed backup database file based on your needs.</li>
-<li>Decompress the backed-up database compressed file into the <code>output-directory</code>. If you wish to specify another directory, you can decompress it into your designated target directory.</li>
-<li>Start the node. The node will default to reading from the <code>output-directory</code>. If your data was decompressed to another directory, add the <code>-d</code> parameter and specify the database directory name when starting the node.</li>
-</ol>
-<h3 id="nile-testnet-data-snapshots">Nile Testnet Data Snapshots<a class="headerlink" href="#nile-testnet-data-snapshots" title="Permanent link">&para;</a></h3>
-<p>For detailed information on Nile Testnet data snapshots, please refer to the <a href="https://nileex.io/">official website</a>. The usage method is the same as for Mainnet data snapshots.</p>
+<p>Note: During extraction, both the compressed archive and the extracted files must be stored simultaneously. We recommend using two 3TB disks (3TB+ for the archive &amp; 3TB+ for the extracted data. You can release the archive disk after extraction to reduce costs.).</p>
 
 
 

@@ -867,36 +867,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#1-obtaining-bandwidth" class="md-nav__link" >
+  <a href="#obtaining-bandwidth" class="md-nav__link" >
     <span class="md-ellipsis">
-      1. Obtaining Bandwidth
+      Obtaining Bandwidth
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#2-how-bandwidth-is-consumed" class="md-nav__link" >
+  <a href="#how-bandwidth-is-consumed" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. How Bandwidth is Consumed
+      How Bandwidth is Consumed
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#3-automatic-bandwidth-recovery" class="md-nav__link" >
+  <a href="#automatic-bandwidth-recovery" class="md-nav__link" >
     <span class="md-ellipsis">
-      3. Automatic Bandwidth Recovery
+      Automatic Bandwidth Recovery
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#4-querying-bandwidth-balance" class="md-nav__link" >
+  <a href="#querying-bandwidth-balance" class="md-nav__link" >
     <span class="md-ellipsis">
-      4. Querying Bandwidth Balance
+      Querying Bandwidth Balance
     </span>
   </a>
   
@@ -918,27 +918,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#1-acquiring-and-consuming-energy" class="md-nav__link" >
+  <a href="#acquiring-and-consuming-energy" class="md-nav__link" >
     <span class="md-ellipsis">
-      1. Acquiring and Consuming Energy
+      Acquiring and Consuming Energy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#2-how-to-set-fee_limit-essential-for-users" class="md-nav__link" >
+  <a href="#how-to-set-fee_limit-essential-for-users" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. How to Set fee_limit (Essential for Users)
+      How to Set fee_limit (Essential for Users)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#3-energy-consumption-mechanism" class="md-nav__link" >
+  <a href="#energy-consumption-mechanism" class="md-nav__link" >
     <span class="md-ellipsis">
-      3. Energy Consumption Mechanism
+      Energy Consumption Mechanism
     </span>
   </a>
   
@@ -1704,7 +1704,7 @@
 <blockquote>
 <p><strong>Note:</strong> Because the total staked funds in the network and an individual account's staked funds can change at any time, the amount of Bandwidth an account possesses is not a fixed value.</p>
 </blockquote>
-<h3 id="1-obtaining-bandwidth">1. Obtaining Bandwidth<a class="headerlink" href="#1-obtaining-bandwidth" title="Permanent link">&para;</a></h3>
+<h3 id="obtaining-bandwidth">Obtaining Bandwidth<a class="headerlink" href="#obtaining-bandwidth" title="Permanent link">&para;</a></h3>
 <p>There are three ways to obtain Bandwidth:</p>
 <ul>
 <li>
@@ -1727,7 +1727,7 @@
 <p><strong>Daily Free Allowance:</strong> Every account receives a fixed daily allowance of free Bandwidth, which can be modified through a committee proposal <a href="https://tronscan.io/#/sr/committee">#61</a> and is currently set to 600.</p>
 </li>
 </ul>
-<h3 id="2-how-bandwidth-is-consumed">2. How Bandwidth is Consumed<a class="headerlink" href="#2-how-bandwidth-is-consumed" title="Permanent link">&para;</a></h3>
+<h3 id="how-bandwidth-is-consumed">How Bandwidth is Consumed<a class="headerlink" href="#how-bandwidth-is-consumed" title="Permanent link">&para;</a></h3>
 <p>All transactions, except for query operations, consume Bandwidth. When you initiate a transaction, the system deducts the Bandwidth fee according to a strict priority order based on the transaction type.</p>
 <p><strong>Scenario 1: Standard Transactions</strong></p>
 <p>The system attempts to pay the Bandwidth fee in the following order:</p>
@@ -1776,9 +1776,9 @@
 </ul>
 </li>
 </ol>
-<h3 id="3-automatic-bandwidth-recovery">3. Automatic Bandwidth Recovery<a class="headerlink" href="#3-automatic-bandwidth-recovery" title="Permanent link">&para;</a></h3>
+<h3 id="automatic-bandwidth-recovery">Automatic Bandwidth Recovery<a class="headerlink" href="#automatic-bandwidth-recovery" title="Permanent link">&para;</a></h3>
 <p>An account's consumed free Bandwidth and staked Bandwidth will gradually recover over a 24-hour period.</p>
-<h3 id="4-querying-bandwidth-balance">4. Querying Bandwidth Balance<a class="headerlink" href="#4-querying-bandwidth-balance" title="Permanent link">&para;</a></h3>
+<h3 id="querying-bandwidth-balance">Querying Bandwidth Balance<a class="headerlink" href="#querying-bandwidth-balance" title="Permanent link">&para;</a></h3>
 <p>You can query an account's current resource status by calling the <code>wallet/getaccountresource</code> HTTP endpoint. In the returned JSON data, use the following formulas to calculate the remaining Bandwidth:</p>
 <div class="highlight"><pre><span></span><code>Remaining Free Bandwidth = freeNetLimit - freeNetUsed
 Remaining Staked Bandwidth = NetLimit - NetUsed
@@ -1792,7 +1792,7 @@ Remaining Staked Bandwidth = NetLimit - NetUsed
 <li><a href="#energy-mechanism">The TRON network's overall consumption mechanism</a></li>
 </ul>
 <p><a id="get-energy"></a></p>
-<h3 id="1-acquiring-and-consuming-energy">1. Acquiring and Consuming Energy<a class="headerlink" href="#1-acquiring-and-consuming-energy" title="Permanent link">&para;</a></h3>
+<h3 id="acquiring-and-consuming-energy">Acquiring and Consuming Energy<a class="headerlink" href="#acquiring-and-consuming-energy" title="Permanent link">&para;</a></h3>
 <p>Energy can be acquired in two primary ways:</p>
 <ul>
 <li>By Staking TRX: Users can obtain Energy by staking the TRX they hold.</li>
@@ -1843,7 +1843,7 @@ C: 36,000,000,000
 <h4 id="energy-recovery">Energy Recovery<a class="headerlink" href="#energy-recovery" title="Permanent link">&para;</a></h4>
 <p>Consumed Energy resources gradually recover over a 24-hour period.</p>
 <p><a id="set-fee-limit"></a></p>
-<h3 id="2-how-to-set-fee_limit-essential-for-users">2. How to Set <code>fee_limit</code> (Essential for Users)<a class="headerlink" href="#2-how-to-set-fee_limit-essential-for-users" title="Permanent link">&para;</a></h3>
+<h3 id="how-to-set-fee_limit-essential-for-users">How to Set <code>fee_limit</code> (Essential for Users)<a class="headerlink" href="#how-to-set-fee_limit-essential-for-users" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.
@@ -1872,7 +1872,7 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <li><strong>Step 3: Set the Final <code>fee_limit</code></strong>: The recommended <code>fee_limit</code> for the user to set is 200,000 sun.</li>
 </ul>
 <p><a id="energy-mechanism"></a></p>
-<h3 id="3-energy-consumption-mechanism">3. Energy Consumption Mechanism<a class="headerlink" href="#3-energy-consumption-mechanism" title="Permanent link">&para;</a></h3>
+<h3 id="energy-consumption-mechanism">Energy Consumption Mechanism<a class="headerlink" href="#energy-consumption-mechanism" title="Permanent link">&para;</a></h3>
 <p><strong>Basic Energy Consumption Rules</strong></p>
 <p>When executing smart contract transactions, the system calculates and deducts the Energy required for each instruction sequentially. The consumption of Energy in an account follows these priority principles:</p>
 <ol>
@@ -1967,10 +1967,14 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <h3 id="how-to-unstake">How to Unstake<a class="headerlink" href="#how-to-unstake" title="Permanent link">&para;</a></h3>
 <p>After staking TRX, you can initiate an unstake operation at any time using the <code>unfreezebalancev2</code> API. However, this process has a time delay and follows specific rules.</p>
 <p>After staking TRX, you can initiate an unstake operation at any time using the <code>unfreezebalancev2</code> API. After initiating an unstake, your TRX enters a 14-day pending period. This pending period is TRON network parameter <a href="https://tronscan.io/#/sr/committee">#70</a> and can be changed in the future through network governance. After the 14-day period has ended, you can withdraw the funds to your account balance using the <code>withdrawexpireunfreeze</code> API.</p>
-<p>!!! <strong>Important Notes</strong>
-    * <strong>Delegated Resources Cannot Be Unstaked:</strong> You cannot unstake TRX corresponding to resources that are currently delegated. You must first reclaim the resources using <code>undelegateresource</code> before you can unstake that portion of TRX.
-    * <strong>Resource Reclamation:</strong> Unstaking will cause the resources (Energy or Bandwidth) and TRON Power (TP) corresponding to the staked TRX to be synchronously reclaimed by the system. As a result, you will lose the respective Energy or Bandwidth and an equivalent amount of TP.
-    * <strong>Concurrent Operation Limit:</strong> You can have a maximum of 32 unstake operations in the 14-day pending period at any one time. Use the <code>getavailableunfreezecount</code> endpoint to check your remaining unstake capacity.</p>
+<div class="admonition important notes">
+<p class="admonition-title">Important</p>
+<ul>
+<li><strong>Delegated Resources Cannot Be Unstaked:</strong> You cannot unstake TRX corresponding to resources that are currently delegated. You must first reclaim the resources using <code>undelegateresource</code> before you can unstake that portion of TRX.</li>
+<li><strong>Resource Reclamation:</strong> Unstaking will cause the resources (Energy or Bandwidth) and TRON Power (TP) corresponding to the staked TRX to be synchronously reclaimed by the system. As a result, you will lose the respective Energy or Bandwidth and an equivalent amount of TP.</li>
+<li><strong>Concurrent Operation Limit:</strong> You can have a maximum of 32 unstake operations in the 14-day pending period at any one time. Use the <code>getavailableunfreezecount</code> endpoint to check your remaining unstake capacity.</li>
+</ul>
+</div>
 <p><strong>Automatic Effects of Unstaking</strong>: Calling <code>unfreezebalancev2</code> not only initiates a new unstaking process, but it also automatically withdraws any TRX that has already completed its 14-day pending period.</p>
 <p><strong>How to Verify Withdrawn Amount</strong>: To find out exactly how much unstaked TRX was automatically withdrawn during a specific unstaking operation, you can query the details of that unstake transaction using the <code>gettransactioninfobyid</code> API and look for the field <code>withdraw_expire_amount</code>, which shows the amount of matured unstaked TRX that was automatically withdrawn in this transaction.</p>
 <h4 id="reclaiming-tron-power">Reclaiming TRON Power<a class="headerlink" href="#reclaiming-tron-power" title="Permanent link">&para;</a></h4>
@@ -2012,11 +2016,11 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 </ol>
 </li>
 </ul>
-<p>!!! Important Distinction: Stake 1.0 vs. Stake 2.0
-    Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding <code>wallet/unfreezebalance</code> API.</p>
-<div class="codehilite"><pre><span></span><code>Unstaking TRX from Stake 1.0 will revoke **all** of the account&#39;s votes.
-</code></pre></div>
-
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stake 1.0 vs. Stake 2.0</p>
+<p>Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding <code>wallet/unfreezebalance</code> API. Unstaking TRX from Stake 1.0 will revoke <strong>all</strong> of the account's votes.</p>
+</div>
 <h3 id="how-to-cancel-all-unstaking-requests">How to Cancel All Unstaking Requests<a class="headerlink" href="#how-to-cancel-all-unstaking-requests" title="Permanent link">&para;</a></h3>
 <p>If you initiate an unstake but change your mind, Stake 2.0 provides an efficient "cancel" feature. You can use the <code>cancelallunfreezev2</code> API to immediately cancel all pending unstake requests, bypassing the 14-day pending period, and get your resources back immediately.</p>
 <p><strong>Please note</strong>: this endpoint cancels all of your account's unstaking requests that are currently in the 14-day pending period.</p>
