@@ -347,7 +347,6 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
   wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
   The returned JSON data contains all the transaction details, such as the contract type (`TransferContract`), transfer amount, sender and recipient addresses, etc. `"contractRet":"SUCCESS"` indicates that the transaction's contract is syntactically correct.
-  
   ```
   {
   	"ret":[
@@ -381,17 +380,12 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
   	"raw_data_hex":"0a02cbc322088581ae7e29258a5240dbfc91ca9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30"
   }
   wallet> 
-  
   ```
 2. Use `gettransactioninfobyid <txid>` to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption):
-
   ```
   wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
-  
   In the returned result, the most important field is `blockNumber`, which indicates the block height at which the transaction was confirmed. If this value exists, the transaction has been successfully recorded on the blockchain. Additionally, the `receipt` object records the resources consumed by the transaction, such as bandwidth (`net_usage`).
-  
-  
   ```
   {
   	"id": "21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",

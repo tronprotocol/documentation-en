@@ -25,7 +25,7 @@ For example, a transaction with a size of 200 bytes will consume 200 Bandwidth.
 
 > **Note:** Because the total staked funds in the network and an individual account's staked funds can change at any time, the amount of Bandwidth an account possesses is not a fixed value.
 
-### 1. Obtaining Bandwidth
+### Obtaining Bandwidth
 
 There are three ways to obtain Bandwidth:
 
@@ -54,7 +54,7 @@ There are three ways to obtain Bandwidth:
     
   * **Daily Free Allowance:** Every account receives a fixed daily allowance of free Bandwidth, which can be modified through a committee proposal [#61](https://tronscan.io/#/sr/committee) and is currently set to 600.
 
-### 2. How Bandwidth is Consumed
+### How Bandwidth is Consumed
 
 All transactions, except for query operations, consume Bandwidth. When you initiate a transaction, the system deducts the Bandwidth fee according to a strict priority order based on the transaction type.
 
@@ -96,11 +96,11 @@ TRC-10 token transfers have a unique consumption logic that introduces the "toke
 4.  **TRX Burning:** If all the above resources are insufficient, burns the initiator's TRX to pay the fee.
       * *Burn Fee = Transaction Size (bytes) × 1,000 sun*
 
-### 3\. Automatic Bandwidth Recovery
+### Automatic Bandwidth Recovery
 
 An account's consumed free Bandwidth and staked Bandwidth will gradually recover over a 24-hour period.
 
-### 4\. Querying Bandwidth Balance
+### Querying Bandwidth Balance
 
 You can query an account's current resource status by calling the `wallet/getaccountresource` HTTP endpoint. In the returned JSON data, use the following formulas to calculate the remaining Bandwidth:
 
@@ -120,7 +120,7 @@ Energy is the unit of measurement for the computational resources consumed by th
 - [The TRON network's overall consumption mechanism](#energy-mechanism)
 
 <a id="get-energy"></a>
-### 1\. Acquiring and Consuming Energy
+### Acquiring and Consuming Energy
 
 Energy can be acquired in two primary ways:
 
@@ -197,7 +197,7 @@ Contract execution can be interrupted for various reasons, with different rules 
 Consumed Energy resources gradually recover over a 24-hour period.
 
 <a id="set-fee-limit"></a>
-### 2\. How to Set `fee_limit` (Essential for Users)
+### How to Set `fee_limit` (Essential for Users)
 
 !!! Note
     In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.
@@ -227,7 +227,7 @@ The `fee_limit` estimation method is as follows:
 - **Step 3: Set the Final `fee_limit`**: The recommended `fee_limit` for the user to set is 200,000 sun.
 
 <a id="energy-mechanism"></a>
-### 3\. Energy Consumption Mechanism
+### Energy Consumption Mechanism
 
 **Basic Energy Consumption Rules**
 
@@ -344,7 +344,8 @@ After staking TRX, you can initiate an unstake operation at any time using the `
 After staking TRX, you can initiate an unstake operation at any time using the `unfreezebalancev2` API. After initiating an unstake, your TRX enters a 14-day pending period. This pending period is TRON network parameter [#70](https://tronscan.io/#/sr/committee) and can be changed in the future through network governance. After the 14-day period has ended, you can withdraw the funds to your account balance using the `withdrawexpireunfreeze` API.
 
 
-!!! **Important Notes**
+!!! Important Notes
+    
     * **Delegated Resources Cannot Be Unstaked:** You cannot unstake TRX corresponding to resources that are currently delegated. You must first reclaim the resources using `undelegateresource` before you can unstake that portion of TRX.
     * **Resource Reclamation:** Unstaking will cause the resources (Energy or Bandwidth) and TRON Power (TP) corresponding to the staked TRX to be synchronously reclaimed by the system. As a result, you will lose the respective Energy or Bandwidth and an equivalent amount of TP.
     * **Concurrent Operation Limit:** You can have a maximum of 32 unstake operations in the 14-day pending period at any one time. Use the `getavailableunfreezecount` endpoint to check your remaining unstake capacity.
@@ -393,10 +394,10 @@ The revocation operation is not random. Instead, votes are revoked proportionall
           * Votes revoked for SR2: `500 * (400 / 1000) = 200` votes.
     5.  Final State: User A successfully unstakes 1,500 TRX. Their voting state is updated to: 300 votes for SR1 and 200 votes for SR2.
 
-!!! Important Distinction: Stake 1.0 vs. Stake 2.0
-    Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding `wallet/unfreezebalance` API.
+!!! Note
+    Stake 1.0 vs. Stake 2.0
     
-    Unstaking TRX from Stake 1.0 will revoke **all** of the account's votes.
+    Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding `wallet/unfreezebalance` API. Unstaking TRX from Stake 1.0 will revoke **all** of the account's votes.
 
 ### How to Cancel All Unstaking Requests
 
