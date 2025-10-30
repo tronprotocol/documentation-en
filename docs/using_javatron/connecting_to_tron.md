@@ -331,7 +331,7 @@ node {
 
 Unlike node discovery, which uses UDP, peer connections use Transmission Control Protocol (TCP) on the same port (18888 by default). However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:
 
-![image](https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_topology.png)
+![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_topology.png)
 
 
 ## Logs and Node Status Verification
