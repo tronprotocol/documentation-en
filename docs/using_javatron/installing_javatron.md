@@ -121,7 +121,7 @@ node.backup {
   ]
 }
 ```
-For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100 and 192.168.0.101 respectively, their `node.backup` configurations should be as follows:
+For example, if an account with block production rights deploys two nodes with IPs 192.168.0.100 and 192.168.0.101 respectively, their `node.backup` configurations should be as follows:
 
 - Configuration for IP 192.168.0.100
 ```ini
