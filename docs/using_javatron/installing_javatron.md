@@ -101,7 +101,7 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
 
 ### Master-Slave Mode for Block Production FullNodes
 
-To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommanded number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The description of `node.backup` configuration items is as follows:
+To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommended number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The description of `node.backup` configuration items is as follows:
 
 ```ini
 node.backup {
