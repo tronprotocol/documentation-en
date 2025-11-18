@@ -114,7 +114,7 @@ node.backup {
   # time interval to send keepAlive message, each member should have the same configuration unit: ms
   keepAliveInterval = 3000
 
-  # peer's ip list, can't contain myself
+  # peers' IP list, must not include myself
   members = [
     # "ip",
     # "ip"
