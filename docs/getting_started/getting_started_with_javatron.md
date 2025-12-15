@@ -157,7 +157,7 @@ This module will guide you through launching a java-tron instance, turning your 
 > - The startup command in this guide is for basic demonstration purposes only. For more detailed deployment and configuration, see the official [Nile Node Deployment Guide](https://nileex.io/run/getRunPage). 
 > - The Nile testnet does not support syncing data from the genesis block (block 0). To start your node quickly, download the officially provided data snapshot. For specific instructions, refer to [Deploying a Node Using a Data Snapshot](../using_javatron/backup_restore.md).
 
-**1. Start the Node**
+### **1. Start the Node**
 
 Please use the following command to start the node. The `-Xmx24g` flag allocates 24GB of memory to the JVM; you can adjust this according to your machine's configuration.
 
@@ -167,7 +167,7 @@ Please use the following command to start the node. The `-Xmx24g` flag allocates
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
 ```
 
-**2. Verify Node Status**
+### **2. Verify Node Status**
 
 **2.1 Check Startup and Sync Logs**
 
@@ -226,6 +226,8 @@ You can send the following HTTP requests to your java-tron node to verify that i
 `curl http://127.0.0.1:8090/wallet/getnowblock`
 
 To confirm that your node is fully synchronized with the network, compare your local node's block height with the latest block height displayed on the [Tronscan block explorer](https://tronscan.org/). If they match, your local node is properly synchronized.
+
+### **3. Stop the Node**
 
 To shut down java-tron, use `kill -15 <process_id>` to stop the node.
 

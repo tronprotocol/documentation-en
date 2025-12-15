@@ -101,9 +101,9 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
 
 ### Master-Slave Mode for Block Production FullNodes
 
-To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes, it's necessary to configure `node.backup` in each node's configuration file. The description of `node.backup` configuration items is as follows:
+To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommended number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The description of `node.backup` configuration items is as follows:
 
-```
+```ini
 node.backup {
   # udp listen port, each member should have the same configuration
   port = 10001
@@ -114,14 +114,14 @@ node.backup {
   # time interval to send keepAlive message, each member should have the same configuration unit: ms
   keepAliveInterval = 3000
 
-  # peer's ip list, can't contain myself
+  # peers' IP list, must not include myself
   members = [
     # "ip",
     # "ip"
   ]
 }
-```ini
-For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be as follows:
+```
+For example, if an account with block production rights deploys two nodes with IPs 192.168.0.100 and 192.168.0.101 respectively, their `node.backup` configurations should be as follows:
 
 - Configuration for IP 192.168.0.100
 ```ini
@@ -130,36 +130,20 @@ node.backup {
   priority = 8
   keepAliveInterval = 3000
   members = [
-    "192.168.0.101",
-    "192.168.0.102"
+    "192.168.0.101"
   ]
 }
 ```
 
 * Configuration for IP 192.168.0.101
 
-```
+```ini
 node.backup {
   port = 10001
   priority = 7
   keepAliveInterval = 3000
   members = [
-    "192.168.0.100",
-    "192.168.0.102"
-  ]
-}
-```
-
-* Configuration for IP 192.168.0.102
-
-```
-node.backup {
-  port = 10001
-  priority = 6
-  keepAliveInterval = 3000
-  members = [
-    "192.168.0.100",
-    "192.168.0.101"
+    "192.168.0.100"
   ]
 }
 ```
