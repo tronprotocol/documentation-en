@@ -64,7 +64,7 @@ The operational steps for deploying a private network node are fundamentally the
       | `seed.node`     | Leave empty    | Set `ip.list` to the IP address of the SR node and the port number specified in its `listen.port` configuration   | Enables FullNode to establish connection with SR node for data synchronization     |
       | `needSyncCheck`     | `false`     | `true`     | Set the first SR’s `needSyncCheck` to `false`, other SRs `true`     |
       | `node.discovery.enable`     | `true`     | `true`     | If set to `false`, the current node will not be discovered by other nodes    |
-      | `block.maintenanceTimeInterval`|`300000`| Same as SR configuration	 | The default maintenance time interval is 6 hours: 21600000 (ms). Can be set to a smaller value, such as 300000(ms) (5 minutes), to pass the proposal faster.|
+      | `block.maintenanceTimeInterval`|`300000`| Same as SR configuration	 | The default maintenance time interval is 6 hours: 21600000 (ms)|
       | `committee.allowSameTokenName` |`1`|`1`| If set to `1` (true), the creation of tokens with identical names is allowed |
       | `committee.allowTvmTransferTrc10` | `1`|`1`| If set to 1 (true), the TVM is allowed to execute transfers of TRC-10 tokens via smart contracts. |
       
