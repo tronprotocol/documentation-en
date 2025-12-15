@@ -79,6 +79,12 @@ rpc ListWitnesses (EmptyMessage) returns (WitnessList) {}
 ```
 Nodes: FullNode and SolidityNode
 
+## Get the paged list of witnesses info, sorted in descending order by real-time vote count.
+```protobuf
+rpc GetPaginatedNowWitnessList (PaginatedMessage) returns (WitnessList) {}
+```
+Nodes: FullNode
+
 ## Application for super representative
 ```protobuf
 rpc CreateWitness (WitnessCreateContract) returns (Transaction) {}
