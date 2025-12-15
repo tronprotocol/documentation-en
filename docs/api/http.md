@@ -2060,7 +2060,7 @@ Parameter: None
 
 Return Value: A list of all witness information.
 
-#### wallet/getpaginatednowwitnesslist  
+#### walletsolidity/getpaginatednowwitnesslist  
 Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted in descending order by real-time vote count.
 ```
 curl -X POST  http://127.0.0.1:8091/wallet/getpaginatednowwitnesslist -d '{ 
