@@ -76,7 +76,7 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf
 * To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided at the beginning of this section.
 
 ### Starting a SolidityNode
-SolidityNode only synchronizes solidified blocks from trusted FullNode. Trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
+A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
 
 ```
 node {
