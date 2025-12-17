@@ -10,7 +10,7 @@ The TRON Toolkit is a comprehensive utility that integrates various ecosystem to
 
 This document provides a detailed guide on how to acquire and use the TRON Toolkit.
 
-**Note**: Since only RocksDB is supported on ARM architecture, tools such as `db convert` and `db archive` that handle LevelDB can only be used on x86 architecture.
+**Note**: Because only RocksDB is supported on ARM architecture, tools designed for LevelDB such as `db convert` and `db archive` can only be used on x86 architecture.
 
 ## Obtaining the Toolkit
 
