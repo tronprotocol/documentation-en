@@ -171,17 +171,10 @@ The above fees can be adjusted through proposals.
 
 ### 1. Permission Modification Operation Process
 
-1. Check Current Account Permissions
-Use the getaccount command to query and review the current permission structure of the SR account.
-2. Prepare the New Witness Account.
-3. Stop the Current SR Node.
-4.Update Witness Permission via Smart Contract.
-Using the SR's owner account, initiate the AccountPermissionUpdateContract transaction (cost: 100 TRX).
-5. Modify SR Node Configuration, update the local config file of your SR node.Replace the existing private key with the private key of the new witness account.
-6. Restart the SR Node.
-
-Warning!
-You must stop the currently producing SR node before broadcasting the AccountPermissionUpdateContract transaction.
+1. Use `getaccount` to query the current account permission structure.
+2. Construct the new permission configuration.
+3. Call `AccountPermissionUpdateContract`.
+4. Sign and broadcast the transaction.
 
 An SR node cannot package a transaction that modifies its own witness permission into a block. If a node attempts to produce a block containing such a transaction, the block will fail signature verification. As a penalty, the node will be disconnected from the network by other peers for 1 hour.
 
