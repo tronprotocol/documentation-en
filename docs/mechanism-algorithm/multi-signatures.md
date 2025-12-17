@@ -176,8 +176,6 @@ The above fees can be adjusted through proposals.
 3. Call `AccountPermissionUpdateContract`.
 4. Sign and broadcast the transaction.
 
-
-
 #### Example Request:
 
 ```
