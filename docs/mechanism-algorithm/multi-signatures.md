@@ -176,7 +176,7 @@ The above fees can be adjusted through proposals.
 3. Call `AccountPermissionUpdateContract`.
 4. Sign and broadcast the transaction.
 
-An SR node cannot package a transaction that modifies its own witness permission into a block. If a node attempts to produce a block containing such a transaction, the block will fail signature verification. As a penalty, the node will be disconnected from the network by other peers for 1 hour.
+
 
 #### Example Request:
 
