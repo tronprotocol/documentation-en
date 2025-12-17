@@ -942,7 +942,7 @@ Result
 
 ### eth_getBlockReceipts
 
-*Return the transaction receipts for all transactions in the specified block. For the genesis block, blocks that have been pruned by light nodes, and blocks that have not yet been produced, it returns null.*
+*Returns transaction receipts for all transactions in the specified block. Returns null for the genesis block, blocks that have been pruned by light nodes, or blocks that have not yet been produced.*
 
 **Parameters**
 
@@ -950,7 +950,7 @@ String - block number, it supports three types: block number represented as hexa
 
 **Returns**
 
-An array of objects - An array of transaction receipt objects, the object is the same as the return value of [eth_getTransactionReceipt](#eth_gettransactionreceipt)
+An array of objects - An array of transaction receipt objects, each object matches the return value of [eth_getTransactionReceipt](#eth_gettransactionreceipt)
 
 **Example**
 

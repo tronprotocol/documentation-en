@@ -1420,7 +1420,7 @@ Parameter: None
 Return Value: A list of all Super Representative information.
 
 #### wallet/getpaginatednowwitnesslist  
-Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted in descending order by real-time vote count.
+Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted by real-time vote count in descending order.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getpaginatednowwitnesslist -d '{ 
   "offset": 0,                          
@@ -1434,7 +1434,7 @@ Parameters:
 * `limit`: `long` type, indicates the number of witnesses to return, must be `>0`, with an upper limit of system constant `1000`.  
 * `visible`: `boolean` type, optional parameter, defaults to false, controls the format of the returned address.  
 
-Return value: A paginated list of witnesses meeting the parameter conditions, sorted in descending order by real-time vote count.
+Return value: A paginated list of witnesses meeting the parameter conditions, sorted by real-time vote count in descending order.
 
 #### wallet/withdrawbalance
 Description:** SR or users withdraw rewards to their balance. This can be done once every 24 hours.
@@ -2061,7 +2061,7 @@ Parameter: None
 Return Value: A list of all witness information.
 
 #### walletsolidity/getpaginatednowwitnesslist  
-Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted in descending order by real-time vote count.
+Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted by real-time vote count in descending order.
 ```
 curl -X POST  http://127.0.0.1:8091/wallet/getpaginatednowwitnesslist -d '{ 
   "offset": 0,                          
@@ -2075,7 +2075,7 @@ Parameters:
 * `limit`: `long` type, indicates the number of witnesses to return, must be `>0`, with an upper limit of system constant `1000`.  
 * `visible`: `boolean` type, optional parameter, defaults to false, controls the format of the returned address.  
 
-Return value: A paginated list of witnesses meeting the parameter conditions, sorted in descending order by real-time vote count.
+Return value: A paginated list of witnesses meeting the parameter conditions, sorted by real-time vote count in descending order.
 
 ### TRC-10 Token
 
