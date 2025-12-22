@@ -98,7 +98,7 @@ Newly produced blocks initially remain in an unconfirmed state. When a block is 
 
 The "acknowledgment" of an unconfirmed block here occurs when other SRs produce subsequent blocks after that block. For example, as shown in Figure d, when SR C produces block 103, SR E produces block 104' based on block 103, and SR G, A, and B produce blocks 105', 106', and 107' respectively. These are essentially subsequent blocks to block 103, and therefore, they signify acknowledgment of block 103 produced by C.
 
-Thus, when block 121 is produced, block 103 becomes a solidified block because it now has 19 subsequent blocks. It's important to emphasize that the SRs who produced these 19 blocks must be **different from each other** and **different** from the SR who produced block 103.
+Thus, when block 121 is produced, block 103 becomes a solidified block because it now has 18 subsequent blocks. It's important to emphasize that the SRs who produced these 18 blocks must be **different from each other** and **different** from the SR who produced block 103, this ensures that the block has received confirmations from 19 distinct SRs, including the producer of the block.
 
 ### Longest Chain Principle
 
