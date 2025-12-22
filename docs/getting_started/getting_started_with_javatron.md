@@ -262,8 +262,8 @@ The result is as follows:
 ```
 {
 	"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-	"balance": 93643d857919,
-	"create_time": 1619681898000,
+	"balance": 5,
+	"create_time": 1663487574000,
 	"net_window_size": 28800000,
 	"net_window_optimized": true,
 	"account_resource": {
