@@ -333,7 +333,8 @@ Please choose your key for sign.
 No.  Address                  Name
 1    (you wallet address)
 2    (you wallet address)
-Please choose between 1 and 2, or enter search to search wallets
+3    (you wallet address)
+Please choose between 1 and 3, or enter search to search wallets
 3
 Please input your password.
 password: 
