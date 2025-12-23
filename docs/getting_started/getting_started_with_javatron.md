@@ -331,9 +331,9 @@ y
 Please choose your key for sign.
 
 No.  Address                  Name
-1    (you wallet address)
-2    (you wallet address)
-3    (you wallet address)
+1    (your wallet address)
+2    (your wallet address)
+3    (your wallet address)
 Please choose between 1 and 3, or enter search to search wallets
 3
 Please input your password.
