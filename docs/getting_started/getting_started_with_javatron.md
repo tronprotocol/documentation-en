@@ -98,7 +98,7 @@ Please enter the number of mnemonic words
         Valid inputs are "12" or "24"
 mnemonic file : ./Mnemonic/(your wallet address).json
 Please name your wallet: 
-, keystore file : ./Wallet/(your wallet address).json
+Register a wallet  successful, keystore file : ./Wallet/(your wallet address).json
 (Note: If you delete an account, make sure to delete the wallet file and mnemonic file) 
 wallet> 
 ```
