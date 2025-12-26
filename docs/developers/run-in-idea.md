@@ -60,7 +60,7 @@ This is the JDK used to execute Gradle build tasks (e.g., build, clean).
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_JDK.png)
 
-> **Important Note**: The **Project SDK** and **Gradle JVM** settings must match and both be set to Oracle JDK 8. Otherwise, you may encounter unexpected errors during the build process.
+> **Important Note**: The **Project SDK** and **Gradle JVM** settings must match and both be set to Oracle JDK 8(Consistent with version 1.8 shown in the figure, the difference between 1.8 and 8 is only in the naming convention. In the java-tron documentation, it is uniformly designated as 8 unless otherwise specified). Otherwise, you may encounter unexpected errors during the build process.
 
 
 ## Getting and Compiling the Source Code
