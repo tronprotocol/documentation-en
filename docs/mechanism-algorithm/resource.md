@@ -466,7 +466,7 @@ Unrecovered resource amount = Original unrecovered resource amount - Reclaimed u
 
 **Note on Recovery:** Resources recover linearly over a **24-hour period**. If an account uses resources again or reclaims delegated resources during this period, the system performs a weighted merger of the existing recovery progress and the new recovery cycle. Consequently, the actual time remaining for resources to fully recover is usually less than 24 hours.
 
-### Example
+#### Example
 
 Assume the current network resource conversion ratio is **1 TRX Staked = 0.2 Energy**, and the total network staking amount remains unchanged. User X delegated **200 TRX** worth of Energy to User Y. Before the delegation is canceled, the account states are:
 
