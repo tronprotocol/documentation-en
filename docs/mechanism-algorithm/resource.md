@@ -423,7 +423,7 @@ You can query the transaction details using `gettransactioninfobyid` and check t
 **Note**: In the TRON network, the amount of resources an account receives depends on the proportion of its TRX staked relative to the total TRX staked across the entire network. When a delegator delegates resources to a recipient, it essentially lends a portion of its own staked TRX to the recipient. In resource quota calculations, the system does not distinguish between the sources of TRX. TRX staked by the account itself and TRX delegated from other accounts are aggregated and treated uniformly as the weighting basis for resource allocation. So, unless otherwise specified, the term “staked amount” in this chapter refers to the total staked TRX of an account, including both self-staked TRX and TRX delegated from other accounts, without distinguishing their sources.
 
 
-When a Delegator initiates resource delegation, a certain amount of staked TRX is lent to the Recipient, granting them the corresponding resources usage right. When the Delegator cancels the resource delegation, the system not only reclaims the corresponding staked TRX, but also reclaims a proportional amount of the Recipient’s unrecovered resources.
+When a Delegator initiates resource delegation, a certain amount of staked TRX is lent to the Recipient, granting them the right to use the corresponding resources. When the Delegator cancels the resource delegation, the system not only reclaims the corresponding staked TRX, but also reclaims a proportional amount of the Recipient’s unrecovered resources.
 
 
 #### Reclamation Logic for Unrecovered Resources
@@ -433,12 +433,10 @@ When a Delegator initiates resource delegation, a certain amount of staked TRX i
 The system proportionally reclaims the Recipient's unrecovered resources based on the amount of TRX being undelegated according to the following formula:
 
 ```
-Reclaimed unrecovered resources
-= (Canceled delegated TRX amount / Recipient’s total staked TRX amount for that resource)
-  × Recipient’s unrecovered resource amount
+Reclaimed unrecovered resources = (Canceled delegated TRX amount / Recipient’s total staked TRX amount for that resource) * Recipient’s unrecovered resource amount
 ```
 
-**Note**: The reclaimed unrecovered resources **must not exceed** the maximum resource capacity corresponding to the undelegated TRX amount, calculated in real time based on current network-wide staking.
+**Note**: The reclaimed unrecovered resources **must not exceed** the maximum resource capacity corresponding to the undelegated TRX amount, calculated in real time based on the total network staking.
 
 * **Canceled delegated TRX amount**: The amount of staked TRX reclaimed in the cancel delegation transaction.
 * **Recipient's Total Staked TRX Amount for that resource**: The total staked TRX used by the recipient to obtain a specific resource (Energy or Bandwidth), including self-staked TRX (Stake 1.0 and Stake 2.0) and delegated TRX from others. This can be queried via the [wallet/getaccount](https://developers.tron.network/reference/account-getaccount#/) API.
@@ -446,7 +444,8 @@ Reclaimed unrecovered resources
 
 ##### 2. Account State Changes
 
-After undelegation, the states of both accounts are changed as follows:
+After undelegation, the effective resource-related states of both accounts change as follows.
+The following expressions describe the **logical impact**, rather than direct updates to on-chain fields.
 
 **Delegator**
 
@@ -464,7 +463,7 @@ Staked amount = Original staked amount - Canceled delegated TRX amount
 Unrecovered resource amount = Original unrecovered resource amount - Reclaimed unrecovered resource amount
 ```
 
-**Note on Recovery:** Resources recover linearly over a **24-hour period**. If an account uses resources again or reclaims delegated resources during this period, the system performs a weighted merger of the existing recovery progress and the new recovery cycle. Consequently, the actual time remaining for resources to fully recover is usually less than 24 hours.
+**Note on Recovery:** Resources recover linearly over a **24-hour period**. If an account uses resources again or reclaims delegated resources during this period, the system performs a weighted merger of the existing recovery progress and the new recovery cycle. 
 
 #### Example
 
@@ -477,7 +476,7 @@ Assume the current network resource conversion ratio is **1 TRX Staked = 0.2 Ene
 
 When User X cancels the Energy delegation of **200 TRX** to User Y:
 ```
-Reclaimed unrecovered Energy amount = 200 / 500 * 50 = 20 Energy
+Reclaimed unrecovered Energy amount = (200 / 500) * 50 = 20 Energy
 ```
 
 After reclamation, the account states become:
