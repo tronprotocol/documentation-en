@@ -444,8 +444,8 @@ Reclaimed unrecovered resources = (Canceled delegated TRX amount / Recipient’s
 
 ##### 2. Account State Changes
 
-After undelegation, the effective resource-related states of both accounts change as follows.
-The following expressions describe the **logical impact**, rather than direct updates to on-chain fields.
+After resource undelegation, the effective resource-related states of both accounts are changed as follows.
+The following expressions describe the changes at a logical level. The term “staked amount” represents a computed value rather than a single on-chain field.
 
 **Delegator**
 
