@@ -73,7 +73,7 @@ The principle of Base58 encoding is to convert a large integer with a base of 25
     * **Calculate the `s` value**: First calculate the modular inverse of the temporary private key `k` with respect to n, `k⁻¹`, that is, `k⁻¹` satisfies `k⁻¹ × k = 1 mod n`, then calculate the `s` value through the transaction's `hash`, the user's private key `d`, and the `r` value, `s = (k⁻¹ × (hash + d × r)) mod n`. `s` is 32 bytes.
     * **Calculate the `v` value**: The `v` value is the recovery identifier. Since the `r` value undergoes a modulo operation and the symmetry of the elliptic curve, if there is only the `r` value, one `r` can recover up to four `K`s. The value range of `v` is four integers: `0, 1, 2, 3`. Historically, to be consistent with Ethereum, the final `v` value will be 27 added to `0, 1, 2, 3`, that is, the final value range of `v` is `27, 28, 29, 30`. With a determined `v`, the unique `K` can be recovered. `v` is 1 byte.
 
-4. Append the concatenated signature results `r`, `s`, `v` to the transaction, in the order `v || r || s`.
+4. Concatenate the values of `r`, `s`, and `v` to obtain the complete signature. The concatenation order shall be `r || s || v`. Note that during concatenation, the `v` value shall not be incremented by `27`, instead, one of the standard values of `0, 1, 2, and 3` shall be used directly.
 
 #### Java Code Sample
 
