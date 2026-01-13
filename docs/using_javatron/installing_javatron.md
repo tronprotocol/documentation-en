@@ -57,7 +57,7 @@ You can choose different configuration files to connect the java-tron node to di
 * For Mainnet FullNode configuration file: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
 * For other network node configuration:
     * Nile Testnet: https://nileex.io/
-    * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
+    * Private Network: please refer to [Private Network Deployment Guide](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
 
 ### Starting a FullNode
 
@@ -71,8 +71,8 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf
 
 * `-XX:+UseConcMarkSweepGC`: Specifies the **Concurrent Mark Sweep (CMS) garbage collector**. This parameter must be placed before the `-jar` parameter.
 * `-Xms`: initial value of the Java Virtual Machine (JVM) heap size, `-Xmx`: maximum value of the JVM heap size, `-XX:NewRatio`: ratio of the old generation to the young generation in the heap, for example, `-XX:NewRatio=2` means the size of the old generation is twice that of the young generation.
-    * For ordinary FullNode, the recommended setting is: `-Xms12G -Xmx12G -XX:NewRatio=3`
-    * For block-producing FullNode, the recommended setting is: `-Xms24G -Xmx24G -XX:NewRatio=3`
+    * For an ordinary FullNode, the recommended setting is: `-Xms12G -Xmx12G -XX:NewRatio=3`
+    * For a block-producing FullNode, the recommended setting is: `-Xms24G -Xmx24G -XX:NewRatio=3`
 * To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided at the beginning of this section.
 
 ### Starting a Block Production Node
@@ -101,7 +101,7 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
 
 ### Master-Slave Mode for Block Production FullNodes
 
-To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommended number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The description of `node.backup` configuration items is as follows:
+To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommended number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The description of the `node.backup` configuration items are as follows:
 
 ```ini
 node.backup {
@@ -163,7 +163,7 @@ For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large
 The operational steps are as follows:
 
 1. Download the latest data snapshot.
-2. Unzip it to the `output-directory` within your `tron` project.
+2. Unzip it to the `output-directory` folder within your `tron` project (default is `output-directory`).
 3. Then start the node; the node will continue to synchronize based on the data snapshot.
 
 ### Specifying Super Representative Account Private Key Using Keystore + Password
