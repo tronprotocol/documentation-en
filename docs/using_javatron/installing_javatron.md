@@ -103,11 +103,11 @@ A **FullNode** serves as an entry point to the TRON network, possesses complete 
 Below is the command to start a **Mainnet FullNode**, specifying the configuration file with the `-c` parameter:
 
 ```
-$ nohup java -Xms6G -jar ./build/libs/FullNode.jar -c config.conf &
+$ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &
 ```
 *   `nohup ... &`: Runs the command in the background and ignores the hangup signal.
 * The `Xms9G` parameter suggests the minimal heap size to `9 GB` for connecting to Mainnet.
-* To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided at the beginning of this section.
+* To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided above.
 
 ### JVM Parameter Optimization for Mainnet FullNode Deployment
 For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:
