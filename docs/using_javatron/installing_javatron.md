@@ -148,6 +148,7 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 
     > For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
     > For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
+    
 *   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
 *   `-XX:MaxDirectMemorySize`: Limits the memory used by NIO Direct Byte Buffers.
 *   `-XX:ReservedCodeCacheSize`: Sets the maximum size of the JIT code cache.
