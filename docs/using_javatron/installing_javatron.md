@@ -105,7 +105,8 @@ Below is the command to start a **Mainnet FullNode**, specifying the configurati
 ```
 $ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &
 ```
-*   `nohup ... &`: Runs the command in the background and ignores the hangup signal.
+
+* `nohup ... &`: Runs the command in the background and ignores the hangup signal.
 * The `Xms9G` parameter suggests the minimal heap size to `9 GB` for connecting to Mainnet.
 * To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided above.
 
