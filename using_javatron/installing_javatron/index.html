@@ -432,6 +432,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
+  <a href="#prerequisites-before-compiling-java-tron" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Prerequisites Before Compiling java-tron
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
   <a href="#compiling-java-tron-source-code" class="md-nav__link" >
     <span class="md-ellipsis">
       Compiling java-tron Source Code
@@ -456,9 +465,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#starting-a-fullnode" class="md-nav__link" >
+  <a href="#quick-start-a-fullnode" class="md-nav__link" >
     <span class="md-ellipsis">
-      Starting a FullNode
+      Quick Start a FullNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" class="md-nav__link" >
+    <span class="md-ellipsis">
+      JVM Parameter Optimization for Mainnet FullNode Deployment
     </span>
   </a>
   
@@ -1631,18 +1649,49 @@
 </ul>
 <h2 id="obtaining-the-java-tron-client">Obtaining the java-tron Client<a class="headerlink" href="#obtaining-the-java-tron-client" title="Permanent link">&para;</a></h2>
 <p>You can directly download the official client <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, or you can compile the source code yourself to package the client.</p>
+<h3 id="prerequisites-before-compiling-java-tron">Prerequisites Before Compiling java-tron<a class="headerlink" href="#prerequisites-before-compiling-java-tron" title="Permanent link">&para;</a></h3>
+<p>Before compiling java-tron, make sure you have:
+- Operating system: <code>Linux</code> or <code>MacOS</code> (Windows is not supported).
+- Git and correct JDK version installed based on your CPU architecture.</p>
+<p>Step 1: Verify Git is installed</p>
+<p>If Git is not installed, download it from <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>--version
+</code></pre></div>
+<p>Step 2: Check your CPU architecture and install the correct JDK</p>
+<div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-m
+</code></pre></div>
+<ul>
+<li>If your architecture is <code>x86_64</code> (Intel/AMD 64-bit):</li>
+<li>Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</li>
+<li>
+<p>Verify:
+    <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
+</code></pre></div>
+    The output should show a version starting with <code>1.8</code>.</p>
+</li>
+<li>
+<p>If your architecture is <code>arm64</code> or <code>aarch64</code> (Apple Silicon / ARM servers):</p>
+</li>
+<li>Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17</li>
+<li>Verify:
+    <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
+</code></pre></div>
+    The output should show a version starting with <code>17</code>.</li>
+</ul>
 <h3 id="compiling-java-tron-source-code">Compiling java-tron Source Code<a class="headerlink" href="#compiling-java-tron-source-code" title="Permanent link">&para;</a></h3>
-<p>Before you begin compiling, ensure that <strong>git</strong> is installed on your system.</p>
 <ol>
-<li>First, clone the java-tron source code to your local machine using the <code>git</code> command and switch to the <code>master</code> branch:
-<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/java-tron.git
+<li>Clone the repo and switch to the <code>master</code> branch:
+    <div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/java-tron.git
 git checkout -t origin/master
+cd java-tron
 </code></pre></div></li>
-<li>Then, execute the following commands to compile the java-tron source code:
-<div class="highlight"><pre><span></span><code>cd java-tron
-./gradlew clean build -x test
+<li>Then, run the following commands to build java-tron:
+    <div class="highlight"><pre><span></span><code>./gradlew clean build -x test
 </code></pre></div><ul>
 <li>The parameter <code>-x test</code> indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.</li>
+<li>If you encounter <code>DependencyVerificationException</code> during the build, refresh dependencies and regenerate verification metadata:
+  <div class="highlight"><pre><span></span><code>./gradlew clean build -x test --refresh-dependencies
+</code></pre></div></li>
 <li>After compilation is complete, the <code>FullNode.jar</code> file will be generated in the <code>java-tron/build/libs/</code> directory.</li>
 </ul>
 </li>
@@ -1657,20 +1706,64 @@ git checkout -t origin/master
 </ul>
 </li>
 </ul>
-<h3 id="starting-a-fullnode">Starting a FullNode<a class="headerlink" href="#starting-a-fullnode" title="Permanent link">&para;</a></h3>
+<h3 id="quick-start-a-fullnode">Quick Start a FullNode<a class="headerlink" href="#quick-start-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>A <strong>FullNode</strong> serves as an entry point to the TRON network, possesses complete historical data, and provides external access via <strong>HTTP API</strong>, <strong>gRPC API</strong>, and <strong>JSON-RPC API</strong>. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.</p>
 <p>Below is the command to start a <strong>Mainnet FullNode</strong>, specifying the configuration file with the <code>-c</code> parameter:</p>
-<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf
+<div class="highlight"><pre><span></span><code>$ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &amp;
 </code></pre></div>
 <ul>
-<li><code>-XX:+UseConcMarkSweepGC</code>: Specifies the <strong>Concurrent Mark Sweep (CMS) garbage collector</strong>. This parameter must be placed before the <code>-jar</code> parameter.</li>
-<li><code>-Xms</code>: initial value of the Java Virtual Machine (JVM) heap size, <code>-Xmx</code>: maximum value of the JVM heap size, <code>-XX:NewRatio</code>: ratio of the old generation to the young generation in the heap, for example, <code>-XX:NewRatio=2</code> means the size of the old generation is twice that of the young generation.<ul>
-<li>For ordinary FullNode, the recommended setting is: <code>-Xms12G -Xmx12G -XX:NewRatio=3</code></li>
-<li>For block-producing FullNode, the recommended setting is: <code>-Xms24G -Xmx24G -XX:NewRatio=3</code></li>
+<li><code>nohup ... &amp;</code>: Runs the command in the background and ignores the hangup signal.</li>
+<li>The <code>Xms9G</code> parameter suggests the minimal heap size to <code>9 GB</code> for connecting to Mainnet.</li>
+<li>To start a <strong>Nile Testnet FullNode</strong> or <strong>Private Network FullNode</strong>, use the corresponding configuration file links provided above.</li>
 </ul>
-</li>
-<li>To start a <strong>Nile Testnet FullNode</strong> or <strong>Private Network FullNode</strong>, use the corresponding configuration file links provided at the beginning of this section.</li>
+<h3 id="jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for Mainnet FullNode Deployment<a class="headerlink" href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" title="Permanent link">&para;</a></h3>
+<p>For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:</p>
+<h4 id="x86_64-jdk-8">x86_64 (JDK 8)<a class="headerlink" href="#x86_64-jdk-8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx12G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<h4 id="arm64-jdk-17">ARM64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<h4 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h4>
+<p><strong>General &amp; Memory Parameters:</strong></p>
+<ul>
+<li><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.
+    &gt; For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.
+    &gt; For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</li>
+<li><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</li>
+<li><code>-XX:MaxDirectMemorySize</code>: Limits the memory used by NIO Direct Byte Buffers.</li>
+<li><code>-XX:ReservedCodeCacheSize</code>: Sets the maximum size of the JIT code cache.</li>
+<li><code>-XX:+UseCodeCacheFlushing</code>: Allows the JVM to flush the code cache when full.</li>
+<li><code>-XX:+HeapDumpOnOutOfMemoryError</code>: Dumps the heap to a file if an OutOfMemoryError occurs.</li>
 </ul>
+<p><strong>JDK 8 (CMS GC) Specific:</strong></p>
+<ul>
+<li><code>-XX:+UseConcMarkSweepGC</code>: Enables the Concurrent Mark Sweep (CMS) garbage collector.</li>
+<li><code>-XX:NewRatio=3</code>: Sets the ratio of Old Generation to Young Generation to 3:1.</li>
+<li><code>-XX:+CMSScavengeBeforeRemark</code>: Triggers a minor GC before the CMS Remark phase to reduce pause time.</li>
+<li><code>-XX:+ParallelRefProcEnabled</code>: Enables parallel reference processing to reduce pause times.</li>
+<li><code>-XX:+UseCMSInitiatingOccupancyOnly</code> &amp; <code>-XX:CMSInitiatingOccupancyFraction=70</code>: Forces CMS to start collection when Old Gen is 70% full.</li>
+<li><code>-XX:+PrintGCDetails</code>, <code>-XX:+PrintGCDateStamps</code>, <code>-Xloggc:gc.log</code>: Legacy GC logging settings.</li>
+</ul>
+<p><strong>JDK 17 (ZGC) Specific:</strong>
+*   <code>-XX:+UseZGC</code>: Enables ZGC, a scalable low-latency garbage collector.
+*   <code>-Xlog:gc...</code>: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).</p>
 <h3 id="starting-a-block-production-node">Starting a Block Production Node<a class="headerlink" href="#starting-a-block-production-node" title="Permanent link">&para;</a></h3>
 <p>By adding the <code>--witness</code> parameter to the FullNode startup command above, the <code>FullNode</code> will run as a <strong>Block Production Node</strong> (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports <strong>block production</strong> and <strong>transaction packaging</strong>.</p>
 <p><strong>Important Notes</strong>:</p>
@@ -1688,63 +1781,50 @@ git checkout -t origin/master
 <div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
 </code></pre></div>
 <h3 id="master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes<a class="headerlink" href="#master-slave-mode-for-block-production-fullnodes" title="Permanent link">&para;</a></h3>
-<p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes, it's necessary to configure <code>node.backup</code> in each node's configuration file. The description of <code>node.backup</code> configuration items is as follows:</p>
-<div class="highlight"><pre><span></span><code>node.backup {
-  # udp listen port, each member should have the same configuration
-  port = 10001
+<p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes <strong>(Recommended number: 2)</strong>, it's necessary to configure <code>node.backup</code> in each node's configuration file. The description of <code>node.backup</code> configuration items is as follows:</p>
+<p><div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
+<span class="w">  </span><span class="c1"># udp listen port, each member should have the same configuration</span>
+<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
 
-  # my priority, each member should use different priority
-  priority = 8
+<span class="w">  </span><span class="c1"># my priority, each member should use different priority</span>
+<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
 
-  # time interval to send keepAlive message, each member should have the same configuration unit: ms
-  keepAliveInterval = 3000
+<span class="w">  </span><span class="c1"># time interval to send keepAlive message, each member should have the same configuration unit: ms</span>
+<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
 
-  # peer&#39;s ip list, can&#39;t contain myself
-  members = [
-    # &quot;ip&quot;,
-    # &quot;ip&quot;
-  ]
-}
-```ini
-For example, if an account with block production rights deploys three nodes with IPs 192.168.0.100, 192.168.0.101, and 192.168.0.102 respectively, their `node.backup` configurations should be as follows:
-
-- Configuration for IP 192.168.0.100
-```ini
-node.backup {
-  port = 10001
-  priority = 8
-  keepAliveInterval = 3000
-  members = [
-    &quot;192.168.0.101&quot;,
-    &quot;192.168.0.102&quot;
-  ]
-}
+<span class="w">  </span><span class="c1"># peers&#39; IP list, must not include myself</span>
+<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="c1"># &quot;ip&quot;,</span>
+<span class="w">    </span><span class="c1"># &quot;ip&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="na">}</span>
 </code></pre></div>
+For example, if an account with block production rights deploys two nodes with IPs 192.168.0.100 and 192.168.0.101 respectively, their <code>node.backup</code> configurations should be as follows:</p>
 <ul>
-<li>Configuration for IP 192.168.0.101</li>
+<li>
+<p>Configuration for IP 192.168.0.100
+<div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
+<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
+<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
+<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
+<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">&quot;192.168.0.101&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="na">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Configuration for IP 192.168.0.101</p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code>node.backup {
-  port = 10001
-  priority = 7
-  keepAliveInterval = 3000
-  members = [
-    &quot;192.168.0.100&quot;,
-    &quot;192.168.0.102&quot;
-  ]
-}
-</code></pre></div>
-<ul>
-<li>Configuration for IP 192.168.0.102</li>
-</ul>
-<div class="highlight"><pre><span></span><code>node.backup {
-  port = 10001
-  priority = 6
-  keepAliveInterval = 3000
-  members = [
-    &quot;192.168.0.100&quot;,
-    &quot;192.168.0.101&quot;
-  ]
-}
+<div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
+<span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
+<span class="w">  </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7</span>
+<span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
+<span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">&quot;192.168.0.100&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="na">}</span>
 </code></pre></div>
 <p><strong>Note</strong>:</p>
 <ul>
