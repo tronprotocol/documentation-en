@@ -35,6 +35,7 @@ You can directly download the official client [here](https://github.com/tronprot
 
 ### Prerequisites Before Compiling java-tron
 Before compiling java-tron, make sure you have:
+
 - Operating system: `Linux` or `MacOS` (Windows is not supported).
 - Git and correct JDK version installed based on your CPU architecture.
 
@@ -53,16 +54,18 @@ uname -m
 ```
 
 - If your architecture is `x86_64` (Intel/AMD 64-bit):
-  - Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
-  - Verify:
+
+    - Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+    - Verify:
     ```bash
     java -version
     ```
     The output should show a version starting with `1.8`.
 
 - If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
-  - Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17
-  - Verify:
+
+    - Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17
+    - Verify:
     ```bash
     java -version
     ```
@@ -141,6 +144,7 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 **General & Memory Parameters:**
 
 *   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
+
     > For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
     > For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
 *   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
@@ -159,6 +163,7 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 *   `-XX:+PrintGCDetails`, `-XX:+PrintGCDateStamps`, `-Xloggc:gc.log`: Legacy GC logging settings.
 
 **JDK 17 (ZGC) Specific:**
+
 *   `-XX:+UseZGC`: Enables ZGC, a scalable low-latency garbage collector.
 *   `-Xlog:gc...`: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).
 
