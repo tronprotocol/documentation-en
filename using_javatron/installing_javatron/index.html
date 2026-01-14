@@ -1650,9 +1650,11 @@
 <h2 id="obtaining-the-java-tron-client">Obtaining the java-tron Client<a class="headerlink" href="#obtaining-the-java-tron-client" title="Permanent link">&para;</a></h2>
 <p>You can directly download the official client <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, or you can compile the source code yourself to package the client.</p>
 <h3 id="prerequisites-before-compiling-java-tron">Prerequisites Before Compiling java-tron<a class="headerlink" href="#prerequisites-before-compiling-java-tron" title="Permanent link">&para;</a></h3>
-<p>Before compiling java-tron, make sure you have:
-- Operating system: <code>Linux</code> or <code>MacOS</code> (Windows is not supported).
-- Git and correct JDK version installed based on your CPU architecture.</p>
+<p>Before compiling java-tron, make sure you have:</p>
+<ul>
+<li>Operating system: <code>Linux</code> or <code>MacOS</code> (Windows is not supported).</li>
+<li>Git and correct JDK version installed based on your CPU architecture.</li>
+</ul>
 <p>Step 1: Verify Git is installed</p>
 <p>If Git is not installed, download it from <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>.</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>--version
@@ -1661,22 +1663,26 @@
 <div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-m
 </code></pre></div>
 <ul>
-<li>If your architecture is <code>x86_64</code> (Intel/AMD 64-bit):</li>
-<li>Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</li>
 <li>
-<p>Verify:
-    <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
+<p>If your architecture is <code>x86_64</code> (Intel/AMD 64-bit):</p>
+<ul>
+<li>Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</li>
+<li>Verify:
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
 </code></pre></div>
-    The output should show a version starting with <code>1.8</code>.</p>
+The output should show a version starting with <code>1.8</code>.</li>
+</ul>
 </li>
 <li>
 <p>If your architecture is <code>arm64</code> or <code>aarch64</code> (Apple Silicon / ARM servers):</p>
-</li>
+<ul>
 <li>Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17</li>
 <li>Verify:
-    <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
 </code></pre></div>
-    The output should show a version starting with <code>17</code>.</li>
+The output should show a version starting with <code>17</code>.</li>
+</ul>
+</li>
 </ul>
 <h3 id="compiling-java-tron-source-code">Compiling java-tron Source Code<a class="headerlink" href="#compiling-java-tron-source-code" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1743,10 +1749,16 @@ cd java-tron
 <h4 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h4>
 <p><strong>General &amp; Memory Parameters:</strong></p>
 <ul>
-<li><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.
-    &gt; For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.
-    &gt; For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</li>
-<li><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</li>
+<li>
+<p><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.</p>
+<blockquote>
+<p>For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.
+For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</p>
+</blockquote>
+</li>
+<li>
+<p><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</p>
+</li>
 <li><code>-XX:MaxDirectMemorySize</code>: Limits the memory used by NIO Direct Byte Buffers.</li>
 <li><code>-XX:ReservedCodeCacheSize</code>: Sets the maximum size of the JIT code cache.</li>
 <li><code>-XX:+UseCodeCacheFlushing</code>: Allows the JVM to flush the code cache when full.</li>
@@ -1761,9 +1773,11 @@ cd java-tron
 <li><code>-XX:+UseCMSInitiatingOccupancyOnly</code> &amp; <code>-XX:CMSInitiatingOccupancyFraction=70</code>: Forces CMS to start collection when Old Gen is 70% full.</li>
 <li><code>-XX:+PrintGCDetails</code>, <code>-XX:+PrintGCDateStamps</code>, <code>-Xloggc:gc.log</code>: Legacy GC logging settings.</li>
 </ul>
-<p><strong>JDK 17 (ZGC) Specific:</strong>
-*   <code>-XX:+UseZGC</code>: Enables ZGC, a scalable low-latency garbage collector.
-*   <code>-Xlog:gc...</code>: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).</p>
+<p><strong>JDK 17 (ZGC) Specific:</strong></p>
+<ul>
+<li><code>-XX:+UseZGC</code>: Enables ZGC, a scalable low-latency garbage collector.</li>
+<li><code>-Xlog:gc...</code>: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).</li>
+</ul>
 <h3 id="starting-a-block-production-node">Starting a Block Production Node<a class="headerlink" href="#starting-a-block-production-node" title="Permanent link">&para;</a></h3>
 <p>By adding the <code>--witness</code> parameter to the FullNode startup command above, the <code>FullNode</code> will run as a <strong>Block Production Node</strong> (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports <strong>block production</strong> and <strong>transaction packaging</strong>.</p>
 <p><strong>Important Notes</strong>:</p>
