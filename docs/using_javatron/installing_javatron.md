@@ -105,7 +105,8 @@ Below is the command to start a **Mainnet FullNode**, specifying the configurati
 ```
 $ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &
 ```
-*   `nohup ... &`: Runs the command in the background and ignores the hangup signal.
+
+* `nohup ... &`: Runs the command in the background and ignores the hangup signal.
 * The `Xms9G` parameter suggests the minimal heap size to `9 GB` for connecting to Mainnet.
 * To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided above.
 
@@ -139,9 +140,10 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 
 #### Java Startup Parameters Explanation
 **General & Memory Parameters:**
+
 *   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
-  > - For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
-  > - For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
+    > For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
+    > For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
 *   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
 *   `-XX:MaxDirectMemorySize`: Limits the memory used by NIO Direct Byte Buffers.
 *   `-XX:ReservedCodeCacheSize`: Sets the maximum size of the JIT code cache.
@@ -149,6 +151,7 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 *   `-XX:+HeapDumpOnOutOfMemoryError`: Dumps the heap to a file if an OutOfMemoryError occurs.
 
 **JDK 8 (CMS GC) Specific:**
+
 *   `-XX:+UseConcMarkSweepGC`: Enables the Concurrent Mark Sweep (CMS) garbage collector.
 *   `-XX:NewRatio=3`: Sets the ratio of Old Generation to Young Generation to 3:1.
 *   `-XX:+CMSScavengeBeforeRemark`: Triggers a minor GC before the CMS Remark phase to reduce pause time.
