@@ -33,7 +33,7 @@ There are two main types of accounts on the TRON network:
 
 To begin interacting with the TRON network, you first need to create an Externally Owned Account (hereafter referred to as an "account"). There are several ways to create a TRON account, including using Software Development Kits (SDKs) like [Trident-java](https://tronprotocol.github.io/trident/) and [TronWeb](https://tronweb.network/), or various wallet applications (such as the browser extension wallet, [TronLink](https://www.tronlink.org/)). 
 
-This guide will use the command-line tool `wallet-cli` to demonstrate the most fundamental account operations.
+This guide use the command-line tool `wallet-cli` to demonstrate fundamental account operations.
 
 > **About `wallet-cli`**
 >
@@ -83,18 +83,23 @@ currentNetwork: NILE
 
 **1. Register Account**
 
-At the prompt, enter the `registerwallet` command and follow the instructions to set a secure password. This command generates a new TRON network account and registers it with `wallet-cli`, which means its encrypted private key is stored in the local keystore for future use in signing transactions.
+At the prompt, enter the `registerwallet` command and follow the instructions to set a secure password. This command generates a new TRON network account and registers it with `wallet-cli`, storing the encrypted private key locally for future transaction signing.
 
 
 ```
 wallet> registerwallet
 Please input password.
 password: 
-user defined config file doesn't exists, use default config file in jar
-WalletApi getRpcVsersion: 2
 Please input password again.
-password: 
-Register a wallet successful, keystore file name is UTC--2022-07-04T06-35-35.304000000Z--TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz.json
+Please enter the number of mnemonic words 
+        Default: 12 mnemonic words, 
+        Enter 24 to use 24 mnemonic words
+        Press Enter to use the default (12). 
+        Valid inputs are "12" or "24"
+mnemonic file : ./Mnemonic/(your wallet address).json
+Please name your wallet: 
+Register a wallet  successful, keystore file : ./Wallet/(your wallet address).json
+(Note: If you delete an account, make sure to delete the wallet file and mnemonic file) 
 wallet> 
 ```
 
@@ -149,7 +154,7 @@ After completing all the above preparations, you now have a properly configured 
 <a id="start-node"></a>
 ## Skill 2: Start and Run a Java-tron Node
 
-This module will guide you through launching a java-tron instance, turning your computer into a TRON FullNode. Running your own node provides you with the most stable, reliable, and rate-unlimited network access. The network used in this module is the TRON [Nile Testnet](https://nileex.io/).
+This module guide you through launching a java-tron instance, turning your computer into a TRON FullNode. Running your own node provides you with the most stable, reliable, and rate-unlimited network access. The network used in this module is the TRON [Nile Testnet](https://nileex.io/).
 
 > Tips:
 > 
@@ -257,14 +262,13 @@ The result is as follows:
 ```
 {
 	"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-	"balance": 93643857919,
-	"create_time": 1619681898000,
-	"latest_opration_time": 1655358327000,
-	"is_witness": true,
-	"asset_issued_name": "TestTRC10T",
-	"latest_consume_free_time": 1652948766000,
+	"balance": 5,
+	"create_time": 1663487574000,
+	"net_window_size": 28800000,
+	"net_window_optimized": true,
 	"account_resource": {
-		"latest_consume_time_for_energy": 1655358327000
+		"energy_window_size": 28800000
+        "energy_window_optimized": true
 	},
     
         ......
@@ -312,7 +316,7 @@ wallet> sendcoin TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
 	"raw_data_hex":"0a02cbc322088581ae7e29258a5240a89aefbf9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30"
 }
 before sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240a89aefbf9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30
-Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
+Please confirm and input your permission id, if input y/Y means default 0, other non-numeric characters will cancel transaction.
 ```
 
 This command returns a transaction pending confirmation. Please follow the steps below to complete the signing and broadcasting:
@@ -322,13 +326,15 @@ This command returns a transaction pending confirmation. Please follow the steps
 3. Authorize with Password: Enter the password for the selected account. `wallet-cli` will then sign the transaction and broadcast it to the java-tron node, completing the transaction.
 
 ```
-Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
+Please confirm and input your permission id, if input y/Y means default 0, other non-numeric characters will cancel transaction.
 y
 Please choose your key for sign.
-The 1th keystore file name is .DS_Store
-The 2th keystore file name is UTC--2022-07-04T06-35-35.304000000Z--TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz.json
-The 3th keystore file name is UTC--2022-06-21T09-51-26.367000000Z--TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM.json
-Please choose between 1 and 3
+
+No.  Address                  Name
+1    (your wallet address)
+2    (your wallet address)
+3    (your wallet address)
+Please choose between 1 and 3, or enter search to search wallets
 3
 Please input your password.
 password: 
@@ -405,9 +411,9 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
 
 ### Method Two: Using `cURL` (Direct HTTP API Call)
 
-While `wallet-cli` provides user-friendly interactive commands, more advanced developers or those working in automated scripting scenarios may find it more flexible and efficient to interact with a java-tron node directly via its HTTP API. This section demonstrates how to use `cURL` (a command-line tool for sending HTTP requests) to call the java-tron node's HTTP API to perform core functions like querying account balances and sending transactions.
+While `wallet-cli` provides user-friendly interactive commands, advanced developers or those working on automated scripts scenarios may find it more flexible and efficient to interact with a java-tron node directly via its HTTP API. This section demonstrates how to use `cURL` (a command-line tool for sending HTTP requests) to call the java-tron node's HTTP API to perform core functions like querying account balances and sending transactions.
 
-Unlike `wallet-cli`, which automatically handles signing and broadcasting, sending a transaction by directly calling the API requires you to manually complete a standard three-step process: **Create -> Sign -> Broadcast**. This section will show you how to execute this process.
+Unlike `wallet-cli`, which automatically handles signing and broadcasting, using the API requires you to manually complete a three-step process: **Create -> Sign -> Broadcast**. This section will show you how to execute this process.
 
 #### Prerequisite: Query Account Balance
 
@@ -436,7 +442,7 @@ In the returned JSON data, the `balance` field represents the TRX balance of the
 
 Now, let's use a TRX transfer as an example to fully demonstrate the "Create-Sign-Broadcast" three-step process for sending a transaction to java-tron.
 
-Srtep 1 - Create a Transaction
+Step 1 - Create a Transaction
 
   Use the FullNode's `wallet/createtransaction` HTTP endpoint to create an unsigned TRX transfer transaction. In the request body, specify the sender (`owner_address`), recipient (`to_address`), and amount (`amount`).
     

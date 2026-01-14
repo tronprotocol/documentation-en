@@ -33,21 +33,58 @@ For a Super Representative (SR) node acting as a **block production node**, the 
 
 You can directly download the official client [here](https://github.com/tronprotocol/java-tron/releases), or you can compile the source code yourself to package the client.
 
+### Prerequisites Before Compiling java-tron
+Before compiling java-tron, make sure you have:
+- Operating system: `Linux` or `MacOS` (Windows is not supported).
+- Git and correct JDK version installed based on your CPU architecture.
+
+Step 1: Verify Git is installed
+
+If Git is not installed, download it from [https://git-scm.com/downloads](https://git-scm.com/downloads).
+
+```bash
+git --version
+```
+
+Step 2: Check your CPU architecture and install the correct JDK
+
+```bash
+uname -m
+```
+
+- If your architecture is `x86_64` (Intel/AMD 64-bit):
+  - Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+  - Verify:
+    ```bash
+    java -version
+    ```
+    The output should show a version starting with `1.8`.
+
+- If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
+  - Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17
+  - Verify:
+    ```bash
+    java -version
+    ```
+    The output should show a version starting with `17`.
+
 ### Compiling java-tron Source Code
 
-Before you begin compiling, ensure that **git** is installed on your system.
-
-1. First, clone the java-tron source code to your local machine using the `git` command and switch to the `master` branch:
-```
-git clone https://github.com/tronprotocol/java-tron.git
-git checkout -t origin/master
-```
-2. Then, execute the following commands to compile the java-tron source code:
-```
-cd java-tron
-./gradlew clean build -x test
-```
+1. Clone the repo and switch to the `master` branch:
+    ```
+    git clone https://github.com/tronprotocol/java-tron.git
+    git checkout -t origin/master
+    cd java-tron
+    ```
+2. Then, run the following commands to build java-tron:
+    ```
+    ./gradlew clean build -x test
+    ```
     * The parameter `-x test` indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.
+    * If you encounter `DependencyVerificationException` during the build, refresh dependencies and regenerate verification metadata:
+      ```
+      ./gradlew clean build -x test --refresh-dependencies
+      ```
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
 ## Starting a java-tron Node
@@ -59,21 +96,71 @@ You can choose different configuration files to connect the java-tron node to di
     * Nile Testnet: https://nileex.io/
     * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
 
-### Starting a FullNode
+### Quick Start a FullNode 
 
 A **FullNode** serves as an entry point to the TRON network, possesses complete historical data, and provides external access via **HTTP API**, **gRPC API**, and **JSON-RPC API**. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.
 
 Below is the command to start a **Mainnet FullNode**, specifying the configuration file with the `-c` parameter:
 
 ```
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf
+$ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &
+```
+*   `nohup ... &`: Runs the command in the background and ignores the hangup signal.
+* The `Xms9G` parameter suggests the minimal heap size to `9 GB` for connecting to Mainnet.
+* To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided above.
+
+### JVM Parameter Optimization for Mainnet FullNode Deployment
+For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:
+
+#### x86_64 (JDK 8)
+```bash
+$ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
+             -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+             -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+             -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+             -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
+             -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+             -XX:+HeapDumpOnOutOfMemoryError \
+             -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+             -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+```
+#### ARM64 (JDK 17)
+```bash
+$ nohup java -Xmx9G -XX:+UseZGC \
+             -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+             -XX:ReservedCodeCacheSize=256m \
+             -XX:+UseCodeCacheFlushing \
+             -XX:MetaspaceSize=256m \
+             -XX:MaxMetaspaceSize=512m \
+             -XX:MaxDirectMemorySize=1g \
+             -XX:+HeapDumpOnOutOfMemoryError \
+             -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
 
-* `-XX:+UseConcMarkSweepGC`: Specifies the **Concurrent Mark Sweep (CMS) garbage collector**. This parameter must be placed before the `-jar` parameter.
-* `-Xms`: initial value of the Java Virtual Machine (JVM) heap size, `-Xmx`: maximum value of the JVM heap size, `-XX:NewRatio`: ratio of the old generation to the young generation in the heap, for example, `-XX:NewRatio=2` means the size of the old generation is twice that of the young generation.
-    * For ordinary FullNode, the recommended setting is: `-Xms12G -Xmx12G -XX:NewRatio=3`
-    * For block-producing FullNode, the recommended setting is: `-Xms24G -Xmx24G -XX:NewRatio=3`
-* To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided at the beginning of this section.
+#### Java Startup Parameters Explanation
+**General & Memory Parameters:**
+*   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
+  > - For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
+  > - For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
+*   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
+*   `-XX:MaxDirectMemorySize`: Limits the memory used by NIO Direct Byte Buffers.
+*   `-XX:ReservedCodeCacheSize`: Sets the maximum size of the JIT code cache.
+*   `-XX:+UseCodeCacheFlushing`: Allows the JVM to flush the code cache when full.
+*   `-XX:+HeapDumpOnOutOfMemoryError`: Dumps the heap to a file if an OutOfMemoryError occurs.
+
+**JDK 8 (CMS GC) Specific:**
+*   `-XX:+UseConcMarkSweepGC`: Enables the Concurrent Mark Sweep (CMS) garbage collector.
+*   `-XX:NewRatio=3`: Sets the ratio of Old Generation to Young Generation to 3:1.
+*   `-XX:+CMSScavengeBeforeRemark`: Triggers a minor GC before the CMS Remark phase to reduce pause time.
+*   `-XX:+ParallelRefProcEnabled`: Enables parallel reference processing to reduce pause times.
+*   `-XX:+UseCMSInitiatingOccupancyOnly` & `-XX:CMSInitiatingOccupancyFraction=70`: Forces CMS to start collection when Old Gen is 70% full.
+*   `-XX:+PrintGCDetails`, `-XX:+PrintGCDateStamps`, `-Xloggc:gc.log`: Legacy GC logging settings.
+
+**JDK 17 (ZGC) Specific:**
+*   `-XX:+UseZGC`: Enables ZGC, a scalable low-latency garbage collector.
+*   `-Xlog:gc...`: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).
+
+
 
 ### Starting a Block Production Node
 
