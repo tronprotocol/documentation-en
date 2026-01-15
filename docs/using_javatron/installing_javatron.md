@@ -96,7 +96,7 @@ You can choose different configuration files to connect the java-tron node to di
 
 * For Mainnet FullNode configuration file: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
 * For other network node configuration:
-    * Nile Testnet: please refer to https://nileex.io/
+    * Nile Testnet: please refer to [config-nile.conf](https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf)
     * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
 
 ### Quick Start a FullNode 
