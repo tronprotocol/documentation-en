@@ -55,7 +55,7 @@ uname -m
 
 - If your architecture is `x86_64` (Intel/AMD 64-bit):
 
-    - Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+    - Install Java SE 8 (Oracle JDK 8): [https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
     - Verify:
     ```bash
     java -version
@@ -64,7 +64,7 @@ uname -m
 
 - If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
 
-    - Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17
+    - Install Java SE 17 (JDK 17): [https://www.oracle.com/java/technologies/downloads/#java17](https://www.oracle.com/java/technologies/downloads/#java17)
     - Verify:
     ```bash
     java -version
@@ -148,7 +148,7 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 
     > For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
     > For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
-    
+
 *   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
 *   `-XX:MaxDirectMemorySize`: Limits the memory used by NIO Direct Byte Buffers.
 *   `-XX:ReservedCodeCacheSize`: Sets the maximum size of the JIT code cache.
