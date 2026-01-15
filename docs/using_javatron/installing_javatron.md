@@ -96,7 +96,7 @@ You can choose different configuration files to connect the java-tron node to di
 
 * For Mainnet FullNode configuration file: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
 * For other network node configuration:
-    * Nile Testnet: https://nileex.io/
+    * Nile Testnet: please refer to https://nileex.io/
     * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
 
 ### Quick Start a FullNode 
@@ -113,10 +113,10 @@ $ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &
 * The `Xms9G` parameter suggests the minimal heap size to `9 GB` for connecting to Mainnet.
 * To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided above.
 
-### JVM Parameter Optimization for Mainnet FullNode Deployment
+#### JVM Parameter Optimization for Mainnet FullNode Deployment
 For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:
 
-#### x86_64 (JDK 8)
+##### x86_64 (JDK 8)
 ```bash
 $ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
              -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
@@ -128,7 +128,7 @@ $ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
              -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
              -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
-#### ARM64 (JDK 17)
+##### ARM64 (JDK 17)
 ```bash
 $ nohup java -Xmx9G -XX:+UseZGC \
              -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
@@ -141,14 +141,12 @@ $ nohup java -Xmx9G -XX:+UseZGC \
              -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
 
-#### Java Startup Parameters Explanation
+##### Java Startup Parameters Explanation
 **General & Memory Parameters:**
 
 *   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
-
-    > For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
-    > For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
-
+    * For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
+    * For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
 *   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
 *   `-XX:MaxDirectMemorySize`: Limits the memory used by NIO Direct Byte Buffers.
 *   `-XX:ReservedCodeCacheSize`: Sets the maximum size of the JIT code cache.
