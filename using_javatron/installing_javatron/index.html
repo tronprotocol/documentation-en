@@ -465,18 +465,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#quick-start-a-fullnode" class="md-nav__link" >
+  <a href="#starting-a-fullnode" class="md-nav__link" >
     <span class="md-ellipsis">
-      Quick Start a FullNode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" class="md-nav__link" >
-    <span class="md-ellipsis">
-      JVM Parameter Optimization for Mainnet FullNode Deployment
+      Starting a FullNode
     </span>
   </a>
   
@@ -1666,7 +1657,7 @@
 <li>
 <p>If your architecture is <code>x86_64</code> (Intel/AMD 64-bit):</p>
 <ul>
-<li>Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</li>
+<li>Install Java SE 8 (Oracle JDK 8): <a href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</a></li>
 <li>Verify:
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
 </code></pre></div>
@@ -1676,7 +1667,7 @@ The output should show a version starting with <code>1.8</code>.</li>
 <li>
 <p>If your architecture is <code>arm64</code> or <code>aarch64</code> (Apple Silicon / ARM servers):</p>
 <ul>
-<li>Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17</li>
+<li>Install Java SE 17 (JDK 17): <a href="https://www.oracle.com/java/technologies/downloads/#java17">https://www.oracle.com/java/technologies/downloads/#java17</a></li>
 <li>Verify:
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
 </code></pre></div>
@@ -1707,12 +1698,12 @@ cd java-tron
 <ul>
 <li>For Mainnet FullNode configuration file: <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a></li>
 <li>For other network node configuration:<ul>
-<li>Nile Testnet: https://nileex.io/</li>
+<li>Nile Testnet: please refer to <a href="https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf">config-nile.conf</a></li>
 <li>Private Network: please refer to <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network</a></li>
 </ul>
 </li>
 </ul>
-<h3 id="quick-start-a-fullnode">Quick Start a FullNode<a class="headerlink" href="#quick-start-a-fullnode" title="Permanent link">&para;</a></h3>
+<h3 id="starting-a-fullnode">Starting a FullNode<a class="headerlink" href="#starting-a-fullnode" title="Permanent link">&para;</a></h3>
 <p>A <strong>FullNode</strong> serves as an entry point to the TRON network, possesses complete historical data, and provides external access via <strong>HTTP API</strong>, <strong>gRPC API</strong>, and <strong>JSON-RPC API</strong>. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.</p>
 <p>Below is the command to start a <strong>Mainnet FullNode</strong>, specifying the configuration file with the <code>-c</code> parameter:</p>
 <div class="highlight"><pre><span></span><code>$ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &amp;
@@ -1722,9 +1713,9 @@ cd java-tron
 <li>The <code>Xms9G</code> parameter suggests the minimal heap size to <code>9 GB</code> for connecting to Mainnet.</li>
 <li>To start a <strong>Nile Testnet FullNode</strong> or <strong>Private Network FullNode</strong>, use the corresponding configuration file links provided above.</li>
 </ul>
-<h3 id="jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for Mainnet FullNode Deployment<a class="headerlink" href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" title="Permanent link">&para;</a></h3>
+<h4 id="jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for Mainnet FullNode Deployment<a class="headerlink" href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" title="Permanent link">&para;</a></h4>
 <p>For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:</p>
-<h4 id="x86_64-jdk-8">x86_64 (JDK 8)<a class="headerlink" href="#x86_64-jdk-8" title="Permanent link">&para;</a></h4>
+<h5 id="x86_64-jdk-8">x86_64 (JDK 8)<a class="headerlink" href="#x86_64-jdk-8" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx12G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
 <span class="w">             </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
 <span class="w">             </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
@@ -1735,7 +1726,7 @@ cd java-tron
 <span class="w">             </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
 <span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<h4 id="arm64-jdk-17">ARM64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h4>
+<h5 id="arm64-jdk-17">ARM64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
 <span class="w">             </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
 <span class="w">             </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
@@ -1746,19 +1737,15 @@ cd java-tron
 <span class="w">             </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
 <span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<h4 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h4>
+<h5 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h5>
 <p><strong>General &amp; Memory Parameters:</strong></p>
 <ul>
-<li>
-<p><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.</p>
-<blockquote>
-<p>For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.
-For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</p>
-</blockquote>
+<li><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.<ul>
+<li>For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.</li>
+<li>For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</li>
+</ul>
 </li>
-<li>
-<p><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</p>
-</li>
+<li><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</li>
 <li><code>-XX:MaxDirectMemorySize</code>: Limits the memory used by NIO Direct Byte Buffers.</li>
 <li><code>-XX:ReservedCodeCacheSize</code>: Sets the maximum size of the JIT code cache.</li>
 <li><code>-XX:+UseCodeCacheFlushing</code>: Allows the JVM to flush the code cache when full.</li>
