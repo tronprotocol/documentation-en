@@ -185,12 +185,12 @@ nohup java -jar ./build/libs/FullNode.jar -c config-nile.conf &
 
 Nile resources: explorer, faucet, wallet, developer docs, and network statistics at [nileex.io](https://nileex.io/).
 
-### 3. Access Shasta test network
+### Access Shasta test network
 Shasta does not accept public node peers. Programmatic access is available via TronGrid endpoints; see [TronGrid Service](https://developers.tron.network/docs/trongrid) for details.
 
 Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shastaex.io](https://shasta.tronex.io/).
 
-### 4. Set up a private network
+### Set up a private network
 Setting up a private network for testing or development, follow the [Private Network guidance](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/).
 
 
