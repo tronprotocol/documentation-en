@@ -190,9 +190,8 @@ Shasta does not accept public node peers. Programmatic access is available via T
 
 Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shastaex.io](https://shasta.tronex.io/).
 
-### Set up a private network
+### Starting a FullNode on a private network
 Setting up a private network for testing or development, follow the [Private Network guidance](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/).
-
 
 ### Starting a Block Production Node
 
