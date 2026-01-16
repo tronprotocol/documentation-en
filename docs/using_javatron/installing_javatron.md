@@ -2,7 +2,10 @@
 
 This document guides developers on how to deploy a TRON java-tron node on `Linux` or `macOS` operating systems.
 
-**Important Note:** The java-tron node currently requires **Oracle JDK 1.8**. Other JDK versions are not supported.
+Currently, a java-tron node supports running on both x86 and ARM architectures(Support for the ARM architecture starts from version 4.8.1). JDK support varies by architecture:
+
+- On x86 architecture, currently only Oracle JDK 8 is supported.
+- On ARM architecture, currently only JDK 17 is supported.
 
 
 ## Hardware Configuration Requirements

@@ -5,7 +5,7 @@ This document will guide you through setting up a basic TRON private network. Th
 
 Before you begin, please ensure your development environment meets the following requirements:
 
-- **Java Development Kit (JDK)**: You must have Oracle JDK 1.8 installed.
+- **Java Development Kit (JDK)**: On x86 architecture, Oracle JDK 8 must be installed; on ARM architecture, JDK 17 must be installed.
 - **TRON Accounts**: You need to create at least two TRON network addresses in advance and securely store the addresses and their corresponding private keys. One address will serve as the initial SR node (Block Production), and the other will be a regular account.
 - **Address Creation Tools**: You can use any of the following tools to generate and manage your TRON accounts:
     - [Wallet-cli](https://github.com/tronprotocol/wallet-cli): An official command-line wallet tool, suitable for server environments.
