@@ -940,6 +940,41 @@ Result
 
 ```
 
+### eth_getBlockReceipts
+
+*Returns transaction receipts for all transactions in the specified block. Returns null for the genesis block, blocks that have been pruned by light nodes, or blocks that have not yet been produced.*
+
+**Parameters**
+
+String - block number, it supports three types: block number represented as hexadecimal string, blockHash (with or without the "0x" prefix), or tags ("latest", "earliest", "finalized").
+
+**Returns**
+
+An array of objects - An array of transaction receipt objects, each object matches the return value of [eth_getTransactionReceipt](#eth_gettransactionreceipt)
+
+**Example**
+
+```curl
+
+curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
+
+	"jsonrpc": "2.0",
+
+	"method": "eth_getBlockReceipts",
+
+	"params": ["0x5416c22"],
+
+	"id": 64
+
+}'
+
+```
+
+Result
+
+```json
+   {"jsonrpc":"2.0","id":1,"result":null}
+```
 
 ### eth_getWork
 

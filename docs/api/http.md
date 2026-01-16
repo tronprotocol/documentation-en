@@ -1369,6 +1369,7 @@ The following are voting and SR related APIs:
 - [wallet/createwitness](#walletcreatewitness)
 - [wallet/updatewitness](#walletupdatewitness)
 - [wallet/listwitnesses](#walletlistwitnesses)
+- [wallet/getpaginatednowwitnesslist](#walletgetpaginatednowwitnesslist)
 - [wallet/withdrawbalance](#walletwithdrawbalance)
 - [wallet/votewitnessaccount](#walletvotewitnessaccount)
 - [wallet/getBrokerage](#walletgetbrokerage)
@@ -1417,6 +1418,23 @@ curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
 Parameter: None
 
 Return Value: A list of all Super Representative information.
+
+#### wallet/getpaginatednowwitnesslist  
+Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted by real-time vote count in descending order.
+```
+curl -X POST  http://127.0.0.1:8090/wallet/getpaginatednowwitnesslist -d '{ 
+  "offset": 0,                          
+  "limit": 100,                         
+  "visible": true                       
+}'                                      
+```
+Parameters:  
+
+* `offset`: `long` type, indicates the starting index, must be `>=0`.  
+* `limit`: `long` type, indicates the number of witnesses to return, must be `>0`, with an upper limit of system constant `1000`.  
+* `visible`: `boolean` type, optional parameter, defaults to false, controls the format of the returned address.  
+
+Return value: A paginated list of witnesses meeting the parameter conditions, sorted by real-time vote count in descending order.
 
 #### wallet/withdrawbalance
 Description:** SR or users withdraw rewards to their balance. This can be done once every 24 hours.
@@ -2041,6 +2059,23 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/listwitnesses
 Parameter: None
 
 Return Value: A list of all witness information.
+
+#### walletsolidity/getpaginatednowwitnesslist  
+Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted by real-time vote count in descending order.
+```
+curl -X POST  http://127.0.0.1:8091/wallet/getpaginatednowwitnesslist -d '{ 
+  "offset": 0,                          
+  "limit": 100,                         
+  "visible": true                       
+}'                                      
+```
+Parameters:  
+
+* `offset`: `long` type, indicates the starting index, must be `>=0`.  
+* `limit`: `long` type, indicates the number of witnesses to return, must be `>0`, with an upper limit of system constant `1000`.  
+* `visible`: `boolean` type, optional parameter, defaults to false, controls the format of the returned address.  
+
+Return value: A paginated list of witnesses meeting the parameter conditions, sorted by real-time vote count in descending order.
 
 ### TRC-10 Token
 
