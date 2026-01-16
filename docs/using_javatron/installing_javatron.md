@@ -123,7 +123,7 @@ nohup java -Xms9G -jar ./build/libs/FullNode.jar &
 Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.
 
 #### JVM Parameter Optimization for Mainnet FullNode Deployment
-For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:
+For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters with respective architectures:
 
 ##### x86_64 (JDK 8)
 ```bash
