@@ -169,6 +169,25 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 
 
 
+### Starting a SolidityNode
+A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
+
+```
+node {
+  # trust node for solidity node
+  # trustNode = "ip:port"
+  trustNode = "127.0.0.1:50051"
+  ...
+}
+```
+
+Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, SolidityNode is started using the command-line parameter `--solidity`, as shown below:
+
+```
+java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --solidity -c config.conf
+```
+
+
 ### Starting a Block Production Node
 
 By adding the `--witness` parameter to the FullNode startup command above, the `FullNode` will run as a **Block Production Node** (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports **block production** and **transaction packaging**.
@@ -274,7 +293,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
         localwitnesskeystore = ["B/localwitnesskeystore.json"]
         ```
 
-    * You can generate the `keystore` file and password using the `registerwallet` command from the `wallet-cli` project.
+    * You can use the `registerwallet` command from the `wallet-cli` project to generate the `keystore` file and password, or use the command `java -jar FullNode.jar --keystore-factory` to generate them (starting from version 4.8.1, `KeystoreFactory.jar` is no longer provided).
 
 2. **Starting a Block Production Node**:
 
