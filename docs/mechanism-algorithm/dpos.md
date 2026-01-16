@@ -96,9 +96,7 @@ TRON has established an **irreversible block** (or **solidified block**) mechani
 
 Newly produced blocks initially remain in an unconfirmed state. When a block is acknowledged by at least **70%** (i.e., $27 \times 70\% \approx 19$ (rounded up) SRs), that block is considered an **irreversible block**, commonly referred to as a **solidified block**. At this point, the transactions contained within the solidified block have been confirmed by the entire blockchain network.
 
-The "acknowledgment" of an unconfirmed block here occurs when other SRs produce subsequent blocks after that block. For example, as shown in Figure d, when SR C produces block 103, SR E produces block 104' based on block 103, and SR G, A, and B produce blocks 105', 106', and 107' respectively. These are essentially subsequent blocks to block 103, and therefore, they signify acknowledgment of block 103 produced by C.
-
-Thus, when block 121 is produced, block 103 becomes a solidified block because it now has 19 subsequent blocks. It's important to emphasize that the SRs who produced these 19 blocks must be **different from each other** and **different** from the SR who produced block 103.
+The "acknowledgment" of an unconfirmed block here occurs when other SRs produce subsequent blocks after that block. For example, as shown in Figure d, when SR C produces block 103, SR E produces block 104' based on block 103, and SR G, A, and B produce blocks 105', 106', and 107' respectively. These are essentially subsequent blocks to block 103, and therefore, they signify acknowledgment of block 103 produced by C. Thus, when block 121' is produced, block 103 becomes a solidified block because it now has 18 subsequent blocks. It's important to emphasize that the SRs who produced these 18 blocks must be **different from each other** and **different** from the SR who produced block 103, this ensures that the block has received confirmations from 19 distinct SRs, including the producer of the block.
 
 ### Longest Chain Principle
 
