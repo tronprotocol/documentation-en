@@ -123,7 +123,7 @@ nohup java -Xms9G -jar ./build/libs/FullNode.jar &
 Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.
 
 #### JVM Parameter Optimization for Mainnet FullNode Deployment
-For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters with respective architectures:
+For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters for different architectures:
 
 ##### x86_64 (JDK 8)
 ```bash
@@ -191,7 +191,7 @@ Shasta does not accept public node peers. Programmatic access is available via T
 Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shastaex.io](https://shasta.tronex.io/).
 
 ### Starting a FullNode on a private network
-Setting up a private network for testing or development, follow the [Private Network guidance](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/).
+To set up a private network for testing or development, follow the [Private Network guidance](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/).
 
 ### Starting a Block Production Node
 
