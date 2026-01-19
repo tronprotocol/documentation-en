@@ -36,7 +36,7 @@ You can directly download the official client [here](https://github.com/tronprot
 ### Prerequisites Before Compiling java-tron
 Before compiling java-tron, make sure you have:
 
-- Operating system: `Linux` or `MacOS` (Windows is not supported).
+- Operating system: `Linux` or `macOS` (`Windows` is not supported).
 - Git and correct JDK version installed based on your CPU architecture.
 
 Step 1: Verify Git is installed
