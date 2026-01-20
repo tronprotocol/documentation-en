@@ -115,10 +115,11 @@ Network selection is performed by specifying the appropriate configuration file 
 
 Launch a main-network full node with the built-in default configuration:
 ```bash
-nohup java -Xms9G -jar ./build/libs/FullNode.jar &
+nohup java -jar ./build/libs/FullNode.jar &
 ```
 * `nohup ... &`: Runs the command in the background and ignores the hangup signal.
-* `-Xms9G`: Sets the JVM minimum heap size to `9 GB`.
+
+> For production deployments or long-running Mainnet nodes, please refer to the below [JVM Parameter Optimization for FullNode](#jvm-parameter-optimization-for-mainnet-fullnode-deployment) guide for the recommended Java commands.
 
 Using the below command, you can monitor the blocks syncing progress:
 ```bash
@@ -221,8 +222,10 @@ localwitness = [
 Then execute the following command to start the Block Production Node:
 
 ```
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
+java -jar FullNode.jar --witness -c config.conf
 ```
+> **Note:** For Mainnet SR nodes, please refer to [JVM Parameter Optimization for FullNode](#jvm-parameter-optimization-for-mainnet-fullnode-deployment) for the complete Java commands with different architectures. For 64GB RAM servers, it is recommended to use `-Xms9G -Xmx24G` as the JVM heap size.
+
 
 ### Master-Slave Mode for Block Production FullNodes
 
