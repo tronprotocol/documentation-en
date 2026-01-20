@@ -35,7 +35,8 @@ You can directly download the official client [here](https://github.com/tronprot
 
 ### Prerequisites Before Compiling java-tron
 Before compiling java-tron, make sure you have:
-- Operating system: `Linux` or `MacOS` (Windows is not supported).
+
+- Operating system: `Linux` or `macOS` (`Windows` is not supported).
 - Git and correct JDK version installed based on your CPU architecture.
 
 Step 1: Verify Git is installed
@@ -53,16 +54,18 @@ uname -m
 ```
 
 - If your architecture is `x86_64` (Intel/AMD 64-bit):
-  - Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
-  - Verify:
+
+    - Install Java SE 8 (Oracle JDK 8): [https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
+    - Verify:
     ```bash
     java -version
     ```
     The output should show a version starting with `1.8`.
 
 - If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
-  - Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17
-  - Verify:
+
+    - Install Java SE 17 (JDK 17): [https://www.oracle.com/java/technologies/downloads/#java17](https://www.oracle.com/java/technologies/downloads/#java17)
+    - Verify:
     ```bash
     java -version
     ```
@@ -87,32 +90,49 @@ uname -m
       ```
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
-## Starting a java-tron Node
+## Starting a java-tron Full Node
+A full node acts as a gateway to the TRON network, exposing comprehensive interfaces via HTTP and RPC APIs. Through these endpoints, clients may execute asset transfers, deploy smart contracts, and invoke on-chain logic. It must join a TRON network to participate in the network's consensus and transaction processing.
 
-You can choose different configuration files to connect the java-tron node to different TRON networks:
+### Network Types
 
-* For Mainnet FullNode configuration file: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
-* For other network node configuration:
-    * Nile Testnet: https://nileex.io/
-    * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
+The TRON network is mainly divided into:
 
-### Quick Start a FullNode 
+- **Main Network (Mainnet)**  
+  The primary public blockchain where real value (TRX, TRC-20 tokens, etc.) is transacted, secured by a massive decentralized network.
 
-A **FullNode** serves as an entry point to the TRON network, possesses complete historical data, and provides external access via **HTTP API**, **gRPC API**, and **JSON-RPC API**. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.
+- **[Nile Test Network (Testnet)](https://nileex.io/)**  
+  A forward-looking testnet where new features and governance proposals are launched first for developers to experience. Consequently, its codebase is typically ahead of the Mainnet.
 
-Below is the command to start a **Mainnet FullNode**, specifying the configuration file with the `-c` parameter:
+- **[Shasta Testnet](https://shasta.tronex.io/)**  
+  Closely mirrors the Mainnet’s features and governance proposals. Its network parameters and software versions are kept in sync with the Mainnet, providing developers with a highly realistic environment for final testing.
 
+- **Private Networks**  
+  Customized TRON networks set up by private entities for testing, development, or specific use cases.
+
+Network selection is performed by specifying the appropriate configuration file upon full-node startup. Mainnet configuration: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf); Nile testnet configuration: [config-nile.conf](https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf)
+
+### Starting a FullNode on the TRON main network
+
+Launch a main-network full node with the built-in default configuration:
+```bash
+nohup java -Xms9G -jar ./build/libs/FullNode.jar &
 ```
-$ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &
+* `nohup ... &`: Runs the command in the background and ignores the hangup signal.
+* `-Xms9G`: Sets the JVM minimum heap size to `9 GB`.
+
+Using the below command, you can monitor the blocks syncing progress:
+```bash
+tail -f ./logs/tron.log
 ```
-*   `nohup ... &`: Runs the command in the background and ignores the hangup signal.
-* The `Xms9G` parameter suggests the minimal heap size to `9 GB` for connecting to Mainnet.
-* To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided above.
 
-### JVM Parameter Optimization for Mainnet FullNode Deployment
-For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:
+Use [TronScan](https://tronscan.org/#/), TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, etc.
 
-#### x86_64 (JDK 8)
+Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.
+
+#### JVM Parameter Optimization for Mainnet FullNode Deployment
+For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters for different architectures:
+
+##### x86_64 (JDK 8)
 ```bash
 $ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
              -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
@@ -124,7 +144,7 @@ $ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
              -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
              -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
-#### ARM64 (JDK 17)
+##### ARM64 (JDK 17)
 ```bash
 $ nohup java -Xmx9G -XX:+UseZGC \
              -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
@@ -137,11 +157,12 @@ $ nohup java -Xmx9G -XX:+UseZGC \
              -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
 
-#### Java Startup Parameters Explanation
+##### Java Startup Parameters Explanation
 **General & Memory Parameters:**
+
 *   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
-  > - For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
-  > - For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
+    * For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
+    * For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
 *   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
 *   `-XX:MaxDirectMemorySize`: Limits the memory used by NIO Direct Byte Buffers.
 *   `-XX:ReservedCodeCacheSize`: Sets the maximum size of the JIT code cache.
@@ -149,6 +170,7 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 *   `-XX:+HeapDumpOnOutOfMemoryError`: Dumps the heap to a file if an OutOfMemoryError occurs.
 
 **JDK 8 (CMS GC) Specific:**
+
 *   `-XX:+UseConcMarkSweepGC`: Enables the Concurrent Mark Sweep (CMS) garbage collector.
 *   `-XX:NewRatio=3`: Sets the ratio of Old Generation to Young Generation to 3:1.
 *   `-XX:+CMSScavengeBeforeRemark`: Triggers a minor GC before the CMS Remark phase to reduce pause time.
@@ -157,10 +179,26 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 *   `-XX:+PrintGCDetails`, `-XX:+PrintGCDateStamps`, `-Xloggc:gc.log`: Legacy GC logging settings.
 
 **JDK 17 (ZGC) Specific:**
+
 *   `-XX:+UseZGC`: Enables ZGC, a scalable low-latency garbage collector.
 *   `-Xlog:gc...`: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).
 
+### Staring a FullNode on the Nile test network
+Utilize the `-c` flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is **strongly advised** to compile the source code following the [Building the Source Code](https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code) instructions for the Nile TestNet.
 
+```bash
+nohup java -jar ./build/libs/FullNode.jar -c config-nile.conf &
+```
+
+Nile resources: explorer, faucet, wallet, developer docs, and network statistics at [nileex.io](https://nileex.io/).
+
+### Access Shasta test network
+Shasta does not accept public node peers. Programmatic access is available via TronGrid endpoints; see [TronGrid Service](https://developers.tron.network/docs/trongrid) for details.
+
+Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shastaex.io](https://shasta.tronex.io/).
+
+### Starting a FullNode on a private network
+To set up a private network for testing or development, follow the [Private Network guidance](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/).
 
 ### Starting a Block Production Node
 
