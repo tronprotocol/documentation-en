@@ -120,6 +120,13 @@ nohup java -Xms9G -jar ./build/libs/FullNode.jar &
 * `nohup ... &`: Runs the command in the background and ignores the hangup signal.
 * `-Xms9G`: Sets the JVM minimum heap size to `9 GB`.
 
+Using the below command, you can monitor the blocks syncing progress:
+```bash
+tail -f ./logs/tron.log
+```
+
+Use [TronScan](https://tronscan.org/#/), TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, etc.
+
 Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.
 
 #### JVM Parameter Optimization for Mainnet FullNode Deployment
