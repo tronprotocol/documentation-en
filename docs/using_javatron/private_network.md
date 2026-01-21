@@ -23,10 +23,10 @@ The operational steps for deploying a private network node are fundamentally the
      
       ```
       # Create the Super Representative (SR) node directory
-      $ mkdir SR
+      mkdir SR
       
       # Create the regular FullNode directory
-      $ mkdir FullNode
+      mkdir FullNode
       ```
 
 2. Get the java-tron Client
@@ -35,8 +35,8 @@ The operational steps for deploying a private network node are fundamentally the
     - Copy the downloaded `JAR` file into each of the two node directories:
 
          ```
-         $ cp FullNode.jar ./SR
-         $ cp FullNode.jar ./FullNode
+         cp FullNode.jar ./SR
+         cp FullNode.jar ./FullNode
          ```
 
 3. Prepare Configuration Files
@@ -45,10 +45,10 @@ The operational steps for deploying a private network node are fundamentally the
      - Copy it into each node directory and rename the files for distinction.
         ```
         # Configuration file for the SR node
-        $ cp private_net_config.conf ./SR/supernode.conf
+        cp private_net_config.conf ./SR/supernode.conf
       
         #  Configuration file for the regular Fullnode
-        $ cp private_net_config.conf ./FullNode/fullnode.conf
+        cp private_net_config.conf ./FullNode/fullnode.conf
         ```     
 
 4. Modify Node Configurations
@@ -83,14 +83,14 @@ The operational steps for deploying a private network node are fundamentally the
 
      - Start the Super Representative (SR) Node:
      ```
-     $ cd SR
-     $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
+     cd SR
+     java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
      ```
     
      - Start the regular FullNode:
       ```
-      $ cd FullNode
-      $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
+      cd FullNode
+      java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
       # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.
       ```  
       

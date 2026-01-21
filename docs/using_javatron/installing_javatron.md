@@ -115,10 +115,11 @@ Network selection is performed by specifying the appropriate configuration file 
 
 Launch a main-network full node with the built-in default configuration:
 ```bash
-nohup java -Xms9G -jar ./build/libs/FullNode.jar &
+nohup java -jar ./build/libs/FullNode.jar &
 ```
 * `nohup ... &`: Runs the command in the background and ignores the hangup signal.
-* `-Xms9G`: Sets the JVM minimum heap size to `9 GB`.
+
+> For production deployments or long-running Mainnet nodes, please refer to the below [JVM Parameter Optimization for FullNode](#jvm-parameter-optimization-for-mainnet-fullnode-deployment) guide for the recommended Java commands.
 
 Using the below command, you can monitor the blocks syncing progress:
 ```bash
@@ -134,27 +135,27 @@ For higher efficiency and stability when connecting to Mainnet, please refer to 
 
 ##### x86_64 (JDK 8)
 ```bash
-$ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
-             -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-             -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-             -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-             -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
-             -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-             -XX:+HeapDumpOnOutOfMemoryError \
-             -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-             -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
+    -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+    -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+    -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
+    -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+    -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
 ##### ARM64 (JDK 17)
 ```bash
-$ nohup java -Xmx9G -XX:+UseZGC \
-             -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
-             -XX:ReservedCodeCacheSize=256m \
-             -XX:+UseCodeCacheFlushing \
-             -XX:MetaspaceSize=256m \
-             -XX:MaxMetaspaceSize=512m \
-             -XX:MaxDirectMemorySize=1g \
-             -XX:+HeapDumpOnOutOfMemoryError \
-             -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+nohup java -Xmx9G -XX:+UseZGC \
+    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+    -XX:ReservedCodeCacheSize=256m \
+    -XX:+UseCodeCacheFlushing \
+    -XX:MetaspaceSize=256m \
+    -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1g \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
 
 ##### Java Startup Parameters Explanation
@@ -218,10 +219,32 @@ localwitness = [
 ]
 ```
 
-Then execute the following command to start the Block Production Node:
+For SR nodes running on high-performance servers (e.g., ≥ 64GB RAM), it is strongly recommended to use the following optimized Java startup commands. These configurations are designed to ensure maximum stability and efficiency for block production. Execute the command corresponding to your environment:
 
+#### Option 1: JDK 8 on x86_64
+```bash
+nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
+    -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+    -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+    -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
+    -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+    -jar ./build/libs/FullNode.jar --witness -c config.conf &
 ```
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
+
+#### Option 2: JDK 17 on ARM64
+```bash
+nohup java -Xms9G -Xmx24G -XX:+UseZGC \
+    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+    -XX:ReservedCodeCacheSize=256m \
+    -XX:+UseCodeCacheFlushing \
+    -XX:MetaspaceSize=256m \
+    -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1g \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -jar ./build/libs/FullNode.jar --witness -c config.conf &
 ```
 
 ### Master-Slave Mode for Block Production FullNodes
