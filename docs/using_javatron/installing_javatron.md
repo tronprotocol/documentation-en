@@ -234,7 +234,7 @@ nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
     -jar ./build/libs/FullNode.jar --witness -c config.conf &
 ```
 
-#### Option 2: JDK 17 on ARM64 / x86_64
+#### Option 2: JDK 17 on ARM64
 ```bash
 nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
