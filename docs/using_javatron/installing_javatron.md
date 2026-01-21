@@ -226,7 +226,7 @@ java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
 
 ### Master-Slave Mode for Block Production FullNodes
 
-To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommended number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The description of `node.backup` configuration items is as follows:
+To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommended number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The descriptions of the `node.backup` configuration items are as follows:
 
 ```ini
 node.backup {
@@ -288,7 +288,7 @@ For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large
 The operational steps are as follows:
 
 1. Download the latest data snapshot.
-2. Unzip it to the `output-directory` within your `tron` project.
+2. Unzip it to the `output-directory` folder within your `tron` project (default is `output-directory`).
 3. Then start the node; the node will continue to synchronize based on the data snapshot.
 
 ### Specifying Super Representative Account Private Key Using Keystore + Password
