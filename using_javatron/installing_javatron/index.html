@@ -455,19 +455,55 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#starting-a-java-tron-node" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#starting-a-java-tron-full-node" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Starting a java-tron Node
+      Starting a java-tron Full Node
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Starting a java-tron Node" hidden>
+    <nav class="md-nav" aria-label="Starting a java-tron Full Node" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#starting-a-fullnode" class="md-nav__link" >
+  <a href="#network-types" class="md-nav__link" >
     <span class="md-ellipsis">
-      Starting a FullNode
+      Network Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#starting-a-fullnode-on-the-tron-main-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting a FullNode on the TRON main network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#staring-a-fullnode-on-the-nile-test-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Staring a FullNode on the Nile test network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#access-shasta-test-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Access Shasta test network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#starting-a-fullnode-on-a-private-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting a FullNode on a private network
     </span>
   </a>
   
@@ -1643,7 +1679,7 @@
 <h3 id="prerequisites-before-compiling-java-tron">Prerequisites Before Compiling java-tron<a class="headerlink" href="#prerequisites-before-compiling-java-tron" title="Permanent link">&para;</a></h3>
 <p>Before compiling java-tron, make sure you have:</p>
 <ul>
-<li>Operating system: <code>Linux</code> or <code>MacOS</code> (Windows is not supported).</li>
+<li>Operating system: <code>Linux</code> or <code>macOS</code> (<code>Windows</code> is not supported).</li>
 <li>Git and correct JDK version installed based on your CPU architecture.</li>
 </ul>
 <p>Step 1: Verify Git is installed</p>
@@ -1693,49 +1729,65 @@ cd java-tron
 </ul>
 </li>
 </ol>
-<h2 id="starting-a-java-tron-node">Starting a java-tron Node<a class="headerlink" href="#starting-a-java-tron-node" title="Permanent link">&para;</a></h2>
-<p>You can choose different configuration files to connect the java-tron node to different TRON networks:</p>
+<h2 id="starting-a-java-tron-full-node">Starting a java-tron Full Node<a class="headerlink" href="#starting-a-java-tron-full-node" title="Permanent link">&para;</a></h2>
+<p>A full node acts as a gateway to the TRON network, exposing comprehensive interfaces via HTTP and RPC APIs. Through these endpoints, clients may execute asset transfers, deploy smart contracts, and invoke on-chain logic. It must join a TRON network to participate in the network's consensus and transaction processing.</p>
+<h3 id="network-types">Network Types<a class="headerlink" href="#network-types" title="Permanent link">&para;</a></h3>
+<p>The TRON network is mainly divided into:</p>
 <ul>
-<li>For Mainnet FullNode configuration file: <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a></li>
-<li>For other network node configuration:<ul>
-<li>Nile Testnet: please refer to <a href="https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf">config-nile.conf</a></li>
-<li>Private Network: please refer to <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network</a></li>
-</ul>
+<li>
+<p><strong>Main Network (Mainnet)</strong><br />
+  The primary public blockchain where real value (TRX, TRC-20 tokens, etc.) is transacted, secured by a massive decentralized network.</p>
+</li>
+<li>
+<p><strong><a href="https://nileex.io/">Nile Test Network (Testnet)</a></strong><br />
+  A forward-looking testnet where new features and governance proposals are launched first for developers to experience. Consequently, its codebase is typically ahead of the Mainnet.</p>
+</li>
+<li>
+<p><strong><a href="https://shasta.tronex.io/">Shasta Testnet</a></strong><br />
+  Closely mirrors the Mainnet’s features and governance proposals. Its network parameters and software versions are kept in sync with the Mainnet, providing developers with a highly realistic environment for final testing.</p>
+</li>
+<li>
+<p><strong>Private Networks</strong><br />
+  Customized TRON networks set up by private entities for testing, development, or specific use cases.</p>
 </li>
 </ul>
-<h3 id="starting-a-fullnode">Starting a FullNode<a class="headerlink" href="#starting-a-fullnode" title="Permanent link">&para;</a></h3>
-<p>A <strong>FullNode</strong> serves as an entry point to the TRON network, possesses complete historical data, and provides external access via <strong>HTTP API</strong>, <strong>gRPC API</strong>, and <strong>JSON-RPC API</strong>. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.</p>
-<p>Below is the command to start a <strong>Mainnet FullNode</strong>, specifying the configuration file with the <code>-c</code> parameter:</p>
-<div class="highlight"><pre><span></span><code>$ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &amp;
+<p>Network selection is performed by specifying the appropriate configuration file upon full-node startup. Mainnet configuration: <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a>; Nile testnet configuration: <a href="https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf">config-nile.conf</a></p>
+<h3 id="starting-a-fullnode-on-the-tron-main-network">Starting a FullNode on the TRON main network<a class="headerlink" href="#starting-a-fullnode-on-the-tron-main-network" title="Permanent link">&para;</a></h3>
+<p>Launch a main-network full node with the built-in default configuration:
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<ul>
-<li><code>nohup ... &amp;</code>: Runs the command in the background and ignores the hangup signal.</li>
-<li>The <code>Xms9G</code> parameter suggests the minimal heap size to <code>9 GB</code> for connecting to Mainnet.</li>
-<li>To start a <strong>Nile Testnet FullNode</strong> or <strong>Private Network FullNode</strong>, use the corresponding configuration file links provided above.</li>
-</ul>
+* <code>nohup ... &amp;</code>: Runs the command in the background and ignores the hangup signal.</p>
+<blockquote>
+<p>For production deployments or long-running Mainnet nodes, please refer to the below <a href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for FullNode</a> guide for the recommended Java commands.</p>
+</blockquote>
+<p>Using the below command, you can monitor the blocks syncing progress:
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>./logs/tron.log
+</code></pre></div></p>
+<p>Use <a href="https://tronscan.org/#/">TronScan</a>, TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, etc.</p>
+<p>Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.</p>
 <h4 id="jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for Mainnet FullNode Deployment<a class="headerlink" href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" title="Permanent link">&para;</a></h4>
-<p>For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:</p>
+<p>For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters for different architectures:</p>
 <h5 id="x86_64-jdk-8">x86_64 (JDK 8)<a class="headerlink" href="#x86_64-jdk-8" title="Permanent link">&para;</a></h5>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx12G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx12G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h5 id="arm64-jdk-17">ARM64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h5>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h5 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h5>
 <p><strong>General &amp; Memory Parameters:</strong></p>
@@ -1765,6 +1817,16 @@ cd java-tron
 <li><code>-XX:+UseZGC</code>: Enables ZGC, a scalable low-latency garbage collector.</li>
 <li><code>-Xlog:gc...</code>: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).</li>
 </ul>
+<h3 id="staring-a-fullnode-on-the-nile-test-network">Staring a FullNode on the Nile test network<a class="headerlink" href="#staring-a-fullnode-on-the-nile-test-network" title="Permanent link">&para;</a></h3>
+<p>Utilize the <code>-c</code> flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is <strong>strongly advised</strong> to compile the source code following the <a href="https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code">Building the Source Code</a> instructions for the Nile TestNet.</p>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>config-nile.conf<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<p>Nile resources: explorer, faucet, wallet, developer docs, and network statistics at <a href="https://nileex.io/">nileex.io</a>.</p>
+<h3 id="access-shasta-test-network">Access Shasta test network<a class="headerlink" href="#access-shasta-test-network" title="Permanent link">&para;</a></h3>
+<p>Shasta does not accept public node peers. Programmatic access is available via TronGrid endpoints; see <a href="https://developers.tron.network/docs/trongrid">TronGrid Service</a> for details.</p>
+<p>Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at <a href="https://shasta.tronex.io/">shastaex.io</a>.</p>
+<h3 id="starting-a-fullnode-on-a-private-network">Starting a FullNode on a private network<a class="headerlink" href="#starting-a-fullnode-on-a-private-network" title="Permanent link">&para;</a></h3>
+<p>To set up a private network for testing or development, follow the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network guidance</a>.</p>
 <h3 id="starting-a-block-production-node">Starting a Block Production Node<a class="headerlink" href="#starting-a-block-production-node" title="Permanent link">&para;</a></h3>
 <p>By adding the <code>--witness</code> parameter to the FullNode startup command above, the <code>FullNode</code> will run as a <strong>Block Production Node</strong> (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports <strong>block production</strong> and <strong>transaction packaging</strong>.</p>
 <p><strong>Important Notes</strong>:</p>
@@ -1778,11 +1840,31 @@ cd java-tron
     650950B1...295BD812
 ]
 </code></pre></div>
-<p>Then execute the following command to start the Block Production Node:</p>
-<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
+<p>For SR nodes running on high-performance servers (e.g., ≥ 64GB RAM), it is strongly recommended to use the following optimized Java startup commands. These configurations are designed to ensure maximum stability and efficiency for block production. Execute the command corresponding to your environment:</p>
+<h4 id="option-1-jdk-8-on-x86_64">Option 1: JDK 8 on x86_64<a class="headerlink" href="#option-1-jdk-8-on-x86_64" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<h4 id="option-2-jdk-17-on-arm64">Option 2: JDK 17 on ARM64<a class="headerlink" href="#option-2-jdk-17-on-arm64" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h3 id="master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes<a class="headerlink" href="#master-slave-mode-for-block-production-fullnodes" title="Permanent link">&para;</a></h3>
-<p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes <strong>(Recommended number: 2)</strong>, it's necessary to configure <code>node.backup</code> in each node's configuration file. The description of <code>node.backup</code> configuration items is as follows:</p>
+<p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes <strong>(Recommended number: 2)</strong>, it's necessary to configure <code>node.backup</code> in each node's configuration file. The descriptions of the <code>node.backup</code> configuration items are as follows:</p>
 <p><div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
 <span class="w">  </span><span class="c1"># udp listen port, each member should have the same configuration</span>
 <span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
@@ -1839,7 +1921,7 @@ For example, if an account with block production rights deploys two nodes with I
 <p>The operational steps are as follows:</p>
 <ol>
 <li>Download the latest data snapshot.</li>
-<li>Unzip it to the <code>output-directory</code> within your <code>tron</code> project.</li>
+<li>Unzip it to the <code>output-directory</code> folder within your <code>tron</code> project (default is <code>output-directory</code>).</li>
 <li>Then start the node; the node will continue to synchronize based on the data snapshot.</li>
 </ol>
 <h3 id="specifying-super-representative-account-private-key-using-keystore-password">Specifying Super Representative Account Private Key Using Keystore + Password<a class="headerlink" href="#specifying-super-representative-account-private-key-using-keystore-password" title="Permanent link">&para;</a></h3>

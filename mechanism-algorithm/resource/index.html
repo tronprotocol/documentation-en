@@ -1020,6 +1020,15 @@
 </li>
         
           <li class="md-nav__item ">
+  <a href="#resource-reclamation-upon-undelegation" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Resource Reclamation Upon Undelegation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
   <a href="#relevant-api-endpoints" class="md-nav__link" >
     <span class="md-ellipsis">
       Relevant API Endpoints
@@ -2035,6 +2044,94 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <li><code>cancel_unfreezeV2_amount</code>: The total amount of TRX that was successfully canceled and re-staked.</li>
 <li><code>withdraw_expire_amount</code>: The total amount of matured unstaked TRX that was automatically withdrawn to your account balance.</li>
 </ul>
+<h3 id="resource-reclamation-upon-undelegation">Resource Reclamation Upon Undelegation<a class="headerlink" href="#resource-reclamation-upon-undelegation" title="Permanent link">&para;</a></h3>
+<p><strong>Note</strong>: In the TRON network, the amount of resources an account receives depends on the proportion of its TRX staked relative to the total TRX staked across the entire network. When a delegator delegates resources to a recipient, it essentially lends a portion of its own staked TRX to the recipient. In resource quota calculations, the system does not distinguish between the sources of TRX. TRX staked by the account itself and TRX delegated from other accounts are aggregated and treated uniformly as the weighting basis for resource allocation. So, unless otherwise specified, the term “staked amount” in this chapter refers to the total staked TRX of an account, including both self-staked TRX and TRX delegated from other accounts, without distinguishing their sources.</p>
+<p>When a Delegator initiates resource delegation, a certain amount of staked TRX is lent to the Recipient, granting them the right to use the corresponding resources. When the Delegator cancels the resource delegation, the system not only reclaims the corresponding staked TRX, but also reclaims a proportional amount of the Recipient’s unrecovered resources.</p>
+<h4 id="reclamation-logic-for-unrecovered-resources">Reclamation Logic for Unrecovered Resources<a class="headerlink" href="#reclamation-logic-for-unrecovered-resources" title="Permanent link">&para;</a></h4>
+<h5 id="1-calculation-formula">1. Calculation Formula<a class="headerlink" href="#1-calculation-formula" title="Permanent link">&para;</a></h5>
+<p>The system proportionally reclaims the Recipient's unrecovered resources based on the amount of TRX being undelegated according to the following formula:</p>
+<div class="highlight"><pre><span></span><code>Reclaimed unrecovered resources = (Canceled delegated TRX amount / Recipient’s total staked TRX amount for that resource) * Recipient’s unrecovered resource amount
+</code></pre></div>
+<p><strong>Note</strong>: The reclaimed unrecovered resources <strong>must not exceed</strong> the maximum resource capacity corresponding to the undelegated TRX amount, calculated in real time based on the total network staking.</p>
+<ul>
+<li><strong>Canceled delegated TRX amount</strong>: The amount of staked TRX reclaimed in the cancel delegation transaction.</li>
+<li><strong>Recipient's Total Staked TRX Amount for that resource</strong>: The total staked TRX used by the recipient to obtain a specific resource (Energy or Bandwidth), including self-staked TRX (Stake 1.0 and Stake 2.0) and delegated TRX from others. This can be queried via the <a href="https://developers.tron.network/reference/account-getaccount#/">wallet/getaccount</a> API.</li>
+<li><strong>Recipient's Unrecovered Resource Amount</strong>: The amount of resources that have already been consumed and are currently in the recovery period on the recipient’s account. This can be queried via <a href="https://developers.tron.network/reference/account-getaccount#/">wallet/getaccount</a> or <a href="https://developers.tron.network/reference/getaccountresource#/">wallet/getaccountresource</a>.</li>
+</ul>
+<h5 id="2-account-state-changes">2. Account State Changes<a class="headerlink" href="#2-account-state-changes" title="Permanent link">&para;</a></h5>
+<p>After resource undelegation, the effective resource-related states of both accounts are changed as follows.
+The following expressions describe the changes at a logical level. The term “staked amount” represents a computed value rather than a single on-chain field.</p>
+<p><strong>Delegator</strong></p>
+<div class="highlight"><pre><span></span><code>Staked amount = Original staked amount + Canceled delegated TRX amount
+
+Unrecovered resource amount = Original unrecovered resource amount + Reclaimed unrecovered resource amount
+</code></pre></div>
+<p><strong>Recipient</strong></p>
+<div class="highlight"><pre><span></span><code>Staked amount = Original staked amount - Canceled delegated TRX amount
+
+Unrecovered resource amount = Original unrecovered resource amount - Reclaimed unrecovered resource amount
+</code></pre></div>
+<p><strong>Note on Recovery:</strong> Resources recover linearly over a <strong>24-hour period</strong>. If an account uses resources again or reclaims delegated resources during this period, the system performs a weighted merger of the existing recovery progress and the new recovery cycle. </p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<p>Assume the current network resource conversion ratio is <strong>1 TRX Staked = 0.2 Energy</strong>, and the total network staking amount remains unchanged. User X delegated <strong>200 TRX</strong> worth of Energy to User Y. Before the delegation is canceled, the account states are:</p>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Role</th>
+<th>Total Staked TRX (for Energy)</th>
+<th>Total Energy</th>
+<th>Unrecovered Energy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>Delegator</td>
+<td>1000 TRX</td>
+<td>200 Energy</td>
+<td>75 Energy</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>Recipient</td>
+<td>500 TRX</td>
+<td>100 Energy</td>
+<td>50 Energy</td>
+</tr>
+</tbody>
+</table>
+<p>When User X cancels the Energy delegation of <strong>200 TRX</strong> to User Y:
+<div class="highlight"><pre><span></span><code>Reclaimed unrecovered Energy amount = (200 / 500) * 50 = 20 Energy
+</code></pre></div></p>
+<p>After reclamation, the account states become:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Account</th>
+<th style="text-align: left;">Role</th>
+<th style="text-align: left;">Total Staked TRX (for Energy)</th>
+<th style="text-align: left;">Total Energy</th>
+<th style="text-align: left;">Unrecovered Energy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>X</strong></td>
+<td style="text-align: left;">Delegator</td>
+<td style="text-align: left;">1200 TRX (1000+200)</td>
+<td style="text-align: left;">240 Energy</td>
+<td style="text-align: left;">95 Energy (75+20)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Y</strong></td>
+<td style="text-align: left;">Recipient</td>
+<td style="text-align: left;">300 TRX (500-200)</td>
+<td style="text-align: left;">60 Energy</td>
+<td style="text-align: left;">30 Energy (50-20)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="relevant-api-endpoints">Relevant API Endpoints<a class="headerlink" href="#relevant-api-endpoints" title="Permanent link">&para;</a></h3>
 <table>
 <thead>

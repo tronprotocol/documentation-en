@@ -1527,10 +1527,10 @@
 <p>Prepare Node Directories</p>
 <p>To keep configurations and data isolated, it is recommended to create separate deployment directories for each node.</p>
 <div class="highlight"><pre><span></span><code># Create the Super Representative (SR) node directory
-$ mkdir SR
+mkdir SR
 
 # Create the regular FullNode directory
-$ mkdir FullNode
+mkdir FullNode
 </code></pre></div>
 </li>
 <li>
@@ -1539,8 +1539,8 @@ $ mkdir FullNode
 <li>Download the latest <code>FullNode.jar</code> from the <a href="https://github.com/tronprotocol/java-tron/releases">java-tron GitHub Releases</a> page.</li>
 <li>
 <p>Copy the downloaded <code>JAR</code> file into each of the two node directories:</p>
-<div class="highlight"><pre><span></span><code>$ cp FullNode.jar ./SR
-$ cp FullNode.jar ./FullNode
+<div class="highlight"><pre><span></span><code>cp FullNode.jar ./SR
+cp FullNode.jar ./FullNode
 </code></pre></div>
 </li>
 </ul>
@@ -1551,10 +1551,10 @@ $ cp FullNode.jar ./FullNode
 <li>Download the official configuration file template (<a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">config.conf</a>) and change the <code>p2p.version</code> to any value other than <strong>11111</strong> or <strong>20180622</strong>.</li>
 <li>Copy it into each node directory and rename the files for distinction.
     <div class="highlight"><pre><span></span><code># Configuration file for the SR node
-$ cp private_net_config.conf ./SR/supernode.conf
+cp private_net_config.conf ./SR/supernode.conf
 
 #  Configuration file for the regular Fullnode
-$ cp private_net_config.conf ./FullNode/fullnode.conf
+cp private_net_config.conf ./FullNode/fullnode.conf
 </code></pre></div></li>
 </ul>
 </li>
@@ -1655,14 +1655,14 @@ $ cp private_net_config.conf ./FullNode/fullnode.conf
 <ul>
 <li>
 <p>Start the Super Representative (SR) Node:
- <div class="highlight"><pre><span></span><code>$ cd SR
-$ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
+ <div class="highlight"><pre><span></span><code>cd SR
+java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
 </code></pre></div></p>
 </li>
 <li>
 <p>Start the regular FullNode:
-  <div class="highlight"><pre><span></span><code>$ cd FullNode
-$ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
+  <div class="highlight"><pre><span></span><code>cd FullNode
+java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
 # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.
 </code></pre></div></p>
 </li>
