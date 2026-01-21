@@ -10,6 +10,7 @@ The TRON Toolkit is a comprehensive utility that integrates various ecosystem to
 
 This document provides a detailed guide on how to acquire and use the TRON Toolkit.
 
+**Note**: Because only RocksDB is supported on ARM architecture, tools designed for LevelDB such as `db convert` and `db archive` can only be used on x86 architecture.
 
 ## Obtaining the Toolkit
 
@@ -271,7 +272,7 @@ Use the `db convert` command to perform the data conversion:
 
 ```
 # full command
-  java -jar Toolkit.jar db convert [-h] [--safe] <src> <dest>
+  java -jar Toolkit.jar db convert [-h] <src> <dest>
 # examples
   java -jar Toolkit.jar db convert  output-directory/database /tmp/database
 ```
@@ -280,9 +281,6 @@ Use the `db convert` command to perform the data conversion:
 
 *   `<src>`: Specifies the source LevelDB data directory. Default: `output-directory/database`.
 *   `<dest>`: Specifies the output directory for the RocksDB data. Default: `output-directory-dst/database`.
-*   `--safe <boolean>`: Toggles safe mode for the conversion. The default is `false`, but we recommended setting this to `true` for better data compatibility.
-    *   If safe mode is enabled, the tool reads all data from LevelDB and writes it to RocksDB. This process is slower but more thorough.
-    *   If safe mode is disabled (default), the tool performs a much faster conversion. Because the current version of RocksDB is compatible with LevelDB, this mode simply changes the `engine.properties` file setting from `leveldb` to `rocksdb`.
 *   `-h | --help <boolean>`: Displays help information. Default: `false`.
 
 > **Important Note**: Before performing any operation with this tool, you must stop the currently running node.
