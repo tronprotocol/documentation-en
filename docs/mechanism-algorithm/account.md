@@ -48,7 +48,7 @@ The private key is a 32-byte large number, and the public key consists of two 32
 1. Calculate the checksum
 
     a. Perform SHA256 hash operation on `address` to get `h1`  
-    b. Perform SHA256 operation on `h1` again to get `h2` 
+    b. Perform SHA256 operation on `h1` again to get `h2`  
     c. Take the first 4 bytes of `h2` as the checksum `check`
 
 2. Splice data Append `check` to `address` to get `address||check`
