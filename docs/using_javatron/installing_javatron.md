@@ -120,6 +120,7 @@ Launch a main-network full node with the built-in default configuration:
 ```bash
 nohup java -jar ./build/libs/FullNode.jar &
 ```
+
 * `nohup ... &`: Runs the command in the background and ignores the hangup signal.
 
 > For production deployments or long-running Mainnet nodes, please refer to the below [JVM Parameter Optimization for FullNode](#jvm-parameter-optimization-for-mainnet-fullnode-deployment) guide for the recommended Java commands.
