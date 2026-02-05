@@ -2810,6 +2810,7 @@ Parameters:</p>
 <li><a href="#walletcreatewitness">wallet/createwitness</a></li>
 <li><a href="#walletupdatewitness">wallet/updatewitness</a></li>
 <li><a href="#walletlistwitnesses">wallet/listwitnesses</a></li>
+<li><a href="#walletgetpaginatednowwitnesslist">wallet/getpaginatednowwitnesslist</a></li>
 <li><a href="#walletwithdrawbalance">wallet/withdrawbalance</a></li>
 <li><a href="#walletvotewitnessaccount">wallet/votewitnessaccount</a></li>
 <li><a href="#walletgetbrokerage">wallet/getBrokerage</a></li>
@@ -2850,6 +2851,21 @@ Parameters:</p>
 </code></pre></div>
 Parameter: None</p>
 <p>Return Value: A list of all Super Representative information.</p>
+<h4 id="walletgetpaginatednowwitnesslist">wallet/getpaginatednowwitnesslist<a class="headerlink" href="#walletgetpaginatednowwitnesslist" title="Permanent link">&para;</a></h4>
+<p>Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted by real-time vote count in descending order.
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getpaginatednowwitnesslist -d &#39;{ 
+  &quot;offset&quot;: 0,                          
+  &quot;limit&quot;: 100,                         
+  &quot;visible&quot;: true                       
+}&#39;                                      
+</code></pre></div>
+Parameters:  </p>
+<ul>
+<li><code>offset</code>: <code>long</code> type, indicates the starting index, must be <code>&gt;=0</code>.  </li>
+<li><code>limit</code>: <code>long</code> type, indicates the number of witnesses to return, must be <code>&gt;0</code>, with an upper limit of system constant <code>1000</code>.  </li>
+<li><code>visible</code>: <code>boolean</code> type, optional parameter, defaults to false, controls the format of the returned address.  </li>
+</ul>
+<p>Return value: A paginated list of witnesses meeting the parameter conditions, sorted by real-time vote count in descending order.</p>
 <h4 id="walletwithdrawbalance">wallet/withdrawbalance<a class="headerlink" href="#walletwithdrawbalance" title="Permanent link">&para;</a></h4>
 <p>Description:** SR or users withdraw rewards to their balance. This can be done once every 24 hours.</p>
 <p><div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d &#39;{
@@ -3354,6 +3370,21 @@ Parameter: <code>account_id</code> in hexString format by default.</p>
 </code></pre></div>
 Parameter: None</p>
 <p>Return Value: A list of all witness information.</p>
+<h4 id="walletsoliditygetpaginatednowwitnesslist">walletsolidity/getpaginatednowwitnesslist<a class="headerlink" href="#walletsoliditygetpaginatednowwitnesslist" title="Permanent link">&para;</a></h4>
+<p>Description: Query the real-time vote count of each witness and return a paginated list of witnesses, sorted by real-time vote count in descending order.
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/wallet/getpaginatednowwitnesslist -d &#39;{ 
+  &quot;offset&quot;: 0,                          
+  &quot;limit&quot;: 100,                         
+  &quot;visible&quot;: true                       
+}&#39;                                      
+</code></pre></div>
+Parameters:  </p>
+<ul>
+<li><code>offset</code>: <code>long</code> type, indicates the starting index, must be <code>&gt;=0</code>.  </li>
+<li><code>limit</code>: <code>long</code> type, indicates the number of witnesses to return, must be <code>&gt;0</code>, with an upper limit of system constant <code>1000</code>.  </li>
+<li><code>visible</code>: <code>boolean</code> type, optional parameter, defaults to false, controls the format of the returned address.  </li>
+</ul>
+<p>Return value: A paginated list of witnesses meeting the parameter conditions, sorted by real-time vote count in descending order.</p>
 <h3 id="trc-10-token_1">TRC-10 Token<a class="headerlink" href="#trc-10-token_1" title="Permanent link">&para;</a></h3>
 <h4 id="walletsoliditygetassetissuelist">walletsolidity/getassetissuelist<a class="headerlink" href="#walletsoliditygetassetissuelist" title="Permanent link">&para;</a></h4>
 <p>Description: Query a list of all TRC-10 tokens on the entire network.

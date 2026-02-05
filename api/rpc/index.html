@@ -780,6 +780,15 @@
 </li>
       
         <li class="md-nav__item ">
+  <a href="#get-the-paged-list-of-witnesses-in-descending-order-by-real-time-vote-count" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get the paged list of witnesses in descending order by real-time vote count
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
   <a href="#application-for-super-representative" class="md-nav__link" >
     <span class="md-ellipsis">
       Application for super representative
@@ -2062,6 +2071,10 @@ Nodes: FullNode</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ListWitnesses</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
+<h2 id="get-the-paged-list-of-witnesses-in-descending-order-by-real-time-vote-count">Get the paged list of witnesses in descending order by real-time vote count<a class="headerlink" href="#get-the-paged-list-of-witnesses-in-descending-order-by-real-time-vote-count" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetPaginatedNowWitnessList</span><span class="w"> </span><span class="p">(</span><span class="n">PaginatedMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
 <h2 id="application-for-super-representative">Application for super representative<a class="headerlink" href="#application-for-super-representative" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateWitness</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessCreateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>

@@ -1650,14 +1650,15 @@
 <p>To simplify the Java development process and improve efficiency, selecting and configuring an Integrated Development Environment (IDE) is a crucial first step. This guide uses IntelliJ IDEA as an example to explain how to set up and configure the java-tron development environment.</p>
 <p>java-tron nodes support deployment on <code>Linux</code> or <code>MacOS</code> operating systems. The JDK version requirements are as follows:</p>
 <ul>
-<li><strong>General Requirement</strong>: <strong>Oracle JDK 1.8</strong></li>
-<li><strong>For <code>v4.8.1</code> and later</strong>: Support is also provided for JDK 17 on the ARM architecture</li>
+<li>On x86 architecture, currently only Oracle JDK 8 is supported.</li>
+<li>On ARM architecture, currently only JDK 17 is supported.</li>
 </ul>
+<p>The following configuration uses x86 architecture and Oracle JDK 8 as an example.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before you begin, please ensure your development environment meets the following requirements:</p>
 <ul>
 <li>Operating System: <code>Linux</code> or <code>MacOS</code></li>
-<li>Oracle JDK 1.8 is installed</li>
+<li>Oracle JDK 8 is installed</li>
 <li><code>git</code> is installed</li>
 <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> is installed</li>
 </ul>
@@ -1678,7 +1679,7 @@
 </ol>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_annotation.png" /></p>
 <h3 id="step-3-verify-and-unify-the-jdk-version">Step 3: Verify and Unify the JDK Version<a class="headerlink" href="#step-3-verify-and-unify-the-jdk-version" title="Permanent link">&para;</a></h3>
-<p>To ensure the project compiles and runs correctly, you must set the JDK version to Oracle JDK 1.8 in two key locations within IntelliJ IDEA.</p>
+<p>To ensure the project compiles and runs correctly, you must set the JDK version to Oracle JDK 8 in two key locations within IntelliJ IDEA.</p>
 <h4 id="1-configure-project-sdk">1. Configure Project SDK<a class="headerlink" href="#1-configure-project-sdk" title="Permanent link">&para;</a></h4>
 <p>This is the core JDK used for compiling the project's source code and performing syntax analysis.</p>
 <ol>
@@ -1693,7 +1694,7 @@
 </ol>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_JDK.png" /></p>
 <blockquote>
-<p><strong>Important Note</strong>: The <strong>Project SDK</strong> and <strong>Gradle JVM</strong> settings must match and both be set to Oracle JDK 1.8. Otherwise, you may encounter unexpected errors during the build process.</p>
+<p><strong>Important Note</strong>: The <strong>Project SDK</strong> and <strong>Gradle JVM</strong> settings must match and both be set to Oracle JDK 8(Consistent with version 1.8 shown in the figure, the difference between 1.8 and 8 is only in the naming convention. In the java-tron documentation, it is uniformly designated as 8 unless otherwise specified). Otherwise, you may encounter unexpected errors during the build process.</p>
 </blockquote>
 <h2 id="getting-and-compiling-the-source-code">Getting and Compiling the Source Code<a class="headerlink" href="#getting-and-compiling-the-source-code" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-clone-the-source-code">Step 1: Clone the Source Code<a class="headerlink" href="#step-1-clone-the-source-code" title="Permanent link">&para;</a></h3>
