@@ -510,6 +510,15 @@
 </li>
         
           <li class="md-nav__item ">
+  <a href="#starting-a-soliditynode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting a SolidityNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
   <a href="#starting-a-block-production-node" class="md-nav__link" >
     <span class="md-ellipsis">
       Starting a Block Production Node
@@ -1651,7 +1660,11 @@
 
 <h1 id="deploying-a-java-tron-node">Deploying a java-tron Node<a class="headerlink" href="#deploying-a-java-tron-node" title="Permanent link">&para;</a></h1>
 <p>This document guides developers on how to deploy a TRON java-tron node on <code>Linux</code> or <code>macOS</code> operating systems.</p>
-<p><strong>Important Note:</strong> The java-tron node currently requires <strong>Oracle JDK 1.8</strong>. Other JDK versions are not supported.</p>
+<p>Currently, a java-tron node supports running on both x86 and ARM architectures(Support for the ARM architecture starts from version 4.8.1). JDK support varies by architecture:</p>
+<ul>
+<li>On x86 architecture, currently only Oracle JDK 8 is supported.</li>
+<li>On ARM architecture, currently only JDK 17 is supported.</li>
+</ul>
 <h2 id="hardware-configuration-requirements">Hardware Configuration Requirements<a class="headerlink" href="#hardware-configuration-requirements" title="Permanent link">&para;</a></h2>
 <p>The minimum hardware configuration required to run a java-tron node is as follows:</p>
 <ul>
@@ -1755,8 +1768,10 @@ cd java-tron
 <h3 id="starting-a-fullnode-on-the-tron-main-network">Starting a FullNode on the TRON main network<a class="headerlink" href="#starting-a-fullnode-on-the-tron-main-network" title="Permanent link">&para;</a></h3>
 <p>Launch a main-network full node with the built-in default configuration:
 <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div>
-* <code>nohup ... &amp;</code>: Runs the command in the background and ignores the hangup signal.</p>
+</code></pre></div></p>
+<ul>
+<li><code>nohup ... &amp;</code>: Runs the command in the background and ignores the hangup signal.</li>
+</ul>
 <blockquote>
 <p>For production deployments or long-running Mainnet nodes, please refer to the below <a href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for FullNode</a> guide for the recommended Java commands.</p>
 </blockquote>
@@ -1827,6 +1842,18 @@ cd java-tron
 <p>Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at <a href="https://shasta.tronex.io/">shastaex.io</a>.</p>
 <h3 id="starting-a-fullnode-on-a-private-network">Starting a FullNode on a private network<a class="headerlink" href="#starting-a-fullnode-on-a-private-network" title="Permanent link">&para;</a></h3>
 <p>To set up a private network for testing or development, follow the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network guidance</a>.</p>
+<h3 id="starting-a-soliditynode">Starting a SolidityNode<a class="headerlink" href="#starting-a-soliditynode" title="Permanent link">&para;</a></h3>
+<p>A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.</p>
+<div class="highlight"><pre><span></span><code>node {
+  # trust node for solidity node
+  # trustNode = &quot;ip:port&quot;
+  trustNode = &quot;127.0.0.1:50051&quot;
+  ...
+}
+</code></pre></div>
+<p>Starting from version 4.8.1, <code>SolidityNode.jar</code> is no longer provided. Instead, SolidityNode is started using the command-line parameter <code>--solidity</code>, as shown below:</p>
+<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --solidity -c config.conf
+</code></pre></div>
 <h3 id="starting-a-block-production-node">Starting a Block Production Node<a class="headerlink" href="#starting-a-block-production-node" title="Permanent link">&para;</a></h3>
 <p>By adding the <code>--witness</code> parameter to the FullNode startup command above, the <code>FullNode</code> will run as a <strong>Block Production Node</strong> (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports <strong>block production</strong> and <strong>transaction packaging</strong>.</p>
 <p><strong>Important Notes</strong>:</p>
@@ -1941,7 +1968,7 @@ For example, if an account with block production rights deploys two nodes with I
 </code></pre></div>
 </li>
 <li>
-<p>You can generate the <code>keystore</code> file and password using the <code>registerwallet</code> command from the <code>wallet-cli</code> project.</p>
+<p>You can use the <code>registerwallet</code> command from the <code>wallet-cli</code> project to generate the <code>keystore</code> file and password, or use the command <code>java -jar FullNode.jar --keystore-factory</code> to generate them (starting from version 4.8.1, <code>KeystoreFactory.jar</code> is no longer provided).</p>
 </li>
 </ul>
 </li>

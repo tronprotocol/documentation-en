@@ -1658,7 +1658,7 @@
 <li>
 <p>Calculate the checksum</p>
 <p>a. Perform SHA256 hash operation on <code>address</code> to get <code>h1</code><br />
-b. Perform SHA256 operation on <code>h1</code> again to get <code>h2</code> 
+b. Perform SHA256 operation on <code>h1</code> again to get <code>h2</code><br />
 c. Take the first 4 bytes of <code>h2</code> as the checksum <code>check</code></p>
 </li>
 <li>
@@ -1682,11 +1682,11 @@ c. Take the first 4 bytes of <code>h2</code> as the checksum <code>check</code><
 <ul>
 <li><strong>Calculate the <code>r</code> value</strong>: Randomly generate a temporary private key <code>k</code>, calculate the temporary public key <code>K = k × G</code> (<code>G</code>: curve base point), <code>r = K_x mod n</code>, that is, the abscissa of <code>K</code> modulo <code>n</code>, where <code>n</code> is the curve order (<code>n</code> and <code>G</code> satisfy <code>n × G = O</code>, and <code>O</code> is the zero point of the elliptic curve group on the finite field). <code>r</code> is 32 bytes.</li>
 <li><strong>Calculate the <code>s</code> value</strong>: First calculate the modular inverse of the temporary private key <code>k</code> with respect to n, <code>k⁻¹</code>, that is, <code>k⁻¹</code> satisfies <code>k⁻¹ × k = 1 mod n</code>, then calculate the <code>s</code> value through the transaction's <code>hash</code>, the user's private key <code>d</code>, and the <code>r</code> value, <code>s = (k⁻¹ × (hash + d × r)) mod n</code>. <code>s</code> is 32 bytes.</li>
-<li><strong>Calculate the <code>v</code> value</strong>: The <code>v</code> value is the recovery identifier. Since the <code>r</code> value undergoes a modulo operation and the symmetry of the elliptic curve, if there is only the <code>r</code> value, one <code>r</code> can recover up to four <code>K</code>s. The value range of <code>v</code> is four integers: <code>0, 1, 2, 3</code>. Historically, to be consistent with Ethereum, the final <code>v</code> value will be 27 added to <code>0, 1, 2, 3</code>, that is, the final value range of <code>v</code> is <code>27, 28, 29, 30</code>. With a determined <code>v</code>, the unique <code>K</code> can be recovered. <code>v</code> is 1 byte.</li>
+<li><strong>Calculate the <code>v</code> value</strong>: Calculate the <code>recoveryId</code> first. Due to the modulo operation on the <code>r</code> value and the symmetry of the elliptic curve, if there is only the <code>r</code> value, one <code>r</code> can recover up to four <code>K</code>s. The value range of <code>recoveryId</code> is <code>0, 1, 2, 3</code>. The calculation of <code>v</code> value depends on <code>recoveryId</code>. Historically, to remain consistent with Ethereum, the  <code>v</code> value will be <code>27</code> added to <code>recoveryId</code>, that is, the value range of <code>v</code> is <code>27, 28, 29, 30</code>. With a determined <code>v</code>, the unique <code>K</code> can be recovered. <code>v</code> is 1 byte.</li>
 </ul>
 </li>
 <li>
-<p>Append the concatenated signature results <code>r</code>, <code>s</code>, <code>v</code> to the transaction, in the order <code>v || r || s</code>.</p>
+<p>Concatenate the values of <code>r</code>, <code>s</code>, and <code>recoveryId</code>(or <code>r</code>, <code>s</code>, and <code>v</code>) to obtain the complete signature. The concatenation order shall be <code>r || s || recoveryId</code>(or <code>r || s || v</code>). At present, both the transaction signing in the official client <code>wallet-cli</code> and the block signing in <code>java-tron</code> (during block production by SRs) adopt the <code>recoveryId</code> scheme, i.e., <code>signature = r || s || recoveryId</code>.</p>
 </li>
 </ol>
 <h4 id="java-code-sample">Java Code Sample<a class="headerlink" href="#java-code-sample" title="Permanent link">&para;</a></h4>

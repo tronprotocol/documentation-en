@@ -1682,9 +1682,14 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</
 <td style="text-align: left;">SRs/SR partners, their voters</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Rewards Distribution Time</strong></td>
-<td style="text-align: left;"><strong>SR</strong>: After producing each block<br><br><strong>Voters</strong>: Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>WithdrawBalanceContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code></td>
-<td style="text-align: left;"><strong>SRs/SR partners</strong>: After producing each block<br><br><strong>Voters</strong>: Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>WithdrawBalanceContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code></td>
+<td style="text-align: left;"><strong>Rewards Distribution</strong></td>
+<td style="text-align: left;"><strong>SR</strong>: After producing each block<br><br><strong>Voters</strong>: Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code><br>- <code>WithdrawBalanceContract</code>(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution)</td>
+<td style="text-align: left;"><strong>SRs/SR partners</strong>: After producing each block<br><br><strong>Voters</strong>: Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code><br>- <code>WithdrawBalanceContract</code>(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rewards Withdrawn to Account Balance</strong></td>
+<td style="text-align: left;">Triggered when <code>WithdrawBalanceContract</code> transaction is initiated</td>
+<td style="text-align: left;">Triggered when <code>WithdrawBalanceContract</code> transaction is initiated</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Specific Rewards</strong></td>

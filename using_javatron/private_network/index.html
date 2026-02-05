@@ -1510,7 +1510,7 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before you begin, please ensure your development environment meets the following requirements:</p>
 <ul>
-<li><strong>Java Development Kit (JDK)</strong>: You must have Oracle JDK 1.8 installed.</li>
+<li><strong>Java Development Kit (JDK)</strong>: On x86 architecture, Oracle JDK 8 must be installed; on ARM architecture, JDK 17 must be installed.</li>
 <li><strong>TRON Accounts</strong>: You need to create at least two TRON network addresses in advance and securely store the addresses and their corresponding private keys. One address will serve as the initial SR node (Block Production), and the other will be a regular account.</li>
 <li><strong>Address Creation Tools</strong>: You can use any of the following tools to generate and manage your TRON accounts:<ul>
 <li><a href="https://github.com/tronprotocol/wallet-cli">Wallet-cli</a>: An official command-line wallet tool, suitable for server environments.</li>
@@ -1617,13 +1617,13 @@ cp private_net_config.conf ./FullNode/fullnode.conf
 <td style="text-align: left;"><code>block.proposalExpireTime</code></td>
 <td style="text-align: left;"><code>600000</code></td>
 <td style="text-align: left;">Same as SR configuration</td>
-<td style="text-align: left;">The default proposal effective time is 3 days: 259200000 (ms). Can be set to a lower value, such as 600,000(ms) (10 minutes), to pass the proposal faster.</td>
+<td style="text-align: left;">The default proposal expire time is 3 days: 259200000 (ms). Since, in principle, proposals are required to go through at least one maintenanceTimeInterval, if you want a proposal to pass quickly, you need to set both this item and the maintenanceTimeInterval to small values.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>block.maintenanceTimeInterval</code></td>
 <td style="text-align: left;"><code>300000</code></td>
 <td style="text-align: left;">Same as SR configuration</td>
-<td style="text-align: left;">The default maintenance time interval is 6 hours: 21600000 (ms). Can be set to a smaller value, such as 300000(ms) (5 minutes), to pass the proposal faster.</td>
+<td style="text-align: left;">The default maintenance time interval is 6 hours: 21600000 (ms)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>committee.allowSameTokenName</code></td>

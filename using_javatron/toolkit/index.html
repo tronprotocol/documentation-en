@@ -1659,6 +1659,7 @@
 <li><a href="#leveldb-startup-optimization-tool">LevelDB Startup Optimization</a>: Accelerates the startup speed for nodes using LevelDB.</li>
 </ul>
 <p>This document provides a detailed guide on how to acquire and use the TRON Toolkit.</p>
+<p><strong>Note</strong>: Because only RocksDB is supported on ARM architecture, tools designed for LevelDB such as <code>db convert</code> and <code>db archive</code> can only be used on x86 architecture.</p>
 <h2 id="obtaining-the-toolkit">Obtaining the Toolkit<a class="headerlink" href="#obtaining-the-toolkit" title="Permanent link">&para;</a></h2>
 <p>You can obtain the <code>Toolkit.jar</code> file either by compiling the <code>java-tron</code> source code or by downloading a pre-compiled binary from the official releases. We recommend downloading the latest version from <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases</a>.</p>
 <h3 id="compiling-from-source">Compiling from Source<a class="headerlink" href="#compiling-from-source" title="Permanent link">&para;</a></h3>
@@ -1850,7 +1851,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 <h3 id="command-and-parameters_3">Command and Parameters<a class="headerlink" href="#command-and-parameters_3" title="Permanent link">&para;</a></h3>
 <p>Use the <code>db convert</code> command to perform the data conversion:</p>
 <div class="highlight"><pre><span></span><code># full command
-  java -jar Toolkit.jar db convert [-h] [--safe] &lt;src&gt; &lt;dest&gt;
+  java -jar Toolkit.jar db convert [-h] &lt;src&gt; &lt;dest&gt;
 # examples
   java -jar Toolkit.jar db convert  output-directory/database /tmp/database
 </code></pre></div>
@@ -1858,11 +1859,6 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 <ul>
 <li><code>&lt;src&gt;</code>: Specifies the source LevelDB data directory. Default: <code>output-directory/database</code>.</li>
 <li><code>&lt;dest&gt;</code>: Specifies the output directory for the RocksDB data. Default: <code>output-directory-dst/database</code>.</li>
-<li><code>--safe &lt;boolean&gt;</code>: Toggles safe mode for the conversion. The default is <code>false</code>, but we recommended setting this to <code>true</code> for better data compatibility.<ul>
-<li>If safe mode is enabled, the tool reads all data from LevelDB and writes it to RocksDB. This process is slower but more thorough.</li>
-<li>If safe mode is disabled (default), the tool performs a much faster conversion. Because the current version of RocksDB is compatible with LevelDB, this mode simply changes the <code>engine.properties</code> file setting from <code>leveldb</code> to <code>rocksdb</code>.</li>
-</ul>
-</li>
 <li><code>-h | --help &lt;boolean&gt;</code>: Displays help information. Default: <code>false</code>.</li>
 </ul>
 <blockquote>

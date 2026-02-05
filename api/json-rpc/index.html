@@ -899,6 +899,15 @@
 </li>
         
           <li class="md-nav__item ">
+  <a href="#eth_getblockreceipts" class="md-nav__link" >
+    <span class="md-ellipsis">
+      eth_getBlockReceipts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
   <a href="#eth_getwork" class="md-nav__link" >
     <span class="md-ellipsis">
       eth_getWork
@@ -2923,6 +2932,28 @@ curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot
 <span class="w">    </span><span class="p">}</span>
 
 <span class="p">}</span>
+</code></pre></div>
+<h3 id="eth_getblockreceipts">eth_getBlockReceipts<a class="headerlink" href="#eth_getblockreceipts" title="Permanent link">&para;</a></h3>
+<p><em>Returns transaction receipts for all transactions in the specified block. Returns null for the genesis block, blocks that have been pruned by light nodes, or blocks that have not yet been produced.</em></p>
+<p><strong>Parameters</strong></p>
+<p>String - block number, it supports three types: block number represented as hexadecimal string, blockHash (with or without the "0x" prefix), or tags ("latest", "earliest", "finalized").</p>
+<p><strong>Returns</strong></p>
+<p>An array of objects - An array of transaction receipt objects, each object matches the return value of <a href="#eth_gettransactionreceipt">eth_getTransactionReceipt</a></p>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
+
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+
+    &quot;method&quot;: &quot;eth_getBlockReceipts&quot;,
+
+    &quot;params&quot;: [&quot;0x5416c22&quot;],
+
+    &quot;id&quot;: 64
+
+}&#39;
+</code></pre></div>
+<p>Result</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="p">{</span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">}</span>
 </code></pre></div>
 <h3 id="eth_getwork">eth_getWork<a class="headerlink" href="#eth_getwork" title="Permanent link">&para;</a></h3>
 <p><em>Returns the hash of the current block</em></p>
