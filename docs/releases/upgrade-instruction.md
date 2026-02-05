@@ -106,7 +106,7 @@ nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
     -jar ./build/libs/FullNode.jar --witness -c config.conf &
 ```
-* **ARM64 Architecture (Only JDK 17 is supported)**
+* **arm64 Architecture (Only JDK 17 is supported)**
 ```bash
 nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
@@ -134,7 +134,7 @@ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
     -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
-* **ARM64 Architecture (Only JDK 17 is supported)**
+* **arm64 Architecture (Only JDK 17 is supported)**
 ```bash
 nohup java -Xmx9G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \

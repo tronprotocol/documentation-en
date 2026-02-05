@@ -2,10 +2,10 @@
 
 This document guides developers on how to deploy a TRON java-tron node on `Linux` or `macOS` operating systems.
 
-Currently, a java-tron node supports running on both x86 and ARM architectures(Support for the ARM architecture starts from version 4.8.1). JDK support varies by architecture:
+Currently, a java-tron node supports running on both x86_64 and arm64 architectures(Support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:
 
-- On x86 architecture, currently only Oracle JDK 8 is supported.
-- On ARM architecture, currently only JDK 17 is supported.
+- On x86_64 architecture, currently only Oracle JDK 8 is supported.
+- On arm64 architecture, currently only JDK 17 is supported.
 
 
 ## Hardware Configuration Requirements
@@ -149,7 +149,7 @@ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
     -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
-##### ARM64 (JDK 17)
+##### arm64 (JDK 17)
 ```bash
 nohup java -Xmx9G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
@@ -257,7 +257,7 @@ nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
     -jar ./build/libs/FullNode.jar --witness -c config.conf &
 ```
 
-#### Option 2: JDK 17 on ARM64
+#### Option 2: JDK 17 on arm64
 ```bash
 nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \

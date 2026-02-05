@@ -4,10 +4,10 @@ To simplify the Java development process and improve efficiency, selecting and c
 
 java-tron nodes support deployment on `Linux` or `MacOS` operating systems. The JDK version requirements are as follows:
 
-- On x86 architecture, currently only Oracle JDK 8 is supported.
-- On ARM architecture, currently only JDK 17 is supported.
+- On x86_64 architecture, currently only Oracle JDK 8 is supported.
+- On arm64 architecture, currently only JDK 17 is supported.
 
-The following configuration uses x86 architecture and Oracle JDK 8 as an example.
+The following configuration uses x86_64 architecture and Oracle JDK 8 as an example.
 
 ## Prerequisites
 
