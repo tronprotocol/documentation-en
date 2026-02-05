@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Democritus    |  GreatVoyage-v4.8.1    |  2026-02-04    |  [TIP-6780](https://github.com/tronprotocol/tips/blob/master/tip-6780.md) <br> [TIP-767](https://github.com/tronprotocol/tips/blob/master/tip-767.md) |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.1)   |   [Specs](#greatvoyage-481democritus)   |
 |  Seneca    |  GreatVoyage-v4.8.0.1    |  2026-01-13    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0.1)   |   [Specs](#greatvoyage-4801seneca)   |
 |  Kant    |  GreatVoyage-v4.8.0    |  2025-04-29    |  [TIP-650](https://github.com/tronprotocol/tips/blob/master/tip-650.md) <br> [TIP-651](https://github.com/tronprotocol/tips/blob/master/tip-651.md) <br> [TIP-694](https://github.com/tronprotocol/tips/blob/master/tip-694.md) <br> [TIP-697](https://github.com/tronprotocol/tips/blob/master/tip-697.md) <br> [TIP-745](https://github.com/tronprotocol/tips/blob/master/tip-745.md)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0)   |   [Specs](#greatvoyage-480kant)   |
 |  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/tronprotocol/tips/issues/697)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
@@ -78,6 +79,419 @@
 |   N/A   | Odyssey-v1.0.4    |  2018-4-13    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.4)    |  N/A   |
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
+
+
+
+## GreatVoyage-4.8.1(Democritus)
+
+### Core
+#### 1. Expand compatibility for ARM64 architecture and JDK 17
+
+To further enrich the java-tron technical ecosystem, the Democritus version introduces support for the arm64 architecture. In arm64 environments, the system currently supports JDK 17 and the RocksDB database.
+
+* **ARM64 architecture**
+    * **Mandatory JDK 17**: 
+    JDK 17 is the required Java runtime environment to ensure the operational stability of the node in the arm64 environments (based on JEP 237, 388, 391).
+    * **Mandatory RocksDB**: 
+    The database only supports **RocksDB (v9.7.4)**. LevelDB JNI does not support arm64 architecture and lacks maintenance, so the community-active RocksDB was chosen.
+    * **Floating point computation adaptation**: 
+    Floating-point calculations have been switched to use `StrictMath` via a proposal to ensure consistent results across different platforms. Before the proposal took effect, differences in floating-point implementations between arm64 and x86_64 architectures could lead to inconsistent results. Therefore, on arm64 architectures,  results are kept consistent with x86_64 mainnet data via hardcoding.
+        * Warning: Private networks on x86_64 platforms using floating-point computation (specifically Bancor transactions involving `pow`) may face synchronization issues from genesis on arm64. In such cases, please use a database snapshot from an existing height to start arm64 nodes.
+    * **Toolkit limitations**: 
+    LevelDB-related commands (`db archive` and `db convert`) are not supported in arm64 environments.
+* **Changes under x86_64 architecture**
+    * **Mandatory JDK 8**: 
+    Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as `@PostConstruct` will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86_64 to ensure environment stability.
+    * **RocksDB/LevelDB compatibility restrictions**: 
+    Due to version discrepancies (x86_64 uses RocksDB v5.15.10 which supports LevelDB, while arm64 uses v9.7.4 which does not), forcing RocksDB to open LevelDB in an arm64 environment triggers "Database Corruption" errors. To ensure consistent cross-platform behavior and data migration, **Democritus uniformly prohibits RocksDB from accessing LevelDB databases** (Existing databases successfully opened via compatibility mode remain unaffected). Error prompts for LevelDB attempting to open RocksDB have also been optimized, and interfaces/exception logic have been standardized.
+    * **Toolkit update**: 
+    Previously, `db convert` defaulted to a "compatibility mode" that only updated the value of `engine.properties` to RocksDB while keeping the underlying data in LevelDB format. To align with arm64's strict RocksDB requirements, the `db convert` command has been refactored to perform a **non-compatibility conversion** by default (previously the `–safe` flag logic). Consequently, the `–safe` parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.
+* **Other changes**
+    * **JDK 17 Compatibility**
+        * Null pointer compatibility: Optimized null pointer prompt information to facilitate problem positioning (based on JEP 358).
+        * Number conversion exception compatibility: Optimized number conversion exception prompts and added conversion radix error prompts (based on JDK-8176425).
+        * JDK version parsing compatibility: Adapted to JDK 10+ version number format changes (based on JEP 223).
+        * var inference keyword: Supports var type inference mechanism (based on JEP 286).
+    * **RocksDB Resource Optimization**
+        * Increase max handle setting parameter: Added the parameter `dbSettings.maxOpenFiles`, default is 5000 (previously mandatory and unconfigurable), developers can adjust according to server load.
+        * Resource release optimization: Set a reasonable lifecycle for RocksDB resources to release used resources in time, avoiding potential memory leak problems.
+        * To support JDK 17 and arm64 architecture, the following dependency changes were made:
+        
+            |  group-name   | package-name | Old version | New version |
+            | --- | -------- | -------- | -------- |
+            | org.projectlombok    |   lombok       |   1.18.12       |   1.18.34       |
+            |  javax.annotation   |   javax.annotation-api       |   -       |  1.3.2        |
+            | javax.jws    |   javax.jws-api       |   -       |      1.1    |
+            |  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
+            |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm64)    |
+
+* Issue：[https://github.com/tronprotocol/java-tron/issues/5954](https://github.com/tronprotocol/java-tron/issues/5954)
+* Source Code：
+[https://github.com/tronprotocol/java-tron/pull/6327](https://github.com/tronprotocol/java-tron/pull/6327)
+[https://github.com/tronprotocol/java-tron/pull/6421](https://github.com/tronprotocol/java-tron/pull/6421)
+[https://github.com/tronprotocol/java-tron/pull/6440](https://github.com/tronprotocol/java-tron/pull/6440)
+[https://github.com/tronprotocol/java-tron/pull/6455](https://github.com/tronprotocol/java-tron/pull/6455)
+[https://github.com/tronprotocol/java-tron/pull/6457](https://github.com/tronprotocol/java-tron/pull/6457)
+[https://github.com/tronprotocol/java-tron/pull/6459](https://github.com/tronprotocol/java-tron/pull/6459)
+[https://github.com/tronprotocol/java-tron/pull/6472](https://github.com/tronprotocol/java-tron/pull/6472)
+[https://github.com/tronprotocol/java-tron/pull/6502](https://github.com/tronprotocol/java-tron/pull/6502)
+
+### TVM
+#### 1. Modify the behavior of `SELFDESTRUCT`
+Following the proposal to deprecate the `SELFDESTRUCT` instruction via TIP-652 in GreatVoyage-4.8.0 (Kant), the Democritus release formally introduces behavioral adjustments to `SELFDESTRUCT`. This change ensures deep compatibility with Ethereum's EIP-6780, aligning the TVM (TRON Virtual Machine) with EVM standards. Detailed specifications can be found in TIP-6780.
+
+In versions prior to Democritus, `SELFDESTRUCT` allowed a contract to terminate itself, transfer its funds to a designated address, and delete all associated account data (code, storage, and the account itself). Starting with the Democritus release, the behavior of the `SELFDESTRUCT` instruction is modified as follows:
+
+* **Restricted Execution Scenarios**: 
+Account data deletion (including code, storage, and the account itself) is now only permitted if `SELFDESTRUCT` is invoked within the same transaction in which the contract was created.
+    * Scenario 1: invoke `SELFDESTRUCT` in a Subsequent Transaction (Standard Case)
+        * The contract account is **not** destroyed.
+        * Execution of the current contract stops immediately.
+        * No data is deleted, including storage keys, code, or the account itself. However, all assets (TRX, staked TRX, and TRC10 tokens) are transferred to the target address.
+        * If the target address is the contract itself, the assets are not burned.
+    * Scenario 2: invoke `SELFDESTRUCT` in the Same Transaction (Creation & Destruction)
+        * Execution stops immediately.
+        * All account data is purged.
+        * All assets are transferred to the target address.
+        * If the target address is the contract itself, the balance is reset to zero and the assets are burned.
+
+* **Energy Cost Adjustment**: 
+To increase the threshold for usage and further mitigate abuse, the Energy cost for the `SELFDESTRUCT` opcode has been increased from 0 to 5,000.
+
+**NOTE**: This feature is governed by TRON network parameter #94. It is disabled by default (value: 0) and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.
+
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-6780.md](https://github.com/tronprotocol/tips/blob/master/tip-6780.md)
+* Source Code：
+[https://github.com/tronprotocol/java-tron/pull/6383](https://github.com/tronprotocol/java-tron/pull/6383)
+[https://github.com/tronprotocol/java-tron/pull/6448](https://github.com/tronprotocol/java-tron/pull/6448)
+
+### Net
+#### 1. Fix 'gt lastNum' and 'gt highNoFork' error during block synchronizing
+The synchronization service previously outputted full exception stack traces during specific edge-case scenarios involving `gt highNoFork` and `gt lastNum` errors. To better align with standard error-level logging practices, this behavior has been adjusted. The service now logs only the specific exception message, suppressing the full stack trace to reduce log noise and improve readability.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6381](https://github.com/tronprotocol/java-tron/pull/6381)
+
+
+#### 2. Fix the light node incorrectly reporting a FORKED disconnection 
+In versions prior to Democritus, light nodes often misidentified connection issues as `FORKED` during handshakes with Full Nodes of lower block heights. This occurred specifically when a Full Node's highest solidified block was not present on the light node's local main chain.
+
+The Democritus release refines this logic by introducing a specific height threshold: a `FORKED` status is now only triggered if the light node’s lowest block height is lower than the Full Node’s highest solidified block height. In all other cases of chain mismatch, the error is correctly categorized as `LIGHT_NODE_SYNC_FAIL`.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6375](https://github.com/tronprotocol/java-tron/pull/6375)
+
+
+#### 3. Optimize P2P disconnection reason codes
+Prior to the Democritus release, certain `P2P_DISCONNECT` messages utilized vague reason codes, hindering accurate network troubleshooting. This update refines the error reporting logic for three specific scenarios to provide clearer diagnostic data:
+
+* Scenario 1: If a connection is terminated because a received block fails signature verification, the reason code is updated from `UNKNOWN` to `BAD_BLOCK`.
+* Scenario 2: Previously, failures during the `HelloMessage` validation incorrectly triggered an `UNEXPECTED_IDENTITY` error, even when no identity-specific checks were performed. This has been corrected to `INCOMPATIBLE_PROTOCOL` to accurately reflect the validation failure.
+* Scenario 3: When a `P2P_HELLO` message contains a Block ID with a length other than 32 bytes, the disconnection reason is now reported as `INCOMPATIBLE_PROTOCOL` instead of `UNKNOWN`.
+
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6394](https://github.com/tronprotocol/java-tron/pull/6394)
+
+#### 4. Implement P2P message rate limit
+Prior to the Democritus release, P2P message processing was not rate-limited, leaving nodes vulnerable to resource exhaustion (bandwidth, CPU, and RAM) when handling high message volumes. To address this, Democritus introduces a per-peer rate limiting mechanism. If the frequency of specific messages from a single peer exceeds defined thresholds, the node will drop the messages and proactively disconnect from that peer. The following limits are applied based on message type and node state:
+
+* `SyncBlockChainMessage`: Restricted to 3 QPS during the synchronization phase (defined as `ChainInventory.remainNum > 0`).
+* `FetchInvDataMessage`: Restricted to 3 QPS during the block synchronization stage.
+* `P2P_DISCONNECT`: Processing is limited to 1 QPS.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6393](https://github.com/tronprotocol/java-tron/pull/6393)
+
+#### 5. Optimize concurrent access to fields of `PeerConnection`
+The Democritus release optimizes concurrent access to `PeerConnection` by applying the `volatile` keyword to shared fields and refining the sequence of variable assignments. These changes ensure thread-safe visibility and prevent race conditions, significantly reducing exceptions caused by state inconsistencies during network synchronization.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6360](https://github.com/tronprotocol/java-tron/pull/6360)
+
+### Other Changes
+
+**Configuration & Dependencies**
+
+#### 1. Optimize the configuration switch for zkSNARK
+
+Added configuration item `node.allowShieldedTransactionApi` to replace `node.fullNodeAllowShieldedTransaction`.
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6371](https://github.com/tronprotocol/java-tron/pull/6371)
+[https://github.com/tronprotocol/java-tron/pull/6427](https://github.com/tronprotocol/java-tron/pull/6427)
+
+#### 2. Upgrade gradle to support jitpack publish
+Gradle version has been upgraded to 7.6.4, using the maven-publish plugin to support jitpack publishing.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6367](https://github.com/tronprotocol/java-tron/pull/6367)
+
+#### 3. Optimize local witness initialization logic
+The Democritus release refines the local witness initialization process. Private key and address initialization logic is now executed exclusively by witness nodes. If an invalid witness address is configured, the program will throw an exception and terminate. Additionally, the cryptography library has been upgraded from `org.bouncycastle:bcprov-jdk15on:1.69` to `org.bouncycastle:bcprov-jdk18on:1.79`.
+
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6368](https://github.com/tronprotocol/java-tron/pull/6368)
+[https://github.com/tronprotocol/java-tron/pull/6452](https://github.com/tronprotocol/java-tron/pull/6452)
+
+#### 4. Optimize log prompts for missing `Blackhole` configuration
+The Democritus release improves the error logging for missing `Blackhole` account configurations. The updated logs provide more actionable guidance, explicitly notifying users to configure the `Blackhole` account address within the `config.conf` file.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6356](https://github.com/tronprotocol/java-tron/pull/6356)
+
+
+#### 5. Enrich FullNode command-line options
+Starting with the **Democritus** release, the standalone `SolidityNode.jar` and `KeystoreFactory.jar` have been merged into `FullNode`. Users can start the SolidityNode service using the command-line parameter `--solidity`, or start the KeystoreFactory service using `--keystore-factory`. This unification reduces storage overhead and simplifies build and deployment workflows.
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6397](https://github.com/tronprotocol/java-tron/pull/6397)
+[https://github.com/tronprotocol/java-tron/pull/6450](https://github.com/tronprotocol/java-tron/pull/6450)
+[https://github.com/tronprotocol/java-tron/pull/6446](https://github.com/tronprotocol/java-tron/pull/6446)
+
+#### 6. Synchronize `config.conf` with `tron-deployment`
+
+The Democritus version introduces full synchronization of configuration items between `config.conf` and the `tron-deployment` repository, and updates the seed node list in `seed.node.ip.list`.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6332](https://github.com/tronprotocol/java-tron/pull/6332)
+
+#### 7. Standardize full configuration and annotation guidelines
+The Democritus version introduces a standardized configuration file containing all supported parameters. **Any configuration item not included in this file is considered invalid or deprecated.** Additionally, this release defines specific annotation and commenting standards within the configuration files:
+
+* Whole-line comments Must begin with the `#` prefix.
+* Comments appended to the end of a configuration line may use either `#` or `//`.
+* Configuration items without default values must be prefixed with `#` to serve as a commented-out template.
+
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6430](https://github.com/tronprotocol/java-tron/pull/6430)
+
+#### 8. Update dependencies
+Upgraded dependencies such as `grpc-java`, `spring`, `jackson`, and `jetty`:
+
+| group-name | package-name | Old version | New version |
+| --- | --- | --- | --- |
+| org.eclipse.jetty | jetty-server | 9.4.53.v20231009 | 9.4.57.v20241219 |
+| com.cedarsoftware | java-util | 1.8.0 | 3.2.0 |
+| com.fasterxml.jackson.core | jackson-databind | 2.13.4.2 | 2.18.3 |
+| org.springframework | spring-context | 5.3.18 | 5.3.39 |
+| org.springframework | spring-test | 5.2.0.RELEASE | 5.3.39 |
+| io.grpc | grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services | 1.60.0 | 1.75.0 |
+| com.google.protobuf | protobuf-java, protobuf-java-util, protoc | 3.25.5 | 3.25.8 |
+
+Deleted dependencies: 
+
+| group-name | package-name |
+| --- | --- |
+| com.carrotsearch | java-sizeof | 
+| org.springframework | spring-tx | 
+| org.springframework | spring-web |
+| org.hamcrest | hamcrest-junit | 
+| com.google.inject | guice |
+| io.vavr | vavr | 
+
+Additionally, the Democritus version upgrades the underlying network library `libp2p`, from 2.2.6 to 2.2.7. This version not only adds compilation support for JDK 17 but also introduces numerous optimizations and improvements:
+
+* Added formal compilation support for JDK 17 ([#113](https://github.com/tronprotocol/libp2p/pull/113)).
+* Upgraded `grpc-netty` and `protobuf` libraries ([#110](https://github.com/tronprotocol/libp2p/pull/110)).
+* Optimized connection pool (`connPool`) and general resource allocation logic ([#116](https://github.com/tronprotocol/libp2p/pull/116)).
+* Implemented a concurrent external IP acquisition mechanism with built-in validation ([#120](https://github.com/tronprotocol/libp2p/pull/120), [#121](https://github.com/tronprotocol/libp2p/pull/121)).
+* Refined network detection logic ([#122](https://github.com/tronprotocol/libp2p/pull/122)):
+
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6400](https://github.com/tronprotocol/java-tron/pull/6400)
+[https://github.com/tronprotocol/java-tron/pull/6429](https://github.com/tronprotocol/java-tron/pull/6429)
+[https://github.com/tronprotocol/java-tron/pull/6431](https://github.com/tronprotocol/java-tron/pull/6431)
+[https://github.com/tronprotocol/java-tron/pull/6481](https://github.com/tronprotocol/java-tron/pull/6481)
+
+#### 9. Update code version to 4.8.1
+The version number has been formally defined as 4.8.1 to reflect the Democritus release.
+
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6445](https://github.com/tronprotocol/java-tron/pull/6445)
+
+
+**Event Service**
+
+#### 1. Optimize transaction info retrieval logic for Event Services
+The Democritus release addresses compatibility issues encountered during the retrieval of Transaction Info. To ensure data availability, if the event service fails to retrieve data from the `transactionRetStore` database, it will automatically perform a compatibility fallback to retrieve data from the `transactionHistoryStore` database.
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6443](https://github.com/tronprotocol/java-tron/pull/6443)
+[https://github.com/tronprotocol/java-tron/pull/6453](https://github.com/tronprotocol/java-tron/pull/6453)
+
+#### 2. Remove bloom filter write toggle
+The `section-bloom` database is used to store Bloom filters for contract logs and their corresponding block indexes. When processing `eth_getLogs` requests, the node queries this database to quickly locate matching blocks. This is a critical step for efficient event retrieval.
+
+Prior to the Democritus Release, writing to this database was controlled by the `node.jsonrpc.httpFullNodeEnable` configuration setting. If this setting was disabled, the node would not record block Bloom filter data to the `section-bloom` database. Because these index data points cannot be retrospectively backfilled automatically, users were unable to query historical transaction events that occurred while the toggle was off—even if they enabled the configuration later.
+
+
+Starting with the Democritus version, dependency on this configuration toggle has been removed. The node now persistently writes data to the `section-bloom` database by default. This change ensures the continuity and integrity of the Bloom filter index, completely resolving the issue where `eth_getLogs` failed to retrieve historical data due to specific configuration states.
+
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6372](https://github.com/tronprotocol/java-tron/pull/6372)
+
+#### 3. Optimize event service shutdown logic
+The Democritus version introduces an optimized shutdown logic for the `HistoryEventService` thread. By implementing a global state variable, `isClosed`, the system now ensures that resource deallocation occurs exactly once, even if the close function is invoked multiple times. This optimization effectively prevents redundant resource disposal and associated exceptions, significantly enhancing system stability during termination.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6463](https://github.com/tronprotocol/java-tron/pull/6463)
+
+**Test Case**
+
+#### 1. Optimize resource management for test cases
+The Democritus version introduces a systematic optimization of resource management for unit testing. These enhancements significantly improve execution efficiency while further ensuring the cleanliness and stability of the testing environment.
+
+* **Standardized Cleanup Mechanism**: Implemented a more rigorous file cleanup protocol to ensure that all temporary data generated during testing is thoroughly removed post-execution.
+* **Improved Execution Performance**: By optimizing high-latency test cases, the total duration of the unit testing suite has been reduced by up to 30%.
+* **Robust Resource Release**: Addressed known resource leak issues and standardized the resource release logic.
+* **Enhanced Runtime Stability**: Resolved specific NullPointerExceptions.
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6437](https://github.com/tronprotocol/java-tron/pull/6437)
+[https://github.com/tronprotocol/java-tron/pull/6483](https://github.com/tronprotocol/java-tron/pull/6483)
+[https://github.com/tronprotocol/java-tron/pull/6486](https://github.com/tronprotocol/java-tron/pull/6486)
+
+#### 2. Implement gRPC timeout mechanism
+
+When executing test cases repeatedly (e.g., over 100 times) on arm64, certain gRPC test cases would hang. To solve this, the Democritus version introduces a gRPC timeout mechanism. A 5-second execution timeout was added for individual gRPC test case, and a 30-second timeout for the entire test execution; if it times out, it breaks and continues executing subsequent logic.
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6441](https://github.com/tronprotocol/java-tron/pull/6441)
+[https://github.com/tronprotocol/java-tron/pull/6460](https://github.com/tronprotocol/java-tron/pull/6460)
+ 
+
+
+#### 3. Ensure automated termination of unit test
+
+The Democritus version introduces optimizations to the termination logic of the `ConditionalStopTest` unit test. Specifically, within SR scenarios, the logic has been refined to accurately identify stop conditions even when the block production sequence undergoes changes. This ensures that the unit test terminates correctly and automatically as expected.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6469](https://github.com/tronprotocol/java-tron/pull/6469)
+
+#### 4. Enhance log context isolation mechanism
+The Democritus version addresses the issue of global logger configuration pollution previously triggered by the `TronErrorTest` unit test. By strengthening the output of error and warning messages during the `LogService` configuration loading phase and explicitly restoring the logger context within unit tests, the system now ensures complete log environment isolation between different test cases. This improvement eliminates interference in logging behavior across test suites and provides clearer diagnostic data for rapidly locating `Logback` configuration loading anomalies.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6476](https://github.com/tronprotocol/java-tron/pull/6476) 
+
+#### 5. Resolve `CheckStyle` violations in testcase
+Added a line break to a comment statement in the test case file to fix `checkStyle` issues in test cases.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6392](https://github.com/tronprotocol/java-tron/pull/6392)
+
+
+**Documents**
+#### 1. Update readme for FullNode startup JVM parameters 
+Adjusted the JVM startup parameters for java-tron on x86_64 and arm64 platforms, aiming to ensure that FullNode nodes can meet basic disaster recovery requirements under minimum hardware configurations; meanwhile, modified hardware requirements to recommend more stable machine configurations.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6478](https://github.com/tronprotocol/java-tron/pull/6478)
+
+
+#### 2. Fix README badge display errors
+The Democritus version fixed the issue where the GitHub badge at the top of the README document displayed as "unknown", and modified the badge image link.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6340](https://github.com/tronprotocol/java-tron/pull/6340)
+
+
+#### 3. Update telegram info and doc link in README
+The Democritus version udpated the README document to add Telegram contact information for the official TRON development discussion group.
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6364](https://github.com/tronprotocol/java-tron/pull/6364)
+
+**Others**
+
+#### 1. TIP-767: Transitioning voting window configuration to chain governance 
+To ensure high uniformity of governance parameters across the entire network and enhance protocol consistency, the Democritus version introduces TRON No. 92 network parameter (`PROPOSAL_EXPIRE_TIME`), transitioning the configuration of proposal expiration time to on-chain governance.
+
+
+* TIP：[https://github.com/tronprotocol/tips/blob/master/tip-767.md](https://github.com/tronprotocol/tips/blob/master/tip-767.md)
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6399](https://github.com/tronprotocol/java-tron/pull/6399)
+[https://github.com/tronprotocol/java-tron/pull/6454](https://github.com/tronprotocol/java-tron/pull/6454)
+
+#### 2. Fix protocol buffer syntax compatibility issue: 
+
+Fixed the hexadecimal casing error in the `ReasonCode` struct, resolving compilation compatibility issues in JavaScript environments.
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6426](https://github.com/tronprotocol/java-tron/pull/6426)
+
+
+
+### API
+
+#### 1. Introduce the`eth_getBlockReceipts` API
+The Democritus version introduces the `eth_getBlockReceipts` interface, used to query all transaction receipts in a specified block. For genesis blocks, blocks already pruned by light nodes, and unproduced blocks, it returns `null`.
+
+* **Parameters**: block number (required). Supports three types: hexadecimal string, blockHash (with or without 0x prefix), or tags ("latest", "earliest", "finalized").
+* **Returns**: An array of objects, where each object is a receipt for a transaction in that block. The structure is consistent with [eth_getTransactionReceipt](https://developers.tron.network/reference/eth_gettransactionreceipt).
+
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6379](https://github.com/tronprotocol/java-tron/pull/6379) [https://github.com/tronprotocol/java-tron/pull/6433](https://github.com/tronprotocol/java-tron/pull/6433)
+
+#### 2. Introduce a new API to query the real-time vote count of witness
+The Democritus version introduces the `getPaginatedNowWitnessList` interface. This endpoint is designed to query real-time voting data for the current epoch and return a paginated list of witnesses sorted in descending order of their vote counts. where votes = final votes at the end of the last maintenance period + voting increments in the current epoch (can be negative).
+
+* **Parameters**
+    * offset: long, start index, requires >= 0.
+    * limit: long, number of items to return, requires > 0, upper limit is 1000.
+    * visible: boolean, optional; controls whether the returned JSON address is in readable encoding.
+* **Returns**
+    * Success: witnesses array, each item is a Witness (containing address, vote count, URL, etc.), sorted descending by "real-time votes".
+    * Failure: No result or invalid parameters. When limit <= 0, offset < 0, or offset >= total Witness count, returns {} (empty object), http code = 200.
+
+API-specific errors: When in a maintenance period and requesting non-solidified data, throws a maintenance period unavailable exception, http code = 200.
+
+* Source Code: 
+[https://github.com/tronprotocol/java-tron/pull/6373](https://github.com/tronprotocol/java-tron/pull/6373)
+[https://github.com/tronprotocol/java-tron/pull/6451](https://github.com/tronprotocol/java-tron/pull/6451)
+
+#### 3. Optimize the return data `eth_call`
+In versions prior to Democritus, the `eth_call` interface provided limited feedback upon contract execution failure. It typically returned a generic error message (e.g., "REVERT opcode executed") while leaving the data field empty. This lack of detailed execution context made it difficult for developers to diagnose and trace specific issues within the smart contract. 
+
+The Democritus version introduced `JsonRpcException` as the parent class for all JsonRpc exceptions, and a `JsonRpcErrorResolver` class for data field generation logic.
+
+Using [the demo contract](https://nile.tronscan.org/#/contract/TAFPPQK2NaqSPwKcaomLXJmwbxLB34x8Lr/code) as an example, the following information was returned when calling the testInsufficientBalance method prior to the change: 
+```
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+        "code": -32000,
+        "message": "REVERT opcode executed",
+        "data": "{}"
+    }
+}
+```
+After modification: The `data` field returns error information (e.g., encoded revert reason), allowing developers to obtain the specific error reason via ABI parsing. (Consistent with Ethereum node strategy, returns unparsed data for everything except default Error(string)).
+```
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+        "code": -32000,
+        "message": "REVERT opcode executed",
+       "data": "0xcf47918100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000064"
+    }
+}
+```
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6369](https://github.com/tronprotocol/java-tron/pull/6369)
+
+#### 4. Performance optimization for eth_getLogs, eth_getFilterLogs
+Event query interfaces like `eth_getLogs` rely on a `partialMatch` function to query the Bloom database. The query conditions are derived from 3 `bitIndexes` generated for each topic or address. Since the Bloom filter has a bit limit (2048 bits), when the number of topics reaches 683, the total number of indexes ( 683 * 3 > 2048) exceeds the filter capacity. This inevitably leads to bit collisions and redundant bitIndexes, resulting in duplicate database queries. To address this, the proposed optimization implements de-duplication of bitIndexes prior to execution, significantly reducing the frequency of database lookups.
+
+The table below contrasts the duplication rate of `bitIndex` and execution time of `partialMatch` under different numbers of topics and addresses. It shows that as the number of `topics` increases, the higher the `bitIndex` duplication, the more significant the performance improvement after optimization.
+
+
+| Metric | 10 Topics | 100 Topics | 500 Topics | 1000 Topics | 2000 Addresses |
+| --- | --- | --- | --- | --- | --- |
+| **Original (ms)** | 2.28 | 2.51 | 9.35 | 21.41 | 40.15 |
+| **Optimized (ms)** | 2.13 | 2.13 | 6.95 | 12.80 | 15.24 |
+| **Improvement Rate** | 6.58% | 15.14% | 25.67% | 40.21% | 62.04% |
+| **Duplication Rate** | 0% | 7.60% | 29.41% | 47.31% | 67.62% |
+
+
+
+* Source Code:  [https://github.com/tronprotocol/java-tron/pull/6370](https://github.com/tronprotocol/java-tron/pull/6370)
+
+---
+*To a wise and good man the whole earth is his fatherland.*
+<p align="right">---Democritus</p>
+
 
 ## GreatVoyage-4.8.0.1(Seneca)
 
