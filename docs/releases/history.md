@@ -439,7 +439,7 @@ API-specific errors: When in a maintenance period and requesting non-solidified 
 [https://github.com/tronprotocol/java-tron/pull/6373](https://github.com/tronprotocol/java-tron/pull/6373)
 [https://github.com/tronprotocol/java-tron/pull/6451](https://github.com/tronprotocol/java-tron/pull/6451)
 
-#### 3. Optimize the return data `eth_call`
+#### 3. Optimize the return data of `eth_call`
 In versions prior to Democritus, the `eth_call` interface provided limited feedback upon contract execution failure. It typically returned a generic error message (e.g., "REVERT opcode executed") while leaving the data field empty. This lack of detailed execution context made it difficult for developers to diagnose and trace specific issues within the smart contract. 
 
 The Democritus version introduced `JsonRpcException` as the parent class for all JsonRpc exceptions, and a `JsonRpcErrorResolver` class for data field generation logic.
