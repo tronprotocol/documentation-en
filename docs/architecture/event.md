@@ -625,7 +625,7 @@ db.createUser({user:"<eventlog-username>",pwd:"<eventlog-password>",roles:[{role
 
 The Event Query Service provides an HTTP interface for querying event data stored in MongoDB. This service requires a Java environment.
 
-**Note**: Please use Oracle JDK 8 on x86 architecture and JDK 17 on ARM architecture.
+**Note**: Please use Oracle JDK 8 on x86_64 architecture and JDK 17 on arm64 architecture.
 
 ##### 1. Downloading the Source Code
 

@@ -4,12 +4,12 @@ In the TRON Java implementation (**java-tron**), the node data storage engine of
 
 Database support varies by architecture:
 
-- On x86 architecture, both LevelDB and RocksDB are supported, and the current version of RocksDB is v5.15.10.
-- On ARM architecture, only RocksDB is supported, and the current version of RocksDB is v9.7.4.
+- On x86_64 architecture, both LevelDB and RocksDB are supported, and the current version of RocksDB is v5.15.10.
+- On arm64 architecture, only RocksDB is supported, and the current version of RocksDB is v9.7.4.
 
 Developers can flexibly choose the appropriate storage engine based on the platform environment, hardware conditions, and performance requirements.
 
-In comparison, **RocksDB provides richer configuration parameters and generally offers higher storage efficiency**. This article will introduce how to enable RocksDB and how to convert from LevelDB to RocksDB on x86 platforms.
+In comparison, **RocksDB provides richer configuration parameters and generally offers higher storage efficiency**. This article will introduce how to enable RocksDB and how to convert from LevelDB to RocksDB on x86_64 platforms.
 
 ## Using RocksDB
 
@@ -42,7 +42,7 @@ dbSettings = {
 }
 ```
 
-## Migrating from LevelDB to RocksDB on x86 Platforms
+## Migrating from LevelDB to RocksDB on x86_64 Platforms
 To migrate from LevelDB to RocksDB, use the TRON Toolkit `Toolkit.jar`.
 ### 1. Data Conversion Steps
 ```
@@ -84,7 +84,7 @@ java -jar build/libs/Toolkit.jar db convert output-directory/database output-dir
 > Note:
 The entire data conversion process is expected to take approximately **10 hours**, depending on the data volume and disk performance.
 ## About LevelDB
-LevelDB is the default data storage engine for java-tron nodes on x86 platforms, suitable for resource-constrained or lightweight deployment scenarios. It has a simple structure and is easy to maintain, but it is less efficient than RocksDB in terms of data compression, backup capabilities, and performance for large-scale nodes.
+LevelDB is the default data storage engine for java-tron nodes on x86_64 platforms, suitable for resource-constrained or lightweight deployment scenarios. It has a simple structure and is easy to maintain, but it is less efficient than RocksDB in terms of data compression, backup capabilities, and performance for large-scale nodes.
 
 For a detailed comparison between the two, refer to the documentation:
 📘 [RocksDB vs. LevelDB Comparison](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
