@@ -1660,10 +1660,10 @@
 
 <h1 id="deploying-a-java-tron-node">Deploying a java-tron Node<a class="headerlink" href="#deploying-a-java-tron-node" title="Permanent link">&para;</a></h1>
 <p>This document guides developers on how to deploy a TRON java-tron node on <code>Linux</code> or <code>macOS</code> operating systems.</p>
-<p>Currently, a java-tron node supports running on both x86 and ARM architectures(Support for the ARM architecture starts from version 4.8.1). JDK support varies by architecture:</p>
+<p>Currently, a java-tron node supports running on both x86_64 and arm64 architectures(Support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:</p>
 <ul>
-<li>On x86 architecture, currently only Oracle JDK 8 is supported.</li>
-<li>On ARM architecture, currently only JDK 17 is supported.</li>
+<li>On x86_64 architecture, currently only Oracle JDK 8 is supported.</li>
+<li>On arm64 architecture, currently only JDK 17 is supported.</li>
 </ul>
 <h2 id="hardware-configuration-requirements">Hardware Configuration Requirements<a class="headerlink" href="#hardware-configuration-requirements" title="Permanent link">&para;</a></h2>
 <p>The minimum hardware configuration required to run a java-tron node is as follows:</p>
@@ -1793,7 +1793,7 @@ cd java-tron
 <span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<h5 id="arm64-jdk-17">ARM64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h5>
+<h5 id="arm64-jdk-17">arm64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
@@ -1879,7 +1879,7 @@ cd java-tron
 <span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<h4 id="option-2-jdk-17-on-arm64">Option 2: JDK 17 on ARM64<a class="headerlink" href="#option-2-jdk-17-on-arm64" title="Permanent link">&para;</a></h4>
+<h4 id="option-2-jdk-17-on-arm64">Option 2: JDK 17 on arm64<a class="headerlink" href="#option-2-jdk-17-on-arm64" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
