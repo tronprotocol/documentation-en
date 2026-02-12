@@ -147,7 +147,7 @@ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
     -XX:+HeapDumpOnOutOfMemoryError \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-    -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+    -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
 ```
 ##### arm64 (JDK 17)
 ```bash
@@ -159,7 +159,7 @@ nohup java -Xmx9G -XX:+UseZGC \
     -XX:MaxMetaspaceSize=512m \
     -XX:MaxDirectMemorySize=1g \
     -XX:+HeapDumpOnOutOfMemoryError \
-    -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+    -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
 ```
 
 ##### Java Startup Parameters Explanation
@@ -192,7 +192,7 @@ nohup java -Xmx9G -XX:+UseZGC \
 Utilize the `-c` flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is **strongly advised** to compile the source code following the [Building the Source Code](https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code) instructions for the Nile TestNet.
 
 ```bash
-nohup java -jar ./build/libs/FullNode.jar -c config-nile.conf &
+nohup java -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config-nile.conf &
 ```
 
 Nile resources: explorer, faucet, wallet, developer docs, and network statistics at [nileex.io](https://nileex.io/).
@@ -220,7 +220,7 @@ node {
 Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, SolidityNode is started using the command-line parameter `--solidity`, as shown below:
 
 ```
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --solidity -c config.conf
+java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --solidity -c framework/src/main/resources/config.conf
 ```
 
 
@@ -254,7 +254,7 @@ nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
     -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
     -XX:+HeapDumpOnOutOfMemoryError \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-    -jar ./build/libs/FullNode.jar --witness -c config.conf &
+    -jar ./build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
 ```
 
 #### Option 2: JDK 17 on arm64
@@ -267,7 +267,7 @@ nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -XX:MaxMetaspaceSize=512m \
     -XX:MaxDirectMemorySize=1g \
     -XX:+HeapDumpOnOutOfMemoryError \
-    -jar ./build/libs/FullNode.jar --witness -c config.conf &
+    -jar ./build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
 ```
 
 ### Master-Slave Mode for Block Production FullNodes
@@ -359,7 +359,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
         * **Important Notes**: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as `screen` or `tmux`.
   
         ```
-        java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
+        java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c framework/src/main/resources/config.conf
         ```
 
         * During node startup, the system will prompt you to enter the password. After entering the password correctly, the node will complete its startup.
@@ -367,7 +367,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
     * **Using `nohup` to pass the password directly in the command line via `--password`**
 
         ```
-        nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf --password "your_password" > start.log 2>&1 &
+        nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c framework/src/main/resources/config.conf --password "your_password" > start.log 2>&1 &
         ```
 
 ### Optimizing Memory Usage with `tcmalloc`

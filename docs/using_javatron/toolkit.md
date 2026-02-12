@@ -43,7 +43,7 @@ Use the `db mv` command to execute the data migration：
 # full command
 java -jar Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
 # examples
-java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 ```
 
 **Optional Parameters**：
@@ -107,38 +107,17 @@ The tool will move the database specified by `name` to the `path` directory and 
 After configuration, run the following command to perform the migration. The command will display the current progress.
 
 ```
-java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 ```
 
 #### 4. Restart the FullNode Service
 
 Once the migration is complete, restart your `java-tron` node. 
 
-**FullNode Startup Command Example**：
+[**FullNode Startup Command Example**](../installing_javatron/#starting-a-fullnode-on-the-tron-main-network)
 
-```
-nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
-                -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-                -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-                -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-                -XX:+UseConcMarkSweepGC -XX:NewRatio=2 \
-                -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-                -XX:+HeapDumpOnOutOfMemoryError \
-                -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-                -jar FullNode.jar -c main_net_config.conf >> start.log 2>&1 &
-```
-**Super Representative (SR) FullNode Startup Command Example**：
-```
-nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
-               -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-               -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-               -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-               -XX:+UseConcMarkSweepGC -XX:NewRatio=2 \
-               -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-               -XX:+HeapDumpOnOutOfMemoryError \
-               -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-               -jar FullNode.jar --witness -c main_net_config.conf >> start.log 2>&1 &
-```
+[**Super Representative (SR) FullNode Startup Command Example**](../installing_javatron/#starting-a-block-production-node)
+
 ## Lite Fullnode Data Pruning
 
 The TRON Toolkit provides a **data pruning tool** primarily used for generating and managing lite FullNode data.
