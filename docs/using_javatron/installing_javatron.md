@@ -220,7 +220,7 @@ node {
 Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, SolidityNode is started using the command-line parameter `--solidity`, as shown below:
 
 ```
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --solidity -c config.conf
+java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --solidity -c framework/src/main/resources/config.conf
 ```
 
 
