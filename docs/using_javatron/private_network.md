@@ -84,13 +84,13 @@ The operational steps for deploying a private network node are fundamentally the
      - Start the Super Representative (SR) Node:
      ```
      cd SR
-     java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
+     java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar build/libs/FullNode.jar  --witness  -c supernode.conf
      ```
     
      - Start the regular FullNode:
       ```
       cd FullNode
-      java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
+      java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar build/libs/FullNode.jar  -c fullnode.conf
       # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.
       ```  
       

@@ -41,9 +41,9 @@ The continuous growth of TRON's on-chain data (Mainnet Fullnode database current
 Use the `db mv` command to execute the data migration：
 ```
 # full command
-java -jar Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
+java -jar build/libs/Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
 # examples
-java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
+java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 ```
 
 **Optional Parameters**：
@@ -107,7 +107,7 @@ The tool will move the database specified by `name` to the `path` directory and 
 After configuration, run the following command to perform the migration. The command will display the current progress.
 
 ```
-java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
+java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 ```
 
 #### 4. Restart the FullNode Service
@@ -143,14 +143,14 @@ The data pruning tool can split a FullNode's data into a **Snapshot Dataset** or
 Use the `db lite` command to perform data pruning operations:
 ```
 # full command
-  java -jar Toolkit.jar db lite [-h] -ds=<datasetPath> -fn=<fnDataPath> [-o=<operate>] [-t=<type>]
+  java -jar build/libs/Toolkit.jar db lite [-h] -ds=<datasetPath> -fn=<fnDataPath> [-o=<operate>] [-t=<type>]
 # examples
   #split and get a snapshot dataset
-  java -jar Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
+  java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
   #split and get a history dataset
-  java -jar Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
+  java -jar build/libs/Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
   #merge history dataset and snapshot dataset
-  java -jar Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
+  java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
 **Optional Parameters**：
 
@@ -177,7 +177,7 @@ First, stop the node, then execute the following command:
 
 ```shell
 # For simplicity, the snapshot dataset will be stored in the /tmp directory
-java -jar Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
+java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
 ```
 
 * `--fn-data-path`: The source directory of the data to be pruned (the node's database directory).
@@ -193,7 +193,7 @@ To split and create a history dataset, use the following command:
 
 ```
 # For simplicity, the history dataset will be stored in the /tmp directory
-java -jar Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
+java -jar build/libs/Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
 ```
 
 *   `--fn-data-path`: The FullNode's database directory.
@@ -211,7 +211,7 @@ Use the following command to merge a history dataset and a snapshot dataset:
 
 ```shell
 # Assuming the snapshot dataset is in /tmp/snapshot and the history dataset is in /tmp/history
-java -jar Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
+java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
 *   `--fn-data-path`: The directory of the snapshot dataset.
 *   `--dataset-path`: The directory of the history dataset.
@@ -229,9 +229,9 @@ Use the `db cp` command to perform a data copy operation:
 
 ```shell
 # full command
-  java -jar Toolkit.jar db cp [-h] <src> <dest>
+  java -jar build/libs/Toolkit.jar db cp [-h] <src> <dest>
 # examples
-  java -jar Toolkit.jar db cp  output-directory/database /tmp/databse
+  java -jar build/libs/Toolkit.jar db cp  output-directory/database /tmp/databse
 ```
 
 **Optional Parameters**:
@@ -251,9 +251,9 @@ Use the `db convert` command to perform the data conversion:
 
 ```
 # full command
-  java -jar Toolkit.jar db convert [-h] <src> <dest>
+  java -jar build/libs/Toolkit.jar db convert [-h] <src> <dest>
 # examples
-  java -jar Toolkit.jar db convert  output-directory/database /tmp/database
+  java -jar build/libs/Toolkit.jar db convert  output-directory/database /tmp/database
 ```
 
 **Optional Parameters**:
@@ -274,16 +274,16 @@ Use the `db archive` command to perform the LevelDB startup optimization:
 
 ```
 # full command
-   java -jar Toolkit.jar db archive [-h] [-b=<maxBatchSize>] [-d=<databaseDirectory>] [-m=<maxManifestSize>]
+   java -jar build/libs/Toolkit.jar db archive [-h] [-b=<maxBatchSize>] [-d=<databaseDirectory>] [-m=<maxManifestSize>]
 # examples
    #1. use default settings
-   java -jar Toolkit.jar db archive 
+   java -jar build/libs/Toolkit.jar db archive 
    #2. specify the database directory as /tmp/db/database
-   java -jar Toolkit.jar db archive -d /tmp/db/database 
+   java -jar build/libs/Toolkit.jar db archive -d /tmp/db/database 
    #3. specify the batch size to 64000 when optimizing manifest
-   java -jar Toolkit.jar db archive -b 64000
+   java -jar build/libs/Toolkit.jar db archive -b 64000
    #4. specify optimization only when Manifest exceeds 128M
-   java -jar Toolkit.jar db archive -m 128 
+   java -jar build/libs/Toolkit.jar db archive -m 128 
 ```
 
 **Optional Parameters**:
