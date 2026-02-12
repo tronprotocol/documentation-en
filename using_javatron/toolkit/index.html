@@ -1681,7 +1681,7 @@ Upon successful compilation, the <code>Toolkit.jar</code> artifact will be locat
 <div class="highlight"><pre><span></span><code># full command
 java -jar Toolkit.jar db mv [-h] [-c=&lt;config&gt;] [-d=&lt;database&gt;]
 # examples
-java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 </code></pre></div></p>
 <p><strong>Optional Parameters</strong>：</p>
 <ul>
@@ -1725,32 +1725,12 @@ java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directo
 <p>The tool will move the database specified by <code>name</code> to the <code>path</code> directory and create a soft link in the original location pointing to the new directory. After the Fullnode restart, it will use this link to locate the data.</p>
 <h4 id="3-execute-the-database-migration">3. Execute the Database Migration<a class="headerlink" href="#3-execute-the-database-migration" title="Permanent link">&para;</a></h4>
 <p>After configuration, run the following command to perform the migration. The command will display the current progress.</p>
-<div class="highlight"><pre><span></span><code>java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+<div class="highlight"><pre><span></span><code>java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 </code></pre></div>
 <h4 id="4-restart-the-fullnode-service">4. Restart the FullNode Service<a class="headerlink" href="#4-restart-the-fullnode-service" title="Permanent link">&para;</a></h4>
 <p>Once the migration is complete, restart your <code>java-tron</code> node. </p>
-<p><strong>FullNode Startup Command Example</strong>：</p>
-<p><div class="highlight"><pre><span></span><code>nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
-                -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-                -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-                -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-                -XX:+UseConcMarkSweepGC -XX:NewRatio=2 \
-                -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-                -XX:+HeapDumpOnOutOfMemoryError \
-                -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-                -jar FullNode.jar -c main_net_config.conf &gt;&gt; start.log 2&gt;&amp;1 &amp;
-</code></pre></div>
-<strong>Super Representative (SR) FullNode Startup Command Example</strong>：
-<div class="highlight"><pre><span></span><code>nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
-               -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-               -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-               -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-               -XX:+UseConcMarkSweepGC -XX:NewRatio=2 \
-               -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-               -XX:+HeapDumpOnOutOfMemoryError \
-               -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-               -jar FullNode.jar --witness -c main_net_config.conf &gt;&gt; start.log 2&gt;&amp;1 &amp;
-</code></pre></div></p>
+<p><a href="../installing_javatron/#starting-a-fullnode-on-the-tron-main-network"><strong>FullNode Startup Command Example</strong></a></p>
+<p><a href="../installing_javatron/#starting-a-block-production-node"><strong>Super Representative (SR) FullNode Startup Command Example</strong></a></p>
 <h2 id="lite-fullnode-data-pruning">Lite Fullnode Data Pruning<a class="headerlink" href="#lite-fullnode-data-pruning" title="Permanent link">&para;</a></h2>
 <p>The TRON Toolkit provides a <strong>data pruning tool</strong> primarily used for generating and managing lite FullNode data.</p>
 <p>A FullNode's complete data can be split into two parts: a snapshot dataset (Snapshot Dataset) or a historical dataset (History Dataset).</p>
