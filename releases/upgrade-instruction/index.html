@@ -1659,7 +1659,7 @@ $ git checkout -b release_vx.x.x
 <span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div></li>
 <li><strong>arm64 Architecture (Only JDK 17 is supported)</strong>
 <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
@@ -1670,7 +1670,7 @@ $ git checkout -b release_vx.x.x
 <span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div><blockquote>
 <p><strong>Note</strong>: We recommend managing your private key using a <code>keystore</code> file or within the configuration file, rather than passing it directly as a command-line argument.</p>
 </blockquote>
@@ -1687,7 +1687,7 @@ $ git checkout -b release_vx.x.x
 <span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div></li>
 <li><strong>arm64 Architecture (Only JDK 17 is supported)</strong>
 <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
@@ -1698,7 +1698,7 @@ $ git checkout -b release_vx.x.x
 <span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div></li>
 </ul>
 <h3 id="step-6-verify-and-monitor">Step 6: Verify and Monitor<a class="headerlink" href="#step-6-verify-and-monitor" title="Permanent link">&para;</a></h3>
