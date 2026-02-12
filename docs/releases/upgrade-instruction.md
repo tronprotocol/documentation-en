@@ -104,7 +104,7 @@ nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
     -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
     -XX:+HeapDumpOnOutOfMemoryError \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-    -jar ./build/libs/FullNode.jar --witness -c config.conf &
+    -jar ./build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
 ```
 * **arm64 Architecture (Only JDK 17 is supported)**
 ```bash
@@ -116,7 +116,7 @@ nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -XX:MaxMetaspaceSize=512m \
     -XX:MaxDirectMemorySize=1g \
     -XX:+HeapDumpOnOutOfMemoryError \
-    -jar ./build/libs/FullNode.jar --witness -c config.conf &
+    -jar ./build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
 ```
 > **Note**: We recommend managing your private key using a `keystore` file or within the configuration file, rather than passing it directly as a command-line argument.
     
@@ -132,7 +132,7 @@ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
     -XX:+HeapDumpOnOutOfMemoryError \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-    -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+    -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
 ```
 * **arm64 Architecture (Only JDK 17 is supported)**
 ```bash
@@ -144,7 +144,7 @@ nohup java -Xmx9G -XX:+UseZGC \
     -XX:MaxMetaspaceSize=512m \
     -XX:MaxDirectMemorySize=1g \
     -XX:+HeapDumpOnOutOfMemoryError \
-    -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+    -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
 ```
 
 ### Step 6: Verify and Monitor
