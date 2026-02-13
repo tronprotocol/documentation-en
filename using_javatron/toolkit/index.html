@@ -1679,9 +1679,9 @@ Upon successful compilation, the <code>Toolkit.jar</code> artifact will be locat
 <h3 id="command-and-parameters">Command and Parameters<a class="headerlink" href="#command-and-parameters" title="Permanent link">&para;</a></h3>
 <p>Use the <code>db mv</code> command to execute the data migration：
 <div class="highlight"><pre><span></span><code># full command
-java -jar Toolkit.jar db mv [-h] [-c=&lt;config&gt;] [-d=&lt;database&gt;]
+java -jar build/libs/Toolkit.jar db mv [-h] [-c=&lt;config&gt;] [-d=&lt;database&gt;]
 # examples
-java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
+java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 </code></pre></div></p>
 <p><strong>Optional Parameters</strong>：</p>
 <ul>
@@ -1725,7 +1725,7 @@ java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data
 <p>The tool will move the database specified by <code>name</code> to the <code>path</code> directory and create a soft link in the original location pointing to the new directory. After the Fullnode restart, it will use this link to locate the data.</p>
 <h4 id="3-execute-the-database-migration">3. Execute the Database Migration<a class="headerlink" href="#3-execute-the-database-migration" title="Permanent link">&para;</a></h4>
 <p>After configuration, run the following command to perform the migration. The command will display the current progress.</p>
-<div class="highlight"><pre><span></span><code>java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
+<div class="highlight"><pre><span></span><code>java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 </code></pre></div>
 <h4 id="4-restart-the-fullnode-service">4. Restart the FullNode Service<a class="headerlink" href="#4-restart-the-fullnode-service" title="Permanent link">&para;</a></h4>
 <p>Once the migration is complete, restart your <code>java-tron</code> node. </p>
@@ -1749,14 +1749,14 @@ java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data
 <h3 id="command-and-parameters_1">Command and Parameters<a class="headerlink" href="#command-and-parameters_1" title="Permanent link">&para;</a></h3>
 <p>Use the <code>db lite</code> command to perform data pruning operations:
 <div class="highlight"><pre><span></span><code># full command
-  java -jar Toolkit.jar db lite [-h] -ds=&lt;datasetPath&gt; -fn=&lt;fnDataPath&gt; [-o=&lt;operate&gt;] [-t=&lt;type&gt;]
+  java -jar build/libs/Toolkit.jar db lite [-h] -ds=&lt;datasetPath&gt; -fn=&lt;fnDataPath&gt; [-o=&lt;operate&gt;] [-t=&lt;type&gt;]
 # examples
   #split and get a snapshot dataset
-  java -jar Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
+  java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
   #split and get a history dataset
-  java -jar Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
+  java -jar build/libs/Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
   #merge history dataset and snapshot dataset
-  java -jar Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
+  java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 </code></pre></div>
 <strong>Optional Parameters</strong>：</p>
 <ul>
@@ -1779,7 +1779,7 @@ java -jar Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data
 <p>This feature can be used to convert FullNode data into Lite FullNode data, or to periodically prune the data of a running Lite FullNode. Follow these steps:</p>
 <p>First, stop the node, then execute the following command:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># For simplicity, the snapshot dataset will be stored in the /tmp directory</span>
-java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>split<span class="w"> </span>-t<span class="w"> </span>snapshot<span class="w"> </span>--fn-data-path<span class="w"> </span>output-directory/database<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp
+java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>split<span class="w"> </span>-t<span class="w"> </span>snapshot<span class="w"> </span>--fn-data-path<span class="w"> </span>output-directory/database<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp
 </code></pre></div>
 <ul>
 <li><code>--fn-data-path</code>: The source directory of the data to be pruned (the node's database directory).</li>
@@ -1789,7 +1789,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 <h4 id="split-to-create-a-history-dataset">Split to Create a History Dataset<a class="headerlink" href="#split-to-create-a-history-dataset" title="Permanent link">&para;</a></h4>
 <p>To split and create a history dataset, use the following command:</p>
 <div class="highlight"><pre><span></span><code># For simplicity, the history dataset will be stored in the /tmp directory
-java -jar Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
+java -jar build/libs/Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
 </code></pre></div>
 <ul>
 <li><code>--fn-data-path</code>: The FullNode's database directory.</li>
@@ -1803,7 +1803,7 @@ java -jar Toolkit.jar db lite -o split -t history --fn-data-path output-director
 </blockquote>
 <p>Use the following command to merge a history dataset and a snapshot dataset:</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Assuming the snapshot dataset is in /tmp/snapshot and the history dataset is in /tmp/history</span>
-java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>merge<span class="w"> </span>--fn-data-path<span class="w"> </span>/tmp/snapshot<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp/history
+java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>merge<span class="w"> </span>--fn-data-path<span class="w"> </span>/tmp/snapshot<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp/history
 </code></pre></div>
 *   <code>--fn-data-path</code>: The directory of the snapshot dataset.
 *   <code>--dataset-path</code>: The directory of the history dataset.</p>
@@ -1813,9 +1813,9 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 <h3 id="command-and-parameters_2">Command and Parameters<a class="headerlink" href="#command-and-parameters_2" title="Permanent link">&para;</a></h3>
 <p>Use the <code>db cp</code> command to perform a data copy operation:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># full command</span>
-<span class="w">  </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>cp<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>&lt;src&gt;<span class="w"> </span>&lt;dest&gt;
+<span class="w">  </span>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>db<span class="w"> </span>cp<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>&lt;src&gt;<span class="w"> </span>&lt;dest&gt;
 <span class="c1"># examples</span>
-<span class="w">  </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>cp<span class="w">  </span>output-directory/database<span class="w"> </span>/tmp/databse
+<span class="w">  </span>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>db<span class="w"> </span>cp<span class="w">  </span>output-directory/database<span class="w"> </span>/tmp/databse
 </code></pre></div>
 <p><strong>Optional Parameters</strong>:</p>
 <ul>
@@ -1831,9 +1831,9 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 <h3 id="command-and-parameters_3">Command and Parameters<a class="headerlink" href="#command-and-parameters_3" title="Permanent link">&para;</a></h3>
 <p>Use the <code>db convert</code> command to perform the data conversion:</p>
 <div class="highlight"><pre><span></span><code># full command
-  java -jar Toolkit.jar db convert [-h] &lt;src&gt; &lt;dest&gt;
+  java -jar build/libs/Toolkit.jar db convert [-h] &lt;src&gt; &lt;dest&gt;
 # examples
-  java -jar Toolkit.jar db convert  output-directory/database /tmp/database
+  java -jar build/libs/Toolkit.jar db convert  output-directory/database /tmp/database
 </code></pre></div>
 <p><strong>Optional Parameters</strong>:</p>
 <ul>
@@ -1849,16 +1849,16 @@ java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="
 <h3 id="command-and-parameters_4">Command and Parameters<a class="headerlink" href="#command-and-parameters_4" title="Permanent link">&para;</a></h3>
 <p>Use the <code>db archive</code> command to perform the LevelDB startup optimization:</p>
 <div class="highlight"><pre><span></span><code># full command
-   java -jar Toolkit.jar db archive [-h] [-b=&lt;maxBatchSize&gt;] [-d=&lt;databaseDirectory&gt;] [-m=&lt;maxManifestSize&gt;]
+   java -jar build/libs/Toolkit.jar db archive [-h] [-b=&lt;maxBatchSize&gt;] [-d=&lt;databaseDirectory&gt;] [-m=&lt;maxManifestSize&gt;]
 # examples
    #1. use default settings
-   java -jar Toolkit.jar db archive 
+   java -jar build/libs/Toolkit.jar db archive 
    #2. specify the database directory as /tmp/db/database
-   java -jar Toolkit.jar db archive -d /tmp/db/database 
+   java -jar build/libs/Toolkit.jar db archive -d /tmp/db/database 
    #3. specify the batch size to 64000 when optimizing manifest
-   java -jar Toolkit.jar db archive -b 64000
+   java -jar build/libs/Toolkit.jar db archive -b 64000
    #4. specify optimization only when Manifest exceeds 128M
-   java -jar Toolkit.jar db archive -m 128 
+   java -jar build/libs/Toolkit.jar db archive -m 128 
 </code></pre></div>
 <p><strong>Optional Parameters</strong>:</p>
 <ul>

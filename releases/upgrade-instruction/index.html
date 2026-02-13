@@ -1647,60 +1647,10 @@ $ git checkout -b release_vx.x.x
 </blockquote>
 <p><a id="step5"></a> </p>
 <h3 id="step-5-start-the-node">Step 5: Start the Node<a class="headerlink" href="#step-5-start-the-node" title="Permanent link">&para;</a></h3>
-<p>Please select the appropriate startup command below as a reference based on the node type and CPU architecture. For detailed explanations of the command parameters, refer to the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#starting-a-fullnode-on-the-tron-main-network"> Deployment</a> section. Adjust the parameter values according to your actual runtime environment.</p>
 <h4 id="super-representative-node-block-producing-node">Super Representative Node (Block-Producing Node)<a class="headerlink" href="#super-representative-node-block-producing-node" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>x86_64 Architecture (Only JDK 8 is supported)</strong>
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div></li>
-<li><strong>arm64 Architecture (Only JDK 17 is supported)</strong>
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div><blockquote>
-<p><strong>Note</strong>: We recommend managing your private key using a <code>keystore</code> file or within the configuration file, rather than passing it directly as a command-line argument.</p>
-</blockquote>
-</li>
-</ul>
+<p>For Block-Producing Node, please refer to <a href="../../using_javatron/installing_javatron/#starting-a-block-production-node">Starting a Block Production Node</a></p>
 <h4 id="regular-fullnode">Regular FullNode<a class="headerlink" href="#regular-fullnode" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>x86_64 Architecture (Only JDK 8 is supported)</strong>
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx12G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div></li>
-<li><strong>arm64 Architecture (Only JDK 17 is supported)</strong>
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div></li>
-</ul>
+<p>For Regular FullNode, please refer to <a href="../../using_javatron/installing_javatron/#starting-a-fullnode-on-the-tron-main-network">Starting a FullNode on the TRON main network</a> </p>
 <h3 id="step-6-verify-and-monitor">Step 6: Verify and Monitor<a class="headerlink" href="#step-6-verify-and-monitor" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Wait for Node Synchronization</strong>: After the node starts, it will begin to synchronize block data. Please wait patiently for it to catch up to the latest block height of the network.</li>

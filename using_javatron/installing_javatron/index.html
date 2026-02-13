@@ -1767,7 +1767,7 @@ cd java-tron
 <p>Network selection is performed by specifying the appropriate configuration file upon full-node startup. Mainnet configuration: <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a>; Nile testnet configuration: <a href="https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf">config-nile.conf</a></p>
 <h3 id="starting-a-fullnode-on-the-tron-main-network">Starting a FullNode on the TRON main network<a class="headerlink" href="#starting-a-fullnode-on-the-tron-main-network" title="Permanent link">&para;</a></h3>
 <p>Launch a main-network full node with the built-in default configuration:
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div></p>
 <ul>
 <li><code>nohup ... &amp;</code>: Runs the command in the background and ignores the hangup signal.</li>
@@ -1791,7 +1791,7 @@ cd java-tron
 <span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h5 id="arm64-jdk-17">arm64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
@@ -1802,7 +1802,7 @@ cd java-tron
 <span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h5 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h5>
 <p><strong>General &amp; Memory Parameters:</strong></p>
@@ -1834,7 +1834,7 @@ cd java-tron
 </ul>
 <h3 id="staring-a-fullnode-on-the-nile-test-network">Staring a FullNode on the Nile test network<a class="headerlink" href="#staring-a-fullnode-on-the-nile-test-network" title="Permanent link">&para;</a></h3>
 <p>Utilize the <code>-c</code> flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is <strong>strongly advised</strong> to compile the source code following the <a href="https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code">Building the Source Code</a> instructions for the Nile TestNet.</p>
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config-nile.conf<span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config-nile.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <p>Nile resources: explorer, faucet, wallet, developer docs, and network statistics at <a href="https://nileex.io/">nileex.io</a>.</p>
 <h3 id="access-shasta-test-network">Access Shasta test network<a class="headerlink" href="#access-shasta-test-network" title="Permanent link">&para;</a></h3>
@@ -1852,7 +1852,7 @@ cd java-tron
 }
 </code></pre></div>
 <p>Starting from version 4.8.1, <code>SolidityNode.jar</code> is no longer provided. Instead, SolidityNode is started using the command-line parameter <code>--solidity</code>, as shown below:</p>
-<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --solidity -c framework/src/main/resources/config.conf
+<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --solidity -c framework/src/main/resources/config.conf
 </code></pre></div>
 <h3 id="starting-a-block-production-node">Starting a Block Production Node<a class="headerlink" href="#starting-a-block-production-node" title="Permanent link">&para;</a></h3>
 <p>By adding the <code>--witness</code> parameter to the FullNode startup command above, the <code>FullNode</code> will run as a <strong>Block Production Node</strong> (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports <strong>block production</strong> and <strong>transaction packaging</strong>.</p>
@@ -1877,7 +1877,7 @@ cd java-tron
 <span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h4 id="option-2-jdk-17-on-arm64">Option 2: JDK 17 on arm64<a class="headerlink" href="#option-2-jdk-17-on-arm64" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
@@ -1888,7 +1888,7 @@ cd java-tron
 <span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h3 id="master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes<a class="headerlink" href="#master-slave-mode-for-block-production-fullnodes" title="Permanent link">&para;</a></h3>
 <p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes <strong>(Recommended number: 2)</strong>, it's necessary to configure <code>node.backup</code> in each node's configuration file. The descriptions of the <code>node.backup</code> configuration items are as follows:</p>
@@ -1968,7 +1968,7 @@ For example, if an account with block production rights deploys two nodes with I
 </code></pre></div>
 </li>
 <li>
-<p>You can use the <code>registerwallet</code> command from the <code>wallet-cli</code> project to generate the <code>keystore</code> file and password, or use the command <code>java -jar FullNode.jar --keystore-factory</code> to generate them (starting from version 4.8.1, <code>KeystoreFactory.jar</code> is no longer provided).</p>
+<p>You can use the <code>registerwallet</code> command from the <code>wallet-cli</code> project to generate the <code>keystore</code> file and password, or use the command <code>java -jar build/libs/FullNode.jar --keystore-factory</code> to generate them (starting from version 4.8.1, <code>KeystoreFactory.jar</code> is no longer provided).</p>
 </li>
 </ul>
 </li>
@@ -1980,7 +1980,7 @@ For example, if an account with block production rights deploys two nodes with I
 <ul>
 <li><strong>Important Notes</strong>: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as <code>screen</code> or <code>tmux</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c framework/src/main/resources/config.conf
+<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf
 </code></pre></div>
 <ul>
 <li>During node startup, the system will prompt you to enter the password. After entering the password correctly, the node will complete its startup.</li>
@@ -1988,7 +1988,7 @@ For example, if an account with block production rights deploys two nodes with I
 </li>
 <li>
 <p><strong>Using <code>nohup</code> to pass the password directly in the command line via <code>--password</code></strong></p>
-<div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c framework/src/main/resources/config.conf --password &quot;your_password&quot; &gt; start.log 2&gt;&amp;1 &amp;
+<div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf --password &quot;your_password&quot; &gt; start.log 2&gt;&amp;1 &amp;
 </code></pre></div>
 </li>
 </ul>

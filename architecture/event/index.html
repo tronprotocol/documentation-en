@@ -1652,7 +1652,7 @@ After the build is complete, the generated <code>.zip</code> file is the plugin 
 </code></pre></div>
 <h5 id="step-5-start-the-fullnode-and-plugin">Step 5: Start the Fullnode and Plugin<a class="headerlink" href="#step-5-start-the-fullnode-and-plugin" title="Permanent link">&para;</a></h5>
 <p>After completing the configuration, use the following command to start the <code>FullNode</code> and load the event plugin.</p>
-<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+<div class="highlight"><pre><span></span><code>java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 </code></pre></div>
 <h3 id="kafka-plugin-deployment-and-usage">Kafka Plugin: Deployment and Usage<a class="headerlink" href="#kafka-plugin-deployment-and-usage" title="Permanent link">&para;</a></h3>
 <p>This guide is designed to help developers efficiently use the Kafka event subscription plugin to listen for on-chain events on the TRON network. We will walk you through the entire process step-by-step, from environment setup to deployment, configuration, and final verification.</p>
@@ -1859,7 +1859,7 @@ Parameters:</p>
 </code></pre></div>
 <h4 id="starting-the-event-subscription-node">Starting the Event Subscription Node<a class="headerlink" href="#starting-the-event-subscription-node" title="Permanent link">&para;</a></h4>
 <p>After completing the above configuration, you must add the <code>--es</code> parameter when starting the FullNode to enable the event subscription feature.</p>
-<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+<div class="highlight"><pre><span></span><code>java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 </code></pre></div>
 <h5 id="verifying-plugin-load">Verifying Plugin Load<a class="headerlink" href="#verifying-plugin-load" title="Permanent link">&para;</a></h5>
 <p>You can verify that the Kafka event plugin has loaded successfully by checking the Fullnode logs:</p>
@@ -2095,7 +2095,7 @@ sh insertIndex.sh
 <h5 id="1-starting-the-fullnode">1. Starting the FullNode<a class="headerlink" href="#1-starting-the-fullnode" title="Permanent link">&para;</a></h5>
 <p><strong>Important</strong>: Before starting the FullNode, ensure that the MongoDB service has been started successfully.</p>
 <p>The command to start the FullNode is as follows:</p>
-<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+<div class="highlight"><pre><span></span><code>java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 </code></pre></div>
 <p>For information on installing a FullNode, please refer to the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/">Deploying a FullNode</a> documentation.</p>
 <h5 id="2-verifying-plugin-load">2. Verifying Plugin Load<a class="headerlink" href="#2-verifying-plugin-load" title="Permanent link">&para;</a></h5>
@@ -2154,7 +2154,7 @@ db.block.find()
 </ul>
 <h3 id="starting-the-node">Starting the Node<a class="headerlink" href="#starting-the-node" title="Permanent link">&para;</a></h3>
 <p>The event subscription service is disabled by default and must be enabled using the <code>--es</code> command-line argument. The startup command for a node with event subscription enabled is as follows:</p>
-<div class="highlight"><pre><span></span><code>$ java -jar FullNode.jar --es
+<div class="highlight"><pre><span></span><code>$ java -jar build/libs/FullNode.jar --es
 </code></pre></div>
 <h3 id="preparing-the-event-subscription-script">Preparing the Event Subscription Script<a class="headerlink" href="#preparing-the-event-subscription-script" title="Permanent link">&para;</a></h3>
 <p>This guide uses Node.js as an example to demonstrate how to subscribe to events.</p>

@@ -4351,7 +4351,7 @@ This feature needs to be enabled through the following configuration items:
 Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5583">https://github.com/tronprotocol/java-tron/pull/5583</a>  </p>
 <h4 id="6-delete-the-litefullnodetool-related-code-under-the-framework-module">6. Delete the LiteFullNodeTool related code under the framework module<a class="headerlink" href="#6-delete-the-litefullnodetool-related-code-under-the-framework-module" title="Permanent link">&para;</a></h4>
 <p>In order to facilitate tool maintenance and developer use, TRON has launched the <code>Toolkit.jar</code> toolbox, which includes various TRON development tools. As early as the Aristotle version, the code related to the LiteFullNode data clipping tool has been integrated into the <code>Toolkit</code> toolbox (located under the plugin module), and <code>Toolkit</code> can completely replace <code>LiteFullNodeTool</code> (located under the framework module). Therefore, the Bias version deletes the <code>LiteFullNodeTool</code> related code under the framework module, which not only reduces code redundancy, but also makes the division of functional modules clearer. The commands to use the LiteFullNode data pruning function in the <code>Toolkit</code> are as follows:</p>
-<div class="highlight"><pre><span></span><code>$ java -jar Toolkit.jar db lite 
+<div class="highlight"><pre><span></span><code>$ java -jar build/libs/Toolkit.jar db lite 
 </code></pre></div>
 <p>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/5711">https://github.com/tronprotocol/java-tron/pull/5711</a>  </p>
 <h4 id="7-remove-configuration-item-nodediscoverybindip">7. Remove configuration item node.discovery.bind.ip<a class="headerlink" href="#7-remove-configuration-item-nodediscoverybindip" title="Permanent link">&para;</a></h4>
@@ -4740,7 +4740,7 @@ node.dynamicConfig.checkInterval = 600
 </ul>
 <h4 id="6-add-a-new-node-startup-mode">6. Add a new node startup mode<a class="headerlink" href="#6-add-a-new-node-startup-mode" title="Permanent link">&para;</a></h4>
 <p>In order to facilitate data backup or data statistics for node deployers, the client supports stopping running under specific conditions. Users can set the conditions for node stop through the node configuration file. When the conditions are met, the node will stop syncing and exit. However, in the versions previous to Periander, the node only supports stopping under certain conditions and does not support the interface query service after stopping, so users cannot call the interface to query the status of the system. Therefore, the Periander version adds a new node startup mode to support data query services without starting the P2P network module. When the node successfully stops under certain conditions, the user can add <code>-p2p- disable true</code> parameter to the command to start the node. At this time, the node will not start the network module, and will not perform node discovery and block synchronization, but will provide interface query services, so that users can query the current system status. Below is the start command:</p>
-<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --p2p-disable true 
+<div class="highlight"><pre><span></span><code>java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --p2p-disable true 
 </code></pre></div>
 <ul>
 <li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/5011">https://github.com/tronprotocol/java-tron/pull/5011</a></li>
@@ -5145,11 +5145,11 @@ node.dynamicConfig.checkInterval = 600
 <h4 id="6-toolkitjar-integration">6. Toolkit.jar Integration<a class="headerlink" href="#6-toolkitjar-integration" title="Permanent link">&para;</a></h4>
 <p><code>DBConvert.jar</code> is a database conversion tool, which can convert LevelDB into RocksDB; <code>LiteFullNodeTool.jar</code> is a light FullNode tool, which can convert FullNode data into LiteFullNode data. Starting from GreatVoyage-v4.7.0.1 (Aristotle), <code>DBConvert.jar</code> and <code>LiteFullNodeTool.jar</code> have been integrated into the <code>Toolkit.jar</code> toolbox, and a database copy function is added which can realize fast Node database copy. In the future, the tools around java-tron will be gradually integrated into the <code>Toolkit.jar</code> toolbox in order to facilitate tool maintenance and developer use. The commands for using the new functions of the <code>Toolkit.jar</code> toolbox are as follows:</p>
 <div class="highlight"><pre><span></span><code>// Convert LevelDB data to RocksDB data
-java -jar Toolkit.jar db convert -h
+java -jar build/libs/Toolkit.jar db convert -h
 // convert FullNode data into LiteFullNode data
-java -jar Toolkit.jar db lite -h
+java -jar build/libs/Toolkit.jar db lite -h
 // Database copy
-java -jar Toolkit.jar db copy -h
+java -jar build/libs/Toolkit.jar db copy -h
 </code></pre></div>
 <ul>
 <li>Source code: <a href="https://github.com/tronprotocol/java-tron/pull/4813">https://github.com/tronprotocol/java-tron/pull/4813</a> </li>
@@ -5220,12 +5220,12 @@ java -jar Toolkit.jar db copy -h
 </ul>
 <h4 id="3-add-the-help-command-option">3. Add the --help command option<a class="headerlink" href="#3-add-the-help-command-option" title="Permanent link">&para;</a></h4>
 <p>GreatVoyage-v4.6.0(Socrates) adds ‘help’ command line options to check all parameters and instructions. Please check the example below,
-<div class="highlight"><pre><span></span><code>$ java -jar FullNode.jar --help
+<div class="highlight"><pre><span></span><code>$ java -jar build/libs/FullNode.jar --help
 
 Name:
     FullNode - the java-tron command line interface
 
-Usage: java -jar FullNode.jar [options] [seedNode &lt;seedNode&gt; ...]
+Usage: java -jar build/libs/FullNode.jar [options] [seedNode &lt;seedNode&gt; ...]
 
 VERSION:
 4.5.2-d05f766
