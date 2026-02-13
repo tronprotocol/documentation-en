@@ -58,7 +58,7 @@ If your node uses a custom data directory, you can include the following paramet
 
 For example, if the node is run as follows:
 ```
-nohup java -jar FullNode.jar -d your_database_dir &
+nohup java -jar build/libs/FullNode.jar -d your_database_dir &
 ```
 Then use the following command for conversion:
 ```

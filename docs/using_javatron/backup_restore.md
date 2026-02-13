@@ -3,7 +3,7 @@
 java-tron nodes store their persistent data in a specified data directory, which defaults to `/output-directory/`. You can specify a different data storage location by adding the `-d` or `--output-directory` parameter to the java-tron node startup command. For example:
 
 ```
-java -jar FullNode.jar -d ./outputdir
+java -jar build/libs/FullNode.jar -d ./outputdir
 ```
 
 

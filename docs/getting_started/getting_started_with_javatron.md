@@ -164,13 +164,7 @@ This module guide you through launching a java-tron instance, turning your compu
 
 ### **1. Start the Node**
 
-Please use the following command to start the node. The `-Xmx24g` flag allocates 24GB of memory to the JVM; you can adjust this according to your machine's configuration.
-
-> Tip: Before running this command, make sure you have installed java-tron as described in the introduction.
-
-```
-$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c nile_net_config.conf
-```
+For the startup command, please refer to [Staring a FullNode on the Nile test network](../../using_javatron/installing_javatron/#staring-a-fullnode-on-the-nile-test-network).
 
 ### **2. Verify Node Status**
 

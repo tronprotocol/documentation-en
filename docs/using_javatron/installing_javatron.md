@@ -118,7 +118,7 @@ Network selection is performed by specifying the appropriate configuration file 
 
 Launch a main-network full node with the built-in default configuration:
 ```bash
-nohup java -jar ./build/libs/FullNode.jar &
+nohup java -jar build/libs/FullNode.jar &
 ```
 
 * `nohup ... &`: Runs the command in the background and ignores the hangup signal.
@@ -147,7 +147,7 @@ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
     -XX:+HeapDumpOnOutOfMemoryError \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-    -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
+    -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
 ```
 ##### arm64 (JDK 17)
 ```bash
@@ -159,7 +159,7 @@ nohup java -Xmx9G -XX:+UseZGC \
     -XX:MaxMetaspaceSize=512m \
     -XX:MaxDirectMemorySize=1g \
     -XX:+HeapDumpOnOutOfMemoryError \
-    -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
+    -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
 ```
 
 ##### Java Startup Parameters Explanation
@@ -192,7 +192,7 @@ nohup java -Xmx9G -XX:+UseZGC \
 Utilize the `-c` flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is **strongly advised** to compile the source code following the [Building the Source Code](https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code) instructions for the Nile TestNet.
 
 ```bash
-nohup java -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config-nile.conf &
+nohup java -jar build/libs/FullNode.jar -c framework/src/main/resources/config-nile.conf &
 ```
 
 Nile resources: explorer, faucet, wallet, developer docs, and network statistics at [nileex.io](https://nileex.io/).
@@ -254,7 +254,7 @@ nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
     -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
     -XX:+HeapDumpOnOutOfMemoryError \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-    -jar ./build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
+    -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
 ```
 
 #### Option 2: JDK 17 on arm64
@@ -267,7 +267,7 @@ nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -XX:MaxMetaspaceSize=512m \
     -XX:MaxDirectMemorySize=1g \
     -XX:+HeapDumpOnOutOfMemoryError \
-    -jar ./build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
+    -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
 ```
 
 ### Master-Slave Mode for Block Production FullNodes

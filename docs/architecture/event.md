@@ -97,7 +97,7 @@ event.subscribe.startSyncBlockNum = <block_height>
 After completing the configuration, use the following command to start the `FullNode` and load the event plugin.
 
 ```
-java -jar FullNode.jar -c config.conf --es
+java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
 ### Kafka Plugin: Deployment and Usage
@@ -368,7 +368,7 @@ bin/kafka-topics.sh --create --topic block --bootstrap-server localhost:9092
 After completing the above configuration, you must add the `--es` parameter when starting the FullNode to enable the event subscription feature.
 
 ```
-java -jar FullNode.jar -c config.conf --es
+java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
 ##### Verifying Plugin Load
@@ -690,7 +690,7 @@ After completing the deployment steps, you can start the TRON FullNode and verif
 The command to start the FullNode is as follows:
 
 ```
-java -jar FullNode.jar -c config.conf --es
+java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
 For information on installing a FullNode, please refer to the [Deploying a FullNode](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/) documentation.
@@ -777,7 +777,7 @@ event.subscribe = {
 The event subscription service is disabled by default and must be enabled using the `--es` command-line argument. The startup command for a node with event subscription enabled is as follows:
 
 ```
-$ java -jar FullNode.jar --es
+$ java -jar build/libs/FullNode.jar --es
 ```
 
 ### Preparing the Event Subscription Script
