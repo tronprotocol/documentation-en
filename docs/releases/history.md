@@ -1012,7 +1012,7 @@ Source Code: [https://github.com/tronprotocol/java-tron/pull/5583](https://githu
 In order to facilitate tool maintenance and developer use, TRON has launched the `Toolkit.jar` toolbox, which includes various TRON development tools. As early as the Aristotle version, the code related to the LiteFullNode data clipping tool has been integrated into the `Toolkit` toolbox (located under the plugin module), and `Toolkit` can completely replace `LiteFullNodeTool` (located under the framework module). Therefore, the Bias version deletes the `LiteFullNodeTool` related code under the framework module, which not only reduces code redundancy, but also makes the division of functional modules clearer. The commands to use the LiteFullNode data pruning function in the `Toolkit` are as follows:
 
 ```
-$ java -jar Toolkit.jar db lite 
+$ java -jar build/libs/Toolkit.jar db lite 
 ```
 
 
@@ -1598,7 +1598,7 @@ In order to improve block synchronization performance under an unstable network,
 In order to facilitate data backup or data statistics for node deployers, the client supports stopping running under specific conditions. Users can set the conditions for node stop through the node configuration file. When the conditions are met, the node will stop syncing and exit. However, in the versions previous to Periander, the node only supports stopping under certain conditions and does not support the interface query service after stopping, so users cannot call the interface to query the status of the system. Therefore, the Periander version adds a new node startup mode to support data query services without starting the P2P network module. When the node successfully stops under certain conditions, the user can add `-p2p- disable true` parameter to the command to start the node. At this time, the node will not start the network module, and will not perform node discovery and block synchronization, but will provide interface query services, so that users can query the current system status. Below is the start command:
 
 ```
-java -jar FullNode.jar -c config.conf --p2p-disable true 
+java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --p2p-disable true 
 ```
 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/5011](https://github.com/tronprotocol/java-tron/pull/5011)
@@ -1979,11 +1979,11 @@ Therefore, starting from the GreatVoyage-v4.7.0.1 (Aristotle) version, the numbe
 
 ```
 // Convert LevelDB data to RocksDB data
-java -jar Toolkit.jar db convert -h
+java -jar build/libs/Toolkit.jar db convert -h
 // convert FullNode data into LiteFullNode data
-java -jar Toolkit.jar db lite -h
+java -jar build/libs/Toolkit.jar db lite -h
 // Database copy
-java -jar Toolkit.jar db copy -h
+java -jar build/libs/Toolkit.jar db copy -h
 ```
 
 * Source code: [https://github.com/tronprotocol/java-tron/pull/4813](https://github.com/tronprotocol/java-tron/pull/4813) 
@@ -2087,12 +2087,12 @@ GreatVoyage-v4.6.0 (Socrates) adds three new Prometheus metrics related to the n
 
 GreatVoyage-v4.6.0(Socrates) adds ‘help’ command line options to check all parameters and instructions. Please check the example below,
 ```
-$ java -jar FullNode.jar --help
+$ java -jar build/libs/FullNode.jar --help
 
 Name:
 	FullNode - the java-tron command line interface
 
-Usage: java -jar FullNode.jar [options] [seedNode <seedNode> ...]
+Usage: java -jar build/libs/FullNode.jar [options] [seedNode <seedNode> ...]
 
 VERSION:
 4.5.2-d05f766

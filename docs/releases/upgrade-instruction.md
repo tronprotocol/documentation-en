@@ -91,61 +91,12 @@ After preparing the new version of the executable file and backing up the origin
 <a id="step5"></a> 
 ### Step 5: Start the Node
 
-Please select the appropriate startup command below as a reference based on the node type and CPU architecture. For detailed explanations of the command parameters, refer to the [ Deployment](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#starting-a-fullnode-on-the-tron-main-network) section. Adjust the parameter values according to your actual runtime environment.
-
 #### Super Representative Node (Block-Producing Node)
-* **x86_64 Architecture (Only JDK 8 is supported)**
-```bash
-nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
-    -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-    -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-    -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-    -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
-    -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-    -XX:+HeapDumpOnOutOfMemoryError \
-    -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-    -jar ./build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
-```
-* **arm64 Architecture (Only JDK 17 is supported)**
-```bash
-nohup java -Xms9G -Xmx24G -XX:+UseZGC \
-    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
-    -XX:ReservedCodeCacheSize=256m \
-    -XX:+UseCodeCacheFlushing \
-    -XX:MetaspaceSize=256m \
-    -XX:MaxMetaspaceSize=512m \
-    -XX:MaxDirectMemorySize=1g \
-    -XX:+HeapDumpOnOutOfMemoryError \
-    -jar ./build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
-```
-> **Note**: We recommend managing your private key using a `keystore` file or within the configuration file, rather than passing it directly as a command-line argument.
+
+For Block-Producing Node, please refer to [Starting a Block Production Node](../../using_javatron/installing_javatron/#starting-a-block-production-node)
     
 #### Regular FullNode
-
-* **x86_64 Architecture (Only JDK 8 is supported)**
-```bash
-nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
-    -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-    -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-    -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-    -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
-    -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-    -XX:+HeapDumpOnOutOfMemoryError \
-    -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-    -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
-```
-* **arm64 Architecture (Only JDK 17 is supported)**
-```bash
-nohup java -Xmx9G -XX:+UseZGC \
-    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
-    -XX:ReservedCodeCacheSize=256m \
-    -XX:+UseCodeCacheFlushing \
-    -XX:MetaspaceSize=256m \
-    -XX:MaxMetaspaceSize=512m \
-    -XX:MaxDirectMemorySize=1g \
-    -XX:+HeapDumpOnOutOfMemoryError \
-    -jar ./build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
-```
+For Regular FullNode, please refer to [Starting a FullNode on the TRON main network](../../using_javatron/installing_javatron/#starting-a-fullnode-on-the-tron-main-network) 
 
 ### Step 6: Verify and Monitor
 

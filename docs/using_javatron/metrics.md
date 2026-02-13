@@ -26,7 +26,7 @@ node {
 Start java-tron node using below command：
 
 ```shell
-$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c framework/src/main/resources/config.conf
+$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf
 ```
 
 ## Deploy prometheus service
