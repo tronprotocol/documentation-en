@@ -1619,7 +1619,7 @@ java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
 <li><code>dst_db_path</code>: RocksDB database storage path (default: <code>output-directory-dst/database</code>)</li>
 </ul>
 <p>For example, if the node is run as follows:
-<div class="highlight"><pre><span></span><code>nohup java -jar FullNode.jar -d your_database_dir &amp;
+<div class="highlight"><pre><span></span><code>nohup java -jar build/libs/FullNode.jar -d your_database_dir &amp;
 </code></pre></div>
 Then use the following command for conversion:
 <div class="highlight"><pre><span></span><code>java -jar build/libs/Toolkit.jar db convert  your_database_dir/database output-directory-dst/database

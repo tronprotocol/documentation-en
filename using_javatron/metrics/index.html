@@ -1544,7 +1544,7 @@
 </code></pre></div>
 <h2 id="start-java-tron-node">Start java-tron node<a class="headerlink" href="#start-java-tron-node" title="Permanent link">&para;</a></h2>
 <p>Start java-tron node using below command：</p>
-<div class="highlight"><pre><span></span><code>$<span class="w">  </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf
+<div class="highlight"><pre><span></span><code>$<span class="w">  </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf
 </code></pre></div>
 <h2 id="deploy-prometheus-service">Deploy prometheus service<a class="headerlink" href="#deploy-prometheus-service" title="Permanent link">&para;</a></h2>
 <p><a href="https://prometheus.io/download/">prometheus</a> officially provides precompiled binaries and docker images, you can download them directly from the official website or pull the docker images on dockerhub. For more detailed installation and configuration instructions, Please refer to the <a href="https://prometheus.io/docs/introduction/overview/">prometheus documentation</a>. As a simple deployment instruction, this article will adopt the docker image deployment:</p>
