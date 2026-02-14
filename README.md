@@ -4,3 +4,6 @@
 ## Community  
 - [Core Devs Community](https://t.me/troncoredevscommunity) 
 - [Tron Official Developer Group](https://t.me/TronOfficialDevelopersGroupEn)
+
+## Contribution
+Any suggestions for improving the documentation are very welcome. Please refer to our [contributing guide](CONTRIBUTING.md) for more information.
