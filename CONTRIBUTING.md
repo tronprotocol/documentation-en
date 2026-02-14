@@ -4,7 +4,7 @@ Thank you for taking time to contribute to english documentation of java-tron.
 
 Whether you're fixing a typo, updating outdated information, or adding new tutorials, contributions of any size are welcome and appreciated. This guide is designed to help you submit contributions smoothly and easily.
 
-**Note**: Due to the simple nature of this project, we currently maintain only the `master` branch with no complex development branch workflow.
+**Note**: Due to the simple nature of this project, we currently maintain only the `master` branch with no complex `develop` branch workflow.
 
 
 ## How to Contribute
