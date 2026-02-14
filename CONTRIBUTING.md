@@ -21,12 +21,12 @@ If you find errors, broken links, or unclear explanations while reading the docu
 
 You can modify the documentation directly via Pull Requests.
 
-1.  **Fork this Repository**: Click the Fork button in the top-right corner to copy this project to your account.
+1.  **Fork this Repository**: Click the Fork button in the top-right corner to fork this project to your account.
 2.  **Clone to Your Local Machine**: Clone the forked repository to your computer.
     ```bash
     git clone https://github.com/your-username/documentation-en.git
     ```
-3.  **Add Upstream Repository**: Add the official repository as "upstream" to sync updates later.
+3.  **Add Upstream Repository**: Add the official repository as `upstream` to sync updates later.
     ```bash
     git remote add upstream https://github.com/tronprotocol/documentation-en.git
     ```
@@ -51,20 +51,22 @@ You can modify the documentation directly via Pull Requests.
     ```
 8.  **Open a Pull Request**：
     Open a Pull Request on your GitHub targeting the official repository's `master` branch.
-    **Notice**
     - Since we don't maintain a `develop` branch, your PR will directly target the `master` branch.
     - Please describe in detail what you changed and why.
 
 
 ## FAQ
 
-**Q: I don't see a `develop` branch. Which branch should I submit my PR to?**
+**Q: I don't see a `develop` branch. Which branch should I submit my PR to?** 
+
 A: Submit your PR directly to the `master` branch. It will be merged after review.
 
 **Q: I want to rewrite a large section. Can I submit a PR directly?**
+
 A: We recommend opening an Issue first to describe your idea and confirm the direction before starting work. This helps avoid wasted effort.
 
 **Q: How long until my changes are merged?**
+
 A: Maintainers will try to review PRs within 3 business days. Simple typo fixes are usually merged quickly.
 
 ---
