@@ -76,11 +76,11 @@ The table below lists the download addresses for FullNode data snapshots. Please
 
 - **LevelDB** and **RocksDB** data are not interchangeable. The database type for a FullNode is specified by the `db.engine` configuration item in the configuration file, with selectable values being `LEVELDB` or `ROCKSDB`.
 - Internal transactions can be enabled/disabled through the configuration items `vm.saveInternalTx` or `vm.saveFeaturedInternalTx` in the configuration file. Internal transactions are saved only when `vm.saveInternalTx` is enabled. If `saveFeaturedInternalTx` is also enabled, all types of internal transactions will be saved; otherwise, only `call`, `create`, and `suicide` transactions will be saved. Affected interface: [`gettransactioninfobyid`](https://developers.tron.network/reference/gettransactioninfobyid-1)
-- Historical accont balances can be enabled/disabled through the configuration item `storage.balance.history.lookup` in the configuration file. Affected interface: [`getaccountbalance`](https://developers.tron.network/reference/getaccountbalance)
+- Historical account balances can be enabled/disabled through the configuration item `storage.balance.history.lookup` in the configuration file. Affected interface: [`getaccountbalance`](https://developers.tron.network/reference/getaccountbalance)
 
 #### Lite FullNode Data Snapshots
 
-The TRON network has supported **Lite FullNode** type nodes since the GreatVoyage-V4.1.0 version. Compared to a regular FullNode, a Lite FullNode has a smaller database and faster startup speed because it only requires state data and necessary historical data to start. The table below lists the download addresses for Lite FullNode data snapshots.
+The TRON network has supported **Lite FullNode** type nodes since the GreatVoyage-V4.1.0 release. Compared to a regular FullNode, a Lite FullNode has a smaller database and faster startup speed because it only requires state data and necessary historical data to start. The table below lists the download addresses for Lite FullNode data snapshots.
 
 | Lite FullNode Node Data Source | Download Address | Description |
 | :----------------------------- | :--------------- | :---------- |
@@ -97,7 +97,7 @@ For detailed information on Nile Testnet data snapshots, please refer to the [of
 The steps for using data snapshots are as follows:
 
 1. Download the corresponding compressed backup database based on your needs.
-2. Decompress the compressed file of the backup database to the `output-directory` directory (or specify another target directory as needed). For detailed decompression instructions, refer to the Data Snapshot Decompression Methods
+2. Extract the compressed database backup to the `output-directory` directory (or specify another target directory as needed). For detailed decompression instructions, refer to the Data Snapshot Download and Extraction Methods
  section below.
 3. Start the node. The node reads data from the `output-directory` by default. If your data was decompressed into a different directory, add the `-d` parameter and specify the database directory name when starting the node.
 
@@ -132,4 +132,4 @@ wget SNAPSHOT_URL/FullNode_output-directory.tgz
 tar -zxvf FullNode_output-directory.tgz
 ```
 
-Note: During extraction, both the compressed archive and the extracted files must be stored simultaneously. We recommend using two 3TB disks (3TB+ for the archive & 3TB+ for the extracted data. You can release the archive disk after extraction to reduce costs.).
+Note: During extraction, both the compressed archive and the extracted files must be stored simultaneously. We recommend using two 3TB disks (3TB+ for the archive & 3TB+ for the extracted data). You can release the archive disk after extraction to reduce costs.
