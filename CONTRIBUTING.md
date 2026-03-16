@@ -16,16 +16,12 @@ If you find errors, broken links, unclear explanations, or suggested content whi
 1.  Before submitting an Issue, please search [existing issues](https://github.com/tronprotocol/documentation-en/issues?q=is%3Aissue%20state%3Aclosed%20OR%20state%3Aopen) first to avoid duplicates.
 2.  For simple typos or formatting issues, we recommend submitting a fix directly via a Pull Request.
 3.  For other content questions, please clearly describe the problem you encountered and how you expect the documentation to read.
-*  Ask a question
-Feel free to ask any `documentation-en` related question to solve your doubt. Please click **Ask a question** in GitHub Issues, using [Ask a question](.github/ISSUE_TEMPLATE/ask-a-question.md) template.
-
-*  Report an error
-
-If you think you've found an error with `documentation-en`, please click **Report an error** in GitHub Issues, using [Report an error](.github/ISSUE_TEMPLATE/report-an-error.md) template.
-
-*  Request a feature
-
-If you have any good content suggestions for `documentation-en`, please click **Request a feature** in GitHub Issues, using [Request a feature](.github/ISSUE_TEMPLATE/request-a-feature.md) template.
+    *  Ask a question
+      Feel free to ask any `documentation-en` related question to solve your doubt. Please click **Ask a question** in GitHub Issues, using [Ask a question](.github/ISSUE_TEMPLATE/ask-a-question.md) template.
+    *  Report an error
+      If you think you've found an error with `documentation-en`, please click **Report an error** in GitHub Issues, using [Report an error](.github/ISSUE_TEMPLATE/report-an-error.md) template.
+    *  Request a feature
+      If you have any good content suggestions for `documentation-en`, please click **Request a feature** in GitHub Issues, using [Request a feature](.github/ISSUE_TEMPLATE/request-a-feature.md) template.
 
 ### Submitting Changes
 
