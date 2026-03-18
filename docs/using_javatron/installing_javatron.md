@@ -2,7 +2,7 @@
 
 This document guides developers on how to deploy a TRON java-tron node on `Linux` or `macOS` operating systems.
 
-Currently, a java-tron node supports running on both x86_64 and arm64 architectures(Support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:
+Currently, a java-tron node supports running on both x86_64 and arm64 architectures(support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:
 
 - On x86_64 architecture, currently only Oracle JDK 8 is supported.
 - On arm64 architecture, currently only JDK 17 is supported.
@@ -188,7 +188,7 @@ nohup java -Xmx9G -XX:+UseZGC \
 *   `-XX:+UseZGC`: Enables ZGC, a scalable low-latency garbage collector.
 *   `-Xlog:gc...`: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).
 
-### Staring a FullNode on the Nile test network
+### Starting a FullNode on the Nile test network
 Utilize the `-c` flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is **strongly advised** to compile the source code following the [Building the Source Code](https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code) instructions for the Nile TestNet.
 
 ```bash
@@ -355,8 +355,8 @@ To avoid specifying the private key in plaintext within the configuration file, 
 
 2. **Starting a Block Production Node**:
 
-    * **Starting the node interactively without `nohup` (Recommended)**
-        * **Important Notes**: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as `screen` or `tmux`.
+    * **Interactive Startup without `nohup` (Recommended)**
+        * **Notes**: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool like screen or tmux."
   
         ```
         java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf
@@ -373,6 +373,8 @@ To avoid specifying the private key in plaintext within the configuration file, 
 ### Optimizing Memory Usage with `tcmalloc`
 
 To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's `glibc malloc`.
+**Note**:
+ If you are deploying via the official java-tron Docker image (version 4.8.1 or later), `tcmalloc` is already integrated by default and no manual configuration is required.
 
 1. **Install `tcmalloc`**:
     * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
