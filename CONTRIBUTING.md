@@ -16,13 +16,13 @@ If you find errors, broken links, unclear explanations, or suggested content whi
 1.  Before submitting an Issue, please search [existing issues](https://github.com/tronprotocol/documentation-en/issues?q=is%3Aissue%20state%3Aclosed%20OR%20state%3Aopen) first to avoid duplicates.
 2.  For simple typos or formatting issues, we recommend submitting a fix directly via a Pull Request.
 3.  For other content questions, please clearly describe the problem you encountered and how you expect the documentation to read.
-    * Ask a question
+    * **Ask a question**
 
       Feel free to ask any `documentation-en` related question to solve your doubt. Please click **Ask a question** in GitHub Issues, using [Ask a question](.github/ISSUE_TEMPLATE/ask-a-question.md) template.
-    * Report an error
+    * **Report an error**
 
       If you think you've found an error with `documentation-en`, please click **Report an error** in GitHub Issues, using [Report an error](.github/ISSUE_TEMPLATE/report-an-error.md) template.
-    * Request a feature
+    * **Request a feature**
 
       If you have any good content suggestions for `documentation-en`, please click **Request a feature** in GitHub Issues, using [Request a feature](.github/ISSUE_TEMPLATE/request-a-feature.md) template.
 
@@ -30,11 +30,11 @@ If you find errors, broken links, unclear explanations, or suggested content whi
 
 If you want to modify the documentation, please follow the following steps.
 
-* Fork the Repository
+* **Fork the Repository**
 
   Visit [tronprotocol/documentation-en](https://github.com/tronprotocol/documentation-en/) and click **Fork** to create a fork repository under your GitHub account.
 
-* Setup Local Environment
+* **Setup Local Environment**
 
   Clone your fork repository to local and add the official repository as **upstream**.
     ```
@@ -45,7 +45,7 @@ If you want to modify the documentation, please follow the following steps.
     git remote add upstream https://github.com/tronprotocol/documentation-en.git
     ```
 
-* Synchronize and Fix
+* **Synchronize and Fix**
 
   Before making new fixes, please synchronize your local `master` branch with the upstream repository and update to your fork repository.
     ```
@@ -60,7 +60,7 @@ If you want to modify the documentation, please follow the following steps.
     git checkout -b branch_name master
     ```
 
-* Commit and Push
+* **Commit and Push**
 
   Write and commit the new code when it is completed.
      ```
@@ -73,7 +73,7 @@ If you want to modify the documentation, please follow the following steps.
      git push origin branch_name
      ```
 
-* Submit a pull request
+* **Submit a Pull Request**
 
   Submit a pull request (PR) from your fork repository to `tronprotocol/documentation-en`. Please select `master` as the base branch for `tronprotocol/documentation-en` and the compare branch for your fork repository.
 
