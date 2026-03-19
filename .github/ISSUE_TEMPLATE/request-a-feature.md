@@ -1,7 +1,7 @@
 ---
 name: Request a feature
 about: Add content to this documentation project
-title: '[FEATURE] '
+title: '[Feature] '
 labels: 'type:docs'
 assignees: ''
 
