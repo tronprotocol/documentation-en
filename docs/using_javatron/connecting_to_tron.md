@@ -1,6 +1,6 @@
 # Connect to the TRON Network
 
-The TRON network is mainly divided into:
+The TRON network is mainly divided into four enironments:
 
 - **Mainnet**
 - **Nile Testnet**
@@ -234,7 +234,7 @@ seed.node = {
 }
 ```
 For TRON Mainnet, you can use [community public nodes](https://developers.tron.network/docs/networks#public-node) as seed nodes. To get the latest `seed.node` list, refer to the official [config file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
-If your network interface supports IPv6, you can remove the comment symbol `#` in the list.
+If your network interface supports IPv6, you can uncomment the relevant lines in the list.
 
 ### Persistent Nodes from Database
 When persistence is enabled, nodes in the routing table are periodically written to the database and reused on restart:
@@ -306,9 +306,9 @@ node {
   }
   ```
   
-  Compared with the traditional static seed node list, the DNS tree mechanism has advantages in P2P network bootstrapping, such as dynamic node updates and resistance to attacks.
+  Compared to traditional static seed node list, the DNS tree mechanism offers advantages in P2P network bootstrapping, such as dynamic node updates and resistance to attacks.
   
-It can be seen that currently, the target nodes for active connection only come from two categories: one is the configured active nodes, and the other is the connectable nodes obtained through node discovery.
+Currently, target nodes for active connections come from three sources: configured active nodes, nodes obtained through node discovery, and DNS tree nodes.
 
 ### Passive Connections
 -  The current node will always accept connection requests from nodes listed under `node.passive`
@@ -394,7 +394,7 @@ curl http://127.0.0.1:16887/wallet/getnowblock
 If the heights match, synchronization is normal.
 
 ## Troubleshooting Common Connection Issues
-There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
+If your java-tron node fails to connect to peers, check the following common causes:
 
 - **Local clock offset**
 
