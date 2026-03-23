@@ -1,8 +1,8 @@
 # java-tron Node Metrics Monitoring
-Starting from the GreatVoyage-4.5.1 (Tertullian) version, the node provides a series of interfaces compatible with the prometheus protocol, so that the node deployer can monitor the health status of the node more conveniently. If you want to monitor various indicators of the node, you first need to deploy a prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
+Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes provide a series of interfaces compatible with the Prometheus protocol, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
 
 ## Configure java-tron 
-To use the Prometheus tool to monitor the java-tron node, you first need to enable prometheus metric monitoring in the node configuration file and set the http port:
+To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file:
 
 ```
 node {
@@ -23,7 +23,7 @@ node {
 ```
 ## Start java-tron node
 
-Start java-tron node using below command：
+Start java-tron node using the following command：
 
 ```shell
 $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf
@@ -31,17 +31,17 @@ $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar -c framewor
 
 ## Deploy prometheus service
 
-[prometheus](https://prometheus.io/download/) officially provides precompiled binaries and docker images, you can download them directly from the official website or pull the docker images on dockerhub. For more detailed installation and configuration instructions, Please refer to the [prometheus documentation](https://prometheus.io/docs/introduction/overview/). As a simple deployment instruction, this article will adopt the docker image deployment:
+[Prometheus](https://prometheus.io/download/) officially provides precompiled binaries and Docker images. You can download them directly from the official website or pull the images from Docker Hub. For more detailed installation and configuration instructions, Please refer to the [prometheus documentation](https://prometheus.io/docs/introduction/overview/). For this guide, we will use Docker for a simple deployment:
 
-1. After installing docker, enter the following command to pull the prometheus image:
+1. After installing docker, enter the following command to pull the Prometheus image:
 
     ```
     $ docker pull prom/prometheus
     ```
 
-2. Download the prometheus configuration file
+2. Download the Prometheus configuration file
 
-    The following is a prometheus configuration file template `prometheus.yaml`:
+    The following is a Prometheus configuration file template `prometheus.yaml`:
     ```
     global:
       scrape_interval: 30s
@@ -67,7 +67,7 @@ $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar -c framewor
           group: group-xxx
           instance: xxx-02
     ```
-    You can download and use this template and modify the configuration items `targets`, it is used to configure the ip and prometheus port of the java-tron node. If you deploy multiple java-tron nodes, you can configure multiple `targets` to monitor multiple nodes.
+    You can use this template and modify the targets configuration item, which specifies the IP address and Prometheus port of your java-tron node(s).
 
 3. Start a Prometheus container
 
@@ -80,9 +80,9 @@ $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar -c framewor
         prom/prometheus:latest
     ```
 
-    After the container starts, you can view the running status of the prometheus service through `http://localhost:9090/`.
+    After the container starts, you can view the running status of the Prometheus service through `http://localhost:9090/`.
     
-    Click "Status" -> "Configuration" to check whether the configuration file used by the container is correct:
+    Go to "Status" -> "Configuration" to verify that the container is using the correct configuration file:
     
      ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_config.png)
 
@@ -90,7 +90,7 @@ $  java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar -c framewor
      
      ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_targets.png)
      
-     In this example, the status of the first endpoint is `UP`, which means that Prometheus can fetch the data of this node normally. The second endpoint, whose status is `DOWN`, indicates an exception. For details, please refer to the description in "Error".
+     In the example above, the status of the first endpoint is UP, meaning Prometheus can successfully fetch data from the node. The second endpoint shows DOWN, indicating an error (hover over the error label for details).
 
      When the status of the monitored java-tron nodes is normal, you can monitor the indicator data through visualization tools such as Grafana or Promdash, etc. This article will use grafana to display the data:
 
@@ -113,15 +113,15 @@ The deployment process of the Grafana visualization tool is as follows:
 
 3. Log in to the Grafana web UI
 
-    After startup, you can login the Grafana web UI through `http://localhost:3000/`. The initial user name and password are both `admin`. After login, change the password according to the prompts, and then you can enter the main interface. Click the settings icon on the left side of the main page and select "Data Sources" to configure Grafana's data sources:
+    After startup, login the Grafana web UI through `http://localhost:3000/`. The default username and password are both `admin`. After login, change the password according to the prompts, and then you can enter the main interface. Click the settings icon on the left side of the main page and select "Data Sources" to configure Grafana's data sources:
     
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_datasource.png)
 
-    Enter the ip and port of the prometheus service in `URL`:
+    Enter the ip and port of the Prometheus service in `URL`:
 
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_prometheus.png)
     
-    Then click the "Save & test" button at the bottom of the page to save the settings. After clicking save, Grafana will detect the connection with the data source, and if the connection is successful, you will find the words `Data source is working`.
+    Click the "Save & test" at the bottom of the page. Grafana will test the connection, and if successful, a 'Data source is working' notification will appear.
 
 4. Import Dashboard
 
