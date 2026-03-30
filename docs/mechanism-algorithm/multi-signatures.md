@@ -176,7 +176,7 @@ The above fees can be adjusted through proposals.
 3. Call `AccountPermissionUpdateContract`.
 4. Sign and broadcast the transaction.
 
-**Notice:**: When a block contains transactions that modify account permissions, the block producer performs additional processing during block production to ensure that such transactions take effect starting from the next block.
+**Notice:**: When a block contains transactions that modify account permissions, the account is actually restricted from further transactions for the remainder of that block during block production to ensure that such account permission modify transactions actually take effect starting from the next block.
 
 #### Example Request:
 
