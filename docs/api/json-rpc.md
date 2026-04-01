@@ -116,7 +116,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 | to        | DATA, 20 Bytes | Contract address.  Hex format address, remove the prefix "41" |
 | gas       | QUANTITY       | Not supported. The value is 0x0                               |
 | gasPrice  | QUANTITY       | Not supported. The value is 0x0                               |
-| value     | QUANTITY       | The integer of value sent with this transaction encoded as hexadecimal                               |
+| value     | QUANTITY       | Amount of TRX sent with this transaction(Unit:sun, format: hex); default: 0x0                               |
 | data      | DATA           | Hash of the method signature and encoded parameters.          |
 
 2\. QUANTITY|TAG - currently, only "latest" is available. 
