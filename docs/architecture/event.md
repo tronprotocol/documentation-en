@@ -656,11 +656,11 @@ Upon successful execution, a JAR package will be generated in the `tron-eventque
 An example of the configuration file content is shown below:
 
 ```text
-mongo.host=IP
+mongo.host=127.0.0.1
 mongo.port=27017
 mongo.dbname=eventlog
-mongo.username=tron
-mongo.password=${MONGO_PASSWORD}
+mongo.username=${MONGO_USERNAME}  # Example: tron
+mongo.password=${MONGO_PASSWORD}  # MUST be a strong password in production
 mongo.connectionsPerHost=8
 mongo.threadsAllowedToBlockForConnectionMultiplier=4
 ```
