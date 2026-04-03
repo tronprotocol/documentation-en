@@ -649,14 +649,18 @@ mvn --version
 mvn package
 ```
 
-Upon successful execution, a JAR package will be generated in the `tron-eventquery/target` directory, and a `config.conf` file will be created in the `tron-eventquery/` directory. An example of the configuration file content is shown below:
+Upon successful execution, a JAR package will be generated in the `tron-eventquery/target` directory, and a `config.conf` file will be created in the `tron-eventquery/` directory. 
+
+**Note: The configuration below is for reference only. In a production environment, please ensure you set a strong password for MongoDB and avoid using hardcoded plaintext passwords.**
+
+An example of the configuration file content is shown below:
 
 ```text
 mongo.host=IP
 mongo.port=27017
 mongo.dbname=eventlog
 mongo.username=tron
-mongo.password=123456
+mongo.password=${MONGO_PASSWORD}
 mongo.connectionsPerHost=8
 mongo.threadsAllowedToBlockForConnectionMultiplier=4
 ```
