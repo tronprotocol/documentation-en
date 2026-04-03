@@ -9,7 +9,7 @@ TRON offers two primary event subscription methods, allowing developers to choos
 
 ## Local Event Plugin Subscription (Recommended)
 
-This method utilizes an extensible plugin architecture to persistntly store on-chain events in external systems, such as **MongoDB** or **Kafka**, either in real-time or in batches. Designed specifically for production environments, this solution caters to applications requiring high reliability, durable storage, and robust data analysis capabilities.
+This method utilizes an extensible plugin architecture to persistently store on-chain events in external systems, such as **MongoDB** or **Kafka**, either in real-time or in batches. Designed specifically for production environments, this solution caters to applications requiring high reliability, durable storage, and robust data analysis capabilities.
 
 This method has the following advantages:
 
@@ -71,7 +71,7 @@ Visit the [event-plugin Releases page](https://github.com/tronprotocol/event-plu
 
 ##### Step 2: Modify the FullNode Configuration
 
-In your `config.conf` file, set the event service version to `V2.0`, the value is `1`.
+In your `config.conf` file, set the event service version to `V2.0`by setting the value to 1.
 
 ```
 event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
@@ -224,7 +224,7 @@ Parameters:
 
 - `triggerName`: (String) The event type identifier. For transaction events, this value is fixed to `transaction`.
 - `enable`: (Boolean) Enables or disables the subscription for this event type.
-- `topic`: (String) The name of the topic for receiving this event type in MongoDB or Kafka. This value must be consistent with the configuration in MongoDB or Kafka.
+- `topic`: (String) The name of the topic for receiving this event type in MongoDB or Kafka. This value must match the configuration in MongoDB or Kafka.
 - `solidified`: (Boolean) If set to `true`, the subscription will only deliver events for transactions included in solidified blocks.
 - `ethCompatible`: (Boolean) If set to `true`, the event payload will include Ethereum-compatible fields (e.g., `transactionIndex`, `logList`).
 
@@ -421,7 +421,7 @@ The main steps include:
 - [Deploying the Event Plugin](#deploying-the-event-subscription-plugin)
 - [Deploying the MongoDB](#installing-and-configuring-mongodb)
 - [Deploying the Event Query Service](#deploying-the-event-query-service)
-- [Starting and Verifing](#launch-and-verification)
+- [Starting and Verifying](#launch-and-verification)
 - [Using the TRON Event Query Service API](#using-the-tron-event-query-service-api)
 
 
@@ -744,7 +744,7 @@ This method has the following advantages:
   - **Low Latency**: Optimized for real-time event streaming.
   - **Lightweight**: Well-suited for rapid development and testing environments.
 
-Therefore, when you want to connect to an event stream quickly and at a minimal cost without relying on persistence capabilities, using the **built-in ZeroMQ message queue** is a more lightweight and direct choice. This guide explains how to subscribe to events using this method.
+Therefore, if you need to connect to an event stream quickly and efficiently without requiring persistent storage, the **built-in ZeroMQ message queue** is the ideal lightweight choice. This guide explains how to subscribe to events using this method.
 
 ### Configuring the Node
 
