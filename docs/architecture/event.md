@@ -9,7 +9,7 @@ TRON offers two primary event subscription methods, allowing developers to choos
 
 ## Local Event Plugin Subscription (Recommended)
 
-This method utilizes an extensible plugin architecture to persistntly store on-chain events in external systems, such as **MongoDB** or **Kafka**, either in real-time or in batches. Designed specifically for production environments, this solution caters to applications requiring high reliability, durable storage, and robust data analysis capabilities.
+This method utilizes an extensible plugin architecture to persistently store on-chain events in external systems, such as **MongoDB** or **Kafka**, either in real-time or in batches. Designed specifically for production environments, this solution caters to applications requiring high reliability, durable storage, and robust data analysis capabilities.
 
 This method has the following advantages:
 
@@ -421,7 +421,7 @@ The main steps include:
 - [Deploying the Event Plugin](#deploying-the-event-subscription-plugin)
 - [Deploying the MongoDB](#installing-and-configuring-mongodb)
 - [Deploying the Event Query Service](#deploying-the-event-query-service)
-- [Starting and Verifing](#launch-and-verification)
+- [Starting and Verifying](#launch-and-verification)
 - [Using the TRON Event Query Service API](#using-the-tron-event-query-service-api)
 
 

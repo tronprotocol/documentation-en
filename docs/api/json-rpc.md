@@ -1184,7 +1184,7 @@ QUANTITY - the filter id.
 
 **Returns**
 
-- For filters created with eth_newFilte, return logs object list, each log object with following params:
+- For filters created with eth_newFilter, return logs object list, each log object with following params:
 
 | Field            | Type           | Description                                                                                 |
 | :--------------- | :------------- | :------------------------------------------------------------------------------------------ |
