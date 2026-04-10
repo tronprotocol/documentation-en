@@ -71,7 +71,7 @@ Visit the [event-plugin Releases page](https://github.com/tronprotocol/event-plu
 
 ##### Step 2: Modify the FullNode Configuration
 
-In your `config.conf` file, set the event service version to `V2.0`by setting the value to 1.
+In your `config.conf` file, set the event service version to `V2.0` by setting the value to 1.
 
 ```
 event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
