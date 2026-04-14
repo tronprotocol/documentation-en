@@ -39,45 +39,45 @@ The private key is a 32-byte large number, and the public key consists of two 32
 
 ## TRON Address Generation
 
-1. Take the public key P as input, calculate SHA3 to get the result H, and SHA3 uses Keccak256.
-2. Take the last 20 bytes of H, and prepend a byte 0x41 to get address.
-3. Perform base58check calculation on address to get the final address.
+1. Take the public key `P` as input, calculate `SHA3` to get the result `H` (`SHA3` uses Keccak256).
+2. Take the last 20 bytes of `H`, and prepend the byte `0x41` to get the `address`.
+3. Perform a Base58Check calculation on the `address` to get the final address.
 
 ### Base58Check Calculation Process
 
 1. Calculate the checksum
 
-    a. Perform SHA256 hash operation on `address` to get `h1`  
-    b. Perform SHA256 operation on `h1` again to get `h2`  
-    c. Take the first 4 bytes of `h2` as the checksum `check`
+    a. Perform a SHA256 hash operation on `address` to get `h1`.  
+    b. Perform a SHA256 operation on `h1` again to get `h2`.  
+    c. Take the first 4 bytes of `h2` as the checksum `check`.
 
-2. Splice data Append `check` to `address` to get `address||check`
-3. Base58 encoding Perform Base58 encoding on `address||check`. The character table for Base58 is: `"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"`, excluding easily confused characters:` 0` (Arabic numeral 0), `O` (uppercase letter O), `I` (uppercase letter I), `l` (lowercase letter L).
+2. Splice data: Append `check` to `address` to get `address||check`.
+3. Base58 encoding: Perform Base58 encoding on `address||check`. The character table for Base58 is: `"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"`, excluding easily confused characters: `0` (Arabic numeral 0), `O` (uppercase letter O), `I` (uppercase letter I), `l` (lowercase letter L).
 
 ### TRON Address Characteristics
 
 The principle of Base58 encoding is to convert a large integer with a base of 256 into a representation with a base of 58, and then map it to the character table. Since the first byte of `address||check` is fixed as `0x41`, its decimal value `N` satisfies: `65 × 256²⁴ ≤ N < 66 × 256²⁴`.
 
-- Length is `34`: Because `58³⁴ > 66 × 256²⁴` indicates that length of `34` are sufficient, and `58³³ < 65 × 256²⁴` indicates that length of `33` are insufficient, so the length can only be `34`.
-- The first character is `T`: First, the length is determined to be `34`, and since `27 × 58³³ > 66 × 256²⁴` indicates that the index of first character in base58 character table must be less than `27`, and `26 × 58³³ < 65 × 256²⁴` indicates that the index must be greater than or equal to `26`, so the first index can only be `26`, and `26` corresponds to `T` in the base58 character table (`0` corresponds to `'1'`).
+- Length is `34`: Because `58³⁴ > 66 × 256²⁴` indicates that a length of `34` is sufficient, and `58³³ < 65 × 256²⁴` indicates that a length of `33` is insufficient, so the length can only be `34`.
+- The first character is `T`: First, the length is determined to be `34`, and since `27 × 58³³ > 66 × 256²⁴` indicates that the index of the first character in the Base58 character table must be less than `27`, and `26 × 58³³ < 65 × 256²⁴` indicates that the index must be greater than or equal to `26`, so the first index can only be `26`, and `26` corresponds to `T` in the Base58 character table (`0` corresponds to `'1'`).
 
 ## Signature Specification
 
 ### Algorithm
 
-1. Take the `rawdata` of the transaction, convert it to `byte[]` format, and record it as `data` (for example, the `byte[]` type in Java).
-2. Perform `sha256` operation on `data` to get the hash value of the transaction, recorded as `hash`.
-3. Use the private key d corresponding to the address in the transaction contract to sign hash. The signature algorithm is the ECDSA algorithm (using the SECP256K1 curve). The signature result includes three values: `r`, `s`, and `v`:
+1. Take the `raw_data` of the transaction, convert it to `byte[]` format, and record it as `data` (for example, the `byte[]` type in Java).
+2. Perform a `sha256` operation on `data` to get the hash value of the transaction, recorded as `hash`.
+3. Use the private key `d` corresponding to the address in the transaction contract to sign the `hash`. The signature algorithm is the ECDSA algorithm (using the SECP256K1 curve). The signature result includes three values: `r`, `s`, and `v`:
 
     * **Calculate the `r` value**: Randomly generate a temporary private key `k`, calculate the temporary public key `K = k × G` (`G`: curve base point), `r = K_x mod n`, that is, the abscissa of `K` modulo `n`, where `n` is the curve order (`n` and `G` satisfy `n × G = O`, and `O` is the zero point of the elliptic curve group on the finite field). `r` is 32 bytes.
-    * **Calculate the `s` value**: First calculate the modular inverse of the temporary private key `k` with respect to n, `k⁻¹`, that is, `k⁻¹` satisfies `k⁻¹ × k = 1 mod n`, then calculate the `s` value through the transaction's `hash`, the user's private key `d`, and the `r` value, `s = (k⁻¹ × (hash + d × r)) mod n`. `s` is 32 bytes.
-    * **Calculate the `v` value**: Calculate the `recoveryId` first. Due to the modulo operation on the `r` value and the symmetry of the elliptic curve, if there is only the `r` value, one `r` can recover up to four `K`s. The value range of `recoveryId` is `0, 1, 2, 3`. The calculation of `v` value depends on `recoveryId`. Historically, to remain consistent with Ethereum, the  `v` value will be `27` added to `recoveryId`, that is, the value range of `v` is `27, 28, 29, 30`. With a determined `v`, the unique `K` can be recovered. `v` is 1 byte.
+    * **Calculate the `s` value**: First calculate the modular inverse of the temporary private key `k` with respect to `n`, `k⁻¹`, that is, `k⁻¹` satisfies `k⁻¹ × k = 1 mod n`, then calculate the `s` value through the transaction's `hash`, the user's private key `d`, and the `r` value: `s = (k⁻¹ × (hash + d × r)) mod n`. `s` is 32 bytes.
+    * **Calculate the `v` value**: Calculate the `recoveryId` first. Due to the modulo operation on the `r` value and the symmetry of the elliptic curve, if there is only the `r` value, one `r` can recover up to four `K`s. The value range of `recoveryId` is `0, 1, 2, 3`. The calculation of the `v` value depends on `recoveryId`. Historically, to remain consistent with Ethereum, the  `v` value will be `27` added to `recoveryId`, that is, the value range of `v` is `27, 28, 29, 30`. With a determined `v`, the unique `K` can be recovered. `v` is 1 byte.
 
-4. Concatenate the values of `r`, `s`, and `recoveryId`(or `r`, `s`, and `v`) to obtain the complete signature. The concatenation order shall be `r || s || recoveryId`(or `r || s || v`). At present, both the transaction signing in the official client `wallet-cli` and the block signing in `java-tron` (during block production by SRs) adopt the `recoveryId` scheme, i.e., `signature = r || s || recoveryId`.
+4. Concatenate the values of `r`, `s`, and `recoveryId` (or `r`, `s`, and `v`) to obtain the complete signature. The concatenation order shall be `r || s || recoveryId` (or `r || s || v`). At present, both the transaction signing in the official client `wallet-cli` and the block signing in `java-tron` (during block production by SRs) adopt the `recoveryId` scheme, i.e., `signature = r || s || recoveryId`.
 
 #### Java Code Sample
 
-```
+```java
 public static Transaction sign(Transaction transaction, ECKey myKey) {
     Transaction.Builder transactionBuilderSigned = transaction.toBuilder();
     byte[] hash = sha256(transaction.getRawData().toByteArray());
@@ -85,7 +85,6 @@ public static Transaction sign(Transaction transaction, ECKey myKey) {
     ByteString bsSign = ByteString.copyFrom(signature.toByteArray());
     transactionBuilderSigned.addSignature(bsSign);
 }
-```
 
 ## Signature Verification
 When a FullNode receives a transaction, it uses the transaction hash and signature to recover a public key via the ECDSA recovery mechanism (ecrecover). An address is then derived from this public key. If the derived address matches the originator's address specified in the transaction, the signature is considered valid.
@@ -109,4 +108,4 @@ Signature verification is performed by the FullNode. For [ECDSA algorithm signat
 
 ### Signature normalization
 
-ECDSA signatures (using the secp256k1 curve) are malleable, meaning that for a signature $(r, s)$, where $r, s \in [1, n-1]$, the pair $(r, n - s)$ is also a valid signature. Since signatures affect transaction ID in both Bitcoin and Ethereum, [BIP-62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki) and [EIP-2](https://eips.ethereum.org/EIPS/eip-2) require signatures to be normalized, i.e., $s \leq n/2$. However, for the TRON network, the transaction ID does not include signature information, so there is no strict requirement for signature normalization, and signature verification does not need to check whether the signature is normalized. Although there is no strict restriction, both `java-tron` and `wallet-cli` currently perform signature normalization.
+ECDSA signatures (using the secp256k1 curve) are malleable, meaning that for a signature $(r, s)$, where $r, s \in [1, n-1]$, the pair $(r, n - s)$ is also a valid signature. Since signatures affect transaction ID in both Bitcoin and Ethereum, [BIP-62](https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki) and [EIP-2](https://eips.ethereum.org/EIPS/eip-2) require signatures to be normalized, i.e., $s \leq n/2$. However, for the TRON network, the transaction ID does not include signature information, so there is no strict requirement for signature normalization, and signature verification does not need to check whether the signature is normalized. Although there is no strict restriction, both java-tron and wallet-cli currently perform signature normalization.
