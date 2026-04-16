@@ -19,192 +19,196 @@ nav:
     - API:
         - HTTP API:
             - Overview: api/http/index.md
-            - Accounts:
-                - validateaddress: api/http/wallet-operations/validateaddress.md
-                - createaccount: api/http/wallet-operations/createaccount.md
+            - Account Management:
                 - getaccount: api/http/account-management/getaccount.md
-                - updateaccount: api/http/wallet-operations/updateaccount.md
-                - accountpermissionupdate: api/http/wallet-operations/accountpermissionupdate.md
                 - getaccountbalance: api/http/account-management/getaccountbalance.md
-            - Transfers and Transactions:
-                - createtransaction: api/http/wallet-operations/createtransaction.md
-                - broadcasttransaction: api/http/wallet-operations/broadcasttransaction.md
-                - broadcasthex: api/http/wallet-operations/broadcasthex.md
-                - getsignweight: api/http/account-management/getsignweight.md
-                - getapprovedlist: api/http/account-management/getapprovedlist.md
-            - Resources:
-                - getaccountresource: api/http/resource-management/getaccountresource.md
                 - getaccountnet: api/http/account-management/getaccountnet.md
-                - freezebalance: api/http/resource-management/freezebalance.md
-                - unfreezebalance: api/http/resource-management/unfreezebalance.md
-                - getdelegatedresource: api/http/resource-management/getdelegatedresource.md
-                - getdelegatedresourceaccountindex: api/http/resource-management/getdelegatedresourceaccountindex.md
-                - freezebalancev2: api/http/resource-management/freezebalancev2.md
-                - unfreezebalancev2: api/http/resource-management/unfreezebalancev2.md
-                - cancelallunfreezev2: api/http/resource-management/cancelallunfreezev2.md
-                - delegateresource: api/http/resource-management/delegateresource.md
-                - undelegateresource: api/http/resource-management/undelegateresource.md
-                - withdrawexpireunfreeze: api/http/resource-management/withdrawexpireunfreeze.md
-                - getavailableunfreezecount: api/http/resource-management/getavailableunfreezecount.md
-                - getcanwithdrawunfreezeamount: api/http/resource-management/getcanwithdrawunfreezeamount.md
-                - getcandelegatedmaxsize: api/http/resource-management/getcandelegatedmaxsize.md
-                - getdelegatedresourcev2: api/http/resource-management/getdelegatedresourcev2.md
-                - getdelegatedresourceaccountindexv2: api/http/resource-management/getdelegatedresourceaccountindexv2.md
-            - Query the Network:
-                - getnowblock: api/http/block-operations/getnowblock.md
+                - getapprovedlist: api/http/account-management/getapprovedlist.md
+                - getsignweight: api/http/account-management/getsignweight.md
+            - Assets and Tokens:
+                - createassetissue: api/http/assets-and-tokens/createassetissue.md
+                - getassetissuebyaccount: api/http/assets-and-tokens/getassetissuebyaccount.md
+                - getassetissuebyid: api/http/assets-and-tokens/getassetissuebyid.md
+                - getassetissuebyname: api/http/assets-and-tokens/getassetissuebyname.md
+                - getassetissuelist: api/http/assets-and-tokens/getassetissuelist.md
+                - getassetissuelistbyname: api/http/assets-and-tokens/getassetissuelistbyname.md
+                - getpaginatedassetissuelist: api/http/assets-and-tokens/getpaginatedassetissuelist.md
+                - participateassetissue: api/http/assets-and-tokens/participateassetissue.md
+                - transferasset: api/http/assets-and-tokens/transferasset.md
+                - unfreezeasset: api/http/assets-and-tokens/unfreezeasset.md
+                - updateasset: api/http/assets-and-tokens/updateasset.md
+            - Block Operations:
                 - getblock: api/http/block-operations/getblock.md
-                - getblockbynum: api/http/block-operations/getblockbynum.md
+                - getblockbalance: api/http/block-operations/getblockbalance.md
                 - getblockbyid: api/http/block-operations/getblockbyid.md
                 - getblockbylatestnum: api/http/block-operations/getblockbylatestnum.md
                 - getblockbylimitnext: api/http/block-operations/getblockbylimitnext.md
-                - getblockbalance: api/http/block-operations/getblockbalance.md
-                - gettransactionbyid: api/http/transaction-operations/gettransactionbyid.md
-                - gettransactioninfobyid: api/http/transaction-operations/gettransactioninfobyid.md
-                - gettransactioncountbyblocknum: api/http/transaction-operations/gettransactioncountbyblocknum.md
-                - gettransactioninfobyblocknum: api/http/transaction-operations/gettransactioninfobyblocknum.md
-                - listnodes: api/http/network-information/listnodes.md
-                - getnodeinfo: api/http/network-information/getnodeinfo.md
-                - getchainparameters: api/http/network-information/getchainparameters.md
-                - getenergyprices: api/http/network-information/getenergyprices.md
+                - getblockbynum: api/http/block-operations/getblockbynum.md
+                - getnowblock: api/http/block-operations/getnowblock.md
+            - Network Information:
                 - getbandwidthprices: api/http/network-information/getbandwidthprices.md
                 - getburntrx: api/http/network-information/getburntrx.md
+                - getchainparameters: api/http/network-information/getchainparameters.md
+                - getenergyprices: api/http/network-information/getenergyprices.md
+                - getnodeinfo: api/http/network-information/getnodeinfo.md
+                - listnodes: api/http/network-information/listnodes.md
+            - Resource Management:
+                - cancelallunfreezev2: api/http/resource-management/cancelallunfreezev2.md
+                - delegateresource: api/http/resource-management/delegateresource.md
+                - freezebalance: api/http/resource-management/freezebalance.md
+                - freezebalancev2: api/http/resource-management/freezebalancev2.md
+                - getaccountresource: api/http/resource-management/getaccountresource.md
+                - getavailableunfreezecount: api/http/resource-management/getavailableunfreezecount.md
+                - getcandelegatedmaxsize: api/http/resource-management/getcandelegatedmaxsize.md
+                - getcanwithdrawunfreezeamount: api/http/resource-management/getcanwithdrawunfreezeamount.md
+                - getdelegatedresource: api/http/resource-management/getdelegatedresource.md
+                - getdelegatedresourceaccountindex: api/http/resource-management/getdelegatedresourceaccountindex.md
+                - getdelegatedresourceaccountindexv2: api/http/resource-management/getdelegatedresourceaccountindexv2.md
+                - getdelegatedresourcev2: api/http/resource-management/getdelegatedresourcev2.md
+                - undelegateresource: api/http/resource-management/undelegateresource.md
+                - unfreezebalance: api/http/resource-management/unfreezebalance.md
+                - unfreezebalancev2: api/http/resource-management/unfreezebalancev2.md
+                - withdrawexpireunfreeze: api/http/resource-management/withdrawexpireunfreeze.md
             - Smart Contracts:
+                - clearabi: api/http/smart-contracts/clearabi.md
+                - deploycontract: api/http/smart-contracts/deploycontract.md
+                - estimateenergy: api/http/smart-contracts/estimateenergy.md
                 - getcontract: api/http/smart-contracts/getcontract.md
                 - getcontractinfo: api/http/smart-contracts/getcontractinfo.md
-                - deploycontract: api/http/smart-contracts/deploycontract.md
-                - triggersmartcontract: api/http/smart-contracts/triggersmartcontract.md
                 - triggerconstantcontract: api/http/smart-contracts/triggerconstantcontract.md
-                - updatesetting: api/http/smart-contracts/updatesetting.md
+                - triggersmartcontract: api/http/smart-contracts/triggersmartcontract.md
                 - updateenergylimit: api/http/smart-contracts/updateenergylimit.md
-                - clearabi: api/http/smart-contracts/clearabi.md
-                - estimateenergy: api/http/smart-contracts/estimateenergy.md
-            - TRC-10 Token:
-                - getassetissuebyaccount: api/http/assets-and-tokens/getassetissuebyaccount.md
-                - getassetissuebyname: api/http/assets-and-tokens/getassetissuebyname.md
-                - getassetissuelistbyname: api/http/assets-and-tokens/getassetissuelistbyname.md
-                - getassetissuebyid: api/http/assets-and-tokens/getassetissuebyid.md
-                - getassetissuelist: api/http/assets-and-tokens/getassetissuelist.md
-                - getpaginatedassetissuelist: api/http/assets-and-tokens/getpaginatedassetissuelist.md
-                - transferasset: api/http/assets-and-tokens/transferasset.md
-                - participateassetissue: api/http/assets-and-tokens/participateassetissue.md
-                - createassetissue: api/http/assets-and-tokens/createassetissue.md
-                - unfreezeasset: api/http/assets-and-tokens/unfreezeasset.md
-                - updateasset: api/http/assets-and-tokens/updateasset.md
-            - Vote and Super Representative:
+                - updatesetting: api/http/smart-contracts/updatesetting.md
+            - Transaction Operations:
+                - getpendingsize: api/http/transaction-operations/getpendingsize.md
+                - gettransactionbyid: api/http/transaction-operations/gettransactionbyid.md
+                - gettransactioncountbyblocknum: api/http/transaction-operations/gettransactioncountbyblocknum.md
+                - gettransactionfrompending: api/http/transaction-operations/gettransactionfrompending.md
+                - gettransactioninfobyblocknum: api/http/transaction-operations/gettransactioninfobyblocknum.md
+                - gettransactioninfobyid: api/http/transaction-operations/gettransactioninfobyid.md
+                - gettransactionlistfrompending: api/http/transaction-operations/gettransactionlistfrompending.md
+            - Wallet Operations:
+                - accountpermissionupdate: api/http/wallet-operations/accountpermissionupdate.md
+                - broadcasthex: api/http/wallet-operations/broadcasthex.md
+                - broadcasttransaction: api/http/wallet-operations/broadcasttransaction.md
+                - createaccount: api/http/wallet-operations/createaccount.md
+                - createtransaction: api/http/wallet-operations/createtransaction.md
+                - updateaccount: api/http/wallet-operations/updateaccount.md
+                - validateaddress: api/http/wallet-operations/validateaddress.md
+            - Witness and Governance:
                 - createwitness: api/http/witness-and-governance/createwitness.md
-                - updatewitness: api/http/witness-and-governance/updatewitness.md
-                - listwitnesses: api/http/witness-and-governance/listwitnesses.md
-                - getpaginatednowwitnesslist: api/http/witness-and-governance/getpaginatednowwitnesslist.md
-                - withdrawbalance: api/http/witness-and-governance/withdrawbalance.md
-                - votewitnessaccount: api/http/witness-and-governance/votewitnessaccount.md
                 - getBrokerage: api/http/witness-and-governance/getBrokerage.md
-                - updateBrokerage: api/http/witness-and-governance/updateBrokerage.md
                 - getReward: api/http/witness-and-governance/getReward.md
                 - getnextmaintenancetime: api/http/witness-and-governance/getnextmaintenancetime.md
-            - Proposals:
-                - proposalcreate: api/http/witness-and-governance/proposalcreate.md
+                - getpaginatednowwitnesslist: api/http/witness-and-governance/getpaginatednowwitnesslist.md
+                - getpaginatedproposallist: api/http/witness-and-governance/getpaginatedproposallist.md
                 - getproposalbyid: api/http/witness-and-governance/getproposalbyid.md
                 - listproposals: api/http/witness-and-governance/listproposals.md
+                - listwitnesses: api/http/witness-and-governance/listwitnesses.md
                 - proposalapprove: api/http/witness-and-governance/proposalapprove.md
+                - proposalcreate: api/http/witness-and-governance/proposalcreate.md
                 - proposaldelete: api/http/witness-and-governance/proposaldelete.md
-                - getpaginatedproposallist: api/http/witness-and-governance/getpaginatedproposallist.md
-            - Pending Pool:
-                - gettransactionfrompending: api/http/transaction-operations/gettransactionfrompending.md
-                - gettransactionlistfrompending: api/http/transaction-operations/gettransactionlistfrompending.md
-                - getpendingsize: api/http/transaction-operations/getpendingsize.md
+                - updateBrokerage: api/http/witness-and-governance/updateBrokerage.md
+                - updatewitness: api/http/witness-and-governance/updatewitness.md
+                - votewitnessaccount: api/http/witness-and-governance/votewitnessaccount.md
+                - withdrawbalance: api/http/witness-and-governance/withdrawbalance.md
         - gRPC API:
             - Overview: api/rpc/index.md
-            - Accounts:
+            - Account Management:
                 - getaccount: api/rpc/account-management/getaccount.md
                 - getaccountbalance: api/rpc/account-management/getaccountbalance.md
-                - createaccount: api/rpc/wallet-operations/createaccount.md
-                - updateaccount: api/rpc/wallet-operations/updateaccount.md
-                - accountpermissionupdate: api/rpc/wallet-operations/accountpermissionupdate.md
-            - Transfers and Transactions:
-                - createtransaction: api/rpc/wallet-operations/createtransaction.md
-                - broadcasttransaction: api/rpc/wallet-operations/broadcasttransaction.md
-                - gettransactionsignweight: api/rpc/account-management/gettransactionsignweight.md
-                - gettransactionapprovedlist: api/rpc/account-management/gettransactionapprovedlist.md
-            - Resources:
+                - getaccountbyid: api/rpc/account-management/getaccountbyid.md
                 - getaccountnet: api/rpc/account-management/getaccountnet.md
-                - getaccountresource: api/rpc/resource-management/getaccountresource.md
-                - freezebalance: api/rpc/resource-management/freezebalance.md
-                - unfreezebalance: api/rpc/resource-management/unfreezebalance.md
-                - freezebalancev2: api/rpc/resource-management/freezebalancev2.md
-                - unfreezebalancev2: api/rpc/resource-management/unfreezebalancev2.md
-                - withdrawexpireunfreeze: api/rpc/resource-management/withdrawexpireunfreeze.md
-                - delegateresource: api/rpc/resource-management/delegateresource.md
-                - undelegateresource: api/rpc/resource-management/undelegateresource.md
-                - cancelallunfreezev2: api/rpc/resource-management/cancelallunfreezev2.md
-                - getdelegatedresource: api/rpc/resource-management/getdelegatedresource.md
-                - getdelegatedresourcev2: api/rpc/resource-management/getdelegatedresourcev2.md
-                - getdelegatedresourceaccountindex: api/rpc/resource-management/getdelegatedresourceaccountindex.md
-                - getdelegatedresourceaccountindexv2: api/rpc/resource-management/getdelegatedresourceaccountindexv2.md
-                - getcandelegatedmaxsize: api/rpc/resource-management/getcandelegatedmaxsize.md
-                - getavailableunfreezecount: api/rpc/resource-management/getavailableunfreezecount.md
-                - getcanwithdrawunfreezeamount: api/rpc/resource-management/getcanwithdrawunfreezeamount.md
-            - Query the Network:
-                - getnowblock: api/rpc/block-operations/getnowblock.md
-                - getblockbynum: api/rpc/block-operations/getblockbynum.md
-                - getblockbyid: api/rpc/block-operations/getblockbyid.md
-                - getblockbylimitnext: api/rpc/block-operations/getblockbylimitnext.md
-                - getblockbylatestnum: api/rpc/block-operations/getblockbylatestnum.md
+                - gettransactionapprovedlist: api/rpc/account-management/gettransactionapprovedlist.md
+                - gettransactionsignweight: api/rpc/account-management/gettransactionsignweight.md
+                - setaccountid: api/rpc/account-management/setaccountid.md
+            - Assets and Tokens:
+                - createassetissue: api/rpc/assets-and-tokens/createassetissue.md
+                - getassetissuebyaccount: api/rpc/assets-and-tokens/getassetissuebyaccount.md
+                - getassetissuebyid: api/rpc/assets-and-tokens/getassetissuebyid.md
+                - getassetissuebyname: api/rpc/assets-and-tokens/getassetissuebyname.md
+                - getassetissuelist: api/rpc/assets-and-tokens/getassetissuelist.md
+                - getassetissuelistbyname: api/rpc/assets-and-tokens/getassetissuelistbyname.md
+                - getpaginatedassetissuelist: api/rpc/assets-and-tokens/getpaginatedassetissuelist.md
+                - participateassetissue: api/rpc/assets-and-tokens/participateassetissue.md
+                - transferasset: api/rpc/assets-and-tokens/transferasset.md
+                - unfreezeasset: api/rpc/assets-and-tokens/unfreezeasset.md
+                - updateasset: api/rpc/assets-and-tokens/updateasset.md
+            - Block Operations:
                 - getblock: api/rpc/block-operations/getblock.md
                 - getblockbalancetrace: api/rpc/block-operations/getblockbalancetrace.md
-                - gettransactionbyid: api/rpc/transaction-operations/gettransactionbyid.md
-                - gettransactioninfobyid: api/rpc/transaction-operations/gettransactioninfobyid.md
-                - gettransactioncountbyblocknum: api/rpc/transaction-operations/gettransactioncountbyblocknum.md
-                - gettransactioninfobyblocknum: api/rpc/transaction-operations/gettransactioninfobyblocknum.md
-                - listnodes: api/rpc/network-information/listnodes.md
-                - getnodeinfo: api/rpc/network-information/getnodeinfo.md
-                - getchainparameters: api/rpc/network-information/getchainparameters.md
-                - getnextmaintenancetime: api/rpc/witness-and-governance/getnextmaintenancetime.md
-                - getburntrx: api/rpc/network-information/getburntrx.md
+                - getblockbyid: api/rpc/block-operations/getblockbyid.md
+                - getblockbylatestnum: api/rpc/block-operations/getblockbylatestnum.md
+                - getblockbylimitnext: api/rpc/block-operations/getblockbylimitnext.md
+                - getblockbynum: api/rpc/block-operations/getblockbynum.md
+                - getnowblock: api/rpc/block-operations/getnowblock.md
+            - Network Information:
                 - getbandwidthprices: api/rpc/network-information/getbandwidthprices.md
+                - getburntrx: api/rpc/network-information/getburntrx.md
+                - getchainparameters: api/rpc/network-information/getchainparameters.md
                 - getenergyprices: api/rpc/network-information/getenergyprices.md
+                - getmemofee: api/rpc/network-information/getmemofee.md
+                - getnodeinfo: api/rpc/network-information/getnodeinfo.md
+                - listnodes: api/rpc/network-information/listnodes.md
+                - totaltransaction: api/rpc/network-information/totaltransaction.md
+            - Resource Management:
+                - cancelallunfreezev2: api/rpc/resource-management/cancelallunfreezev2.md
+                - delegateresource: api/rpc/resource-management/delegateresource.md
+                - freezebalance: api/rpc/resource-management/freezebalance.md
+                - freezebalancev2: api/rpc/resource-management/freezebalancev2.md
+                - getaccountresource: api/rpc/resource-management/getaccountresource.md
+                - getavailableunfreezecount: api/rpc/resource-management/getavailableunfreezecount.md
+                - getcandelegatedmaxsize: api/rpc/resource-management/getcandelegatedmaxsize.md
+                - getcanwithdrawunfreezeamount: api/rpc/resource-management/getcanwithdrawunfreezeamount.md
+                - getdelegatedresource: api/rpc/resource-management/getdelegatedresource.md
+                - getdelegatedresourceaccountindex: api/rpc/resource-management/getdelegatedresourceaccountindex.md
+                - getdelegatedresourceaccountindexv2: api/rpc/resource-management/getdelegatedresourceaccountindexv2.md
+                - getdelegatedresourcev2: api/rpc/resource-management/getdelegatedresourcev2.md
+                - undelegateresource: api/rpc/resource-management/undelegateresource.md
+                - unfreezebalance: api/rpc/resource-management/unfreezebalance.md
+                - unfreezebalancev2: api/rpc/resource-management/unfreezebalancev2.md
+                - withdrawexpireunfreeze: api/rpc/resource-management/withdrawexpireunfreeze.md
             - Smart Contracts:
+                - clearcontractabi: api/rpc/smart-contracts/clearcontractabi.md
                 - deploycontract: api/rpc/smart-contracts/deploycontract.md
-                - triggercontract: api/rpc/smart-contracts/triggercontract.md
-                - triggerconstantcontract: api/rpc/smart-contracts/triggerconstantcontract.md
                 - estimateenergy: api/rpc/smart-contracts/estimateenergy.md
                 - getcontract: api/rpc/smart-contracts/getcontract.md
                 - getcontractinfo: api/rpc/smart-contracts/getcontractinfo.md
-                - updatesetting: api/rpc/smart-contracts/updatesetting.md
+                - triggerconstantcontract: api/rpc/smart-contracts/triggerconstantcontract.md
+                - triggercontract: api/rpc/smart-contracts/triggercontract.md
                 - updateenergylimit: api/rpc/smart-contracts/updateenergylimit.md
-                - clearcontractabi: api/rpc/smart-contracts/clearcontractabi.md
-            - TRC-10 Token:
-                - createassetissue: api/rpc/assets-and-tokens/createassetissue.md
-                - transferasset: api/rpc/assets-and-tokens/transferasset.md
-                - participateassetissue: api/rpc/assets-and-tokens/participateassetissue.md
-                - getassetissuelist: api/rpc/assets-and-tokens/getassetissuelist.md
-                - getassetissuebyaccount: api/rpc/assets-and-tokens/getassetissuebyaccount.md
-                - getassetissuebyname: api/rpc/assets-and-tokens/getassetissuebyname.md
-                - getassetissuelistbyname: api/rpc/assets-and-tokens/getassetissuelistbyname.md
-                - getassetissuebyid: api/rpc/assets-and-tokens/getassetissuebyid.md
-                - getpaginatedassetissuelist: api/rpc/assets-and-tokens/getpaginatedassetissuelist.md
-                - unfreezeasset: api/rpc/assets-and-tokens/unfreezeasset.md
-                - updateasset: api/rpc/assets-and-tokens/updateasset.md
-            - Vote and Super Representative:
-                - votewitnessaccount: api/rpc/witness-and-governance/votewitnessaccount.md
-                - createwitness: api/rpc/witness-and-governance/createwitness.md
-                - updatewitness: api/rpc/witness-and-governance/updatewitness.md
-                - listwitnesses: api/rpc/witness-and-governance/listwitnesses.md
-                - getpaginatednowwitnesslist: api/rpc/witness-and-governance/getpaginatednowwitnesslist.md
-                - withdrawbalance: api/rpc/witness-and-governance/withdrawbalance.md
-                - getbrokerageinfo: api/rpc/witness-and-governance/getbrokerageinfo.md
-                - getrewardinfo: api/rpc/witness-and-governance/getrewardinfo.md
-                - updatebrokerage: api/rpc/witness-and-governance/updatebrokerage.md
-            - Proposals:
-                - proposalcreate: api/rpc/witness-and-governance/proposalcreate.md
-                - proposalapprove: api/rpc/witness-and-governance/proposalapprove.md
-                - proposaldelete: api/rpc/witness-and-governance/proposaldelete.md
-                - getproposalbyid: api/rpc/witness-and-governance/getproposalbyid.md
-                - listproposals: api/rpc/witness-and-governance/listproposals.md
-                - getpaginatedproposallist: api/rpc/witness-and-governance/getpaginatedproposallist.md
-            - Pending Pool:
-                - gettransactionfrompending: api/rpc/transaction-operations/gettransactionfrompending.md
-                - gettransactionlistfrompending: api/rpc/transaction-operations/gettransactionlistfrompending.md
+                - updatesetting: api/rpc/smart-contracts/updatesetting.md
+            - Transaction Operations:
                 - getpendingsize: api/rpc/transaction-operations/getpendingsize.md
+                - gettransactionbyid: api/rpc/transaction-operations/gettransactionbyid.md
+                - gettransactioncountbyblocknum: api/rpc/transaction-operations/gettransactioncountbyblocknum.md
+                - gettransactionfrompending: api/rpc/transaction-operations/gettransactionfrompending.md
+                - gettransactioninfobyblocknum: api/rpc/transaction-operations/gettransactioninfobyblocknum.md
+                - gettransactioninfobyid: api/rpc/transaction-operations/gettransactioninfobyid.md
+                - gettransactionlistfrompending: api/rpc/transaction-operations/gettransactionlistfrompending.md
+            - Wallet Operations:
+                - accountpermissionupdate: api/rpc/wallet-operations/accountpermissionupdate.md
+                - broadcasttransaction: api/rpc/wallet-operations/broadcasttransaction.md
+                - createaccount: api/rpc/wallet-operations/createaccount.md
+                - createtransaction: api/rpc/wallet-operations/createtransaction.md
+                - updateaccount: api/rpc/wallet-operations/updateaccount.md
+            - Witness and Governance:
+                - createwitness: api/rpc/witness-and-governance/createwitness.md
+                - getbrokerageinfo: api/rpc/witness-and-governance/getbrokerageinfo.md
+                - getnextmaintenancetime: api/rpc/witness-and-governance/getnextmaintenancetime.md
+                - getpaginatednowwitnesslist: api/rpc/witness-and-governance/getpaginatednowwitnesslist.md
+                - getpaginatedproposallist: api/rpc/witness-and-governance/getpaginatedproposallist.md
+                - getproposalbyid: api/rpc/witness-and-governance/getproposalbyid.md
+                - getrewardinfo: api/rpc/witness-and-governance/getrewardinfo.md
+                - listproposals: api/rpc/witness-and-governance/listproposals.md
+                - listwitnesses: api/rpc/witness-and-governance/listwitnesses.md
+                - proposalapprove: api/rpc/witness-and-governance/proposalapprove.md
+                - proposalcreate: api/rpc/witness-and-governance/proposalcreate.md
+                - proposaldelete: api/rpc/witness-and-governance/proposaldelete.md
+                - updatebrokerage: api/rpc/witness-and-governance/updatebrokerage.md
+                - updatewitness: api/rpc/witness-and-governance/updatewitness.md
+                - votewitnessaccount: api/rpc/witness-and-governance/votewitnessaccount.md
+                - withdrawbalance: api/rpc/witness-and-governance/withdrawbalance.md
         - jsonRPC API:
             - Overview: api/json-rpc/index.md
             - eth:
