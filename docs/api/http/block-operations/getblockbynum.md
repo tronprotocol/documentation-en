@@ -57,7 +57,7 @@ curl --request POST \
   "transactions": [
     {}
   ],
-  "visible": true
+  "visible": false
 }
 ```
 
