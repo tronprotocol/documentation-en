@@ -139,6 +139,6 @@ The creator of a proposal can cancel it at any time before it takes effect.
 
 Proposals can be queried using the following API interfaces:
 
-+ Query all the proposals list ([ListProposals](https://tronprotocol.github.io/documentation-en/api/http/#walletlistproposals))
-+ Query all the proposals list by pagination ([GetPaginatedProposalList](https://tronprotocol.github.io/documentation-en/api/http/#walletgetpaginatedproposallist))
-+ Query a proposal by proposal id ([GetProposalById](https://tronprotocol.github.io/documentation-en/api/http/#walletgetproposalbyid))
++ Query all the proposals list ([ListProposals](../api/http/witness-and-governance/listproposals.md))
++ Query all the proposals list by pagination ([GetPaginatedProposalList](../api/http/witness-and-governance/getpaginatedproposallist.md))
++ Query a proposal by proposal id ([GetProposalById](../api/http/witness-and-governance/getproposalbyid.md))

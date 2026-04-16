@@ -490,7 +490,7 @@ Step 2 - Sign the Transaction
 
 Step 3 - Broadcast the Transaction
     
-  The final step is to broadcast the signed transaction. Call the [wallet/broadcasttransaction](../api/http.md/#walletbroadcasttransaction) endpoint, providing the transaction object from step one and the signature hash from step two in the request body. Upon submission, the node will verify the signature and then broadcast the transaction to the entire TRON network for confirmation, completing the transfer process.
+  The final step is to broadcast the signed transaction. Call the [wallet/broadcasttransaction](../api/http/wallet-operations/broadcasttransaction.md) endpoint, providing the transaction object from step one and the signature hash from step two in the request body. Upon submission, the node will verify the signature and then broadcast the transaction to the entire TRON network for confirmation, completing the transfer process.
     
     ```
     curl --location --request POST 'http://127.0.0.1:8090/wallet/broadcasttransaction' \
