@@ -8,11 +8,11 @@ Most HTTP APIs are accessed via the `wallet` path (default port `8090`). Some AP
 ## API Categories
 
 - [Account Management](account-management/getaccount.md) - Account query, balance, and multi-signature verification
-- [Assets and Tokens](assets-and-tokens/getassetissuebyid.md) - TRC-10 asset issuance, transfer, and queries
-- [Block Operations](block-operations/getnowblock.md) - Block query by number, ID, and range
-- [Network Information](network-information/getnodeinfo.md) - Node info, chain parameters, and pricing
-- [Resource Management](resource-management/getaccountresource.md) - Energy, bandwidth, staking, and delegation
-- [Smart Contracts](smart-contracts/getcontract.md) - Contract deployment, triggering, and queries
-- [Transaction Operations](transaction-operations/gettransactionbyid.md) - Transaction query and pending pool
-- [Wallet Operations](wallet-operations/createtransaction.md) - Account creation, transfers, and broadcasting
-- [Witness and Governance](witness-and-governance/listwitnesses.md) - Witness management, voting, proposals, and rewards
+- [Assets and Tokens](assets-and-tokens/createassetissue.md) - TRC-10 asset issuance, transfer, and queries
+- [Block Operations](block-operations/getblock.md) - Block query by number, ID, and range
+- [Network Information](network-information/getbandwidthprices.md) - Node info, chain parameters, and pricing
+- [Resource Management](resource-management/cancelallunfreezev2.md) - Energy, bandwidth, staking, and delegation
+- [Smart Contracts](smart-contracts/clearabi.md) - Contract deployment, triggering, and queries
+- [Transaction Operations](transaction-operations/getpendingsize.md) - Transaction query and pending pool
+- [Wallet Operations](wallet-operations/accountpermissionupdate.md) - Account creation, transfers, and broadcasting
+- [Witness and Governance](witness-and-governance/createwitness.md) - Witness management, voting, proposals, and rewards
