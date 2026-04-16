@@ -7,12 +7,12 @@ Most HTTP APIs are accessed via the `wallet` path (default port `8090`). Some AP
 
 ## API Categories
 
-- [Accounts](accounts/validateaddress.md) - Account creation, query, and permission management
-- [Transfers and Transactions](transfers/createtransaction.md) - TRX transfers and transaction broadcasting
-- [Resources](resources/getaccountresource.md) - Energy, bandwidth, staking, and delegation
-- [Query the Network](network/getnowblock.md) - Blocks, transactions, node info, and chain parameters
+- [Account Management](account-management/getaccount.md) - Account query, balance, and multi-signature verification
+- [Assets and Tokens](assets-and-tokens/getassetissuebyid.md) - TRC-10 asset issuance, transfer, and queries
+- [Block Operations](block-operations/getnowblock.md) - Block query by number, ID, and range
+- [Network Information](network-information/getnodeinfo.md) - Node info, chain parameters, and pricing
+- [Resource Management](resource-management/getaccountresource.md) - Energy, bandwidth, staking, and delegation
 - [Smart Contracts](smart-contracts/getcontract.md) - Contract deployment, triggering, and queries
-- [TRC-10 Token](trc10-token/getassetissuebyaccount.md) - TRC-10 asset issuance, transfer, and queries
-- [Vote and Super Representative](voting/createwitness.md) - Witness management, voting, and rewards
-- [Proposals](proposals/proposalcreate.md) - Network proposal creation and management
-- [Pending Pool](pending-pool/gettransactionfrompending.md) - Pending transaction queries
+- [Transaction Operations](transaction-operations/gettransactionbyid.md) - Transaction query and pending pool
+- [Wallet Operations](wallet-operations/createtransaction.md) - Account creation, transfers, and broadcasting
+- [Witness and Governance](witness-and-governance/listwitnesses.md) - Witness management, voting, proposals, and rewards
