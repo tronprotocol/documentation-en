@@ -2,7 +2,7 @@
 
 ## Overview
 
-As a distributed ledger system, a blockchain boasts thousands, even tens of thousands, of independent nodes globally, each maintaining an identical copy of the ledger. To record new transaction data onto this shared ledger, universal agreement from these nodes is essential. Achieving this in an inherently untrustworthy distributed environment is a complex engineering challenge.
+As a distributed ledger system, a blockchain boasts thousands, even tens of thousands, of independent nodes globally, each maintaining an identical copy of the ledger. To record new transaction data onto this shared ledger, universal agreement from these nodes is essential. Achieving this consensus in an inherently untrustworthy distributed environment is a complex engineering challenge.
 
 A blockchain system functions correctly (i.e., all nodes can consistently maintain a coherent ledger) provided that the vast majority of nodes in the system are honest and reliable. To ensure that honest nodes can collectively oversee the recording of transaction data, every blockchain system needs to establish its own **consensus mechanism**. 
 
@@ -35,7 +35,7 @@ The following will provide a detailed explanation, integrating the specific impl
 |Super Representative Partner (SRP)| SR candidates ranked from **28th** to **127th** by vote count. They do not participate in block production or transaction packaging but can receive voting rewards. Voters who vote for SRPs will also receive voting rewards.|
 |Block Production / Producing Blocks|The process of validating transactions and recording them as entries. Since entries in TRON are carried by blocks, the block production process is also referred to as "producing blocks." This document does not distinguish between block production and producing blocks.|
 |Block Production Order (Block Generation Order)|The 27 SRs are ranked from highest to lowest by vote count, which determines their block production order.|
-|Slot|In the TRON network, every **3 seconds** is counted as a slot. Under normal circumstances, each SR producing a block will complete block generation within its corresponding slot time. Therefore, TRON's average block generation interval is approximately 3 seconds. If an SR fails to produce a block for some reason, the corresponding slot will be empty, and the next SR will produce a block in the subsequent slot. During maintenance periods, block production skips 2 slots.|
+|Slot|In the TRON network, every **3 seconds** is counted as a slot. Under normal circumstances, each SR producing a block will complete block generation within its corresponding slot time. Therefore, TRON's average block generation interval is approximately 3 seconds. If an SR fails to produce a block for any reason, the corresponding slot remain empty, and the next scheduled SR will produce a block in the subsequent slot. During maintenance periods, block production skips 2 slots.|
 |Epoch|TRON defines every **6 hours** as an epoch. The last two block generation times in each epoch are **maintenance periods**. The maintenance period of each epoch will determine the block generation order for the next epoch.|
 |Maintenance Period|TRON sets this at **2 block times**, which is **6 seconds**. This period is used to tally the votes for candidates. Since there are 4 epochs in 24 hours, there are naturally 4 maintenance periods. No blocks are produced during the maintenance period; its primary purpose is to determine the block production order for the next epoch.|
 
@@ -57,7 +57,7 @@ SRs continuously repeat this process to ensure that all new transaction data in 
 
 ### Votes
 
-Before voting for SRs, an account needs to acquire **voting power**, specifically **TRON Power (TP)**. Voting power is obtained by **staking TRX**. In addition to obtaining Bandwidth or Energy, staking TRX simultaneously grants users voting power. For every **1 TRX** staked, a user receives **1 TP**.
+Before voting for SRs, an account needs to acquire **voting power**, specifically **TRON Power (TP)**. Voting power is obtained by **staking TRX**. Staking TRX grants users voting power (TRON Power) in addition to Bandwidth or Energy. For every **1 TRX** staked, a user receives **1 TP**.
 
 When an account unstakes TRX, it loses the corresponding amount of TP, and its current votes become invalid. Votes are tallied every **6 hours**, and SRs and SRPs are also updated every 6 hours. If an account casts multiple votes before the vote tally, the TRON network will only record the account's **latest vote**, and previous votes will be overwritten.
 
@@ -71,7 +71,7 @@ During each **maintenance period**, the system tallies the votes for all candida
 
 ## Block Production Mechanism
 
-In an **epoch**, the 27 SRs will produce blocks sequentially according to their **block production order**. Each SR can only produce blocks when it is their turn.
+In an **epoch**, the 27 SRs will produce blocks sequentially according to their **block production order**.Each SR can produce a block only during its designated turn.
 
 SRs package multiple valid transaction data into each block. At the same time, each block fills in the **hash value** (`hash`) of the previous block as its **parent hash value** (`parentHash`). Furthermore, the SR uses their private key to sign the current block's data, and the **signature result** (`witness_signature`), along with the SR's address, block height, block generation time, and other data, are also filled into the block.
 
@@ -94,9 +94,13 @@ TRON has established an **irreversible block** (or **solidified block**) mechani
 
 ### Solidified Block Principle
 
-Newly produced blocks initially remain in an unconfirmed state. When a block is acknowledged by at least **70%** (i.e., $27 \times 70\% \approx 19$ (rounded up) SRs), that block is considered an **irreversible block**, commonly referred to as a **solidified block**. At this point, the transactions contained within the solidified block have been confirmed by the entire blockchain network.
+Newly produced blocks initially remain in an unconfirmed state. The process of solidification works as follows:
 
-The "acknowledgment" of an unconfirmed block here occurs when other SRs produce subsequent blocks after that block. For example, as shown in Figure d, when SR C produces block 103, SR E produces block 104' based on block 103, and SR G, A, and B produce blocks 105', 106', and 107' respectively. These are essentially subsequent blocks to block 103, and therefore, they signify acknowledgment of block 103 produced by C. Thus, when block 121' is produced, block 103 becomes a solidified block because it now has 18 subsequent blocks. It's important to emphasize that the SRs who produced these 18 blocks must be **different from each other** and **different** from the SR who produced block 103, this ensures that the block has received confirmations from 19 distinct SRs, including the producer of the block.
+* A block becomes an **irreversible block** (commonly referred to as a **solidified block**) when it is acknowledged by at least **70%** of the SRs (i.e., 27 × 70% ≈ 19 SRs). Once solidified, the transactions within it are permanently confirmed by the entire network.
+* "Acknowledgment" occurs when an SR produces a subsequent block that builds upon the original unconfirmed block.
+* Therefore, a block is solidified when 18 subsequent blocks are produced by 18 *different* SRs (plus the original block producer, totaling 19 distinct SR confirmations).
+
+For example, as shown in Figure d, when SR C produces block 103, SR E produces block 104' based on block 103, and SRs G, A, and B produce blocks 105', 106', and 107' respectively. These are all subsequent blocks to block 103, signifying their acknowledgment of the block produced by C. Thus, when block 121' is produced, block 103 becomes a solidified block because it has accumulated 18 subsequent blocks. It is important to emphasize that the SRs who produced these 18 blocks must be different from each other and different from the SR who produced block 103 to ensure the block has received confirmations from 19 distinct SRs.
 
 ### Longest Chain Principle
 
@@ -106,7 +110,7 @@ When a blockchain forks, honest SRs will always choose to continue producing blo
 
 To ensure the secure and efficient operation of the TRON blockchain system, TRON has designed an incentive model to encourage more nodes to join the TRON network, thereby expanding network scale.
 
-* **Block Production Rewards:** For every block successfully produced in the TRON network, the corresponding SR is rewarded with **8 TRX**. After deducting their commission based on a self-defined commission rate, this SR distributes the remaining portion to the voters who supported them, based on their voting weight.
+* **Block Production Rewards:** For every block successfully produced in the TRON network, the corresponding SR is rewarded with **8 TRX**. After deducting a self-defined commission rate, the SR distributes the remaining block rewards to their voters proportionally based on voting weight.
 * **Voting Rewards:** With the generation of each block, the TRON network also awards an additional **128 TRX** to all SRs and SRPs. This reward is distributed based on their respective vote proportions. Similarly, after deducting their commission based on their set commission rate, SRs and SRPs distribute the remaining voting rewards to their respective voters based on the voters' voting weight.
 
 ## Proposal-Based Parameter Adjustment
