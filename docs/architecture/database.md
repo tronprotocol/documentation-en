@@ -5,11 +5,11 @@ In the TRON Java implementation (**java-tron**), the node data storage engine of
 Database support varies by architecture:
 
 - On x86_64 architecture, both LevelDB and RocksDB are supported, and the current version of RocksDB is v5.15.10.
-- On arm64 architecture, only RocksDB is supported, and the current version of RocksDB is v9.7.4.
+- On arm64 architecture, only RocksDB is supported, and the current RocksDB version is v9.7.4.
 
-Developers can flexibly choose the appropriate storage engine based on the platform environment, hardware conditions, and performance requirements.
+Developers can choose the appropriate storage engine based on the platform environment, hardware conditions, and performance requirements.
 
-In comparison, **RocksDB provides richer configuration parameters and generally offers higher storage efficiency**. This article will introduce how to enable RocksDB and how to convert from LevelDB to RocksDB on x86_64 platforms.
+In comparison, **RocksDB provides richer configuration parameters and generally offers higher storage efficiency**. This article introduces how to enable RocksDB and how to migrate from LevelDB to RocksDB on x86_64 platforms.
 
 ## Using RocksDB
 
