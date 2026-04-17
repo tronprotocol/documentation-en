@@ -4,13 +4,13 @@
 
 JSON-RPC is a stateless, lightweight remote procedure call (RPC) protocol. The JSON-RPC interface supported by the TRON network is compatible with Ethereum's. However, due to the difference in chain mechanism and design, TRON cannot support some interfaces on Ethereum. At the same time, TRON also provides dedicated APIs to create different types of transactions.
 
-**Please pay attention**
+**Note:**
 
-- The JSON-RPC service needs to be enabled and set the port in the node configuration file. If not configured, the service is disable by default. 
+- The JSON-RPC service needs to be enabled and its port set in the node configuration file. If not configured, the service is disabled by default. 
 
-### How to enable or disable JSON-RPC service of a node
+### How to Enable or Disable the JSON-RPC Service of a Node
 
-Add below items in node's [configuration file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf), then enable or disable it:  
+Add the following items to the node's [configuration file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf), to enable or disable the service:  
 ```
 node.jsonrpc {  
     httpFullNodeEnable = true  
@@ -22,7 +22,7 @@ node.jsonrpc {
 
 ### HEX value encoding
 
-At present there are two key data types that are passed over JSON: unformatted byte arrays and quantities. Both are passed with a hex encoding, however with different requirements to formatting:
+Currently, there are two key data types passed over JSON: unformatted byte arrays and quantities. Both are passed with a hex encoding, however with different requirements to formatting:
 
 When encoding QUANTITIES (integers, numbers): encode as hex, prefix with “0x”, the most compact representation (slight exception: zero should be represented as “0x0”).  
 Examples:
