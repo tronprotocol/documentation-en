@@ -64,7 +64,7 @@ The operational steps for deploying a private network node are fundamentally the
       | `seed.node`     | Leave empty    | Set `ip.list` to the IP address of the SR node and the port number specified in its `listen.port` configuration   | Enables FullNode to establish connection with SR node for data synchronization     |
       | `needSyncCheck`     | `false`     | `true`     | Set the first SR’s `needSyncCheck` to `false`, other SRs `true`     |
       | `node.discovery.enable`     | `true`     | `true`     | If set to `false`, the current node will not be discovered by other nodes    |
-      | `block.proposalExpireTime`|`600000` | Same as SR configuration	 | The default proposal expire time is 3 days: 259200000 (ms). Since, in principle, proposals are required to go through at least one maintenanceTimeInterval, if you want a proposal to pass quickly, you need to set both this item and the maintenanceTimeInterval to small values.|
+      | `block.proposalExpireTime`|`600000` | Same as SR configuration	 | The default proposal expiration time is 3 days: 259200000 (ms). Because proposals must pass through at least one maintenanceTimeInterval to be approved, you should set both block.proposalExpireTime and block.maintenanceTimeInterval to smaller values if you want to speed up the proposal process in a private network.|
       | `block.maintenanceTimeInterval`|`300000`| Same as SR configuration	 | The default maintenance time interval is 6 hours: 21600000 (ms)|
       | `committee.allowSameTokenName` |`1`|`1`| If set to `1` (true), the creation of tokens with identical names is allowed |
       | `committee.allowTvmTransferTrc10` | `1`|`1`| If set to 1 (true), the TVM is allowed to execute transfers of TRC-10 tokens via smart contracts. |
@@ -119,7 +119,7 @@ The operational steps for deploying a private network node are fundamentally the
 
      - **Method 2: Modify via On-Chain Proposals (For a Running Network)**
 
-        This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate has the right to create a proposal, but only SRs have the right to vote for its approval.
+        This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate has the right to create a proposal, but only SRs have the right to vote on its approval.
      
          - Create a Proposal: Any SR, SR Partner, or SR Candidate uses the [proposalcreate](https://developers.tron.network/reference/proposalcreate) API, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).
          - Approve a Proposal: An SR uses the [proposalapprove](https://developers.tron.network/reference/proposalapprove) API to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').
