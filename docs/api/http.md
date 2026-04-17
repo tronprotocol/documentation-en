@@ -67,7 +67,7 @@ The following are the APIs related to on-chain accounts:
 
 
 #### wallet/validateaddress
-Description: Validates if a TRON address is effective. This is useful for pre-checking user-inputted addresses in applications before sending a transaction.
+Description: Validates whether a TRON address is valid. This is useful for pre-checking user-inputted addresses in applications before sending a transaction.
 
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189139CB1387AF85E3D24E212A008AC974967E561"}'
@@ -114,7 +114,7 @@ Description: Queries and returns the complete on-chain information for a specifi
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 ```
-参数：
+Parameters：
 * `address`: The account address to query.
 * * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
@@ -264,7 +264,7 @@ The following are transfer and transaction related APIs:
 - [wallet/getapprovedlist](#walletgetapprovedlist)
 
 #### wallet/createtransaction
-Description: Creates a TRX transfer transaction. If the to_address does not exist, this transaction will also create the account on the blockchain
+Description: Creates a TRX transfer transaction. If the to_address does not exist, this transaction will also activate the account on the blockchain
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d '{"to_address": "41e9d79cc47518930bc322d9bf7cddd260a0260a8d", "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292", "amount": 1000 }'
 ```
