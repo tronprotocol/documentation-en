@@ -2,19 +2,19 @@
 
 **energyUsage**
 
-The Energy conumption of the contract caller in one contract trigger.
+The Energy consumption of the contract caller in one contract trigger.
 
 **energyFee**
 
-The number of TRX burned from the contract caller for Energy conumption in one contract trigger.
+The number of TRX burned from the contract caller for Energy consumption in one contract trigger.
 
 **originEnergyUsage**
 
-The total Energy conumption of the contract developer in one contract trigger.
+The total Energy consumption of the contract developer in one contract trigger.
 
 **energyUsageTotal**
 
-The total Energy conumption of the contract developer and the contract caller combined.
+The total Energy consumption of the contract developer and the contract caller combined.
 
 **Feelimit**
 

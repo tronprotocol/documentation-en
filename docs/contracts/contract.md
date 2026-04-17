@@ -9,7 +9,7 @@ TRON smart contract support Solidity language in (Ethereum). You can find the la
 ## Features
 TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
 
-### Defination of Smart Contract 
+### Definition of Smart Contract 
 TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
 ``` solidity
 message SmartContract {
@@ -74,13 +74,13 @@ Through other two grpc message types CreateSmartContract and TriggerSmartContrac
 
 ### Usage of the Function of Smart Contract 
 
-* **constant function and inconstant function**
+* **constant function and non-constant function**
 
-There are two types of function according to whether any change will be made to the properties on the chain: constant function and inconstant function
+There are two types of function according to whether any change will be made to the properties on the chain: constant function and non-constant function
 Constant function uses view/pure/constant to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
-Inconstant function will be broadcasted in the form of a transaction while being called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.
+Non-constant function will be broadcasted in the form of a transaction while being called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.
 
-Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as inconstant function, be dealt in the form of transaction.
+Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as non-constant function, be dealt in the form of transaction.
 
 * **message calls**
 
@@ -189,7 +189,7 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 - block.timestamp (uint): current block timestamp
 - gasleft() returns (uint256): remaining gas
 - msg.data (bytes): complete call data
-- msg.gas (uint): remaining gas - since 0.4.21, not recommended, replaced by gesleft()
+- msg.gas (uint): remaining gas - since 0.4.21, not recommended, replaced by gasleft()
 - msg.sender (address): message sender (current call)
 - msg.sig (bytes4): first 4 bytes of call data (function identifier)
 - msg.value (uint): the amount of SUN send with message

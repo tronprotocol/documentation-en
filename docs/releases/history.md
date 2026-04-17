@@ -386,7 +386,7 @@ The Democritus version fixed the issue where the GitHub badge at the top of the 
 
 
 #### 3. Update telegram info and doc link in README
-The Democritus version udpated the README document to add Telegram contact information for the official TRON development discussion group.
+The Democritus version updated the README document to add Telegram contact information for the official TRON development discussion group.
 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6364](https://github.com/tronprotocol/java-tron/pull/6364)
 

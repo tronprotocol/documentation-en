@@ -163,7 +163,7 @@ public class FullNodeHttpApiService implements Service {
 }
 ```
 
-### 2.3 Debuging and Testing
+### 2.3 Debugging and Testing
 
 Once the code changes are complete, you can start the `java-tron` node in IntelliJ IDEA for debugging. Then, use the `curl` command in your terminal to access the newly added HTTP API:
 

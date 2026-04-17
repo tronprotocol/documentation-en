@@ -428,7 +428,7 @@ message ReceiveDescription {
 ```
 
 - `value_commitment`: _value commitment_ of receiver's transfer amount.
-- `note_commitment`: commitment of the receiver's not.
+- `note_commitment`: commitment of the receiver's note.
 - `epk`: ephemeral public key, in order to generate note's decryption key.
 - `c_enc`: part of note ciphertext, encryption of diversifier, receiver's transfer amount, rcm, and memo.
 - `c_out`: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.
