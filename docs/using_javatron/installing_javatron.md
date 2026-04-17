@@ -4,13 +4,13 @@ This document guides developers on how to deploy a TRON java-tron node on `Linux
 
 Currently, a java-tron node supports running on both x86_64 and arm64 architectures(Support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:
 
-- On x86_64 architecture, currently only Oracle JDK 8 is supported.
-- On arm64 architecture, currently only JDK 17 is supported.
+- For the x86_64 architecture, currently only Oracle JDK 8 is supported.
+- For the arm64 architecture, currently only JDK 17 is supported.
 
 
 ## Hardware Configuration Requirements
 
-The minimum hardware configuration required to run a java-tron node is as follows:
+The minimum hardware requirements to run a java-tron node are as follows:
 
 * **CPU**: 8 Cores
 * **Memory**: 16 GB
@@ -24,7 +24,7 @@ The recommended configuration is:
 * **SSD**: 3.5 TB+
 * **Network Bandwidth**: 100 Mbps
 
-For a Super Representative (SR) node acting as a **block production node**, the recommended configuration is:
+For a Super Representative (SR) node acting as a **block-production node**, the recommended configuration is:
 
 * **CPU**: 32 Cores
 * **Memory**: 64 GB
@@ -36,11 +36,11 @@ For a Super Representative (SR) node acting as a **block production node**, the 
 
 You can directly download the official client [here](https://github.com/tronprotocol/java-tron/releases), or you can compile the source code yourself to package the client.
 
-### Prerequisites Before Compiling java-tron
+### Prerequisites for Compiling java-tron
 Before compiling java-tron, make sure you have:
 
 - Operating system: `Linux` or `macOS` (`Windows` is not supported).
-- Git and correct JDK version installed based on your CPU architecture.
+- Git and the correct JDK version installed based on your CPU architecture.
 
 Step 1: Verify Git is installed
 
@@ -86,7 +86,7 @@ uname -m
     ```
     ./gradlew clean build -x test
     ```
-    * The parameter `-x test` indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.
+    * The `-x test` parameter skips the execution of test cases. You can remove this parameter to execute test during compilation, but this will increase the compilation time.
     * If you encounter `DependencyVerificationException` during the build, refresh dependencies and regenerate verification metadata:
       ```
       ./gradlew clean build -x test --refresh-dependencies
@@ -125,12 +125,12 @@ nohup java -jar build/libs/FullNode.jar &
 
 > For production deployments or long-running Mainnet nodes, please refer to the below [JVM Parameter Optimization for FullNode](#jvm-parameter-optimization-for-mainnet-fullnode-deployment) guide for the recommended Java commands.
 
-Using the below command, you can monitor the blocks syncing progress:
+Using the command below, you can monitor the block synchronization progress:
 ```bash
 tail -f ./logs/tron.log
 ```
 
-Use [TronScan](https://tronscan.org/#/), TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, etc.
+Use [TronScan](https://tronscan.org/#/), TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, and more.
 
 Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.
 
@@ -188,7 +188,7 @@ nohup java -Xmx9G -XX:+UseZGC \
 *   `-XX:+UseZGC`: Enables ZGC, a scalable low-latency garbage collector.
 *   `-Xlog:gc...`: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).
 
-### Staring a FullNode on the Nile test network
+### Starting a FullNode on the Nile test network
 Utilize the `-c` flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is **strongly advised** to compile the source code following the [Building the Source Code](https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code) instructions for the Nile TestNet.
 
 ```bash
