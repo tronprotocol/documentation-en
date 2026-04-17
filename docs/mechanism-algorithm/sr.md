@@ -2,7 +2,7 @@
 
 ## How to Become a Super Representative
 
-In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate and participate in the election by paying a fee of 9999 TRX.
+In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate and participate in the election by paying a one-time fee of 9999 TRX.
 
 Based on the final vote rankings, candidates are divided into two categories:
 
@@ -24,7 +24,7 @@ All accounts in the TRON network have the right to vote for the Super Representa
 
  - The Impact of Unstaking on Voting
  
-    When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system reclaims TP according to the following rules:
+    When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system retracts TP according to the following rules:
     
     * Unused TP is reclaimed first.
     * If the available TP is insufficient, the system automatically retracts a proportional amount from your existing votes to cover the deficit.
@@ -70,7 +70,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 | **Related On-chain Parameter ID** | #5 (requires activation of #30 chain parameter) | #31 (requires activation of #30 chain parameter) |
 | **Related On-chain Parameter Name** | `getWitnessPayPerBlock` | `getWitness127PayPerBlock` |
 | **Rewards Distribution Target** | SRs, their voters | SRs/SR partners, their voters |
-| **Rewards Distribution** | **SR**: After producing each block<br><br>**Voters**: Triggered when voters initiate any of these 4 transactions:<br>- `VoteWitnessContract`<br>- `UnfreezeBalanceContract`<br>- `UnfreezeBalanceV2Contract`<br>- `WithdrawBalanceContract`(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution) | **SRs/SR partners**: After producing each block<br><br>**Voters**: Triggered when voters initiate any of these 4 transactions:<br>- `VoteWitnessContract`<br>- `UnfreezeBalanceContract`<br>- `UnfreezeBalanceV2Contract`<br>- `WithdrawBalanceContract`(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution) |
+| **Rewards Distribution** | **SR**: After producing each block<br><br>**Voters**: Triggered when voters initiate any of these 4 transactions:<br>- `VoteWitnessContract`<br>- `UnfreezeBalanceContract`<br>- `UnfreezeBalanceV2Contract`<br>- `WithdrawBalanceContract`(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution) | **SRs/SR partners**: After producing each block<br><br>**Voters**: Triggered when  a voter initiates any of the following 4 transactions:<br>- `VoteWitnessContract`<br>- `UnfreezeBalanceContract`<br>- `UnfreezeBalanceV2Contract`<br>- `WithdrawBalanceContract`(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution) |
 | **Rewards Withdrawn to Account Balance** |Triggered when `WithdrawBalanceContract` transaction is initiated  | Triggered when `WithdrawBalanceContract` transaction is initiated|
 | **Specific Rewards** | SR: <br>`8 * brokerageRate`<br><br>voter:<br> `8 * (1-brokerageRate) * (votes of this voter) / (total votes received by this SR)` | SR/SR partner:<br> `128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs & SR partners)`<br><br>voter:<br> `128 * (1-brokerageRate) * (votes of this voter) / (total votes received by all SRs & SR partners)` |
 
@@ -86,7 +86,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 
 ### About the Committee
 
-The Committee is the highest governing body of the TRON network, responsible for modifying the network's core dynamic parameters (such as transaction fees, block rewards, etc.).
+The Committee is the highest governing body of the TRON network, responsible for modifying the network's dynamic parameters (eg. transaction fees, block rewards).
 
  - **Composition**: The Committee is composed of the current 27 active Super Representatives (SRs).
  - **Powers**: Each committee member has two core powers: 
@@ -110,7 +110,7 @@ Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dyn
 # value0_N: New parameter value
 ```
 
-### Vote for a Proposal
+### Vote on a Proposal
 
 The voting process for proposals follows these core rules:
 
@@ -135,7 +135,7 @@ The creator of a proposal can cancel it at any time before it takes effect.
 # id: proposal id
 ```
 
-### Query Proposal
+### Querying Proposals
 
 Proposals can be queried using the following API interfaces:
 
