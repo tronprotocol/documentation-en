@@ -127,7 +127,7 @@ The detailed information of `ContractType` is as follows (including Proto Messag
 | 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of an SR |
 | 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Subscribe to TRC10 tokens with TRX during the ICO period |
 | 10 | AccountUpdateContract | AccountContract.AccountUpdateContract | UpdateAccountActuator | ✅ Enabled | Modify account name (subject to AllowUpdateAccountName constraint) |
-| 11 | FreezeBalanceContract | BalanceContract.FreezeBalanceContract | FreezeBalanceActuator | ✅ Enabled | Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others |
+| 11 | FreezeBalanceContract | BalanceContract.FreezeBalanceContract | FreezeBalanceActuator | 🚫 Disabled (rejected by chain after `supportUnfreezeDelay` is enabled) | Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others |
 | 12 | UnfreezeBalanceContract | BalanceContract.UnfreezeBalanceContract | UnfreezeBalanceActuator | ✅ Enabled | Stake 1.0: Unfreeze TRX after expiration; release resources and clear votes |
 | 13 | WithdrawBalanceContract | BalanceContract.WithdrawBalanceContract | WithdrawBalanceActuator | ✅ Enabled | Withdraw SR block/voting rewards to account balance |
 | 14 | UnfreezeAssetContract | AssetIssueContractOuterClass.UnfreezeAssetContract | UnfreezeAssetActuator | ✅ Enabled | Issuer unfreezes TRC10 token shares frozen during ICO |
