@@ -1,6 +1,6 @@
 # /wallet/getaccountnet
 
-Query an account's bandwidth (Net) usage. **Deprecated** — prefer `/wallet/getaccountresource`.
+Query an account's bandwidth (Net) usage. **Deprecated** — prefer [`/wallet/getaccountresource`](getaccountresource.md).
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetAccountNetServlet.java`
 - Method: `GET` / `POST`

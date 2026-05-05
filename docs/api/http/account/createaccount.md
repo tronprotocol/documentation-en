@@ -4,7 +4,7 @@ Build an unsigned transaction that creates a new account. The new account is act
 
 - Source: `framework/src/main/java/org/tron/core/services/http/CreateAccountServlet.java`
 - Method: `POST`
-- Contract: `protocol.AccountCreateContract` (`protocol/src/main/protos/core/contract/account_contract.proto`)
+- Contract: `protocol.AccountCreateContract` (`account_contract.proto`)
 
 ## Request parameters
 

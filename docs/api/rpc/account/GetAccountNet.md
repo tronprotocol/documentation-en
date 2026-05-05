@@ -1,6 +1,6 @@
 # GetAccountNet
 
-Query an account's bandwidth (Net) resource usage. **Deprecated**; use `GetAccountResource` instead.
+Query an account's bandwidth (Net) resource usage. **Deprecated**; use [`GetAccountResource`](GetAccountResource.md) instead.
 
 - Service: `Wallet` only
 
