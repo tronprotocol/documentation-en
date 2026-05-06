@@ -2,10 +2,6 @@ name: Publish Document
 
 on:
   workflow_dispatch: # Allows manual trigger from GitHub UI
-  push:
-     branches: [master] # or master 
-  schedule:
-     - cron: '0 0 * * *' 
 
 permissions:
   contents: write
@@ -25,17 +21,11 @@ jobs:
         sudo pip3 install -U pygments==2.17.2 pymdown-extensions==10.14.3
         sudo pip3 install mkdocs-exclude==1.0.2
         sudo pip3 install mkdocs-material==9.6.8
-        sudo pip3 install python-frontmatter GitPython requests
 
     - name: Audit dependencies
       run: |
         sudo pip3 install pip-audit==2.10.0
         pip-audit
-    
-    - name: Sync TRON TIPs
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: python3 scripts/sync_tips.py
 
     - name: Build the document
       run: mkdocs build

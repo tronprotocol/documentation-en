@@ -259,8 +259,7 @@ nav:
         - Account Permission Management: mechanism-algorithm/multi-signatures.md
     - For java-tron Developers:
         - Developer Guide: developers/java-tron.md
-        - TIPs Workflow: developers/tips-workflow.md
-        - TIPs: developers/tips/
+        - TIPs Workflow: developers/tips.md
         - Issue Workflow: developers/issue-workflow.md
         - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md
@@ -276,7 +275,6 @@ nav:
         - History: releases/history.md
     - Appendix:
         - Glossary: glossary.md
-    
 
 theme:
   name: material
@@ -289,10 +287,6 @@ theme:
     - search.suggest  # Show suggestions during search
     - content.code.annotate  # Code block annotations
     - content.tooltips  # Tooltips in content
-    - navigation.tabs
-    - content.tabs.link
-    - content.code.copy
-    - tags 
   palette:
     primary: custom  # Primary color
     accent: custom  # Accent color
@@ -319,9 +313,6 @@ markdown_extensions:
     - pymdownx.tilde
     - pymdownx.tasklist
     - pymdownx.superfences
-    - tables
-    - attr_list
-    - md_in_html
 
 plugins:
   - search
@@ -339,6 +330,4 @@ plugins:
         - introduction/overview.md
         - mechanism-algorithm/shielded-TRC20-contract.md
         - mechanism-algorithm/trc10.md
-        - search
-        - tags
 
