@@ -19,9 +19,237 @@ nav:
         - Node Monitoring: using_javatron/metrics.md
         - Node Maintenance Tool: using_javatron/toolkit.md
     - API:
-        - HTTP API: api/http.md
-        - gRPC API: api/rpc.md
-        - jsonRPC API: api/json-rpc.md
+        - HTTP API:
+            - Overview: api/http/index.md
+            - Account:
+                - Query an account by address: api/http/account/getaccount.md
+                - Query an account's balance at a specific block: api/http/account/getaccountbalance.md
+                - Query an account's bandwidth resources: api/http/account/getaccountnet.md
+                - Query bandwidth + energy + TronPower: api/http/account/getaccountresource.md
+                - Create an on-chain account: api/http/account/createaccount.md
+                - Update an account's name: api/http/account/updateaccount.md
+                - Configure multi-sig permissions: api/http/account/accountpermissionupdate.md
+                - Validate an address: api/http/account/validateaddress.md
+            - Block / transaction query:
+                - Latest block: api/http/block-and-tx-query/getnowblock.md
+                - Generic block query: api/http/block-and-tx-query/getblock.md
+                - Block by height: api/http/block-and-tx-query/getblockbynum.md
+                - Block by hash: api/http/block-and-tx-query/getblockbyid.md
+                - Blocks in a range: api/http/block-and-tx-query/getblockbylimitnext.md
+                - The most recent N blocks: api/http/block-and-tx-query/getblockbylatestnum.md
+                - Per-account balance changes within a block: api/http/block-and-tx-query/getblockbalance.md
+                - Transaction count in a block: api/http/block-and-tx-query/gettransactioncountbyblocknum.md
+                - Transaction by txid: api/http/block-and-tx-query/gettransactionbyid.md
+                - Transaction receipt by txid: api/http/block-and-tx-query/gettransactioninfobyid.md
+                - Transaction receipts by block: api/http/block-and-tx-query/gettransactioninfobyblocknum.md
+                - Pending pool size: api/http/block-and-tx-query/getpendingsize.md
+                - Single pending transaction: api/http/block-and-tx-query/gettransactionfrompending.md
+                - All pending transaction IDs: api/http/block-and-tx-query/gettransactionlistfrompending.md
+            - Transaction build / broadcast:
+                - Build a TRX transfer transaction: api/http/tx-build-and-broadcast/createtransaction.md
+                - Current multi-sig weight: api/http/tx-build-and-broadcast/getsignweight.md
+                - Addresses that have already signed: api/http/tx-build-and-broadcast/getapprovedlist.md
+                - Broadcast a signed transaction (JSON): api/http/tx-build-and-broadcast/broadcasttransaction.md
+                - Broadcast a signed transaction (hex): api/http/tx-build-and-broadcast/broadcasthex.md
+            - TRC10 asset:
+                - Issue a TRC10 token: api/http/asset/createassetissue.md
+                - Update a TRC10 description: api/http/asset/updateasset.md
+                - Transfer TRC10: api/http/asset/transferasset.md
+                - Participate in a TRC10 fundraising: api/http/asset/participateassetissue.md
+                - Unfreeze TRC10 frozen by the issuer: api/http/asset/unfreezeasset.md
+                - Look up a TRC10 by id: api/http/asset/getassetissuebyid.md
+                - Look up a TRC10 by name: api/http/asset/getassetissuebyname.md
+                - All TRC10s with a given name: api/http/asset/getassetissuelistbyname.md
+                - TRC10s issued by an account: api/http/asset/getassetissuebyaccount.md
+                - All TRC10s on the network: api/http/asset/getassetissuelist.md
+                - Paginated TRC10 list: api/http/asset/getpaginatedassetissuelist.md
+            - Smart contract:
+                - Deploy a contract: api/http/smart-contract/deploycontract.md
+                - Trigger a contract (write): api/http/smart-contract/triggersmartcontract.md
+                - Read-only contract call: api/http/smart-contract/triggerconstantcontract.md
+                - Estimate energy usage of a call: api/http/smart-contract/estimateenergy.md
+                - Contract metadata: api/http/smart-contract/getcontract.md
+                - Full contract runtime info: api/http/smart-contract/getcontractinfo.md
+                - Clear a contract's ABI: api/http/smart-contract/clearabi.md
+                - Change the user-energy percentage: api/http/smart-contract/updatesetting.md
+                - Change the deployer's energy limit: api/http/smart-contract/updateenergylimit.md
+            - Witness / governance:
+                - Apply to become an SR candidate: api/http/witness-and-governance/createwitness.md
+                - Update an SR's URL: api/http/witness-and-governance/updatewitness.md
+                - All SR candidates: api/http/witness-and-governance/listwitnesses.md
+                - Paginated SR list: api/http/witness-and-governance/getpaginatednowwitnesslist.md
+                - Vote for SRs: api/http/witness-and-governance/votewitnessaccount.md
+                - An SR's current brokerage rate: api/http/witness-and-governance/getBrokerage.md
+                - Update an SR's brokerage: api/http/witness-and-governance/updateBrokerage.md
+                - Claimable rewards for an account: api/http/witness-and-governance/getReward.md
+                - Withdraw block production rewards / dividends: api/http/witness-and-governance/withdrawbalance.md
+                - Create a chain-parameter proposal: api/http/witness-and-governance/proposalcreate.md
+                - Vote on a proposal as an SR: api/http/witness-and-governance/proposalapprove.md
+                - Withdraw your own proposal: api/http/witness-and-governance/proposaldelete.md
+                - List of proposals: api/http/witness-and-governance/listproposals.md
+                - Proposal by ID: api/http/witness-and-governance/getproposalbyid.md
+                - Paginated proposal list: api/http/witness-and-governance/getpaginatedproposallist.md
+                - Current chain parameters: api/http/witness-and-governance/getchainparameters.md
+                - Next maintenance period time: api/http/witness-and-governance/getnextmaintenancetime.md
+            - Stake 1.0 (unfreeze and query only):
+                - Freeze TRX for resources (V1): api/http/stake-v1/freezebalance.md
+                - Unfreeze matured resources (V1): api/http/stake-v1/unfreezebalance.md
+                - Query delegation records (V1): api/http/stake-v1/getdelegatedresource.md
+                - Query delegation counterparty addresses (V1): api/http/stake-v1/getdelegatedresourceaccountindex.md
+            - Stake 2.0:
+                - Freeze TRX for resources: api/http/stake-v2/freezebalancev2.md
+                - Initiate unfreeze: api/http/stake-v2/unfreezebalancev2.md
+                - Withdraw matured unfreezes: api/http/stake-v2/withdrawexpireunfreeze.md
+                - Cancel all unmatured unfreezes: api/http/stake-v2/cancelallunfreezev2.md
+                - Delegate resources to another account: api/http/stake-v2/delegateresource.md
+                - Undelegate resources from another account: api/http/stake-v2/undelegateresource.md
+                - Query delegation records: api/http/stake-v2/getdelegatedresourcev2.md
+                - Query delegation counterparty addresses: api/http/stake-v2/getdelegatedresourceaccountindexv2.md
+                - Current maximum delegatable amount: api/http/stake-v2/getcandelegatedmaxsize.md
+                - Remaining unfreeze count: api/http/stake-v2/getavailableunfreezecount.md
+                - Withdrawable unfreeze amount at a given time: api/http/stake-v2/getcanwithdrawunfreezeamount.md
+            - Node / pricing / tools:
+                - Node status: api/http/node-and-tools/getnodeinfo.md
+                - Known peers: api/http/node-and-tools/listnodes.md
+                - Historical energy unit prices: api/http/node-and-tools/getenergyprices.md
+                - Historical bandwidth unit prices: api/http/node-and-tools/getbandwidthprices.md
+                - Cumulative burned TRX: api/http/node-and-tools/getburntrx.md
+        - gRPC API:
+            - Overview: api/rpc/index.md
+            - Account:
+                - Query an account by address: api/rpc/account/GetAccount.md
+                - Query an account's balance at a specific block: api/rpc/account/GetAccountBalance.md
+                - Query an account's bandwidth resources: api/rpc/account/GetAccountNet.md
+                - Query bandwidth + energy + TronPower: api/rpc/account/GetAccountResource.md
+                - Create an on-chain account: api/rpc/account/CreateAccount2.md
+                - Update an account's name: api/rpc/account/UpdateAccount2.md
+                - Configure multi-sig permissions: api/rpc/account/AccountPermissionUpdate.md
+            - Block / transaction query:
+                - Latest block: api/rpc/block-and-tx-query/GetNowBlock2.md
+                - Generic block query: api/rpc/block-and-tx-query/GetBlock.md
+                - Block by height: api/rpc/block-and-tx-query/GetBlockByNum2.md
+                - Block by hash: api/rpc/block-and-tx-query/GetBlockById.md
+                - Blocks in a range: api/rpc/block-and-tx-query/GetBlockByLimitNext2.md
+                - The most recent N blocks: api/rpc/block-and-tx-query/GetBlockByLatestNum2.md
+                - Per-account balance changes within a block: api/rpc/block-and-tx-query/GetBlockBalanceTrace.md
+                - Transaction count in a block: api/rpc/block-and-tx-query/GetTransactionCountByBlockNum.md
+                - Transaction by txid: api/rpc/block-and-tx-query/GetTransactionById.md
+                - Transaction receipt by txid: api/rpc/block-and-tx-query/GetTransactionInfoById.md
+                - Transaction receipts by block: api/rpc/block-and-tx-query/GetTransactionInfoByBlockNum.md
+                - Pending pool size: api/rpc/block-and-tx-query/GetPendingSize.md
+                - Single pending transaction: api/rpc/block-and-tx-query/GetTransactionFromPending.md
+                - All pending transaction IDs: api/rpc/block-and-tx-query/GetTransactionListFromPending.md
+            - Transaction build / broadcast:
+                - Build a TRX transfer transaction: api/rpc/tx-build-and-broadcast/CreateTransaction2.md
+                - Current multi-sig weight: api/rpc/tx-build-and-broadcast/GetTransactionSignWeight.md
+                - Addresses that have already signed: api/rpc/tx-build-and-broadcast/GetTransactionApprovedList.md
+                - Broadcast a signed transaction: api/rpc/tx-build-and-broadcast/BroadcastTransaction.md
+            - TRC10 asset:
+                - Issue a TRC10 token: api/rpc/asset/CreateAssetIssue2.md
+                - Update a TRC10 description: api/rpc/asset/UpdateAsset2.md
+                - Transfer TRC10: api/rpc/asset/TransferAsset2.md
+                - Participate in a TRC10 fundraising: api/rpc/asset/ParticipateAssetIssue2.md
+                - Unfreeze TRC10 frozen by the issuer: api/rpc/asset/UnfreezeAsset2.md
+                - Look up a TRC10 by id: api/rpc/asset/GetAssetIssueById.md
+                - Look up a TRC10 by name: api/rpc/asset/GetAssetIssueByName.md
+                - All TRC10s with a given name: api/rpc/asset/GetAssetIssueListByName.md
+                - TRC10s issued by an account: api/rpc/asset/GetAssetIssueByAccount.md
+                - All TRC10s on the network: api/rpc/asset/GetAssetIssueList.md
+                - Paginated TRC10 list: api/rpc/asset/GetPaginatedAssetIssueList.md
+            - Smart contract:
+                - Deploy a contract: api/rpc/smart-contract/DeployContract.md
+                - Trigger a contract (write): api/rpc/smart-contract/TriggerContract.md
+                - Read-only contract call: api/rpc/smart-contract/TriggerConstantContract.md
+                - Estimate energy usage of a call: api/rpc/smart-contract/EstimateEnergy.md
+                - Contract metadata: api/rpc/smart-contract/GetContract.md
+                - Full contract runtime info: api/rpc/smart-contract/GetContractInfo.md
+                - Clear a contract's ABI: api/rpc/smart-contract/ClearContractABI.md
+                - Change the user-energy percentage: api/rpc/smart-contract/UpdateSetting.md
+                - Change the deployer's energy limit: api/rpc/smart-contract/UpdateEnergyLimit.md
+            - Witness / governance:
+                - Apply to become an SR candidate: api/rpc/witness-and-governance/CreateWitness2.md
+                - Update an SR's URL: api/rpc/witness-and-governance/UpdateWitness2.md
+                - All SR candidates: api/rpc/witness-and-governance/ListWitnesses.md
+                - Paginated SR list: api/rpc/witness-and-governance/GetPaginatedNowWitnessList.md
+                - Vote for SRs: api/rpc/witness-and-governance/VoteWitnessAccount2.md
+                - An SR's current brokerage rate: api/rpc/witness-and-governance/GetBrokerageInfo.md
+                - Update an SR's brokerage: api/rpc/witness-and-governance/UpdateBrokerage.md
+                - Claimable rewards for an account: api/rpc/witness-and-governance/GetRewardInfo.md
+                - Withdraw block production rewards / dividends: api/rpc/witness-and-governance/WithdrawBalance2.md
+                - Create a chain-parameter proposal: api/rpc/witness-and-governance/ProposalCreate.md
+                - Vote on a proposal as an SR: api/rpc/witness-and-governance/ProposalApprove.md
+                - Withdraw your own proposal: api/rpc/witness-and-governance/ProposalDelete.md
+                - List of proposals: api/rpc/witness-and-governance/ListProposals.md
+                - Proposal by ID: api/rpc/witness-and-governance/GetProposalById.md
+                - Paginated proposal list: api/rpc/witness-and-governance/GetPaginatedProposalList.md
+                - Current chain parameters: api/rpc/witness-and-governance/GetChainParameters.md
+                - Next maintenance period time: api/rpc/witness-and-governance/GetNextMaintenanceTime.md
+            - Stake 1.0 (unfreeze and query only):
+                - Freeze TRX for resources (V1): api/rpc/stake-v1/FreezeBalance2.md
+                - Unfreeze matured resources (V1): api/rpc/stake-v1/UnfreezeBalance2.md
+                - Query delegation records (V1): api/rpc/stake-v1/GetDelegatedResource.md
+                - Query delegation counterparty addresses (V1): api/rpc/stake-v1/GetDelegatedResourceAccountIndex.md
+            - Stake 2.0:
+                - Freeze TRX for resources: api/rpc/stake-v2/FreezeBalanceV2.md
+                - Initiate unfreeze: api/rpc/stake-v2/UnfreezeBalanceV2.md
+                - Withdraw matured unfreezes: api/rpc/stake-v2/WithdrawExpireUnfreeze.md
+                - Cancel all unmatured unfreezes: api/rpc/stake-v2/CancelAllUnfreezeV2.md
+                - Delegate resources to another account: api/rpc/stake-v2/DelegateResource.md
+                - Undelegate resources from another account: api/rpc/stake-v2/UnDelegateResource.md
+                - Query delegation records: api/rpc/stake-v2/GetDelegatedResourceV2.md
+                - Query delegation counterparty addresses: api/rpc/stake-v2/GetDelegatedResourceAccountIndexV2.md
+                - Current maximum delegatable amount: api/rpc/stake-v2/GetCanDelegatedMaxSize.md
+                - Remaining unfreeze count: api/rpc/stake-v2/GetAvailableUnfreezeCount.md
+                - Withdrawable unfreeze amount at a given time: api/rpc/stake-v2/GetCanWithdrawUnfreezeAmount.md
+            - Node / pricing / tools:
+                - Node status: api/rpc/node-and-tools/GetNodeInfo.md
+                - Known peers: api/rpc/node-and-tools/ListNodes.md
+                - Historical energy unit prices: api/rpc/node-and-tools/GetEnergyPrices.md
+                - Historical bandwidth unit prices: api/rpc/node-and-tools/GetBandwidthPrices.md
+                - Cumulative burned TRX: api/rpc/node-and-tools/GetBurnTrx.md
+        - jsonRPC API:
+            - Overview: api/json-rpc/index.md
+            - Node info / chain identity:
+                - Client version string: api/json-rpc/node/web3_clientVersion.md
+                - Keccak-256 hash: api/json-rpc/node/web3_sha3.md
+                - Network ID: api/json-rpc/node/net_version.md
+                - Whether listening on P2P: api/json-rpc/node/net_listening.md
+                - Number of peers: api/json-rpc/node/net_peerCount.md
+                - Chain ID: api/json-rpc/node/eth_chainId.md
+                - Protocol version: api/json-rpc/node/eth_protocolVersion.md
+                - Sync status: api/json-rpc/node/eth_syncing.md
+                - Latest block height: api/json-rpc/node/eth_blockNumber.md
+                - Current energy unit price: api/json-rpc/node/eth_gasPrice.md
+            - Block / transaction query:
+                - Query a block by hash: api/json-rpc/block-and-tx-query/eth_getBlockByHash.md
+                - Query a block by height / tag: api/json-rpc/block-and-tx-query/eth_getBlockByNumber.md
+                - Block transaction count (by hash): api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash.md
+                - Block transaction count (by height): api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByNumber.md
+                - Query a transaction by txid: api/json-rpc/block-and-tx-query/eth_getTransactionByHash.md
+                - Query a transaction by block hash + index: api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex.md
+                - Query a transaction by block height + index: api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex.md
+                - Query a receipt by txid: api/json-rpc/block-and-tx-query/eth_getTransactionReceipt.md
+                - Receipt list for an entire block: api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md
+            - Account state:
+                - Account TRX balance: api/json-rpc/account/eth_getBalance.md
+                - Contract storage slot: api/json-rpc/account/eth_getStorageAt.md
+                - Contract runtime bytecode: api/json-rpc/account/eth_getCode.md
+            - Smart contract calls:
+                - Read-only contract call: api/json-rpc/smart-contract/eth_call.md
+                - Estimate energy consumption: api/json-rpc/smart-contract/eth_estimateGas.md
+            - Logs / filters:
+                - One-shot log query: api/json-rpc/filter/eth_getLogs.md
+                - Register a log filter: api/json-rpc/filter/eth_newFilter.md
+                - Register a new-block filter: api/json-rpc/filter/eth_newBlockFilter.md
+                - Uninstall a filter: api/json-rpc/filter/eth_uninstallFilter.md
+                - Pull and drain filter increments: api/json-rpc/filter/eth_getFilterChanges.md
+                - Pull a log filter's full set: api/json-rpc/filter/eth_getFilterLogs.md
+            - Transaction build:
+                - Build an unsigned transaction: api/json-rpc/tx-build/buildTransaction.md
+            - Compatibility stub methods:
+                - etherbase address: api/json-rpc/stub/eth_coinbase.md
+                - Node-managed accounts list: api/json-rpc/stub/eth_accounts.md
+                - Mining work info: api/json-rpc/stub/eth_getWork.md
     - Core Protocol:
         - DPoS: mechanism-algorithm/dpos.md
         - Super Representative: mechanism-algorithm/sr.md
