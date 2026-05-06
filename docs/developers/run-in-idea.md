@@ -4,17 +4,17 @@ To simplify the Java development process and improve efficiency, selecting and c
 
 java-tron nodes support deployment on `Linux` or `MacOS` operating systems. The JDK version requirements are as follows:
 
-- On x86_64 architecture, currently only Oracle JDK 8 is supported.
+- On x86_64 architecture, currently only JDK 8 (latest minor version recommended) is supported.
 - On arm64 architecture, currently only JDK 17 is supported.
 
-The following configuration uses x86_64 architecture and Oracle JDK 8 as an example.
+The following configuration uses x86_64 architecture and JDK 8 (latest minor version recommended) as an example.
 
 ## Prerequisites
 
 Before you begin, please ensure your development environment meets the following requirements:
 
   - Operating System: `Linux` or `MacOS`
-  - Oracle JDK 8 is installed
+  - JDK 8 (latest minor version recommended) is installed
   - `git` is installed
   - [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) is installed
 
@@ -41,7 +41,7 @@ To ensure Lombok's annotations work correctly, you must enable the annotation pr
 
 ### Step 3: Verify and Unify the JDK Version
 
-To ensure the project compiles and runs correctly, you must set the JDK version to Oracle JDK 8 in two key locations within IntelliJ IDEA.
+To ensure the project compiles and runs correctly, you must set the JDK version to JDK 8 (latest minor version recommended) in two key locations within IntelliJ IDEA.
 
 
 #### 1. Configure Project SDK
@@ -60,7 +60,7 @@ This is the JDK used to execute Gradle build tasks (e.g., build, clean).
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_JDK.png)
 
-> **Important Note**: The **Project SDK** and **Gradle JVM** settings must match and both be set to Oracle JDK 8(Consistent with version 1.8 shown in the figure, the difference between 1.8 and 8 is only in the naming convention. In the java-tron documentation, it is uniformly designated as 8 unless otherwise specified). Otherwise, you may encounter unexpected errors during the build process.
+> **Important Note**: The **Project SDK** and **Gradle JVM** settings must match and both be set to JDK 8 (latest minor version recommended; consistent with version 1.8 shown in the figure, the difference between 1.8 and 8 is only in the naming convention. In the java-tron documentation, it is uniformly designated as 8 unless otherwise specified). Otherwise, you may encounter unexpected errors during the build process.
 
 
 ## Getting and Compiling the Source Code

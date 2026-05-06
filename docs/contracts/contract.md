@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
+Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can executes as designed.
 
 TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [TRON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
@@ -92,7 +92,7 @@ There is a special type of message call, delegate call. The difference with comm
 
 * **CREATE command**
 
-This command will create a new contract with a new address. The only difference with Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the contract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
+This command will create a new contract with a new address. The primary difference from Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the contract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
 Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
 
 * **built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)**
@@ -105,15 +105,15 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
 
 Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
 
-2)Different accounts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+2)Different accounts vote for Super Representative Node (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-3)SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+3)Super Representative gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-4)SuperNode approves or disapproves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+4)Super Representative approves or disapproves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-5)SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+5)Super Representative address proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-6)SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+6)Super Representative deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
 7)TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
@@ -182,7 +182,7 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 #### Block Related
 - block.blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded
-- block.coinbase (address): SuperNode address that produced the current block
+- block.coinbase (address): Super Representative address that produced the current block
 - block.difficulty (uint): current block difficulty, not recommended, set 0
 - block.gaslimit (uint): current block gas limit, not supported, set 0
 - block.number (uint): current block number

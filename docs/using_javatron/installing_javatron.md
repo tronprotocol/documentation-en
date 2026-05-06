@@ -4,7 +4,7 @@ This document guides developers on how to deploy a TRON java-tron node on `Linux
 
 Currently, a java-tron node supports running on both x86_64 and arm64 architectures(support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:
 
-- For the x86_64 architecture, currently only Oracle JDK 8 is supported.
+- For the x86_64 architecture, currently only JDK 8 (latest minor version recommended) is supported.
 - For the arm64 architecture, currently only JDK 17 is supported.
 
 
@@ -58,7 +58,7 @@ uname -m
 
 - If your architecture is `x86_64` (Intel/AMD 64-bit):
 
-    - Install Java SE 8 (Oracle JDK 8): [https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
+    - Install Java SE 8 (JDK 8, latest minor version recommended).
     - Verify:
     ```bash
     java -version
@@ -67,7 +67,7 @@ uname -m
 
 - If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
 
-    - Install Java SE 17 (JDK 17): [https://www.oracle.com/java/technologies/downloads/#java17](https://www.oracle.com/java/technologies/downloads/#java17)
+    - Install Java SE 17 (JDK 17).
     - Verify:
     ```bash
     java -version

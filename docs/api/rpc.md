@@ -79,13 +79,13 @@ rpc ListWitnesses (EmptyMessage) returns (WitnessList) {}
 ```
 Nodes: FullNode and SolidityNode
 
-## Get the paged list of witnesses in descending order by real-time vote count
+## Get the paginated list of witnesses in descending order by real-time vote count
 ```protobuf
 rpc GetPaginatedNowWitnessList (PaginatedMessage) returns (WitnessList) {}
 ```
 Nodes: FullNode
 
-## Application for super representative
+## Apply for super representative candidacy
 ```protobuf
 rpc CreateWitness (WitnessCreateContract) returns (Transaction) {}
 ```
@@ -94,7 +94,7 @@ Nodes: FullNode
 Description:
 To apply to become TRON’s Super Representative candidate.
 
-## Information update of Super Representative candidates
+## Update Super Representative candidate information
 ```protobuf
 rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {}
 ```
@@ -108,13 +108,13 @@ rpc TransferAsset (TransferAssetContract) returns (Transaction){}
 ```
 Node: FullNode
 
-## Participate a token
+## Participate in a token offering
 ```protobuf
 rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction) {}
 ```
 Nodes: FullNode
 
-## Query the list of nodes connected to the ip of the api
+## Query the list of connected peer nodes
 ```protobuf
 rpc ListNodes (EmptyMessage) returns (NodeList) {}
 ```
@@ -188,7 +188,7 @@ rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {}
 ```
 Nodes: FullNode
 
-## Block producing reward redemption
+## Withdraw block producing rewards
 ```protobuf
 rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {}
 ```
@@ -212,7 +212,7 @@ rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {}
 ```
 Nodes: SolidityNode
 
-## Query block information by block id
+## Query block information by block ID
 ```protobuf
 rpc GetBlockById (BytesMessage) returns (Block) {}
 ```
@@ -227,7 +227,7 @@ Nodes: Fullnode
 Description:
 Token update can only be initiated by the token issuer to update token description, url, maximum bandwidth consumption by each account and total bandwidth consumption.
 
-## Query the list of all the tokens by pagination
+## Query a paginated list of all tokens
 ```protobuf
 rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {}
 ```
@@ -247,19 +247,19 @@ rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {}
 Nodes: FullNode
 
 
-## Create an market order       
+## Create a market order       
 ```
 rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
 ```
 Nodes: FullNode
  
-## Cancel the order      
+## Cancel a market order      
 ```   
 rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
 ```
 Nodes: FullNode 
 
-## Get all orders for the account      
+## Get all orders for an account      
 ```
 rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
 ```
@@ -283,13 +283,13 @@ rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
 ```
 Nodes: FullNode 
 
-## Get order by id      
+## Get order by ID     
 ```
 rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
 ```
 Nodes: FullNode 
 
-## perform a historical balance lookup      
+## Perform a historical balance lookup      
 ```
 rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
 ```
@@ -297,7 +297,7 @@ Nodes: FullNode
 
 **Notice**: Only node where `storage.balance.history.lookup= true` is set in the configuration file supports querying the account's historical balance. The supported official nodes can be queried [here](../using_javatron/backup_restore.md/#fullnode-data-snapshots).
 
-## fetch all balance-changing transactions in a block      
+## Fetch all balance-changing transactions in a block      
 ```
 rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
 ```
