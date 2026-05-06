@@ -164,7 +164,7 @@ This module guide you through launching a java-tron instance, turning your compu
 
 ### **1. Start the Node**
 
-For the startup command, please refer to [Staring a FullNode on the Nile test network](../../using_javatron/installing_javatron/#staring-a-fullnode-on-the-nile-test-network).
+For the startup command, please refer to [Starting a FullNode on the Nile test network](../using_javatron/installing_javatron.md#starting-a-fullnode-on-the-nile-test-network).
 
 ### **2. Verify Node Status**
 

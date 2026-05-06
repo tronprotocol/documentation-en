@@ -93,10 +93,10 @@ After preparing the new version of the executable file and backing up the origin
 
 #### Super Representative Node (Block-Producing Node)
 
-For Block-Producing Node, please refer to [Starting a Block Production Node](../../using_javatron/installing_javatron/#starting-a-block-production-node)
+For Block-Producing Node, please refer to [Starting a Block Production Node](../using_javatron/installing_javatron.md#starting-a-block-production-node)
     
 #### Regular FullNode
-For Regular FullNode, please refer to [Starting a FullNode on the TRON main network](../../using_javatron/installing_javatron/#starting-a-fullnode-on-the-tron-main-network) 
+For Regular FullNode, please refer to [Starting a FullNode on the TRON main network](../using_javatron/installing_javatron.md#starting-a-fullnode-on-the-tron-main-network) 
 
 ### Step 6: Verify and Monitor
 
