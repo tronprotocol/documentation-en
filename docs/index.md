@@ -37,6 +37,7 @@ This documentation is written for java-tron node operators, protocol researchers
 
     - [HTTP API](api/http/index.md)
     - [JSON-RPC API](api/json-rpc/index.md)
+    - [gRPC API](api/rpc/index.md)
     - [Smart Contracts](contracts/contract.md)
     - [wallet-cli](clients/wallet-cli.md)
 
@@ -56,7 +57,7 @@ This documentation is written for java-tron node operators, protocol researchers
 ## Browse by topic
 
 - __[Using java-tron](using_javatron/installing_javatron.md)__ — Deployment, backup and restore, lite node, private network, event subscription, database configuration, node monitoring, maintenance tooling
-- __[API](api/http/index.md)__ — HTTP, gRPC, JSON-RPC
+- __[API](api/index.md)__ — HTTP, gRPC, JSON-RPC
 - __[Core Protocol](mechanism-algorithm/dpos.md)__ — DPoS consensus, Super Representatives, account model, resource model, smart contracts, system contracts, decentralized exchange, account permission management
 - __[For java-tron Developers](developers/java-tron.md)__ — Developer guide, TIPs workflow, issue workflow, governance workflow, IDE configuration, development examples, core modules
 - __[For DApp Developers](contracts/tools.md)__ — Development tooling
