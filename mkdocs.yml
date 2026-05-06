@@ -44,7 +44,39 @@ nav:
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
-        - History: releases/history.md
+        - History:
+            - releases/versions/index.md
+            - v4.8.1 (Democritus): releases/versions/v4.8.1.md
+            - v4.8.0.1 (Seneca): releases/versions/v4.8.0.1.md
+            - v4.8.0 (Kant): releases/versions/v4.8.0.md
+            - v4.7.7 (Epicurus): releases/versions/v4.7.7.md
+            - v4.7.6 (Anaximander): releases/versions/v4.7.6.md
+            - v4.7.5 (Cleobulus): releases/versions/v4.7.5.md
+            - v4.7.4 (Bias): releases/versions/v4.7.4.md
+            - v4.7.3.1 (Solon): releases/versions/v4.7.3.1.md
+            - v4.7.3 (Chilon): releases/versions/v4.7.3.md
+            - v4.7.2 (Periander): releases/versions/v4.7.2.md
+            - v4.7.1.1 (Pittacus): releases/versions/v4.7.1.1.md
+            - v4.7.1 (Sartre): releases/versions/v4.7.1.md
+            - v4.7.0.1 (Aristotle): releases/versions/v4.7.0.1.md
+            - v4.6.0 (Socrates): releases/versions/v4.6.0.md
+            - v4.5.2 (Aurelius): releases/versions/v4.5.2.md
+            - v4.5.1 (Tertullian): releases/versions/v4.5.1.md
+            - v4.4.6 (David): releases/versions/v4.4.6.md
+            - v4.4.5 (Cicero): releases/versions/v4.4.5.md
+            - v4.4.4 (Plotinus): releases/versions/v4.4.4.md
+            - v4.4.2 (Augustinus): releases/versions/v4.4.2.md
+            - v4.4.0 (Rousseau): releases/versions/v4.4.0.md
+            - v4.3.0 (Bacon): releases/versions/v4.3.0.md
+            - v4.2.2.1 (Epictetus): releases/versions/v4.2.2.1.md
+            - v4.2.2 (Lucretius): releases/versions/v4.2.2.md
+            - v4.2.0 (Plato): releases/versions/v4.2.0.md
+            - v4.1.3 (Thales): releases/versions/v4.1.3.md
+            - v4.1.2: releases/versions/v4.1.2.md
+            - v4.1.1: releases/versions/v4.1.1.md
+            - v4.0.0: releases/versions/v4.0.0.md
+            - Odyssey-v3.7: releases/versions/v3.7.md
+            - Odyssey-v3.6.5: releases/versions/v3.6.5.md
     - Appendix:
         - Glossary: glossary.md
 
@@ -54,6 +86,7 @@ theme:
   features:
     - navigation.sections  # Enable grouping in the left navigation bar
     - navigation.footer
+    - navigation.indexes   # Subgroup titles like History open index.md directly
     - toc.integrate
     - search.highlight  # Highlight matching content during search
     - search.suggest  # Show suggestions during search
