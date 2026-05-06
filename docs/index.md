@@ -36,7 +36,7 @@ This documentation is written for java-tron node operators, protocol researchers
     Build applications against the HTTP, gRPC, and JSON-RPC interfaces exposed by java-tron.
 
     - [HTTP API](api/http/index.md)
-    - [JSON-RPC API](api/json-rpc.md)
+    - [JSON-RPC API](api/json-rpc/index.md)
     - [Smart Contracts](contracts/contract.md)
     - [wallet-cli](clients/wallet-cli.md)
 
