@@ -1,15 +1,15 @@
 # Decentralized Exchange (DEX)
 
-The TRON network natively supports **Decentralized Exchanges (DEX)**, with its core consisting of multiple trading pairs. This article introduces the basic concepts of trading pairs, creation methods, trading processes, funding and withdrawal mechanisms, and includes common query methods and price calculation methods.
+The TRON network natively supports **Decentralized Exchanges (DEX)**, with its core consisting of multiple trading pairs. This article introduces the basic concepts of trading pairs, creation methods, trading processes, injected and redeemed mechanisms, and includes common query methods and price calculation methods.
 
 ## What is a Trading Pair
 
-A trading pair (`Exchange`) represents a trading market between any two TRC-10 tokens, which can be:
+A trading pair (`Exchange`) represents a Inter-token trading, support swaps:
 
-- Between any two TRC-10 tokens.
-- Between a TRC-10 token and TRX.
+- Between any two TRC-10 tokens ; or
+- a TRC-10 token and TRX.
 
-Any account can create any combination of trading pairs, even if the same combination already exists on the network. All trading pairs on the TRON network follow the **Bancor protocol** for asset exchange, with the default weight of the two tokens being equal. Therefore, the balance ratio of the two tokens in the trading pair represents the current price.
+Any account can create any combination of trading pairs, even if the same combination already exists on the network. The TRON network utilizes the **Bancor protocol** to facilitate automated liquidity, where the default weights of the two assets are equal ($50/50$).Therefore, The current exchange rate is determined by the relative ratio of the two token balances.
 
 **Example:**  
 Suppose a trading pair contains two tokens, ABC and DEF:
@@ -21,7 +21,7 @@ Then the current exchange rate is: 10 ABC = 1 DEF
 
 ## Creating a Trading Pair
 
-Any account can initiate the creation of a trading pair. **The fee for creating a trading pair is 1024 TRX, which will be burned.**  
+Any account can initiate the creation of a trading pair. **"A creation fee of 1,024 TRX is required, which is permanently burned from the supply.**  
 
 When creating a trading pair, the initial balances of the two tokens must be provided, and upon successful creation, the system will automatically deduct the corresponding tokens from the initiator’s account.
 
@@ -44,7 +44,7 @@ ExchangeCreate abc 10000000 _ 1000000000000
 The above command creates a trading pair between `abc` and `TRX`, with an initial injection of 10,000,000 abc tokens (token precision 0-6) and 1,000,000,000,000 sun (i.e., 1,000,000 TRX). If the account balance is insufficient, the creation transaction will fail.
 
 ## Trading
-All accounts can perform instant trades in any trading pair. Trading does not require order placement, and the price and quantity are calculated entirely based on the Bancor protocol.
+All accounts can perform instant trades in any trading pair. The DEX functions as an Automated Market Maker (AMM); trades are executed instantly against the liquidity pool rather than through a traditional order book, and the price and quantity are calculated entirely based on the Bancor protocol.
 
 ### Contract: `ExchangeTransactionContract`
 Parameters are as follows:
@@ -52,7 +52,7 @@ Parameters are as follows:
 - `exchange_id`: The ID of the trading pair (the system assigns a unique ID based on creation time).
 - `token_id`: The ID of the token to be sold.
 - `quant`: The quantity to be sold.
-- `expected`: The minimum quantity of the other token expected to be received (if the actual amount received is less than this value, the transaction fails).
+- `expected`: The expected parameter acts as a minimum receive amount, serving as a slippage limit to protect the user from unfavorable price swings during execution.
 
 #### Example:
 Suppose the trading pair ID for `abc` and `TRX` is 1, with the current state:
@@ -68,7 +68,7 @@ Upon a successful transaction, the user's TRX balance will **decrease** and thei
 The actual amount of `abc` received by the user can be queried using the `gettransactioninfobyid` interface, checking the `exchange_received_amount` field.
 
 ## Adding Liquidity (Funding)
-When the balance of one token in a trading pair is low, transactions may cause significant price fluctuations. At this point, **the creator of the trading pair can choose to inject more assets** to improve stability.
+When the balance of one token in a trading pair is low, transactions may cause significant price fluctuations. At this point, **Currently, liquidity management (Injected and Redeemed) is restricted to the trading pair creator** to deepen liquidity and reduce price impact (slippage) for other traders.
 
 >**Funding Guidelines:**
 >
@@ -101,7 +101,7 @@ The assets in a trading pair belong entirely to the creator. The creator can wit
 >**Withdrawal Rules:**
 >- Only the trading pair creator can perform this action.
 >- No fees are required.
->- The system withdraws the other token in proportion to the current token ratio, ensuring the price remains unchanged but increasing price volatility.
+>- The system withdraws the other token in proportion to the current token ratio, The system enforces a proportional deposit/withdrawal based on the current pool ratio to ensure the action itself does not cause an immediate price shift.
 
 ### Contract: `ExchangeWithdrawContract`
 Parameters are as follows:
@@ -134,7 +134,9 @@ TRON provides multiple interfaces for querying trading pairs:
 
 For detailed API documentation, refer to [RPC-API ](https://tronprotocol.github.io/documentation-en/api/rpc/).
 
-### Price Calculation
+### Price Calculation (Quote Currency)
+If the price of Token A is known, the price of Token B is derived by multiplying the price of Token A by the ratio of the pool balances.
+
 Suppose in a trading pair:
 
 - `first_token_price = 100 sun`.
