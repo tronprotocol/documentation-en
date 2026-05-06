@@ -1,6 +1,8 @@
 site_name: java-tron
 site_url: https://tronprotocol.github.io/documentation-en/
 repo_url: https://github.com/tronprotocol/documentation-en
+repo_name: tronprotocol/documentation-en
+edit_uri: edit/master/docs/
 
 nav:
     - Home: index.md
@@ -311,15 +313,22 @@ nav:
 theme:
   name: material
   custom_dir: docs/overrides
+  language: en
   features:
     - navigation.sections  # Enable grouping in the left navigation bar
+    - navigation.indexes  # Allow sections to use index.md as their landing page
     - navigation.footer
-    - navigation.indexes   # Subgroup titles like History open index.md directly
-    - toc.integrate
+    - navigation.tracking  # Update URL anchor while scrolling
+    - toc.follow  # Right-side TOC highlights the current section
+    # - toc.integrate  # Disabled to restore the standard right-side TOC
     - search.highlight  # Highlight matching content during search
     - search.suggest  # Show suggestions during search
+    - search.share  # Share button in search box copies URL with active query
     - content.code.annotate  # Code block annotations
+    - content.code.copy  # Copy button in the top-right of every code block
     - content.tooltips  # Tooltips in content
+    - content.action.edit  # Per-page "Edit this page" button
+    - content.action.view  # Per-page "View source" button
   palette:
     primary: custom  # Primary color
     accent: custom  # Accent color
@@ -337,7 +346,9 @@ extra_css:
 
 markdown_extensions:
     - admonition
+    - attr_list  # Required by homepage grid cards
     - footnotes
+    - md_in_html  # Required by homepage grid cards
     - codehilite
     - toc:
         permalink: true
@@ -349,6 +360,10 @@ markdown_extensions:
 
 plugins:
   - search
+  - git-revision-date-localized:
+      locale: en
+      type: date
+      fallback_to_build_date: true
   - exclude:
       glob:
         - clients/tron-grid.md
