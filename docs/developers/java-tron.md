@@ -34,7 +34,7 @@ If you plan to contribute to java-tron development, please follow the process be
     You can directly submit a PR, but ensure it includes a complete description.
 - **Complex Changes**
     Please first submit an Issue in the [TIP repository](https://github.com/tronprotocol/tips), detailing the motivation and implementation plan.
-Refer to the [TIP Specification](tips.md).
+Refer to the [TIP Specification](tips-workflow.md).
 - **Early PR Submission**
     We encourage developers to submit PRs early, even if the feature is not yet complete. This allows other developers to know that the related TIP Issue has entered the *In Progress* state.
 - **Development Branch**

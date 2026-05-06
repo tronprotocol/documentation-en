@@ -31,7 +31,7 @@ nav:
         - Account Permission Management: mechanism-algorithm/multi-signatures.md
     - For java-tron Developers:
         - Developer Guide: developers/java-tron.md
-        - TIPs Workflow: developers/tips.md
+        - TIPs Workflow: developers/tips-workflow.md
         - Issue Workflow: developers/issue-workflow.md
         - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md

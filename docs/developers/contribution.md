@@ -29,7 +29,7 @@ Check [TRON Incentives Policy](incentives.md)
 
 ## Submitting a TIP
 
-Please check [Submitting a TIP](./tips.md)
+Please check [Submitting a TIP](./tips-workflow.md)
 
 ## Coding java-tron
 
