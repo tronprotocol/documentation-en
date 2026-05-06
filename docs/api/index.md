@@ -6,9 +6,9 @@ A java-tron node exposes three API surfaces. They share most underlying function
 
 | Need | Recommended | Why |
 |---|---|---|
-| Calling from a browser, mobile, or any HTTP client | **HTTP API** | Plain `POST` + JSON, no codegen, the broadest method coverage on the node |
+| Calling from a browser, mobile, or any HTTP client | **HTTP API** | `POST` / `GET` (partial support), no codegen, the broadest method coverage on the node |
 | Reusing existing Ethereum tooling (web3.js, ethers.js, MetaMask, Hardhat, Foundry) | **JSON-RPC API** | Implements the `eth_*` / `net_*` / `web3_*` method set so EVM tools work unchanged |
-| Server-to-server in a typed language (Java, Go, Rust, C++) where latency or throughput matters | **gRPC API** | Persistent HTTP/2 connections, protobuf encoding, generated stubs |
+| Server-to-server in a typed language (Java, Go, Rust, C++) where latency or throughput matters | **gRPC API** | Persistent HTTP/2 connections, protobuf encoding, client code can be auto-generated from `.proto` with no hand-written networking |
 
 If you're undecided: start with **HTTP API**. It has the smallest setup cost and the widest method coverage. Switch to JSON-RPC only when EVM-tool compatibility is the goal, and to gRPC only when profiling shows the HTTP path is the bottleneck.
 
@@ -19,6 +19,6 @@ Notes:
 
 ## Reference indexes
 
-- [HTTP API reference](http/index.md) — endpoints under `/wallet/*`, organized by feature
-- [JSON-RPC API reference](json-rpc/index.md) — `eth_*` / `net_*` / `web3_*` methods plus the Tron-specific `buildTransaction`
-- [gRPC API reference](rpc/index.md) — `protocol.Wallet` / `protocol.WalletSolidity` methods
+- [HTTP API reference](http/index.md) — endpoints under `/wallet/*` and `/walletsolidity/*` (partial support), organized by feature
+- [JSON-RPC API reference](json-rpc/index.md) — `eth_*` / `net_*` / `web3_*` methods plus the Tron-specific `buildTransaction`, organized by feature
+- [gRPC API reference](rpc/index.md) — `protocol.Wallet` / `protocol.WalletSolidity` (partial support) methods, organized by feature
