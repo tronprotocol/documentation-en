@@ -32,6 +32,146 @@ nav:
     - For java-tron Developers:
         - Developer Guide: developers/java-tron.md
         - TIPs Workflow: developers/tips-workflow.md
+        - TIPs:
+            - All: developers/tips/index.md
+            - Core:
+                - Overview: developers/tips/core/index.md
+                - "TIP-836: harden exchange transaction calculations": developers/tips/core/tip-836.md
+                - "TIP-833: Harden ResourceProcessor Resource Window Calculations": developers/tips/core/tip-833.md
+                - "TIP-767: Transitioning proposal expire time configuration to Chain Governance": developers/tips/core/tip-767.md
+                - "TIP-697: Migrate Floating-Point Calculations from Math to StrictMath": developers/tips/core/tip-697.md
+                - "TIP-694: Enhance Verification of Transaction Limitation at Consensus Layer": developers/tips/core/tip-694.md
+                - "TIP-635: Optimize Reward Withdrawal To Improve TPS": developers/tips/core/tip-635.md
+                - "TIP-586: GRPC Implementation for Resource Price Interfaces": developers/tips/core/tip-586.md
+                - "TIP-555: Network upgrade logic optimization": developers/tips/core/tip-555.md
+                - "TIP-542: Resource delegating supports customizable lock period": developers/tips/core/tip-542.md
+                - "TIP-541: Support canceling unstaking in Stake 2.0": developers/tips/core/tip-541.md
+                - "TIP-534: Remove Vulnerable APIs": developers/tips/core/tip-534.md
+                - "TIP-491: Dynamic Energy Model": developers/tips/core/tip-491.md
+                - "TIP-476: Delegate Data Structure Optimization": developers/tips/core/tip-476.md
+                - "TIP-467: Stake 2.0 - A new TRON staking model": developers/tips/core/tip-467.md
+                - "TIP-465: new reward calculation algorithm": developers/tips/core/tip-465.md
+                - "TIP-461: Optimize data consistency for system abnormals": developers/tips/core/tip-461.md
+                - "TIP-440: Transaction cache optimization": developers/tips/core/tip-440.md
+                - "TIP-428: Increase the probability that the block processing thread acquires the lock": developers/tips/core/tip-428.md
+                - "TIP-388: Optimize light node synchronization logic": developers/tips/core/tip-388.md
+                - "TIP-383: Optimize transaction cache loading": developers/tips/core/tip-383.md
+                - "TIP-382: Optimize the data structure of account assets": developers/tips/core/tip-382.md
+                - "TIP-370: Node support conditionalized stop": developers/tips/core/tip-370.md
+                - "TIP-369: Node support prometheus metrics": developers/tips/core/tip-369.md
+                - "TIP-366: TIP-366 Node startup optimization": developers/tips/core/tip-366.md
+                - "TIP-362: Optimized node broadcast data caching": developers/tips/core/tip-362.md
+                - "TIP-343: TIP-343 Refine Write Parameters For Leveldb": developers/tips/core/tip-343.md
+                - "TIP-298: Reformat manifest": developers/tips/core/tip-298.md
+                - "TIP-295: Optimize account assets": developers/tips/core/tip-295.md
+                - "TIP-290: Dynamic store optimization": developers/tips/core/tip-290.md
+                - "TIP-289: Block Broadcast Optimization": developers/tips/core/tip-289.md
+                - "TIP-285: Optimize transaction cache initialization logic": developers/tips/core/tip-285.md
+                - "TIP-281: Optimize the query of database": developers/tips/core/tip-281.md
+                - "TIP-276: Optimize block verification logic": developers/tips/core/tip-276.md
+                - "TIP-269: Optimize the performance of block processing": developers/tips/core/tip-269.md
+                - "TIP-250: Include transaction results on the chain": developers/tips/core/tip-250.md
+                - "TIP-207: A proposal to improve network resources model": developers/tips/core/tip-207.md
+                - "TIP-196: Reward SRs with the transaction fees charged for bandwidth and Energy": developers/tips/core/tip-196.md
+                - "TIP-178: TOKENISSUE and UPDATEASSET Instruction in TVM": developers/tips/core/tip-178.md
+                - "TIP-171: STAKE instructions in TVM": developers/tips/core/tip-171.md
+                - "TIP-156: Vote instructions in TVM": developers/tips/core/tip-156.md
+                - "TIP-128: TIP128 Lite Fullnode support": developers/tips/core/tip-128.md
+                - "TIP-127: Support Tron-DEX based on system contracts": developers/tips/core/tip-127.md
+                - "TIP-64: tron mix consensus Analytics": developers/tips/core/tip-64.md
+                - "TIP-62: Tron consensus algorithm introduction": developers/tips/core/tip-62.md
+                - "TIP-60: TRC-60:Precompiled contract function for multi-signature verification": developers/tips/core/tip-60.md
+                - "TIP-01: Tron Wallet Proposal - Key Derivation Methods for Tron Accounts with BIP39": developers/tips/core/tip-01.md
+            - Networking:
+                - Overview: developers/tips/networking/index.md
+                - "TIP-621: Add code version column to HelloMessage": developers/tips/networking/tip-621.md
+                - "TIP-592: Supplement Disconnect Reasons in Java-tron": developers/tips/networking/tip-592.md
+                - "TIP-550: P2P message snappy compression": developers/tips/networking/tip-550.md
+                - "TIP-549: P2P support IPv6 protocol": developers/tips/networking/tip-549.md
+                - "TIP-548: Node Discovery via DNS": developers/tips/networking/tip-548.md
+                - "TIP-547: Connection precheck before P2P communication": developers/tips/networking/tip-547.md
+                - "TIP-425: Speed up TCP connection establishment": developers/tips/networking/tip-425.md
+                - "TIP-391: Optimize fetch block process": developers/tips/networking/tip-391.md
+            - Interface:
+                - Overview: developers/tips/interface/index.md
+                - "TIP-3326: Wallet Switch TRON Chain Method": developers/tips/interface/tip-3326.md
+                - "TIP-1193: TRON Provider JavaScript API": developers/tips/interface/tip-1193.md
+                - "TIP-1102: Opt-in account exposure": developers/tips/interface/tip-1102.md
+                - "TIP-712: TRON typed structured data hashing and signing": developers/tips/interface/tip-712.md
+                - "TIP-544: Add `data` to the http interfaces interacting with smart contract": developers/tips/interface/tip-544.md
+                - "TIP-387: Transaction memo fee": developers/tips/interface/tip-387.md
+                - "TIP-51: TRC-51 rate limit of API traffic": developers/tips/interface/tip-51.md
+            - TRC:
+                - Overview: developers/tips/trc/index.md
+                - "TIP-8004: Trustless Agents - Discover agents and establish trust through reputation and validation": developers/tips/trc/tip-8004.md
+                - "TIP-7007: Verifiable AI-Generated Content Token": developers/tips/trc/tip-7007.md
+                - "TIP-4907: Fork from ERC-4907 Rental NFT": developers/tips/trc/tip-4907.md
+                - "TIP-4626: Tokenized Vaults": developers/tips/trc/tip-4626.md
+                - "TIP-1271: Standard Signature Validation Method for Contracts": developers/tips/trc/tip-1271.md
+                - "TIP-1155: Multi Token Standard": developers/tips/trc/tip-1155.md
+                - "TIP-721: TRC-721 Non-Fungible Token Standard": developers/tips/trc/tip-721.md
+                - "TIP-484: Smart Contract Standard for TRX liquidity staking and resource market": developers/tips/trc/tip-484.md
+                - "TIP-293: Add a proposal to adjust the total net limit": developers/tips/trc/tip-293.md
+                - "TIP-292: Add a proposal to adjust the free net limit in an account": developers/tips/trc/tip-292.md
+                - "TIP-222: Improve transaction execution speed": developers/tips/trc/tip-222.md
+                - "TIP-191: Signed Data Standard": developers/tips/trc/tip-191.md
+                - "TIP-165: TRC-165 Standard Interface Detection In Contract": developers/tips/trc/tip-165.md
+                - "TIP-135: Shielded TRC-20 Contract": developers/tips/trc/tip-135.md
+                - "TIP-120: ECDSA Signature Encoding Specification": developers/tips/trc/tip-120.md
+                - "TIP-105: Multi-signature Permission Operation": developers/tips/trc/tip-105.md
+                - "TIP-104: Data Signing Specification": developers/tips/trc/tip-104.md
+                - "TIP-102: Hierarchical Deterministic Wallet": developers/tips/trc/tip-102.md
+                - "TIP-101: Wallet Keystore Specification": developers/tips/trc/tip-101.md
+                - "TIP-54: TRC-54: Automatically active non-existent account when transferring TRX/TRC10 asset in a smart contract": developers/tips/trc/tip-54.md
+                - "TIP-53: Optimize the current TRON delegation mechanism": developers/tips/trc/tip-53.md
+                - "TIP-44: TRC-44 Address.isContract instructions": developers/tips/trc/tip-44.md
+                - "TIP-43: TRC-43: Precompiled contract function for signature parallel verification": developers/tips/trc/tip-43.md
+                - "TIP-41: Optimize transactionHistoryStore occupancy space#40": developers/tips/trc/tip-41.md
+                - "TIP-37: TRC-37: forbid using TransferContract & TransferAssetContract for contract account": developers/tips/trc/tip-37.md
+                - "TIP-32: TRC-32 Clear the ABI of contract": developers/tips/trc/tip-32.md
+                - "TIP-31: TRC-31 Trigger constant contract": developers/tips/trc/tip-31.md
+                - "TIP-30: TRC-30 Code hash instructions": developers/tips/trc/tip-30.md
+                - "TIP-29: Bitwise shifting instructions in Tron": developers/tips/trc/tip-29.md
+                - "TIP-26: Add a contract creation function called CREATE2": developers/tips/trc/tip-26.md
+                - "TIP-24: Implement DB storage with RocksDB": developers/tips/trc/tip-24.md
+                - "TIP-23: TRC-23 Add the account world status tree root to the block header": developers/tips/trc/tip-23.md
+                - "TIP-20: TRC-20 Token Standard": developers/tips/trc/tip-20.md
+                - "TIP-19: TRC-19 Deferred transaction": developers/tips/trc/tip-19.md
+                - "TIP-17: Adaptive Energy Limit Model": developers/tips/trc/tip-17.md
+                - "TIP-16: Account Multi-signature": developers/tips/trc/tip-16.md
+                - "TIP-13: Account System Standard": developers/tips/trc/tip-13.md
+                - "TIP-12: TRC-12 Tron event subscribes model": developers/tips/trc/tip-12.md
+                - "TIP-10: TRC-10 Token Standard": developers/tips/trc/tip-10.md
+            - VM:
+                - Overview: developers/tips/vm/index.md
+                - "TIP-6780: Implement EIP-6780: SELFDESTRUCT only in same transaction": developers/tips/vm/tip-6780.md
+                - "TIP-745: Introduce EIP-4844 and EIP-7516 instructions": developers/tips/vm/tip-745.md
+                - "TIP-653: Adjust energy cost of SUICIDE and VOTEWITNESS opcodes in TVM": developers/tips/vm/tip-653.md
+                - "TIP-652: Announce EIP-6049 Deprecate SELFDESTRUCT": developers/tips/vm/tip-652.md
+                - "TIP-651: Implement EIP-5656 MCOPY - Memory copying instruction": developers/tips/vm/tip-651.md
+                - "TIP-650: Implement EIP-1153 Transient storage opcodes": developers/tips/vm/tip-650.md
+                - "TIP-543: Implement EIP-3855 PUSH0 instruction": developers/tips/vm/tip-543.md
+                - "TIP-474: Optimize the return value of chainid opcode": developers/tips/vm/tip-474.md
+                - "TIP-397: Raise limit of the 13th network parameter": developers/tips/vm/tip-397.md
+                - "TIP-344: Optimize instruction execution for TVM": developers/tips/vm/tip-344.md
+                - "TIP-318: Adapt to Ethereum London Upgrade": developers/tips/vm/tip-318.md
+                - "TIP-306: Adapt to solidity_0.8.4": developers/tips/vm/tip-306.md
+                - "TIP-272: Compatible with EVM": developers/tips/vm/tip-272.md
+                - "TIP-271: Vote for SR in Smart Contract": developers/tips/vm/tip-271.md
+                - "TIP-268: SmartContract ABI optimization": developers/tips/vm/tip-268.md
+                - "TIP-241: Adaptation to solidity-v0.5.16": developers/tips/vm/tip-241.md
+                - "TIP-209: Adapt to Solidity 0.6.0.": developers/tips/vm/tip-209.md
+                - "TIP-204: Make MAX_FEE_LIMIT configurable as a chain property": developers/tips/vm/tip-204.md
+                - "TIP-203: Adaptation to solidity-v0.5.15": developers/tips/vm/tip-203.md
+                - "TIP-176: altbn128 operation energy reduction in TVM": developers/tips/vm/tip-176.md
+                - "TIP-175: SELFBALANCE instructions in TVM": developers/tips/vm/tip-175.md
+                - "TIP-174: CHAINID instructions in TVM": developers/tips/vm/tip-174.md
+                - "TIP-157: Freeze instructions in TVM": developers/tips/vm/tip-157.md
+                - "TIP-138: Pedersen hash function": developers/tips/vm/tip-138.md
+                - "TIP-137: Zero-knowledge Proof Verification functions": developers/tips/vm/tip-137.md
+            - Informational:
+                - Overview: developers/tips/informational/index.md
+                - "TIP-28: TRC-28 Built-in message queue for event subscribe": developers/tips/informational/tip-28.md
         - Issue Workflow: developers/issue-workflow.md
         - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md
@@ -76,6 +216,7 @@ extra_css:
 
 markdown_extensions:
     - admonition
+    - attr_list
     - footnotes
     - codehilite
     - toc:
