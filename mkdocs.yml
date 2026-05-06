@@ -33,7 +33,7 @@ nav:
         - Developer Guide: developers/java-tron.md
         - TIPs Workflow: developers/tips-workflow.md
         - TIPs:
-            - All: developers/tips/index.md
+            - Overview: developers/tips/index.md
             - Core:
                 - Overview: developers/tips/core/index.md
                 - "TIP-836: harden exchange transaction calculations": developers/tips/core/tip-836.md
