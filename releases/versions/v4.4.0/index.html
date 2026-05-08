@@ -8701,10 +8701,12 @@ Source Code：https://github.com/tronprotocol/java-tron/pull/3993  </p>
 https://github.com/tronprotocol/java-tron/pull/3992 </p>
 <h3 id="tvm">TVM<a class="headerlink" href="#tvm" title="Permanent link">&para;</a></h3>
 <h4 id="1-provide-compatibility-with-evm">1. Provide compatibility with EVM<a class="headerlink" href="#1-provide-compatibility-with-evm" title="Permanent link">&para;</a></h4>
-<p>The GreatVoyage-v4.4.0 (Rousseau) version provides compatibility solution for those instructions that are different from EVM, so that the newly deployed contract supports the following features:
-- The <code>GASPRICE</code> instruction returns the unit price of energy.
-- The <code>try/catch-statement</code> supports catching all types of TVM exceptions.
-- Forbid the system contract “TransferContract” to transfer TRX to the smart contract account.</p>
+<p>The GreatVoyage-v4.4.0 (Rousseau) version provides compatibility solution for those instructions that are different from EVM, so that the newly deployed contract supports the following features:</p>
+<ul>
+<li>The <code>GASPRICE</code> instruction returns the unit price of energy.</li>
+<li>The <code>try/catch-statement</code> supports catching all types of TVM exceptions.</li>
+<li>Forbid the system contract “TransferContract” to transfer TRX to the smart contract account.</li>
+</ul>
 <p>TIP: https://github.com/tronprotocol/tips/blob/master/tip-272.md 
 Source Code：https://github.com/tronprotocol/java-tron/pull/4032 </p>
 <p><strong>NOTICE</strong>：
@@ -8726,10 +8728,12 @@ By default, this feature is disabled, and the super representative or super part
 <p>In order to make the FullNode customizable, starting from GreatVoyage-v4.4.0 (Rousseau) version, FullNode supports disabling specific APIs through the configuration file.</p>
 <p>Source code：https://github.com/tronprotocol/java-tron/pull/4045 </p>
 <h4 id="3-optimize-the-triggerconstantcontract-api">3. Optimize the <code>TriggerConstantContract</code> API<a class="headerlink" href="#3-optimize-the-triggerconstantcontract-api" title="Permanent link">&para;</a></h4>
-<p>In GreatVoyage-v4.4.0 (Rousseau), the following optimizations have been introduced to the <code>TriggerConstantContract</code> interface:
--  Execute contract creation when <code>ContractAddress</code> is empty
--  Remove the check of the incoming parameters <code>callvalue</code> and <code>tokenvalue</code>
--  The log list and internal transaction list are added to <code>TransactionExtention</code></p>
+<p>In GreatVoyage-v4.4.0 (Rousseau), the following optimizations have been introduced to the <code>TriggerConstantContract</code> interface:</p>
+<ul>
+<li>Execute contract creation when <code>ContractAddress</code> is empty</li>
+<li>Remove the check of the incoming parameters <code>callvalue</code> and <code>tokenvalue</code></li>
+<li>The log list and internal transaction list are added to <code>TransactionExtention</code></li>
+</ul>
 <p>Source Code： https://github.com/tronprotocol/java-tron/pull/4032 </p>
 <h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h3>
 <h4 id="1-upgrade-event-plugin-to-support-bttc-data">1. Upgrade event plugin to support <code>BTTC</code> data<a class="headerlink" href="#1-upgrade-event-plugin-to-support-bttc-data" title="Permanent link">&para;</a></h4>
@@ -8765,7 +8769,7 @@ By default, this feature is disabled, it will be enabled after the London upgrad
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 6, 2026 05:03:13 UTC">May 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:50:08 UTC">May 8, 2026</span>
   </span>
 
     

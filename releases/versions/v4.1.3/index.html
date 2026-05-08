@@ -8654,10 +8654,12 @@
 <h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="1add-new-api-to-support-transaction-query-in-pending-pool">1.Add new API to support transaction query in pending pool.<a class="headerlink" href="#1add-new-api-to-support-transaction-query-in-pending-pool" title="Permanent link">&para;</a></h4>
 <p>It is currently impossible to query the intermediate state information of a certain transaction from after it is issued to before it is on the chain.After a transaction is sent, if it is not on the chain, we cannot know whether it is waiting for packaging or has been discarded.</p>
-<p>In this upgrade, the Fullnode node provides 3 API to obtain detailed information about the pending pool:
-- /wallet/gettransactionfrompending: Obtain the transaction information from pending pool through the - transaction ID
-- /wallet/gettransactionlistfrompending: Get all transactions from the pending pool
-- /wallet/getpendingsize: Get the number of transactions in pending pool</p>
+<p>In this upgrade, the Fullnode node provides 3 API to obtain detailed information about the pending pool:</p>
+<ul>
+<li>/wallet/gettransactionfrompending: Obtain the transaction information from pending pool through the - transaction ID</li>
+<li>/wallet/gettransactionlistfrompending: Get all transactions from the pending pool</li>
+<li>/wallet/getpendingsize: Get the number of transactions in pending pool</li>
+</ul>
 <p>The optimization of transaction packaging logic of GreatVoyage-4.1.3(Thales)  will effectively reduce low-cost attacks and greatly improve the security of the TRON public chain.</p>
 <hr />
 
@@ -8680,7 +8682,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 6, 2026 05:03:13 UTC">May 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:50:08 UTC">May 8, 2026</span>
   </span>
 
     
