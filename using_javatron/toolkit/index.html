@@ -9021,10 +9021,12 @@ java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.co
 <li><strong>History Dataset</strong>: Used for querying historical data.</li>
 </ul>
 <p>The Snapshot Dataset contains all account state data plus the history of the most recent 65,536 blocks. It occupies a small amount of space (approximately 3% of a FullNode's data). Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.</p>
-<p>The data pruning tool can split a FullNode's data into a <strong>Snapshot Dataset</strong> or a <strong>History Dataset</strong>. It also supports merging a history dataset back with a snapshot dataset. This enables the following use cases:
-* <strong>Convert FullNode Data into Lite Fullnode Data</strong>: Split the full node data to generate a snapshot dataset, which is all that's needed to run a light node.
-* <strong>Periodically Pruning a Lite FullNode</strong>: As a light node runs, its data grows. You can periodically prune it by using the tool to create a new, smaller snapshot dataset from the existing lite FullNode data.
-* <strong>Converting Lite FullNode Data Back to FullNode Data</strong>: To enable historical queries on a lite FullNode, you can convert it back to a FullNode. First, split a FullNode to create a history dataset. Then, merge that history dataset with your lite FullNode's snapshot dataset to create a complete FullNode database.</p>
+<p>The data pruning tool can split a FullNode's data into a <strong>Snapshot Dataset</strong> or a <strong>History Dataset</strong>. It also supports merging a history dataset back with a snapshot dataset. This enables the following use cases:</p>
+<ul>
+<li><strong>Convert FullNode Data into Lite Fullnode Data</strong>: Split the full node data to generate a snapshot dataset, which is all that's needed to run a light node.</li>
+<li><strong>Periodically Pruning a Lite FullNode</strong>: As a light node runs, its data grows. You can periodically prune it by using the tool to create a new, smaller snapshot dataset from the existing lite FullNode data.</li>
+<li><strong>Converting Lite FullNode Data Back to FullNode Data</strong>: To enable historical queries on a lite FullNode, you can convert it back to a FullNode. First, split a FullNode to create a history dataset. Then, merge that history dataset with your lite FullNode's snapshot dataset to create a complete FullNode database.</li>
+</ul>
 <blockquote>
 <p><strong>Important Note</strong>: Before using this tool for any operation, you need to stop the currently running node first.</p>
 </blockquote>
@@ -9172,7 +9174,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<s
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 6, 2026 12:33:18 UTC">May 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:50:08 UTC">May 8, 2026</span>
   </span>
 
     

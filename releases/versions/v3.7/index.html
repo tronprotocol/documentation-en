@@ -8690,10 +8690,12 @@
 <h4 id="protocol">Protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h4>
 <p>The decentralized TRON protocol can be implemented by any teams without limitation of programming languages. Any clients in accordance with the TRON protocol can communicate with each other.
 A concise and efficient data transfer protocol is essential to a distributed network, even more for the blockchain. So, the implementation of the protocol is based on the Protocol Buffers, an open-source and excellent software protocol maintained by Google. 
-The specific business logic of the blockchain defined by the protocol includes:
-- the data format of message，including block, transaction, proposal, witness, vote, account, exchange and so on.
-- the communication protocols between blockchain nodes, including the node discovery protocol, the node data synchronization protocol, the node scoring protocol and so on.
-- the interface protocols that the blockchain provides to the external system or clients</p>
+The specific business logic of the blockchain defined by the protocol includes:</p>
+<ul>
+<li>the data format of message，including block, transaction, proposal, witness, vote, account, exchange and so on.</li>
+<li>the communication protocols between blockchain nodes, including the node discovery protocol, the node data synchronization protocol, the node scoring protocol and so on.</li>
+<li>the interface protocols that the blockchain provides to the external system or clients</li>
+</ul>
 <h4 id="consensus">Consensus<a class="headerlink" href="#consensus" title="Permanent link">&para;</a></h4>
 <p>The consensus mechanism is an essential part of the blockchain. The TRON blockchain chooses the DPoS as the core consensus mechanism and it has been running steadily for a long time. But replaceable consensus module is essential if we want to redefine the java-tron as the powerful infrastructure for building application-specific blockchains. The developers of blockchain should determine to choose the consensus mechanism that considered to be most suitable to the specific application scenario. The ultimate goal of the replaceable consensus module is that the consensus mechanism can be determined by configuring some necessary parameters. In addition, the developers can implement a customized consensus module as long as several essential interfaces implemented.</p>
 <h4 id="crypto">Crypto<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h4>
@@ -8707,15 +8709,19 @@ blockchain data security. such as public and private key deduction, transaction 
 <p>Added a subscription trigger for the updating a solidified block, which triggers the solidified block update event to the message queue, so that users can get the latest solidified block information on time. A solidified block is a block that regarded as can not be revocable. So, when the block becomes a solidified block, it means that the transactions packed in this block are accepted by the blockchain.</p>
 <h3 id="two-new-http-apis-added">Two new HTTP APIs added<a class="headerlink" href="#two-new-http-apis-added" title="Permanent link">&para;</a></h3>
 <p><strong>gettransactioninfobyblocknum</strong></p>
-<p>This api is both added in the context: /wallet &amp; /walletsolidity.
-* Description: Query the list of information of transactions in a specific block.
-* Parameter num: the height of the block.
-* Return: The list of transaction information.</p>
+<p>This api is both added in the context: /wallet &amp; /walletsolidity.</p>
+<ul>
+<li>Description: Query the list of information of transactions in a specific block.</li>
+<li>Parameter num: the height of the block.</li>
+<li>Return: The list of transaction information.</li>
+</ul>
 <p><strong>broadcasthex</strong></p>
-<p>/wallet/broadcasthex
-* Description: broadcast signed transaction with the format of the hex string
-* Parameter: signed transaction with the format of the hex string
-* Return: the result of the broadcast</p>
+<p>/wallet/broadcasthex</p>
+<ul>
+<li>Description: broadcast signed transaction with the format of the hex string</li>
+<li>Parameter: signed transaction with the format of the hex string</li>
+<li>Return: the result of the broadcast</li>
+</ul>
 <h3 id="a-new-rpc-api-added">A new RPC API added<a class="headerlink" href="#a-new-rpc-api-added" title="Permanent link">&para;</a></h3>
 <p>Adding the <code>GetTransactionInfoByBlockNum</code> method both in <code>Wallet</code> <code>WalletSolidity</code> services：
 <div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionInfoByBlockNum</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionInfoList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8746,7 +8752,7 @@ TransactionInfoList transactionInfoList = blockingStubFull.getTransactionInfoByB
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 6, 2026 05:03:13 UTC">May 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:50:08 UTC">May 8, 2026</span>
   </span>
 
     

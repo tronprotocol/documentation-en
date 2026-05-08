@@ -8696,10 +8696,12 @@
 <li><strong>HTTP status code</strong>: always 200; business errors are conveyed via the <code>error</code> field in the response body (see <code>JsonRpcServlet.java</code>).</li>
 <li><strong>Numeric encoding</strong>: all numbers (block number, balance, gas, timestamp, etc.) use <code>0x</code>-prefixed hex strings; null values map to <code>0x</code> or <code>0x0</code>.</li>
 <li><strong>Address encoding</strong>: JSON-RPC interfaces accept <code>0x</code>-prefixed 20-byte hex addresses by default; base58check is also accepted (internally converted by <code>JsonRpcApiUtil.addressCompatibleToByteArray</code>).</li>
-<li><strong>Block tags</strong>: among the common <code>latest</code> / <code>earliest</code> / <code>pending</code> / <code>finalized</code>, <strong>only a few methods support these tags</strong>:</li>
+<li><strong>Block tags</strong>: among the common <code>latest</code> / <code>earliest</code> / <code>pending</code> / <code>finalized</code>, <strong>only a few methods support these tags</strong>:<ul>
 <li>Block-query methods such as <code>eth_getBlockByNumber</code> and <code>eth_getBlockReceipts</code> accept <code>latest</code> / <code>earliest</code> / <code>finalized</code>; <code>pending</code> is explicitly unsupported and throws <code>-32602 TAG pending not supported</code>.</li>
 <li><code>eth_getBalance</code> / <code>eth_getStorageAt</code> / <code>eth_getCode</code> / <code>eth_call</code> <strong>only support <code>latest</code></strong>; <code>earliest</code> / <code>pending</code> / <code>finalized</code> raise <code>-32602 TAG [earliest | pending | finalized] not supported</code>, and a specific height raises <code>-32602 QUANTITY not supported, just support TAG as latest</code>.</li>
 <li><code>eth_newFilter</code> does not support <code>finalized</code> (raises <code>-32602 invalid block range params</code>).</li>
+</ul>
+</li>
 </ul>
 <h2 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h2>
 <p>JSON-RPC protocol errors use <code>error.code</code> / <code>error.message</code>. Business exceptions map as follows (see annotations on <code>TronJsonRpc.java</code> + <code>JsonRpcErrorResolver.java</code>):</p>
@@ -9021,7 +9023,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 03:13:07 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:03:41 UTC">May 8, 2026</span>
   </span>
 
     
