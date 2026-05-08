@@ -85,6 +85,7 @@ Parameters are as follows:
 
 ### Example:
 Suppose the trading pair ID for `abc` and `TRX` is 1, with the current state:
+
 - `abc` balance is 10,000,000.
 - `TRX` balance is 1,000,000.
 
@@ -112,6 +113,7 @@ Parameters are as follows:
 
 ### Example:
 Suppose the trading pair ID for `abc` and `TRX` is 1, with the current state:
+
 - `abc` balance is 10,000,000.
 - `TRX` balance is 1,000,000.
 

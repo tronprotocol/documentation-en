@@ -12,6 +12,7 @@ Estimate a transaction's energy consumption (Tron's counterpart of Ethereum gas)
 | `params[0]` | object | yes | `CallArguments` (same as [`eth_call`](eth_call.md)); `from` / `to` / `value` / `data` are used to infer the contract type |
 
 `CallArguments.getContractType` inference rules:
+
 - `to` is empty and `data` is non-empty → `CreateSmartContract`
 - `to` is a contract address → `TriggerSmartContract`
 - `to` is a regular account and `value` is non-empty → `TransferContract` (returns `0x0` directly without entering EVM estimation)
