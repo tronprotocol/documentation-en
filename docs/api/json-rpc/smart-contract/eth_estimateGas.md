@@ -38,8 +38,8 @@ Hex-encoded energy usage:
 
 - Plain TRX transfer (`TransferContract`) → `0x0`
 - Contract call / deployment → depends on node config:
-  - `node.supportEstimateEnergy = true` returns `EstimateEnergyMessage.energyRequired`
-  - Default (false) → returns `TransactionExtention.energyUsed` (the actual usage of one constant-call)
+    - `node.supportEstimateEnergy = true` returns `EstimateEnergyMessage.energyRequired`
+    - Default (false) → returns `TransactionExtention.energyUsed` (the actual usage of one constant-call)
 
 The example below is the real response captured from the Nile testnet curl above (the TRX transfer takes the `TransferContract` path and returns `0x0` directly without entering the EVM):
 
