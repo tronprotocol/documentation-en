@@ -1,0 +1,9373 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/versions/v4.8.1/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../v4.8.0.1/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>v4.8.1 (Democritus) - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#greatvoyage-481democritus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              v4.8.1 (Democritus)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tronprotocol/documentation-en
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tronprotocol/documentation-en
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../api/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../api/http/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            HTTP API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Account
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/account/getaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account by address
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/account/getaccountbalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account's balance at a specific block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/account/getaccountnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account's bandwidth resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/account/getaccountresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query bandwidth + energy + TronPower
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/account/createaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create an on-chain account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/account/updateaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an account's name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/account/accountpermissionupdate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure multi-sig permissions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/account/validateaddress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validate an address
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Block / transaction query
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Block / transaction query
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/getnowblock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latest block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/getblock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generic block query
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/getblockbynum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block by height
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/getblockbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block by hash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/getblockbylimitnext/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blocks in a range
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/getblockbylatestnum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The most recent N blocks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/getblockbalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Per-account balance changes within a block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/gettransactioncountbyblocknum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction count in a block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/gettransactionbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/gettransactioninfobyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction receipt by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/gettransactioninfobyblocknum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction receipts by block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/getpendingsize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pending pool size
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/gettransactionfrompending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single pending transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/block-and-tx-query/gettransactionlistfrompending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All pending transaction IDs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transaction build / broadcast
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Transaction build / broadcast
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/tx-build-and-broadcast/createtransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build a TRX transfer transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/tx-build-and-broadcast/getsignweight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current multi-sig weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/tx-build-and-broadcast/getapprovedlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Addresses that have already signed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/tx-build-and-broadcast/broadcasttransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcast a signed transaction (JSON)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/tx-build-and-broadcast/broadcasthex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcast a signed transaction (hex)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_5" id="__nav_4_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TRC10 asset
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            TRC10 asset
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/createassetissue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue a TRC10 token
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/updateasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update a TRC10 description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/transferasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/participateassetissue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Participate in a TRC10 fundraising
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/unfreezeasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfreeze TRC10 frozen by the issuer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/getassetissuebyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Look up a TRC10 by id
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/getassetissuebyname/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Look up a TRC10 by name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/getassetissuelistbyname/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All TRC10s with a given name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/getassetissuebyaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TRC10s issued by an account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/getassetissuelist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All TRC10s on the network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/asset/getpaginatedassetissuelist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated TRC10 list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_6" id="__nav_4_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart contract
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Smart contract
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/deploycontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy a contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/triggersmartcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trigger a contract (write)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/triggerconstantcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read-only contract call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/estimateenergy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimate energy usage of a call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/getcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contract metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/getcontractinfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Full contract runtime info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/clearabi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clear a contract's ABI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/updatesetting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change the user-energy percentage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/smart-contract/updateenergylimit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change the deployer's energy limit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_7" id="__nav_4_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Witness / governance
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Witness / governance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/createwitness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apply to become an SR candidate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/updatewitness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an SR's URL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/listwitnesses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All SR candidates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/getpaginatednowwitnesslist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated SR list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/votewitnessaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vote for SRs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/getBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    An SR's current brokerage rate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/updateBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an SR's brokerage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/getReward/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Claimable rewards for an account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/withdrawbalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw block production rewards / dividends
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/proposalcreate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a chain-parameter proposal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/proposalapprove/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vote on a proposal as an SR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/proposaldelete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw your own proposal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/listproposals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List of proposals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/getproposalbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proposal by ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/getpaginatedproposallist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated proposal list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/getchainparameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current chain parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/witness-and-governance/getnextmaintenancetime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next maintenance period time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_8" id="__nav_4_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Stake 1.0 (unfreeze and query only)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Stake 1.0 (unfreeze and query only)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v1/freezebalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Freeze TRX for resources (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v1/unfreezebalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfreeze matured resources (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v1/getdelegatedresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation records (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v1/getdelegatedresourceaccountindex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation counterparty addresses (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_9" id="__nav_4_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Stake 2.0
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Stake 2.0
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/freezebalancev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Freeze TRX for resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/unfreezebalancev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initiate unfreeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/withdrawexpireunfreeze/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw matured unfreezes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/cancelallunfreezev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cancel all unmatured unfreezes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/delegateresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Delegate resources to another account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/undelegateresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Undelegate resources from another account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/getdelegatedresourcev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/getdelegatedresourceaccountindexv2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation counterparty addresses
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/getcandelegatedmaxsize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current maximum delegatable amount
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/getavailableunfreezecount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remaining unfreeze count
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/stake-v2/getcanwithdrawunfreezeamount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdrawable unfreeze amount at a given time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_10" id="__nav_4_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Node / pricing / tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Node / pricing / tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/node-and-tools/getnodeinfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/node-and-tools/listnodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known peers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/node-and-tools/getenergyprices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historical energy unit prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/node-and-tools/getbandwidthprices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historical bandwidth unit prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/node-and-tools/getburntrx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cumulative burned TRX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../api/rpc/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            gRPC API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Account
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/account/GetAccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account by address
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/account/GetAccountBalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account's balance at a specific block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/account/GetAccountNet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account's bandwidth resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/account/GetAccountResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query bandwidth + energy + TronPower
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/account/CreateAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create an on-chain account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/account/UpdateAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an account's name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/account/AccountPermissionUpdate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure multi-sig permissions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_3" id="__nav_4_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Block / transaction query
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Block / transaction query
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetNowBlock2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latest block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetBlock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generic block query
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetBlockByNum2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block by height
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetBlockById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block by hash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetBlockByLimitNext2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blocks in a range
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetBlockByLatestNum2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The most recent N blocks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetBlockBalanceTrace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Per-account balance changes within a block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetTransactionCountByBlockNum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction count in a block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetTransactionById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetTransactionInfoById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction receipt by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetTransactionInfoByBlockNum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction receipts by block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetPendingSize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pending pool size
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetTransactionFromPending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single pending transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/block-and-tx-query/GetTransactionListFromPending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All pending transaction IDs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_4" id="__nav_4_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transaction build / broadcast
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Transaction build / broadcast
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/tx-build-and-broadcast/CreateTransaction2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build a TRX transfer transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/tx-build-and-broadcast/GetTransactionSignWeight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current multi-sig weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/tx-build-and-broadcast/GetTransactionApprovedList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Addresses that have already signed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/tx-build-and-broadcast/BroadcastTransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcast a signed transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_5" id="__nav_4_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TRC10 asset
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            TRC10 asset
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/CreateAssetIssue2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue a TRC10 token
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/UpdateAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update a TRC10 description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/TransferAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/ParticipateAssetIssue2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Participate in a TRC10 fundraising
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/UnfreezeAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfreeze TRC10 frozen by the issuer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/GetAssetIssueById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Look up a TRC10 by id
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/GetAssetIssueByName/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Look up a TRC10 by name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/GetAssetIssueListByName/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All TRC10s with a given name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/GetAssetIssueByAccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TRC10s issued by an account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/GetAssetIssueList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All TRC10s on the network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/asset/GetPaginatedAssetIssueList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated TRC10 list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_6" id="__nav_4_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart contract
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Smart contract
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/DeployContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy a contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/TriggerContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trigger a contract (write)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/TriggerConstantContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read-only contract call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/EstimateEnergy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimate energy usage of a call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/GetContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contract metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/GetContractInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Full contract runtime info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/ClearContractABI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clear a contract's ABI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/UpdateSetting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change the user-energy percentage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/smart-contract/UpdateEnergyLimit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change the deployer's energy limit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_7" id="__nav_4_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Witness / governance
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Witness / governance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/CreateWitness2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apply to become an SR candidate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/UpdateWitness2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an SR's URL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/ListWitnesses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All SR candidates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/GetPaginatedNowWitnessList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated SR list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/VoteWitnessAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vote for SRs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/GetBrokerageInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    An SR's current brokerage rate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/UpdateBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an SR's brokerage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/GetRewardInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Claimable rewards for an account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/WithdrawBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw block production rewards / dividends
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/ProposalCreate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a chain-parameter proposal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/ProposalApprove/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vote on a proposal as an SR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/ProposalDelete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw your own proposal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/ListProposals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List of proposals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/GetProposalById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proposal by ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/GetPaginatedProposalList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated proposal list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/GetChainParameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current chain parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/witness-and-governance/GetNextMaintenanceTime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next maintenance period time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_8" id="__nav_4_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Stake 1.0 (unfreeze and query only)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Stake 1.0 (unfreeze and query only)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v1/FreezeBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Freeze TRX for resources (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v1/UnfreezeBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfreeze matured resources (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v1/GetDelegatedResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation records (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v1/GetDelegatedResourceAccountIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation counterparty addresses (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_9" id="__nav_4_3_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Stake 2.0
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Stake 2.0
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/FreezeBalanceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Freeze TRX for resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/UnfreezeBalanceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initiate unfreeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/WithdrawExpireUnfreeze/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw matured unfreezes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/CancelAllUnfreezeV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cancel all unmatured unfreezes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/DelegateResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Delegate resources to another account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/UnDelegateResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Undelegate resources from another account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/GetDelegatedResourceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/GetDelegatedResourceAccountIndexV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation counterparty addresses
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/GetCanDelegatedMaxSize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current maximum delegatable amount
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/GetAvailableUnfreezeCount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remaining unfreeze count
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/stake-v2/GetCanWithdrawUnfreezeAmount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdrawable unfreeze amount at a given time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_10" id="__nav_4_3_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Node / pricing / tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            Node / pricing / tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/node-and-tools/GetNodeInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/node-and-tools/ListNodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known peers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/node-and-tools/GetEnergyPrices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historical energy unit prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/node-and-tools/GetBandwidthPrices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historical bandwidth unit prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/node-and-tools/GetBurnTrx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cumulative burned TRX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../api/json-rpc/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            jsonRPC API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Node info / chain identity
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Node info / chain identity
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/web3_clientVersion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Client version string
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/web3_sha3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keccak-256 hash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/net_version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/net_listening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whether listening on P2P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/net_peerCount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Number of peers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/eth_chainId/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chain ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/eth_protocolVersion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/eth_syncing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sync status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/eth_blockNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latest block height
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/node/eth_gasPrice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current energy unit price
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Block / transaction query
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Block / transaction query
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getBlockByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a block by hash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getBlockByNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a block by height / tag
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block transaction count (by hash)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block transaction count (by height)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getTransactionByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a transaction by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a transaction by block hash + index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a transaction by block height + index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getTransactionReceipt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a receipt by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/block-and-tx-query/eth_getBlockReceipts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Receipt list for an entire block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_4" id="__nav_4_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account state
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Account state
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/account/eth_getBalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account TRX balance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/account/eth_getStorageAt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contract storage slot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/account/eth_getCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contract runtime bytecode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_5" id="__nav_4_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart contract calls
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Smart contract calls
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/smart-contract/eth_call/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read-only contract call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/smart-contract/eth_estimateGas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimate energy consumption
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_6" id="__nav_4_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logs / filters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Logs / filters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/filter/eth_getLogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-shot log query
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/filter/eth_newFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Register a log filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/filter/eth_newBlockFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Register a new-block filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/filter/eth_uninstallFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uninstall a filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/filter/eth_getFilterChanges/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pull and drain filter increments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/filter/eth_getFilterLogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pull a log filter's full set
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_7" id="__nav_4_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transaction build
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Transaction build
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/tx-build/buildTransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build an unsigned transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_8" id="__nav_4_4_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compatibility stub methods
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            Compatibility stub methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/stub/eth_coinbase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    etherbase address
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/stub/eth_accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node-managed accounts list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/stub/eth_getWork/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mining work info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/tip-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            History
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    v4.8.1 (Democritus)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.1 (Democritus)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#core" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#tvm" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#net" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Net
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#other-changes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#api" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.8.0.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.0.1 (Seneca)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.8.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.0 (Kant)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.7 (Epicurus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.6 (Anaximander)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.5 (Cleobulus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.4 (Bias)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.3.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.3.1 (Solon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.3 (Chilon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.2 (Periander)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.1.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.1.1 (Pittacus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.1 (Sartre)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.7.0.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.0.1 (Aristotle)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.6.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.6.0 (Socrates)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.5.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.5.2 (Aurelius)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.5.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.5.1 (Tertullian)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.4.6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.6 (David)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.4.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.5 (Cicero)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.4.4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.4 (Plotinus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.4.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.2 (Augustinus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.4.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.0 (Rousseau)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.3.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.3.0 (Bacon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.2.2.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.2.1 (Epictetus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.2.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.2 (Lucretius)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.2.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.0 (Plato)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.1.3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.3 (Thales)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.1.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.1.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4.0.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.0.0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v3.7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Odyssey-v3.7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v3.6.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Odyssey-v3.6.5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#core" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Core
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#tvm" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#net" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Net
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#other-changes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#api" class="md-nav__link" >
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/versions/v4.8.1.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/tronprotocol/documentation-en/raw/master/docs/releases/versions/v4.8.1.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="greatvoyage-481democritus">GreatVoyage-4.8.1(Democritus)<a class="headerlink" href="#greatvoyage-481democritus" title="Permanent link">&para;</a></h1>
+<h3 id="core">Core<a class="headerlink" href="#core" title="Permanent link">&para;</a></h3>
+<h4 id="1-expand-compatibility-for-arm64-architecture-and-jdk-17">1. Expand compatibility for ARM64 architecture and JDK 17<a class="headerlink" href="#1-expand-compatibility-for-arm64-architecture-and-jdk-17" title="Permanent link">&para;</a></h4>
+<p>To further enrich the java-tron technical ecosystem, the Democritus version introduces support for the arm64 architecture. In arm64 environments, the system currently supports JDK 17 and the RocksDB database.</p>
+<ul>
+<li><strong>ARM64 architecture</strong><ul>
+<li><strong>Mandatory JDK 17</strong>: 
+JDK 17 is the required Java runtime environment to ensure the operational stability of the node in the arm64 environments (based on JEP 237, 388, 391).</li>
+<li><strong>Mandatory RocksDB</strong>: 
+The database only supports <strong>RocksDB (v9.7.4)</strong>. LevelDB JNI does not support arm64 architecture and lacks maintenance, so the community-active RocksDB was chosen.</li>
+<li><strong>Floating point computation adaptation</strong>: 
+Floating-point calculations have been switched to use <code>StrictMath</code> via a proposal to ensure consistent results across different platforms. Before the proposal took effect, differences in floating-point implementations between arm64 and x86_64 architectures could lead to inconsistent results. Therefore, on arm64 architectures,  results are kept consistent with x86_64 mainnet data via hardcoding.<ul>
+<li>Warning: Private networks on x86_64 platforms using floating-point computation (specifically Bancor transactions involving <code>pow</code>) may face synchronization issues from genesis on arm64. In such cases, please use a database snapshot from an existing height to start arm64 nodes.</li>
+</ul>
+</li>
+<li><strong>Toolkit limitations</strong>: 
+LevelDB-related commands (<code>db archive</code> and <code>db convert</code>) are not supported in arm64 environments.</li>
+</ul>
+</li>
+<li><strong>Changes under x86_64 architecture</strong><ul>
+<li><strong>Mandatory JDK 8</strong>: 
+Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as <code>@PostConstruct</code> will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86_64 to ensure environment stability.</li>
+<li><strong>RocksDB/LevelDB compatibility restrictions</strong>: 
+Due to version discrepancies (x86_64 uses RocksDB v5.15.10 which supports LevelDB, while arm64 uses v9.7.4 which does not), forcing RocksDB to open LevelDB in an arm64 environment triggers "Database Corruption" errors. To ensure consistent cross-platform behavior and data migration, <strong>Democritus uniformly prohibits RocksDB from accessing LevelDB databases</strong> (Existing databases successfully opened via compatibility mode remain unaffected). Error prompts for LevelDB attempting to open RocksDB have also been optimized, and interfaces/exception logic have been standardized.</li>
+<li><strong>Toolkit update</strong>: 
+Previously, <code>db convert</code> defaulted to a "compatibility mode" that only updated the value of <code>engine.properties</code> to RocksDB while keeping the underlying data in LevelDB format. To align with arm64's strict RocksDB requirements, the <code>db convert</code> command has been refactored to perform a <strong>non-compatibility conversion</strong> by default (previously the <code>–safe</code> flag logic). Consequently, the <code>–safe</code> parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.</li>
+</ul>
+</li>
+<li>
+<p><strong>Other changes</strong></p>
+<ul>
+<li><strong>JDK 17 Compatibility</strong><ul>
+<li>Null pointer compatibility: Optimized null pointer prompt information to facilitate problem positioning (based on JEP 358).</li>
+<li>Number conversion exception compatibility: Optimized number conversion exception prompts and added conversion radix error prompts (based on JDK-8176425).</li>
+<li>JDK version parsing compatibility: Adapted to JDK 10+ version number format changes (based on JEP 223).</li>
+<li>var inference keyword: Supports var type inference mechanism (based on JEP 286).</li>
+</ul>
+</li>
+<li><strong>RocksDB Resource Optimization</strong><ul>
+<li>Increase max handle setting parameter: Added the parameter <code>dbSettings.maxOpenFiles</code>, default is 5000 (previously mandatory and unconfigurable), developers can adjust according to server load.</li>
+<li>Resource release optimization: Set a reasonable lifecycle for RocksDB resources to release used resources in time, avoiding potential memory leak problems.</li>
+<li>
+<p>To support JDK 17 and arm64 architecture, the following dependency changes were made:</p>
+<table>
+<thead>
+<tr>
+<th>group-name</th>
+<th>package-name</th>
+<th>Old version</th>
+<th>New version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.projectlombok</td>
+<td>lombok</td>
+<td>1.18.12</td>
+<td>1.18.34</td>
+</tr>
+<tr>
+<td>javax.annotation</td>
+<td>javax.annotation-api</td>
+<td>-</td>
+<td>1.3.2</td>
+</tr>
+<tr>
+<td>javax.jws</td>
+<td>javax.jws-api</td>
+<td>-</td>
+<td>1.1</td>
+</tr>
+<tr>
+<td>org.aspectj</td>
+<td>aspectjrt</td>
+<td>1.8.13</td>
+<td>1.9.8</td>
+</tr>
+<tr>
+<td>org.rocksdb</td>
+<td>rocksdbjni</td>
+<td>-</td>
+<td>9.7.4(arm64)</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Issue：<a href="https://github.com/tronprotocol/java-tron/issues/5954">https://github.com/tronprotocol/java-tron/issues/5954</a></p>
+</li>
+<li>Source Code：
+<a href="https://github.com/tronprotocol/java-tron/pull/6327">https://github.com/tronprotocol/java-tron/pull/6327</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6421">https://github.com/tronprotocol/java-tron/pull/6421</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6440">https://github.com/tronprotocol/java-tron/pull/6440</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6455">https://github.com/tronprotocol/java-tron/pull/6455</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6457">https://github.com/tronprotocol/java-tron/pull/6457</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6459">https://github.com/tronprotocol/java-tron/pull/6459</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6472">https://github.com/tronprotocol/java-tron/pull/6472</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6502">https://github.com/tronprotocol/java-tron/pull/6502</a></li>
+</ul>
+<h3 id="tvm">TVM<a class="headerlink" href="#tvm" title="Permanent link">&para;</a></h3>
+<h4 id="1-modify-the-behavior-of-selfdestruct">1. Modify the behavior of <code>SELFDESTRUCT</code><a class="headerlink" href="#1-modify-the-behavior-of-selfdestruct" title="Permanent link">&para;</a></h4>
+<p>Following the proposal to deprecate the <code>SELFDESTRUCT</code> instruction via TIP-652 in GreatVoyage-4.8.0 (Kant), the Democritus release formally introduces behavioral adjustments to <code>SELFDESTRUCT</code>. This change ensures deep compatibility with Ethereum's EIP-6780, aligning the TVM (TRON Virtual Machine) with EVM standards. Detailed specifications can be found in TIP-6780.</p>
+<p>In versions prior to Democritus, <code>SELFDESTRUCT</code> allowed a contract to terminate itself, transfer its funds to a designated address, and delete all associated account data (code, storage, and the account itself). Starting with the Democritus release, the behavior of the <code>SELFDESTRUCT</code> instruction is modified as follows:</p>
+<ul>
+<li>
+<p><strong>Restricted Execution Scenarios</strong>: 
+Account data deletion (including code, storage, and the account itself) is now only permitted if <code>SELFDESTRUCT</code> is invoked within the same transaction in which the contract was created.</p>
+<ul>
+<li>Scenario 1: invoke <code>SELFDESTRUCT</code> in a Subsequent Transaction (Standard Case)<ul>
+<li>The contract account is <strong>not</strong> destroyed.</li>
+<li>Execution of the current contract stops immediately.</li>
+<li>No data is deleted, including storage keys, code, or the account itself. However, all assets (TRX, staked TRX, and TRC10 tokens) are transferred to the target address.</li>
+<li>If the target address is the contract itself, the assets are not burned.</li>
+</ul>
+</li>
+<li>Scenario 2: invoke <code>SELFDESTRUCT</code> in the Same Transaction (Creation &amp; Destruction)<ul>
+<li>Execution stops immediately.</li>
+<li>All account data is purged.</li>
+<li>All assets are transferred to the target address.</li>
+<li>If the target address is the contract itself, the balance is reset to zero and the assets are burned.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Energy Cost Adjustment</strong>: 
+To increase the threshold for usage and further mitigate abuse, the Energy cost for the <code>SELFDESTRUCT</code> opcode has been increased from 0 to 5,000.</p>
+</li>
+</ul>
+<p><strong>NOTE</strong>: This feature is governed by TRON network parameter #94. It is disabled by default (value: 0) and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.</p>
+<ul>
+<li>TIP: <a href="https://github.com/tronprotocol/tips/blob/master/tip-6780.md">https://github.com/tronprotocol/tips/blob/master/tip-6780.md</a></li>
+<li>Source Code：
+<a href="https://github.com/tronprotocol/java-tron/pull/6383">https://github.com/tronprotocol/java-tron/pull/6383</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6448">https://github.com/tronprotocol/java-tron/pull/6448</a></li>
+</ul>
+<h3 id="net">Net<a class="headerlink" href="#net" title="Permanent link">&para;</a></h3>
+<h4 id="1-fix-gt-lastnum-and-gt-highnofork-error-during-block-synchronizing">1. Fix 'gt lastNum' and 'gt highNoFork' error during block synchronizing<a class="headerlink" href="#1-fix-gt-lastnum-and-gt-highnofork-error-during-block-synchronizing" title="Permanent link">&para;</a></h4>
+<p>The synchronization service previously outputted full exception stack traces during specific edge-case scenarios involving <code>gt highNoFork</code> and <code>gt lastNum</code> errors. To better align with standard error-level logging practices, this behavior has been adjusted. The service now logs only the specific exception message, suppressing the full stack trace to reduce log noise and improve readability.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6381">https://github.com/tronprotocol/java-tron/pull/6381</a></li>
+</ul>
+<h4 id="2-fix-the-light-node-incorrectly-reporting-a-forked-disconnection">2. Fix the light node incorrectly reporting a FORKED disconnection<a class="headerlink" href="#2-fix-the-light-node-incorrectly-reporting-a-forked-disconnection" title="Permanent link">&para;</a></h4>
+<p>In versions prior to Democritus, light nodes often misidentified connection issues as <code>FORKED</code> during handshakes with Full Nodes of lower block heights. This occurred specifically when a Full Node's highest solidified block was not present on the light node's local main chain.</p>
+<p>The Democritus release refines this logic by introducing a specific height threshold: a <code>FORKED</code> status is now only triggered if the light node’s lowest block height is lower than the Full Node’s highest solidified block height. In all other cases of chain mismatch, the error is correctly categorized as <code>LIGHT_NODE_SYNC_FAIL</code>.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6375">https://github.com/tronprotocol/java-tron/pull/6375</a></li>
+</ul>
+<h4 id="3-optimize-p2p-disconnection-reason-codes">3. Optimize P2P disconnection reason codes<a class="headerlink" href="#3-optimize-p2p-disconnection-reason-codes" title="Permanent link">&para;</a></h4>
+<p>Prior to the Democritus release, certain <code>P2P_DISCONNECT</code> messages utilized vague reason codes, hindering accurate network troubleshooting. This update refines the error reporting logic for three specific scenarios to provide clearer diagnostic data:</p>
+<ul>
+<li>Scenario 1: If a connection is terminated because a received block fails signature verification, the reason code is updated from <code>UNKNOWN</code> to <code>BAD_BLOCK</code>.</li>
+<li>Scenario 2: Previously, failures during the <code>HelloMessage</code> validation incorrectly triggered an <code>UNEXPECTED_IDENTITY</code> error, even when no identity-specific checks were performed. This has been corrected to <code>INCOMPATIBLE_PROTOCOL</code> to accurately reflect the validation failure.</li>
+<li>
+<p>Scenario 3: When a <code>P2P_HELLO</code> message contains a Block ID with a length other than 32 bytes, the disconnection reason is now reported as <code>INCOMPATIBLE_PROTOCOL</code> instead of <code>UNKNOWN</code>.</p>
+</li>
+<li>
+<p>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6394">https://github.com/tronprotocol/java-tron/pull/6394</a></p>
+</li>
+</ul>
+<h4 id="4-implement-p2p-message-rate-limit">4. Implement P2P message rate limit<a class="headerlink" href="#4-implement-p2p-message-rate-limit" title="Permanent link">&para;</a></h4>
+<p>Prior to the Democritus release, P2P message processing was not rate-limited, leaving nodes vulnerable to resource exhaustion (bandwidth, CPU, and RAM) when handling high message volumes. To address this, Democritus introduces a per-peer rate limiting mechanism. If the frequency of specific messages from a single peer exceeds defined thresholds, the node will drop the messages and proactively disconnect from that peer. The following limits are applied based on message type and node state:</p>
+<ul>
+<li><code>SyncBlockChainMessage</code>: Restricted to 3 QPS during the synchronization phase (defined as <code>ChainInventory.remainNum &gt; 0</code>).</li>
+<li><code>FetchInvDataMessage</code>: Restricted to 3 QPS during the block synchronization stage.</li>
+<li>
+<p><code>P2P_DISCONNECT</code>: Processing is limited to 1 QPS.</p>
+</li>
+<li>
+<p>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6393">https://github.com/tronprotocol/java-tron/pull/6393</a></p>
+</li>
+</ul>
+<h4 id="5-optimize-concurrent-access-to-fields-of-peerconnection">5. Optimize concurrent access to fields of <code>PeerConnection</code><a class="headerlink" href="#5-optimize-concurrent-access-to-fields-of-peerconnection" title="Permanent link">&para;</a></h4>
+<p>The Democritus release optimizes concurrent access to <code>PeerConnection</code> by applying the <code>volatile</code> keyword to shared fields and refining the sequence of variable assignments. These changes ensure thread-safe visibility and prevent race conditions, significantly reducing exceptions caused by state inconsistencies during network synchronization.</p>
+<ul>
+<li>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/6360">https://github.com/tronprotocol/java-tron/pull/6360</a></li>
+</ul>
+<h3 id="other-changes">Other Changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h3>
+<p><strong>Configuration &amp; Dependencies</strong></p>
+<h4 id="1-optimize-the-configuration-switch-for-zksnark">1. Optimize the configuration switch for zkSNARK<a class="headerlink" href="#1-optimize-the-configuration-switch-for-zksnark" title="Permanent link">&para;</a></h4>
+<p>Added configuration item <code>node.allowShieldedTransactionApi</code> to replace <code>node.fullNodeAllowShieldedTransaction</code>.</p>
+<ul>
+<li>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6371">https://github.com/tronprotocol/java-tron/pull/6371</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6427">https://github.com/tronprotocol/java-tron/pull/6427</a></li>
+</ul>
+<h4 id="2-upgrade-gradle-to-support-jitpack-publish">2. Upgrade gradle to support jitpack publish<a class="headerlink" href="#2-upgrade-gradle-to-support-jitpack-publish" title="Permanent link">&para;</a></h4>
+<p>Gradle version has been upgraded to 7.6.4, using the maven-publish plugin to support jitpack publishing.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6367">https://github.com/tronprotocol/java-tron/pull/6367</a></li>
+</ul>
+<h4 id="3-optimize-local-witness-initialization-logic">3. Optimize local witness initialization logic<a class="headerlink" href="#3-optimize-local-witness-initialization-logic" title="Permanent link">&para;</a></h4>
+<p>The Democritus release refines the local witness initialization process. Private key and address initialization logic is now executed exclusively by witness nodes. If an invalid witness address is configured, the program will throw an exception and terminate. Additionally, the cryptography library has been upgraded from <code>org.bouncycastle:bcprov-jdk15on:1.69</code> to <code>org.bouncycastle:bcprov-jdk18on:1.79</code>.</p>
+<ul>
+<li>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6368">https://github.com/tronprotocol/java-tron/pull/6368</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6452">https://github.com/tronprotocol/java-tron/pull/6452</a></li>
+</ul>
+<h4 id="4-optimize-log-prompts-for-missing-blackhole-configuration">4. Optimize log prompts for missing <code>Blackhole</code> configuration<a class="headerlink" href="#4-optimize-log-prompts-for-missing-blackhole-configuration" title="Permanent link">&para;</a></h4>
+<p>The Democritus release improves the error logging for missing <code>Blackhole</code> account configurations. The updated logs provide more actionable guidance, explicitly notifying users to configure the <code>Blackhole</code> account address within the <code>config.conf</code> file.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6356">https://github.com/tronprotocol/java-tron/pull/6356</a></li>
+</ul>
+<h4 id="5-enrich-fullnode-command-line-options">5. Enrich FullNode command-line options<a class="headerlink" href="#5-enrich-fullnode-command-line-options" title="Permanent link">&para;</a></h4>
+<p>Starting with the <strong>Democritus</strong> release, the standalone <code>SolidityNode.jar</code> and <code>KeystoreFactory.jar</code> have been merged into <code>FullNode</code>. Users can start the SolidityNode service using the command-line parameter <code>--solidity</code>, or start the KeystoreFactory service using <code>--keystore-factory</code>. This unification reduces storage overhead and simplifies build and deployment workflows.</p>
+<ul>
+<li>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6397">https://github.com/tronprotocol/java-tron/pull/6397</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6450">https://github.com/tronprotocol/java-tron/pull/6450</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6446">https://github.com/tronprotocol/java-tron/pull/6446</a></li>
+</ul>
+<h4 id="6-synchronize-configconf-with-tron-deployment">6. Synchronize <code>config.conf</code> with <code>tron-deployment</code><a class="headerlink" href="#6-synchronize-configconf-with-tron-deployment" title="Permanent link">&para;</a></h4>
+<p>The Democritus version introduces full synchronization of configuration items between <code>config.conf</code> and the <code>tron-deployment</code> repository, and updates the seed node list in <code>seed.node.ip.list</code>.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6332">https://github.com/tronprotocol/java-tron/pull/6332</a></li>
+</ul>
+<h4 id="7-standardize-full-configuration-and-annotation-guidelines">7. Standardize full configuration and annotation guidelines<a class="headerlink" href="#7-standardize-full-configuration-and-annotation-guidelines" title="Permanent link">&para;</a></h4>
+<p>The Democritus version introduces a standardized configuration file containing all supported parameters. <strong>Any configuration item not included in this file is considered invalid or deprecated.</strong> Additionally, this release defines specific annotation and commenting standards within the configuration files:</p>
+<ul>
+<li>Whole-line comments Must begin with the <code>#</code> prefix.</li>
+<li>Comments appended to the end of a configuration line may use either <code>#</code> or <code>//</code>.</li>
+<li>
+<p>Configuration items without default values must be prefixed with <code>#</code> to serve as a commented-out template.</p>
+</li>
+<li>
+<p>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6430">https://github.com/tronprotocol/java-tron/pull/6430</a></p>
+</li>
+</ul>
+<h4 id="8-update-dependencies">8. Update dependencies<a class="headerlink" href="#8-update-dependencies" title="Permanent link">&para;</a></h4>
+<p>Upgraded dependencies such as <code>grpc-java</code>, <code>spring</code>, <code>jackson</code>, and <code>jetty</code>:</p>
+<table>
+<thead>
+<tr>
+<th>group-name</th>
+<th>package-name</th>
+<th>Old version</th>
+<th>New version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.eclipse.jetty</td>
+<td>jetty-server</td>
+<td>9.4.53.v20231009</td>
+<td>9.4.57.v20241219</td>
+</tr>
+<tr>
+<td>com.cedarsoftware</td>
+<td>java-util</td>
+<td>1.8.0</td>
+<td>3.2.0</td>
+</tr>
+<tr>
+<td>com.fasterxml.jackson.core</td>
+<td>jackson-databind</td>
+<td>2.13.4.2</td>
+<td>2.18.3</td>
+</tr>
+<tr>
+<td>org.springframework</td>
+<td>spring-context</td>
+<td>5.3.18</td>
+<td>5.3.39</td>
+</tr>
+<tr>
+<td>org.springframework</td>
+<td>spring-test</td>
+<td>5.2.0.RELEASE</td>
+<td>5.3.39</td>
+</tr>
+<tr>
+<td>io.grpc</td>
+<td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
+<td>1.60.0</td>
+<td>1.75.0</td>
+</tr>
+<tr>
+<td>com.google.protobuf</td>
+<td>protobuf-java, protobuf-java-util, protoc</td>
+<td>3.25.5</td>
+<td>3.25.8</td>
+</tr>
+</tbody>
+</table>
+<p>Deleted dependencies: </p>
+<table>
+<thead>
+<tr>
+<th>group-name</th>
+<th>package-name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>com.carrotsearch</td>
+<td>java-sizeof</td>
+</tr>
+<tr>
+<td>org.springframework</td>
+<td>spring-tx</td>
+</tr>
+<tr>
+<td>org.springframework</td>
+<td>spring-web</td>
+</tr>
+<tr>
+<td>org.hamcrest</td>
+<td>hamcrest-junit</td>
+</tr>
+<tr>
+<td>com.google.inject</td>
+<td>guice</td>
+</tr>
+<tr>
+<td>io.vavr</td>
+<td>vavr</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, the Democritus version upgrades the underlying network library <code>libp2p</code>, from 2.2.6 to 2.2.7. This version not only adds compilation support for JDK 17 but also introduces numerous optimizations and improvements:</p>
+<ul>
+<li>Added formal compilation support for JDK 17 (<a href="https://github.com/tronprotocol/libp2p/pull/113">#113</a>).</li>
+<li>Upgraded <code>grpc-netty</code> and <code>protobuf</code> libraries (<a href="https://github.com/tronprotocol/libp2p/pull/110">#110</a>).</li>
+<li>Optimized connection pool (<code>connPool</code>) and general resource allocation logic (<a href="https://github.com/tronprotocol/libp2p/pull/116">#116</a>).</li>
+<li>Implemented a concurrent external IP acquisition mechanism with built-in validation (<a href="https://github.com/tronprotocol/libp2p/pull/120">#120</a>, <a href="https://github.com/tronprotocol/libp2p/pull/121">#121</a>).</li>
+<li>
+<p>Refined network detection logic (<a href="https://github.com/tronprotocol/libp2p/pull/122">#122</a>):</p>
+</li>
+<li>
+<p>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6400">https://github.com/tronprotocol/java-tron/pull/6400</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6429">https://github.com/tronprotocol/java-tron/pull/6429</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6431">https://github.com/tronprotocol/java-tron/pull/6431</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6481">https://github.com/tronprotocol/java-tron/pull/6481</a></p>
+</li>
+</ul>
+<h4 id="9-update-code-version-to-481">9. Update code version to 4.8.1<a class="headerlink" href="#9-update-code-version-to-481" title="Permanent link">&para;</a></h4>
+<p>The version number has been formally defined as 4.8.1 to reflect the Democritus release.</p>
+<ul>
+<li>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/6445">https://github.com/tronprotocol/java-tron/pull/6445</a></li>
+</ul>
+<p><strong>Event Service</strong></p>
+<h4 id="1-optimize-transaction-info-retrieval-logic-for-event-services">1. Optimize transaction info retrieval logic for Event Services<a class="headerlink" href="#1-optimize-transaction-info-retrieval-logic-for-event-services" title="Permanent link">&para;</a></h4>
+<p>The Democritus release addresses compatibility issues encountered during the retrieval of Transaction Info. To ensure data availability, if the event service fails to retrieve data from the <code>transactionRetStore</code> database, it will automatically perform a compatibility fallback to retrieve data from the <code>transactionHistoryStore</code> database.</p>
+<ul>
+<li>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6443">https://github.com/tronprotocol/java-tron/pull/6443</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6453">https://github.com/tronprotocol/java-tron/pull/6453</a></li>
+</ul>
+<h4 id="2-remove-bloom-filter-write-toggle">2. Remove bloom filter write toggle<a class="headerlink" href="#2-remove-bloom-filter-write-toggle" title="Permanent link">&para;</a></h4>
+<p>The <code>section-bloom</code> database is used to store Bloom filters for contract logs and their corresponding block indexes. When processing <code>eth_getLogs</code> requests, the node queries this database to quickly locate matching blocks. This is a critical step for efficient event retrieval.</p>
+<p>Prior to the Democritus Release, writing to this database was controlled by the <code>node.jsonrpc.httpFullNodeEnable</code> configuration setting. If this setting was disabled, the node would not record block Bloom filter data to the <code>section-bloom</code> database. Because these index data points cannot be retrospectively backfilled automatically, users were unable to query historical transaction events that occurred while the toggle was off—even if they enabled the configuration later.</p>
+<p>Starting with the Democritus version, dependency on this configuration toggle has been removed. The node now persistently writes data to the <code>section-bloom</code> database by default. This change ensures the continuity and integrity of the Bloom filter index, completely resolving the issue where <code>eth_getLogs</code> failed to retrieve historical data due to specific configuration states.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6372">https://github.com/tronprotocol/java-tron/pull/6372</a></li>
+</ul>
+<h4 id="3-optimize-event-service-shutdown-logic">3. Optimize event service shutdown logic<a class="headerlink" href="#3-optimize-event-service-shutdown-logic" title="Permanent link">&para;</a></h4>
+<p>The Democritus version introduces an optimized shutdown logic for the <code>HistoryEventService</code> thread. By implementing a global state variable, <code>isClosed</code>, the system now ensures that resource deallocation occurs exactly once, even if the close function is invoked multiple times. This optimization effectively prevents redundant resource disposal and associated exceptions, significantly enhancing system stability during termination.</p>
+<ul>
+<li>Source Code: <a href="https://github.com/tronprotocol/java-tron/pull/6463">https://github.com/tronprotocol/java-tron/pull/6463</a></li>
+</ul>
+<p><strong>Test Case</strong></p>
+<h4 id="1-optimize-resource-management-for-test-cases">1. Optimize resource management for test cases<a class="headerlink" href="#1-optimize-resource-management-for-test-cases" title="Permanent link">&para;</a></h4>
+<p>The Democritus version introduces a systematic optimization of resource management for unit testing. These enhancements significantly improve execution efficiency while further ensuring the cleanliness and stability of the testing environment.</p>
+<ul>
+<li><strong>Standardized Cleanup Mechanism</strong>: Implemented a more rigorous file cleanup protocol to ensure that all temporary data generated during testing is thoroughly removed post-execution.</li>
+<li><strong>Improved Execution Performance</strong>: By optimizing high-latency test cases, the total duration of the unit testing suite has been reduced by up to 30%.</li>
+<li><strong>Robust Resource Release</strong>: Addressed known resource leak issues and standardized the resource release logic.</li>
+<li>
+<p><strong>Enhanced Runtime Stability</strong>: Resolved specific NullPointerExceptions.</p>
+</li>
+<li>
+<p>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6437">https://github.com/tronprotocol/java-tron/pull/6437</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6483">https://github.com/tronprotocol/java-tron/pull/6483</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6486">https://github.com/tronprotocol/java-tron/pull/6486</a></p>
+</li>
+</ul>
+<h4 id="2-implement-grpc-timeout-mechanism">2. Implement gRPC timeout mechanism<a class="headerlink" href="#2-implement-grpc-timeout-mechanism" title="Permanent link">&para;</a></h4>
+<p>When executing test cases repeatedly (e.g., over 100 times) on arm64, certain gRPC test cases would hang. To solve this, the Democritus version introduces a gRPC timeout mechanism. A 5-second execution timeout was added for individual gRPC test case, and a 30-second timeout for the entire test execution; if it times out, it breaks and continues executing subsequent logic.</p>
+<ul>
+<li>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6441">https://github.com/tronprotocol/java-tron/pull/6441</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6460">https://github.com/tronprotocol/java-tron/pull/6460</a></li>
+</ul>
+<h4 id="3-ensure-automated-termination-of-unit-test">3. Ensure automated termination of unit test<a class="headerlink" href="#3-ensure-automated-termination-of-unit-test" title="Permanent link">&para;</a></h4>
+<p>The Democritus version introduces optimizations to the termination logic of the <code>ConditionalStopTest</code> unit test. Specifically, within SR scenarios, the logic has been refined to accurately identify stop conditions even when the block production sequence undergoes changes. This ensures that the unit test terminates correctly and automatically as expected.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6469">https://github.com/tronprotocol/java-tron/pull/6469</a></li>
+</ul>
+<h4 id="4-enhance-log-context-isolation-mechanism">4. Enhance log context isolation mechanism<a class="headerlink" href="#4-enhance-log-context-isolation-mechanism" title="Permanent link">&para;</a></h4>
+<p>The Democritus version addresses the issue of global logger configuration pollution previously triggered by the <code>TronErrorTest</code> unit test. By strengthening the output of error and warning messages during the <code>LogService</code> configuration loading phase and explicitly restoring the logger context within unit tests, the system now ensures complete log environment isolation between different test cases. This improvement eliminates interference in logging behavior across test suites and provides clearer diagnostic data for rapidly locating <code>Logback</code> configuration loading anomalies.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6476">https://github.com/tronprotocol/java-tron/pull/6476</a> </li>
+</ul>
+<h4 id="5-resolve-checkstyle-violations-in-testcase">5. Resolve <code>CheckStyle</code> violations in testcase<a class="headerlink" href="#5-resolve-checkstyle-violations-in-testcase" title="Permanent link">&para;</a></h4>
+<p>Added a line break to a comment statement in the test case file to fix <code>checkStyle</code> issues in test cases.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6392">https://github.com/tronprotocol/java-tron/pull/6392</a></li>
+</ul>
+<p><strong>Documents</strong></p>
+<h4 id="1-update-readme-for-fullnode-startup-jvm-parameters">1. Update readme for FullNode startup JVM parameters<a class="headerlink" href="#1-update-readme-for-fullnode-startup-jvm-parameters" title="Permanent link">&para;</a></h4>
+<p>Adjusted the JVM startup parameters for java-tron on x86_64 and arm64 platforms, aiming to ensure that FullNode nodes can meet basic disaster recovery requirements under minimum hardware configurations; meanwhile, modified hardware requirements to recommend more stable machine configurations.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6478">https://github.com/tronprotocol/java-tron/pull/6478</a></li>
+</ul>
+<h4 id="2-fix-readme-badge-display-errors">2. Fix README badge display errors<a class="headerlink" href="#2-fix-readme-badge-display-errors" title="Permanent link">&para;</a></h4>
+<p>The Democritus version fixed the issue where the GitHub badge at the top of the README document displayed as "unknown", and modified the badge image link.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6340">https://github.com/tronprotocol/java-tron/pull/6340</a></li>
+</ul>
+<h4 id="3-update-telegram-info-and-doc-link-in-readme">3. Update telegram info and doc link in README<a class="headerlink" href="#3-update-telegram-info-and-doc-link-in-readme" title="Permanent link">&para;</a></h4>
+<p>The Democritus version updated the README document to add Telegram contact information for the official TRON development discussion group.</p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6364">https://github.com/tronprotocol/java-tron/pull/6364</a></li>
+</ul>
+<p><strong>Others</strong></p>
+<h4 id="1-tip-767-transitioning-voting-window-configuration-to-chain-governance">1. TIP-767: Transitioning voting window configuration to chain governance<a class="headerlink" href="#1-tip-767-transitioning-voting-window-configuration-to-chain-governance" title="Permanent link">&para;</a></h4>
+<p>To ensure high uniformity of governance parameters across the entire network and enhance protocol consistency, the Democritus version introduces TRON No. 92 network parameter (<code>PROPOSAL_EXPIRE_TIME</code>), transitioning the configuration of proposal expiration time to on-chain governance.</p>
+<ul>
+<li>TIP：<a href="https://github.com/tronprotocol/tips/blob/master/tip-767.md">https://github.com/tronprotocol/tips/blob/master/tip-767.md</a></li>
+<li>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6399">https://github.com/tronprotocol/java-tron/pull/6399</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6454">https://github.com/tronprotocol/java-tron/pull/6454</a></li>
+</ul>
+<h4 id="2-fix-protocol-buffer-syntax-compatibility-issue">2. Fix protocol buffer syntax compatibility issue:<a class="headerlink" href="#2-fix-protocol-buffer-syntax-compatibility-issue" title="Permanent link">&para;</a></h4>
+<p>Fixed the hexadecimal casing error in the <code>ReasonCode</code> struct, resolving compilation compatibility issues in JavaScript environments.</p>
+<ul>
+<li>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6426">https://github.com/tronprotocol/java-tron/pull/6426</a></li>
+</ul>
+<h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h4 id="1-introduce-theeth_getblockreceipts-api">1. Introduce the<code>eth_getBlockReceipts</code> API<a class="headerlink" href="#1-introduce-theeth_getblockreceipts-api" title="Permanent link">&para;</a></h4>
+<p>The Democritus version introduces the <code>eth_getBlockReceipts</code> interface, used to query all transaction receipts in a specified block. For genesis blocks, blocks already pruned by light nodes, and unproduced blocks, it returns <code>null</code>.</p>
+<ul>
+<li><strong>Parameters</strong>: block number (required). Supports three types: hexadecimal string, blockHash (with or without 0x prefix), or tags ("latest", "earliest", "finalized").</li>
+<li>
+<p><strong>Returns</strong>: An array of objects, where each object is a receipt for a transaction in that block. The structure is consistent with <a href="https://developers.tron.network/reference/eth_gettransactionreceipt">eth_getTransactionReceipt</a>.</p>
+</li>
+<li>
+<p>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6379">https://github.com/tronprotocol/java-tron/pull/6379</a> <a href="https://github.com/tronprotocol/java-tron/pull/6433">https://github.com/tronprotocol/java-tron/pull/6433</a></p>
+</li>
+</ul>
+<h4 id="2-introduce-a-new-api-to-query-the-real-time-vote-count-of-witness">2. Introduce a new API to query the real-time vote count of witness<a class="headerlink" href="#2-introduce-a-new-api-to-query-the-real-time-vote-count-of-witness" title="Permanent link">&para;</a></h4>
+<p>The Democritus version introduces the <code>getPaginatedNowWitnessList</code> interface. This endpoint is designed to query real-time voting data for the current epoch and return a paginated list of witnesses sorted in descending order of their vote counts. where votes = final votes at the end of the last maintenance period + voting increments in the current epoch (can be negative).</p>
+<ul>
+<li><strong>Parameters</strong><ul>
+<li>offset: long, start index, requires &gt;= 0.</li>
+<li>limit: long, number of items to return, requires &gt; 0, upper limit is 1000.</li>
+<li>visible: boolean, optional; controls whether the returned JSON address is in readable encoding.</li>
+</ul>
+</li>
+<li><strong>Returns</strong><ul>
+<li>Success: witnesses array, each item is a Witness (containing address, vote count, URL, etc.), sorted descending by "real-time votes".</li>
+<li>Failure: No result or invalid parameters. When limit &lt;= 0, offset &lt; 0, or offset &gt;= total Witness count, returns {} (empty object), http code = 200.</li>
+</ul>
+</li>
+</ul>
+<p>API-specific errors: When in a maintenance period and requesting non-solidified data, throws a maintenance period unavailable exception, http code = 200.</p>
+<ul>
+<li>Source Code: 
+<a href="https://github.com/tronprotocol/java-tron/pull/6373">https://github.com/tronprotocol/java-tron/pull/6373</a>
+<a href="https://github.com/tronprotocol/java-tron/pull/6451">https://github.com/tronprotocol/java-tron/pull/6451</a></li>
+</ul>
+<h4 id="3-optimize-the-return-data-of-eth_call">3. Optimize the return data of <code>eth_call</code><a class="headerlink" href="#3-optimize-the-return-data-of-eth_call" title="Permanent link">&para;</a></h4>
+<p>In versions prior to Democritus, the <code>eth_call</code> interface provided limited feedback upon contract execution failure. It typically returned a generic error message (e.g., "REVERT opcode executed") while leaving the data field empty. This lack of detailed execution context made it difficult for developers to diagnose and trace specific issues within the smart contract. </p>
+<p>The Democritus version introduced <code>JsonRpcException</code> as the parent class for all JsonRpc exceptions, and a <code>JsonRpcErrorResolver</code> class for data field generation logic.</p>
+<p>Using <a href="https://nile.tronscan.org/#/contract/TAFPPQK2NaqSPwKcaomLXJmwbxLB34x8Lr/code">the demo contract</a> as an example, the following information was returned when calling the testInsufficientBalance method prior to the change: 
+<div class="highlight"><pre><span></span><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: 1,
+    &quot;error&quot;: {
+        &quot;code&quot;: -32000,
+        &quot;message&quot;: &quot;REVERT opcode executed&quot;,
+        &quot;data&quot;: &quot;{}&quot;
+    }
+}
+</code></pre></div>
+After modification: The <code>data</code> field returns error information (e.g., encoded revert reason), allowing developers to obtain the specific error reason via ABI parsing. (Consistent with Ethereum node strategy, returns unparsed data for everything except default Error(string)).
+<div class="highlight"><pre><span></span><code>{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;id&quot;: 1,
+    &quot;error&quot;: {
+        &quot;code&quot;: -32000,
+        &quot;message&quot;: &quot;REVERT opcode executed&quot;,
+       &quot;data&quot;: &quot;0xcf47918100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000064&quot;
+    }
+}
+</code></pre></div></p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6369">https://github.com/tronprotocol/java-tron/pull/6369</a></li>
+</ul>
+<h4 id="4-performance-optimization-for-eth_getlogs-eth_getfilterlogs">4. Performance optimization for eth_getLogs, eth_getFilterLogs<a class="headerlink" href="#4-performance-optimization-for-eth_getlogs-eth_getfilterlogs" title="Permanent link">&para;</a></h4>
+<p>Event query interfaces like <code>eth_getLogs</code> rely on a <code>partialMatch</code> function to query the Bloom database. The query conditions are derived from 3 <code>bitIndexes</code> generated for each topic or address. Since the Bloom filter has a bit limit (2048 bits), when the number of topics reaches 683, the total number of indexes ( 683 * 3 &gt; 2048) exceeds the filter capacity. This inevitably leads to bit collisions and redundant bitIndexes, resulting in duplicate database queries. To address this, the proposed optimization implements de-duplication of bitIndexes prior to execution, significantly reducing the frequency of database lookups.</p>
+<p>The table below contrasts the duplication rate of <code>bitIndex</code> and execution time of <code>partialMatch</code> under different numbers of topics and addresses. It shows that as the number of <code>topics</code> increases, the higher the <code>bitIndex</code> duplication, the more significant the performance improvement after optimization.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>10 Topics</th>
+<th>100 Topics</th>
+<th>500 Topics</th>
+<th>1000 Topics</th>
+<th>2000 Addresses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Original (ms)</strong></td>
+<td>2.28</td>
+<td>2.51</td>
+<td>9.35</td>
+<td>21.41</td>
+<td>40.15</td>
+</tr>
+<tr>
+<td><strong>Optimized (ms)</strong></td>
+<td>2.13</td>
+<td>2.13</td>
+<td>6.95</td>
+<td>12.80</td>
+<td>15.24</td>
+</tr>
+<tr>
+<td><strong>Improvement Rate</strong></td>
+<td>6.58%</td>
+<td>15.14%</td>
+<td>25.67%</td>
+<td>40.21%</td>
+<td>62.04%</td>
+</tr>
+<tr>
+<td><strong>Duplication Rate</strong></td>
+<td>0%</td>
+<td>7.60%</td>
+<td>29.41%</td>
+<td>47.31%</td>
+<td>67.62%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6370">https://github.com/tronprotocol/java-tron/pull/6370</a></li>
+</ul>
+<hr />
+<p><em>To a wise and good man the whole earth is his fatherland.</em></p>
+<p align="right">---Democritus</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 6, 2026 05:03:13 UTC">May 6, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+		  <hr class="content-footer-divider">  <!-- 添加的水平线 -->
+      	    	  <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: java-tron Release History">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                java-tron Release History
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../v4.8.0.1/" class="md-footer__link md-footer__link--next" aria-label="Next: v4.8.0.1 (Seneca)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                v4.8.0.1 (Seneca)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div-->
+</footer>
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.tracking", "toc.follow", "search.highlight", "search.suggest", "search.share", "content.code.annotate", "content.code.copy", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/toc.js"></script>
+      
+        <script src="../../../javascripts/nav-toc.js"></script>
+      
+        <script src="../../../javascripts/mathjax-sri.js"></script>
+      
+    
+  </body>
+</html>

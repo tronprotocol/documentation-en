@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/api/rpc/">
       
       
-        <link rel="prev" href="../http/">
+        <link rel="prev" href="../http/node-and-tools/getburntrx/">
       
       
-        <link rel="next" href="../json-rpc/">
+        <link rel="next" href="account/GetAccount/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>gRPC API - java-tron</title>
+        <title>Overview - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rpc-list" class="md-skip">
+        <a href="#java-tron-grpc-api" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              gRPC API
+              Overview
             
           </span>
         </div>
@@ -138,6 +138,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
@@ -169,7 +174,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    tronprotocol/documentation-en
   </div>
 </a>
       </div>
@@ -197,9 +202,7 @@
 
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
       
@@ -217,7 +220,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    tronprotocol/documentation-en
   </div>
 </a>
     </div>
@@ -252,6 +255,10 @@
   
   
     
+    
+      
+        
+      
     
     
       
@@ -322,6 +329,26 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -571,6 +598,18 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
       
         
@@ -585,8 +624,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     API
@@ -594,13 +635,149 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../http/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            HTTP API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Account
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -611,610 +788,16 @@
   
   
     <li class="md-nav__item">
-      <a href="../http/" class="md-nav__link">
+      <a href="../http/account/getaccount/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    HTTP API
+    Query an account by address
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    gRPC API
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    gRPC API
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item ">
-  <a href="#get-account-information" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get account information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#trx-transfer" class="md-nav__link" >
-    <span class="md-ellipsis">
-      TRX transfer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#broadcast-transaction" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Broadcast transaction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#create-an-account" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Create an account
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#account-name-update" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Account name update
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#vote-for-super-representative-candidates" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Vote for super representative candidates
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-ratio-of-brokerage-of-the-super-representative" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the ratio of brokerage of the super representative
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-unclaimed-reward" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query unclaimed reward
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#update-the-ratio-of-brokerage" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Update the ratio of brokerage
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#issue-a-token" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Issue a token
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-of-list-of-super-representative-candidates" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query of list of super representative candidates
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-the-paged-list-of-witnesses-in-descending-order-by-real-time-vote-count" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get the paged list of witnesses in descending order by real-time vote count
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#application-for-super-representative" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Application for super representative
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#information-update-of-super-representative-candidates" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Information update of Super Representative candidates
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#token-transfer" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Token transfer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#participate-a-token" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Participate a token
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-list-of-nodes-connected-to-the-ip-of-the-api" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the list of nodes connected to the ip of the api
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-list-of-all-issued-tokens" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the list of all issued tokens
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-token-issued-by-a-given-account" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the token issued by a given account
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-token-information-by-token-name" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the token information by token name
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-list-of-tokens-by-timestamp" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the list of tokens by timestamp
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-current-block-information" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get current block information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-a-block-by-block-height" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get a block by block height
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-the-total-number-of-transactions" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get the total number of transactions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-transaction-by-transaction-id" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the transaction by transaction id
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-transaction-by-timestamp" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the transaction by timestamp
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#stake-trx" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Stake TRX
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#unstake-trx" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Unstake TRX
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#block-producing-reward-redemption" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Block producing reward redemption
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#unstake-token-balance" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Unstake token balance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-next-maintenance-time" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the next maintenance time
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-transaction-fee-block-information" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the transaction fee &amp; block information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-block-information-by-block-id" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query block information by block id
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#update-token-information" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Update token information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-list-of-all-the-tokens-by-pagination" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the list of all the tokens by pagination
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#deploy-a-smart-contract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Deploy a smart contract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#trigger-a-smart-contract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Trigger a smart contract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#create-an-market-order" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Create an market order
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#cancel-the-order" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Cancel the order
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-all-orders-for-the-account" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get all orders for the account
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-all-trading-pairs" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get all trading pairs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-all-orders-for-the-trading-pair" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get all orders for the trading pair
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-all-prices-for-the-trading-pair" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get all prices for the trading pair
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-order-by-id" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get order by id
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#perform-a-historical-balance-lookup" class="md-nav__link" >
-    <span class="md-ellipsis">
-      perform a historical balance lookup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#fetch-all-balance-changing-transactions-in-a-block" class="md-nav__link" >
-    <span class="md-ellipsis">
-      fetch all balance-changing transactions in a block
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-the-burn-trx-amount" class="md-nav__link" >
-    <span class="md-ellipsis">
-      get the burn trx amount
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#freeze-trx" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Freeze TRX
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#unfreeze-trx" class="md-nav__link" >
-    <span class="md-ellipsis">
-      UnFreeze TRX
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#withdraw-staked-trx" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Withdraw Staked TRX
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#delegate-resource" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Delegate Resource
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#undelegate-resource" class="md-nav__link" >
-    <span class="md-ellipsis">
-      UnDelegate Resource
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-transaction-information-in-the-pending-pool" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query transaction information in the pending pool
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-pending-pool-transaction-id-list" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the pending pool transaction id list
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-size-of-the-pending-pool" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the size of the pending pool
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#cancel-unfreeze" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Cancel UnFreeze
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-bandwidth-unit-price" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get bandwidth unit price
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-energy-unit-price" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get energy unit price
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-transaction-memo-fee" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get transaction memo fee
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1227,8 +810,4902 @@
   
   
     <li class="md-nav__item">
-      <a href="../json-rpc/" class="md-nav__link">
+      <a href="../http/account/getaccountbalance/" class="md-nav__link">
         
+  
+  <span class="md-ellipsis">
+    Query an account's balance at a specific block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/account/getaccountnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account's bandwidth resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/account/getaccountresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query bandwidth + energy + TronPower
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/account/createaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create an on-chain account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/account/updateaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an account's name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/account/accountpermissionupdate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure multi-sig permissions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/account/validateaddress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validate an address
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Block / transaction query
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Block / transaction query
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/getnowblock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latest block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/getblock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generic block query
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/getblockbynum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block by height
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/getblockbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block by hash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/getblockbylimitnext/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blocks in a range
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/getblockbylatestnum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The most recent N blocks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/getblockbalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Per-account balance changes within a block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/gettransactioncountbyblocknum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction count in a block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/gettransactionbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/gettransactioninfobyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction receipt by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/gettransactioninfobyblocknum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction receipts by block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/getpendingsize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pending pool size
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/gettransactionfrompending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single pending transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/block-and-tx-query/gettransactionlistfrompending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All pending transaction IDs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transaction build / broadcast
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Transaction build / broadcast
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/tx-build-and-broadcast/createtransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build a TRX transfer transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/tx-build-and-broadcast/getsignweight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current multi-sig weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/tx-build-and-broadcast/getapprovedlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Addresses that have already signed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/tx-build-and-broadcast/broadcasttransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcast a signed transaction (JSON)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/tx-build-and-broadcast/broadcasthex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcast a signed transaction (hex)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_5" id="__nav_4_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TRC10 asset
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            TRC10 asset
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/createassetissue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue a TRC10 token
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/updateasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update a TRC10 description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/transferasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/participateassetissue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Participate in a TRC10 fundraising
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/unfreezeasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfreeze TRC10 frozen by the issuer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/getassetissuebyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Look up a TRC10 by id
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/getassetissuebyname/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Look up a TRC10 by name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/getassetissuelistbyname/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All TRC10s with a given name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/getassetissuebyaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TRC10s issued by an account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/getassetissuelist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All TRC10s on the network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/asset/getpaginatedassetissuelist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated TRC10 list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_6" id="__nav_4_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart contract
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Smart contract
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/deploycontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy a contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/triggersmartcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trigger a contract (write)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/triggerconstantcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read-only contract call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/estimateenergy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimate energy usage of a call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/getcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contract metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/getcontractinfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Full contract runtime info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/clearabi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clear a contract's ABI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/updatesetting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change the user-energy percentage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/smart-contract/updateenergylimit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change the deployer's energy limit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_7" id="__nav_4_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Witness / governance
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Witness / governance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/createwitness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apply to become an SR candidate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/updatewitness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an SR's URL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/listwitnesses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All SR candidates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/getpaginatednowwitnesslist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated SR list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/votewitnessaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vote for SRs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/getBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    An SR's current brokerage rate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/updateBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an SR's brokerage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/getReward/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Claimable rewards for an account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/withdrawbalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw block production rewards / dividends
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/proposalcreate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a chain-parameter proposal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/proposalapprove/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vote on a proposal as an SR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/proposaldelete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw your own proposal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/listproposals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List of proposals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/getproposalbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proposal by ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/getpaginatedproposallist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated proposal list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/getchainparameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current chain parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/witness-and-governance/getnextmaintenancetime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next maintenance period time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_8" id="__nav_4_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Stake 1.0 (unfreeze and query only)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Stake 1.0 (unfreeze and query only)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v1/freezebalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Freeze TRX for resources (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v1/unfreezebalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfreeze matured resources (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v1/getdelegatedresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation records (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v1/getdelegatedresourceaccountindex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation counterparty addresses (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_9" id="__nav_4_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Stake 2.0
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Stake 2.0
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/freezebalancev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Freeze TRX for resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/unfreezebalancev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initiate unfreeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/withdrawexpireunfreeze/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw matured unfreezes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/cancelallunfreezev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cancel all unmatured unfreezes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/delegateresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Delegate resources to another account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/undelegateresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Undelegate resources from another account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/getdelegatedresourcev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/getdelegatedresourceaccountindexv2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation counterparty addresses
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/getcandelegatedmaxsize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current maximum delegatable amount
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/getavailableunfreezecount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remaining unfreeze count
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/stake-v2/getcanwithdrawunfreezeamount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdrawable unfreeze amount at a given time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_10" id="__nav_4_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Node / pricing / tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Node / pricing / tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/node-and-tools/getnodeinfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/node-and-tools/listnodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known peers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/node-and-tools/getenergyprices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historical energy unit prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/node-and-tools/getbandwidthprices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historical bandwidth unit prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http/node-and-tools/getburntrx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cumulative burned TRX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            gRPC API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Account
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="account/GetAccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account by address
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="account/GetAccountBalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account's balance at a specific block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="account/GetAccountNet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query an account's bandwidth resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="account/GetAccountResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query bandwidth + energy + TronPower
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="account/CreateAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create an on-chain account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="account/UpdateAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an account's name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="account/AccountPermissionUpdate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure multi-sig permissions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_3" id="__nav_4_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Block / transaction query
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Block / transaction query
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetNowBlock2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latest block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetBlock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generic block query
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetBlockByNum2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block by height
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetBlockById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block by hash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetBlockByLimitNext2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blocks in a range
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetBlockByLatestNum2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The most recent N blocks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetBlockBalanceTrace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Per-account balance changes within a block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetTransactionCountByBlockNum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction count in a block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetTransactionById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetTransactionInfoById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction receipt by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetTransactionInfoByBlockNum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transaction receipts by block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetPendingSize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pending pool size
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetTransactionFromPending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single pending transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="block-and-tx-query/GetTransactionListFromPending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All pending transaction IDs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_4" id="__nav_4_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transaction build / broadcast
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Transaction build / broadcast
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tx-build-and-broadcast/CreateTransaction2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build a TRX transfer transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tx-build-and-broadcast/GetTransactionSignWeight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current multi-sig weight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tx-build-and-broadcast/GetTransactionApprovedList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Addresses that have already signed
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tx-build-and-broadcast/BroadcastTransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcast a signed transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_5" id="__nav_4_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TRC10 asset
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            TRC10 asset
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/CreateAssetIssue2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue a TRC10 token
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/UpdateAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update a TRC10 description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/TransferAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transfer TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/ParticipateAssetIssue2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Participate in a TRC10 fundraising
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/UnfreezeAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfreeze TRC10 frozen by the issuer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/GetAssetIssueById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Look up a TRC10 by id
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/GetAssetIssueByName/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Look up a TRC10 by name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/GetAssetIssueListByName/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All TRC10s with a given name
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/GetAssetIssueByAccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TRC10s issued by an account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/GetAssetIssueList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All TRC10s on the network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asset/GetPaginatedAssetIssueList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated TRC10 list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_6" id="__nav_4_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart contract
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Smart contract
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/DeployContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy a contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/TriggerContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trigger a contract (write)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/TriggerConstantContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read-only contract call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/EstimateEnergy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimate energy usage of a call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/GetContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contract metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/GetContractInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Full contract runtime info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/ClearContractABI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clear a contract's ABI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/UpdateSetting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change the user-energy percentage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smart-contract/UpdateEnergyLimit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change the deployer's energy limit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_7" id="__nav_4_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Witness / governance
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Witness / governance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/CreateWitness2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apply to become an SR candidate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/UpdateWitness2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an SR's URL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/ListWitnesses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    All SR candidates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/GetPaginatedNowWitnessList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated SR list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/VoteWitnessAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vote for SRs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/GetBrokerageInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    An SR's current brokerage rate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/UpdateBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update an SR's brokerage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/GetRewardInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Claimable rewards for an account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/WithdrawBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw block production rewards / dividends
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/ProposalCreate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a chain-parameter proposal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/ProposalApprove/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vote on a proposal as an SR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/ProposalDelete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw your own proposal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/ListProposals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List of proposals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/GetProposalById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proposal by ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/GetPaginatedProposalList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paginated proposal list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/GetChainParameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current chain parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="witness-and-governance/GetNextMaintenanceTime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next maintenance period time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_8" id="__nav_4_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Stake 1.0 (unfreeze and query only)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Stake 1.0 (unfreeze and query only)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v1/FreezeBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Freeze TRX for resources (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v1/UnfreezeBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unfreeze matured resources (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v1/GetDelegatedResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation records (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v1/GetDelegatedResourceAccountIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation counterparty addresses (V1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_9" id="__nav_4_3_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Stake 2.0
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Stake 2.0
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/FreezeBalanceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Freeze TRX for resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/UnfreezeBalanceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initiate unfreeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/WithdrawExpireUnfreeze/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdraw matured unfreezes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/CancelAllUnfreezeV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cancel all unmatured unfreezes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/DelegateResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Delegate resources to another account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/UnDelegateResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Undelegate resources from another account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/GetDelegatedResourceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/GetDelegatedResourceAccountIndexV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query delegation counterparty addresses
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/GetCanDelegatedMaxSize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current maximum delegatable amount
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/GetAvailableUnfreezeCount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remaining unfreeze count
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stake-v2/GetCanWithdrawUnfreezeAmount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Withdrawable unfreeze amount at a given time
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_10" id="__nav_4_3_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Node / pricing / tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            Node / pricing / tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="node-and-tools/GetNodeInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="node-and-tools/ListNodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known peers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="node-and-tools/GetEnergyPrices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historical energy unit prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="node-and-tools/GetBandwidthPrices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historical bandwidth unit prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="node-and-tools/GetBurnTrx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cumulative burned TRX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../json-rpc/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     jsonRPC API
@@ -1236,7 +5713,1179 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            jsonRPC API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Node info / chain identity
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Node info / chain identity
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/web3_clientVersion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Client version string
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/web3_sha3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keccak-256 hash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/net_version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/net_listening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whether listening on P2P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/net_peerCount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Number of peers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/eth_chainId/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chain ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/eth_protocolVersion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocol version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/eth_syncing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sync status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/eth_blockNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latest block height
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/node/eth_gasPrice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current energy unit price
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Block / transaction query
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Block / transaction query
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getBlockByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a block by hash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getBlockByNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a block by height / tag
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block transaction count (by hash)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getBlockTransactionCountByNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Block transaction count (by height)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getTransactionByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a transaction by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a transaction by block hash + index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a transaction by block height + index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getTransactionReceipt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query a receipt by txid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/block-and-tx-query/eth_getBlockReceipts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Receipt list for an entire block
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_4" id="__nav_4_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account state
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Account state
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/account/eth_getBalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account TRX balance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/account/eth_getStorageAt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contract storage slot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/account/eth_getCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contract runtime bytecode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_5" id="__nav_4_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Smart contract calls
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Smart contract calls
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/smart-contract/eth_call/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read-only contract call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/smart-contract/eth_estimateGas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimate energy consumption
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_6" id="__nav_4_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logs / filters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Logs / filters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/filter/eth_getLogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-shot log query
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/filter/eth_newFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Register a log filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/filter/eth_newBlockFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Register a new-block filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/filter/eth_uninstallFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uninstall a filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/filter/eth_getFilterChanges/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pull and drain filter increments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/filter/eth_getFilterLogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pull a log filter's full set
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_7" id="__nav_4_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transaction build
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Transaction build
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/tx-build/buildTransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build an unsigned transaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_8" id="__nav_4_4_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compatibility stub methods
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            Compatibility stub methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/stub/eth_coinbase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    etherbase address
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/stub/eth_accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node-managed accounts list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-rpc/stub/eth_getWork/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mining work info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1256,6 +6905,24 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -1481,6 +7148,24 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
       
         
@@ -1543,11 +7228,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/tips/" class="md-nav__link">
+      <a href="../../developers/tip-workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
     
   </span>
   
@@ -1683,6 +7390,10 @@
   
     
     
+      
+        
+      
+    
     
       
         
@@ -1753,6 +7464,10 @@
   
     
     
+      
+        
+      
+    
     
       
         
@@ -1822,6 +7537,14 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -1906,9 +7629,91 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../releases/history/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../releases/versions/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     History
@@ -1916,7 +7721,709 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            History
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.8.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.1 (Democritus)
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.8.0.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.0.1 (Seneca)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.8.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.0 (Kant)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.7 (Epicurus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.6 (Anaximander)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.5 (Cleobulus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.4 (Bias)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.3.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.3.1 (Solon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.3 (Chilon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.2 (Periander)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.1.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.1.1 (Pittacus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.1 (Sartre)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.0.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.0.1 (Aristotle)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.6.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.6.0 (Socrates)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.5.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.5.2 (Aurelius)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.5.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.5.1 (Tertullian)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.6 (David)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.5 (Cicero)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.4 (Plotinus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.2 (Augustinus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.0 (Rousseau)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.3.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.3.0 (Bacon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.2.2.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.2.1 (Epictetus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.2.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.2 (Lucretius)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.2.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.0 (Plato)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.1.3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.3 (Thales)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.1.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.1.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.0.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.0.0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v3.7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Odyssey-v3.7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v3.6.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Odyssey-v3.6.5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1936,6 +8443,10 @@
   
   
     
+    
+      
+        
+      
     
     
       
@@ -2006,6 +8517,131 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#services-and-default-ports" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Services and default ports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#calling" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Calling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#account" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#block-transaction-query" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Block / transaction query
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#transaction-build-broadcast" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Transaction build / broadcast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#trc10-asset" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TRC10 asset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#smart-contract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Smart contract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#witness-governance" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Witness / governance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#stake-10-unfreeze-and-query-only" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Stake 1.0 (unfreeze and query only)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#stake-20" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Stake 2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#node-pricing-tools" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Node / pricing / tools
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -2015,262 +8651,497 @@
 
 
   
+    <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/api/rpc/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/tronprotocol/documentation-en/raw/master/docs/api/rpc/index.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
   
 
 
-<h1 id="rpc-list">RPC List<a class="headerlink" href="#rpc-list" title="Permanent link">&para;</a></h1>
-<p><strong>For the specific definition of API, please refer to the following link:</strong>
-<a href="https://github.com/tronprotocol/protocol/blob/master/api/api.proto">api/api.proto</a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.</p>
-</div>
-<h2 id="get-account-information">Get account information<a class="headerlink" href="#get-account-information" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAccount</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h1 id="java-tron-grpc-api">java-tron gRPC API<a class="headerlink" href="#java-tron-grpc-api" title="Permanent link">&para;</a></h1>
+<p>A java-tron node exposes its API over gRPC. This directory lists short reference docs for 82 commonly used gRPC methods, organized by topic.</p>
+<h2 id="services-and-default-ports">Services and default ports<a class="headerlink" href="#services-and-default-ports" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Default port</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>protocol.Wallet</code></td>
+<td><code>50051</code></td>
+<td>FullNode full-feature service (includes write transactions)</td>
+<td><code>framework/src/main/java/org/tron/core/services/RpcApiService.java</code></td>
+</tr>
+<tr>
+<td><code>protocol.WalletSolidity</code></td>
+<td><code>50061</code></td>
+<td>Returns solidified data only; read-only</td>
+<td><code>framework/src/main/java/org/tron/core/services/interfaceOnSolidity/RpcApiServiceOnSolidity.java</code></td>
+</tr>
+</tbody>
+</table>
+<p>The ports can be overridden via <code>node.rpc.port</code> / <code>node.rpc.solidityPort</code> in the node configuration (see <code>framework/src/main/resources/config.conf</code>).</p>
+<p>The proto definition lives in <code>protocol/src/main/protos/api/api.proto</code>.</p>
+<h2 id="calling">Calling<a class="headerlink" href="#calling" title="Permanent link">&para;</a></h2>
+<p>gRPC does not use URL paths to distinguish <code>wallet</code> from <code>walletsolidity</code> — they are two independent service stubs reached on different ports:</p>
+<div class="highlight"><pre><span></span><code># Wallet
+grpc://&lt;host&gt;:50051   protocol.Wallet/&lt;Method&gt;
+
+# WalletSolidity (read-only)
+grpc://&lt;host&gt;:50061   protocol.WalletSolidity/&lt;Method&gt;
 </code></pre></div>
-Nodes: Fullnode and SolidityNode</p>
-<h2 id="trx-transfer">TRX transfer<a class="headerlink" href="#trx-transfer" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">TransferContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: Fullnode</p>
-<h2 id="broadcast-transaction">Broadcast transaction<a class="headerlink" href="#broadcast-transaction" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">BroadcastTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Return</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: Fullnode</p>
-<p>Description:
-Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after super representatives verification.</p>
-<h2 id="create-an-account">Create an account<a class="headerlink" href="#create-an-account" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateAccount</span><span class="w"> </span><span class="p">(</span><span class="n">AccountCreateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="account-name-update">Account name update<a class="headerlink" href="#account-name-update" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateAccount</span><span class="w"> </span><span class="p">(</span><span class="n">AccountUpdateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: Fullnode</p>
-<h2 id="vote-for-super-representative-candidates">Vote for super representative candidates<a class="headerlink" href="#vote-for-super-representative-candidates" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">VoteWitnessAccount</span><span class="w"> </span><span class="p">(</span><span class="n">VoteWitnessContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-ratio-of-brokerage-of-the-super-representative">Query the ratio of brokerage of the super representative<a class="headerlink" href="#query-the-ratio-of-brokerage-of-the-super-representative" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBrokerageInfo</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-unclaimed-reward">Query unclaimed reward<a class="headerlink" href="#query-unclaimed-reward" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetRewardInfo</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="update-the-ratio-of-brokerage">Update the ratio of brokerage<a class="headerlink" href="#update-the-ratio-of-brokerage" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateBrokerage</span><span class="w"> </span><span class="p">(</span><span class="n">UpdateBrokerageContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="issue-a-token">Issue a token<a class="headerlink" href="#issue-a-token" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateAssetIssue</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-of-list-of-super-representative-candidates">Query of list of super representative candidates<a class="headerlink" href="#query-of-list-of-super-representative-candidates" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ListWitnesses</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="get-the-paged-list-of-witnesses-in-descending-order-by-real-time-vote-count">Get the paged list of witnesses in descending order by real-time vote count<a class="headerlink" href="#get-the-paged-list-of-witnesses-in-descending-order-by-real-time-vote-count" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetPaginatedNowWitnessList</span><span class="w"> </span><span class="p">(</span><span class="n">PaginatedMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="application-for-super-representative">Application for super representative<a class="headerlink" href="#application-for-super-representative" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateWitness</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessCreateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<p>Description:
-To apply to become TRON’s Super Representative candidate.</p>
-<h2 id="information-update-of-super-representative-candidates">Information update of Super Representative candidates<a class="headerlink" href="#information-update-of-super-representative-candidates" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateWitness</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessUpdateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<p>Description: Update the website url of the SR.</p>
-<h2 id="token-transfer">Token transfer<a class="headerlink" href="#token-transfer" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TransferAsset</span><span class="w"> </span><span class="p">(</span><span class="n">TransferAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">){}</span>
-</code></pre></div>
-Node: FullNode</p>
-<h2 id="participate-a-token">Participate a token<a class="headerlink" href="#participate-a-token" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ParticipateAssetIssue</span><span class="w"> </span><span class="p">(</span><span class="n">ParticipateAssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-list-of-nodes-connected-to-the-ip-of-the-api">Query the list of nodes connected to the ip of the api<a class="headerlink" href="#query-the-list-of-nodes-connected-to-the-ip-of-the-api" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ListNodes</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NodeList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="query-the-list-of-all-issued-tokens">Query the list of all issued tokens<a class="headerlink" href="#query-the-list-of-all-issued-tokens" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueList</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="query-the-token-issued-by-a-given-account">Query the token issued by a given account<a class="headerlink" href="#query-the-token-issued-by-a-given-account" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueByAccount</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="query-the-token-information-by-token-name">Query the token information by token name<a class="headerlink" href="#query-the-token-information-by-token-name" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueByName</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and Soliditynode</p>
-<h2 id="query-the-list-of-tokens-by-timestamp">Query the list of tokens by timestamp<a class="headerlink" href="#query-the-list-of-tokens-by-timestamp" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueListByTimestamp</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">){}</span>
-</code></pre></div>
-Nodes: SolidityNode</p>
-<h2 id="get-current-block-information">Get current block information<a class="headerlink" href="#get-current-block-information" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetNowBlock</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="get-a-block-by-block-height">Get a block by block height<a class="headerlink" href="#get-a-block-by-block-height" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBlockByNum</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="get-the-total-number-of-transactions">Get the total number of transactions<a class="headerlink" href="#get-the-total-number-of-transactions" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TotalTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="query-the-transaction-by-transaction-id">Query the transaction by transaction id<a class="headerlink" href="#query-the-transaction-by-transaction-id" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">getTransactionById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: SolidityNode</p>
-<h2 id="query-the-transaction-by-timestamp">Query the transaction by timestamp<a class="headerlink" href="#query-the-transaction-by-timestamp" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">getTransactionsByTimestamp</span><span class="w"> </span><span class="p">(</span><span class="n">TimeMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: SolidityNode</p>
-<h2 id="stake-trx">Stake TRX<a class="headerlink" href="#stake-trx" title="Permanent link">&para;</a></h2>
-<p>This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">FreezeBalance</span><span class="w"> </span><span class="p">(</span><span class="n">FreezeBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="unstake-trx">Unstake TRX<a class="headerlink" href="#unstake-trx" title="Permanent link">&para;</a></h2>
-<p>Unstake the TRX staked during Stake1.0.
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeBalance</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="block-producing-reward-redemption">Block producing reward redemption<a class="headerlink" href="#block-producing-reward-redemption" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">WithdrawBalance</span><span class="w"> </span><span class="p">(</span><span class="n">WithdrawBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="unstake-token-balance">Unstake token balance<a class="headerlink" href="#unstake-token-balance" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeAsset</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-next-maintenance-time">Query the next maintenance time<a class="headerlink" href="#query-the-next-maintenance-time" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetNextMaintenanceTime</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-transaction-fee-block-information">Query the transaction fee &amp; block information<a class="headerlink" href="#query-the-transaction-fee-block-information" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionInfoById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionInfo</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: SolidityNode</p>
-<h2 id="query-block-information-by-block-id">Query block information by block id<a class="headerlink" href="#query-block-information-by-block-id" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBlockById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="update-token-information">Update token information<a class="headerlink" href="#update-token-information" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateAsset</span><span class="w"> </span><span class="p">(</span><span class="n">UpdateAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: Fullnode</p>
-<p>Description:
-Token update can only be initiated by the token issuer to update token description, url, maximum bandwidth consumption by each account and total bandwidth consumption.</p>
-<h2 id="query-the-list-of-all-the-tokens-by-pagination">Query the list of all the tokens by pagination<a class="headerlink" href="#query-the-list-of-all-the-tokens-by-pagination" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetPaginatedAssetIssueList</span><span class="w"> </span><span class="p">(</span><span class="n">PaginatedMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="deploy-a-smart-contract">Deploy a smart contract<a class="headerlink" href="#deploy-a-smart-contract" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">DeployContract</span><span class="w"> </span><span class="p">(</span><span class="n">CreateSmartContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="trigger-a-smart-contract">Trigger a smart contract<a class="headerlink" href="#trigger-a-smart-contract" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TriggerContract</span><span class="w"> </span><span class="p">(</span><span class="n">TriggerSmartContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="create-an-market-order">Create an market order<a class="headerlink" href="#create-an-market-order" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="cancel-the-order">Cancel the order<a class="headerlink" href="#cancel-the-order" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-all-orders-for-the-account">Get all orders for the account<a class="headerlink" href="#get-all-orders-for-the-account" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-all-trading-pairs">Get all trading pairs<a class="headerlink" href="#get-all-trading-pairs" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-all-orders-for-the-trading-pair">Get all orders for the trading pair<a class="headerlink" href="#get-all-orders-for-the-trading-pair" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-all-prices-for-the-trading-pair">Get all prices for the trading pair<a class="headerlink" href="#get-all-prices-for-the-trading-pair" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-order-by-id">Get order by id<a class="headerlink" href="#get-order-by-id" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="perform-a-historical-balance-lookup">perform a historical balance lookup<a class="headerlink" href="#perform-a-historical-balance-lookup" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
-</code></pre></div>
-Nodes: FullNode</p>
-<p><strong>Notice</strong>: Only node where <code>storage.balance.history.lookup= true</code> is set in the configuration file supports querying the account's historical balance. The supported official nodes can be queried <a href="../../using_javatron/backup_restore/#fullnode-data-snapshots">here</a>.</p>
-<h2 id="fetch-all-balance-changing-transactions-in-a-block">fetch all balance-changing transactions in a block<a class="headerlink" href="#fetch-all-balance-changing-transactions-in-a-block" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-the-burn-trx-amount">get the burn trx amount<a class="headerlink" href="#get-the-burn-trx-amount" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="freeze-trx">Freeze TRX<a class="headerlink" href="#freeze-trx" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">FreezeBalanceV2</span><span class="w"> </span><span class="p">(</span><span class="n">FreezeBalanceV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="unfreeze-trx">UnFreeze TRX<a class="headerlink" href="#unfreeze-trx" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeBalanceV2</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeBalanceV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="withdraw-staked-trx">Withdraw Staked TRX<a class="headerlink" href="#withdraw-staked-trx" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">WithdrawExpireUnfreeze</span><span class="w"> </span><span class="p">(</span><span class="n">WithdrawExpireUnfreezeContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="delegate-resource">Delegate Resource<a class="headerlink" href="#delegate-resource" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">DelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">DelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="undelegate-resource">UnDelegate Resource<a class="headerlink" href="#undelegate-resource" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnDelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">UnDelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-transaction-information-in-the-pending-pool">Query transaction information in the pending pool<a class="headerlink" href="#query-transaction-information-in-the-pending-pool" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetTransactionFromPending (BytesMessage) returns (Transaction) {};
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-pending-pool-transaction-id-list">Query the pending pool transaction id list<a class="headerlink" href="#query-the-pending-pool-transaction-id-list" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetTransactionListFromPending (EmptyMessage) returns (TransactionIdList) {};
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-size-of-the-pending-pool">Query the size of the pending pool<a class="headerlink" href="#query-the-size-of-the-pending-pool" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>rpc GetPendingSize (EmptyMessage) returns (NumberMessage) {};
-Nodes: FullNode
-</code></pre></div>
-<h2 id="cancel-unfreeze">Cancel UnFreeze<a class="headerlink" href="#cancel-unfreeze" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CancelAllUnfreezeV2</span><span class="w"> </span><span class="p">(</span><span class="n">CancelAllUnfreezeV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="get-bandwidth-unit-price">Get bandwidth unit price<a class="headerlink" href="#get-bandwidth-unit-price" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBandwidthPrices</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="get-energy-unit-price">Get energy unit price<a class="headerlink" href="#get-energy-unit-price" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetEnergyPrices</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="get-transaction-memo-fee">Get transaction memo fee<a class="headerlink" href="#get-transaction-memo-fee" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetMemoFee</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNodes</p>
+<p>Each method doc contains:</p>
+<ul>
+<li>The method name (top-level heading, PascalCase, identical to the proto)</li>
+<li>A short description</li>
+<li>Service support (<code>Wallet</code> / <code>WalletSolidity</code> / both)</li>
+<li>The matching protobuf signature</li>
+</ul>
+<h2 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="account/GetAccount/">GetAccount</a></td>
+<td>Look up an account by address</td>
+</tr>
+<tr>
+<td><a href="account/GetAccountBalance/">GetAccountBalance</a></td>
+<td>Query an account's balance at a specific block</td>
+</tr>
+<tr>
+<td><a href="account/GetAccountNet/">GetAccountNet</a></td>
+<td>Query an account's bandwidth resource</td>
+</tr>
+<tr>
+<td><a href="account/GetAccountResource/">GetAccountResource</a></td>
+<td>Query an account's bandwidth + energy + TronPower</td>
+</tr>
+<tr>
+<td><a href="account/CreateAccount2/">CreateAccount2</a></td>
+<td>Create an account on chain (consumes 1 TRX)</td>
+</tr>
+<tr>
+<td><a href="account/UpdateAccount2/">UpdateAccount2</a></td>
+<td>Update the account name</td>
+</tr>
+<tr>
+<td><a href="account/AccountPermissionUpdate/">AccountPermissionUpdate</a></td>
+<td>Configure multi-sig permissions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="block-transaction-query">Block / transaction query<a class="headerlink" href="#block-transaction-query" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="block-and-tx-query/GetNowBlock2/">GetNowBlock2</a></td>
+<td>The latest block</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetBlock/">GetBlock</a></td>
+<td>Generic block lookup (by num/hash)</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetBlockByNum2/">GetBlockByNum2</a></td>
+<td>Look up a block by height</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetBlockById/">GetBlockById</a></td>
+<td>Look up a block by hash</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetBlockByLimitNext2/">GetBlockByLimitNext2</a></td>
+<td>Look up a range of blocks</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetBlockByLatestNum2/">GetBlockByLatestNum2</a></td>
+<td>Get the most recent N blocks</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetBlockBalanceTrace/">GetBlockBalanceTrace</a></td>
+<td>Query account balance changes within a block</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetTransactionCountByBlockNum/">GetTransactionCountByBlockNum</a></td>
+<td>Number of transactions in a block</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetTransactionById/">GetTransactionById</a></td>
+<td>Look up a transaction by txID</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetTransactionInfoById/">GetTransactionInfoById</a></td>
+<td>Look up a transaction's receipt by txID</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetTransactionInfoByBlockNum/">GetTransactionInfoByBlockNum</a></td>
+<td>Look up transaction receipts by block</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetPendingSize/">GetPendingSize</a></td>
+<td>Pending pool size</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetTransactionFromPending/">GetTransactionFromPending</a></td>
+<td>Look up a single pending transaction</td>
+</tr>
+<tr>
+<td><a href="block-and-tx-query/GetTransactionListFromPending/">GetTransactionListFromPending</a></td>
+<td>All pending transaction IDs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transaction-build-broadcast">Transaction build / broadcast<a class="headerlink" href="#transaction-build-broadcast" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tx-build-and-broadcast/CreateTransaction2/">CreateTransaction2</a></td>
+<td>Build a TRX transfer transaction</td>
+</tr>
+<tr>
+<td><a href="tx-build-and-broadcast/GetTransactionSignWeight/">GetTransactionSignWeight</a></td>
+<td>Query the current accumulated multi-sig weight</td>
+</tr>
+<tr>
+<td><a href="tx-build-and-broadcast/GetTransactionApprovedList/">GetTransactionApprovedList</a></td>
+<td>List addresses that have signed a multi-sig transaction</td>
+</tr>
+<tr>
+<td><a href="tx-build-and-broadcast/BroadcastTransaction/">BroadcastTransaction</a></td>
+<td>Broadcast a signed transaction (JSON)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="trc10-asset">TRC10 asset<a class="headerlink" href="#trc10-asset" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="asset/CreateAssetIssue2/">CreateAssetIssue2</a></td>
+<td>Issue a TRC10 token</td>
+</tr>
+<tr>
+<td><a href="asset/UpdateAsset2/">UpdateAsset2</a></td>
+<td>Update a TRC10's description / URL / bandwidth limit</td>
+</tr>
+<tr>
+<td><a href="asset/TransferAsset2/">TransferAsset2</a></td>
+<td>Transfer TRC10</td>
+</tr>
+<tr>
+<td><a href="asset/ParticipateAssetIssue2/">ParticipateAssetIssue2</a></td>
+<td>Participate in a TRC10 sale</td>
+</tr>
+<tr>
+<td><a href="asset/UnfreezeAsset2/">UnfreezeAsset2</a></td>
+<td>Unfreeze TRC10 locked by the issuer</td>
+</tr>
+<tr>
+<td><a href="asset/GetAssetIssueById/">GetAssetIssueById</a></td>
+<td>Look up TRC10 by id (recommended)</td>
+</tr>
+<tr>
+<td><a href="asset/GetAssetIssueByName/">GetAssetIssueByName</a></td>
+<td>Look up TRC10 by name (errors on duplicate names)</td>
+</tr>
+<tr>
+<td><a href="asset/GetAssetIssueListByName/">GetAssetIssueListByName</a></td>
+<td>List TRC10s sharing a given name</td>
+</tr>
+<tr>
+<td><a href="asset/GetAssetIssueByAccount/">GetAssetIssueByAccount</a></td>
+<td>TRC10s issued by an account</td>
+</tr>
+<tr>
+<td><a href="asset/GetAssetIssueList/">GetAssetIssueList</a></td>
+<td>All TRC10s on chain</td>
+</tr>
+<tr>
+<td><a href="asset/GetPaginatedAssetIssueList/">GetPaginatedAssetIssueList</a></td>
+<td>Paginated TRC10 list</td>
+</tr>
+</tbody>
+</table>
+<h2 id="smart-contract">Smart contract<a class="headerlink" href="#smart-contract" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="smart-contract/DeployContract/">DeployContract</a></td>
+<td>Deploy a contract</td>
+</tr>
+<tr>
+<td><a href="smart-contract/TriggerContract/">TriggerContract</a></td>
+<td>Trigger a contract (write)</td>
+</tr>
+<tr>
+<td><a href="smart-contract/TriggerConstantContract/">TriggerConstantContract</a></td>
+<td>Read-only contract call</td>
+</tr>
+<tr>
+<td><a href="smart-contract/EstimateEnergy/">EstimateEnergy</a></td>
+<td>Estimate the energy cost of a call</td>
+</tr>
+<tr>
+<td><a href="smart-contract/GetContract/">GetContract</a></td>
+<td>Query contract metadata</td>
+</tr>
+<tr>
+<td><a href="smart-contract/GetContractInfo/">GetContractInfo</a></td>
+<td>Query a contract's full runtime info</td>
+</tr>
+<tr>
+<td><a href="smart-contract/ClearContractABI/">ClearContractABI</a></td>
+<td>Clear a contract's ABI</td>
+</tr>
+<tr>
+<td><a href="smart-contract/UpdateSetting/">UpdateSetting</a></td>
+<td>Update the user-energy percentage</td>
+</tr>
+<tr>
+<td><a href="smart-contract/UpdateEnergyLimit/">UpdateEnergyLimit</a></td>
+<td>Update the deployer energy limit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="witness-governance">Witness / governance<a class="headerlink" href="#witness-governance" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="witness-and-governance/CreateWitness2/">CreateWitness2</a></td>
+<td>Apply to become an SR candidate</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/UpdateWitness2/">UpdateWitness2</a></td>
+<td>Update an SR's URL</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/ListWitnesses/">ListWitnesses</a></td>
+<td>List all SR candidates</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/GetPaginatedNowWitnessList/">GetPaginatedNowWitnessList</a></td>
+<td>Paginated SR list</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/VoteWitnessAccount2/">VoteWitnessAccount2</a></td>
+<td>Vote for SRs</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/GetBrokerageInfo/">GetBrokerageInfo</a></td>
+<td>An SR's current brokerage rate</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/UpdateBrokerage/">UpdateBrokerage</a></td>
+<td>An SR updates its brokerage</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/GetRewardInfo/">GetRewardInfo</a></td>
+<td>Query claimable voter rewards</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/WithdrawBalance2/">WithdrawBalance2</a></td>
+<td>Withdraw block-production rewards / voter rewards</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/ProposalCreate/">ProposalCreate</a></td>
+<td>Create a chain-parameter proposal</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/ProposalApprove/">ProposalApprove</a></td>
+<td>An SR votes on a proposal</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/ProposalDelete/">ProposalDelete</a></td>
+<td>Cancel a proposal you created</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/ListProposals/">ListProposals</a></td>
+<td>List proposals</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/GetProposalById/">GetProposalById</a></td>
+<td>Look up a proposal by ID</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/GetPaginatedProposalList/">GetPaginatedProposalList</a></td>
+<td>Paginated proposal list</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/GetChainParameters/">GetChainParameters</a></td>
+<td>Current values of all chain parameters</td>
+</tr>
+<tr>
+<td><a href="witness-and-governance/GetNextMaintenanceTime/">GetNextMaintenanceTime</a></td>
+<td>Time of the next maintenance period</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stake-10-unfreeze-and-query-only">Stake 1.0 (unfreeze and query only)<a class="headerlink" href="#stake-10-unfreeze-and-query-only" title="Permanent link">&para;</a></h2>
+<p>After proposal #70 <code>UNFREEZE_DELAY_DAYS</code> was passed (mainnet has activated it), new V1 freeze requests are rejected on chain; the unfreeze and query methods remain so legacy positions can still be wound down.</p>
+<blockquote>
+<p>The trailing <code>2</code> in file names (e.g. <code>FreezeBalance2</code>) is a historical proto naming suffix (the V1 method that returns <code>TransactionExtention</code>) and is not the same method as Stake 2.0's <code>FreezeBalanceV2</code>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="stake-v1/FreezeBalance2/">FreezeBalance2</a></td>
+<td>Freeze TRX for resources (V1, <strong>chain rejects new requests</strong>)</td>
+</tr>
+<tr>
+<td><a href="stake-v1/UnfreezeBalance2/">UnfreezeBalance2</a></td>
+<td>Unfreeze matured resources (V1, still usable for legacy unfreezing)</td>
+</tr>
+<tr>
+<td><a href="stake-v1/GetDelegatedResource/">GetDelegatedResource</a></td>
+<td>Look up delegation records (V1, read-only)</td>
+</tr>
+<tr>
+<td><a href="stake-v1/GetDelegatedResourceAccountIndex/">GetDelegatedResourceAccountIndex</a></td>
+<td>Look up delegation counterparty addresses (V1, read-only)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stake-20">Stake 2.0<a class="headerlink" href="#stake-20" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="stake-v2/FreezeBalanceV2/">FreezeBalanceV2</a></td>
+<td>Freeze TRX for resources</td>
+</tr>
+<tr>
+<td><a href="stake-v2/UnfreezeBalanceV2/">UnfreezeBalanceV2</a></td>
+<td>Initiate an unfreeze (14-day wait)</td>
+</tr>
+<tr>
+<td><a href="stake-v2/WithdrawExpireUnfreeze/">WithdrawExpireUnfreeze</a></td>
+<td>Withdraw matured unfreeze</td>
+</tr>
+<tr>
+<td><a href="stake-v2/CancelAllUnfreezeV2/">CancelAllUnfreezeV2</a></td>
+<td>Cancel all unmatured unfreezes</td>
+</tr>
+<tr>
+<td><a href="stake-v2/DelegateResource/">DelegateResource</a></td>
+<td>Delegate resources to another account</td>
+</tr>
+<tr>
+<td><a href="stake-v2/UnDelegateResource/">UnDelegateResource</a></td>
+<td>Undelegate resources</td>
+</tr>
+<tr>
+<td><a href="stake-v2/GetDelegatedResourceV2/">GetDelegatedResourceV2</a></td>
+<td>Look up delegation records</td>
+</tr>
+<tr>
+<td><a href="stake-v2/GetDelegatedResourceAccountIndexV2/">GetDelegatedResourceAccountIndexV2</a></td>
+<td>Look up delegation counterparty addresses</td>
+</tr>
+<tr>
+<td><a href="stake-v2/GetCanDelegatedMaxSize/">GetCanDelegatedMaxSize</a></td>
+<td>Current maximum delegatable amount</td>
+</tr>
+<tr>
+<td><a href="stake-v2/GetAvailableUnfreezeCount/">GetAvailableUnfreezeCount</a></td>
+<td>Remaining unfreeze slots</td>
+</tr>
+<tr>
+<td><a href="stake-v2/GetCanWithdrawUnfreezeAmount/">GetCanWithdrawUnfreezeAmount</a></td>
+<td>Withdrawable amount at a given timestamp</td>
+</tr>
+</tbody>
+</table>
+<h2 id="node-pricing-tools">Node / pricing / tools<a class="headerlink" href="#node-pricing-tools" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="node-and-tools/GetNodeInfo/">GetNodeInfo</a></td>
+<td>Node status</td>
+</tr>
+<tr>
+<td><a href="node-and-tools/ListNodes/">ListNodes</a></td>
+<td>Known peer nodes</td>
+</tr>
+<tr>
+<td><a href="node-and-tools/GetEnergyPrices/">GetEnergyPrices</a></td>
+<td>Historical energy unit prices</td>
+</tr>
+<tr>
+<td><a href="node-and-tools/GetBandwidthPrices/">GetBandwidthPrices</a></td>
+<td>Historical bandwidth unit prices</td>
+</tr>
+<tr>
+<td><a href="node-and-tools/GetBurnTrx/">GetBurnTrx</a></td>
+<td>Cumulative burned TRX</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2278,6 +9149,27 @@ Nodes: FullNodes</p>
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 03:13:07 UTC">May 1, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -2291,7 +9183,7 @@ Nodes: FullNodes</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../http/" class="md-footer__link md-footer__link--prev" aria-label="Previous: HTTP API">
+          <a href="../http/node-and-tools/getburntrx/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cumulative burned TRX">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2301,20 +9193,20 @@ Nodes: FullNodes</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                HTTP API
+                Cumulative burned TRX
               </div>
             </div>
           </a>
         
         
           
-          <a href="../json-rpc/" class="md-footer__link md-footer__link--next" aria-label="Next: jsonRPC API">
+          <a href="account/GetAccount/" class="md-footer__link md-footer__link--next" aria-label="Next: Query an account by address">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                jsonRPC API
+                Query an account by address
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2356,7 +9248,7 @@ Nodes: FullNodes</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.tracking", "toc.follow", "search.highlight", "search.suggest", "search.share", "content.code.annotate", "content.code.copy", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
@@ -2365,7 +9257,7 @@ Nodes: FullNodes</p>
       
         <script src="../../javascripts/nav-toc.js"></script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="../../javascripts/mathjax-sri.js"></script>
       
     
   </body>
