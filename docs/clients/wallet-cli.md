@@ -1492,7 +1492,7 @@ assetV2
 #### TRC-10 Token Transfer -` TransferAsset [OwnerAddress] ToAddress AssertID Amount`
 
 - `OwnerAddress` (Optional) - The account address initiating the transaction. Default: The address of the logged-in account.
--`ToAddress` - The address of the destination account.
+- `ToAddress` - The address of the destination account.
 - `AssertName` - The TRC-10 token ID. Example: 1000001
 - `Amount` - The number of TRC-10 tokens to be transferred.
 
