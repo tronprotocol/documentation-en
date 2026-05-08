@@ -22,9 +22,9 @@ The URL path is always `/jsonrpc` (see `FullNodeJsonRpcHttpService.java`).
 - **Numeric encoding**: all numbers (block number, balance, gas, timestamp, etc.) use `0x`-prefixed hex strings; null values map to `0x` or `0x0`.
 - **Address encoding**: JSON-RPC interfaces accept `0x`-prefixed 20-byte hex addresses by default; base58check is also accepted (internally converted by `JsonRpcApiUtil.addressCompatibleToByteArray`).
 - **Block tags**: among the common `latest` / `earliest` / `pending` / `finalized`, **only a few methods support these tags**:
-  - Block-query methods such as `eth_getBlockByNumber` and `eth_getBlockReceipts` accept `latest` / `earliest` / `finalized`; `pending` is explicitly unsupported and throws `-32602 TAG pending not supported`.
-  - `eth_getBalance` / `eth_getStorageAt` / `eth_getCode` / `eth_call` **only support `latest`**; `earliest` / `pending` / `finalized` raise `-32602 TAG [earliest | pending | finalized] not supported`, and a specific height raises `-32602 QUANTITY not supported, just support TAG as latest`.
-  - `eth_newFilter` does not support `finalized` (raises `-32602 invalid block range params`).
+    - Block-query methods such as `eth_getBlockByNumber` and `eth_getBlockReceipts` accept `latest` / `earliest` / `finalized`; `pending` is explicitly unsupported and throws `-32602 TAG pending not supported`.
+    - `eth_getBalance` / `eth_getStorageAt` / `eth_getCode` / `eth_call` **only support `latest`**; `earliest` / `pending` / `finalized` raise `-32602 TAG [earliest | pending | finalized] not supported`, and a specific height raises `-32602 QUANTITY not supported, just support TAG as latest`.
+    - `eth_newFilter` does not support `finalized` (raises `-32602 invalid block range params`).
 
 ## Error responses
 

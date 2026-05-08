@@ -130,6 +130,7 @@ A FullNode's complete data can be split into two parts: a Snapshot Dataset or a 
 The Snapshot Dataset contains all account state data plus the history of the most recent 65,536 blocks. It occupies a small amount of space (approximately 3% of a FullNode's data). Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.
 
 The data pruning tool can split a FullNode's data into a **Snapshot Dataset** or a **History Dataset**. It also supports merging a history dataset back with a snapshot dataset. This enables the following use cases:
+
 * **Convert FullNode Data into Lite Fullnode Data**: Split the full node data to generate a snapshot dataset, which is all that's needed to run a light node.
 * **Periodically Pruning a Lite FullNode**: As a light node runs, its data grows. You can periodically prune it by using the tool to create a new, smaller snapshot dataset from the existing lite FullNode data.
 * **Converting Lite FullNode Data Back to FullNode Data**: To enable historical queries on a lite FullNode, you can convert it back to a FullNode. First, split a FullNode to create a history dataset. Then, merge that history dataset with your lite FullNode's snapshot dataset to create a complete FullNode database.

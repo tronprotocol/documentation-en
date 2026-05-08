@@ -231,7 +231,7 @@ By adding the `--witness` parameter to the FullNode startup command above, the `
 **Important Notes**:
 
 * Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.
-  * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
+    * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
 * Fill in the **private key** of your Super Representative account in the `localwitness` list of `config.conf`.
 
 Here is an example of the `localwitness` configuration:

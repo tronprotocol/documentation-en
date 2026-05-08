@@ -3,6 +3,7 @@
 This directory documents the FullNode HTTP endpoints under `framework/src/main/java/org/tron/core/services/http/`. One markdown file per endpoint, named after the last segment of the URL (e.g. `/wallet/getnodeinfo` → `getnodeinfo.md`).
 
 The following categories are intentionally not covered:
+
 - Exchange (DEX) endpoints
 - Market (order book) endpoints
 - Shielded (anonymous transaction) endpoints
