@@ -114,9 +114,9 @@ java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.co
 
 Once the migration is complete, restart your `java-tron` node. 
 
-[**FullNode Startup Command Example**](../installing_javatron/#starting-a-fullnode-on-the-tron-main-network)
+[**FullNode Startup Command Example**](installing_javatron.md#starting-a-fullnode-on-the-tron-main-network)
 
-[**Super Representative (SR) FullNode Startup Command Example**](../installing_javatron/#starting-a-block-production-node)
+[**Super Representative (SR) FullNode Startup Command Example**](installing_javatron.md#starting-a-block-production-node)
 
 ## Lite Fullnode Data Pruning
 
