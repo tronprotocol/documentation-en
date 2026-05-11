@@ -34,10 +34,10 @@ The following will provide a detailed explanation, integrating the specific impl
 |Super Representative Candidate| A node in the TRON network that is eligible to become an SR.|
 |Super Representative Partner (SRP)| SR candidates ranked from **28th** to **127th** by vote count. They do not participate in block production or transaction packaging but can receive voting rewards. Voters who vote for SRPs will also receive voting rewards.|
 |Block Production / Producing Blocks|The process of validating transactions and recording them as entries. Since entries in TRON are carried by blocks, the block production process is also referred to as "producing blocks." This document does not distinguish between block production and producing blocks.|
-|Block Production Order (Block Generation Order)|The 27 SRs are ranked from highest to lowest by vote count, which determines their block production order.|
-|Slot|In the TRON network, every **3 seconds** is counted as a slot. Under normal circumstances, each SR producing a block will complete block generation within its corresponding slot time. Therefore, TRON's average block generation interval is approximately 3 seconds. If an SR fails to produce a block for any reason, the corresponding slot remain empty, and the next scheduled SR will produce a block in the subsequent slot. During maintenance periods, block production skips 2 slots.|
-|Epoch|TRON defines every **6 hours** as an epoch. The last two block generation times in each epoch are **maintenance periods**. The maintenance period of each epoch will determine the block generation order for the next epoch.|
-|Maintenance Period|TRON sets this at **2 block times**, which is **6 seconds**. This period is used to tally the votes for candidates. Since there are 4 epochs in 24 hours, there are naturally 4 maintenance periods. No blocks are produced during the maintenance period; its primary purpose is to determine the block production order for the next epoch.|
+|Block Production Order (Block Generation Order)|The 27 SRs are ranked from highest to lowest by vote count, which determines their block production order. When two SRs have the same vote count, their addresses are used as a tiebreaker to produce a deterministic order.|
+|Slot|In the TRON network, every **3 seconds** is counted as a slot. Under normal circumstances, each SR producing a block will complete block generation within its corresponding slot time. Therefore, TRON's average block generation interval is approximately 3 seconds. If an SR fails to produce a block for any reason, the corresponding slot remains empty, and the next scheduled SR will produce a block in the subsequent slot. During maintenance periods, block production skips 2 slots.|
+|Epoch|TRON defines every **6 hours** as an epoch. At the boundary between consecutive epochs, the system performs a **maintenance period** to determine the block production order for the next epoch.|
+|Maintenance Period|At each epoch boundary, the system triggers maintenance: it tallies the votes accumulated during the epoch, re-elects the 27 SRs, and updates the block production order for the next epoch. During maintenance, block production **skips 2 slots** (about **6 seconds**) so no blocks are produced in that interval. Since there are 4 epochs in 24 hours, there are naturally 4 maintenance periods per day.|
 
 ![Epoch](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/sequence_en.jpg)
 
@@ -71,7 +71,7 @@ During each **maintenance period**, the system tallies the votes for all candida
 
 ## Block Production Mechanism
 
-In an **epoch**, the 27 SRs will produce blocks sequentially according to their **block production order**.Each SR can produce a block only during its designated turn.
+In an **epoch**, the 27 SRs will produce blocks sequentially according to their **block production order**. Each SR can produce a block only during its designated turn.
 
 SRs package multiple valid transaction data into each block. At the same time, each block fills in the **hash value** (`hash`) of the previous block as its **parent hash value** (`parentHash`). Furthermore, the SR uses their private key to sign the current block's data, and the **signature result** (`witness_signature`), along with the SR's address, block height, block generation time, and other data, are also filled into the block.
 
@@ -109,6 +109,8 @@ When a blockchain forks, honest SRs will always choose to continue producing blo
 ## Incentive Model
 
 To ensure the secure and efficient operation of the TRON blockchain system, TRON has designed an incentive model to encourage more nodes to join the TRON network, thereby expanding network scale.
+
+The reward amounts below reflect the **current mainnet values** after adjustment through on-chain proposals; they are not protocol-hardcoded and can be changed again via future proposals (see [Proposal-Based Parameter Adjustment](#proposal-based-parameter-adjustment)).
 
 * **Block Production Rewards:** For every block successfully produced in the TRON network, the corresponding SR is rewarded with **8 TRX**. After deducting a self-defined commission rate, the SR distributes the remaining block rewards to their voters proportionally based on voting weight.
 * **Voting Rewards:** With the generation of each block, the TRON network also awards an additional **128 TRX** to all SRs and SRPs. This reward is distributed based on their respective vote proportions. Similarly, after deducting their commission based on their set commission rate, SRs and SRPs distribute the remaining voting rewards to their respective voters based on the voters' voting weight.
