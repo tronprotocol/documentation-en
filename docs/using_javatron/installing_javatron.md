@@ -203,7 +203,7 @@ Shasta does not accept public node peers. Programmatic access is available via T
 Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shasta.tronex.io](https://shasta.tronex.io/).
 
 ### Starting a FullNode on a private network
-To set up a private network for testing or development, follow the [Private Network guidance](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/).
+To set up a private network for testing or development, follow the [Private Network guidance](private_network.md).
 
 ### Starting a SolidityNode
 A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
@@ -329,7 +329,7 @@ node.backup {
 
 ### Speeding Up Node Data Synchronization
 
-For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#main-net-data-snapshot) to accelerate node synchronization.
+For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](backup_restore.md#main-net-data-snapshot) to accelerate node synchronization.
 
 The operational steps are as follows:
 
