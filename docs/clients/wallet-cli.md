@@ -59,9 +59,9 @@ Balance = 0
 - [Smart Contracts](#smart-contracts)
 - [TRC-10 Assets](#trc-10-assets)
 - [Governance](#governance)
-- [Decentralized Exchange](#defi)
-- [GasFree Support](#gasfree)
-- [Other Utility Commands](#other)
+- [Decentralized Exchange](#decentralized-exchange)
+- [GasFree Support](#gasfree-support)
+- [Other Utility Commands](#other-useful-commands)
 
 
 
@@ -1693,7 +1693,7 @@ Example: `DeleteProposal 1`
 > Get proposal information based on the proposal ID.
 
 
-### Decentralized Exchange (DEX) { #defi }
+### Decentralized Exchange (DEX) { #decentralized-exchange }
 
 Trading and price fluctuations of trading pairs follow the Bancor protocol.
 
@@ -1940,7 +1940,7 @@ getTransactionInfoById b375787a098498623403c755b1399e82910385251b643811936d914c9
 }
 ```
 
-### GasFree Support { #gasfree }
+### GasFree Support { #gasfree-support }
 
 `wallet-cli` now supports **GasFree** integration. This guide explains the new commands and provides instructions on how to use them.
 
@@ -2058,7 +2058,7 @@ GasFreeTrace: successful!!
 
 
 
-### Other Useful Commands { #other }
+### Other Useful Commands { #other-useful-commands }
 
 #### Switch Network - `SwitchNetwork`
 

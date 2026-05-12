@@ -115,11 +115,11 @@ Remaining Staked Bandwidth = NetLimit - NetUsed
 
 Energy is the unit of measurement for the computational resources consumed by the TRON Virtual Machine (TVM) when executing the instructions of a smart contract. This section provides a comprehensive overview of Energy focusing on the following three aspects:
 
-- [The acquisition, consumption, and recovery of Energy](#get-energy)
+- [The acquisition, consumption, and recovery of Energy](#acquiring-and-consuming-energy)
 - [How to set the key parameter, `fee_limit`](#set-fee-limit)
-- [The TRON network's overall consumption mechanism](#energy-mechanism)
+- [The TRON network's overall consumption mechanism](#energy-consumption-mechanism)
 
-### Acquiring and Consuming Energy { #get-energy }
+### Acquiring and Consuming Energy { #acquiring-and-consuming-energy }
 
 Energy can be acquired in two primary ways:
 
@@ -224,7 +224,7 @@ The `fee_limit` estimation method is as follows:
 - **Step 2: Determine the User's Share**: Calculate the portion of the fee the user is responsible for. Given the developer commits to covering 90%, the user's share is 10%: `2,000,000 sun * 10% = 200,000 sun`.
 - **Step 3: Set the Final `fee_limit`**: The recommended `fee_limit` for the user to set is 200,000 sun.
 
-### Energy Consumption Mechanism { #energy-mechanism }
+### Energy Consumption Mechanism { #energy-consumption-mechanism }
 
 **Basic Energy Consumption Rules**
 
