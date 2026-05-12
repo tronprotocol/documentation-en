@@ -4,17 +4,15 @@ This guide provides detailed instructions on how to safely upgrade your java-tro
 
 For **mandatory upgrades**, it is crucial to strictly follow this guide to complete the deployment. For **optional upgrades**, you may choose whether to upgrade based on your specific needs.
 
-  * For standard nodes, please refer to the [Standard Node Upgrade Process](#standard_process).
-  * For nodes configured with a primary/backup high-availability setup, please follow the [Primary/Backup Node Upgrade Guide](#primary/backup_upgrade) to ensure a seamless service transition.
+  * For standard nodes, please refer to the [Standard Node Upgrade Process](#standard-process).
+  * For nodes configured with a primary/backup high-availability setup, please follow the [Primary/Backup Node Upgrade Guide](#primary-backup-upgrade) to ensure a seamless service transition.
 
 
-<a id="standard_process"></a>
-## Standard Node Upgrade Process
+## Standard Node Upgrade Process { #standard-process }
 
 All FullNodes, including block-producing Super Representative nodes, should follow these steps to complete the upgrade.
 
-<a id="step1"></a> 
-### Step 1: Prepare the New Version Package
+### Step 1: Prepare the New Version Package { #step1 }
 
 You can either download the compiled java-tron executable directly or download the new version's source code and compile it yourself to obtain the new executable file. Please perform the following operations in a directory outside of the current java-tron running directory.
 
@@ -55,8 +53,7 @@ You can either download the compiled java-tron executable directly or download t
     $ kill -15 <PID>
     ```
 
-<a id="step3"></a> 
-### Step 3: Back Up Critical Data
+### Step 3: Back Up Critical Data { #step3 }
 
 A full backup is strongly recommended before upgrading. Please perform the following backup steps in the specified order:
 
@@ -88,8 +85,7 @@ After preparing the new version of the executable file and backing up the origin
   
 > **Note on the Database**: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built [database snapshot](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore).
 
-<a id="step5"></a> 
-### Step 5: Start the Node
+### Step 5: Start the Node { #step5 }
 
 #### Super Representative Node (Block-Producing Node)
 
@@ -113,18 +109,17 @@ For Regular FullNode, please refer to [Starting a FullNode on the TRON main netw
 **Contingency Plan**: If you encounter any issues during the upgrade process that prevent the node from starting or running correctly, immediately use the data backed up in [Step 3](#step3) to restore the previous version. Please submit a GitHub Issue or report the problem to the TRON community for assistance.
 
 -----
-<a id="primary/backup_upgrade"></a> 
-## Primary/Backup Node Upgrade Guide
+## Primary/Backup Node Upgrade Guide { #primary-backup-upgrade }
 
 To ensure high availability of the service, the upgrade of primary/backup nodes should adopt a rolling upgrade strategy.
 
 1.  **Upgrade the Backup Node**
-      * First, perform all the steps in the [Standard Node Upgrade Process](#standard_process) on the Backup Node.
+      * First, perform all the steps in the [Standard Node Upgrade Process](#standard-process) on the Backup Node.
 2.  **Perform the Switchover**
       * After confirming that the Backup Node has been successfully upgraded and has completed block synchronization, stop the process on the **Master Node**.
       * At this point, the Backup Node will automatically take over, becoming the new **Active Node** and serving traffic.
 3.  **Upgrade the Original Master Node**
-      * After confirming that the new Active Node (the former Backup Node) is running stably, perform the [Standard Node Upgrade Process](#standard_process) on the original Master Node.
+      * After confirming that the new Active Node (the former Backup Node) is running stably, perform the [Standard Node Upgrade Process](#standard-process) on the original Master Node.
       * **Error Handling**: If the new Active Node fails during this period, immediately stop its upgrade process and restart the original Master Node to restore service. At the same time, please save the complete logs from the failed node for troubleshooting. For further support, please submit a GitHub Issue with the relevant logs or report it to the community.
 4.  **Restore the Primary/Backup Architecture**
       * After the original Master Node has been upgraded, started, and fully synchronized, stop the currently active node (the former Backup Node).

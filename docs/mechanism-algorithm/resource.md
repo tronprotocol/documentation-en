@@ -119,8 +119,7 @@ Energy is the unit of measurement for the computational resources consumed by th
 - [How to set the key parameter, `fee_limit`](#set-fee-limit)
 - [The TRON network's overall consumption mechanism](#energy-mechanism)
 
-<a id="get-energy"></a>
-### Acquiring and Consuming Energy
+### Acquiring and Consuming Energy { #get-energy }
 
 Energy can be acquired in two primary ways:
 
@@ -196,8 +195,7 @@ Contract execution can be interrupted for various reasons, with different rules 
 
 Consumed Energy resources gradually recover over a 24-hour period.
 
-<a id="set-fee-limit"></a>
-### How to Set `fee_limit` (Essential for Users)
+### How to Set `fee_limit` (Essential for Users) { #set-fee-limit }
 
 !!! Note
     In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.
@@ -226,8 +224,7 @@ The `fee_limit` estimation method is as follows:
 - **Step 2: Determine the User's Share**: Calculate the portion of the fee the user is responsible for. Given the developer commits to covering 90%, the user's share is 10%: `2,000,000 sun * 10% = 200,000 sun`.
 - **Step 3: Set the Final `fee_limit`**: The recommended `fee_limit` for the user to set is 200,000 sun.
 
-<a id="energy-mechanism"></a>
-### Energy Consumption Mechanism
+### Energy Consumption Mechanism { #energy-mechanism }
 
 **Basic Energy Consumption Rules**
 
@@ -248,8 +245,7 @@ Energy Deduction Rules:
     - Available Energy in the caller’s account is consumed first.
     - If insufficient, the remaining part will be covered by burning TRX from the caller's account at a fixed rate.
 
-<a id="dynamic-energy-model"></a>
-## Dynamic Energy Model
+## Dynamic Energy Model { #dynamic-energy-model }
 
 The Dynamic Energy Model is a resource-balancing mechanism on the TRON network. It dynamically adjusts the Energy consumption of each contract based on its resource usage, promoting a more equitable distribution of Energy and preventing network resources from being excessively concentrated on a few popular contracts. For more details, see the [Introduction to Dynamic Energy Model](https://medium.com/tronnetwork/introduction-to-dynamic-energy-model-31917419b61a).
 
@@ -297,8 +293,7 @@ The dynamic energy model is active on Mainnet with the following parameters:
 
 Since the Energy cost for popular contracts can vary between maintenance periods, it is crucial to set an appropriate `fee_limit` for transactions.
 
-<a id="staking-on-tron"></a>
-## Staking on TRON
+## Staking on TRON { #staking-on-tron }
 
 ### How to Stake for System Resources
 

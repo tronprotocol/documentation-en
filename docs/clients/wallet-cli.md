@@ -65,8 +65,7 @@ Balance = 0
 
 
 
-<a id="key-management"></a>
-### Key Management
+### Key Management { #key-management }
 
 #### Log Out - `Logout`
 > Logs out of the current wallet account.
@@ -297,8 +296,7 @@ File deleted successfully:
 ClearWalletKeystore successful !!!
 ```
 
-<a id="on-chain-accounts"></a>
-### On-chain Accounts
+### On-chain Accounts { #on-chain-accounts }
 
 #### Create Account - CreateAccount
 > This command can create a new inactive address account and burn 1 TRX as a fee.
@@ -435,8 +433,7 @@ Account `TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ` grants itself Owner access, and gra
 If the account is not a **Super Representative** (SR), you do not need to set the `witness_permission`, or an error will occur.
 
 
-<a id="account-resources"></a>
-### Account Resources
+### Account Resources { #account-resources }
 
 #### How to Freeze/Unfreeze Balance
 
@@ -837,8 +834,7 @@ wallet> getCanWithdrawUnfreezeAmount TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh 16711003
 }
 ```
 
-<a id="transactions"></a>
-### Transactions
+### Transactions { #transactions }
 
 #### Signing a Transaction
 
@@ -1038,8 +1034,7 @@ The information displayed is as follows:
 }
 ```
 
-<a id="querying-on-chain-data"></a>
-### Querying On-chain Data
+### Querying On-chain Data { #querying-on-chain-data }
 
 #### View Transaction History - `ViewTransactionHistory`
 
@@ -1154,8 +1149,7 @@ current network: CUSTOM
 fullNode: EMPTY, solidityNode: localhost:50052
 ```
 
-<a id="smart-contracts"></a>
-### Smart Contract
+### Smart Contract { #smart-contracts }
 
 #### Deploying a Smart Contract
 
@@ -1352,8 +1346,7 @@ Example:
 > UpdateSetting [ownerAddress] <contract_address> <consume_user_resource_percent>
 ```
 
-<a id="trc-10-assets"></a>
-### TRC-10 Assets
+### TRC-10 Assets { #trc-10-assets }
 
 #### How to Issue a TRC-10 Token
 
@@ -1538,8 +1531,7 @@ Example:
 > ListAssetIssuePaginated 0 1
 ```
 
-<a id="governance"></a>
-### Governance
+### Governance { #governance }
 
 #### How to Vote
 
@@ -1701,8 +1693,7 @@ Example: `DeleteProposal 1`
 > Get proposal information based on the proposal ID.
 
 
-<a id="defi"></a>
-### Decentralized Exchange (DEX)
+### Decentralized Exchange (DEX) { #defi }
 
 Trading and price fluctuations of trading pairs follow the Bancor protocol.
 
@@ -1949,8 +1940,7 @@ getTransactionInfoById b375787a098498623403c755b1399e82910385251b643811936d914c9
 }
 ```
 
-<a id="gasfree"></a>
-### GasFree Support
+### GasFree Support { #gasfree }
 
 `wallet-cli` now supports **GasFree** integration. This guide explains the new commands and provides instructions on how to use them.
 
@@ -2068,9 +2058,7 @@ GasFreeTrace: successful!!
 
 
 
-<a id="other"></a>
-
-### Other Useful Commands
+### Other Useful Commands { #other }
 
 #### Switch Network - `SwitchNetwork`
 
