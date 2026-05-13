@@ -1,6 +1,56 @@
 # System Contracts
 The TRON network supports many different types of transactions, such as TRX transfers, TRC10 transfers , smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `wallet/deploycontractAPI`.The transaction type of stake TRX is `FreezeBalanceV2Contract`, which requires calling the ` wallet/freezebalancev2API`. We collectively refer to the implementation of these different transaction types as system contracts.
 
+## ContractType Overview
+
+Every system contract is identified by a `ContractType` enum value defined in [`Tron.proto`](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto). The table below lists each `ContractType` together with its Proto Message, Actuator, current status, and the business it triggers.
+
+| # | ContractType | Proto Message | Actuator | Status | Business Triggered |
+|---|---|---|---|---|---|
+| 0 | AccountCreateContract | AccountContract.AccountCreateContract | CreateAccountActuator | ✅ Enabled | Create an on-chain account |
+| 1 | TransferContract | BalanceContract.TransferContract | TransferActuator | ✅ Enabled | TRX Transfer |
+| 2 | TransferAssetContract | AssetIssueContractOuterClass.TransferAssetContract | TransferAssetActuator | ✅ Enabled | TRC10 Token Transfer |
+| 3 | VoteAssetContract | | | 🚫 Disabled (Actuator not implemented) | |
+| 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance) |
+| 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a Super Representative (SR) candidate; write to witness store |
+| 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC10 tokens; freeze balance during recruitment period according to ICO rules |
+| 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of an SR |
+| 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Subscribe to TRC10 tokens with TRX during the ICO period |
+| 10 | AccountUpdateContract | AccountContract.AccountUpdateContract | UpdateAccountActuator | ✅ Enabled | Modify account name (subject to AllowUpdateAccountName constraint) |
+| 11 | FreezeBalanceContract | BalanceContract.FreezeBalanceContract | FreezeBalanceActuator | 🚫 Disabled (rejected by chain after `supportUnfreezeDelay` is enabled) | Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others |
+| 12 | UnfreezeBalanceContract | BalanceContract.UnfreezeBalanceContract | UnfreezeBalanceActuator | ✅ Enabled | Stake 1.0: Unfreeze TRX after expiration; release resources and clear votes |
+| 13 | WithdrawBalanceContract | BalanceContract.WithdrawBalanceContract | WithdrawBalanceActuator | ✅ Enabled | Withdraw SR block/voting rewards to account balance |
+| 14 | UnfreezeAssetContract | AssetIssueContractOuterClass.UnfreezeAssetContract | UnfreezeAssetActuator | ✅ Enabled | Issuer unfreezes TRC10 token shares frozen during ICO |
+| 15 | UpdateAssetContract | AssetIssueContractOuterClass.UpdateAssetContract | UpdateAssetActuator | ✅ Enabled | Update TRC10 token description / url / free bandwidth quota |
+| 16 | ProposalCreateContract | ProposalContract.ProposalCreateContract | ProposalCreateActuator | ✅ Enabled | SR creates an on-chain parameter proposal; written to ProposalStore for voting |
+| 17 | ProposalApproveContract | ProposalContract.ProposalApproveContract | ProposalApproveActuator | ✅ Enabled | SR approves or cancels a vote on a proposal |
+| 18 | ProposalDeleteContract | ProposalContract.ProposalDeleteContract | ProposalDeleteActuator | ✅ Enabled | Proposal creator withdraws their own created proposal |
+| 19 | SetAccountIdContract | AccountContract.SetAccountIdContract | SetAccountIdActuator | ✅ Enabled | Set a unique account_id for the account (can only be set once) |
+| 20 | CustomContract | | | 🚫 Disabled (Actuator not implemented) | |
+| 30 | CreateSmartContract | SmartContractOuterClass.CreateSmartContract | VMActuator | ✅ Enabled | Deploy a smart contract |
+| 31 | TriggerSmartContract | SmartContractOuterClass.TriggerSmartContract | VMActuator | ✅ Enabled | Call/Trigger a smart contract |
+| 32 | GetContract | | | 🚫 Disabled (Actuator not implemented) | |
+| 33 | UpdateSettingContract | SmartContractOuterClass.UpdateSettingContract | UpdateSettingContractActuator | ✅ Enabled | Contract owner modifies `consume_user_resource_percent` (percentage of energy borne by the user) |
+| 41 | ExchangeCreateContract | ExchangeContract.ExchangeCreateContract | ExchangeCreateActuator | ✅ Enabled | Create a Bancor exchange pair; inject initial liquidity for two assets |
+| 42 | ExchangeInjectContract | ExchangeContract.ExchangeInjectContract | ExchangeInjectActuator | ✅ Enabled | Inject liquidity into an existing exchange pair; deduct assets based on Bancor algorithm |
+| 43 | ExchangeWithdrawContract | ExchangeContract.ExchangeWithdrawContract | ExchangeWithdrawActuator | ✅ Enabled | Exchange pair creator redeems both assets from the pair proportionally |
+| 44 | ExchangeTransactionContract | ExchangeContract.ExchangeTransactionContract | ExchangeTransactionActuator | 🚫 Disabled | Asset exchange via Bancor exchange pair |
+| 45 | UpdateEnergyLimitContract | SmartContractOuterClass.UpdateEnergyLimitContract | UpdateEnergyLimitContractActuator | ✅ Enabled | Contract owner updates `origin_energy_limit` (max energy consumption owner is willing to pay per call) |
+| 46 | AccountPermissionUpdateContract | AccountContract.AccountPermissionUpdateContract | AccountPermissionUpdateActuator | ✅ Enabled | Update account permissions: owner/witness/active |
+| 48 | ClearABIContract | SmartContractOuterClass.ClearABIContract | ClearABIContractActuator | ✅ Enabled | Contract owner clears contract ABI |
+| 49 | UpdateBrokerageContract | StorageContract.UpdateBrokerageContract | UpdateBrokerageActuator | ✅ Enabled | SR adjusts the brokerage ratio (0-100%) for voters |
+| 51 | ShieldedTransferContract | ShieldContract.ShieldedTransferContract | ShieldedTransferActuator | 🚫 Disabled (`getAllowShieldedTransaction` not enabled) | ZK-SNARK anonymous transfer (transparent in + shielded spend/receive + transparent out) |
+| 52 | MarketSellAssetContract | MarketContract.MarketSellAssetContract | MarketSellAssetActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Place a limit sell order on the built-in order book (sell/buy two assets + price) |
+| 53 | MarketCancelOrderContract | MarketContract.MarketCancelOrderContract | MarketCancelOrderActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Cancel own unexecuted market order; refund remaining assets |
+| 54 | FreezeBalanceV2Contract | BalanceContract.FreezeBalanceV2Contract | FreezeBalanceV2Actuator | ✅ Enabled | Stake 2.0: Freeze TRX to gain Bandwidth/Energy; decouples resources from TronPower |
+| 55 | UnfreezeBalanceV2Contract | BalanceContract.UnfreezeBalanceV2Contract | UnfreezeBalanceV2Actuator | ✅ Enabled | Stake 2.0: Initiate unstaking; enters unfreeze waiting period |
+| 56 | WithdrawExpireUnfreezeContract | BalanceContract.WithdrawExpireUnfreezeContract | WithdrawExpireUnfreezeActuator | ✅ Enabled | Withdraw unfrozen TRX that has passed the waiting period to account balance |
+| 57 | DelegateResourceContract | BalanceContract.DelegateResourceContract | DelegateResourceActuator | ✅ Enabled | Stake 2.0: Delegate own staked Bandwidth/Energy to other addresses (lock-up period optional) |
+| 58 | UnDelegateResourceContract | BalanceContract.UnDelegateResourceContract | UnDelegateResourceActuator | ✅ Enabled | Stake 2.0: Reclaim previously delegated resources from others |
+| 59 | CancelAllUnfreezeV2Contract | BalanceContract.CancelAllUnfreezeV2Contract | CancelAllUnfreezeV2Actuator | ✅ Enabled | Cancel all pending Stake 2.0 unfreezing requests; remaining shares are re-staked |
+
+The protobuf message definition and field-level documentation of each contract are listed in the sections below.
+
 ## AccountCreateContract
 ```
     message AccountCreateContract {
@@ -139,7 +189,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 
 - `owner_address`: The owner of the current account.
 - `to_address`: The token owner's address.
-- `account_name`: The token id.
+- `asset_name`: The token id.
 - `amount`: The amount of token to purchase.
 
 ## AccountUpdateContract
@@ -377,6 +427,58 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `quant`: The token amount to sell.
 - `expected`: The expected token amount to buy, if the calculated actual token amount that can be bought is less than this value, the transaction will fail.
 
+## UpdateEnergyLimitContract
+```
+    message UpdateEnergyLimitContract {
+      bytes owner_address = 1;
+      bytes contract_address = 2;
+      int64 origin_energy_limit = 3;
+    }
+```
+
+- `owner_address`: The owner of the current account.
+- `contract_address`: The contract address.
+- `origin_energy_limit`: The target energy limit to change.
+
+## AccountPermissionUpdateContract
+```
+    message AccountPermissionUpdateContract {
+      bytes owner_address = 1;
+      Permission owner = 2;             //Empty is invalidate
+      Permission witness = 3;           //Can be empty
+      repeated Permission actives = 4;  //Empty is invalidate
+    }
+```
+
+- `owner_address`: The owner of the current account.
+- `owner`: The owner permission of the account. Cannot be empty.
+- `witness`: The witness permission. Only valid for SR (witness) accounts; can be empty for non-witness accounts.
+- `actives`: The list of active permissions. Cannot be empty.
+
+For more details, see [Account Permission Management](./multi-signatures.md).
+
+## ClearABIContract
+```
+    message ClearABIContract {
+      bytes owner_address = 1;
+      bytes contract_address = 2;
+    }
+```
+
+- `owner_address`: The owner of the current account.
+- `account_address`: The target contract address to clear ABI.
+
+## UpdateBrokerageContract
+```
+    message UpdateBrokerageContract {
+      bytes owner_address = 1;
+      int32 brokerage = 2;
+    }
+```
+
+- `owner_address`: The owner of the current account.
+- `brokerage`: Commission rate, from 0 to 100,1 mean 1%.
+
 ## ShieldedTransferContract
 ```
     message ShieldedTransferContract {
@@ -434,44 +536,33 @@ message ReceiveDescription {
 - `c_out`: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.
 - `zkproof`: zero-knowledge proof of the receiver's note.
 
-## Account Permission Management
-
-[Account Permission Management](./multi-signatures.md)
-
-## ClearABIContract
+## MarketSellAssetContract
 ```
-    message ClearABIContract {
+    message MarketSellAssetContract {
       bytes owner_address = 1;
-      bytes contract_address = 2;
+      bytes sell_token_id = 2;
+      int64 sell_token_quantity = 3;
+      bytes buy_token_id = 4;
+      int64 buy_token_quantity = 5; // min to receive
     }
 ```
 
 - `owner_address`: The owner of the current account.
-- `account_address`: The target contract address to clear ABI.
+- `sell_token_id`: The id of the token to sell.
+- `sell_token_quantity`: The amount of the token to sell.
+- `buy_token_id`: The id of the token to buy.
+- `buy_token_quantity`: The minimum amount of the buy token to receive. If the actual amount obtained when matching is less than this value, the order will be placed on the order book waiting to be matched at a better price.
 
-## UpdateBrokerageContract
+## MarketCancelOrderContract
 ```
-    message UpdateBrokerageContract {
+    message MarketCancelOrderContract {
       bytes owner_address = 1;
-      int32 brokerage = 2;
+      bytes order_id = 2;
     }
 ```
 
 - `owner_address`: The owner of the current account.
-- `brokerage`: Commission rate, from 0 to 100,1 mean 1%.
-
-## UpdateEnergyLimitContract
-```
-    message UpdateEnergyLimitContract {
-      bytes owner_address = 1;
-      bytes contract_address = 2;
-      int64 origin_energy_limit = 3;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `contract_address`: The contract address.
-- `origin_energy_limit`: The target energy limit to change.
+- `order_id`: The id of the market order to cancel.
 
 ## FreezeBalanceV2Contract
 
@@ -546,11 +637,17 @@ message ReceiveDescription {
 * `resource`： Resource type
 * `balance`：undelegated TRX, unit is sun
 * `receiver_address`：Resource receiver address
-   
 
 
+## CancelAllUnfreezeV2Contract
 
+```protobuf
+      message CancelAllUnfreezeV2Contract {
+        bytes owner_address = 1;
+      }
+```
 
+* `owner_address`：The owner's address
 
 
 
