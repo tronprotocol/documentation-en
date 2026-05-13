@@ -264,10 +264,10 @@ In some cases (e.g., local testing or a fixed private network), you may disable 
 ### Number of Node Connections
 The number of peer connections is controlled by the following parameters. They are usually tuned together:
 
-- `node.maxConnections`: the maximum number of peer connections (default: 30). Inbound connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in `node.passive`, `node.active`, or `fastForward` (the IPs from all three are added to the trust list). Outbound connections bypass this check entirely: outbound to peers configured in `node.active` is bounded only by the size of the `node.active` list, while outbound to peers discovered via the discovery protocol is driven by `minConnections` and `minActiveConnections` (see below).
-- `node.minConnections`: the desired minimum total number of peer connections, counting both inbound and outbound (default: 8). When the total is below this value, the node initiates outbound connections to discovered peers to close the gap.
-- `node.minActiveConnections`: the desired minimum number of outbound connections to discovered peers (default: 3). The node will keep initiating outbound connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded `minConnections`.
-- `node.maxConnectionsWithSameIp`: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single host.
+- `node.maxConnections`: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in `node.passive`, `node.active`, or `fastForward` (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in `node.active` are bounded only by the size of the `node.active` list, while active connections to peers discovered via the discovery protocol are driven by `minConnections` and `minActiveConnections` (see below).
+- `node.minConnections`: the desired minimum total number of peer connections, counting both active and passive (default: 8). When the total is below this value, the node initiates active connections to discovered peers to close the gap.
+- `node.minActiveConnections`: the desired minimum number of active connections to discovered peers (default: 3). The node will keep initiating active connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded `minConnections`.
+- `node.maxConnectionsWithSameIp`: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single IP.
 
 ```
 node {
