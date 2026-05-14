@@ -1,13 +1,13 @@
 # TIP Specification and Guidelines
 
-**TRON Improvement Proposals (TIPs)** document the entire improvement process for the TRON network, from community suggestions and discussions to final adoption. Each TIP is a detailed design document that covers its underlying principles and technical specifications, to help community members fully understand its content. TIPs are a core unit of TRON's community governance, and anyone can freely submit a TIP. Through community discussion, the community decides whether to develop it into a common standard or incorporate it into a network upgrade. The proposer of a TIP is responsible for encouraging developer participation in the community, building consensus for the TIP, and recording all dissenting opinions.
+**TRON Improvement Proposals (TIPs)** document the entire improvement process for the TRON network, from community suggestions and discussions to final adoption. Each TIP is a detailed design document that covers its underlying principles and technical specifications, to help community members fully understand its content. TIPs are a core unit of TRON's community governance, and anyone can freely submit a TIP. Through community discussion, the community decides whether to develop it into a common standard or incorporate it into a network upgrade. The proposer of a TIP is responsible for encouraging developer participation in the community, building consensus around the TIP, and recording all dissenting opinions.
 
 
 ## TIP Types
 
-TIPs are primarily categorized into two types: `Standard Track` and `Informational`.
+TIPs are primarily categorized into two types: `Standard Tracks` and `Informational`.
 
-* **`Standard Track`**: These TIPs describe changes that affect how TRON is implemented, such as modifications to block or transaction validity rules, proposed application standards, or any changes that affect the interoperability of TRON applications. `Standard Track` TIPs can be further subdivided into the following categories:
+* **`Standard Tracks`**: These TIPs describe changes that affect how TRON is implemented, such as modifications to block or transaction validity rules, proposed application standards, or any changes that affect the interoperability of TRON applications. `Standard Tracks` TIPs can be further subdivided into the following categories:
 
     * **`Core`**: TIPs that require a consensus fork[^1] for implementation. This category also includes TIPs that don't require a consensus fork but still need discussion by core developers.
     * **`Networking`**: Improvements to the network protocol.
@@ -20,7 +20,7 @@ TIPs are primarily categorized into two types: `Standard Track` and `Information
 
 ## TIP Workflow
 
-Before submitting a TIP, we recommend first creating a TIP **Issue** for community discussion and add a link to this issue in the TIP's title. The format of the TIP issue should be consistent with the content of the TIP. The specific process for submitting a TIP is as follows:
+Before submitting a TIP, we recommend first creating a TIP **Issue** for community discussion and add a link to this issue in the TIP's title. The format of the TIP issue must strictly align with the proposed TIP content. The specific process for submitting a TIP is as follows:
 
 1.  **Fork** the GitHub [TIPs repository](https://github.com/tronprotocol/TIPs).
 2.  Create a new TIP in your forked repository, following the [TIP template](https://github.com/tronprotocol/TIPs/blob/master/template.md).
@@ -28,7 +28,7 @@ Before submitting a TIP, we recommend first creating a TIP **Issue** for communi
 
 Strictly follow the `markdown` requirements of the [template](https://github.com/tronprotocol/TIPs/blob/master/template.md) when writing a TIP, and ensure that the TIP title includes a link to the TIP Issue or a discussion forum address so that community members can fully discuss the TIP. If a TIP involves the development of new features in java-tron and has a corresponding development PR, you need to cross-reference each other's GitHub links in both the TIP and the java-tron PR to ensure the traceability of the new feature's requirements analysis and development code.
 
-After a new TIP's initial PR submission, the TIP will be in the **`Draft`** state. The editor will review the TIP to ensure it meets certain formatting standards and assign a TIP number before merging it.
+Upon the initial PR submission, the new TIP enters the **`Draft`** state. The editor will review the TIP to ensure it meets certain formatting standards and assign a TIP number before merging it.
 
 Once the TIP is considered mature and ready to move to the next phase, you should:
 
@@ -64,9 +64,9 @@ tip: <to be assigned>
 title: <TIP title>
 author: <a list of the author's or authors' name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)>
 discussions-to: <URL>
-status: <Draft | Last Call | Accepted | Final | Deferred>
-type: <Standards Track (Core, Networking, Interface, TRC, VM) | Informational>
-category (*only required for Standard Track): <Core | Networking | Interface | TRC | VM>
+status: <Draft | Last Call | Accepted | Final(non-core) | Final(core) | Active | Abandoned | Rejected | Deferred>
+type: <Standards Track (Core, Networking, Interface, TRC, TVM) | Informational>
+category (*only required for Standard Tracks): <Core | Networking | Interface | TRC | TVM>
 created: <date created on, in ISO 8601 (yyyy-mm-dd) format>
 requires (*optional): <TIP number(s)>
 replaces (*optional): <TIP number(s)>
@@ -83,7 +83,7 @@ The TIP body should include the following sections:
 * **`Rationale`**: Describes the design's motivation and the reasons for the design decisions made. It serves to supplement the `Specification`. The `Rationale` should also describe alternative designs and related work, and include an explanation of significant objections or concerns raised during the TIP's discussion.
 * **`Backwards Compatibility`**: (Optional) If the TIP's changes introduce backwards compatibility issues, the TIP should include a `Backwards Compatibility` section describing these incompatibilities and their impact. The TIP must state how these incompatibilities are intended to be handled.
 * **`Test Cases`**: (Optional) For TIPs that affect consensus, implementation-related test cases must be included. This section can be omitted for non-Core TIPs.
-* **`Implementation`**: This section does not need to be completed before the TIP is assigned the `Accepted` status but must be completed before the TIP is assigned the `Final` status. When discussing many API details, "general consensus and working code" are necessary.
+* **`Implementation`**: This section is optional before a TIP reaches Accepted status, but mandatory before it transitions to Final status. When discussing many API details, "general consensus and working code" are necessary.
 
 
 ## Linking to External Resources
