@@ -204,7 +204,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `owner_address`: The owner of the current account.
 - `account_name`: Account name.
 
-## (Deprecated)FreezeBalanceContract
+## FreezeBalanceContract
 ```
     message FreezeBalanceContract {
       bytes owner_address = 1;
@@ -452,8 +452,8 @@ The protobuf message definition and field-level documentation of each contract a
 
 - `owner_address`: The owner of the current account.
 - `owner`: The owner permission of the account. Cannot be empty.
-- `witness`: The witness permission. Only valid for SR (witness) accounts; can be empty for non-witness accounts.
-- `actives`: The list of active permissions. Cannot be empty.
+- `witness`: The witness permission. Required for SR (witness) accounts; must be empty for non-witness accounts.
+- `actives`: The list of active permissions. Cannot be empty; at most 8 entries.
 
 For more details, see [Account Permission Management](./multi-signatures.md).
 
@@ -466,7 +466,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
 ```
 
 - `owner_address`: The owner of the current account.
-- `account_address`: The target contract address to clear ABI.
+- `contract_address`: The target contract address to clear ABI.
 
 ## UpdateBrokerageContract
 ```
