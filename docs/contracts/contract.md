@@ -71,8 +71,8 @@ message SmartContract {
 - name: smart contract name
 - origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)
 - code_hash: hash of the contract runtime bytecode
-- trx_hash: transaction id of the contract creation transaction
-- version: smart contract version, used to distinguish behavior across TVM upgrades (e.g. version 1 enables TVM-Compatible-EVM features)
+- trx_hash: root transaction id of the deployment. Populated only for contracts deployed via the CREATE2 opcode; left empty for contracts deployed via the CREATE opcode or via gRPC `deployContract`
+- version: smart contract version. When the network has activated the ALLOW_TVM_COMPATIBLE_EVM proposal, newly deployed contracts are stamped with version 1 so the runtime can gate EVM-compatible behavior to them, while older contracts (deployed before activation) keep version 0 and retain the original TVM semantics. As of writing this proposal is not active on mainnet, so all contracts on mainnet have version 0
 
 Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.
 
@@ -96,7 +96,7 @@ There is a special type of message call, delegate call. The difference with comm
 
 * **CREATE command**
 
-This command will create a new contract with a new address. The primary difference from Ethereum is that the new TRON address is derived as `sha3omit12(rootTransactionId || nonce)` — the root transaction id concatenated with the 8-byte nonce, then hashed (the nonce itself is **not** pre-hashed). Different from Ethereum (where nonce is the sender account's transaction nonce), here `nonce` is a per-root-transaction counter that increments on every internal action (internal call, transfer, CREATE, suicide, etc.), not only on CREATE. Refer to `TransactionUtil.generateContractAddress(byte[], long)` for the exact implementation.
+This command will create a new contract with a new address. The primary difference from Ethereum is that the new TRON address is derived as `sha3omit12(rootTransactionId || nonce)` — the root transaction id concatenated with the 8-byte nonce, then hashed (the nonce itself is **not** pre-hashed); the final 21-byte address has a leading `0x41` TRON address prefix. Different from Ethereum (where nonce is the sender account's transaction nonce), here `nonce` is a per-root-transaction counter that increments on every internal action (internal call, transfer, CREATE, suicide, etc.), not only on CREATE. Refer to `TransactionUtil.generateContractAddress(byte[], long)` for the exact implementation.
 Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
 
 * **built-in function and built-in function attribute**
