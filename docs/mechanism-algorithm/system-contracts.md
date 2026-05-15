@@ -134,10 +134,11 @@ The protobuf message definition and field-level documentation of each contract a
       int64 total_supply = 4;
       repeated FrozenSupply frozen_supply = 5;
       int32 trx_num = 6;
+      int32 precision = 7;
       int32 num = 8;
       int64 start_time = 9;
       int64 end_time = 10;
-      int64 order = 11; // the order of tokens of the same name
+      int64 order = 11; // useless
       int32 vote_score = 16;
       bytes description = 20;
       bytes url = 21;
@@ -145,6 +146,7 @@ The protobuf message definition and field-level documentation of each contract a
       int64 public_free_asset_net_limit = 23;
       int64 public_free_asset_net_usage = 24;
       int64 public_latest_free_net_time = 25;
+      string id = 41;
     }
 ```
 
@@ -165,6 +167,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `public_free_asset_net_limit`: The free bandwidth limit all the accounts can use.
 - `public_free_asset_net_usage`: The free bandwidth usage of all the accounts.
 - `public_latest_free_net_time`: The latest bandwidth consumption time of token transfer.
+- `id`: The unique token ID, generated sequentially by the system at issuance (incrementing from 1000001).
 
 ## WitnessUpdateContract
 ```
@@ -226,7 +229,7 @@ The protobuf message definition and field-level documentation of each contract a
     message UnfreezeBalanceContract {
       bytes owner_address = 1;
       ResourceCode resource = 10;
-      bytes receiver_address = 13;
+      bytes receiver_address = 15;
     }
 ```
 
@@ -612,6 +615,7 @@ message ReceiveDescription {
       int64 balance = 3;
       bytes receiver_address = 4;
       bool  lock = 5;
+      int64 lock_period = 6;
       }
 ```
 
@@ -619,7 +623,8 @@ message ReceiveDescription {
 * `resource`： Resource type
 * `balance`： Amount of TRX staked for resources to be delegated, unit is sun
 * `receiver_address`：Resource receiver address
-* `lock`：Indicates whether the delegation is locked. If `true`, the delegated resources cannot be undelegated for 3 days. If the owner delegates the same resource type to the same address with a lock before the initial lock expires, the 3-day lock timer is reset.
+* `lock`：Whether to lock this delegation.
+* `lock_period`：The lock duration when `lock=true`, in blocks (3 seconds per block). User-supplied values are only accepted after the `MAX_DELEGATE_LOCK_PERIOD` proposal takes effect; in that case `0` means use the default of 86400 blocks (3 days), and the upper bound is determined by the chain parameter `getMaxDelegateLockPeriod`. Before the proposal takes effect this field is ignored and the lock duration is fixed at 86400 blocks.
    
    
 ## UnDelegateResourceContract
