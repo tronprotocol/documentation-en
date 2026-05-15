@@ -58,6 +58,7 @@ message SmartContract {
   int64 origin_energy_limit = 8;
   bytes code_hash = 9;
   bytes trx_hash = 10;
+  int32 version = 11;
 }
 ```
 
@@ -69,6 +70,9 @@ message SmartContract {
 - consume_user_resource_percent: resource consumption percentage set by the developer
 - name: smart contract name
 - origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)
+- code_hash: hash of the contract runtime bytecode
+- trx_hash: transaction id of the contract creation transaction
+- version: smart contract version, used to distinguish behavior across TVM upgrades (e.g. version 1 enables TVM-Compatible-EVM features)
 
 Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.
 
@@ -92,38 +96,41 @@ There is a special type of message call, delegate call. The difference with comm
 
 * **CREATE command**
 
-This command will create a new contract with a new address. The primary difference from Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the contract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
+This command will create a new contract with a new address. The primary difference from Ethereum is that the new TRON address is derived as `sha3omit12(rootTransactionId || nonce)` — the root transaction id concatenated with the 8-byte nonce, then hashed (the nonce itself is **not** pre-hashed). Different from Ethereum (where nonce is the sender account's transaction nonce), here `nonce` is a per-root-transaction counter that increments on every internal action (internal call, transfer, CREATE, suicide, etc.), not only on CREATE. Refer to `TransactionUtil.generateContractAddress(byte[], long)` for the exact implementation.
 Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
 
-* **built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)**
+* **built-in function and built-in function attribute**
 
-```  
-1)TVM is compatible with solidity language's transfer format, including:
-- accompany with constructor to call transfer
-- accompany with internal function to call transfer
-- use transfer/send/call/callcode/delegatecall to call transfer
+```
+1) TVM is compatible with solidity language's transfer format, including:
+   - accompany with constructor to call transfer
+   - accompany with internal function to call transfer
+   - use transfer/send/call/callcode/delegatecall to call transfer
 
-Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
+   Note: TRON's smart contract is different from TRON's system contract.
+   If the transfer-to address does not exist, a smart-contract transfer
+   cannot create the account.
 
-2)Different accounts vote for Super Representative Node (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+2) Voting for Super Representatives and withdrawing voting rewards from
+   inside a contract. Enabled by the ALLOW_TVM_VOTE proposal (proposal 59),
+   which is active on mainnet. Provides VOTEWITNESS / WITHDRAWREWARD and
+   related read-only opcodes.
 
-3)Super Representative gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+3) TRC10 token operations: sending TRC10 to a target address and querying
+   the TRC10 balance of an address. Enabled by the ALLOW_TVM_TRANSFER_TRC10
+   proposal (proposal 18), which is active on mainnet.
 
-4)Super Representative approves or disapproves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+4) Staking TRX for resources (Stake 2.0), delegating / undelegating
+   resources, and querying delegated balances from inside a contract.
+   Enabled when the network supports the unfreeze-delay model (Stake 2.0),
+   which is active on mainnet.
 
-5)Super Representative address proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-
-6)Super Representative deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-
-7)TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-
-8)TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-
-9)Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-
-10)Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
-
-11)Compatible with all the built-in functions of Ethereum
+5) Compatible with most Ethereum built-in functions and precompiles
+   (through the Constantinople, Istanbul, London, Shanghai and Cancun
+   upgrades, each gated by its own ALLOW_TVM_* proposal — all active on
+   mainnet). The ALLOW_TVM_COMPATIBLE_EVM proposal (proposal 60) has not
+   been activated on mainnet, so the Ethereum-standard RIPEMD160 and
+   BLAKE2F precompiles are not yet enabled.
 ```
 Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
 
@@ -181,7 +188,8 @@ Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, c
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 #### Block Related
-- block.blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded
+- blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded. Note: the form `block.blockhash(uint)` was deprecated in Solidity 0.4.22 and removed in 0.5.0; use the top-level `blockhash(...)` instead
+- block.basefee (uint): current block base fee, returns the network energy fee. Available since the London upgrade (ALLOW_TVM_LONDON, proposal 63), which is active on mainnet
 - block.coinbase (address): Super Representative address that produced the current block
 - block.difficulty (uint): current block difficulty, not recommended, set 0
 - block.gaslimit (uint): current block gas limit, not supported, set 0
@@ -193,7 +201,7 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 - msg.sender (address): message sender (current call)
 - msg.sig (bytes4): first 4 bytes of call data (function identifier)
 - msg.value (uint): the amount of SUN send with message
-- now (uint): current block timestamp (block.timestamp)
+- now (uint): current block timestamp - removed in Solidity 0.7.0, use `block.timestamp` instead
 - tx.gasprice (uint): the gas price of transaction, not recommended, set 0
 - tx.origin (address): transaction initiator
 
