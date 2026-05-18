@@ -90,7 +90,7 @@ Note: If you use create command inside a contract (`CREATE` instruction), even u
 
 #### message calls
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with `OutOfEnergyException` in the internal message call, it will return false, but not error. In the meantime, only the energy sent with the internal message call will be consumed; if an energy limit is not specified via `call.gas(x)` (pre-0.6.2 chained syntax) or `{gas: x, value: ...}` (0.6.2+ options syntax), all the remaining energy will be forwarded to the inner call.
+Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with `OutOfEnergyException` in the internal message call, it will return false, but not error. In the meantime, only the energy sent with the internal message call will be consumed; if an energy limit is not specified via `call.gas(x)` (chained syntax, removed in Solidity 0.7.0) or `{gas: x, value: ...}` (options syntax, since Solidity 0.6.2), all the remaining energy will be forwarded to the inner call.
 
 #### delegate call/call code/library
 
@@ -214,7 +214,7 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 - `msg.sender` (address): message sender (current call)
 - `msg.sig` (bytes4): first 4 bytes of call data (function identifier)
 - `msg.value` (uint): the amount of SUN send with message
-- `now` (uint): alias for `block.timestamp`. Removed in upstream Solidity 0.7.0 (TRON's Solidity fork inherits the removal starting from `tv_0.7.0`); use `block.timestamp` instead
+- `now` (uint): alias for `block.timestamp`. Removed in Solidity 0.7.0; use `block.timestamp` instead
 - `tx.gasprice` (uint): the gas price of transaction, not recommended, set 0
 - `tx.origin` (address): transaction initiator
 
