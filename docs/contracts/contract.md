@@ -69,7 +69,7 @@ message SmartContract {
 - `call_value`: TRX transferred into smart contract while call the contract
 - `consume_user_resource_percent`: resource consumption percentage set by the developer
 - `name`: smart contract name
-- `origin_energy_limit`: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use `updateEnergyLimit` api to update this parameter (must greater than 0)
+- `origin_energy_limit`: energy consumption of the developer limit in one call, must be greater than 0. For old contracts that were deployed without this parameter, the stored value is 0 but the runtime substitutes a default of 10,000,000 energy (`CREATOR_DEFAULT_ENERGY_LIMIT`); developers can use the `updateEnergyLimit` api to update this parameter (the new value must be greater than 0)
 - `code_hash`: hash of the contract runtime bytecode
 - `trx_hash`: root transaction id of the deployment. Populated only for contracts deployed via the `CREATE2` opcode; left empty for contracts deployed via the `CREATE` opcode or via gRPC `deployContract`
 - `version`: smart contract version. When the network has activated the `ALLOW_TVM_COMPATIBLE_EVM` proposal, newly deployed contracts are stamped with version 1 so the runtime can gate EVM-compatible behavior to them, while older contracts (deployed before activation) keep version 0 and retain the original TVM semantics. As of writing this proposal is not active on mainnet, so all contracts on mainnet have version 0
