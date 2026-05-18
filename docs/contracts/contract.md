@@ -201,7 +201,7 @@ Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, c
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 #### Block Related
-- `blockhash(uint blockNumber) returns (bytes32)`: specified block hash, can only apply to the latest 256 blocks and current block excluded. Note: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0 (TRON's Solidity fork inherits both, starting from `tv_0.4.24`); use the top-level `blockhash(...)` instead
+- `blockhash(uint blockNumber) returns (bytes32)`: specified block hash, can only apply to the latest 256 blocks and current block excluded. Note: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0; TRON's Solidity fork inherits the deprecation from `tv_0.4.24` and the removal from `tv_0.5.4` onwards — use the top-level `blockhash(...)` instead
 - `block.basefee` (uint): returns the network energy fee from chain parameter (`getEnergyFee`); unlike Ethereum's per-block EIP-1559 base fee, this value only changes when a committee proposal modifies it. Available since the London upgrade (`ALLOW_TVM_LONDON`), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
 - `block.coinbase` (address): Super Representative address that produced the current block
 - `block.difficulty` (uint): current block difficulty, not recommended, set 0
