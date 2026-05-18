@@ -84,9 +84,9 @@ There are two types of function according to whether any change will be made to 
 Constant function uses `view`/`pure` to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
 Non-constant function will be broadcasted in the form of a transaction while being called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.
 
-Note: legacy contracts may use the deprecated `constant` function modifier. It is a compile-time annotation only and is not encoded into bytecode, so already-deployed contracts continue to run normally; however, recompiling such sources with the current TRON Solidity compiler will fail with a parser error — use `view`/`pure` for new contracts.
+**Note**: legacy contracts may use the deprecated `constant` function modifier. It is a compile-time annotation only and is not encoded into bytecode, so already-deployed contracts continue to run normally; however, recompiling such sources with the current TRON Solidity compiler will fail with a parser error — use `view`/`pure` for new contracts.
 
-Note: If you use create command inside a contract (`CREATE` instruction), even use `view`/`pure` to decorate the dynamically created contract function, this function will still be treated as non-constant function, be dealt in the form of transaction.
+**Note**: If you use create command inside a contract (`CREATE` instruction), even use `view`/`pure` to decorate the dynamically created contract function, this function will still be treated as non-constant function, be dealt in the form of transaction.
 
 #### message calls
 
@@ -99,7 +99,7 @@ There is a special type of message call, delegate call. The difference with comm
 #### CREATE command
 
 This command will create a new contract with a new address. The primary difference from Ethereum is that the new TRON address is derived as `sha3omit12(rootTransactionId || nonce)` — the root transaction id concatenated with the 8-byte nonce, then hashed (the nonce itself is **not** pre-hashed); the final 21-byte address has a leading `0x41` TRON address prefix. Different from Ethereum (where nonce is the sender account's transaction nonce), here `nonce` is a per-root-transaction counter that increments on every internal action (internal call, transfer, `CREATE`, suicide, etc.), not only on `CREATE`. Refer to `TransactionUtil.generateContractAddress(byte[], long)` for the exact implementation.
-Note: Different from creating a contract by grpc's `deployContract`, contract created by `CREATE` command does not store contract abi.
+**Note**: Different from creating a contract by grpc's `deployContract`, contract created by `CREATE` command does not store contract abi.
 
 #### built-in function and built-in function attribute
 
@@ -109,7 +109,7 @@ Note: Different from creating a contract by grpc's `deployContract`, contract cr
     - accompany with internal function to call transfer
     - use `transfer`/`send`/`call`/`callcode`/`delegatecall` to call transfer
 
-    Note: TRON's smart contract differs from TRON's system contract.
+    **Note**: TRON's smart contract differs from TRON's system contract.
     Before the SOLIDITY_059 upgrade (chain parameter `ALLOW_TVM_SOLIDITY_059`,
     activated by committee [proposal #29](https://tronscan.io/#/proposal/29)),
     a smart-contract transfer to a non-existent address would fail. Since
@@ -145,7 +145,7 @@ Note: Different from creating a contract by grpc's `deployContract`, contract cr
    the Ethereum-standard `RIPEMD160` and `BLAKE2F` precompiles are not yet
    enabled.
 
-Note: Ethereum's `RIPEMD160` function is not recommended, because the return of TRON is a hash result based on TRON's `sha256`, not an accurate Ethereum `RIPEMD160`.
+**Note**: Ethereum's `RIPEMD160` function is not recommended, because the return of TRON is a hash result based on TRON's `sha256`, not an accurate Ethereum `RIPEMD160`.
 
 ### Contract Address Used in Solidity Language 
 
@@ -201,7 +201,7 @@ Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, c
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 #### Block Related
-- `blockhash(uint blockNumber) returns (bytes32)`: specified block hash, can only apply to the latest 256 blocks and current block excluded. Note: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0; TRON's Solidity fork inherits the deprecation from `tv_0.4.24` and the removal from `tv_0.5.4` onwards — use the top-level `blockhash(...)` instead
+- `blockhash(uint blockNumber) returns (bytes32)`: specified block hash, can only apply to the latest 256 blocks and current block excluded. **Note**: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0; TRON's Solidity fork inherits the deprecation from `tv_0.4.24` and the removal from `tv_0.5.4` onwards — use the top-level `blockhash(...)` instead
 - `block.basefee` (uint): returns the network energy fee from chain parameter (`getEnergyFee`); unlike Ethereum's per-block EIP-1559 base fee, this value only changes when a committee proposal modifies it. Available since the London upgrade (`ALLOW_TVM_LONDON`), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
 - `block.coinbase` (address): Super Representative address that produced the current block
 - `block.difficulty` (uint): current block difficulty, not recommended, set 0
