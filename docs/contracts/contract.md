@@ -81,10 +81,12 @@ Through other two grpc message types `CreateSmartContract` and `TriggerSmartCont
 #### constant function and non-constant function
 
 There are two types of function according to whether any change will be made to the properties on the chain: constant function and non-constant function
-Constant function uses `view`/`pure`/`constant` to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
+Constant function uses `view`/`pure` to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
 Non-constant function will be broadcasted in the form of a transaction while being called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.
 
-Note: If you use create command inside a contract (`CREATE` instruction), even use `view`/`pure`/`constant` to decorate the dynamically created contract function, this function will still be treated as non-constant function, be dealt in the form of transaction.
+Note: legacy contracts may use the deprecated `constant` function modifier. It is a compile-time annotation only and is not encoded into bytecode, so already-deployed contracts continue to run normally; however, recompiling such sources with the current TRON Solidity compiler will fail with a parser error — use `view`/`pure` for new contracts.
+
+Note: If you use create command inside a contract (`CREATE` instruction), even use `view`/`pure` to decorate the dynamically created contract function, this function will still be treated as non-constant function, be dealt in the form of transaction.
 
 #### message calls
 
