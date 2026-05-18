@@ -106,9 +106,12 @@ Note: Different from creating a contract by grpc's deploycontract, contract crea
    - accompany with internal function to call transfer
    - use transfer/send/call/callcode/delegatecall to call transfer
 
-   Note: TRON's smart contract is different from TRON's system contract.
-   If the transfer-to address does not exist, a smart-contract transfer
-   cannot create the account.
+   Note: TRON's smart contract differs from TRON's system contract.
+   Before the SOLIDITY_059 upgrade (chain parameter ALLOW_TVM_SOLIDITY_059,
+   activated by committee [proposal #29](https://tronscan.io/#/proposal/29)),
+   a smart-contract transfer to a non-existent address would fail. Since
+   then, the TVM auto-creates the target account on transfer, matching
+   the system-contract behavior.
 
 2) Voting for Super Representatives and withdrawing voting rewards from
    inside a contract. Enabled by the ALLOW_TVM_VOTE chain parameter,
