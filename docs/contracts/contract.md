@@ -198,8 +198,8 @@ Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, c
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 #### Block Related
-- blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded. Note: the form `block.blockhash(uint)` was deprecated in Solidity 0.4.22 and removed in 0.5.0; use the top-level `blockhash(...)` instead
-- block.basefee (uint): current block base fee, returns the network energy fee. Available since the London upgrade (ALLOW_TVM_LONDON), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
+- blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded. Note: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0 (TRON's Solidity fork inherits both, starting from `tv_0.4.24`); use the top-level `blockhash(...)` instead
+- block.basefee (uint): returns the network energy fee from chain parameter (`getEnergyFee`); unlike Ethereum's per-block EIP-1559 base fee, this value only changes when a committee proposal modifies it. Available since the London upgrade (ALLOW_TVM_LONDON), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
 - block.coinbase (address): Super Representative address that produced the current block
 - block.difficulty (uint): current block difficulty, not recommended, set 0
 - block.gaslimit (uint): current block gas limit, not supported, set 0
@@ -211,7 +211,7 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 - msg.sender (address): message sender (current call)
 - msg.sig (bytes4): first 4 bytes of call data (function identifier)
 - msg.value (uint): the amount of SUN send with message
-- now (uint): current block timestamp - removed in Solidity 0.7.0, use `block.timestamp` instead
+- now (uint): alias for `block.timestamp`. Removed in upstream Solidity 0.7.0 (TRON's Solidity fork inherits the removal starting from `tv_0.7.0`); use `block.timestamp` instead
 - tx.gasprice (uint): the gas price of transaction, not recommended, set 0
 - tx.origin (address): transaction initiator
 
