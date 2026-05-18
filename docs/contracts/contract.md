@@ -88,7 +88,7 @@ Note: If you use create command inside a contract (`CREATE` instruction), even u
 
 #### message calls
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with `OutOfEnergyException` in the internal message call, it will return false, but not error. In the meantime, only the gas sent with the internal message call will be consumed, if energy is not specified in `call.value(energy)`, all the remaining energy will be used.
+Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with `OutOfEnergyException` in the internal message call, it will return false, but not error. In the meantime, only the energy sent with the internal message call will be consumed; if an energy limit is not specified via `call.gas(x)` (pre-0.6.2 chained syntax) or `{gas: x, value: ...}` (0.6.2+ options syntax), all the remaining energy will be forwarded to the inner call.
 
 #### delegate call/call code/library
 
