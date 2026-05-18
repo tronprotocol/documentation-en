@@ -62,96 +62,97 @@ message SmartContract {
 }
 ```
 
-- origin_address: smart contract creator address
-- contract_address: smart contract address
-- abi: the api information of all the function of the smart contract
-- bytecode: smart contract byte code
-- call_value: TRX transferred into smart contract while call the contract
-- consume_user_resource_percent: resource consumption percentage set by the developer
-- name: smart contract name
-- origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)
-- code_hash: hash of the contract runtime bytecode
-- trx_hash: root transaction id of the deployment. Populated only for contracts deployed via the CREATE2 opcode; left empty for contracts deployed via the CREATE opcode or via gRPC `deployContract`
-- version: smart contract version. When the network has activated the ALLOW_TVM_COMPATIBLE_EVM proposal, newly deployed contracts are stamped with version 1 so the runtime can gate EVM-compatible behavior to them, while older contracts (deployed before activation) keep version 0 and retain the original TVM semantics. As of writing this proposal is not active on mainnet, so all contracts on mainnet have version 0
+- `origin_address`: smart contract creator address
+- `contract_address`: smart contract address
+- `abi`: the api information of all the function of the smart contract
+- `bytecode`: smart contract byte code
+- `call_value`: TRX transferred into smart contract while call the contract
+- `consume_user_resource_percent`: resource consumption percentage set by the developer
+- `name`: smart contract name
+- `origin_energy_limit`: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use `updateEnergyLimit` api to update this parameter (must greater than 0)
+- `code_hash`: hash of the contract runtime bytecode
+- `trx_hash`: root transaction id of the deployment. Populated only for contracts deployed via the `CREATE2` opcode; left empty for contracts deployed via the `CREATE` opcode or via gRPC `deployContract`
+- `version`: smart contract version. When the network has activated the `ALLOW_TVM_COMPATIBLE_EVM` proposal, newly deployed contracts are stamped with version 1 so the runtime can gate EVM-compatible behavior to them, while older contracts (deployed before activation) keep version 0 and retain the original TVM semantics. As of writing this proposal is not active on mainnet, so all contracts on mainnet have version 0
 
-Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.
+Through other two grpc message types `CreateSmartContract` and `TriggerSmartContract` to create and use smart contract.
 
 ### Usage of the Function of Smart Contract 
 
-* **constant function and non-constant function**
+#### constant function and non-constant function
 
 There are two types of function according to whether any change will be made to the properties on the chain: constant function and non-constant function
-Constant function uses view/pure/constant to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
+Constant function uses `view`/`pure`/`constant` to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
 Non-constant function will be broadcasted in the form of a transaction while being called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.
 
-Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as non-constant function, be dealt in the form of transaction.
+Note: If you use create command inside a contract (`CREATE` instruction), even use `view`/`pure`/`constant` to decorate the dynamically created contract function, this function will still be treated as non-constant function, be dealt in the form of transaction.
 
-* **message calls**
+#### message calls
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meantime, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
+Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with `OutOfEnergyException` in the internal message call, it will return false, but not error. In the meantime, only the gas sent with the internal message call will be consumed, if energy is not specified in `call.value(energy)`, all the remaining energy will be used.
 
-* **delegate call/call code/library**
+#### delegate call/call code/library
 
-There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, msg.sender and msg.value remain unchanged. This means a contract can dynamically loadcode from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.
+There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, `msg.sender` and `msg.value` remain unchanged. This means a contract can dynamically loadcode from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.
 
-* **CREATE command**
+#### CREATE command
 
-This command will create a new contract with a new address. The primary difference from Ethereum is that the new TRON address is derived as `sha3omit12(rootTransactionId || nonce)` — the root transaction id concatenated with the 8-byte nonce, then hashed (the nonce itself is **not** pre-hashed); the final 21-byte address has a leading `0x41` TRON address prefix. Different from Ethereum (where nonce is the sender account's transaction nonce), here `nonce` is a per-root-transaction counter that increments on every internal action (internal call, transfer, CREATE, suicide, etc.), not only on CREATE. Refer to `TransactionUtil.generateContractAddress(byte[], long)` for the exact implementation.
-Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
+This command will create a new contract with a new address. The primary difference from Ethereum is that the new TRON address is derived as `sha3omit12(rootTransactionId || nonce)` — the root transaction id concatenated with the 8-byte nonce, then hashed (the nonce itself is **not** pre-hashed); the final 21-byte address has a leading `0x41` TRON address prefix. Different from Ethereum (where nonce is the sender account's transaction nonce), here `nonce` is a per-root-transaction counter that increments on every internal action (internal call, transfer, `CREATE`, suicide, etc.), not only on `CREATE`. Refer to `TransactionUtil.generateContractAddress(byte[], long)` for the exact implementation.
+Note: Different from creating a contract by grpc's `deployContract`, contract created by `CREATE` command does not store contract abi.
 
-* **built-in function and built-in function attribute**
+#### built-in function and built-in function attribute
 
-1) TVM is compatible with solidity language's transfer format, including:
-   - accompany with constructor to call transfer
-   - accompany with internal function to call transfer
-   - use transfer/send/call/callcode/delegatecall to call transfer
+1. TVM is compatible with solidity language's transfer format, including:
 
-   Note: TRON's smart contract differs from TRON's system contract.
-   Before the SOLIDITY_059 upgrade (chain parameter ALLOW_TVM_SOLIDITY_059,
-   activated by committee [proposal #29](https://tronscan.io/#/proposal/29)),
-   a smart-contract transfer to a non-existent address would fail. Since
-   then, the TVM auto-creates the target account on transfer, matching
-   the system-contract behavior.
+    - accompany with constructor to call transfer
+    - accompany with internal function to call transfer
+    - use `transfer`/`send`/`call`/`callcode`/`delegatecall` to call transfer
 
-2) Voting for Super Representatives and withdrawing voting rewards from
-   inside a contract. Enabled by the ALLOW_TVM_VOTE chain parameter,
+    Note: TRON's smart contract differs from TRON's system contract.
+    Before the SOLIDITY_059 upgrade (chain parameter `ALLOW_TVM_SOLIDITY_059`,
+    activated by committee [proposal #29](https://tronscan.io/#/proposal/29)),
+    a smart-contract transfer to a non-existent address would fail. Since
+    then, the TVM auto-creates the target account on transfer, matching
+    the system-contract behavior.
+
+2. Voting for Super Representatives and withdrawing voting rewards from
+   inside a contract. Enabled by the `ALLOW_TVM_VOTE` chain parameter,
    activated on mainnet by committee [proposal #84](https://tronscan.io/#/proposal/84).
-   Provides VOTEWITNESS / WITHDRAWREWARD opcodes and related read-only
+   Provides `VOTEWITNESS` / `WITHDRAWREWARD` opcodes and related read-only
    precompiles.
 
-3) TRC10 token operations: sending TRC10 to a target address and querying
-   the TRC10 balance of an address. Enabled by the ALLOW_TVM_TRANSFER_TRC10
+3. TRC10 token operations: sending TRC10 to a target address and querying
+   the TRC10 balance of an address. Enabled by the `ALLOW_TVM_TRANSFER_TRC10`
    chain parameter, activated on mainnet by committee
    [proposal #15](https://tronscan.io/#/proposal/15).
 
-4) Staking TRX for resources (Stake 2.0), delegating / undelegating
+4. Staking TRX for resources (Stake 2.0), delegating / undelegating
    resources, and querying delegated balances from inside a contract.
    Enabled when the network supports the unfreeze-delay model (Stake 2.0),
    which is active on mainnet.
 
-5) Compatible with most Ethereum built-in functions and precompiles
+5. Compatible with most Ethereum built-in functions and precompiles
    (through the Constantinople, Istanbul, London, Shanghai and Cancun
-   upgrades, each gated by its own ALLOW_TVM_* chain parameter — all
+   upgrades, each gated by its own `ALLOW_TVM_*` chain parameter — all
    active on mainnet via committee proposals
    [#18](https://tronscan.io/#/proposal/18),
    [#44](https://tronscan.io/#/proposal/44),
    [#72](https://tronscan.io/#/proposal/72),
    [#89](https://tronscan.io/#/proposal/89) and
    [#103](https://tronscan.io/#/proposal/103) respectively). The
-   ALLOW_TVM_COMPATIBLE_EVM chain parameter has never been proposed, so
-   the Ethereum-standard RIPEMD160 and BLAKE2F precompiles are not yet
+   `ALLOW_TVM_COMPATIBLE_EVM` chain parameter has never been proposed, so
+   the Ethereum-standard `RIPEMD160` and `BLAKE2F` precompiles are not yet
    enabled.
 
-Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
+Note: Ethereum's `RIPEMD160` function is not recommended, because the return of TRON is a hash result based on TRON's `sha256`, not an accurate Ethereum `RIPEMD160`.
 
 ### Contract Address Used in Solidity Language 
 
 Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 
-* **address conversion**
+#### address conversion
 
 Need to convert TRON's address while using in solidity (recommended):
-```text
+```solidity
 /**
      *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
@@ -164,10 +165,10 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address){
 ```
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
 
-* **address judgement**
+#### address judgement
 
 Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-```text
+```solidity
 function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
         if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
@@ -179,17 +180,17 @@ function compareAddress(address tronAddress) public view returns (uint256){
 ```
 But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c
 
-* **variable assignment**
+#### variable assignment
 
 Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-```text
+```solidity
 function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
         address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
         // do something
 }
 ```
-If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
+If you want to use a base58 TRON address string (e.g. `TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm`), convert it to the 20-byte hex form first via wallet-cli or a TRON SDK before assigning it to a Solidity `address`.
 
 ### Special Constants Differ from Ethereum 
 
@@ -198,22 +199,24 @@ Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, c
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 #### Block Related
-- blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded. Note: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0 (TRON's Solidity fork inherits both, starting from `tv_0.4.24`); use the top-level `blockhash(...)` instead
-- block.basefee (uint): returns the network energy fee from chain parameter (`getEnergyFee`); unlike Ethereum's per-block EIP-1559 base fee, this value only changes when a committee proposal modifies it. Available since the London upgrade (ALLOW_TVM_LONDON), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
-- block.coinbase (address): Super Representative address that produced the current block
-- block.difficulty (uint): current block difficulty, not recommended, set 0
-- block.gaslimit (uint): current block gas limit, not supported, set 0
-- block.number (uint): current block number
-- block.timestamp (uint): current block timestamp
-- gasleft() returns (uint256): remaining gas
-- msg.data (bytes): complete call data
-- msg.gas (uint): remaining gas - since 0.4.21, not recommended, replaced by gasleft()
-- msg.sender (address): message sender (current call)
-- msg.sig (bytes4): first 4 bytes of call data (function identifier)
-- msg.value (uint): the amount of SUN send with message
-- now (uint): alias for `block.timestamp`. Removed in upstream Solidity 0.7.0 (TRON's Solidity fork inherits the removal starting from `tv_0.7.0`); use `block.timestamp` instead
-- tx.gasprice (uint): the gas price of transaction, not recommended, set 0
-- tx.origin (address): transaction initiator
+- `blockhash(uint blockNumber) returns (bytes32)`: specified block hash, can only apply to the latest 256 blocks and current block excluded. Note: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0 (TRON's Solidity fork inherits both, starting from `tv_0.4.24`); use the top-level `blockhash(...)` instead
+- `block.basefee` (uint): returns the network energy fee from chain parameter (`getEnergyFee`); unlike Ethereum's per-block EIP-1559 base fee, this value only changes when a committee proposal modifies it. Available since the London upgrade (`ALLOW_TVM_LONDON`), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
+- `block.coinbase` (address): Super Representative address that produced the current block
+- `block.difficulty` (uint): current block difficulty, not recommended, set 0
+- `block.gaslimit` (uint): current block gas limit, not supported, set 0
+- `block.number` (uint): current block number
+- `block.timestamp` (uint): current block timestamp
+- `gasleft() returns (uint256)`: remaining gas
+- `msg.data` (bytes): complete call data
+- `msg.gas` (uint): remaining gas - since 0.4.21, not recommended, replaced by `gasleft()`
+- `msg.sender` (address): message sender (current call)
+- `msg.sig` (bytes4): first 4 bytes of call data (function identifier)
+- `msg.value` (uint): the amount of SUN send with message
+- `now` (uint): alias for `block.timestamp`. Removed in upstream Solidity 0.7.0 (TRON's Solidity fork inherits the removal starting from `tv_0.7.0`); use `block.timestamp` instead
+- `tx.gasprice` (uint): the gas price of transaction, not recommended, set 0
+- `tx.origin` (address): transaction initiator
 
 
-Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.
+### Energy
+
+Each command of smart contract consume system resource while running, we use `Energy` as the unit of the consumption of the resource.
