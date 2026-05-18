@@ -178,7 +178,7 @@ function compareAddress(address tronAddress) public view returns (uint256){
         }
 }
 ```
-But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c
+But if you are using wallet-cli, pass the 21-byte TRON address as a 32-byte ABI-encoded value (11 leading zero bytes followed by the 21-byte TRON address that starts with `41`), e.g. `000000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c`.
 
 #### variable assignment
 
