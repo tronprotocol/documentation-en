@@ -2,7 +2,7 @@
 # Network Governance
 
 The governance of the TRON network is primarily achieved by modifying [network parameters](https://tronscan.org/#/sr/committee), a process also known as **network upgrade**.  
-Anyone can propose changes to network parameters within the community, but only **Super Representatives (SR)** , **Super Representative Partners** and **Super Representative Candidates** can formally submit voting requests on-chain. During the voting period, the Super Representatives will vote on the proposal. When the voting deadline is reached and the required number of supporting votes is met, the proposal automatically takes effect.
+Anyone can propose changes to network parameters within the community, but only **Super Representatives (SR)**, **Super Representative Partners** and **Super Representative Candidates** can formally submit voting requests on-chain. During the voting period, the Super Representatives will vote on the proposal. When the voting deadline is reached and the required number of supporting votes is met, the proposal automatically takes effect.
 
 You can view the history of completed proposals and voting records [here](https://github.com/tronprotocol/tips/tree/master/proposal).
 
@@ -52,7 +52,7 @@ Describe the motivation for the proposal, including the current issues and why c
 Specify the date for initiating the proposal vote and the estimated time for the proposal to take effect.
 Generally, after an Issue is raised, about two weeks are allocated for community discussion, so the formal voting request should be initiated after two weeks.
 
-## How to Initialize the Voting Request
+## How to Initiate the Voting Request
 Clearly specify the command to initiate the proposal voting request on-chain.
 
 ## Technical Specification / Background
@@ -61,14 +61,14 @@ Provide a detailed description of the technical specifications or background inf
 
 ## Community Discussion
 
-After the TIP discussion is initiated, the proposer should actively encourage community users to participate in the discussion, collect opinions and feedback, and make appropriate revisions and updates to the proposal based on the discussion results.
+After the TIP discussion is initiated, the proposer should actively encourage community users to engage the community, gather feedback, and iterate on the proposal accordingly.
 
 ## Submit Voting Request
 
-Typically, if the community has fully discussed and reached a basic consensus, a **Super Representative** , **Super Representative Partner** or  **Super Representative Candidate**, will formally submit the voting request on-chain.
+Typically, if the community has fully discussed and reached a basic consensus, a **Super Representative** , **Super Representative Partner** or  **Super Representative Candidates** will formally submit the voting request on-chain.
 
 ## Voting and Implementation
 
 - The on-chain voting period lasts for **3 days**.  
 - During this period, all Super Representatives can vote on the TIP.  
-- After the voting deadline, if the number of supporting votes from Super Representatives is **greater than or equal to 18**, the proposal is considered passed and automatically takes effect.
+- After the voting deadline, if the number of supporting votes from Super Representatives is **at least 18**, the proposal is considered passed and automatically takes effect.
