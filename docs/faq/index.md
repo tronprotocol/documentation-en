@@ -64,11 +64,11 @@ Staked duration must be 3 days now. It means you can not unstake until the 3 day
 
 ### How to watch my account for transactions
 
-To meet your needs, you can use TRON event subscription plugin. For more detail, please refer to [https://tronprotocol.github.io/documentation-en/architecture/plugin/#tron-event-subscription](https://tronprotocol.github.io/documentation-en/architecture/plugin/#tron-event-subscription)
+To meet your needs, you can use TRON event subscription plugin. For more detail, please refer to [Event Subscription](../architecture/event.md)
 
 ### How to calculate the transaction fee?
 
-please refer to [https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/)
+please refer to [Resource Model](../mechanism-algorithm/resource.md)
 
 ### How to calculate the number of bytes of transactions?
 

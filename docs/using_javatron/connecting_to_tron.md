@@ -431,4 +431,4 @@ Developers can deploy a private instance of the TRON network.
 - Use a custom `node.p2p.version` to avoid conflicts with existing public networks.
 
 ### Reference Guide:
-- Please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/) for full instructions.
+- Please refer to [Private Network](private_network.md) for full instructions.
