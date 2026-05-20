@@ -1,6 +1,6 @@
 # Node Data Backup and Restore
 
-java-tron nodes store their persistent data in a specified data directory, which defaults to `/output-directory/`. You can specify a different data storage location by adding the `-d` or `--output-directory` parameter to the java-tron node startup command. For example:
+java-tron nodes store their persistent data in a specified data directory, which defaults to `output-directory` (a relative path under the current working directory). You can specify a different data storage location by adding the `-d` or `--output-directory` parameter to the java-tron node startup command. For example:
 
 ```
 java -jar build/libs/FullNode.jar -d ./outputdir
@@ -80,7 +80,7 @@ The table below lists the download addresses for FullNode data snapshots. Please
 
 #### Lite FullNode Data Snapshots
 
-The TRON network has supported **Lite FullNode** type nodes since the GreatVoyage-V4.1.0 release. Compared to a regular FullNode, a Lite FullNode has a smaller database and faster startup speed because it only requires state data and necessary historical data to start. The table below lists the download addresses for Lite FullNode data snapshots.
+The TRON network has supported **Lite FullNode** type nodes since the GreatVoyage-v4.1.0 release. Compared to a regular FullNode, a Lite FullNode has a smaller database and faster startup speed because it only requires state data and necessary historical data to start. The table below lists the download addresses for Lite FullNode data snapshots.
 
 | Lite FullNode Node Data Source | Download Address | Description |
 | :----------------------------- | :--------------- | :---------- |
