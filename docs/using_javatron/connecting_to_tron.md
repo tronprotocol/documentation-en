@@ -1,6 +1,6 @@
 # Connect to the TRON Network
 
-The TRON network is mainly divided into four enironments:
+The TRON network is mainly divided into four environments:
 
 - **Mainnet**
 - **Nile Testnet**
@@ -198,7 +198,7 @@ genesis.block = {
       voteCount = 100000000
     }
   ]
-  timestamp = "0" #2017-8-26 12:00:00
+  timestamp = "0" # Genesis block timestamp, milli seconds
   parentHash = "0xe58f33f9baf9305dc6f82b9f1934ea8f0ade2defb951258d50167028c780351f"
 }
 ```
@@ -262,14 +262,24 @@ In some cases (e.g., local testing or a fixed private network), you may disable 
 ## Node Connection
 
 ### Number of Node Connections
-`node.maxConnections`  defines the maximum number of peer connections (default: 30). Higher values improve network joining and broadcasting efficiency but require more bandwidth and resources: 
+The number of peer connections is controlled by the following parameters. They are usually tuned together:
+
+- `node.maxConnections`: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in `node.passive`, `node.active`, or `fastForward` (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in `node.active` are bounded only by the size of the `node.active` list, while active connections to peers discovered via the discovery protocol are driven by `minConnections` and `minActiveConnections` (see below).
+- `node.minConnections`: the desired minimum total number of peer connections, counting both active and passive (default: 8). When the total is below this value, the node initiates active connections to discovered peers to close the gap.
+- `node.minActiveConnections`: the desired minimum number of active connections to discovered peers (default: 3). The node will keep initiating active connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded `minConnections`.
+- `node.maxConnectionsWithSameIp`: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single IP.
+
 ```
 node {
   ...
-  maxConnections = 30           # max connections
+  maxConnections = 30
+  minConnections = 8
+  minActiveConnections = 3
+  maxConnectionsWithSameIp = 2
   ...
 }
 ```
+Note: `minConnections` must not exceed `maxConnections`, and `minActiveConnections` must not exceed `minConnections`; otherwise the node will automatically clamp them at startup.
 
 
 
@@ -354,7 +364,7 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 Use the HTTP API:
 
 ```
-$ curl http://127.0.0.1:16887/wallet/getnodeinfo
+$ curl http://127.0.0.1:8090/wallet/getnodeinfo
 ```
 Example response：
 ```
@@ -388,7 +398,7 @@ Example response：
 ### Verify Node Synchronization
 Compare your local block height with [TRONSCAN](https://tronscan.org/) ：
 ```
-curl http://127.0.0.1:16887/wallet/getnowblock
+curl http://127.0.0.1:8090/wallet/getnowblock
 ```
 If the heights match, synchronization is normal.
 
