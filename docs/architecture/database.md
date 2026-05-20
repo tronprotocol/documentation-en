@@ -87,7 +87,6 @@ java -jar build/libs/Toolkit.jar db cp output-directory/database /tmp/output-dir
 cd /tmp
 java -jar build/libs/Toolkit.jar db convert output-directory/database output-directory-dst/database
 ```
-> Note:
-The entire data conversion process is expected to take approximately **10 hours**, depending on the data volume and disk performance.
+> **Note:** The entire data conversion process is expected to take approximately **10 hours**, depending on the data volume and disk performance.
 ## About LevelDB
 LevelDB is the default data storage engine for java-tron nodes on x86_64 platforms, suitable for resource-constrained or lightweight deployment scenarios. It has a simple structure and is easy to maintain, but it is less efficient than RocksDB in terms of data compression, backup capabilities, and performance for large-scale nodes.
