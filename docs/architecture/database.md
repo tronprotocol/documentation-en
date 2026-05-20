@@ -26,7 +26,16 @@ storage {
   transHistory.switch = "on"
 }
 ```
+
+Key descriptions:
+
+- `db.sync`: when `true`, the underlying engine waits for each write to be physically flushed to disk before returning — safer against power loss / hard crashes, but noticeably slower. Default `false`, in which case writes are buffered by the OS and recent ones may be lost on a crash. Honored by both LevelDB and RocksDB.
+- `transHistory.switch`: when `"off"`, `TransactionHistoryStore` and `TransactionRetStore` silently drop new writes, so `gettransactioninfobyid` returns empty for any transaction processed while the switch was off. Reads of pre-existing data still work. Default `"on"`.
+
 ### 2. RocksDB Optimization Parameters
+
+The `dbSettings` block applies only when `db.engine = "ROCKSDB"`. Under LevelDB, these values are silently ignored.
+
 RocksDB supports various tuning parameters that can be configured based on the performance of the node server. Below is an example of recommended parameters:
 ```
 dbSettings = {
