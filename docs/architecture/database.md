@@ -45,7 +45,7 @@ dbSettings = {
 ## Migrating from LevelDB to RocksDB on x86_64 Platforms
 To migrate from LevelDB to RocksDB, use the TRON Toolkit `Toolkit.jar`.
 
-> **Note:** The `db convert` subcommand is x86_64-only. On arm64 it prints an "unsupported architecture" message and exits without doing any work, since arm64 builds do not ship the LevelDB native library.
+> **Note:** The `db convert` subcommand is x86_64-only. On arm64 it prints an "unsupported architecture" message and exits without doing any work.
 ### 1. Data Conversion Steps
 ```
 cd java-tron                                   # Source root directory
