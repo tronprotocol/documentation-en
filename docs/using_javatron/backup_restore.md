@@ -74,7 +74,7 @@ The table below lists the download addresses for FullNode data snapshots. Please
 | Official Data Source (Asia: Singapore) | [http://35.247.128.170/](http://35.247.128.170/) | LevelDB data, includes internal transactions |
 | Official Data Source (Americas: Virginia, USA) | [http://34.48.6.163/](http://34.48.6.163/) | LevelDB data, does not include internal transactions, includes historical account balances |
 
-**Note:** 
+**Note:**
 
 - **LevelDB** and **RocksDB** data are not interchangeable. The database type for a FullNode is specified by the `db.engine` configuration item in the configuration file, with selectable values being `LEVELDB` or `ROCKSDB`. If you have a snapshot in LevelDB format but want to run the node with the RocksDB engine, the [Data Conversion Tool](toolkit.md/#data-conversion-tool) in the toolkit can convert LevelDB data into RocksDB format.
 - Internal transactions can be enabled/disabled through the configuration items `vm.saveInternalTx` or `vm.saveFeaturedInternalTx` in the configuration file. Internal transactions are saved only when `vm.saveInternalTx` is enabled. If `saveFeaturedInternalTx` is also enabled, all types of internal transactions will be saved; otherwise, only `call`, `create`, and `suicide` transactions will be saved. Affected interface: [`gettransactioninfobyid`](https://developers.tron.network/reference/gettransactioninfobyid-1)
@@ -97,11 +97,11 @@ The TRON network has supported **Lite FullNode** type nodes since the GreatVoyag
 For detailed information on Nile Testnet data snapshots, please refer to the [official website](https://nileex.io/). The usage method is the same as for Mainnet data snapshots.
 
 ### Data Snapshot Usage Steps
+
 The steps for using data snapshots are as follows:
 
 1. Download the corresponding compressed backup database based on your needs.
-2. Extract the compressed database backup to the `output-directory` directory (or specify another target directory as needed). For detailed decompression instructions, refer to the Data Snapshot Download and Extraction Methods
- section below.
+2. Extract the compressed database backup to the `output-directory` directory (or specify another target directory as needed). For detailed decompression instructions, refer to the Data Snapshot Download and Extraction Methods section below.
 3. Start the node. The node reads data from the `output-directory` by default. If your data was decompressed into a different directory, add the `-d` parameter and specify the database directory name when starting the node.
 
 #### Data Snapshot Download and Extraction Methods
