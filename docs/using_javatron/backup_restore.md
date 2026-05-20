@@ -123,7 +123,7 @@ Run the script:
 bash download_snapshot.sh
 ```
 
-Note: This method avoids storing the complete compressed file and extracts the data on-the-fly, **significantly reducing disk space requirements**.
+**Note:** This method avoids storing the complete compressed file and extracts the data on-the-fly, **significantly reducing disk space requirements**.
 
 **Method 2: Full Download Before Extraction (Requires Sufficient Storage Space)**
 
@@ -135,4 +135,4 @@ wget SNAPSHOT_URL/FullNode_output-directory.tgz
 tar -zxvf FullNode_output-directory.tgz
 ```
 
-Note: During extraction, both the compressed archive and the extracted files must be stored simultaneously. We recommend using two 3TB disks (3TB+ for the archive & 3TB+ for the extracted data). You can release the archive disk after extraction to reduce costs.
+**Note:** During extraction, both the compressed archive and the extracted files must be stored simultaneously. We recommend using two 3TB disks (3TB+ for the archive & 3TB+ for the extracted data). You can release the archive disk after extraction to reduce costs.
