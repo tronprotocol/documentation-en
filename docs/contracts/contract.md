@@ -86,8 +86,6 @@ Non-constant function will be broadcasted in the form of a transaction while bei
 
 **Note**: legacy contracts may use the deprecated `constant` function modifier. It is a compile-time annotation only and is not encoded into bytecode, so already-deployed contracts continue to run normally; however, recompiling such sources with the current TRON Solidity compiler will fail with a parser error — use `view`/`pure` for new contracts.
 
-**Note**: If you use create command inside a contract (`CREATE` instruction), even use `view`/`pure` to decorate the dynamically created contract function, this function will still be treated as non-constant function, be dealt in the form of transaction.
-
 #### message calls
 
 Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with `OutOfEnergyException` in the internal message call, it will return false, but not error. In the meantime, only the energy sent with the internal message call will be consumed; if an energy limit is not specified via `call.gas(x)` (chained syntax, removed in Solidity 0.7.0) or `{gas: x, value: ...}` (options syntax, since Solidity 0.6.2), all the remaining energy will be forwarded to the inner call.
@@ -144,8 +142,6 @@ This command will create a new contract with a new address. The primary differen
    `ALLOW_TVM_COMPATIBLE_EVM` chain parameter has never been proposed, so
    the Ethereum-standard `RIPEMD160` and `BLAKE2F` precompiles are not yet
    enabled.
-
-**Note**: Ethereum's `RIPEMD160` function is not recommended, because the return of TRON is a hash result based on TRON's `sha256`, not an accurate Ethereum `RIPEMD160`.
 
 ### Contract Address Used in Solidity Language 
 
