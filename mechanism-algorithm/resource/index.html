@@ -7164,7 +7164,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#how-to-set-fee_limit-essential-for-users" class="md-nav__link" >
+  <a href="#set-fee-limit" class="md-nav__link" >
     <span class="md-ellipsis">
       How to Set fee_limit (Essential for Users)
     </span>
@@ -8868,7 +8868,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#how-to-set-fee_limit-essential-for-users" class="md-nav__link" >
+  <a href="#set-fee-limit" class="md-nav__link" >
     <span class="md-ellipsis">
       How to Set fee_limit (Essential for Users)
     </span>
@@ -9120,11 +9120,10 @@ Remaining Staked Bandwidth = NetLimit - NetUsed
 <h2 id="energy">Energy<a class="headerlink" href="#energy" title="Permanent link">&para;</a></h2>
 <p>Energy is the unit of measurement for the computational resources consumed by the TRON Virtual Machine (TVM) when executing the instructions of a smart contract. This section provides a comprehensive overview of Energy focusing on the following three aspects:</p>
 <ul>
-<li><a href="#get-energy">The acquisition, consumption, and recovery of Energy</a></li>
+<li><a href="#acquiring-and-consuming-energy">The acquisition, consumption, and recovery of Energy</a></li>
 <li><a href="#set-fee-limit">How to set the key parameter, <code>fee_limit</code></a></li>
-<li><a href="#energy-mechanism">The TRON network's overall consumption mechanism</a></li>
+<li><a href="#energy-consumption-mechanism">The TRON network's overall consumption mechanism</a></li>
 </ul>
-<p><a id="get-energy"></a></p>
 <h3 id="acquiring-and-consuming-energy">Acquiring and Consuming Energy<a class="headerlink" href="#acquiring-and-consuming-energy" title="Permanent link">&para;</a></h3>
 <p>Energy can be acquired in two primary ways:</p>
 <ul>
@@ -9175,8 +9174,7 @@ C: 36,000,000,000
 </ul>
 <h4 id="energy-recovery">Energy Recovery<a class="headerlink" href="#energy-recovery" title="Permanent link">&para;</a></h4>
 <p>Consumed Energy resources gradually recover over a 24-hour period.</p>
-<p><a id="set-fee-limit"></a></p>
-<h3 id="how-to-set-fee_limit-essential-for-users">How to Set <code>fee_limit</code> (Essential for Users)<a class="headerlink" href="#how-to-set-fee_limit-essential-for-users" title="Permanent link">&para;</a></h3>
+<h3 id="set-fee-limit">How to Set <code>fee_limit</code> (Essential for Users)<a class="headerlink" href="#set-fee-limit" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.
@@ -9204,7 +9202,6 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <li><strong>Step 2: Determine the User's Share</strong>: Calculate the portion of the fee the user is responsible for. Given the developer commits to covering 90%, the user's share is 10%: <code>2,000,000 sun * 10% = 200,000 sun</code>.</li>
 <li><strong>Step 3: Set the Final <code>fee_limit</code></strong>: The recommended <code>fee_limit</code> for the user to set is 200,000 sun.</li>
 </ul>
-<p><a id="energy-mechanism"></a></p>
 <h3 id="energy-consumption-mechanism">Energy Consumption Mechanism<a class="headerlink" href="#energy-consumption-mechanism" title="Permanent link">&para;</a></h3>
 <p><strong>Basic Energy Consumption Rules</strong></p>
 <p>When executing smart contract transactions, the system calculates and deducts the Energy required for each instruction sequentially. The consumption of Energy in an account follows these priority principles:</p>
@@ -9226,7 +9223,6 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 </ul>
 </li>
 </ul>
-<p><a id="dynamic-energy-model"></a></p>
 <h2 id="dynamic-energy-model">Dynamic Energy Model<a class="headerlink" href="#dynamic-energy-model" title="Permanent link">&para;</a></h2>
 <p>The Dynamic Energy Model is a resource-balancing mechanism on the TRON network. It dynamically adjusts the Energy consumption of each contract based on its resource usage, promoting a more equitable distribution of Energy and preventing network resources from being excessively concentrated on a few popular contracts. For more details, see the <a href="https://medium.com/tronnetwork/introduction-to-dynamic-energy-model-31917419b61a">Introduction to Dynamic Energy Model</a>.</p>
 <h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
@@ -9265,7 +9261,6 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <li><code>max_factor</code>: 3.4</li>
 </ul>
 <p>Since the Energy cost for popular contracts can vary between maintenance periods, it is crucial to set an appropriate <code>fee_limit</code> for transactions.</p>
-<p><a id="staking-on-tron"></a></p>
 <h2 id="staking-on-tron">Staking on TRON<a class="headerlink" href="#staking-on-tron" title="Permanent link">&para;</a></h2>
 <h3 id="how-to-stake-for-system-resources">How to Stake for System Resources<a class="headerlink" href="#how-to-stake-for-system-resources" title="Permanent link">&para;</a></h3>
 <p>On the TRON network, staking TRX is the unified mechanism for obtaining the three core resources: Energy, Bandwidth, and TRON Power (TP).</p>
@@ -9550,7 +9545,7 @@ Unrecovered resource amount = Original unrecovered resource amount - Reclaimed u
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 4, 2026 07:19:10 UTC">January 4, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 09:21:54 UTC">May 12, 2026</span>
   </span>
 
     
@@ -9642,8 +9637,6 @@ Unrecovered resource amount = Original unrecovered resource amount - Reclaimed u
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../javascripts/toc.js"></script>
-      
-        <script src="../../javascripts/nav-toc.js"></script>
       
         <script src="../../javascripts/mathjax-sri.js"></script>
       

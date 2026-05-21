@@ -7627,7 +7627,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#smart-contract" class="md-nav__link" >
+  <a href="#smart-contracts" class="md-nav__link" >
     <span class="md-ellipsis">
       Smart Contract
     </span>
@@ -7654,7 +7654,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#decentralized-exchange-dex" class="md-nav__link" >
+  <a href="#decentralized-exchange" class="md-nav__link" >
     <span class="md-ellipsis">
       Decentralized Exchange (DEX)
     </span>
@@ -8781,7 +8781,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#smart-contract" class="md-nav__link" >
+  <a href="#smart-contracts" class="md-nav__link" >
     <span class="md-ellipsis">
       Smart Contract
     </span>
@@ -8808,7 +8808,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#decentralized-exchange-dex" class="md-nav__link" >
+  <a href="#decentralized-exchange" class="md-nav__link" >
     <span class="md-ellipsis">
       Decentralized Exchange (DEX)
     </span>
@@ -8921,11 +8921,10 @@ Balance = 0
 <li><a href="#smart-contracts">Smart Contracts</a></li>
 <li><a href="#trc-10-assets">TRC-10 Assets</a></li>
 <li><a href="#governance">Governance</a></li>
-<li><a href="#defi">Decentralized Exchange</a></li>
-<li><a href="#gasfree">GasFree Support</a></li>
-<li><a href="#other">Other Utility Commands</a></li>
+<li><a href="#decentralized-exchange">Decentralized Exchange</a></li>
+<li><a href="#gasfree-support">GasFree Support</a></li>
+<li><a href="#other-useful-commands">Other Utility Commands</a></li>
 </ul>
-<p><a id="key-management"></a></p>
 <h3 id="key-management">Key Management<a class="headerlink" href="#key-management" title="Permanent link">&para;</a></h3>
 <h4 id="log-out-logout">Log Out - <code>Logout</code><a class="headerlink" href="#log-out-logout" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -9147,7 +9146,6 @@ File deleted successfully:
 - /wallet-cli/Mnemonic/TABWx8yFhWrvZHbwKcCmFLyPLWjd2dZ2Rq.json
 ClearWalletKeystore successful !!!
 </code></pre></div></p>
-<p><a id="on-chain-accounts"></a></p>
 <h3 id="on-chain-accounts">On-chain Accounts<a class="headerlink" href="#on-chain-accounts" title="Permanent link">&para;</a></h3>
 <h4 id="create-account-createaccount">Create Account - CreateAccount<a class="headerlink" href="#create-account-createaccount" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -9272,7 +9270,6 @@ CreateAccount successful !!
 </code></pre></div>
 <p>Account <code>TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ</code> grants itself Owner access, and grants <code>TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR</code> and <code>TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP</code> Active access. Active access requires signatures from both accounts to take effect.</p>
 <p>If the account is not a <strong>Super Representative</strong> (SR), you do not need to set the <code>witness_permission</code>, or an error will occur.</p>
-<p><a id="account-resources"></a></p>
 <h3 id="account-resources">Account Resources<a class="headerlink" href="#account-resources" title="Permanent link">&para;</a></h3>
 <h4 id="how-to-freezeunfreeze-balance">How to Freeze/Unfreeze Balance<a class="headerlink" href="#how-to-freezeunfreeze-balance" title="Permanent link">&para;</a></h4>
 <p>After funds are frozen, you will get a corresponding amount of <strong>TRON Power</strong> (TP) and Bandwidth. TP can be used for voting, and Bandwidth can be used for transactions.</p>
@@ -9639,7 +9636,6 @@ wallet&gt; GetTransactionById feb334794cf361fd351728026ccf7319e6ae90eba622b9eb53
     &quot;amount&quot;: 9000000
 }
 </code></pre></div></p>
-<p><a id="transactions"></a></p>
 <h3 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permanent link">&para;</a></h3>
 <h4 id="signing-a-transaction">Signing a Transaction<a class="headerlink" href="#signing-a-transaction" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>&gt; SendCoin TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW 10000000000000000
@@ -9827,7 +9823,6 @@ Current signWeight is:
     }
 }
 </code></pre></div>
-<p><a id="querying-on-chain-data"></a></p>
 <h3 id="querying-on-chain-data">Querying On-chain Data<a class="headerlink" href="#querying-on-chain-data" title="Permanent link">&para;</a></h3>
 <h4 id="view-transaction-history-viewtransactionhistory">View Transaction History - <code>ViewTransactionHistory</code><a class="headerlink" href="#view-transaction-history-viewtransactionhistory" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -9943,8 +9938,7 @@ currentNetwork: NILE
 current network: CUSTOM
 fullNode: EMPTY, solidityNode: localhost:50052
 </code></pre></div></p>
-<p><a id="smart-contracts"></a></p>
-<h3 id="smart-contract">Smart Contract<a class="headerlink" href="#smart-contract" title="Permanent link">&para;</a></h3>
+<h3 id="smart-contracts">Smart Contract<a class="headerlink" href="#smart-contracts" title="Permanent link">&para;</a></h3>
 <h4 id="deploying-a-smart-contract">Deploying a Smart Contract<a class="headerlink" href="#deploying-a-smart-contract" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>DeployContract [ownerAddress] contractName ABI byteCode constructor params isHex fee_limit consume_user_resource_percent origin_energy_limit value token_value token_id(e.g: TRXTOKEN, use # if don&#39;t provided) &lt;library:address,library:address,...&gt; &lt;lib_compiler_version(e.g:v5)&gt; library:address,...&gt;
 </code></pre></div>
@@ -10116,7 +10110,6 @@ Note: <code>#</code> can be used for <code>&lt;owner_address&gt;</code> to refer
 # Updates the consume_user_resource_percent parameter
 &gt; UpdateSetting [ownerAddress] &lt;contract_address&gt; &lt;consume_user_resource_percent&gt;
 </code></pre></div>
-<p><a id="trc-10-assets"></a></p>
 <h3 id="trc-10-assets">TRC-10 Assets<a class="headerlink" href="#trc-10-assets" title="Permanent link">&para;</a></h3>
 <h4 id="how-to-issue-a-trc-10-token">How to Issue a TRC-10 Token<a class="headerlink" href="#how-to-issue-a-trc-10-token" title="Permanent link">&para;</a></h4>
 <p>Each account can only issue <strong>one</strong> TRC-10 token.</p>
@@ -10292,7 +10285,6 @@ address: TN3zfjYUmMFK3ZsHSsrdJoNRtGkQmZLBLz
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>&gt; ListAssetIssuePaginated 0 1
 </code></pre></div>
-<p><a id="governance"></a></p>
 <h3 id="governance">Governance<a class="headerlink" href="#governance" title="Permanent link">&para;</a></h3>
 <h4 id="how-to-vote">How to Vote<a class="headerlink" href="#how-to-vote" title="Permanent link">&para;</a></h4>
 <p>Voting requires Shares, which can be obtained by freezing funds.</p>
@@ -10429,8 +10421,7 @@ address: TN3zfjYUmMFK3ZsHSsrdJoNRtGkQmZLBLz
 <blockquote>
 <p>Get proposal information based on the proposal ID.</p>
 </blockquote>
-<p><a id="defi"></a></p>
-<h3 id="decentralized-exchange-dex">Decentralized Exchange (DEX)<a class="headerlink" href="#decentralized-exchange-dex" title="Permanent link">&para;</a></h3>
+<h3 id="decentralized-exchange">Decentralized Exchange (DEX)<a class="headerlink" href="#decentralized-exchange" title="Permanent link">&para;</a></h3>
 <p>Trading and price fluctuations of trading pairs follow the Bancor protocol.</p>
 <h4 id="create-a-trading-pair">Create a Trading Pair<a class="headerlink" href="#create-a-trading-pair" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -10647,7 +10638,6 @@ Use the <code>getTransactionInfoById</code> command to get the contract executio
     }
 }
 </code></pre></div></p>
-<p><a id="gasfree"></a></p>
 <h3 id="gasfree-support">GasFree Support<a class="headerlink" href="#gasfree-support" title="Permanent link">&para;</a></h3>
 <p><code>wallet-cli</code> now supports <strong>GasFree</strong> integration. This guide explains the new commands and provides instructions on how to use them.</p>
 <p>For more details, please refer to the <a href="https://gasfree.io/specification">GasFree Documentation</a> and the <a href="https://support.tronlink.org/hc/en-us/articles/38903684778393-GasFree-User-Guide">TronLink User Guide For GasFree</a>.</p>
@@ -10754,7 +10744,6 @@ GasFreeTrace result: {
 }
 GasFreeTrace: successful!!
 </code></pre></div></p>
-<p><a id="other"></a></p>
 <h3 id="other-useful-commands">Other Useful Commands<a class="headerlink" href="#other-useful-commands" title="Permanent link">&para;</a></h3>
 <h4 id="switch-network-switchnetwork">Switch Network - <code>SwitchNetwork</code><a class="headerlink" href="#switch-network-switchnetwork" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -10826,7 +10815,7 @@ Choose an option (1-2): 1
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:55:20 UTC">May 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 09:21:54 UTC">May 12, 2026</span>
   </span>
 
     
@@ -10918,8 +10907,6 @@ Choose an option (1-2): 1
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../javascripts/toc.js"></script>
-      
-        <script src="../../javascripts/nav-toc.js"></script>
       
         <script src="../../javascripts/mathjax-sri.js"></script>
       

@@ -7642,7 +7642,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#step-1-prepare-the-new-version-package" class="md-nav__link" >
+  <a href="#prepare-the-new-version-package" class="md-nav__link" >
     <span class="md-ellipsis">
       Step 1: Prepare the New Version Package
     </span>
@@ -7660,7 +7660,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#step-3-back-up-critical-data" class="md-nav__link" >
+  <a href="#back-up-critical-data" class="md-nav__link" >
     <span class="md-ellipsis">
       Step 3: Back Up Critical Data
     </span>
@@ -7678,7 +7678,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#step-5-start-the-node" class="md-nav__link" >
+  <a href="#start-the-node" class="md-nav__link" >
     <span class="md-ellipsis">
       Step 5: Start the Node
     </span>
@@ -7701,7 +7701,7 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#primarybackup-node-upgrade-guide" class="md-nav__link" >
+  <a href="#primary-backup-node-upgrade-guide" class="md-nav__link" >
     <span class="md-ellipsis">
       Primary/Backup Node Upgrade Guide
     </span>
@@ -8664,7 +8664,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#step-1-prepare-the-new-version-package" class="md-nav__link" >
+  <a href="#prepare-the-new-version-package" class="md-nav__link" >
     <span class="md-ellipsis">
       Step 1: Prepare the New Version Package
     </span>
@@ -8682,7 +8682,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#step-3-back-up-critical-data" class="md-nav__link" >
+  <a href="#back-up-critical-data" class="md-nav__link" >
     <span class="md-ellipsis">
       Step 3: Back Up Critical Data
     </span>
@@ -8700,7 +8700,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#step-5-start-the-node" class="md-nav__link" >
+  <a href="#start-the-node" class="md-nav__link" >
     <span class="md-ellipsis">
       Step 5: Start the Node
     </span>
@@ -8723,7 +8723,7 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#primarybackup-node-upgrade-guide" class="md-nav__link" >
+  <a href="#primary-backup-node-upgrade-guide" class="md-nav__link" >
     <span class="md-ellipsis">
       Primary/Backup Node Upgrade Guide
     </span>
@@ -8767,19 +8767,17 @@
 <p>This guide provides detailed instructions on how to safely upgrade your java-tron node to the latest version.</p>
 <p>For <strong>mandatory upgrades</strong>, it is crucial to strictly follow this guide to complete the deployment. For <strong>optional upgrades</strong>, you may choose whether to upgrade based on your specific needs.</p>
 <ul>
-<li>For standard nodes, please refer to the <a href="#standard_process">Standard Node Upgrade Process</a>.</li>
-<li>For nodes configured with a primary/backup high-availability setup, please follow the <a href="#primary/backup_upgrade">Primary/Backup Node Upgrade Guide</a> to ensure a seamless service transition.</li>
+<li>For standard nodes, please refer to the <a href="#standard-node-upgrade-process">Standard Node Upgrade Process</a>.</li>
+<li>For nodes configured with a primary/backup high-availability setup, please follow the <a href="#primary-backup-node-upgrade-guide">Primary/Backup Node Upgrade Guide</a> to ensure a seamless service transition.</li>
 </ul>
-<p><a id="standard_process"></a></p>
 <h2 id="standard-node-upgrade-process">Standard Node Upgrade Process<a class="headerlink" href="#standard-node-upgrade-process" title="Permanent link">&para;</a></h2>
 <p>All FullNodes, including block-producing Super Representative nodes, should follow these steps to complete the upgrade.</p>
-<p><a id="step1"></a> </p>
-<h3 id="step-1-prepare-the-new-version-package">Step 1: Prepare the New Version Package<a class="headerlink" href="#step-1-prepare-the-new-version-package" title="Permanent link">&para;</a></h3>
+<h3 id="prepare-the-new-version-package">Step 1: Prepare the New Version Package<a class="headerlink" href="#prepare-the-new-version-package" title="Permanent link">&para;</a></h3>
 <p>You can either download the compiled java-tron executable directly or download the new version's source code and compile it yourself to obtain the new executable file. Please perform the following operations in a directory outside of the current java-tron running directory.</p>
 <h4 id="option-1-download-the-executable-recommended">Option 1: Download the Executable (Recommended)<a class="headerlink" href="#option-1-download-the-executable-recommended" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Visit the <a href="https://github.com/tronprotocol/java-tron/releases">java-tron GitHub Releases</a> page to download the latest version of the <code>FullNode.jar</code> executable.</li>
-<li><strong>Security Check</strong>: To ensure the integrity and security of the file, it is essential to perform a signature verification on the downloaded JAR file according to the <a href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/">java-tron Signature Verification</a> guide.</li>
+<li><strong>Security Check</strong>: To ensure the integrity and security of the file, it is essential to perform a signature verification on the downloaded JAR file according to the <a href="../signature_verification/">java-tron Signature Verification</a> guide.</li>
 </ol>
 <h4 id="option-2-compile-from-source-code">Option 2: Compile from Source Code<a class="headerlink" href="#option-2-compile-from-source-code" title="Permanent link">&para;</a></h4>
 <ol>
@@ -8797,7 +8795,7 @@ $ git checkout -b release_vx.x.x
 </ol>
 <h3 id="step-2-stop-the-running-node">Step 2: Stop the Running Node<a class="headerlink" href="#step-2-stop-the-running-node" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p><strong>Note</strong>: If this is your first time deploying the node, please skip directly to <a href="#step5">Step 5: Start the Node</a>.</p>
+<p><strong>Note</strong>: If this is your first time deploying the node, please skip directly to <a href="#start-the-node">Step 5: Start the Node</a>.</p>
 </blockquote>
 <ol>
 <li>
@@ -8811,8 +8809,7 @@ $ git checkout -b release_vx.x.x
 </code></pre></div></p>
 </li>
 </ol>
-<p><a id="step3"></a> </p>
-<h3 id="step-3-back-up-critical-data">Step 3: Back Up Critical Data<a class="headerlink" href="#step-3-back-up-critical-data" title="Permanent link">&para;</a></h3>
+<h3 id="back-up-critical-data">Step 3: Back Up Critical Data<a class="headerlink" href="#back-up-critical-data" title="Permanent link">&para;</a></h3>
 <p>A full backup is strongly recommended before upgrading. Please perform the following backup steps in the specified order:</p>
 <ol>
 <li><strong>Back up the current executable file</strong>
@@ -8829,7 +8826,7 @@ $ git checkout -b release_vx.x.x
 <h3 id="step-4-replace-old-files">Step 4: Replace Old Files<a class="headerlink" href="#step-4-replace-old-files" title="Permanent link">&para;</a></h3>
 <p>After preparing the new version of the executable file and backing up the original node data, follow these steps to replace the old files:</p>
 <ol>
-<li>Copy the new <code>FullNode.jar</code> obtained in <a href="#step1">Step 1</a> to the java-tron working directory.</li>
+<li>Copy the new <code>FullNode.jar</code> obtained in <a href="#prepare-the-new-version-package">Step 1</a> to the java-tron working directory.</li>
 <li>Update the Configuration File (optional)<ul>
 <li>We recommend replacing your existing configuration file with the new version from the release. After replacing it, merge your previous custom settings (e.g., private key, keystore path) into the new file.</li>
 <li><strong>Configuration Update Strategy</strong><ul>
@@ -8841,10 +8838,9 @@ $ git checkout -b release_vx.x.x
 </li>
 </ol>
 <blockquote>
-<p><strong>Note on the Database</strong>: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore">database snapshot</a>.</p>
+<p><strong>Note on the Database</strong>: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built <a href="../../using_javatron/backup_restore/">database snapshot</a>.</p>
 </blockquote>
-<p><a id="step5"></a> </p>
-<h3 id="step-5-start-the-node">Step 5: Start the Node<a class="headerlink" href="#step-5-start-the-node" title="Permanent link">&para;</a></h3>
+<h3 id="start-the-node">Step 5: Start the Node<a class="headerlink" href="#start-the-node" title="Permanent link">&para;</a></h3>
 <h4 id="super-representative-node-block-producing-node">Super Representative Node (Block-Producing Node)<a class="headerlink" href="#super-representative-node-block-producing-node" title="Permanent link">&para;</a></h4>
 <p>For Block-Producing Node, please refer to <a href="../../using_javatron/installing_javatron/#starting-a-block-production-node">Starting a Block Production Node</a></p>
 <h4 id="regular-fullnode">Regular FullNode<a class="headerlink" href="#regular-fullnode" title="Permanent link">&para;</a></h4>
@@ -8863,14 +8859,13 @@ $ git checkout -b release_vx.x.x
 </ul>
 </li>
 </ol>
-<p><strong>Contingency Plan</strong>: If you encounter any issues during the upgrade process that prevent the node from starting or running correctly, immediately use the data backed up in <a href="#step3">Step 3</a> to restore the previous version. Please submit a GitHub Issue or report the problem to the TRON community for assistance.</p>
+<p><strong>Contingency Plan</strong>: If you encounter any issues during the upgrade process that prevent the node from starting or running correctly, immediately use the data backed up in <a href="#back-up-critical-data">Step 3</a> to restore the previous version. Please submit a GitHub Issue or report the problem to the TRON community for assistance.</p>
 <hr />
-<p><a id="primary/backup_upgrade"></a> </p>
-<h2 id="primarybackup-node-upgrade-guide">Primary/Backup Node Upgrade Guide<a class="headerlink" href="#primarybackup-node-upgrade-guide" title="Permanent link">&para;</a></h2>
+<h2 id="primary-backup-node-upgrade-guide">Primary/Backup Node Upgrade Guide<a class="headerlink" href="#primary-backup-node-upgrade-guide" title="Permanent link">&para;</a></h2>
 <p>To ensure high availability of the service, the upgrade of primary/backup nodes should adopt a rolling upgrade strategy.</p>
 <ol>
 <li><strong>Upgrade the Backup Node</strong><ul>
-<li>First, perform all the steps in the <a href="#standard_process">Standard Node Upgrade Process</a> on the Backup Node.</li>
+<li>First, perform all the steps in the <a href="#standard-node-upgrade-process">Standard Node Upgrade Process</a> on the Backup Node.</li>
 </ul>
 </li>
 <li><strong>Perform the Switchover</strong><ul>
@@ -8879,7 +8874,7 @@ $ git checkout -b release_vx.x.x
 </ul>
 </li>
 <li><strong>Upgrade the Original Master Node</strong><ul>
-<li>After confirming that the new Active Node (the former Backup Node) is running stably, perform the <a href="#standard_process">Standard Node Upgrade Process</a> on the original Master Node.</li>
+<li>After confirming that the new Active Node (the former Backup Node) is running stably, perform the <a href="#standard-node-upgrade-process">Standard Node Upgrade Process</a> on the original Master Node.</li>
 <li><strong>Error Handling</strong>: If the new Active Node fails during this period, immediately stop its upgrade process and restart the original Master Node to restore service. At the same time, please save the complete logs from the failed node for troubleshooting. For further support, please submit a GitHub Issue with the relevant logs or report it to the community.</li>
 </ul>
 </li>
@@ -8913,7 +8908,7 @@ $ git checkout -b release_vx.x.x
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 6, 2026 12:33:18 UTC">May 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 09:28:13 UTC">May 12, 2026</span>
   </span>
 
     
@@ -9005,8 +9000,6 @@ $ git checkout -b release_vx.x.x
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../javascripts/toc.js"></script>
-      
-        <script src="../../javascripts/nav-toc.js"></script>
       
         <script src="../../javascripts/mathjax-sri.js"></script>
       
