@@ -1,5 +1,5 @@
 # System Contracts
-The TRON network supports many different types of transactions, such as TRX transfers, TRC10 transfers , smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `wallet/deploycontractAPI`.The transaction type of stake TRX is `FreezeBalanceV2Contract`, which requires calling the ` wallet/freezebalancev2API`. We collectively refer to the implementation of these different transaction types as system contracts.
+The TRON network supports many different types of transactions, such as TRX transfers, TRC-10 transfers, smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `wallet/deploycontractAPI`.The transaction type of stake TRX is `FreezeBalanceV2Contract`, which requires calling the ` wallet/freezebalancev2API`. We collectively refer to the implementation of these different transaction types as system contracts.
 
 ## ContractType Overview
 
@@ -9,19 +9,19 @@ Every system contract is identified by a `ContractType` enum value defined in [`
 |---|---|---|---|---|---|
 | 0 | AccountCreateContract | AccountContract.AccountCreateContract | CreateAccountActuator | ✅ Enabled | Create an on-chain account |
 | 1 | TransferContract | BalanceContract.TransferContract | TransferActuator | ✅ Enabled | TRX Transfer |
-| 2 | TransferAssetContract | AssetIssueContractOuterClass.TransferAssetContract | TransferAssetActuator | ✅ Enabled | TRC10 Token Transfer |
+| 2 | TransferAssetContract | AssetIssueContractOuterClass.TransferAssetContract | TransferAssetActuator | ✅ Enabled | TRC-10 token transfer |
 | 3 | VoteAssetContract | | | 🚫 Disabled (Actuator not implemented) | |
 | 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance) |
 | 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a Super Representative (SR) candidate; write to witness store |
-| 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC10 tokens; freeze balance during recruitment period according to ICO rules |
+| 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC-10 tokens; freeze balance during recruitment period according to ICO rules |
 | 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of an SR |
-| 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Subscribe to TRC10 tokens with TRX during the ICO period |
+| 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Participate in a TRC-10 token issuance with TRX during the ICO period |
 | 10 | AccountUpdateContract | AccountContract.AccountUpdateContract | UpdateAccountActuator | ✅ Enabled | Modify account name (subject to AllowUpdateAccountName constraint) |
 | 11 | FreezeBalanceContract | BalanceContract.FreezeBalanceContract | FreezeBalanceActuator | 🚫 Disabled (rejected by chain after `supportUnfreezeDelay` is enabled) | Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others |
 | 12 | UnfreezeBalanceContract | BalanceContract.UnfreezeBalanceContract | UnfreezeBalanceActuator | ✅ Enabled | Stake 1.0: Unfreeze TRX after expiration; release resources and clear votes |
 | 13 | WithdrawBalanceContract | BalanceContract.WithdrawBalanceContract | WithdrawBalanceActuator | ✅ Enabled | Withdraw SR block/voting rewards to account balance |
-| 14 | UnfreezeAssetContract | AssetIssueContractOuterClass.UnfreezeAssetContract | UnfreezeAssetActuator | ✅ Enabled | Issuer unfreezes TRC10 token shares frozen during ICO |
-| 15 | UpdateAssetContract | AssetIssueContractOuterClass.UpdateAssetContract | UpdateAssetActuator | ✅ Enabled | Update TRC10 token description / url / free bandwidth quota |
+| 14 | UnfreezeAssetContract | AssetIssueContractOuterClass.UnfreezeAssetContract | UnfreezeAssetActuator | ✅ Enabled | Issuer unfreezes TRC-10 token shares frozen during ICO |
+| 15 | UpdateAssetContract | AssetIssueContractOuterClass.UpdateAssetContract | UpdateAssetActuator | ✅ Enabled | Update TRC-10 token description / url / free bandwidth quota |
 | 16 | ProposalCreateContract | ProposalContract.ProposalCreateContract | ProposalCreateActuator | ✅ Enabled | SR creates an on-chain parameter proposal; written to ProposalStore for voting |
 | 17 | ProposalApproveContract | ProposalContract.ProposalApproveContract | ProposalApproveActuator | ✅ Enabled | SR approves or cancels a vote on a proposal |
 | 18 | ProposalDeleteContract | ProposalContract.ProposalDeleteContract | ProposalDeleteActuator | ✅ Enabled | Proposal creator withdraws their own created proposal |
@@ -60,7 +60,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account creating the new account.
 - `account_address`: The target address to create.
 - `type`: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.
 
@@ -73,7 +73,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account sending TRX.
 - `to_address`: The target address to receive the transfer.
 - `amount`: The amount of TRX to transfer.
 
@@ -88,7 +88,7 @@ The protobuf message definition and field-level documentation of each contract a
 ```
 
 - `asset_name`: The TRC-10 token ID to transfer.
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account sending the TRC-10 token.
 - `to_address`: The target address to receive the transfer.
 - `amount`: The amount of token to transfer.
 
@@ -105,7 +105,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the voter account.
 - `vote_address`: The SR or candidate's address.
 - `vote_count`: The votes number.
 - `support`: Constant true, not used.
@@ -118,7 +118,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account applying to become a Witness.
 - `url`: The website url of the witness.
 
 ## AssetIssueContract
@@ -150,7 +150,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account issuing the TRC-10 token.
 - `name`: The token name to issue.
 - `abbr`: The abbreviation of the token name.
 - `total_supply`: The amount of token to issue.
@@ -177,7 +177,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The Witness account address.
 - `update_url`: The website url of the witness.
 
 ## ParticipateAssetIssueContract
@@ -190,7 +190,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account participating in the asset issue.
 - `to_address`: The token owner's address.
 - `asset_name`: The token id.
 - `amount`: The amount of token to purchase.
@@ -204,7 +204,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account to update.
 - `account_name`: Account name.
 
 ## FreezeBalanceContract
@@ -218,7 +218,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account staking TRX.
 - `frozen_balance`: The amount of TRX to stake.
 - `frozen_duration`: The stake duration.
 - `resource`: The type of resource get by staking TRX.
@@ -233,7 +233,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account unstaking TRX.
 - `resource`: The type of resource to unfree.
 - `receiver_address`: The account address to receive resource.
 
@@ -244,7 +244,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account withdrawing rewards.
 
 ## UnfreezeAssetContract
 ```
@@ -253,7 +253,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the token issuer.
 
 ## UpdateAssetContract
 ```
@@ -266,7 +266,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the token issuer.
 - `description`: The description of the token.
 - `url`: The website url of the token.
 - `new_limit`: The bandwidth consumption limit of each account when transfers asset.
@@ -280,7 +280,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account creating the proposal.
 - `parameters`: The proposal.
 
 ## ProposalApproveContract
@@ -292,7 +292,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account approving the proposal.
 - `proposal_id`: The proposal id.
 - `is_add_approval`: Whether to approve.
 
@@ -304,7 +304,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account deleting the proposal.
 - `proposal_id`: The proposal id.
 
 ## SetAccountIdContract
@@ -316,7 +316,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account setting the account id.
 - `account_id`: The account id.
 
 ## CreateSmartContract
@@ -329,7 +329,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account deploying the contract.
 - `new_contract`: the smart contract.
 - `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
@@ -346,7 +346,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account calling the contract.
 - `contract_address`: The contract address.
 - `call_value`: The amount of TRX to send to the contract when triggers.
 - `data`: The parameters to trigger the contract.
@@ -362,7 +362,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the contract deployer.
 - `contract_address`: The address of the smart contract.
 - `consume_user_resource_percent`: The percentage of resource consumption ratio.
 
@@ -377,7 +377,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account creating the exchange.
 - `first_token_id`: First token id.
 - `first_token_balance`: First token balance.
 - `second_token_id`: Second token id.
@@ -393,7 +393,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account injecting liquidity.
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to inject.
 - `quant`: The token amount to inject.
@@ -408,7 +408,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account withdrawing liquidity.
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to withdraw.
 - `quant`: The token amount to withdraw.
@@ -424,7 +424,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the trading account.
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to sell.
 - `quant`: The token amount to sell.
@@ -439,7 +439,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the contract deployer.
 - `contract_address`: The contract address.
 - `origin_energy_limit`: The target energy limit to change.
 
@@ -453,7 +453,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account whose permissions will be updated.
 - `owner`: The owner permission of the account. Cannot be empty.
 - `witness`: The witness permission. Required for SR (witness) accounts; must be empty for non-witness accounts.
 - `actives`: The list of active permissions. Cannot be empty; at most 8 entries.
@@ -468,7 +468,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the contract deployer.
 - `contract_address`: The target contract address to clear ABI.
 
 ## UpdateBrokerageContract
@@ -479,7 +479,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The Witness account address.
 - `brokerage`: Commission rate, from 0 to 100,1 mean 1%.
 
 ## ShieldedTransferContract
@@ -550,7 +550,7 @@ message ReceiveDescription {
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account placing the order.
 - `sell_token_id`: The id of the token to sell.
 - `sell_token_quantity`: The amount of the token to sell.
 - `buy_token_id`: The id of the token to buy.
@@ -564,7 +564,7 @@ message ReceiveDescription {
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account that placed the order.
 - `order_id`: The id of the market order to cancel.
 
 ## FreezeBalanceV2Contract
@@ -577,7 +577,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the account staking TRX.
 * `frozen_balance`：TRX stake amount, the unit is sun
 * `resource`： Resource type
 
@@ -591,7 +591,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：Owner address
+* `owner_address`: The address of the account unstaking TRX.
 * `unfreeze_balance`：The amount of TRX to unstake, in sun
 * `resource`： Resource type
    
@@ -604,7 +604,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the account withdrawing expired unstaked TRX.
    
 ## DelegateResourceContract
 
@@ -619,7 +619,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the resource delegator.
 * `resource`： Resource type
 * `balance`： Amount of TRX staked for resources to be delegated, unit is sun
 * `receiver_address`：Resource receiver address
@@ -638,7 +638,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the account canceling the delegation.
 * `resource`： Resource type
 * `balance`：undelegated TRX, unit is sun
 * `receiver_address`：Resource receiver address
@@ -652,7 +652,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the account canceling all pending Stake 2.0 unfreezing requests.
 
 
 
