@@ -11,10 +11,10 @@ Every system contract is identified by a `ContractType` enum value defined in [`
 | 1 | TransferContract | BalanceContract.TransferContract | TransferActuator | ✅ Enabled | TRX Transfer |
 | 2 | TransferAssetContract | AssetIssueContractOuterClass.TransferAssetContract | TransferAssetActuator | ✅ Enabled | TRC-10 token transfer |
 | 3 | VoteAssetContract | | | 🚫 Disabled (Actuator not implemented) | |
-| 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance) |
-| 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a Super Representative (SR) candidate; write to witness store |
+| 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for Witnesses using account's TronPower; refresh voting records (takes effect at next maintenance) |
+| 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a Witness; write to witness store |
 | 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC-10 tokens; freeze balance during recruitment period according to ICO rules |
-| 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of an SR |
+| 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of a Witness |
 | 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Participate in a TRC-10 token issuance with TRX during the ICO period |
 | 10 | AccountUpdateContract | AccountContract.AccountUpdateContract | UpdateAccountActuator | ✅ Enabled | Modify account name (subject to AllowUpdateAccountName constraint) |
 | 11 | FreezeBalanceContract | BalanceContract.FreezeBalanceContract | FreezeBalanceActuator | 🚫 Disabled (rejected by chain after `supportUnfreezeDelay` is enabled) | Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others |
@@ -22,8 +22,8 @@ Every system contract is identified by a `ContractType` enum value defined in [`
 | 13 | WithdrawBalanceContract | BalanceContract.WithdrawBalanceContract | WithdrawBalanceActuator | ✅ Enabled | Withdraw SR block/voting rewards to account balance |
 | 14 | UnfreezeAssetContract | AssetIssueContractOuterClass.UnfreezeAssetContract | UnfreezeAssetActuator | ✅ Enabled | Issuer unfreezes TRC-10 token shares frozen during ICO |
 | 15 | UpdateAssetContract | AssetIssueContractOuterClass.UpdateAssetContract | UpdateAssetActuator | ✅ Enabled | Update TRC-10 token description / url / free bandwidth quota |
-| 16 | ProposalCreateContract | ProposalContract.ProposalCreateContract | ProposalCreateActuator | ✅ Enabled | SR creates an on-chain parameter proposal; written to ProposalStore for voting |
-| 17 | ProposalApproveContract | ProposalContract.ProposalApproveContract | ProposalApproveActuator | ✅ Enabled | SR approves or cancels a vote on a proposal |
+| 16 | ProposalCreateContract | ProposalContract.ProposalCreateContract | ProposalCreateActuator | ✅ Enabled | Witness creates an on-chain parameter proposal; written to ProposalStore for voting |
+| 17 | ProposalApproveContract | ProposalContract.ProposalApproveContract | ProposalApproveActuator | ✅ Enabled | Witness approves or cancels a vote on a proposal |
 | 18 | ProposalDeleteContract | ProposalContract.ProposalDeleteContract | ProposalDeleteActuator | ✅ Enabled | Proposal creator withdraws their own created proposal |
 | 19 | SetAccountIdContract | AccountContract.SetAccountIdContract | SetAccountIdActuator | ✅ Enabled | Set a unique account_id for the account (can only be set once) |
 | 20 | CustomContract | | | 🚫 Disabled (Actuator not implemented) | |
@@ -33,12 +33,12 @@ Every system contract is identified by a `ContractType` enum value defined in [`
 | 33 | UpdateSettingContract | SmartContractOuterClass.UpdateSettingContract | UpdateSettingContractActuator | ✅ Enabled | Contract owner modifies `consume_user_resource_percent` (percentage of energy borne by the user) |
 | 41 | ExchangeCreateContract | ExchangeContract.ExchangeCreateContract | ExchangeCreateActuator | ✅ Enabled | Create a Bancor exchange pair; inject initial liquidity for two assets |
 | 42 | ExchangeInjectContract | ExchangeContract.ExchangeInjectContract | ExchangeInjectActuator | ✅ Enabled | Inject liquidity into an existing exchange pair; deduct assets based on Bancor algorithm |
-| 43 | ExchangeWithdrawContract | ExchangeContract.ExchangeWithdrawContract | ExchangeWithdrawActuator | ✅ Enabled | Exchange pair creator redeems both assets from the pair proportionally |
+| 43 | ExchangeWithdrawContract | ExchangeContract.ExchangeWithdrawContract | ExchangeWithdrawActuator | ✅ Enabled | Exchange pair creator withdraws both assets from the pair proportionally |
 | 44 | ExchangeTransactionContract | ExchangeContract.ExchangeTransactionContract | ExchangeTransactionActuator | 🚫 Disabled | Asset exchange via Bancor exchange pair |
 | 45 | UpdateEnergyLimitContract | SmartContractOuterClass.UpdateEnergyLimitContract | UpdateEnergyLimitContractActuator | ✅ Enabled | Contract owner updates `origin_energy_limit` (max energy consumption owner is willing to pay per call) |
 | 46 | AccountPermissionUpdateContract | AccountContract.AccountPermissionUpdateContract | AccountPermissionUpdateActuator | ✅ Enabled | Update account permissions: owner/witness/active |
 | 48 | ClearABIContract | SmartContractOuterClass.ClearABIContract | ClearABIContractActuator | ✅ Enabled | Contract owner clears contract ABI |
-| 49 | UpdateBrokerageContract | StorageContract.UpdateBrokerageContract | UpdateBrokerageActuator | ✅ Enabled | SR adjusts the brokerage ratio (0-100%) for voters |
+| 49 | UpdateBrokerageContract | StorageContract.UpdateBrokerageContract | UpdateBrokerageActuator | ✅ Enabled | Witness adjusts the brokerage ratio (0-100%) for voters |
 | 51 | ShieldedTransferContract | ShieldContract.ShieldedTransferContract | ShieldedTransferActuator | 🚫 Disabled (`getAllowShieldedTransaction` not enabled) | ZK-SNARK anonymous transfer (transparent in + shielded spend/receive + transparent out) |
 | 52 | MarketSellAssetContract | MarketContract.MarketSellAssetContract | MarketSellAssetActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Place a limit sell order on the built-in order book (sell/buy two assets + price) |
 | 53 | MarketCancelOrderContract | MarketContract.MarketCancelOrderContract | MarketCancelOrderActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Cancel own unexecuted market order; refund remaining assets |
@@ -106,7 +106,7 @@ The protobuf message definition and field-level documentation of each contract a
 ```
 
 - `owner_address`: The address of the account casting votes for Witnesses.
-- `vote_address`: The SR or candidate's address.
+- `vote_address`: The Witness address.
 - `vote_count`: The votes number.
 - `support`: Constant true, not used.
 
@@ -377,7 +377,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The address of the account creating the exchange.
+- `owner_address`: The address of the account creating the exchange pair.
 - `first_token_id`: First token id.
 - `first_token_balance`: First token balance.
 - `second_token_id`: Second token id.
@@ -408,7 +408,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The address of the account withdrawing liquidity.
+- `owner_address`: The address of the account withdrawing liquidity (must be the pair's creator).
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to withdraw.
 - `quant`: The token amount to withdraw.
@@ -455,7 +455,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 - `owner_address`: The address of the account whose permissions will be updated.
 - `owner`: The owner permission of the account. Cannot be empty.
-- `witness`: The witness permission. Required for SR (witness) accounts; must be empty for non-witness accounts.
+- `witness`: The witness permission. Required for Witness accounts; must be empty for non-Witness accounts.
 - `actives`: The list of active permissions. Cannot be empty; at most 8 entries.
 
 For more details, see [Account Permission Management](./multi-signatures.md).
@@ -480,7 +480,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
 ```
 
 - `owner_address`: The address of the Witness adjusting its brokerage ratio.
-- `brokerage`: Commission rate, from 0 to 100,1 mean 1%.
+- `brokerage`: Brokerage ratio, from 0 to 100, 1 means 1%.
 
 ## ShieldedTransferContract
 ```
