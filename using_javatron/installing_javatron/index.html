@@ -9132,7 +9132,7 @@ cd java-tron
 <p>Shasta does not accept public node peers. Programmatic access is available via TronGrid endpoints; see <a href="https://developers.tron.network/docs/trongrid">TronGrid Service</a> for details.</p>
 <p>Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at <a href="https://shasta.tronex.io/">shasta.tronex.io</a>.</p>
 <h3 id="starting-a-fullnode-on-a-private-network">Starting a FullNode on a private network<a class="headerlink" href="#starting-a-fullnode-on-a-private-network" title="Permanent link">&para;</a></h3>
-<p>To set up a private network for testing or development, follow the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network guidance</a>.</p>
+<p>To set up a private network for testing or development, follow the <a href="../private_network/">Private Network guidance</a>.</p>
 <h3 id="starting-a-soliditynode">Starting a SolidityNode<a class="headerlink" href="#starting-a-soliditynode" title="Permanent link">&para;</a></h3>
 <p>A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.</p>
 <div class="highlight"><pre><span></span><code>node {
@@ -9237,7 +9237,7 @@ For example, if an account with block production rights deploys two nodes with I
 </ul>
 <h2 id="optimizations-and-considerations">Optimizations and Considerations<a class="headerlink" href="#optimizations-and-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="speeding-up-node-data-synchronization">Speeding Up Node Data Synchronization<a class="headerlink" href="#speeding-up-node-data-synchronization" title="Permanent link">&para;</a></h3>
-<p>For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#main-net-data-snapshot">data snapshots</a> to accelerate node synchronization.</p>
+<p>For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use <a href="../backup_restore/#main-net-data-snapshot">data snapshots</a> to accelerate node synchronization.</p>
 <p>The operational steps are as follows:</p>
 <ol>
 <li>Download the latest data snapshot.</li>
@@ -9363,7 +9363,7 @@ export TCMALLOC_RELEASE_RATE=10
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:51:18 UTC">May 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 09:28:13 UTC">May 12, 2026</span>
   </span>
 
     
@@ -9455,8 +9455,6 @@ export TCMALLOC_RELEASE_RATE=10
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../javascripts/toc.js"></script>
-      
-        <script src="../../javascripts/nav-toc.js"></script>
       
         <script src="../../javascripts/mathjax-sri.js"></script>
       

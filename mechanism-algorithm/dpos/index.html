@@ -8947,19 +8947,19 @@
 </tr>
 <tr>
 <td>Block Production Order (Block Generation Order)</td>
-<td>The 27 SRs are ranked from highest to lowest by vote count, which determines their block production order.</td>
+<td>The 27 SRs are ranked from highest to lowest by vote count, which determines their block production order. When two SRs have the same vote count, their addresses are used as a tiebreaker to produce a deterministic order.</td>
 </tr>
 <tr>
 <td>Slot</td>
-<td>In the TRON network, every <strong>3 seconds</strong> is counted as a slot. Under normal circumstances, each SR producing a block will complete block generation within its corresponding slot time. Therefore, TRON's average block generation interval is approximately 3 seconds. If an SR fails to produce a block for any reason, the corresponding slot remain empty, and the next scheduled SR will produce a block in the subsequent slot. During maintenance periods, block production skips 2 slots.</td>
+<td>In the TRON network, every <strong>3 seconds</strong> is counted as a slot. Under normal circumstances, each SR producing a block will complete block generation within its corresponding slot time. Therefore, TRON's average block generation interval is approximately 3 seconds. If an SR fails to produce a block for any reason, the corresponding slot remains empty, and the next scheduled SR will produce a block in the subsequent slot. During maintenance periods, block production skips 2 slots.</td>
 </tr>
 <tr>
 <td>Epoch</td>
-<td>TRON defines every <strong>6 hours</strong> as an epoch. The last two block generation times in each epoch are <strong>maintenance periods</strong>. The maintenance period of each epoch will determine the block generation order for the next epoch.</td>
+<td>TRON defines every <strong>6 hours</strong> as an epoch. At the boundary between consecutive epochs, the system performs a <strong>maintenance period</strong> to determine the block production order for the next epoch.</td>
 </tr>
 <tr>
 <td>Maintenance Period</td>
-<td>TRON sets this at <strong>2 block times</strong>, which is <strong>6 seconds</strong>. This period is used to tally the votes for candidates. Since there are 4 epochs in 24 hours, there are naturally 4 maintenance periods. No blocks are produced during the maintenance period; its primary purpose is to determine the block production order for the next epoch.</td>
+<td>At each epoch boundary, the system triggers maintenance: it tallies the votes accumulated during the epoch, re-elects the 27 SRs, and updates the block production order for the next epoch. During maintenance, block production <strong>skips 2 slots</strong> (<strong>6 seconds</strong>) so no blocks are produced in that interval. Since there are 4 epochs in 24 hours, there are naturally 4 maintenance periods per day.</td>
 </tr>
 </tbody>
 </table>
@@ -8983,7 +8983,7 @@
 <h3 id="tallying-votes">Tallying Votes<a class="headerlink" href="#tallying-votes" title="Permanent link">&para;</a></h3>
 <p>During each <strong>maintenance period</strong>, the system tallies the votes for all candidates and selects the <strong>27</strong> candidates with the most votes to be the SRs for the next block production cycle.</p>
 <h2 id="block-production-mechanism">Block Production Mechanism<a class="headerlink" href="#block-production-mechanism" title="Permanent link">&para;</a></h2>
-<p>In an <strong>epoch</strong>, the 27 SRs will produce blocks sequentially according to their <strong>block production order</strong>.Each SR can produce a block only during its designated turn.</p>
+<p>In an <strong>epoch</strong>, the 27 SRs will produce blocks sequentially according to their <strong>block production order</strong>. Each SR can produce a block only during its designated turn.</p>
 <p>SRs package multiple valid transaction data into each block. At the same time, each block fills in the <strong>hash value</strong> (<code>hash</code>) of the previous block as its <strong>parent hash value</strong> (<code>parentHash</code>). Furthermore, the SR uses their private key to sign the current block's data, and the <strong>signature result</strong> (<code>witness_signature</code>), along with the SR's address, block height, block generation time, and other data, are also filled into the block.</p>
 <p>In this way, each block stores the hash value of the previous block, thereby logically linking the blocks together and ultimately forming the blockchain's chain structure. A typical blockchain structure diagram is as follows:</p>
 <p><img alt="blockchain_structure" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/blockchain_structure.png" /></p>
@@ -9009,6 +9009,7 @@
 <p>When a blockchain forks, honest SRs will always choose to continue producing blocks on the currently <strong>longest</strong> fork chain.</p>
 <h2 id="incentive-model">Incentive Model<a class="headerlink" href="#incentive-model" title="Permanent link">&para;</a></h2>
 <p>To ensure the secure and efficient operation of the TRON blockchain system, TRON has designed an incentive model to encourage more nodes to join the TRON network, thereby expanding network scale.</p>
+<p>The reward amounts below reflect the <strong>current mainnet values</strong> after adjustment through on-chain proposals; they are not protocol-hardcoded and can be changed again via future proposals (see <a href="#proposal-based-parameter-adjustment">Proposal-Based Parameter Adjustment</a>).</p>
 <ul>
 <li><strong>Block Production Rewards:</strong> For every block successfully produced in the TRON network, the corresponding SR is rewarded with <strong>8 TRX</strong>. After deducting a self-defined commission rate, the SR distributes the remaining block rewards to their voters proportionally based on voting weight.</li>
 <li><strong>Voting Rewards:</strong> With the generation of each block, the TRON network also awards an additional <strong>128 TRX</strong> to all SRs and SRPs. This reward is distributed based on their respective vote proportions. Similarly, after deducting their commission based on their set commission rate, SRs and SRPs distribute the remaining voting rewards to their respective voters based on the voters' voting weight.</li>
@@ -9040,7 +9041,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 9, 2026 03:57:43 UTC">April 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 11, 2026 07:40:01 UTC">May 11, 2026</span>
   </span>
 
     
@@ -9132,8 +9133,6 @@
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../javascripts/toc.js"></script>
-      
-        <script src="../../javascripts/nav-toc.js"></script>
       
         <script src="../../javascripts/mathjax-sri.js"></script>
       

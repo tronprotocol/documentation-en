@@ -9082,7 +9082,7 @@
 
 
 <h1 id="connect-to-the-tron-network">Connect to the TRON Network<a class="headerlink" href="#connect-to-the-tron-network" title="Permanent link">&para;</a></h1>
-<p>The TRON network is mainly divided into four enironments:</p>
+<p>The TRON network is mainly divided into four environments:</p>
 <ul>
 <li><strong>Mainnet</strong></li>
 <li><strong>Nile Testnet</strong></li>
@@ -9270,7 +9270,7 @@
       voteCount = 100000000
     }
   ]
-  timestamp = &quot;0&quot; #2017-8-26 12:00:00
+  timestamp = &quot;0&quot; # Genesis block timestamp, milli seconds
   parentHash = &quot;0xe58f33f9baf9305dc6f82b9f1934ea8f0ade2defb951258d50167028c780351f&quot;
 }
 </code></pre></div>
@@ -9319,13 +9319,23 @@ By default, node discovery uses the User Datagram Protocol (UDP) on port <code>1
 <p>In some cases (e.g., local testing or a fixed private network), you may disable discovery by setting:<code>node.discovery.enable = false</code> or by blocking UDP port 18888 via firewall.</p>
 <h2 id="node-connection">Node Connection<a class="headerlink" href="#node-connection" title="Permanent link">&para;</a></h2>
 <h3 id="number-of-node-connections">Number of Node Connections<a class="headerlink" href="#number-of-node-connections" title="Permanent link">&para;</a></h3>
-<p><code>node.maxConnections</code>  defines the maximum number of peer connections (default: 30). Higher values improve network joining and broadcasting efficiency but require more bandwidth and resources: 
-<div class="highlight"><pre><span></span><code>node {
+<p>The number of peer connections is controlled by the following parameters. They are usually tuned together:</p>
+<ul>
+<li><code>node.maxConnections</code>: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in <code>node.passive</code>, <code>node.active</code>, or <code>fastForward</code> (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in <code>node.active</code> are bounded only by the size of the <code>node.active</code> list, while active connections to peers discovered via the discovery protocol are driven by <code>minConnections</code> and <code>minActiveConnections</code> (see below).</li>
+<li><code>node.minConnections</code>: the desired minimum total number of peer connections, counting both active and passive (default: 8). When the total is below this value, the node initiates active connections to discovered peers to close the gap.</li>
+<li><code>node.minActiveConnections</code>: the desired minimum number of active connections to discovered peers (default: 3). The node will keep initiating active connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded <code>minConnections</code>.</li>
+<li><code>node.maxConnectionsWithSameIp</code>: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single IP.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>node {
   ...
-  maxConnections = 30           # max connections
+  maxConnections = 30
+  minConnections = 8
+  minActiveConnections = 3
+  maxConnectionsWithSameIp = 2
   ...
 }
-</code></pre></div></p>
+</code></pre></div>
+Note: <code>minConnections</code> must not exceed <code>maxConnections</code>, and <code>minActiveConnections</code> must not exceed <code>minConnections</code>; otherwise the node will automatically clamp them at startup.</p>
 <h3 id="active-connection-active-peers">Active Connection (Active Peers)<a class="headerlink" href="#active-connection-active-peers" title="Permanent link">&para;</a></h3>
 <p>Active peers come from three sources:</p>
 <ul>
@@ -9392,7 +9402,7 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 </code></pre></div>
 <h3 id="check-node-status">Check Node Status<a class="headerlink" href="#check-node-status" title="Permanent link">&para;</a></h3>
 <p>Use the HTTP API:</p>
-<p><div class="highlight"><pre><span></span><code>$ curl http://127.0.0.1:16887/wallet/getnodeinfo
+<p><div class="highlight"><pre><span></span><code>$ curl http://127.0.0.1:8090/wallet/getnodeinfo
 </code></pre></div>
 Example response：
 <div class="highlight"><pre><span></span><code>{
@@ -9424,7 +9434,7 @@ Example response：
 </code></pre></div></p>
 <h3 id="verify-node-synchronization">Verify Node Synchronization<a class="headerlink" href="#verify-node-synchronization" title="Permanent link">&para;</a></h3>
 <p>Compare your local block height with <a href="https://tronscan.org/">TRONSCAN</a> ：
-<div class="highlight"><pre><span></span><code>curl http://127.0.0.1:16887/wallet/getnowblock
+<div class="highlight"><pre><span></span><code>curl http://127.0.0.1:8090/wallet/getnowblock
 </code></pre></div>
 If the heights match, synchronization is normal.</p>
 <h2 id="troubleshooting-common-connection-issues">Troubleshooting Common Connection Issues<a class="headerlink" href="#troubleshooting-common-connection-issues" title="Permanent link">&para;</a></h2>
@@ -9457,7 +9467,7 @@ If the heights match, synchronization is normal.</p>
 </ul>
 <h3 id="reference-guide">Reference Guide:<a class="headerlink" href="#reference-guide" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Please refer to <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network</a> for full instructions.</li>
+<li>Please refer to <a href="../private_network/">Private Network</a> for full instructions.</li>
 </ul>
 
 
@@ -9479,7 +9489,7 @@ If the heights match, synchronization is normal.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2026 04:36:59 UTC">April 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 13, 2026 07:37:50 UTC">May 13, 2026</span>
   </span>
 
     
@@ -9571,8 +9581,6 @@ If the heights match, synchronization is normal.</p>
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../javascripts/toc.js"></script>
-      
-        <script src="../../javascripts/nav-toc.js"></script>
       
         <script src="../../javascripts/mathjax-sri.js"></script>
       
