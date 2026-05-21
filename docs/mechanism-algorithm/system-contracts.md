@@ -105,7 +105,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The address of the voter account.
+- `owner_address`: The address of the account casting votes for Witnesses.
 - `vote_address`: The SR or candidate's address.
 - `vote_count`: The votes number.
 - `support`: Constant true, not used.
@@ -177,7 +177,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The Witness account address.
+- `owner_address`: The address of the Witness updating its URL.
 - `update_url`: The website url of the witness.
 
 ## ParticipateAssetIssueContract
@@ -424,7 +424,7 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The address of the trading account.
+- `owner_address`: The address of the account exchanging assets via the pair.
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to sell.
 - `quant`: The token amount to sell.
@@ -479,7 +479,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
     }
 ```
 
-- `owner_address`: The Witness account address.
+- `owner_address`: The address of the Witness adjusting its brokerage ratio.
 - `brokerage`: Commission rate, from 0 to 100,1 mean 1%.
 
 ## ShieldedTransferContract
@@ -638,7 +638,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`: The address of the account canceling the delegation.
+* `owner_address`: The address of the account reclaiming previously delegated resources.
 * `resource`： Resource type
 * `balance`：undelegated TRX, unit is sun
 * `receiver_address`：Resource receiver address
