@@ -36,7 +36,7 @@ If you plan to contribute to java-tron development, please follow the process be
     For complex architectural or logic changes, please first submit a TRON Improvement Proposal (TIP) in the [TIP repository](https://github.com/tronprotocol/tips), detailing the motivation and implementation plan.
 Refer to the [TIP Specification](tips.md).
 - **Early PR Submission**
-    We encourage developers to submit PRs early, even if the feature is not yet complete. This notifying the community that the associated TIP has transitioned to the 'In Progress' stage.
+    We encourage developers to submit PRs early, even if the feature is not yet complete. This notifies the community that the associated TIP issue has entered the In Progress state.
 - **Development Branch**
     All development should be based on the `develop` branch, followed by a PR submission.
 
@@ -107,7 +107,7 @@ All PRs must be reviewed before merging.
 - Reviewers should remain polite, respectful, and follow up promptly.
 
 ### Feature Validation
-- **For Bug Fixess**
+- **For Bug Fixes**
     - Reviewers must attempt to reproduce the reported issue to validate the effectiveness of the fix.
     - It’s recommended that submitters provide unit tests that fail before the fix and pass after.
 - **New Feature PRs**
