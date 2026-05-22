@@ -4,11 +4,11 @@
 
 ---
 
-## Core {: #core }
+## Core { #core }
 
 **Status:**&nbsp;&nbsp;[Draft](#core-draft) | [Last Call](#core-last-call) | [Final](#core-final) | [Unknown](#core-unknown)
 
-### Draft {: #core-draft }
+### Draft { #core-draft }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -18,7 +18,7 @@
 | 64 | [tron mix consensus Analytics](https://github.com/tronprotocol/tips/blob/master/./tip-64.md) | billtron([@billtron](https://github.com/billtron)) | Core |
 | 62 | [Tron consensus algorithm introduction](https://github.com/tronprotocol/tips/blob/master/./tip-62.md) | billtron([@billtron](https://github.com/billtron)) | Core |
 
-### Last Call {: #core-last-call }
+### Last Call { #core-last-call }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -26,7 +26,7 @@
 | 833 | [Harden ResourceProcessor Resource Window Calculations](https://github.com/tronprotocol/tips/blob/master/./tip-833.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
 | 128 | [TIP128 Lite Fullnode support](https://github.com/tronprotocol/tips/blob/master/./tip-128.md) | guoquan-wu([@guoquan-wu](https://github.com/guoquan-wu)) | Core |
 
-### Final {: #core-final }
+### Final { #core-final }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -68,7 +68,7 @@
 | 127 | [Support Tron-DEX based on system contracts](https://github.com/tronprotocol/tips/blob/master/./tip-127.md) | renchenchang([@renchenchang](http://github.com/renchenchang)) | Core |
 | 60 | [TRC-60:Precompiled contract function for multi-signature verification](https://github.com/tronprotocol/tips/blob/master/./tip-60.md) | Julian.Kang([@Sh11thead](https://github.com/Sh11thead)) | Core |
 
-### Unknown {: #core-unknown }
+### Unknown { #core-unknown }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -76,11 +76,11 @@
 
 ---
 
-## Networking {: #networking }
+## Networking { #networking }
 
 **Status:**&nbsp;&nbsp;[Final](#networking-final)
 
-### Final {: #networking-final }
+### Final { #networking-final }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -95,11 +95,11 @@
 
 ---
 
-## Interface {: #interface }
+## Interface { #interface }
 
 **Status:**&nbsp;&nbsp;[Final](#interface-final)
 
-### Final {: #interface-final }
+### Final { #interface-final }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -113,17 +113,17 @@
 
 ---
 
-## TRC {: #trc }
+## TRC { #trc }
 
 **Status:**&nbsp;&nbsp;[Draft](#trc-draft) | [Last Call](#trc-last-call) | [Final](#trc-final) | [Deferred](#trc-deferred)
 
-### Draft {: #trc-draft }
+### Draft { #trc-draft }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
 | 165 | [TRC-165 Standard Interface Detection In Contract](https://github.com/tronprotocol/tips/blob/master/./tip-165.md) | Timothy([@timothyckw](https://github.com/timothyckw)) | TRC |
 
-### Last Call {: #trc-last-call }
+### Last Call { #trc-last-call }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -134,7 +134,7 @@
 | 102 | [Hierarchical Deterministic Wallet](https://github.com/tronprotocol/tips/blob/master/./tip-102.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
 | 101 | [Wallet Keystore Specification](https://github.com/tronprotocol/tips/blob/master/./tip-101.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
 
-### Final {: #trc-final }
+### Final { #trc-final }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -170,7 +170,7 @@
 | 20 | [TRC-20 Token Standard](https://github.com/tronprotocol/tips/blob/master/./tip-20.md) | zhaohong([@zhaohong](https://github.com/zhaohong)) | TRC |
 | 10 | [TRC-10 Token Standard](https://github.com/tronprotocol/tips/blob/master/./tip-10.md) | hzhao([@zhaohong](https://github.com/zhaohong)) | TRC |
 
-### Deferred {: #trc-deferred }
+### Deferred { #trc-deferred }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -178,23 +178,23 @@
 
 ---
 
-## VM {: #vm }
+## VM { #vm }
 
 **Status:**&nbsp;&nbsp;[Draft](#vm-draft) | [Last Call](#vm-last-call) | [Final](#vm-final)
 
-### Draft {: #vm-draft }
+### Draft { #vm-draft }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
 | 241 | [Adaptation to solidity-v0.5.16](https://github.com/tronprotocol/tips/blob/master/./tip-241.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | VM |
 
-### Last Call {: #vm-last-call }
+### Last Call { #vm-last-call }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
 | 176 | [altbn128 operation energy reduction in TVM](https://github.com/tronprotocol/tips/blob/master/./tip-176.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | VM |
 
-### Final {: #vm-final }
+### Final { #vm-final }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
@@ -224,11 +224,11 @@
 
 ---
 
-## Informational {: #informational }
+## Informational { #informational }
 
 **Status:**&nbsp;&nbsp;[Final](#informational-final)
 
-### Final {: #informational-final }
+### Final { #informational-final }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |

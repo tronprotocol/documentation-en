@@ -2,11 +2,11 @@
 
 This guide will walk you through a series of fundamental operations for java-tron. We recommend learning in the following order:
 
-- [**Create a TRON Account**](#create-account):
+- [**Create a TRON Account**](#creating-your-tron-account):
     - Obtain your digital identity in the blockchain world. Learn how to securely generate and manage your address and private key, which are your sole credentials for holding TRX assets, sending transactions, and interacting with smart contracts.
-- [**Start and Run a java-tron Node**](#start-node):
+- [**Start and Run a java-tron Node**](#start-and-run-a-java-tron-node):
     - Set up your dedicated gateway to the TRON network. Connect your computer to the TRON network, making it a part of the ecosystem. This is crucial for developers who want to maintain the network or require a local, high-availability API service.
-- [**Interact with the TRON Network Using a Java-tron Node**](#interact-with-tron):
+- [**Interact with the TRON Network Using a Java-tron Node**](#interacting-with-the-tron-network):
     - Learn how to send transactions and query on-chain data using client tools like `wallet-cli` or `cURL`. (This skill does not require you to run your own node; you can use public node services to complete these operations).
 
 ## Core Concepts
@@ -23,8 +23,7 @@ The first step in interacting with any blockchain is connecting to the correct n
 For development and learning, we must use a testnet to avoid any real financial loss. The network used in this guide is the TRON [Nile Testnet](https://nileex.io/).
 
 
-<a id="create-account"></a>
-## Skill 1: Creating Your TRON Account
+## Skill 1: Creating Your TRON Account { #creating-your-tron-account }
 
 There are two main types of accounts on the TRON network:
 
@@ -151,8 +150,7 @@ Executing any transaction on the TRON network (e.g., transfers, contract calls) 
 
 After completing all the above preparations, you now have a properly configured TRON account on a secure network with test tokens.
 
-<a id="start-node"></a>
-## Skill 2: Start and Run a Java-tron Node
+## Skill 2: Start and Run a Java-tron Node { #start-and-run-a-java-tron-node }
 
 This module guide you through launching a java-tron instance, turning your computer into a TRON FullNode. Running your own node provides you with the most stable, reliable, and rate-unlimited network access. The network used in this module is the TRON [Nile Testnet](https://nileex.io/).
 
@@ -230,8 +228,7 @@ To confirm that your node is fully synchronized with the network, compare your l
 
 To shut down java-tron, use `kill -15 <process_id>` to stop the node.
 
-<a id="interact-with-tron"></a>
-##  Skill 3: Interacting with the TRON Network
+##  Skill 3: Interacting with the TRON Network { #interacting-with-the-tron-network }
 
 The core of this module is learning how to communicate with the TRON network using the API interfaces provided by a java-tron node. The java-tron node serves as your gateway to the blockchain, offering powerful HTTP and gRPC interfaces that allow any client application to query on-chain data or broadcast transactions.
 

@@ -340,7 +340,6 @@ theme:
 
 extra_javascript:
     - javascripts/toc.js
-    - javascripts/nav-toc.js
     - javascripts/mathjax-sri.js
 
 extra_css:
