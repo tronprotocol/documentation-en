@@ -74,7 +74,7 @@ kill -15 $(ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}')
 
 #### 2. Configure Database Storage Migration
 
-Database migration is configured via the `storage.properties `field in the `java-tron` node configuration file. You can find an example configuration in the [tron-deployment repository](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L37).
+Database migration is configured via the `storage.properties `field in the `java-tron` node configuration file. You can find an example configuration in the [java-tron repository](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 
 The following example demonstrates how to migrate the `block` and `trans` databases to the `/data1/tron` directory:
 
