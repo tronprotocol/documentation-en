@@ -21,7 +21,6 @@ The deployment steps, configuration files, and startup commands for a Lite FullN
  - Download the Lite FullNode data snapshot from the [Public Backup Data](backup_restore.md/#lite-fullnode-data-snapshots) and use it directly.
  - Use the [Lite FullNode Pruning Tool](toolkit.md/#lite-fullnode-data-pruning) to convert a FullNode's database into a Lite FullNode's database.
 
-
 ## Lite FullNode Maintenance
 Although a Lite FullNode starts with a minimal data footprint, it continuously syncs and saves new block data during operation. Consequently, its data expansion rate matches that of a standard FullNode, and its disk usage will grow over time.
 
