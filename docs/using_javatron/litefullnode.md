@@ -10,7 +10,7 @@ Lite Fullnodes run the exact same code as Fullnodes, but they are designed with 
 ## Core Features
   - **Starts from a State Data Snapshot**: A Lite Fullnode does not sync from the genesis block. Instead, it directly loads a "state data snapshot" that contains only the state of all network accounts and the historical data of the most recent ~65,536 blocks.
  - **Significant Resource Advantages**: Due to the minimal initial data size (about 3% of a Fullnode's data), Lite Fullnodes have the distinct advantages of occupying less disk space and faster startup times.
- - **Provides a Subset of Fullnode APIs**: By default, to save resources, a Lite Fullnode supports historical data queries (for data outside the snapshot's range). For a list of unsupported APIs, please refer to HTTP and GRPC.
+ - **Provides a Subset of Fullnode APIs**: By default, to save resources, a Lite Fullnode disables historical data queries (for data outside the snapshot's range). For a list of unsupported APIs, please refer to HTTP and GRPC.
  - **Extendable Functionality**: These unsupported APIs can be enabled by setting openHistoryQueryWhenLiteFN = true in the configuration file. Because a Lite FullNode saves data exactly like a standard FullNode after startup, enabling this option restores full API functionality for newly synced blocks. However, it will still be unable to query historical data prior to the node's initial startup snapshot.
 
 Therefore, if developers only need to use a node for block synchronization, processing, and broadcasting transactions, a Lite Fullnode is a better choice.
@@ -25,4 +25,4 @@ The deployment steps, configuration files, and startup commands for a Lite Fulln
 ## Lite Fullnode Maintenance
 Although a Lite FullNode starts with a minimal data footprint, it continuously syncs and saves new block data during operation. Consequently, its data expansion rate matches that of a standard FullNode, and its disk usage will grow over time.
 
-To manage disk space, you can perform periodic maintenance (pruning) on the Lite Fullnode's data. This maintenance is also done using the Lite Fullnode Pruning Tool, which re-prunes the current node data into a new snapshot dataset containing only the latest state.
+To manage disk space, you can perform periodic maintenance (pruning) on the Lite Fullnode's data. This maintenance is also done using the [Lite Fullnode Pruning Tool](toolkit.md/#lite-fullnode-data-pruning), which re-prunes the current node data into a new snapshot dataset containing only the latest state.
