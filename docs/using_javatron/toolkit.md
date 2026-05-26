@@ -7,6 +7,7 @@ The TRON Toolkit is a comprehensive utility that integrates various ecosystem to
 * [Fast Data Copy](#fast-data-copy-tool): Implements rapid database copying.
 * [Data Conversion](#data-conversion-tool): Supports data format conversion from LevelDB to RocksDB.
 * [LevelDB Startup Optimization](#leveldb-startup-optimization-tool): Accelerates the startup speed for nodes using LevelDB.
+* [Merkle Root Computation](#merkle-root-computation-tool): Computes the Merkle root of a small database for verification purposes.
 
 This document provides a detailed guide on how to acquire and use the TRON Toolkit.
 
@@ -155,7 +156,7 @@ Use the `db lite` command to perform data pruning operations:
 ```
 **Optional Parameters**：
 
-*   `-o | --operation <split | merge>`: Specifies the operation type. Default: `split`。
+*   `-o | --operate <split | merge>`: Specifies the operation type. Default: `split`。
 *   `-t | --type <snapshot | history>`：Used only with `-o split`. `snapshot` creates a snapshot dataset; `history` creates a history dataset.
 *   `-fn | --fn-data-path <string>`：
     *   For `split`, this is the source directory of the data to be pruned.
@@ -295,3 +296,29 @@ Use the `db archive` command to perform the LevelDB startup optimization:
 *   `-h | --help <boolean>`: Displays help information. Default: `false`.
 
 > **Important Note**: Before performing any operation with this tool, you must stop the currently running node.
+
+## Merkle Root Computation Tool
+
+The TRON Toolkit provides a **Merkle root computation tool** that calculates the Merkle root of a specified database. This is useful for data verification and consistency checks across nodes.
+
+> **Important Note**: This tool is intended for small databases. Running it against a large database may cause a `GC overhead limit exceeded` error.
+
+### Command and Parameters
+
+Use the `db root` command to compute the Merkle root:
+
+```
+# full command
+   java -jar build/libs/Toolkit.jar db root [-h] [--db=<dbs>]... [<db>]
+# examples
+   #compute the merkle root of the `account` and `witness` dbs in the default database directory
+   java -jar build/libs/Toolkit.jar db root --db account --db witness
+   #specify the database directory
+   java -jar build/libs/Toolkit.jar db root --db account /tmp/db/database
+```
+
+**Optional Parameters**:
+
+*   `<db>`: Specifies the database directory. Default: `output-directory/database`.
+*   `--db <string>`: Specifies the name of the database to compute the root for. This option can be repeated to compute roots for multiple databases.
+*   `-h | --help <boolean>`: Displays help information. Default: `false`.
