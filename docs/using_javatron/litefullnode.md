@@ -9,7 +9,7 @@ Lite Fullnodes run the exact same code as Fullnodes, but they are designed with 
 
 ## Core Features
   - **Starts from a State Data Snapshot**: A Lite Fullnode does not sync from the genesis block. Instead, it directly loads a "state data snapshot" that contains only the state of all network accounts and the historical data of the most recent ~65,536 blocks.
- - **Significant Resource Advantages**: Due to the minimal initial data size (about 3% of a Fullnode's data), Lite Fullnodes have the distinct advantages of occupying less disk space and faster startup times.
+ - **Significant Resource Advantages**: Because the initial data size is far smaller than that of a Fullnode, Lite Fullnodes have the distinct advantages of occupying less disk space and faster startup times.
  - **Provides a Subset of Fullnode APIs**: By default, to save resources, a Lite Fullnode disables historical data queries (for data outside the snapshot's range). For a list of unsupported APIs, please refer to HTTP and GRPC.
  - **Extendable Functionality**: These unsupported APIs can be enabled by setting openHistoryQueryWhenLiteFN = true in the configuration file. Because a Lite FullNode saves data exactly like a standard FullNode after startup, enabling this option restores full API functionality for newly synced blocks. However, it will still be unable to query historical data prior to the node's initial startup snapshot.
 
