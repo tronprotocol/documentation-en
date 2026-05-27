@@ -14,7 +14,7 @@ node.metrics = {
 ```
 ## Start java-tron node
 
-After updating the configuration, start the node as described in [Starting a FullNode on the TRON main network](installing_javatron.md#starting-a-fullnode-on-the-tron-main-network).
+After updating the configuration, start the node as described in [Starting a java-tron Full Node](installing_javatron.md#starting-a-java-tron-node).
 
 ## Deploy prometheus service
 

@@ -93,7 +93,7 @@ uname -m
       ```
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
-## Starting a java-tron Full Node
+## Starting a java-tron Full Node { #starting-a-java-tron-node }
 A full node acts as a gateway to the TRON network, exposing comprehensive interfaces via HTTP and RPC APIs. Through these endpoints, clients may execute asset transfers, deploy smart contracts, and invoke on-chain logic. It must join a TRON network to participate in the network's consensus and transaction processing.
 
 ### Network Types
