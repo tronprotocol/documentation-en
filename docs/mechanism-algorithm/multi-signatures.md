@@ -1,6 +1,6 @@
 # Account Permission Management 
 
-The TRON network supports Hierarchical Role-Based Access Control (RBAC) of account permissions. By configuring permissions (owner, witness, active), joint control of accounts, secure delegation, and functional permission separation can be achieved. The following document details the account permission model, contract structure, configuration methods, and common interface calls.
+The TRON network supports fine-grained control of account permissions. By configuring permissions (owner, witness, active), joint control of accounts, secure delegation, and functional permission separation can be achieved. The following document details the account permission model, contract structure, configuration methods, and common interface calls.
 
 
 
@@ -102,7 +102,6 @@ message AccountPermissionUpdateContract {
 
 - This contract is used to **update all account permission structures at once**, which is an "all-or-nothing" update. Even if modifying a single permission, the full permission set must be resubmitted to prevent accidental loss of access.
 - Even if only one permission is modified, all other existing permissions must be fully specified in the contract.
-- `AccountPermissionUpdateContract`
 
 ### 5. Contract Type Enumeration: `ContractType`
 
@@ -261,7 +260,7 @@ POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
 
 ### 2. Operations Value Calculation Example
 
-`operations` field is a 32-byte bitmask where each bit represents a specific `ContractType` , defining the functional scope of an Active permission.
+`operations` field is a 32-byte hexadecimal string (little-endian) where each bit represents a specific `ContractType` , defining the functional scope of an Active permission.
 The following Java example generates permissions for contracts (ID=0-45):
 
 ```
