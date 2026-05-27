@@ -697,7 +697,7 @@ The command to start the FullNode is as follows:
 java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
-For information on installing a FullNode, please refer to the [Deploying a FullNode](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/) documentation.
+For information on installing a FullNode, please refer to the [Deploying a FullNode](../using_javatron/installing_javatron.md) documentation.
 
 ##### 2. Verifying Plugin Load
 

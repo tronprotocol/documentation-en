@@ -15,6 +15,7 @@ In shielded transaction of transferring TronZ, there are two types of address:
 "z-addr" address uses Anonymous account model.
 
 In shielded transaction of transferring TronZ, there are three types of transfer transaction:
+
 - From "t-addr" to "z-addr":
 The transaction information of "t-addr" can be tracked, "z-addr" can not be tracked.
 

@@ -12,6 +12,7 @@ Estimate a transaction's energy consumption (Tron's counterpart of Ethereum gas)
 | `params[0]` | object | yes | `CallArguments` (same as [`eth_call`](eth_call.md)); `from` / `to` / `value` / `data` are used to infer the contract type |
 
 `CallArguments.getContractType` inference rules:
+
 - `to` is empty and `data` is non-empty → `CreateSmartContract`
 - `to` is a contract address → `TriggerSmartContract`
 - `to` is a regular account and `value` is non-empty → `TransferContract` (returns `0x0` directly without entering EVM estimation)
@@ -37,8 +38,8 @@ Hex-encoded energy usage:
 
 - Plain TRX transfer (`TransferContract`) → `0x0`
 - Contract call / deployment → depends on node config:
-  - `node.supportEstimateEnergy = true` returns `EstimateEnergyMessage.energyRequired`
-  - Default (false) → returns `TransactionExtention.energyUsed` (the actual usage of one constant-call)
+    - `node.supportEstimateEnergy = true` returns `EstimateEnergyMessage.energyRequired`
+    - Default (false) → returns `TransactionExtention.energyUsed` (the actual usage of one constant-call)
 
 The example below is the real response captured from the Nile testnet curl above (the TRX transfer takes the `TransferContract` path and returns `0x0` directly without entering the EVM):
 

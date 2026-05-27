@@ -91,6 +91,7 @@ node.backup {
 }
 ```
 policy: 
+
 1. the one which synchronized first will become master.
 2. if synchronization is completed at the same time, the one with big priority will become master.
 
