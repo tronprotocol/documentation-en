@@ -1,7 +1,7 @@
 # java-tron Node Metrics Monitoring
-Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose a series of metrics endpoints in the Prometheus exposition format, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
+Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose a series of metrics endpoints in the Prometheus exposition format, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node, and obtain metric data from the node's metrics endpoint. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
 
-## Configure java-tron 
+## Configure java-tron
 To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file. Locate the `node.metrics` block in `config.conf` and set `prometheus.enable` to `true`:
 
 ```
@@ -12,15 +12,15 @@ node.metrics = {
   }
 }
 ```
-## Start java-tron node
+## Start the java-tron Node
 
 After updating the configuration, start the node as described in [Starting a java-tron Full Node](installing_javatron.md#starting-a-java-tron-node).
 
-## Deploy prometheus service
+## Deploy Prometheus Service
 
-[Prometheus](https://prometheus.io/download/) officially provides precompiled binaries and Docker images. You can download them directly from the official website or pull the images from Docker Hub. For more detailed installation and configuration instructions, Please refer to the [prometheus documentation](https://prometheus.io/docs/introduction/overview/). For this guide, we will use Docker for a simple deployment:
+[Prometheus](https://prometheus.io/download/) officially provides precompiled binaries and Docker images. You can download them directly from the official website or pull the images from Docker Hub. For more detailed installation and configuration instructions, please refer to the [Prometheus documentation](https://prometheus.io/docs/introduction/overview/). For this guide, we will use Docker for a simple deployment:
 
-1. After installing docker, enter the following command to pull the Prometheus image:
+1. After installing Docker, enter the following command to pull the Prometheus image:
 
     ```
     $ docker pull prom/prometheus
@@ -29,7 +29,7 @@ After updating the configuration, start the node as described in [Starting a jav
 2. Download the Prometheus configuration file
 
     The following is a Prometheus configuration file template `prometheus.yaml`:
-    ```
+    ```yaml
     global:
       scrape_interval: 30s
       scrape_timeout: 10s
@@ -58,7 +58,7 @@ After updating the configuration, start the node as described in [Starting a jav
 
 3. Start a Prometheus container
 
-    Start a Prometheus container with the following command and specify to use the user-defined configuration file in the previous step:`/Users/test/deploy/prometheus/prometheus.yaml` 
+    Start a Prometheus container with the following command, mounting the configuration file from the previous step (`/Users/test/deploy/prometheus/prometheus.yaml`):
     
     ```
     $ docker run --name prometheus \
@@ -67,25 +67,26 @@ After updating the configuration, start the node as described in [Starting a jav
         prom/prometheus:latest
     ```
 
-    After the container starts, you can view the running status of the Prometheus service through `http://localhost:9090/`.
-    
+    After the container starts, you can view the running status of the Prometheus service at `http://localhost:9090/`.
+
     Go to "Status" -> "Configuration" to verify that the container is using the correct configuration file:
-    
-     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_config.png)
 
-     Click "Status" -> "Targets" to view the status of each monitored java-tron node:
-     
-     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_targets.png)
-     
-     In the example above, the status of the first endpoint is UP, meaning Prometheus can successfully fetch data from the node. The second endpoint shows DOWN, indicating an error (hover over the error label for details).
+    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_config.png)
 
-     When the status of the monitored java-tron nodes is normal, you can monitor the indicator data through visualization tools such as Grafana. This article will use Grafana to display the data:
+    Click "Status" -> "Targets" to view the status of each monitored java-tron node:
+
+    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_targets.png)
+
+    In the example above, the status of the first endpoint is UP, meaning Prometheus can successfully fetch data from the node. The second endpoint shows DOWN, indicating an error (hover over the error label for details).
+
+    When the status of the monitored java-tron nodes is normal, you can monitor the metrics through visualization tools such as Grafana. This article will use Grafana to display the data:
 
 ## Deploy Grafana
 The deployment process of the Grafana visualization tool is as follows:
 
 1. Install Grafana
-    Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/next/setup-grafana/installation/). This article will adopt the docker image deployment, and the pulled image version is the open source version:
+
+    Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/next/setup-grafana/installation/). This article will adopt the Docker image deployment, and the pulled image version is the open source version:
     
     ```
     $ docker pull grafana/grafana-oss
@@ -114,7 +115,7 @@ The deployment process of the Grafana visualization tool is as follows:
 
     Grafana's dashboard needs to be configured. For the convenience of java-tron node deployers, the TRON community provides a comprehensive dashboard configuration file [java-tron-template_rev1.json](https://grafana.com/grafana/dashboards/16567), which you can download directly and then import into Grafana.
 
-     Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import the downloaded dashboard configuration file:
+    Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import the downloaded dashboard configuration file:
     
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png)
     
