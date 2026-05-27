@@ -1,5 +1,5 @@
 # java-tron Node Metrics Monitoring
-Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose metrics in the Prometheus exposition format on a `/metrics` endpoint, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node and scrape metric data from this endpoint. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
+Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose metrics in the Prometheus exposition format on a `/metrics` endpoint, allowing node operators to monitor node health more conveniently. For the meaning of each exposed metric, see the [All Metrics section](https://github.com/tronprotocol/tron-docker/blob/main/metric_monitor/README.md#all-metrics) of the tron-docker metric_monitor README. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node and scrape metric data from this endpoint. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
 
 ## Configure java-tron
 To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file. Locate the `node.metrics` block in `config.conf` and set `prometheus.enable` to `true`:
@@ -115,15 +115,13 @@ The deployment process of the Grafana visualization tool is as follows:
 
 4. Import Dashboard
 
-    Grafana's dashboard needs to be configured. For the convenience of java-tron node deployers, the TRON community provides a comprehensive dashboard configuration file [java-tron-template_rev1.json](https://grafana.com/grafana/dashboards/16567), which you can download from the Grafana Dashboards library and then import into Grafana.
+    For the convenience of java-tron node deployers, the TRON community provides a set of pre-configured Grafana dashboards. Refer to the [Import dashboard section](https://github.com/tronprotocol/tron-docker/blob/main/metric_monitor/README.md#import-dashboard) of the tron-docker metric_monitor README to import them into Grafana.
 
-    Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import the downloaded dashboard configuration file:
+    Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import one of the JSON files mentioned above:
     
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png)
     
-    Then you can see the following types of monitoring metrics on the dashboard, and monitor the running status of the nodes in real time:
-    
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_dashboard.png)
+    The dashboard will then display the monitoring metrics corresponding to the imported JSON file, allowing you to monitor the running status of the node in real time.
 
 
 
