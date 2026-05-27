@@ -23,11 +23,7 @@ node {
 ```
 ## Start java-tron node
 
-Start java-tron node using the following command：
-
-```shell
-$  java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf
-```
+After updating the configuration, start the node as described in [Starting a FullNode on the TRON main network](installing_javatron.md#starting-a-fullnode-on-the-tron-main-network).
 
 ## Deploy prometheus service
 
