@@ -1,5 +1,5 @@
 # java-tron Node Metrics Monitoring
-Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes provide a series of interfaces compatible with the Prometheus protocol, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
+Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose a series of metrics endpoints in the Prometheus exposition format, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
 
 ## Configure java-tron 
 To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file. Locate the `node.metrics` block in `config.conf` and set `prometheus.enable` to `true`:
@@ -79,7 +79,7 @@ After updating the configuration, start the node as described in [Starting a Ful
      
      In the example above, the status of the first endpoint is UP, meaning Prometheus can successfully fetch data from the node. The second endpoint shows DOWN, indicating an error (hover over the error label for details).
 
-     When the status of the monitored java-tron nodes is normal, you can monitor the indicator data through visualization tools such as Grafana or Promdash, etc. This article will use grafana to display the data:
+     When the status of the monitored java-tron nodes is normal, you can monitor the indicator data through visualization tools such as Grafana. This article will use Grafana to display the data:
 
 ## Deploy Grafana
 The deployment process of the Grafana visualization tool is as follows:
