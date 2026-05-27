@@ -115,13 +115,13 @@ The deployment process of the Grafana visualization tool is as follows:
 
 4. Import Dashboard
 
-    For the convenience of java-tron node deployers, the TRON community provides a set of pre-configured Grafana dashboards. Refer to the [Import dashboard section](https://github.com/tronprotocol/tron-docker/blob/main/metric_monitor/README.md#import-dashboard) of the tron-docker metric_monitor README to import them into Grafana.
+    For the convenience of java-tron node deployers, the TRON community provides a set of pre-configured Grafana dashboards, each provided as a JSON file. Refer to the [Import dashboard section](https://github.com/tronprotocol/tron-docker/blob/main/metric_monitor/README.md#import-dashboard) of the tron-docker metric_monitor README to import them into Grafana.
 
     Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import one of the JSON files mentioned above:
     
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png)
     
-    The dashboard will then display the monitoring metrics corresponding to the imported JSON file, allowing you to monitor the running status of the node in real time.
+    Grafana will then render the dashboard according to the imported JSON file, allowing you to monitor the running status of the node in real time.
 
 
 
