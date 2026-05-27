@@ -1,5 +1,5 @@
 # java-tron Node Metrics Monitoring
-Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose a series of metrics endpoints in the Prometheus exposition format, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node, and obtain metric data from the node's metrics endpoint. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
+Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose metrics in the Prometheus exposition format on a `/metrics` endpoint, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node and scrape metric data from this endpoint. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
 
 ## Configure java-tron
 To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file. Locate the `node.metrics` block in `config.conf` and set `prometheus.enable` to `true`:
@@ -51,7 +51,7 @@ After updating the configuration, start the node as described in [Starting a jav
           group: group-xxx
           instance: xxx-01
       - targets:
-        - 172.0.0.2:9527
+        - 127.0.0.2:9527
         labels:
           group: group-xxx
           instance: xxx-02
