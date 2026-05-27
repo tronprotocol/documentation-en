@@ -20,13 +20,15 @@ After updating the configuration, start the node as described in [Starting a jav
 
 [Prometheus](https://prometheus.io/download/) officially provides precompiled binaries and Docker images. You can download them directly from the official website or pull the images from Docker Hub. For more detailed installation and configuration instructions, please refer to the [Prometheus documentation](https://prometheus.io/docs/introduction/overview/). For this guide, we will use Docker for a simple deployment:
 
-1. After installing Docker, enter the following command to pull the Prometheus image:
+1. Install Prometheus
+
+    After installing Docker, enter the following command to pull the Prometheus image:
 
     ```
     $ docker pull prom/prometheus
     ```
 
-2. Download the Prometheus configuration file
+2. Prepare the Prometheus configuration file
 
     The following is a Prometheus configuration file template `prometheus.yaml`:
     ```yaml
@@ -63,7 +65,7 @@ After updating the configuration, start the node as described in [Starting a jav
     ```
     $ docker run --name prometheus \
         -d -p 9090:9090 \
-        -v  /Users/test/deploy/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml \
+        -v /Users/test/deploy/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml \
         prom/prometheus:latest
     ```
 
@@ -86,7 +88,7 @@ The deployment process of the Grafana visualization tool is as follows:
 
 1. Install Grafana
 
-    Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/next/setup-grafana/installation/). This article will adopt the Docker image deployment, and the pulled image version is the open source version:
+    Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/next/setup-grafana/installation/). This article uses the Docker image deployment, pulling the open source image (`grafana-oss`):
     
     ```
     $ docker pull grafana/grafana-oss
@@ -94,26 +96,26 @@ The deployment process of the Grafana visualization tool is as follows:
 
 2. Start Grafana
 
-    You can use the below command to start Grafana:
+    You can use the following command to start Grafana:
     ```
     $ docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
     ```
 
 3. Log in to the Grafana web UI
 
-    After startup, login the Grafana web UI through `http://localhost:3000/`. The default username and password are both `admin`. After login, change the password according to the prompts, and then you can enter the main interface. Click the settings icon on the left side of the main page and select "Data Sources" to configure Grafana's data sources:
+    After startup, log in to the Grafana web UI at `http://localhost:3000/`. The default username and password are both `admin`. After login, change the password according to the prompts, and then you can enter the main interface. Click the settings icon on the left side of the main page and select "Data Sources" to configure Grafana's data sources:
     
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_datasource.png)
 
-    Enter the ip and port of the Prometheus service in `URL`:
+    Enter the IP address and port of the Prometheus service in `URL`:
 
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_prometheus.png)
     
-    Click the "Save & test" at the bottom of the page. Grafana will test the connection, and if successful, a 'Data source is working' notification will appear.
+    Click the "Save & test" button at the bottom of the page. Grafana will test the connection, and if successful, a 'Data source is working' notification will appear.
 
 4. Import Dashboard
 
-    Grafana's dashboard needs to be configured. For the convenience of java-tron node deployers, the TRON community provides a comprehensive dashboard configuration file [java-tron-template_rev1.json](https://grafana.com/grafana/dashboards/16567), which you can download directly and then import into Grafana.
+    Grafana's dashboard needs to be configured. For the convenience of java-tron node deployers, the TRON community provides a comprehensive dashboard configuration file [java-tron-template_rev1.json](https://grafana.com/grafana/dashboards/16567), which you can download from the Grafana Dashboards library and then import into Grafana.
 
     Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import the downloaded dashboard configuration file:
     
