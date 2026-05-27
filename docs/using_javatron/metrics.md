@@ -56,7 +56,7 @@ After updating the configuration, start the node as described in [Starting a jav
           group: group-xxx
           instance: xxx-02
     ```
-    You can use this template and modify the targets configuration item, which specifies the IP address and Prometheus port of your java-tron node(s).
+    You can use this template and modify the targets configuration item, which specifies the IP address and Prometheus port of your java-tron node(s). Save the file to a local directory, for example `/Users/test/deploy/prometheus/prometheus.yaml`.
 
 3. Start a Prometheus container
 
