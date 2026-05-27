@@ -1,6 +1,6 @@
 # Connect to the TRON Network
 
-The TRON network is mainly divided into:
+The TRON network is mainly divided into four environments:
 
 - **Mainnet**
 - **Nile Testnet**
@@ -198,7 +198,7 @@ genesis.block = {
       voteCount = 100000000
     }
   ]
-  timestamp = "0" #2017-8-26 12:00:00
+  timestamp = "0" # Genesis block timestamp, milli seconds
   parentHash = "0xe58f33f9baf9305dc6f82b9f1934ea8f0ade2defb951258d50167028c780351f"
 }
 ```
@@ -234,7 +234,7 @@ seed.node = {
 }
 ```
 For TRON Mainnet, you can use [community public nodes](https://developers.tron.network/docs/networks#public-node) as seed nodes. To get the latest `seed.node` list, refer to the official [config file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
-If your network interface supports IPv6, you can remove the comment symbol `#` in the list.
+If your network interface supports IPv6, you can uncomment the relevant lines in the list.
 
 ### Persistent Nodes from Database
 When persistence is enabled, nodes in the routing table are periodically written to the database and reused on restart:
@@ -262,14 +262,24 @@ In some cases (e.g., local testing or a fixed private network), you may disable 
 ## Node Connection
 
 ### Number of Node Connections
-`node.maxConnections`  defines the maximum number of peer connections (default: 30). Higher values improve network joining and broadcasting efficiency but require more bandwidth and resources: 
+The number of peer connections is controlled by the following parameters. They are usually tuned together:
+
+- `node.maxConnections`: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in `node.passive`, `node.active`, or `fastForward` (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in `node.active` are bounded only by the size of the `node.active` list, while active connections to peers discovered via the discovery protocol are driven by `minConnections` and `minActiveConnections` (see below).
+- `node.minConnections`: the desired minimum total number of peer connections, counting both active and passive (default: 8). When the total is below this value, the node initiates active connections to discovered peers to close the gap.
+- `node.minActiveConnections`: the desired minimum number of active connections to discovered peers (default: 3). The node will keep initiating active connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded `minConnections`.
+- `node.maxConnectionsWithSameIp`: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single IP.
+
 ```
 node {
   ...
-  maxConnections = 30           # max connections
+  maxConnections = 30
+  minConnections = 8
+  minActiveConnections = 3
+  maxConnectionsWithSameIp = 2
   ...
 }
 ```
+Note: `minConnections` must not exceed `maxConnections`, and `minActiveConnections` must not exceed `minConnections`; otherwise the node will automatically clamp them at startup.
 
 
 
@@ -306,9 +316,8 @@ node {
   }
   ```
   
-  Compared with the traditional static seed node list, the DNS tree mechanism has advantages in P2P network bootstrapping, such as dynamic node updates and resistance to attacks.
+  Compared to traditional static seed node list, the DNS tree mechanism offers advantages in P2P network bootstrapping, such as dynamic node updates and resistance to attacks.
   
-It can be seen that currently, the target nodes for active connection only come from two categories: one is the configured active nodes, and the other is the connectable nodes obtained through node discovery.
 
 ### Passive Connections
 -  The current node will always accept connection requests from nodes listed under `node.passive`
@@ -355,7 +364,7 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 Use the HTTP API:
 
 ```
-$ curl http://127.0.0.1:16887/wallet/getnodeinfo
+$ curl http://127.0.0.1:8090/wallet/getnodeinfo
 ```
 Example response：
 ```
@@ -389,12 +398,12 @@ Example response：
 ### Verify Node Synchronization
 Compare your local block height with [TRONSCAN](https://tronscan.org/) ：
 ```
-curl http://127.0.0.1:16887/wallet/getnowblock
+curl http://127.0.0.1:8090/wallet/getnowblock
 ```
 If the heights match, synchronization is normal.
 
 ## Troubleshooting Common Connection Issues
-There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:
+If your java-tron node fails to connect to peers, check the following common causes:
 
 - **Local clock offset**
 
@@ -422,4 +431,4 @@ Developers can deploy a private instance of the TRON network.
 - Use a custom `node.p2p.version` to avoid conflicts with existing public networks.
 
 ### Reference Guide:
-- Please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/) for full instructions.
+- Please refer to [Private Network](private_network.md) for full instructions.

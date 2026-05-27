@@ -85,6 +85,7 @@ Parameters are as follows:
 
 ### Example:
 Suppose the trading pair ID for `abc` and `TRX` is 1, with the current state:
+
 - `abc` balance is 10,000,000.
 - `TRX` balance is 1,000,000.
 
@@ -112,6 +113,7 @@ Parameters are as follows:
 
 ### Example:
 Suppose the trading pair ID for `abc` and `TRX` is 1, with the current state:
+
 - `abc` balance is 10,000,000.
 - `TRX` balance is 1,000,000.
 
@@ -132,7 +134,7 @@ TRON provides multiple interfaces for querying trading pairs:
 
 **3. Query details of a specific trading pair:** `GetExchangeById`
 
-For detailed API documentation, refer to [RPC-API ](https://tronprotocol.github.io/documentation-en/api/rpc/).
+For detailed API documentation, refer to [RPC-API ](../api/rpc/index.md).
 
 ### Price Calculation
 Suppose in a trading pair:
@@ -166,5 +168,5 @@ buyTokenQuant = (long)(balance * (Math.pow(1.0 + (double) supplyQuant / supply, 
 
 >**Note**: Market prices may fluctuate in real-time due to other trading activities on the network.
 
-For more interface details, refer to: [HTTP API Documentation](https://tronprotocol.github.io/documentation-en/api/http/).
+For more interface details, refer to: [HTTP API Documentation](../api/http/index.md).
 

@@ -4,7 +4,7 @@ This document guides developers on how to deploy a TRON java-tron node on `Linux
 
 Currently, a java-tron node supports running on both x86_64 and arm64 architectures(support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:
 
-- For the x86_64 architecture, currently only Oracle JDK 8 is supported.
+- For the x86_64 architecture, currently only JDK 8 (latest minor version recommended) is supported.
 - For the arm64 architecture, currently only JDK 17 is supported.
 
 
@@ -58,7 +58,7 @@ uname -m
 
 - If your architecture is `x86_64` (Intel/AMD 64-bit):
 
-    - Install Java SE 8 (Oracle JDK 8): [https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
+    - Install Java SE 8 (JDK 8, latest minor version recommended).
     - Verify:
     ```bash
     java -version
@@ -67,7 +67,7 @@ uname -m
 
 - If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
 
-    - Install Java SE 17 (JDK 17): [https://www.oracle.com/java/technologies/downloads/#java17](https://www.oracle.com/java/technologies/downloads/#java17)
+    - Install Java SE 17 (JDK 17).
     - Verify:
     ```bash
     java -version
@@ -203,7 +203,7 @@ Shasta does not accept public node peers. Programmatic access is available via T
 Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shasta.tronex.io](https://shasta.tronex.io/).
 
 ### Starting a FullNode on a private network
-To set up a private network for testing or development, follow the [Private Network guidance](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/).
+To set up a private network for testing or development, follow the [Private Network guidance](private_network.md).
 
 ### Starting a SolidityNode
 A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
@@ -231,7 +231,7 @@ By adding the `--witness` parameter to the FullNode startup command above, the `
 **Important Notes**:
 
 * Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.
-  * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
+    * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
 * Fill in the **private key** of your Super Representative account in the `localwitness` list of `config.conf`.
 
 Here is an example of the `localwitness` configuration:
@@ -329,7 +329,7 @@ node.backup {
 
 ### Speeding Up Node Data Synchronization
 
-For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/#main-net-data-snapshot) to accelerate node synchronization.
+For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](backup_restore.md#main-net-data-snapshot) to accelerate node synchronization.
 
 The operational steps are as follows:
 

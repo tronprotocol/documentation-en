@@ -1,5 +1,5 @@
 # System Contracts
-The TRON network supports many different types of transactions, such as TRX transfer transactions, TRC10 transfer transactions, creating smart contract transactions, triggering smart contract transactions, staking TRX transactions, and more. To create different types of transactions, you need to call different API. For example, the type of smart contract deployment transaction is `CreateSmartContract`, you need to call `wallet/deploycontractAPI` to create a transaction; the type of stake TRX transactions is `FreezeBalanceV2Contract`, you need to call` wallet/freezebalancev2API` to create transactions, we collectively refer to the implementation of these different transaction types as system contracts, the following are the types of system contracts and their contents:
+The TRON network supports many different types of transactions, such as TRX transfers, TRC10 transfers , smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `wallet/deploycontractAPI`.The transaction type of stake TRX is `FreezeBalanceV2Contract`, which requires calling the ` wallet/freezebalancev2API`. We collectively refer to the implementation of these different transaction types as system contracts.
 
 ## AccountCreateContract
 ```
@@ -24,7 +24,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 ```
 
 - `owner_address`: The owner of the current account.
-- `to_address`: The target address to transfer.
+- `to_address`: The target address to receive the transfer.
 - `amount`: The amount of TRX to transfer.
 
 ## TransferAssetContract
@@ -37,9 +37,9 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `asset_name`: The token id to transfer.
+- `asset_name`: The TRC-10 token ID to transfer.
 - `owner_address`: The owner of the current account.
-- `to_address`: The target address to transfer.
+- `to_address`: The target address to receive the transfer.
 - `amount`: The amount of token to transfer.
 
 ## VoteWitnessContract
@@ -138,7 +138,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 ```
 
 - `owner_address`: The owner of the current account.
-- `to_address`: The token owner address.
+- `to_address`: The token owner's address.
 - `account_name`: The token id.
 - `amount`: The amount of token to purchase.
 
@@ -483,7 +483,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：Owner address
+* `owner_address`：The owner's address
 * `frozen_balance`：TRX stake amount, the unit is sun
 * `resource`： Resource type
 
@@ -510,7 +510,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：Owner address
+* `owner_address`：The owner's address
    
 ## DelegateResourceContract
 
@@ -524,11 +524,11 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：Owner address
+* `owner_address`：The owner's address
 * `resource`： Resource type
 * `balance`： Amount of TRX staked for resources to be delegated, unit is sun
 * `receiver_address`：Resource receiver address
-* `lock`：Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days
+* `lock`：Indicates whether the delegation is locked. If `true`, the delegated resources cannot be undelegated for 3 days. If the owner delegates the same resource type to the same address with a lock before the initial lock expires, the 3-day lock timer is reset.
    
    
 ## UnDelegateResourceContract
@@ -542,7 +542,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：Owner address
+* `owner_address`：The owner's address
 * `resource`： Resource type
 * `balance`：undelegated TRX, unit is sun
 * `receiver_address`：Resource receiver address

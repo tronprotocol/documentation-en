@@ -625,7 +625,7 @@ db.createUser({user:"<eventlog-username>",pwd:"<eventlog-password>",roles:[{role
 
 The Event Query Service provides an HTTP interface for querying event data stored in MongoDB. This service requires a Java environment.
 
-**Note**: Please use Oracle JDK 8 on x86_64 architecture and JDK 17 on arm64 architecture.
+**Note**: Please use JDK 8 (latest minor version recommended) on x86_64 architecture and JDK 17 on arm64 architecture.
 
 ##### 1. Downloading the Source Code
 
@@ -697,7 +697,7 @@ The command to start the FullNode is as follows:
 java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
-For information on installing a FullNode, please refer to the [Deploying a FullNode](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/) documentation.
+For information on installing a FullNode, please refer to the [Deploying a FullNode](../using_javatron/installing_javatron.md) documentation.
 
 ##### 2. Verifying Plugin Load
 
