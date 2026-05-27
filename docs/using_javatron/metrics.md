@@ -2,24 +2,15 @@
 Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes provide a series of interfaces compatible with the Prometheus protocol, allowing node operators to monitor node health more conveniently. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node, and obtain the indicator data of the node through the node interface. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
 
 ## Configure java-tron 
-To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file:
+To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file. Locate the `node.metrics` block in `config.conf` and set `prometheus.enable` to `true`:
 
 ```
-node {
-  ... ...
-  p2p {
-    version = 11111 # 11111: mainnet; 20180622: testnet
+node.metrics = {
+  prometheus {
+    enable = true
+    port = 9527
   }
- ####### add for prometheus start.
- metrics{
-  prometheus{
-  enable=true 
-  port="9527"
-  }
- }
- ####### add for prometheus end.
 }
-
 ```
 ## Start java-tron node
 
@@ -71,7 +62,7 @@ After updating the configuration, start the node as described in [Starting a Ful
     
     ```
     $ docker run --name prometheus \
-        -d -p :9090:9090 \
+        -d -p 9090:9090 \
         -v  /Users/test/deploy/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml \
         prom/prometheus:latest
     ```
