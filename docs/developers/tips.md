@@ -238,6 +238,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## TIP Types
 
 TIPs are primarily categorized into two types: `Standard Track` and `Informational`.
@@ -337,5 +338,7 @@ Images, diagrams, and other auxiliary files should be stored in a subdirectory o
 
 
 [^1]: **Consensus fork**: A phenomenon in a blockchain network where nodes have different opinions on changes to protocol rules, leading to a divergence in the blockchain's history.
+=======
+>>>>>>> b2513e1aab15128899dbf64070e43db1c3f976b5
 =======
 >>>>>>> b2513e1aab15128899dbf64070e43db1c3f976b5
