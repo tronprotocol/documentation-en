@@ -539,6 +539,7 @@ event.subscribe = {
       * `triggerName`: The name of the trigger, which cannot be modified.
       * `enable`: Toggles the event subscription. `true` enables it, `false` disables it.
       * `topic`: The name of the collection in MongoDB that will receive the events. This can be modified.
+      * `redundancy`: Only applies to `contractlog` and `soliditylog`. When set to `true`, a contract log that has already been delivered as a `contractevent`/`solidityevent` is **also** delivered as a raw `contractlog`/`soliditylog`. Defaults to `false`.
   * `filter`: The criteria for filtering events.
       * `fromblock`: The starting block number of the query range. Can be `""`, `"earliest"` (to query from the genesis block), or a specific block number.
       * `toblock`: The ending block number of the query range. Can be `""`, `"latest"` (the most recent block), or a specific block number.
