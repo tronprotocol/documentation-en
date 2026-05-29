@@ -198,13 +198,13 @@ event.subscribe = {
   * `dbconfig`: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.
   * `contractParse`: Controls whether contract logs are ABI-decoded. When `true` (the default), the node matches each log against the contract's ABI; matched logs are delivered as decoded `contractevent` triggers, while unmatched logs are delivered as raw `contractlog` triggers. When `false`, ABI decoding is skipped and all logs are delivered as raw `contractlog` triggers.
   * `topics`: Configure the events to subscribe to. For more details, please refer to the [Event Types](#event-types) section below.
-  * `filter`: Filtering parameters. For more details, please refer to the [Event Types](#event-types) section below.
+  * `filter`: Filtering parameters. For more details, please refer to the [Event Filtering](#event-filtering) section below.
 
-###### Event Types
+#### Event Types
 
 TRON event subscription supports 7 types of events: `block`, `transaction`, `contractevent`, `contractlog`, `solidity`, `solidityevent`, and `soliditylog`. Developers should configure these based on their application's specific needs. **We recommend subscribing to only 1-2 event types. Enabling too many triggers can lead to performance degradation.**
 
-**1. Transaction Event**
+##### 1. Transaction Event
 
 Subscribes to events related to on-chain transactions.
 
@@ -239,7 +239,7 @@ Key Fields in Transaction Events:
 
 For a complete list of fields, see the [TransactionLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/TransactionLogTrigger.java) source code.
 
-**2. Block Events**
+##### 2. Block Events
 
 Subscribes to events triggered upon the creation of new blocks.
 
@@ -267,7 +267,7 @@ Key Fields in Block Events:
 
 For a complete list of fields, see the [BlockLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/BlockLogTrigger.java) source code.
 
-**3. Contract Events and Logs**
+##### 3. Contract Events and Logs
 
 Subscribes to smart contract events and logs generated during contract execution.
 
@@ -314,22 +314,25 @@ Key Fields in Contract Events
 For a complete list of fields, see the [ContractEventTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java) and [ContractLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java) source code.
 
 
-> **Note**: `Contract event` and `Contract log` support event filtering through the `filter` field. You can specify a block range (`fromblock` - `toblock`), specific contract addresses (`contractAddress`), or specific contract topics (`contractTopic`) to provide developers with a more efficient and precise event subscription service.
-> ```
-> filter = {
->   fromblock = "" // The starting block number of the query range. Can be an empty string, "earliest", or a specific block number.
->   toblock = "" // The ending block number of the query range. Can be an empty string, "latest", or a specific block number.
->   contractAddress = [
->     "" // The contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.
->   ]
->
->   contractTopic = [
->     "" // The contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.
->   ]
-> }
-> ```
+###### Event Filtering
 
-**4. Solidified Block Notification Events**
+`Contract event` and `Contract log` support event filtering through the `filter` field. You can specify a block range (`fromblock` - `toblock`), specific contract addresses (`contractAddress`), or specific contract topics (`contractTopic`) to provide developers with a more efficient and precise event subscription service.
+
+```hocon
+filter = {
+  fromblock = "" // The starting block number of the query range. Can be an empty string, "earliest", or a specific block number.
+  toblock = "" // The ending block range of the query range. Can be an empty string, "latest", or a specific block number.
+  contractAddress = [
+    "" // The contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.
+  ]
+
+  contractTopic = [
+    "" // The contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.
+  ]
+}
+```
+
+##### 4. Solidified Block Notification Events
 
 Subscribes to real-time notifications for the latest solidified block height. This is ideal for applications that need to track the chain's finalized state.
 
@@ -712,7 +715,7 @@ tail -f logs/tron.log | grep -i eventplugin
 If you see a message similar to the following, the plugin has loaded successfully:
 
 ```text
-o.t.c.l.EventPluginLoader 'your plugin path/plugin-kafka-1.0.0.zip' loaded
+o.t.c.l.EventPluginLoader 'your plugin path/plugin-mongodb-1.0.0.zip' loaded
 ```
 
 ##### 3. Verifying Data Persistence in MongoDB
