@@ -74,7 +74,7 @@ Visit the [event-plugin Releases page](https://github.com/tronprotocol/event-plu
 In your `config.conf` file, set the event service version to `V2.0` by setting the value to 1.
 
 ```
-event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
+event.subscribe.version = 1 # 1 for V2.0, 0 for V1.0
 ```
 
 ##### Step 3: Configure the Event Plugin
@@ -146,7 +146,7 @@ In a Linux environment, please follow these steps to install Kafka:
 
 ```
 cd /usr/local
-wget https://downloads.apache.org/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
 tar -xzf kafka_2.13-2.8.0.tgz
 ```
 
@@ -196,6 +196,7 @@ event.subscribe = {
   * `path`: The absolute local path to the `plugin-kafka-1.0.0.zip` file. Please ensure the path is correct, or the plugin will fail to load.
   * `server`: The Kafka server address in `ip:port` format. The default Kafka port is `9092`. Please ensure the port number is correct and that the Kafka service is accessible.
   * `dbconfig`: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.
+  * `contractParse`: Controls whether contract logs are ABI-decoded. When `true` (the default), the node matches each log against the contract's ABI; matched logs are delivered as decoded `contractevent` triggers, while unmatched logs are delivered as raw `contractlog` triggers. When `false`, ABI decoding is skipped and all logs are delivered as raw `contractlog` triggers.
   * `topics`: Configure the events to subscribe to. For more details, please refer to the [Event Types](#event-types) section below.
   * `filter`: Filtering parameters. For more details, please refer to the [Event Types](#event-types) section below.
 
@@ -207,7 +208,7 @@ TRON event subscription supports 7 types of events: `block`, `transaction`, `con
 
 Subscribes to events related to on-chain transactions.
 
-Configuration Example：
+Configuration Example:
 
 ```
 event.subscribe.topics = [
@@ -242,7 +243,7 @@ For a complete list of fields, see the [TransactionLogTrigger](https://github.co
 
 Subscribes to events triggered upon the creation of new blocks.
 
-Configuration Example：
+Configuration Example:
 
 ```
 event.subscribe.topics = [
@@ -270,7 +271,7 @@ For a complete list of fields, see the [BlockLogTrigger](https://github.com/tron
 
 Subscribes to smart contract events and logs generated during contract execution.
 
-Configuration Example：
+Configuration Example:
 
 ```
 event.subscribe.topics = [
@@ -333,7 +334,7 @@ For a complete list of fields, see the [ContractEventTrigger](https://github.com
 Subscribes to real-time notifications for the latest solidified block height. This is ideal for applications that need to track the chain's finalized state.
 
 
-Configuration Example：
+Configuration Example:
 
 ```
 event.subscribe.topics = [
@@ -641,7 +642,7 @@ cd tron-eventquery
 Download and use Maven to build the `tron-eventquery` service:
 
 ```
-wget https://mirrors.cnnic.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
+wget https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
 tar zxvf apache-maven-3.5.4-bin.tar.gz
 export M2_HOME=$HOME/maven/apache-maven-3.5.4
 export PATH=$PATH:$M2_HOME/bin
@@ -718,7 +719,7 @@ o.t.c.l.EventPluginLoader 'your plugin path/plugin-kafka-1.0.0.zip' loaded
 Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:
 
 ```
-mongo 47.90.245.68:27017
+mongo 127.0.0.1:27017
 use eventlog
 db.auth("tron", "123456")
 show collections
@@ -798,7 +799,7 @@ Next, write the subscriber code:
 
 ```
 // subscriber.js
-var zmq = require("zeromq"),
+var zmq = require("zeromq");
 var sock = zmq.socket("sub");
 
 sock.connect("tcp://127.0.0.1:5555");
@@ -830,6 +831,6 @@ $ node subscriber.js
 When the node produces a new block, the subscriber will receive the block event, and the output will look like this:
 
 ```
-received a message related to: block, containing message: {"timeStamp":1678343709000,"triggerName":"blockTrigger","blockNumber":1361,"blockHash":"00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280","transactionSize":0,"latestSolidifiedBlockNumber":1361,"transactionList":[]}
-received a message related to: block, containing message: {"timeStamp":1678343712000,"triggerName":"blockTrigger","blockNumber":1362,"blockHash":"0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0","transactionSize":0,"latestSolidifiedBlockNumber":1362,"transactionList":[]}
+received a message related to: blockTrigger, containing message: {"timeStamp":1678343709000,"triggerName":"blockTrigger","blockNumber":1361,"blockHash":"00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280","transactionSize":0,"latestSolidifiedBlockNumber":1361,"transactionList":[]}
+received a message related to: blockTrigger, containing message: {"timeStamp":1678343712000,"triggerName":"blockTrigger","blockNumber":1362,"blockHash":"0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0","transactionSize":0,"latestSolidifiedBlockNumber":1362,"transactionList":[]}
 ```
