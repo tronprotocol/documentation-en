@@ -36,7 +36,7 @@ The TRON network only records the state of your last vote. This means that every
 **Example:**
 
 ```
->freezebalancev2 10000000 1 # Stake 10 TRX to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
+>freezebalancev2 10000000 1 # Stake 10 TRX (the amount is in sun; 1 TRX = 1,000,000 sun, so 10 TRX = 10000000 sun) to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
 >votewitness SR1 4 SR2 6 # Cast 4 votes for SR1 and 6 votes for SR2.
 >votewitness SR1 3 SR2 7 # Cast 3 votes for SR1 and 7 votes for SR2.
 ```
