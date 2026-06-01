@@ -72,7 +72,7 @@ Explanation:
 - `type`: Permission type (owner/witness/active).
 - `id`: Permission ID, automatically assigned by the system.
     - `owner` = 0, `witness` = 1, `active` starts from 2 and increments.
-- `permission_name`: Permission name, maximum 32 bytes.
+- `permission_name`: Permission name, maximum 32 characters.
 - `threshold`: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value.
 - `operations`: Used only for Active permissions, specifies executable contract types.
 - `keys`: Addresses and weights with this permission (up to 5).
@@ -175,6 +175,7 @@ Active permissions configure which `ContractType` can be executed through the `o
 - Available only for Super Representative, Super Representative Partner, and Super Representative Candidate accounts.
 - Controls block-producing nodes, does not have permissions for fund transfers or other operations.
 - Can delegate block production permission to other addresses to enhance account security.
+- Must contain exactly one key.
 
 #### Super Representative Node Configuration Example:
 
