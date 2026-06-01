@@ -223,7 +223,7 @@ The above fees can be adjusted through proposals.
 3. Call `AccountPermissionUpdateContract`.
 4. Sign and broadcast the transaction.
 
-**Notice:**: When a block contains transactions that modify account permissions, no further transactions from this account will be included in this block to ensure that such account permission modify transactions actually take effect starting from the next block.
+**Note**: When a block contains transactions that modify account permissions, no further transactions from this account will be included in this block to ensure that such account permission modify transactions actually take effect starting from the next block.
 
 #### Example Request:
 
