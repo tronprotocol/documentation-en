@@ -11,8 +11,6 @@ Based on the final vote rankings, the top 127 candidates take on one of two role
  - **Super Representatives (SRs)**: The top 27 candidates with the most votes. They are the core nodes of the TRON network, responsible for producing blocks and packing transactions. For this, they receive block rewards and vote rewards.
  - **Super Representative Partners (SR Partners)**: Candidates ranking from 28th to 127th. They act as backup nodes for the network, do not participate in block production, but share in the vote rewards.
 
-Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Voters who cast their ballots for SRs or SR Partners receive voting rewards proportional to their votes.
-
 The TRON network tallies votes once every 6 hours, and the roles of Super Representatives and Partners are updated accordingly in this 6-hour cycle.
 
 
@@ -82,6 +80,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
  - Chain parameter details can be viewed on TRONSCAN's [committee](https://tronscan.org/#/sr/committee) page.
  - `brokerageRate` refers to the commission rate.
  - SRs and SR Partners are the top 127 SR candidates.
+ - Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Likewise, their voters cannot receive block or vote rewards either.
  - If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.
  - Withdrawing rewards to the account balance via the `WithdrawBalanceContract` transaction has a 24-hour cooldown: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.
 
@@ -95,7 +94,7 @@ The Committee is the highest governing body of the TRON network, responsible for
  - **Powers**: Each committee member has two core powers: 
 
      - To create a proposal: Initiate a proposal to modify network parameters.
-     - To vote on a proposal: Vote on proposals initiated by other members.
+     - To vote on a proposal: Vote on proposals to modify network parameters (including proposals initiated by oneself).
 
  - **Proposal Effective Mechanism**: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
 
