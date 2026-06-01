@@ -121,7 +121,7 @@ Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dyn
 The voting process for proposals follows these core rules:
 
 1.  The governance system only supports approval votes. Not voting is equivalent to disapproving.
-2.  A proposal is valid for 3 days from its creation. If it does not receive enough approval votes within this period, it will expire.
+2.  A proposal is valid for 3 days from its creation by default. This duration is the on-chain parameter `getProposalExpireTime` (#92), which can be modified by proposal (currently 3 days on mainnet). If it does not receive enough approval votes within this period, it will expire.
 
 **Example**:
 
