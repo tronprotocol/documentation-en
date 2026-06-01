@@ -2,14 +2,14 @@
 
 ## How to Become a Super Representative
 
-In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate and participate in the election by paying a one-time fee of 9999 TRX.
+In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate by paying a one-time fee of 9999 TRX, and any TRX holder can vote for SR candidates.
 
-Based on the final vote rankings, candidates are divided into two categories:
+Based on the final vote rankings, the top 127 candidates take on one of two roles:
 
  - **Super Representatives (SRs)**: The top 27 candidates with the most votes. They are the core nodes of the TRON network, responsible for producing blocks and packing transactions. For this, they receive block rewards and vote rewards.
  - **Super Representative Partners (SR Partners)**: Candidates ranking from 28th to 127th. They act as backup nodes for the network, do not participate in block production, but share in the vote rewards.
 
-Voters who cast their ballots for both Super Representatives (SRs) and Partners can receive corresponding voting rewards proportional to their votes.
+Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Voters who cast their ballots for SRs or SR Partners receive voting rewards proportional to their votes.
 
 The TRON network tallies votes once every 6 hours, and the roles of Super Representatives and Partners are updated accordingly in this 6-hour cycle.
 
@@ -33,7 +33,7 @@ All accounts in the TRON network have the right to vote for the Super Representa
 **Important Note:**
 The TRON network only records the state of your last vote. This means that every new vote you cast will completely overwrite all previous voting effects.
 
-**Example:：** 
+**Example:**
 
 ```
 >freezebalancev2 10000000 1 # Stake 10 TRX to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
