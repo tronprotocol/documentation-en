@@ -122,8 +122,13 @@ The voting process for proposals follows these core rules:
 ```
 >approveProposal id is_or_not_add_approval
 # id: proposal id
-# is_or_not_add_approval: YES vote or cancel YES vote
+# is_or_not_add_approval: true to add an approval (vote YES), false to cancel a previous approval
 ```
+
+**Note**: The following two cases are rejected during validation:
+
+- Passing `true` when you have already approved the proposal (you cannot approve the same proposal twice).
+- Passing `false` when you have not approved the proposal before (there is no approval to cancel).
 
 ### Cancel Proposal
 
