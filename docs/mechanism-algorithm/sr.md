@@ -54,7 +54,7 @@ SRs and SR Partners can set a Commission Rate (also known as Brokerage Rate) to 
 
 - Customizing the Rate
 
-    SRs and SR Partners can adjust their commission rate at any time via the `wallet/updateBrokerage` API interface.
+    SRs and SR Partners can adjust their commission rate at any time via the [`wallet/updateBrokerage`](../api/http/witness-and-governance/updateBrokerage.md) API interface.
 
      - 100% Commission: All rewards go to the SR/SR Partner.
      - 0% Commission: All rewards are distributed to the voters.
