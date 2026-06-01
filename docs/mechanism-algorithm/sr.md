@@ -96,6 +96,8 @@ The Committee is the highest governing body of the TRON network, responsible for
 
  - **Proposal Effective Mechanism**: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
 
+**Note**: The Create, Vote on, and Cancel Proposal examples below are wallet-cli client commands. For the corresponding HTTP API interfaces, see [ProposalCreate](../api/http/witness-and-governance/proposalcreate.md), [ProposalApprove](../api/http/witness-and-governance/proposalapprove.md), and [ProposalDelete](../api/http/witness-and-governance/proposaldelete.md).
+
 ### Create a Proposal
 
 In the TRON network, all SRs, SR Partners, and SR candidates have the right to initiate proposals to modify network parameters.
@@ -105,10 +107,12 @@ Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dyn
 **Example**:
 
 ```
->createproposal id0 value0 ... idN valueN
-# id0_N: Parameter number
-# value0_N: New parameter value
+>createproposal parameter0 value0 ... parameterN valueN
+# parameter0_N: the network parameter number to modify (not the proposal id)
+# value0_N: the new value for that parameter
 ```
+
+**Note**: A single proposal can modify several network parameters at once by supplying multiple `parameter value` pairs.
 
 ### Vote on a Proposal
 
