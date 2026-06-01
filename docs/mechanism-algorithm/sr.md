@@ -4,6 +4,8 @@
 
 In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate by paying a one-time fee of 9999 TRX, and any TRX holder can vote for SR candidates.
 
+An application to become a candidate can be initiated via the `CreateWitness` command in the wallet-cli client, and requires submitting a URL (used to publish information such as the candidate's homepage).
+
 Based on the final vote rankings, the top 127 candidates take on one of two roles:
 
  - **Super Representatives (SRs)**: The top 27 candidates with the most votes. They are the core nodes of the TRON network, responsible for producing blocks and packing transactions. For this, they receive block rewards and vote rewards.
@@ -81,6 +83,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
  - `brokerageRate` refers to the commission rate.
  - SRs and SR Partners are the top 127 SR candidates.
  - If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.
+ - Withdrawing rewards to the account balance via the `WithdrawBalanceContract` transaction has a 24-hour cooldown: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.
 
 ## Committee
 
