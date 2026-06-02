@@ -41,7 +41,7 @@ curl --request POST \
 | `contract_address` | bytes | Address of the deployed/called contract |
 | `receipt` | ResourceReceipt | Resource consumption (see below) |
 | `log` | repeated Log | Event logs (`{address, topics[], data}`) |
-| `result` | enum | `SUCESS` / `FAILED` |
+| `result` | enum | `SUCCESS` / `FAILED` |
 | `resMessage` | bytes | Failure reason |
 | `internal_transactions` | repeated InternalTransaction | Internal transactions |
 | `withdraw_amount` | int64 | Withdrawn witness reward (only for WithdrawBalance) |
@@ -50,6 +50,8 @@ curl --request POST \
 | `cancel_unfreezeV2_amount` | map\<string,int64\> | Cancelled unfreeze amount (V2) |
 | `assetIssueID` | string | Newly created TRC10 ID (only for CreateAssetIssue) |
 | `exchange_*` / `orderId` | — | Exchange / Market related fields |
+
+> **Note**: To parse the `log` field, please ensure the transaction result is "success" first — this alignment is recommended for data consistency.
 
 `ResourceReceipt` (`Tron.proto`):
 
