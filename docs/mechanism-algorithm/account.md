@@ -27,7 +27,7 @@ There are two primary ways to create a new TRON account:
 **Account Creation Cost:**
 
    - Activating a new account costs 1 TRX, which is burned. This amount is the `getCreateNewAccountFeeInSystemContract` network parameter (currently 1 TRX on mainnet) and can be changed by committee proposal.
-   - Additionally, if the creator's account has sufficient Bandwidth (either from staking TRX or delegated from others), the creation will only consume Bandwidth. Otherwise, the equivalent fee is burned to pay for the Bandwidth. This Bandwidth fee is the `getCreateAccountFee` network parameter (currently 0.1 TRX on mainnet) and can also be changed by committee proposal. Note that the daily free Bandwidth cannot be used to create an account; only Bandwidth obtained from staking TRX or delegated from others is eligible.
+   - Additionally, if the creator's account has sufficient Bandwidth (either from staking TRX or delegated from others), the creation will only consume Bandwidth. Otherwise, the `getCreateAccountFee` is burned to pay for the Bandwidth. This Bandwidth fee is a network parameter (currently 0.1 TRX on mainnet) and can also be changed by committee proposal. Note that the daily free Bandwidth cannot be used to create an account; only Bandwidth obtained from staking TRX or delegated from others is eligible.
 
 ## Key Pair Generation Algorithm
 
