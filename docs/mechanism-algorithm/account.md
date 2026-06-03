@@ -22,7 +22,7 @@ There are two primary ways to create a new TRON account:
 
 **Method 2: Creation via System Contract**
 
-   - Developers can create an account by calling the `CreateAccount` system contract.
+   - Developers can create an account by calling the `AccountCreateContract` system contract.
 
 **Account Creation Cost:**
 
