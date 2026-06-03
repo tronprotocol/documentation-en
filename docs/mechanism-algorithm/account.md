@@ -26,8 +26,8 @@ There are two primary ways to create a new TRON account:
 
 **Account Creation Cost:**
 
-   - A fixed fee of 1 TRX is required to create and activate a new account.
-   - Additionally, if the creator's account has sufficient Bandwidth (either from staking TRX or delegated from others), the creation will only consume Bandwidth. Otherwise, 0.1 TRX will be burned to pay for the Bandwidth fee.
+   - Activating a new account costs 1 TRX, which is burned. This amount is the `getCreateNewAccountFeeInSystemContract` network parameter (currently 1 TRX on mainnet) and can be changed by committee proposal.
+   - Additionally, if the creator's account has sufficient Bandwidth (either from staking TRX or delegated from others), the creation will only consume Bandwidth. Otherwise, the equivalent fee is burned to pay for the Bandwidth. This Bandwidth fee is the `getCreateAccountFee` network parameter (currently 0.1 TRX on mainnet) and can also be changed by committee proposal. Note that the daily free Bandwidth cannot be used to create an account; only Bandwidth obtained from staking TRX or delegated from others is eligible.
 
 ## Key Pair Generation Algorithm
 
@@ -84,7 +84,9 @@ public static Transaction sign(Transaction transaction, ECKey myKey) {
     ECDSASignature signature = myKey.sign(hash);
     ByteString bsSign = ByteString.copyFrom(signature.toByteArray());
     transactionBuilderSigned.addSignature(bsSign);
+    return transactionBuilderSigned.build();
 }
+```
 
 ## Signature Verification
 When a FullNode receives a transaction, it uses the transaction hash and signature to recover a public key via the ECDSA recovery mechanism (ecrecover). An address is then derived from this public key. If the derived address matches the originator's address specified in the transaction, the signature is considered valid.
