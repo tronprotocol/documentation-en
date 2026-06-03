@@ -75,7 +75,7 @@ The principle of Base58 encoding is to convert a large integer with a base of 25
 
 4. Concatenate the values of `r`, `s`, and `recoveryId` (or `r`, `s`, and `v`) to obtain the complete signature. The concatenation order shall be `r || s || recoveryId` (or `r || s || v`). At present, both the transaction signing in the official client `wallet-cli` and the block signing in `java-tron` (during block production by SRs) adopt the `recoveryId` scheme, i.e., `signature = r || s || recoveryId`.
 
-#### Java Code Sample
+### Java Code Sample
 
 ```java
 public static Transaction sign(Transaction transaction, ECKey myKey) {
