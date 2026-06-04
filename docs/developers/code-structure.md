@@ -223,7 +223,7 @@ The Framework module serves as the core of java-tron and the primary entry point
     |-- common
     |   |-- application
     |   |-- backup
-    |   |-- logsfilterf
+    |   |-- logsfilter
     |   |-- net
     |   |-- overlay
     |   |   |-- client
@@ -263,7 +263,7 @@ This article mainly introduces the code structure of java-tron, as well as the f
 
 ## ChainBase
 ### Introduction
-As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. "Blockchains are frequently used for secure bookkeeping and transaction processing. For example, applications utilize cryptocurrencies like BTC, ETH, and TRX to conduct economic activities while ensuring financial transparency.
+As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. Blockchains are frequently used for secure bookkeeping and transaction processing. For example, applications utilize cryptocurrencies like BTC, ETH, and TRX to conduct economic activities while ensuring financial transparency.
 
 The realization of such an immutable distributed ledger is a very complex system engineering, involving many technical fields: such as p2p networks, smart contracts, databases, cryptography, consensus mechanisms, etc. Among them, the database is the basis of the underlying storage, and various blockchain teams are exploring the design and optimization of the database level.
 
