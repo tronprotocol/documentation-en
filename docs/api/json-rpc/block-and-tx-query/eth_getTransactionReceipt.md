@@ -37,6 +37,8 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 | `type` | hex | Constant `0x0` |
 | `root` | null | Not populated (post-Byzantium) |
 
+> **Note**: To parse the `logs` field, please ensure the transaction succeeded (`status == "0x1"`) first — this alignment is recommended for data consistency. 
+
 The example below is the real response captured from the Nile testnet curl above (a contract call producing 1 log; cross-check at [Nile Tronscan](https://nile.tronscan.org/#/transaction/01b4cde4197b9d1a1ff09ef5d2b1d939d3ec2401b3f002ebd0802c0f30a6e4ca)):
 
 ```json

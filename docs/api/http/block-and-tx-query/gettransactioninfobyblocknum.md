@@ -33,6 +33,8 @@ curl --request POST \
 
 Returns a JSON array (equivalent to the original `TransactionInfoList.transactionInfo`); each element has the same structure as [`/wallet/gettransactioninfobyid`](gettransactioninfobyid.md).
 
+> **Note**: To parse event logs from the returned transactions, please ensure each transaction's result is "success" first — this alignment is recommended for data consistency. 
+
 Response example (block 66987565 contains 4 transactions; first 2 shown):
 
 ```json

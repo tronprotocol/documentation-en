@@ -27,6 +27,8 @@ Special cases:
 - **Block 0 (genesis)** → `null`
 - Block has been pruned by a lite fullnode → `null`
 
+> **Note**: To parse `logs` from the returned receipts, please ensure each receipt's `status` is `"0x1"` (success) first — this alignment is recommended for data consistency.
+
 The example below is the real response captured from the Nile testnet curl above (block `0x3fe1ca0` has 4 transactions: 1 contract call + 3 TRX transfers):
 
 ```json
