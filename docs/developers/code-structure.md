@@ -1,6 +1,6 @@
 # java-tron Core Modules
 ## Code Structure
-java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a TRON node by starting java-tron. In this article, we will describe the code structure of java-tron in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.
+java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. Starting java-tron runs a TRON node. This document details the code structure of java-tron and introduces the functions of its various modules to facilitate code analysis and development.
 
 java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
 
@@ -8,13 +8,14 @@ java-tron adopts a modular code structure; the code structure is clear and easy 
 
 ### protocol
 
-For a distributed network such as blockchain, a concise and efficient data interaction protocol is very important. The protocol module defines:
+In a distributed network like a blockchain, a concise and efficient data interaction protocol is essential. 
+The protocol module defines:
 
 * Inter-node communication protocol
 * Communication protocol between modules within the node
-* Agreement for Services Provided Externally
+* Protocols for externally provided services
 
-The above protocols adopt the [`Google Protobuf`](https://developers.google.com/protocol-buffers) data exchange format. Compared with JSON and XML, the `Google Protobuf` format is more efficient and flexible and can be compiled by the ProtoBuf compiler to generate language-specific serialization and deserialization source code for the defined protocol files. Protobuf is the basis for java-tron to achieve cross-language and cross-platform.
+The above protocols adopt the [`Google Protobuf`](https://developers.google.com/protocol-buffers) data exchange format. Compared with JSON and XML, the `Google Protobuf` format is more efficient and flexible and can be compiled by the ProtoBuf compiler to generate language-specific source code for serialization and deserialization based on the defined protocol files. Protobuf is the basis for java-tron to achieve cross-language and cross-platform.
 
 [protocol](https://github.com/tronprotocol/java-tron/tree/develop/protocol) module's source code is located at:  `https://github.com/tronprotocol/java-tron/tree/develop/protocol` , its directory structure is as follows:
 
@@ -41,7 +42,7 @@ The above protocols adopt the [`Google Protobuf`](https://developers.google.com/
 
 ### common
 
-The common module encapsulates common components and tools, such as exception handling, metrics monitoring tools, etc which make it easy to use by other modules.
+The common module encapsulates common components and tools, such as exception handling and metrics monitoring tools, making them easily accessible for use by other modules.
 
 [common](https://github.com/tronprotocol/java-tron/tree/develop/common) module's source code is located at:  `https://github.com/tronprotocol/java-tron/tree/develop/common`, its directory structure is as follows:
 
@@ -76,7 +77,7 @@ The common module encapsulates common components and tools, such as exception ha
 
 ### chainbase
 
-Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. Because of this, chainbase defines an interface standard supporting databases that can roll back. This interface requires databases to have a state rollback mechanism, a checkpoint-based disaster tolerant mechanism and so on. 
+Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. To address this, Chainbase defines an interface standard that supports rollbackable databases. This interface requires databases to implement a state rollback mechanism, a checkpoint-based disaster tolerance mechanism, and other relevant features. 
 
 In addition, the chainbase module features a well-designed abstract interface. Any database that implements the interface can be used for underlying storage on the blockchain, granting more flexibility to developers. LevelDB and RocksDB are two default implementations.
 
@@ -133,7 +134,7 @@ In addition, the chainbase module features a well-designed abstract interface. A
 
 ### consensus
 
-The consensus mechanism is a crucial module in blockchains. Common ones are PoW, PoS, DPoS and PBFT, etc. While Paxos, Raft, etc, are applied to consortium blockchains and other trusted networks. The consensus mechanism should match the business scenario. For instance, PoW is not suitable for real-time games that are sensitive to consensus efficiency, while PBFT can make an optimized choice for exchanges demanding high real-time capability. In this sense, a replaceable consensus is a creative innovation and an essential link in building application-specific blockchains. Even star blockchain programs like Cosmos SDK are still at a stage where the application layer provides developers with limited autonomy and the consensus at the base level is subject to Tendermint. Therefore, the ultimate goal of the consensus module is to make consensus switch as easy as configuring parameters for application developers.
+The consensus mechanism is a crucial module in blockchains. Common ones are PoW, PoS, DPoS and PBFT, etc. Conversely, algorithms like Paxos and Raft are typically applied to consortium blockchains and other trusted networks. The consensus mechanism should match the business scenario. For instance, PoW is not suitable for real-time games that are sensitive to consensus efficiency, while PBFT can make an optimized choice for exchanges demanding high real-time capability. Therefore, a replaceable consensus mechanism is an essential innovation for building application-specific blockchains. Even prominent blockchain frameworks like Cosmos SDK currently offer limited autonomy at the consensus level, relying primarily on Tendermint. Therefore, the ultimate goal of the consensus module is to make consensus switch as easy as configuring parameters for application developers.
 
 [consensus](https://github.com/tronprotocol/java-tron/tree/develop/consensus) module's source code is located at:  `https://github.com/tronprotocol/java-tron/tree/develop/consensus`, its directory structure is as follows:
 ```
@@ -159,7 +160,7 @@ Currently, java-tron implements DPOS consensus and PBFT consensus based on the `
 
 ### actuator
 
-Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. This is one of the reasons why java-tron supports the creation of a chain of applications. For the reasons mentioned, java-tron includes a separate module, Actuator, offering application developers a brand new way of development. They can choose to implant their application codes into a chain instead of running them on virtual machines. 
+Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. To address these limitations and support the creation of application-specific chains, java-tron includes a separate module called Actuator, offering developers a novel approach to application development. They can choose to implant their application codes into a chain instead of running them on virtual machines. 
 
 Actuator is the executor of transactions, while applications can be viewed as a cluster of different types of transactions, each of which is executed by a corresponding actuator.
 
@@ -191,7 +192,7 @@ Actuator module defines the `Actuator` interface, which includes 4 different met
 Depending on their businesses, developers may set up Actuator accordingly and customize the processing of different types of transactions.
  
 ### crypto
-Crypto is a relatively independent module, but it is also a very important module. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
+The Crypto module is relatively independent yet crucial to the system. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
 
 [crypto](https://github.com/tronprotocol/java-tron/tree/develop/crypto) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/crypto`, its directory structure is as follows:
 ```
@@ -213,7 +214,7 @@ Crypto is a relatively independent module, but it is also a very important modul
 
 ### framework
 
-The framework is the core module of java-tron and the entrance of the node. The framework module is responsible for the initialization of each module and business logic. The framework module includes the services provided externally, the node discovery and node management process related to the P2P network, and the block broadcasting and processing procedures.
+The Framework module serves as the core of java-tron and the primary entry point for the node. It manages the initialization of all other modules and handles the core business logic. The framework module includes the services provided externally, the node discovery and node management process related to the P2P network, and the block broadcasting and processing procedures.
 
 [framework](https://github.com/tronprotocol/java-tron/tree/develop/framework) module's source code is located at:  `https://github.com/tronprotocol/java-tron/tree/develop/framework`, its directory structure is as follows:
 
@@ -222,7 +223,7 @@ The framework is the core module of java-tron and the entrance of the node. The 
     |-- common
     |   |-- application
     |   |-- backup
-    |   |-- logsfilter
+    |   |-- logsfilterf
     |   |-- net
     |   |-- overlay
     |   |   |-- client
@@ -262,7 +263,7 @@ This article mainly introduces the code structure of java-tron, as well as the f
 
 ## ChainBase
 ### Introduction
-As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. In reality, blockchain is often used for bookkeeping and transactions. For example, many applications use BTC, ETH, TRX, and other cryptos to carry out economic activities to ensure the openness and transparency of funds.
+As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. "Blockchains are frequently used for secure bookkeeping and transaction processing. For example, applications utilize cryptocurrencies like BTC, ETH, and TRX to conduct economic activities while ensuring financial transparency.
 
 The realization of such an immutable distributed ledger is a very complex system engineering, involving many technical fields: such as p2p networks, smart contracts, databases, cryptography, consensus mechanisms, etc. Among them, the database is the basis of the underlying storage, and various blockchain teams are exploring the design and optimization of the database level.
 
@@ -305,7 +306,7 @@ As we all know, the blockchain mainly stores transaction data. Before introducin
 
 The transaction will be distributed to each node through network broadcast. After receiving the transaction, the node will first validate the signature of the transaction. If successful, the transaction needs to be pre-executed to determine whether the transaction is legal.
 
-**Note: The specific implementation of java-tron deviates from the above figure, and for the sake of convenience, this article collectively refers to the FullNode and SR as the nodes.**
+**Note: The specific implementation in java-tron may deviate slightly from the simplified figure above. For convenience, this article collectively refers to FullNodes and Super Representatives (SRs) simply as 'nodes'.**
 
 For example, to process a transfer transaction: user A transfers 100 TRX to user B, and it needs to validate whether user A has enough balance to make the transfer.
 
@@ -496,9 +497,9 @@ This article analyzes the implementation details of rollback and database writin
 
 ## Network
 ### Overview
-P2P is a distributed network in which participants in the network share a part of the hardware resources they own, such as processing power, storage capacity, network connection capacity, printers, etc. These shared resources need to be provided services and content by the network, which can be accessed by other peers directly without going through an intermediate entity. Participants in this network are both providers and acquirers of service and content.
+A Peer-to-Peer (P2P) network is a distributed architecture where participants share a portion of their hardware resources, such as processing power, storage capacity, network connection capacity, printers, etc. These shared resources need to be provided services and content by the network, which can be accessed by other peers directly without going through an intermediate entity. Participants in this network are both providers and acquirers of service and content.
 
-Different from the traditional Client/Server central server structure, the status of each node in the P2P network is equal. While serving as a client, each node can also serve as a server to provide services to other nodes, which greatly improves the utilization of resources.
+Unlike traditional Client/Server architectures, all nodes in a P2P network have equal status. While serving as a client, each node can also serve as a server to provide services to other nodes, which greatly improves the utilization of resources.
 
 
 #### Blockchain Network
