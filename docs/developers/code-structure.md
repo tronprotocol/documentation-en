@@ -2,11 +2,11 @@
 ## Code Structure
 java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. Starting java-tron runs a TRON node. This document details the code structure of java-tron and introduces the functions of its various modules to facilitate code analysis and development.
 
-java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: [protocol](#protocol), [common](#common), [chainbase](#chainbase), [consensus](#consensus), [actuator](#actuator), [crypto](#crypto), [framework](#framework), the following introduces the functions of each module and its code organization.
+java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: [Protocol](#protocol), [Common](#common), [Chainbase](#chainbase), [Consensus](#consensus), [Actuator](#actuator), [Crypto](#crypto), [Framework](#framework), the following introduces the functions of each module and its code organization.
 
 
 
-### protocol
+### Protocol
 
 In a distributed network like a blockchain, a concise and efficient data interaction protocol is essential. 
 The protocol module defines:
@@ -40,7 +40,7 @@ The above protocols adopt the [`Google Protobuf`](https://developers.google.com/
 
 
 
-### common
+### Common
 
 The common module encapsulates common components and tools, such as exception handling and metrics monitoring tools, making them easily accessible for use by other modules.
 
@@ -75,7 +75,7 @@ The common module encapsulates common components and tools, such as exception ha
 
 
 
-### chainbase
+### Chainbase
 
 Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. To address this, Chainbase defines an interface standard that supports rollbackable databases. This interface requires databases to implement a state rollback mechanism, a checkpoint-based disaster tolerance mechanism, and other relevant features. 
 
@@ -132,7 +132,7 @@ In addition, the chainbase module features a well-designed abstract interface. A
         * `TronStoreWithRevoking.java` - It is the base class that supports rollbackable databases. All rollbackable databases are their implementations, such as `BlockStore`, `TransactionStore`, etc
     
 
-### consensus
+### Consensus
 
 The consensus mechanism is a crucial module in blockchains. Common ones are PoW, PoS, DPoS and PBFT, etc. Conversely, algorithms like Paxos and Raft are typically applied to consortium blockchains and other trusted networks. The consensus mechanism should match the business scenario. For instance, PoW is not suitable for real-time games that are sensitive to consensus efficiency, while PBFT can make an optimized choice for exchanges demanding high real-time capability. Therefore, a replaceable consensus mechanism is an essential innovation for building application-specific blockchains. Even prominent blockchain frameworks like Cosmos SDK currently offer limited autonomy at the consensus level, relying primarily on Tendermint. Therefore, the ultimate goal of the consensus module is to make consensus switch as easy as configuring parameters for application developers.
 
@@ -158,7 +158,7 @@ consensus module divides the consensus process into several important parts that
 Currently, java-tron implements DPOS consensus and PBFT consensus based on the `ConsensusInterface` interface, which is located in the `dpos/` and `pbft/` directories respectively. Developers can also implement the `ConsensusInterface` interface according to their own business needs to customize the consensus mechanism.
 
 
-### actuator
+### Actuator
 
 Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. To address these limitations and support the creation of application-specific chains, java-tron includes a separate module called Actuator, offering developers a novel approach to application development. They can choose to implant their application codes into a chain instead of running them on virtual machines. 
 
@@ -191,7 +191,7 @@ Actuator module defines the `Actuator` interface, which includes 4 different met
 
 Depending on their businesses, developers may set up Actuator accordingly and customize the processing of different types of transactions.
  
-### crypto
+### Crypto
 The Crypto module is relatively independent yet crucial to the system. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
 
 [crypto](https://github.com/tronprotocol/java-tron/tree/develop/crypto) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/crypto`, its directory structure is as follows:
@@ -212,7 +212,7 @@ The Crypto module is relatively independent yet crucial to the system. Data secu
 * `sm2` and `jce` - Provide SM2 and ECKey encryption algorithm and signature algorithm
 * `zksnark` - Provide a zero-knowledge proof algorithm
 
-### framework
+### Framework
 
 The Framework module serves as the core of java-tron and the primary entry point for the node. It manages the initialization of all other modules and handles the core business logic. The framework module includes the services provided externally, the node discovery and node management process related to the P2P network, and the block broadcasting and processing procedures.
 
