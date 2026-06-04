@@ -79,7 +79,7 @@ The common module encapsulates common components and tools, such as exception ha
 
 Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. To address this, Chainbase defines an interface standard that supports rollbackable databases. This interface requires databases to implement a state rollback mechanism, a checkpoint-based disaster tolerance mechanism, and other relevant features. 
 
-In addition, the chainbase module features a well-designed abstract interface. Any database that implements the interface can be used for underlying storage on the blockchain, granting more flexibility to developers. LevelDB and RocksDB are two default implementations.
+In addition, the Chainbase module features a well-designed abstract interface. Any database that implements the interface can be used for underlying storage on the blockchain, granting more flexibility to developers. LevelDB and RocksDB are two default implementations.
 
 [chainbase](https://github.com/tronprotocol/java-tron/tree/develop/chainbase) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/chainbase`, its directory structure is as follows:
 ```
@@ -147,7 +147,7 @@ The consensus mechanism is a crucial module in blockchains. Common ones are PoW,
     |-- dpos
     |-- pbft
 ```
-consensus module divides the consensus process into several important parts that are defined in `ConsensusInterface`:
+Consensus module divides the consensus process into several important parts that are defined in `ConsensusInterface`:
 
 1. `start` - start the consensus service with customizable startup parameters
 2. `stop` - stop the consensus service
@@ -267,7 +267,7 @@ As we all know, the blockchain is essentially a non-tamperable distributed ledge
 
 The realization of such an immutable distributed ledger is a very complex system engineering, involving many technical fields: such as p2p networks, smart contracts, databases, cryptography, consensus mechanisms, etc. Among them, the database is the basis of the underlying storage, and various blockchain teams are exploring the design and optimization of the database level.
 
-The database module of java-tron is also called the ChainBase module. This article mainly introduces some background knowledge and shows developers the implementation details of the ChainBase module by introducing logic such as transaction processing, state rollback, and data persistence.
+The Database module of java-tron is also called the ChainBase module. This article mainly introduces some background knowledge and shows developers the implementation details of the ChainBase module by introducing logic such as transaction processing, state rollback, and data persistence.
 
 
 
@@ -295,11 +295,11 @@ To learn more, please refer to [Delegated Proof of Stake](https://en.bitcoinwiki
 #### Persistent Storage
 There are certain differences between blockchain and traditional Internet business. The blockchain does not have particularly complex processing logic at the database level, but there are a large number of key-value read and write operations in the blockchain so there are higher requirements for data read and write performance.
 
-Based on this consideration, java-tron uses LevelDB as the underlying data storage by default, and java-tron has a good architecture design. The interface-oriented programming mode makes the chainbase module have better scalability. All databases implemented the chainbase interface can be used as the underlying storage engine of java-tron. For example, in the chainbase v2 version, a database implementation based on RocksDB is provided.
+Based on this consideration, java-tron uses LevelDB as the underlying data storage by default, and java-tron has a good architecture design. The interface-oriented programming mode makes the Chainbase module have better scalability. All databases implemented the chainbase interface can be used as the underlying storage engine of java-tron. For example, in the chainbase v2 version, a database implementation based on RocksDB is provided.
 
 
 #### Transaction Validation
-As we all know, the blockchain mainly stores transaction data. Before introducing the chainbase module, you need to understand the transaction processing logic in java-tron.
+As we all know, the blockchain mainly stores transaction data. Before introducing the Chainbase module, you need to understand the transaction processing logic in java-tron.
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_1.png)
 
