@@ -82,7 +82,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
  - SRs and SR Partners are the top 127 SR candidates.
  - Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Likewise, their voters cannot receive block or vote rewards either.
  - If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.
- - Withdrawing rewards to the account balance via the `WithdrawBalanceContract` transaction has a 24-hour cooldown: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.
+ - Via the `WithdrawBalanceContract` transaction, withdrawing rewards to the account balance is subject to a 24-hour withdrawal interval limit: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.
 
 ## Committee
 
