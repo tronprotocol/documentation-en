@@ -155,7 +155,7 @@ Use the `db lite` command to perform data pruning operations:
 ```
 **Optional Parameters**：
 
-*   `-o | --operation <split | merge>`: Specifies the operation type. Default: `split`。
+*   `-o | --operation <split | merge>`: Specifies the operation type. Default: `split`.
 *   `-t | --type <snapshot | history>`：Used only with `-o split`. `snapshot` creates a snapshot dataset; `history` creates a history dataset.
 *   `-fn | --fn-data-path <string>`：
     *   For `split`, this is the source directory of the data to be pruned.
