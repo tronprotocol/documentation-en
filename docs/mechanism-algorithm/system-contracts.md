@@ -11,10 +11,10 @@ Every system contract is identified by a `ContractType` enum value defined in [`
 | 1 | TransferContract | BalanceContract.TransferContract | TransferActuator | ✅ Enabled | TRX Transfer |
 | 2 | TransferAssetContract | AssetIssueContractOuterClass.TransferAssetContract | TransferAssetActuator | ✅ Enabled | TRC-10 token transfer |
 | 3 | VoteAssetContract | | | 🚫 Disabled (Actuator not implemented) | |
-| 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for Witnesses using account's TronPower; refresh voting records (takes effect at next maintenance) |
-| 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a Witness; write to witness store |
+| 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance) |
+| 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a SR |
 | 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC-10 tokens; freeze balance during recruitment period according to ICO rules |
-| 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of a Witness |
+| 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of a SR |
 | 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Participate in a TRC-10 token issuance with TRX during the ICO period |
 | 10 | AccountUpdateContract | AccountContract.AccountUpdateContract | UpdateAccountActuator | ✅ Enabled | Modify account name (subject to AllowUpdateAccountName constraint) |
 | 11 | FreezeBalanceContract | BalanceContract.FreezeBalanceContract | FreezeBalanceActuator | 🚫 Disabled (rejected by chain after `supportUnfreezeDelay` is enabled) | Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others |
@@ -105,8 +105,8 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The address of the account casting votes for Witnesses.
-- `vote_address`: The Witness address.
+- `owner_address`: The address of the account casting votes for SRs.
+- `vote_address`: The SR address.
 - `vote_count`: The votes number.
 - `support`: Constant true, not used.
 
@@ -118,8 +118,8 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The address of the account applying to become a Witness.
-- `url`: The website url of the witness.
+- `owner_address`: The address of the account applying to become a SR.
+- `url`: The website url of the SR.
 
 ## AssetIssueContract
 ```
@@ -177,8 +177,8 @@ The protobuf message definition and field-level documentation of each contract a
     }
 ```
 
-- `owner_address`: The address of the Witness updating its URL.
-- `update_url`: The website url of the witness.
+- `owner_address`: The address of the SR updating its URL.
+- `update_url`: The website url of the SR.
 
 ## ParticipateAssetIssueContract
 ```
@@ -455,7 +455,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 - `owner_address`: The address of the account whose permissions will be updated.
 - `owner`: The owner permission of the account. Cannot be empty.
-- `witness`: The witness permission. Required for Witness accounts; must be empty for non-Witness accounts.
+- `witness`: The witness permission. Required for SRs; must be empty for non-SRs.
 - `actives`: The list of active permissions. Cannot be empty; at most 8 entries.
 
 For more details, see [Account Permission Management](./multi-signatures.md).
@@ -479,7 +479,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
     }
 ```
 
-- `owner_address`: The address of the Witness adjusting its brokerage ratio.
+- `owner_address`: The address of the SR adjusting its brokerage ratio.
 - `brokerage`: Brokerage ratio, from 0 to 100, 1 means 1%.
 
 ## ShieldedTransferContract
