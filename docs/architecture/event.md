@@ -477,7 +477,7 @@ event.subscribe = {
   }
   path = "/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"  
   server = "127.0.0.1:27017"  
-  dbconfig = "eventlog|tron|123456"  
+  dbconfig = "eventlog|<eventlog-username>|<eventlog-password>"  
   topics = [
     {
       triggerName = "block"  
@@ -537,7 +537,7 @@ event.subscribe = {
   * `native.useNativeQueue`: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. `true` uses the built-in queue, while `false` uses the plugin. This must be set to `false`.
   * `path`: The absolute path to the plugin file, e.g., `"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"`.
   * `server`: The target server address, i.e., the address and port for MongoDB, e.g., `"127.0.0.1:27017"`.
-  * `dbconfig`: The MongoDB database configuration in the format: `database_name|username|password`, e.g., `"eventlog|tron|123456"`.
+  * `dbconfig`: The MongoDB database configuration in the format: `database_name|username|password`, e.g., `"eventlog|<eventlog-username>|<eventlog-password>"`.
   * `topics`: Seven event types are currently supported: `block`, `transaction`, `contractevent`, `contractlog`, `solidity`, `solidityevent`, and `soliditylog`. For more details, please refer to the [Event Types](#event-types) chapter.
       * `triggerName`: The name of the trigger, which cannot be modified.
       * `enable`: Toggles the event subscription. `true` enables it, `false` disables it.
@@ -725,7 +725,7 @@ Connect to MongoDB and query the data to verify that event data has been capture
 ```
 mongo 127.0.0.1:27017
 use eventlog
-db.auth("tron", "123456")
+db.auth("<eventlog-username>", "<eventlog-password>")
 show collections
 db.block.find()
 ```
