@@ -207,23 +207,6 @@ The protobuf message definition and field-level documentation of each contract a
 - `owner_address`: The address of the account to update.
 - `account_name`: Account name.
 
-## FreezeBalanceContract
-```
-    message FreezeBalanceContract {
-      bytes owner_address = 1;
-      int64 frozen_balance = 2;
-      int64 frozen_duration = 3;
-      ResourceCode resource = 10;
-      bytes receiver_address = 15;
-    }
-```
-
-- `owner_address`: The address of the account staking TRX.
-- `frozen_balance`: The amount of TRX to stake.
-- `frozen_duration`: The stake duration.
-- `resource`: The type of resource get by staking TRX.
-- `receiver_address`: The account address to receive resource.
-
 ## UnfreezeBalanceContract
 ```
     message UnfreezeBalanceContract {
@@ -413,23 +396,6 @@ The protobuf message definition and field-level documentation of each contract a
 - `token_id`: The token id to withdraw.
 - `quant`: The token amount to withdraw.
 
-## ExchangeTransactionContract
-```
-    message ExchangeTransactionContract {
-      bytes owner_address = 1;
-      int64 exchange_id = 2;
-      bytes token_id = 3;
-      int64 quant = 4;
-      int64 expected = 5;
-    }
-```
-
-- `owner_address`: The address of the account exchanging assets via the pair.
-- `exchange_id`: The token pair id.
-- `token_id`: The token id to sell.
-- `quant`: The token amount to sell.
-- `expected`: The expected token amount to buy, if the calculated actual token amount that can be bought is less than this value, the transaction will fail.
-
 ## UpdateEnergyLimitContract
 ```
     message UpdateEnergyLimitContract {
@@ -481,91 +447,6 @@ For more details, see [Account Permission Management](./multi-signatures.md).
 
 - `owner_address`: The address of the SR adjusting its brokerage ratio.
 - `brokerage`: Brokerage ratio, from 0 to 100, 1 means 1%.
-
-## ShieldedTransferContract
-```
-    message ShieldedTransferContract {
-      bytes transparent_from_address = 1;
-      int64 from_amount = 2;
-      repeated SpendDescription spend_description = 3;
-      repeated ReceiveDescription receive_description = 4;
-      bytes binding_signature = 5;
-      bytes transparent_to_address = 6;
-      int64 to_amount = 7;
-    }
-```
-
-- `transparent_from_address`: The transparent address of the sender.
-- `from_amount`: The amount to send.
-- `spend_description`: Shielded spend information.
-- `receive_description`: Shielded receive information.
-- `binding_signature`: The binding signature.
-- `transparent_to_address`: The transparent address of the receiver.
-- `to_amount`: The amount to receive.
-
-```
-message SpendDescription {
-  bytes value_commitment = 1;
-  bytes anchor = 2;
-  bytes nullifier = 3;
-  bytes rk = 4;
-  bytes zkproof = 5;
-  bytes spend_authority_signature = 6;
-}
-```
-
-- `value_commitment`: _value commitment_ of spender's transfer amount.
-- `anchor`: root of the note commitment Merkle tree at some block.
-- `nullifier`: _nullifier_ of spender's note, to prevent double-spent.
-- `rk`: public key, to verify spender's _Spend Authorization Signature_.
-- `zkproof`: zero-knowledge proof of spender's note, prove that this note exists and could be spent.
-- `spend_authority_signature`: the spender's _Spend Authorization Signature_.
-
-```
-message ReceiveDescription {
-  bytes value_commitment = 1;
-  bytes note_commitment = 2;
-  bytes epk = 3;
-  bytes c_enc = 4;
-  bytes c_out = 5;
-  bytes zkproof = 6;
-}
-```
-
-- `value_commitment`: _value commitment_ of receiver's transfer amount.
-- `note_commitment`: commitment of the receiver's note.
-- `epk`: ephemeral public key, in order to generate note's decryption key.
-- `c_enc`: part of note ciphertext, encryption of diversifier, receiver's transfer amount, rcm, and memo.
-- `c_out`: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.
-- `zkproof`: zero-knowledge proof of the receiver's note.
-
-## MarketSellAssetContract
-```
-    message MarketSellAssetContract {
-      bytes owner_address = 1;
-      bytes sell_token_id = 2;
-      int64 sell_token_quantity = 3;
-      bytes buy_token_id = 4;
-      int64 buy_token_quantity = 5; // min to receive
-    }
-```
-
-- `owner_address`: The address of the account placing the order.
-- `sell_token_id`: The id of the token to sell.
-- `sell_token_quantity`: The amount of the token to sell.
-- `buy_token_id`: The id of the token to buy.
-- `buy_token_quantity`: The minimum amount of the buy token to receive. If the actual amount obtained when matching is less than this value, the order will be placed on the order book waiting to be matched at a better price.
-
-## MarketCancelOrderContract
-```
-    message MarketCancelOrderContract {
-      bytes owner_address = 1;
-      bytes order_id = 2;
-    }
-```
-
-- `owner_address`: The address of the account that placed the order.
-- `order_id`: The id of the market order to cancel.
 
 ## FreezeBalanceV2Contract
 
