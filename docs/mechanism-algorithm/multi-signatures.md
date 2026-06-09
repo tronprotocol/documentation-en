@@ -72,8 +72,8 @@ Explanation:
 - `type`: Permission type (owner/witness/active).
 - `id`: Permission ID, automatically assigned by the system.
     - `owner` = 0, `witness` = 1, `active` starts from 2 and increments.
-- `permission_name`: Permission name, maximum 32 bytes.
-- `threshold`: The operation is authorized only when the cumulative weight of valid signatures meets or exceeds the defined threshold.
+- `permission_name`: Permission name, maximum 32 characters.
+- `threshold`: Permission threshold, the operation is authorized only when the cumulative weight of valid signatures meets or exceeds this value.
 - `operations`: Used only for Active permissions, specifies executable contract types.
 - `keys`: Addresses and weights with this permission (up to 5).
 
@@ -121,6 +121,7 @@ Active permissions configure which `ContractType` can be executed through the `o
 - Available only for Super Representative, Super Representative Partner, and Super Representative Candidate accounts.
 - Controls block-producing nodes, does not have permissions for fund transfers or other operations.
 - Can delegate block production permission to other addresses to enhance account security.
+- Must contain exactly one key.
 
 #### Super Representative Node Configuration Example:
 
@@ -168,7 +169,7 @@ The above fees can be adjusted through proposals.
 3. Call `AccountPermissionUpdateContract`.
 4. Sign and broadcast the transaction.
 
-**Notice:**: When a block contains transactions that modify account permissions, no further transactions from this account will be included in this block to ensure that such account permission modify transactions actually take effect starting from the next block.
+**Note**: When a block contains transactions that modify account permissions, no further transactions from this account will be included in this block to ensure that such account permission modify transactions actually take effect starting from the next block.
 
 #### Example Request:
 
@@ -217,6 +218,8 @@ for (int id : contractId) {
 }
 System.out.println(ByteArray.toHexString(operations));
 ```
+
+>**Note**: The `contractId` above only illustrates the bit-setting logic. `ContractType` IDs are not contiguous (7, 21-29, 34-40, etc. are gaps), and a bit can only be set for a contract type already present in the on-chain `AVAILABLE_CONTRACT_TYPE` bitmap; otherwise the transaction is rejected during validation. `AVAILABLE_CONTRACT_TYPE` roughly corresponds to the `#` column in the table above, except it does not include ShieldedTransferContract(51).
 
 ### 3. Transaction Execution Process
 
