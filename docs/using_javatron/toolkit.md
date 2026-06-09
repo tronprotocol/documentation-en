@@ -7,6 +7,7 @@ The TRON Toolkit is a comprehensive utility that integrates various ecosystem to
 * [Fast Data Copy](#fast-data-copy-tool): Implements rapid database copying.
 * [Data Conversion](#data-conversion-tool): Supports data format conversion from LevelDB to RocksDB.
 * [LevelDB Startup Optimization](#leveldb-startup-optimization-tool): Accelerates the startup speed for nodes using LevelDB.
+* [Merkle Root Computation](#merkle-root-computation-tool): Computes the Merkle root of a small database for verification purposes.
 
 This document provides a detailed guide on how to acquire and use the TRON Toolkit.
 
@@ -73,7 +74,7 @@ kill -15 $(ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}')
 
 #### 2. Configure Database Storage Migration
 
-Database migration is configured via the `storage.properties `field in the `java-tron` node configuration file. You can find an example configuration in the [tron-deployment repository](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L37).
+Database migration is configured via the `storage.properties `field in the `java-tron` node configuration file. You can find an example configuration in the [java-tron repository](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 
 The following example demonstrates how to migrate the `block` and `trans` databases to the `/data1/tron` directory:
 
@@ -127,7 +128,7 @@ A FullNode's complete data can be split into two parts: a Snapshot Dataset or a 
 * **Snapshot Dataset**: Used to start a lite FullNode. It does not contain historical data prior to the block height at the time of pruning.
 * **History Dataset**: Used for querying historical data.
 
-The Snapshot Dataset contains all account state data plus the history of the most recent 65,536 blocks. It occupies a small amount of space (approximately 3% of a FullNode's data). Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.
+The Snapshot Dataset contains the latest state of the entire network plus the history of the most recent 65,536 blocks. It is far smaller than a FullNode's full database. Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.
 
 The data pruning tool can split a FullNode's data into a **Snapshot Dataset** or a **History Dataset**. It also supports merging a history dataset back with a snapshot dataset. This enables the following use cases:
 
@@ -155,7 +156,7 @@ Use the `db lite` command to perform data pruning operations:
 ```
 **Optional Parameters**：
 
-*   `-o | --operation <split | merge>`: Specifies the operation type. Default: `split`.
+*   `-o | --operate <split | merge>`: Specifies the operation type. Default: `split`.
 *   `-t | --type <snapshot | history>`：Used only with `-o split`. `snapshot` creates a snapshot dataset; `history` creates a history dataset.
 *   `-fn | --fn-data-path <string>`：
     *   For `split`, this is the source directory of the data to be pruned.
@@ -295,3 +296,29 @@ Use the `db archive` command to perform the LevelDB startup optimization:
 *   `-h | --help <boolean>`: Displays help information. Default: `false`.
 
 > **Important Note**: Before performing any operation with this tool, you must stop the currently running node.
+
+## Merkle Root Computation Tool
+
+The TRON Toolkit provides a **Merkle root computation tool** that calculates the Merkle root of a specified database. This is useful for data verification and consistency checks across nodes.
+
+> **Important Note**: This tool is intended for small databases. Running it against a large database may cause a `GC overhead limit exceeded` error.
+
+### Command and Parameters
+
+Use the `db root` command to compute the Merkle root:
+
+```
+# full command
+   java -jar build/libs/Toolkit.jar db root [-h] [--db=<dbs>]... [<db>]
+# examples
+   #compute the merkle root of the `account` and `witness` dbs in the default database directory
+   java -jar build/libs/Toolkit.jar db root --db account --db witness
+   #specify the database directory
+   java -jar build/libs/Toolkit.jar db root --db account /tmp/db/database
+```
+
+**Optional Parameters**:
+
+*   `<db>`: Specifies the database directory. Default: `output-directory/database`.
+*   `--db <string>`: Specifies the name of the database to compute the root for. This option can be repeated to compute roots for multiple databases.
+*   `-h | --help <boolean>`: Displays help information. Default: `false`.

@@ -74,7 +74,7 @@ Visit the [event-plugin Releases page](https://github.com/tronprotocol/event-plu
 In your `config.conf` file, set the event service version to `V2.0` by setting the value to 1.
 
 ```
-event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
+event.subscribe.version = 1 # 1 for V2.0, 0 for V1.0
 ```
 
 ##### Step 3: Configure the Event Plugin
@@ -146,7 +146,7 @@ In a Linux environment, please follow these steps to install Kafka:
 
 ```
 cd /usr/local
-wget https://downloads.apache.org/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
 tar -xzf kafka_2.13-2.8.0.tgz
 ```
 
@@ -196,18 +196,19 @@ event.subscribe = {
   * `path`: The absolute local path to the `plugin-kafka-1.0.0.zip` file. Please ensure the path is correct, or the plugin will fail to load.
   * `server`: The Kafka server address in `ip:port` format. The default Kafka port is `9092`. Please ensure the port number is correct and that the Kafka service is accessible.
   * `dbconfig`: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.
+  * `contractParse`: Controls whether contract logs are ABI-decoded. When `true` (the default), the node matches each log against the contract's ABI; matched logs are delivered as decoded `contractevent` triggers, while unmatched logs are delivered as raw `contractlog` triggers. When `false`, ABI decoding is skipped and all logs are delivered as raw `contractlog` triggers.
   * `topics`: Configure the events to subscribe to. For more details, please refer to the [Event Types](#event-types) section below.
-  * `filter`: Filtering parameters. For more details, please refer to the [Event Types](#event-types) section below.
+  * `filter`: Filtering parameters. For more details, please refer to the [Event Filtering](#event-filtering) section below.
 
-###### Event Types
+#### Event Types
 
 TRON event subscription supports 7 types of events: `block`, `transaction`, `contractevent`, `contractlog`, `solidity`, `solidityevent`, and `soliditylog`. Developers should configure these based on their application's specific needs. **We recommend subscribing to only 1-2 event types. Enabling too many triggers can lead to performance degradation.**
 
-**1. Transaction Event**
+##### 1. Transaction Event
 
 Subscribes to events related to on-chain transactions.
 
-Configuration Example：
+Configuration Example:
 
 ```
 event.subscribe.topics = [
@@ -238,11 +239,11 @@ Key Fields in Transaction Events:
 
 For a complete list of fields, see the [TransactionLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/TransactionLogTrigger.java) source code.
 
-**2. Block Events**
+##### 2. Block Events
 
 Subscribes to events triggered upon the creation of new blocks.
 
-Configuration Example：
+Configuration Example:
 
 ```
 event.subscribe.topics = [
@@ -266,11 +267,11 @@ Key Fields in Block Events:
 
 For a complete list of fields, see the [BlockLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/BlockLogTrigger.java) source code.
 
-**3. Contract Events and Logs**
+##### 3. Contract Events and Logs
 
 Subscribes to smart contract events and logs generated during contract execution.
 
-Configuration Example：
+Configuration Example:
 
 ```
 event.subscribe.topics = [
@@ -313,27 +314,30 @@ Key Fields in Contract Events
 For a complete list of fields, see the [ContractEventTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java) and [ContractLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java) source code.
 
 
-> **Note**: `Contract event` and `Contract log` support event filtering through the `filter` field. You can specify a block range (`fromblock` - `toblock`), specific contract addresses (`contractAddress`), or specific contract topics (`contractTopic`) to provide developers with a more efficient and precise event subscription service.
-> ```
-> filter = {
->   fromblock = "" // The starting block number of the query range. Can be an empty string, "earliest", or a specific block number.
->   toblock = "" // The ending block number of the query range. Can be an empty string, "latest", or a specific block number.
->   contractAddress = [
->     "" // The contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.
->   ]
->
->   contractTopic = [
->     "" // The contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.
->   ]
-> }
-> ```
+###### Event Filtering
 
-**4. Solidified Block Notification Events**
+`Contract event` and `Contract log` support event filtering through the `filter` field. You can specify a block range (`fromblock` - `toblock`), specific contract addresses (`contractAddress`), or specific contract topics (`contractTopic`) to provide developers with a more efficient and precise event subscription service.
+
+```hocon
+filter = {
+  fromblock = "" // The starting block number of the query range. Can be an empty string, "earliest", or a specific block number.
+  toblock = "" // The ending block range of the query range. Can be an empty string, "latest", or a specific block number.
+  contractAddress = [
+    "" // The contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.
+  ]
+
+  contractTopic = [
+    "" // The contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.
+  ]
+}
+```
+
+##### 4. Solidified Block Notification Events
 
 Subscribes to real-time notifications for the latest solidified block height. This is ideal for applications that need to track the chain's finalized state.
 
 
-Configuration Example：
+Configuration Example:
 
 ```
 event.subscribe.topics = [
@@ -473,7 +477,7 @@ event.subscribe = {
   }
   path = "/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"  
   server = "127.0.0.1:27017"  
-  dbconfig = "eventlog|tron|123456"  
+  dbconfig = "eventlog|<eventlog-username>|<eventlog-password>"  
   topics = [
     {
       triggerName = "block"  
@@ -533,11 +537,12 @@ event.subscribe = {
   * `native.useNativeQueue`: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. `true` uses the built-in queue, while `false` uses the plugin. This must be set to `false`.
   * `path`: The absolute path to the plugin file, e.g., `"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"`.
   * `server`: The target server address, i.e., the address and port for MongoDB, e.g., `"127.0.0.1:27017"`.
-  * `dbconfig`: The MongoDB database configuration in the format: `database_name|username|password`, e.g., `"eventlog|tron|123456"`.
+  * `dbconfig`: The MongoDB database configuration in the format: `database_name|username|password`, e.g., `"eventlog|<eventlog-username>|<eventlog-password>"`.
   * `topics`: Seven event types are currently supported: `block`, `transaction`, `contractevent`, `contractlog`, `solidity`, `solidityevent`, and `soliditylog`. For more details, please refer to the [Event Types](#event-types) chapter.
       * `triggerName`: The name of the trigger, which cannot be modified.
       * `enable`: Toggles the event subscription. `true` enables it, `false` disables it.
       * `topic`: The name of the collection in MongoDB that will receive the events. This can be modified.
+      * `redundancy`: Only applies to `contractlog` and `soliditylog`. When set to `true`, a contract log that has already been delivered as a `contractevent`/`solidityevent` is **also** delivered as a raw `contractlog`/`soliditylog`. Defaults to `false`.
   * `filter`: The criteria for filtering events.
       * `fromblock`: The starting block number of the query range. Can be `""`, `"earliest"` (to query from the genesis block), or a specific block number.
       * `toblock`: The ending block number of the query range. Can be `""`, `"latest"` (the most recent block), or a specific block number.
@@ -641,7 +646,7 @@ cd tron-eventquery
 Download and use Maven to build the `tron-eventquery` service:
 
 ```
-wget https://mirrors.cnnic.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
+wget https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
 tar zxvf apache-maven-3.5.4-bin.tar.gz
 export M2_HOME=$HOME/maven/apache-maven-3.5.4
 export PATH=$PATH:$M2_HOME/bin
@@ -710,7 +715,7 @@ tail -f logs/tron.log | grep -i eventplugin
 If you see a message similar to the following, the plugin has loaded successfully:
 
 ```text
-o.t.c.l.EventPluginLoader 'your plugin path/plugin-kafka-1.0.0.zip' loaded
+o.t.c.l.EventPluginLoader 'your plugin path/plugin-mongodb-1.0.0.zip' loaded
 ```
 
 ##### 3. Verifying Data Persistence in MongoDB
@@ -718,9 +723,9 @@ o.t.c.l.EventPluginLoader 'your plugin path/plugin-kafka-1.0.0.zip' loaded
 Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:
 
 ```
-mongo 47.90.245.68:27017
+mongo 127.0.0.1:27017
 use eventlog
-db.auth("tron", "123456")
+db.auth("<eventlog-username>", "<eventlog-password>")
 show collections
 db.block.find()
 ```
@@ -798,7 +803,7 @@ Next, write the subscriber code:
 
 ```
 // subscriber.js
-var zmq = require("zeromq"),
+var zmq = require("zeromq");
 var sock = zmq.socket("sub");
 
 sock.connect("tcp://127.0.0.1:5555");
@@ -830,6 +835,6 @@ $ node subscriber.js
 When the node produces a new block, the subscriber will receive the block event, and the output will look like this:
 
 ```
-received a message related to: block, containing message: {"timeStamp":1678343709000,"triggerName":"blockTrigger","blockNumber":1361,"blockHash":"00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280","transactionSize":0,"latestSolidifiedBlockNumber":1361,"transactionList":[]}
-received a message related to: block, containing message: {"timeStamp":1678343712000,"triggerName":"blockTrigger","blockNumber":1362,"blockHash":"0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0","transactionSize":0,"latestSolidifiedBlockNumber":1362,"transactionList":[]}
+received a message related to: blockTrigger, containing message: {"timeStamp":1678343709000,"triggerName":"blockTrigger","blockNumber":1361,"blockHash":"00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280","transactionSize":0,"latestSolidifiedBlockNumber":1361,"transactionList":[]}
+received a message related to: blockTrigger, containing message: {"timeStamp":1678343712000,"triggerName":"blockTrigger","blockNumber":1362,"blockHash":"0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0","transactionSize":0,"latestSolidifiedBlockNumber":1362,"transactionList":[]}
 ```
