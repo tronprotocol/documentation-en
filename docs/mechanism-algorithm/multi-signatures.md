@@ -73,7 +73,7 @@ Explanation:
 - `id`: Permission ID, automatically assigned by the system.
     - `owner` = 0, `witness` = 1, `active` starts from 2 and increments.
 - `permission_name`: Permission name, maximum 32 bytes.
-- `threshold`: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value.
+- `threshold`: The operation is authorized only when the cumulative weight of valid signatures meets or exceeds the defined threshold.
 - `operations`: Used only for Active permissions, specifies executable contract types.
 - `keys`: Addresses and weights with this permission (up to 5).
 
@@ -100,7 +100,7 @@ message AccountPermissionUpdateContract {
 }
 ```
 
-- This contract is used to **update all account permission structures at once**.
+- This contract is used to **update all account permission structures at once**, which is an "all-or-nothing" update. Even if modifying a single permission, the full permission set must be resubmitted to prevent accidental loss of access.
 - Even if only one permission is modified, all other existing permissions must be fully specified in the contract.
 
 ### 5. Contract Type Enumeration: `ContractType`
@@ -204,7 +204,7 @@ localwitness = [
 - Permission IDs start from 2 and increment.
 - When creating an account by default, one `active` permission is generated, with a default threshold of 1, containing only the account's own address.
 
-## Operation Fees
+## Fees and Constraints
 
 | Operation                  | Fee Standard |
 | -------------------------- | ------------ |
@@ -260,7 +260,7 @@ POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
 
 ### 2. Operations Value Calculation Example
 
-`operations` is a 32-byte hexadecimal string (little-endian) representing executable contract permissions.
+`operations` field is a 32-byte hexadecimal string (little-endian) where each bit represents a specific `ContractType` , defining the functional scope of an Active permission.
 The following Java example generates permissions for contracts (ID=0-45):
 
 ```
@@ -278,7 +278,7 @@ System.out.println(ByteArray.toHexString(operations));
 2. Set `Permission_id` (default is 0, i.e., `owner` permission).
 3. User A signs and forwards to B.
 4. User B signs and forwards to C.
-5. ...
+5. (Under Asynchronous Multi-Sig Orchestration,transactions can be partially signed and passed between authorized parties until the threshold is met.)
 6. The last user signs and broadcasts.
 7. The node verifies if the total signature weight ≥ `threshold`; if yes, accepts the transaction.
 
