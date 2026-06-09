@@ -2,14 +2,14 @@
 
 ## How to Become a Super Representative
 
-In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate and participate in the election by paying a one-time fee of 9999 TRX.
+In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate by paying a one-time fee of 9999 TRX, and any TRX holder can vote for SR candidates.
 
-Based on the final vote rankings, candidates are divided into two categories:
+An application to become a candidate can be initiated via the `CreateWitness` command in the wallet-cli client, and requires submitting a URL (used to publish information such as the candidate's homepage).
+
+Based on the final vote rankings, the top 127 candidates take on one of two roles:
 
  - **Super Representatives (SRs)**: The top 27 candidates with the most votes. They are the core nodes of the TRON network, responsible for producing blocks and packing transactions. For this, they receive block rewards and vote rewards.
  - **Super Representative Partners (SR Partners)**: Candidates ranking from 28th to 127th. They act as backup nodes for the network, do not participate in block production, but share in the vote rewards.
-
-Voters who cast their ballots for both Super Representatives (SRs) and Partners can receive corresponding voting rewards proportional to their votes.
 
 The TRON network tallies votes once every 6 hours, and the roles of Super Representatives and Partners are updated accordingly in this 6-hour cycle.
 
@@ -33,10 +33,10 @@ All accounts in the TRON network have the right to vote for the Super Representa
 **Important Note:**
 The TRON network only records the state of your last vote. This means that every new vote you cast will completely overwrite all previous voting effects.
 
-**Example:：** 
+**Example:**
 
 ```
->freezebalancev2 10000000 1 # Stake 10 TRX to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
+>freezebalancev2 10000000 1 # Stake 10 TRX (the amount is in sun; 1 TRX = 1,000,000 sun, so 10 TRX = 10000000 sun) to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
 >votewitness SR1 4 SR2 6 # Cast 4 votes for SR1 and 6 votes for SR2.
 >votewitness SR1 3 SR2 7 # Cast 3 votes for SR1 and 7 votes for SR2.
 ```
@@ -54,7 +54,7 @@ SRs and SR Partners can set a Commission Rate (also known as Brokerage Rate) to 
 
 - Customizing the Rate
 
-    SRs and SR Partners can adjust their commission rate at any time via the `wallet/updateBrokerage` API interface.
+    SRs and SR Partners can adjust their commission rate at any time via the [`wallet/updateBrokerage`](../api/http/witness-and-governance/updateBrokerage.md) API interface.
 
      - 100% Commission: All rewards go to the SR/SR Partner.
      - 0% Commission: All rewards are distributed to the voters.
@@ -80,7 +80,9 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
  - Chain parameter details can be viewed on TRONSCAN's [committee](https://tronscan.org/#/sr/committee) page.
  - `brokerageRate` refers to the commission rate.
  - SRs and SR Partners are the top 127 SR candidates.
+ - Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Likewise, their voters cannot receive block or vote rewards either.
  - If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.
+ - Via the `WithdrawBalanceContract` transaction, withdrawing rewards to the account balance is subject to a 24-hour withdrawal interval limit: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.
 
 ## Committee
 
@@ -92,9 +94,11 @@ The Committee is the highest governing body of the TRON network, responsible for
  - **Powers**: Each committee member has two core powers: 
 
      - To create a proposal: Initiate a proposal to modify network parameters.
-     - To vote on a proposal: Vote on proposals initiated by other members.
+     - To vote on a proposal: Vote on proposals to modify network parameters (including proposals initiated by oneself).
 
  - **Proposal Effective Mechanism**: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
+
+**Note**: The Create, Vote on, and Cancel Proposal examples below are wallet-cli client commands. For the corresponding HTTP API interfaces, see [ProposalCreate](../api/http/witness-and-governance/proposalcreate.md), [ProposalApprove](../api/http/witness-and-governance/proposalapprove.md), and [ProposalDelete](../api/http/witness-and-governance/proposaldelete.md).
 
 ### Create a Proposal
 
@@ -105,25 +109,32 @@ Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dyn
 **Example**:
 
 ```
->createproposal id0 value0 ... idN valueN
-# id0_N: Parameter number
-# value0_N: New parameter value
+>createproposal parameter0 value0 ... parameterN valueN
+# parameter0_N: the network parameter number to modify (not the proposal id)
+# value0_N: the new value for that parameter
 ```
+
+**Note**: A single proposal can modify several network parameters at once by supplying multiple `parameter value` pairs.
 
 ### Vote on a Proposal
 
 The voting process for proposals follows these core rules:
 
 1.  The governance system only supports approval votes. Not voting is equivalent to disapproving.
-2.  A proposal is valid for 3 days from its creation. If it does not receive enough approval votes within this period, it will expire.
+2.  A proposal is valid for 3 days from its creation by default. This duration is the on-chain parameter `getProposalExpireTime` (#92), which can be modified by proposal (currently 3 days on mainnet). If it does not receive enough approval votes within this period, it will expire.
 
 **Example**:
 
 ```
 >approveProposal id is_or_not_add_approval
 # id: proposal id
-# is_or_not_add_approval: YES vote or cancel YES vote
+# is_or_not_add_approval: true to add an approval (vote YES), false to cancel a previous approval
 ```
+
+**Note**: The following two cases are rejected during validation:
+
+- Passing `true` when you have already approved the proposal (you cannot approve the same proposal twice).
+- Passing `false` when you have not approved the proposal before (there is no approval to cancel).
 
 ### Cancel Proposal
 
