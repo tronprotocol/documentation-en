@@ -1,11 +1,11 @@
 # Issue Specification and Guidelines
 
-We encourage community contributors to actively participate in raising and discussing Issues for java-tron. You can submit any problems you encounter or new ideas you have as an Issue Participating in Issue discussions or helping to provide solutions will drive java-tron in a better direction. We sincerely thank you for every contribution you make to java-tron.
+We encourage community contributors to actively participate in raising and discussing Issues for java-tron. You can submit any problems you encounter or new ideas you have as an Issue. Participating in Issue discussions or helping to provide solutions will drive java-tron in a better direction. We sincerely thank you for every contribution you make to java-tron.
 
 
 ## Submitting an Issue
 
-If you encounter a problem or find a **Bug** while using java-tron, we welcome you to submit an Issue Please follow these rules to ensure efficient processing:
+If you encounter a problem or find a **bug** while using java-tron, we welcome you to submit an Issue. Please follow these rules to ensure efficient processing:
 
 ### 1. Search Existing Issues
 
@@ -32,7 +32,7 @@ The process for handling an Issue is as follows:
 2. **Assigning Issues**
    Issues will be assigned to one or more core community developers. These core developers will participate in the investigation and discussion of the Issue
 3. **Community Discussion**
-   All community participants can join the Issue investigation and discussion, posting their thoughts or opinions in the comments section. Through the collective wisdom of the community, we will work together to find solutions to problems.
+   All community participants can join the Issue investigation and discussion, posting their thoughts or opinions in the comments section. Leveraging the community's collective expertise, we will collaboratively find solutions.
 4. **Closing Issues**
    An Issue submitter can close their own submitted Issue at any time. We will also close an Issue when the problem has been resolved, or if the Issue has not been discussed by the community for an extended period. If needed, the Issue submitter or other users can reopen the Issue based on the actual situation.
 

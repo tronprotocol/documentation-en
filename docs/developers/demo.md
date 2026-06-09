@@ -1,6 +1,6 @@
 # Development Example
 
-This document will detail the process of contributing to `java-tron` development, using the addition of a new `setPeer` HTTP API as a practical example. Before you begin, please ensure you have configured your development environment, for instance, by following the [IntelliJ IDEA Development Environment Setup Guide](run-in-idea.md).
+This document details the process of contributing to `java-tron` development, using the addition of a new `setPeer` HTTP API as a practical example. Before you begin, ensure you have configured your development environment. For example, you can follow the [IntelliJ IDEA Development Environment Setup Guide](run-in-idea.md).
 
 **Background**: At times, a `java-tron` node may fail to connect to peers due to network issues. To enhance the stability of the node's network connections, we want to implement a feature that enables you to dynamically add trusted nodes while the node is running, ensuring connectivity even if the node discovery service fails.
 
@@ -71,7 +71,7 @@ public class SetPeerServlet extends HttpServlet {
   private ChannelManager channelManager;
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-    // GETrequests are not handled in this example
+    // GET requests are not handled in this example
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -83,9 +83,9 @@ public class SetPeerServlet extends HttpServlet {
 
       boolean res = addPeer(peerIpPort);
       if (res) {
-        response.getWriter().println("Success to set trusted peer:" + peerIpPort);
+        response.getWriter().println("Successfully set trusted peer:" + peerIpPort);
       } else {
-        response.getWriter().println("Fail to set the trusted peer:" + peerIpPort);
+        response.getWriter().println("Failed to set trusted peer:" + peerIpPort);
       }
 
     } catch (Exception e) {
@@ -185,7 +185,7 @@ At this point, the implementation of the `setPeer` feature is complete. Next, yo
 
 ## 3. Writing Unit Tests
 
-The `java-tron` project uses the JUnit framework for unit testing. For detailed information on using JUnit, please refer to the [official JUnit documentation](https://junit.org). Below is an introduction to the specifications and common annotations for `java-tron` unit test cases.
+The `java-tron` project uses the JUnit framework for unit testing. For detailed information on using JUnit, please refer to the [official JUnit documentation](https://junit.org). Below is an overview of the specifications and common annotations for `java-tron` unit test cases.
 
 ### 3.1 `java-tron`  Unit Test Case Guidelines
 
@@ -325,5 +325,5 @@ On GitHub, create a Pull Request from your repository to `tronprotocol/java-tron
 
 ![提交 Pull Request 示例](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png)
 
-Please ensure your Pull Request description is clear and includes details about the changes you have made and their purpose.
+Ensure your Pull Request description is clear, detailing the changes you made and their purpose.
 

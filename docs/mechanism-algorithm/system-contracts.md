@@ -1,5 +1,55 @@
 # System Contracts
-The TRON network supports many different types of transactions, such as TRX transfers, TRC10 transfers , smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `wallet/deploycontractAPI`.The transaction type of stake TRX is `FreezeBalanceV2Contract`, which requires calling the ` wallet/freezebalancev2API`. We collectively refer to the implementation of these different transaction types as system contracts.
+The TRON network supports many different types of transactions, such as TRX transfers, TRC-10 transfers, smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `wallet/deploycontractAPI`.The transaction type of stake TRX is `FreezeBalanceV2Contract`, which requires calling the ` wallet/freezebalancev2API`. We collectively refer to the implementation of these different transaction types as system contracts.
+
+## ContractType Overview
+
+Every system contract is identified by a `ContractType` enum value defined in [`Tron.proto`](https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto). The table below lists each `ContractType` together with its Proto Message, Actuator, current status, and the business it triggers.
+
+| # | ContractType | Proto Message | Actuator | Status | Business Triggered |
+|---|---|---|---|---|---|
+| 0 | AccountCreateContract | AccountContract.AccountCreateContract | CreateAccountActuator | ✅ Enabled | Create an on-chain account |
+| 1 | TransferContract | BalanceContract.TransferContract | TransferActuator | ✅ Enabled | TRX Transfer |
+| 2 | TransferAssetContract | AssetIssueContractOuterClass.TransferAssetContract | TransferAssetActuator | ✅ Enabled | TRC-10 token transfer |
+| 3 | VoteAssetContract | | | 🚫 Disabled (Actuator not implemented) | |
+| 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance) |
+| 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a SR |
+| 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC-10 tokens; freeze balance during recruitment period according to ICO rules |
+| 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of a SR |
+| 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Participate in a TRC-10 token issuance with TRX during the ICO period |
+| 10 | AccountUpdateContract | AccountContract.AccountUpdateContract | UpdateAccountActuator | ✅ Enabled | Modify account name (subject to AllowUpdateAccountName constraint) |
+| 11 | FreezeBalanceContract | BalanceContract.FreezeBalanceContract | FreezeBalanceActuator | 🚫 Disabled (rejected by chain after `supportUnfreezeDelay` is enabled) | Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others |
+| 12 | UnfreezeBalanceContract | BalanceContract.UnfreezeBalanceContract | UnfreezeBalanceActuator | ✅ Enabled | Stake 1.0: Unfreeze TRX after expiration; release resources and clear votes |
+| 13 | WithdrawBalanceContract | BalanceContract.WithdrawBalanceContract | WithdrawBalanceActuator | ✅ Enabled | Withdraw SR block/voting rewards to account balance |
+| 14 | UnfreezeAssetContract | AssetIssueContractOuterClass.UnfreezeAssetContract | UnfreezeAssetActuator | ✅ Enabled | Unfreeze TRC-10 token shares frozen during ICO |
+| 15 | UpdateAssetContract | AssetIssueContractOuterClass.UpdateAssetContract | UpdateAssetActuator | ✅ Enabled | Update TRC-10 token description / url / free bandwidth quota |
+| 16 | ProposalCreateContract | ProposalContract.ProposalCreateContract | ProposalCreateActuator | ✅ Enabled | Create an on-chain parameter proposal; written to ProposalStore for voting |
+| 17 | ProposalApproveContract | ProposalContract.ProposalApproveContract | ProposalApproveActuator | ✅ Enabled | Approve or cancel a vote on a proposal |
+| 18 | ProposalDeleteContract | ProposalContract.ProposalDeleteContract | ProposalDeleteActuator | ✅ Enabled | Withdraw the created proposal |
+| 19 | SetAccountIdContract | AccountContract.SetAccountIdContract | SetAccountIdActuator | ✅ Enabled | Set a unique account_id for the account (can only be set once) |
+| 20 | CustomContract | | | 🚫 Disabled (Actuator not implemented) | |
+| 30 | CreateSmartContract | SmartContractOuterClass.CreateSmartContract | VMActuator | ✅ Enabled | Deploy a smart contract |
+| 31 | TriggerSmartContract | SmartContractOuterClass.TriggerSmartContract | VMActuator | ✅ Enabled | Call/Trigger a smart contract |
+| 32 | GetContract | | | 🚫 Disabled (Actuator not implemented) | |
+| 33 | UpdateSettingContract | SmartContractOuterClass.UpdateSettingContract | UpdateSettingContractActuator | ✅ Enabled | Modify `consume_user_resource_percent` (percentage of energy borne by the user) |
+| 41 | ExchangeCreateContract | ExchangeContract.ExchangeCreateContract | ExchangeCreateActuator | ✅ Enabled | Create a Bancor exchange pair; inject initial liquidity for two assets |
+| 42 | ExchangeInjectContract | ExchangeContract.ExchangeInjectContract | ExchangeInjectActuator | ✅ Enabled | Inject liquidity into an existing exchange pair; deduct assets based on Bancor algorithm |
+| 43 | ExchangeWithdrawContract | ExchangeContract.ExchangeWithdrawContract | ExchangeWithdrawActuator | ✅ Enabled | Withdraw both assets from the pair proportionally |
+| 44 | ExchangeTransactionContract | ExchangeContract.ExchangeTransactionContract | ExchangeTransactionActuator | 🚫 Disabled | Asset exchange via Bancor exchange pair |
+| 45 | UpdateEnergyLimitContract | SmartContractOuterClass.UpdateEnergyLimitContract | UpdateEnergyLimitContractActuator | ✅ Enabled | Update `origin_energy_limit` (max energy willing to pay per contract call) |
+| 46 | AccountPermissionUpdateContract | AccountContract.AccountPermissionUpdateContract | AccountPermissionUpdateActuator | ✅ Enabled | Update account permissions: owner/witness/active |
+| 48 | ClearABIContract | SmartContractOuterClass.ClearABIContract | ClearABIContractActuator | ✅ Enabled | Clear contract ABI |
+| 49 | UpdateBrokerageContract | StorageContract.UpdateBrokerageContract | UpdateBrokerageActuator | ✅ Enabled | Adjust the brokerage ratio (0-100%) for voters |
+| 51 | ShieldedTransferContract | ShieldContract.ShieldedTransferContract | ShieldedTransferActuator | 🚫 Disabled (`getAllowShieldedTransaction` not enabled) | ZK-SNARK anonymous transfer (transparent in + shielded spend/receive + transparent out) |
+| 52 | MarketSellAssetContract | MarketContract.MarketSellAssetContract | MarketSellAssetActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Place a limit sell order on the built-in order book (sell/buy two assets + price) |
+| 53 | MarketCancelOrderContract | MarketContract.MarketCancelOrderContract | MarketCancelOrderActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Cancel own unexecuted market order; refund remaining assets |
+| 54 | FreezeBalanceV2Contract | BalanceContract.FreezeBalanceV2Contract | FreezeBalanceV2Actuator | ✅ Enabled | Stake 2.0: Freeze TRX to gain Bandwidth/Energy; decouples resources from TronPower |
+| 55 | UnfreezeBalanceV2Contract | BalanceContract.UnfreezeBalanceV2Contract | UnfreezeBalanceV2Actuator | ✅ Enabled | Stake 2.0: Initiate unstaking; enters unfreeze waiting period |
+| 56 | WithdrawExpireUnfreezeContract | BalanceContract.WithdrawExpireUnfreezeContract | WithdrawExpireUnfreezeActuator | ✅ Enabled | Withdraw unfrozen TRX that has passed the waiting period to account balance |
+| 57 | DelegateResourceContract | BalanceContract.DelegateResourceContract | DelegateResourceActuator | ✅ Enabled | Stake 2.0: Delegate own staked Bandwidth/Energy to other addresses (lock-up period optional) |
+| 58 | UnDelegateResourceContract | BalanceContract.UnDelegateResourceContract | UnDelegateResourceActuator | ✅ Enabled | Stake 2.0: Reclaim previously delegated resources from others |
+| 59 | CancelAllUnfreezeV2Contract | BalanceContract.CancelAllUnfreezeV2Contract | CancelAllUnfreezeV2Actuator | ✅ Enabled | Cancel all pending Stake 2.0 unfreezing requests; remaining shares are re-staked |
+
+The protobuf message definition and field-level documentation of each contract are listed in the sections below.
 
 ## AccountCreateContract
 ```
@@ -10,7 +60,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account creating the new account.
 - `account_address`: The target address to create.
 - `type`: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.
 
@@ -23,7 +73,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account sending TRX.
 - `to_address`: The target address to receive the transfer.
 - `amount`: The amount of TRX to transfer.
 
@@ -38,7 +88,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 ```
 
 - `asset_name`: The TRC-10 token ID to transfer.
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account sending the TRC-10 token.
 - `to_address`: The target address to receive the transfer.
 - `amount`: The amount of token to transfer.
 
@@ -55,8 +105,8 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
-- `vote_address`: The SR or candidate's address.
+- `owner_address`: The address of the account casting votes for SRs.
+- `vote_address`: The SR address.
 - `vote_count`: The votes number.
 - `support`: Constant true, not used.
 
@@ -68,8 +118,8 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
-- `url`: The website url of the witness.
+- `owner_address`: The address of the account applying to become a SR.
+- `url`: The website url of the SR.
 
 ## AssetIssueContract
 ```
@@ -84,10 +134,11 @@ The TRON network supports many different types of transactions, such as TRX tran
       int64 total_supply = 4;
       repeated FrozenSupply frozen_supply = 5;
       int32 trx_num = 6;
+      int32 precision = 7;
       int32 num = 8;
       int64 start_time = 9;
       int64 end_time = 10;
-      int64 order = 11; // the order of tokens of the same name
+      int64 order = 11; // useless
       int32 vote_score = 16;
       bytes description = 20;
       bytes url = 21;
@@ -95,10 +146,11 @@ The TRON network supports many different types of transactions, such as TRX tran
       int64 public_free_asset_net_limit = 23;
       int64 public_free_asset_net_usage = 24;
       int64 public_latest_free_net_time = 25;
+      string id = 41;
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account issuing the TRC-10 token.
 - `name`: The token name to issue.
 - `abbr`: The abbreviation of the token name.
 - `total_supply`: The amount of token to issue.
@@ -115,6 +167,7 @@ The TRON network supports many different types of transactions, such as TRX tran
 - `public_free_asset_net_limit`: The free bandwidth limit all the accounts can use.
 - `public_free_asset_net_usage`: The free bandwidth usage of all the accounts.
 - `public_latest_free_net_time`: The latest bandwidth consumption time of token transfer.
+- `id`: The unique token ID, generated sequentially by the system at issuance (incrementing from 1000001).
 
 ## WitnessUpdateContract
 ```
@@ -124,8 +177,8 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
-- `update_url`: The website url of the witness.
+- `owner_address`: The address of the SR updating its URL.
+- `update_url`: The website url of the SR.
 
 ## ParticipateAssetIssueContract
 ```
@@ -137,9 +190,9 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account participating in the asset issue.
 - `to_address`: The token owner's address.
-- `account_name`: The token id.
+- `asset_name`: The token id.
 - `amount`: The amount of token to purchase.
 
 ## AccountUpdateContract
@@ -151,36 +204,19 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account to update.
 - `account_name`: Account name.
-
-## (Deprecated)FreezeBalanceContract
-```
-    message FreezeBalanceContract {
-      bytes owner_address = 1;
-      int64 frozen_balance = 2;
-      int64 frozen_duration = 3;
-      ResourceCode resource = 10;
-      bytes receiver_address = 15;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `frozen_balance`: The amount of TRX to stake.
-- `frozen_duration`: The stake duration.
-- `resource`: The type of resource get by staking TRX.
-- `receiver_address`: The account address to receive resource.
 
 ## UnfreezeBalanceContract
 ```
     message UnfreezeBalanceContract {
       bytes owner_address = 1;
       ResourceCode resource = 10;
-      bytes receiver_address = 13;
+      bytes receiver_address = 15;
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account unstaking TRX.
 - `resource`: The type of resource to unfree.
 - `receiver_address`: The account address to receive resource.
 
@@ -191,7 +227,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account withdrawing rewards.
 
 ## UnfreezeAssetContract
 ```
@@ -200,7 +236,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the token issuer.
 
 ## UpdateAssetContract
 ```
@@ -213,7 +249,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the token issuer.
 - `description`: The description of the token.
 - `url`: The website url of the token.
 - `new_limit`: The bandwidth consumption limit of each account when transfers asset.
@@ -227,7 +263,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account creating the proposal.
 - `parameters`: The proposal.
 
 ## ProposalApproveContract
@@ -239,7 +275,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account approving the proposal.
 - `proposal_id`: The proposal id.
 - `is_add_approval`: Whether to approve.
 
@@ -251,7 +287,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account deleting the proposal.
 - `proposal_id`: The proposal id.
 
 ## SetAccountIdContract
@@ -263,7 +299,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account setting the account id.
 - `account_id`: The account id.
 
 ## CreateSmartContract
@@ -276,7 +312,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account deploying the contract.
 - `new_contract`: the smart contract.
 - `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
@@ -293,7 +329,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account calling the contract.
 - `contract_address`: The contract address.
 - `call_value`: The amount of TRX to send to the contract when triggers.
 - `data`: The parameters to trigger the contract.
@@ -309,7 +345,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the contract deployer.
 - `contract_address`: The address of the smart contract.
 - `consume_user_resource_percent`: The percentage of resource consumption ratio.
 
@@ -324,7 +360,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account creating the exchange pair.
 - `first_token_id`: First token id.
 - `first_token_balance`: First token balance.
 - `second_token_id`: Second token id.
@@ -340,7 +376,7 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account injecting liquidity (must be the pair's creator).
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to inject.
 - `quant`: The token amount to inject.
@@ -355,110 +391,10 @@ The TRON network supports many different types of transactions, such as TRX tran
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the account withdrawing liquidity (must be the pair's creator).
 - `exchange_id`: The token pair id.
 - `token_id`: The token id to withdraw.
 - `quant`: The token amount to withdraw.
-
-## ExchangeTransactionContract
-```
-    message ExchangeTransactionContract {
-      bytes owner_address = 1;
-      int64 exchange_id = 2;
-      bytes token_id = 3;
-      int64 quant = 4;
-      int64 expected = 5;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `exchange_id`: The token pair id.
-- `token_id`: The token id to sell.
-- `quant`: The token amount to sell.
-- `expected`: The expected token amount to buy, if the calculated actual token amount that can be bought is less than this value, the transaction will fail.
-
-## ShieldedTransferContract
-```
-    message ShieldedTransferContract {
-      bytes transparent_from_address = 1;
-      int64 from_amount = 2;
-      repeated SpendDescription spend_description = 3;
-      repeated ReceiveDescription receive_description = 4;
-      bytes binding_signature = 5;
-      bytes transparent_to_address = 6;
-      int64 to_amount = 7;
-    }
-```
-
-- `transparent_from_address`: The transparent address of the sender.
-- `from_amount`: The amount to send.
-- `spend_description`: Shielded spend information.
-- `receive_description`: Shielded receive information.
-- `binding_signature`: The binding signature.
-- `transparent_to_address`: The transparent address of the receiver.
-- `to_amount`: The amount to receive.
-
-```
-message SpendDescription {
-  bytes value_commitment = 1;
-  bytes anchor = 2;
-  bytes nullifier = 3;
-  bytes rk = 4;
-  bytes zkproof = 5;
-  bytes spend_authority_signature = 6;
-}
-```
-
-- `value_commitment`: _value commitment_ of spender's transfer amount.
-- `anchor`: root of the note commitment Merkle tree at some block.
-- `nullifier`: _nullifier_ of spender's note, to prevent double-spent.
-- `rk`: public key, to verify spender's _Spend Authorization Signature_.
-- `zkproof`: zero-knowledge proof of spender's note, prove that this note exists and could be spent.
-- `spend_authority_signature`: the spender's _Spend Authorization Signature_.
-
-```
-message ReceiveDescription {
-  bytes value_commitment = 1;
-  bytes note_commitment = 2;
-  bytes epk = 3;
-  bytes c_enc = 4;
-  bytes c_out = 5;
-  bytes zkproof = 6;
-}
-```
-
-- `value_commitment`: _value commitment_ of receiver's transfer amount.
-- `note_commitment`: commitment of the receiver's note.
-- `epk`: ephemeral public key, in order to generate note's decryption key.
-- `c_enc`: part of note ciphertext, encryption of diversifier, receiver's transfer amount, rcm, and memo.
-- `c_out`: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.
-- `zkproof`: zero-knowledge proof of the receiver's note.
-
-## Account Permission Management
-
-[Account Permission Management](./multi-signatures.md)
-
-## ClearABIContract
-```
-    message ClearABIContract {
-      bytes owner_address = 1;
-      bytes contract_address = 2;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `account_address`: The target contract address to clear ABI.
-
-## UpdateBrokerageContract
-```
-    message UpdateBrokerageContract {
-      bytes owner_address = 1;
-      int32 brokerage = 2;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `brokerage`: Commission rate, from 0 to 100,1 mean 1%.
 
 ## UpdateEnergyLimitContract
 ```
@@ -469,9 +405,48 @@ message ReceiveDescription {
     }
 ```
 
-- `owner_address`: The owner of the current account.
+- `owner_address`: The address of the contract deployer.
 - `contract_address`: The contract address.
 - `origin_energy_limit`: The target energy limit to change.
+
+## AccountPermissionUpdateContract
+```
+    message AccountPermissionUpdateContract {
+      bytes owner_address = 1;
+      Permission owner = 2;             //Empty is invalidate
+      Permission witness = 3;           //Can be empty
+      repeated Permission actives = 4;  //Empty is invalidate
+    }
+```
+
+- `owner_address`: The address of the account whose permissions will be updated.
+- `owner`: The owner permission of the account. Cannot be empty.
+- `witness`: The witness permission. Required for SRs; must be empty for non-SRs.
+- `actives`: The list of active permissions. Cannot be empty; at most 8 entries.
+
+For more details, see [Account Permission Management](./multi-signatures.md).
+
+## ClearABIContract
+```
+    message ClearABIContract {
+      bytes owner_address = 1;
+      bytes contract_address = 2;
+    }
+```
+
+- `owner_address`: The address of the contract deployer.
+- `contract_address`: The target contract address to clear ABI.
+
+## UpdateBrokerageContract
+```
+    message UpdateBrokerageContract {
+      bytes owner_address = 1;
+      int32 brokerage = 2;
+    }
+```
+
+- `owner_address`: The address of the SR adjusting its brokerage ratio.
+- `brokerage`: Brokerage ratio, from 0 to 100, 1 means 1%.
 
 ## FreezeBalanceV2Contract
 
@@ -483,7 +458,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the account staking TRX.
 * `frozen_balance`：TRX stake amount, the unit is sun
 * `resource`： Resource type
 
@@ -497,7 +472,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：Owner address
+* `owner_address`: The address of the account unstaking TRX.
 * `unfreeze_balance`：The amount of TRX to unstake, in sun
 * `resource`： Resource type
    
@@ -510,7 +485,7 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the account withdrawing expired unstaked TRX.
    
 ## DelegateResourceContract
 
@@ -521,14 +496,16 @@ message ReceiveDescription {
       int64 balance = 3;
       bytes receiver_address = 4;
       bool  lock = 5;
+      int64 lock_period = 6;
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the resource delegator.
 * `resource`： Resource type
 * `balance`： Amount of TRX staked for resources to be delegated, unit is sun
 * `receiver_address`：Resource receiver address
-* `lock`：Indicates whether the delegation is locked. If `true`, the delegated resources cannot be undelegated for 3 days. If the owner delegates the same resource type to the same address with a lock before the initial lock expires, the 3-day lock timer is reset.
+* `lock`：Whether to lock this delegation.
+* `lock_period`：The lock duration when `lock=true`, in blocks (3 seconds per block). User-supplied values are only accepted after the `MAX_DELEGATE_LOCK_PERIOD` proposal takes effect; in that case `0` means use the default of 86400 blocks (3 days), and the upper bound is determined by the chain parameter `getMaxDelegateLockPeriod`. Before the proposal takes effect this field is ignored and the lock duration is fixed at 86400 blocks.
    
    
 ## UnDelegateResourceContract
@@ -542,15 +519,21 @@ message ReceiveDescription {
       }
 ```
 
-* `owner_address`：The owner's address
+* `owner_address`: The address of the account reclaiming previously delegated resources.
 * `resource`： Resource type
 * `balance`：undelegated TRX, unit is sun
 * `receiver_address`：Resource receiver address
-   
 
 
+## CancelAllUnfreezeV2Contract
 
+```protobuf
+      message CancelAllUnfreezeV2Contract {
+        bytes owner_address = 1;
+      }
+```
 
+* `owner_address`: The address of the account canceling all pending Stake 2.0 unfreezing requests.
 
 
 

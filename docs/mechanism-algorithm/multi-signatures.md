@@ -73,7 +73,7 @@ Explanation:
 - `id`: Permission ID, automatically assigned by the system.
     - `owner` = 0, `witness` = 1, `active` starts from 2 and increments.
 - `permission_name`: Permission name, maximum 32 characters.
-- `threshold`: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value.
+- `threshold`: Permission threshold, the operation is authorized only when the cumulative weight of valid signatures meets or exceeds this value.
 - `operations`: Used only for Active permissions, specifies executable contract types.
 - `keys`: Addresses and weights with this permission (up to 5).
 
@@ -100,66 +100,12 @@ message AccountPermissionUpdateContract {
 }
 ```
 
-- This contract is used to **update all account permission structures at once**.
+- This contract is used to **update all account permission structures at once**, which is an "all-or-nothing" update. Even if modifying a single permission, the full permission set must be resubmitted to prevent accidental loss of access.
 - Even if only one permission is modified, all other existing permissions must be fully specified in the contract.
 
 ### 5. Contract Type Enumeration: `ContractType`
 
-```
-enum ContractType {
-  AccountCreateContract = 0;
-  ...
-  AccountPermissionUpdateContract = 46;
-}
-```
-
-The detailed information of `ContractType` is as follows (including Proto Message, Actuator, status, and business Triggered):
-
-| # | ContractType | Proto Message | Actuator | Status | Business Triggered |
-|---|---|---|---|---|---|
-| 0 | AccountCreateContract | AccountContract.AccountCreateContract | CreateAccountActuator | ✅ Enabled | Create an on-chain account |
-| 1 | TransferContract | BalanceContract.TransferContract | TransferActuator | ✅ Enabled | TRX Transfer |
-| 2 | TransferAssetContract | AssetIssueContractOuterClass.TransferAssetContract | TransferAssetActuator | ✅ Enabled | TRC10 Token Transfer |
-| 3 | VoteAssetContract | | | 🚫 Disabled (Actuator not implemented) | |
-| 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance) |
-| 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a Super Representative (SR) candidate; write to witness store |
-| 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC10 tokens; freeze balance during recruitment period according to ICO rules |
-| 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of an SR |
-| 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Subscribe to TRC10 tokens with TRX during the ICO period |
-| 10 | AccountUpdateContract | AccountContract.AccountUpdateContract | UpdateAccountActuator | ✅ Enabled | Modify account name (subject to AllowUpdateAccountName constraint) |
-| 11 | FreezeBalanceContract | BalanceContract.FreezeBalanceContract | FreezeBalanceActuator | 🚫 Disabled (rejected by chain after `supportUnfreezeDelay` is enabled) | Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others |
-| 12 | UnfreezeBalanceContract | BalanceContract.UnfreezeBalanceContract | UnfreezeBalanceActuator | ✅ Enabled | Stake 1.0: Unfreeze TRX after expiration; release resources and clear votes |
-| 13 | WithdrawBalanceContract | BalanceContract.WithdrawBalanceContract | WithdrawBalanceActuator | ✅ Enabled | Withdraw SR block/voting rewards to account balance |
-| 14 | UnfreezeAssetContract | AssetIssueContractOuterClass.UnfreezeAssetContract | UnfreezeAssetActuator | ✅ Enabled | Issuer unfreezes TRC10 token shares frozen during ICO |
-| 15 | UpdateAssetContract | AssetIssueContractOuterClass.UpdateAssetContract | UpdateAssetActuator | ✅ Enabled | Update TRC10 token description / url / free bandwidth quota |
-| 16 | ProposalCreateContract | ProposalContract.ProposalCreateContract | ProposalCreateActuator | ✅ Enabled | SR creates an on-chain parameter proposal; written to ProposalStore for voting |
-| 17 | ProposalApproveContract | ProposalContract.ProposalApproveContract | ProposalApproveActuator | ✅ Enabled | SR approves or cancels a vote on a proposal |
-| 18 | ProposalDeleteContract | ProposalContract.ProposalDeleteContract | ProposalDeleteActuator | ✅ Enabled | Proposal creator withdraws their own created proposal |
-| 19 | SetAccountIdContract | AccountContract.SetAccountIdContract | SetAccountIdActuator | ✅ Enabled | Set a unique account_id for the account (can only be set once) |
-| 20 | CustomContract | | | 🚫 Disabled (Actuator not implemented) | |
-| 30 | CreateSmartContract | SmartContractOuterClass.CreateSmartContract | VMActuator | ✅ Enabled | Deploy a smart contract |
-| 31 | TriggerSmartContract | SmartContractOuterClass.TriggerSmartContract | VMActuator | ✅ Enabled | Call/Trigger a smart contract |
-| 32 | GetContract | | | 🚫 Disabled (Actuator not implemented) | |
-| 33 | UpdateSettingContract | SmartContractOuterClass.UpdateSettingContract | UpdateSettingContractActuator | ✅ Enabled | Contract owner modifies `consume_user_resource_percent` (percentage of energy borne by the user) |
-| 41 | ExchangeCreateContract | ExchangeContract.ExchangeCreateContract | ExchangeCreateActuator | ✅ Enabled | Create a Bancor exchange pair; inject initial liquidity for two assets |
-| 42 | ExchangeInjectContract | ExchangeContract.ExchangeInjectContract | ExchangeInjectActuator | ✅ Enabled | Inject liquidity into an existing exchange pair; deduct assets based on Bancor algorithm |
-| 43 | ExchangeWithdrawContract | ExchangeContract.ExchangeWithdrawContract | ExchangeWithdrawActuator | ✅ Enabled | Exchange pair creator redeems both assets from the pair proportionally |
-| 44 | ExchangeTransactionContract | ExchangeContract.ExchangeTransactionContract | ExchangeTransactionActuator | 🚫 Disabled | Asset exchange via Bancor exchange pair |
-| 45 | UpdateEnergyLimitContract | SmartContractOuterClass.UpdateEnergyLimitContract | UpdateEnergyLimitContractActuator | ✅ Enabled | Contract owner updates `origin_energy_limit` (max energy consumption owner is willing to pay per call) |
-| 46 | AccountPermissionUpdateContract | AccountContract.AccountPermissionUpdateContract | AccountPermissionUpdateActuator | ✅ Enabled | Update account permissions: owner/witness/active |
-| 48 | ClearABIContract | SmartContractOuterClass.ClearABIContract | ClearABIContractActuator | ✅ Enabled | Contract owner clears contract ABI |
-| 49 | UpdateBrokerageContract | StorageContract.UpdateBrokerageContract | UpdateBrokerageActuator | ✅ Enabled | SR adjusts the brokerage ratio (0-100%) for voters |
-| 51 | ShieldedTransferContract | ShieldContract.ShieldedTransferContract | ShieldedTransferActuator | 🚫 Disabled (`getAllowShieldedTransaction` not enabled) | ZK-SNARK anonymous transfer (transparent in + shielded spend/receive + transparent out) |
-| 52 | MarketSellAssetContract | MarketContract.MarketSellAssetContract | MarketSellAssetActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Place a limit sell order on the built-in order book (sell/buy two assets + price) |
-| 53 | MarketCancelOrderContract | MarketContract.MarketCancelOrderContract | MarketCancelOrderActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Cancel own unexecuted market order; refund remaining assets |
-| 54 | FreezeBalanceV2Contract | BalanceContract.FreezeBalanceV2Contract | FreezeBalanceV2Actuator | ✅ Enabled | Stake 2.0: Freeze TRX to gain Bandwidth/Energy; decouples resources from TronPower |
-| 55 | UnfreezeBalanceV2Contract | BalanceContract.UnfreezeBalanceV2Contract | UnfreezeBalanceV2Actuator | ✅ Enabled | Stake 2.0: Initiate unstaking; enters unfreeze waiting period |
-| 56 | WithdrawExpireUnfreezeContract | BalanceContract.WithdrawExpireUnfreezeContract | WithdrawExpireUnfreezeActuator | ✅ Enabled | Withdraw unfrozen TRX that has passed the waiting period to account balance |
-| 57 | DelegateResourceContract | BalanceContract.DelegateResourceContract | DelegateResourceActuator | ✅ Enabled | Stake 2.0: Delegate own staked Bandwidth/Energy to other addresses (lock-up period optional) |
-| 58 | UnDelegateResourceContract | BalanceContract.UnDelegateResourceContract | UnDelegateResourceActuator | ✅ Enabled | Stake 2.0: Reclaim previously delegated resources from others |
-| 59 | CancelAllUnfreezeV2Contract | BalanceContract.CancelAllUnfreezeV2Contract | CancelAllUnfreezeV2Actuator | ✅ Enabled | Cancel all pending Stake 2.0 unfreezing requests; remaining shares are re-staked |
-
-Active permissions configure which `ContractType` can be executed through the `operations` field. For details on how to calculate the value of `operations`, please see [Operations Value Calculation Example](#2-operations-value-calculation-example).
+Active permissions configure which `ContractType` can be executed through the `operations` field. The full list of `ContractType` enum values together with their Proto Message, Actuator, status, and business behaviors is maintained in [System Contracts — ContractType Overview](./system-contracts.md#contracttype-overview). For details on how to calculate the value of `operations` from these enum values, please see [Operations Value Calculation Example](#2-operations-value-calculation-example).
 
 ## Explanation of Each Permission Type
 
@@ -205,7 +151,7 @@ localwitness = [
 - Permission IDs start from 2 and increment.
 - When creating an account by default, one `active` permission is generated, with a default threshold of 1, containing only the account's own address.
 
-## Operation Fees
+## Fees and Constraints
 
 | Operation                  | Fee Standard |
 | -------------------------- | ------------ |
@@ -261,7 +207,7 @@ POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
 
 ### 2. Operations Value Calculation Example
 
-`operations` is a 32-byte hexadecimal string (little-endian) representing executable contract permissions.
+`operations` field is a 32-byte hexadecimal string (little-endian) where each bit represents a specific `ContractType` , defining the functional scope of an Active permission.
 The following Java example generates permissions for contracts (ID=0-45):
 
 ```
@@ -281,7 +227,7 @@ System.out.println(ByteArray.toHexString(operations));
 2. Set `Permission_id` (default is 0, i.e., `owner` permission).
 3. User A signs and forwards to B.
 4. User B signs and forwards to C.
-5. ...
+5. (Under Asynchronous Multi-Sig Orchestration,transactions can be partially signed and passed between authorized parties until the threshold is met.)
 6. The last user signs and broadcasts.
 7. The node verifies if the total signature weight ≥ `threshold`; if yes, accepts the transaction.
 

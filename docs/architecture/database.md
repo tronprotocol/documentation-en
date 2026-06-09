@@ -26,7 +26,16 @@ storage {
   transHistory.switch = "on"
 }
 ```
+
+Key descriptions:
+
+- `db.sync`: when `true`, the underlying engine waits for each write to be physically flushed to disk before returning — safer against power loss / hard crashes, but noticeably slower. Default `false`, in which case writes are buffered by the OS and recent ones may be lost on a crash. Honored by both LevelDB and RocksDB.
+- `transHistory.switch`: when `"off"`, `TransactionHistoryStore` and `TransactionRetStore` silently drop new writes, so `gettransactioninfobyid` returns empty for any transaction processed while the switch was off. Reads of pre-existing data still work. Default `"on"`.
+
 ### 2. RocksDB Optimization Parameters
+
+The `dbSettings` block applies only when `db.engine = "ROCKSDB"`. Under LevelDB, these values are silently ignored.
+
 RocksDB supports various tuning parameters that can be configured based on the performance of the node server. Below is an example of recommended parameters:
 ```
 dbSettings = {
@@ -44,17 +53,23 @@ dbSettings = {
 
 ## Migrating from LevelDB to RocksDB on x86_64 Platforms
 To migrate from LevelDB to RocksDB, use the TRON Toolkit `Toolkit.jar`.
+
+> **Note:** The `db convert` subcommand is x86_64-only. On arm64 it prints an "unsupported architecture" message and exits without doing any work.
 ### 1. Data Conversion Steps
 ```
 cd java-tron                                   # Source root directory
 ./gradlew build -xtest -xcheck                 # Compile the project
 java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
 ```
-### 2. Optional Parameter Descriptions
-If your node uses a custom data directory, you can include the following parameters when running the conversion script:
+### 2. Positional Arguments
+If your node uses a custom data directory, pass the LevelDB source and RocksDB destination as two positional arguments after `db convert`:
 
-- `src_db_path`: LevelDB database path (default: `output-directory/database`)
-- `dst_db_path`: RocksDB database storage path (default: `output-directory-dst/database`)
+```
+java -jar build/libs/Toolkit.jar db convert <src> <dst>
+```
+
+- `<src>`: LevelDB database path (default: `output-directory/database`)
+- `<dst>`: RocksDB database storage path (default: `output-directory-dst/database`)
 
 For example, if the node is run as follows:
 ```
@@ -81,10 +96,6 @@ java -jar build/libs/Toolkit.jar db cp output-directory/database /tmp/output-dir
 cd /tmp
 java -jar build/libs/Toolkit.jar db convert output-directory/database output-directory-dst/database
 ```
-> Note:
-The entire data conversion process is expected to take approximately **10 hours**, depending on the data volume and disk performance.
+> **Note:** The entire data conversion process is expected to take approximately **10 hours**, depending on the data volume and disk performance.
 ## About LevelDB
 LevelDB is the default data storage engine for java-tron nodes on x86_64 platforms, suitable for resource-constrained or lightweight deployment scenarios. It has a simple structure and is easy to maintain, but it is less efficient than RocksDB in terms of data compression, backup capabilities, and performance for large-scale nodes.
-
-For a detailed comparison between the two, refer to the documentation:
-📘 [RocksDB vs. LevelDB Comparison](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
