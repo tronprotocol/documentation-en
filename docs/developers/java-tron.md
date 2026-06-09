@@ -1,7 +1,7 @@
 # Developer Guide
 Thank you for contributing to the development of java-tron source code!
 
-Whether it's a small fix or a significant feature improvement, we greatly appreciate your contributions.
+Whether it is a minor bug fix or a major feature enhancement, we value your contributions.
 
 On GitHub, you can:
 
@@ -20,7 +20,7 @@ If you plan to contribute to java-tron development, please follow the process be
 1. **Fork the Repository**
     Fork the [java-tron repository](https://github.com/tronprotocol/java-tron) to your personal account.
 2. **Modify Code**
-    Create a new branch based on the standard and start development.
+    Create a new branch from the develop branch and begin implementation.
 3. **Submit Changes**
     Commit your changes with clear commit messages.
 4. **Create a Pull Request (PR)**
@@ -32,11 +32,11 @@ If you plan to contribute to java-tron development, please follow the process be
 
 - **Minor Fixes**
     You can directly submit a PR, but ensure it includes a complete description.
-- **Complex Changes**
-    Please first submit an Issue in the [TIP repository](https://github.com/tronprotocol/tips), detailing the motivation and implementation plan.
+- **Major Changes**
+    For complex architectural or logic changes, please first submit a TRON Improvement Proposal (TIP) in the [TIP repository](https://github.com/tronprotocol/tips), detailing the motivation and implementation plan.
 Refer to the [TIP Specification](tips.md).
 - **Early PR Submission**
-    We encourage developers to submit PRs early, even if the feature is not yet complete. This allows other developers to know that the related TIP Issue has entered the *In Progress* state.
+    We encourage developers to submit PRs early, even if the feature is not yet complete. This notifies the community that the associated TIP issue has entered the In Progress state.
 - **Development Branch**
     All development should be based on the `develop` branch, followed by a PR submission.
 
@@ -45,7 +45,7 @@ The `java-tron` repository includes the following main branch types:
 
 - **`develop` Branch**
     - Used for daily development
-    - Only allows merging from forked branches and `release-*` branches
+    - Accepts merges exclusively from contributor forks and `release-*` branches
     - When preparing a new release, a `release-*` branch is created from this branch
 - **`master` Branch**
     - Used only for releases
@@ -53,7 +53,7 @@ The `java-tron` repository includes the following main branch types:
 - **`release-*` Branch**
     - Created from `develop` for version finalization and regression testing
     - Merged into `master` branch after regression testing
-    - Permanently retained as a release snapshot
+    - Retained permanently as a point-in-time release snapshot
     - Bug fixes are merged directly into this branch and synchronized back to `develop`
 - **`feature-*` Branch**
     - Created from `develop` for new feature development
@@ -61,7 +61,7 @@ The `java-tron` repository includes the following main branch types:
     - Can be maintained long-term
 - **`hotfix-*` Branch**
     - Created from `master` for urgent bug fixes
-    - Merged back into both `master` and `develop` after fixes are complete
+    - Must be merged back into both `master` and `develop` to ensure consistency
 
 ## Code Submission Process
 ### 1. Fork and Clone the Repository
@@ -77,7 +77,7 @@ git fetch upstream
 git checkout develop
 git merge upstream/develop --no-ff
 ```
-> `--no-ff` avoids fast-forward merges to ensure a clear commit history.
+> The `--no-ff` flag prevents fast-forward merges, preserving a clear record of the merge event in the commit history.
 ### 3. Create a Development Branch
 ```
 git checkout -b feature/branch_name develop
@@ -101,14 +101,14 @@ The only way to merge code into **java-tron** is through **a Pull Request (PR)**
 All PRs must be reviewed before merging.
 
 ### Review Process
-- Reviewers must understand the motivation and changes of the PR.
+- Reviewers are responsible for verifying the PR's objectives and technical impact.
 - For PRs lacking descriptions or with excessive changes, reviewers may request additional clarification.
 - Reviewers check code style, feature completeness, and test coverage.
 - Reviewers should remain polite, respectful, and follow up promptly.
 
 ### Feature Validation
-- **Bug Fix PRs**
-    - Reviewers should attempt to reproduce the issue and verify the fix.
+- **For Bug Fixes**
+    - Reviewers must attempt to reproduce the reported issue to validate the effectiveness of the fix.
     - It’s recommended that submitters provide unit tests that fail before the fix and pass after.
 - **New Feature PRs**
     - Reviewers should test the new feature and provide feedback.
@@ -116,7 +116,7 @@ All PRs must be reviewed before merging.
 
 ### Code Specification Requirements
 
-- Use code formatting tools to check code.
+- Adhere to automated code formatting standards before submission.
 - Self-test before submission.
 - Pass standardized tests.
 
@@ -168,11 +168,10 @@ Recommended format:
 
 ### Subject Specifications
 
-1. Maximum 50 characters.
-2. Start with a verb in the first-person present tense (e.g., `change`, not `changed`).
+1. Limit to 50 characters; do not end with a period.
+2. Use the imperative mood in the subject line (e.g., `fix`, instead of `fixes/fixed`).
 3. Start with a lowercase letter.
-4. No period at the end.
-5. Avoid meaningless commits.
+4. Avoid meaningless commits.
 
 Example:
 ```
