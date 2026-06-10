@@ -7284,9 +7284,9 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#operation-fees" class="md-nav__link" >
+  <a href="#fees-and-constraints" class="md-nav__link" >
     <span class="md-ellipsis">
-      Operation Fees
+      Fees and Constraints
     </span>
   </a>
   
@@ -8909,9 +8909,9 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#operation-fees" class="md-nav__link" >
+  <a href="#fees-and-constraints" class="md-nav__link" >
     <span class="md-ellipsis">
-      Operation Fees
+      Fees and Constraints
     </span>
   </a>
   
@@ -9107,8 +9107,8 @@
 <li><code>owner</code> = 0, <code>witness</code> = 1, <code>active</code> starts from 2 and increments.</li>
 </ul>
 </li>
-<li><code>permission_name</code>: Permission name, maximum 32 bytes.</li>
-<li><code>threshold</code>: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value.</li>
+<li><code>permission_name</code>: Permission name, maximum 32 characters.</li>
+<li><code>threshold</code>: Permission threshold, the operation is authorized only when the cumulative weight of valid signatures meets or exceeds this value.</li>
 <li><code>operations</code>: Used only for Active permissions, specifies executable contract types.</li>
 <li><code>keys</code>: Addresses and weights with this permission (up to 5).</li>
 </ul>
@@ -9131,360 +9131,11 @@
 }
 </code></pre></div>
 <ul>
-<li>This contract is used to <strong>update all account permission structures at once</strong>.</li>
+<li>This contract is used to <strong>update all account permission structures at once</strong>, which is an "all-or-nothing" update. Even if modifying a single permission, the full permission set must be resubmitted to prevent accidental loss of access.</li>
 <li>Even if only one permission is modified, all other existing permissions must be fully specified in the contract.</li>
 </ul>
 <h3 id="5-contract-type-enumeration-contracttype">5. Contract Type Enumeration: <code>ContractType</code><a class="headerlink" href="#5-contract-type-enumeration-contracttype" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>enum ContractType {
-  AccountCreateContract = 0;
-  ...
-  AccountPermissionUpdateContract = 46;
-}
-</code></pre></div>
-<p>The detailed information of <code>ContractType</code> is as follows (including Proto Message, Actuator, status, and business Triggered):</p>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>ContractType</th>
-<th>Proto Message</th>
-<th>Actuator</th>
-<th>Status</th>
-<th>Business Triggered</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>AccountCreateContract</td>
-<td>AccountContract.AccountCreateContract</td>
-<td>CreateAccountActuator</td>
-<td>✅ Enabled</td>
-<td>Create an on-chain account</td>
-</tr>
-<tr>
-<td>1</td>
-<td>TransferContract</td>
-<td>BalanceContract.TransferContract</td>
-<td>TransferActuator</td>
-<td>✅ Enabled</td>
-<td>TRX Transfer</td>
-</tr>
-<tr>
-<td>2</td>
-<td>TransferAssetContract</td>
-<td>AssetIssueContractOuterClass.TransferAssetContract</td>
-<td>TransferAssetActuator</td>
-<td>✅ Enabled</td>
-<td>TRC10 Token Transfer</td>
-</tr>
-<tr>
-<td>3</td>
-<td>VoteAssetContract</td>
-<td></td>
-<td></td>
-<td>🚫 Disabled (Actuator not implemented)</td>
-<td></td>
-</tr>
-<tr>
-<td>4</td>
-<td>VoteWitnessContract</td>
-<td>WitnessContract.VoteWitnessContract</td>
-<td>VoteWitnessActuator</td>
-<td>✅ Enabled</td>
-<td>Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance)</td>
-</tr>
-<tr>
-<td>5</td>
-<td>WitnessCreateContract</td>
-<td>WitnessContract.WitnessCreateContract</td>
-<td>WitnessCreateActuator</td>
-<td>✅ Enabled</td>
-<td>Apply to become a Super Representative (SR) candidate; write to witness store</td>
-</tr>
-<tr>
-<td>6</td>
-<td>AssetIssueContract</td>
-<td>AssetIssueContractOuterClass.AssetIssueContract</td>
-<td>AssetIssueActuator</td>
-<td>✅ Enabled</td>
-<td>Issue TRC10 tokens; freeze balance during recruitment period according to ICO rules</td>
-</tr>
-<tr>
-<td>8</td>
-<td>WitnessUpdateContract</td>
-<td>WitnessContract.WitnessUpdateContract</td>
-<td>WitnessUpdateActuator</td>
-<td>✅ Enabled</td>
-<td>Update the official website URL of an SR</td>
-</tr>
-<tr>
-<td>9</td>
-<td>ParticipateAssetIssueContract</td>
-<td>AssetIssueContractOuterClass.ParticipateAssetIssueContract</td>
-<td>ParticipateAssetIssueActuator</td>
-<td>✅ Enabled</td>
-<td>Subscribe to TRC10 tokens with TRX during the ICO period</td>
-</tr>
-<tr>
-<td>10</td>
-<td>AccountUpdateContract</td>
-<td>AccountContract.AccountUpdateContract</td>
-<td>UpdateAccountActuator</td>
-<td>✅ Enabled</td>
-<td>Modify account name (subject to AllowUpdateAccountName constraint)</td>
-</tr>
-<tr>
-<td>11</td>
-<td>FreezeBalanceContract</td>
-<td>BalanceContract.FreezeBalanceContract</td>
-<td>FreezeBalanceActuator</td>
-<td>🚫 Disabled (rejected by chain after <code>supportUnfreezeDelay</code> is enabled)</td>
-<td>Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others</td>
-</tr>
-<tr>
-<td>12</td>
-<td>UnfreezeBalanceContract</td>
-<td>BalanceContract.UnfreezeBalanceContract</td>
-<td>UnfreezeBalanceActuator</td>
-<td>✅ Enabled</td>
-<td>Stake 1.0: Unfreeze TRX after expiration; release resources and clear votes</td>
-</tr>
-<tr>
-<td>13</td>
-<td>WithdrawBalanceContract</td>
-<td>BalanceContract.WithdrawBalanceContract</td>
-<td>WithdrawBalanceActuator</td>
-<td>✅ Enabled</td>
-<td>Withdraw SR block/voting rewards to account balance</td>
-</tr>
-<tr>
-<td>14</td>
-<td>UnfreezeAssetContract</td>
-<td>AssetIssueContractOuterClass.UnfreezeAssetContract</td>
-<td>UnfreezeAssetActuator</td>
-<td>✅ Enabled</td>
-<td>Issuer unfreezes TRC10 token shares frozen during ICO</td>
-</tr>
-<tr>
-<td>15</td>
-<td>UpdateAssetContract</td>
-<td>AssetIssueContractOuterClass.UpdateAssetContract</td>
-<td>UpdateAssetActuator</td>
-<td>✅ Enabled</td>
-<td>Update TRC10 token description / url / free bandwidth quota</td>
-</tr>
-<tr>
-<td>16</td>
-<td>ProposalCreateContract</td>
-<td>ProposalContract.ProposalCreateContract</td>
-<td>ProposalCreateActuator</td>
-<td>✅ Enabled</td>
-<td>SR creates an on-chain parameter proposal; written to ProposalStore for voting</td>
-</tr>
-<tr>
-<td>17</td>
-<td>ProposalApproveContract</td>
-<td>ProposalContract.ProposalApproveContract</td>
-<td>ProposalApproveActuator</td>
-<td>✅ Enabled</td>
-<td>SR approves or cancels a vote on a proposal</td>
-</tr>
-<tr>
-<td>18</td>
-<td>ProposalDeleteContract</td>
-<td>ProposalContract.ProposalDeleteContract</td>
-<td>ProposalDeleteActuator</td>
-<td>✅ Enabled</td>
-<td>Proposal creator withdraws their own created proposal</td>
-</tr>
-<tr>
-<td>19</td>
-<td>SetAccountIdContract</td>
-<td>AccountContract.SetAccountIdContract</td>
-<td>SetAccountIdActuator</td>
-<td>✅ Enabled</td>
-<td>Set a unique account_id for the account (can only be set once)</td>
-</tr>
-<tr>
-<td>20</td>
-<td>CustomContract</td>
-<td></td>
-<td></td>
-<td>🚫 Disabled (Actuator not implemented)</td>
-<td></td>
-</tr>
-<tr>
-<td>30</td>
-<td>CreateSmartContract</td>
-<td>SmartContractOuterClass.CreateSmartContract</td>
-<td>VMActuator</td>
-<td>✅ Enabled</td>
-<td>Deploy a smart contract</td>
-</tr>
-<tr>
-<td>31</td>
-<td>TriggerSmartContract</td>
-<td>SmartContractOuterClass.TriggerSmartContract</td>
-<td>VMActuator</td>
-<td>✅ Enabled</td>
-<td>Call/Trigger a smart contract</td>
-</tr>
-<tr>
-<td>32</td>
-<td>GetContract</td>
-<td></td>
-<td></td>
-<td>🚫 Disabled (Actuator not implemented)</td>
-<td></td>
-</tr>
-<tr>
-<td>33</td>
-<td>UpdateSettingContract</td>
-<td>SmartContractOuterClass.UpdateSettingContract</td>
-<td>UpdateSettingContractActuator</td>
-<td>✅ Enabled</td>
-<td>Contract owner modifies <code>consume_user_resource_percent</code> (percentage of energy borne by the user)</td>
-</tr>
-<tr>
-<td>41</td>
-<td>ExchangeCreateContract</td>
-<td>ExchangeContract.ExchangeCreateContract</td>
-<td>ExchangeCreateActuator</td>
-<td>✅ Enabled</td>
-<td>Create a Bancor exchange pair; inject initial liquidity for two assets</td>
-</tr>
-<tr>
-<td>42</td>
-<td>ExchangeInjectContract</td>
-<td>ExchangeContract.ExchangeInjectContract</td>
-<td>ExchangeInjectActuator</td>
-<td>✅ Enabled</td>
-<td>Inject liquidity into an existing exchange pair; deduct assets based on Bancor algorithm</td>
-</tr>
-<tr>
-<td>43</td>
-<td>ExchangeWithdrawContract</td>
-<td>ExchangeContract.ExchangeWithdrawContract</td>
-<td>ExchangeWithdrawActuator</td>
-<td>✅ Enabled</td>
-<td>Exchange pair creator redeems both assets from the pair proportionally</td>
-</tr>
-<tr>
-<td>44</td>
-<td>ExchangeTransactionContract</td>
-<td>ExchangeContract.ExchangeTransactionContract</td>
-<td>ExchangeTransactionActuator</td>
-<td>🚫 Disabled</td>
-<td>Asset exchange via Bancor exchange pair</td>
-</tr>
-<tr>
-<td>45</td>
-<td>UpdateEnergyLimitContract</td>
-<td>SmartContractOuterClass.UpdateEnergyLimitContract</td>
-<td>UpdateEnergyLimitContractActuator</td>
-<td>✅ Enabled</td>
-<td>Contract owner updates <code>origin_energy_limit</code> (max energy consumption owner is willing to pay per call)</td>
-</tr>
-<tr>
-<td>46</td>
-<td>AccountPermissionUpdateContract</td>
-<td>AccountContract.AccountPermissionUpdateContract</td>
-<td>AccountPermissionUpdateActuator</td>
-<td>✅ Enabled</td>
-<td>Update account permissions: owner/witness/active</td>
-</tr>
-<tr>
-<td>48</td>
-<td>ClearABIContract</td>
-<td>SmartContractOuterClass.ClearABIContract</td>
-<td>ClearABIContractActuator</td>
-<td>✅ Enabled</td>
-<td>Contract owner clears contract ABI</td>
-</tr>
-<tr>
-<td>49</td>
-<td>UpdateBrokerageContract</td>
-<td>StorageContract.UpdateBrokerageContract</td>
-<td>UpdateBrokerageActuator</td>
-<td>✅ Enabled</td>
-<td>SR adjusts the brokerage ratio (0-100%) for voters</td>
-</tr>
-<tr>
-<td>51</td>
-<td>ShieldedTransferContract</td>
-<td>ShieldContract.ShieldedTransferContract</td>
-<td>ShieldedTransferActuator</td>
-<td>🚫 Disabled (<code>getAllowShieldedTransaction</code> not enabled)</td>
-<td>ZK-SNARK anonymous transfer (transparent in + shielded spend/receive + transparent out)</td>
-</tr>
-<tr>
-<td>52</td>
-<td>MarketSellAssetContract</td>
-<td>MarketContract.MarketSellAssetContract</td>
-<td>MarketSellAssetActuator</td>
-<td>🚫 Disabled (<code>getAllowMarketTransaction</code> not enabled)</td>
-<td>Place a limit sell order on the built-in order book (sell/buy two assets + price)</td>
-</tr>
-<tr>
-<td>53</td>
-<td>MarketCancelOrderContract</td>
-<td>MarketContract.MarketCancelOrderContract</td>
-<td>MarketCancelOrderActuator</td>
-<td>🚫 Disabled (<code>getAllowMarketTransaction</code> not enabled)</td>
-<td>Cancel own unexecuted market order; refund remaining assets</td>
-</tr>
-<tr>
-<td>54</td>
-<td>FreezeBalanceV2Contract</td>
-<td>BalanceContract.FreezeBalanceV2Contract</td>
-<td>FreezeBalanceV2Actuator</td>
-<td>✅ Enabled</td>
-<td>Stake 2.0: Freeze TRX to gain Bandwidth/Energy; decouples resources from TronPower</td>
-</tr>
-<tr>
-<td>55</td>
-<td>UnfreezeBalanceV2Contract</td>
-<td>BalanceContract.UnfreezeBalanceV2Contract</td>
-<td>UnfreezeBalanceV2Actuator</td>
-<td>✅ Enabled</td>
-<td>Stake 2.0: Initiate unstaking; enters unfreeze waiting period</td>
-</tr>
-<tr>
-<td>56</td>
-<td>WithdrawExpireUnfreezeContract</td>
-<td>BalanceContract.WithdrawExpireUnfreezeContract</td>
-<td>WithdrawExpireUnfreezeActuator</td>
-<td>✅ Enabled</td>
-<td>Withdraw unfrozen TRX that has passed the waiting period to account balance</td>
-</tr>
-<tr>
-<td>57</td>
-<td>DelegateResourceContract</td>
-<td>BalanceContract.DelegateResourceContract</td>
-<td>DelegateResourceActuator</td>
-<td>✅ Enabled</td>
-<td>Stake 2.0: Delegate own staked Bandwidth/Energy to other addresses (lock-up period optional)</td>
-</tr>
-<tr>
-<td>58</td>
-<td>UnDelegateResourceContract</td>
-<td>BalanceContract.UnDelegateResourceContract</td>
-<td>UnDelegateResourceActuator</td>
-<td>✅ Enabled</td>
-<td>Stake 2.0: Reclaim previously delegated resources from others</td>
-</tr>
-<tr>
-<td>59</td>
-<td>CancelAllUnfreezeV2Contract</td>
-<td>BalanceContract.CancelAllUnfreezeV2Contract</td>
-<td>CancelAllUnfreezeV2Actuator</td>
-<td>✅ Enabled</td>
-<td>Cancel all pending Stake 2.0 unfreezing requests; remaining shares are re-staked</td>
-</tr>
-</tbody>
-</table>
-<p>Active permissions configure which <code>ContractType</code> can be executed through the <code>operations</code> field. For details on how to calculate the value of <code>operations</code>, please see <a href="#2-operations-value-calculation-example">Operations Value Calculation Example</a>.</p>
+<p>Active permissions configure which <code>ContractType</code> can be executed through the <code>operations</code> field. The full list of <code>ContractType</code> enum values together with their Proto Message, Actuator, status, and business behaviors is maintained in <a href="../system-contracts/#contracttype-overview">System Contracts — ContractType Overview</a>. For details on how to calculate the value of <code>operations</code> from these enum values, please see <a href="#2-operations-value-calculation-example">Operations Value Calculation Example</a>.</p>
 <h2 id="explanation-of-each-permission-type">Explanation of Each Permission Type<a class="headerlink" href="#explanation-of-each-permission-type" title="Permanent link">&para;</a></h2>
 <h3 id="owner-permission-account-master-control"><code>owner</code> Permission (Account Master Control)<a class="headerlink" href="#owner-permission-account-master-control" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9498,6 +9149,7 @@
 <li>Available only for Super Representative, Super Representative Partner, and Super Representative Candidate accounts.</li>
 <li>Controls block-producing nodes, does not have permissions for fund transfers or other operations.</li>
 <li>Can delegate block production permission to other addresses to enhance account security.</li>
+<li>Must contain exactly one key.</li>
 </ul>
 <h4 id="super-representative-node-configuration-example">Super Representative Node Configuration Example:<a class="headerlink" href="#super-representative-node-configuration-example" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code># config.conf
@@ -9522,7 +9174,7 @@ localwitness = [
 <li>Permission IDs start from 2 and increment.</li>
 <li>When creating an account by default, one <code>active</code> permission is generated, with a default threshold of 1, containing only the account's own address.</li>
 </ul>
-<h2 id="operation-fees">Operation Fees<a class="headerlink" href="#operation-fees" title="Permanent link">&para;</a></h2>
+<h2 id="fees-and-constraints">Fees and Constraints<a class="headerlink" href="#fees-and-constraints" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -9550,7 +9202,7 @@ localwitness = [
 <li>Call <code>AccountPermissionUpdateContract</code>.</li>
 <li>Sign and broadcast the transaction.</li>
 </ol>
-<p><strong>Notice:</strong>: When a block contains transactions that modify account permissions, no further transactions from this account will be included in this block to ensure that such account permission modify transactions actually take effect starting from the next block.</p>
+<p><strong>Note</strong>: When a block contains transactions that modify account permissions, no further transactions from this account will be included in this block to ensure that such account permission modify transactions actually take effect starting from the next block.</p>
 <h4 id="example-request">Example Request:<a class="headerlink" href="#example-request" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
 
@@ -9583,7 +9235,7 @@ localwitness = [
 }
 </code></pre></div>
 <h3 id="2-operations-value-calculation-example">2. Operations Value Calculation Example<a class="headerlink" href="#2-operations-value-calculation-example" title="Permanent link">&para;</a></h3>
-<p><code>operations</code> is a 32-byte hexadecimal string (little-endian) representing executable contract permissions.
+<p><code>operations</code> field is a 32-byte hexadecimal string (little-endian) where each bit represents a specific <code>ContractType</code> , defining the functional scope of an Active permission.
 The following Java example generates permissions for contracts (ID=0-45):</p>
 <div class="highlight"><pre><span></span><code>Integer[] contractId = {0, 1, 2, ..., 45};
 byte[] operations = new byte[32];
@@ -9592,13 +9244,16 @@ for (int id : contractId) {
 }
 System.out.println(ByteArray.toHexString(operations));
 </code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: The <code>contractId</code> above only illustrates the bit-setting logic. <code>ContractType</code> IDs are not contiguous (7, 21-29, 34-40, etc. are gaps), and a bit can only be set for a contract type already present in the on-chain <code>AVAILABLE_CONTRACT_TYPE</code> bitmap; otherwise the transaction is rejected during validation. <code>AVAILABLE_CONTRACT_TYPE</code> roughly corresponds to the <code>#</code> column in the table above, except it does not include ShieldedTransferContract(51).</p>
+</blockquote>
 <h3 id="3-transaction-execution-process">3. Transaction Execution Process<a class="headerlink" href="#3-transaction-execution-process" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Create the transaction.</li>
 <li>Set <code>Permission_id</code> (default is 0, i.e., <code>owner</code> permission).</li>
 <li>User A signs and forwards to B.</li>
 <li>User B signs and forwards to C.</li>
-<li>...</li>
+<li>(Under Asynchronous Multi-Sig Orchestration,transactions can be partially signed and passed between authorized parties until the threshold is met.)</li>
 <li>The last user signs and broadcasts.</li>
 <li>The node verifies if the total signature weight ≥ <code>threshold</code>; if yes, accepts the transaction.</li>
 </ol>
@@ -9641,7 +9296,7 @@ rpc GetTransactionSignWeight(Transaction) returns (TransactionSignWeight) {}
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:51:18 UTC">May 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 1, 2026 05:05:45 UTC">June 1, 2026</span>
   </span>
 
     

@@ -8962,7 +8962,7 @@
 
 
 <h1 id="development-example">Development Example<a class="headerlink" href="#development-example" title="Permanent link">&para;</a></h1>
-<p>This document will detail the process of contributing to <code>java-tron</code> development, using the addition of a new <code>setPeer</code> HTTP API as a practical example. Before you begin, please ensure you have configured your development environment, for instance, by following the <a href="../run-in-idea/">IntelliJ IDEA Development Environment Setup Guide</a>.</p>
+<p>This document details the process of contributing to <code>java-tron</code> development, using the addition of a new <code>setPeer</code> HTTP API as a practical example. Before you begin, ensure you have configured your development environment. For example, you can follow the <a href="../run-in-idea/">IntelliJ IDEA Development Environment Setup Guide</a>.</p>
 <p><strong>Background</strong>: At times, a <code>java-tron</code> node may fail to connect to peers due to network issues. To enhance the stability of the node's network connections, we want to implement a feature that enables you to dynamically add trusted nodes while the node is running, ensuring connectivity even if the node discovery service fails.</p>
 <h2 id="1-prepare-the-development-environment">1. Prepare the Development Environment<a class="headerlink" href="#1-prepare-the-development-environment" title="Permanent link">&para;</a></h2>
 <h3 id="11-fork-the-java-tron-repository">1.1 Fork the <code>java-tron</code> Repository<a class="headerlink" href="#11-fork-the-java-tron-repository" title="Permanent link">&para;</a></h3>
@@ -9014,7 +9014,7 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/develop<span cl
 <span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">ChannelManager</span><span class="w"> </span><span class="n">channelManager</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doGet</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// GETrequests are not handled in this example</span>
+<span class="w">    </span><span class="c1">// GET requests are not handled in this example</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doPost</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -9026,9 +9026,9 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/develop<span cl
 
 <span class="w">      </span><span class="kt">boolean</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addPeer</span><span class="p">(</span><span class="n">peerIpPort</span><span class="p">);</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">response</span><span class="p">.</span><span class="na">getWriter</span><span class="p">().</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Success to set trusted peer:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">peerIpPort</span><span class="p">);</span>
+<span class="w">        </span><span class="n">response</span><span class="p">.</span><span class="na">getWriter</span><span class="p">().</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Successfully set trusted peer:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">peerIpPort</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">response</span><span class="p">.</span><span class="na">getWriter</span><span class="p">().</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Fail to set the trusted peer:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">peerIpPort</span><span class="p">);</span>
+<span class="w">        </span><span class="n">response</span><span class="p">.</span><span class="na">getWriter</span><span class="p">().</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Failed to set trusted peer:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">peerIpPort</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -9116,7 +9116,7 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/develop<span cl
 </code></pre></div>
 At this point, the implementation of the <code>setPeer</code> feature is complete. Next, you need to write unit tests for these changes.</p>
 <h2 id="3-writing-unit-tests">3. Writing Unit Tests<a class="headerlink" href="#3-writing-unit-tests" title="Permanent link">&para;</a></h2>
-<p>The <code>java-tron</code> project uses the JUnit framework for unit testing. For detailed information on using JUnit, please refer to the <a href="https://junit.org">official JUnit documentation</a>. Below is an introduction to the specifications and common annotations for <code>java-tron</code> unit test cases.</p>
+<p>The <code>java-tron</code> project uses the JUnit framework for unit testing. For detailed information on using JUnit, please refer to the <a href="https://junit.org">official JUnit documentation</a>. Below is an overview of the specifications and common annotations for <code>java-tron</code> unit test cases.</p>
 <h3 id="31-java-tron-unit-test-case-guidelines">3.1 <code>java-tron</code>  Unit Test Case Guidelines<a class="headerlink" href="#31-java-tron-unit-test-case-guidelines" title="Permanent link">&para;</a></h3>
 <p>When writing unit tests for <code>java-tron</code>, please adhere to the following guidelines:</p>
 <ul>
@@ -9230,7 +9230,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 <h3 id="53-submit-a-pull-request">5.3 Submit a Pull Request<a class="headerlink" href="#53-submit-a-pull-request" title="Permanent link">&para;</a></h3>
 <p>On GitHub, create a Pull Request from your repository to <code>tronprotocol/java-tron</code>. This will propose your changes to the official repository.</p>
 <p><img alt="提交 Pull Request 示例" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png" /></p>
-<p>Please ensure your Pull Request description is clear and includes details about the changes you have made and their purpose.</p>
+<p>Ensure your Pull Request description is clear, detailing the changes you made and their purpose.</p>
 
 
 
@@ -9251,7 +9251,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 8, 2026 05:38:32 UTC">April 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 28, 2026 07:54:06 UTC">May 28, 2026</span>
   </span>
 
     

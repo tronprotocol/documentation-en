@@ -7120,6 +7120,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
+  <a href="#contracttype-overview" class="md-nav__link" >
+    <span class="md-ellipsis">
+      ContractType Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
   <a href="#accountcreatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
       AccountCreateContract
@@ -7195,15 +7204,6 @@
   <a href="#accountupdatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
       AccountUpdateContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#deprecatedfreezebalancecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      (Deprecated)FreezeBalanceContract
     </span>
   </a>
   
@@ -7336,27 +7336,18 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#exchangetransactioncontract" class="md-nav__link" >
+  <a href="#updateenergylimitcontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      ExchangeTransactionContract
+      UpdateEnergyLimitContract
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item ">
-  <a href="#shieldedtransfercontract" class="md-nav__link" >
+  <a href="#accountpermissionupdatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      ShieldedTransferContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#account-permission-management" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Account Permission Management
+      AccountPermissionUpdateContract
     </span>
   </a>
   
@@ -7375,15 +7366,6 @@
   <a href="#updatebrokeragecontract" class="md-nav__link" >
     <span class="md-ellipsis">
       UpdateBrokerageContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#updateenergylimitcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      UpdateEnergyLimitContract
     </span>
   </a>
   
@@ -7429,6 +7411,15 @@
   <a href="#undelegateresourcecontract" class="md-nav__link" >
     <span class="md-ellipsis">
       UnDelegateResourceContract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#cancelallunfreezev2contract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      CancelAllUnfreezeV2Contract
     </span>
   </a>
   
@@ -8891,6 +8882,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
+  <a href="#contracttype-overview" class="md-nav__link" >
+    <span class="md-ellipsis">
+      ContractType Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
   <a href="#accountcreatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
       AccountCreateContract
@@ -8966,15 +8966,6 @@
   <a href="#accountupdatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
       AccountUpdateContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#deprecatedfreezebalancecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      (Deprecated)FreezeBalanceContract
     </span>
   </a>
   
@@ -9107,27 +9098,18 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#exchangetransactioncontract" class="md-nav__link" >
+  <a href="#updateenergylimitcontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      ExchangeTransactionContract
+      UpdateEnergyLimitContract
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item ">
-  <a href="#shieldedtransfercontract" class="md-nav__link" >
+  <a href="#accountpermissionupdatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      ShieldedTransferContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#account-permission-management" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Account Permission Management
+      AccountPermissionUpdateContract
     </span>
   </a>
   
@@ -9146,15 +9128,6 @@
   <a href="#updatebrokeragecontract" class="md-nav__link" >
     <span class="md-ellipsis">
       UpdateBrokerageContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#updateenergylimitcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      UpdateEnergyLimitContract
     </span>
   </a>
   
@@ -9205,6 +9178,15 @@
   
 </li>
       
+        <li class="md-nav__item ">
+  <a href="#cancelallunfreezev2contract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      CancelAllUnfreezeV2Contract
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9238,7 +9220,352 @@
 
 
 <h1 id="system-contracts">System Contracts<a class="headerlink" href="#system-contracts" title="Permanent link">&para;</a></h1>
-<p>The TRON network supports many different types of transactions, such as TRX transfers, TRC10 transfers , smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is <code>CreateSmartContract</code>, which requires calling the <code>wallet/deploycontractAPI</code>.The transaction type of stake TRX is <code>FreezeBalanceV2Contract</code>, which requires calling the <code>wallet/freezebalancev2API</code>. We collectively refer to the implementation of these different transaction types as system contracts.</p>
+<p>The TRON network supports many different types of transactions, such as TRX transfers, TRC-10 transfers, smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is <code>CreateSmartContract</code>, which requires calling the <code>wallet/deploycontractAPI</code>.The transaction type of stake TRX is <code>FreezeBalanceV2Contract</code>, which requires calling the <code>wallet/freezebalancev2API</code>. We collectively refer to the implementation of these different transaction types as system contracts.</p>
+<h2 id="contracttype-overview">ContractType Overview<a class="headerlink" href="#contracttype-overview" title="Permanent link">&para;</a></h2>
+<p>Every system contract is identified by a <code>ContractType</code> enum value defined in <a href="https://github.com/tronprotocol/java-tron/blob/master/protocol/src/main/protos/core/Tron.proto"><code>Tron.proto</code></a>. The table below lists each <code>ContractType</code> together with its Proto Message, Actuator, current status, and the business it triggers.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>ContractType</th>
+<th>Proto Message</th>
+<th>Actuator</th>
+<th>Status</th>
+<th>Business Triggered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>AccountCreateContract</td>
+<td>AccountContract.AccountCreateContract</td>
+<td>CreateAccountActuator</td>
+<td>✅ Enabled</td>
+<td>Create an on-chain account</td>
+</tr>
+<tr>
+<td>1</td>
+<td>TransferContract</td>
+<td>BalanceContract.TransferContract</td>
+<td>TransferActuator</td>
+<td>✅ Enabled</td>
+<td>TRX Transfer</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TransferAssetContract</td>
+<td>AssetIssueContractOuterClass.TransferAssetContract</td>
+<td>TransferAssetActuator</td>
+<td>✅ Enabled</td>
+<td>TRC-10 token transfer</td>
+</tr>
+<tr>
+<td>3</td>
+<td>VoteAssetContract</td>
+<td></td>
+<td></td>
+<td>🚫 Disabled (Actuator not implemented)</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>VoteWitnessContract</td>
+<td>WitnessContract.VoteWitnessContract</td>
+<td>VoteWitnessActuator</td>
+<td>✅ Enabled</td>
+<td>Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>WitnessCreateContract</td>
+<td>WitnessContract.WitnessCreateContract</td>
+<td>WitnessCreateActuator</td>
+<td>✅ Enabled</td>
+<td>Apply to become a SR</td>
+</tr>
+<tr>
+<td>6</td>
+<td>AssetIssueContract</td>
+<td>AssetIssueContractOuterClass.AssetIssueContract</td>
+<td>AssetIssueActuator</td>
+<td>✅ Enabled</td>
+<td>Issue TRC-10 tokens; freeze balance during recruitment period according to ICO rules</td>
+</tr>
+<tr>
+<td>8</td>
+<td>WitnessUpdateContract</td>
+<td>WitnessContract.WitnessUpdateContract</td>
+<td>WitnessUpdateActuator</td>
+<td>✅ Enabled</td>
+<td>Update the official website URL of a SR</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ParticipateAssetIssueContract</td>
+<td>AssetIssueContractOuterClass.ParticipateAssetIssueContract</td>
+<td>ParticipateAssetIssueActuator</td>
+<td>✅ Enabled</td>
+<td>Participate in a TRC-10 token issuance with TRX during the ICO period</td>
+</tr>
+<tr>
+<td>10</td>
+<td>AccountUpdateContract</td>
+<td>AccountContract.AccountUpdateContract</td>
+<td>UpdateAccountActuator</td>
+<td>✅ Enabled</td>
+<td>Modify account name (subject to AllowUpdateAccountName constraint)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>FreezeBalanceContract</td>
+<td>BalanceContract.FreezeBalanceContract</td>
+<td>FreezeBalanceActuator</td>
+<td>🚫 Disabled (rejected by chain after <code>supportUnfreezeDelay</code> is enabled)</td>
+<td>Stake 1.0: Freeze TRX to gain Bandwidth/Energy; can be delegated to others</td>
+</tr>
+<tr>
+<td>12</td>
+<td>UnfreezeBalanceContract</td>
+<td>BalanceContract.UnfreezeBalanceContract</td>
+<td>UnfreezeBalanceActuator</td>
+<td>✅ Enabled</td>
+<td>Stake 1.0: Unfreeze TRX after expiration; release resources and clear votes</td>
+</tr>
+<tr>
+<td>13</td>
+<td>WithdrawBalanceContract</td>
+<td>BalanceContract.WithdrawBalanceContract</td>
+<td>WithdrawBalanceActuator</td>
+<td>✅ Enabled</td>
+<td>Withdraw SR block/voting rewards to account balance</td>
+</tr>
+<tr>
+<td>14</td>
+<td>UnfreezeAssetContract</td>
+<td>AssetIssueContractOuterClass.UnfreezeAssetContract</td>
+<td>UnfreezeAssetActuator</td>
+<td>✅ Enabled</td>
+<td>Unfreeze TRC-10 token shares frozen during ICO</td>
+</tr>
+<tr>
+<td>15</td>
+<td>UpdateAssetContract</td>
+<td>AssetIssueContractOuterClass.UpdateAssetContract</td>
+<td>UpdateAssetActuator</td>
+<td>✅ Enabled</td>
+<td>Update TRC-10 token description / url / free bandwidth quota</td>
+</tr>
+<tr>
+<td>16</td>
+<td>ProposalCreateContract</td>
+<td>ProposalContract.ProposalCreateContract</td>
+<td>ProposalCreateActuator</td>
+<td>✅ Enabled</td>
+<td>Create an on-chain parameter proposal; written to ProposalStore for voting</td>
+</tr>
+<tr>
+<td>17</td>
+<td>ProposalApproveContract</td>
+<td>ProposalContract.ProposalApproveContract</td>
+<td>ProposalApproveActuator</td>
+<td>✅ Enabled</td>
+<td>Approve or cancel a vote on a proposal</td>
+</tr>
+<tr>
+<td>18</td>
+<td>ProposalDeleteContract</td>
+<td>ProposalContract.ProposalDeleteContract</td>
+<td>ProposalDeleteActuator</td>
+<td>✅ Enabled</td>
+<td>Withdraw the created proposal</td>
+</tr>
+<tr>
+<td>19</td>
+<td>SetAccountIdContract</td>
+<td>AccountContract.SetAccountIdContract</td>
+<td>SetAccountIdActuator</td>
+<td>✅ Enabled</td>
+<td>Set a unique account_id for the account (can only be set once)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>CustomContract</td>
+<td></td>
+<td></td>
+<td>🚫 Disabled (Actuator not implemented)</td>
+<td></td>
+</tr>
+<tr>
+<td>30</td>
+<td>CreateSmartContract</td>
+<td>SmartContractOuterClass.CreateSmartContract</td>
+<td>VMActuator</td>
+<td>✅ Enabled</td>
+<td>Deploy a smart contract</td>
+</tr>
+<tr>
+<td>31</td>
+<td>TriggerSmartContract</td>
+<td>SmartContractOuterClass.TriggerSmartContract</td>
+<td>VMActuator</td>
+<td>✅ Enabled</td>
+<td>Call/Trigger a smart contract</td>
+</tr>
+<tr>
+<td>32</td>
+<td>GetContract</td>
+<td></td>
+<td></td>
+<td>🚫 Disabled (Actuator not implemented)</td>
+<td></td>
+</tr>
+<tr>
+<td>33</td>
+<td>UpdateSettingContract</td>
+<td>SmartContractOuterClass.UpdateSettingContract</td>
+<td>UpdateSettingContractActuator</td>
+<td>✅ Enabled</td>
+<td>Modify <code>consume_user_resource_percent</code> (percentage of energy borne by the user)</td>
+</tr>
+<tr>
+<td>41</td>
+<td>ExchangeCreateContract</td>
+<td>ExchangeContract.ExchangeCreateContract</td>
+<td>ExchangeCreateActuator</td>
+<td>✅ Enabled</td>
+<td>Create a Bancor exchange pair; inject initial liquidity for two assets</td>
+</tr>
+<tr>
+<td>42</td>
+<td>ExchangeInjectContract</td>
+<td>ExchangeContract.ExchangeInjectContract</td>
+<td>ExchangeInjectActuator</td>
+<td>✅ Enabled</td>
+<td>Inject liquidity into an existing exchange pair; deduct assets based on Bancor algorithm</td>
+</tr>
+<tr>
+<td>43</td>
+<td>ExchangeWithdrawContract</td>
+<td>ExchangeContract.ExchangeWithdrawContract</td>
+<td>ExchangeWithdrawActuator</td>
+<td>✅ Enabled</td>
+<td>Withdraw both assets from the pair proportionally</td>
+</tr>
+<tr>
+<td>44</td>
+<td>ExchangeTransactionContract</td>
+<td>ExchangeContract.ExchangeTransactionContract</td>
+<td>ExchangeTransactionActuator</td>
+<td>🚫 Disabled</td>
+<td>Asset exchange via Bancor exchange pair</td>
+</tr>
+<tr>
+<td>45</td>
+<td>UpdateEnergyLimitContract</td>
+<td>SmartContractOuterClass.UpdateEnergyLimitContract</td>
+<td>UpdateEnergyLimitContractActuator</td>
+<td>✅ Enabled</td>
+<td>Update <code>origin_energy_limit</code> (max energy willing to pay per contract call)</td>
+</tr>
+<tr>
+<td>46</td>
+<td>AccountPermissionUpdateContract</td>
+<td>AccountContract.AccountPermissionUpdateContract</td>
+<td>AccountPermissionUpdateActuator</td>
+<td>✅ Enabled</td>
+<td>Update account permissions: owner/witness/active</td>
+</tr>
+<tr>
+<td>48</td>
+<td>ClearABIContract</td>
+<td>SmartContractOuterClass.ClearABIContract</td>
+<td>ClearABIContractActuator</td>
+<td>✅ Enabled</td>
+<td>Clear contract ABI</td>
+</tr>
+<tr>
+<td>49</td>
+<td>UpdateBrokerageContract</td>
+<td>StorageContract.UpdateBrokerageContract</td>
+<td>UpdateBrokerageActuator</td>
+<td>✅ Enabled</td>
+<td>Adjust the brokerage ratio (0-100%) for voters</td>
+</tr>
+<tr>
+<td>51</td>
+<td>ShieldedTransferContract</td>
+<td>ShieldContract.ShieldedTransferContract</td>
+<td>ShieldedTransferActuator</td>
+<td>🚫 Disabled (<code>getAllowShieldedTransaction</code> not enabled)</td>
+<td>ZK-SNARK anonymous transfer (transparent in + shielded spend/receive + transparent out)</td>
+</tr>
+<tr>
+<td>52</td>
+<td>MarketSellAssetContract</td>
+<td>MarketContract.MarketSellAssetContract</td>
+<td>MarketSellAssetActuator</td>
+<td>🚫 Disabled (<code>getAllowMarketTransaction</code> not enabled)</td>
+<td>Place a limit sell order on the built-in order book (sell/buy two assets + price)</td>
+</tr>
+<tr>
+<td>53</td>
+<td>MarketCancelOrderContract</td>
+<td>MarketContract.MarketCancelOrderContract</td>
+<td>MarketCancelOrderActuator</td>
+<td>🚫 Disabled (<code>getAllowMarketTransaction</code> not enabled)</td>
+<td>Cancel own unexecuted market order; refund remaining assets</td>
+</tr>
+<tr>
+<td>54</td>
+<td>FreezeBalanceV2Contract</td>
+<td>BalanceContract.FreezeBalanceV2Contract</td>
+<td>FreezeBalanceV2Actuator</td>
+<td>✅ Enabled</td>
+<td>Stake 2.0: Freeze TRX to gain Bandwidth/Energy; decouples resources from TronPower</td>
+</tr>
+<tr>
+<td>55</td>
+<td>UnfreezeBalanceV2Contract</td>
+<td>BalanceContract.UnfreezeBalanceV2Contract</td>
+<td>UnfreezeBalanceV2Actuator</td>
+<td>✅ Enabled</td>
+<td>Stake 2.0: Initiate unstaking; enters unfreeze waiting period</td>
+</tr>
+<tr>
+<td>56</td>
+<td>WithdrawExpireUnfreezeContract</td>
+<td>BalanceContract.WithdrawExpireUnfreezeContract</td>
+<td>WithdrawExpireUnfreezeActuator</td>
+<td>✅ Enabled</td>
+<td>Withdraw unfrozen TRX that has passed the waiting period to account balance</td>
+</tr>
+<tr>
+<td>57</td>
+<td>DelegateResourceContract</td>
+<td>BalanceContract.DelegateResourceContract</td>
+<td>DelegateResourceActuator</td>
+<td>✅ Enabled</td>
+<td>Stake 2.0: Delegate own staked Bandwidth/Energy to other addresses (lock-up period optional)</td>
+</tr>
+<tr>
+<td>58</td>
+<td>UnDelegateResourceContract</td>
+<td>BalanceContract.UnDelegateResourceContract</td>
+<td>UnDelegateResourceActuator</td>
+<td>✅ Enabled</td>
+<td>Stake 2.0: Reclaim previously delegated resources from others</td>
+</tr>
+<tr>
+<td>59</td>
+<td>CancelAllUnfreezeV2Contract</td>
+<td>BalanceContract.CancelAllUnfreezeV2Contract</td>
+<td>CancelAllUnfreezeV2Actuator</td>
+<td>✅ Enabled</td>
+<td>Cancel all pending Stake 2.0 unfreezing requests; remaining shares are re-staked</td>
+</tr>
+</tbody>
+</table>
+<p>The protobuf message definition and field-level documentation of each contract are listed in the sections below.</p>
 <h2 id="accountcreatecontract">AccountCreateContract<a class="headerlink" href="#accountcreatecontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message AccountCreateContract {
       bytes owner_address = 1;
@@ -9247,7 +9574,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account creating the new account.</li>
 <li><code>account_address</code>: The target address to create.</li>
 <li><code>type</code>: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.</li>
 </ul>
@@ -9259,7 +9586,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account sending TRX.</li>
 <li><code>to_address</code>: The target address to receive the transfer.</li>
 <li><code>amount</code>: The amount of TRX to transfer.</li>
 </ul>
@@ -9273,7 +9600,7 @@
 </code></pre></div>
 <ul>
 <li><code>asset_name</code>: The TRC-10 token ID to transfer.</li>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account sending the TRC-10 token.</li>
 <li><code>to_address</code>: The target address to receive the transfer.</li>
 <li><code>amount</code>: The amount of token to transfer.</li>
 </ul>
@@ -9289,8 +9616,8 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
-<li><code>vote_address</code>: The SR or candidate's address.</li>
+<li><code>owner_address</code>: The address of the account casting votes for SRs.</li>
+<li><code>vote_address</code>: The SR address.</li>
 <li><code>vote_count</code>: The votes number.</li>
 <li><code>support</code>: Constant true, not used.</li>
 </ul>
@@ -9301,8 +9628,8 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
-<li><code>url</code>: The website url of the witness.</li>
+<li><code>owner_address</code>: The address of the account applying to become a SR.</li>
+<li><code>url</code>: The website url of the SR.</li>
 </ul>
 <h2 id="assetissuecontract">AssetIssueContract<a class="headerlink" href="#assetissuecontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message AssetIssueContract {
@@ -9316,10 +9643,11 @@
       int64 total_supply = 4;
       repeated FrozenSupply frozen_supply = 5;
       int32 trx_num = 6;
+      int32 precision = 7;
       int32 num = 8;
       int64 start_time = 9;
       int64 end_time = 10;
-      int64 order = 11; // the order of tokens of the same name
+      int64 order = 11; // useless
       int32 vote_score = 16;
       bytes description = 20;
       bytes url = 21;
@@ -9327,10 +9655,11 @@
       int64 public_free_asset_net_limit = 23;
       int64 public_free_asset_net_usage = 24;
       int64 public_latest_free_net_time = 25;
+      string id = 41;
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account issuing the TRC-10 token.</li>
 <li><code>name</code>: The token name to issue.</li>
 <li><code>abbr</code>: The abbreviation of the token name.</li>
 <li><code>total_supply</code>: The amount of token to issue.</li>
@@ -9347,6 +9676,7 @@
 <li><code>public_free_asset_net_limit</code>: The free bandwidth limit all the accounts can use.</li>
 <li><code>public_free_asset_net_usage</code>: The free bandwidth usage of all the accounts.</li>
 <li><code>public_latest_free_net_time</code>: The latest bandwidth consumption time of token transfer.</li>
+<li><code>id</code>: The unique token ID, generated sequentially by the system at issuance (incrementing from 1000001).</li>
 </ul>
 <h2 id="witnessupdatecontract">WitnessUpdateContract<a class="headerlink" href="#witnessupdatecontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message WitnessUpdateContract {
@@ -9355,8 +9685,8 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
-<li><code>update_url</code>: The website url of the witness.</li>
+<li><code>owner_address</code>: The address of the SR updating its URL.</li>
+<li><code>update_url</code>: The website url of the SR.</li>
 </ul>
 <h2 id="participateassetissuecontract">ParticipateAssetIssueContract<a class="headerlink" href="#participateassetissuecontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message ParticipateAssetIssueContract {
@@ -9367,9 +9697,9 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account participating in the asset issue.</li>
 <li><code>to_address</code>: The token owner's address.</li>
-<li><code>account_name</code>: The token id.</li>
+<li><code>asset_name</code>: The token id.</li>
 <li><code>amount</code>: The amount of token to purchase.</li>
 </ul>
 <h2 id="accountupdatecontract">AccountUpdateContract<a class="headerlink" href="#accountupdatecontract" title="Permanent link">&para;</a></h2>
@@ -9380,34 +9710,18 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account to update.</li>
 <li><code>account_name</code>: Account name.</li>
-</ul>
-<h2 id="deprecatedfreezebalancecontract">(Deprecated)FreezeBalanceContract<a class="headerlink" href="#deprecatedfreezebalancecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>    message FreezeBalanceContract {
-      bytes owner_address = 1;
-      int64 frozen_balance = 2;
-      int64 frozen_duration = 3;
-      ResourceCode resource = 10;
-      bytes receiver_address = 15;
-    }
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
-<li><code>frozen_balance</code>: The amount of TRX to stake.</li>
-<li><code>frozen_duration</code>: The stake duration.</li>
-<li><code>resource</code>: The type of resource get by staking TRX.</li>
-<li><code>receiver_address</code>: The account address to receive resource.</li>
 </ul>
 <h2 id="unfreezebalancecontract">UnfreezeBalanceContract<a class="headerlink" href="#unfreezebalancecontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message UnfreezeBalanceContract {
       bytes owner_address = 1;
       ResourceCode resource = 10;
-      bytes receiver_address = 13;
+      bytes receiver_address = 15;
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account unstaking TRX.</li>
 <li><code>resource</code>: The type of resource to unfree.</li>
 <li><code>receiver_address</code>: The account address to receive resource.</li>
 </ul>
@@ -9417,7 +9731,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account withdrawing rewards.</li>
 </ul>
 <h2 id="unfreezeassetcontract">UnfreezeAssetContract<a class="headerlink" href="#unfreezeassetcontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message UnfreezeAssetContract {
@@ -9425,7 +9739,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the token issuer.</li>
 </ul>
 <h2 id="updateassetcontract">UpdateAssetContract<a class="headerlink" href="#updateassetcontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message UpdateAssetContract {
@@ -9437,7 +9751,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the token issuer.</li>
 <li><code>description</code>: The description of the token.</li>
 <li><code>url</code>: The website url of the token.</li>
 <li><code>new_limit</code>: The bandwidth consumption limit of each account when transfers asset.</li>
@@ -9450,7 +9764,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account creating the proposal.</li>
 <li><code>parameters</code>: The proposal.</li>
 </ul>
 <h2 id="proposalapprovecontract">ProposalApproveContract<a class="headerlink" href="#proposalapprovecontract" title="Permanent link">&para;</a></h2>
@@ -9461,7 +9775,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account approving the proposal.</li>
 <li><code>proposal_id</code>: The proposal id.</li>
 <li><code>is_add_approval</code>: Whether to approve.</li>
 </ul>
@@ -9472,7 +9786,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account deleting the proposal.</li>
 <li><code>proposal_id</code>: The proposal id.</li>
 </ul>
 <h2 id="setaccountidcontract">SetAccountIdContract<a class="headerlink" href="#setaccountidcontract" title="Permanent link">&para;</a></h2>
@@ -9483,7 +9797,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account setting the account id.</li>
 <li><code>account_id</code>: The account id.</li>
 </ul>
 <h2 id="createsmartcontract">CreateSmartContract<a class="headerlink" href="#createsmartcontract" title="Permanent link">&para;</a></h2>
@@ -9495,7 +9809,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account deploying the contract.</li>
 <li><code>new_contract</code>: the smart contract.</li>
 <li><code>call_token_value</code> : The amount of TRC-10 token to send to the contract when triggers.</li>
 <li><code>token_id</code> : The id of the TRC-10 token to be sent to the contract.</li>
@@ -9511,7 +9825,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account calling the contract.</li>
 <li><code>contract_address</code>: The contract address.</li>
 <li><code>call_value</code>: The amount of TRX to send to the contract when triggers.</li>
 <li><code>data</code>: The parameters to trigger the contract.</li>
@@ -9526,7 +9840,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the contract deployer.</li>
 <li><code>contract_address</code>: The address of the smart contract.</li>
 <li><code>consume_user_resource_percent</code>: The percentage of resource consumption ratio.</li>
 </ul>
@@ -9540,7 +9854,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account creating the exchange pair.</li>
 <li><code>first_token_id</code>: First token id.</li>
 <li><code>first_token_balance</code>: First token balance.</li>
 <li><code>second_token_id</code>: Second token id.</li>
@@ -9555,7 +9869,7 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account injecting liquidity (must be the pair's creator).</li>
 <li><code>exchange_id</code>: The token pair id.</li>
 <li><code>token_id</code>: The token id to inject.</li>
 <li><code>quant</code>: The token amount to inject.</li>
@@ -9569,102 +9883,10 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the account withdrawing liquidity (must be the pair's creator).</li>
 <li><code>exchange_id</code>: The token pair id.</li>
 <li><code>token_id</code>: The token id to withdraw.</li>
 <li><code>quant</code>: The token amount to withdraw.</li>
-</ul>
-<h2 id="exchangetransactioncontract">ExchangeTransactionContract<a class="headerlink" href="#exchangetransactioncontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>    message ExchangeTransactionContract {
-      bytes owner_address = 1;
-      int64 exchange_id = 2;
-      bytes token_id = 3;
-      int64 quant = 4;
-      int64 expected = 5;
-    }
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
-<li><code>exchange_id</code>: The token pair id.</li>
-<li><code>token_id</code>: The token id to sell.</li>
-<li><code>quant</code>: The token amount to sell.</li>
-<li><code>expected</code>: The expected token amount to buy, if the calculated actual token amount that can be bought is less than this value, the transaction will fail.</li>
-</ul>
-<h2 id="shieldedtransfercontract">ShieldedTransferContract<a class="headerlink" href="#shieldedtransfercontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>    message ShieldedTransferContract {
-      bytes transparent_from_address = 1;
-      int64 from_amount = 2;
-      repeated SpendDescription spend_description = 3;
-      repeated ReceiveDescription receive_description = 4;
-      bytes binding_signature = 5;
-      bytes transparent_to_address = 6;
-      int64 to_amount = 7;
-    }
-</code></pre></div>
-<ul>
-<li><code>transparent_from_address</code>: The transparent address of the sender.</li>
-<li><code>from_amount</code>: The amount to send.</li>
-<li><code>spend_description</code>: Shielded spend information.</li>
-<li><code>receive_description</code>: Shielded receive information.</li>
-<li><code>binding_signature</code>: The binding signature.</li>
-<li><code>transparent_to_address</code>: The transparent address of the receiver.</li>
-<li><code>to_amount</code>: The amount to receive.</li>
-</ul>
-<div class="highlight"><pre><span></span><code>message SpendDescription {
-  bytes value_commitment = 1;
-  bytes anchor = 2;
-  bytes nullifier = 3;
-  bytes rk = 4;
-  bytes zkproof = 5;
-  bytes spend_authority_signature = 6;
-}
-</code></pre></div>
-<ul>
-<li><code>value_commitment</code>: <em>value commitment</em> of spender's transfer amount.</li>
-<li><code>anchor</code>: root of the note commitment Merkle tree at some block.</li>
-<li><code>nullifier</code>: <em>nullifier</em> of spender's note, to prevent double-spent.</li>
-<li><code>rk</code>: public key, to verify spender's <em>Spend Authorization Signature</em>.</li>
-<li><code>zkproof</code>: zero-knowledge proof of spender's note, prove that this note exists and could be spent.</li>
-<li><code>spend_authority_signature</code>: the spender's <em>Spend Authorization Signature</em>.</li>
-</ul>
-<div class="highlight"><pre><span></span><code>message ReceiveDescription {
-  bytes value_commitment = 1;
-  bytes note_commitment = 2;
-  bytes epk = 3;
-  bytes c_enc = 4;
-  bytes c_out = 5;
-  bytes zkproof = 6;
-}
-</code></pre></div>
-<ul>
-<li><code>value_commitment</code>: <em>value commitment</em> of receiver's transfer amount.</li>
-<li><code>note_commitment</code>: commitment of the receiver's note.</li>
-<li><code>epk</code>: ephemeral public key, in order to generate note's decryption key.</li>
-<li><code>c_enc</code>: part of note ciphertext, encryption of diversifier, receiver's transfer amount, rcm, and memo.</li>
-<li><code>c_out</code>: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.</li>
-<li><code>zkproof</code>: zero-knowledge proof of the receiver's note.</li>
-</ul>
-<h2 id="account-permission-management">Account Permission Management<a class="headerlink" href="#account-permission-management" title="Permanent link">&para;</a></h2>
-<p><a href="../multi-signatures/">Account Permission Management</a></p>
-<h2 id="clearabicontract">ClearABIContract<a class="headerlink" href="#clearabicontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>    message ClearABIContract {
-      bytes owner_address = 1;
-      bytes contract_address = 2;
-    }
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
-<li><code>account_address</code>: The target contract address to clear ABI.</li>
-</ul>
-<h2 id="updatebrokeragecontract">UpdateBrokerageContract<a class="headerlink" href="#updatebrokeragecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>    message UpdateBrokerageContract {
-      bytes owner_address = 1;
-      int32 brokerage = 2;
-    }
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
-<li><code>brokerage</code>: Commission rate, from 0 to 100,1 mean 1%.</li>
 </ul>
 <h2 id="updateenergylimitcontract">UpdateEnergyLimitContract<a class="headerlink" href="#updateenergylimitcontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>    message UpdateEnergyLimitContract {
@@ -9674,9 +9896,44 @@
     }
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The owner of the current account.</li>
+<li><code>owner_address</code>: The address of the contract deployer.</li>
 <li><code>contract_address</code>: The contract address.</li>
 <li><code>origin_energy_limit</code>: The target energy limit to change.</li>
+</ul>
+<h2 id="accountpermissionupdatecontract">AccountPermissionUpdateContract<a class="headerlink" href="#accountpermissionupdatecontract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>    message AccountPermissionUpdateContract {
+      bytes owner_address = 1;
+      Permission owner = 2;             //Empty is invalidate
+      Permission witness = 3;           //Can be empty
+      repeated Permission actives = 4;  //Empty is invalidate
+    }
+</code></pre></div>
+<ul>
+<li><code>owner_address</code>: The address of the account whose permissions will be updated.</li>
+<li><code>owner</code>: The owner permission of the account. Cannot be empty.</li>
+<li><code>witness</code>: The witness permission. Required for SRs; must be empty for non-SRs.</li>
+<li><code>actives</code>: The list of active permissions. Cannot be empty; at most 8 entries.</li>
+</ul>
+<p>For more details, see <a href="../multi-signatures/">Account Permission Management</a>.</p>
+<h2 id="clearabicontract">ClearABIContract<a class="headerlink" href="#clearabicontract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>    message ClearABIContract {
+      bytes owner_address = 1;
+      bytes contract_address = 2;
+    }
+</code></pre></div>
+<ul>
+<li><code>owner_address</code>: The address of the contract deployer.</li>
+<li><code>contract_address</code>: The target contract address to clear ABI.</li>
+</ul>
+<h2 id="updatebrokeragecontract">UpdateBrokerageContract<a class="headerlink" href="#updatebrokeragecontract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>    message UpdateBrokerageContract {
+      bytes owner_address = 1;
+      int32 brokerage = 2;
+    }
+</code></pre></div>
+<ul>
+<li><code>owner_address</code>: The address of the SR adjusting its brokerage ratio.</li>
+<li><code>brokerage</code>: Brokerage ratio, from 0 to 100, 1 means 1%.</li>
 </ul>
 <h2 id="freezebalancev2contract">FreezeBalanceV2Contract<a class="headerlink" href="#freezebalancev2contract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">FreezeBalanceV2Contract</span><span class="w"> </span><span class="p">{</span>
@@ -9686,7 +9943,7 @@
 <span class="w">      </span><span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：The owner's address</li>
+<li><code>owner_address</code>: The address of the account staking TRX.</li>
 <li><code>frozen_balance</code>：TRX stake amount, the unit is sun</li>
 <li><code>resource</code>： Resource type</li>
 </ul>
@@ -9698,7 +9955,7 @@
 <span class="w">      </span><span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：Owner address</li>
+<li><code>owner_address</code>: The address of the account unstaking TRX.</li>
 <li><code>unfreeze_balance</code>：The amount of TRX to unstake, in sun</li>
 <li><code>resource</code>： Resource type</li>
 </ul>
@@ -9708,7 +9965,7 @@
 <span class="w">      </span><span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：The owner's address</li>
+<li><code>owner_address</code>: The address of the account withdrawing expired unstaked TRX.</li>
 </ul>
 <h2 id="delegateresourcecontract">DelegateResourceContract<a class="headerlink" href="#delegateresourcecontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">DelegateResourceContract</span><span class="w"> </span><span class="p">{</span>
@@ -9717,14 +9974,16 @@
 <span class="w">      </span><span class="kt">int64</span><span class="w"> </span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">receiver_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="w">      </span><span class="kt">bool</span><span class="w">  </span><span class="na">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">int64</span><span class="w"> </span><span class="na">lock_period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
 <span class="w">      </span><span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：The owner's address</li>
+<li><code>owner_address</code>: The address of the resource delegator.</li>
 <li><code>resource</code>： Resource type</li>
 <li><code>balance</code>： Amount of TRX staked for resources to be delegated, unit is sun</li>
 <li><code>receiver_address</code>：Resource receiver address</li>
-<li><code>lock</code>：Indicates whether the delegation is locked. If <code>true</code>, the delegated resources cannot be undelegated for 3 days. If the owner delegates the same resource type to the same address with a lock before the initial lock expires, the 3-day lock timer is reset.</li>
+<li><code>lock</code>：Whether to lock this delegation.</li>
+<li><code>lock_period</code>：The lock duration when <code>lock=true</code>, in blocks (3 seconds per block). User-supplied values are only accepted after the <code>MAX_DELEGATE_LOCK_PERIOD</code> proposal takes effect; in that case <code>0</code> means use the default of 86400 blocks (3 days), and the upper bound is determined by the chain parameter <code>getMaxDelegateLockPeriod</code>. Before the proposal takes effect this field is ignored and the lock duration is fixed at 86400 blocks.</li>
 </ul>
 <h2 id="undelegateresourcecontract">UnDelegateResourceContract<a class="headerlink" href="#undelegateresourcecontract" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UnDelegateResourceContract</span><span class="w"> </span><span class="p">{</span>
@@ -9735,10 +9994,18 @@
 <span class="w">      </span><span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：The owner's address</li>
+<li><code>owner_address</code>: The address of the account reclaiming previously delegated resources.</li>
 <li><code>resource</code>： Resource type</li>
 <li><code>balance</code>：undelegated TRX, unit is sun</li>
 <li><code>receiver_address</code>：Resource receiver address</li>
+</ul>
+<h2 id="cancelallunfreezev2contract">CancelAllUnfreezeV2Contract<a class="headerlink" href="#cancelallunfreezev2contract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">CancelAllUnfreezeV2Contract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>owner_address</code>: The address of the account canceling all pending Stake 2.0 unfreezing requests.</li>
 </ul>
 
 
@@ -9760,7 +10027,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2026 20:08:46 UTC">April 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 8, 2026 09:01:51 UTC">June 8, 2026</span>
   </span>
 
     
