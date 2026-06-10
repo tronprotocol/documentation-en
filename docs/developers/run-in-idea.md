@@ -48,7 +48,7 @@ To ensure the project compiles and runs correctly, you must set the JDK version 
 
 This is the core JDK used for compiling the project's source code and performing syntax analysis.
 
-1. Navigate to `File` -\> `Project Structure` , and select "Project" from the left panel.
+1. Navigate to `File` -\> `Project Structure`, and select "Project" from the left panel.
 2.  In the `Project SDK` dropdown menu, confirm that version `1.8` is selected.
 
 #### 2. Configure Gradle JVM
