@@ -61,11 +61,11 @@ Provide a detailed description of the technical specifications or background inf
 
 ## Community Discussion
 
-After the TIP discussion is initiated, the proposer should actively encourage community users to engage the community, gather feedback, and iterate on the proposal accordingly.
+After the TIP discussion is initiated, the proposer should actively engage with the community, gather feedback, and iterate on the proposal accordingly.
 
 ## Submit Voting Request
 
-Typically, if the community has fully discussed and reached a basic consensus, a **Super Representative** , **Super Representative Partner** or  **Super Representative Candidates** will formally submit the voting request on-chain.
+Typically, if the community has fully discussed and reached a basic consensus, a **Super Representative** , **Super Representative Partner** or  **Super Representative Candidate** will formally submit the voting request on-chain.
 
 ## Voting and Implementation
 
