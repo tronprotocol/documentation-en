@@ -8851,7 +8851,7 @@ After the build is complete, the generated <code>.zip</code> file is the plugin 
 <p>Visit the <a href="https://github.com/tronprotocol/event-plugin/releases">event-plugin Releases page</a> to download the latest plugin package.</p>
 <h5 id="step-2-modify-the-fullnode-configuration">Step 2: Modify the FullNode Configuration<a class="headerlink" href="#step-2-modify-the-fullnode-configuration" title="Permanent link">&para;</a></h5>
 <p>In your <code>config.conf</code> file, set the event service version to <code>V2.0</code> by setting the value to 1.</p>
-<div class="highlight"><pre><span></span><code>event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
+<div class="highlight"><pre><span></span><code>event.subscribe.version = 1 # 1 for V2.0, 0 for V1.0
 </code></pre></div>
 <h5 id="step-3-configure-the-event-plugin">Step 3: Configure the Event Plugin<a class="headerlink" href="#step-3-configure-the-event-plugin" title="Permanent link">&para;</a></h5>
 <p>The configuration process for the new plugin is mostly identical to the old version. You can refer to the official documentation for deployment:</p>
@@ -8897,7 +8897,7 @@ cd event-plugin
 <h5 id="step-1-installing-kafka">Step 1. Installing Kafka<a class="headerlink" href="#step-1-installing-kafka" title="Permanent link">&para;</a></h5>
 <p>In a Linux environment, please follow these steps to install Kafka:</p>
 <div class="highlight"><pre><span></span><code>cd /usr/local
-wget https://downloads.apache.org/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
 tar -xzf kafka_2.13-2.8.0.tgz
 </code></pre></div>
 <h5 id="step-2-running-kafka">Step 2: Running Kafka<a class="headerlink" href="#step-2-running-kafka" title="Permanent link">&para;</a></h5>
@@ -8938,14 +8938,15 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 <li><code>path</code>: The absolute local path to the <code>plugin-kafka-1.0.0.zip</code> file. Please ensure the path is correct, or the plugin will fail to load.</li>
 <li><code>server</code>: The Kafka server address in <code>ip:port</code> format. The default Kafka port is <code>9092</code>. Please ensure the port number is correct and that the Kafka service is accessible.</li>
 <li><code>dbconfig</code>: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.</li>
+<li><code>contractParse</code>: Controls whether contract logs are ABI-decoded. When <code>true</code> (the default), the node matches each log against the contract's ABI; matched logs are delivered as decoded <code>contractevent</code> triggers, while unmatched logs are delivered as raw <code>contractlog</code> triggers. When <code>false</code>, ABI decoding is skipped and all logs are delivered as raw <code>contractlog</code> triggers.</li>
 <li><code>topics</code>: Configure the events to subscribe to. For more details, please refer to the <a href="#event-types">Event Types</a> section below.</li>
-<li><code>filter</code>: Filtering parameters. For more details, please refer to the <a href="#event-types">Event Types</a> section below.</li>
+<li><code>filter</code>: Filtering parameters. For more details, please refer to the <a href="#event-filtering">Event Filtering</a> section below.</li>
 </ul>
-<h6 id="event-types">Event Types<a class="headerlink" href="#event-types" title="Permanent link">&para;</a></h6>
+<h4 id="event-types">Event Types<a class="headerlink" href="#event-types" title="Permanent link">&para;</a></h4>
 <p>TRON event subscription supports 7 types of events: <code>block</code>, <code>transaction</code>, <code>contractevent</code>, <code>contractlog</code>, <code>solidity</code>, <code>solidityevent</code>, and <code>soliditylog</code>. Developers should configure these based on their application's specific needs. <strong>We recommend subscribing to only 1-2 event types. Enabling too many triggers can lead to performance degradation.</strong></p>
-<p><strong>1. Transaction Event</strong></p>
+<h5 id="1-transaction-event">1. Transaction Event<a class="headerlink" href="#1-transaction-event" title="Permanent link">&para;</a></h5>
 <p>Subscribes to events related to on-chain transactions.</p>
-<p>Configuration Example：</p>
+<p>Configuration Example:</p>
 <p><div class="highlight"><pre><span></span><code>event.subscribe.topics = [
   {
     triggerName = &quot;transaction&quot;
@@ -8972,9 +8973,9 @@ Parameters:</p>
 <li><code>energyFee</code>: The total amount of TRX (in sun) consumed by the transaction.</li>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/TransactionLogTrigger.java">TransactionLogTrigger</a> source code.</p>
-<p><strong>2. Block Events</strong></p>
+<h5 id="2-block-events">2. Block Events<a class="headerlink" href="#2-block-events" title="Permanent link">&para;</a></h5>
 <p>Subscribes to events triggered upon the creation of new blocks.</p>
-<p>Configuration Example：</p>
+<p>Configuration Example:</p>
 <div class="highlight"><pre><span></span><code>event.subscribe.topics = [
   {
     triggerName = &quot;block&quot;
@@ -8993,9 +8994,9 @@ Parameters:</p>
 <li><code>transactionList</code>: An array of transaction hashes contained within the block.</li>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/BlockLogTrigger.java">BlockLogTrigger</a> source code.</p>
-<p><strong>3. Contract Events and Logs</strong></p>
+<h5 id="3-contract-events-and-logs">3. Contract Events and Logs<a class="headerlink" href="#3-contract-events-and-logs" title="Permanent link">&para;</a></h5>
 <p>Subscribes to smart contract events and logs generated during contract execution.</p>
-<p>Configuration Example：</p>
+<p>Configuration Example:</p>
 <div class="highlight"><pre><span></span><code>event.subscribe.topics = [
   {
     triggerName = &quot;contractevent&quot;
@@ -9033,11 +9034,11 @@ Parameters:</p>
 <li><code>blockNumber</code>: The block height at which the event was included.</li>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java">ContractEventTrigger</a> and <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java">ContractLogTrigger</a> source code.</p>
-<blockquote>
-<p><strong>Note</strong>: <code>Contract event</code> and <code>Contract log</code> support event filtering through the <code>filter</code> field. You can specify a block range (<code>fromblock</code> - <code>toblock</code>), specific contract addresses (<code>contractAddress</code>), or specific contract topics (<code>contractTopic</code>) to provide developers with a more efficient and precise event subscription service.
+<h6 id="event-filtering">Event Filtering<a class="headerlink" href="#event-filtering" title="Permanent link">&para;</a></h6>
+<p><code>Contract event</code> and <code>Contract log</code> support event filtering through the <code>filter</code> field. You can specify a block range (<code>fromblock</code> - <code>toblock</code>), specific contract addresses (<code>contractAddress</code>), or specific contract topics (<code>contractTopic</code>) to provide developers with a more efficient and precise event subscription service.</p>
 <div class="highlight"><pre><span></span><code>filter = {
   fromblock = &quot;&quot; // The starting block number of the query range. Can be an empty string, &quot;earliest&quot;, or a specific block number.
-  toblock = &quot;&quot; // The ending block number of the query range. Can be an empty string, &quot;latest&quot;, or a specific block number.
+  toblock = &quot;&quot; // The ending block range of the query range. Can be an empty string, &quot;latest&quot;, or a specific block number.
   contractAddress = [
     &quot;&quot; // The contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.
   ]
@@ -9046,11 +9047,10 @@ Parameters:</p>
     &quot;&quot; // The contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.
   ]
 }
-</code></pre></div></p>
-</blockquote>
-<p><strong>4. Solidified Block Notification Events</strong></p>
+</code></pre></div>
+<h5 id="4-solidified-block-notification-events">4. Solidified Block Notification Events<a class="headerlink" href="#4-solidified-block-notification-events" title="Permanent link">&para;</a></h5>
 <p>Subscribes to real-time notifications for the latest solidified block height. This is ideal for applications that need to track the chain's finalized state.</p>
-<p>Configuration Example：</p>
+<p>Configuration Example:</p>
 <div class="highlight"><pre><span></span><code>event.subscribe.topics = [
   {
     triggerName = &quot;solidity&quot;
@@ -9144,7 +9144,7 @@ cd event-plugin
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip&quot;</span><span class="w">  </span>
 <span class="w">  </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;127.0.0.1:27017&quot;</span><span class="w">  </span>
-<span class="w">  </span><span class="nx">dbconfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eventlog|tron|123456&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">dbconfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eventlog|&lt;eventlog-username&gt;|&lt;eventlog-password&gt;&quot;</span><span class="w">  </span>
 <span class="w">  </span><span class="nx">topics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w">  </span>
@@ -9203,11 +9203,12 @@ cd event-plugin
 <li><code>native.useNativeQueue</code>: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. <code>true</code> uses the built-in queue, while <code>false</code> uses the plugin. This must be set to <code>false</code>.</li>
 <li><code>path</code>: The absolute path to the plugin file, e.g., <code>"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"</code>.</li>
 <li><code>server</code>: The target server address, i.e., the address and port for MongoDB, e.g., <code>"127.0.0.1:27017"</code>.</li>
-<li><code>dbconfig</code>: The MongoDB database configuration in the format: <code>database_name|username|password</code>, e.g., <code>"eventlog|tron|123456"</code>.</li>
+<li><code>dbconfig</code>: The MongoDB database configuration in the format: <code>database_name|username|password</code>, e.g., <code>"eventlog|&lt;eventlog-username&gt;|&lt;eventlog-password&gt;"</code>.</li>
 <li><code>topics</code>: Seven event types are currently supported: <code>block</code>, <code>transaction</code>, <code>contractevent</code>, <code>contractlog</code>, <code>solidity</code>, <code>solidityevent</code>, and <code>soliditylog</code>. For more details, please refer to the <a href="#event-types">Event Types</a> chapter.<ul>
 <li><code>triggerName</code>: The name of the trigger, which cannot be modified.</li>
 <li><code>enable</code>: Toggles the event subscription. <code>true</code> enables it, <code>false</code> disables it.</li>
 <li><code>topic</code>: The name of the collection in MongoDB that will receive the events. This can be modified.</li>
+<li><code>redundancy</code>: Only applies to <code>contractlog</code> and <code>soliditylog</code>. When set to <code>true</code>, a contract log that has already been delivered as a <code>contractevent</code>/<code>solidityevent</code> is <strong>also</strong> delivered as a raw <code>contractlog</code>/<code>soliditylog</code>. Defaults to <code>false</code>.</li>
 </ul>
 </li>
 <li><code>filter</code>: The criteria for filtering events.<ul>
@@ -9278,7 +9279,7 @@ cd tron-eventquery
 </code></pre></div>
 <h5 id="2-building-the-service">2. Building the Service<a class="headerlink" href="#2-building-the-service" title="Permanent link">&para;</a></h5>
 <p>Download and use Maven to build the <code>tron-eventquery</code> service:</p>
-<div class="highlight"><pre><span></span><code>wget https://mirrors.cnnic.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
+<div class="highlight"><pre><span></span><code>wget https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
 tar zxvf apache-maven-3.5.4-bin.tar.gz
 export M2_HOME=$HOME/maven/apache-maven-3.5.4
 export PATH=$PATH:$M2_HOME/bin
@@ -9318,13 +9319,13 @@ sh insertIndex.sh
 <div class="highlight"><pre><span></span><code>tail -f logs/tron.log | grep -i eventplugin
 </code></pre></div>
 <p>If you see a message similar to the following, the plugin has loaded successfully:</p>
-<div class="highlight"><pre><span></span><code>o.t.c.l.EventPluginLoader &#39;your plugin path/plugin-kafka-1.0.0.zip&#39; loaded
+<div class="highlight"><pre><span></span><code>o.t.c.l.EventPluginLoader &#39;your plugin path/plugin-mongodb-1.0.0.zip&#39; loaded
 </code></pre></div>
 <h5 id="3-verifying-data-persistence-in-mongodb">3. Verifying Data Persistence in MongoDB<a class="headerlink" href="#3-verifying-data-persistence-in-mongodb" title="Permanent link">&para;</a></h5>
 <p>Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:</p>
-<div class="highlight"><pre><span></span><code>mongo 47.90.245.68:27017
+<div class="highlight"><pre><span></span><code>mongo 127.0.0.1:27017
 use eventlog
-db.auth(&quot;tron&quot;, &quot;123456&quot;)
+db.auth(&quot;&lt;eventlog-username&gt;&quot;, &quot;&lt;eventlog-password&gt;&quot;)
 show collections
 db.block.find()
 </code></pre></div>
@@ -9378,7 +9379,7 @@ db.block.find()
 </code></pre></div>
 <p>Next, write the subscriber code:</p>
 <div class="highlight"><pre><span></span><code>// subscriber.js
-var zmq = require(&quot;zeromq&quot;),
+var zmq = require(&quot;zeromq&quot;);
 var sock = zmq.socket(&quot;sub&quot;);
 
 sock.connect(&quot;tcp://127.0.0.1:5555&quot;);
@@ -9402,8 +9403,8 @@ sock.on(&quot;message&quot;, function(topic, message) {
 &gt; Subscriber connected to port 5555
 </code></pre></div>
 <p>When the node produces a new block, the subscriber will receive the block event, and the output will look like this:</p>
-<div class="highlight"><pre><span></span><code>received a message related to: block, containing message: {&quot;timeStamp&quot;:1678343709000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1361,&quot;blockHash&quot;:&quot;00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1361,&quot;transactionList&quot;:[]}
-received a message related to: block, containing message: {&quot;timeStamp&quot;:1678343712000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1362,&quot;blockHash&quot;:&quot;0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1362,&quot;transactionList&quot;:[]}
+<div class="highlight"><pre><span></span><code>received a message related to: blockTrigger, containing message: {&quot;timeStamp&quot;:1678343709000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1361,&quot;blockHash&quot;:&quot;00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1361,&quot;transactionList&quot;:[]}
+received a message related to: blockTrigger, containing message: {&quot;timeStamp&quot;:1678343712000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1362,&quot;blockHash&quot;:&quot;0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1362,&quot;transactionList&quot;:[]}
 </code></pre></div>
 
 
@@ -9425,7 +9426,7 @@ received a message related to: block, containing message: {&quot;timeStamp&quot;
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 09:28:13 UTC">May 12, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 5, 2026 03:25:56 UTC">June 5, 2026</span>
   </span>
 
     

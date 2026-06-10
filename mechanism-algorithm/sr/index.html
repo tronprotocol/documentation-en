@@ -8831,13 +8831,13 @@
 
 <h1 id="super-representatives-committee">Super Representatives &amp; Committee<a class="headerlink" href="#super-representatives-committee" title="Permanent link">&para;</a></h1>
 <h2 id="how-to-become-a-super-representative">How to Become a Super Representative<a class="headerlink" href="#how-to-become-a-super-representative" title="Permanent link">&para;</a></h2>
-<p>In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate and participate in the election by paying a one-time fee of 9999 TRX.</p>
-<p>Based on the final vote rankings, candidates are divided into two categories:</p>
+<p>In the TRON network, block producers are called Super Representatives (SRs), and they are elected by a network-wide vote. Any account can apply to become a Super Representative candidate by paying a one-time fee of 9999 TRX, and any TRX holder can vote for SR candidates.</p>
+<p>An application to become a candidate can be initiated via the <code>CreateWitness</code> command in the wallet-cli client, and requires submitting a URL (used to publish information such as the candidate's homepage).</p>
+<p>Based on the final vote rankings, the top 127 candidates take on one of two roles:</p>
 <ul>
 <li><strong>Super Representatives (SRs)</strong>: The top 27 candidates with the most votes. They are the core nodes of the TRON network, responsible for producing blocks and packing transactions. For this, they receive block rewards and vote rewards.</li>
 <li><strong>Super Representative Partners (SR Partners)</strong>: Candidates ranking from 28th to 127th. They act as backup nodes for the network, do not participate in block production, but share in the vote rewards.</li>
 </ul>
-<p>Voters who cast their ballots for both Super Representatives (SRs) and Partners can receive corresponding voting rewards proportional to their votes.</p>
 <p>The TRON network tallies votes once every 6 hours, and the roles of Super Representatives and Partners are updated accordingly in this 6-hour cycle.</p>
 <h2 id="super-representative-election">Super Representative Election<a class="headerlink" href="#super-representative-election" title="Permanent link">&para;</a></h2>
 <p>All accounts in the TRON network have the right to vote for the Super Representative candidates they support. The core of voting is TRON Power (TP), which determines the weight of your vote.</p>
@@ -8858,8 +8858,8 @@
 </ul>
 <p><strong>Important Note:</strong>
 The TRON network only records the state of your last vote. This means that every new vote you cast will completely overwrite all previous voting effects.</p>
-<p><strong>Example:：</strong> </p>
-<p><div class="highlight"><pre><span></span><code>&gt;freezebalancev2 10000000 1 # Stake 10 TRX to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
+<p><strong>Example:</strong></p>
+<p><div class="highlight"><pre><span></span><code>&gt;freezebalancev2 10000000 1 # Stake 10 TRX (the amount is in sun; 1 TRX = 1,000,000 sun, so 10 TRX = 10000000 sun) to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
 &gt;votewitness SR1 4 SR2 6 # Cast 4 votes for SR1 and 6 votes for SR2.
 &gt;votewitness SR1 3 SR2 7 # Cast 3 votes for SR1 and 7 votes for SR2.
 </code></pre></div>
@@ -8874,7 +8874,7 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</
 </li>
 <li>
 <p>Customizing the Rate</p>
-<p>SRs and SR Partners can adjust their commission rate at any time via the <code>wallet/updateBrokerage</code> API interface.</p>
+<p>SRs and SR Partners can adjust their commission rate at any time via the <a href="../../api/http/witness-and-governance/updateBrokerage/"><code>wallet/updateBrokerage</code></a> API interface.</p>
 <ul>
 <li>100% Commission: All rewards go to the SR/SR Partner.</li>
 <li>0% Commission: All rewards are distributed to the voters.</li>
@@ -8934,7 +8934,9 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</
 <li>Chain parameter details can be viewed on TRONSCAN's <a href="https://tronscan.org/#/sr/committee">committee</a> page.</li>
 <li><code>brokerageRate</code> refers to the commission rate.</li>
 <li>SRs and SR Partners are the top 127 SR candidates.</li>
+<li>Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Likewise, their voters cannot receive block or vote rewards either.</li>
 <li>If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.</li>
+<li>Via the <code>WithdrawBalanceContract</code> transaction, withdrawing rewards to the account balance is subject to a 24-hour withdrawal interval limit: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.</li>
 </ul>
 <h2 id="committee">Committee<a class="headerlink" href="#committee" title="Permanent link">&para;</a></h2>
 <h3 id="about-the-committee">About the Committee<a class="headerlink" href="#about-the-committee" title="Permanent link">&para;</a></h3>
@@ -8945,32 +8947,39 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</
 <p><strong>Powers</strong>: Each committee member has two core powers: </p>
 <ul>
 <li>To create a proposal: Initiate a proposal to modify network parameters.</li>
-<li>To vote on a proposal: Vote on proposals initiated by other members.</li>
+<li>To vote on a proposal: Vote on proposals to modify network parameters (including proposals initiated by oneself).</li>
 </ul>
 </li>
 <li>
 <p><strong>Proposal Effective Mechanism</strong>: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.</p>
 </li>
 </ul>
+<p><strong>Note</strong>: The Create, Vote on, and Cancel Proposal examples below are wallet-cli client commands. For the corresponding HTTP API interfaces, see <a href="../../api/http/witness-and-governance/proposalcreate/">ProposalCreate</a>, <a href="../../api/http/witness-and-governance/proposalapprove/">ProposalApprove</a>, and <a href="../../api/http/witness-and-governance/proposaldelete/">ProposalDelete</a>.</p>
 <h3 id="create-a-proposal">Create a Proposal<a class="headerlink" href="#create-a-proposal" title="Permanent link">&para;</a></h3>
 <p>In the TRON network, all SRs, SR Partners, and SR candidates have the right to initiate proposals to modify network parameters.</p>
 <p>Please refer to <a href="https://tronscan.org/#/sr/committee">here</a> for TRON network dynamic parameters and their values.</p>
 <p><strong>Example</strong>:</p>
-<div class="highlight"><pre><span></span><code>&gt;createproposal id0 value0 ... idN valueN
-# id0_N: Parameter number
-# value0_N: New parameter value
+<div class="highlight"><pre><span></span><code>&gt;createproposal parameter0 value0 ... parameterN valueN
+# parameter0_N: the network parameter number to modify (not the proposal id)
+# value0_N: the new value for that parameter
 </code></pre></div>
+<p><strong>Note</strong>: A single proposal can modify several network parameters at once by supplying multiple <code>parameter value</code> pairs.</p>
 <h3 id="vote-on-a-proposal">Vote on a Proposal<a class="headerlink" href="#vote-on-a-proposal" title="Permanent link">&para;</a></h3>
 <p>The voting process for proposals follows these core rules:</p>
 <ol>
 <li>The governance system only supports approval votes. Not voting is equivalent to disapproving.</li>
-<li>A proposal is valid for 3 days from its creation. If it does not receive enough approval votes within this period, it will expire.</li>
+<li>A proposal is valid for 3 days from its creation by default. This duration is the on-chain parameter <code>getProposalExpireTime</code> (#92), which can be modified by proposal (currently 3 days on mainnet). If it does not receive enough approval votes within this period, it will expire.</li>
 </ol>
 <p><strong>Example</strong>:</p>
 <div class="highlight"><pre><span></span><code>&gt;approveProposal id is_or_not_add_approval
 # id: proposal id
-# is_or_not_add_approval: YES vote or cancel YES vote
+# is_or_not_add_approval: true to add an approval (vote YES), false to cancel a previous approval
 </code></pre></div>
+<p><strong>Note</strong>: The following two cases are rejected during validation:</p>
+<ul>
+<li>Passing <code>true</code> when you have already approved the proposal (you cannot approve the same proposal twice).</li>
+<li>Passing <code>false</code> when you have not approved the proposal before (there is no approval to cancel).</li>
+</ul>
 <h3 id="cancel-proposal">Cancel Proposal<a class="headerlink" href="#cancel-proposal" title="Permanent link">&para;</a></h3>
 <p>The creator of a proposal can cancel it at any time before it takes effect.</p>
 <p><strong>Example</strong>:
@@ -9004,7 +9013,7 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 12, 2026 09:28:13 UTC">May 12, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 4, 2026 08:24:32 UTC">June 4, 2026</span>
   </span>
 
     

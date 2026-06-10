@@ -9023,7 +9023,7 @@
 
 <h1 id="developer-guide">Developer Guide<a class="headerlink" href="#developer-guide" title="Permanent link">&para;</a></h1>
 <p>Thank you for contributing to the development of java-tron source code!</p>
-<p>Whether it's a small fix or a significant feature improvement, we greatly appreciate your contributions.</p>
+<p>Whether it is a minor bug fix or a major feature enhancement, we value your contributions.</p>
 <p>On GitHub, you can:</p>
 <ul>
 <li>Track issues</li>
@@ -9038,7 +9038,7 @@
 <li><strong>Fork the Repository</strong>
     Fork the <a href="https://github.com/tronprotocol/java-tron">java-tron repository</a> to your personal account.</li>
 <li><strong>Modify Code</strong>
-    Create a new branch based on the standard and start development.</li>
+    Create a new branch from the develop branch and begin implementation.</li>
 <li><strong>Submit Changes</strong>
     Commit your changes with clear commit messages.</li>
 <li><strong>Create a Pull Request (PR)</strong>
@@ -9050,11 +9050,11 @@
 <ul>
 <li><strong>Minor Fixes</strong>
     You can directly submit a PR, but ensure it includes a complete description.</li>
-<li><strong>Complex Changes</strong>
-    Please first submit an Issue in the <a href="https://github.com/tronprotocol/tips">TIP repository</a>, detailing the motivation and implementation plan.
+<li><strong>Major Changes</strong>
+    For complex architectural or logic changes, please first submit a TRON Improvement Proposal (TIP) in the <a href="https://github.com/tronprotocol/tips">TIP repository</a>, detailing the motivation and implementation plan.
 Refer to the <a href="../tips/">TIP Specification</a>.</li>
 <li><strong>Early PR Submission</strong>
-    We encourage developers to submit PRs early, even if the feature is not yet complete. This allows other developers to know that the related TIP Issue has entered the <em>In Progress</em> state.</li>
+    We encourage developers to submit PRs early, even if the feature is not yet complete. This notifies the community that the associated TIP issue has entered the In Progress state.</li>
 <li><strong>Development Branch</strong>
     All development should be based on the <code>develop</code> branch, followed by a PR submission.</li>
 </ul>
@@ -9063,7 +9063,7 @@ Refer to the <a href="../tips/">TIP Specification</a>.</li>
 <ul>
 <li><strong><code>develop</code> Branch</strong><ul>
 <li>Used for daily development</li>
-<li>Only allows merging from forked branches and <code>release-*</code> branches</li>
+<li>Accepts merges exclusively from contributor forks and <code>release-*</code> branches</li>
 <li>When preparing a new release, a <code>release-*</code> branch is created from this branch</li>
 </ul>
 </li>
@@ -9075,7 +9075,7 @@ Refer to the <a href="../tips/">TIP Specification</a>.</li>
 <li><strong><code>release-*</code> Branch</strong><ul>
 <li>Created from <code>develop</code> for version finalization and regression testing</li>
 <li>Merged into <code>master</code> branch after regression testing</li>
-<li>Permanently retained as a release snapshot</li>
+<li>Retained permanently as a point-in-time release snapshot</li>
 <li>Bug fixes are merged directly into this branch and synchronized back to <code>develop</code></li>
 </ul>
 </li>
@@ -9087,7 +9087,7 @@ Refer to the <a href="../tips/">TIP Specification</a>.</li>
 </li>
 <li><strong><code>hotfix-*</code> Branch</strong><ul>
 <li>Created from <code>master</code> for urgent bug fixes</li>
-<li>Merged back into both <code>master</code> and <code>develop</code> after fixes are complete</li>
+<li>Must be merged back into both <code>master</code> and <code>develop</code> to ensure consistency</li>
 </ul>
 </li>
 </ul>
@@ -9106,7 +9106,7 @@ git checkout develop
 git merge upstream/develop --no-ff
 </code></pre></div>
 <blockquote>
-<p><code>--no-ff</code> avoids fast-forward merges to ensure a clear commit history.</p>
+<p>The <code>--no-ff</code> flag prevents fast-forward merges, preserving a clear record of the merge event in the commit history.</p>
 </blockquote>
 <h3 id="3-create-a-development-branch">3. Create a Development Branch<a class="headerlink" href="#3-create-a-development-branch" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>git checkout -b feature/branch_name develop
@@ -9127,15 +9127,15 @@ It’s recommended to select the options in the red box, setting <code>develop</
 All PRs must be reviewed before merging.</p>
 <h3 id="review-process">Review Process<a class="headerlink" href="#review-process" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Reviewers must understand the motivation and changes of the PR.</li>
+<li>Reviewers are responsible for verifying the PR's objectives and technical impact.</li>
 <li>For PRs lacking descriptions or with excessive changes, reviewers may request additional clarification.</li>
 <li>Reviewers check code style, feature completeness, and test coverage.</li>
 <li>Reviewers should remain polite, respectful, and follow up promptly.</li>
 </ul>
 <h3 id="feature-validation">Feature Validation<a class="headerlink" href="#feature-validation" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Bug Fix PRs</strong><ul>
-<li>Reviewers should attempt to reproduce the issue and verify the fix.</li>
+<li><strong>For Bug Fixes</strong><ul>
+<li>Reviewers must attempt to reproduce the reported issue to validate the effectiveness of the fix.</li>
 <li>It’s recommended that submitters provide unit tests that fail before the fix and pass after.</li>
 </ul>
 </li>
@@ -9147,7 +9147,7 @@ All PRs must be reviewed before merging.</p>
 </ul>
 <h3 id="code-specification-requirements">Code Specification Requirements<a class="headerlink" href="#code-specification-requirements" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Use code formatting tools to check code.</li>
+<li>Adhere to automated code formatting standards before submission.</li>
 <li>Self-test before submission.</li>
 <li>Pass standardized tests.</li>
 </ul>
@@ -9197,10 +9197,9 @@ All PRs must be reviewed before merging.</p>
 </ul>
 <h3 id="subject-specifications">Subject Specifications<a class="headerlink" href="#subject-specifications" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Maximum 50 characters.</li>
-<li>Start with a verb in the first-person present tense (e.g., <code>change</code>, not <code>changed</code>).</li>
+<li>Limit to 50 characters; do not end with a period.</li>
+<li>Use the imperative mood in the subject line (e.g., <code>fix</code>, instead of <code>fixes/fixed</code>).</li>
 <li>Start with a lowercase letter.</li>
-<li>No period at the end.</li>
 <li>Avoid meaningless commits.</li>
 </ol>
 <p>Example:
@@ -9249,7 +9248,7 @@ Closes #1234
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 18, 2025 08:45:54 UTC">September 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 22, 2026 09:14:12 UTC">May 22, 2026</span>
   </span>
 
     

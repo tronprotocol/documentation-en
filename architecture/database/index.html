@@ -602,9 +602,9 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#2-optional-parameter-descriptions" class="md-nav__link" >
+  <a href="#2-positional-arguments" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. Optional Parameter Descriptions
+      2. Positional Arguments
     </span>
   </a>
   
@@ -8712,9 +8712,9 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#2-optional-parameter-descriptions" class="md-nav__link" >
+  <a href="#2-positional-arguments" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. Optional Parameter Descriptions
+      2. Positional Arguments
     </span>
   </a>
   
@@ -8795,7 +8795,13 @@
   transHistory.switch = &quot;on&quot;
 }
 </code></pre></div>
+<p>Key descriptions:</p>
+<ul>
+<li><code>db.sync</code>: when <code>true</code>, the underlying engine waits for each write to be physically flushed to disk before returning — safer against power loss / hard crashes, but noticeably slower. Default <code>false</code>, in which case writes are buffered by the OS and recent ones may be lost on a crash. Honored by both LevelDB and RocksDB.</li>
+<li><code>transHistory.switch</code>: when <code>"off"</code>, <code>TransactionHistoryStore</code> and <code>TransactionRetStore</code> silently drop new writes, so <code>gettransactioninfobyid</code> returns empty for any transaction processed while the switch was off. Reads of pre-existing data still work. Default <code>"on"</code>.</li>
+</ul>
 <h3 id="2-rocksdb-optimization-parameters">2. RocksDB Optimization Parameters<a class="headerlink" href="#2-rocksdb-optimization-parameters" title="Permanent link">&para;</a></h3>
+<p>The <code>dbSettings</code> block applies only when <code>db.engine = "ROCKSDB"</code>. Under LevelDB, these values are silently ignored.</p>
 <p>RocksDB supports various tuning parameters that can be configured based on the performance of the node server. Below is an example of recommended parameters:
 <div class="highlight"><pre><span></span><code>dbSettings = {
   levelNumber = 7
@@ -8811,16 +8817,21 @@
 </code></pre></div></p>
 <h2 id="migrating-from-leveldb-to-rocksdb-on-x86_64-platforms">Migrating from LevelDB to RocksDB on x86_64 Platforms<a class="headerlink" href="#migrating-from-leveldb-to-rocksdb-on-x86_64-platforms" title="Permanent link">&para;</a></h2>
 <p>To migrate from LevelDB to RocksDB, use the TRON Toolkit <code>Toolkit.jar</code>.</p>
+<blockquote>
+<p><strong>Note:</strong> The <code>db convert</code> subcommand is x86_64-only. On arm64 it prints an "unsupported architecture" message and exits without doing any work.</p>
+</blockquote>
 <h3 id="1-data-conversion-steps">1. Data Conversion Steps<a class="headerlink" href="#1-data-conversion-steps" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>cd java-tron                                   # Source root directory
 ./gradlew build -xtest -xcheck                 # Compile the project
 java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
 </code></pre></div>
-<h3 id="2-optional-parameter-descriptions">2. Optional Parameter Descriptions<a class="headerlink" href="#2-optional-parameter-descriptions" title="Permanent link">&para;</a></h3>
-<p>If your node uses a custom data directory, you can include the following parameters when running the conversion script:</p>
+<h3 id="2-positional-arguments">2. Positional Arguments<a class="headerlink" href="#2-positional-arguments" title="Permanent link">&para;</a></h3>
+<p>If your node uses a custom data directory, pass the LevelDB source and RocksDB destination as two positional arguments after <code>db convert</code>:</p>
+<div class="highlight"><pre><span></span><code>java -jar build/libs/Toolkit.jar db convert &lt;src&gt; &lt;dst&gt;
+</code></pre></div>
 <ul>
-<li><code>src_db_path</code>: LevelDB database path (default: <code>output-directory/database</code>)</li>
-<li><code>dst_db_path</code>: RocksDB database storage path (default: <code>output-directory-dst/database</code>)</li>
+<li><code>&lt;src&gt;</code>: LevelDB database path (default: <code>output-directory/database</code>)</li>
+<li><code>&lt;dst&gt;</code>: RocksDB database storage path (default: <code>output-directory-dst/database</code>)</li>
 </ul>
 <p>For example, if the node is run as follows:
 <div class="highlight"><pre><span></span><code>nohup java -jar build/libs/FullNode.jar -d your_database_dir &amp;
@@ -8845,13 +8856,10 @@ cd /tmp
 java -jar build/libs/Toolkit.jar db convert output-directory/database output-directory-dst/database
 </code></pre></div></p>
 <blockquote>
-<p>Note:
-The entire data conversion process is expected to take approximately <strong>10 hours</strong>, depending on the data volume and disk performance.</p>
+<p><strong>Note:</strong> The entire data conversion process is expected to take approximately <strong>10 hours</strong>, depending on the data volume and disk performance.</p>
 </blockquote>
 <h2 id="about-leveldb">About LevelDB<a class="headerlink" href="#about-leveldb" title="Permanent link">&para;</a></h2>
 <p>LevelDB is the default data storage engine for java-tron nodes on x86_64 platforms, suitable for resource-constrained or lightweight deployment scenarios. It has a simple structure and is easy to maintain, but it is less efficient than RocksDB in terms of data compression, backup capabilities, and performance for large-scale nodes.</p>
-<p>For a detailed comparison between the two, refer to the documentation:
-📘 <a href="https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md">RocksDB vs. LevelDB Comparison</a></p>
 
 
 
@@ -8872,7 +8880,7 @@ The entire data conversion process is expected to take approximately <strong>10 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 18, 2026 09:43:39 UTC">March 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 20, 2026 03:55:33 UTC">May 20, 2026</span>
   </span>
 
     

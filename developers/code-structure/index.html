@@ -7418,7 +7418,7 @@
           <li class="md-nav__item ">
   <a href="#protocol" class="md-nav__link" >
     <span class="md-ellipsis">
-      protocol
+      Protocol
     </span>
   </a>
   
@@ -7427,7 +7427,7 @@
           <li class="md-nav__item ">
   <a href="#common" class="md-nav__link" >
     <span class="md-ellipsis">
-      common
+      Common
     </span>
   </a>
   
@@ -7436,7 +7436,7 @@
           <li class="md-nav__item ">
   <a href="#chainbase" class="md-nav__link" >
     <span class="md-ellipsis">
-      chainbase
+      Chainbase
     </span>
   </a>
   
@@ -7445,7 +7445,7 @@
           <li class="md-nav__item ">
   <a href="#consensus" class="md-nav__link" >
     <span class="md-ellipsis">
-      consensus
+      Consensus
     </span>
   </a>
   
@@ -7454,7 +7454,7 @@
           <li class="md-nav__item ">
   <a href="#actuator" class="md-nav__link" >
     <span class="md-ellipsis">
-      actuator
+      Actuator
     </span>
   </a>
   
@@ -7463,7 +7463,7 @@
           <li class="md-nav__item ">
   <a href="#crypto" class="md-nav__link" >
     <span class="md-ellipsis">
-      crypto
+      Crypto
     </span>
   </a>
   
@@ -7472,7 +7472,7 @@
           <li class="md-nav__item ">
   <a href="#framework" class="md-nav__link" >
     <span class="md-ellipsis">
-      framework
+      Framework
     </span>
   </a>
   
@@ -8813,7 +8813,7 @@
           <li class="md-nav__item ">
   <a href="#protocol" class="md-nav__link" >
     <span class="md-ellipsis">
-      protocol
+      Protocol
     </span>
   </a>
   
@@ -8822,7 +8822,7 @@
           <li class="md-nav__item ">
   <a href="#common" class="md-nav__link" >
     <span class="md-ellipsis">
-      common
+      Common
     </span>
   </a>
   
@@ -8831,7 +8831,7 @@
           <li class="md-nav__item ">
   <a href="#chainbase" class="md-nav__link" >
     <span class="md-ellipsis">
-      chainbase
+      Chainbase
     </span>
   </a>
   
@@ -8840,7 +8840,7 @@
           <li class="md-nav__item ">
   <a href="#consensus" class="md-nav__link" >
     <span class="md-ellipsis">
-      consensus
+      Consensus
     </span>
   </a>
   
@@ -8849,7 +8849,7 @@
           <li class="md-nav__item ">
   <a href="#actuator" class="md-nav__link" >
     <span class="md-ellipsis">
-      actuator
+      Actuator
     </span>
   </a>
   
@@ -8858,7 +8858,7 @@
           <li class="md-nav__item ">
   <a href="#crypto" class="md-nav__link" >
     <span class="md-ellipsis">
-      crypto
+      Crypto
     </span>
   </a>
   
@@ -8867,7 +8867,7 @@
           <li class="md-nav__item ">
   <a href="#framework" class="md-nav__link" >
     <span class="md-ellipsis">
-      framework
+      Framework
     </span>
   </a>
   
@@ -9059,16 +9059,17 @@
 
 <h1 id="java-tron-core-modules">java-tron Core Modules<a class="headerlink" href="#java-tron-core-modules" title="Permanent link">&para;</a></h1>
 <h2 id="code-structure">Code Structure<a class="headerlink" href="#code-structure" title="Permanent link">&para;</a></h2>
-<p>java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. We can run a TRON node by starting java-tron. In this article, we will describe the code structure of java-tron in detail, and introduce the functions of its various modules, to facilitate the subsequent code analysis and development of developers.</p>
-<p>java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: <a href="#protocol">protocol</a>, <a href="#common">common</a>, <a href="#chainbase">chainbase</a>, <a href="#consensus">consensus</a>, <a href="#actuator">actuator</a>, <a href="#crypto">crypto</a>, <a href="#framework">framework</a>, the following introduces the functions of each module and its code organization.</p>
-<h3 id="protocol">protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h3>
-<p>For a distributed network such as blockchain, a concise and efficient data interaction protocol is very important. The protocol module defines:</p>
+<p>java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. Starting java-tron runs a TRON node. This document details the code structure of java-tron and introduces the functions of its various modules to facilitate code analysis and development.</p>
+<p>java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: <a href="#protocol">Protocol</a>, <a href="#common">Common</a>, <a href="#chainbase">Chainbase</a>, <a href="#consensus">Consensus</a>, <a href="#actuator">Actuator</a>, <a href="#crypto">Crypto</a>, <a href="#framework">Framework</a>, the following introduces the functions of each module and its code organization.</p>
+<h3 id="protocol">Protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h3>
+<p>In a distributed network like a blockchain, a concise and efficient data interaction protocol is essential. 
+The protocol module defines:</p>
 <ul>
 <li>Inter-node communication protocol</li>
 <li>Communication protocol between modules within the node</li>
-<li>Agreement for Services Provided Externally</li>
+<li>Protocols for externally provided services</li>
 </ul>
-<p>The above protocols adopt the <a href="https://developers.google.com/protocol-buffers"><code>Google Protobuf</code></a> data exchange format. Compared with JSON and XML, the <code>Google Protobuf</code> format is more efficient and flexible and can be compiled by the ProtoBuf compiler to generate language-specific serialization and deserialization source code for the defined protocol files. Protobuf is the basis for java-tron to achieve cross-language and cross-platform.</p>
+<p>The above protocols adopt the <a href="https://developers.google.com/protocol-buffers"><code>Google Protobuf</code></a> data exchange format. Compared with JSON and XML, the <code>Google Protobuf</code> format is more efficient and flexible and can be compiled by the ProtoBuf compiler to generate language-specific source code for serialization and deserialization based on the defined protocol files. Protobuf is the basis for java-tron to achieve cross-language and cross-platform.</p>
 <p><a href="https://github.com/tronprotocol/java-tron/tree/develop/protocol">protocol</a> module's source code is located at:  <code>https://github.com/tronprotocol/java-tron/tree/develop/protocol</code> , its directory structure is as follows:</p>
 <div class="highlight"><pre><span></span><code>|-- protos
     |-- api
@@ -9090,8 +9091,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="common">common<a class="headerlink" href="#common" title="Permanent link">&para;</a></h3>
-<p>The common module encapsulates common components and tools, such as exception handling, metrics monitoring tools, etc which make it easy to use by other modules.</p>
+<h3 id="common">Common<a class="headerlink" href="#common" title="Permanent link">&para;</a></h3>
+<p>The common module encapsulates common components and tools, such as exception handling and metrics monitoring tools, making them easily accessible for use by other modules.</p>
 <p><a href="https://github.com/tronprotocol/java-tron/tree/develop/common">common</a> module's source code is located at:  <code>https://github.com/tronprotocol/java-tron/tree/develop/common</code>, its directory structure is as follows:</p>
 <div class="highlight"><pre><span></span><code>|-- /common/src/main/java/org/tron
     |-- common
@@ -9117,9 +9118,9 @@
 <li><code>core/config</code> - Node configuration related classes</li>
 <li><code>core/exception</code> - All exception handling related classes</li>
 </ul>
-<h3 id="chainbase">chainbase<a class="headerlink" href="#chainbase" title="Permanent link">&para;</a></h3>
-<p>Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. Because of this, chainbase defines an interface standard supporting databases that can roll back. This interface requires databases to have a state rollback mechanism, a checkpoint-based disaster tolerant mechanism and so on. </p>
-<p>In addition, the chainbase module features a well-designed abstract interface. Any database that implements the interface can be used for underlying storage on the blockchain, granting more flexibility to developers. LevelDB and RocksDB are two default implementations.</p>
+<h3 id="chainbase">Chainbase<a class="headerlink" href="#chainbase" title="Permanent link">&para;</a></h3>
+<p>Chainbase is a database module. For probabilistic consensus algorithms such as PoW, PoS and DPoS, situations of switching to a new chain, however unlikely, are inevitable. To address this, Chainbase defines an interface standard that supports rollbackable databases. This interface requires databases to implement a state rollback mechanism, a checkpoint-based disaster tolerance mechanism, and other relevant features. </p>
+<p>In addition, the Chainbase module features a well-designed abstract interface. Any database that implements the interface can be used for underlying storage on the blockchain, granting more flexibility to developers. LevelDB and RocksDB are two default implementations.</p>
 <p><a href="https://github.com/tronprotocol/java-tron/tree/develop/chainbase">chainbase</a> module's source code is located at: <code>https://github.com/tronprotocol/java-tron/tree/develop/chainbase</code>, its directory structure is as follows:
 <div class="highlight"><pre><span></span><code>|-- chainbase.src.main.java.org.tron
     |-- common
@@ -9176,8 +9177,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="consensus">consensus<a class="headerlink" href="#consensus" title="Permanent link">&para;</a></h3>
-<p>The consensus mechanism is a crucial module in blockchains. Common ones are PoW, PoS, DPoS and PBFT, etc. While Paxos, Raft, etc, are applied to consortium blockchains and other trusted networks. The consensus mechanism should match the business scenario. For instance, PoW is not suitable for real-time games that are sensitive to consensus efficiency, while PBFT can make an optimized choice for exchanges demanding high real-time capability. In this sense, a replaceable consensus is a creative innovation and an essential link in building application-specific blockchains. Even star blockchain programs like Cosmos SDK are still at a stage where the application layer provides developers with limited autonomy and the consensus at the base level is subject to Tendermint. Therefore, the ultimate goal of the consensus module is to make consensus switch as easy as configuring parameters for application developers.</p>
+<h3 id="consensus">Consensus<a class="headerlink" href="#consensus" title="Permanent link">&para;</a></h3>
+<p>The consensus mechanism is a crucial module in blockchains. Common ones are PoW, PoS, DPoS and PBFT, etc. Conversely, algorithms like Paxos and Raft are typically applied to consortium blockchains and other trusted networks. The consensus mechanism should match the business scenario. For instance, PoW is not suitable for real-time games that are sensitive to consensus efficiency, while PBFT can make an optimized choice for exchanges demanding high real-time capability. Therefore, a replaceable consensus mechanism is an essential innovation for building application-specific blockchains. Even prominent blockchain frameworks like Cosmos SDK currently offer limited autonomy at the consensus level, relying primarily on Tendermint. Therefore, the ultimate goal of the consensus module is to make consensus switch as easy as configuring parameters for application developers.</p>
 <p><a href="https://github.com/tronprotocol/java-tron/tree/develop/consensus">consensus</a> module's source code is located at:  <code>https://github.com/tronprotocol/java-tron/tree/develop/consensus</code>, its directory structure is as follows:
 <div class="highlight"><pre><span></span><code>|-- consensus/src/main/java/org/tron/consensus
     |-- Consensus.java
@@ -9188,7 +9189,7 @@
     |-- dpos
     |-- pbft
 </code></pre></div>
-consensus module divides the consensus process into several important parts that are defined in <code>ConsensusInterface</code>:</p>
+Consensus module divides the consensus process into several important parts that are defined in <code>ConsensusInterface</code>:</p>
 <ol>
 <li><code>start</code> - start the consensus service with customizable startup parameters</li>
 <li><code>stop</code> - stop the consensus service</li>
@@ -9197,8 +9198,8 @@ consensus module divides the consensus process into several important parts that
 <li><code>applyBlock</code> - define the consensus logic of processing blocks</li>
 </ol>
 <p>Currently, java-tron implements DPOS consensus and PBFT consensus based on the <code>ConsensusInterface</code> interface, which is located in the <code>dpos/</code> and <code>pbft/</code> directories respectively. Developers can also implement the <code>ConsensusInterface</code> interface according to their own business needs to customize the consensus mechanism.</p>
-<h3 id="actuator">actuator<a class="headerlink" href="#actuator" title="Permanent link">&para;</a></h3>
-<p>Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. This is one of the reasons why java-tron supports the creation of a chain of applications. For the reasons mentioned, java-tron includes a separate module, Actuator, offering application developers a brand new way of development. They can choose to implant their application codes into a chain instead of running them on virtual machines. </p>
+<h3 id="actuator">Actuator<a class="headerlink" href="#actuator" title="Permanent link">&para;</a></h3>
+<p>Ethereum was the first to introduce the virtual machine and define the smart contract. However, smart contracts are constrained in terms of their functions and not flexible enough to accommodate the needs of complex applications. To address these limitations and support the creation of application-specific chains, java-tron includes a separate module called Actuator, offering developers a novel approach to application development. They can choose to implant their application codes into a chain instead of running them on virtual machines. </p>
 <p>Actuator is the executor of transactions, while applications can be viewed as a cluster of different types of transactions, each of which is executed by a corresponding actuator.</p>
 <p><a href="https://github.com/tronprotocol/java-tron/tree/develop/actuator">actuator</a> module's source code is located at: <code>https://github.com/tronprotocol/java-tron/tree/develop/actuator</code>, its directory structure is as follows:
 <div class="highlight"><pre><span></span><code>|-- actuator/src/main/java/org/tron/core
@@ -9225,8 +9226,8 @@ consensus module divides the consensus process into several important parts that
 <li><code>calcFee</code> - define the logic of calculating transaction fees</li>
 </ul>
 <p>Depending on their businesses, developers may set up Actuator accordingly and customize the processing of different types of transactions.</p>
-<h3 id="crypto">crypto<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h3>
-<p>Crypto is a relatively independent module, but it is also a very important module. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.</p>
+<h3 id="crypto">Crypto<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h3>
+<p>The Crypto module is relatively independent yet crucial to the system. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.</p>
 <p><a href="https://github.com/tronprotocol/java-tron/tree/develop/crypto">crypto</a> module's source code is located at: <code>https://github.com/tronprotocol/java-tron/tree/develop/crypto</code>, its directory structure is as follows:
 <div class="highlight"><pre><span></span><code>|-- crypto/src/main/java/org/tron/common/crypto
     |-- Blake2bfMessageDigest.java
@@ -9244,8 +9245,8 @@ consensus module divides the consensus process into several important parts that
 <li><code>sm2</code> and <code>jce</code> - Provide SM2 and ECKey encryption algorithm and signature algorithm</li>
 <li><code>zksnark</code> - Provide a zero-knowledge proof algorithm</li>
 </ul>
-<h3 id="framework">framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h3>
-<p>The framework is the core module of java-tron and the entrance of the node. The framework module is responsible for the initialization of each module and business logic. The framework module includes the services provided externally, the node discovery and node management process related to the P2P network, and the block broadcasting and processing procedures.</p>
+<h3 id="framework">Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h3>
+<p>The Framework module serves as the core of java-tron and the primary entry point for the node. It manages the initialization of all other modules and handles the core business logic. The framework module includes the services provided externally, the node discovery and node management process related to the P2P network, and the block broadcasting and processing procedures.</p>
 <p><a href="https://github.com/tronprotocol/java-tron/tree/develop/framework">framework</a> module's source code is located at:  <code>https://github.com/tronprotocol/java-tron/tree/develop/framework</code>, its directory structure is as follows:</p>
 <div class="highlight"><pre><span></span><code>|-- framework/src/main/java/org/tron
     |-- common
@@ -9288,9 +9289,9 @@ consensus module divides the consensus process into several important parts that
 <p>This article mainly introduces the code structure of java-tron, as well as the function, location and directory structure of each functional module. Through this article, you will have a general understanding of the overall structure and key interfaces of java-tron, which is helpful for subsequent code analysis and development.</p>
 <h2 id="chainbase_1">ChainBase<a class="headerlink" href="#chainbase_1" title="Permanent link">&para;</a></h2>
 <h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
-<p>As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. In reality, blockchain is often used for bookkeeping and transactions. For example, many applications use BTC, ETH, TRX, and other cryptos to carry out economic activities to ensure the openness and transparency of funds.</p>
+<p>As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. Blockchains are frequently used for secure bookkeeping and transaction processing. For example, applications utilize cryptocurrencies like BTC, ETH, and TRX to conduct economic activities while ensuring financial transparency.</p>
 <p>The realization of such an immutable distributed ledger is a very complex system engineering, involving many technical fields: such as p2p networks, smart contracts, databases, cryptography, consensus mechanisms, etc. Among them, the database is the basis of the underlying storage, and various blockchain teams are exploring the design and optimization of the database level.</p>
-<p>The database module of java-tron is also called the ChainBase module. This article mainly introduces some background knowledge and shows developers the implementation details of the ChainBase module by introducing logic such as transaction processing, state rollback, and data persistence.</p>
+<p>The Database module of java-tron is also called the ChainBase module. This article mainly introduces some background knowledge and shows developers the implementation details of the ChainBase module by introducing logic such as transaction processing, state rollback, and data persistence.</p>
 <h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
 <p>The database is an important part of the blockchain system. It stores all the data on the blockchain and is the basis for the normal operation of the blockchain system. Each fullnode stores a full amount of data, including block data, state data, etc. java-tron uses the Account model to save the user's account state.</p>
 <h4 id="account-models">Account Models<a class="headerlink" href="#account-models" title="Permanent link">&para;</a></h4>
@@ -9307,12 +9308,12 @@ consensus module divides the consensus process into several important parts that
 <p>To learn more, please refer to <a href="https://en.bitcoinwiki.org/wiki/DPoS">Delegated Proof of Stake</a>.</p>
 <h4 id="persistent-storage">Persistent Storage<a class="headerlink" href="#persistent-storage" title="Permanent link">&para;</a></h4>
 <p>There are certain differences between blockchain and traditional Internet business. The blockchain does not have particularly complex processing logic at the database level, but there are a large number of key-value read and write operations in the blockchain so there are higher requirements for data read and write performance.</p>
-<p>Based on this consideration, java-tron uses LevelDB as the underlying data storage by default, and java-tron has a good architecture design. The interface-oriented programming mode makes the chainbase module have better scalability. All databases implemented the chainbase interface can be used as the underlying storage engine of java-tron. For example, in the chainbase v2 version, a database implementation based on RocksDB is provided.</p>
+<p>Based on this consideration, java-tron uses LevelDB as the underlying data storage by default, and java-tron has a good architecture design. The interface-oriented programming mode makes the Chainbase module have better scalability. All databases implemented the chainbase interface can be used as the underlying storage engine of java-tron. For example, in the chainbase v2 version, a database implementation based on RocksDB is provided.</p>
 <h4 id="transaction-validation">Transaction Validation<a class="headerlink" href="#transaction-validation" title="Permanent link">&para;</a></h4>
-<p>As we all know, the blockchain mainly stores transaction data. Before introducing the chainbase module, you need to understand the transaction processing logic in java-tron.</p>
+<p>As we all know, the blockchain mainly stores transaction data. Before introducing the Chainbase module, you need to understand the transaction processing logic in java-tron.</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_1.png" /></p>
 <p>The transaction will be distributed to each node through network broadcast. After receiving the transaction, the node will first validate the signature of the transaction. If successful, the transaction needs to be pre-executed to determine whether the transaction is legal.</p>
-<p><strong>Note: The specific implementation of java-tron deviates from the above figure, and for the sake of convenience, this article collectively refers to the FullNode and SR as the nodes.</strong></p>
+<p><strong>Note: The specific implementation in java-tron may deviate slightly from the simplified figure above. For convenience, this article collectively refers to FullNodes and Super Representatives (SRs) simply as 'nodes'.</strong></p>
 <p>For example, to process a transfer transaction: user A transfers 100 TRX to user B, and it needs to validate whether user A has enough balance to make the transfer.</p>
 <p>The account library in the database stores the account information of all users, including the user's balance information. How to judge whether this transfer transaction is legal? The logic of java-tron is: when a transaction is received from the network, the transaction operation will be executed immediately, that is, the account information will be modified in the local database: (accountA - 100TRX, accountB + 100TRX). If this operation can be executed successfully, it means that the transaction is legal at least in the current state, and can be packed into the block.</p>
 <h4 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Permanent link">&para;</a></h4>
@@ -9413,8 +9414,8 @@ consensus module divides the consensus process into several important parts that
 <p>This article analyzes the implementation details of rollback and database writing in the chainbase module through the processing flow of transactions and blocks and also analyzes the principle of atomic writing among multiple instances of the database to prevent database damage caused by accidental downtime. We hope that reading this article can help developers to further understand and develop the java-tron database.</p>
 <h2 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
 <h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
-<p>P2P is a distributed network in which participants in the network share a part of the hardware resources they own, such as processing power, storage capacity, network connection capacity, printers, etc. These shared resources need to be provided services and content by the network, which can be accessed by other peers directly without going through an intermediate entity. Participants in this network are both providers and acquirers of service and content.</p>
-<p>Different from the traditional Client/Server central server structure, the status of each node in the P2P network is equal. While serving as a client, each node can also serve as a server to provide services to other nodes, which greatly improves the utilization of resources.</p>
+<p>A Peer-to-Peer (P2P) network is a distributed architecture where participants share a portion of their hardware resources, such as processing power, storage capacity, network connection capacity, printers, etc. These shared resources need to be provided services and content by the network, which can be accessed by other peers directly without going through an intermediate entity. Participants in this network are both providers and acquirers of service and content.</p>
+<p>Unlike traditional Client/Server architectures, all nodes in a P2P network have equal status. While serving as a client, each node can also serve as a server to provide services to other nodes, which greatly improves the utilization of resources.</p>
 <h4 id="blockchain-network">Blockchain Network<a class="headerlink" href="#blockchain-network" title="Permanent link">&para;</a></h4>
 <p>P2P is the network layer in the blockchain structure. The main purpose of the network layer is to realize information broadcast, verification and communication between nodes. The blockchain network is essentially a P2P network, and each node can both receive and generate information. Nodes keep communication by maintaining common blockchain data.</p>
 <p>As the foundation of the blockchain, the P2P network brings the following advantages to the blockchain:</p>
@@ -9573,7 +9574,7 @@ consensus module divides the consensus process into several important parts that
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 23, 2025 03:45:25 UTC">January 23, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 4, 2026 11:15:55 UTC">June 4, 2026</span>
   </span>
 
     

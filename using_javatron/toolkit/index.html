@@ -777,6 +777,30 @@
   
 </li>
       
+        <li class="md-nav__item has-children">
+  <a href="#merkle-root-computation-tool" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Merkle Root Computation Tool
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Merkle Root Computation Tool" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#command-and-parameters_5" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Command and Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -8899,6 +8923,30 @@
   
 </li>
       
+        <li class="md-nav__item has-children">
+  <a href="#merkle-root-computation-tool" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Merkle Root Computation Tool
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Merkle Root Computation Tool" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#command-and-parameters_5" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Command and Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -8939,6 +8987,7 @@
 <li><a href="#fast-data-copy-tool">Fast Data Copy</a>: Implements rapid database copying.</li>
 <li><a href="#data-conversion-tool">Data Conversion</a>: Supports data format conversion from LevelDB to RocksDB.</li>
 <li><a href="#leveldb-startup-optimization-tool">LevelDB Startup Optimization</a>: Accelerates the startup speed for nodes using LevelDB.</li>
+<li><a href="#merkle-root-computation-tool">Merkle Root Computation</a>: Computes the Merkle root of a small database for verification purposes.</li>
 </ul>
 <p>This document provides a detailed guide on how to acquire and use the TRON Toolkit.</p>
 <p><strong>Note</strong>: Because only RocksDB is supported on the arm64 architecture, LevelDB-specific tools like <code>db convert</code> and <code>db archive</code> can only be used on x86_64 architectures.</p>
@@ -8984,7 +9033,7 @@ java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.co
 <div class="highlight"><pre><span></span><code>kill -15 $(ps -ef | grep FullNode.jar | grep -v grep | awk &#39;{print $2}&#39;)
 </code></pre></div>
 <h4 id="2-configure-database-storage-migration">2. Configure Database Storage Migration<a class="headerlink" href="#2-configure-database-storage-migration" title="Permanent link">&para;</a></h4>
-<p>Database migration is configured via the <code>storage.properties</code>field in the <code>java-tron</code> node configuration file. You can find an example configuration in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf#L37">tron-deployment repository</a>.</p>
+<p>Database migration is configured via the <code>storage.properties</code>field in the <code>java-tron</code> node configuration file. You can find an example configuration in the <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">java-tron repository</a>.</p>
 <p>The following example demonstrates how to migrate the <code>block</code> and <code>trans</code> databases to the <code>/data1/tron</code> directory:</p>
 <p><div class="highlight"><pre><span></span><code>storage {
  ......
@@ -9020,7 +9069,7 @@ java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.co
 <li><strong>Snapshot Dataset</strong>: Used to start a lite FullNode. It does not contain historical data prior to the block height at the time of pruning.</li>
 <li><strong>History Dataset</strong>: Used for querying historical data.</li>
 </ul>
-<p>The Snapshot Dataset contains all account state data plus the history of the most recent 65,536 blocks. It occupies a small amount of space (approximately 3% of a FullNode's data). Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.</p>
+<p>The Snapshot Dataset contains the latest state of the entire network plus the history of the most recent 65,536 blocks. It is far smaller than a FullNode's full database. Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.</p>
 <p>The data pruning tool can split a FullNode's data into a <strong>Snapshot Dataset</strong> or a <strong>History Dataset</strong>. It also supports merging a history dataset back with a snapshot dataset. This enables the following use cases:</p>
 <ul>
 <li><strong>Convert FullNode Data into Lite Fullnode Data</strong>: Split the full node data to generate a snapshot dataset, which is all that's needed to run a light node.</li>
@@ -9044,7 +9093,7 @@ java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.co
 </code></pre></div>
 <strong>Optional Parameters</strong>：</p>
 <ul>
-<li><code>-o | --operation &lt;split | merge&gt;</code>: Specifies the operation type. Default: <code>split</code>。</li>
+<li><code>-o | --operate &lt;split | merge&gt;</code>: Specifies the operation type. Default: <code>split</code>.</li>
 <li><code>-t | --type &lt;snapshot | history&gt;</code>：Used only with <code>-o split</code>. <code>snapshot</code> creates a snapshot dataset; <code>history</code> creates a history dataset.</li>
 <li><code>-fn | --fn-data-path &lt;string&gt;</code>：<ul>
 <li>For <code>split</code>, this is the source directory of the data to be pruned.</li>
@@ -9154,6 +9203,27 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<s
 <blockquote>
 <p><strong>Important Note</strong>: Before performing any operation with this tool, you must stop the currently running node.</p>
 </blockquote>
+<h2 id="merkle-root-computation-tool">Merkle Root Computation Tool<a class="headerlink" href="#merkle-root-computation-tool" title="Permanent link">&para;</a></h2>
+<p>The TRON Toolkit provides a <strong>Merkle root computation tool</strong> that calculates the Merkle root of a specified database. This is useful for data verification and consistency checks across nodes.</p>
+<blockquote>
+<p><strong>Important Note</strong>: This tool is intended for small databases. Running it against a large database may cause a <code>GC overhead limit exceeded</code> error.</p>
+</blockquote>
+<h3 id="command-and-parameters_5">Command and Parameters<a class="headerlink" href="#command-and-parameters_5" title="Permanent link">&para;</a></h3>
+<p>Use the <code>db root</code> command to compute the Merkle root:</p>
+<div class="highlight"><pre><span></span><code># full command
+   java -jar build/libs/Toolkit.jar db root [-h] [--db=&lt;dbs&gt;]... [&lt;db&gt;]
+# examples
+   #compute the merkle root of the `account` and `witness` dbs in the default database directory
+   java -jar build/libs/Toolkit.jar db root --db account --db witness
+   #specify the database directory
+   java -jar build/libs/Toolkit.jar db root --db account /tmp/db/database
+</code></pre></div>
+<p><strong>Optional Parameters</strong>:</p>
+<ul>
+<li><code>&lt;db&gt;</code>: Specifies the database directory. Default: <code>output-directory/database</code>.</li>
+<li><code>--db &lt;string&gt;</code>: Specifies the name of the database to compute the root for. This option can be repeated to compute roots for multiple databases.</li>
+<li><code>-h | --help &lt;boolean&gt;</code>: Displays help information. Default: <code>false</code>.</li>
+</ul>
 
 
 
@@ -9174,7 +9244,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<s
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:50:08 UTC">May 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 8, 2026 09:20:54 UTC">June 8, 2026</span>
   </span>
 
     
