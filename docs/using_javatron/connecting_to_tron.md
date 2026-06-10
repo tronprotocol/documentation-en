@@ -348,7 +348,7 @@ Unlike node discovery, which uses UDP, peer connections use Transmission Control
 TRON node logs are stored in `logs/tron.log`：
 
 ```
-$ tail -f logs/tron.log
+tail -f logs/tron.log
 ```
 ### Example Sync Logs：
 ```
@@ -364,7 +364,7 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 Use the HTTP API:
 
 ```
-$ curl http://127.0.0.1:8090/wallet/getnodeinfo
+curl http://127.0.0.1:8090/wallet/getnodeinfo
 ```
 Example response：
 ```

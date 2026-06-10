@@ -786,7 +786,7 @@ event.subscribe = {
 The event subscription service is disabled by default and must be enabled using the `--es` command-line argument. The startup command for a node with event subscription enabled is as follows:
 
 ```
-$ java -jar build/libs/FullNode.jar --es
+java -jar build/libs/FullNode.jar --es
 ```
 
 ### Preparing the Event Subscription Script
@@ -796,7 +796,7 @@ This guide uses Node.js as an example to demonstrate how to subscribe to events.
 First, install the `ZeroMQ` library:
 
 ```
-$ npm install zeromq@5
+npm install zeromq@5
 ```
 
 Next, write the subscriber code:
@@ -827,7 +827,7 @@ This example connects the subscriber to the node's event publisher and subscribe
 The Node.js startup command is as follows:
 
 ```
-$ node subscriber.js
+node subscriber.js
 
 > Subscriber connected to port 5555
 ```

@@ -25,7 +25,7 @@ After updating the configuration, start the node as described in [Starting a jav
     After installing Docker, enter the following command to pull the Prometheus image:
 
     ```
-    $ docker pull prom/prometheus
+    docker pull prom/prometheus
     ```
 
 2. Prepare the Prometheus configuration file
@@ -63,7 +63,7 @@ After updating the configuration, start the node as described in [Starting a jav
     Start a Prometheus container with the following command, mounting the configuration file from the previous step (`/Users/test/deploy/prometheus/prometheus.yaml`):
     
     ```
-    $ docker run --name prometheus \
+    docker run --name prometheus \
         -d -p 9090:9090 \
         -v /Users/test/deploy/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml \
         prom/prometheus:latest
@@ -91,14 +91,14 @@ The deployment process of the Grafana visualization tool is as follows:
     Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/next/setup-grafana/installation/). This article uses the Docker image deployment, pulling the open source image (`grafana-oss`):
     
     ```
-    $ docker pull grafana/grafana-oss
+    docker pull grafana/grafana-oss
     ```
 
 2. Start Grafana
 
     You can use the following command to start Grafana:
     ```
-    $ docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
+    docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
     ```
 
 3. Log in to the Grafana web UI

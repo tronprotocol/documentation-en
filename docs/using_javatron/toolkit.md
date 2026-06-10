@@ -22,13 +22,13 @@ You can obtain the `Toolkit.jar` file either by compiling the `java-tron` source
 
 1. **Clone the `java-tron` source repository**：
    ```
-   $ git clone https://github.com/tronprotocol/java-tron.git
-   $ git checkout -t origin/master
+   git clone https://github.com/tronprotocol/java-tron.git
+   git checkout -t origin/master
    ```
 2. **Build the project**：
    ```
-   $ cd java-tron
-   $ ./gradlew clean build -x test
+   cd java-tron
+   ./gradlew clean build -x test
    ```
 Upon successful compilation, the `Toolkit.jar` artifact will be located in the `java-tron/build/libs/` directory.
 

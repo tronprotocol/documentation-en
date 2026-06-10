@@ -49,7 +49,7 @@ Now, please complete the following three preparation steps in order.
 In your terminal, start a `wallet-cli` instance with the command `java -jar wallet-cli.jar`:
 
 ```
-$ java -jar wallet-cli.jar
+java -jar wallet-cli.jar
 
 Welcome to TRON wallet-cli
 Please type one of the following commands to proceed.

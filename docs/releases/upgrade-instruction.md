@@ -27,15 +27,15 @@ You can either download the compiled java-tron executable directly or download t
 1. Clone the `java-tron` repository and switch to the target version's branch.
     ```
     # clone the repository
-    $ git clone https://github.com/tronprotocol/java-tron.git
+    git clone https://github.com/tronprotocol/java-tron.git
 
     # Switch to the specified version branch
-    $ cd java-tron
-    $ git checkout -b release_vx.x.x
+    cd java-tron
+    git checkout -b release_vx.x.x
     ```
 2. Run the build command. Upon successful compilation, the new executable file, `FullNode.jar`, will be generated in the `build/libs/` directory.
     ```
-    $ ./gradlew clean build -x test
+    ./gradlew clean build -x test
     ```
 
 ### Step 2: Stop the Running Node
@@ -45,12 +45,12 @@ You can either download the compiled java-tron executable directly or download t
 1. Use the following command to find the `PID` of the java-tron process.
 
     ```
-    $ ps -ef | grep java
+    ps -ef | grep java
     ```
 
 2. Stop the node process.
     ```
-    $ kill -15 <PID>
+    kill -15 <PID>
     ```
 
 ### Step 3: Back Up Critical Data { #back-up-critical-data }
@@ -59,15 +59,15 @@ A full backup is strongly recommended before upgrading. Please perform the follo
 
 1. **Back up the current executable file**
     ```
-    $ mv $JAVA_TRON.jar $JAVA_TRON.jar.`date "+%Y%m%d%H%M%S"`
+    mv $JAVA_TRON.jar $JAVA_TRON.jar.`date "+%Y%m%d%H%M%S"`
     ```
 2. **Back up the current `output-directory` database**
     ```
-    $ tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
+    tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
     ```
  3. **Back up the current configuration file**
     ```
-    $ mv $config.conf $config.conf.`date "+%Y%m%d%H%M%S"`
+    mv $config.conf $config.conf.`date "+%Y%m%d%H%M%S"`
     ```
 
 This ensures that if the upgrade fails, you can quickly roll back to the previous version using the backup.
