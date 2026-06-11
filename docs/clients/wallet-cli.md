@@ -26,7 +26,7 @@ $ ./gradlew run
 > RegisterWallet 123456      (password = 123456)
 > login 123456
 > getAddress
-address = TRfwwLDpr4excH4V4QzghLEsdYwkapTxnm'  # Back it up!
+address = TRfwwLDpr4excH4V4QzghLEsdYwkapTxnm  # Back it up!
 > BackupWallet 123456
 priKey = 1234567890123456789012345678901234567890123456789012345678901234  # Back it up! (BackupWallet2Base64 option)
 > getbalance
@@ -249,7 +249,7 @@ importWalletByKeystore successful !!
 Example:
 ```
 wallet> ImportWalletByLedger
-((Note:This will pair Ledger to user your hardward wallet)
+((Note:This will pair Ledger to use your hardward wallet)
 Only one Ledger device is supported. If you have multiple devices, please ensure only one is connected.
 Ledger device found: Nano X
 Please input password.
@@ -645,12 +645,12 @@ wallet> GetTransactionById e5763ab8dfb1e7ed076770d55cf3c1ddaf36d75e23ec8330f99df
 delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress [lock]
 ```
 
-- `OwnerAddress` - The account address initiating the transaction。 Optional, defaults to the address of the logged-in account。
-- `balance` - The amount to delegate, in the smallest unit, sun。 The minimum value is 1,000,000 sun。
-- `ResourceCode` - 0 for BANDWIDTH; 1 for ENERGY。
-- `ReceiverAddress` - The account address。
-- `lock` - Defaults to `false`。 Set to `true` to lock the delegation for 3 days。
-- `lock_period` - The maximum lock period for delegation。 It can be any time between (0, 86400] blocks。
+- `OwnerAddress` - The account address initiating the transaction. Optional, defaults to the address of the logged-in account.
+- `balance` - The amount to delegate, in the smallest unit, sun. The minimum value is 1,000,000 sun.
+- `ResourceCode` - 0 for BANDWIDTH; 1 for ENERGY.
+- `ReceiverAddress` - The account address.
+- `lock` - Defaults to `false`. Set to `true` to lock the delegation for 3 days.
+- `lock_period` - The maximum lock period for delegation. It can be any time between (0, 86400] blocks.
 
 Example:
 ```
@@ -698,10 +698,10 @@ wallet> GetTransactionById 363ac0b82b6ad3e0d3cad90f7d72b3eceafe36585432a3e013389
 unDelegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress
 ```
 
-- `OwnerAddress` - The account address initiating the transaction。 Optional, defaults to the address of the logged-in account。
-- `balance` - The amount to undelegate, in the smallest unit, sun。
-- `ResourceCode` - 0 for BANDWIDTH; 1 for ENERGY。
-- `ReceiverAddress` - The account address。
+- `OwnerAddress` - The account address initiating the transaction. Optional, defaults to the address of the logged-in account.
+- `balance` - The amount to undelegate, in the smallest unit, sun.
+- `ResourceCode` - 0 for BANDWIDTH; 1 for ENERGY.
+- `ReceiverAddress` - The account address.
 
 Example:
 ```
@@ -743,24 +743,24 @@ wallet> GetTransactionById feb334794cf361fd351728026ccf7319e6ae90eba622b9eb53c62
 
 
 #### Getting Account Bandwidth - `GetAccountNet`
-> Gets the usage of bandwidth。
+> Gets the usage of bandwidth.
 
 #### Getting Account Resources - `GetAccountResource`
-> Gets the usage of bandwidth and energy。
+> Gets the usage of bandwidth and energy.
 
 #### Getting Delegated Resource Information
 `getDelegatedResource fromAddress toAddress`
-> Gets the delegated resource information from `fromAddress` to `toAddress`。
+> Gets the delegated resource information from `fromAddress` to `toAddress`.
 
 `getDelegatedResourceAccountIndex address`
-> Gets the resource information that `address` has delegated to other accounts。
+> Gets the resource information that `address` has delegated to other accounts.
 
 #### Getting Delegated Resource Information using v2 API
 `getDelegatedResourceV2 fromAddress toAddress`
-> Gets the delegated resource information from `fromAddress` to `toAddress` using the v2 API。
+> Gets the delegated resource information from `fromAddress` to `toAddress` using the v2 API.
 
-- `fromAddress` - The account address initiating the delegation。
-- `toAddress` - The account address receiving the delegation。
+- `fromAddress` - The account address initiating the delegation.
+- `toAddress` - The account address receiving the delegation.
 
 Example:
 ```
@@ -778,9 +778,9 @@ wallet> getDelegatedResourceV2 TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh TQ4gjjpAjLNnE6
 
 `getDelegatedResourceAccountIndexV2 address`
 
-> Gets the delegated resource information that the `address` has delegated to other accounts using the v2 API。
+> Gets the delegated resource information that the `address` has delegated to other accounts using the v2 API.
 
-- `address` - The account address that initiated or received the delegation。
+- `address` - The account address that initiated or received the delegation.
 
 Example:
 ```
@@ -794,10 +794,10 @@ wallet> getDelegatedResourceAccountIndexV2 TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh
 ```
 
 `getcandelegatedmaxsize ownerAddress type`
-> Gets the maximum amount of resources `ownerAddress` can delegate (using `delegateResource`)。
+> Gets the maximum amount of resources `ownerAddress` can delegate (using `delegateResource`).
 
-- `ownerAddress` - The account address initiating the delegation。 Optional, defaults to the address of the logged-in account。
-- `type` - 0 for Bandwidth, 1 for Energy。
+- `ownerAddress` - The account address initiating the delegation. Optional, defaults to the address of the logged-in account.
+- `type` - 0 for Bandwidth, 1 for Energy.
 
 Example:
 ```
@@ -808,9 +808,9 @@ wallet> getCanDelegatedMaxSize TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh 0
 ```
 
 `getavailableunfreezecount ownerAddress`
-> Gets the number of available unfreeze attempts for `ownerAddress` using `unfreezeBalanceV2`。
+> Gets the number of available unfreeze attempts for `ownerAddress` using `unfreezeBalanceV2`.
 
-- `ownerAddress` - The account address initiating the transaction. Optional, defaults to the address of the logged-in account。
+- `ownerAddress` - The account address initiating the transaction. Optional, defaults to the address of the logged-in account.
 
 Example:
 ```
@@ -922,7 +922,7 @@ Current signWeight is:
 #### Broadcasting a Transaction
 
 **BroadcastTransaction**
-> Broadcasts a transaction, where the transaction is in hex string format。
+> Broadcasts a transaction, where the transaction is in hex string format.
 
 #### Getting Transaction Signature Weight - `getTransactionSignWeight`
 
@@ -1983,8 +1983,8 @@ gasFreeInfo: successful !!
 ```
 
 #### GasFree Transfer - `GasFreeTransfer`
-> Submits a **GasFree** transfer。
-> Function: Submits a request for a gas-free token transfer。
+> Submits a **GasFree** transfer.
+> Function: Submits a request for a gas-free token transfer.
 
 Example:
 ```
@@ -2018,8 +2018,8 @@ GasFreeTransfer successful !!!
 
 #### GasFree Trace - `GasFreeTrace`
 
-> Traces the transfer status。
-> Function: Checks the progress of a **GasFree** transfer using the `traceId` obtained from `GasFreeTransfer`。
+> Traces the transfer status.
+> Function: Checks the progress of a **GasFree** transfer using the `traceId` obtained from `GasFreeTransfer`.
 
 Example:
 ```
