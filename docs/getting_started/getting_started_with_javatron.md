@@ -480,8 +480,8 @@ Step 2 - Sign the Transaction
   Use the sender's private key to sign the transaction data (`raw_data_hex` or `txid`) generated in the previous step, proving your ownership of the account.  
   **Important Note**: 
   
-  - To ensure the security of your private key, it is strongly recommended that you perform all signing operations in a local or secure server environment using official TRON SDKs (e.g., `TronWeb`, `java-tron-sdk`).
-  - `cURL` cannot perform signing operations. This step is for procedural explanation only.
+- To ensure the security of your private key, it is strongly recommended that you perform all signing operations in a local or secure server environment using official TRON SDKs (e.g., `TronWeb`, `java-tron-sdk`).
+- `cURL` cannot perform signing operations. This step is for procedural explanation only.
 
   After signing, you will get a long string, which is the transaction's Signature Hash.
 

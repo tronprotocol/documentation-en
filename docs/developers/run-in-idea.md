@@ -13,10 +13,10 @@ The following configuration uses x86_64 architecture and JDK 8 (latest minor ver
 
 Before you begin, please ensure your development environment meets the following requirements:
 
-  - Operating System: `Linux` or `MacOS`
-  - JDK 8 (latest minor version recommended) is installed
-  - `git` is installed
-  - [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) is installed
+- Operating System: `Linux` or `MacOS`
+- JDK 8 (latest minor version recommended) is installed
+- `git` is installed
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) is installed
 
 
 ## Configuring the IntelliJ IDEA Environment
@@ -79,7 +79,7 @@ git checkout -t origin/develop
 
 You can compile the project in two ways:
 
-  * **Compile using the terminal:**
+* **Compile using the terminal:**
  
     In the root directory of the `java-tron` project, execute the following Gradle command:
 
@@ -93,7 +93,7 @@ You can compile the project in two ways:
     # Compile while skipping tests
     ./gradlew clean build -x test
     ```
-  * **Compile using the IntelliJ IDEA UI:**
+* **Compile using the IntelliJ IDEA UI:**
     
     Open the `java-tron` project in IntelliJ IDEA, then click `Build` -\> `Build Project` in the top menu bar to compile the entire project.
 
@@ -160,9 +160,9 @@ Next, create a new run configuration in IntelliJ IDEA to define how it launches 
 
 Now you can start the java-tron node from within IDEA:
 
-  * **Run the node:** Click `Run` -\> `Run 'FullNode'` in the top menu bar.
+* **Run the node:** Click `Run` -\> `Run 'FullNode'` in the top menu bar.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_runjavatron.png)
-  * **Debug the node:** Set breakpoints in your code, then click `Run` -\> `Debug 'FullNode'`. The program will pause at the breakpoints, which allows you to perform step-by-step debugging.
+* **Debug the node:** Set breakpoints in your code, then click `Run` -\> `Debug 'FullNode'`. The program will pause at the breakpoints, which allows you to perform step-by-step debugging.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_debug.png)
 
 After the node starts, relevant log files will be written to the `Working directory` you configured.

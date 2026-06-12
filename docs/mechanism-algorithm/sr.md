@@ -8,8 +8,8 @@ An application to become a candidate can be initiated via the `CreateWitness` co
 
 Based on the final vote rankings, the top 127 candidates take on one of two roles:
 
- - **Super Representatives (SRs)**: The top 27 candidates with the most votes. They are the core nodes of the TRON network, responsible for producing blocks and packing transactions. For this, they receive block rewards and vote rewards.
- - **Super Representative Partners (SR Partners)**: Candidates ranking from 28th to 127th. They act as backup nodes for the network, do not participate in block production, but share in the vote rewards.
+- **Super Representatives (SRs)**: The top 27 candidates with the most votes. They are the core nodes of the TRON network, responsible for producing blocks and packing transactions. For this, they receive block rewards and vote rewards.
+- **Super Representative Partners (SR Partners)**: Candidates ranking from 28th to 127th. They act as backup nodes for the network, do not participate in block production, but share in the vote rewards.
 
 The TRON network tallies votes once every 6 hours, and the roles of Super Representatives and Partners are updated accordingly in this 6-hour cycle.
 
@@ -18,11 +18,11 @@ The TRON network tallies votes once every 6 hours, and the roles of Super Repres
 
 All accounts in the TRON network have the right to vote for the Super Representative candidates they support. The core of voting is TRON Power (TP), which determines the weight of your vote.
 
- - Obtaining Voting Power (TRON Power)
+- Obtaining Voting Power (TRON Power)
 
     Your amount of TP is directly linked to the amount of TRX you have staked. Calculation Method: For every 1 TRX you stake, you receive 1 TP.
 
- - The Impact of Unstaking on Voting
+- The Impact of Unstaking on Voting
  
     When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system retracts TP according to the following rules:
     
@@ -56,8 +56,8 @@ SRs and SR Partners can set a Commission Rate (also known as Brokerage Rate) to 
 
     SRs and SR Partners can adjust their commission rate at any time via the [`wallet/updateBrokerage`](../api/http/witness-and-governance/updateBrokerage.md) API interface.
 
-     - 100% Commission: All rewards go to the SR/SR Partner.
-     - 0% Commission: All rewards are distributed to the voters.
+    - 100% Commission: All rewards go to the SR/SR Partner.
+    - 0% Commission: All rewards are distributed to the voters.
 
 ### Block Production Rewards and Voting Rewards
 
@@ -77,12 +77,12 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 
 **Notes:**
 
- - Chain parameter details can be viewed on TRONSCAN's [committee](https://tronscan.org/#/sr/committee) page.
- - `brokerageRate` refers to the commission rate.
- - SRs and SR Partners are the top 127 SR candidates.
- - Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Likewise, their voters cannot receive block or vote rewards either.
- - If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.
- - Via the `WithdrawBalanceContract` transaction, withdrawing rewards to the account balance is subject to a 24-hour withdrawal interval limit: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.
+- Chain parameter details can be viewed on TRONSCAN's [committee](https://tronscan.org/#/sr/committee) page.
+- `brokerageRate` refers to the commission rate.
+- SRs and SR Partners are the top 127 SR candidates.
+- Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Likewise, their voters cannot receive block or vote rewards either.
+- If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.
+- Via the `WithdrawBalanceContract` transaction, withdrawing rewards to the account balance is subject to a 24-hour withdrawal interval limit: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.
 
 ## Committee
 
@@ -90,13 +90,13 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 
 The Committee is the highest governing body of the TRON network, responsible for modifying the network parameters (eg. transaction fees, block rewards).
 
- - **Composition**: The Committee is composed of the current 27 active Super Representatives (SRs).
- - **Powers**: Each committee member has two core powers: 
+- **Composition**: The Committee is composed of the current 27 active Super Representatives (SRs).
+- **Powers**: Each committee member has two core powers: 
 
-     - To create a proposal: Initiate a proposal to modify network parameters.
-     - To vote on a proposal: Vote on proposals to modify network parameters (including proposals initiated by oneself).
+    - To create a proposal: Initiate a proposal to modify network parameters.
+    - To vote on a proposal: Vote on proposals to modify network parameters (including proposals initiated by oneself).
 
- - **Proposal Effective Mechanism**: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
+- **Proposal Effective Mechanism**: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
 
 **Note**: The Create, Vote on, and Cancel Proposal examples below are wallet-cli client commands. For the corresponding HTTP API interfaces, see [ProposalCreate](../api/http/witness-and-governance/proposalcreate.md), [ProposalApprove](../api/http/witness-and-governance/proposalapprove.md), and [ProposalDelete](../api/http/witness-and-governance/proposaldelete.md).
 

@@ -4,8 +4,8 @@ This guide provides detailed instructions on how to safely upgrade your java-tro
 
 For **mandatory upgrades**, it is crucial to strictly follow this guide to complete the deployment. For **optional upgrades**, you may choose whether to upgrade based on your specific needs.
 
-  * For standard nodes, please refer to the [Standard Node Upgrade Process](#standard-node-upgrade-process).
-  * For nodes configured with a primary/backup high-availability setup, please follow the [Primary/Backup Node Upgrade Guide](#primary-backup-node-upgrade-guide) to ensure a seamless service transition.
+* For standard nodes, please refer to the [Standard Node Upgrade Process](#standard-node-upgrade-process).
+* For nodes configured with a primary/backup high-availability setup, please follow the [Primary/Backup Node Upgrade Guide](#primary-backup-node-upgrade-guide) to ensure a seamless service transition.
 
 
 ## Standard Node Upgrade Process { #standard-node-upgrade-process }

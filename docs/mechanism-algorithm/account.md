@@ -3,9 +3,9 @@
 ## Introduction
 TRON employs an account model for its ledger. All activities on the network, such as transfers, voting, and contract deployment, revolve around accounts.
 
- - **Unique Identifier**: Each account is uniquely identified by its Address, which typically begins with a `T`.
- - **Access Control**: Any operation on an account (such as a transfer) requires a signature from the corresponding Private Key.
- - **Account Assets and Capabilities**: Each account can own and manage various resources, including:
+- **Unique Identifier**: Each account is uniquely identified by its Address, which typically begins with a `T`.
+- **Access Control**: Any operation on an account (such as a transfer) requires a signature from the corresponding Private Key.
+- **Account Assets and Capabilities**: Each account can own and manage various resources, including:
 
     - **Assets**: TRX, TRC-10, TRC-20, TRC-721/TRC-1155 NFTs, etc.
     - **Network Resources**: Bandwidth and Energy.
@@ -17,17 +17,17 @@ There are two primary ways to create a new TRON account:
 
 **Method 1: Offline Generation and On-Chain Activation**
 
-   - Generate Address: Use a wallet application (like [TronLink](https://www.tronlink.org/)) to generate a new key pair (private key and address).
-   - Activate Account: At this stage, the account exists only conceptually and must be "activated" to be used on the blockchain. Activation is accomplished by sending any amount of TRX or a TRC-10 token from an existing account to this new address. Once the transaction is successful, the new account is officially created on the TRON network.
+- Generate Address: Use a wallet application (like [TronLink](https://www.tronlink.org/)) to generate a new key pair (private key and address).
+- Activate Account: At this stage, the account exists only conceptually and must be "activated" to be used on the blockchain. Activation is accomplished by sending any amount of TRX or a TRC-10 token from an existing account to this new address. Once the transaction is successful, the new account is officially created on the TRON network.
 
 **Method 2: Creation via System Contract**
 
-   - Developers can create an account by calling the `AccountCreateContract` system contract.
+- Developers can create an account by calling the `AccountCreateContract` system contract.
 
 **Account Creation Cost:**
 
-   - Activating a new account costs 1 TRX, which is burned. This amount is the `getCreateNewAccountFeeInSystemContract` network parameter (currently 1 TRX on mainnet) and can be changed by committee proposal.
-   - Additionally, if the creator's account has sufficient Bandwidth (either from staking TRX or delegated from others), the creation will only consume Bandwidth. Otherwise, the `getCreateAccountFee` is burned to pay for the Bandwidth. This Bandwidth fee is a network parameter (currently 0.1 TRX on mainnet) and can also be changed by committee proposal. Note that the daily free Bandwidth cannot be used to create an account; only Bandwidth obtained from staking TRX or delegated from others is eligible.
+- Activating a new account costs 1 TRX, which is burned. This amount is the `getCreateNewAccountFeeInSystemContract` network parameter (currently 1 TRX on mainnet) and can be changed by committee proposal.
+- Additionally, if the creator's account has sufficient Bandwidth (either from staking TRX or delegated from others), the creation will only consume Bandwidth. Otherwise, the `getCreateAccountFee` is burned to pay for the Bandwidth. This Bandwidth fee is a network parameter (currently 0.1 TRX on mainnet) and can also be changed by committee proposal. Note that the daily free Bandwidth cannot be used to create an account; only Bandwidth obtained from staking TRX or delegated from others is eligible.
 
 ## Key Pair Generation Algorithm
 
