@@ -92,6 +92,7 @@ After preparing the new version of the executable file and backing up the origin
 For Block-Producing Node, please refer to [Starting a Block Production Node](../using_javatron/installing_javatron.md#starting-a-block-production-node)
     
 #### Regular FullNode
+
 For Regular FullNode, please refer to [Starting a FullNode on the TRON main network](../using_javatron/installing_javatron.md#starting-a-fullnode-on-the-tron-main-network) 
 
 ### Step 6: Verify and Monitor
@@ -109,6 +110,7 @@ For Regular FullNode, please refer to [Starting a FullNode on the TRON main netw
 **Contingency Plan**: If you encounter any issues during the upgrade process that prevent the node from starting or running correctly, immediately use the data backed up in [Step 3](#back-up-critical-data) to restore the previous version. Please submit a GitHub Issue or report the problem to the TRON community for assistance.
 
 -----
+
 ## Primary/Backup Node Upgrade Guide { #primary-backup-node-upgrade-guide }
 
 To ensure high availability of the service, the upgrade of primary/backup nodes should adopt a rolling upgrade strategy.

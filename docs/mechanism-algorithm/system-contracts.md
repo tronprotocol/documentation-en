@@ -1,4 +1,5 @@
 # System Contracts
+
 The TRON network supports many different types of transactions, such as TRX transfers, TRC-10 transfers, smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `wallet/deploycontractAPI`.The transaction type of stake TRX is `FreezeBalanceV2Contract`, which requires calling the ` wallet/freezebalancev2API`. We collectively refer to the implementation of these different transaction types as system contracts.
 
 ## ContractType Overview
@@ -52,6 +53,7 @@ Every system contract is identified by a `ContractType` enum value defined in [`
 The protobuf message definition and field-level documentation of each contract are listed in the sections below.
 
 ## AccountCreateContract
+
 ```
     message AccountCreateContract {
       bytes owner_address = 1;
@@ -65,6 +67,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `type`: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.
 
 ## TransferContract
+
 ```
     message TransferContract {
       bytes owner_address = 1;
@@ -78,6 +81,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `amount`: The amount of TRX to transfer.
 
 ## TransferAssetContract
+
 ```
     message TransferAssetContract {
       bytes asset_name = 1;
@@ -93,6 +97,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `amount`: The amount of token to transfer.
 
 ## VoteWitnessContract
+
 ```
     message VoteWitnessContract {
       message Vote {
@@ -111,6 +116,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `support`: Constant true, not used.
 
 ## WitnessCreateContract
+
 ```
     message WitnessCreateContract {
       bytes owner_address = 1;
@@ -122,6 +128,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `url`: The website url of the SR.
 
 ## AssetIssueContract
+
 ```
     message AssetIssueContract {
       message FrozenSupply {
@@ -170,6 +177,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `id`: The unique token ID, generated sequentially by the system at issuance (incrementing from 1000001).
 
 ## WitnessUpdateContract
+
 ```
     message WitnessUpdateContract {
       bytes owner_address = 1;
@@ -181,6 +189,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `update_url`: The website url of the SR.
 
 ## ParticipateAssetIssueContract
+
 ```
     message ParticipateAssetIssueContract {
       bytes owner_address = 1;
@@ -196,6 +205,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `amount`: The amount of token to purchase.
 
 ## AccountUpdateContract
+
 ```
     // Update account name. Account name is unique now.
     message AccountUpdateContract {
@@ -208,6 +218,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `account_name`: Account name.
 
 ## UnfreezeBalanceContract
+
 ```
     message UnfreezeBalanceContract {
       bytes owner_address = 1;
@@ -221,6 +232,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `receiver_address`: The account address to receive resource.
 
 ## WithdrawBalanceContract
+
 ```
     message WithdrawBalanceContract {
       bytes owner_address = 1;
@@ -230,6 +242,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `owner_address`: The address of the account withdrawing rewards.
 
 ## UnfreezeAssetContract
+
 ```
     message UnfreezeAssetContract {
       bytes owner_address = 1;
@@ -239,6 +252,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `owner_address`: The address of the token issuer.
 
 ## UpdateAssetContract
+
 ```
     message UpdateAssetContract {
       bytes owner_address = 1;
@@ -256,6 +270,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `new_public_limit`: The bandwidth consumption limit of the accounts.
 
 ## ProposalCreateContract
+
 ```
     message ProposalCreateContract {
       bytes owner_address = 1;
@@ -267,6 +282,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `parameters`: The proposal.
 
 ## ProposalApproveContract
+
 ```
     message ProposalApproveContract {
       bytes owner_address = 1;
@@ -280,6 +296,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `is_add_approval`: Whether to approve.
 
 ## ProposalDeleteContract
+
 ```
     message ProposalDeleteContract {
       bytes owner_address = 1;
@@ -291,6 +308,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `proposal_id`: The proposal id.
 
 ## SetAccountIdContract
+
 ```
     // Set account id if the account has no id. Account id is unique and case insensitive.
     message SetAccountIdContract {
@@ -303,6 +321,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `account_id`: The account id.
 
 ## CreateSmartContract
+
 ```
     message CreateSmartContract {
       bytes owner_address = 1;
@@ -318,6 +337,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
 
 ## TriggerSmartContract
+
 ```
     message TriggerSmartContract {
       bytes owner_address = 1;
@@ -337,6 +357,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
 
 ## UpdateSettingContract
+
 ```
     message UpdateSettingContract {
       bytes owner_address = 1;
@@ -350,6 +371,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `consume_user_resource_percent`: The percentage of resource consumption ratio.
 
 ## ExchangeCreateContract
+
 ```
     message ExchangeCreateContract {
       bytes owner_address = 1;
@@ -367,6 +389,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `second_token_balance`: Second token balance.
 
 ## ExchangeInjectContract
+
 ```
     message ExchangeInjectContract {
       bytes owner_address = 1;
@@ -382,6 +405,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `quant`: The token amount to inject.
 
 ## ExchangeWithdrawContract
+
 ```
     message ExchangeWithdrawContract {
       bytes owner_address = 1;
@@ -397,6 +421,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `quant`: The token amount to withdraw.
 
 ## UpdateEnergyLimitContract
+
 ```
     message UpdateEnergyLimitContract {
       bytes owner_address = 1;
@@ -410,6 +435,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `origin_energy_limit`: The target energy limit to change.
 
 ## AccountPermissionUpdateContract
+
 ```
     message AccountPermissionUpdateContract {
       bytes owner_address = 1;
@@ -427,6 +453,7 @@ The protobuf message definition and field-level documentation of each contract a
 For more details, see [Account Permission Management](./multi-signatures.md).
 
 ## ClearABIContract
+
 ```
     message ClearABIContract {
       bytes owner_address = 1;
@@ -438,6 +465,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
 - `contract_address`: The target contract address to clear ABI.
 
 ## UpdateBrokerageContract
+
 ```
     message UpdateBrokerageContract {
       bytes owner_address = 1;

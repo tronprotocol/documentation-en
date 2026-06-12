@@ -37,6 +37,7 @@ For a Super Representative (SR) node acting as a **block-production node**, the 
 You can directly download the official client [here](https://github.com/tronprotocol/java-tron/releases), or you can compile the source code yourself to package the client.
 
 ### Prerequisites for Compiling java-tron
+
 Before compiling java-tron, make sure you have:
 
 - Operating system: `Linux` or `macOS` (`Windows` is not supported).
@@ -94,6 +95,7 @@ uname -m
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
 ## Starting a java-tron Full Node { #starting-a-java-tron-node }
+
 A full node acts as a gateway to the TRON network, exposing comprehensive interfaces via HTTP and RPC APIs. Through these endpoints, clients may execute asset transfers, deploy smart contracts, and invoke on-chain logic. It must join a TRON network to participate in the network's consensus and transaction processing.
 
 ### Network Types
@@ -135,9 +137,11 @@ Use [TronScan](https://tronscan.org/#/), TRON's official block explorer, to view
 Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.
 
 #### JVM Parameter Optimization for Mainnet FullNode Deployment
+
 For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters for different architectures:
 
 ##### x86_64 (JDK 8)
+
 ```bash
 nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
@@ -149,7 +153,9 @@ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
     -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
 ```
+
 ##### arm64 (JDK 17)
+
 ```bash
 nohup java -Xmx9G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
@@ -163,6 +169,7 @@ nohup java -Xmx9G -XX:+UseZGC \
 ```
 
 ##### Java Startup Parameters Explanation
+
 **General & Memory Parameters:**
 
 *   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
@@ -189,6 +196,7 @@ nohup java -Xmx9G -XX:+UseZGC \
 *   `-Xlog:gc...`: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).
 
 ### Starting a FullNode on the Nile test network
+
 Utilize the `-c` flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is **strongly advised** to compile the source code following the [Building the Source Code](https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code) instructions for the Nile TestNet.
 
 ```bash
@@ -198,14 +206,17 @@ nohup java -jar build/libs/FullNode.jar -c framework/src/main/resources/config-n
 Nile resources: explorer, faucet, wallet, developer docs, and network statistics at [nileex.io](https://nileex.io/).
 
 ### Access Shasta test network
+
 Shasta does not accept public node peers. Programmatic access is available via TronGrid endpoints; see [TronGrid Service](https://developers.tron.network/docs/trongrid) for details.
 
 Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shasta.tronex.io](https://shasta.tronex.io/).
 
 ### Starting a FullNode on a private network
+
 To set up a private network for testing or development, follow the [Private Network guidance](private_network.md).
 
 ### Starting a SolidityNode
+
 A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
 
 ```
@@ -245,6 +256,7 @@ localwitness = [
 For SR nodes running on high-performance servers (e.g., ≥ 64GB RAM), it is strongly recommended to use the following optimized Java startup commands. These configurations are designed to ensure maximum stability and efficiency for block production. Execute the command corresponding to your environment:
 
 #### Option 1: JDK 8 on x86_64
+
 ```bash
 nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
     -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
@@ -258,6 +270,7 @@ nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
 ```
 
 #### Option 2: JDK 17 on arm64
+
 ```bash
 nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \

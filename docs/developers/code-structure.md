@@ -1,5 +1,7 @@
 # java-tron Core Modules
+
 ## Code Structure
+
 java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. Starting java-tron runs a TRON node. This document details the code structure of java-tron and introduces the functions of its various modules to facilitate code analysis and development.
 
 java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. Currently java-tron is divided into 7 modules: [Protocol](#protocol), [Common](#common), [Chainbase](#chainbase), [Consensus](#consensus), [Actuator](#actuator), [Crypto](#crypto), [Framework](#framework), the following introduces the functions of each module and its code organization.
@@ -192,6 +194,7 @@ Actuator module defines the `Actuator` interface, which includes 4 different met
 Depending on their businesses, developers may set up Actuator accordingly and customize the processing of different types of transactions.
  
 ### Crypto
+
 The Crypto module is relatively independent yet crucial to the system. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
 
 [crypto](https://github.com/tronprotocol/java-tron/tree/develop/crypto) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/crypto`, its directory structure is as follows:
@@ -257,12 +260,15 @@ The Framework module serves as the core of java-tron and the primary entry point
 * `core/db/Manager.java` - Transaction and block verification and processing logic
 
 ### Summary
+
 This article mainly introduces the code structure of java-tron, as well as the function, location and directory structure of each functional module. Through this article, you will have a general understanding of the overall structure and key interfaces of java-tron, which is helpful for subsequent code analysis and development.
 
 
 
 ## ChainBase
+
 ### Introduction
+
 As we all know, the blockchain is essentially a non-tamperable distributed ledger, which is very suitable for solving the problem of trust. Blockchains are frequently used for secure bookkeeping and transaction processing. For example, applications utilize cryptocurrencies like BTC, ETH, and TRX to conduct economic activities while ensuring financial transparency.
 
 The realization of such an immutable distributed ledger is a very complex system engineering, involving many technical fields: such as p2p networks, smart contracts, databases, cryptography, consensus mechanisms, etc. Among them, the database is the basis of the underlying storage, and various blockchain teams are exploring the design and optimization of the database level.
@@ -272,9 +278,11 @@ The Database module of java-tron is also called the ChainBase module. This artic
 
 
 ### Prerequisites
+
 The database is an important part of the blockchain system. It stores all the data on the blockchain and is the basis for the normal operation of the blockchain system. Each fullnode stores a full amount of data, including block data, state data, etc. java-tron uses the Account model to save the user's account state.
 
 #### Account Models
+
 There are currently two mainstream account models,
 
 - [UTXO](https://en.wikipedia.org/wiki/Unspent_transaction_output)
@@ -293,12 +301,14 @@ To solve the problems faced by PoW, some people proposed PoS (Proof of Stake), w
 To learn more, please refer to [Delegated Proof of Stake](https://en.bitcoinwiki.org/wiki/DPoS).
 
 #### Persistent Storage
+
 There are certain differences between blockchain and traditional Internet business. The blockchain does not have particularly complex processing logic at the database level, but there are a large number of key-value read and write operations in the blockchain so there are higher requirements for data read and write performance.
 
 Based on this consideration, java-tron uses LevelDB as the underlying data storage by default, and java-tron has a good architecture design. The interface-oriented programming mode makes the Chainbase module have better scalability. All databases implemented the chainbase interface can be used as the underlying storage engine of java-tron. For example, in the chainbase v2 version, a database implementation based on RocksDB is provided.
 
 
 #### Transaction Validation
+
 As we all know, the blockchain mainly stores transaction data. Before introducing the Chainbase module, you need to understand the transaction processing logic in java-tron.
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_1.png)
@@ -314,6 +324,7 @@ The account library in the database stores the account information of all users,
 
 
 #### Glossary
+
 SR： Super Representative, is responsible for block production.
 
 FullNode： stores all block data, is responsible for transactions, block broadcasting and validation, and provides query services.
@@ -322,6 +333,7 @@ TRX： TRON native token.
 
 
 ### State Rollback
+
 Above we mentioned that java-tron validates whether the transaction is legal through pre-execution, but what we need to know is that the transaction is successfully validated on a certain node does not mean that the transaction has been successfully chained because the transaction has not been packed into the consensus blocks, there is a risk of being rolled back.
 
 The consensus of java-tron follows a principle: that is, the transactions in the blocks that are approved by more than 2/3 of the SRs are the ones that are really successful on the chain. can also be understood as below,
@@ -349,6 +361,7 @@ The data state changes caused by these three scenarios may need to be rolled bac
 
 
 #### Rollback after Receiving a New Block
+
 When receiving a new block, the node needs to roll back to the state at the end of the previous block and roll back all transactions validated afterward. As shown below,
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_2.png)
@@ -360,6 +373,7 @@ If the account balance of accountA is 100 at the block height is 1000, the node 
 
 
 #### Rollback after Producing a New Block
+
 First of all, readers may have a question: the validated transaction can be directly packed into the block, and it will not change the database state. Why is there a change in the database state?
 
 Because java-tron does a secondary validation of the transaction when it is packed into the block. The secondary validation is due to the timeliness of the transaction. Still taking the above figure as an example, it can be seen from the figure, that after 1001 is received, the transaction t1 was rolled back, and the balance of accountA was deducted by 50. And then, it was the node's turn to produce a block, but t1 had become an illegal transaction at this time because the balance in accountA was not enough to transfer 100 TRX, it is not advisable to directly pack t1 into the block. So the transaction needs to be validated again, which is why the transaction needs to be validated twice when producing a block.
@@ -368,6 +382,7 @@ After the block is packed successfully, the node will broadcast the block to the
 
 
 #### Rollback when Forking
+
 This is the last rollback situation, and the blockchain will inevitably fork, especially the blockchain system based on DPoS with a faster block production speed that is more prone to fork.
 
 java-tron maintains a data structure in memory as below,
@@ -383,10 +398,12 @@ As shown in the figure, fork A in the dark part was originally the main chain. B
 
 
 ### State Rollback Implementation
+
 This chapter explains receiving and validating transactions, block production, validating and saving blocks from the perspective of code, to further analyze the chainbase module of java-tron. If there is no further declaration, the default description is dedicated to all the Fullnode (including SR).
 
 
 #### Receiving Transactions
+
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_4.png)
 
 
@@ -437,6 +454,7 @@ In the process of producing the block, the transaction will be validated again, 
 
 
 ### Block Solidity
+
 java-tron adopts the DPoS consensus mechanism. The DPoS of java-tron is to vote for 27 nodes as block producers (also known as SR), SR has the right and obligation to produce blocks, and blocks approved by more than 2/3 of SR are considered to reach a consensus. These blocks, which are no longer rolled back are called solidified blocks. Only solidified blocks can be written to the database.
 
 SnapshotManager in java-tron is the key entry to the storage module, holds references to all current business databases, and stores database references in a list. Each database instance supports adding a new layer of state set on its own called SnapshotImpl. It is an in-memory hashmap, multiple SnapshotImpl are associated in the form of a linked list, and one SnapshotImpl retains the data modification (in-merging or merging) involved in one state change, and SnapshotImpl is independent of each other. They are separated through this data structure, as shown in the following figure,
@@ -489,6 +507,7 @@ This solution can be summarized as,
 - the data set that needs to be guaranteed to be written atomically is first written to a temporary database by atomic writing, and then the data is written to different database instances; if an accident occurs, it can be recovered through the data of the temporary database
 
 ### Summary
+
 This article analyzes the implementation details of rollback and database writing in the chainbase module through the processing flow of transactions and blocks and also analyzes the principle of atomic writing among multiple instances of the database to prevent database damage caused by accidental downtime. We hope that reading this article can help developers to further understand and develop the java-tron database.
 
 
@@ -496,13 +515,16 @@ This article analyzes the implementation details of rollback and database writin
 
 
 ## Network
+
 ### Overview
+
 A Peer-to-Peer (P2P) network is a distributed architecture where participants share a portion of their hardware resources, such as processing power, storage capacity, network connection capacity, printers, etc. These shared resources need to be provided services and content by the network, which can be accessed by other peers directly without going through an intermediate entity. Participants in this network are both providers and acquirers of service and content.
 
 Unlike traditional Client/Server architectures, all nodes in a P2P network have equal status. While serving as a client, each node can also serve as a server to provide services to other nodes, which greatly improves the utilization of resources.
 
 
 #### Blockchain Network
+
 P2P is the network layer in the blockchain structure. The main purpose of the network layer is to realize information broadcast, verification and communication between nodes. The blockchain network is essentially a P2P network, and each node can both receive and generate information. Nodes keep communication by maintaining common blockchain data.
 
 As the foundation of the blockchain, the P2P network brings the following advantages to the blockchain:
@@ -513,6 +535,7 @@ As the foundation of the blockchain, the P2P network brings the following advant
 
 
 #### TRON Network
+
 The architecture diagram of TRON is as follows:
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_architecture.png)
 
@@ -527,14 +550,17 @@ Below will separately introduce these four functional parts.
 
 
 ### Node Discovery
+
 Node discovery is the first step for nodes to access the blockchain network. The blockchain network is a structured P2P network which organizes all nodes in an orderly manner, such as forming a ring network or a tree-like network. Structured networks are generally implemented based on the DHT (Distributed Hash Table) algorithm. Specific implementation algorithms include Chord, Pastry, CAN, Kademlia and so on. The TRON network uses the Kademlia algorithm.
 
 #### Kademlia Algorithm
+
 Kademlia is an implementation of Distributed Hash Table (DHT), it is the core routing technology in the decentralized P2P network and can quickly find target nodes in the network without a central server.
 
 For a detailed introduction to the algorithm, please refer to [Kademlia](https://en.wikipedia.org/wiki/Kademlia).
 
 #### Kademlia Implementation by TRON
+
 The main points of the Kademlia algorithm implemented by TRON are as follows:
 
 * Node ID: Randomly generated 512bit ID
@@ -550,6 +576,7 @@ The node discovery protocol of TRON includes the following four UDP messages:
 * `DISCOVER_NEIGHBORS` - used in response to `DISCOVER_FIND_NODE` message, will return one or more nodes, up to 16
 
 ##### Initialize K-Buckets
+
 After the node is started, it will read the seed nodes configured in the node configuration file and the peer nodes recorded in the database, and then send `DISCOVER_PING` message to them respectively. If the reply message `DISCOVER_PONG` from a peer is received, and at the condition that the K bucket is not full, it will then write the peer node into the K bucket; But if the corresponding bucket has already been full (that is the bucket has reached 16 nodes), it will challenge to the earliest node in the bucket. If the challenge is successful, the old node will be deleted, and the new node will be added to the K bucket. That is the K bucket initialization process, then the node discovery process is performed.
 
 
@@ -569,6 +596,7 @@ The node discovery algorithm used in `DiscoverTask` and `RefreshTask` will be ex
 
 
 ##### Receive Neighbors' Messages and Update K Bucket
+
 When the local node receives the `DISCOVER_NEIGHBORS` message replied by the remote node, it will send the `DISCOVER_PING` message to the received neighbor node in turn, and then if it receives the reply message `DISCOVER_PONG`, it will judge whether the corresponding K-bucket is full, if the K-bucket is not full, it will add the new node to the K bucket, if the K bucket is full, it will challenge one of the nodes, if the challenge is successful (send a `DISCOVER_PING` message to the old node, if it fails to receive the reply message `DISCOVER_PONG`, the challenge is successful, otherwise the challenge fails), the old node will be deleted from the K bucket, and the new node will be added to the K bucket.
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_updatek.png)
@@ -581,6 +609,7 @@ Nodes periodically perform node discovery tasks, continuously update K-buckets, 
 Before understanding how to establish a TCP connection between nodes, we need to first understand the peer node type.
 
 #### Peer Node Management
+
 The local node needs to manage and classify peer nodes for efficient and stable node connection. Remote nodes can be divided into the following categories:
 
 * Active nodes: specified in the configuration file. After the system starts, it will actively establish connections with the nodes. If the connection fails to be established, it will retry in each scheduled TCP connection task.
@@ -590,6 +619,7 @@ The local node needs to manage and classify peer nodes for efficient and stable 
 * RecentlyDisconnectedNodes: When a connection is disconnected, the peer node will be added to the recentlyDisconnectedNodes list, valid for 30s, when a connection request from recentlyDisconnectedNodes is received, the request will be rejected directly
 
 #### Establish TCP Connection with Peers
+
 After the node is started, a scheduled task `poolLoopExecutor` will be created to establish a TCP connection with nodes. It will select nodes and establish connections with them. The working process is as follows:
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_connect.png)
@@ -597,6 +627,7 @@ After the node is started, a scheduled task `poolLoopExecutor` will be created t
 The TCP connection can be mainly divided into two steps: first, determine the node list which the node will establish a connection with. The list needs to contain the active nodes that have not successfully established a connection, and then calculate the number of connections that also need to be established, and filter out the nodes from discovered neighbors according to the [node filtering strategy](#node-filtering-strategy), then score and sort them according to the [node scoring strategy](#node-scoring-strategy), and the corresponding number of nodes with the highest score is added to the request list. Finally, TCP connections are established with the nodes in the request list.
 
 ##### Node Filtering Strategy
+
 When establishing a node connection, it is necessary to filter out the following types of nodes and determine whether the node's own connection number has reached the maximum value.
 
 * Myself
@@ -612,6 +643,7 @@ But for trusted nodes, some filtering policies are ignored and connections are a
 
 
 ##### Node Scoring Strategy
+
 The node score is used to determine the priority of nodes to establish a connection. The higher the score, the higher the priority. Scoring dimensions include:
 
 * Packet loss rate: The lower the packet loss rate, the better the communication quality. The score is inversely proportional to the packet loss rate. The highest score is 100 and the lowest is 0.
@@ -633,6 +665,7 @@ After the TCP connection is successfully established, the node that actively ini
 When the neighbor node receives `P2P_HELLO`, it will compare with the local information, such as checking whether the p2p version and the genesis block information are consistent. If all the check conditions are passed, it will reply to the `P2P_HELLO` message, and then perform the block synchronization or broadcast; otherwise, it will disconnect the connection.
 
 #### Channel Keep-Alive
+
 Channel keep-alive is accomplished through `P2P_PING`, `P2P_PONG` TCP messages. When a node establishes a TCP connection with a neighbor node and handshakes successfully, the node will open a thread `pingTask` for the connection and periodically send `P2P_PING` messages to maintain the TCP connection, which is scheduled every 10s. If the `P2P_PONG` message replied is not received within the timeout period, the connection will be terminated.
 
 ### Block Synchronization
@@ -648,6 +681,7 @@ After node A receives the `BLOCK_CHAIN_INVENTORY` message, it gets the missing b
 After node B receives the `FETCH_INV_DATA` message from node A, it sends the block to node A through the `BLOCK` message. After node A receives the `BLOCK` message, it asynchronously processes the block.
 
 #### Blockchain Summary and List of Missing Blocks
+
 Below will take several different block synchronization scenarios as examples to illustrate the generation of the blockchain summary and the lost block ID list. 
 
 * Blockchain summary: an ordered list of block IDs, including the highest solidified block, the highest non-solidified block, and the blocks corresponding to the dichotomy.
@@ -694,6 +728,7 @@ Node A sends the transaction or block to be broadcast to Node B via the `INVENTO
 After node A receives the `FETCH_INV_DATA` message, it will check whether an "INVENTORY" message has been sent to the peer. If it has been sent, it will send a transaction or block message to node B according to the list data. After node B receives the transaction or block message, it processes the message and triggers the forwarding process.
 
 ### Summary
+
 This article introduces the implementation details related to the P2P network, the lowest level module of TRON, including node discovery, node connection, block synchronization, and the process of block and transaction broadcasting. I hope that reading this article can help developers to further understand and develop java-tron network-related modules.
 
 

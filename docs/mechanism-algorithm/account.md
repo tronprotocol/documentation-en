@@ -1,6 +1,7 @@
 # Account Model
 
 ## Introduction
+
 TRON employs an account model for its ledger. All activities on the network, such as transfers, voting, and contract deployment, revolve around accounts.
 
 - **Unique Identifier**: Each account is uniquely identified by its Address, which typically begins with a `T`.
@@ -89,6 +90,7 @@ public static Transaction sign(Transaction transaction, ECKey myKey) {
 ```
 
 ## Signature Verification
+
 When a FullNode receives a transaction, it uses the transaction hash and signature to recover a public key via the ECDSA recovery mechanism (ecrecover). An address is then derived from this public key. If the derived address matches the originator's address specified in the transaction, the signature is considered valid.
 
 ### Algorithm

@@ -52,16 +52,21 @@ dbSettings = {
 ```
 
 ## Migrating from LevelDB to RocksDB on x86_64 Platforms
+
 To migrate from LevelDB to RocksDB, use the TRON Toolkit `Toolkit.jar`.
 
 > **Note:** The `db convert` subcommand is x86_64-only. On arm64 it prints an "unsupported architecture" message and exits without doing any work.
+>
 ### 1. Data Conversion Steps
+
 ```
 cd java-tron                                   # Source root directory
 ./gradlew build -xtest -xcheck                 # Compile the project
 java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
 ```
+
 ### 2. Positional Arguments
+
 If your node uses a custom data directory, pass the LevelDB source and RocksDB destination as two positional arguments after `db convert`:
 
 ```
@@ -79,6 +84,7 @@ Then use the following command for conversion:
 ```
 java -jar build/libs/Toolkit.jar db convert  your_database_dir/database output-directory-dst/database
 ```
+
 ### 3. Perform Conversion After Stopping the Node
 
 >**The node must be stopped before performing the data conversion operation.**
@@ -97,5 +103,7 @@ cd /tmp
 java -jar build/libs/Toolkit.jar db convert output-directory/database output-directory-dst/database
 ```
 > **Note:** The entire data conversion process is expected to take approximately **10 hours**, depending on the data volume and disk performance.
+>
 ## About LevelDB
+
 LevelDB is the default data storage engine for java-tron nodes on x86_64 platforms, suitable for resource-constrained or lightweight deployment scenarios. It has a simple structure and is easy to maintain, but it is less efficient than RocksDB in terms of data compression, backup capabilities, and performance for large-scale nodes.

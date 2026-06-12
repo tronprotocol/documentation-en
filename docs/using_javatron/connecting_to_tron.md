@@ -16,6 +16,7 @@ This guide explains how to configure the java-tron client to connect to these ne
 You can connect a java-tron node to a specific network by modifying the following key items in the [config file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf):
 
 ### Network ID 
+
 The P2P Network ID(`p2p.version`) specifies the network you want to join. Mainnet configuration:
 
 ```
@@ -36,6 +37,7 @@ In particular:
 - Private Network: Custom value (set to a different ID)
 
 ### Genesis Block
+
 The `genesis.block` configuration must be consistent with other nodes in the target network, otherwise the node will not be able to connect to peers. Mainnet configuration:
 
 ```
@@ -204,7 +206,9 @@ genesis.block = {
 ```
 
 ## Node Discovery 
+
 ### Enable Node Discovery
+
 Node discovery is enabled or disabled via the configuration file. It is enabled by default:
 
 ```
@@ -216,9 +220,11 @@ node.discovery = {
 ```
 
 ### Boot Nodes
+
 Java-tron uses the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol to discover peers. Discovery requires boot nodes, which consist of seed nodes and actively configured peers, see [Active Connection (Active Peers)](#active-connection-active-peers). 
 
 ### seed.node
+
 `seed.node` is used to initialize connections. It should point to online and stable Fullnode:
 
 ```
@@ -237,6 +243,7 @@ For TRON Mainnet, you can use [community public nodes](https://developers.tron.n
 If your network interface supports IPv6, you can uncomment the relevant lines in the list.
 
 ### Persistent Nodes from Database
+
 When persistence is enabled, nodes in the routing table are periodically written to the database and reused on restart:
 
 ```
@@ -255,13 +262,16 @@ node {
   ...
 }
 ```
+
 ### Disable Node Discovery
+
 In some cases (e.g., local testing or a fixed private network), you may disable discovery by setting:`node.discovery.enable = false` or by blocking UDP port 18888 via firewall.
 
 
 ## Node Connection
 
 ### Number of Node Connections
+
 The number of peer connections is controlled by the following parameters. They are usually tuned together:
 
 - `node.maxConnections`: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in `node.passive`, `node.active`, or `fastForward` (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in `node.active` are bounded only by the size of the `node.active` list, while active connections to peers discovered via the discovery protocol are driven by `minConnections` and `minActiveConnections` (see below).
@@ -284,6 +294,7 @@ Note: `minConnections` must not exceed `maxConnections`, and `minActiveConnectio
 
 
 ### Active Connection (Active Peers)
+
 Active peers come from three sources:
 
 - Configured active peers (high priority). These connections are made regardless of discovery settings:
@@ -320,6 +331,7 @@ node {
   
 
 ### Passive Connections
+
 -  The current node will always accept connection requests from nodes listed under `node.passive`
 
 
@@ -344,23 +356,31 @@ Unlike node discovery, which uses UDP, peer connections use Transmission Control
 
 
 ## Logs and Node Status Verification
+
 ### View Sync Logs
+
 TRON node logs are stored in `logs/tron.log`：
 
 ```
 tail -f logs/tron.log
 ```
+
 ### Example Sync Logs：
+
 ```
 pushBlock block number:76, cost/txs:13/0 false
 Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
 ```
+
 ### Example Block Production Logs (for Super Representatives):
+
 ```
 Generate block 79336 begin
 Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponedCount: 0
 ```
+
 ### Check Node Status
+
 Use the HTTP API:
 
 ```
@@ -395,7 +415,9 @@ Example response：
     "totalFlow": 8735314
 }
 ```
+
 ### Verify Node Synchronization
+
 Compare your local block height with [TRONSCAN](https://tronscan.org/) ：
 ```
 curl http://127.0.0.1:8090/wallet/getnowblock
@@ -403,6 +425,7 @@ curl http://127.0.0.1:8090/wallet/getnowblock
 If the heights match, synchronization is normal.
 
 ## Troubleshooting Common Connection Issues
+
 If your java-tron node fails to connect to peers, check the following common causes:
 
 - **Local clock offset**
@@ -425,10 +448,13 @@ If your java-tron node fails to connect to peers, check the following common cau
     Use Nile Testnet instead.
 
 ## Connecting to a Private Network
+
 Developers can deploy a private instance of the TRON network.
 
 ### Key Configuration:
+
 - Use a custom `node.p2p.version` to avoid conflicts with existing public networks.
 
 ### Reference Guide:
+
 - Please refer to [Private Network](private_network.md) for full instructions.

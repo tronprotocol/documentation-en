@@ -1,4 +1,5 @@
 # Private Network
+
 This document will guide you through setting up a basic TRON private network. This network will consist of one Super Representative (SR) node responsible for block production and one regular FullNode used only for syncing block data and broadcasting transactions.
 
 ## Prerequisites
@@ -15,6 +16,7 @@ Before you begin, please ensure your development environment meets the following
 
 
 ## Deployment Guide
+
 The operational steps for deploying a private network node are fundamentally the same as deploying a Mainnet node. The primary difference lies in the node's configuration file. The most crucial part of setting up a private network is modifying the configuration items in this file to allow the nodes to form a private network, enabling network discovery, block synchronization, and transaction broadcasting.
 
 1. Prepare Node Directories

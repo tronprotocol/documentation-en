@@ -266,6 +266,7 @@ The result is as follows:
 }
 
 ```
+
 #### Query Account Balance
 
 Use the `getbalance` command to quickly check the TRX balance of the currently logged-in account.
@@ -429,6 +430,7 @@ In the returned JSON data, the `balance` field represents the TRX balance of the
     "balance": 1000000000000000,"account_resource": {}
 }
 ```
+
 #### The Three-Step Process for Sending a Transaction
 
 Now, let's use a TRX transfer as an example to fully demonstrate the "Create-Sign-Broadcast" three-step process for sending a transaction to java-tron.

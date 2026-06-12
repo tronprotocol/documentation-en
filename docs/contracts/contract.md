@@ -7,9 +7,11 @@ Smart contract is a computerized transaction protocol that automatically impleme
 TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [TRON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## Features
+
 TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
 
 ### Definition of Smart Contract 
+
 TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
 ``` solidity
 message SmartContract {
@@ -193,10 +195,12 @@ If you want to use a base58 TRON address string (e.g. `TLLM21wteSPs4hKjbxgmH1L6p
 ### Special Constants Differ from Ethereum 
 
 #### Currency
+
 Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 #### Block Related
+
 - `blockhash(uint blockNumber) returns (bytes32)`: specified block hash, can only apply to the latest 256 blocks and current block excluded. **Note**: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0; TRON's Solidity fork inherits the deprecation from `tv_0.4.24` and the removal from `tv_0.5.4` onwards — use the top-level `blockhash(...)` instead
 - `block.basefee` (uint): returns the network energy fee from chain parameter (`getEnergyFee`); unlike Ethereum's per-block EIP-1559 base fee, this value only changes when a committee proposal modifies it. Available since the London upgrade (`ALLOW_TVM_LONDON`), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
 - `block.coinbase` (address): Super Representative address that produced the current block
