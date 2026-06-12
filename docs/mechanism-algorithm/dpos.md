@@ -119,7 +119,7 @@ The reward amounts below reflect the **current mainnet values** after adjustment
 
 An important feature of DPoS is that any system parameter adjustment can be initiated through an **on-chain proposal**. SRs decide whether a proposal takes effect by voting on it. The benefit of this mechanism is that **no hard fork upgrade is required** when adjusting parameters on-chain.
 
-For current dynamic parameters and their values in the TRON network, as well as past proposal records, please refer to the [TRONSCAN Committee](https://tronscan.org/#/sr/committee) Page.
+For TRON's current network parameters and their values, as well as past proposal records, please refer to the [TRONSCAN Committee](https://tronscan.org/#/sr/committee) Page.
 
 ## References
 

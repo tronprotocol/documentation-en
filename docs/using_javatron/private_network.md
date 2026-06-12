@@ -94,15 +94,15 @@ The operational steps for deploying a private network node are fundamentally the
       # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.
       ```  
       
-7. Advanced Operation: Modifying Dynamic Network Parameters
+7. Advanced Operation: Modifying Network Parameters
 
-     Dynamic network parameters can be retrieved via the [getchainparameters](../api/http/witness-and-governance/getchainparameters.md) API. The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN [Parameters & Proposals page](https://tronscan.org/#/sr/committee). If you want your private network's dynamic parameters to match the Mainnet's, you can use the[ dbfork tool](https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md), which can capture the latest state of the Mainnet.
+     Network parameters can be retrieved via the [getchainparameters](../api/http/witness-and-governance/getchainparameters.md) API. The current Mainnet network parameters and related proposals can be viewed on the TRONSCAN [Parameters & Proposals page](https://tronscan.org/#/sr/committee). If you want your private network's parameters to match the Mainnet's, you can use the[ dbfork tool](https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md), which can capture the latest state of the Mainnet.
    
      After your private network is running, you may need to adjust certain network parameters (e.g., transaction fees, energy price). This can be achieved in two ways:
 
      - **Method 1: Set via Configuration File (For Initial Deployment)**
     
-         Some dynamic parameters can be set directly in the configuration file. You can find a list of these parameters [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
+         Some network parameters can be set directly in the configuration file. You can find a list of these parameters [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
       
          **Example**: Add the following `committee` block to your `.conf` file to enable multi-signature and contract creation:
       
@@ -129,7 +129,7 @@ The operational steps for deploying a private network node are fundamentally the
 
          **Example Code (using TronWeb):**
      
-         The following code snippet demonstrates how to create a proposal to modify two network parameters and then vote on it. In [proposalcreate](../api/http/witness-and-governance/proposalcreate.md), dynamic parameters are represented by their IDs. The mapping between parameter IDs and names is defined in the java-tron source code's [`enum ProposalType`](https://github.com/tronprotocol/java-tron/blob/master/actuator/src/main/java/org/tron/core/utils/ProposalUtil.java) (the number in parentheses for each enum entry is the parameter ID).
+         The following code snippet demonstrates how to create a proposal to modify two network parameters and then vote on it. In [proposalcreate](../api/http/witness-and-governance/proposalcreate.md), network parameters are represented by their IDs. The mapping between parameter IDs and names is defined in the java-tron source code's [`enum ProposalType`](https://github.com/tronprotocol/java-tron/blob/master/actuator/src/main/java/org/tron/core/utils/ProposalUtil.java) (the number in parentheses for each enum entry is the parameter ID).
      
       
          ```
@@ -165,4 +165,4 @@ The operational steps for deploying a private network node are fundamentally the
 
          Once the proposal is approved and the maintenance period has passed, the new network parameters will take effect. You can verify the changes using [listproposals](../api/http/witness-and-governance/listproposals.md) or [getchainparameters](../api/http/witness-and-governance/getchainparameters.md).
     
-         It is important to note that dynamic parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission.
+         It is important to note that network parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission.

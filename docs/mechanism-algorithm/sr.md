@@ -88,7 +88,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 
 ### About the Committee
 
-The Committee is the highest governing body of the TRON network, responsible for modifying the network's dynamic parameters (eg. transaction fees, block rewards).
+The Committee is the highest governing body of the TRON network, responsible for modifying the network parameters (eg. transaction fees, block rewards).
 
  - **Composition**: The Committee is composed of the current 27 active Super Representatives (SRs).
  - **Powers**: Each committee member has two core powers: 
@@ -104,7 +104,7 @@ The Committee is the highest governing body of the TRON network, responsible for
 
 In the TRON network, all SRs, SR Partners, and SR candidates have the right to initiate proposals to modify network parameters.
 
-Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network dynamic parameters and their values.
+Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network parameters and their values.
 
 **Example**:
 
