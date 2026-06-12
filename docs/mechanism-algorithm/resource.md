@@ -80,15 +80,15 @@ TRC-10 token transfers have a unique consumption logic that introduces the "toke
 
 1.  **Issuer's Bandwidth (Highest Priority):** The system first attempts to consume the Bandwidth prepaid by the token issuer. This requires all three of the following conditions to be met (only if all three checks pass will the issuer's Bandwidth be deducted; otherwise, the cost falls to the transaction initiator):
       * The token issuer has a sufficient total free Bandwidth allowance.
-          * Query Method: [/wallet/getassetissuebyaccount](https://developers.tron.network/reference/getassetissuebyaccount)
+          * Query Method: [/wallet/getassetissuebyaccount](../api/http/asset/getassetissuebyaccount.md)
           * Formula: `public_free_asset_net_limit - public_free_asset_net_usage`
           * Description: The remaining quota the token issuer can pay for this token's transfers.
       * The transaction initiator has a sufficient Bandwidth allowance for that specific token.
-          * Query Method: [/wallet/getaccountnet](https://developers.tron.network/reference/getaccountnet) 
+          * Query Method: [/wallet/getaccountnet](../api/http/account/getaccountnet.md) 
           * Formula: `assetNetLimit['assetID'] - assetNetUsed['assetID']`
           * Description: The free Bandwidth quota provided by the issuer that the token holder can still use.
       * The token issuer has sufficient staked Bandwidth. 
-          * Query Method: [/wallet/getaccountnet](https://developers.tron.network/reference/getaccountnet)
+          * Query Method: [/wallet/getaccountnet](../api/http/account/getaccountnet.md)
           * Formula: `NetLimit - NetUsed`
           * Description: The amount of available Bandwidth the issuer has obtained through staking.
 2.  **Initiator's Staked Bandwidth:** Attempts to consume the initiator's staked Bandwidth.
@@ -214,7 +214,7 @@ Before setting `fee_limit`, understand these concepts:
 **Example:**
 Here's how to estimate the `fee_limit` for executing a contract `C`:
 
-  - Assume contract C consumed 18,000 Energy during its last successful execution. By calling the [estimateenergy](https://developers.tron.network/reference/estimateenergy) API to get a pre-execution estimate, let's assume the upper limit of Energy consumption for this transaction is approximately 20,000 Energy.
+  - Assume contract C consumed 18,000 Energy during its last successful execution. By calling the [estimateenergy](../api/http/smart-contract/estimateenergy.md) API to get a pre-execution estimate, let's assume the upper limit of Energy consumption for this transaction is approximately 20,000 Energy.
   - When burning TRX, since the unit price of Energy is currently 100 sun, 10 TRX can be exchanged for a fixed 100,000 Energy units.
   - Assume the developer has committed to covering 90% of the Energy cost and has sufficient Energy.
 
@@ -434,8 +434,8 @@ Reclaimed unrecovered resources = (Canceled delegated TRX amount / Recipient’s
 **Note**: The reclaimed unrecovered resources **must not exceed** the maximum resource capacity corresponding to the undelegated TRX amount, calculated in real time based on the total network staking.
 
 * **Canceled delegated TRX amount**: The amount of staked TRX reclaimed in the cancel delegation transaction.
-* **Recipient's Total Staked TRX Amount for that resource**: The total staked TRX used by the recipient to obtain a specific resource (Energy or Bandwidth), including self-staked TRX (Stake 1.0 and Stake 2.0) and delegated TRX from others. This can be queried via the [wallet/getaccount](https://developers.tron.network/reference/account-getaccount#/) API.
-* **Recipient's Unrecovered Resource Amount**: The amount of resources that have already been consumed and are currently in the recovery period on the recipient’s account. This can be queried via [wallet/getaccount](https://developers.tron.network/reference/account-getaccount#/) or [wallet/getaccountresource](https://developers.tron.network/reference/getaccountresource#/).
+* **Recipient's Total Staked TRX Amount for that resource**: The total staked TRX used by the recipient to obtain a specific resource (Energy or Bandwidth), including self-staked TRX (Stake 1.0 and Stake 2.0) and delegated TRX from others. This can be queried via the [wallet/getaccount](../api/http/account/getaccount.md) API.
+* **Recipient's Unrecovered Resource Amount**: The amount of resources that have already been consumed and are currently in the recovery period on the recipient’s account. This can be queried via [wallet/getaccount](../api/http/account/getaccount.md) or [wallet/getaccountresource](../api/http/account/getaccountresource.md).
 
 ##### 2. Account State Changes
 
