@@ -48,7 +48,7 @@ Now, please complete the following three preparation steps in order.
 
 In your terminal, start a `wallet-cli` instance with the command `java -jar wallet-cli.jar`:
 
-```
+```bash
 java -jar wallet-cli.jar
 
 Welcome to TRON wallet-cli
@@ -65,7 +65,7 @@ wallet>
 By default, `wallet-cli` operates on the TRON Mainnet. You must first switch the environment to the Nile Testnet to avoid interacting with real assets in this guide.
 
 Use the `switchnetwork` command to switch networks and `currentnetwork` to verify the status. When prompted, enter `2` to select `NILE`.
-```
+```text
 wallet> switchnetwork
 Please select network：
 1. MAIN
@@ -85,7 +85,7 @@ currentNetwork: NILE
 At the prompt, enter the `registerwallet` command and follow the instructions to set a secure password. This command generates a new TRON network account and registers it with `wallet-cli`, storing the encrypted private key locally for future transaction signing.
 
 
-```
+```text
 wallet> registerwallet
 Please input password.
 password: 
@@ -106,12 +106,12 @@ wallet>
 
 First, use the `login` command in `wallet-cli`. The system will list the available accounts for you to choose from.
 
-```
+```text
 wallet> login
 ```
 If multiple accounts are available, when prompted, enter the number for the account you want to log in with (such as `2`), then enter the account's password.
 
-```
+```text
 Please choose between 1 and 3
 2
 Please input your password.
@@ -124,7 +124,7 @@ The `Login successful !!!` message indicates a successful login.
 After logging in, you can use the `getaddress` command at any time to view the current account's address.
 
 
-```
+```text
 wallet> getaddress
 GetAddress successful !!
 address = TQXjm2J8K2DKTV49MdfT2anjUehbU3WDJz
@@ -171,7 +171,7 @@ For the startup command, please refer to [Starting a FullNode on the Nile test n
 When the node starts, you will first see the network configuration information in the logs. The following logs indicate that java-tron has started and connected to the Nile testnet:
 
 
-```
+```text
 11:07:58.758 INFO  [main] [app](Args.java:1143) ************************ Net config ************************
 11:07:58.758 INFO  [main] [app](Args.java:1144) P2P version: 201910292
 11:07:58.758 INFO  [main] [app](Args.java:1145) Bind IP: 192.168.20.101
@@ -181,7 +181,7 @@ When the node starts, you will first see the network configuration information i
 ```
 Next, the node will begin searching for other connectable peers in the network and will continuously request blocks from them to synchronize the entire on-chain data. Successfully connected peers are called "active peers." The following logs indicate that the node has successfully connected to other nodes and has started syncing data:
 
-```
+```text
 11:08:42.547 INFO  [TronJClientWorker-1] [net](Channel.java:116) Finish handshake with /123.56.3.74:18888.
 11:08:42.547 INFO  [TronJClientWorker-1] [net](ChannelManager.java:161) Add active peer /123.56.3.74:18888 | fea80a0298b465a54fd332ff36819545d850115e77b327858b5306c9a58c6b8c2e7c08df76ab508a7594ed3577a8f4157727108442877077ab499b102b488467, total active peers: 1
 11:08:42.549 INFO  [TronJClientWorker-1] [net](Channel.java:208) Peer /123.56.3.74:18888 status change to SYNCING.
@@ -245,12 +245,12 @@ The examples in this module will primarily be demonstrated using a **public node
 
 You can use the `getaccount <address>` command to query detailed information for a specific address. When this command is executed, `wallet-cli` sends a request to the java-tron node in the background and then displays the retrieved account data in the terminal.
 
-```
+```text
 wallet> getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 ```
 The result is as follows:
 
-```
+```json
 {
 	"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
 	"balance": 5,
@@ -272,7 +272,7 @@ The result is as follows:
 Use the `getbalance` command to quickly check the TRX balance of the currently logged-in account.
 
 
-```
+```text
 wallet> getbalance
 Balance = 93642857919
 wallet> 
@@ -283,7 +283,7 @@ wallet>
 Use the `sendcoin <recipient_address> <amount>` command to initiate a TRX transfer. The amount is in sun (1 TRX = 1,000,000 sun).
 
 
-```
+```text
 wallet> sendcoin TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf 1000000
 {
 	"raw_data":{
@@ -317,7 +317,7 @@ This command returns a transaction pending confirmation. Please follow the steps
 2. Select Signing Account: Follow the prompts to select the account that will sign this transaction (i.e., the sending account).
 3. Authorize with Password: Enter the password for the selected account. `wallet-cli` will then sign the transaction and broadcast it to the java-tron node, completing the transaction.
 
-```
+```text
 Please confirm and input your permission id, if input y/Y means default 0, other non-numeric characters will cancel transaction.
 y
 Please choose your key for sign.
@@ -343,11 +343,11 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
 
 
 1. Use `gettransactionbyid <txid>` to view the raw content of the transaction:
-  ```
+  ```text
   wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
   The returned JSON data contains all the transaction details, such as the contract type (`TransferContract`), transfer amount, sender and recipient addresses, etc. `"contractRet":"SUCCESS"` indicates that the transaction's contract is syntactically correct.
-  ```
+  ```json
   {
   	"ret":[
   		{
@@ -382,11 +382,11 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
   wallet> 
   ```
 2. Use `gettransactioninfobyid <txid>` to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption):
-  ```
+  ```text
   wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
   In the returned result, the most important field is `blockNumber`, which indicates the block height at which the transaction was confirmed. If this value exists, the transaction has been successfully recorded on the blockchain. Additionally, the `receipt` object records the resources consumed by the transaction, such as bandwidth (`net_usage`).
-  ```
+  ```json
   {
   	"id": "21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
   	"blockNumber": 27773932,
@@ -413,7 +413,7 @@ Before sending a transaction, let's first use the node's `wallet/getaccount` HTT
 
 Send a `POST` request to the node's `8090` port, including the address you want to query in the request body.
 
-```
+```bash
  curl -X POST http://127.0.0.1:8090/wallet/getaccount -d 
      '{"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
        "visible": true
@@ -423,7 +423,7 @@ Send a `POST` request to the node's `8090` port, including the address you want 
 In the returned JSON data, the `balance` field represents the TRX balance of the address, in sun (1 TRX = 1,000,000 sun).
 
 
-```
+```json
 {
     "account_name": "testacc2",
     "address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
@@ -539,7 +539,7 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
 
   Use the `wallet/gettransactionbyid` HTTP endpoint to get the full data of a broadcast transaction. In the request body, pass the `txid` you want to query in the `value` field:
 
-  ```
+  ```bash
   curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactionbyid' \
   --header 'Content-Type: application/json' \
   --data-raw '{
@@ -548,7 +548,7 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
   ```
   The data structure of the response is nearly identical to that of the `wallet-cli` `gettransactionbyid` command:
   
-  ```
+  ```json
   {
       "ret": [
           {
@@ -588,7 +588,7 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
 
   Pass the target `txid` in the request body:
   
-  ```
+  ```bash
   curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactioninfobyid' \
   --header 'Content-Type: application/json' \
   --data-raw '{
@@ -599,7 +599,7 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
   The `blockNumber` field in the response is the key proof of a successful transaction. As long as this field has a value, it means your transaction is successfully and irreversibly recorded on the blockchain. The `receipt` field provides a detailed execution receipt.
   
   
-  ```
+  ```json
   {
       "id": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
       "blockNumber": 27662687,

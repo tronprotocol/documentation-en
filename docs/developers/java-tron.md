@@ -69,7 +69,7 @@ The `java-tron` repository includes the following main branch types:
 
 ### 1. Fork and Clone the Repository
 
-```
+```bash
 git clone https://github.com/yourname/java-tron.git
 cd java-tron
 git remote add upstream https://github.com/tronprotocol/java-tron.git
@@ -78,7 +78,7 @@ git remote add upstream https://github.com/tronprotocol/java-tron.git
 >
 ### 2. Sync Upstream Code
 
-```
+```bash
 git fetch upstream
 git checkout develop
 git merge upstream/develop --no-ff
@@ -87,20 +87,20 @@ git merge upstream/develop --no-ff
 >
 ### 3. Create a Development Branch
 
-```
+```bash
 git checkout -b feature/branch_name develop
 ```
 
 ### 4. Commit Changes
 
-```
+```bash
 git add .
 git commit -m "commit message"
 ```
 
 ### 5. Push the Branch
 
-```
+```bash
 git push origin feature/branch_name
 ```
 
@@ -167,7 +167,7 @@ Once all checks pass, maintainers will review and merge into `develop`.
 
 Recommended format:
 
-```
+```text
 <type>(<scope>): <subject>
 
 <body>
@@ -193,7 +193,7 @@ Recommended format:
 4. Avoid meaningless commits.
 
 Example:
-```
+```text
 feat(block): optimize the block-producing logic
 
 1. increase the priority for acquiring synchronization lock

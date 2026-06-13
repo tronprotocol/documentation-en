@@ -6,7 +6,7 @@ Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose
 
 To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file. Locate the `node.metrics` block in `config.conf` and set `prometheus.enable` to `true`:
 
-```
+```properties
 node.metrics = {
   prometheus {
     enable = true
@@ -27,7 +27,7 @@ After updating the configuration, start the node as described in [Starting a jav
 
     After installing Docker, enter the following command to pull the Prometheus image:
 
-    ```
+    ```bash
     docker pull prom/prometheus
     ```
 
@@ -65,7 +65,7 @@ After updating the configuration, start the node as described in [Starting a jav
 
     Start a Prometheus container with the following command, mounting the configuration file from the previous step (`/Users/test/deploy/prometheus/prometheus.yaml`):
     
-    ```
+    ```bash
     docker run --name prometheus \
         -d -p 9090:9090 \
         -v /Users/test/deploy/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml \
@@ -94,14 +94,14 @@ The deployment process of the Grafana visualization tool is as follows:
 
     Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/next/setup-grafana/installation/). This article uses the Docker image deployment, pulling the open source image (`grafana-oss`):
     
-    ```
+    ```bash
     docker pull grafana/grafana-oss
     ```
 
 2. Start Grafana
 
     You can use the following command to start Grafana:
-    ```
+    ```bash
     docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
     ```
 

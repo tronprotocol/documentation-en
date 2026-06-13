@@ -25,7 +25,7 @@ You can either download the compiled java-tron executable directly or download t
 #### Option 2: Compile from Source Code
 
 1. Clone the `java-tron` repository and switch to the target version's branch.
-    ```
+    ```bash
     # clone the repository
     git clone https://github.com/tronprotocol/java-tron.git
 
@@ -34,7 +34,7 @@ You can either download the compiled java-tron executable directly or download t
     git checkout -b release_vx.x.x
     ```
 2. Run the build command. Upon successful compilation, the new executable file, `FullNode.jar`, will be generated in the `build/libs/` directory.
-    ```
+    ```bash
     ./gradlew clean build -x test
     ```
 
@@ -44,12 +44,12 @@ You can either download the compiled java-tron executable directly or download t
 
 1. Use the following command to find the `PID` of the java-tron process.
 
-    ```
+    ```bash
     ps -ef | grep java
     ```
 
 2. Stop the node process.
-    ```
+    ```bash
     kill -15 <PID>
     ```
 
@@ -58,15 +58,15 @@ You can either download the compiled java-tron executable directly or download t
 A full backup is strongly recommended before upgrading. Please perform the following backup steps in the specified order:
 
 1. **Back up the current executable file**
-    ```
+    ```bash
     mv $JAVA_TRON.jar $JAVA_TRON.jar.`date "+%Y%m%d%H%M%S"`
     ```
 2. **Back up the current `output-directory` database**
-    ```
+    ```bash
     tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
     ```
  3. **Back up the current configuration file**
-    ```
+    ```bash
     mv $config.conf $config.conf.`date "+%Y%m%d%H%M%S"`
     ```
 
@@ -102,7 +102,7 @@ For Regular FullNode, please refer to [Starting a FullNode on the TRON main netw
 3.  **Confirm Synchronization Status**: You need to verify that synchronization is complete by comparing the latest block height of your local node with that of the TRON Mainnet. The upgrade is successful when the two heights are nearly identical.
 
     - To query local node block height, call the `/wallet/getnowblock` API:
-        ```
+        ```bash
         curl http://127.0.0.1:8090/wallet/getnowblock
         ```
     - To check the real-time block height of the Mainnet, use the [TRONSCAN](https://tronscan.org) block explorer.

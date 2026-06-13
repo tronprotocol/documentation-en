@@ -33,7 +33,7 @@ TRON supports three types of permission:
 
 ### 1. Account Structure: `Account`
 
-```
+```protobuf
 message Account {
   ...
   Permission owner_permission = 31;
@@ -50,7 +50,7 @@ Explanation:
 
 ### 2. Permission Configuration: `Permission`
 
-```
+```protobuf
 message Permission {
   enum PermissionType {
     Owner = 0;
@@ -79,7 +79,7 @@ Explanation:
 
 ### 3. Permission Key Structure: `Key`
 
-```
+```protobuf
 message Key {
   bytes address = 1;
   int64 weight = 2;
@@ -91,7 +91,7 @@ message Key {
 
 ### 4. Permission Update Transaction: `AccountPermissionUpdateContract`
 
-```
+```protobuf
 message AccountPermissionUpdateContract {
   bytes owner_address = 1;
   Permission owner = 2;
@@ -125,7 +125,7 @@ Active permissions configure which `ContractType` can be executed through the `o
 
 #### Super Representative Node Configuration Example:
 
-```
+```properties
 # config.conf
 //localWitnessAccountAddress = TMK5c1jd...m6FXFXEz  # TRON Address
 localwitness = [
@@ -135,7 +135,7 @@ localwitness = [
 
 If the `witness` permission is modified, then:
 
-```
+```properties
 localWitnessAccountAddress = TSMC4YzU...PBebBk2E
 localwitness = [
   yyy  # Private key of TSMC4YzU...PBebBk2E
@@ -173,7 +173,7 @@ The above fees can be adjusted through proposals.
 
 #### Example Request:
 
-```
+```text
 POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
 
 {
@@ -210,7 +210,7 @@ POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
 `operations` field is a 32-byte hexadecimal string (little-endian) where each bit represents a specific `ContractType` , defining the functional scope of an Active permission.
 The following Java example generates permissions for contracts (ID=0-45):
 
-```
+```java
 Integer[] contractId = {0, 1, 2, ..., 45};
 byte[] operations = new byte[32];
 for (int id : contractId) {
@@ -237,7 +237,7 @@ System.out.println(ByteArray.toHexString(operations));
 
 ### Query Signed Addresses
 
-```
+```text
 POST /wallet/getapprovedlist
 
 rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList) {}
@@ -245,7 +245,7 @@ rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList) {}
 
 ### Query Signature Weight
 
-```
+```text
 POST /wallet/getsignweight
 
 rpc GetTransactionSignWeight(Transaction) returns (TransactionSignWeight) {}

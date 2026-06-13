@@ -17,7 +17,7 @@ In comparison, **RocksDB provides richer configuration parameters and generally 
 
 To enable RocksDB, set `storage.db.engine` to ``"ROCKSDB"`` in the configuration file:
 
-```
+```properties
 storage {
   # Storage engine for persisting data
   db.engine = "ROCKSDB"
@@ -37,7 +37,7 @@ Key descriptions:
 The `dbSettings` block applies only when `db.engine = "ROCKSDB"`. Under LevelDB, these values are silently ignored.
 
 RocksDB supports various tuning parameters that can be configured based on the performance of the node server. Below is an example of recommended parameters:
-```
+```properties
 dbSettings = {
   levelNumber = 7
   # compactThreads = 32
@@ -59,7 +59,7 @@ To migrate from LevelDB to RocksDB, use the TRON Toolkit `Toolkit.jar`.
 >
 ### 1. Data Conversion Steps
 
-```
+```bash
 cd java-tron                                   # Source root directory
 ./gradlew build -xtest -xcheck                 # Compile the project
 java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
@@ -69,7 +69,7 @@ java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
 
 If your node uses a custom data directory, pass the LevelDB source and RocksDB destination as two positional arguments after `db convert`:
 
-```
+```bash
 java -jar build/libs/Toolkit.jar db convert <src> <dst>
 ```
 
@@ -77,11 +77,11 @@ java -jar build/libs/Toolkit.jar db convert <src> <dst>
 - `<dst>`: RocksDB database storage path (default: `output-directory-dst/database`)
 
 For example, if the node is run as follows:
-```
+```bash
 nohup java -jar build/libs/FullNode.jar -d your_database_dir &
 ```
 Then use the following command for conversion:
-```
+```bash
 java -jar build/libs/Toolkit.jar db convert  your_database_dir/database output-directory-dst/database
 ```
 
@@ -97,7 +97,7 @@ To minimize downtime, follow these steps:
 4. Perform the data conversion in the new directory.
 
 Example commands:
-```
+```bash
 java -jar build/libs/Toolkit.jar db cp output-directory/database /tmp/output-directory/database
 cd /tmp
 java -jar build/libs/Toolkit.jar db convert output-directory/database output-directory-dst/database

@@ -23,7 +23,7 @@ The operational steps for deploying a private network node are fundamentally the
 
      To keep configurations and data isolated, it is recommended to create separate deployment directories for each node.
      
-      ```
+      ```bash
       # Create the Super Representative (SR) node directory
       mkdir SR
       
@@ -36,7 +36,7 @@ The operational steps for deploying a private network node are fundamentally the
     - Download the latest `FullNode.jar` from the [java-tron GitHub Releases](https://github.com/tronprotocol/java-tron/releases) page.
     - Copy the downloaded `JAR` file into each of the two node directories:
 
-         ```
+         ```bash
          cp FullNode.jar ./SR
          cp FullNode.jar ./FullNode
          ```
@@ -45,7 +45,7 @@ The operational steps for deploying a private network node are fundamentally the
 
      - Download the official configuration file template ([config.conf](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf)) and change the `p2p.version` to any value other than **11111** or **20180622**.
      - Copy it into each node directory and rename the files for distinction.
-        ```
+        ```bash
         # Configuration file for the SR node
         cp private_net_config.conf ./SR/supernode.conf
       
@@ -84,13 +84,13 @@ The operational steps for deploying a private network node are fundamentally the
      The startup commands for the Super Representative (block-producing node) and the regular Full Node are slightly different.
 
      - Start the Super Representative (SR) Node:
-     ```
+     ```bash
      cd SR
      java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
      ```
     
      - Start the regular FullNode:
-      ```
+      ```bash
       cd FullNode
       java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
       # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.
@@ -108,7 +108,7 @@ The operational steps for deploying a private network node are fundamentally the
       
          **Example**: Add the following `committee` block to your `.conf` file to enable multi-signature and contract creation:
       
-         ```
+         ```properties
          committee = {
            allowCreationOfContracts = 1
            allowAdaptiveEnergy = 0
@@ -134,7 +134,7 @@ The operational steps for deploying a private network node are fundamentally the
          The following code snippet demonstrates how to create a proposal to modify two network parameters and then vote on it. In [proposalcreate](../api/http/witness-and-governance/proposalcreate.md), network parameters are represented by their IDs. The mapping between parameter IDs and names is defined in the java-tron source code's [`enum ProposalType`](https://github.com/tronprotocol/java-tron/blob/master/actuator/src/main/java/org/tron/core/utils/ProposalUtil.java) (the number in parentheses for each enum entry is the parameter ID).
      
       
-         ```
+         ```javascript
          var TronWeb = require('tronweb');
          var tronWeb = new TronWeb({
              fullHost: 'http://localhost:8090',

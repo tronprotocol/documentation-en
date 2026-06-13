@@ -19,7 +19,7 @@ You can connect a java-tron node to a specific network by modifying the followin
 
 The P2P Network ID(`p2p.version`) specifies the network you want to join. Mainnet configuration:
 
-```
+```properties
 node {
   ...
   p2p {
@@ -40,7 +40,7 @@ In particular:
 
 The `genesis.block` configuration must be consistent with other nodes in the target network, otherwise the node will not be able to connect to peers. Mainnet configuration:
 
-```
+```properties
 genesis.block = {
   # Reserve balance
   assets = [
@@ -211,7 +211,7 @@ genesis.block = {
 
 Node discovery is enabled or disabled via the configuration file. It is enabled by default:
 
-```
+```properties
 node.discovery = {
   ...
   enable = true
@@ -227,7 +227,7 @@ Java-tron uses the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol t
 
 `seed.node` is used to initialize connections. It should point to online and stable Fullnode:
 
-```
+```properties
 seed.node = {
   ip.list = [
     "3.225.171.164:18888",
@@ -246,7 +246,7 @@ If your network interface supports IPv6, you can uncomment the relevant lines in
 
 When persistence is enabled, nodes in the routing table are periodically written to the database and reused on restart:
 
-```
+```properties
 node.discovery = {
   ...
   persist = true
@@ -255,7 +255,7 @@ node.discovery = {
 ```
 By default, node discovery uses the User Datagram Protocol (UDP) on port `18888`:
 
-```
+```properties
 node {
   ...
   listen.port = 18888
@@ -279,7 +279,7 @@ The number of peer connections is controlled by the following parameters. They a
 - `node.minActiveConnections`: the desired minimum number of active connections to discovered peers (default: 3). The node will keep initiating active connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded `minConnections`.
 - `node.maxConnectionsWithSameIp`: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single IP.
 
-```
+```properties
 node {
   ...
   maxConnections = 30
@@ -299,7 +299,7 @@ Active peers come from three sources:
 
 - Configured active peers (high priority). These connections are made regardless of discovery settings:
 
-```
+```properties
 node {
   ...
   active = [
@@ -316,7 +316,7 @@ node {
 - DNS tree nodes (low priority). Rarely used, requires
 `treeUrls`：
 
-  ```
+  ```properties
   dns {
   ...
   # dns urls to get nodes, url format tree://{pubkey}@{domain}, default empty
@@ -335,7 +335,7 @@ node {
 -  The current node will always accept connection requests from nodes listed under `node.passive`
 
 
-```
+```properties
 node {
   ...
   passive = [
@@ -361,20 +361,20 @@ Unlike node discovery, which uses UDP, peer connections use Transmission Control
 
 TRON node logs are stored in `logs/tron.log`：
 
-```
+```bash
 tail -f logs/tron.log
 ```
 
 ### Example Sync Logs：
 
-```
+```text
 pushBlock block number:76, cost/txs:13/0 false
 Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
 ```
 
 ### Example Block Production Logs (for Super Representatives):
 
-```
+```text
 Generate block 79336 begin
 Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponedCount: 0
 ```
@@ -383,11 +383,11 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 
 Use the HTTP API:
 
-```
+```bash
 curl http://127.0.0.1:8090/wallet/getnodeinfo
 ```
 Example response：
-```
+```json
 {
   "activeConnectCount": 3,
     "beginSyncNum": 42518346,
@@ -419,7 +419,7 @@ Example response：
 ### Verify Node Synchronization
 
 Compare your local block height with [TRONSCAN](https://tronscan.org/) ：
-```
+```bash
 curl http://127.0.0.1:8090/wallet/getnowblock
 ```
 If the heights match, synchronization is normal.
@@ -431,7 +431,7 @@ If your java-tron node fails to connect to peers, check the following common cau
 - **Local clock offset**
 
     Sync system time with:
-    ```
+    ```bash
     sudo ntpdate -s time.nist.gov
     ```
     

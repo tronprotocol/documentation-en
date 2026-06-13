@@ -56,7 +56,7 @@ You can get the source code from GitHub and build it yourself, or download the o
 
 * Build from Source:
 
-```
+```bash
 git clone git@github.com:tronprotocol/event-plugin.git
 cd event-plugin
 git checkout master
@@ -73,7 +73,7 @@ Visit the [event-plugin Releases page](https://github.com/tronprotocol/event-plu
 
 In your `config.conf` file, set the event service version to `V2.0` by setting the value to 1.
 
-```
+```properties
 event.subscribe.version = 1 # 1 for V2.0, 0 for V1.0
 ```
 
@@ -88,7 +88,7 @@ The configuration process for the new plugin is mostly identical to the old vers
 
 If you need to sync historical events starting from a specific block height, add the following setting to your configuration file.
 
-```
+```properties
 event.subscribe.startSyncBlockNum = <block_height>
 ```
 
@@ -96,7 +96,7 @@ event.subscribe.startSyncBlockNum = <block_height>
 
 After completing the configuration, use the following command to start the `FullNode` and load the event plugin.
 
-```
+```bash
 java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
@@ -128,7 +128,7 @@ To ensure the stable operation of your TRON node and event subscription service,
 
 First, you need to clone the `event-plugin` project from its GitHub repository and compile it to generate the plugin's `.zip` file. Please follow these steps:
 
-```
+```bash
 git clone https://github.com/tronprotocol/event-plugin.git
 cd event-plugin
 ./gradlew build
@@ -144,7 +144,7 @@ After a successful compilation, you will find the generated `.zip` plugin file i
 
 In a Linux environment, please follow these steps to install Kafka:
 
-```
+```bash
 cd /usr/local
 wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
 tar -xzf kafka_2.13-2.8.0.tgz
@@ -168,7 +168,7 @@ bin/kafka-server-start.sh config/server.properties &
 To support Kafka event subscriptions, you need to modify the Fullnode's configuration file (`config.conf`) by adding the `event.subscribe` section.
 
 
-```
+```properties
 event.subscribe = {
   version = 1 
   startSyncBlockNum = 0 
@@ -210,7 +210,7 @@ Subscribes to events related to on-chain transactions.
 
 Configuration Example:
 
-```
+```properties
 event.subscribe.topics = [
   {
     triggerName = "transaction"
@@ -245,7 +245,7 @@ Subscribes to events triggered upon the creation of new blocks.
 
 Configuration Example:
 
-```
+```properties
 event.subscribe.topics = [
   {
     triggerName = "block"
@@ -273,7 +273,7 @@ Subscribes to smart contract events and logs generated during contract execution
 
 Configuration Example:
 
-```
+```properties
 event.subscribe.topics = [
   {
     triggerName = "contractevent"
@@ -339,7 +339,7 @@ Subscribes to real-time notifications for the latest solidified block height. Th
 
 Configuration Example:
 
-```
+```properties
 event.subscribe.topics = [
   {
     triggerName = "solidity"
@@ -363,7 +363,7 @@ The name of the Kafka subscription topic must match the `topic` setting in the `
 
 In a Linux environment, the command to create a Kafka topic is as follows:
 
-```
+```bash
 bin/kafka-topics.sh --create --topic block --bootstrap-server localhost:9092
 ```
 
@@ -371,7 +371,7 @@ bin/kafka-topics.sh --create --topic block --bootstrap-server localhost:9092
 
 After completing the above configuration, you must add the `--es` parameter when starting the FullNode to enable the event subscription feature.
 
-```
+```bash
 java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
@@ -379,13 +379,13 @@ java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --
 
 You can verify that the Kafka event plugin has loaded successfully by checking the Fullnode logs:
 
-```
+```bash
 grep -i eventplugin logs/tron.log
 ```
 
 If you see a message similar to the following in the logs, the event subscription plugin has loaded successfully:
 
-```
+```text
 [o.t.c.l.EventPluginLoader] 'your plugin path/plugin-kafka-1.0.0.zip' loaded
 ```
 
@@ -395,13 +395,13 @@ Execute the `kafka-console-consumer.sh` script to retrieve messages from the `"b
 
 In a Linux environment, the command is as follows:
 
-```
+```bash
 bin/kafka-console-consumer.sh --topic block --from-beginning --bootstrap-server localhost:9092
 ```
 
 If you see JSON-formatted output similar to the following in your console, the event subscription is successful:
 
-```
+```json
 {
 	"timeStamp": 1539973125000,
 	"triggerName": "blockTrigger",
@@ -451,7 +451,7 @@ The TRON MongoDB event subscription system consists of three core modules:
 
 ##### 1. Building the Plugin
 
-```
+```bash
 git clone https://github.com/tronprotocol/event-plugin.git
 cd event-plugin
 ./gradlew build
@@ -459,7 +459,7 @@ cd event-plugin
 
 After the build is complete, the generated plugin file will be located at:
 
-```
+```text
 event-plugin/build/plugins/plugin-mongodb-*.zip
 ```
 
@@ -558,7 +558,7 @@ MongoDB will be used to store TRON event data. Please follow these steps to inst
 
 First, create an installation directory for MongoDB, then download and extract the installation package:
 
-```
+```bash
 mkdir /home/java-tron
 cd /home/java-tron
 curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
@@ -570,7 +570,7 @@ mv mongodb-linux-x86_64-4.0.4 mongodb
 
 To simplify subsequent operations, please set the environment variables for MongoDB:
 
-```
+```bash
 export MONGOPATH=/home/java-tron/mongodb/
 export PATH=$PATH:$MONGOPATH/bin
 ```
@@ -579,7 +579,7 @@ export PATH=$PATH:$MONGOPATH/bin
 
 Create the log and data directories for MongoDB and create the configuration file `mgdb.conf`:
 
-```
+```bash
 mkdir -p /home/java-tron/mongodb/{log,data}
 cd /home/java-tron/mongodb/log/ && touch mongodb.log && cd -
 vim /home/java-tron/mongodb/mgdb.conf
@@ -607,7 +607,7 @@ Important Configuration Notes:
 
 Start the MongoDB service using the configuration file:
 
-```
+```bash
 mongod --config /home/java-tron/mongodb/mgdb.conf &
 ```
 
@@ -615,7 +615,7 @@ mongod --config /home/java-tron/mongodb/mgdb.conf &
 
 Connect to MongoDB to create an administrative user, then create the database and user for the event subscription service:
 
-```
+```text
 mongo
 use admin
 db.createUser({user:"<admin-username>",pwd:"<admin-password>",roles:[{role:"root",db:"admin"}]})
@@ -636,7 +636,7 @@ The Event Query Service provides an HTTP interface for querying event data store
 
 Clone the `tron-eventquery` project source code:
 
-```
+```bash
 git clone https://github.com/tronprotocol/tron-eventquery.git
 cd tron-eventquery
 ```
@@ -645,7 +645,7 @@ cd tron-eventquery
 
 Download and use Maven to build the `tron-eventquery` service:
 
-```
+```bash
 wget https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
 tar zxvf apache-maven-3.5.4-bin.tar.gz
 export M2_HOME=$HOME/maven/apache-maven-3.5.4
@@ -676,14 +676,14 @@ Please modify `mongo.host`, `mongo.port`, `mongo.dbname`, `mongo.username`, and 
 
 Start the `tron-eventquery` service and insert the indexes:
 
-```
+```bash
 sh deploy.sh
 sh insertIndex.sh
 ```
 
 **Note**: The default port is `8080`. To change it, edit the `deploy.sh` script. For example:
 
-```
+```bash
 nohup java -jar -Dserver.port=8081 target/troneventquery-1.0.0-SNAPSHOT.jar 2>&1 &
 ```
 
@@ -698,7 +698,7 @@ After completing the deployment steps, you can start the TRON FullNode and verif
 
 The command to start the FullNode is as follows:
 
-```
+```bash
 java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
@@ -708,7 +708,7 @@ For information on installing a FullNode, please refer to the [Deploying a FullN
 
 You can verify that the event plugin has loaded successfully by checking the FullNode logs:
 
-```
+```bash
 tail -f logs/tron.log | grep -i eventplugin
 ```
 
@@ -722,7 +722,7 @@ o.t.c.l.EventPluginLoader 'your plugin path/plugin-mongodb-1.0.0.zip' loaded
 
 Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:
 
-```
+```bash
 mongo 127.0.0.1:27017
 use eventlog
 db.auth("<eventlog-username>", "<eventlog-password>")
@@ -755,7 +755,7 @@ Therefore, if you need to connect to an event stream quickly and efficiently wit
 
 To enable event subscriptions via java-tron's built-in ZeroMQ, you must enable the feature in the node's configuration file.
 
-```
+```properties
 event.subscribe = {
   native = {
     useNativeQueue = true  
@@ -785,7 +785,7 @@ event.subscribe = {
 
 The event subscription service is disabled by default and must be enabled using the `--es` command-line argument. The startup command for a node with event subscription enabled is as follows:
 
-```
+```bash
 java -jar build/libs/FullNode.jar --es
 ```
 
@@ -795,13 +795,13 @@ This guide uses Node.js as an example to demonstrate how to subscribe to events.
 
 First, install the `ZeroMQ` library:
 
-```
+```bash
 npm install zeromq@5
 ```
 
 Next, write the subscriber code:
 
-```
+```javascript
 // subscriber.js
 var zmq = require("zeromq");
 var sock = zmq.socket("sub");
@@ -826,7 +826,7 @@ This example connects the subscriber to the node's event publisher and subscribe
 
 The Node.js startup command is as follows:
 
-```
+```bash
 node subscriber.js
 
 > Subscriber connected to port 5555
@@ -834,7 +834,7 @@ node subscriber.js
 
 When the node produces a new block, the subscriber will receive the block event, and the output will look like this:
 
-```
+```text
 received a message related to: blockTrigger, containing message: {"timeStamp":1678343709000,"triggerName":"blockTrigger","blockNumber":1361,"blockHash":"00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280","transactionSize":0,"latestSolidifiedBlockNumber":1361,"transactionList":[]}
 received a message related to: blockTrigger, containing message: {"timeStamp":1678343712000,"triggerName":"blockTrigger","blockNumber":1362,"blockHash":"0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0","transactionSize":0,"latestSolidifiedBlockNumber":1362,"transactionList":[]}
 ```

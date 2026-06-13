@@ -35,7 +35,7 @@ The TRON network only records the state of your last vote. This means that every
 
 **Example:**
 
-```
+```text
 >freezebalancev2 10000000 1 # Stake 10 TRX (the amount is in sun; 1 TRX = 1,000,000 sun, so 10 TRX = 10000000 sun) to get 10 TP. Resource code: 0 for BANDWIDTH, 1 for ENERGY.
 >votewitness SR1 4 SR2 6 # Cast 4 votes for SR1 and 6 votes for SR2.
 >votewitness SR1 3 SR2 7 # Cast 3 votes for SR1 and 7 votes for SR2.
@@ -108,7 +108,7 @@ Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network par
 
 **Example**:
 
-```
+```text
 >createproposal parameter0 value0 ... parameterN valueN
 # parameter0_N: the network parameter number to modify (not the proposal id)
 # value0_N: the new value for that parameter
@@ -125,7 +125,7 @@ The voting process for proposals follows these core rules:
 
 **Example**:
 
-```
+```text
 >approveProposal id is_or_not_add_approval
 # id: proposal id
 # is_or_not_add_approval: true to add an approval (vote YES), false to cancel a previous approval
@@ -141,7 +141,7 @@ The voting process for proposals follows these core rules:
 The creator of a proposal can cancel it at any time before it takes effect.
 
 **Example**:
-```
+```text
 >deleteProposal proposalId
 # id: proposal id
 ```

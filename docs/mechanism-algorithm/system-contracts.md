@@ -54,7 +54,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## AccountCreateContract
 
-```
+```protobuf
     message AccountCreateContract {
       bytes owner_address = 1;
       bytes account_address = 2;
@@ -68,7 +68,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## TransferContract
 
-```
+```protobuf
     message TransferContract {
       bytes owner_address = 1;
       bytes to_address = 2;
@@ -82,7 +82,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## TransferAssetContract
 
-```
+```protobuf
     message TransferAssetContract {
       bytes asset_name = 1;
       bytes owner_address = 2;
@@ -98,7 +98,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## VoteWitnessContract
 
-```
+```protobuf
     message VoteWitnessContract {
       message Vote {
         bytes vote_address = 1;
@@ -117,7 +117,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## WitnessCreateContract
 
-```
+```protobuf
     message WitnessCreateContract {
       bytes owner_address = 1;
       bytes url = 2;
@@ -129,7 +129,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## AssetIssueContract
 
-```
+```protobuf
     message AssetIssueContract {
       message FrozenSupply {
         int64 frozen_amount = 1;
@@ -178,7 +178,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## WitnessUpdateContract
 
-```
+```protobuf
     message WitnessUpdateContract {
       bytes owner_address = 1;
       bytes update_url = 12;
@@ -190,7 +190,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## ParticipateAssetIssueContract
 
-```
+```protobuf
     message ParticipateAssetIssueContract {
       bytes owner_address = 1;
       bytes to_address = 2;
@@ -206,7 +206,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## AccountUpdateContract
 
-```
+```protobuf
     // Update account name. Account name is unique now.
     message AccountUpdateContract {
       bytes account_name = 1;
@@ -219,7 +219,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## UnfreezeBalanceContract
 
-```
+```protobuf
     message UnfreezeBalanceContract {
       bytes owner_address = 1;
       ResourceCode resource = 10;
@@ -233,7 +233,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## WithdrawBalanceContract
 
-```
+```protobuf
     message WithdrawBalanceContract {
       bytes owner_address = 1;
     }
@@ -243,7 +243,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## UnfreezeAssetContract
 
-```
+```protobuf
     message UnfreezeAssetContract {
       bytes owner_address = 1;
     }
@@ -253,7 +253,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## UpdateAssetContract
 
-```
+```protobuf
     message UpdateAssetContract {
       bytes owner_address = 1;
       bytes description = 2;
@@ -271,7 +271,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## ProposalCreateContract
 
-```
+```protobuf
     message ProposalCreateContract {
       bytes owner_address = 1;
       map<int64, int64> parameters = 2;
@@ -283,7 +283,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## ProposalApproveContract
 
-```
+```protobuf
     message ProposalApproveContract {
       bytes owner_address = 1;
       int64 proposal_id = 2;
@@ -297,7 +297,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## ProposalDeleteContract
 
-```
+```protobuf
     message ProposalDeleteContract {
       bytes owner_address = 1;
       int64 proposal_id = 2;
@@ -309,7 +309,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## SetAccountIdContract
 
-```
+```protobuf
     // Set account id if the account has no id. Account id is unique and case insensitive.
     message SetAccountIdContract {
       bytes account_id = 1;
@@ -322,7 +322,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## CreateSmartContract
 
-```
+```protobuf
     message CreateSmartContract {
       bytes owner_address = 1;
       SmartContract new_contract = 2;
@@ -338,7 +338,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## TriggerSmartContract
 
-```
+```protobuf
     message TriggerSmartContract {
       bytes owner_address = 1;
       bytes contract_address = 2;
@@ -358,7 +358,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## UpdateSettingContract
 
-```
+```protobuf
     message UpdateSettingContract {
       bytes owner_address = 1;
       bytes contract_address = 2;
@@ -372,7 +372,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## ExchangeCreateContract
 
-```
+```protobuf
     message ExchangeCreateContract {
       bytes owner_address = 1;
       bytes first_token_id = 2;
@@ -390,7 +390,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## ExchangeInjectContract
 
-```
+```protobuf
     message ExchangeInjectContract {
       bytes owner_address = 1;
       int64 exchange_id = 2;
@@ -406,7 +406,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## ExchangeWithdrawContract
 
-```
+```protobuf
     message ExchangeWithdrawContract {
       bytes owner_address = 1;
       int64 exchange_id = 2;
@@ -422,7 +422,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## UpdateEnergyLimitContract
 
-```
+```protobuf
     message UpdateEnergyLimitContract {
       bytes owner_address = 1;
       bytes contract_address = 2;
@@ -436,7 +436,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 ## AccountPermissionUpdateContract
 
-```
+```protobuf
     message AccountPermissionUpdateContract {
       bytes owner_address = 1;
       Permission owner = 2;             //Empty is invalidate
@@ -454,7 +454,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
 
 ## ClearABIContract
 
-```
+```protobuf
     message ClearABIContract {
       bytes owner_address = 1;
       bytes contract_address = 2;
@@ -466,7 +466,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
 
 ## UpdateBrokerageContract
 
-```
+```protobuf
     message UpdateBrokerageContract {
       bytes owner_address = 1;
       int32 brokerage = 2;

@@ -78,18 +78,18 @@ uname -m
 ### Compiling java-tron Source Code
 
 1. Clone the repo and switch to the `master` branch:
-    ```
+    ```bash
     git clone https://github.com/tronprotocol/java-tron.git
     git checkout -t origin/master
     cd java-tron
     ```
 2. Then, run the following commands to build java-tron:
-    ```
+    ```bash
     ./gradlew clean build -x test
     ```
     * The `-x test` parameter skips the execution of test cases. You can remove this parameter to execute test during compilation, but this will increase the compilation time.
     * If you encounter `DependencyVerificationException` during the build, refresh dependencies and regenerate verification metadata:
-      ```
+      ```bash
       ./gradlew clean build -x test --refresh-dependencies
       ```
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
@@ -219,7 +219,7 @@ To set up a private network for testing or development, follow the [Private Netw
 
 A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
 
-```
+```properties
 node {
   # trust node for solidity node
   # trustNode = "ip:port"
@@ -230,7 +230,7 @@ node {
 
 Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, SolidityNode is started using the command-line parameter `--solidity`, as shown below:
 
-```
+```bash
 java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --solidity -c framework/src/main/resources/config.conf
 ```
 
@@ -247,7 +247,7 @@ By adding the `--witness` parameter to the FullNode startup command above, the `
 
 Here is an example of the `localwitness` configuration:
 
-```
+```properties
 localwitness = [
     650950B1...295BD812
 ]
@@ -360,7 +360,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
     * Note that the `keystore` file needs to be placed in the current directory where the startup command is executed, or in its subdirectory.
         * For example, if the current directory is `A`, and the `keystore` file path is `A/B/localwitnesskeystore.json`, the configuration should be:
 
-        ```
+        ```properties
         localwitnesskeystore = ["B/localwitnesskeystore.json"]
         ```
 
@@ -371,7 +371,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
     * **Interactive Startup without `nohup` (Recommended)**
         * **Notes**: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool like screen or tmux."
   
-        ```
+        ```bash
         java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf
         ```
 
@@ -379,7 +379,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
 
     * **Using `nohup` to pass the password directly in the command line via `--password`**
 
-        ```
+        ```bash
         nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf --password "your_password" > start.log 2>&1 &
         ```
 
@@ -392,19 +392,19 @@ To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's
 1. **Install `tcmalloc`**:
     * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
 
-    ```
+    ```bash
     sudo apt install libgoogle-perftools4
     ```
 
     * **Ubuntu 16.04 LTS**:
 
-    ```
+    ```bash
     sudo apt install libgoogle-perftools4
     ```
 
     * **CentOS 7**:
 
-    ```
+    ```bash
     sudo yum install gperftools-libs
     ```
 
@@ -412,7 +412,7 @@ To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's
 
     * Add the following two lines to your node's startup script. Please note that the path to `libtcmalloc.so.4` might vary slightly across different Linux distributions.
 
-    ```
+    ```bash
     #!/bin/bash
 
     export LD_PRELOAD="/usr/lib/libtcmalloc.so.4" # Adjust path according to your system
@@ -424,21 +424,21 @@ To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's
 
     * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
 
-    ```
+    ```bash
     export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```
 
     * **Ubuntu 16.04 LTS**:
 
-    ```
+    ```bash
     export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```
 
     * **CentOS 7**:
 
-    ```
+    ```bash
     export LD_PRELOAD="/usr/lib64/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```

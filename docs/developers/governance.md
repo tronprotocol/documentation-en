@@ -35,7 +35,7 @@ New proposal discussions can refer to this [example](https://github.com/tronprot
 
 To facilitate dissemination and community participation, it is recommended to give the proposal a concise and clear name, placed at the beginning of the title, for example:
 
-```
+```text
 Proposal: Change the unit price of Energy to 100 sun
 ```
 
@@ -43,7 +43,7 @@ Proposal: Change the unit price of Energy to 100 sun
 
 The Issue body should include the following main sections:
 
-```
+```text
 ## Simple Summary
 Briefly describe the TRON network parameters to be modified and their values, along with a summary of the expected impact.
 
