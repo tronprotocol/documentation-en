@@ -1,6 +1,6 @@
 # TransferAsset2
 
-Transfer TRC10 tokens.
+Transfer TRC-10 tokens.
 
 - Service: `Wallet` only
 

@@ -43,7 +43,7 @@ Returns a `protocol.Account` (see `protocol/src/main/protos/core/Tron.proto`). C
 | `frozenV2` | repeated FreezeV2 | Stake 2.0 freezes |
 | `unfrozenV2` | repeated UnFreezeV2 | Stake 2.0 unfreezes in progress |
 | `account_resource` | AccountResource | Energy-related |
-| `asset` / `assetV2` | map\<string,int64\> | TRC10 holdings |
+| `asset` / `assetV2` | map\<string,int64\> | TRC-10 holdings |
 | `allowance` | int64 | Unwithdrawn witness rewards |
 | `latest_opration_time` | int64 | Time of the most recent operation |
 | `owner_permission` / `witness_permission` / `active_permission` | Permission | Permission configuration |

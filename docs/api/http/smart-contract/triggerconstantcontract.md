@@ -18,8 +18,8 @@ Read-only contract call (does not go on-chain). Used to read view/pure functions
 | `parameter` | string | No | ABI-encoded parameters (hex) |
 | `data` | string | No | Call data (hex); use either this or `function_selector` |
 | `call_value` | int64 | No | TRX (sun) sent with the call |
-| `token_id` | int64 | No | TRC10 token id sent with the call |
-| `call_token_value` | int64 | No | TRC10 amount sent with the call |
+| `token_id` | int64 | No | TRC-10 token id sent with the call |
+| `call_token_value` | int64 | No | TRC-10 amount sent with the call |
 | `extra_data` | string | No | Transaction memo (hex; UTF-8 text when `visible=true`) |
 | `permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields (response includes `result.message`, which is affected by `visible`) |

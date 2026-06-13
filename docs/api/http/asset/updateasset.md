@@ -1,6 +1,6 @@
 # /wallet/updateasset
 
-Update a TRC10 token's description, URL, and bandwidth limits (issuer-only).
+Update a TRC-10 token's description, URL, and bandwidth limits (issuer-only).
 
 - Source: `framework/src/main/java/org/tron/core/services/http/UpdateAssetServlet.java`
 - Method: `POST`

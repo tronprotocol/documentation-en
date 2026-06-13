@@ -19,8 +19,8 @@ Deploy a smart contract. Returns the unsigned deployment transaction.
 | `call_value` | int64 | No | TRX (sun) sent with the deployment |
 | `consume_user_resource_percent` | int64 | Yes | Caller-paid energy percentage 0–100 |
 | `origin_energy_limit` | int64 | Yes | Deployer's energy limit |
-| `token_id` | int64 | No | TRC10 token id sent with the deployment |
-| `call_token_value` | int64 | No | TRC10 amount sent with the deployment |
+| `token_id` | int64 | No | TRC-10 token id sent with the deployment |
+| `call_token_value` | int64 | No | TRC-10 amount sent with the deployment |
 | `permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 

@@ -1,6 +1,6 @@
 # GetAssetIssueList
 
-List all TRC10 tokens on the chain.
+List all TRC-10 tokens on the chain.
 
 - Service: both `Wallet` and `WalletSolidity`
 

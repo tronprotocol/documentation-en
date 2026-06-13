@@ -1,6 +1,6 @@
 # /wallet/getassetissuebyid
 
-Look up a TRC10 by token id (recommended — token ids are globally unique).
+Look up a TRC-10 by token id (recommended — token ids are globally unique).
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetAssetIssueByIdServlet.java`
 - Method: `GET` / `POST`

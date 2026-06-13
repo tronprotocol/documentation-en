@@ -1,6 +1,6 @@
 # GetAssetIssueById
 
-Look up a TRC10 token by token id (recommended; token id is globally unique).
+Look up a TRC-10 token by token id (recommended; token id is globally unique).
 
 - Service: both `Wallet` and `WalletSolidity`
 

@@ -1,6 +1,6 @@
 # /wallet/getassetissuelist
 
-Query all TRC10 tokens on the network.
+Query all TRC-10 tokens on the network.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetAssetIssueListServlet.java`
 - Method: `GET` / `POST`
@@ -25,7 +25,7 @@ curl --request POST \
 
 | Field | Type | Description |
 |---|---|---|
-| `assetIssue` | repeated AssetIssueContract | All TRC10 tokens (structure matches the [`/wallet/createassetissue`](createassetissue.md) request body) |
+| `assetIssue` | repeated AssetIssueContract | All TRC-10 tokens (structure matches the [`/wallet/createassetissue`](createassetissue.md) request body) |
 
 Response example (the full Nile list is long, only the first item shown; for paging use [`/wallet/getpaginatedassetissuelist`](getpaginatedassetissuelist.md)):
 

@@ -1,6 +1,6 @@
 # /wallet/participateassetissue
 
-Participate in a TRC10 fundraising (buy with TRX).
+Participate in a TRC-10 fundraising (buy with TRX).
 
 - Source: `framework/src/main/java/org/tron/core/services/http/ParticipateAssetIssueServlet.java`
 - Method: `POST`

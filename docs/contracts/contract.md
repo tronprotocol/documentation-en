@@ -123,8 +123,8 @@ This command will create a new contract with a new address. The primary differen
    Provides `VOTEWITNESS` / `WITHDRAWREWARD` opcodes and related read-only
    precompiles.
 
-3. TRC10 token operations: sending TRC10 to a target address and querying
-   the TRC10 balance of an address. Enabled by the `ALLOW_TVM_TRANSFER_TRC10`
+3. TRC-10 token operations: sending TRC-10 to a target address and querying
+   the TRC-10 balance of an address. Enabled by the `ALLOW_TVM_TRANSFER_TRC10`
    chain parameter, activated on mainnet by committee
    [proposal #15](https://tronscan.io/#/proposal/15).
 

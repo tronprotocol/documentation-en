@@ -1,6 +1,6 @@
 # GetPaginatedAssetIssueList
 
-List all TRC10 tokens on the chain with pagination.
+List all TRC-10 tokens on the chain with pagination.
 
 - Service: both `Wallet` and `WalletSolidity`
 

@@ -1,6 +1,6 @@
 # UpdateAsset2
 
-Update a TRC10 token's description, URL, and bandwidth limit (issuer only).
+Update a TRC-10 token's description, URL, and bandwidth limit (issuer only).
 
 - Service: `Wallet` only
 

@@ -10,7 +10,7 @@ Unfreeze the issuer's `frozen_supply` portion (issuer-only; only succeeds after 
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `owner_address` | string | Yes | TRC10 issuer address |
+| `owner_address` | string | Yes | TRC-10 issuer address |
 | `permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 

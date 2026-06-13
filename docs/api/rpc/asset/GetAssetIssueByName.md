@@ -1,6 +1,6 @@
 # GetAssetIssueByName
 
-Look up a single TRC10 token by name. **Note**: since the `ALLOW_SAME_TOKEN_NAME` proposal, name is no longer unique, and this method returns an error when duplicates exist; prefer `GetAssetIssueById` or `GetAssetIssueListByName`.
+Look up a single TRC-10 token by name. **Note**: since the `ALLOW_SAME_TOKEN_NAME` proposal, name is no longer unique, and this method returns an error when duplicates exist; prefer `GetAssetIssueById` or `GetAssetIssueListByName`.
 
 - Service: both `Wallet` and `WalletSolidity`
 

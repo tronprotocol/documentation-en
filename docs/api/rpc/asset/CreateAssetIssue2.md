@@ -1,6 +1,6 @@
 # CreateAssetIssue2
 
-Build a transaction that issues a TRC10 token.
+Build a transaction that issues a TRC-10 token.
 
 - Service: `Wallet` only
 
