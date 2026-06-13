@@ -87,12 +87,14 @@ You can compile the project in two ways:
     # Perform a full build, including all test cases
     ./gradlew clean build
     ```
+
     To speed up the compilation process by skipping unit tests, you can use the `-x test` argument:
 
     ```bash
     # Compile while skipping tests
     ./gradlew clean build -x test
     ```
+
 * **Compile using the IntelliJ IDEA UI:**
     
     Open the `java-tron` project in IntelliJ IDEA, then click `Build` -\> `Build Project` in the top menu bar to compile the entire project.

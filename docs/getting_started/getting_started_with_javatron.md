@@ -65,6 +65,7 @@ wallet>
 By default, `wallet-cli` operates on the TRON Mainnet. You must first switch the environment to the Nile Testnet to avoid interacting with real assets in this guide.
 
 Use the `switchnetwork` command to switch networks and `currentnetwork` to verify the status. When prompted, enter `2` to select `NILE`.
+
 ```text
 wallet> switchnetwork
 Please select network：
@@ -109,6 +110,7 @@ First, use the `login` command in `wallet-cli`. The system will list the availab
 ```text
 wallet> login
 ```
+
 If multiple accounts are available, when prompted, enter the number for the account you want to log in with (such as `2`), then enter the account's password.
 
 ```text
@@ -119,6 +121,7 @@ password:
 Login successful !!!
 wallet> 
 ```
+
 The `Login successful !!!` message indicates a successful login.
 
 After logging in, you can use the `getaddress` command at any time to view the current account's address.
@@ -179,6 +182,7 @@ When the node starts, you will first see the network configuration information i
 11:07:58.758 INFO  [main] [app](Args.java:1147) Listen port: 18888
 11:07:58.758 INFO  [main] [app](Args.java:1148) Discover enable: true
 ```
+
 Next, the node will begin searching for other connectable peers in the network and will continuously request blocks from them to synchronize the entire on-chain data. Successfully connected peers are called "active peers." The following logs indicate that the node has successfully connected to other nodes and has started syncing data:
 
 ```text
@@ -207,6 +211,7 @@ Num:23113869,ID:000000000160b08d231e450ae1993a72ba19eb8f3c748fa70d105dadd0c9fd5f
 11:08:43.504 INFO  [TronJClientWorker-1] [net](MessageQueue.java:121) Receive from /123.56.3.74:18888, type: BLOCK
 Num:23113870,ID:000000000160b08e37cb9951d31a4233f106c7e77e0535c597dbb6a16f163699, trx size: 0
 ```
+
 You can determine if the sync is progressing normally by observing whether the block number (the number after `Num:`) in the logs is increasing steadily. If the logs stop scrolling for an extended period or repeatedly show errors or warnings, the node may have encountered an issue.
 
 
@@ -248,6 +253,7 @@ You can use the `getaccount <address>` command to query detailed information for
 ```text
 wallet> getaccount TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM
 ```
+
 The result is as follows:
 
 ```json
@@ -343,10 +349,13 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
 
 
 1. Use `gettransactionbyid <txid>` to view the raw content of the transaction:
+
   ```text
   wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
+
   The returned JSON data contains all the transaction details, such as the contract type (`TransferContract`), transfer amount, sender and recipient addresses, etc. `"contractRet":"SUCCESS"` indicates that the transaction's contract is syntactically correct.
+
   ```json
   {
   	"ret":[
@@ -381,11 +390,15 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
   }
   wallet> 
   ```
+
 2. Use `gettransactioninfobyid <txid>` to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption):
+
   ```text
   wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
+
   In the returned result, the most important field is `blockNumber`, which indicates the block height at which the transaction was confirmed. If this value exists, the transaction has been successfully recorded on the blockchain. Additionally, the `receipt` object records the resources consumed by the transaction, such as bandwidth (`net_usage`).
+
   ```json
   {
   	"id": "21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
@@ -546,6 +559,7 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
        "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
   }'
   ```
+
   The data structure of the response is nearly identical to that of the `wallet-cli` `gettransactionbyid` command:
   
   ```json

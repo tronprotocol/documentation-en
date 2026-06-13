@@ -40,6 +40,7 @@ The TRON network only records the state of your last vote. This means that every
 >votewitness SR1 4 SR2 6 # Cast 4 votes for SR1 and 6 votes for SR2.
 >votewitness SR1 3 SR2 7 # Cast 3 votes for SR1 and 7 votes for SR2.
 ```
+
 The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.
 
 ## Rewards
@@ -141,6 +142,7 @@ The voting process for proposals follows these core rules:
 The creator of a proposal can cancel it at any time before it takes effect.
 
 **Example**:
+
 ```text
 >deleteProposal proposalId
 # id: proposal id

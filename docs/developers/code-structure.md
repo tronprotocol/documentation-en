@@ -84,6 +84,7 @@ Chainbase is a database module. For probabilistic consensus algorithms such as P
 In addition, the Chainbase module features a well-designed abstract interface. Any database that implements the interface can be used for underlying storage on the blockchain, granting more flexibility to developers. LevelDB and RocksDB are two default implementations.
 
 [chainbase](https://github.com/tronprotocol/java-tron/tree/develop/chainbase) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/chainbase`, its directory structure is as follows:
+
 ```text
 |-- chainbase.src.main.java.org.tron
     |-- common
@@ -139,6 +140,7 @@ In addition, the Chainbase module features a well-designed abstract interface. A
 The consensus mechanism is a crucial module in blockchains. Common ones are PoW, PoS, DPoS and PBFT, etc. Conversely, algorithms like Paxos and Raft are typically applied to consortium blockchains and other trusted networks. The consensus mechanism should match the business scenario. For instance, PoW is not suitable for real-time games that are sensitive to consensus efficiency, while PBFT can make an optimized choice for exchanges demanding high real-time capability. Therefore, a replaceable consensus mechanism is an essential innovation for building application-specific blockchains. Even prominent blockchain frameworks like Cosmos SDK currently offer limited autonomy at the consensus level, relying primarily on Tendermint. Therefore, the ultimate goal of the consensus module is to make consensus switch as easy as configuring parameters for application developers.
 
 [consensus](https://github.com/tronprotocol/java-tron/tree/develop/consensus) module's source code is located at:  `https://github.com/tronprotocol/java-tron/tree/develop/consensus`, its directory structure is as follows:
+
 ```text
 |-- consensus/src/main/java/org/tron/consensus
     |-- Consensus.java
@@ -149,6 +151,7 @@ The consensus mechanism is a crucial module in blockchains. Common ones are PoW,
     |-- dpos
     |-- pbft
 ```
+
 Consensus module divides the consensus process into several important parts that are defined in `ConsensusInterface`:
 
 1. `start` - start the consensus service with customizable startup parameters
@@ -167,6 +170,7 @@ Ethereum was the first to introduce the virtual machine and define the smart con
 Actuator is the executor of transactions, while applications can be viewed as a cluster of different types of transactions, each of which is executed by a corresponding actuator.
 
 [actuator](https://github.com/tronprotocol/java-tron/tree/develop/actuator) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/actuator`, its directory structure is as follows:
+
 ```text
 |-- actuator/src/main/java/org/tron/core
     |-- actuator
@@ -198,6 +202,7 @@ Depending on their businesses, developers may set up Actuator accordingly and cu
 The Crypto module is relatively independent yet crucial to the system. Data security in java-tron is almost entirely guaranteed by this module. Currently, SM2 and ECKey encryption algorithms are supported.
 
 [crypto](https://github.com/tronprotocol/java-tron/tree/develop/crypto) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/crypto`, its directory structure is as follows:
+
 ```text
 |-- crypto/src/main/java/org/tron/common/crypto
     |-- Blake2bfMessageDigest.java

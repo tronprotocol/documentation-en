@@ -45,6 +45,7 @@ The operational steps for deploying a private network node are fundamentally the
 
      - Download the official configuration file template ([config.conf](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf)) and change the `p2p.version` to any value other than **11111** or **20180622**.
      - Copy it into each node directory and rename the files for distinction.
+
         ```bash
         # Configuration file for the SR node
         cp private_net_config.conf ./SR/supernode.conf
@@ -84,12 +85,14 @@ The operational steps for deploying a private network node are fundamentally the
      The startup commands for the Super Representative (block-producing node) and the regular Full Node are slightly different.
 
      - Start the Super Representative (SR) Node:
+
      ```bash
      cd SR
      java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
      ```
     
      - Start the regular FullNode:
+
       ```bash
       cd FullNode
       java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf

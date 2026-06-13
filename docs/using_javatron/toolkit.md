@@ -21,15 +21,19 @@ You can obtain the `Toolkit.jar` file either by compiling the `java-tron` source
 
 
 1. **Clone the `java-tron` source repository**：
+
    ```bash
    git clone https://github.com/tronprotocol/java-tron.git
    git checkout -t origin/master
    ```
+
 2. **Build the project**：
+
    ```bash
    cd java-tron
    ./gradlew clean build -x test
    ```
+
 Upon successful compilation, the `Toolkit.jar` artifact will be located in the `java-tron/build/libs/` directory.
 
 
@@ -40,6 +44,7 @@ The continuous growth of TRON's on-chain data (Mainnet Fullnode database current
 ### Command and Parameters
 
 Use the `db mv` command to execute the data migration：
+
 ```bash
 # full command
 java -jar build/libs/Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
@@ -97,6 +102,7 @@ storage {
 }
 
 ```
+
 *   `name`：The name of the database to be migrated.
 *   `path`：The target directory for the database migration.
 
@@ -143,6 +149,7 @@ The data pruning tool can split a FullNode's data into a **Snapshot Dataset** or
 ### Command and Parameters
 
 Use the `db lite` command to perform data pruning operations:
+
 ```bash
 # full command
   java -jar build/libs/Toolkit.jar db lite [-h] -ds=<datasetPath> -fn=<fnDataPath> [-o=<operate>] [-t=<type>]
@@ -154,6 +161,7 @@ Use the `db lite` command to perform data pruning operations:
   #merge history dataset and snapshot dataset
   java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
+
 **Optional Parameters**：
 
 *   `-o | --operate <split | merge>`: Specifies the operation type. Default: `split`.
@@ -215,6 +223,7 @@ Use the following command to merge a history dataset and a snapshot dataset:
 # Assuming the snapshot dataset is in /tmp/snapshot and the history dataset is in /tmp/history
 java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
+
 *   `--fn-data-path`: The directory of the snapshot dataset.
 *   `--dataset-path`: The directory of the history dataset.
 

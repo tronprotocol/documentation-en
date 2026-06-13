@@ -62,6 +62,7 @@ cd event-plugin
 git checkout master
 ./gradlew build
 ```
+
 After the build is complete, the generated `.zip` file is the plugin package.
 
 
@@ -221,6 +222,7 @@ event.subscribe.topics = [
   }
 ]
 ```
+
 Parameters:
 
 - `triggerName`: (String) The event type identifier. For transaction events, this value is fixed to `transaction`.

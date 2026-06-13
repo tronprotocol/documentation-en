@@ -34,6 +34,7 @@ After updating the configuration, start the node as described in [Starting a jav
 2. Prepare the Prometheus configuration file
 
     The following is a Prometheus configuration file template `prometheus.yaml`:
+
     ```yaml
     global:
       scrape_interval: 30s
@@ -59,6 +60,7 @@ After updating the configuration, start the node as described in [Starting a jav
           group: group-xxx
           instance: xxx-02
     ```
+
     You can use this template and modify the targets configuration item, which specifies the IP address and Prometheus port of your java-tron node(s). Save the file to a local directory, for example `/Users/test/deploy/prometheus/prometheus.yaml`.
 
 3. Start a Prometheus container
@@ -101,6 +103,7 @@ The deployment process of the Grafana visualization tool is as follows:
 2. Start Grafana
 
     You can use the following command to start Grafana:
+
     ```bash
     docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
     ```

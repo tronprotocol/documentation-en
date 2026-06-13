@@ -21,7 +21,9 @@ If you have already installed GPG, you can skip this step. Otherwise, install it
 ```bash
 brew install gpg
 ```
+
 * **Debian, Ubuntu, or other Linux distributions**:
+
 ```bash
 sudo apt install gpg
 ```
@@ -106,10 +108,13 @@ For the `Odyssey-3.7` version, for example:
 On your system, execute the following command to calculate the SHA256 hash of `FullNode.jar`:
 
 * **macOS**:
+
 ```bash
 shasum -a 256 FullNode.jar
 ```
+
 * **Debian, Ubuntu, and other Debian-derived systems**:
+
 ```bash
 sha256sum FullNode.jar
 ```

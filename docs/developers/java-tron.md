@@ -74,6 +74,7 @@ git clone https://github.com/yourname/java-tron.git
 cd java-tron
 git remote add upstream https://github.com/tronprotocol/java-tron.git
 ```
+
 > `upstream` refers to the official repository. The name can be customized, but `upstream` is the conventional choice
 >
 ### 2. Sync Upstream Code
@@ -83,6 +84,7 @@ git fetch upstream
 git checkout develop
 git merge upstream/develop --no-ff
 ```
+
 > The `--no-ff` flag prevents fast-forward merges, preserving a clear record of the merge event in the commit history.
 >
 ### 3. Create a Development Branch
@@ -145,6 +147,7 @@ CI Tools:
 Once all checks pass, maintainers will review and merge into `develop`.
 
 > **Coding Standards**
+>
 >- Follow the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
 >- All PRs must be based on the `develop` branch
 
@@ -193,6 +196,7 @@ Recommended format:
 4. Avoid meaningless commits.
 
 Example:
+
 ```text
 feat(block): optimize the block-producing logic
 

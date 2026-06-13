@@ -239,6 +239,7 @@ seed.node = {
   ]
 }
 ```
+
 For TRON Mainnet, you can use [community public nodes](https://developers.tron.network/docs/networks#public-node) as seed nodes. To get the latest `seed.node` list, refer to the official [config file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 If your network interface supports IPv6, you can uncomment the relevant lines in the list.
 
@@ -253,6 +254,7 @@ node.discovery = {
   ...
 }
 ```
+
 By default, node discovery uses the User Datagram Protocol (UDP) on port `18888`:
 
 ```properties
@@ -289,6 +291,7 @@ node {
   ...
 }
 ```
+
 Note: `minConnections` must not exceed `maxConnections`, and `minActiveConnections` must not exceed `minConnections`; otherwise the node will automatically clamp them at startup.
 
 
@@ -386,7 +389,9 @@ Use the HTTP API:
 ```bash
 curl http://127.0.0.1:8090/wallet/getnodeinfo
 ```
+
 Example response：
+
 ```json
 {
   "activeConnectCount": 3,
@@ -419,9 +424,11 @@ Example response：
 ### Verify Node Synchronization
 
 Compare your local block height with [TRONSCAN](https://tronscan.org/) ：
+
 ```bash
 curl http://127.0.0.1:8090/wallet/getnowblock
 ```
+
 If the heights match, synchronization is normal.
 
 ## Troubleshooting Common Connection Issues
@@ -431,6 +438,7 @@ If your java-tron node fails to connect to peers, check the following common cau
 - **Local clock offset**
 
     Sync system time with:
+
     ```bash
     sudo ntpdate -s time.nist.gov
     ```

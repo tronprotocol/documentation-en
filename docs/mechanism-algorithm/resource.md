@@ -277,10 +277,13 @@ There is also a `decrease_factor` used to lower the `energy_factor`:
 **`energy_factor` Adjustment Formulas:**
 
 - When the base energy consumption of a contract exceeds the `threshold` within a maintenance period, its `energy_factor` will increase during the next maintenance period, but will not exceed `max_factor`. The formula for this calculation is:
+
     ```text
     energy_factor = min((1 + energy_factor) * (1 + increase_factor) - 1, max_factor)
     ```
+
 - When the base energy consumption of a contract falls to or below the `threshold` within a maintenance period, its `energy_factor` will decrease during the next maintenance period, but not below a minimum of `0`. The formula for this calculation is:
+
     ```text
     energy_factor = max((1 + energy_factor) * (1 - decrease_factor) - 1, 0)
     ```
@@ -470,6 +473,7 @@ Assume the current network resource conversion ratio is **1 TRX Staked = 0.2 Ene
 | Y | Recipient | 500 TRX | 100 Energy | 50 Energy |
 
 When User X cancels the Energy delegation of **200 TRX** to User Y:
+
 ```text
 Reclaimed unrecovered Energy amount = (200 / 500) * 50 = 20 Energy
 ```

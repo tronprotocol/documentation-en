@@ -61,37 +61,47 @@ uname -m
 
     - Install Java SE 8 (JDK 8, latest minor version recommended).
     - Verify:
+
     ```bash
     java -version
     ```
+
     The output should show a version starting with `1.8`.
 
 - If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
 
     - Install Java SE 17 (JDK 17).
     - Verify:
+
     ```bash
     java -version
     ```
+
     The output should show a version starting with `17`.
 
 ### Compiling java-tron Source Code
 
 1. Clone the repo and switch to the `master` branch:
+
     ```bash
     git clone https://github.com/tronprotocol/java-tron.git
     git checkout -t origin/master
     cd java-tron
     ```
+
 2. Then, run the following commands to build java-tron:
+
     ```bash
     ./gradlew clean build -x test
     ```
+
     * The `-x test` parameter skips the execution of test cases. You can remove this parameter to execute test during compilation, but this will increase the compilation time.
     * If you encounter `DependencyVerificationException` during the build, refresh dependencies and regenerate verification metadata:
+
       ```bash
       ./gradlew clean build -x test --refresh-dependencies
       ```
+
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
 ## Starting a java-tron Full Node { #starting-a-java-tron-node }
@@ -119,6 +129,7 @@ Network selection is performed by specifying the appropriate configuration file 
 ### Starting a FullNode on the TRON main network
 
 Launch a main-network full node with the built-in default configuration:
+
 ```bash
 nohup java -jar build/libs/FullNode.jar &
 ```
@@ -128,6 +139,7 @@ nohup java -jar build/libs/FullNode.jar &
 > For production deployments or long-running Mainnet nodes, please refer to the below [JVM Parameter Optimization for FullNode](#jvm-parameter-optimization-for-mainnet-fullnode-deployment) guide for the recommended Java commands.
 
 Using the command below, you can monitor the block synchronization progress:
+
 ```bash
 tail -f ./logs/tron.log
 ```
@@ -305,9 +317,11 @@ node.backup {
   ]
 }
 ```
+
 For example, if an account with block production rights deploys two nodes with IPs 192.168.0.100 and 192.168.0.101 respectively, their `node.backup` configurations should be as follows:
 
 - Configuration for IP 192.168.0.100
+
 ```ini
 node.backup {
   port = 10001

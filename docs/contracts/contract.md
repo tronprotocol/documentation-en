@@ -13,6 +13,7 @@ TRON virtual machine is based on Ethereum solidity language, it also has TRON's 
 ### Definition of Smart Contract 
 
 TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
+
 ``` solidity
 message SmartContract {
   message ABI {
@@ -152,6 +153,7 @@ Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 #### address conversion
 
 Need to convert TRON's address while using in solidity (recommended):
+
 ```solidity
 /**
      *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
@@ -163,11 +165,13 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address){
         return address(tronAddress);
 }
 ```
+
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
 
 #### address judgement
 
 Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
+
 ```solidity
 function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
@@ -178,11 +182,13 @@ function compareAddress(address tronAddress) public view returns (uint256){
         }
 }
 ```
+
 But if you are using wallet-cli, pass the 21-byte TRON address as a 32-byte ABI-encoded value (11 leading zero bytes followed by the 21-byte TRON address that starts with `41`), e.g. `000000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c`.
 
 #### variable assignment
 
 Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
+
 ```solidity
 function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
@@ -190,6 +196,7 @@ function assignAddress() public view {
         // do something
 }
 ```
+
 If you want to use a base58 TRON address string (e.g. `TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm`), convert it to the 20-byte hex form first via wallet-cli or a TRON SDK before assigning it to a Solidity `address`.
 
 ### Special Constants Differ from Ethereum 
