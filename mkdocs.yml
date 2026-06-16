@@ -272,7 +272,17 @@ nav:
     - For Dapp Developers:
         - Tools: contracts/tools.md
     - Clients:
-        - wallet-cli: clients/wallet-cli.md
+        - wallet-cli:
+            - clients/wallet-cli/index.md
+            - Wallet Management: clients/wallet-cli/wallet-management.md
+            - Accounts: clients/wallet-cli/accounts.md
+            - Staking & Resources: clients/wallet-cli/staking.md
+            - Transactions: clients/wallet-cli/transactions.md
+            - Smart Contracts: clients/wallet-cli/smart-contracts.md
+            - TRC-10 Assets: clients/wallet-cli/trc10.md
+            - Governance: clients/wallet-cli/governance.md
+            - GasFree: clients/wallet-cli/gasfree.md
+            - Queries: clients/wallet-cli/query.md
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
@@ -358,6 +368,8 @@ markdown_extensions:
     - pymdownx.tilde
     - pymdownx.tasklist
     - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
 
 plugins:
   - search
