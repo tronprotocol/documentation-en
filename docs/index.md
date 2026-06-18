@@ -71,3 +71,7 @@ This documentation is written for java-tron node operators, protocol researchers
 - [TRON Improvement Proposals (TIPs)](https://github.com/tronprotocol/tips) — Repository for submitting, discussing, and archiving protocol evolution proposals
 - [TRON Developer Hub](https://developers.tron.network/) — DApp developer documentation, SDKs, and tutorials
 - [TRON Official Site](https://tron.network/index?lng=en) — Project updates, ecosystem partners, and community entry points
+
+## Documentation source of truth
+
+This English repository ([`documentation-en`](https://github.com/tronprotocol/documentation-en)) is the authoritative source for java-tron documentation. The Chinese documentation ([`documentation-zh`](https://github.com/tronprotocol/documentation-zh)) is a translation that follows it. When the two diverge, the English version takes precedence; content changes should be made against the English source first and then propagated to the translation.
