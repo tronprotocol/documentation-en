@@ -1,0 +1,37 @@
+{
+  "name": "eth_newBlockFilter",
+  "tags": [
+    {
+      "name": "Logs / filters"
+    }
+  ],
+  "summary": "Register a new-block filter",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_newBlockFilter.md` for examples and detailed behavior.",
+  "params": [],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [
+    {
+      "code": -32005,
+      "message": "JsonRpcExceedLimitException",
+      "x-java-exception": "JsonRpcExceedLimitException"
+    },
+    {
+      "code": -32601,
+      "message": "JsonRpcMethodNotFoundException",
+      "x-java-exception": "JsonRpcMethodNotFoundException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/filter/eth_newBlockFilter.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "newBlockFilter",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

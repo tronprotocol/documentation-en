@@ -1,0 +1,1493 @@
+{
+  "openrpc": "1.2.6",
+  "info": {
+    "title": "java-tron JSON-RPC API",
+    "version": "1.0.0",
+    "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation."
+  },
+  "servers": [
+    {
+      "name": "Nile testnet",
+      "url": "https://nile.trongrid.io/jsonrpc"
+    },
+    {
+      "name": "Local FullNode",
+      "url": "http://127.0.0.1:8545/jsonrpc"
+    },
+    {
+      "name": "Local Solidity",
+      "url": "http://127.0.0.1:8555/jsonrpc"
+    }
+  ],
+  "methods": [
+    {
+      "name": "web3_clientVersion",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Client version string",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/web3_clientVersion.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/web3_clientVersion.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "web3ClientVersion",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "web3_sha3",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Keccak-256 hash",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/web3_sha3.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "data",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/web3_sha3.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "web3Sha3",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "net_version",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Network ID (same as eth_chainId)",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/net_version.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/net_version.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getNetVersion",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "net_listening",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Whether listening on P2P",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/net_listening.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "boolean",
+          "x-java-type": "boolean"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/net_listening.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "isListening",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "net_peerCount",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Number of peers",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/net_peerCount.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/net_peerCount.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getPeerCount",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_chainId",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "chainId (last 4 bytes of the genesis block hash)",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_chainId.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/eth_chainId.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "ethChainId",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_protocolVersion",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Protocol version of the current block header",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_protocolVersion.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/eth_protocolVersion.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getProtocolVersion",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_syncing",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Sync status",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_syncing.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "x-java-type": "Object"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/eth_syncing.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getSyncingStatus",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_blockNumber",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Latest block height",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_blockNumber.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/eth_blockNumber.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getLatestBlockNum",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_gasPrice",
+      "tags": [
+        {
+          "name": "Node info / chain identity"
+        }
+      ],
+      "summary": "Current energy unit price (sun)",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_gasPrice.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/node/eth_gasPrice.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "gasPrice",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getBlockByHash",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Query a block by hash",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockByHash.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "blockHash",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        },
+        {
+          "name": "fullTransactionObjects",
+          "required": true,
+          "schema": {
+            "type": "boolean"
+          },
+          "x-java-type": "Boolean",
+          "x-position": 1
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "object",
+          "additionalProperties": true,
+          "x-java-type": "BlockResult"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockByHash.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "ethGetBlockByHash",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getBlockByNumber",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Query a block by height / tag",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockByNumber.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "bnOrId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        },
+        {
+          "name": "fullTransactionObjects",
+          "required": true,
+          "schema": {
+            "type": "boolean"
+          },
+          "x-java-type": "Boolean",
+          "x-position": 1
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "object",
+          "additionalProperties": true,
+          "x-java-type": "BlockResult"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockByNumber.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "ethGetBlockByNumber",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getBlockTransactionCountByHash",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Block transaction count (by hash)",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "blockHash",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "ethGetBlockTransactionCountByHash",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getBlockTransactionCountByNumber",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Block transaction count (by height)",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByNumber.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "bnOrId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByNumber.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "ethGetBlockTransactionCountByNumber",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getTransactionByHash",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Query a transaction by txid",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getTransactionByHash.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "txId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "object",
+          "additionalProperties": true,
+          "x-java-type": "TransactionResult"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionByHash.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getTransactionByHash",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getTransactionByBlockHashAndIndex",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Query a transaction by block hash + index",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "blockHash",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        },
+        {
+          "name": "index",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 1
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "object",
+          "additionalProperties": true,
+          "x-java-type": "TransactionResult"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getTransactionByBlockHashAndIndex",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getTransactionByBlockNumberAndIndex",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Query a transaction by block height + index",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "blockNumOrTag",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        },
+        {
+          "name": "index",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 1
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "object",
+          "additionalProperties": true,
+          "x-java-type": "TransactionResult"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getTransactionByBlockNumberAndIndex",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getTransactionReceipt",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Query a receipt by txid",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getTransactionReceipt.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "txid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "object",
+          "additionalProperties": true,
+          "x-java-type": "TransactionReceipt"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionReceipt.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getTransactionReceipt",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getBlockReceipts",
+      "tags": [
+        {
+          "name": "Block / transaction query"
+        }
+      ],
+      "summary": "Receipt list for an entire block",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "blockNumOrHashOrTag",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "x-java-type": "List<TransactionReceipt>"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32000,
+          "message": "JsonRpcInternalException",
+          "x-java-exception": "JsonRpcInternalException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getBlockReceipts",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getBalance",
+      "tags": [
+        {
+          "name": "Account state"
+        }
+      ],
+      "summary": "Account TRX balance (sun)",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/account/eth_getBalance.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "address",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        },
+        {
+          "name": "blockNumOrTag",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 1
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/account/eth_getBalance.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getTrxBalance",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getStorageAt",
+      "tags": [
+        {
+          "name": "Account state"
+        }
+      ],
+      "summary": "Contract storage slot",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/account/eth_getStorageAt.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "address",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        },
+        {
+          "name": "storageIdx",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 1
+        },
+        {
+          "name": "blockNumOrTag",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 2
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/account/eth_getStorageAt.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getStorageAt",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getCode",
+      "tags": [
+        {
+          "name": "Account state"
+        }
+      ],
+      "summary": "Contract runtime bytecode",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/account/eth_getCode.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "contractAddress",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        },
+        {
+          "name": "bnOrId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 1
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/account/eth_getCode.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getABIOfSmartContract",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_call",
+      "tags": [
+        {
+          "name": "Smart contract calls"
+        }
+      ],
+      "summary": "Read-only contract call",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/smart-contract/eth_call.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "transactionCall",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "x-java-type": "CallArguments",
+          "x-position": 0
+        },
+        {
+          "name": "blockNumOrTag",
+          "required": true,
+          "schema": {},
+          "x-java-type": "Object",
+          "x-position": 1
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32600,
+          "message": "JsonRpcInvalidRequestException",
+          "x-java-exception": "JsonRpcInvalidRequestException"
+        },
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32000,
+          "message": "JsonRpcInternalException",
+          "x-java-exception": "JsonRpcInternalException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/smart-contract/eth_call.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getCall",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_estimateGas",
+      "tags": [
+        {
+          "name": "Smart contract calls"
+        }
+      ],
+      "summary": "Estimate energy consumption",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/smart-contract/eth_estimateGas.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "args",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "x-java-type": "CallArguments",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32600,
+          "message": "JsonRpcInvalidRequestException",
+          "x-java-exception": "JsonRpcInvalidRequestException"
+        },
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32000,
+          "message": "JsonRpcInternalException",
+          "x-java-exception": "JsonRpcInternalException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/smart-contract/eth_estimateGas.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "estimateGas",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getLogs",
+      "tags": [
+        {
+          "name": "Logs / filters"
+        }
+      ],
+      "summary": "One-shot log query",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_getLogs.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "fr",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "x-java-type": "FilterRequest",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "x-java-type": "LogFilterElement[]"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32601,
+          "message": "JsonRpcMethodNotFoundException",
+          "x-java-exception": "JsonRpcMethodNotFoundException"
+        },
+        {
+          "code": -32005,
+          "message": "JsonRpcTooManyResultException",
+          "x-java-exception": "JsonRpcTooManyResultException"
+        },
+        {
+          "code": -32000,
+          "message": "BadItemException",
+          "x-java-exception": "BadItemException"
+        },
+        {
+          "code": -32000,
+          "message": "ExecutionException",
+          "x-java-exception": "ExecutionException"
+        },
+        {
+          "code": -32000,
+          "message": "InterruptedException",
+          "x-java-exception": "InterruptedException"
+        },
+        {
+          "code": -32000,
+          "message": "ItemNotFoundException",
+          "x-java-exception": "ItemNotFoundException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/filter/eth_getLogs.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getLogs",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_newFilter",
+      "tags": [
+        {
+          "name": "Logs / filters"
+        }
+      ],
+      "summary": "Register a log filter",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_newFilter.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "fr",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "x-java-type": "FilterRequest",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32601,
+          "message": "JsonRpcMethodNotFoundException",
+          "x-java-exception": "JsonRpcMethodNotFoundException"
+        },
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/filter/eth_newFilter.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "newFilter",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_newBlockFilter",
+      "tags": [
+        {
+          "name": "Logs / filters"
+        }
+      ],
+      "summary": "Register a new-block filter",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_newBlockFilter.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32005,
+          "message": "JsonRpcExceedLimitException",
+          "x-java-exception": "JsonRpcExceedLimitException"
+        },
+        {
+          "code": -32601,
+          "message": "JsonRpcMethodNotFoundException",
+          "x-java-exception": "JsonRpcMethodNotFoundException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/filter/eth_newBlockFilter.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "newBlockFilter",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_uninstallFilter",
+      "tags": [
+        {
+          "name": "Logs / filters"
+        }
+      ],
+      "summary": "Uninstall a filter",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_uninstallFilter.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "filterId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "boolean",
+          "x-java-type": "boolean"
+        }
+      },
+      "errors": [
+        {
+          "code": -32601,
+          "message": "JsonRpcMethodNotFoundException",
+          "x-java-exception": "JsonRpcMethodNotFoundException"
+        },
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32000,
+          "message": "ItemNotFoundException",
+          "x-java-exception": "ItemNotFoundException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/filter/eth_uninstallFilter.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "uninstallFilter",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getFilterChanges",
+      "tags": [
+        {
+          "name": "Logs / filters"
+        }
+      ],
+      "summary": "Pull and drain filter increments",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_getFilterChanges.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "filterId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "array",
+          "items": {},
+          "x-java-type": "Object[]"
+        }
+      },
+      "errors": [
+        {
+          "code": -32601,
+          "message": "JsonRpcMethodNotFoundException",
+          "x-java-exception": "JsonRpcMethodNotFoundException"
+        },
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32000,
+          "message": "ItemNotFoundException",
+          "x-java-exception": "ItemNotFoundException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/filter/eth_getFilterChanges.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getFilterChanges",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getFilterLogs",
+      "tags": [
+        {
+          "name": "Logs / filters"
+        }
+      ],
+      "summary": "Pull a log filter's full set (without draining)",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_getFilterLogs.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "filterId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "x-java-type": "String",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "x-java-type": "LogFilterElement[]"
+        }
+      },
+      "errors": [
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32601,
+          "message": "JsonRpcMethodNotFoundException",
+          "x-java-exception": "JsonRpcMethodNotFoundException"
+        },
+        {
+          "code": -32005,
+          "message": "JsonRpcTooManyResultException",
+          "x-java-exception": "JsonRpcTooManyResultException"
+        },
+        {
+          "code": -32000,
+          "message": "BadItemException",
+          "x-java-exception": "BadItemException"
+        },
+        {
+          "code": -32000,
+          "message": "ExecutionException",
+          "x-java-exception": "ExecutionException"
+        },
+        {
+          "code": -32000,
+          "message": "InterruptedException",
+          "x-java-exception": "InterruptedException"
+        },
+        {
+          "code": -32000,
+          "message": "ItemNotFoundException",
+          "x-java-exception": "ItemNotFoundException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/filter/eth_getFilterLogs.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getFilterLogs",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "buildTransaction",
+      "tags": [
+        {
+          "name": "Transaction build"
+        }
+      ],
+      "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC10 transfer / contract deploy / contract trigger)",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/tx-build/buildTransaction.md` for examples and detailed behavior.",
+      "params": [
+        {
+          "name": "args",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "x-java-type": "BuildArguments",
+          "x-position": 0
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "object",
+          "additionalProperties": true,
+          "x-java-type": "TransactionJson"
+        }
+      },
+      "errors": [
+        {
+          "code": -32600,
+          "message": "JsonRpcInvalidRequestException",
+          "x-java-exception": "JsonRpcInvalidRequestException"
+        },
+        {
+          "code": -32601,
+          "message": "JsonRpcMethodNotFoundException",
+          "x-java-exception": "JsonRpcMethodNotFoundException"
+        },
+        {
+          "code": -32602,
+          "message": "JsonRpcInvalidParamsException",
+          "x-java-exception": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32000,
+          "message": "JsonRpcInternalException",
+          "x-java-exception": "JsonRpcInternalException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/tx-build/buildTransaction.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "buildTransaction",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 only (the Solidity port throws -32601)"
+    },
+    {
+      "name": "eth_coinbase",
+      "tags": [
+        {
+          "name": "Compatibility stub methods"
+        }
+      ],
+      "summary": "The configured etherbase address",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/stub/eth_coinbase.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "string",
+          "x-java-type": "String"
+        }
+      },
+      "errors": [
+        {
+          "code": -32000,
+          "message": "JsonRpcInternalException",
+          "x-java-exception": "JsonRpcInternalException"
+        }
+      ],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/stub/eth_coinbase.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getCoinbase",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_accounts",
+      "tags": [
+        {
+          "name": "Compatibility stub methods"
+        }
+      ],
+      "summary": "[]",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/stub/eth_accounts.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-java-type": "String[]"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/stub/eth_accounts.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "getAccounts",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    },
+    {
+      "name": "eth_getWork",
+      "tags": [
+        {
+          "name": "Compatibility stub methods"
+        }
+      ],
+      "summary": "[blockHash, null, null]",
+      "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/stub/eth_getWork.md` for examples and detailed behavior.",
+      "params": [],
+      "result": {
+        "name": "result",
+        "schema": {
+          "type": "array",
+          "items": {},
+          "x-java-type": "List<Object>"
+        }
+      },
+      "errors": [],
+      "externalDocs": {
+        "url": "docs/api/json-rpc/stub/eth_getWork.md"
+      },
+      "x-source-derived": true,
+      "x-java-method": "ethGetWork",
+      "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+      "x-ports": "FullNode 8545 / Solidity 8555"
+    }
+  ]
+}

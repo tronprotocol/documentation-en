@@ -1,0 +1,51 @@
+{
+  "name": "eth_getBlockReceipts",
+  "tags": [
+    {
+      "name": "Block / transaction query"
+    }
+  ],
+  "summary": "Receipt list for an entire block",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "blockNumOrHashOrTag",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 0
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "x-java-type": "List<TransactionReceipt>"
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    },
+    {
+      "code": -32000,
+      "message": "JsonRpcInternalException",
+      "x-java-exception": "JsonRpcInternalException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getBlockReceipts",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

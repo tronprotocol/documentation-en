@@ -1,0 +1,59 @@
+{
+  "name": "buildTransaction",
+  "tags": [
+    {
+      "name": "Transaction build"
+    }
+  ],
+  "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC10 transfer / contract deploy / contract trigger)",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/tx-build/buildTransaction.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "args",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "x-java-type": "BuildArguments",
+      "x-position": 0
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "object",
+      "additionalProperties": true,
+      "x-java-type": "TransactionJson"
+    }
+  },
+  "errors": [
+    {
+      "code": -32600,
+      "message": "JsonRpcInvalidRequestException",
+      "x-java-exception": "JsonRpcInvalidRequestException"
+    },
+    {
+      "code": -32601,
+      "message": "JsonRpcMethodNotFoundException",
+      "x-java-exception": "JsonRpcMethodNotFoundException"
+    },
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    },
+    {
+      "code": -32000,
+      "message": "JsonRpcInternalException",
+      "x-java-exception": "JsonRpcInternalException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/tx-build/buildTransaction.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "buildTransaction",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 only (the Solidity port throws -32601)"
+}

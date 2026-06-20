@@ -1,0 +1,26 @@
+{
+  "name": "eth_blockNumber",
+  "tags": [
+    {
+      "name": "Node info / chain identity"
+    }
+  ],
+  "summary": "Latest block height",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_blockNumber.md` for examples and detailed behavior.",
+  "params": [],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/node/eth_blockNumber.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getLatestBlockNum",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

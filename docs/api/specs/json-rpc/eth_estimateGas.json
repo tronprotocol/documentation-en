@@ -1,0 +1,53 @@
+{
+  "name": "eth_estimateGas",
+  "tags": [
+    {
+      "name": "Smart contract calls"
+    }
+  ],
+  "summary": "Estimate energy consumption",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/smart-contract/eth_estimateGas.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "args",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "x-java-type": "CallArguments",
+      "x-position": 0
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [
+    {
+      "code": -32600,
+      "message": "JsonRpcInvalidRequestException",
+      "x-java-exception": "JsonRpcInvalidRequestException"
+    },
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    },
+    {
+      "code": -32000,
+      "message": "JsonRpcInternalException",
+      "x-java-exception": "JsonRpcInternalException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/smart-contract/eth_estimateGas.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "estimateGas",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

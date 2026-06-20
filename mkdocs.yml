@@ -20,6 +20,7 @@ nav:
         - Node Maintenance Tool: using_javatron/toolkit.md
     - API:
         - Overview: api/index.md
+        - Machine-readable definitions: api/interface-definitions.md
         - HTTP API:
             - Overview: api/http/index.md
             - Account:

@@ -1,0 +1,60 @@
+{
+  "name": "eth_getStorageAt",
+  "tags": [
+    {
+      "name": "Account state"
+    }
+  ],
+  "summary": "Contract storage slot",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/account/eth_getStorageAt.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "address",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 0
+    },
+    {
+      "name": "storageIdx",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 1
+    },
+    {
+      "name": "blockNumOrTag",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 2
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/account/eth_getStorageAt.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getStorageAt",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

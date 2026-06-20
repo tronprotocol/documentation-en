@@ -1,0 +1,52 @@
+{
+  "name": "eth_getTransactionByBlockNumberAndIndex",
+  "tags": [
+    {
+      "name": "Block / transaction query"
+    }
+  ],
+  "summary": "Query a transaction by block height + index",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "blockNumOrTag",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 0
+    },
+    {
+      "name": "index",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 1
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "object",
+      "additionalProperties": true,
+      "x-java-type": "TransactionResult"
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getTransactionByBlockNumberAndIndex",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

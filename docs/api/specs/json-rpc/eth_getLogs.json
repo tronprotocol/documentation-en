@@ -1,0 +1,77 @@
+{
+  "name": "eth_getLogs",
+  "tags": [
+    {
+      "name": "Logs / filters"
+    }
+  ],
+  "summary": "One-shot log query",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_getLogs.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "fr",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "x-java-type": "FilterRequest",
+      "x-position": 0
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "x-java-type": "LogFilterElement[]"
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    },
+    {
+      "code": -32601,
+      "message": "JsonRpcMethodNotFoundException",
+      "x-java-exception": "JsonRpcMethodNotFoundException"
+    },
+    {
+      "code": -32005,
+      "message": "JsonRpcTooManyResultException",
+      "x-java-exception": "JsonRpcTooManyResultException"
+    },
+    {
+      "code": -32000,
+      "message": "BadItemException",
+      "x-java-exception": "BadItemException"
+    },
+    {
+      "code": -32000,
+      "message": "ExecutionException",
+      "x-java-exception": "ExecutionException"
+    },
+    {
+      "code": -32000,
+      "message": "InterruptedException",
+      "x-java-exception": "InterruptedException"
+    },
+    {
+      "code": -32000,
+      "message": "ItemNotFoundException",
+      "x-java-exception": "ItemNotFoundException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/filter/eth_getLogs.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getLogs",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

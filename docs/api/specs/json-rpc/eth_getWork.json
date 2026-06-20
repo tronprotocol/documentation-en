@@ -1,0 +1,27 @@
+{
+  "name": "eth_getWork",
+  "tags": [
+    {
+      "name": "Compatibility stub methods"
+    }
+  ],
+  "summary": "[blockHash, null, null]",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/stub/eth_getWork.md` for examples and detailed behavior.",
+  "params": [],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "array",
+      "items": {},
+      "x-java-type": "List<Object>"
+    }
+  },
+  "errors": [],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/stub/eth_getWork.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "ethGetWork",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

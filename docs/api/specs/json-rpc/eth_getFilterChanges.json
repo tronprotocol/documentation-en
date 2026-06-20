@@ -1,0 +1,53 @@
+{
+  "name": "eth_getFilterChanges",
+  "tags": [
+    {
+      "name": "Logs / filters"
+    }
+  ],
+  "summary": "Pull and drain filter increments",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_getFilterChanges.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "filterId",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 0
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "array",
+      "items": {},
+      "x-java-type": "Object[]"
+    }
+  },
+  "errors": [
+    {
+      "code": -32601,
+      "message": "JsonRpcMethodNotFoundException",
+      "x-java-exception": "JsonRpcMethodNotFoundException"
+    },
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    },
+    {
+      "code": -32000,
+      "message": "ItemNotFoundException",
+      "x-java-exception": "ItemNotFoundException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/filter/eth_getFilterChanges.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getFilterChanges",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

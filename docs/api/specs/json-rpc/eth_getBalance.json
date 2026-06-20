@@ -1,0 +1,51 @@
+{
+  "name": "eth_getBalance",
+  "tags": [
+    {
+      "name": "Account state"
+    }
+  ],
+  "summary": "Account TRX balance (sun)",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/account/eth_getBalance.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "address",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 0
+    },
+    {
+      "name": "blockNumOrTag",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 1
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/account/eth_getBalance.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getTrxBalance",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}

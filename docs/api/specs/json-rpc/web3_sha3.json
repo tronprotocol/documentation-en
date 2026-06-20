@@ -1,0 +1,42 @@
+{
+  "name": "web3_sha3",
+  "tags": [
+    {
+      "name": "Node info / chain identity"
+    }
+  ],
+  "summary": "Keccak-256 hash",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/web3_sha3.md` for examples and detailed behavior.",
+  "params": [
+    {
+      "name": "data",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 0
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException",
+      "x-java-exception": "JsonRpcInvalidParamsException"
+    }
+  ],
+  "externalDocs": {
+    "url": "docs/api/json-rpc/node/web3_sha3.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "web3Sha3",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555"
+}
