@@ -23,6 +23,8 @@
 - [HTTP API reference](https://tronprotocol.github.io/documentation-en/api/http/): `/wallet/*` and `/walletsolidity/*` endpoints, grouped by feature (account, asset, block/tx query, transaction build/broadcast, smart contract, witness/governance, stake v1/v2, node/tools).
 - [JSON-RPC API reference](https://tronprotocol.github.io/documentation-en/api/json-rpc/): Ethereum-compatible `eth_*` / `net_*` / `web3_*` methods plus the Tron-specific `buildTransaction`, with ports, enable flags, encoding conventions, and error codes.
 - [gRPC API reference](https://tronprotocol.github.io/documentation-en/api/rpc/): `protocol.Wallet` / `protocol.WalletSolidity` methods; contracts are defined by the `.proto` files in the java-tron repository.
+- [OpenAPI spec (HTTP)](https://tronprotocol.github.io/documentation-en/api/openapi.yaml): Machine-readable OpenAPI contract for the `/wallet/*` and `/walletsolidity/*` HTTP endpoints.
+- [OpenRPC spec (JSON-RPC)](https://tronprotocol.github.io/documentation-en/api/openrpc.json): Machine-readable OpenRPC contract for the `eth_*` / `net_*` / `web3_*` and `buildTransaction` methods.
 
 ## Core Protocol
 
