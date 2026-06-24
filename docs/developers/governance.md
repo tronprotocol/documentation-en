@@ -69,6 +69,6 @@ Typically, if the community has fully discussed and reached a basic consensus, a
 
 ## Voting and Implementation
 
-- The on-chain voting period lasts for **3 days**.  
+- The on-chain voting period is determined by the network parameter `PROPOSAL_EXPIRE_TIME`, which defaults to **3 days**. This value can itself be modified through governance.  
 - During this period, all Super Representatives can vote on the TIP.  
 - After the voting deadline, if the number of supporting votes from Super Representatives is **greater than or equal to 18**, the proposal is considered passed and automatically takes effect.
