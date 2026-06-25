@@ -169,7 +169,7 @@ Recommended format:
 - `test`: Test code changes
 - `chore`: Build process or auxiliary tooling changes (no production code change)
 
-The `scope` specifies the place of the change, for example: `protobuf`, `api`, `test`, `docs`, `build`, `db`, `net`. Use `*` if there isn't a more fitting scope.
+The `scope` specifies the place of the change, for example: `protocol`, `api`, `test`, `docs`, `build`, `db`, `net`. Use `*` if there isn't a more fitting scope.
 
 ### Subject Specifications
 
