@@ -26,7 +26,7 @@ If you plan to contribute to java-tron development, please follow the process be
 4. **Create a Pull Request (PR)**
     Push your changes to your forked repository and submit a PR to the official repository.
 5. **Code Review and Merge**
-    Maintainers will review your PR based on the [Code Review Guidelines](#code-review-guidelines) and merge it into the main branch if it meets the requirements.
+    Maintainers will review your PR based on the [Code Review Guidelines](#code-review-guidelines) and merge it into the `develop` branch if it meets the requirements.
 
 ## Submission Rules
 
@@ -34,9 +34,9 @@ If you plan to contribute to java-tron development, please follow the process be
     You can directly submit a PR, but ensure it includes a complete description.
 - **Major Changes**
     For complex architectural or logic changes, please first submit a TRON Improvement Proposal (TIP) in the [TIP repository](https://github.com/tronprotocol/tips), detailing the motivation and implementation plan.
-Refer to the [TIP Specification](tips.md).
+    Refer to the [TIP Specification](tips.md).
 - **Early PR Submission**
-    We encourage developers to submit PRs early, even if the feature is not yet complete. This notifies the community that the associated TIP issue has entered the In Progress state.
+    We encourage developers to submit PRs early, even if the feature is not yet complete. This notifies the community that development of the associated TIP has started.
 - **Development Branch**
     All development should be based on the `develop` branch, followed by a PR submission.
 
@@ -45,22 +45,23 @@ The `java-tron` repository includes the following main branch types:
 
 - **`develop` Branch**
     - Used for daily development
-    - Accepts merges exclusively from contributor forks and `release-*` branches
-    - When preparing a new release, a `release-*` branch is created from this branch
+    - Accepts merges exclusively from contributor forks and `release_*` branches
+    - When preparing a new release, a `release_*` branch is created from this branch
 - **`master` Branch**
     - Used only for releases
-    - Only merges from `release-*` and `hotfix-*` branches
-- **`release-*` Branch**
+    - Only merges from `release_*` and `hotfix/*` branches
+- **`release_*` Branch**
     - Created from `develop` for version finalization and regression testing
     - Merged into `master` branch after regression testing
     - Retained permanently as a point-in-time release snapshot
     - Bug fixes are merged directly into this branch and synchronized back to `develop`
-- **`feature-*` Branch**
+- **`feature/*` Branch**
     - Created from `develop` for new feature development
     - Merged back into `develop` after feature completion
     - Can be maintained long-term
-- **`hotfix-*` Branch**
+- **`hotfix/*` Branch**
     - Created from `master` for urgent bug fixes
+    - Only accepts bug-fix pull requests from forked repositories
     - Must be merged back into both `master` and `develop` to ensure consistency
 
 ## Code Submission Process
@@ -93,7 +94,7 @@ git push origin feature/branch_name
 ```
 ### 6. Create a Pull Request
 From your own repository, submit a Pull Request (PR) to `tronprotocol/java-tron`.
-   ![image](https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/javatron_pr.png)
+   ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png)
 It’s recommended to select the options in the red box, setting `develop` branch of the `tronprotocol/java-tron` as the base branch and your forked repository’s branch as the compare branch.
 
 ## Code Review Guidelines
@@ -134,9 +135,9 @@ Once all checks pass, maintainers will review and merge into `develop`.
 ## Branch Naming Conventions
 
 1. `master` and `develop` are fixed names.
-2. Version development branches are named by version number and version name (e.g., `GreatVoyage-v4.8.0(Kant)`).
-3. `hotfix/*`: For urgent fixes ( e.g., `hotfix/typo`).
-4. `feature/*`: For new feature development (e.g., `feature/new-resource-model`).
+2. `release_*`: Named with the `release_` prefix plus the version number, assigned by the project lead (e.g., `release_v4.8.0` for the `GreatVoyage-v4.8.0(Kant)` release).
+3. `hotfix/*`: For urgent fixes, connecting words with underscores (e.g., `hotfix/typo`, `hotfix/null_point_exception`).
+4. `feature/*`: For new feature development, connecting words with underscores (e.g., `feature/new_resource_model`).
 
 ## Pull Request Specifications
 
@@ -145,6 +146,8 @@ Once all checks pass, maintainers will review and merge into `develop`.
 3. Title: Briefly describe the PR’s purpose.
 4. Description: Provide detailed information for reviewers.
 5. Specify areas where feedback is needed.
+6. Do not capitalize the first letter of the title.
+7. Do not end the title with a period.
 
 ## Commit Message Specifications
 Recommended format:
@@ -164,14 +167,16 @@ Recommended format:
 - `style`: Formatting changes (no functional changes)
 - `refactor`: Code refactoring
 - `test`: Test code changes
-- `chore`: Other (e.g., task assignments)
+- `chore`: Build process or auxiliary tooling changes (no production code change)
+
+The `scope` specifies the place of the change, for example: `protocol`, `api`, `test`, `docs`, `build`, `db`, `net`. Use `*` if there isn't a more fitting scope.
 
 ### Subject Specifications
 
 1. Limit to 50 characters; do not end with a period.
-2. Use the imperative mood in the subject line (e.g., `fix`, instead of `fixes/fixed`).
+2. Start with a verb and use the first-person present tense (e.g., use `change` instead of `changed` or `changes`).
 3. Start with a lowercase letter.
-4. Avoid meaningless commits.
+4. Avoid meaningless commits. It is recommended to use the `git rebase` command.
 
 Example:
 ```
