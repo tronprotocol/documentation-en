@@ -39,7 +39,7 @@ This documentation is written for java-tron node operators, protocol researchers
     - [JSON-RPC API](api/json-rpc/index.md)
     - [gRPC API](api/rpc/index.md)
     - [Smart Contracts](contracts/contract.md)
-    - [wallet-cli](clients/wallet-cli.md)
+    - [wallet-cli](clients/wallet-cli/index.md)
 
 -   __Contribute to Core__
 
@@ -61,7 +61,7 @@ This documentation is written for java-tron node operators, protocol researchers
 - __[Core Protocol](mechanism-algorithm/dpos.md)__ — DPoS consensus, Super Representatives, account model, resource model, smart contracts, system contracts, decentralized exchange, account permission management
 - __[For java-tron Developers](developers/java-tron.md)__ — Developer guide, TIPs workflow, issue workflow, governance workflow, IDE configuration, development examples, core modules
 - __[For DApp Developers](contracts/tools.md)__ — Development tooling
-- __[Clients](clients/wallet-cli.md)__ — wallet-cli
+- __[Clients](clients/wallet-cli/index.md)__ — wallet-cli
 - __[Releases](releases/upgrade-instruction.md)__ — Deployment manual for new versions, integrity check, release history
 - __[Appendix](glossary.md)__ — Glossary
 
