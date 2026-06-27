@@ -9,6 +9,8 @@ The TRON network is mainly divided into four environments:
 
 This guide explains how to configure the java-tron client to connect to these networks, covering basic network configuration, node discovery, node connection, log and node status verification, and how to troubleshoot connection issues.
 
+> This is an operational configuration guide. For how the P2P network works internally (architecture, block synchronization, and broadcast protocols), see [P2P Network Deep Dive](../developers/network.md).
+
 
 
 ## Basic Network Configuration
