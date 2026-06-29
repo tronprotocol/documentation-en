@@ -1,10 +1,12 @@
 # java-tron Node Metrics Monitoring
+
 Starting from the GreatVoyage-4.5.1 (Tertullian) version, java-tron nodes expose metrics in the Prometheus exposition format on a `/metrics` endpoint, allowing node operators to monitor node health more conveniently. For the meaning of each exposed metric, see the [All Metrics section](https://github.com/tronprotocol/tron-docker/blob/main/metric_monitor/README.md#all-metrics) of the tron-docker metric_monitor README. To monitor various node metrics, you must first deploy a Prometheus service to communicate with the java-tron node and scrape metric data from this endpoint. Then you need to deploy a visualization tool, such as Grafana, to display the node data obtained by Prometheus in the form of a graphical interface. The following will introduce the deployment process of the java-tron node monitoring system in detail.
 
 ## Configure java-tron
+
 To use Prometheus for monitoring, you must first enable Prometheus metric monitoring and set the HTTP port in your node's configuration file. Locate the `node.metrics` block in `config.conf` and set `prometheus.enable` to `true`:
 
-```
+```properties
 node.metrics = {
   prometheus {
     enable = true
@@ -12,6 +14,7 @@ node.metrics = {
   }
 }
 ```
+
 ## Start the java-tron Node
 
 After updating the configuration, start the node as described in [Starting a java-tron Full Node](installing_javatron.md#starting-a-java-tron-node).
@@ -24,13 +27,14 @@ After updating the configuration, start the node as described in [Starting a jav
 
     After installing Docker, enter the following command to pull the Prometheus image:
 
-    ```
-    $ docker pull prom/prometheus
+    ```bash
+    docker pull prom/prometheus
     ```
 
 2. Prepare the Prometheus configuration file
 
     The following is a Prometheus configuration file template `prometheus.yaml`:
+
     ```yaml
     global:
       scrape_interval: 30s
@@ -56,14 +60,15 @@ After updating the configuration, start the node as described in [Starting a jav
           group: group-xxx
           instance: xxx-02
     ```
+
     You can use this template and modify the targets configuration item, which specifies the IP address and Prometheus port of your java-tron node(s). Save the file to a local directory, for example `/Users/test/deploy/prometheus/prometheus.yaml`.
 
 3. Start a Prometheus container
 
     Start a Prometheus container with the following command, mounting the configuration file from the previous step (`/Users/test/deploy/prometheus/prometheus.yaml`):
     
-    ```
-    $ docker run --name prometheus \
+    ```bash
+    docker run --name prometheus \
         -d -p 9090:9090 \
         -v /Users/test/deploy/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml \
         prom/prometheus:latest
@@ -84,21 +89,23 @@ After updating the configuration, start the node as described in [Starting a jav
     When the status of the monitored java-tron nodes is normal, you can monitor the metrics through visualization tools such as Grafana. This article will use Grafana to display the data:
 
 ## Deploy Grafana
+
 The deployment process of the Grafana visualization tool is as follows:
 
 1. Install Grafana
 
     Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/next/setup-grafana/installation/). This article uses the Docker image deployment, pulling the open source image (`grafana-oss`):
     
-    ```
-    $ docker pull grafana/grafana-oss
+    ```bash
+    docker pull grafana/grafana-oss
     ```
 
 2. Start Grafana
 
     You can use the following command to start Grafana:
-    ```
-    $ docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
+
+    ```bash
+    docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
     ```
 
 3. Log in to the Grafana web UI

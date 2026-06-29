@@ -4,18 +4,18 @@
 
 The TRON network's core system resources consist of three components: TRON Power (TP), Bandwidth, and Energy. Their definitions and functions are as follows:
 
-  - **TRON Power (TP):** Used exclusively for voting for Super Representatives (SRs) and Super Representative Partners. It serves as the credential for users to participate in network governance and is obtained by staking TRX.
-  - **Bandwidth:** Measures the byte size of a transaction on the blockchain. Every type of transaction, from a simple transfer to a contract interaction, must consume Bandwidth.
-  - **Energy:** Measures the computational resources consumed by the TRON Virtual Machine (TVM) to execute a smart contract. It can be understood as a "CPU processing fee." Energy is only consumed when deploying or triggering a smart contract.
+- **TRON Power (TP):** Used exclusively for voting for Super Representatives (SRs) and Super Representative Partners. It serves as the credential for users to participate in network governance and is obtained by staking TRX.
+- **Bandwidth:** Measures the byte size of a transaction on the blockchain. Every type of transaction, from a simple transfer to a contract interaction, must consume Bandwidth.
+- **Energy:** Measures the computational resources consumed by the TRON Virtual Machine (TVM) to execute a smart contract. It can be understood as a "CPU processing fee." Energy is only consumed when deploying or triggering a smart contract.
 
 ## TRON Power (TP)
 
 Before voting for Super Representatives, an account must first acquire TRON Power (TP).
 
-  * **How to Obtain:** When you stake TRX for either Bandwidth or Energy, you simultaneously receive an equivalent amount of TRON Power. This is the only way to get TP. For staking instructions, refer to the [Staking on TRON](#staking-on-tron) section.
-  * **Conversion Ratio:** The staking-to-TP ratio is 1:1. Staking 1 TRX grants you 1 TP.
-  * **Accumulation:** You can stake TRX in multiple, separate transactions. The TP acquired from all stakes is automatically added to your account's total TP pool.
-  * **Querying:** You can check your account's total and used TP at any time using the `wallet/getaccountresource` API endpoint.
+* **How to Obtain:** When you stake TRX for either Bandwidth or Energy, you simultaneously receive an equivalent amount of TRON Power. This is the only way to get TP. For staking instructions, refer to the [Staking on TRON](#staking-on-tron) section.
+* **Conversion Ratio:** The staking-to-TP ratio is 1:1. Staking 1 TRX grants you 1 TP.
+* **Accumulation:** You can stake TRX in multiple, separate transactions. The TP acquired from all stakes is automatically added to your account's total TP pool.
+* **Querying:** You can check your account's total and used TP at any time using the `wallet/getaccountresource` API endpoint.
 
 ## Bandwidth
 
@@ -29,9 +29,9 @@ For example, a transaction with a size of 200 bytes will consume 200 Bandwidth.
 
 There are three ways to obtain Bandwidth:
 
-  * **Staking TRX:** Users share a fixed total Bandwidth pool in proportion to the amount of TRX they have staked for Bandwidth.
+* **Staking TRX:** Users share a fixed total Bandwidth pool in proportion to the amount of TRX they have staked for Bandwidth.
 
-    ```
+    ```text
     Bandwidth Share = (TRX Staked for Bandwidth / Total TRX Staked for Bandwidth Network-Wide) * Total Bandwidth Limit
     ```
 
@@ -39,20 +39,20 @@ There are three ways to obtain Bandwidth:
 
     Staking for Bandwidth (`wallet-cli` example):
 
-    ```
+    ```text
     freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
     ```
 
-  * **Delegation from Others:**
+* **Delegation from Others:**
     Another account can delegate their Bandwidth to you. 
     
     Delegating Bandwidth (`wallet-cli` example):
 
-    ```
+    ```text
     delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress [lock]
     ```
     
-  * **Daily Free Allowance:** Every account receives a fixed daily allowance of free Bandwidth, which can be modified through a committee proposal [#61](https://tronscan.io/#/sr/committee) and is currently set to 600.
+* **Daily Free Allowance:** Every account receives a fixed daily allowance of free Bandwidth, which can be modified through a committee proposal [#61](https://tronscan.io/#/sr/committee) and is currently set to 600.
 
 ### How Bandwidth is Consumed
 
@@ -80,15 +80,15 @@ TRC-10 token transfers have a unique consumption logic that introduces the "toke
 
 1.  **Issuer's Bandwidth (Highest Priority):** The system first attempts to consume the Bandwidth prepaid by the token issuer. This requires all three of the following conditions to be met (only if all three checks pass will the issuer's Bandwidth be deducted; otherwise, the cost falls to the transaction initiator):
       * The token issuer has a sufficient total free Bandwidth allowance.
-          * Query Method: [/wallet/getassetissuebyaccount](https://developers.tron.network/reference/getassetissuebyaccount)
+          * Query Method: [/wallet/getassetissuebyaccount](../api/http/asset/getassetissuebyaccount.md)
           * Formula: `public_free_asset_net_limit - public_free_asset_net_usage`
           * Description: The remaining quota the token issuer can pay for this token's transfers.
       * The transaction initiator has a sufficient Bandwidth allowance for that specific token.
-          * Query Method: [/wallet/getaccountnet](https://developers.tron.network/reference/getaccountnet) 
+          * Query Method: [/wallet/getaccountnet](../api/http/account/getaccountnet.md) 
           * Formula: `assetNetLimit['assetID'] - assetNetUsed['assetID']`
           * Description: The free Bandwidth quota provided by the issuer that the token holder can still use.
       * The token issuer has sufficient staked Bandwidth. 
-          * Query Method: [/wallet/getaccountnet](https://developers.tron.network/reference/getaccountnet)
+          * Query Method: [/wallet/getaccountnet](../api/http/account/getaccountnet.md)
           * Formula: `NetLimit - NetUsed`
           * Description: The amount of available Bandwidth the issuer has obtained through staking.
 2.  **Initiator's Staked Bandwidth:** Attempts to consume the initiator's staked Bandwidth.
@@ -104,7 +104,7 @@ An account's consumed free Bandwidth and staked Bandwidth will gradually recover
 
 You can query an account's current resource status by calling the `wallet/getaccountresource` HTTP endpoint. In the returned JSON data, use the following formulas to calculate the remaining Bandwidth:
 
-```
+```text
 Remaining Free Bandwidth = freeNetLimit - freeNetUsed
 Remaining Staked Bandwidth = NetLimit - NetUsed
 ```
@@ -128,13 +128,13 @@ Energy can be acquired in two primary ways:
 
 #### Staking for Energy (`wallet-cli` example)
 
-```
+```text
 freezeBalanceV2 frozen_balance [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
 #### Delegating Energy (`wallet-cli` example)
 
-```
+```text
 delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress [lock]
 ```
 
@@ -142,7 +142,7 @@ delegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), Rece
 
 You can query an account's current Energy status using the `wallet/getaccountresource` HTTP endpoint. In the returned JSON data, calculate the remaining Energy using the following formula:
 
-```
+```text
 Remaining Energy = EnergyLimit - EnergyUsed
 ```
 
@@ -152,7 +152,7 @@ Remaining Energy = EnergyLimit - EnergyUsed
 
 The amount of Energy you receive is a dynamic value calculated in real-time based on your stake relative to the total network stake for Energy:
 
-```
+```text
 Your Energy Share = (TRX Staked for Energy / Total TRX Staked for Energy Network-Wide) * Total Energy Limit
 ```
 
@@ -162,7 +162,7 @@ _**Calculation Example**_
 
 Because your share is tied to the network's total stake, your available Energy will fluctuate as other users stake or unstake.
 
-```
+```text
 Assume only two users, A and B, have staked 2 TRX each.
 
 Their respective Energy shares are:
@@ -188,8 +188,8 @@ _**Fee Deduction for Exceptions**_
 
 Contract execution can be interrupted for various reasons, with different rules for Energy deduction:
 
-  * **Normal Interruption (`REVERT`):** If a contract exits due to a `REVERT` instruction, only the Energy for the instructions executed up to that point is deducted.
-  * **Unexpected Interruption (bug or Timeout):** If a contract crashes due to a code bug, timeout, or another unexpected error, the system will deduct all available Energy for the transaction as a penalty. Users can limit this penalty by setting the `fee_limit` parameter for the transaction.
+* **Normal Interruption (`REVERT`):** If a contract exits due to a `REVERT` instruction, only the Energy for the instructions executed up to that point is deducted.
+* **Unexpected Interruption (bug or Timeout):** If a contract crashes due to a code bug, timeout, or another unexpected error, the system will deduct all available Energy for the transaction as a penalty. Users can limit this penalty by setting the `fee_limit` parameter for the transaction.
 
 #### Energy Recovery
 
@@ -214,9 +214,9 @@ Before setting `fee_limit`, understand these concepts:
 **Example:**
 Here's how to estimate the `fee_limit` for executing a contract `C`:
 
-  - Assume contract C consumed 18,000 Energy during its last successful execution. By calling the [estimateenergy](https://developers.tron.network/reference/estimateenergy) API to get a pre-execution estimate, let's assume the upper limit of Energy consumption for this transaction is approximately 20,000 Energy.
-  - When burning TRX, since the unit price of Energy is currently 100 sun, 10 TRX can be exchanged for a fixed 100,000 Energy units.
-  - Assume the developer has committed to covering 90% of the Energy cost and has sufficient Energy.
+- Assume contract C consumed 18,000 Energy during its last successful execution. By calling the [estimateenergy](../api/http/smart-contract/estimateenergy.md) API to get a pre-execution estimate, let's assume the upper limit of Energy consumption for this transaction is approximately 20,000 Energy.
+- When burning TRX, since the unit price of Energy is currently 100 sun, 10 TRX can be exchanged for a fixed 100,000 Energy units.
+- Assume the developer has committed to covering 90% of the Energy cost and has sufficient Energy.
 
 The `fee_limit` estimation method is as follows:
 
@@ -255,41 +255,44 @@ If a contract consumes an excessive amount of Energy within a maintenance period
 
 Each contract has an `energy_factor`, which is a multiplier for its base Energy consumption. The initial value is `0`.
 
-  - An `energy_factor` of `0` means the contract is using resources reasonably, and calls will incur no extra Energy cost.
-  - An `energy_factor` greater than `0` indicates it is a popular contract, and calls will consume additional Energy. You can query a contract's `energy_factor` via the `getcontractinfo` API endpoint.
+- An `energy_factor` of `0` means the contract is using resources reasonably, and calls will incur no extra Energy cost.
+- An `energy_factor` greater than `0` indicates it is a popular contract, and calls will consume additional Energy. You can query a contract's `energy_factor` via the `getcontractinfo` API endpoint.
 
 The final Energy consumption for a contract call is calculated as:
 
-```
+```text
 Contract Transaction Energy Consumption = Base Energy Consumption Generated by the Contract Call Transaction * (1 + energy_factor)
 ```
 
 The dynamic energy model introduces three network parameters that control the `energy_factor`:
 
-  * `threshold`: The threshold for a contract's base Energy consumption. If a contract exceeds this threshold in a maintenance period, its Energy cost will increase in the next period.
-  * `increase_factor`: The rate at which `energy_factor` increases when the threshold is exceeded.
-  * `max_factor`: The maximum possible value for `energy_factor`.
+* `threshold`: The threshold for a contract's base Energy consumption. If a contract exceeds this threshold in a maintenance period, its Energy cost will increase in the next period.
+* `increase_factor`: The rate at which `energy_factor` increases when the threshold is exceeded.
+* `max_factor`: The maximum possible value for `energy_factor`.
 
 There is also a `decrease_factor` used to lower the `energy_factor`:
 
-  * `decrease_factor`: Set to **one-fourth** of the `increase_factor`. When a contract's base Energy consumption falls below the threshold, its `energy_factor` is reduced by this rate.
+* `decrease_factor`: Set to **one-fourth** of the `increase_factor`. When a contract's base Energy consumption falls below the threshold, its `energy_factor` is reduced by this rate.
 
 **`energy_factor` Adjustment Formulas:**
 
-  - When the base energy consumption of a contract exceeds the `threshold` within a maintenance period, its `energy_factor` will increase during the next maintenance period, but will not exceed `max_factor`. The formula for this calculation is:
-    ```
+- When the base energy consumption of a contract exceeds the `threshold` within a maintenance period, its `energy_factor` will increase during the next maintenance period, but will not exceed `max_factor`. The formula for this calculation is:
+
+    ```text
     energy_factor = min((1 + energy_factor) * (1 + increase_factor) - 1, max_factor)
     ```
-  - When the base energy consumption of a contract falls to or below the `threshold` within a maintenance period, its `energy_factor` will decrease during the next maintenance period, but not below a minimum of `0`. The formula for this calculation is:
-    ```
+
+- When the base energy consumption of a contract falls to or below the `threshold` within a maintenance period, its `energy_factor` will decrease during the next maintenance period, but not below a minimum of `0`. The formula for this calculation is:
+
+    ```text
     energy_factor = max((1 + energy_factor) * (1 - decrease_factor) - 1, 0)
     ```
 
 The dynamic energy model is active on Mainnet with the following parameters:
 
-  * `threshold`: 5,000,000,000
-  * `increase_factor`: 0.2
-  * `max_factor`: 3.4
+* `threshold`: 5,000,000,000
+* `increase_factor`: 0.2
+* `max_factor`: 3.4
 
 Since the Energy cost for popular contracts can vary between maintenance periods, it is crucial to set an appropriate `fee_limit` for transactions.
 
@@ -301,8 +304,8 @@ On the TRON network, staking TRX is the unified mechanism for obtaining the thre
 
 #### How to Stake
 
-  * **HTTP API:** Call the `wallet/freezebalancev2` endpoint.
-  * **Smart Contract:** Use the [Stake 2.0 Solidity API](https://developers.tron.network/docs/stake-20-solidity-api) within a contract.
+* **HTTP API:** Call the `wallet/freezebalancev2` endpoint.
+* **Smart Contract:** Use the [Stake 2.0 Solidity API](https://developers.tron.network/docs/stake-20-solidity-api) within a contract.
 
 When you unstake, the corresponding resources (Energy/Bandwidth) and TP are released and reclaimed simultaneously.
 
@@ -314,23 +317,23 @@ After an account obtains Energy or Bandwidth through staking, it can choose to d
 
 Before delegating, you must understand the following key rules:
 
-  * **Delegable Resources:** Only Energy and Bandwidth can be delegated. TP cannot.
-  * **Source of Resources:** Only available resources obtained through Stake 2.0 are eligible for delegation.
-  * **Recipient:** The recipient must be an activated external account, not a contract address.
+* **Delegable Resources:** Only Energy and Bandwidth can be delegated. TP cannot.
+* **Source of Resources:** Only available resources obtained through Stake 2.0 are eligible for delegation.
+* **Recipient:** The recipient must be an activated external account, not a contract address.
 
 **Time Lock Option**
 
 When delegating, you can choose to enable a time lock, which affects when you can reclaim the resources.
 
-  * **With Time Lock:** The resources are locked for a period. You must wait for this period to end before you can undelegate.
+* **With Time Lock:** The resources are locked for a period. You must wait for this period to end before you can undelegate.
     **Important:** If you delegate to the same address again during this period, the pending period resets.
-  * **Without Time Lock:** You can undelegate at any time and reclaim the resources immediately.
+* **Without Time Lock:** You can undelegate at any time and reclaim the resources immediately.
 
 **Related API Endpoints**
 
-  * `delegateresource`: Delegate resources.
-  * `undelegateresource`: Undelegate (reclaim) resources.
-  * `getcandelegatedmaxsize`: Query the maximum amount of a resource you can delegate.
+* `delegateresource`: Delegate resources.
+* `undelegateresource`: Undelegate (reclaim) resources.
+* `getcandelegatedmaxsize`: Query the maximum amount of a resource you can delegate.
 
 ### How to Unstake
 
@@ -364,7 +367,7 @@ The revocation operation is not random. Instead, votes are revoked proportionall
 
 - *Formula:*
 
-    ```
+    ```text
     Votes Revoked from a Given SR = Total Votes to Revoke * (Votes Cast for that SR or SR Partner / Total Votes Cast by the Account)
     ```
 
@@ -400,8 +403,8 @@ If you initiate an unstake but change your mind, Stake 2.0 provides an efficient
 
 **Please note**: this endpoint cancels all of your account's unstaking requests that are currently in the 14-day pending period.
 
-  * **TRX Status:** The canceled TRX is immediately re-staked.
-  * **Resource Type:** The re-staked funds will acquire the same resource type (Energy or Bandwidth) as the original stake.
+* **TRX Status:** The canceled TRX is immediately re-staked.
+* **Resource Type:** The re-staked funds will acquire the same resource type (Energy or Bandwidth) as the original stake.
 
 **Additional Effect - Automatic Withdrawal**: This operation will also automatically withdraw any unstaked TRX that has already completed its 14-day pending period and is awaiting withdrawal.
 
@@ -409,8 +412,8 @@ If you initiate an unstake but change your mind, Stake 2.0 provides an efficient
 
 You can query the transaction details using `gettransactioninfobyid` and check the following fields:
 
-  * `cancel_unfreezeV2_amount`: The total amount of TRX that was successfully canceled and re-staked.
-  * `withdraw_expire_amount`: The total amount of matured unstaked TRX that was automatically withdrawn to your account balance.
+* `cancel_unfreezeV2_amount`: The total amount of TRX that was successfully canceled and re-staked.
+* `withdraw_expire_amount`: The total amount of matured unstaked TRX that was automatically withdrawn to your account balance.
 
 
 ### Resource Reclamation Upon Undelegation
@@ -427,15 +430,15 @@ When a Delegator initiates resource delegation, a certain amount of staked TRX i
 
 The system proportionally reclaims the Recipient's unrecovered resources based on the amount of TRX being undelegated according to the following formula:
 
-```
+```text
 Reclaimed unrecovered resources = (Canceled delegated TRX amount / Recipient’s total staked TRX amount for that resource) * Recipient’s unrecovered resource amount
 ```
 
 **Note**: The reclaimed unrecovered resources **must not exceed** the maximum resource capacity corresponding to the undelegated TRX amount, calculated in real time based on the total network staking.
 
 * **Canceled delegated TRX amount**: The amount of staked TRX reclaimed in the cancel delegation transaction.
-* **Recipient's Total Staked TRX Amount for that resource**: The total staked TRX used by the recipient to obtain a specific resource (Energy or Bandwidth), including self-staked TRX (Stake 1.0 and Stake 2.0) and delegated TRX from others. This can be queried via the [wallet/getaccount](https://developers.tron.network/reference/account-getaccount#/) API.
-* **Recipient's Unrecovered Resource Amount**: The amount of resources that have already been consumed and are currently in the recovery period on the recipient’s account. This can be queried via [wallet/getaccount](https://developers.tron.network/reference/account-getaccount#/) or [wallet/getaccountresource](https://developers.tron.network/reference/getaccountresource#/).
+* **Recipient's Total Staked TRX Amount for that resource**: The total staked TRX used by the recipient to obtain a specific resource (Energy or Bandwidth), including self-staked TRX (Stake 1.0 and Stake 2.0) and delegated TRX from others. This can be queried via the [wallet/getaccount](../api/http/account/getaccount.md) API.
+* **Recipient's Unrecovered Resource Amount**: The amount of resources that have already been consumed and are currently in the recovery period on the recipient’s account. This can be queried via [wallet/getaccount](../api/http/account/getaccount.md) or [wallet/getaccountresource](../api/http/account/getaccountresource.md).
 
 ##### 2. Account State Changes
 
@@ -444,7 +447,7 @@ The following expressions describe the changes at a logical level. The term “s
 
 **Delegator**
 
-```
+```text
 Staked amount = Original staked amount + Canceled delegated TRX amount
 
 Unrecovered resource amount = Original unrecovered resource amount + Reclaimed unrecovered resource amount
@@ -452,7 +455,7 @@ Unrecovered resource amount = Original unrecovered resource amount + Reclaimed u
 
 **Recipient**
 
-```
+```text
 Staked amount = Original staked amount - Canceled delegated TRX amount
 
 Unrecovered resource amount = Original unrecovered resource amount - Reclaimed unrecovered resource amount
@@ -470,7 +473,8 @@ Assume the current network resource conversion ratio is **1 TRX Staked = 0.2 Ene
 | Y | Recipient | 500 TRX | 100 Energy | 50 Energy |
 
 When User X cancels the Energy delegation of **200 TRX** to User Y:
-```
+
+```text
 Reclaimed unrecovered Energy amount = (200 / 500) * 50 = 20 Energy
 ```
 

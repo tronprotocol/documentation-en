@@ -72,21 +72,21 @@ Each method doc contains:
 | [GetTransactionApprovedList](tx-build-and-broadcast/GetTransactionApprovedList.md) | List addresses that have signed a multi-sig transaction |
 | [BroadcastTransaction](tx-build-and-broadcast/BroadcastTransaction.md) | Broadcast a signed transaction (JSON) |
 
-## TRC10 asset
+## TRC-10 asset
 
 | Method | Description |
 |---|---|
-| [CreateAssetIssue2](asset/CreateAssetIssue2.md) | Issue a TRC10 token |
-| [UpdateAsset2](asset/UpdateAsset2.md) | Update a TRC10's description / URL / bandwidth limit |
-| [TransferAsset2](asset/TransferAsset2.md) | Transfer TRC10 |
-| [ParticipateAssetIssue2](asset/ParticipateAssetIssue2.md) | Participate in a TRC10 sale |
-| [UnfreezeAsset2](asset/UnfreezeAsset2.md) | Unfreeze TRC10 locked by the issuer |
-| [GetAssetIssueById](asset/GetAssetIssueById.md) | Look up TRC10 by id (recommended) |
-| [GetAssetIssueByName](asset/GetAssetIssueByName.md) | Look up TRC10 by name (errors on duplicate names) |
-| [GetAssetIssueListByName](asset/GetAssetIssueListByName.md) | List TRC10s sharing a given name |
-| [GetAssetIssueByAccount](asset/GetAssetIssueByAccount.md) | TRC10s issued by an account |
-| [GetAssetIssueList](asset/GetAssetIssueList.md) | All TRC10s on chain |
-| [GetPaginatedAssetIssueList](asset/GetPaginatedAssetIssueList.md) | Paginated TRC10 list |
+| [CreateAssetIssue2](asset/CreateAssetIssue2.md) | Issue a TRC-10 token |
+| [UpdateAsset2](asset/UpdateAsset2.md) | Update a TRC-10's description / URL / bandwidth limit |
+| [TransferAsset2](asset/TransferAsset2.md) | Transfer TRC-10 |
+| [ParticipateAssetIssue2](asset/ParticipateAssetIssue2.md) | Participate in a TRC-10 sale |
+| [UnfreezeAsset2](asset/UnfreezeAsset2.md) | Unfreeze TRC-10 locked by the issuer |
+| [GetAssetIssueById](asset/GetAssetIssueById.md) | Look up TRC-10 by id (recommended) |
+| [GetAssetIssueByName](asset/GetAssetIssueByName.md) | Look up TRC-10 by name (errors on duplicate names) |
+| [GetAssetIssueListByName](asset/GetAssetIssueListByName.md) | List TRC-10s sharing a given name |
+| [GetAssetIssueByAccount](asset/GetAssetIssueByAccount.md) | TRC-10s issued by an account |
+| [GetAssetIssueList](asset/GetAssetIssueList.md) | All TRC-10s on chain |
+| [GetPaginatedAssetIssueList](asset/GetPaginatedAssetIssueList.md) | Paginated TRC-10 list |
 
 ## Smart contract
 

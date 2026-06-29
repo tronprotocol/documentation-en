@@ -7,10 +7,13 @@ Smart contract is a computerized transaction protocol that automatically impleme
 TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [TRON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## Features
+
 TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
 
 ### Definition of Smart Contract 
+
 TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
+
 ``` solidity
 message SmartContract {
   message ABI {
@@ -120,8 +123,8 @@ This command will create a new contract with a new address. The primary differen
    Provides `VOTEWITNESS` / `WITHDRAWREWARD` opcodes and related read-only
    precompiles.
 
-3. TRC10 token operations: sending TRC10 to a target address and querying
-   the TRC10 balance of an address. Enabled by the `ALLOW_TVM_TRANSFER_TRC10`
+3. TRC-10 token operations: sending TRC-10 to a target address and querying
+   the TRC-10 balance of an address. Enabled by the `ALLOW_TVM_TRANSFER_TRC10`
    chain parameter, activated on mainnet by committee
    [proposal #15](https://tronscan.io/#/proposal/15).
 
@@ -150,6 +153,7 @@ Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 #### address conversion
 
 Need to convert TRON's address while using in solidity (recommended):
+
 ```solidity
 /**
      *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
@@ -161,11 +165,13 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address){
         return address(tronAddress);
 }
 ```
+
 This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
 
 #### address judgement
 
 Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
+
 ```solidity
 function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
@@ -176,11 +182,13 @@ function compareAddress(address tronAddress) public view returns (uint256){
         }
 }
 ```
+
 But if you are using wallet-cli, pass the 21-byte TRON address as a 32-byte ABI-encoded value (11 leading zero bytes followed by the 21-byte TRON address that starts with `41`), e.g. `000000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c`.
 
 #### variable assignment
 
 Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
+
 ```solidity
 function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
@@ -188,15 +196,18 @@ function assignAddress() public view {
         // do something
 }
 ```
+
 If you want to use a base58 TRON address string (e.g. `TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm`), convert it to the 20-byte hex form first via wallet-cli or a TRON SDK before assigning it to a Solidity `address`.
 
 ### Special Constants Differ from Ethereum 
 
 #### Currency
+
 Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 #### Block Related
+
 - `blockhash(uint blockNumber) returns (bytes32)`: specified block hash, can only apply to the latest 256 blocks and current block excluded. **Note**: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0; TRON's Solidity fork inherits the deprecation from `tv_0.4.24` and the removal from `tv_0.5.4` onwards — use the top-level `blockhash(...)` instead
 - `block.basefee` (uint): returns the network energy fee from chain parameter (`getEnergyFee`); unlike Ethereum's per-block EIP-1559 base fee, this value only changes when a committee proposal modifies it. Available since the London upgrade (`ALLOW_TVM_LONDON`), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
 - `block.coinbase` (address): Super Representative address that produced the current block

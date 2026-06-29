@@ -21,15 +21,19 @@ You can obtain the `Toolkit.jar` file either by compiling the `java-tron` source
 
 
 1. **Clone the `java-tron` source repository**：
+
+   ```bash
+   git clone https://github.com/tronprotocol/java-tron.git
+   git checkout -t origin/master
    ```
-   $ git clone https://github.com/tronprotocol/java-tron.git
-   $ git checkout -t origin/master
-   ```
+
 2. **Build the project**：
+
+   ```bash
+   cd java-tron
+   ./gradlew clean build -x test
    ```
-   $ cd java-tron
-   $ ./gradlew clean build -x test
-   ```
+
 Upon successful compilation, the `Toolkit.jar` artifact will be located in the `java-tron/build/libs/` directory.
 
 
@@ -40,7 +44,8 @@ The continuous growth of TRON's on-chain data (Mainnet Fullnode database current
 ### Command and Parameters
 
 Use the `db mv` command to execute the data migration：
-```
+
+```bash
 # full command
 java -jar build/libs/Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
 # examples
@@ -67,7 +72,7 @@ To use the database partitioning tool, follow these steps:
 
 Before performing a database migration, you **must** stop the currently running FullNode service. You can use the following command to find the FullNode process ID (PID) and kill it:
 
-```
+```bash
 kill -15 $(ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}')
 ```
 
@@ -97,6 +102,7 @@ storage {
 }
 
 ```
+
 *   `name`：The name of the database to be migrated.
 *   `path`：The target directory for the database migration.
 
@@ -107,7 +113,7 @@ The tool will move the database specified by `name` to the `path` directory and 
 
 After configuration, run the following command to perform the migration. The command will display the current progress.
 
-```
+```bash
 java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 ```
 
@@ -143,7 +149,8 @@ The data pruning tool can split a FullNode's data into a **Snapshot Dataset** or
 ### Command and Parameters
 
 Use the `db lite` command to perform data pruning operations:
-```
+
+```bash
 # full command
   java -jar build/libs/Toolkit.jar db lite [-h] -ds=<datasetPath> -fn=<fnDataPath> [-o=<operate>] [-t=<type>]
 # examples
@@ -154,6 +161,7 @@ Use the `db lite` command to perform data pruning operations:
   #merge history dataset and snapshot dataset
   java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
+
 **Optional Parameters**：
 
 *   `-o | --operate <split | merge>`: Specifies the operation type. Default: `split`.
@@ -193,7 +201,7 @@ After the command completes, a directory named `snapshot` will be created in the
 
 To split and create a history dataset, use the following command:
 
-```
+```bash
 # For simplicity, the history dataset will be stored in the /tmp directory
 java -jar build/libs/Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
 ```
@@ -215,6 +223,7 @@ Use the following command to merge a history dataset and a snapshot dataset:
 # Assuming the snapshot dataset is in /tmp/snapshot and the history dataset is in /tmp/history
 java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
+
 *   `--fn-data-path`: The directory of the snapshot dataset.
 *   `--dataset-path`: The directory of the history dataset.
 
@@ -227,6 +236,7 @@ Node databases are often large, and traditional copy operations can be time-cons
 
 
 ### Command and Parameters
+
 Use the `db cp` command to perform a data copy operation:
 
 ```shell
@@ -249,9 +259,10 @@ Use the `db cp` command to perform a data copy operation:
 The TRON Toolkit includes a data conversion feature that allows you to convert a database from LevelDB format to RocksDB format.
 
 ### Command and Parameters
+
 Use the `db convert` command to perform the data conversion:
 
-```
+```bash
 # full command
   java -jar build/libs/Toolkit.jar db convert [-h] <src> <dest>
 # examples
@@ -274,7 +285,7 @@ As a LevelDB database operates, its `manifest` file continuously grows. An exces
 
 Use the `db archive` command to perform the LevelDB startup optimization:
 
-```
+```bash
 # full command
    java -jar build/libs/Toolkit.jar db archive [-h] [-b=<maxBatchSize>] [-d=<databaseDirectory>] [-m=<maxManifestSize>]
 # examples
@@ -307,7 +318,7 @@ The TRON Toolkit provides a **Merkle root computation tool** that calculates the
 
 Use the `db root` command to compute the Merkle root:
 
-```
+```bash
 # full command
    java -jar build/libs/Toolkit.jar db root [-h] [--db=<dbs>]... [<db>]
 # examples

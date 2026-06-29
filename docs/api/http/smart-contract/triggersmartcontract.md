@@ -17,8 +17,8 @@ Trigger a smart contract (state-changing call). Returns the unsigned transaction
 | `parameter` | string | No | ABI-encoded parameters (hex, without function selector) |
 | `data` | string | No | Pre-built call data (hex); use either this or `function_selector` |
 | `call_value` | int64 | No | TRX (sun) sent with the call |
-| `token_id` | int64 | No | TRC10 token id sent with the call |
-| `call_token_value` | int64 | No | TRC10 amount sent with the call |
+| `token_id` | int64 | No | TRC-10 token id sent with the call |
+| `call_token_value` | int64 | No | TRC-10 amount sent with the call |
 | `fee_limit` | int64 | Yes | Transaction fee limit (sun) |
 | `permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields (response includes `result.message`, which is affected by `visible`) |

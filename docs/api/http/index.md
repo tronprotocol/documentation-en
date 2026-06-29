@@ -14,7 +14,7 @@ The following categories are intentionally not covered:
 - **`visible`**: when `true`, addresses are base58check strings and text fields (URL, descriptions, etc.) are UTF-8 strings; when `false` (default), they are hex strings.
 - **Builder endpoints** return an unsigned `protocol.Transaction`. The caller signs it locally and broadcasts it via [`/wallet/broadcasttransaction`](tx-build-and-broadcast/broadcasttransaction.md) or [`/wallet/broadcasthex`](tx-build-and-broadcast/broadcasthex.md).
 - **`permission_id`**: optional on builder endpoints; selects which `Permission` to use for multi-sig accounts.
-- **Amount unit**: TRC10 amounts use the issuer-defined precision; every other amount is in sun (1 TRX = 1e6 sun).
+- **Amount unit**: TRC-10 amounts use the issuer-defined precision; every other amount is in sun (1 TRX = 1e6 sun).
 
 ## Error responses
 
@@ -66,21 +66,21 @@ In the vast majority of cases the HTTP status is **200** — business errors are
 | [`/wallet/broadcasttransaction`](tx-build-and-broadcast/broadcasttransaction.md) | Broadcast a signed transaction (JSON) |
 | [`/wallet/broadcasthex`](tx-build-and-broadcast/broadcasthex.md) | Broadcast a signed transaction (hex) |
 
-## TRC10 asset
+## TRC-10 asset
 
 | Endpoint | Description |
 |---|---|
-| [`/wallet/createassetissue`](asset/createassetissue.md) | Issue a TRC10 token |
-| [`/wallet/updateasset`](asset/updateasset.md) | Update a TRC10's description / URL / limits |
-| [`/wallet/transferasset`](asset/transferasset.md) | Transfer TRC10 |
-| [`/wallet/participateassetissue`](asset/participateassetissue.md) | Participate in a TRC10 fundraising |
-| [`/wallet/unfreezeasset`](asset/unfreezeasset.md) | Unfreeze TRC10 frozen by the issuer |
-| [`/wallet/getassetissuebyid`](asset/getassetissuebyid.md) | Look up a TRC10 by id (recommended) |
-| [`/wallet/getassetissuebyname`](asset/getassetissuebyname.md) | Look up a TRC10 by name (errors on duplicates) |
-| [`/wallet/getassetissuelistbyname`](asset/getassetissuelistbyname.md) | All TRC10s with a given name |
-| [`/wallet/getassetissuebyaccount`](asset/getassetissuebyaccount.md) | TRC10s issued by an account |
-| [`/wallet/getassetissuelist`](asset/getassetissuelist.md) | All TRC10s on the network |
-| [`/wallet/getpaginatedassetissuelist`](asset/getpaginatedassetissuelist.md) | Paginated TRC10 list |
+| [`/wallet/createassetissue`](asset/createassetissue.md) | Issue a TRC-10 token |
+| [`/wallet/updateasset`](asset/updateasset.md) | Update a TRC-10's description / URL / limits |
+| [`/wallet/transferasset`](asset/transferasset.md) | Transfer TRC-10 |
+| [`/wallet/participateassetissue`](asset/participateassetissue.md) | Participate in a TRC-10 fundraising |
+| [`/wallet/unfreezeasset`](asset/unfreezeasset.md) | Unfreeze TRC-10 frozen by the issuer |
+| [`/wallet/getassetissuebyid`](asset/getassetissuebyid.md) | Look up a TRC-10 by id (recommended) |
+| [`/wallet/getassetissuebyname`](asset/getassetissuebyname.md) | Look up a TRC-10 by name (errors on duplicates) |
+| [`/wallet/getassetissuelistbyname`](asset/getassetissuelistbyname.md) | All TRC-10s with a given name |
+| [`/wallet/getassetissuebyaccount`](asset/getassetissuebyaccount.md) | TRC-10s issued by an account |
+| [`/wallet/getassetissuelist`](asset/getassetissuelist.md) | All TRC-10s on the network |
+| [`/wallet/getpaginatedassetissuelist`](asset/getpaginatedassetissuelist.md) | Paginated TRC-10 list |
 
 ## Smart contract
 

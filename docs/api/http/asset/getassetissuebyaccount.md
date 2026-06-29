@@ -1,6 +1,6 @@
 # /wallet/getassetissuebyaccount
 
-Query all TRC10 tokens issued by an account.
+Query all TRC-10 tokens issued by an account.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetAssetIssueByAccountServlet.java`
 - Method: `GET` / `POST`
@@ -31,7 +31,7 @@ curl --request POST \
 
 | Field | Type | Description |
 |---|---|---|
-| `assetIssue` | repeated AssetIssueContract | TRC10 tokens issued by this account (structure in `asset_issue_contract.proto`; fields match the [`/wallet/createassetissue`](createassetissue.md) request body) |
+| `assetIssue` | repeated AssetIssueContract | TRC-10 tokens issued by this account (structure in `asset_issue_contract.proto`; fields match the [`/wallet/createassetissue`](createassetissue.md) request body) |
 
 Response example:
 

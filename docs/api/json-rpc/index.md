@@ -121,7 +121,7 @@ Filter-related defaults (see the `jsonrpc {}` block in `config.conf`):
 
 | Method | Description |
 |---|---|
-| [`buildTransaction`](tx-build/buildTransaction.md) | Build an unsigned transaction (FullNode only; TRX transfer / TRC10 transfer / contract deploy / contract trigger) |
+| [`buildTransaction`](tx-build/buildTransaction.md) | Build an unsigned transaction (FullNode only; TRX transfer / TRC-10 transfer / contract deploy / contract trigger) |
 
 > JSON-RPC does not provide a broadcast endpoint; after signing, send via HTTP [`/wallet/broadcasttransaction`](../http/tx-build-and-broadcast/broadcasttransaction.md) or [`/wallet/broadcasthex`](../http/tx-build-and-broadcast/broadcasthex.md).
 

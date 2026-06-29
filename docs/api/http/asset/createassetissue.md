@@ -1,6 +1,6 @@
 # /wallet/createassetissue
 
-Build a TRC10 token issuance transaction.
+Build a TRC-10 token issuance transaction.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/CreateAssetIssueServlet.java`
 - Method: `POST`
@@ -90,7 +90,7 @@ Response example (`txID`, `ref_block_*`, `expiration`, `timestamp`, and `raw_dat
 }
 ```
 
-Cost: issuing a TRC10 burns a sizable amount of TRX (governed by chain parameter `getAssetIssueFee`, currently 1024 TRX).
+Cost: issuing a TRC-10 burns a sizable amount of TRX (governed by chain parameter `getAssetIssueFee`, currently 1024 TRX).
 
 ### Error responses
 

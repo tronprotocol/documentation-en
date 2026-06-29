@@ -1,6 +1,6 @@
 # GetAssetIssueByAccount
 
-List all TRC10 tokens issued by a given account.
+List all TRC-10 tokens issued by a given account.
 
 - Service: `Wallet` only
 

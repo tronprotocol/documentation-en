@@ -34,7 +34,7 @@ Returns `api.AccountResourceMessage` (`api.proto`):
 |---|---|---|
 | `freeNetUsed` / `freeNetLimit` | int64 | Free bandwidth (resets every 24h) |
 | `NetUsed` / `NetLimit` | int64 | Staked bandwidth |
-| `assetNetUsed` / `assetNetLimit` | map | Per-TRC10 bandwidth |
+| `assetNetUsed` / `assetNetLimit` | map | Per-TRC-10 bandwidth |
 | `TotalNetLimit` / `TotalNetWeight` | int64 | Network-wide bandwidth quota / total staked TRX |
 | `EnergyUsed` / `EnergyLimit` | int64 | Energy |
 | `TotalEnergyLimit` / `TotalEnergyWeight` | int64 | Network-wide energy quota / total staked TRX |

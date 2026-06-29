@@ -1,6 +1,6 @@
 # /wallet/transferasset
 
-TRC10 token transfer.
+TRC-10 token transfer.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/TransferAssetServlet.java`
 - Method: `POST`

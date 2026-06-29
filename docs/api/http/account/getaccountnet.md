@@ -36,8 +36,8 @@ Returns `api.AccountNetMessage` (`protocol/src/main/protos/api/api.proto`):
 | `freeNetLimit` | int64 | Free bandwidth quota (resets every 24h) |
 | `NetUsed` | int64 | Staked bandwidth used |
 | `NetLimit` | int64 | Staked bandwidth quota |
-| `assetNetUsed` | map\<string,int64\> | Per-TRC10 bandwidth used |
-| `assetNetLimit` | map\<string,int64\> | Per-TRC10 bandwidth quota |
+| `assetNetUsed` | map\<string,int64\> | Per-TRC-10 bandwidth used |
+| `assetNetLimit` | map\<string,int64\> | Per-TRC-10 bandwidth quota |
 | `TotalNetLimit` | int64 | Network-wide total bandwidth quota |
 | `TotalNetWeight` | int64 | Network-wide total staked TRX for bandwidth |
 

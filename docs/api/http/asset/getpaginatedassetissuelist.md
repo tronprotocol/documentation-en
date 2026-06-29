@@ -1,6 +1,6 @@
 # /wallet/getpaginatedassetissuelist
 
-Query TRC10 tokens with pagination.
+Query TRC-10 tokens with pagination.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetPaginatedAssetIssueListServlet.java`
 - Method: `GET` / `POST`

@@ -1,4 +1,5 @@
 # Developer Guide
+
 Thank you for contributing to the development of java-tron source code!
 
 Whether it is a minor bug fix or a major feature enhancement, we value your contributions.
@@ -41,6 +42,7 @@ If you plan to contribute to java-tron development, please follow the process be
     All development should be based on the `develop` branch, followed by a PR submission.
 
 ## Branch Management
+
 The `java-tron` repository includes the following main branch types:
 
 - **`develop` Branch**
@@ -65,49 +67,66 @@ The `java-tron` repository includes the following main branch types:
     - Must be merged back into both `master` and `develop` to ensure consistency
 
 ## Code Submission Process
+
 ### 1. Fork and Clone the Repository
-```
+
+```bash
 git clone https://github.com/yourname/java-tron.git
 cd java-tron
 git remote add upstream https://github.com/tronprotocol/java-tron.git
 ```
+
 > `upstream` refers to the official repository. The name can be customized, but `upstream` is the conventional choice
+>
 ### 2. Sync Upstream Code
-```
+
+```bash
 git fetch upstream
 git checkout develop
 git merge upstream/develop --no-ff
 ```
+
 > The `--no-ff` flag prevents fast-forward merges, preserving a clear record of the merge event in the commit history.
+>
 ### 3. Create a Development Branch
-```
+
+```bash
 git checkout -b feature/branch_name develop
 ```
+
 ### 4. Commit Changes
-```
+
+```bash
 git add .
 git commit -m "commit message"
 ```
+
 ### 5. Push the Branch
-```
+
+```bash
 git push origin feature/branch_name
 ```
+
 ### 6. Create a Pull Request
+
 From your own repository, submit a Pull Request (PR) to `tronprotocol/java-tron`.
    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png)
 It’s recommended to select the options in the red box, setting `develop` branch of the `tronprotocol/java-tron` as the base branch and your forked repository’s branch as the compare branch.
 
 ## Code Review Guidelines
+
 The only way to merge code into **java-tron** is through **a Pull Request (PR)**.
 All PRs must be reviewed before merging.
 
 ### Review Process
+
 - Reviewers are responsible for verifying the PR's objectives and technical impact.
 - For PRs lacking descriptions or with excessive changes, reviewers may request additional clarification.
 - Reviewers check code style, feature completeness, and test coverage.
 - Reviewers should remain polite, respectful, and follow up promptly.
 
 ### Feature Validation
+
 - **For Bug Fixes**
     - Reviewers must attempt to reproduce the reported issue to validate the effectiveness of the fix.
     - It’s recommended that submitters provide unit tests that fail before the fix and pass after.
@@ -129,6 +148,7 @@ CI Tools:
 Once all checks pass, maintainers will review and merge into `develop`.
 
 > **Coding Standards**
+>
 >- Follow the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
 >- All PRs must be based on the `develop` branch
 
@@ -150,15 +170,17 @@ Once all checks pass, maintainers will review and merge into `develop`.
 7. Do not end the title with a period.
 
 ## Commit Message Specifications
+
 Recommended format:
 
-```
+```text
 <type>(<scope>): <subject>
 
 <body>
 
 <footer>
 ```
+
 ### Commit Types
 
 - `feat`: New feature
@@ -179,7 +201,8 @@ The `scope` specifies the place of the change, for example: `protocol`, `api`, `
 4. Avoid meaningless commits. It is recommended to use the `git rebase` command.
 
 Example:
-```
+
+```text
 feat(block): optimize the block-producing logic
 
 1. increase the priority for acquiring synchronization lock
@@ -199,4 +222,5 @@ Closes #1234
     - Reviewers may close the PR.
 
 ## Conduct
+
 Please maintain respect and constructiveness to foster a positive community atmosphere.

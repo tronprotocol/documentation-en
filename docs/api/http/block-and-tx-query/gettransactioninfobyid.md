@@ -48,7 +48,7 @@ curl --request POST \
 | `unfreeze_amount` | int64 | Unfrozen amount (only for UnfreezeBalance V1) |
 | `withdraw_expire_amount` | int64 | Withdrawn expired-unfreeze amount (V2) |
 | `cancel_unfreezeV2_amount` | map\<string,int64\> | Cancelled unfreeze amount (V2) |
-| `assetIssueID` | string | Newly created TRC10 ID (only for CreateAssetIssue) |
+| `assetIssueID` | string | Newly created TRC-10 ID (only for CreateAssetIssue) |
 | `exchange_*` / `orderId` | — | Exchange / Market related fields |
 
 > **Note**: To parse the `log` field, please ensure the transaction result is "success" first — this alignment is recommended for data consistency.

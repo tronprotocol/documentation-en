@@ -32,6 +32,7 @@ Create a new branch from your local `develop` branch for your development work. 
 ```shell
 git checkout -b feature/add-new-http-demo develop
 ```
+
 ## 2. Code Implementation: Add the `setPeer` HTTP API
 
 Open the `java-tron` project in IntelliJ IDEA. Next, we will implement a `setPeer` HTTP API to allow users to add trusted nodes via a POST request.
@@ -180,6 +181,7 @@ If the request is successful, you will receive the following response:
 ```text
 Success to set trusted peer:192.163.3.2:16667
 ```
+
 At this point, the implementation of the `setPeer` feature is complete. Next, you need to write unit tests for these changes.
 
 

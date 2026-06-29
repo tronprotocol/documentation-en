@@ -37,6 +37,7 @@ For a Super Representative (SR) node acting as a **block-production node**, the 
 You can directly download the official client [here](https://github.com/tronprotocol/java-tron/releases), or you can compile the source code yourself to package the client.
 
 ### Prerequisites for Compiling java-tron
+
 Before compiling java-tron, make sure you have:
 
 - Operating system: `Linux` or `macOS` (`Windows` is not supported).
@@ -60,40 +61,51 @@ uname -m
 
     - Install Java SE 8 (JDK 8, latest minor version recommended).
     - Verify:
+
     ```bash
     java -version
     ```
+
     The output should show a version starting with `1.8`.
 
 - If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
 
     - Install Java SE 17 (JDK 17).
     - Verify:
+
     ```bash
     java -version
     ```
+
     The output should show a version starting with `17`.
 
 ### Compiling java-tron Source Code
 
 1. Clone the repo and switch to the `master` branch:
-    ```
+
+    ```bash
     git clone https://github.com/tronprotocol/java-tron.git
     git checkout -t origin/master
     cd java-tron
     ```
+
 2. Then, run the following commands to build java-tron:
-    ```
+
+    ```bash
     ./gradlew clean build -x test
     ```
+
     * The `-x test` parameter skips the execution of test cases. You can remove this parameter to execute test during compilation, but this will increase the compilation time.
     * If you encounter `DependencyVerificationException` during the build, refresh dependencies and regenerate verification metadata:
-      ```
+
+      ```bash
       ./gradlew clean build -x test --refresh-dependencies
       ```
+
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
 ## Starting a java-tron Full Node { #starting-a-java-tron-node }
+
 A full node acts as a gateway to the TRON network, exposing comprehensive interfaces via HTTP and RPC APIs. Through these endpoints, clients may execute asset transfers, deploy smart contracts, and invoke on-chain logic. It must join a TRON network to participate in the network's consensus and transaction processing.
 
 ### Network Types
@@ -117,6 +129,7 @@ Network selection is performed by specifying the appropriate configuration file 
 ### Starting a FullNode on the TRON main network
 
 Launch a main-network full node with the built-in default configuration:
+
 ```bash
 nohup java -jar build/libs/FullNode.jar &
 ```
@@ -126,6 +139,7 @@ nohup java -jar build/libs/FullNode.jar &
 > For production deployments or long-running Mainnet nodes, please refer to the below [JVM Parameter Optimization for FullNode](#jvm-parameter-optimization-for-mainnet-fullnode-deployment) guide for the recommended Java commands.
 
 Using the command below, you can monitor the block synchronization progress:
+
 ```bash
 tail -f ./logs/tron.log
 ```
@@ -135,9 +149,11 @@ Use [TronScan](https://tronscan.org/#/), TRON's official block explorer, to view
 Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.
 
 #### JVM Parameter Optimization for Mainnet FullNode Deployment
+
 For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters for different architectures:
 
 ##### x86_64 (JDK 8)
+
 ```bash
 nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
@@ -149,7 +165,9 @@ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
     -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
     -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
 ```
+
 ##### arm64 (JDK 17)
+
 ```bash
 nohup java -Xmx9G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
@@ -163,6 +181,7 @@ nohup java -Xmx9G -XX:+UseZGC \
 ```
 
 ##### Java Startup Parameters Explanation
+
 **General & Memory Parameters:**
 
 *   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
@@ -189,6 +208,7 @@ nohup java -Xmx9G -XX:+UseZGC \
 *   `-Xlog:gc...`: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).
 
 ### Starting a FullNode on the Nile test network
+
 Utilize the `-c` flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is **strongly advised** to compile the source code following the [Building the Source Code](https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code) instructions for the Nile TestNet.
 
 ```bash
@@ -198,17 +218,20 @@ nohup java -jar build/libs/FullNode.jar -c framework/src/main/resources/config-n
 Nile resources: explorer, faucet, wallet, developer docs, and network statistics at [nileex.io](https://nileex.io/).
 
 ### Access Shasta test network
+
 Shasta does not accept public node peers. Programmatic access is available via TronGrid endpoints; see [TronGrid Service](https://developers.tron.network/docs/trongrid) for details.
 
 Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shasta.tronex.io](https://shasta.tronex.io/).
 
 ### Starting a FullNode on a private network
+
 To set up a private network for testing or development, follow the [Private Network guidance](private_network.md).
 
 ### Starting a SolidityNode
+
 A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
 
-```
+```properties
 node {
   # trust node for solidity node
   # trustNode = "ip:port"
@@ -219,7 +242,7 @@ node {
 
 Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, SolidityNode is started using the command-line parameter `--solidity`, as shown below:
 
-```
+```bash
 java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --solidity -c framework/src/main/resources/config.conf
 ```
 
@@ -236,7 +259,7 @@ By adding the `--witness` parameter to the FullNode startup command above, the `
 
 Here is an example of the `localwitness` configuration:
 
-```
+```properties
 localwitness = [
     650950B1...295BD812
 ]
@@ -245,6 +268,7 @@ localwitness = [
 For SR nodes running on high-performance servers (e.g., ≥ 64GB RAM), it is strongly recommended to use the following optimized Java startup commands. These configurations are designed to ensure maximum stability and efficiency for block production. Execute the command corresponding to your environment:
 
 #### Option 1: JDK 8 on x86_64
+
 ```bash
 nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
     -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
@@ -258,6 +282,7 @@ nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
 ```
 
 #### Option 2: JDK 17 on arm64
+
 ```bash
 nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
@@ -292,9 +317,11 @@ node.backup {
   ]
 }
 ```
+
 For example, if an account with block production rights deploys two nodes with IPs 192.168.0.100 and 192.168.0.101 respectively, their `node.backup` configurations should be as follows:
 
 - Configuration for IP 192.168.0.100
+
 ```ini
 node.backup {
   port = 10001
@@ -347,7 +374,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
     * Note that the `keystore` file needs to be placed in the current directory where the startup command is executed, or in its subdirectory.
         * For example, if the current directory is `A`, and the `keystore` file path is `A/B/localwitnesskeystore.json`, the configuration should be:
 
-        ```
+        ```properties
         localwitnesskeystore = ["B/localwitnesskeystore.json"]
         ```
 
@@ -358,7 +385,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
     * **Interactive Startup without `nohup` (Recommended)**
         * **Notes**: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool like screen or tmux."
   
-        ```
+        ```bash
         java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf
         ```
 
@@ -366,7 +393,7 @@ To avoid specifying the private key in plaintext within the configuration file, 
 
     * **Using `nohup` to pass the password directly in the command line via `--password`**
 
-        ```
+        ```bash
         nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf --password "your_password" > start.log 2>&1 &
         ```
 
@@ -379,19 +406,19 @@ To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's
 1. **Install `tcmalloc`**:
     * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
 
-    ```
+    ```bash
     sudo apt install libgoogle-perftools4
     ```
 
     * **Ubuntu 16.04 LTS**:
 
-    ```
+    ```bash
     sudo apt install libgoogle-perftools4
     ```
 
     * **CentOS 7**:
 
-    ```
+    ```bash
     sudo yum install gperftools-libs
     ```
 
@@ -399,7 +426,7 @@ To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's
 
     * Add the following two lines to your node's startup script. Please note that the path to `libtcmalloc.so.4` might vary slightly across different Linux distributions.
 
-    ```
+    ```bash
     #!/bin/bash
 
     export LD_PRELOAD="/usr/lib/libtcmalloc.so.4" # Adjust path according to your system
@@ -411,21 +438,21 @@ To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's
 
     * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
 
-    ```
+    ```bash
     export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```
 
     * **Ubuntu 16.04 LTS**:
 
-    ```
+    ```bash
     export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```
 
     * **CentOS 7**:
 
-    ```
+    ```bash
     export LD_PRELOAD="/usr/lib64/libtcmalloc.so.4"
     export TCMALLOC_RELEASE_RATE=10
     ```

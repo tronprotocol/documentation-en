@@ -59,7 +59,7 @@ A TIP consists of two parts: the header and the main content.
 
 The TIP header contains the TIP number, a short descriptive title (limited to 44 characters), author details, a link to the discussion, TIP status, TIP type, creation date, etc. For the specific format, refer to:
 
-```
+```text
 tip: <to be assigned>
 title: <TIP title>
 author: <a list of the author's or authors' name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)>

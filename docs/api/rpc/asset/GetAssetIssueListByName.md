@@ -1,6 +1,6 @@
 # GetAssetIssueListByName
 
-List all TRC10 tokens that share a given name.
+List all TRC-10 tokens that share a given name.
 
 - Service: both `Wallet` and `WalletSolidity`
 

@@ -2,7 +2,7 @@
 
 java-tron nodes store their persistent data in a specified data directory, which defaults to `output-directory` (a relative path under the current working directory). You can specify a different data storage location by adding the `-d` or `--output-directory` parameter to the java-tron node startup command. For example:
 
-```
+```bash
 java -jar build/libs/FullNode.jar -d ./outputdir
 ```
 
@@ -15,13 +15,13 @@ Before backing up node data, it's crucial to **shut down the node process**. You
 
 First, get the PID of the java-tron process using the following command:
 
-```
+```bash
 ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}'
 ```
 
 Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the java-tron process and avoid database corruption:
 
-```
+```bash
 #!/bin/bash
 while true; do
   pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
@@ -38,7 +38,7 @@ done
 
 Once the java-tron process has successfully shut down, you can back up the data using the following command:
 
-```
+```bash
 tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
 ```
 
@@ -49,7 +49,7 @@ Restoring data is straightforward: simply copy the backed-up data to the node's 
 
 If your database backup file is named `output-directory.20220628152402.etgz`, you can use the following command to restore the database files:
 
-```
+```bash
 tar xzvf output-directory.20220628152402.etgz
 ```
 
@@ -112,14 +112,14 @@ The TRON network snapshot data size exceeds 2TB. To save disk space, we recommen
 
 Create a script file named `download_snapshot.sh` and add the following content:
 
-```
+```bash
 #!/bin/bash
 wget -q -O - SNAPSHOT_URL/FullNode_output-directory.tgz | tar -zxvf -
 ```
 
 Run the script:
 
-```
+```bash
 bash download_snapshot.sh
 ```
 
@@ -127,7 +127,7 @@ bash download_snapshot.sh
 
 **Method 2: Full Download Before Extraction (Requires Sufficient Storage Space)**
 
-```
+```bash
 # 1. Download the complete snapshot file
 wget SNAPSHOT_URL/FullNode_output-directory.tgz
 

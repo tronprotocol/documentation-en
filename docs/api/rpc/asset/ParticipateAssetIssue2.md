@@ -1,6 +1,6 @@
 # ParticipateAssetIssue2
 
-Participate in a TRC10 sale (purchase with TRX).
+Participate in a TRC-10 sale (purchase with TRX).
 
 - Service: `Wallet` only
 

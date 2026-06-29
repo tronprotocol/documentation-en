@@ -1,6 +1,6 @@
 # /wallet/getassetissuelistbyname
 
-Query all TRC10 tokens with a given name.
+Query all TRC-10 tokens with a given name.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetAssetIssueListByNameServlet.java`
 - Method: `GET` / `POST`

@@ -1,4 +1,5 @@
 # Private Network
+
 This document will guide you through setting up a basic TRON private network. This network will consist of one Super Representative (SR) node responsible for block production and one regular FullNode used only for syncing block data and broadcasting transactions.
 
 ## Prerequisites
@@ -15,13 +16,14 @@ Before you begin, please ensure your development environment meets the following
 
 
 ## Deployment Guide
+
 The operational steps for deploying a private network node are fundamentally the same as deploying a Mainnet node. The primary difference lies in the node's configuration file. The most crucial part of setting up a private network is modifying the configuration items in this file to allow the nodes to form a private network, enabling network discovery, block synchronization, and transaction broadcasting.
 
 1. Prepare Node Directories
 
      To keep configurations and data isolated, it is recommended to create separate deployment directories for each node.
      
-      ```
+      ```bash
       # Create the Super Representative (SR) node directory
       mkdir SR
       
@@ -34,7 +36,7 @@ The operational steps for deploying a private network node are fundamentally the
     - Download the latest `FullNode.jar` from the [java-tron GitHub Releases](https://github.com/tronprotocol/java-tron/releases) page.
     - Copy the downloaded `JAR` file into each of the two node directories:
 
-         ```
+         ```bash
          cp FullNode.jar ./SR
          cp FullNode.jar ./FullNode
          ```
@@ -43,7 +45,8 @@ The operational steps for deploying a private network node are fundamentally the
 
      - Download the official configuration file template ([config.conf](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf)) and change the `p2p.version` to any value other than **11111** or **20180622**.
      - Copy it into each node directory and rename the files for distinction.
-        ```
+
+        ```bash
         # Configuration file for the SR node
         cp private_net_config.conf ./SR/supernode.conf
       
@@ -82,31 +85,33 @@ The operational steps for deploying a private network node are fundamentally the
      The startup commands for the Super Representative (block-producing node) and the regular Full Node are slightly different.
 
      - Start the Super Representative (SR) Node:
-     ```
+
+     ```bash
      cd SR
      java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
      ```
     
      - Start the regular FullNode:
-      ```
+
+      ```bash
       cd FullNode
       java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
       # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.
       ```  
       
-7. Advanced Operation: Modifying Dynamic Network Parameters
+7. Advanced Operation: Modifying Network Parameters
 
-     Dynamic network parameters can be retrieved via the [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters) API. The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN [Parameters & Proposals page](https://tronscan.org/#/sr/committee). If you want your private network's dynamic parameters to match the Mainnet's, you can use the[ dbfork tool](https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md), which can capture the latest state of the Mainnet.
+     Network parameters can be retrieved via the [getchainparameters](../api/http/witness-and-governance/getchainparameters.md) API. The current Mainnet network parameters and related proposals can be viewed on the TRONSCAN [Parameters & Proposals page](https://tronscan.org/#/sr/committee). If you want your private network's parameters to match the Mainnet's, you can use the[ dbfork tool](https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md), which can capture the latest state of the Mainnet.
    
      After your private network is running, you may need to adjust certain network parameters (e.g., transaction fees, energy price). This can be achieved in two ways:
 
      - **Method 1: Set via Configuration File (For Initial Deployment)**
     
-         Some dynamic parameters can be set directly in the configuration file. You can find a list of these parameters [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
+         Some network parameters can be set directly in the configuration file. You can find a list of these parameters [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
       
          **Example**: Add the following `committee` block to your `.conf` file to enable multi-signature and contract creation:
       
-         ```
+         ```properties
          committee = {
            allowCreationOfContracts = 1
            allowAdaptiveEnergy = 0
@@ -121,18 +126,18 @@ The operational steps for deploying a private network node are fundamentally the
 
         This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate has the right to create a proposal, but only SRs have the right to vote on its approval.
      
-         - Create a Proposal: Any SR, SR Partner, or SR Candidate uses the [proposalcreate](https://developers.tron.network/reference/proposalcreate) API, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).
-         - Approve a Proposal: An SR uses the [proposalapprove](https://developers.tron.network/reference/proposalapprove) API to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').
+         - Create a Proposal: Any SR, SR Partner, or SR Candidate uses the [proposalcreate](../api/http/witness-and-governance/proposalcreate.md) API, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).
+         - Approve a Proposal: An SR uses the [proposalapprove](../api/http/witness-and-governance/proposalapprove.md) API to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').
          - Related APIs:
-             - Get all proposals: [listproposals](https://developers.tron.network/reference/wallet-listproposals)
-             - Get a proposal by ID: [getproposalbyid](https://developers.tron.network/reference/getproposalbyid)
+             - Get all proposals: [listproposals](../api/http/witness-and-governance/listproposals.md)
+             - Get a proposal by ID: [getproposalbyid](../api/http/witness-and-governance/getproposalbyid.md)
 
          **Example Code (using TronWeb):**
      
-         The following code snippet demonstrates how to create a proposal to modify two network parameters and then vote on it. In [proposalcreate](https://developers.tron.network/reference/proposalcreate), dynamic parameters are represented by their IDs. The mapping between parameter IDs and names can be found [here](https://developers.tron.network/reference/wallet-getchainparameters).
+         The following code snippet demonstrates how to create a proposal to modify two network parameters and then vote on it. In [proposalcreate](../api/http/witness-and-governance/proposalcreate.md), network parameters are represented by their IDs. The mapping between parameter IDs and names is defined in the java-tron source code's [`enum ProposalType`](https://github.com/tronprotocol/java-tron/blob/master/actuator/src/main/java/org/tron/core/utils/ProposalUtil.java) (the number in parentheses for each enum entry is the parameter ID).
      
       
-         ```
+         ```javascript
          var TronWeb = require('tronweb');
          var tronWeb = new TronWeb({
              fullHost: 'http://localhost:8090',
@@ -163,6 +168,6 @@ The operational steps for deploying a private network node are fundamentally the
          modifyChainParameters(parametersForProposal1, 1) 
          ```
 
-         Once the proposal is approved and the maintenance period has passed, the new network parameters will take effect. You can verify the changes using [listproposals](https://developers.tron.network/reference/wallet-listproposals) or [getchainparameters](https://developers.tron.network/reference/wallet-getchainparameters).
+         Once the proposal is approved and the maintenance period has passed, the new network parameters will take effect. You can verify the changes using [listproposals](../api/http/witness-and-governance/listproposals.md) or [getchainparameters](../api/http/witness-and-governance/getchainparameters.md).
     
-         It is important to note that dynamic parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission.
+         It is important to note that network parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission.

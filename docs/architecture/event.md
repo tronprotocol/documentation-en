@@ -13,11 +13,11 @@ This method utilizes an extensible plugin architecture to persistently store on-
 
 This method has the following advantages:
 
-  - **Diverse Plugin Support:** Currently supports Kafka and MongoDB.
-  - **Rich Data Types**: Enables subscriptions to blocks, transactions, smart contract events, and logs.
-  - **Advanced Filtering**: Supports filtering of events based on user-defined criteria.
-  - **Historical Event Replay**: The V2.0 framework allows syncing historical events from any specified block height.
-  - **Production-Grade Reliability**: Ideal for applications requiring high data integrity and dependability.
+- **Diverse Plugin Support:** Currently supports Kafka and MongoDB.
+- **Rich Data Types**: Enables subscriptions to blocks, transactions, smart contract events, and logs.
+- **Advanced Filtering**: Supports filtering of events based on user-defined criteria.
+- **Historical Event Replay**: The V2.0 framework allows syncing historical events from any specified block height.
+- **Production-Grade Reliability**: Ideal for applications requiring high data integrity and dependability.
 
 
 ### Event Service Framework
@@ -56,12 +56,13 @@ You can get the source code from GitHub and build it yourself, or download the o
 
 * Build from Source:
 
-```
+```bash
 git clone git@github.com:tronprotocol/event-plugin.git
 cd event-plugin
 git checkout master
 ./gradlew build
 ```
+
 After the build is complete, the generated `.zip` file is the plugin package.
 
 
@@ -73,7 +74,7 @@ Visit the [event-plugin Releases page](https://github.com/tronprotocol/event-plu
 
 In your `config.conf` file, set the event service version to `V2.0` by setting the value to 1.
 
-```
+```properties
 event.subscribe.version = 1 # 1 for V2.0, 0 for V1.0
 ```
 
@@ -81,14 +82,14 @@ event.subscribe.version = 1 # 1 for V2.0, 0 for V1.0
 
 The configuration process for the new plugin is mostly identical to the old version. You can refer to the official documentation for deployment:
 
-  - [Deploying the Event Plugin (MongoDB)](#mongodb-plugin-deployment-and-usage)
-  - [Deploying the Event Plugin (Kafka)](#kafka-plugin-deployment-and-usage)
+- [Deploying the Event Plugin (MongoDB)](#mongodb-plugin-deployment-and-usage)
+- [Deploying the Event Plugin (Kafka)](#kafka-plugin-deployment-and-usage)
 
 ##### Step 4 (Optional): Configure the Starting Point for Historical Sync
 
 If you need to sync historical events starting from a specific block height, add the following setting to your configuration file.
 
-```
+```properties
 event.subscribe.startSyncBlockNum = <block_height>
 ```
 
@@ -96,7 +97,7 @@ event.subscribe.startSyncBlockNum = <block_height>
 
 After completing the configuration, use the following command to start the `FullNode` and load the event plugin.
 
-```
+```bash
 java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
@@ -118,17 +119,17 @@ The main steps include:
 
 To ensure the stable operation of your TRON node and event subscription service, the following system configuration is recommended:
 
-  * **CPU**: 16 cores or higher
-  * **RAM**: 32 GB or higher
-  * **SSD**: 2.5 TB or more of storage space
-  * **Operating System**: Linux or macOS
+* **CPU**: 16 cores or higher
+* **RAM**: 32 GB or higher
+* **SSD**: 2.5 TB or more of storage space
+* **Operating System**: Linux or macOS
 
 
 #### Compiling the Kafka Event Plugin
 
 First, you need to clone the `event-plugin` project from its GitHub repository and compile it to generate the plugin's `.zip` file. Please follow these steps:
 
-```
+```bash
 git clone https://github.com/tronprotocol/event-plugin.git
 cd event-plugin
 ./gradlew build
@@ -144,7 +145,7 @@ After a successful compilation, you will find the generated `.zip` plugin file i
 
 In a Linux environment, please follow these steps to install Kafka:
 
-```
+```bash
 cd /usr/local
 wget https://archive.apache.org/dist/kafka/2.8.0/kafka_2.13-2.8.0.tgz
 tar -xzf kafka_2.13-2.8.0.tgz
@@ -168,7 +169,7 @@ bin/kafka-server-start.sh config/server.properties &
 To support Kafka event subscriptions, you need to modify the Fullnode's configuration file (`config.conf`) by adding the `event.subscribe` section.
 
 
-```
+```properties
 event.subscribe = {
   version = 1 
   startSyncBlockNum = 0 
@@ -188,17 +189,17 @@ event.subscribe = {
 
 **Field Descriptions**:
 
-  * `version`: The version of the event service framework. `1` indicates V2.0, while `0` indicates V1.0. If not configured, it defaults to V1.0.
-  * `startSyncBlockNum`: A new feature in v2.0 designed for historical data subscriptions. It allows the service to start processing and pushing events from a specific historical block height stored on the local node.
-      * If `startSyncBlockNum <= 0`, this feature is disabled.
-      * If `startSyncBlockNum > 0`, this feature is enabled, and historical event synchronization will begin from the specified block height. **Note**: We recommend using the latest version of the event plugin when enabling this feature.
-  * `native.useNativeQueue`: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. If you need to support Kafka event subscriptions, ensure this field is set to `false`; otherwise, Kafka subscriptions will not work.
-  * `path`: The absolute local path to the `plugin-kafka-1.0.0.zip` file. Please ensure the path is correct, or the plugin will fail to load.
-  * `server`: The Kafka server address in `ip:port` format. The default Kafka port is `9092`. Please ensure the port number is correct and that the Kafka service is accessible.
-  * `dbconfig`: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.
-  * `contractParse`: Controls whether contract logs are ABI-decoded. When `true` (the default), the node matches each log against the contract's ABI; matched logs are delivered as decoded `contractevent` triggers, while unmatched logs are delivered as raw `contractlog` triggers. When `false`, ABI decoding is skipped and all logs are delivered as raw `contractlog` triggers.
-  * `topics`: Configure the events to subscribe to. For more details, please refer to the [Event Types](#event-types) section below.
-  * `filter`: Filtering parameters. For more details, please refer to the [Event Filtering](#event-filtering) section below.
+* `version`: The version of the event service framework. `1` indicates V2.0, while `0` indicates V1.0. If not configured, it defaults to V1.0.
+* `startSyncBlockNum`: A new feature in v2.0 designed for historical data subscriptions. It allows the service to start processing and pushing events from a specific historical block height stored on the local node.
+    * If `startSyncBlockNum <= 0`, this feature is disabled.
+    * If `startSyncBlockNum > 0`, this feature is enabled, and historical event synchronization will begin from the specified block height. **Note**: We recommend using the latest version of the event plugin when enabling this feature.
+* `native.useNativeQueue`: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. If you need to support Kafka event subscriptions, ensure this field is set to `false`; otherwise, Kafka subscriptions will not work.
+* `path`: The absolute local path to the `plugin-kafka-1.0.0.zip` file. Please ensure the path is correct, or the plugin will fail to load.
+* `server`: The Kafka server address in `ip:port` format. The default Kafka port is `9092`. Please ensure the port number is correct and that the Kafka service is accessible.
+* `dbconfig`: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.
+* `contractParse`: Controls whether contract logs are ABI-decoded. When `true` (the default), the node matches each log against the contract's ABI; matched logs are delivered as decoded `contractevent` triggers, while unmatched logs are delivered as raw `contractlog` triggers. When `false`, ABI decoding is skipped and all logs are delivered as raw `contractlog` triggers.
+* `topics`: Configure the events to subscribe to. For more details, please refer to the [Event Types](#event-types) section below.
+* `filter`: Filtering parameters. For more details, please refer to the [Event Filtering](#event-filtering) section below.
 
 #### Event Types
 
@@ -210,7 +211,7 @@ Subscribes to events related to on-chain transactions.
 
 Configuration Example:
 
-```
+```properties
 event.subscribe.topics = [
   {
     triggerName = "transaction"
@@ -221,6 +222,7 @@ event.subscribe.topics = [
   }
 ]
 ```
+
 Parameters:
 
 - `triggerName`: (String) The event type identifier. For transaction events, this value is fixed to `transaction`.
@@ -245,7 +247,7 @@ Subscribes to events triggered upon the creation of new blocks.
 
 Configuration Example:
 
-```
+```properties
 event.subscribe.topics = [
   {
     triggerName = "block"
@@ -273,7 +275,7 @@ Subscribes to smart contract events and logs generated during contract execution
 
 Configuration Example:
 
-```
+```properties
 event.subscribe.topics = [
   {
     triggerName = "contractevent"
@@ -300,16 +302,16 @@ event.subscribe.topics = [
 
 Parameters:
 
-  - `contractevent`: Subscribes to all contract events from all blocks.
-  - `contractlog`: Subscribes to all contract logs from all blocks.
-  - `solidityevent`: Subscribes only to contract events from solidified blocks.
-  - `soliditylog`: Subscribes only to contract logs from solidified blocks.
+- `contractevent`: Subscribes to all contract events from all blocks.
+- `contractlog`: Subscribes to all contract logs from all blocks.
+- `solidityevent`: Subscribes only to contract events from solidified blocks.
+- `soliditylog`: Subscribes only to contract logs from solidified blocks.
 
 Key Fields in Contract Events
 
-  - `transactionId`: The hash of the transaction that generated the event.
-  - `contractAddress`: The address of the smart contract.
-  - `blockNumber`: The block height at which the event was included.
+- `transactionId`: The hash of the transaction that generated the event.
+- `contractAddress`: The address of the smart contract.
+- `blockNumber`: The block height at which the event was included.
 
 For a complete list of fields, see the [ContractEventTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java) and [ContractLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java) source code.
 
@@ -339,7 +341,7 @@ Subscribes to real-time notifications for the latest solidified block height. Th
 
 Configuration Example:
 
-```
+```properties
 event.subscribe.topics = [
   {
     triggerName = "solidity"
@@ -351,8 +353,8 @@ event.subscribe.topics = [
 
 Key Fields in Solidity Notification Events:
 
-  - `latestSolidifiedBlockNumber`: The block number of the newly solidified block.
-  - `timestamp`: The timestamp of the solidified block.
+- `latestSolidifiedBlockNumber`: The block number of the newly solidified block.
+- `timestamp`: The timestamp of the solidified block.
 
 For a complete list of fields, see the [SolidityTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/SolidityTrigger.java) source code.
 
@@ -363,7 +365,7 @@ The name of the Kafka subscription topic must match the `topic` setting in the `
 
 In a Linux environment, the command to create a Kafka topic is as follows:
 
-```
+```bash
 bin/kafka-topics.sh --create --topic block --bootstrap-server localhost:9092
 ```
 
@@ -371,7 +373,7 @@ bin/kafka-topics.sh --create --topic block --bootstrap-server localhost:9092
 
 After completing the above configuration, you must add the `--es` parameter when starting the FullNode to enable the event subscription feature.
 
-```
+```bash
 java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
@@ -379,13 +381,13 @@ java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --
 
 You can verify that the Kafka event plugin has loaded successfully by checking the Fullnode logs:
 
-```
+```bash
 grep -i eventplugin logs/tron.log
 ```
 
 If you see a message similar to the following in the logs, the event subscription plugin has loaded successfully:
 
-```
+```text
 [o.t.c.l.EventPluginLoader] 'your plugin path/plugin-kafka-1.0.0.zip' loaded
 ```
 
@@ -395,13 +397,13 @@ Execute the `kafka-console-consumer.sh` script to retrieve messages from the `"b
 
 In a Linux environment, the command is as follows:
 
-```
+```bash
 bin/kafka-console-consumer.sh --topic block --from-beginning --bootstrap-server localhost:9092
 ```
 
 If you see JSON-formatted output similar to the following in your console, the event subscription is successful:
 
-```
+```json
 {
 	"timeStamp": 1539973125000,
 	"triggerName": "blockTrigger",
@@ -433,10 +435,10 @@ The main steps include:
 
 To ensure the efficient and stable operation of your TRON node and event service, the following configuration is recommended:
 
-  * **CPU**: 16 cores or more
-  * **RAM**: 32 GB or higher
-  * **SSD**: 2.5 TB or more
-  * **Operating System**: Linux or macOS
+* **CPU**: 16 cores or more
+* **RAM**: 32 GB or higher
+* **SSD**: 2.5 TB or more
+* **Operating System**: Linux or macOS
 
 
 #### System Architecture and Workflow
@@ -451,7 +453,7 @@ The TRON MongoDB event subscription system consists of three core modules:
 
 ##### 1. Building the Plugin
 
-```
+```bash
 git clone https://github.com/tronprotocol/event-plugin.git
 cd event-plugin
 ./gradlew build
@@ -459,7 +461,7 @@ cd event-plugin
 
 After the build is complete, the generated plugin file will be located at:
 
-```
+```text
 event-plugin/build/plugins/plugin-mongodb-*.zip
 ```
 
@@ -532,22 +534,22 @@ event.subscribe = {
 
 **Field Descriptions**:
 
-  * `version`: The version of the event service framework. `1` indicates V2.0, while `0` indicates V1.0. If not configured, it defaults to V1.0.
-  * `startSyncBlockNum`: A feature introduced in V2.0 that allows processing and pushing events from historical blocks, satisfying the need for historical data subscriptions. If `startSyncBlockNum <= 0`, this feature is disabled. If `startSyncBlockNum > 0`, the feature is enabled, and historical event synchronization will begin from the specified block height. **Note**: It is recommended to use the latest version of the event plugin when enabling this feature.
-  * `native.useNativeQueue`: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. `true` uses the built-in queue, while `false` uses the plugin. This must be set to `false`.
-  * `path`: The absolute path to the plugin file, e.g., `"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"`.
-  * `server`: The target server address, i.e., the address and port for MongoDB, e.g., `"127.0.0.1:27017"`.
-  * `dbconfig`: The MongoDB database configuration in the format: `database_name|username|password`, e.g., `"eventlog|<eventlog-username>|<eventlog-password>"`.
-  * `topics`: Seven event types are currently supported: `block`, `transaction`, `contractevent`, `contractlog`, `solidity`, `solidityevent`, and `soliditylog`. For more details, please refer to the [Event Types](#event-types) chapter.
-      * `triggerName`: The name of the trigger, which cannot be modified.
-      * `enable`: Toggles the event subscription. `true` enables it, `false` disables it.
-      * `topic`: The name of the collection in MongoDB that will receive the events. This can be modified.
-      * `redundancy`: Only applies to `contractlog` and `soliditylog`. When set to `true`, a contract log that has already been delivered as a `contractevent`/`solidityevent` is **also** delivered as a raw `contractlog`/`soliditylog`. Defaults to `false`.
-  * `filter`: The criteria for filtering events.
-      * `fromblock`: The starting block number of the query range. Can be `""`, `"earliest"` (to query from the genesis block), or a specific block number.
-      * `toblock`: The ending block number of the query range. Can be `""`, `"latest"` (the most recent block), or a specific block number.
-      * `contractAddress`: A list of contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.
-      * `contractTopic`: A list of contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.
+* `version`: The version of the event service framework. `1` indicates V2.0, while `0` indicates V1.0. If not configured, it defaults to V1.0.
+* `startSyncBlockNum`: A feature introduced in V2.0 that allows processing and pushing events from historical blocks, satisfying the need for historical data subscriptions. If `startSyncBlockNum <= 0`, this feature is disabled. If `startSyncBlockNum > 0`, the feature is enabled, and historical event synchronization will begin from the specified block height. **Note**: It is recommended to use the latest version of the event plugin when enabling this feature.
+* `native.useNativeQueue`: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. `true` uses the built-in queue, while `false` uses the plugin. This must be set to `false`.
+* `path`: The absolute path to the plugin file, e.g., `"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"`.
+* `server`: The target server address, i.e., the address and port for MongoDB, e.g., `"127.0.0.1:27017"`.
+* `dbconfig`: The MongoDB database configuration in the format: `database_name|username|password`, e.g., `"eventlog|<eventlog-username>|<eventlog-password>"`.
+* `topics`: Seven event types are currently supported: `block`, `transaction`, `contractevent`, `contractlog`, `solidity`, `solidityevent`, and `soliditylog`. For more details, please refer to the [Event Types](#event-types) chapter.
+    * `triggerName`: The name of the trigger, which cannot be modified.
+    * `enable`: Toggles the event subscription. `true` enables it, `false` disables it.
+    * `topic`: The name of the collection in MongoDB that will receive the events. This can be modified.
+    * `redundancy`: Only applies to `contractlog` and `soliditylog`. When set to `true`, a contract log that has already been delivered as a `contractevent`/`solidityevent` is **also** delivered as a raw `contractlog`/`soliditylog`. Defaults to `false`.
+* `filter`: The criteria for filtering events.
+    * `fromblock`: The starting block number of the query range. Can be `""`, `"earliest"` (to query from the genesis block), or a specific block number.
+    * `toblock`: The ending block number of the query range. Can be `""`, `"latest"` (the most recent block), or a specific block number.
+    * `contractAddress`: A list of contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.
+    * `contractTopic`: A list of contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.
 
 
 #### Installing and Configuring MongoDB
@@ -558,7 +560,7 @@ MongoDB will be used to store TRON event data. Please follow these steps to inst
 
 First, create an installation directory for MongoDB, then download and extract the installation package:
 
-```
+```bash
 mkdir /home/java-tron
 cd /home/java-tron
 curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
@@ -570,7 +572,7 @@ mv mongodb-linux-x86_64-4.0.4 mongodb
 
 To simplify subsequent operations, please set the environment variables for MongoDB:
 
-```
+```bash
 export MONGOPATH=/home/java-tron/mongodb/
 export PATH=$PATH:$MONGOPATH/bin
 ```
@@ -579,7 +581,7 @@ export PATH=$PATH:$MONGOPATH/bin
 
 Create the log and data directories for MongoDB and create the configuration file `mgdb.conf`:
 
-```
+```bash
 mkdir -p /home/java-tron/mongodb/{log,data}
 cd /home/java-tron/mongodb/log/ && touch mongodb.log && cd -
 vim /home/java-tron/mongodb/mgdb.conf
@@ -600,14 +602,14 @@ wiredTigerCacheSizeGB=2
 
 Important Configuration Notes:
 
-  * `bind_ip=0.0.0.0`: Must be configured to `0.0.0.0`; otherwise, remote connections will be rejected.
-  * `wiredTigerCacheSizeGB`: This parameter must be configured to prevent Out Of Memory (OOM) issues.
+* `bind_ip=0.0.0.0`: Must be configured to `0.0.0.0`; otherwise, remote connections will be rejected.
+* `wiredTigerCacheSizeGB`: This parameter must be configured to prevent Out Of Memory (OOM) issues.
 
 ##### 4. Starting MongoDB
 
 Start the MongoDB service using the configuration file:
 
-```
+```bash
 mongod --config /home/java-tron/mongodb/mgdb.conf &
 ```
 
@@ -615,7 +617,7 @@ mongod --config /home/java-tron/mongodb/mgdb.conf &
 
 Connect to MongoDB to create an administrative user, then create the database and user for the event subscription service:
 
-```
+```text
 mongo
 use admin
 db.createUser({user:"<admin-username>",pwd:"<admin-password>",roles:[{role:"root",db:"admin"}]})
@@ -636,7 +638,7 @@ The Event Query Service provides an HTTP interface for querying event data store
 
 Clone the `tron-eventquery` project source code:
 
-```
+```bash
 git clone https://github.com/tronprotocol/tron-eventquery.git
 cd tron-eventquery
 ```
@@ -645,7 +647,7 @@ cd tron-eventquery
 
 Download and use Maven to build the `tron-eventquery` service:
 
-```
+```bash
 wget https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
 tar zxvf apache-maven-3.5.4-bin.tar.gz
 export M2_HOME=$HOME/maven/apache-maven-3.5.4
@@ -676,14 +678,14 @@ Please modify `mongo.host`, `mongo.port`, `mongo.dbname`, `mongo.username`, and 
 
 Start the `tron-eventquery` service and insert the indexes:
 
-```
+```bash
 sh deploy.sh
 sh insertIndex.sh
 ```
 
 **Note**: The default port is `8080`. To change it, edit the `deploy.sh` script. For example:
 
-```
+```bash
 nohup java -jar -Dserver.port=8081 target/troneventquery-1.0.0-SNAPSHOT.jar 2>&1 &
 ```
 
@@ -698,7 +700,7 @@ After completing the deployment steps, you can start the TRON FullNode and verif
 
 The command to start the FullNode is as follows:
 
-```
+```bash
 java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
@@ -708,7 +710,7 @@ For information on installing a FullNode, please refer to the [Deploying a FullN
 
 You can verify that the event plugin has loaded successfully by checking the FullNode logs:
 
-```
+```bash
 tail -f logs/tron.log | grep -i eventplugin
 ```
 
@@ -722,7 +724,7 @@ o.t.c.l.EventPluginLoader 'your plugin path/plugin-mongodb-1.0.0.zip' loaded
 
 Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:
 
-```
+```bash
 mongo 127.0.0.1:27017
 use eventlog
 db.auth("<eventlog-username>", "<eventlog-password>")
@@ -745,9 +747,9 @@ The java-tron node includes a built-in **ZeroMQ** message queue that provides a 
 
 This method has the following advantages:
 
-  - **No Plugin Deployment**: Subscriptions are established by connecting directly to a TRON node.
-  - **Low Latency**: Optimized for real-time event streaming.
-  - **Lightweight**: Well-suited for rapid development and testing environments.
+- **No Plugin Deployment**: Subscriptions are established by connecting directly to a TRON node.
+- **Low Latency**: Optimized for real-time event streaming.
+- **Lightweight**: Well-suited for rapid development and testing environments.
 
 Therefore, if you need to connect to an event stream quickly and efficiently without requiring persistent storage, the **built-in ZeroMQ message queue** is the ideal lightweight choice. This guide explains how to subscribe to events using this method.
 
@@ -755,7 +757,7 @@ Therefore, if you need to connect to an event stream quickly and efficiently wit
 
 To enable event subscriptions via java-tron's built-in ZeroMQ, you must enable the feature in the node's configuration file.
 
-```
+```properties
 event.subscribe = {
   native = {
     useNativeQueue = true  
@@ -776,17 +778,17 @@ event.subscribe = {
 }
 ```
 
-  * `native.useNativeQueue`: `true` to use the built-in message queue, `false` to use event plugins.
-  * `native.bindport`: The port that the ZeroMQ publisher binds to. In this example, it is `5555`, so the subscriber should connect to the publisher address `"tcp://127.0.0.1:5555"`.
-  * `native.sendqueuelength`: The length of the send queue. This is the maximum number of messages the TCP buffer can hold if the subscriber is slow to receive them. Messages published beyond this limit will be discarded.
-  * `topics`: The subscribed [Event Types](#event-types), such as block types, transaction types, etc.
+* `native.useNativeQueue`: `true` to use the built-in message queue, `false` to use event plugins.
+* `native.bindport`: The port that the ZeroMQ publisher binds to. In this example, it is `5555`, so the subscriber should connect to the publisher address `"tcp://127.0.0.1:5555"`.
+* `native.sendqueuelength`: The length of the send queue. This is the maximum number of messages the TCP buffer can hold if the subscriber is slow to receive them. Messages published beyond this limit will be discarded.
+* `topics`: The subscribed [Event Types](#event-types), such as block types, transaction types, etc.
 
 ### Starting the Node
 
 The event subscription service is disabled by default and must be enabled using the `--es` command-line argument. The startup command for a node with event subscription enabled is as follows:
 
-```
-$ java -jar build/libs/FullNode.jar --es
+```bash
+java -jar build/libs/FullNode.jar --es
 ```
 
 ### Preparing the Event Subscription Script
@@ -795,13 +797,13 @@ This guide uses Node.js as an example to demonstrate how to subscribe to events.
 
 First, install the `ZeroMQ` library:
 
-```
-$ npm install zeromq@5
+```bash
+npm install zeromq@5
 ```
 
 Next, write the subscriber code:
 
-```
+```javascript
 // subscriber.js
 var zmq = require("zeromq");
 var sock = zmq.socket("sub");
@@ -826,15 +828,15 @@ This example connects the subscriber to the node's event publisher and subscribe
 
 The Node.js startup command is as follows:
 
-```
-$ node subscriber.js
+```bash
+node subscriber.js
 
 > Subscriber connected to port 5555
 ```
 
 When the node produces a new block, the subscriber will receive the block event, and the output will look like this:
 
-```
+```text
 received a message related to: blockTrigger, containing message: {"timeStamp":1678343709000,"triggerName":"blockTrigger","blockNumber":1361,"blockHash":"00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280","transactionSize":0,"latestSolidifiedBlockNumber":1361,"transactionList":[]}
 received a message related to: blockTrigger, containing message: {"timeStamp":1678343712000,"triggerName":"blockTrigger","blockNumber":1362,"blockHash":"0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0","transactionSize":0,"latestSolidifiedBlockNumber":1362,"transactionList":[]}
 ```

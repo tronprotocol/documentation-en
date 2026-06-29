@@ -166,7 +166,7 @@
 | 26 | [Add a contract creation function called CREATE2](https://github.com/tronprotocol/tips/blob/master/tip-26.md) | Unknown | TRC |
 | 41 | [Optimize transactionHistoryStore occupancy space#40](https://github.com/tronprotocol/tips/blob/master/tip-41.md) | wubin1<wubin1@tron.network> | TRC |
 | 32 | [TRC-32 Clear the ABI of contract](https://github.com/tronprotocol/tips/blob/master/tip-32.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |
-| 54 | [TRC-54: Automatically active non-existent account when transferring TRX/TRC10 asset in a smart contract](https://github.com/tronprotocol/tips/blob/master/tip-54.md) | BlueHoopor([@BlueHoopor](https://github.com/BlueHoopor)) | TRC |
+| 54 | [TRC-54: Automatically active non-existent account when transferring TRX/TRC-10 asset in a smart contract](https://github.com/tronprotocol/tips/blob/master/tip-54.md) | BlueHoopor([@BlueHoopor](https://github.com/BlueHoopor)) | TRC |
 | 37 | [TRC-37: forbid using TransferContract & TransferAssetContract  for contract account](https://github.com/tronprotocol/tips/blob/master/tip-37.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | TRC |
 | 43 | [TRC-43: Precompiled contract function for signature parallel verification](https://github.com/tronprotocol/tips/blob/master/tip-43.md) | Julian.Kang([@Sh11thead](https://github.com/Sh11thead)) | TRC |
 | 44 | [TRC-44 Address.isContract instructions](https://github.com/tronprotocol/tips/blob/master/tip-44.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |

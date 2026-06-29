@@ -1,6 +1,6 @@
 # /wallet/getassetissuebyname
 
-Look up a single TRC10 by name. **Note**: since the `ALLOW_SAME_TOKEN_NAME` proposal, names are no longer unique — this endpoint errors when duplicates exist; prefer [`/wallet/getassetissuebyid`](getassetissuebyid.md) or [`/wallet/getassetissuelistbyname`](getassetissuelistbyname.md).
+Look up a single TRC-10 by name. **Note**: since the `ALLOW_SAME_TOKEN_NAME` proposal, names are no longer unique — this endpoint errors when duplicates exist; prefer [`/wallet/getassetissuebyid`](getassetissuebyid.md) or [`/wallet/getassetissuelistbyname`](getassetissuelistbyname.md).
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetAssetIssueByNameServlet.java`
 - Method: `GET` / `POST`
