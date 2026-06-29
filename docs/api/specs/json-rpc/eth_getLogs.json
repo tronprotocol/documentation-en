@@ -7,16 +7,17 @@
   ],
   "summary": "One-shot log query",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_getLogs.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [
     {
       "name": "fr",
       "required": true,
       "schema": {
-        "type": "object",
-        "additionalProperties": true
+        "$ref": "#/components/schemas/LogFilter"
       },
       "x-java-type": "FilterRequest",
-      "x-position": 0
+      "x-position": 0,
+      "description": "Log filter request."
     }
   ],
   "result": {
@@ -24,8 +25,7 @@
     "schema": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": true
+        "$ref": "#/components/schemas/Log"
       },
       "x-java-type": "LogFilterElement[]"
     }
@@ -33,45 +33,45 @@
   "errors": [
     {
       "code": -32602,
-      "message": "JsonRpcInvalidParamsException",
-      "x-java-exception": "JsonRpcInvalidParamsException"
+      "message": "JsonRpcInvalidParamsException"
     },
     {
       "code": -32601,
-      "message": "JsonRpcMethodNotFoundException",
-      "x-java-exception": "JsonRpcMethodNotFoundException"
+      "message": "JsonRpcMethodNotFoundException"
     },
     {
       "code": -32005,
-      "message": "JsonRpcTooManyResultException",
-      "x-java-exception": "JsonRpcTooManyResultException"
+      "message": "JsonRpcTooManyResultException"
     },
     {
       "code": -32000,
-      "message": "BadItemException",
-      "x-java-exception": "BadItemException"
+      "message": "BadItemException"
     },
     {
       "code": -32000,
-      "message": "ExecutionException",
-      "x-java-exception": "ExecutionException"
+      "message": "ExecutionException"
     },
     {
       "code": -32000,
-      "message": "InterruptedException",
-      "x-java-exception": "InterruptedException"
+      "message": "InterruptedException"
     },
     {
       "code": -32000,
-      "message": "ItemNotFoundException",
-      "x-java-exception": "ItemNotFoundException"
+      "message": "ItemNotFoundException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/filter/eth_getLogs.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/filter/eth_getLogs.md"
   },
   "x-source-derived": true,
   "x-java-method": "getLogs",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getLogs",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getLogs",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class FilterRequest",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+  ]
 }

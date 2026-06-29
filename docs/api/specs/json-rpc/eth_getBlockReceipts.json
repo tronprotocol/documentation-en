@@ -7,45 +7,84 @@
   ],
   "summary": "Receipt list for an entire block",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [
     {
       "name": "blockNumOrHashOrTag",
       "required": true,
       "schema": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string",
+            "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+            "title": "EthGetBlockReceiptsParamString1"
+          },
+          {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "",
+                  "latest",
+                  "earliest",
+                  "finalized"
+                ],
+                "title": "EthGetBlockReceiptsParamNested1String1"
+              },
+              {
+                "type": "string",
+                "pattern": "^0x[0-9a-fA-F]+$",
+                "title": "EthGetBlockReceiptsParamNested1String2"
+              }
+            ],
+            "title": "EthGetBlockReceiptsParamVariant2"
+          }
+        ]
       },
       "x-java-type": "String",
-      "x-position": 0
+      "x-position": 0,
+      "description": "Block hash, hex block number, or supported block tag."
     }
   ],
   "result": {
     "name": "result",
     "schema": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": true
-      },
-      "x-java-type": "List<TransactionReceipt>"
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/TransactionReceipt"
+          },
+          "title": "EthGetBlockReceiptsResultArray1"
+        },
+        {
+          "type": "null",
+          "title": "EthGetBlockReceiptsResultNull2"
+        }
+      ]
     }
   },
   "errors": [
     {
       "code": -32602,
-      "message": "JsonRpcInvalidParamsException",
-      "x-java-exception": "JsonRpcInvalidParamsException"
+      "message": "JsonRpcInvalidParamsException"
     },
     {
       "code": -32000,
-      "message": "JsonRpcInternalException",
-      "x-java-exception": "JsonRpcInternalException"
+      "message": "JsonRpcInternalException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md"
   },
   "x-source-derived": true,
   "x-java-method": "getBlockReceipts",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockReceipts",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getBlockReceipts",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionReceipt.java#class TransactionReceipt"
+  ]
 }

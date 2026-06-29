@@ -7,10 +7,12 @@
   ],
   "summary": "Block transaction count (by hash)",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [
     {
       "name": "blockHash",
       "required": true,
+      "description": "32-byte block hash, with or without the 0x prefix.",
       "schema": {
         "type": "string"
       },
@@ -21,22 +23,35 @@
   "result": {
     "name": "result",
     "schema": {
-      "type": "string",
-      "x-java-type": "String"
+      "oneOf": [
+        {
+          "type": "string",
+          "x-java-type": "String",
+          "title": "EthGetBlockTransactionCountByHashResultString1"
+        },
+        {
+          "type": "null",
+          "title": "EthGetBlockTransactionCountByHashResultNull2"
+        }
+      ]
     }
   },
   "errors": [
     {
       "code": -32602,
-      "message": "JsonRpcInvalidParamsException",
-      "x-java-exception": "JsonRpcInvalidParamsException"
+      "message": "JsonRpcInvalidParamsException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash.md"
   },
   "x-source-derived": true,
   "x-java-method": "ethGetBlockTransactionCountByHash",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockTransactionCountByHash",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockTransactionCountByHash"
+  ]
 }

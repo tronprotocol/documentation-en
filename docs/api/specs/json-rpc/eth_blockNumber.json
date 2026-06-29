@@ -7,6 +7,7 @@
   ],
   "summary": "Latest block height",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_blockNumber.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [],
   "result": {
     "name": "result",
@@ -17,10 +18,15 @@
   },
   "errors": [],
   "externalDocs": {
-    "url": "docs/api/json-rpc/node/eth_blockNumber.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/node/eth_blockNumber.md"
   },
   "x-source-derived": true,
   "x-java-method": "getLatestBlockNum",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_blockNumber",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getLatestBlockNum"
+  ]
 }

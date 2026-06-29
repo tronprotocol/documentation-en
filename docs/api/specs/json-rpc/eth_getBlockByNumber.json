@@ -7,15 +7,33 @@
   ],
   "summary": "Query a block by height / tag",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockByNumber.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [
     {
       "name": "bnOrId",
       "required": true,
       "schema": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "",
+              "latest",
+              "earliest",
+              "finalized"
+            ],
+            "title": "EthGetBlockByNumberParamString1"
+          },
+          {
+            "type": "string",
+            "pattern": "^0x[0-9a-fA-F]+$",
+            "title": "EthGetBlockByNumberParamString2"
+          }
+        ]
       },
       "x-java-type": "String",
-      "x-position": 0
+      "x-position": 0,
+      "description": "Hex block number or supported block tag."
     },
     {
       "name": "fullTransactionObjects",
@@ -24,29 +42,43 @@
         "type": "boolean"
       },
       "x-java-type": "Boolean",
-      "x-position": 1
+      "x-position": 1,
+      "description": "Whether to return full transaction objects instead of transaction hashes."
     }
   ],
   "result": {
     "name": "result",
     "schema": {
-      "type": "object",
-      "additionalProperties": true,
-      "x-java-type": "BlockResult"
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/BlockResult"
+        },
+        {
+          "type": "null",
+          "title": "EthGetBlockByNumberResultNull2"
+        }
+      ]
     }
   },
   "errors": [
     {
       "code": -32602,
-      "message": "JsonRpcInvalidParamsException",
-      "x-java-exception": "JsonRpcInvalidParamsException"
+      "message": "JsonRpcInvalidParamsException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockByNumber.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/block-and-tx-query/eth_getBlockByNumber.md"
   },
   "x-source-derived": true,
   "x-java-method": "ethGetBlockByNumber",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockByNumber",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockByNumber",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcApiUtil.java#getByJsonBlockId",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+  ]
 }

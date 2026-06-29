@@ -7,6 +7,7 @@
   ],
   "summary": "Contract runtime bytecode",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/account/eth_getCode.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [
     {
       "name": "contractAddress",
@@ -15,16 +16,21 @@
         "type": "string"
       },
       "x-java-type": "String",
-      "x-position": 0
+      "x-position": 0,
+      "description": "Contract address."
     },
     {
       "name": "bnOrId",
       "required": true,
       "schema": {
-        "type": "string"
+        "type": "string",
+        "enum": [
+          "latest"
+        ]
       },
       "x-java-type": "String",
-      "x-position": 1
+      "x-position": 1,
+      "description": "Hex block number or supported block tag."
     }
   ],
   "result": {
@@ -37,15 +43,19 @@
   "errors": [
     {
       "code": -32602,
-      "message": "JsonRpcInvalidParamsException",
-      "x-java-exception": "JsonRpcInvalidParamsException"
+      "message": "JsonRpcInvalidParamsException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/account/eth_getCode.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/account/eth_getCode.md"
   },
   "x-source-derived": true,
   "x-java-method": "getABIOfSmartContract",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getCode",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getABIOfSmartContract"
+  ]
 }

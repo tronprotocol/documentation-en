@@ -7,6 +7,7 @@
   ],
   "summary": "Current energy unit price (sun)",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_gasPrice.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [],
   "result": {
     "name": "result",
@@ -17,10 +18,15 @@
   },
   "errors": [],
   "externalDocs": {
-    "url": "docs/api/json-rpc/node/eth_gasPrice.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/node/eth_gasPrice.md"
   },
   "x-source-derived": true,
   "x-java-method": "gasPrice",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_gasPrice",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#gasPrice"
+  ]
 }

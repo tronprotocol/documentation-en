@@ -7,53 +7,140 @@
   ],
   "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC10 transfer / contract deploy / contract trigger)",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/tx-build/buildTransaction.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [
     {
       "name": "args",
       "required": true,
       "schema": {
         "type": "object",
-        "additionalProperties": true
+        "additionalProperties": false,
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "Sender account address."
+          },
+          "to": {
+            "type": "string",
+            "description": "Recipient account or contract address."
+          },
+          "gas": {
+            "type": "string",
+            "description": "Gas limit encoded as a hex quantity."
+          },
+          "gasPrice": {
+            "type": "string",
+            "description": "Gas price encoded as a hex quantity."
+          },
+          "value": {
+            "type": "string",
+            "description": "Hex string, amount, or value field accepted by this endpoint."
+          },
+          "data": {
+            "type": "string",
+            "description": "Hex-encoded contract call data or transaction data."
+          },
+          "nonce": {
+            "type": "string",
+            "description": "Transaction nonce encoded as a hex quantity."
+          },
+          "tokenId": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "description": "TRC10 token id."
+          },
+          "tokenValue": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "description": "TRC10 token amount."
+          },
+          "abi": {
+            "type": "string",
+            "description": "Smart contract ABI definition."
+          },
+          "consumeUserResourcePercent": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "description": "Percentage of contract execution resource cost paid by the user."
+          },
+          "originEnergyLimit": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "description": "Origin energy limit for a deployed smart contract."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name encoded as expected by java-tron."
+          },
+          "permissionId": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "description": "Permission id used to sign the transaction with a non-owner account permission."
+          },
+          "extraData": {
+            "type": "string",
+            "description": "Extra transaction data encoded as expected by java-tron."
+          },
+          "visible": {
+            "type": "boolean",
+            "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+          }
+        }
       },
       "x-java-type": "BuildArguments",
-      "x-position": 0
+      "x-position": 0,
+      "description": "Transaction call arguments."
     }
   ],
   "result": {
     "name": "result",
     "schema": {
-      "type": "object",
-      "additionalProperties": true,
-      "x-java-type": "TransactionJson"
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/TransactionJson"
+        },
+        {
+          "type": "null",
+          "title": "BuildTransactionResultNull2"
+        }
+      ]
     }
   },
   "errors": [
     {
       "code": -32600,
-      "message": "JsonRpcInvalidRequestException",
-      "x-java-exception": "JsonRpcInvalidRequestException"
+      "message": "JsonRpcInvalidRequestException"
     },
     {
       "code": -32601,
-      "message": "JsonRpcMethodNotFoundException",
-      "x-java-exception": "JsonRpcMethodNotFoundException"
+      "message": "JsonRpcMethodNotFoundException"
     },
     {
       "code": -32602,
-      "message": "JsonRpcInvalidParamsException",
-      "x-java-exception": "JsonRpcInvalidParamsException"
+      "message": "JsonRpcInvalidParamsException"
     },
     {
       "code": -32000,
-      "message": "JsonRpcInternalException",
-      "x-java-exception": "JsonRpcInternalException"
+      "message": "JsonRpcInternalException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/tx-build/buildTransaction.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/tx-build/buildTransaction.md"
   },
   "x-source-derived": true,
   "x-java-method": "buildTransaction",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 only (the Solidity port throws -32601)"
+  "x-ports": "FullNode 8545 only (the Solidity port throws -32601)",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#buildTransaction",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#buildTransaction",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class TransactionJson",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#class BuildArguments"
+  ]
 }

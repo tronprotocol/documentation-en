@@ -7,15 +7,18 @@
   ],
   "summary": "Query a block by hash",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getBlockByHash.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [
     {
       "name": "blockHash",
       "required": true,
       "schema": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
       },
       "x-java-type": "String",
-      "x-position": 0
+      "x-position": 0,
+      "description": "32-byte block hash, with or without the 0x prefix."
     },
     {
       "name": "fullTransactionObjects",
@@ -24,29 +27,42 @@
         "type": "boolean"
       },
       "x-java-type": "Boolean",
-      "x-position": 1
+      "x-position": 1,
+      "description": "Whether to return full transaction objects instead of transaction hashes."
     }
   ],
   "result": {
     "name": "result",
     "schema": {
-      "type": "object",
-      "additionalProperties": true,
-      "x-java-type": "BlockResult"
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/BlockResult"
+        },
+        {
+          "type": "null",
+          "title": "EthGetBlockByHashResultNull2"
+        }
+      ]
     }
   },
   "errors": [
     {
       "code": -32602,
-      "message": "JsonRpcInvalidParamsException",
-      "x-java-exception": "JsonRpcInvalidParamsException"
+      "message": "JsonRpcInvalidParamsException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/block-and-tx-query/eth_getBlockByHash.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/block-and-tx-query/eth_getBlockByHash.md"
   },
   "x-source-derived": true,
   "x-java-method": "ethGetBlockByHash",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockByHash",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockByHash",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+  ]
 }

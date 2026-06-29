@@ -7,6 +7,7 @@
   ],
   "summary": "The configured etherbase address",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/stub/eth_coinbase.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [],
   "result": {
     "name": "result",
@@ -18,15 +19,19 @@
   "errors": [
     {
       "code": -32000,
-      "message": "JsonRpcInternalException",
-      "x-java-exception": "JsonRpcInternalException"
+      "message": "JsonRpcInternalException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/stub/eth_coinbase.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/stub/eth_coinbase.md"
   },
   "x-source-derived": true,
   "x-java-method": "getCoinbase",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_coinbase",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCoinbase"
+  ]
 }

@@ -7,6 +7,7 @@
   ],
   "summary": "Contract storage slot",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/account/eth_getStorageAt.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
   "params": [
     {
       "name": "address",
@@ -15,7 +16,8 @@
         "type": "string"
       },
       "x-java-type": "String",
-      "x-position": 0
+      "x-position": 0,
+      "description": "Account or contract address."
     },
     {
       "name": "storageIdx",
@@ -24,16 +26,21 @@
         "type": "string"
       },
       "x-java-type": "String",
-      "x-position": 1
+      "x-position": 1,
+      "description": "Storage slot index."
     },
     {
       "name": "blockNumOrTag",
       "required": true,
       "schema": {
-        "type": "string"
+        "type": "string",
+        "enum": [
+          "latest"
+        ]
       },
       "x-java-type": "String",
-      "x-position": 2
+      "x-position": 2,
+      "description": "Hex block number or supported block tag."
     }
   ],
   "result": {
@@ -46,15 +53,19 @@
   "errors": [
     {
       "code": -32602,
-      "message": "JsonRpcInvalidParamsException",
-      "x-java-exception": "JsonRpcInvalidParamsException"
+      "message": "JsonRpcInvalidParamsException"
     }
   ],
   "externalDocs": {
-    "url": "docs/api/json-rpc/account/eth_getStorageAt.md"
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/account/eth_getStorageAt.md"
   },
   "x-source-derived": true,
   "x-java-method": "getStorageAt",
   "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
-  "x-ports": "FullNode 8545 / Solidity 8555"
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getStorageAt",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getStorageAt"
+  ]
 }
