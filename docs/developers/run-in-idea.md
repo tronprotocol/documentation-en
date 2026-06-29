@@ -1,6 +1,6 @@
 #  IntelliJ IDEA Configuration for java-tron
 
-To simplify the Java development process and improve efficiency, selecting and configuring an Integrated Development Environment (IDE) is a crucial first step. This guide uses IntelliJ IDEA as an example to explain how to set up and configure the java-tron development environment.
+Selecting and configuring an Integrated Development Environment (IDE) is a crucial first step in simplifying Java development and improving efficiency. This guide uses IntelliJ IDEA as an example to explain how to set up and configure the java-tron development environment.
 
 java-tron nodes support deployment on `Linux` or `MacOS` operating systems. The JDK version requirements are as follows:
 
@@ -48,7 +48,7 @@ To ensure the project compiles and runs correctly, you must set the JDK version 
 
 This is the core JDK used for compiling the project's source code and performing syntax analysis.
 
-1. Navigate to `File` -\> `Project Structure` -\>, and select "Project" from the left panel.
+1. Navigate to `File` -\> `Project Structure`, and select "Project" from the left panel.
 2.  In the `Project SDK` dropdown menu, confirm that version `1.8` is selected.
 
 #### 2. Configure Gradle JVM
@@ -60,7 +60,7 @@ This is the JDK used to execute Gradle build tasks (e.g., build, clean).
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_JDK.png)
 
-> **Important Note**: The **Project SDK** and **Gradle JVM** settings must match and both be set to JDK 8 (latest minor version recommended; consistent with version 1.8 shown in the figure, the difference between 1.8 and 8 is only in the naming convention. In the java-tron documentation, it is uniformly designated as 8 unless otherwise specified). Otherwise, you may encounter unexpected errors during the build process.
+> **Important Note**: The **Project SDK** and **Gradle JVM** settings must match and both be set to JDK 8 (latest minor version recommended). Note: Java 1.8 and Java 8 are different naming conventions for the same version; java-tron documentation uniformly designates it as '8'. Mismatched versions will cause unexpected build errors.
 
 
 ## Getting and Compiling the Source Code
@@ -102,11 +102,11 @@ You can compile the project in two ways:
 
 ## Configuring Code Style Checks
 
-java-tron adheres to the `Google checkstyle` code standard. By configuring the `Checkstyle` plugin in IDEA, you can check your code style in real-time to ensure the quality of your commits.
+java-tron adheres to the `Google Checkstyle` standard. By configuring the `Checkstyle` plugin in IDEA, you can check your code style in real-time to ensure the quality of your commits.
 
 ### Step 1: Install the Checkstyle Plugin
 
-1.  In IDEA, navigate to `Preferences` -\> `Plugins`。
+1.  In IDEA, navigate to `Preferences` -\> `Plugins`.
 2.  In the Marketplace, search for and install the `Checkstyle` plugin.
 
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkstyle.png)
@@ -154,7 +154,7 @@ Next, create a new run configuration in IntelliJ IDEA to define how it launches 
       * **JDK**: Ensure you select `java 8 1.8`.
       * **Main Class:** Set to `org.tron.program.FullNode`.
       * **Program Arguments:** Enter the node startup arguments. For example, use `-c config.conf` to specify the configuration file.
-      * **Working Directory:** Set this to the directory you created in [Step 1](#create-a-working-directory), e.g., `/Users/javatrondeploy`。
+      * **Working Directory:** Set this to the directory you created in [Step 1](#create-a-working-directory), e.g., `/Users/javatrondeploy`.
 ![image](https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_RunDebug.png)
 4. Click “Apply” to save the configuration.
 

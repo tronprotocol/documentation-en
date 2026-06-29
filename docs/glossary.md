@@ -2,11 +2,11 @@
 
 **energyUsage**
 
-The Energy consumption of the contract caller in one contract trigger.
+The Energy consumption of the contract caller in one contract trigger.  (EnergyFee not included)
 
 **energyFee**
 
-The number of TRX burned from the contract caller for Energy consumption in one contract trigger.
+The amount of TRX (measured in sun, 1 TRX = 1,000,000 sun) burned from the contract caller for Energy consumption in one contract trigger.
 
 **originEnergyUsage**
 
@@ -16,21 +16,21 @@ The total Energy consumption of the contract developer in one contract trigger.
 
 The total Energy consumption of the contract developer and the contract caller combined.
 
-**Feelimit**
+**FeeLimit**
 
-When the user triggers or create the contract, this is used to set the usage limit of the Energy consumption got from burning TRX or staking TRX, Energy got from staking TRX will be used first.
+When the user triggers or creates the contract, this is used to set the usage limit of the Energy obtained from burning or staking TRX, Energy obtained from staking TRX will be used first.
 
 **CallValue**
 
-When the user triggers or create the contract, this can be used to send TRX to the contract.
+When the user triggers or creates the contract, this can be used to send TRX to the contract.
 
 **consume_user_resource_percent**
 
-For a contract, Resource consumption is composed of two parts, one part is afforded by contract developer and the other part is afforded by contract caller. This is the percentage of the two parts in the Resource consumption.
+For a contract, Resource consumption is composed of two parts: one part is afforded by the contract developer and the other by the contract caller. This is the percentage afforded by the contract caller; the remaining part (100 minus this value) is afforded by the contract developer.
 
 **origin_energy_limit**
 
-The usage limit of the Energy consumption of the developer in one  contract trigger, should be greater than 0.
+The usage limit of the Energy consumption of the developer in one contract trigger, should be greater than 0.
 
 **net_usage**
 
@@ -38,7 +38,7 @@ The Bandwidth consumption in one contract trigger.  (NetFee not included)
 
 **net_fee**
 
-The TRX burned for Bandwidth consumption in one contract trigger.
+The amount of TRX (measured in sun, 1 TRX = 1,000,000 sun) burned for Bandwidth consumption in one contract trigger.
 
 **Bandwidth**
 
@@ -46,7 +46,7 @@ The Bandwidth Points consumed by a transaction is the size of the byte array in 
 
 **Energy**
 
-The creation and operation of a smart contract consume CPU resources. It takes time for smart contracts to operate in virtual machines (VMs), and the time consumed in the system is calculated in microseconds. CPU resources are consumed in energy, which means 1 Energy = 1 Microsecond (μs). If a contract takes 100 μs to execute in a VM, it needs to consume 100 Energy.
+Energy is the resource consumed by the creation and execution of smart contracts. Every operation executed in the TRON Virtual Machine (TVM) costs a fixed, deterministic amount of Energy defined by the VM's Energy cost schedule (for example, an `SLOAD` costs 50 Energy and creating a new storage slot via `SSTORE` costs 20000 Energy). The more computation a contract performs, the more Energy it consumes. Energy can be obtained by staking TRX, or paid for by burning TRX.
 
 **TRON Power(TP)**
 
@@ -54,4 +54,4 @@ The creation and operation of a smart contract consume CPU resources. It takes t
 
 **Super Representative(SR)**
 
-The current block producing Top 27 nodes.
+The top 27 witnesses by votes, responsible for producing blocks.
