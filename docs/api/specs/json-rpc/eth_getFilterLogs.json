@@ -1,0 +1,76 @@
+{
+  "name": "eth_getFilterLogs",
+  "tags": [
+    {
+      "name": "Logs / filters"
+    }
+  ],
+  "summary": "Pull a log filter's full set (without draining)",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/filter/eth_getFilterLogs.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
+  "params": [
+    {
+      "name": "filterId",
+      "required": true,
+      "description": "Filter id returned by eth_newFilter or eth_newBlockFilter.",
+      "schema": {
+        "type": "string"
+      },
+      "x-java-type": "String",
+      "x-position": 0
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Log"
+      },
+      "x-java-type": "LogFilterElement[]"
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException"
+    },
+    {
+      "code": -32601,
+      "message": "JsonRpcMethodNotFoundException"
+    },
+    {
+      "code": -32005,
+      "message": "JsonRpcTooManyResultException"
+    },
+    {
+      "code": -32000,
+      "message": "BadItemException"
+    },
+    {
+      "code": -32000,
+      "message": "ExecutionException"
+    },
+    {
+      "code": -32000,
+      "message": "InterruptedException"
+    },
+    {
+      "code": -32000,
+      "message": "ItemNotFoundException"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/filter/eth_getFilterLogs.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getFilterLogs",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getFilterLogs",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterLogs",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+  ]
+}

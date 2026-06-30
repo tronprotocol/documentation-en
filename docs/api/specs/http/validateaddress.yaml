@@ -1,0 +1,85 @@
+"/wallet/validateaddress":
+  "get":
+    "tags":
+      - "Account"
+    "summary": "Validate an address"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/account/validateaddress.md` for examples and detailed behavior."
+    "operationId": "wallet_validateaddress_get"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/account/validateaddress.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "type": "object"
+              "additionalProperties": false
+              "properties":
+                "result":
+                  "type": "boolean"
+                "message":
+                  "type": "string"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "ValidateAddressServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "parameters":
+      -
+        "name": "address"
+        "in": "query"
+        "required": true
+        "schema":
+          "type": "string"
+          "description": "Account or contract address accepted by this endpoint."
+        "x-source-derived": true
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/ValidateAddressServlet.java"
+  "post":
+    "tags":
+      - "Account"
+    "summary": "Validate an address"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/account/validateaddress.md` for examples and detailed behavior."
+    "operationId": "wallet_validateaddress_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/account/validateaddress.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "type": "object"
+              "additionalProperties": false
+              "properties":
+                "result":
+                  "type": "boolean"
+                "message":
+                  "type": "string"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "ValidateAddressServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "type": "object"
+            "additionalProperties": false
+            "properties":
+              "address":
+                "type": "string"
+                "description": "Account or contract address accepted by this endpoint."
+            "x-source-shape": "servlet-json-fields"
+            "x-java-unknown-fields": "ignored-by-jsonformat"
+            "required":
+              - "address"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/ValidateAddressServlet.java"

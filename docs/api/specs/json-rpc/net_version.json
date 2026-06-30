@@ -1,0 +1,37 @@
+{
+  "name": "net_version",
+  "tags": [
+    {
+      "name": "Node info / chain identity"
+    }
+  ],
+  "summary": "Network ID (same as eth_chainId)",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/net_version.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
+  "params": [],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [
+    {
+      "code": -32000,
+      "message": "JsonRpcInternalException"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/node/net_version.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getNetVersion",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_version",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getNetVersion"
+  ]
+}

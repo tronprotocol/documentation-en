@@ -1,0 +1,35 @@
+{
+  "name": "eth_accounts",
+  "tags": [
+    {
+      "name": "Compatibility stub methods"
+    }
+  ],
+  "summary": "[]",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/stub/eth_accounts.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
+  "params": [],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-java-type": "String[]"
+    }
+  },
+  "errors": [],
+  "externalDocs": {
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/stub/eth_accounts.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getAccounts",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_accounts",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getAccounts"
+  ]
+}

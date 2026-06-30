@@ -265,6 +265,13 @@ localwitness = [
 ]
 ```
 
+!!! warning "Protect the SR private key"
+    The `localwitness` list stores the SR account private key in plaintext. Anyone who can read the file can take over block production for your SR, so protect it:
+
+    - Restrict file permissions so only the node's owner can read the configuration: `chmod 600 config.conf` (apply the same to the keystore file if you use one).
+    - Never commit a configuration file containing a real private key to Git — it remains in history even after the file is deleted. Keep key-bearing files outside the repository and add them to `.gitignore`.
+    - For production deployments, prefer the keystore + password method over a plaintext key (see [Specifying Super Representative Account Private Key Using Keystore + Password](#specifying-super-representative-account-private-key-using-keystore-password) below).
+
 For SR nodes running on high-performance servers (e.g., ≥ 64GB RAM), it is strongly recommended to use the following optimized Java startup commands. These configurations are designed to ensure maximum stability and efficiency for block production. Execute the command corresponding to your environment:
 
 #### Option 1: JDK 8 on x86_64

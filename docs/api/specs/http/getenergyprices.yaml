@@ -1,0 +1,81 @@
+"/wallet/getenergyprices":
+  "get":
+    "tags":
+      - "Node / pricing / tools"
+    "summary": "Historical energy unit prices"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/node-and-tools/getenergyprices.md` for examples and detailed behavior."
+    "operationId": "wallet_getenergyprices_get"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/node-and-tools/getenergyprices.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/PricesResponseMessage"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetEnergyPricesServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/getenergyprices"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetEnergyPricesOnSolidityServlet"
+    "parameters":
+      []
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetEnergyPricesServlet.java"
+  "post":
+    "tags":
+      - "Node / pricing / tools"
+    "summary": "Historical energy unit prices"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/node-and-tools/getenergyprices.md` for examples and detailed behavior."
+    "operationId": "wallet_getenergyprices_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/node-and-tools/getenergyprices.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/PricesResponseMessage"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetEnergyPricesServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/getenergyprices"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetEnergyPricesOnSolidityServlet"
+    "parameters":
+      []
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetEnergyPricesServlet.java"

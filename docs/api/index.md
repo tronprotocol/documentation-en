@@ -22,3 +22,4 @@ Notes:
 - [HTTP API reference](http/index.md) — endpoints under `/wallet/*` and `/walletsolidity/*` (partial support), organized by feature
 - [JSON-RPC API reference](json-rpc/index.md) — `eth_*` / `net_*` / `web3_*` methods plus the Tron-specific `buildTransaction`, organized by feature
 - [gRPC API reference](rpc/index.md) — `protocol.Wallet` / `protocol.WalletSolidity` (partial support) methods, organized by feature
+- [Machine-readable API definitions](interface-definitions.md) — OpenAPI for HTTP and OpenRPC for JSON-RPC

@@ -1,0 +1,104 @@
+{
+  "name": "eth_call",
+  "tags": [
+    {
+      "name": "Smart contract calls"
+    }
+  ],
+  "summary": "Read-only contract call",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/smart-contract/eth_call.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
+  "params": [
+    {
+      "name": "transactionCall",
+      "required": true,
+      "schema": {
+        "$ref": "#/components/schemas/TransactionCall"
+      },
+      "x-java-type": "CallArguments",
+      "x-position": 0,
+      "description": "Transaction call arguments."
+    },
+    {
+      "name": "blockNumOrTag",
+      "required": true,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "latest"
+            ],
+            "title": "EthCallParamString1"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "blockNumber": {
+                "type": "string",
+                "pattern": "^0x[0-9a-fA-F]+$",
+                "description": "Hex-encoded block number."
+              }
+            },
+            "required": [
+              "blockNumber"
+            ],
+            "title": "EthCallParamRequiresBlockNumber2"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "blockHash": {
+                "type": "string",
+                "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+                "description": "32-byte block hash, with or without the 0x prefix."
+              }
+            },
+            "required": [
+              "blockHash"
+            ],
+            "title": "EthCallParamRequiresBlockHash3"
+          }
+        ]
+      },
+      "x-java-type": "Object",
+      "x-position": 1,
+      "description": "Hex block number or supported block tag."
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [
+    {
+      "code": -32600,
+      "message": "JsonRpcInvalidRequestException"
+    },
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException"
+    },
+    {
+      "code": -32000,
+      "message": "JsonRpcInternalException"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/smart-contract/eth_call.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getCall",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_call",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCall"
+  ]
+}

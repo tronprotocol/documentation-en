@@ -1,0 +1,68 @@
+{
+  "name": "eth_getTransactionByBlockHashAndIndex",
+  "tags": [
+    {
+      "name": "Block / transaction query"
+    }
+  ],
+  "summary": "Query a transaction by block hash + index",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
+  "params": [
+    {
+      "name": "blockHash",
+      "required": true,
+      "schema": {
+        "type": "string",
+        "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+      },
+      "x-java-type": "String",
+      "x-position": 0,
+      "description": "32-byte block hash, with or without the 0x prefix."
+    },
+    {
+      "name": "index",
+      "required": true,
+      "schema": {
+        "type": "string",
+        "pattern": "^0x[0-9a-fA-F]+$"
+      },
+      "x-java-type": "String",
+      "x-position": 1,
+      "description": "Hex-encoded transaction index within the block."
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/TransactionResult"
+        },
+        {
+          "type": "null",
+          "title": "EthGetTransactionByBlockHashAndIndexResultNull2"
+        }
+      ]
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getTransactionByBlockHashAndIndex",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionByBlockHashAndIndex",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionByBlockHashAndIndex",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+  ]
+}
