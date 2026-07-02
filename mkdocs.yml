@@ -20,7 +20,6 @@ nav:
         - Node Maintenance Tool: using_javatron/toolkit.md
     - API:
         - Overview: api/index.md
-        - Machine-readable definitions: api/interface-definitions.md
         - HTTP API:
             - Overview: api/http/index.md
             - Account:
@@ -252,6 +251,7 @@ nav:
                 - etherbase address: api/json-rpc/stub/eth_coinbase.md
                 - Node-managed accounts list: api/json-rpc/stub/eth_accounts.md
                 - Mining work info: api/json-rpc/stub/eth_getWork.md
+        - Machine-readable definitions: api/interface-definitions.md
     - Core Protocol:
         - DPoS: mechanism-algorithm/dpos.md
         - Super Representative: mechanism-algorithm/sr.md
