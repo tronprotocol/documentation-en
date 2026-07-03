@@ -16,6 +16,14 @@ The following categories are intentionally not covered:
 - **`permission_id`**: optional on builder endpoints; selects which `Permission` to use for multi-sig accounts.
 - **Amount unit**: TRC-10 amounts use the issuer-defined precision; every other amount is in sun (1 TRX = 1e6 sun).
 
+!!! warning "XSS security note"
+
+    Although the HTTP API reduces the risk of the browser parsing responses directly as HTML by setting `Content-Type` to `application/json`, this does not fully eliminate XSS. Some endpoints do not strictly validate their inputs, and responses may echo user-controlled content (especially when `visible=true`, where fields such as addresses and memos may be returned verbatim as UTF-8 strings). Before rendering any data returned by the API into a page, handle it safely according to the output context.
+
+    The correct approach is to choose the encoding that matches where the data is placed: in an HTML text context, use HTML entity encoding (e.g. `<` → `&lt;`, `>` → `&gt;`, `"` → `&quot;`), or rely on your front-end framework's default output escaping (such as React JSX or Vue template escaping). Only use `encodeURIComponent()` and similar URL-encoding methods when the data is placed into a URL parameter. Note that `encodeURIComponent()` / `escape()` are URL encoding (or legacy encoding) and cannot replace output escaping in an HTML context.
+
+    For more guidance, see the [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html).
+
 ## Error responses
 
 In the vast majority of cases the HTTP status is **200** — business errors are conveyed in the response body, so the client must parse the body to determine success or failure. Known exceptions:
