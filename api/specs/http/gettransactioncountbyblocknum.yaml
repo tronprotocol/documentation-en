@@ -1,0 +1,113 @@
+"/wallet/gettransactioncountbyblocknum":
+  "get":
+    "tags":
+      - "Block / transaction query"
+    "summary": "Transaction count in a block"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/block-and-tx-query/gettransactioncountbyblocknum.md` for examples and detailed behavior."
+    "operationId": "wallet_gettransactioncountbyblocknum_get"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/block-and-tx-query/gettransactioncountbyblocknum.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "type": "object"
+                  "additionalProperties": false
+                  "properties":
+                    "count":
+                      "type": "integer"
+                      "format": "int64"
+                  "not":
+                    "required":
+                      - "Error"
+                  "title": "GettransactioncountbyblocknumGetResultObject1"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetTransactionCountByBlockNumServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/gettransactioncountbyblocknum"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetTransactionCountByBlockNumOnSolidityServlet"
+    "parameters":
+      -
+        "name": "num"
+        "in": "query"
+        "required": true
+        "schema":
+          "type": "integer"
+          "format": "int64"
+          "description": "Number of items or blocks to return."
+        "x-source-derived": true
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetTransactionCountByBlockNumServlet.java"
+      - "protocol/src/main/protos/api/api.proto#NumberMessage"
+  "post":
+    "tags":
+      - "Block / transaction query"
+    "summary": "Transaction count in a block"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/block-and-tx-query/gettransactioncountbyblocknum.md` for examples and detailed behavior."
+    "operationId": "wallet_gettransactioncountbyblocknum_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/block-and-tx-query/gettransactioncountbyblocknum.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "type": "object"
+                  "additionalProperties": false
+                  "properties":
+                    "count":
+                      "type": "integer"
+                      "format": "int64"
+                  "not":
+                    "required":
+                      - "Error"
+                  "title": "GettransactioncountbyblocknumPostResultObject1"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetTransactionCountByBlockNumServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/gettransactioncountbyblocknum"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetTransactionCountByBlockNumOnSolidityServlet"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "allOf":
+              -
+                "$ref": "#/components/schemas/NumberMessageRequest"
+            "required":
+              - "num"

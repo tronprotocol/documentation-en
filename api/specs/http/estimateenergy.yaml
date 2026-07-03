@@ -1,0 +1,67 @@
+"/wallet/estimateenergy":
+  "post":
+    "tags":
+      - "Smart contract"
+    "summary": "Estimate energy usage of a call"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/smart-contract/estimateenergy.md` for examples and detailed behavior."
+    "operationId": "wallet_estimateenergy_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/smart-contract/estimateenergy.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "type": "object"
+              "additionalProperties": false
+              "properties":
+                "result":
+                  "type": "object"
+                  "additionalProperties": false
+                  "properties":
+                    "result":
+                      "type": "boolean"
+                    "code":
+                      "type": "string"
+                    "message":
+                      "type": "string"
+                "energy_required":
+                  "type": "integer"
+                  "format": "int64"
+              "x-java-response": "EstimateEnergyMessage rendered by Util.printEstimateEnergyMessage"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "EstimateEnergyServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/estimateenergy"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "EstimateEnergyOnSolidityServlet"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "allOf":
+              -
+                "$ref": "#/components/schemas/TriggerSmartContractRequest"
+            "required":
+              - "owner_address"
+            "anyOf":
+              -
+                "required":
+                  - "contract_address"
+                "title": "EstimateenergyPostRequestRequiresContractAddress1"
+              -
+                "required":
+                  - "data"
+                "title": "EstimateenergyPostRequestRequiresData2"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/EstimateEnergyServlet.java"
+      - "protocol/src/main/protos/core/contract/smart_contract.proto#TriggerSmartContract"

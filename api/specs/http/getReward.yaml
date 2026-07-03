@@ -1,0 +1,134 @@
+"/wallet/getReward":
+  "get":
+    "tags":
+      - "Witness / governance"
+    "summary": "Claimable rewards for an account"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getReward.md` for examples and detailed behavior."
+    "operationId": "wallet_getReward_get"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getReward.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "type": "object"
+                  "additionalProperties": false
+                  "properties":
+                    "reward":
+                      "type": "integer"
+                      "format": "int64"
+                    "Error":
+                      "type": "string"
+                  "required":
+                    - "reward"
+                  "not":
+                    "required":
+                      - "Error"
+                  "title": "GetRewardGetResultRequiresReward1"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetRewardServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/getReward"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetRewardOnSolidityServlet"
+    "parameters":
+      -
+        "name": "address"
+        "in": "query"
+        "required": false
+        "schema":
+          "type": "string"
+          "description": "Account or contract address accepted by this endpoint."
+        "x-source-derived": true
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetRewardServlet.java"
+  "post":
+    "tags":
+      - "Witness / governance"
+    "summary": "Claimable rewards for an account"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getReward.md` for examples and detailed behavior."
+    "operationId": "wallet_getReward_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getReward.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "type": "object"
+                  "additionalProperties": false
+                  "properties":
+                    "reward":
+                      "type": "integer"
+                      "format": "int64"
+                    "Error":
+                      "type": "string"
+                  "required":
+                    - "reward"
+                  "not":
+                    "required":
+                      - "Error"
+                  "title": "GetRewardPostResultRequiresReward1"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetRewardServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/getReward"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetRewardOnSolidityServlet"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetRewardServlet.java"
+    "requestBody":
+      "required": false
+      "content":
+        "application/json":
+          "schema":
+            "type": "object"
+            "additionalProperties": false
+            "properties":
+              "address":
+                "type": "string"
+                "description": "Account or contract address accepted by this endpoint."
+            "x-source-shape": "servlet-json-body"
+            "x-java-unknown-fields": "ignored-by-servlet-helper"
+        "application/x-www-form-urlencoded":
+          "schema":
+            "type": "object"
+            "additionalProperties": false
+            "properties":
+              "address":
+                "type": "string"
+                "description": "Account or contract address accepted by this endpoint."
+            "x-source-shape": "servlet-form-body"

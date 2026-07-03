@@ -1,0 +1,37 @@
+{
+  "name": "eth_chainId",
+  "tags": [
+    {
+      "name": "Node info / chain identity"
+    }
+  ],
+  "summary": "chainId (last 4 bytes of the genesis block hash)",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/eth_chainId.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
+  "params": [],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "string",
+      "x-java-type": "String"
+    }
+  },
+  "errors": [
+    {
+      "code": -32000,
+      "message": "JsonRpcInternalException"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/node/eth_chainId.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "ethChainId",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_chainId",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethChainId"
+  ]
+}

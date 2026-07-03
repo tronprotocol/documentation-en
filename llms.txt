@@ -1,0 +1,49 @@
+# java-tron
+
+> java-tron is the official Java implementation of the TRON network client, maintained by the TRON protocol team. It implements the TRON mainnet protocol — DPoS consensus, Super Representatives, the account and resource models, smart contracts, system contracts, and multi-signature permissions — and is the software for running full nodes, participating in Super Representative elections, deploying contracts, and building DApps. This site is the authoritative documentation; the Chinese translation lives at documentation-zh.
+
+## Getting Started
+
+- [Getting Started Guide](https://tronprotocol.github.io/documentation-en/getting_started/getting_started_with_javatron/): First steps with java-tron and the TRON protocol.
+- [Glossary](https://tronprotocol.github.io/documentation-en/glossary/): Definitions of common TRON and java-tron terms.
+
+## Running a Node
+
+- [Deploy java-tron](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/): Hardware requirements, JDK prerequisites, building from source, starting full / Solidity / Super Representative nodes, and JVM tuning.
+- [Backup and Restore](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/): Snapshot and restore node databases.
+- [Lite FullNode](https://tronprotocol.github.io/documentation-en/using_javatron/litefullnode/): Run and maintain a pruned, low-footprint node.
+- [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/): Stand up a private TRON chain.
+- [Node Monitoring](https://tronprotocol.github.io/documentation-en/using_javatron/metrics/): Prometheus / Grafana metrics and health endpoints.
+- [Node Maintenance Tool (Toolkit)](https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/): Database partitioning, lite-node pruning, copy, LevelDB→RocksDB conversion, and startup optimization.
+- [Upgrade to a New Version](https://tronprotocol.github.io/documentation-en/releases/upgrade-instruction/): Upgrade procedure for new releases.
+
+## APIs
+
+- [API Overview](https://tronprotocol.github.io/documentation-en/api/): How to choose among the HTTP, JSON-RPC, and gRPC interfaces.
+- [HTTP API reference](https://tronprotocol.github.io/documentation-en/api/http/): `/wallet/*` and `/walletsolidity/*` endpoints, grouped by feature (account, asset, block/tx query, transaction build/broadcast, smart contract, witness/governance, stake v1/v2, node/tools).
+- [JSON-RPC API reference](https://tronprotocol.github.io/documentation-en/api/json-rpc/): Ethereum-compatible `eth_*` / `net_*` / `web3_*` methods plus the Tron-specific `buildTransaction`, with ports, enable flags, encoding conventions, and error codes.
+- [gRPC API reference](https://tronprotocol.github.io/documentation-en/api/rpc/): `protocol.Wallet` / `protocol.WalletSolidity` methods; contracts are defined by the `.proto` files in the java-tron repository.
+- [OpenAPI spec (HTTP)](https://tronprotocol.github.io/documentation-en/api/openapi.yaml): Machine-readable OpenAPI contract for the `/wallet/*` and `/walletsolidity/*` HTTP endpoints.
+- [OpenRPC spec (JSON-RPC)](https://tronprotocol.github.io/documentation-en/api/openrpc.json): Machine-readable OpenRPC contract for the `eth_*` / `net_*` / `web3_*` and `buildTransaction` methods.
+
+## Core Protocol
+
+- [DPoS Consensus](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/dpos/): Delegated Proof-of-Stake block production.
+- [Super Representative](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/sr/): Super Representative elections and block production.
+- [Account Model](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/account/): Account types and structure.
+- [Resource Model](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/): Bandwidth and energy, staking, and resource delegation.
+- [Smart Contract](https://tronprotocol.github.io/documentation-en/contracts/contract/): Smart contract model and lifecycle.
+- [System Contract](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/system-contracts/): On-chain system contract types.
+- [Account Permission Management](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/multi-signatures/): Multi-signature permission model.
+
+## Developers
+
+- [Developer Guide](https://tronprotocol.github.io/documentation-en/developers/java-tron/): Building, contributing to, and extending java-tron.
+- [Core Modules](https://tronprotocol.github.io/documentation-en/developers/code-structure/): Source layout and module responsibilities.
+- [wallet-cli](https://tronprotocol.github.io/documentation-en/clients/wallet-cli/): Official command-line wallet and key management.
+
+## Optional
+
+- [Source and Releases (GitHub)](https://github.com/tronprotocol/java-tron): java-tron source code, releases, and protocol `.proto` definitions.
+- [TRON Improvement Proposals (TIPs)](https://github.com/tronprotocol/tips): Protocol evolution proposals.
+- [TRON Developer Hub](https://developers.tron.network/): DApp developer documentation, SDKs, and tutorials.
