@@ -1,0 +1,32 @@
+{
+  "name": "net_listening",
+  "tags": [
+    {
+      "name": "Node info / chain identity"
+    }
+  ],
+  "summary": "Whether listening on P2P",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/node/net_listening.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
+  "params": [],
+  "result": {
+    "name": "result",
+    "schema": {
+      "type": "boolean",
+      "x-java-type": "boolean"
+    }
+  },
+  "errors": [],
+  "externalDocs": {
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/node/net_listening.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "isListening",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_listening",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#isListening"
+  ]
+}

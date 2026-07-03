@@ -1,0 +1,106 @@
+"/wallet/gettransactioninfobyid":
+  "get":
+    "tags":
+      - "Block / transaction query"
+    "summary": "Transaction receipt by txid"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/block-and-tx-query/gettransactioninfobyid.md` for examples and detailed behavior."
+    "operationId": "wallet_gettransactioninfobyid_get"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/block-and-tx-query/gettransactioninfobyid.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/TransactionInfo"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetTransactionInfoByIdServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/gettransactioninfobyid"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetTransactionInfoByIdOnSolidityServlet"
+    "parameters":
+      -
+        "name": "value"
+        "in": "query"
+        "required": true
+        "schema":
+          "type": "string"
+          "description": "Hex string, amount, or value field accepted by this endpoint."
+        "x-source-derived": true
+      -
+        "name": "visible"
+        "in": "query"
+        "required": false
+        "schema":
+          "type": "boolean"
+          "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+        "x-source-derived": true
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetTransactionInfoByIdServlet.java"
+      - "protocol/src/main/protos/api/api.proto#BytesMessage"
+  "post":
+    "tags":
+      - "Block / transaction query"
+    "summary": "Transaction receipt by txid"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/block-and-tx-query/gettransactioninfobyid.md` for examples and detailed behavior."
+    "operationId": "wallet_gettransactioninfobyid_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/block-and-tx-query/gettransactioninfobyid.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/TransactionInfo"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetTransactionInfoByIdServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/gettransactioninfobyid"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetTransactionInfoByIdOnSolidityServlet"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "allOf":
+              -
+                "$ref": "#/components/schemas/BytesMessageRequest"
+            "required":
+              - "value"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetTransactionInfoByIdServlet.java"
+      - "protocol/src/main/protos/api/api.proto#BytesMessage"

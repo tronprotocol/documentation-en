@@ -1,0 +1,94 @@
+"/wallet/getassetissuebyaccount":
+  "get":
+    "tags":
+      - "TRC10 asset"
+    "summary": "TRC10s issued by an account"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyaccount.md` for examples and detailed behavior."
+    "operationId": "wallet_getassetissuebyaccount_get"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/asset/getassetissuebyaccount.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/AssetIssueList"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetAssetIssueByAccountServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "parameters":
+      -
+        "name": "address"
+        "in": "query"
+        "required": true
+        "schema":
+          "type": "string"
+          "description": "Account or contract address accepted by this endpoint."
+        "x-source-derived": true
+      -
+        "name": "visible"
+        "in": "query"
+        "required": false
+        "schema":
+          "type": "boolean"
+          "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+        "x-source-derived": true
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetAssetIssueByAccountServlet.java"
+      - "protocol/src/main/protos/core/Tron.proto#Account"
+  "post":
+    "tags":
+      - "TRC10 asset"
+    "summary": "TRC10s issued by an account"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyaccount.md` for examples and detailed behavior."
+    "operationId": "wallet_getassetissuebyaccount_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/asset/getassetissuebyaccount.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/AssetIssueList"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetAssetIssueByAccountServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "allOf":
+              -
+                "$ref": "#/components/schemas/AccountRequest"
+            "required":
+              - "address"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetAssetIssueByAccountServlet.java"
+      - "protocol/src/main/protos/core/Tron.proto#Account"

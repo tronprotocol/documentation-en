@@ -1,0 +1,57 @@
+{
+  "name": "eth_getTransactionReceipt",
+  "tags": [
+    {
+      "name": "Block / transaction query"
+    }
+  ],
+  "summary": "Query a receipt by txid",
+  "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/block-and-tx-query/eth_getTransactionReceipt.md` for examples and detailed behavior.",
+  "paramStructure": "by-position",
+  "params": [
+    {
+      "name": "txid",
+      "required": true,
+      "schema": {
+        "type": "string",
+        "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+      },
+      "x-java-type": "String",
+      "x-position": 0,
+      "description": "32-byte transaction id, with or without the 0x prefix."
+    }
+  ],
+  "result": {
+    "name": "result",
+    "schema": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/TransactionReceipt"
+        },
+        {
+          "type": "null",
+          "title": "EthGetTransactionReceiptResultNull2"
+        }
+      ]
+    }
+  },
+  "errors": [
+    {
+      "code": -32602,
+      "message": "JsonRpcInvalidParamsException"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/json-rpc/block-and-tx-query/eth_getTransactionReceipt.md"
+  },
+  "x-source-derived": true,
+  "x-java-method": "getTransactionReceipt",
+  "x-java-source": "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java",
+  "x-ports": "FullNode 8545 / Solidity 8555",
+  "x-overlay-derived": true,
+  "x-source-refs": [
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionReceipt",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionReceipt",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionReceipt.java#class TransactionReceipt"
+  ]
+}

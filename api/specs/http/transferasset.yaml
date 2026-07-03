@@ -1,0 +1,47 @@
+"/wallet/transferasset":
+  "post":
+    "tags":
+      - "TRC10 asset"
+    "summary": "Transfer TRC10"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/transferasset.md` for examples and detailed behavior."
+    "operationId": "wallet_transferasset_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/asset/transferasset.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/Transaction"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "TransferAssetServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "allOf":
+              -
+                "$ref": "#/components/schemas/TransferAssetContractRequest"
+            "required":
+              - "asset_name"
+              - "owner_address"
+              - "to_address"
+              - "amount"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "actuator/src/main/java/org/tron/core/actuator/TransferAssetActuator.java#validate"
+      - "protocol/src/main/protos/core/contract/asset_issue_contract.proto#TransferAssetContract"

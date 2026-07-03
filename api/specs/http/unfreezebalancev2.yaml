@@ -1,0 +1,46 @@
+"/wallet/unfreezebalancev2":
+  "post":
+    "tags":
+      - "Stake 2.0"
+    "summary": "Initiate unfreeze (14-day waiting period)"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/stake-v2/unfreezebalancev2.md` for examples and detailed behavior."
+    "operationId": "wallet_unfreezebalancev2_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/stake-v2/unfreezebalancev2.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/Transaction"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "UnFreezeBalanceV2Servlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "allOf":
+              -
+                "$ref": "#/components/schemas/UnfreezeBalanceV2ContractRequest"
+            "required":
+              - "owner_address"
+              - "unfreeze_balance"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "actuator/src/main/java/org/tron/core/actuator/UnfreezeBalanceV2Actuator.java#validate"
+      - "protocol/src/main/protos/core/contract/balance_contract.proto#UnfreezeBalanceV2Contract"
+      - "protocol/src/main/protos/core/contract/common.proto#ResourceCode"

@@ -1,0 +1,60 @@
+"/wallet/broadcasttransaction":
+  "post":
+    "tags":
+      - "Transaction build / broadcast"
+    "summary": "Broadcast a signed transaction (JSON)"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/tx-build-and-broadcast/broadcasttransaction.md` for examples and detailed behavior."
+    "operationId": "wallet_broadcasttransaction_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/tx-build-and-broadcast/broadcasttransaction.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "type": "object"
+                  "additionalProperties": false
+                  "properties":
+                    "result":
+                      "type": "boolean"
+                    "code":
+                      "type": "string"
+                    "message":
+                      "type": "string"
+                    "txid":
+                      "type": "string"
+                  "x-java-response": "Return/GrpcAPI.Return plus transaction id fields"
+                  "not":
+                    "required":
+                      - "Error"
+                  "title": "BroadcasttransactionPostResultObject1"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "BroadcastServlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "allOf":
+              -
+                "$ref": "#/components/schemas/TransactionRequest"
+            "required":
+              - "raw_data"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/BroadcastServlet.java"
+      - "framework/src/main/java/org/tron/core/services/http/Util.java"
+      - "protocol/src/main/protos/core/Tron.proto#Transaction"

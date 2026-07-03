@@ -1,0 +1,111 @@
+"/wallet/getdelegatedresourcev2":
+  "get":
+    "tags":
+      - "Stake 2.0"
+    "summary": "Query delegation records"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/stake-v2/getdelegatedresourcev2.md` for examples and detailed behavior."
+    "operationId": "wallet_getdelegatedresourcev2_get"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/stake-v2/getdelegatedresourcev2.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/DelegatedResourceList"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetDelegatedResourceV2Servlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/getdelegatedresourcev2"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetDelegatedResourceV2OnSolidityServlet"
+    "parameters":
+      -
+        "name": "fromAddress"
+        "in": "query"
+        "required": true
+        "schema":
+          "type": "string"
+          "description": "Source account address."
+        "x-source-derived": true
+      -
+        "name": "toAddress"
+        "in": "query"
+        "required": true
+        "schema":
+          "type": "string"
+          "description": "Destination account address."
+        "x-source-derived": true
+      -
+        "name": "visible"
+        "in": "query"
+        "required": false
+        "schema":
+          "type": "boolean"
+          "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+        "x-source-derived": true
+  "post":
+    "tags":
+      - "Stake 2.0"
+    "summary": "Query delegation records"
+    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/stake-v2/getdelegatedresourcev2.md` for examples and detailed behavior."
+    "operationId": "wallet_getdelegatedresourcev2_post"
+    "externalDocs":
+      "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/stake-v2/getdelegatedresourcev2.md"
+    "responses":
+      "200":
+        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "content":
+          "application/json":
+            "schema":
+              "oneOf":
+                -
+                  "$ref": "#/components/schemas/DelegatedResourceList"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-business-error":
+                "httpStatus": 200
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+      "404":
+        "description": "Endpoint disabled by node configuration."
+    "x-source-derived": true
+    "x-java-service": "FullNode HTTP"
+    "x-java-servlet": "GetDelegatedResourceV2Servlet"
+    "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
+    "x-tron-alternate-endpoints":
+      -
+        "path": "/walletsolidity/getdelegatedresourcev2"
+        "service": "HTTP OnSolidity"
+        "consistency": "solidified"
+        "x-java-servlet": "GetDelegatedResourceV2OnSolidityServlet"
+    "requestBody":
+      "required": true
+      "content":
+        "application/json":
+          "schema":
+            "allOf":
+              -
+                "$ref": "#/components/schemas/DelegatedResourceMessageRequest"
+            "required":
+              - "fromAddress"
+              - "toAddress"
+    "x-overlay-derived": true
+    "x-source-refs":
+      - "framework/src/main/java/org/tron/core/services/http/GetDelegatedResourceV2Servlet.java"
+      - "protocol/src/main/protos/api/api.proto#DelegatedResourceMessage"
