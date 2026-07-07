@@ -61,4 +61,5 @@ Returns `{}` when there are no nodes.
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error (failed to fetch node list or serialize) | `{"Error": "<exceptionClass> : <message>"}` |

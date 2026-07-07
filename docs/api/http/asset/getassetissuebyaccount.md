@@ -66,8 +66,8 @@ Returns `{}` if the account has not issued any token.
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | `address` is not valid base58check (`visible=true`) | GET: non-base58 characters → `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; checksum-only error makes `Util.getHexAddress` silently return an empty string, the lookup misses and `{}` is returned. POST (via `JsonFormat.merge`): non-base58 characters → `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <pos>: INVALID base58 String, ..."}`; checksum-only error → `{"Error": "class java.lang.NullPointerException : null"}` |
 | `address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

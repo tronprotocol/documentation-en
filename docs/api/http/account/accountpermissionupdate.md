@@ -14,7 +14,7 @@ Update an account's owner / witness / active permissions (multi-sig configuratio
 | `owner` | Permission | Yes | Owner permission (type=Owner, id=0; cannot be empty) |
 | `witness` | Permission | No | Witness permission (type=Witness, id=1); only set on SR accounts |
 | `actives` | repeated Permission | Yes | Active permission list (type=Active, id starts from 2) |
-| `permission_id` | int32 | No | Permission ID used for the current signature |
+| `Permission_id` | int32 | No | Permission ID used for the current signature |
 | `visible` | bool | No | Address format |
 
 `Permission` fields (`Tron.proto`):
@@ -111,8 +111,8 @@ Response example (`txID`, `ref_block_*`, `expiration`, `timestamp`, and `raw_dat
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | `AllowMultiSign` proposal not enabled | `{"Error": "class org.tron.core.exception.ContractValidateException : multi sign is not allowed, need to be opened by the committee"}` |
 | `owner_address` is not a valid 21-byte address | `{"Error": "class org.tron.core.exception.ContractValidateException : invalidate ownerAddress"}` |
 | `owner_address` does not exist on chain | `{"Error": "class org.tron.core.exception.ContractValidateException : ownerAddress account does not exist"}` |

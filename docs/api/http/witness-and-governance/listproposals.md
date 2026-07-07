@@ -55,4 +55,5 @@ Response example (Nile currently has 20000+ proposals, only the first one from g
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error (failed to read Proposal storage) | `{"Error": "<exceptionClass> : <message>"}` |

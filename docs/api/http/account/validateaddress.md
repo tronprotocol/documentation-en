@@ -44,7 +44,7 @@ However, two steps in `doPost` run **before** `validAddress` and can throw, and 
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | Empty body (`Util.checkBodySize` throws `java.lang.Exception`, which is swallowed by the catch) |
-| Request body is not valid JSON (POST) | Empty body (`JSON.parseObject` throws `com.alibaba.fastjson.JSONException`, which is swallowed) |
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON (POST) | Empty body (`JSON.parseObject` throws `org.tron.json.JSONException`, which is swallowed) |
 
 The GET path does not read the body, so the two cases above only trigger on POST.

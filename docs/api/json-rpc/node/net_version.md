@@ -31,4 +31,4 @@ The example below is the real response captured from the Nile testnet curl above
 
 ### Error responses
 
-Same as [`eth_chainId`](eth_chainId.md): if the underlying genesis block cannot be loaded, throws `-32000`, passing through the underlying `Exception.getMessage()`.
+Same as [`eth_chainId`](eth_chainId.md): the implementation can throw `JsonRpcInternalException` if the underlying genesis block cannot be loaded, but the interface declaration does not define a `@JsonRpcErrors` mapping for that exception. Because of that, java-tron does not expose a stable method-level `-32000` mapping for this endpoint.

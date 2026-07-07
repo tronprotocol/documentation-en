@@ -65,4 +65,5 @@ Response example (Nile has 800+ candidates, only the first one is shown; `voteCo
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error (failed to read Witness storage) | `{"Error": "<exceptionClass> : <message>"}` |

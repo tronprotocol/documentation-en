@@ -12,6 +12,7 @@ Returns the number of transactions contained in a given block number.
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `num` | int64 | Yes | Block number |
+| `int64_as_string` | bool | No | GET only; when `true`, returns `count` as a JSON string |
 
 Example:
 
@@ -37,11 +38,17 @@ Response example:
 { "count": 4 }
 ```
 
+With `?int64_as_string=true` on a GET request:
+
+```json
+{ "count": "4" }
+```
+
 ### Error responses
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | `num` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

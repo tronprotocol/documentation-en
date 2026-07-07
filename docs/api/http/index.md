@@ -13,8 +13,11 @@ The following categories are intentionally not covered:
 - **Method**: a few pure-query endpoints accept `GET`, but most POST endpoints only accept `POST` with a JSON body.
 - **`visible`**: when `true`, addresses are base58check strings and text fields (URL, descriptions, etc.) are UTF-8 strings; when `false` (default), they are hex strings.
 - **Builder endpoints** return an unsigned `protocol.Transaction`. The caller signs it locally and broadcasts it via [`/wallet/broadcasttransaction`](tx-build-and-broadcast/broadcasttransaction.md) or [`/wallet/broadcasthex`](tx-build-and-broadcast/broadcasthex.md).
-- **`permission_id`**: optional on builder endpoints; selects which `Permission` to use for multi-sig accounts.
+- **`Permission_id`**: optional on builder endpoints; selects which `Permission` to use for multi-sig accounts. The field name is case-sensitive.
 - **Amount unit**: TRC-10 amounts use the issuer-defined precision; every other amount is in sun (1 TRX = 1e6 sun).
+- **`int64_as_string`**: GET requests may add `int64_as_string=true` in the URL query. When enabled, int64 / uint64 fields in protobuf JSON responses are serialized as JSON strings to avoid precision loss in clients such as JavaScript. This flag is honored only for GET requests; POST bodies are not affected.
+- **Request body size**: HTTP request bodies are limited by `node.http.maxMessageSize` in `config.conf` (default `4194304`, about 4 MiB; `0` rejects every non-empty body). JSON-RPC has its own independent `node.jsonrpc.maxMessageSize`.
+- **Rate limiting**: per-endpoint HTTP limits are configured in `rate.limiter.http`. The global `rate.limiter.apiNonBlocking` switch controls over-limit behavior: `true` rejects immediately; `false` queues and blocks the caller until a permit is available.
 
 !!! warning "XSS security note"
 
@@ -29,6 +32,7 @@ The following categories are intentionally not covered:
 In the vast majority of cases the HTTP status is **200** — business errors are conveyed in the response body, so the client must parse the body to determine success or failure. Known exceptions:
 
 - When an endpoint is explicitly disabled via the node's `disabledApiList`, `HttpApiAccessFilter` returns **HTTP 404** with body `{"Error": "this API is unavailable due to config"}`.
+- When a request body exceeds `node.http.maxMessageSize`, the shared HTTP `SizeLimitHandler` may reject it with **HTTP 413** (`Payload Too Large`) before the target servlet handles the request. If the request reaches a servlet and the servlet-side `Util.checkBodySize` check detects the oversized body, the endpoint follows its own error-response format, which for some endpoints is still **HTTP 200** with an error body.
 - When the node runs in lite fullnode mode and `openHistoryQueryWhenLiteFN` is not enabled, `LiteFnQueryHttpFilter` returns **HTTP 200** for ~24 historical-query endpoints (`getblockbynum` / `gettransactionbyid` / `gettransactioninfobyid` / `gettransactioninfobyblocknum` / `getblockbyid` / `getblockbylatestnum` / `getblockbylimitnext` / `gettransactioncountbyblocknum`, etc.) but the body is the bare string `this API is closed because this node is a lite fullnode` (**not JSON**) — a naive `JSON.parse` will throw, so clients must check the prefix as a string first.
 - Network-layer errors produced by the servlet container or a reverse proxy (502, 504, connection refused, etc.) are out of scope for this document.
 

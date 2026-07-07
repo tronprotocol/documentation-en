@@ -18,13 +18,14 @@ The URL path is always `/jsonrpc` (see `FullNodeJsonRpcHttpService.java`).
 ## Protocol conventions
 
 - **Transport**: `POST` only; the request body is in [JSON-RPC 2.0](https://www.jsonrpc.org/specification) format: `{"jsonrpc":"2.0","method":"...","params":[...],"id":1}`.
-- **HTTP status code**: always 200; business errors are conveyed via the `error` field in the response body (see `JsonRpcServlet.java`).
+- **HTTP status code**: after a request reaches `JsonRpcServlet`, JSON-RPC business errors are returned with HTTP 200 and an `error` field in the response body. Transport-layer failures can still return non-200 status codes; for example, an oversized request body may be rejected before servlet dispatch.
 - **Numeric encoding**: all numbers (block number, balance, gas, timestamp, etc.) use `0x`-prefixed hex strings; null values map to `0x` or `0x0`.
 - **Address encoding**: JSON-RPC interfaces accept `0x`-prefixed 20-byte hex addresses by default; base58check is also accepted (internally converted by `JsonRpcApiUtil.addressCompatibleToByteArray`).
-- **Block tags**: among the common `latest` / `earliest` / `pending` / `finalized`, **only a few methods support these tags**:
-    - Block-query methods such as `eth_getBlockByNumber` and `eth_getBlockReceipts` accept `latest` / `earliest` / `finalized`; `pending` is explicitly unsupported and throws `-32602 TAG pending not supported`.
-    - `eth_getBalance` / `eth_getStorageAt` / `eth_getCode` / `eth_call` **only support `latest`**; `earliest` / `pending` / `finalized` raise `-32602 TAG [earliest | pending | finalized] not supported`, and a specific height raises `-32602 QUANTITY not supported, just support TAG as latest`.
-    - `eth_newFilter` does not support `finalized` (raises `-32602 invalid block range params`).
+- **Call data fields**: `eth_call`, `eth_estimateGas`, and `buildTransaction` accept both `data` and `input`. `input` follows stricter execution-API hex rules (`0x` prefix, even length; empty string means empty bytes). `data` remains lenient for backward compatibility.
+- **Block tags**: among the common `latest` / `earliest` / `pending` / `finalized` / `safe`, **only a few methods support these tags**:
+    - Block-query methods such as `eth_getBlockByNumber` and `eth_getBlockReceipts` accept `latest` / `earliest` / `finalized`; `pending` and `safe` are explicitly unsupported and throw `-32602 TAG pending not supported` or `-32602 TAG safe not supported`.
+    - `eth_getBalance` / `eth_getStorageAt` / `eth_getCode` / `eth_call` **only support `latest`**; `earliest` / `pending` / `finalized` / `safe` raise `-32602 TAG [earliest | pending | finalized | safe] not supported`, and a specific height raises `-32602 QUANTITY not supported, just support TAG as latest`.
+    - `eth_newFilter` does not support `finalized` (raises `-32602 invalid block range params`), nor `pending` / `safe` (raises the corresponding `TAG ... not supported`).
 
 ## Error responses
 
@@ -32,11 +33,14 @@ JSON-RPC protocol errors use `error.code` / `error.message`. Business exceptions
 
 | Code | Exception class | Meaning |
 |---|---|---|
-| `-32600` | `JsonRpcInvalidRequestException` | Request body is invalid or contract validation failed (e.g. `eth_call`'s `params[1]` is neither a tag string nor a `{blockNumber/blockHash}` object, or `ContractValidateException`) |
+| `-32700` | JSON parser / stream constraint exception | Request body cannot be parsed as JSON (`JSON parse error`) or exceeds Jackson stream constraints (passes through Jackson's message) |
+| `-32600` | `JsonRpcInvalidRequestException` / servlet request validation | Request body is invalid, batch item is not an object, or contract validation failed (e.g. `eth_call`'s `params[1]` is neither a tag string nor a `{blockNumber/blockHash}` object, or `ContractValidateException`) |
 | `-32601` | `JsonRpcMethodNotFoundException` | Method does not exist or is unavailable on the current node type (Solidity nodes disable `buildTransaction`, plus a set of always-unsupported methods) |
 | `-32602` | `JsonRpcInvalidParamsException` | Invalid parameters (wrong hash length, wrong address format, unsupported block tag, etc.) |
+| `-32603` | Servlet fallback exception handler | Internal servlet error (`Internal error`) |
 | `-32000` | `JsonRpcInternalException` / `ItemNotFoundException` / `BadItemException` / `ExecutionException` / `InterruptedException` | Server-side internal error (block does not exist, VM execution fails, `etherbase` not configured, filter not found, lite fullnode pruned, etc.) |
-| `-32005` | `JsonRpcExceedLimitException` / `JsonRpcTooManyResultException` | Limit hit (`eth_newBlockFilter` exceeded `maxBlockFilterNum`, or `eth_getLogs` results exceed `LogBlockQuery.MAX_RESULT=10000`; `maxBlockRange` overflow throws `-32602` `exceed max block range` separately) |
+| `-32003` | Servlet response-size guard | Response body exceeds `maxResponseSize` (`Response exceeds the limit of <N> bytes`) |
+| `-32005` | `JsonRpcExceedLimitException` / `JsonRpcTooManyResultException` / servlet batch-size guard | Limit hit (`eth_newBlockFilter` exceeded `maxBlockFilterNum`, `eth_newFilter` exceeded `maxLogFilterNum`, request batch size exceeded `maxBatchSize`, or `eth_getLogs` results exceeded `LogBlockQuery.MAX_RESULT=10000`; validation limits such as `maxBlockRange`, `maxAddressSize`, and `maxSubTopics` throw `-32602`) |
 
 Example error response:
 
@@ -113,9 +117,14 @@ Filter-related defaults (see the `jsonrpc {}` block in `config.conf`):
 
 | Config item | Default | Meaning |
 |---|---|---|
-| `maxBlockRange` | 5000 | Per-request `[fromBlock, toBlock]` span allowed for `eth_getLogs` |
+| `maxBlockRange` | 5000 | Per-request `[fromBlock, toBlock]` span allowed for `eth_getLogs` and `eth_getFilterLogs` |
+| `maxAddressSize` | 1000 | Address count allowed in one filter request |
 | `maxSubTopics` | 1000 | OR-candidate count allowed in a single topic slot |
 | `maxBlockFilterNum` | 50000 | Max block filters alive concurrently on a single node |
+| `maxLogFilterNum` | 20000 | Max log filters alive concurrently on a single node |
+| `maxBatchSize` | 100 | Max JSON-RPC batch request size |
+| `maxResponseSize` | 26214400 | Max response body size in bytes (25 MiB) |
+| `maxMessageSize` | 4194304 | Max JSON-RPC request body size in bytes (about 4 MiB); independent from HTTP/gRPC limits |
 
 ## Transaction build
 

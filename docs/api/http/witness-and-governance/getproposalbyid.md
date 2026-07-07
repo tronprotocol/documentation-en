@@ -60,9 +60,9 @@ Returns `{}` when not found.
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | `id` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
-| Request body is not valid JSON (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` |
+| Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | `id` missing (POST) | `{"Error": "class java.security.InvalidParameterException : key [id] does not exist"}` |
-| `id` is not numeric (POST, including string/bool/array/object) | `{"Error": "class java.lang.NumberFormatException : null"}` (`Util.getJsonLongValue` uses fastjson's `getBigDecimal`) |
+| `id` is not numeric (POST, including string/bool/array/object) | `{"Error": "class java.lang.NumberFormatException : null"}` (`Util.getJsonLongValue` uses `org.tron.json.JSONObject#getBigDecimal`) |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

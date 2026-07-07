@@ -62,6 +62,6 @@ Returns `{}` if not found.
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` |
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

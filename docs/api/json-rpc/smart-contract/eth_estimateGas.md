@@ -9,11 +9,11 @@ Estimate a transaction's energy consumption (Tron's counterpart of Ethereum gas)
 
 | Position | Type | Required | Description |
 |---|---|---|---|
-| `params[0]` | object | yes | `CallArguments` (same as [`eth_call`](eth_call.md)); `from` / `to` / `value` / `data` are used to infer the contract type |
+| `params[0]` | object | yes | `CallArguments` (same as [`eth_call`](eth_call.md)); `from` / `to` / `value` / `data` / `input` are used to infer the contract type |
 
 `CallArguments.getContractType` inference rules:
 
-- `to` is empty and `data` is non-empty → `CreateSmartContract`
+- `to` is empty and calldata is non-empty → `CreateSmartContract`
 - `to` is a contract address → `TriggerSmartContract`
 - `to` is a regular account and `value` is non-empty → `TransferContract` (returns `0x0` directly without entering EVM estimation)
 - Otherwise → throws `-32600 invalid json request[: invalid value]`
@@ -51,10 +51,11 @@ The example below is the real response captured from the Nile testnet curl above
 
 | Trigger | Code | message |
 |---|---|---|
-| `from` is missing / not valid hex / wrong length | `-32602` | passes through `addressCompatibleToByteArray` message |
+| `from` is not valid hex / wrong length | `-32602` | passes through `addressCompatibleToByteArray` message |
 | `to` is not valid hex / wrong length | `-32602` | passes through `addressCompatibleToByteArray` message |
-| `from` is valid but both `to` and `data` are missing | `-32600` | `invalid json request` |
+| `from` is valid but both `to` and calldata (`data` / `input`) are missing | `-32600` | `invalid json request` |
 | `to` is not a contract and `value` is missing | `-32600` | `invalid json request: invalid value` |
 | Contract validation fails (`ContractValidateException`) | `-32600` | passes through message (fallback `invalid contract`) |
 | EVM execution `REVERT` | `-32000` | message + the parsed revert string; `error.data` carries the original revert hex |
+| `input` is not strict hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
 | `data` / `value` hex invalid or other internal exceptions | `-32000` | passes through message (double quotes are replaced with single quotes) |

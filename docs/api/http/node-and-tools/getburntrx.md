@@ -10,6 +10,8 @@ Query the cumulative TRX burned (including transaction fees, contract burns, etc
 
 None.
 
+For GET requests, `int64_as_string=true` may be added to the URL query to return `burnTrxAmount` as a JSON string.
+
 Example:
 
 ```bash
@@ -28,8 +30,15 @@ Response example:
 { "burnTrxAmount": 153731208869910 }
 ```
 
+With `?int64_as_string=true` on a GET request:
+
+```json
+{ "burnTrxAmount": "153731208869910" }
+```
+
 ### Error responses
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error (failed to read dynamic properties) | `{"Error": "<exceptionClass> : <message>"}` |

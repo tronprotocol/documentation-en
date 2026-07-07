@@ -56,8 +56,8 @@ Returns `{}` if not found.
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | `id_or_num` is negative | `{"Error": "num must be non-positive number."}` |
 | `id_or_num` length is not 64 (not a valid block hash length) | `{"Error": "id must be legal block hash."}` |
 | `id_or_num` is hex but parsing fails / hash cannot be resolved to a block number | `{"Error": "id must be legal block hash."}` |

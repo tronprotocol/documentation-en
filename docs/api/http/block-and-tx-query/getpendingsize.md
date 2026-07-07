@@ -9,6 +9,8 @@ Returns the number of transactions in the node's pending pool.
 
 None.
 
+For GET requests, `int64_as_string=true` may be added to the URL query to return `pendingSize` as a JSON string.
+
 Example:
 
 ```bash
@@ -29,8 +31,15 @@ Response example:
 { "pendingSize": 2 }
 ```
 
+With `?int64_as_string=true` on a GET request:
+
+```json
+{ "pendingSize": "2" }
+```
+
 ### Error responses
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error (failed to read the pending pool) | `{"Error": "<exceptionClass> : <message>"}` |

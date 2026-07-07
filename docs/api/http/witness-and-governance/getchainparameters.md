@@ -48,4 +48,5 @@ Response example (Nile, first 8 entries; full list has 75 entries):
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error (failed to read DynamicProperties) | `{"Error": "<exceptionClass> : <message>"}` |

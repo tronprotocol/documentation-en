@@ -24,7 +24,7 @@ Build a TRC-10 token issuance transaction.
 | `url` | string | Yes | Project URL (UTF-8 hex, ≤ 256 bytes) |
 | `free_asset_net_limit` | int64 | No | Per-account free bandwidth quota for this token |
 | `public_free_asset_net_limit` | int64 | No | Public free bandwidth quota for this token |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields |
 
 Example:
@@ -96,8 +96,8 @@ Cost: issuing a TRC-10 burns a sizable amount of TRX (governed by chain paramete
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Invalid `owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid ownerAddress"}` |
 | Invalid `name` (empty, length > 32, or contains illegal characters) | `{"Error": "... : Invalid assetName"}` |
 | `name` decodes to "trx" | `{"Error": "... : assetName can't be trx"}` |

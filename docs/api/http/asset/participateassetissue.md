@@ -14,7 +14,7 @@ Participate in a TRC-10 fundraising (buy with TRX).
 | `to_address` | string | Yes | Token issuer address |
 | `asset_name` | string | Yes | Token id (since the `ALLOW_SAME_TOKEN_NAME` proposal, this is the token id as a string, e.g. `1000001`, encoded as UTF-8 hex) |
 | `amount` | int64 | Yes | TRX paid, in sun |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields |
 
 Constraints: must fall within `[start_time, end_time)`; the token amount received is computed as `amount * num / trx_num`.
@@ -74,8 +74,8 @@ Response example (`asset_name` `31303035343136` decodes to token id `1005416`; `
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Invalid `owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid ownerAddress"}` |
 | Invalid `to_address` | `{"Error": "... : Invalid toAddress"}` |
 | `amount <= 0` | `{"Error": "... : Amount must greater than 0!"}` |

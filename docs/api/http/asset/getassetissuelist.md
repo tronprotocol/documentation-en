@@ -57,4 +57,5 @@ Returns `{}` if there are none.
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error (failed to read AssetIssue store) | `{"Error": "<exceptionClass> : <message>"}` |

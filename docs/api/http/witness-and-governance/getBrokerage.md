@@ -10,7 +10,7 @@ Query the SR's current-cycle reward share ratio (brokerage).
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `address` | string | Yes | SR address |
+| `address` | string | No | SR address; omitted or empty returns `brokerage: 0` |
 | `visible` | bool | No | No effect (the servlet auto-detects address format via the `41` prefix; the response has no bytes fields) |
 
 Example:
@@ -45,7 +45,8 @@ Response example (Nile, sr-15):
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | `address` starts with `41` but is not valid hex | `{"Error": "INVALID address, <hex parser info>"}` |
 | `address` is not valid base58check | `{"Error": "INVALID address, <base58 check info>"}` |
-| POST body is not valid JSON | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` |
+| POST body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

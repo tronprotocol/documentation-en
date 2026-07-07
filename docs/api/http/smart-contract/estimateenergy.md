@@ -45,15 +45,19 @@ Response example:
 }
 ```
 
-When `vm.estimateEnergy=true` is not enabled, the call goes through the exception branch (see below); typically `result.code = OTHER_ERROR` and `result.message` contains `this node does not support estimate energy`.
+When `vm.estimateEnergy=true` is not enabled, the call goes through the `ContractValidateException` branch (see below): `result.code = CONTRACT_VALIDATE_ERROR` and `result.message` is `this node does not support estimate energy`.
 
 ### Error responses
 
-This endpoint never writes `{"Error": ...}`. All exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still an `EstimateEnergyMessage`:
+This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still an `EstimateEnergyMessage`.
+
+If the request body is rejected earlier by the shared HTTP transport layer, for example because it exceeds `node.http.maxMessageSize`, the node usually returns HTTP 413 `Payload Too Large` from `SizeLimitHandler` instead of entering this servlet.
 
 | Trigger | `result.result` | `result.code` | `result.message` |
 |---|---|---|---|
-| Contract does not exist / validation failed (`ContractValidateException`) | false | `CONTRACT_VALIDATE_ERROR` | Original validator message |
-| Node does not have `vm.estimateEnergy` enabled / EVM revert / other | false | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) |
+| The node does not have `vm.estimateEnergy` enabled | false | `CONTRACT_VALIDATE_ERROR` | `this node does not support estimate energy` |
+| The node has constant-call support disabled | false | `CONTRACT_VALIDATE_ERROR` | `this node does not support constant, so estimate energy cannot work` |
+| `contract_address` is set but the contract does not exist | false | `CONTRACT_VALIDATE_ERROR` | `Smart contract is not exist.` |
+| EVM exception / retry exhausted / other non-validation exception | false | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) |
 
 On the exception path `energy_required` is not populated (value is 0).

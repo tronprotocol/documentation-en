@@ -13,7 +13,7 @@ Build an unsigned transaction that creates a new account. The new account is act
 | `owner_address` | string | Yes | Payer address |
 | `account_address` | string | Yes | Address of the new account to create |
 | `type` | enum | No | 0=Normal (default), 1=AssetIssue, 2=Contract |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -69,8 +69,8 @@ The activation fee is deducted from `owner_address`; the amount is governed by c
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | `owner_address` is not a valid 21-byte address | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid ownerAddress"}` |
 | `owner_address` does not exist on chain | `{"Error": "class org.tron.core.exception.ContractValidateException : Account[<addr>] not exists"}` |
 | `owner_address` balance is insufficient for the activation fee | `{"Error": "class org.tron.core.exception.ContractValidateException : Validate CreateAccountActuator error, insufficient fee."}` |

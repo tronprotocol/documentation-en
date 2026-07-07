@@ -78,4 +78,5 @@ Response example (key fields only; `peerList`, full `memoryDescInfoList`, `cheat
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error (failed to collect node info or serialize) | `{"Error": "<exceptionClass> : <message>"}` |

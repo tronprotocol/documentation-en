@@ -21,7 +21,7 @@ Deploy a smart contract. Returns the unsigned deployment transaction.
 | `origin_energy_limit` | int64 | Yes | Deployer's energy limit |
 | `token_id` | int64 | No | TRC-10 token id sent with the deployment |
 | `call_token_value` | int64 | No | TRC-10 amount sent with the deployment |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -93,12 +93,12 @@ Response example (real Nile capture):
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | `owner_address` is not valid base58check (`visible=true`) | If it contains non-base58 characters: `{"Error": "class java.lang.IllegalArgumentException : <details>"}`. If only the checksum is wrong, `Util.getHexAddress` silently returns an empty string; `CreateSmartContract` construction does not validate non-empty owner, and returns a valid transaction with the `owner_address` field missing (signing/broadcasting will fail later). |
 | `owner_address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (direct call to `ByteArray.fromHexString`) |
 | `bytecode` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (direct call to `ByteArray.fromHexString`) |
-| `abi` is not valid JSON | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| `abi` is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | `consume_user_resource_percent` not in [0, 100] | `{"Error": "class org.tron.core.exception.ContractValidateException : percent must be >= 0 and <= 100"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
 

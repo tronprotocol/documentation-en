@@ -20,6 +20,7 @@ Tron private extension. Constructs an **unsigned** Tron transaction; sign it and
 | `gas` | `0x0` | Maximum energy consumed by the transaction; ultimately `feeLimit = gas × eth_gasPrice` (sun) |
 | `value` | null | TRX amount (sun, hex) |
 | `data` | null | Contract bytecode (deployment) or calldata (trigger) |
+| `input` | null | Alias for `data`; stricter hex validation, preferred when using execution-API-compatible clients |
 | `tokenId` | `0` | TRC-10 token id (used for `TransferAssetContract`) |
 | `tokenValue` | `0` | TRC-10 amount |
 | `abi` | `""` | ABI JSON string for contract deployment (e.g. `[{...}]`) |
@@ -34,7 +35,7 @@ Contract type inference (`BuildArguments.getContractType`):
 
 | Condition | ContractType |
 |---|---|
-| `to` empty + `data` non-empty | `CreateSmartContract` |
+| `to` empty + calldata non-empty | `CreateSmartContract` |
 | `to` is a contract address | `TriggerSmartContract` |
 | `to` is a regular account + `tokenId>0` + `tokenValue>0` + `value` empty | `TransferAssetContract` |
 | `to` is a regular account + `value` non-empty | `TransferContract` |
@@ -103,6 +104,8 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 | `from` missing / invalid | `-32600` | `invalid json request` |
 | Contract type inference fails (e.g. `to` + `data` + `value` all empty) | `-32600` | `invalid json request` |
 | `to` non-empty but invalid hex / wrong length | `-32602` | passes through `addressCompatibleToByteArray` message |
+| `input` is not strict hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
+| `data` and `input` are both set but resolve to different bytes | `-32602` | `both "data" and "input" are set and not equal. Please use "input" to pass transaction call data` |
 | `value` is not valid hex | `-32602` | `invalid param value: invalid hex number` |
 | `gas` is not valid hex | `-32602` | `invalid param value: invalid hex number` |
 | `tokenId` invalid after string conversion (TRC-10 path only) | `-32602` | `invalid param value: invalid tokenId` |

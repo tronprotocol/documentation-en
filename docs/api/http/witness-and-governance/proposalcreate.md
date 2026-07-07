@@ -12,7 +12,7 @@ Create a chain-parameter proposal (SRs only).
 |---|---|---|---|
 | `owner_address` | string | Yes | SR address |
 | `parameters` | array<{key, value}> | Yes | Proposal parameter entries; `key` is the parameter index, `value` is the target value |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Parameter indices are the keys returned by [`/wallet/getchainparameters`](getchainparameters.md).
@@ -74,8 +74,8 @@ Response example (`txID`, `ref_block_*`, `expiration`, `timestamp`, `raw_data_he
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Invalid `owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid address"}` |
 | owner account does not exist | `{"Error": "... : Account[<address>] not exists"}` |
 | owner is not an SR | `{"Error": "... : Witness[<address>] not exists"}` |

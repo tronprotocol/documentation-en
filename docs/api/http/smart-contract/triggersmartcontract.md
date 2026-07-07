@@ -20,7 +20,7 @@ Trigger a smart contract (state-changing call). Returns the unsigned transaction
 | `token_id` | int64 | No | TRC-10 token id sent with the call |
 | `call_token_value` | int64 | No | TRC-10 amount sent with the call |
 | `fee_limit` | int64 | Yes | Transaction fee limit (sun) |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields (response includes `result.message`, which is affected by `visible`) |
 
 Example:
@@ -94,10 +94,12 @@ Response example (real Nile capture):
 
 ### Error responses
 
-This endpoint never writes `{"Error": ...}`. All exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`:
+This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`.
+
+If the request body is rejected earlier by the shared HTTP transport layer, for example because it exceeds `node.http.maxMessageSize`, the node usually returns HTTP 413 `Payload Too Large` from `SizeLimitHandler` instead of entering this servlet.
 
 | Trigger | `result.result` | `result.code` | `result.message` |
 |---|---|---|---|
 | Empty `owner_address` / `contract_address` (`InvalidParameterException`) | false | `OTHER_ERROR` | `class java.security.InvalidParameterException : owner_address isn't set.` etc. |
-| Contract validation failed / fee_limit out of range / caller account does not exist (`ContractValidateException`) | false | `CONTRACT_VALIDATE_ERROR` | Original validator message |
+| `contract_address` does not point to an existing smart contract | false | `CONTRACT_VALIDATE_ERROR` | `No contract or not a valid smart contract` |
 | Other (hex parsing, proto merge, etc.) | false | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) |

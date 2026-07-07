@@ -2,7 +2,7 @@
 
 > **Disabled on-chain**: After proposal #70 `UNFREEZE_DELAY_DAYS` is approved (already active on mainnet), `FreezeBalanceActuator.validate()` throws `freeze v2 is open, old freeze is closed` directly, so all new requests fail. Use [`/wallet/freezebalancev2`](../stake-v2/freezebalancev2.md) instead.
 
-Freeze TRX to obtain bandwidth or energy; can be delegated to others. Minimum freeze period is 3 days.
+Freeze TRX to obtain bandwidth or energy; can be delegated to others. On nodes with `block.checkFrozenTime=1`, the duration must be within the chain's current dynamic range (normally exactly 3 days).
 
 - Source: `framework/src/main/java/org/tron/core/services/http/FreezeBalanceServlet.java`
 - Method: `POST`
@@ -14,10 +14,10 @@ Freeze TRX to obtain bandwidth or energy; can be delegated to others. Minimum fr
 |---|---|---|---|
 | `owner_address` | string | Yes | Freezing account address |
 | `frozen_balance` | int64 | Yes | Frozen amount (sun) |
-| `frozen_duration` | int64 | Yes | Freeze duration in days (must be ≥ 3) |
+| `frozen_duration` | int64 | No | Freeze duration in days; omitted defaults to `0`. Validated only when `block.checkFrozenTime=1`, when it must be within `[minFrozenTime, maxFrozenTime]` (normally `[3, 3]`) |
 | `resource` | enum | No | `BANDWIDTH` / `ENERGY`, default `BANDWIDTH` |
 | `receiver_address` | string | No | Delegate target address (omit to freeze for self) |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -79,8 +79,8 @@ On chains where proposal #70 has not been activated, the endpoint still returns 
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Proposal #70 `UNFREEZE_DELAY_DAYS` activated (mainnet default) | `{"Error": "class org.tron.core.exception.ContractValidateException : freeze v2 is open, old freeze is closed"}` |
 | `owner_address` is not a valid 21-byte address | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid address"}` |
 | `owner_address` does not exist on chain | `{"Error": "class org.tron.core.exception.ContractValidateException : Account[<addr>] not exists"}` |
@@ -88,7 +88,7 @@ On chains where proposal #70 has not been activated, the endpoint still returns 
 | `frozen_balance < 1_000_000` (less than 1 TRX) | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenBalance must be greater than or equal to 1 TRX"}` |
 | Existing frozen-record count on the account is not in `{0,1}` | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenCount must be 0 or 1"}` |
 | `frozen_balance > account balance` | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenBalance must be less than or equal to accountBalance"}` |
-| `frozen_duration` outside `[minFrozenTime, maxFrozenTime]` (only when `--check-frozen-time=1`) | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenDuration must be less than <max> days and more than <min> days"}` |
+| `frozen_duration` outside `[minFrozenTime, maxFrozenTime]` (only when `block.checkFrozenTime=1`) | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenDuration must be less than <max> days and more than <min> days"}` |
 | Invalid `resource` (when `AllowNewResourceModel` is not enabled, `TRON_POWER` is not allowed) | `{"Error": "class org.tron.core.exception.ContractValidateException : ResourceCode error, valid ResourceCode[BANDWIDTH、ENERGY]"}` or `... [BANDWIDTH、ENERGY、TRON_POWER]` |
 | `resource=TRON_POWER` but `receiver_address` is also set | `{"Error": "class org.tron.core.exception.ContractValidateException : TRON_POWER is not allowed to delegate to other accounts."}` |
 | `receiver_address == owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : receiverAddress must not be the same as ownerAddress"}` |

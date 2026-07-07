@@ -37,6 +37,4 @@ The example below is the real response captured from a Nile testnet call:
 
 ### Error responses
 
-| Trigger | Code | message |
-|---|---|---|
-| Unable to load block 0 (extreme cases such as the node not having finished loading the genesis block) | `-32000` | passes through the underlying `Exception.getMessage()` |
+The implementation can throw `JsonRpcInternalException` if block 0 cannot be loaded, but the `eth_chainId` interface declaration does not define a `@JsonRpcErrors` mapping for that exception. Because of that, java-tron does not expose a stable method-level `-32000` mapping for this endpoint.

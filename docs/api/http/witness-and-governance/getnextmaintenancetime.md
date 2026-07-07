@@ -33,4 +33,5 @@ Response example (`num` advances at the end of each maintenance period):
 
 | Trigger | Response |
 |---|---|
+| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Internal node error | `{"Error": "<exceptionClass> : <message>"}` |
