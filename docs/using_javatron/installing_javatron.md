@@ -363,7 +363,7 @@ node.backup {
 
 ### Speeding Up Node Data Synchronization
 
-For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](backup_restore.md#main-net-data-snapshot) to accelerate node synchronization.
+For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](backup_restore.md#mainnet-data-snapshots) to accelerate node synchronization.
 
 The operational steps are as follows:
 
