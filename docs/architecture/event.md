@@ -201,7 +201,7 @@ event.subscribe = {
     * If `startSyncBlockNum <= 0`, this feature is disabled.
     * If `startSyncBlockNum > 0`, this feature is enabled, and historical event synchronization will begin from the specified block height. **Note**: We recommend using the latest version of the event plugin when enabling this feature.
 * `native.useNativeQueue`: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. If you need to support Kafka event subscriptions, ensure this field is set to `false`; otherwise, Kafka subscriptions will not work.
-* `path`: The absolute local path to the `plugin-kafka-*.zip` file. For java-tron v4.8.2 and later, the plugin package must declare `Plugin-Version` `3.0.0` or later. Please ensure the path is correct, or the plugin will fail to load.
+* `path`: The absolute local path to the plugin ZIP file you built or downloaded, e.g., `plugin-kafka-3.0.0.zip`. For java-tron v4.8.2 and later, the plugin package must declare `Plugin-Version` `3.0.0` or later. Please ensure the path is correct, or the plugin will fail to load.
 * `server`: The Kafka server address in `ip:port` format. The default Kafka port is `9092`. Please ensure the port number is correct and that the Kafka service is accessible.
 * `dbconfig`: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.
 * `contractParse`: Controls whether contract logs are ABI-decoded. When `true` (the default), the node matches each log against the contract's ABI; matched logs are delivered as decoded `contractevent` triggers, while unmatched logs are delivered as raw `contractlog` triggers. When `false`, ABI decoding is skipped and all logs are delivered as raw `contractlog` triggers.
@@ -491,7 +491,7 @@ event.subscribe = {
   native = {
     useNativeQueue = false  
   }
-  path = "/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-*.zip"
+  path = "/deploy/fullnode/event-plugin/build/plugins/<plugin-mongodb-x.x.x.zip>"
   server = "127.0.0.1:27017"  
   dbconfig = "eventlog|<eventlog-username>|<eventlog-password>"  
   topics = [
@@ -552,7 +552,7 @@ event.subscribe = {
 * `enable`: The global event subscription switch. If `false`, event subscription is disabled and the plugin path, topics, and filter settings are not applied, unless the legacy `--es` command-line flag is also specified.
 * `startSyncBlockNum`: A feature introduced in V2.0 that allows processing and pushing events from historical blocks, satisfying the need for historical data subscriptions. If `startSyncBlockNum <= 0`, this feature is disabled. If `startSyncBlockNum > 0`, the feature is enabled, and historical event synchronization will begin from the specified block height. **Note**: It is recommended to use the latest version of the event plugin when enabling this feature.
 * `native.useNativeQueue`: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. `true` uses the built-in queue, while `false` uses the plugin. This must be set to `false`.
-* `path`: The absolute path to the plugin file, e.g., `"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-*.zip"`. For java-tron v4.8.2 and later, the plugin package must declare `Plugin-Version` `3.0.0` or later.
+* `path`: The absolute path to the plugin file. Replace the `<plugin-mongodb-x.x.x.zip>` placeholder with the actual name of the ZIP file you built or downloaded, e.g., `"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-3.0.0.zip"`. For java-tron v4.8.2 and later, the plugin package must declare `Plugin-Version` `3.0.0` or later.
 * `server`: The target server address, i.e., the address and port for MongoDB, e.g., `"127.0.0.1:27017"`.
 * `dbconfig`: The MongoDB database configuration in the format: `database_name|username|password`, e.g., `"eventlog|<eventlog-username>|<eventlog-password>"`.
 * `topics`: Seven event types are currently supported: `block`, `transaction`, `contractevent`, `contractlog`, `solidity`, `solidityevent`, and `soliditylog`. For more details, please refer to the [Event Types](#event-types) chapter.
