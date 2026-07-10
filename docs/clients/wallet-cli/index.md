@@ -7,26 +7,36 @@ and talks to a TRON node primarily over gRPC (through the
 broadcast transactions. A few features (such as GasFree fee-delegated transfers) instead call the
 relevant service over HTTP.
 
-It offers two ways to drive it:
+It offers three ways to drive it:
 
-- **Interactive (REPL) mode** — a human-friendly shell with tab completion and interactive prompts.
-  Best for manual exploration and day-to-day wallet management.
-- **Standard CLI mode** — a non-interactive, scriptable interface with deterministic exit codes and
-  optional JSON output. Best for automation, scripts, CI/CD, and AI agents.
+- **Java Interactive (REPL) mode** — a human-friendly shell with tab completion and interactive
+  prompts. Best for manual exploration and day-to-day wallet management.
+- **Java Standard CLI mode** — a non-interactive, scriptable interface with deterministic exit codes
+  and optional JSON output. Best for automation and scripts that use the Java JAR.
+- **TypeScript / npm CLI** — a separate Node.js-based CLI introduced in 4.9.7 and published as
+  `@tron-walletcli/wallet-cli`. It uses grouped commands such as `tx send` and `account balance`,
+  and is designed for automation, CI/CD, and AI agents.
 
-Every command in this documentation is shown in both modes wherever it exists in both. Use the tabs
-to switch:
+The command reference pages below focus on the Java JAR's REPL and Standard CLI modes. For the
+Node.js command surface, see [TypeScript / npm CLI](typescript-cli.md). Use the tabs below to compare
+the same account query across the three entry points:
 
-=== "Standard CLI"
+=== "Java Standard CLI"
 
     ```bash
     java -jar build/libs/wallet-cli.jar --network nile get-account --address TXyz...
     ```
 
-=== "REPL"
+=== "Java REPL"
 
     ```
     GetAccount TXyz...
+    ```
+
+=== "TypeScript / npm CLI"
+
+    ```bash
+    wallet-cli account info --network tron:nile --account TXyz...
     ```
 
 ## Build

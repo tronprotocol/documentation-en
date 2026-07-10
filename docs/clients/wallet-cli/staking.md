@@ -13,15 +13,14 @@ Resource codes used throughout:
 |------|----------|
 | `0` | BANDWIDTH |
 | `1` | ENERGY |
-| `2` | TRON_POWER (voting power; REPL freeze/unfreeze only, network-gated) |
+| `2` | TRON_POWER (voting power; freeze/unfreeze only, network-gated) |
 
-Code `2` (TRON_POWER) is accepted only by the **REPL** freeze/unfreeze commands —
-`FreezeBalance`/`UnfreezeBalance` (Stake 1.0) and `FreezeBalanceV2`/`UnfreezeBalanceV2` (Stake 2.0).
-Even there it is network-gated: the node only allows a code-`2` freeze when the chain parameter
-`getAllowNewResourceModel` is enabled, which is **not** the case on mainnet — so in practice only
-`0`/`1` are usable. Every Standard CLI command that takes a `--resource` rejects anything other than
-`0` (BANDWIDTH) or `1` (ENERGY) up front with a usage error. Delegation commands (both modes)
-likewise accept only `0` or `1`.
+Code `2` (TRON_POWER) is network-gated for freeze/unfreeze commands:
+`FreezeBalance`/`UnfreezeBalance` (Stake 1.0), `FreezeBalanceV2`/`UnfreezeBalanceV2` (Stake 2.0),
+and their Standard CLI equivalents accept it only when the chain parameter
+`getAllowNewResourceModel` is enabled. If that chain parameter cannot be fetched, the 4.9.7 client
+fails open and lets the node validate the transaction at broadcast. Delegation commands (both modes)
+always accept only `0` or `1`; TRON_POWER is not delegatable.
 
 Amounts are in **SUN** (1 TRX = 1,000,000 SUN).
 
@@ -46,8 +45,9 @@ resource queries at the end of the page do not.
     ```
 
     - `--amount` (required, SUN), `--duration` (required, days).
-    - `--resource` (optional, `0`/`1`, default `0`). Standard CLI accepts only `0`/`1`; to freeze
-      for TRON_POWER (voting power, code `2`) use the REPL `FreezeBalance`.
+    - `--resource` (optional, `0`/`1`/`2`, default `0`). `2` is TRON_POWER and is allowed only when
+      `getAllowNewResourceModel` is enabled. If `--receiver` is set, the operation is delegated and
+      `2` is rejected.
     - `--receiver` (optional) — delegate the obtained resource to another address.
     - `--owner`, `--multi` (optional).
 
@@ -67,7 +67,9 @@ resource queries at the end of the page do not.
     java -jar build/libs/wallet-cli.jar --network nile unfreeze-balance --resource 1
     ```
 
-    - `--resource` (optional, default `0`).
+    - `--resource` (optional, `0`/`1`/`2`, default `0`). `2` is TRON_POWER and is allowed only when
+      `getAllowNewResourceModel` is enabled. If `--receiver` is set, the operation targets a
+      delegated freeze and `2` is rejected.
     - `--receiver` (optional) — required if the resource was delegated.
     - `--owner`, `--multi` (optional).
 
@@ -90,7 +92,9 @@ No duration: staked TRX stays staked until you explicitly unstake it.
       --amount 1000000 --resource 1
     ```
 
-    - `--amount` (required, SUN), `--resource` (optional, default `0`).
+    - `--amount` (required, SUN), `--resource` (optional, `0`/`1`/`2`, default `0`).
+      `2` is TRON_POWER and is allowed only when `getAllowNewResourceModel` is enabled; if that
+      chain parameter cannot be fetched, the client lets the node validate at broadcast.
     - `--owner`, `--permission-id`, `--multi` (optional).
 
 === "REPL"
@@ -111,7 +115,9 @@ waiting period (see `withdraw-expire-unfreeze`).
       --amount 1000000 --resource 1
     ```
 
-    - `--amount` (required, SUN), `--resource` (optional, default `0`).
+    - `--amount` (required, SUN), `--resource` (optional, `0`/`1`/`2`, default `0`).
+      `2` is TRON_POWER and is allowed only when `getAllowNewResourceModel` is enabled; if that
+      chain parameter cannot be fetched, the client lets the node validate at broadcast.
     - `--owner`, `--permission-id`, `--multi` (optional).
 
 === "REPL"
