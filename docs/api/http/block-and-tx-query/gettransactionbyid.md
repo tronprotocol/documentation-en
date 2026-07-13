@@ -9,10 +9,12 @@ Query a transaction by its ID (**execution result not included** — only the pr
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `value` | string | Yes | Transaction ID hex (32 bytes) |
-| `visible` | bool | No | Format for addresses and text fields |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `value` | GET / POST | string | Yes | Transaction ID hex (32 bytes) |
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:
 
@@ -27,7 +29,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 Returns `protocol.Transaction`:
@@ -79,9 +80,9 @@ Returns `{}` if not found. For execution results (receipt, logs), use [`/wallet/
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `value` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | `value` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

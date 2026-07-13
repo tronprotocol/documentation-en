@@ -9,11 +9,15 @@ Paginated query of currently active SRs.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `offset` | int64 | No | Starting offset; defaults to `0` |
-| `limit` | int64 | No | Page size; defaults to `0`, which returns an empty list |
-| `visible` | bool | No | Address format |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `offset` | GET | int64 | Yes | Starting offset; omission reaches `Long.parseLong(null)` and fails |
+| `offset` | POST | int64 | No | Starting offset; Protobuf default is `0` |
+| `limit` | GET | int64 | Yes | Page size; omission reaches `Long.parseLong(null)` and fails |
+| `limit` | POST | int64 | No | Page size; Protobuf default is `0`, which returns an empty list |
+| `visible` | GET / POST | bool | No | Address format |
 
 Example:
 
@@ -29,7 +33,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 Same fields as [`/wallet/listwitnesses`](listwitnesses.md).
@@ -65,10 +68,10 @@ Response example (Nile, limit=2; `voteCount`, `latestBlockNum`, `latestSlotNum` 
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `offset` / `limit` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Called against the fullnode HEAD cursor during a maintenance period (non-solidity) | `{"Error": "class org.tron.core.exception.MaintenanceUnavailableException : Service temporarily unavailable during maintenance period. Please try again later."}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET | `offset` / `limit` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | Called against the fullnode HEAD cursor during a maintenance period (non-solidity) | `{"Error": "class org.tron.core.exception.MaintenanceUnavailableException : Service temporarily unavailable during maintenance period. Please try again later."}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

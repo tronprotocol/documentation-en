@@ -11,6 +11,7 @@ The following categories are intentionally not covered:
 ## Common conventions
 
 - **Method**: a few pure-query endpoints accept `GET`, but most POST endpoints only accept `POST` with a JSON body.
+- **GET / POST boundaries**: on endpoints that support both methods, request and error tables identify the applicable method. GET normally reads URL query parameters; POST normally reads a JSON body, except where the endpoint page states that POST reuses query parameters or ignores its body.
 - **`visible`**: when `true`, addresses are base58check strings and text fields (URL, descriptions, etc.) are UTF-8 strings; when `false` (default), they are hex strings.
 - **Builder endpoints** return an unsigned `protocol.Transaction`. The caller signs it locally and broadcasts it via [`/wallet/broadcasttransaction`](tx-build-and-broadcast/broadcasttransaction.md) or [`/wallet/broadcasthex`](tx-build-and-broadcast/broadcasthex.md).
 - **`Permission_id`**: optional on builder endpoints; selects which `Permission` to use for multi-sig accounts. The field name is case-sensitive.

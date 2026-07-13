@@ -7,10 +7,12 @@ Query an account's bandwidth (Net) + energy + TronPower usage.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `address` | string | Yes | Account address |
-| `visible` | bool | No | Address format |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `address` | GET / POST | string | Yes | Account address |
+| `visible` | GET / POST | bool | No | Address format |
 
 Example:
 
@@ -25,7 +27,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 Returns `api.AccountResourceMessage` (`api.proto`):
@@ -65,10 +66,10 @@ Returns `{}` if `address` is missing or the account does not exist.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : exception decoding Hex string: <details>"}` |
-| `address` is not valid base58check (`visible=true`) | `{"Error": "class java.lang.IllegalArgumentException : <details>"}` |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | `address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : exception decoding Hex string: <details>"}` |
+| GET / POST | `address` is not valid base58check (`visible=true`) | `{"Error": "class java.lang.IllegalArgumentException : <details>"}` |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

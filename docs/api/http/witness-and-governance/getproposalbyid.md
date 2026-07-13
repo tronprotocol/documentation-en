@@ -8,10 +8,12 @@ Query a proposal by ID.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `id` | int64 | Yes | Proposal ID |
-| `visible` | bool | No | Address format |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `id` | GET / POST | int64 | Yes | Proposal ID |
+| `visible` | GET / POST | bool | No | Address format |
 
 Example:
 
@@ -26,7 +28,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -58,11 +59,11 @@ Returns `{}` when not found.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `id` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
-| Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
-| `id` missing (POST) | `{"Error": "class java.security.InvalidParameterException : key [id] does not exist"}` |
-| `id` is not numeric (POST, including string/bool/array/object) | `{"Error": "class java.lang.NumberFormatException : null"}` (`Util.getJsonLongValue` uses `org.tron.json.JSONObject#getBigDecimal`) |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET | `id` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
+| POST | Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
+| POST | `id` missing (POST) | `{"Error": "class java.security.InvalidParameterException : key [id] does not exist"}` |
+| POST | `id` is not numeric (POST, including string/bool/array/object) | `{"Error": "class java.lang.NumberFormatException : null"}` (`Util.getJsonLongValue` uses `org.tron.json.JSONObject#getBigDecimal`) |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

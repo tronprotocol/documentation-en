@@ -8,10 +8,12 @@ Query the SR's current-cycle reward share ratio (brokerage).
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `address` | string | No | SR address; omitted or empty returns `brokerage: 0` |
-| `visible` | bool | No | No effect (the servlet auto-detects address format via the `41` prefix; the response has no bytes fields) |
+GET reads `address` from the URL query; POST reads it from a JSON request body. `visible` is ignored.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `address` | GET / POST | string | No | SR address; omitted or empty returns `brokerage: 0` |
+| `visible` | GET / POST | bool | No | No effect (the servlet auto-detects address format via the `41` prefix; the response has no bytes fields) |
 
 Example:
 
@@ -26,7 +28,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -43,10 +44,10 @@ Response example (Nile, sr-15):
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `address` starts with `41` but is not valid hex | `{"Error": "INVALID address, <hex parser info>"}` |
-| `address` is not valid base58check | `{"Error": "INVALID address, <base58 check info>"}` |
-| POST body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | `address` starts with `41` but is not valid hex | `{"Error": "INVALID address, <hex parser info>"}` |
+| GET / POST | `address` is not valid base58check | `{"Error": "INVALID address, <base58 check info>"}` |
+| POST | POST body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

@@ -9,9 +9,11 @@ List the peers discovered by this node.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `visible` | bool | No | Text field format (only affects `Address.host`: `true` outputs UTF-8 IP string, default/`false` outputs hex bytes) |
+Both GET and POST read these fields from URL query parameters; the servlet does not parse the POST body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `visible` | GET / POST | bool | No | Text field format (only affects `Address.host`: `true` outputs UTF-8 IP string, default/`false` outputs hex bytes) |
 
 Example:
 
@@ -20,7 +22,6 @@ curl --request POST \
      --url https://nile.trongrid.io/wallet/listnodes \
      --header 'accept: application/json'
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -59,7 +60,7 @@ Returns `{}` when there are no nodes.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| Internal node error (failed to fetch node list or serialize) | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | Internal node error (failed to fetch node list or serialize) | `{"Error": "<exceptionClass> : <message>"}` |

@@ -8,9 +8,11 @@ Returns the current latest block.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `visible` | bool | No | Format for addresses and text fields |
+Both GET and POST read these fields from URL query parameters; the servlet does not parse the POST body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:
 
@@ -19,7 +21,6 @@ curl --request POST \
      --url https://nile.trongrid.io/wallet/getnowblock \
      --header 'accept: application/json'
 ```
-
 ## Response
 
 Returns `protocol.Block` (`Tron.proto`):
@@ -60,7 +61,7 @@ Returns `{}` when no block is available.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| Internal node error (failed to read latest block or serialize) | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | Internal node error (failed to read latest block or serialize) | `{"Error": "<exceptionClass> : <message>"}` |

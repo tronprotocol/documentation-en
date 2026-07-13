@@ -8,10 +8,12 @@ Look up a TRC-10 by token id (recommended — token ids are globally unique).
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `value` | string | Yes | Token id (numeric string, e.g. `"1000001"`) |
-| `visible` | bool | No | Format for addresses and text fields |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `value` | GET / POST | string | Yes | Token id (numeric string, e.g. `"1000001"`) |
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:
 
@@ -26,7 +28,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 Returns a `protocol.AssetIssueContract`; fields match the [`/wallet/createassetissue`](createassetissue.md) request body.
@@ -60,8 +61,8 @@ Returns `{}` if not found.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| POST | Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

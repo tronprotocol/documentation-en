@@ -9,10 +9,12 @@ Query the list of delegation counterparties for an account, both as lender and r
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `value` | string | Yes | Account address to query |
-| `visible` | bool | No | Address format |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `value` | GET / POST | string | Yes | Account address to query |
+| `visible` | GET / POST | bool | No | Address format |
 
 Example:
 
@@ -27,7 +29,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 Same fields as [`/wallet/getdelegatedresourceaccountindex`](../stake-v1/getdelegatedresourceaccountindex.md) (Stake 2.0 data).
@@ -42,10 +43,10 @@ Response example (the account neither delegates to others nor receives delegatio
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `value` is not valid base58check (`visible=true`) | With non-base58 characters: `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; if only the checksum is wrong, `Util.getHexAddress` silently returns null → no record found, returns `{}` (GET and POST behave identically; POST converts base58 → hex before merge) |
-| `value` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
-| Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | `value` is not valid base58check (`visible=true`) | With non-base58 characters: `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; if only the checksum is wrong, `Util.getHexAddress` silently returns null → no record found, returns `{}` (GET and POST behave identically; POST converts base58 → hex before merge) |
+| GET / POST | `value` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
+| POST | Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

@@ -9,10 +9,12 @@ Query a block by block number.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `num` | int64 | No | Block number; omitted defaults to `0` for both GET and POST |
-| `visible` | bool | No | Format for addresses and text fields |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `num` | GET / POST | int64 | No | Block number; omitted defaults to `0` for both GET and POST |
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 GET example: `/wallet/getblockbynum?num=66987565`
 
@@ -27,7 +29,6 @@ curl --request POST \
 { "num": 66987565 }
 '
 ```
-
 ## Response
 
 Returns `protocol.Block`; fields are the same as [`/wallet/getnowblock`](getnowblock.md).
@@ -56,9 +57,9 @@ Returns `{}` if the block number does not exist.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `num` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET | `num` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

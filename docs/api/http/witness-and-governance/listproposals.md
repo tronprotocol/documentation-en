@@ -8,9 +8,11 @@ Get the list of all proposals.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `visible` | bool | No | Address format |
+Both GET and POST read these fields from URL query parameters; the servlet does not parse the POST body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `visible` | GET / POST | bool | No | Address format |
 
 Example:
 
@@ -19,7 +21,6 @@ curl --request POST \
      --url https://nile.trongrid.io/wallet/listproposals \
      --header 'accept: application/json'
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -53,7 +54,7 @@ Response example (Nile currently has 20000+ proposals, only the first one from g
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| Internal node error (failed to read Proposal storage) | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | Internal node error (failed to read Proposal storage) | `{"Error": "<exceptionClass> : <message>"}` |

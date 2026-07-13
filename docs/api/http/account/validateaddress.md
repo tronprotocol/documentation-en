@@ -7,9 +7,11 @@ Validate the format of an address (auto-detects hex / base58check / base64). **D
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `address` | string | Yes | Address to validate; format is detected by length: 42 chars hex / 34 chars base58check / 28 chars base64 |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `address` | GET / POST | string | Yes | Address to validate; format is detected by length: 42 chars hex / 34 chars base58check / 28 chars base64 |
 
 Example:
 
@@ -22,7 +24,6 @@ curl --request POST \
 { "address": "41dd791d6b49e190062d650e6a23c575510d35f2f9" }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -40,11 +41,9 @@ Response example:
 
 Address-parsing errors (length mismatch, checksum failure, base58/base64 decode failure, etc.) are conveyed via `result=false` plus `message` — they do **not** produce an `{"Error": ...}` body.
 
-However, two steps in `doPost` run **before** `validAddress` and can throw, and the servlet's outer `catch (Exception e)` only calls `logger.debug` without writing a response body — clients receive **HTTP 200 with an empty body**:
+Two failures bypass the normal `result=false` response: an oversized request body may be rejected by the shared HTTP layer before the servlet runs, while malformed JSON can fail inside `doPost`. The latter exception is caught and only logged, so the client receives **HTTP 200 with an empty body**:
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| Request body is not valid JSON (POST) | Empty body (`JSON.parseObject` throws `org.tron.json.JSONException`, which is swallowed) |
-
-The GET path does not read the body, so the two cases above only trigger on POST.
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| POST | Request body is not valid JSON (POST) | Empty body (`JSON.parseObject` throws `org.tron.json.JSONException`, which is swallowed) |

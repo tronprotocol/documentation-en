@@ -8,11 +8,13 @@ Query the unclaimed voting rewards for an account.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `address` | string | No | Voter account address; omitted or empty returns `reward: 0` |
-| `visible` | bool | No | No effect (the servlet auto-detects address format via the `41` prefix; the response has no bytes fields) |
-| `int64_as_string` | bool | No | GET only; when `true`, returns `reward` as a JSON string |
+GET reads `address` from the URL query; POST reads it from a JSON request body. `visible` is ignored.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `address` | GET / POST | string | No | Voter account address; omitted or empty returns `reward: 0` |
+| `visible` | GET / POST | bool | No | No effect (the servlet auto-detects address format via the `41` prefix; the response has no bytes fields) |
+| `int64_as_string` | GET | bool | No | GET only; when `true`, returns `reward` as a JSON string |
 
 Example:
 
@@ -27,7 +29,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -52,9 +53,9 @@ Withdraw via [`/wallet/withdrawbalance`](withdrawbalance.md).
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.http.maxMessageSize` (POST) | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `address` parse failure (invalid hex / base58) | `{"Error": "INVALID address, <details>"}` |
-| Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | `address` parse failure (invalid hex / base58) | `{"Error": "INVALID address, <details>"}` |
+| POST | Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
