@@ -1,8 +1,8 @@
 "/wallet/getassetissuebyaccount":
   "get":
     "tags":
-      - "TRC10 asset"
-    "summary": "TRC10s issued by an account"
+      - "TRC-10 asset"
+    "summary": "TRC-10s issued by an account"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyaccount.md` for examples and detailed behavior."
     "operationId": "wallet_getassetissuebyaccount_get"
     "externalDocs":
@@ -51,8 +51,8 @@
       - "protocol/src/main/protos/core/Tron.proto#Account"
   "post":
     "tags":
-      - "TRC10 asset"
-    "summary": "TRC10s issued by an account"
+      - "TRC-10 asset"
+    "summary": "TRC-10s issued by an account"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyaccount.md` for examples and detailed behavior."
     "operationId": "wallet_getassetissuebyaccount_post"
     "externalDocs":

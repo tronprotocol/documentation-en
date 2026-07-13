@@ -1,8 +1,8 @@
 "/wallet/participateassetissue":
   "post":
     "tags":
-      - "TRC10 asset"
-    "summary": "Participate in a TRC10 fundraising"
+      - "TRC-10 asset"
+    "summary": "Participate in a TRC-10 fundraising"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/participateassetissue.md` for examples and detailed behavior."
     "operationId": "wallet_participateassetissue_post"
     "externalDocs":

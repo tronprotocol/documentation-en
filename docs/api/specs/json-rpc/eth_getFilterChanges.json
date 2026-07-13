@@ -25,7 +25,16 @@
     "schema": {
       "type": "array",
       "items": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Block hash returned by a block filter.",
+            "title": "EthGetFilterChangesResultString1"
+          },
+          {
+            "$ref": "#/components/schemas/Log"
+          }
+        ]
       },
       "x-java-type": "Object[]"
     }
@@ -54,6 +63,7 @@
   "x-overlay-derived": true,
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getFilterChanges",
-    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterChanges"
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterChanges",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
   ]
 }

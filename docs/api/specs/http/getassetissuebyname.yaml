@@ -1,8 +1,8 @@
 "/wallet/getassetissuebyname":
   "get":
     "tags":
-      - "TRC10 asset"
-    "summary": "Look up a TRC10 by name (errors on duplicates)"
+      - "TRC-10 asset"
+    "summary": "Look up a TRC-10 by name (errors on duplicates)"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyname.md` for examples and detailed behavior."
     "operationId": "wallet_getassetissuebyname_get"
     "externalDocs":
@@ -56,8 +56,8 @@
       - "framework/src/main/java/org/tron/core/services/http/GetAssetIssueByNameServlet.java"
   "post":
     "tags":
-      - "TRC10 asset"
-    "summary": "Look up a TRC10 by name (errors on duplicates)"
+      - "TRC-10 asset"
+    "summary": "Look up a TRC-10 by name (errors on duplicates)"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyname.md` for examples and detailed behavior."
     "operationId": "wallet_getassetissuebyname_post"
     "externalDocs":

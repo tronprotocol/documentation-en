@@ -99,6 +99,7 @@
   "x-overlay-derived": true,
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_call",
-    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCall"
+    "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCall",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#input"
   ]
 }

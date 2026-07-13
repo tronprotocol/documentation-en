@@ -1,8 +1,8 @@
 "/wallet/updateasset":
   "post":
     "tags":
-      - "TRC10 asset"
-    "summary": "Update a TRC10's description / URL / limits"
+      - "TRC-10 asset"
+    "summary": "Update a TRC-10's description / URL / limits"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/updateasset.md` for examples and detailed behavior."
     "operationId": "wallet_updateasset_post"
     "externalDocs":

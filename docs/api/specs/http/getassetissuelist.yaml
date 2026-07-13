@@ -1,8 +1,8 @@
 "/wallet/getassetissuelist":
   "get":
     "tags":
-      - "TRC10 asset"
-    "summary": "All TRC10s on the network"
+      - "TRC-10 asset"
+    "summary": "All TRC-10s on the network"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuelist.md` for examples and detailed behavior."
     "operationId": "wallet_getassetissuelist_get"
     "externalDocs":
@@ -43,13 +43,23 @@
           "type": "boolean"
           "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
         "x-source-derived": true
+      -
+        "name": "int64_as_string"
+        "in": "query"
+        "required": false
+        "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+        "schema":
+          "type": "boolean"
+          "default": false
+        "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+        "x-source-derived": true
     "x-overlay-derived": true
     "x-source-refs":
       - "framework/src/main/java/org/tron/core/services/http/GetAssetIssueListServlet.java"
   "post":
     "tags":
-      - "TRC10 asset"
-    "summary": "All TRC10s on the network"
+      - "TRC-10 asset"
+    "summary": "All TRC-10s on the network"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuelist.md` for examples and detailed behavior."
     "operationId": "wallet_getassetissuelist_post"
     "externalDocs":

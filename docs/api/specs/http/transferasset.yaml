@@ -1,8 +1,8 @@
 "/wallet/transferasset":
   "post":
     "tags":
-      - "TRC10 asset"
-    "summary": "Transfer TRC10"
+      - "TRC-10 asset"
+    "summary": "Transfer TRC-10"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/transferasset.md` for examples and detailed behavior."
     "operationId": "wallet_transferasset_post"
     "externalDocs":

@@ -77,7 +77,7 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockByNumber",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockByNumber",
-    "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcApiUtil.java#getByJsonBlockId",
+    "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcApiUtil.java#parseBlockNumber",
     "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
     "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
   ]

@@ -5,8 +5,8 @@
   "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation."
   "x-java-tron-source":
     "repo": "tronprotocol/java-tron"
-    "commit": "a79693e4508c05650cc474f23e7f97451d2861ec"
-    "version": "GreatVoyage-v4.8.1.1"
+    "commit": "e90dd782122c9e9b283429d03697f0cb8f1326fb"
+    "version": "GreatVoyage-v4.8.2"
 "servers":
   -
     "url": "https://nile.trongrid.io"
@@ -25,8 +25,8 @@
     "name": "Transaction build / broadcast"
     "description": "Transaction creation, signing, permission, and broadcast endpoints."
   -
-    "name": "TRC10 asset"
-    "description": "TRC10 asset issuance and asset query endpoints."
+    "name": "TRC-10 asset"
+    "description": "TRC-10 asset endpoints."
   -
     "name": "Smart contract"
     "description": "Smart contract deployment, trigger, and contract metadata endpoints."
@@ -645,6 +645,16 @@
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetNowBlockServlet.java"
@@ -756,6 +766,16 @@
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetBlockServlet.java"
@@ -858,6 +878,16 @@
           "schema":
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+          "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
           "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
@@ -1762,7 +1792,16 @@
       "x-java-servlet": "GetPendingSizeServlet"
       "x-java-source": "framework/src/main/java/org/tron/core/services/http/FullNodeHttpApiService.java"
       "parameters":
-        []
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetPendingSizeServlet.java"
@@ -1937,6 +1976,16 @@
           "schema":
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+          "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
           "x-source-derived": true
     "post":
       "tags":
@@ -2245,8 +2294,8 @@
   "/wallet/createassetissue":
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "Issue a TRC10 token"
+        - "TRC-10 asset"
+      "summary": "Issue a TRC-10 token"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/createassetissue.md` for examples and detailed behavior."
       "operationId": "wallet_createassetissue_post"
       "externalDocs":
@@ -2296,8 +2345,8 @@
   "/wallet/updateasset":
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "Update a TRC10's description / URL / limits"
+        - "TRC-10 asset"
+      "summary": "Update a TRC-10's description / URL / limits"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/updateasset.md` for examples and detailed behavior."
       "operationId": "wallet_updateasset_post"
       "externalDocs":
@@ -2341,8 +2390,8 @@
   "/wallet/transferasset":
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "Transfer TRC10"
+        - "TRC-10 asset"
+      "summary": "Transfer TRC-10"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/transferasset.md` for examples and detailed behavior."
       "operationId": "wallet_transferasset_post"
       "externalDocs":
@@ -2388,8 +2437,8 @@
   "/wallet/participateassetissue":
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "Participate in a TRC10 fundraising"
+        - "TRC-10 asset"
+      "summary": "Participate in a TRC-10 fundraising"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/participateassetissue.md` for examples and detailed behavior."
       "operationId": "wallet_participateassetissue_post"
       "externalDocs":
@@ -2435,8 +2484,8 @@
   "/wallet/unfreezeasset":
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "Unfreeze TRC10 frozen by the issuer"
+        - "TRC-10 asset"
+      "summary": "Unfreeze TRC-10 frozen by the issuer"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/unfreezeasset.md` for examples and detailed behavior."
       "operationId": "wallet_unfreezeasset_post"
       "externalDocs":
@@ -2479,8 +2528,8 @@
   "/wallet/getassetissuebyid":
     "get":
       "tags":
-        - "TRC10 asset"
-      "summary": "Look up a TRC10 by id (recommended)"
+        - "TRC-10 asset"
+      "summary": "Look up a TRC-10 by id (recommended)"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyid.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuebyid_get"
       "externalDocs":
@@ -2534,8 +2583,8 @@
         - "framework/src/main/java/org/tron/core/services/http/GetAssetIssueByIdServlet.java"
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "Look up a TRC10 by id (recommended)"
+        - "TRC-10 asset"
+      "summary": "Look up a TRC-10 by id (recommended)"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyid.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuebyid_post"
       "externalDocs":
@@ -2591,8 +2640,8 @@
   "/wallet/getassetissuebyname":
     "get":
       "tags":
-        - "TRC10 asset"
-      "summary": "Look up a TRC10 by name (errors on duplicates)"
+        - "TRC-10 asset"
+      "summary": "Look up a TRC-10 by name (errors on duplicates)"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyname.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuebyname_get"
       "externalDocs":
@@ -2646,8 +2695,8 @@
         - "framework/src/main/java/org/tron/core/services/http/GetAssetIssueByNameServlet.java"
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "Look up a TRC10 by name (errors on duplicates)"
+        - "TRC-10 asset"
+      "summary": "Look up a TRC-10 by name (errors on duplicates)"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyname.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuebyname_post"
       "externalDocs":
@@ -2703,8 +2752,8 @@
   "/wallet/getassetissuelistbyname":
     "get":
       "tags":
-        - "TRC10 asset"
-      "summary": "All TRC10s with a given name"
+        - "TRC-10 asset"
+      "summary": "All TRC-10s with a given name"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuelistbyname.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuelistbyname_get"
       "externalDocs":
@@ -2758,8 +2807,8 @@
         - "framework/src/main/java/org/tron/core/services/http/GetAssetIssueListByNameServlet.java"
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "All TRC10s with a given name"
+        - "TRC-10 asset"
+      "summary": "All TRC-10s with a given name"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuelistbyname.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuelistbyname_post"
       "externalDocs":
@@ -2815,8 +2864,8 @@
   "/wallet/getassetissuebyaccount":
     "get":
       "tags":
-        - "TRC10 asset"
-      "summary": "TRC10s issued by an account"
+        - "TRC-10 asset"
+      "summary": "TRC-10s issued by an account"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyaccount.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuebyaccount_get"
       "externalDocs":
@@ -2865,8 +2914,8 @@
         - "protocol/src/main/protos/core/Tron.proto#Account"
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "TRC10s issued by an account"
+        - "TRC-10 asset"
+      "summary": "TRC-10s issued by an account"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuebyaccount.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuebyaccount_post"
       "externalDocs":
@@ -2909,8 +2958,8 @@
   "/wallet/getassetissuelist":
     "get":
       "tags":
-        - "TRC10 asset"
-      "summary": "All TRC10s on the network"
+        - "TRC-10 asset"
+      "summary": "All TRC-10s on the network"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuelist.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuelist_get"
       "externalDocs":
@@ -2951,13 +3000,23 @@
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetAssetIssueListServlet.java"
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "All TRC10s on the network"
+        - "TRC-10 asset"
+      "summary": "All TRC-10s on the network"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getassetissuelist.md` for examples and detailed behavior."
       "operationId": "wallet_getassetissuelist_post"
       "externalDocs":
@@ -3004,8 +3063,8 @@
   "/wallet/getpaginatedassetissuelist":
     "get":
       "tags":
-        - "TRC10 asset"
-      "summary": "Paginated TRC10 list"
+        - "TRC-10 asset"
+      "summary": "Paginated TRC-10 list"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getpaginatedassetissuelist.md` for examples and detailed behavior."
       "operationId": "wallet_getpaginatedassetissuelist_get"
       "externalDocs":
@@ -3070,8 +3129,8 @@
         - "protocol/src/main/protos/api/api.proto#PaginatedMessage"
     "post":
       "tags":
-        - "TRC10 asset"
-      "summary": "Paginated TRC10 list"
+        - "TRC-10 asset"
+      "summary": "Paginated TRC-10 list"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getpaginatedassetissuelist.md` for examples and detailed behavior."
       "operationId": "wallet_getpaginatedassetissuelist_post"
       "externalDocs":
@@ -3780,6 +3839,16 @@
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/ListWitnessesServlet.java"
@@ -4049,6 +4118,16 @@
             "type": "string"
             "description": "Account or contract address accepted by this endpoint."
           "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetBrokerageServlet.java"
@@ -4225,6 +4304,16 @@
           "schema":
             "type": "string"
             "description": "Account or contract address accepted by this endpoint."
+          "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
           "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
@@ -4520,6 +4609,16 @@
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/ListProposalsServlet.java"
@@ -4810,6 +4909,16 @@
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetChainParametersServlet.java"
@@ -4883,6 +4992,16 @@
           "schema":
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+          "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
           "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
@@ -6092,7 +6211,16 @@
           "consistency": "solidified"
           "x-java-servlet": "GetNodeInfoOnSolidityServlet"
       "parameters":
-        []
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetNodeInfoServlet.java"
@@ -6175,6 +6303,16 @@
             "type": "boolean"
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           "x-source-derived": true
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/ListNodesServlet.java"
@@ -6253,7 +6391,16 @@
           "consistency": "solidified"
           "x-java-servlet": "GetEnergyPricesOnSolidityServlet"
       "parameters":
-        []
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetEnergyPricesServlet.java"
@@ -6334,7 +6481,16 @@
           "consistency": "solidified"
           "x-java-servlet": "GetBandwidthPricesOnSolidityServlet"
       "parameters":
-        []
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetBandwidthPricesServlet.java"
@@ -6424,7 +6580,16 @@
           "consistency": "solidified"
           "x-java-servlet": "GetBurnTrxOnSolidityServlet"
       "parameters":
-        []
+        -
+          "name": "int64_as_string"
+          "in": "query"
+          "required": false
+          "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+          "schema":
+            "type": "boolean"
+            "default": false
+          "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+          "x-source-derived": true
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetBurnTrxServlet.java"
@@ -8899,6 +9064,76 @@
         - "to_address"
         - "amount"
       "x-java-unknown-fields": "ignored-by-jsonformat"
+    "TransactionResult":
+      "type": "object"
+      "additionalProperties": false
+      "properties":
+        "fee":
+          "type": "integer"
+          "format": "int64"
+        "ret":
+          "type": "string"
+          "enum":
+            - "SUCESS"
+            - "FAILED"
+        "contractRet":
+          "type": "string"
+          "enum":
+            - "DEFAULT"
+            - "SUCCESS"
+            - "REVERT"
+            - "BAD_JUMP_DESTINATION"
+            - "OUT_OF_MEMORY"
+            - "PRECOMPILED_CONTRACT"
+            - "STACK_TOO_SMALL"
+            - "STACK_TOO_LARGE"
+            - "ILLEGAL_OPERATION"
+            - "STACK_OVERFLOW"
+            - "OUT_OF_ENERGY"
+            - "OUT_OF_TIME"
+            - "JVM_STACK_OVER_FLOW"
+            - "UNKNOWN"
+            - "TRANSFER_FAILED"
+            - "INVALID_CODE"
+        "assetIssueID":
+          "type": "string"
+        "withdraw_amount":
+          "type": "integer"
+          "format": "int64"
+        "unfreeze_amount":
+          "type": "integer"
+          "format": "int64"
+        "exchange_received_amount":
+          "type": "integer"
+          "format": "int64"
+        "exchange_inject_another_amount":
+          "type": "integer"
+          "format": "int64"
+        "exchange_withdraw_another_amount":
+          "type": "integer"
+          "format": "int64"
+        "exchange_id":
+          "type": "integer"
+          "format": "int64"
+        "shielded_transaction_fee":
+          "type": "integer"
+          "format": "int64"
+        "orderId":
+          "type": "string"
+        "orderDetails":
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/MarketOrderDetail"
+        "withdraw_expire_amount":
+          "type": "integer"
+          "format": "int64"
+        "cancel_unfreezeV2_amount":
+          "type": "object"
+          "additionalProperties":
+            "type": "integer"
+            "format": "int64"
+      "x-proto-message": "Transaction.Result"
+      "x-proto-file": "protocol/src/main/protos/core/Tron.proto"
     "TransactionRequest":
       "type": "object"
       "additionalProperties": false
@@ -8913,6 +9148,11 @@
           "items":
             "type": "string"
           "description": "Transaction signatures."
+        "ret":
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/TransactionResult"
+          "description": "Transaction result entries returned by java-tron when present."
         "visible":
           "type": "boolean"
           "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
@@ -9202,62 +9442,10 @@
           "format": "int64"
           "description": "TRC10 token id."
         "abi":
-          "type": "array"
-          "description": "Smart contract ABI definition."
-          "items":
-            "type": "object"
-            "additionalProperties": false
-            "properties":
-              "anonymous":
-                "type": "boolean"
-              "constant":
-                "type": "boolean"
-              "name":
-                "type": "string"
-              "inputs":
-                "type": "array"
-                "items":
-                  "type": "object"
-                  "additionalProperties": false
-                  "properties":
-                    "indexed":
-                      "type": "boolean"
-                    "name":
-                      "type": "string"
-                    "type":
-                      "type": "string"
-              "outputs":
-                "type": "array"
-                "items":
-                  "type": "object"
-                  "additionalProperties": false
-                  "properties":
-                    "indexed":
-                      "type": "boolean"
-                    "name":
-                      "type": "string"
-                    "type":
-                      "type": "string"
-              "type":
-                "type": "string"
-                "enum":
-                  - "UnknownEntryType"
-                  - "Constructor"
-                  - "Function"
-                  - "Event"
-                  - "Fallback"
-                  - "Receive"
-                  - "Error"
-              "payable":
-                "type": "boolean"
-              "stateMutability":
-                "type": "string"
-                "enum":
-                  - "UnknownMutabilityType"
-                  - "Pure"
-                  - "View"
-                  - "Nonpayable"
-                  - "Payable"
+          "type": "string"
+          "additionalProperties": false
+          "description": "JSON-encoded ABI entry array. DeployContractServlet reads this field as a string before parsing it as ABI JSON."
+          "x-java-serialized-json": "ABI.entrys"
         "bytecode":
           "type": "string"
           "description": "Compiled smart contract bytecode."
@@ -9604,12 +9792,25 @@
           "type": "string"
           "description": "Address of the account that owns or initiates the request."
         "parameters":
-          "type": "object"
+          "type": "array"
           "additionalProperties":
             "type": "integer"
             "format": "int64"
-          "description": "Proposal parameter map."
-          "minProperties": 1
+          "description": "Proposal parameter entries parsed by JsonFormat as key/value map entries."
+          "minItems": 1
+          "items":
+            "type": "object"
+            "additionalProperties": false
+            "properties":
+              "key":
+                "type": "integer"
+                "format": "int64"
+              "value":
+                "type": "integer"
+                "format": "int64"
+            "required":
+              - "key"
+              - "value"
         "visible":
           "type": "boolean"
           "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
