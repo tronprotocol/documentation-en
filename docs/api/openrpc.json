@@ -6,8 +6,8 @@
     "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation.",
     "x-java-tron-source": {
       "repo": "tronprotocol/java-tron",
-      "commit": "a79693e4508c05650cc474f23e7f97451d2861ec",
-      "version": "GreatVoyage-v4.8.1.1"
+      "commit": "e90dd782122c9e9b283429d03697f0cb8f1326fb",
+      "version": "GreatVoyage-v4.8.2"
     }
   },
   "servers": [
@@ -546,7 +546,7 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockByNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockByNumber",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcApiUtil.java#getByJsonBlockId",
+        "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcApiUtil.java#parseBlockNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
       ]
@@ -1314,7 +1314,8 @@
       "x-overlay-derived": true,
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_call",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCall"
+        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCall",
+        "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#input"
       ]
     },
     {
@@ -1371,7 +1372,7 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_estimateGas",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#estimateGas",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#class CallArguments"
+        "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#input"
       ]
     },
     {
@@ -1488,6 +1489,10 @@
         {
           "code": -32602,
           "message": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32005,
+          "message": "JsonRpcExceedLimitException"
         }
       ],
       "externalDocs": {
@@ -1628,7 +1633,16 @@
         "schema": {
           "type": "array",
           "items": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Block hash returned by a block filter.",
+                "title": "EthGetFilterChangesResultString1"
+              },
+              {
+                "$ref": "#/components/schemas/Log"
+              }
+            ]
           },
           "x-java-type": "Object[]"
         }
@@ -1657,7 +1671,8 @@
       "x-overlay-derived": true,
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getFilterChanges",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterChanges"
+        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterChanges",
+        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
       ]
     },
     {
@@ -1743,7 +1758,7 @@
           "name": "Transaction build"
         }
       ],
-      "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC10 transfer / contract deploy / contract trigger)",
+      "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC-10 transfer / contract deploy / contract trigger)",
       "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/tx-build/buildTransaction.md` for examples and detailed behavior.",
       "paramStructure": "by-position",
       "params": [
@@ -1777,6 +1792,10 @@
               "data": {
                 "type": "string",
                 "description": "Hex-encoded contract call data or transaction data."
+              },
+              "input": {
+                "type": "string",
+                "description": "Alias for data; when both are present they must encode the same bytes."
               },
               "nonce": {
                 "type": "string",
@@ -1879,7 +1898,7 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#buildTransaction",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#buildTransaction",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class TransactionJson",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#class BuildArguments"
+        "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#input"
       ]
     },
     {
@@ -2193,6 +2212,10 @@
           "blockNumber": {
             "type": "string"
           },
+          "blockTimestamp": {
+            "type": "string",
+            "description": "Block timestamp as a hex quantity in seconds."
+          },
           "data": {
             "type": "string"
           },
@@ -2234,6 +2257,7 @@
           "address",
           "blockHash",
           "blockNumber",
+          "blockTimestamp",
           "data",
           "logIndex",
           "removed",
@@ -2363,6 +2387,10 @@
           "data": {
             "type": "string",
             "description": "Hex-encoded contract call data or transaction data."
+          },
+          "input": {
+            "type": "string",
+            "description": "Alias for data; when both are present, input takes precedence."
           },
           "nonce": {
             "type": "string",

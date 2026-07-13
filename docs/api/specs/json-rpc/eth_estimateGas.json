@@ -52,6 +52,6 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_estimateGas",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#estimateGas",
-    "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#class CallArguments"
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#input"
   ]
 }

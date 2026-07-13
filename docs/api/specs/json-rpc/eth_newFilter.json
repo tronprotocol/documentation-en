@@ -35,6 +35,10 @@
     {
       "code": -32602,
       "message": "JsonRpcInvalidParamsException"
+    },
+    {
+      "code": -32005,
+      "message": "JsonRpcExceedLimitException"
     }
   ],
   "externalDocs": {

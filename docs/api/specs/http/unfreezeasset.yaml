@@ -1,8 +1,8 @@
 "/wallet/unfreezeasset":
   "post":
     "tags":
-      - "TRC10 asset"
-    "summary": "Unfreeze TRC10 frozen by the issuer"
+      - "TRC-10 asset"
+    "summary": "Unfreeze TRC-10 frozen by the issuer"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/unfreezeasset.md` for examples and detailed behavior."
     "operationId": "wallet_unfreezeasset_post"
     "externalDocs":

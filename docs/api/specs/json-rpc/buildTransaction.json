@@ -5,7 +5,7 @@
       "name": "Transaction build"
     }
   ],
-  "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC10 transfer / contract deploy / contract trigger)",
+  "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC-10 transfer / contract deploy / contract trigger)",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/tx-build/buildTransaction.md` for examples and detailed behavior.",
   "paramStructure": "by-position",
   "params": [
@@ -39,6 +39,10 @@
           "data": {
             "type": "string",
             "description": "Hex-encoded contract call data or transaction data."
+          },
+          "input": {
+            "type": "string",
+            "description": "Alias for data; when both are present they must encode the same bytes."
           },
           "nonce": {
             "type": "string",
@@ -141,6 +145,6 @@
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#buildTransaction",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#buildTransaction",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class TransactionJson",
-    "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#class BuildArguments"
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#input"
   ]
 }

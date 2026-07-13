@@ -1,8 +1,8 @@
 "/wallet/getpaginatedassetissuelist":
   "get":
     "tags":
-      - "TRC10 asset"
-    "summary": "Paginated TRC10 list"
+      - "TRC-10 asset"
+    "summary": "Paginated TRC-10 list"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getpaginatedassetissuelist.md` for examples and detailed behavior."
     "operationId": "wallet_getpaginatedassetissuelist_get"
     "externalDocs":
@@ -67,8 +67,8 @@
       - "protocol/src/main/protos/api/api.proto#PaginatedMessage"
   "post":
     "tags":
-      - "TRC10 asset"
-    "summary": "Paginated TRC10 list"
+      - "TRC-10 asset"
+    "summary": "Paginated TRC-10 list"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/asset/getpaginatedassetissuelist.md` for examples and detailed behavior."
     "operationId": "wallet_getpaginatedassetissuelist_post"
     "externalDocs":

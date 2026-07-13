@@ -55,6 +55,16 @@
           "type": "string"
           "description": "Account or contract address accepted by this endpoint."
         "x-source-derived": true
+      -
+        "name": "int64_as_string"
+        "in": "query"
+        "required": false
+        "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+        "schema":
+          "type": "boolean"
+          "default": false
+        "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+        "x-source-derived": true
     "x-overlay-derived": true
     "x-source-refs":
       - "framework/src/main/java/org/tron/core/services/http/GetBrokerageServlet.java"
