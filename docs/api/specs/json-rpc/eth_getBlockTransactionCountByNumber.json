@@ -12,9 +12,18 @@
     {
       "name": "bnOrId",
       "required": true,
-      "description": "Hex block number or supported block tag.",
+      "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
       "schema": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string",
+            "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+            "title": "EthGetBlockTransactionCountByNumberParamString1"
+          },
+          {
+            "$ref": "#/components/schemas/BlockNumber"
+          }
+        ]
       },
       "x-java-type": "String",
       "x-position": 0

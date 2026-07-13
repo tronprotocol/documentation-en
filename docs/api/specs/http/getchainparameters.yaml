@@ -9,21 +9,36 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getchainparameters.md"
     "responses":
       "200":
-        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
         "content":
           "application/json":
             "schema":
               "oneOf":
                 -
-                  "$ref": "#/components/schemas/ChainParameters"
+                  "$ref": "#/components/schemas/ChainParametersInt64StringCompatible"
                 -
                   "$ref": "#/components/schemas/JavaTronError"
-              "x-tron-business-error":
+              "x-tron-in-band-error":
                 "httpStatus": 200
                 "errorSchema": "#/components/schemas/JavaTronError"
                 "discriminatorField": "Error"
+                "sources":
+                  - "servlet"
+                  - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/JavaTronError"
+            "example":
+              "Error": "this API is unavailable due to config"
+      "413":
+        "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "content":
+          "text/html":
+            "schema":
+              "type": "string"
     "x-source-derived": true
     "x-java-service": "FullNode HTTP"
     "x-java-servlet": "GetChainParametersServlet"
@@ -60,7 +75,7 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getchainparameters.md"
     "responses":
       "200":
-        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
         "content":
           "application/json":
             "schema":
@@ -69,12 +84,27 @@
                   "$ref": "#/components/schemas/ChainParameters"
                 -
                   "$ref": "#/components/schemas/JavaTronError"
-              "x-tron-business-error":
+              "x-tron-in-band-error":
                 "httpStatus": 200
                 "errorSchema": "#/components/schemas/JavaTronError"
                 "discriminatorField": "Error"
+                "sources":
+                  - "servlet"
+                  - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/JavaTronError"
+            "example":
+              "Error": "this API is unavailable due to config"
+      "413":
+        "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "content":
+          "text/html":
+            "schema":
+              "type": "string"
     "x-source-derived": true
     "x-java-service": "FullNode HTTP"
     "x-java-servlet": "GetChainParametersServlet"
@@ -82,3 +112,12 @@
     "x-overlay-derived": true
     "x-source-refs":
       - "framework/src/main/java/org/tron/core/services/http/GetChainParametersServlet.java"
+    "parameters":
+      -
+        "name": "visible"
+        "in": "query"
+        "required": false
+        "schema":
+          "type": "boolean"
+          "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+        "x-source-derived": true

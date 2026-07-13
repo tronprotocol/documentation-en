@@ -9,29 +9,69 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/smart-contract/estimateenergy.md"
     "responses":
       "200":
-        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
         "content":
           "application/json":
             "schema":
-              "type": "object"
-              "additionalProperties": false
-              "properties":
-                "result":
+              "oneOf":
+                -
                   "type": "object"
                   "additionalProperties": false
                   "properties":
                     "result":
-                      "type": "boolean"
-                    "code":
-                      "type": "string"
-                    "message":
-                      "type": "string"
-                "energy_required":
-                  "type": "integer"
-                  "format": "int64"
-              "x-java-response": "EstimateEnergyMessage rendered by Util.printEstimateEnergyMessage"
+                      "type": "object"
+                      "additionalProperties": false
+                      "properties":
+                        "result":
+                          "type": "boolean"
+                        "code":
+                          "type": "string"
+                        "message":
+                          "type": "string"
+                    "energy_required":
+                      "type": "integer"
+                      "format": "int64"
+                  "x-java-response": "EstimateEnergyMessage rendered by Util.printEstimateEnergyMessage"
+                  "not":
+                    "required":
+                      - "Error"
+                  "title": "EstimateenergyPostResultObject1"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-in-band-error":
+                "httpStatus": 200
+                "errors":
+                  -
+                    "kind": "business"
+                    "responsePath": "$.result"
+                    "discriminatorPath": "$.result.code"
+                    "failureCondition": "field exists and is not SUCCESS"
+                    "sources":
+                      - "servlet"
+                  -
+                    "kind": "java-tron"
+                    "schema": "#/components/schemas/JavaTronError"
+                    "discriminatorPath": "$.Error"
+                    "sources":
+                      - "shared-rate-limiter"
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+                "sources":
+                  - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/JavaTronError"
+            "example":
+              "Error": "this API is unavailable due to config"
+      "413":
+        "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "content":
+          "text/html":
+            "schema":
+              "type": "string"
     "x-source-derived": true
     "x-java-service": "FullNode HTTP"
     "x-java-servlet": "EstimateEnergyServlet"
@@ -49,7 +89,7 @@
           "schema":
             "allOf":
               -
-                "$ref": "#/components/schemas/TriggerSmartContractRequest"
+                "$ref": "#/components/schemas/EstimateEnergyRequest"
             "required":
               - "owner_address"
             "anyOf":

@@ -18,11 +18,30 @@
         "properties": {
           "from": {
             "type": "string",
-            "description": "Sender account address."
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "to": {
-            "type": "string",
-            "description": "Recipient account or contract address."
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "title": "BuildTransactionParamString1"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "",
+                  "0x"
+                ],
+                "title": "BuildTransactionParamString2"
+              },
+              {
+                "type": "null",
+                "title": "BuildTransactionParamNull3"
+              }
+            ],
+            "description": "Target hex address. Contract deployment also accepts an omitted value, null, an empty string, or 0x; base58check is not accepted."
           },
           "gas": {
             "type": "string",
@@ -68,6 +87,7 @@
             "type": "integer",
             "format": "int64",
             "minimum": 0,
+            "maximum": 100,
             "description": "Percentage of contract execution resource cost paid by the user."
           },
           "originEnergyLimit": {
@@ -94,7 +114,10 @@
             "type": "boolean",
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           }
-        }
+        },
+        "required": [
+          "from"
+        ]
       },
       "x-java-type": "BuildArguments",
       "x-position": 0,

@@ -14,7 +14,7 @@
       "required": true,
       "schema": {
         "type": "string",
-        "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+        "pattern": "^(0x)?[0-9a-fA-F]{64}$"
       },
       "x-java-type": "String",
       "x-position": 0,
@@ -25,7 +25,7 @@
       "required": true,
       "schema": {
         "type": "string",
-        "pattern": "^0x[0-9a-fA-F]+$"
+        "pattern": "^0x(?:[0-9a-fA-F]{1,7}|[0-7][0-9a-fA-F]{7})$"
       },
       "x-java-type": "String",
       "x-position": 1,

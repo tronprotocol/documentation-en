@@ -9,7 +9,7 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/block-and-tx-query/getblockbalance.md"
     "responses":
       "200":
-        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
         "content":
           "application/json":
             "schema":
@@ -18,12 +18,27 @@
                   "$ref": "#/components/schemas/BlockBalanceTrace"
                 -
                   "$ref": "#/components/schemas/JavaTronError"
-              "x-tron-business-error":
+              "x-tron-in-band-error":
                 "httpStatus": 200
                 "errorSchema": "#/components/schemas/JavaTronError"
                 "discriminatorField": "Error"
+                "sources":
+                  - "servlet"
+                  - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/JavaTronError"
+            "example":
+              "Error": "this API is unavailable due to config"
+      "413":
+        "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "content":
+          "text/html":
+            "schema":
+              "type": "string"
     "x-source-derived": true
     "x-java-service": "FullNode HTTP"
     "x-java-servlet": "GetBlockBalanceServlet"
@@ -33,8 +48,13 @@
       "content":
         "application/json":
           "schema":
-            "$ref": "#/components/schemas/BlockIdentifierRequest"
+            "allOf":
+              -
+                "$ref": "#/components/schemas/BlockIdentifierRequest"
+            "required":
+              - "hash"
     "x-overlay-derived": true
     "x-source-refs":
       - "framework/src/main/java/org/tron/core/services/http/GetBlockBalanceServlet.java"
+      - "framework/src/main/java/org/tron/core/Wallet.java#checkBlockIdentifier"
       - "protocol/src/main/protos/core/contract/balance_contract.proto#BlockIdentifier"

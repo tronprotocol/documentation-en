@@ -125,8 +125,8 @@
       },
       "errors": [
         {
-          "code": -32000,
-          "message": "JsonRpcInternalException"
+          "code": -32001,
+          "message": "<underlying exception message>"
         }
       ],
       "externalDocs": {
@@ -226,8 +226,8 @@
       },
       "errors": [
         {
-          "code": -32000,
-          "message": "JsonRpcInternalException"
+          "code": -32001,
+          "message": "<underlying exception message>"
         }
       ],
       "externalDocs": {
@@ -415,7 +415,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -481,38 +481,31 @@
         {
           "name": "bnOrId",
           "required": true,
+          "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
           "schema": {
             "oneOf": [
               {
                 "type": "string",
-                "enum": [
-                  "",
-                  "latest",
-                  "earliest",
-                  "finalized"
-                ],
+                "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
                 "title": "EthGetBlockByNumberParamString1"
               },
               {
-                "type": "string",
-                "pattern": "^0x[0-9a-fA-F]+$",
-                "title": "EthGetBlockByNumberParamString2"
+                "$ref": "#/components/schemas/BlockNumber"
               }
             ]
           },
           "x-java-type": "String",
-          "x-position": 0,
-          "description": "Hex block number or supported block tag."
+          "x-position": 0
         },
         {
           "name": "fullTransactionObjects",
           "required": true,
+          "description": "Whether to return full transaction objects instead of transaction hashes.",
           "schema": {
             "type": "boolean"
           },
           "x-java-type": "Boolean",
-          "x-position": 1,
-          "description": "Whether to return full transaction objects instead of transaction hashes."
+          "x-position": 1
         }
       ],
       "result": {
@@ -565,12 +558,13 @@
         {
           "name": "blockHash",
           "required": true,
-          "description": "32-byte block hash, with or without the 0x prefix.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
-          "x-position": 0
+          "x-position": 0,
+          "description": "32-byte block hash, with or without the 0x prefix."
         }
       ],
       "result": {
@@ -622,9 +616,18 @@
         {
           "name": "bnOrId",
           "required": true,
-          "description": "Hex block number or supported block tag.",
+          "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
           "schema": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+                "title": "EthGetBlockTransactionCountByNumberParamString1"
+              },
+              {
+                "$ref": "#/components/schemas/BlockNumber"
+              }
+            ]
           },
           "x-java-type": "String",
           "x-position": 0
@@ -681,7 +684,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -738,7 +741,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -749,7 +752,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^0x[0-9a-fA-F]+$"
+            "pattern": "^0x(?:[0-9a-fA-F]{1,7}|[0-7][0-9a-fA-F]{7})$"
           },
           "x-java-type": "String",
           "x-position": 1,
@@ -804,39 +807,32 @@
         {
           "name": "blockNumOrTag",
           "required": true,
+          "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
           "schema": {
             "oneOf": [
               {
                 "type": "string",
-                "enum": [
-                  "",
-                  "latest",
-                  "earliest",
-                  "finalized"
-                ],
+                "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
                 "title": "EthGetTransactionByBlockNumberAndIndexParamString1"
               },
               {
-                "type": "string",
-                "pattern": "^0x[0-9a-fA-F]+$",
-                "title": "EthGetTransactionByBlockNumberAndIndexParamString2"
+                "$ref": "#/components/schemas/BlockNumber"
               }
             ]
           },
           "x-java-type": "String",
-          "x-position": 0,
-          "description": "Hex block number or supported block tag."
+          "x-position": 0
         },
         {
           "name": "index",
           "required": true,
+          "description": "0x-prefixed transaction index from 0x0 through 0x7fffffff.",
           "schema": {
             "type": "string",
-            "pattern": "^0x[0-9a-fA-F]+$"
+            "pattern": "^0x(?:[0-9a-fA-F]{1,7}|[0-7][0-9a-fA-F]{7})$"
           },
           "x-java-type": "String",
-          "x-position": 1,
-          "description": "Hex-encoded transaction index within the block."
+          "x-position": 1
         }
       ],
       "result": {
@@ -889,7 +885,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -944,38 +940,26 @@
         {
           "name": "blockNumOrHashOrTag",
           "required": true,
+          "description": "Strict 32-byte block hash, non-negative block height (0x-prefixed hexadecimal or decimal), or case-insensitive latest, earliest, or finalized tag.",
           "schema": {
-            "oneOf": [
+            "anyOf": [
               {
                 "type": "string",
-                "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+                "pattern": "^(0x)?[0-9a-fA-F]{64}$",
                 "title": "EthGetBlockReceiptsParamString1"
               },
               {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "enum": [
-                      "",
-                      "latest",
-                      "earliest",
-                      "finalized"
-                    ],
-                    "title": "EthGetBlockReceiptsParamNested1String1"
-                  },
-                  {
-                    "type": "string",
-                    "pattern": "^0x[0-9a-fA-F]+$",
-                    "title": "EthGetBlockReceiptsParamNested1String2"
-                  }
-                ],
-                "title": "EthGetBlockReceiptsParamVariant2"
+                "type": "string",
+                "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+                "title": "EthGetBlockReceiptsParamString2"
+              },
+              {
+                "$ref": "#/components/schemas/BlockNumber"
               }
             ]
           },
           "x-java-type": "String",
-          "x-position": 0,
-          "description": "Block hash, hex block number, or supported block tag."
+          "x-position": 0
         }
       ],
       "result": {
@@ -1035,7 +1019,9 @@
           "name": "address",
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -1044,15 +1030,13 @@
         {
           "name": "blockNumOrTag",
           "required": true,
+          "description": "Only the case-insensitive latest tag is supported.",
           "schema": {
             "type": "string",
-            "enum": [
-              "latest"
-            ]
+            "pattern": "^[lL][aA][tT][eE][sS][tT]$"
           },
           "x-java-type": "String",
-          "x-position": 1,
-          "description": "Hex block number or supported block tag."
+          "x-position": 1
         }
       ],
       "result": {
@@ -1096,7 +1080,9 @@
           "name": "address",
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -1106,7 +1092,9 @@
           "name": "storageIdx",
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?[0-9a-fA-F]{0,64}$",
+            "description": "Hex storage slot of at most 32 bytes, with or without 0x; shorter values are left-padded with zeros."
           },
           "x-java-type": "String",
           "x-position": 1,
@@ -1115,15 +1103,13 @@
         {
           "name": "blockNumOrTag",
           "required": true,
+          "description": "Only the case-insensitive latest tag is supported.",
           "schema": {
             "type": "string",
-            "enum": [
-              "latest"
-            ]
+            "pattern": "^[lL][aA][tT][eE][sS][tT]$"
           },
           "x-java-type": "String",
-          "x-position": 2,
-          "description": "Hex block number or supported block tag."
+          "x-position": 2
         }
       ],
       "result": {
@@ -1167,7 +1153,9 @@
           "name": "contractAddress",
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -1176,15 +1164,13 @@
         {
           "name": "bnOrId",
           "required": true,
+          "description": "Only the case-insensitive latest tag is supported.",
           "schema": {
             "type": "string",
-            "enum": [
-              "latest"
-            ]
+            "pattern": "^[lL][aA][tT][eE][sS][tT]$"
           },
           "x-java-type": "String",
-          "x-position": 1,
-          "description": "Hex block number or supported block tag."
+          "x-position": 1
         }
       ],
       "result": {
@@ -1228,7 +1214,111 @@
           "name": "transactionCall",
           "required": true,
           "schema": {
-            "$ref": "#/components/schemas/TransactionCall"
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "from": {
+                "type": "string",
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
+              },
+              "to": {
+                "type": "string",
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
+              },
+              "gas": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "EthCallGasString"
+                  },
+                  {
+                    "type": "null",
+                    "title": "EthCallGasNull"
+                  }
+                ],
+                "description": "Accepted but ignored."
+              },
+              "gasPrice": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "EthCallGasPriceString"
+                  },
+                  {
+                    "type": "null",
+                    "title": "EthCallGasPriceNull"
+                  }
+                ],
+                "description": "Accepted but ignored."
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "null",
+                    "title": "EthCallValueNull"
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      ""
+                    ],
+                    "title": "EthCallValueEmpty"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^0x(?:\\+?0*(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})|-0+)$",
+                    "title": "EthCallValueHexLong"
+                  }
+                ],
+                "description": "Source-compatible non-negative hex long. null or an empty string means zero; non-empty values require a lowercase 0x prefix and must fit in signed long range."
+              },
+              "data": {
+                "oneOf": [
+                  {
+                    "type": "null",
+                    "title": "EthCallDataNull"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^(?:0x)?[0-9a-fA-F]*$",
+                    "title": "EthCallDataHex"
+                  }
+                ],
+                "description": "Lenient hex calldata. null and empty values are accepted; the lowercase 0x prefix is optional and odd-length payloads are left-padded before decoding."
+              },
+              "input": {
+                "oneOf": [
+                  {
+                    "type": "null",
+                    "title": "EthCallInputNull"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^(?:|0x(?:[0-9a-fA-F]{2})*)$",
+                    "title": "EthCallInputHex"
+                  }
+                ],
+                "description": "Strict hex calldata alias. null and an empty string are accepted; otherwise a lowercase 0x prefix and an even-length payload are required. When input is non-null, it takes precedence over data."
+              },
+              "nonce": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "EthCallNonceString"
+                  },
+                  {
+                    "type": "null",
+                    "title": "EthCallNonceNull"
+                  }
+                ],
+                "description": "Accepted but ignored."
+              }
+            },
+            "required": [
+              "to"
+            ]
           },
           "x-java-type": "CallArguments",
           "x-position": 0,
@@ -1237,50 +1327,49 @@
         {
           "name": "blockNumOrTag",
           "required": true,
+          "description": "Case-insensitive latest tag or object containing blockNumber and/or blockHash; blockNumber takes precedence.",
           "schema": {
             "oneOf": [
               {
                 "type": "string",
-                "enum": [
-                  "latest"
-                ],
+                "pattern": "^[lL][aA][tT][eE][sS][tT]$",
                 "title": "EthCallParamString1"
               },
               {
                 "type": "object",
-                "additionalProperties": false,
+                "additionalProperties": true,
+                "description": "At least one selector is required. If both are present, blockNumber takes precedence; other properties are ignored.",
                 "properties": {
                   "blockNumber": {
-                    "type": "string",
-                    "pattern": "^0x[0-9a-fA-F]+$",
-                    "description": "Hex-encoded block number."
-                  }
-                },
-                "required": [
-                  "blockNumber"
-                ],
-                "title": "EthCallParamRequiresBlockNumber2"
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
+                    "$ref": "#/components/schemas/BlockNumber",
+                    "description": "Non-negative block number encoded as 0x-prefixed hexadecimal or decimal, limited to signed long range."
+                  },
                   "blockHash": {
                     "type": "string",
-                    "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+                    "pattern": "^(0x)?[0-9a-fA-F]{64}$",
                     "description": "32-byte block hash, with or without the 0x prefix."
                   }
                 },
-                "required": [
-                  "blockHash"
+                "anyOf": [
+                  {
+                    "required": [
+                      "blockNumber"
+                    ],
+                    "title": "EthCallParamNested1RequiresBlockNumber1"
+                  },
+                  {
+                    "required": [
+                      "blockHash"
+                    ],
+                    "title": "EthCallParamNested1RequiresBlockHash2"
+                  }
                 ],
-                "title": "EthCallParamRequiresBlockHash3"
+                "title": "EthCallParamObject2"
               }
             ]
           },
           "x-java-type": "Object",
-          "x-position": 1,
-          "description": "Hex block number or supported block tag."
+          "x-position": 1
         }
       ],
       "result": {
@@ -1467,7 +1556,154 @@
           "name": "fr",
           "required": true,
           "schema": {
-            "$ref": "#/components/schemas/LogFilter"
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "fromBlock": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "NewFilterFromBlockTag",
+                    "pattern": "^(?:|[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT])$"
+                  },
+                  {
+                    "title": "NewFilterFromBlockNumber",
+                    "$ref": "#/components/schemas/HexBlockNumber"
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterFromBlockNull"
+                  }
+                ],
+                "description": "Start block for a log filter."
+              },
+              "toBlock": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "NewFilterToBlockTag",
+                    "pattern": "^(?:|[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT])$"
+                  },
+                  {
+                    "title": "NewFilterToBlockNumber",
+                    "$ref": "#/components/schemas/HexBlockNumber"
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterToBlockNull"
+                  }
+                ],
+                "description": "End block for a log filter."
+              },
+              "address": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "NewFilterAddress",
+                    "pattern": "^(0x)?[0-9a-fA-F]{39,40}$"
+                  },
+                  {
+                    "type": "array",
+                    "title": "NewFilterAddressList",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^(0x)?[0-9a-fA-F]{39,40}$"
+                    }
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterAddressNull"
+                  }
+                ],
+                "description": "Account or contract address accepted by this endpoint."
+              },
+              "topics": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "maxItems": 4,
+                    "items": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/Topic32Input"
+                        },
+                        {
+                          "type": "null",
+                          "title": "NewFilterTopicNull"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Topic32Input"
+                          },
+                          "title": "EthNewFilterParamNested1Array3"
+                        }
+                      ]
+                    },
+                    "title": "EthNewFilterParamArray1"
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterTopicsNull"
+                  }
+                ],
+                "description": "Log topics filter."
+              },
+              "blockHash": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(0x)?[0-9a-fA-F]{64}$",
+                    "title": "EthNewFilterParamString1"
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterBlockHashNull"
+                  }
+                ],
+                "description": "32-byte block hash, with or without the 0x prefix."
+              }
+            },
+            "not": {
+              "allOf": [
+                {
+                  "required": [
+                    "blockHash"
+                  ],
+                  "properties": {
+                    "blockHash": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "fromBlock"
+                      ],
+                      "properties": {
+                        "fromBlock": {
+                          "type": "string"
+                        }
+                      },
+                      "title": "EthNewFilterParamRequiresFromBlock1"
+                    },
+                    {
+                      "required": [
+                        "toBlock"
+                      ],
+                      "properties": {
+                        "toBlock": {
+                          "type": "string"
+                        }
+                      },
+                      "title": "EthNewFilterParamRequiresToBlock2"
+                    }
+                  ]
+                }
+              ]
+            }
           },
           "x-java-type": "FilterRequest",
           "x-position": 0,
@@ -1689,7 +1925,7 @@
         {
           "name": "filterId",
           "required": true,
-          "description": "Filter id returned by eth_newFilter or eth_newBlockFilter.",
+          "description": "Log filter id returned by eth_newFilter; block filter ids are not accepted.",
           "schema": {
             "type": "string"
           },
@@ -1771,11 +2007,30 @@
             "properties": {
               "from": {
                 "type": "string",
-                "description": "Sender account address."
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
               },
               "to": {
-                "type": "string",
-                "description": "Recipient account or contract address."
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                    "title": "BuildTransactionParamString1"
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      "",
+                      "0x"
+                    ],
+                    "title": "BuildTransactionParamString2"
+                  },
+                  {
+                    "type": "null",
+                    "title": "BuildTransactionParamNull3"
+                  }
+                ],
+                "description": "Target hex address. Contract deployment also accepts an omitted value, null, an empty string, or 0x; base58check is not accepted."
               },
               "gas": {
                 "type": "string",
@@ -1821,6 +2076,7 @@
                 "type": "integer",
                 "format": "int64",
                 "minimum": 0,
+                "maximum": 100,
                 "description": "Percentage of contract execution resource cost paid by the user."
               },
               "originEnergyLimit": {
@@ -1847,7 +2103,10 @@
                 "type": "boolean",
                 "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
               }
-            }
+            },
+            "required": [
+              "from"
+            ]
           },
           "x-java-type": "BuildArguments",
           "x-position": 0,
@@ -1988,10 +2247,30 @@
         "name": "result",
         "schema": {
           "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "x-java-type": "List<Object>"
+          "items": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^0x[0-9a-fA-F]{64}$",
+                  "title": "EthGetWorkResultString1"
+                },
+                {
+                  "type": "null",
+                  "title": "EthGetWorkResultNull2"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "x-java-type": "List<Object>",
+          "minItems": 3,
+          "maxItems": 3
         }
       },
       "errors": [],
@@ -2058,7 +2337,16 @@
             "type": "string"
           },
           "to": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TransactionResultToString1"
+              },
+              {
+                "type": "null",
+                "title": "TransactionResultToNull2"
+              }
+            ]
           },
           "transactionIndex": {
             "type": "string"
@@ -2228,22 +2516,7 @@
           "topics": {
             "type": "array",
             "items": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/Hash32"
-                },
-                {
-                  "type": "null",
-                  "title": "LogTopicsNull2"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Hash32"
-                  },
-                  "title": "LogTopicsArray3"
-                }
-              ]
+              "$ref": "#/components/schemas/Hash32"
             }
           },
           "transactionHash": {
@@ -2366,37 +2639,166 @@
         "properties": {
           "from": {
             "type": "string",
-            "description": "Sender account address."
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "to": {
-            "type": "string",
-            "description": "Recipient account or contract address."
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "title": "TransactionCallToString1"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "",
+                  "0x"
+                ],
+                "title": "TransactionCallToString2"
+              },
+              {
+                "type": "null",
+                "title": "TransactionCallToNull3"
+              }
+            ],
+            "description": "Target hex address. Contract deployment also accepts an omitted value, null, an empty string, or 0x."
           },
           "gas": {
-            "type": "string",
-            "description": "Gas limit encoded as a hex quantity."
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TransactionCallGasString1"
+              },
+              {
+                "type": "null",
+                "title": "TransactionCallGasNull2"
+              }
+            ],
+            "description": "Accepted but ignored."
           },
           "gasPrice": {
-            "type": "string",
-            "description": "Gas price encoded as a hex quantity."
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TransactionCallGasPriceString1"
+              },
+              {
+                "type": "null",
+                "title": "TransactionCallGasPriceNull2"
+              }
+            ],
+            "description": "Accepted but ignored."
           },
           "value": {
-            "type": "string",
-            "description": "Hex string, amount, or value field accepted by this endpoint."
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "TransactionCallValueNull1"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  ""
+                ],
+                "title": "TransactionCallValueString2"
+              },
+              {
+                "type": "string",
+                "pattern": "^0x(?:\\+?0*(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})|-0+)$",
+                "title": "TransactionCallValueString3"
+              }
+            ],
+            "description": "Source-compatible non-negative hex long. null or an empty string means zero; non-empty values require a lowercase 0x prefix and must fit in signed long range."
           },
           "data": {
-            "type": "string",
-            "description": "Hex-encoded contract call data or transaction data."
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "TransactionCallDataNull1"
+              },
+              {
+                "type": "string",
+                "pattern": "^(?:0x)?[0-9a-fA-F]*$",
+                "title": "TransactionCallDataString2"
+              }
+            ],
+            "description": "Lenient hex calldata. null and empty values are accepted; the lowercase 0x prefix is optional and odd-length payloads are left-padded before decoding."
           },
           "input": {
-            "type": "string",
-            "description": "Alias for data; when both are present, input takes precedence."
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "TransactionCallInputNull1"
+              },
+              {
+                "type": "string",
+                "pattern": "^(?:|0x(?:[0-9a-fA-F]{2})*)$",
+                "title": "TransactionCallInputString2"
+              }
+            ],
+            "description": "Strict hex calldata alias. null and an empty string are accepted; otherwise a lowercase 0x prefix and an even-length payload are required. When input is non-null, it takes precedence over data."
           },
           "nonce": {
-            "type": "string",
-            "description": "Transaction nonce encoded as a hex quantity."
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TransactionCallNonceString1"
+              },
+              {
+                "type": "null",
+                "title": "TransactionCallNonceNull2"
+              }
+            ],
+            "description": "Accepted but ignored."
           }
         },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "to": {
+                  "enum": [
+                    null,
+                    "",
+                    "0x"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "anyOf": [
+                {
+                  "required": [
+                    "input"
+                  ],
+                  "properties": {
+                    "input": {
+                      "type": "string",
+                      "pattern": "^0x(?:[0-9a-fA-F]{2})+$"
+                    }
+                  },
+                  "title": "TransactionCallRequiresInput1"
+                },
+                {
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "input": {
+                      "type": "null"
+                    },
+                    "data": {
+                      "type": "string",
+                      "pattern": "^(?:0x)?[0-9a-fA-F]+$"
+                    }
+                  },
+                  "title": "TransactionCallRequiresData2"
+                }
+              ]
+            }
+          }
+        ],
         "x-java-type": "CallArguments"
       },
       "LogFilter": {
@@ -2404,56 +2806,147 @@
         "additionalProperties": false,
         "properties": {
           "fromBlock": {
-            "type": "string",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:|[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+                "title": "LogFilterFromBlockString1"
+              },
+              {
+                "$ref": "#/components/schemas/HexBlockNumber"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterFromBlockNull"
+              }
+            ],
             "description": "Start block for a log filter."
           },
           "toBlock": {
-            "type": "string",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:|[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+                "title": "LogFilterToBlockString1"
+              },
+              {
+                "$ref": "#/components/schemas/HexBlockNumber"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterToBlockNull"
+              }
+            ],
             "description": "End block for a log filter."
           },
           "address": {
             "oneOf": [
               {
                 "type": "string",
+                "pattern": "^(0x)?[0-9a-fA-F]{39,40}$",
                 "title": "LogFilterAddressString1"
               },
               {
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^(0x)?[0-9a-fA-F]{39,40}$"
                 },
                 "title": "LogFilterAddressArray2"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterAddressNull"
               }
             ],
             "description": "Account or contract address accepted by this endpoint."
           },
           "topics": {
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/Hash32"
+            "oneOf": [
+              {
+                "type": "array",
+                "maxItems": 4,
+                "items": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Topic32Input"
+                    },
+                    {
+                      "type": "null",
+                      "title": "LogFilterTopicNull"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Topic32Input"
+                      },
+                      "title": "LogFilterTopicsNested1Array3"
+                    }
+                  ]
                 },
-                {
-                  "type": "null",
-                  "title": "LogFilterTopicsNull2"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Hash32"
-                  },
-                  "title": "LogFilterTopicsArray3"
-                }
-              ]
-            },
+                "title": "LogFilterTopicsArray1"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterTopicsNull"
+              }
+            ],
             "description": "Log topics filter."
           },
           "blockHash": {
-            "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(0x)?[0-9a-fA-F]{64}$",
+                "title": "LogFilterBlockHashString1"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterBlockHashNull"
+              }
+            ],
             "description": "32-byte block hash, with or without the 0x prefix."
           }
+        },
+        "not": {
+          "allOf": [
+            {
+              "required": [
+                "blockHash"
+              ],
+              "properties": {
+                "blockHash": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "anyOf": [
+                {
+                  "required": [
+                    "fromBlock"
+                  ],
+                  "properties": {
+                    "fromBlock": {
+                      "type": "string"
+                    }
+                  },
+                  "title": "LogFilterRequiresFromBlock1"
+                },
+                {
+                  "required": [
+                    "toBlock"
+                  ],
+                  "properties": {
+                    "toBlock": {
+                      "type": "string"
+                    }
+                  },
+                  "title": "LogFilterRequiresToBlock2"
+                }
+              ]
+            }
+          ]
         },
         "x-java-type": "FilterRequest"
       },
@@ -2685,7 +3178,29 @@
       },
       "Hash32": {
         "type": "string",
-        "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+        "pattern": "^(0x)?[0-9a-fA-F]{64}$"
+      },
+      "Topic32Input": {
+        "type": "string",
+        "pattern": "^(0x)?[0-9a-fA-F]{63,64}$"
+      },
+      "BlockNumber": {
+        "oneOf": [
+          {
+            "type": "string",
+            "pattern": "^0?(?:[0-9]{1,18}|[0-8][0-9]{18}|9[0-1][0-9]{17}|92[0-1][0-9]{16}|922[0-2][0-9]{15}|9223[0-2][0-9]{14}|92233[0-6][0-9]{13}|922337[0-1][0-9]{12}|92233720[0-2][0-9]{10}|922337203[0-5][0-9]{9}|9223372036[0-7][0-9]{8}|92233720368[0-4][0-9]{7}|922337203685[0-3][0-9]{6}|9223372036854[0-6][0-9]{5}|92233720368547[0-6][0-9]{4}|922337203685477[0-4][0-9]{3}|9223372036854775[0-7][0-9]{2}|922337203685477580[0-6]|9223372036854775807)$",
+            "title": "BlockNumberString1"
+          },
+          {
+            "type": "string",
+            "pattern": "^0x0{0,2}(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})$",
+            "title": "BlockNumberString2"
+          }
+        ]
+      },
+      "HexBlockNumber": {
+        "type": "string",
+        "pattern": "^0x0{0,2}(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})$"
       },
       "HexQuantity": {
         "type": "string",

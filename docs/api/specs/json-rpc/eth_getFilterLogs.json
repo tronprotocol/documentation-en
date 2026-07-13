@@ -12,7 +12,7 @@
     {
       "name": "filterId",
       "required": true,
-      "description": "Filter id returned by eth_newFilter or eth_newBlockFilter.",
+      "description": "Log filter id returned by eth_newFilter; block filter ids are not accepted.",
       "schema": {
         "type": "string"
       },

@@ -9,19 +9,59 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/account/validateaddress.md"
     "responses":
       "200":
-        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
         "content":
           "application/json":
             "schema":
-              "type": "object"
-              "additionalProperties": false
-              "properties":
-                "result":
-                  "type": "boolean"
-                "message":
-                  "type": "string"
+              "oneOf":
+                -
+                  "type": "object"
+                  "additionalProperties": false
+                  "properties":
+                    "result":
+                      "type": "boolean"
+                    "message":
+                      "type": "string"
+                  "not":
+                    "required":
+                      - "Error"
+                  "title": "ValidateaddressGetResultObject1"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-in-band-error":
+                "httpStatus": 200
+                "errors":
+                  -
+                    "kind": "business"
+                    "responsePath": "$"
+                    "discriminatorPath": "$.result"
+                    "failureCondition": "equals false"
+                    "sources":
+                      - "servlet"
+                  -
+                    "kind": "java-tron"
+                    "schema": "#/components/schemas/JavaTronError"
+                    "discriminatorPath": "$.Error"
+                    "sources":
+                      - "shared-rate-limiter"
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+                "sources":
+                  - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/JavaTronError"
+            "example":
+              "Error": "this API is unavailable due to config"
+      "413":
+        "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "content":
+          "text/html":
+            "schema":
+              "type": "string"
     "x-source-derived": true
     "x-java-service": "FullNode HTTP"
     "x-java-servlet": "ValidateAddressServlet"
@@ -34,6 +74,16 @@
         "schema":
           "type": "string"
           "description": "Account or contract address accepted by this endpoint."
+        "x-source-derived": true
+      -
+        "name": "int64_as_string"
+        "in": "query"
+        "required": false
+        "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+        "schema":
+          "type": "boolean"
+          "default": false
+        "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
         "x-source-derived": true
     "x-overlay-derived": true
     "x-source-refs":
@@ -48,19 +98,64 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/account/validateaddress.md"
     "responses":
       "200":
-        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
         "content":
           "application/json":
             "schema":
-              "type": "object"
-              "additionalProperties": false
-              "properties":
-                "result":
-                  "type": "boolean"
-                "message":
-                  "type": "string"
+              "oneOf":
+                -
+                  "type": "object"
+                  "additionalProperties": false
+                  "properties":
+                    "result":
+                      "type": "boolean"
+                    "message":
+                      "type": "string"
+                  "not":
+                    "required":
+                      - "Error"
+                  "title": "ValidateaddressPostResultObject1"
+                -
+                  "$ref": "#/components/schemas/JavaTronError"
+              "x-tron-in-band-error":
+                "httpStatus": 200
+                "errors":
+                  -
+                    "kind": "business"
+                    "responsePath": "$"
+                    "discriminatorPath": "$.result"
+                    "failureCondition": "equals false"
+                    "sources":
+                      - "servlet"
+                  -
+                    "kind": "java-tron"
+                    "schema": "#/components/schemas/JavaTronError"
+                    "discriminatorPath": "$.Error"
+                    "sources":
+                      - "shared-rate-limiter"
+                "errorSchema": "#/components/schemas/JavaTronError"
+                "discriminatorField": "Error"
+                "sources":
+                  - "shared-rate-limiter"
+        "x-tron-empty-body":
+          "possible": true
+          "condition": "Request parsing, body-size validation, or another pre-write servlet exception."
+          "sources":
+            - "servlet"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/JavaTronError"
+            "example":
+              "Error": "this API is unavailable due to config"
+      "413":
+        "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "content":
+          "text/html":
+            "schema":
+              "type": "string"
     "x-source-derived": true
     "x-java-service": "FullNode HTTP"
     "x-java-servlet": "ValidateAddressServlet"
@@ -78,8 +173,6 @@
                 "description": "Account or contract address accepted by this endpoint."
             "x-source-shape": "servlet-json-fields"
             "x-java-unknown-fields": "ignored-by-jsonformat"
-            "required":
-              - "address"
     "x-overlay-derived": true
     "x-source-refs":
       - "framework/src/main/java/org/tron/core/services/http/ValidateAddressServlet.java"

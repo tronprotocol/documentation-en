@@ -18,8 +18,8 @@
   },
   "errors": [
     {
-      "code": -32000,
-      "message": "JsonRpcInternalException"
+      "code": -32001,
+      "message": "<underlying exception message>"
     }
   ],
   "externalDocs": {

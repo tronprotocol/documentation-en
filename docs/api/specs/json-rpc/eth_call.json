@@ -13,7 +13,111 @@
       "name": "transactionCall",
       "required": true,
       "schema": {
-        "$ref": "#/components/schemas/TransactionCall"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "from": {
+            "type": "string",
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
+          },
+          "to": {
+            "type": "string",
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
+          },
+          "gas": {
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "EthCallGasString"
+              },
+              {
+                "type": "null",
+                "title": "EthCallGasNull"
+              }
+            ],
+            "description": "Accepted but ignored."
+          },
+          "gasPrice": {
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "EthCallGasPriceString"
+              },
+              {
+                "type": "null",
+                "title": "EthCallGasPriceNull"
+              }
+            ],
+            "description": "Accepted but ignored."
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "EthCallValueNull"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  ""
+                ],
+                "title": "EthCallValueEmpty"
+              },
+              {
+                "type": "string",
+                "pattern": "^0x(?:\\+?0*(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})|-0+)$",
+                "title": "EthCallValueHexLong"
+              }
+            ],
+            "description": "Source-compatible non-negative hex long. null or an empty string means zero; non-empty values require a lowercase 0x prefix and must fit in signed long range."
+          },
+          "data": {
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "EthCallDataNull"
+              },
+              {
+                "type": "string",
+                "pattern": "^(?:0x)?[0-9a-fA-F]*$",
+                "title": "EthCallDataHex"
+              }
+            ],
+            "description": "Lenient hex calldata. null and empty values are accepted; the lowercase 0x prefix is optional and odd-length payloads are left-padded before decoding."
+          },
+          "input": {
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "EthCallInputNull"
+              },
+              {
+                "type": "string",
+                "pattern": "^(?:|0x(?:[0-9a-fA-F]{2})*)$",
+                "title": "EthCallInputHex"
+              }
+            ],
+            "description": "Strict hex calldata alias. null and an empty string are accepted; otherwise a lowercase 0x prefix and an even-length payload are required. When input is non-null, it takes precedence over data."
+          },
+          "nonce": {
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "EthCallNonceString"
+              },
+              {
+                "type": "null",
+                "title": "EthCallNonceNull"
+              }
+            ],
+            "description": "Accepted but ignored."
+          }
+        },
+        "required": [
+          "to"
+        ]
       },
       "x-java-type": "CallArguments",
       "x-position": 0,
@@ -22,50 +126,49 @@
     {
       "name": "blockNumOrTag",
       "required": true,
+      "description": "Case-insensitive latest tag or object containing blockNumber and/or blockHash; blockNumber takes precedence.",
       "schema": {
         "oneOf": [
           {
             "type": "string",
-            "enum": [
-              "latest"
-            ],
+            "pattern": "^[lL][aA][tT][eE][sS][tT]$",
             "title": "EthCallParamString1"
           },
           {
             "type": "object",
-            "additionalProperties": false,
+            "additionalProperties": true,
+            "description": "At least one selector is required. If both are present, blockNumber takes precedence; other properties are ignored.",
             "properties": {
               "blockNumber": {
-                "type": "string",
-                "pattern": "^0x[0-9a-fA-F]+$",
-                "description": "Hex-encoded block number."
-              }
-            },
-            "required": [
-              "blockNumber"
-            ],
-            "title": "EthCallParamRequiresBlockNumber2"
-          },
-          {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
+                "$ref": "#/components/schemas/BlockNumber",
+                "description": "Non-negative block number encoded as 0x-prefixed hexadecimal or decimal, limited to signed long range."
+              },
               "blockHash": {
                 "type": "string",
-                "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+                "pattern": "^(0x)?[0-9a-fA-F]{64}$",
                 "description": "32-byte block hash, with or without the 0x prefix."
               }
             },
-            "required": [
-              "blockHash"
+            "anyOf": [
+              {
+                "required": [
+                  "blockNumber"
+                ],
+                "title": "EthCallParamNested1RequiresBlockNumber1"
+              },
+              {
+                "required": [
+                  "blockHash"
+                ],
+                "title": "EthCallParamNested1RequiresBlockHash2"
+              }
             ],
-            "title": "EthCallParamRequiresBlockHash3"
+            "title": "EthCallParamObject2"
           }
         ]
       },
       "x-java-type": "Object",
-      "x-position": 1,
-      "description": "Hex block number or supported block tag."
+      "x-position": 1
     }
   ],
   "result": {

@@ -13,10 +13,30 @@
     "name": "result",
     "schema": {
       "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "x-java-type": "List<Object>"
+      "items": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^0x[0-9a-fA-F]{64}$",
+              "title": "EthGetWorkResultString1"
+            },
+            {
+              "type": "null",
+              "title": "EthGetWorkResultNull2"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "x-java-type": "List<Object>",
+      "minItems": 3,
+      "maxItems": 3
     }
   },
   "errors": [],

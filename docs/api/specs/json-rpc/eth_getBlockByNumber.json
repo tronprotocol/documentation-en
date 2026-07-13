@@ -12,38 +12,31 @@
     {
       "name": "bnOrId",
       "required": true,
+      "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
       "schema": {
         "oneOf": [
           {
             "type": "string",
-            "enum": [
-              "",
-              "latest",
-              "earliest",
-              "finalized"
-            ],
+            "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
             "title": "EthGetBlockByNumberParamString1"
           },
           {
-            "type": "string",
-            "pattern": "^0x[0-9a-fA-F]+$",
-            "title": "EthGetBlockByNumberParamString2"
+            "$ref": "#/components/schemas/BlockNumber"
           }
         ]
       },
       "x-java-type": "String",
-      "x-position": 0,
-      "description": "Hex block number or supported block tag."
+      "x-position": 0
     },
     {
       "name": "fullTransactionObjects",
       "required": true,
+      "description": "Whether to return full transaction objects instead of transaction hashes.",
       "schema": {
         "type": "boolean"
       },
       "x-java-type": "Boolean",
-      "x-position": 1,
-      "description": "Whether to return full transaction objects instead of transaction hashes."
+      "x-position": 1
     }
   ],
   "result": {

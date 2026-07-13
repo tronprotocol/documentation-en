@@ -9,21 +9,36 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/asset/getpaginatedassetissuelist.md"
     "responses":
       "200":
-        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
         "content":
           "application/json":
             "schema":
               "oneOf":
                 -
-                  "$ref": "#/components/schemas/AssetIssueList"
+                  "$ref": "#/components/schemas/AssetIssueListInt64StringCompatible"
                 -
                   "$ref": "#/components/schemas/JavaTronError"
-              "x-tron-business-error":
+              "x-tron-in-band-error":
                 "httpStatus": 200
                 "errorSchema": "#/components/schemas/JavaTronError"
                 "discriminatorField": "Error"
+                "sources":
+                  - "servlet"
+                  - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/JavaTronError"
+            "example":
+              "Error": "this API is unavailable due to config"
+      "413":
+        "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "content":
+          "text/html":
+            "schema":
+              "type": "string"
     "x-source-derived": true
     "x-java-service": "FullNode HTTP"
     "x-java-servlet": "GetPaginatedAssetIssueListServlet"
@@ -61,6 +76,16 @@
           "type": "boolean"
           "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
         "x-source-derived": true
+      -
+        "name": "int64_as_string"
+        "in": "query"
+        "required": false
+        "description": "When true, serialize int64 and uint64 response fields as JSON strings to avoid precision loss."
+        "schema":
+          "type": "boolean"
+          "default": false
+        "x-java-source": "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+        "x-source-derived": true
     "x-overlay-derived": true
     "x-source-refs":
       - "framework/src/main/java/org/tron/core/services/http/GetPaginatedAssetIssueListServlet.java"
@@ -75,7 +100,7 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/asset/getpaginatedassetissuelist.md"
     "responses":
       "200":
-        "description": "java-tron response. Most business errors are returned with HTTP 200 and an error object in the body."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
         "content":
           "application/json":
             "schema":
@@ -84,12 +109,27 @@
                   "$ref": "#/components/schemas/AssetIssueList"
                 -
                   "$ref": "#/components/schemas/JavaTronError"
-              "x-tron-business-error":
+              "x-tron-in-band-error":
                 "httpStatus": 200
                 "errorSchema": "#/components/schemas/JavaTronError"
                 "discriminatorField": "Error"
+                "sources":
+                  - "servlet"
+                  - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "content":
+          "application/json":
+            "schema":
+              "$ref": "#/components/schemas/JavaTronError"
+            "example":
+              "Error": "this API is unavailable due to config"
+      "413":
+        "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "content":
+          "text/html":
+            "schema":
+              "type": "string"
     "x-source-derived": true
     "x-java-service": "FullNode HTTP"
     "x-java-servlet": "GetPaginatedAssetIssueListServlet"
@@ -105,12 +145,7 @@
       "content":
         "application/json":
           "schema":
-            "allOf":
-              -
-                "$ref": "#/components/schemas/PaginatedMessageRequest"
-            "required":
-              - "limit"
-              - "offset"
+            "$ref": "#/components/schemas/PaginatedMessageRequest"
     "x-overlay-derived": true
     "x-source-refs":
       - "framework/src/main/java/org/tron/core/services/http/GetPaginatedAssetIssueListServlet.java"
