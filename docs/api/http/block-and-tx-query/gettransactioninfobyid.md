@@ -14,7 +14,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `value` | GET / POST | string | Yes | Transaction ID hex |
+| `value` | GET | string | Yes | Transaction ID hex |
+| `value` | POST | string | No | Transaction ID; omitted uses empty bytes and returns `{}` |
 | `visible` | GET / POST | bool | No | Format for addresses and text fields; when `visible=true` the servlet additionally rewrites `log[].address` (EVM 20 bytes) by prepending `0x41` and converting to base58 |
 
 Example:

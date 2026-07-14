@@ -14,7 +14,7 @@ Pass the JSON form of `protocol.Transaction` directly (i.e., the response from `
 |---|---|---|---|
 | `raw_data` | object | Yes | Same as `createtransaction` response; the node re-serializes it into protobuf bytes for SHA256 signature verification |
 | `raw_data_hex` | string | No (node ignores) | Client-side display helper — the protobuf encoding of `raw_data`. **Not a proto field of `protocol.Transaction`**; `JsonFormat.merge` skips it during parse, so the node neither reads it nor cross-checks it against `raw_data`. Clients usually SHA256 it to derive `txID` when signing, but whether it matches or is even valid hex when broadcast does not affect processing |
-| `signature` | string[] | Yes | Signature array (1 for ordinary accounts; per permission rules for multi-sig) |
+| `signature` | string[] | No | Optional at JSON/Protobuf parsing time. An ordinary transaction normally needs one valid signature to broadcast successfully; multi-sig transactions must satisfy the selected permission threshold. Missing signatures normally lead to a later `SIGERROR` |
 | `visible` | bool | No | Format of address / text fields |
 
 Example:

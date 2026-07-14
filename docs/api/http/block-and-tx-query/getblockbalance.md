@@ -12,7 +12,7 @@ Returns the balance trace for all transactions inside a block (block balance tra
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `hash` | string | Yes | Block hash hex |
-| `number` | int64 | Yes | Block number |
+| `number` | int64 | No | Block number; omitted defaults to `0`. It may be omitted only for the genesis block; for other blocks it must match the height represented by `hash` |
 | `visible` | bool | No | Address format |
 
 Example:

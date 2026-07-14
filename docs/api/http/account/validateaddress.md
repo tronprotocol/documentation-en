@@ -11,7 +11,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `address` | GET / POST | string | Yes | Address to validate; format is detected by length: 42 chars hex / 34 chars base58check / 28 chars base64 |
+| `address` | GET | string | Yes | Address to validate; format is detected by length: 42 chars hex / 34 chars base58check / 28 chars base64 |
+| `address` | POST | string | No | Address to validate; when omitted, validation returns `result=false` and the exception message (which may be null on older JVMs) |
 
 Example:
 

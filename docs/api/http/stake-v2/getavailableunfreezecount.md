@@ -15,7 +15,8 @@ GET also accepts `ownerAddress` as an alias for `owner_address`. POST accepts on
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `owner_address` | GET / POST | string | Yes | Account address; the `ownerAddress` alias is supported only by GET |
+| `owner_address` | GET | string | Conditional | Account address; GET requires either this field or the `ownerAddress` alias |
+| `owner_address` | POST | string | No | Account address; omitted uses empty bytes and returns the default empty result |
 | `visible` | GET / POST | bool | No | Address format |
 
 Example:

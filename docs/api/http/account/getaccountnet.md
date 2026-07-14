@@ -11,7 +11,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `address` | GET / POST | string | Yes | Account address |
+| `address` | GET | string | Yes | Account address |
+| `address` | POST | string | No | Account address; omitted uses the Protobuf empty address and returns `{}` |
 | `visible` | GET / POST | bool | No | Address format |
 
 Example:

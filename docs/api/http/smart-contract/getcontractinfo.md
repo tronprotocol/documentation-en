@@ -12,7 +12,7 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `value` | GET / POST | string | Yes | Contract address |
+| `value` | GET / POST | string | No | Contract address; omitted uses empty bytes for the lookup and returns `{}` |
 | `visible` | GET / POST | bool | No | Address format |
 
 Example:

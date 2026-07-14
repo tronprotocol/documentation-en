@@ -12,7 +12,7 @@ Build an unsigned transaction that creates a new account. The new account is act
 |---|---|---|---|
 | `owner_address` | string | Yes | Payer address |
 | `account_address` | string | Yes | Address of the new account to create |
-| `type` | enum | No | 0=Normal (default), 1=AssetIssue, 2=Contract |
+| `type` | enum | No | Account type, accepted as either a number (`0`=Normal, `1`=AssetIssue, `2`=Contract) or the Protobuf enum name (`Normal`, `AssetIssue`, `Contract`); default `Normal` |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 

@@ -13,7 +13,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `value` | GET / POST | string | Yes | Transaction ID hex (32 bytes) |
+| `value` | GET | string | Yes | Transaction ID hex (32 bytes) |
+| `value` | POST | string | No | Transaction ID; omitted uses empty bytes and returns `{}` |
 | `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:

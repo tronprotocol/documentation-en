@@ -13,8 +13,10 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `fromAddress` | GET / POST | string | Yes | Delegator address |
-| `toAddress` | GET / POST | string | Yes | Receiver address |
+| `fromAddress` | GET | string | Yes | Delegator address |
+| `fromAddress` | POST | string | No | Delegator address; omitted uses empty bytes and returns an empty result |
+| `toAddress` | GET | string | Yes | Receiver address |
+| `toAddress` | POST | string | No | Receiver address; omitted uses empty bytes and returns an empty result |
 | `visible` | GET / POST | bool | No | Address format |
 
 Example:

@@ -13,10 +13,12 @@ Unfreeze matured Stake 1.0 assets.
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `owner_address` | string | Yes | Account to unfreeze |
-| `resource` | enum | No | `BANDWIDTH` / `ENERGY`, default `BANDWIDTH` |
+| `resource` | enum | No | `BANDWIDTH` / `ENERGY`; `TRON_POWER` is also accepted when the chain enables the new resource model. Default `BANDWIDTH` |
 | `receiver_address` | string | No | Delegation target address (when undelegating) |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
+
+`TRON_POWER` can unfreeze a legacy TronPower freeze only when the chain enables `supportAllowNewResourceModel()`; otherwise it is rejected. This resource parsing rule is separate from the interface-level Stake 1.0/Stake 2.0 availability check.
 
 Example:
 

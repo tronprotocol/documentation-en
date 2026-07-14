@@ -18,7 +18,7 @@ The following categories are intentionally not covered:
 - **Amount unit**: TRC-10 amounts use the issuer-defined precision; every other amount is in sun (1 TRX = 1e6 sun).
 - **`int64_as_string`**: GET requests may add `int64_as_string=true` in the URL query. When enabled, int64 / uint64 fields in protobuf JSON responses are serialized as JSON strings to avoid precision loss in clients such as JavaScript. This flag is honored only for GET requests; POST bodies are not affected.
 - **Request body size**: HTTP request bodies are limited by `node.http.maxMessageSize` in `config.conf` (default `4194304`, about 4 MiB; `0` rejects every non-empty body). JSON-RPC has its own independent `node.jsonrpc.maxMessageSize`.
-- **Rate limiting**: per-endpoint HTTP limits are configured in `rate.limiter.http`. The global `rate.limiter.apiNonBlocking` switch controls over-limit behavior: `true` rejects immediately; `false` queues and blocks the caller until a permit is available.
+- **Rate limiting**: per-endpoint HTTP limits are configured in `rate.limiter.http`. The global `rate.limiter.apiNonBlocking` switch controls over-limit behavior: `true` rejects immediately with HTTP 200 and `{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}`; `false` queues and blocks the caller until a permit is available.
 
 !!! warning "XSS security note"
 
@@ -34,6 +34,7 @@ In the vast majority of cases the HTTP status is **200** — business errors are
 
 - When an endpoint is explicitly disabled via the node's `disabledApiList`, `HttpApiAccessFilter` returns **HTTP 404** with body `{"Error": "this API is unavailable due to config"}`.
 - When a request body exceeds `node.http.maxMessageSize`, the shared HTTP `SizeLimitHandler` may reject it with **HTTP 413** (`Payload Too Large`) before the target servlet handles the request. If the request reaches a servlet and the servlet-side `Util.checkBodySize` check detects the oversized body, the endpoint follows its own error-response format, which for some endpoints is still **HTTP 200** with an error body.
+- When non-blocking rate limiting is enabled and the shared `RateLimiterServlet` cannot acquire a permit, it returns **HTTP 200** with body `{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}` before the target servlet runs. This is a shared-layer error rather than an endpoint business error.
 - When the node runs in lite fullnode mode and `openHistoryQueryWhenLiteFN` is not enabled, `LiteFnQueryHttpFilter` returns **HTTP 200** for ~24 historical-query endpoints (`getblockbynum` / `gettransactionbyid` / `gettransactioninfobyid` / `gettransactioninfobyblocknum` / `getblockbyid` / `getblockbylatestnum` / `getblockbylimitnext` / `gettransactioncountbyblocknum`, etc.) but the body is the bare string `this API is closed because this node is a lite fullnode` (**not JSON**) — a naive `JSON.parse` will throw, so clients must check the prefix as a string first.
 - Network-layer errors produced by the servlet container or a reverse proxy (502, 504, connection refused, etc.) are out of scope for this document.
 

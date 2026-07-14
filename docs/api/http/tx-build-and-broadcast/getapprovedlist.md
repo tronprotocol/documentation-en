@@ -14,7 +14,7 @@ Same body as [`/wallet/getsignweight`](getsignweight.md):
 |---|---|---|---|
 | `raw_data` | object | Yes | Same as `createtransaction` response |
 | `raw_data_hex` | string | No (node ignores) | Same as [`broadcasttransaction`](broadcasttransaction.md): client display helper, not used for signature verification |
-| `signature` | string[] | Yes | Collected signatures |
+| `signature` | string[] | No | Collected signatures; when omitted, the request is still parsed and the approved-address list is empty |
 | `visible` | bool | No | Format of address / text fields (the response includes `result.message`, which is affected by `visible`) |
 
 Example: the request body is a Transaction JSON with `signature`, structured the same as [`/wallet/broadcasttransaction`](broadcasttransaction.md).
@@ -33,7 +33,7 @@ curl --request POST \
 '
 ```
 
-> The above is a placeholder; the real request body is a multi-sig transaction JSON with at least one `signature` (from [`/wallet/createtransaction`](createtransaction.md) etc., then signed).
+> The above is a placeholder. A real permission check normally uses a multi-sig transaction JSON produced by [`/wallet/createtransaction`](createtransaction.md) and then signed, but the endpoint also accepts an empty or omitted `signature` array and returns no approved addresses.
 
 ## Response
 

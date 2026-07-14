@@ -12,7 +12,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `value` | GET / POST | string | Yes | Token name (UTF-8 encoded as hex) |
+| `value` | GET | string | Yes | Token name (UTF-8 encoded as hex) |
+| `value` | POST | string | No | Token name; omitted uses an empty value and normally returns `{}` when `visible=false` |
 | `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:

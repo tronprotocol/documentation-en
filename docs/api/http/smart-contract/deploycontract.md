@@ -15,10 +15,10 @@ Deploy a smart contract. Returns the unsigned deployment transaction.
 | `abi` | json string | No | Contract ABI (JSON-array string) |
 | `bytecode` | string | Yes | Contract bytecode (hex) |
 | `parameter` | string | No | Constructor parameters (hex, appended to bytecode) |
-| `fee_limit` | int64 | Yes | Transaction fee limit (sun) |
+| `fee_limit` | int64 | No | Transaction fee limit (sun); omitted defaults to `0` |
 | `call_value` | int64 | No | TRX (sun) sent with the deployment |
-| `consume_user_resource_percent` | int64 | Yes | Caller-paid energy percentage 0–100 |
-| `origin_energy_limit` | int64 | Yes | Deployer's energy limit |
+| `consume_user_resource_percent` | int64 | No | Caller-paid energy percentage 0–100; omitted defaults to `0` |
+| `origin_energy_limit` | int64 | No | Deployer's energy limit; omitted defaults to `0` |
 | `token_id` | int64 | No | TRC-10 token id sent with the deployment |
 | `call_token_value` | int64 | No | TRC-10 amount sent with the deployment |
 | `Permission_id` | int32 | No | Multi-sig permission ID |

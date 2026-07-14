@@ -15,10 +15,12 @@ Freeze TRX to obtain bandwidth or energy; can be delegated to others. On nodes w
 | `owner_address` | string | Yes | Freezing account address |
 | `frozen_balance` | int64 | Yes | Frozen amount (sun) |
 | `frozen_duration` | int64 | No | Freeze duration in days; omitted defaults to `0`. Validated only when `block.checkFrozenTime=1`, when it must be within `[minFrozenTime, maxFrozenTime]` (normally `[3, 3]`) |
-| `resource` | enum | No | `BANDWIDTH` / `ENERGY`, default `BANDWIDTH` |
+| `resource` | enum | No | `BANDWIDTH` / `ENERGY`; `TRON_POWER` is also accepted when the chain enables the new resource model. Default `BANDWIDTH` |
 | `receiver_address` | string | No | Delegate target address (omit to freeze for self) |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
+
+When `resource=TRON_POWER`, `receiver_address` must be omitted because TronPower cannot be delegated. A node without `supportAllowNewResourceModel()` rejects `TRON_POWER`. Independently, when Stake 2.0 is enabled, the node normally rejects this legacy Stake 1.0 freeze operation as a whole.
 
 Example:
 

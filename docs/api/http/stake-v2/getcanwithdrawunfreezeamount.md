@@ -13,7 +13,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `owner_address` | GET / POST | string | Yes | Account address |
+| `owner_address` | GET | string | Yes | Account address |
+| `owner_address` | POST | string | No | Account address; omitted uses empty bytes and returns the default empty result |
 | `timestamp` | GET / POST | int64 | No | Cutoff timestamp (ms); when missing or `0`, uses latest block time; when negative, returns `{}` |
 | `visible` | GET / POST | bool | No | Address format |
 

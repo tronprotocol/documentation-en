@@ -37,4 +37,8 @@ The example below is the real response captured from a Nile testnet call:
 
 ### Error responses
 
-The implementation can throw `JsonRpcInternalException` if block 0 cannot be loaded, but the `eth_chainId` interface declaration does not define a `@JsonRpcErrors` mapping for that exception. Because of that, java-tron does not expose a stable method-level `-32000` mapping for this endpoint.
+| Trigger | Code | message |
+|---|---|---|
+| Block 0 cannot be loaded | `-32001` | The underlying exception message |
+
+The implementation wraps a failure to load block 0 in `JsonRpcInternalException`, but the `eth_chainId` interface declaration does not define a matching `@JsonRpcErrors` entry. The java-tron resolver therefore returns no mapping, and jsonrpc4j uses its `ERROR_NOT_HANDLED` fallback (`-32001`). The response `error.message` comes from the underlying exception and is not the fixed string `JsonRpcInternalException`.

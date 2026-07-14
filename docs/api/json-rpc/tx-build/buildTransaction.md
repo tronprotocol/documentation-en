@@ -15,8 +15,8 @@ Tron private extension. Constructs an **unsigned** Tron transaction; sign it and
 
 | Field | Default | Description |
 |---|---|---|
-| `from` | required | Sender address (hex or base58check) |
-| `to` | depends | Target address; empty for contract deployment |
+| `from` | required | Sender address: 20-byte hex or 21-byte Tron hex beginning with `41`, with or without `0x` (base58check is not accepted) |
+| `to` | depends | Target address in the same hexadecimal formats as `from`; empty for contract deployment |
 | `gas` | `0x0` | Maximum energy consumed by the transaction; ultimately `feeLimit = gas × eth_gasPrice` (sun) |
 | `value` | null | TRX amount (sun, hex) |
 | `data` | null | Contract bytecode (deployment) or calldata (trigger) |
@@ -108,6 +108,8 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 | `data` and `input` are both set but resolve to different bytes | `-32602` | `both "data" and "input" are set and not equal. Please use "input" to pass transaction call data` |
 | `value` is not valid hex | `-32602` | `invalid param value: invalid hex number` |
 | `gas` is not valid hex | `-32602` | `invalid param value: invalid hex number` |
+| `gas × eth_gasPrice` overflows a signed 64-bit `feeLimit` | `-32602` | `invalid gas: fee limit overflow` |
+| `abi` cannot be parsed for contract deployment | `-32602` | `invalid abi` |
 | `tokenId` invalid after string conversion (TRC-10 path only) | `-32602` | `invalid param value: invalid tokenId` |
 | Contract validation fails (`ContractValidateException`) | `-32600` | passes through message |
 | Internal exception | `-32000` | passes through message |

@@ -19,7 +19,7 @@ Trigger a smart contract (state-changing call). Returns the unsigned transaction
 | `call_value` | int64 | No | TRX (sun) sent with the call |
 | `token_id` | int64 | No | TRC-10 token id sent with the call |
 | `call_token_value` | int64 | No | TRC-10 amount sent with the call |
-| `fee_limit` | int64 | Yes | Transaction fee limit (sun) |
+| `fee_limit` | int64 | No | Transaction fee limit (sun); omitted defaults to `0` |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields (response includes `result.message`, which is affected by `visible`) |
 
@@ -96,7 +96,7 @@ Response example (real Nile capture):
 
 This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`.
 
-If the request body is rejected earlier by the shared HTTP transport layer, for example because it exceeds `node.http.maxMessageSize`, the node usually returns HTTP 413 `Payload Too Large` from `SizeLimitHandler` instead of entering this servlet.
+Before the request reaches this servlet, shared layers can still return a different shape: `SizeLimitHandler` usually returns HTTP 413 `Payload Too Large` for an oversized body, and a non-blocking rate-limit rejection returns HTTP 200 with `{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}`.
 
 | Trigger | `result.result` | `result.code` | `result.message` |
 |---|---|---|---|

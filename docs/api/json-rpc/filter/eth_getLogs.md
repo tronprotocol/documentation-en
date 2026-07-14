@@ -87,8 +87,7 @@ The example below is the real response captured from the Nile testnet curl above
 |---|---|---|
 | `fromBlock` / `toBlock` is `pending` or `safe` | `-32602` | `TAG pending not supported` or `TAG safe not supported` |
 | `blockHash` is given together with `fromBlock` / `toBlock` | `-32602` | `cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other` |
-| `blockHash` format or length does not match the hash rule | `-32602` | `invalid hash value` |
-| `blockHash` has the right shape but hex decoding fails | `-32602` | passes through the `ByteArray.fromHexString` message |
+| `blockHash` does not match the strict `(0x)?[0-9a-fA-F]{64}` hash rule | `-32602` | `invalid hash value` |
 | `blockHash` decodes successfully but does not exist on this node | `-32602` | `invalid blockHash` |
 | `fromBlock > toBlock` | `-32602` | `please verify: fromBlock <= toBlock` |
 | Range exceeds `maxBlockRange` (default 5000) | `-32602` | `exceed max block range: <N>` |

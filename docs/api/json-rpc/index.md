@@ -19,8 +19,8 @@ The URL path is always `/jsonrpc` (see `FullNodeJsonRpcHttpService.java`).
 
 - **Transport**: `POST` only; the request body is in [JSON-RPC 2.0](https://www.jsonrpc.org/specification) format: `{"jsonrpc":"2.0","method":"...","params":[...],"id":1}`.
 - **HTTP status code**: after a request reaches `JsonRpcServlet`, JSON-RPC business errors are returned with HTTP 200 and an `error` field in the response body. Transport-layer failures can still return non-200 status codes; for example, an oversized request body may be rejected before servlet dispatch.
-- **Numeric encoding**: all numbers (block number, balance, gas, timestamp, etc.) use `0x`-prefixed hex strings; null values map to `0x` or `0x0`.
-- **Address encoding**: JSON-RPC interfaces accept `0x`-prefixed 20-byte hex addresses by default; base58check is also accepted (internally converted by `JsonRpcApiUtil.addressCompatibleToByteArray`).
+- **Numeric encoding**: response quantities use `0x`-prefixed hex strings. Block-query selectors additionally accept non-negative decimal heights because `JsonRpcApiUtil.parseBlockNumber` supports both decimal and `0x`-prefixed input.
+- **Address encoding**: JSON-RPC state/call/build interfaces accept hexadecimal addresses only: either a 20-byte EVM-style address or a 21-byte Tron address beginning with `41`, with or without `0x`. Base58check (`T...`) is not accepted by `JsonRpcApiUtil.addressCompatibleToByteArray`. Log filters use 20-byte hexadecimal addresses.
 - **Call data fields**: `eth_call`, `eth_estimateGas`, and `buildTransaction` accept both `data` and `input`. `input` follows stricter execution-API hex rules (`0x` prefix, even length; empty string means empty bytes). `data` remains lenient for backward compatibility.
 - **Block tags**: among the common `latest` / `earliest` / `pending` / `finalized` / `safe`, **only a few methods support these tags**:
     - Block-query methods such as `eth_getBlockByNumber` and `eth_getBlockReceipts` accept `latest` / `earliest` / `finalized`; `pending` and `safe` are explicitly unsupported and throw `-32602 TAG pending not supported` or `-32602 TAG safe not supported`.

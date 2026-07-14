@@ -15,8 +15,10 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `fromAddress` | GET / POST | string | Yes | Resource lender address |
-| `toAddress` | GET / POST | string | Yes | Resource receiver address |
+| `fromAddress` | GET | string | Yes | Resource lender address |
+| `fromAddress` | POST | string | No | Resource lender address; omitted uses empty bytes and returns an empty result |
+| `toAddress` | GET | string | Yes | Resource receiver address |
+| `toAddress` | POST | string | No | Resource receiver address; omitted uses empty bytes and returns an empty result |
 | `visible` | GET / POST | bool | No | Address format |
 
 Example:

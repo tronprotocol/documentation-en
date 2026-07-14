@@ -12,7 +12,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `address` | GET / POST | string | Yes | Account address; hex (21 bytes, 0x41 prefix) when `visible=false`, base58check when `visible=true` |
+| `address` | GET | string | Yes | Account address; hex (21 bytes, 0x41 prefix) when `visible=false`, base58check when `visible=true` |
+| `address` | POST | string | No | Account address; omitted uses the Protobuf empty address and normally returns `{}` |
 | `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 POST example:
@@ -47,7 +48,9 @@ Returns a `protocol.Account` (see `protocol/src/main/protos/core/Tron.proto`). C
 | `asset` / `assetV2` | map\<string,int64\> | TRC-10 holdings |
 | `allowance` | int64 | Unwithdrawn witness rewards |
 | `latest_opration_time` | int64 | Time of the most recent operation |
-| `owner_permission` / `witness_permission` / `active_permission` | Permission | Permission configuration |
+| `owner_permission` | Permission | Owner permission configuration |
+| `witness_permission` | Permission | Witness permission configuration (present for SR accounts) |
+| `active_permission` | repeated Permission | Active permission configurations |
 
 Response example:
 

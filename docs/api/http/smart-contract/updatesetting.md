@@ -12,7 +12,7 @@ Update a contract's `consume_user_resource_percent` (deployer only).
 |---|---|---|---|
 | `owner_address` | string | Yes | Deployer address |
 | `contract_address` | string | Yes | Contract address |
-| `consume_user_resource_percent` | int64 | Yes | Caller-paid energy percentage 0–100 |
+| `consume_user_resource_percent` | int64 | No | Caller-paid energy percentage 0–100; omitted defaults to `0`, which passes the `[0,100]` validation |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 

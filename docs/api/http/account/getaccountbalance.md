@@ -13,7 +13,7 @@ Query an account's TRX balance at a specific block (block-anchored).
 |---|---|---|---|
 | `account_identifier.address` | string | Yes | Account address |
 | `block_identifier.hash` | string | Yes | Block hash |
-| `block_identifier.number` | int64 | Yes | Block number |
+| `block_identifier.number` | int64 | No | Block number; omitted defaults to `0`. It may be omitted only for the genesis block; for other blocks it must match `block_identifier.hash` |
 | `visible` | bool | No | Address format |
 
 Example:

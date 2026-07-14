@@ -13,7 +13,7 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `value` | GET / POST | string | Yes | Block hash hex |
+| `value` | GET / POST | string | No | Block hash hex; omitted uses empty bytes for the lookup and returns `{}` |
 | `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:

@@ -9,7 +9,7 @@ Query all transaction receipts of an entire block by height / hash / tag.
 
 | Position | Type | Required | Description |
 |---|---|---|---|
-| `params[0]` | string | yes | Block hash (64 hex chars) / block height (hex) / tag (`latest` / `earliest` / `finalized`; `pending` and `safe` are explicitly unsupported) |
+| `params[0]` | string | yes | Block hash (64 hex chars), non-negative block height (`0x`-prefixed hex or decimal), or tag (`latest` / `earliest` / `finalized`; `pending` and `safe` are explicitly unsupported) |
 
 ```bash
 curl -X POST https://nile.trongrid.io/jsonrpc \
@@ -95,7 +95,6 @@ The example below is the real response captured from the Nile testnet curl above
 
 | Trigger | Code | message |
 |---|---|---|
-| `params[0]` is neither hash-shaped nor a valid hex height / tag | `-32602` | `invalid block number` |
-| `params[0]` is hash-shaped (`(0x)?[a-zA-Z0-9]{64}`) but contains non-hex characters | `-32602` | passes through the message thrown by `ByteArray.fromHexString` |
+| `params[0]` is neither a strict 32-byte hex hash nor a valid non-negative hex/decimal height or tag | `-32602` | `invalid block number` |
 | `params[0]` is `pending` or `safe` | `-32602` | `TAG pending not supported` or `TAG safe not supported` |
 | Block transaction list and `TransactionInfoList` lengths mismatch (should not happen; defensive check only) | `-32000` | `TransactionList size mismatch: block has %d transactions, but transactionInfoList has %d` |

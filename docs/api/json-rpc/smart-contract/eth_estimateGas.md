@@ -53,9 +53,12 @@ The example below is the real response captured from the Nile testnet curl above
 |---|---|---|
 | `from` is not valid hex / wrong length | `-32602` | passes through `addressCompatibleToByteArray` message |
 | `to` is not valid hex / wrong length | `-32602` | passes through `addressCompatibleToByteArray` message |
-| `from` is valid but both `to` and calldata (`data` / `input`) are missing | `-32600` | `invalid json request` |
+| `to` is empty and the resolved calldata is missing, `""`, or `"0x"` (`input` takes precedence over `data` when non-null) | `-32600` | `invalid json request` |
 | `to` is not a contract and `value` is missing | `-32600` | `invalid json request: invalid value` |
 | Contract validation fails (`ContractValidateException`) | `-32600` | passes through message (fallback `invalid contract`) |
 | EVM execution `REVERT` | `-32000` | message + the parsed revert string; `error.data` carries the original revert hex |
 | `input` is not strict hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
-| `data` / `value` hex invalid or other internal exceptions | `-32000` | passes through message (double quotes are replaced with single quotes) |
+| `data` is not valid lenient hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
+| `value` is not a valid non-negative hex long on the ordinary transfer path | `-32602` | `invalid param value: invalid hex number` or `invalid param value: negative` |
+| `value` is not a valid non-negative hex long on the contract call or deployment path | `-32000` | passes through the parsing message |
+| Other internal exceptions during contract call or deployment estimation | `-32000` | passes through message (double quotes are replaced with single quotes) |

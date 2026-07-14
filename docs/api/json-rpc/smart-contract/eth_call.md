@@ -10,7 +10,7 @@ Read-only call to a smart contract (no on-chain effect, no energy consumed).
 | Position | Type | Required | Description |
 |---|---|---|---|
 | `params[0]` | object | yes | `CallArguments` object, see below |
-| `params[1]` | string \| object | yes | Block tag: a tag string, or a `{"blockNumber": "0x..."}` / `{"blockHash": "0x..."}` object (EIP-1898). String tags only support `latest`; object form checks that the referenced block exists, but execution still uses the latest state |
+| `params[1]` | string \| object | yes | Block tag: a tag string, or an object containing `blockNumber` (non-negative `0x`-hex or decimal) or `blockHash` (strict 32-byte hex). String tags only support `latest`; object form checks that the referenced block exists, but execution still uses the latest state |
 
 `CallArguments` fields (`framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java`):
 
@@ -25,7 +25,7 @@ Read-only call to a smart contract (no on-chain effect, no energy consumed).
 
 `input` follows stricter execution-API hex rules: it must have a `0x` prefix and an even number of hex digits; `""` is accepted as empty bytes. `data` keeps the legacy lenient parser for backward compatibility.
 
-For `params[1]`, a string block tag must be `latest`. EIP-1898 object form accepts an existing `blockNumber` / `blockHash` and checks that the block exists, but the call still executes against latest state rather than historical state.
+For `params[1]`, a string block tag must be `latest`. EIP-1898 object form accepts an existing `blockNumber` / `blockHash` and checks that the block exists, but the call still executes against latest state rather than historical state. Extra object properties are ignored; if both selectors are present, `blockNumber` takes precedence.
 
 ```bash
 # Example: call symbol() of Tether USD (USDT) on Nile testnet
@@ -60,10 +60,11 @@ The example below is the real response captured from the Nile testnet curl above
 |---|---|---|
 | `params[1]` is neither a string nor an object | `-32600` | `invalid json request` |
 | `params[1]` object form has neither `blockNumber` nor `blockHash` | `-32600` | `invalid json request` |
-| `blockNumber` in `params[1]` is not valid hex | `-32602` | `invalid block number` |
+| `blockNumber` in `params[1]` is not a valid non-negative hex/decimal height | `-32602` | `invalid block number` |
+| `blockHash` in `params[1]` does not match `(0x)?[0-9a-fA-F]{64}` | `-32602` | `invalid hash value` |
 | The block specified in `params[1]` does not exist | `-32000` | `header not found` or `header for hash not found` |
 | `params[1]` tag is `earliest` / `pending` / `finalized` / `safe` | `-32602` | `TAG [earliest \| pending \| finalized \| safe] not supported` |
-| `params[1]` is a specific hex height (even if valid) | `-32602` | `QUANTITY not supported, just support TAG as latest` |
+| string `params[1]` is a specific hex or decimal height (even if valid) | `-32602` | `QUANTITY not supported, just support TAG as latest` |
 | `from` / `to` address is invalid | `-32602` | passes through the message |
 | `input` is not strict hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
 | `value` is not valid hex | `-32602` | `invalid param value: invalid hex number` |

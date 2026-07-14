@@ -13,7 +13,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `owner_address` | GET / POST | string | Yes | Account address |
+| `owner_address` | GET | string | Yes | Account address |
+| `owner_address` | POST | string | No | Account address; omitted uses empty bytes and returns the default result |
 | `type` | GET / POST | int32 | No | Resource type: `0`=BANDWIDTH (default), `1`=ENERGY |
 | `visible` | GET / POST | bool | No | Address format |
 
