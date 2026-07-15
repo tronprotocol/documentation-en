@@ -74,5 +74,15 @@
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockReceipts",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getBlockReceipts",
     "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionReceipt.java#class TransactionReceipt"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    },
+    {
+      "errorIndex": 1,
+      "catalogId": "JSON_RPC_INTERNAL_ERROR"
+    }
   ]
 }

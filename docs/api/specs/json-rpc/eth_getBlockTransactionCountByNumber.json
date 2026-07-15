@@ -62,5 +62,11 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockTransactionCountByNumber",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockTransactionCountByNumber"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    }
   ]
 }

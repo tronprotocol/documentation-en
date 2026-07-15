@@ -69,5 +69,11 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getStorageAt",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getStorageAt"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    }
   ]
 }

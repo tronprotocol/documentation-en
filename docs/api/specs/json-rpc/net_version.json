@@ -33,5 +33,11 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_version",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getNetVersion"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_UNDERLYING_INTERNAL_ERROR"
+    }
   ]
 }

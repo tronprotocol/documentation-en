@@ -6,7 +6,7 @@
     "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation.",
     "x-java-tron-source": {
       "repo": "tronprotocol/java-tron",
-      "commit": "e90dd782122c9e9b283429d03697f0cb8f1326fb",
+      "commit": "f8ff7c76f45ab41d9bb76922329657506819701b",
       "version": "GreatVoyage-v4.8.2"
     }
   },
@@ -55,7 +55,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#web3_clientVersion",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#web3ClientVersion"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "web3_sha3",
@@ -103,6 +104,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#web3_sha3",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#web3Sha3"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -140,6 +147,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_version",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getNetVersion"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_UNDERLYING_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -172,7 +185,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_listening",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#isListening"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "net_peerCount",
@@ -204,7 +218,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_peerCount",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getPeerCount"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_chainId",
@@ -241,6 +256,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_chainId",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethChainId"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_UNDERLYING_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -273,7 +294,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_protocolVersion",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getProtocolVersion"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_syncing",
@@ -333,7 +355,8 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_syncing",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getSyncingStatus",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class SyncingResult"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_blockNumber",
@@ -365,7 +388,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_blockNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getLatestBlockNum"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_gasPrice",
@@ -397,7 +421,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_gasPrice",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#gasPrice"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_getBlockByHash",
@@ -465,6 +490,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockByHash",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -542,6 +573,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcApiUtil.java#parseBlockNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -600,6 +637,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockTransactionCountByHash",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockTransactionCountByHash"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -666,6 +709,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockTransactionCountByNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockTransactionCountByNumber"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -723,6 +772,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionByHash",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionByHash",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -791,6 +846,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionByBlockHashAndIndex",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionByBlockHashAndIndex",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -867,6 +928,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionByBlockNumberAndIndex",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionByBlockNumberAndIndex",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -924,6 +991,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionReceipt",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionReceipt",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionReceipt.java#class TransactionReceipt"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -1002,6 +1075,16 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockReceipts",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getBlockReceipts",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionReceipt.java#class TransactionReceipt"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -1063,6 +1146,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBalance",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTrxBalance"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -1136,6 +1225,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getStorageAt",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getStorageAt"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -1197,6 +1292,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getCode",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getABIOfSmartContract"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -1405,6 +1506,20 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_call",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCall",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#input"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_REQUEST"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -1462,6 +1577,20 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_estimateGas",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#estimateGas",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#input"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_REQUEST"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -1539,6 +1668,36 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getLogs",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class FilterRequest",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_TOO_MANY_RESULTS"
+        },
+        {
+          "errorIndex": 3,
+          "catalogId": "JSON_RPC_BAD_ITEM"
+        },
+        {
+          "errorIndex": 4,
+          "catalogId": "JSON_RPC_EXECUTION_ERROR"
+        },
+        {
+          "errorIndex": 5,
+          "catalogId": "JSON_RPC_INTERRUPTED"
+        },
+        {
+          "errorIndex": 6,
+          "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1743,6 +1902,20 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_newFilter",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#newFilter",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class FilterRequest"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_FILTER_LIMIT_EXCEEDED"
+        }
       ]
     },
     {
@@ -1784,6 +1957,16 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_newBlockFilter",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#newBlockFilter"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_FILTER_LIMIT_EXCEEDED"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1840,6 +2023,20 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_uninstallFilter",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#uninstallFilter"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1909,6 +2106,20 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getFilterChanges",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterChanges",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1985,6 +2196,36 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getFilterLogs",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterLogs",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_TOO_MANY_RESULTS"
+        },
+        {
+          "errorIndex": 3,
+          "catalogId": "JSON_RPC_BAD_ITEM"
+        },
+        {
+          "errorIndex": 4,
+          "catalogId": "JSON_RPC_EXECUTION_ERROR"
+        },
+        {
+          "errorIndex": 5,
+          "catalogId": "JSON_RPC_INTERRUPTED"
+        },
+        {
+          "errorIndex": 6,
+          "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+        }
       ]
     },
     {
@@ -2158,6 +2399,24 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#buildTransaction",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class TransactionJson",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#input"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_REQUEST"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 3,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -2195,6 +2454,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_coinbase",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCoinbase"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -2230,7 +2495,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_accounts",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getAccounts"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_getWork",
@@ -2285,7 +2551,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getWork",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetWork"
-      ]
+      ],
+      "x-tron-error-catalog": []
     }
   ],
   "x-tron-rate-limiting": {
@@ -2298,6 +2565,324 @@
     "errorShape": "JavaTronError for HTTP APIs; servlet-level error body for JSON-RPC",
     "message": "lack of computing resources",
     "description": "java-tron applies configurable servlet-level rate limiting. When a request is rejected by the rate limiter, RateLimiterServlet writes an error body without setting HTTP 429."
+  },
+  "x-tron-error-model": {
+    "schemaVersion": "1.0.0",
+    "wireFormatUnchanged": true,
+    "classificationRule": "Evaluate executable sharedCatalogIds matches first, then restrict method-declared candidates through x-tron-error-catalog. If multiple candidates remain for the same wire response, use ambiguousCodeFallback.",
+    "classificationOrder": [
+      "shared-executable-match",
+      "method-declared-error-match",
+      "ambiguous-code-fallback"
+    ],
+    "errorIndexBase": 0,
+    "errorIndexTarget": "method.errors",
+    "sourceExceptionSemantics": "sourceException and sourceMessage describe source declarations only and are not guaranteed to appear in the wire response.",
+    "retryableSemantics": "retryable=true permits automatic replay of the same logical operation. Conditional retry classes remain retryable=false until their stated precondition is satisfied.",
+    "ambiguousCodeFallback": {
+      "retryable": false,
+      "retryClass": "UNKNOWN"
+    },
+    "transportScope": "Includes stable protocol, servlet, and HTTP responses emitted by java-tron. Connection failures, timeouts, and generic I/O failures without a stable response contract remain client transport errors.",
+    "retryClasses": {
+      "SAFE_WITH_BACKOFF": {
+        "automaticRetry": true,
+        "description": "The same request may be retried with exponential backoff and jitter."
+      },
+      "AFTER_STATE_CHANGE": {
+        "automaticRetry": false,
+        "description": "Retry only after node, account, chain, permission, or resource state changes."
+      },
+      "AFTER_REQUEST_REBUILD": {
+        "automaticRetry": false,
+        "description": "Do not replay the same payload; correct or rebuild the request before resubmitting."
+      },
+      "VERIFY_BEFORE_RETRY": {
+        "automaticRetry": false,
+        "description": "Query the transaction or resource outcome before deciding whether to resubmit."
+      },
+      "NEVER": {
+        "automaticRetry": false,
+        "description": "The failure is deterministic for the same request and current state."
+      },
+      "UNKNOWN": {
+        "automaticRetry": false,
+        "description": "The wire response is not specific enough to classify safely; do not retry automatically."
+      }
+    },
+    "sharedCatalogIds": [
+      "JSON_RPC_PARSE_ERROR",
+      "JSON_RPC_INVALID_REQUEST",
+      "JSON_RPC_METHOD_NOT_FOUND",
+      "JSON_RPC_INVALID_PARAMS",
+      "JSON_RPC_SERVLET_INTERNAL_ERROR",
+      "JSON_RPC_RESPONSE_TOO_LARGE",
+      "JSON_RPC_BATCH_TOO_LARGE",
+      "JSON_RPC_RATE_LIMITED",
+      "JSON_RPC_REQUEST_TOO_LARGE"
+    ],
+    "catalog": [
+      {
+        "id": "JSON_RPC_PARSE_ERROR",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The request body is not valid JSON.",
+        "match": {
+          "code": -32700
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java"
+        ],
+        "code": -32700
+      },
+      {
+        "id": "JSON_RPC_INVALID_REQUEST",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The JSON-RPC protocol structure is invalid or method-level request or contract validation failed.",
+        "match": {
+          "code": -32600
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java",
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32600,
+        "sourceException": "JsonRpcInvalidRequestException"
+      },
+      {
+        "id": "JSON_RPC_METHOD_NOT_FOUND",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "AFTER_STATE_CHANGE",
+        "description": "The requested method is unavailable or unsupported on this node/port.",
+        "match": {
+          "code": -32601
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32601,
+        "sourceException": "JsonRpcMethodNotFoundException"
+      },
+      {
+        "id": "JSON_RPC_INVALID_PARAMS",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "Parameters could not be bound to the method signature or failed method validation.",
+        "match": {
+          "code": -32602
+        },
+        "sources": [
+          "framework/build.gradle#jsonrpc4j-1.6",
+          "com.github.briandilley.jsonrpc4j:jsonrpc4j:1.6#com.googlecode.jsonrpc4j.JsonRpcBasicServer.handleObject/findBestMethodByParamsNode",
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32602,
+        "sourceException": "JsonRpcInvalidParamsException"
+      },
+      {
+        "id": "JSON_RPC_SERVLET_INTERNAL_ERROR",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "The JSON-RPC servlet caught an unexpected fallback exception.",
+        "match": {
+          "code": -32603,
+          "messageEquals": "Internal error"
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java"
+        ],
+        "code": -32603
+      },
+      {
+        "id": "JSON_RPC_RESPONSE_TOO_LARGE",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The encoded JSON-RPC response exceeds maxResponseSize.",
+        "match": {
+          "code": -32003,
+          "messagePrefix": "Response exceeds the limit of "
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java"
+        ],
+        "code": -32003
+      },
+      {
+        "id": "JSON_RPC_BATCH_TOO_LARGE",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The request batch contains more entries than maxBatchSize permits.",
+        "match": {
+          "code": -32005,
+          "messagePrefix": "Batch size "
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java"
+        ],
+        "code": -32005
+      },
+      {
+        "id": "JSON_RPC_FILTER_LIMIT_EXCEEDED",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_STATE_CHANGE",
+        "description": "The node has reached its active filter limit.",
+        "match": {
+          "code": -32005
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32005,
+        "sourceException": "JsonRpcExceedLimitException"
+      },
+      {
+        "id": "JSON_RPC_TOO_MANY_RESULTS",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The log query would return more results than the node permits.",
+        "match": {
+          "code": -32005
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32005,
+        "sourceException": "JsonRpcTooManyResultException"
+      },
+      {
+        "id": "JSON_RPC_UNDERLYING_INTERNAL_ERROR",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "Chain identity lookup failed with an underlying exception message.",
+        "match": {
+          "code": -32001,
+          "fallback": true
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#throws JsonRpcInternalException"
+        ],
+        "code": -32001,
+        "sourceException": "JsonRpcInternalException",
+        "sourceMessage": "<underlying exception message>"
+      },
+      {
+        "id": "JSON_RPC_INTERNAL_ERROR",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "The method raised a java-tron JSON-RPC internal error.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "JsonRpcInternalException"
+      },
+      {
+        "id": "JSON_RPC_ITEM_NOT_FOUND",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_STATE_CHANGE",
+        "description": "A requested filter, block item, or cached item was not found.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "ItemNotFoundException"
+      },
+      {
+        "id": "JSON_RPC_BAD_ITEM",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "Log processing encountered an invalid underlying item.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "BadItemException"
+      },
+      {
+        "id": "JSON_RPC_EXECUTION_ERROR",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "Asynchronous log-query execution failed.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "ExecutionException"
+      },
+      {
+        "id": "JSON_RPC_INTERRUPTED",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "Log-query execution declared InterruptedException, but the wire response cannot distinguish it safely from other -32000 failures.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "InterruptedException"
+      },
+      {
+        "id": "JSON_RPC_RATE_LIMITED",
+        "kind": "transport",
+        "retryable": true,
+        "retryClass": "SAFE_WITH_BACKOFF",
+        "description": "The shared servlet rate limiter rejected the request before a JSON-RPC envelope was written.",
+        "match": {
+          "httpStatus": 200,
+          "bodyPath": "$.Error",
+          "contains": "lack of computing resources",
+          "outsideJsonRpcEnvelope": true
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+        ]
+      },
+      {
+        "id": "JSON_RPC_REQUEST_TOO_LARGE",
+        "kind": "transport",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The HTTP request body exceeds node.jsonrpc.maxMessageSize before servlet dispatch.",
+        "match": {
+          "httpStatus": 413,
+          "outsideJsonRpcEnvelope": true
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/common/application/HttpService.java",
+          "framework/src/main/java/org/tron/core/services/jsonrpc/FullNodeJsonRpcHttpService.java"
+        ]
+      }
+    ]
   },
   "components": {
     "schemas": {

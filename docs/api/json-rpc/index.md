@@ -29,18 +29,35 @@ The URL path is always `/jsonrpc` (see `FullNodeJsonRpcHttpService.java`).
 
 ## Error responses
 
-JSON-RPC protocol errors use `error.code` / `error.message`. Business exceptions map as follows (see annotations on `TronJsonRpc.java` + `JsonRpcErrorResolver.java`):
+<!-- BEGIN GENERATED JSON-RPC ERROR CATALOG -->
+### JSON-RPC error catalog
 
-| Code | Exception class | Meaning |
-|---|---|---|
-| `-32700` | JSON parser / stream constraint exception | Request body cannot be parsed as JSON (`JSON parse error`) or exceeds Jackson stream constraints (passes through Jackson's message) |
-| `-32600` | `JsonRpcInvalidRequestException` / servlet request validation | Request body is invalid, batch item is not an object, or contract validation failed (e.g. `eth_call`'s `params[1]` is neither a tag string nor a `{blockNumber/blockHash}` object, or `ContractValidateException`) |
-| `-32601` | `JsonRpcMethodNotFoundException` | Method does not exist or is unavailable on the current node type (Solidity nodes disable `buildTransaction`, plus a set of always-unsupported methods) |
-| `-32602` | `JsonRpcInvalidParamsException` | Invalid parameters (wrong hash length, wrong address format, unsupported block tag, etc.) |
-| `-32603` | Servlet fallback exception handler | Internal servlet error (`Internal error`) |
-| `-32000` | `JsonRpcInternalException` / `ItemNotFoundException` / `BadItemException` / `ExecutionException` / `InterruptedException` | Server-side internal error (block does not exist, VM execution fails, `etherbase` not configured, filter not found, lite fullnode pruned, etc.) |
-| `-32003` | Servlet response-size guard | Response body exceeds `maxResponseSize` (`Response exceeds the limit of <N> bytes`) |
-| `-32005` | `JsonRpcExceedLimitException` / `JsonRpcTooManyResultException` / servlet batch-size guard | Limit hit (`eth_newBlockFilter` exceeded `maxBlockFilterNum`, `eth_newFilter` exceeded `maxLogFilterNum`, request batch size exceeded `maxBatchSize`, or `eth_getLogs` results exceeded `LogBlockQuery.MAX_RESULT=10000`; validation limits such as `maxBlockRange`, `maxAddressSize`, and `maxSubTopics` throw `-32602`) |
+Catalog IDs and retry classifications are defined by `openrpc.json` under `x-tron-error-model`. They are machine-readable documentation classifications, not fields returned by java-tron on the wire.
+
+`Automatic retry` maps exactly to catalog `retryable`: only `Yes` permits automatic replay of the same logical operation. Conditional retry classes remain `No` until the `Scope / action` precondition is satisfied.
+
+Evaluate executable `sharedCatalogIds` matches first, then restrict method-declared candidates through the method's `x-tron-error-catalog`. `sourceException` is source metadata, not a wire field. If reused codes such as `-32000` or `-32005` still identify multiple candidates, classify the response as `UNKNOWN` and do not retry automatically.
+
+| Catalog ID | Wire signal | Source declaration | Meaning | Automatic retry | Retry class | Scope / action |
+|---|---|---|---|---|---|---|
+| `JSON_RPC_PARSE_ERROR` | `error.code` = `-32700` | — | The request body is not valid JSON. | No | `AFTER_REQUEST_REBUILD` | Correct the JSON syntax or reduce constructs that exceed parser limits before resubmitting. |
+| `JSON_RPC_INVALID_REQUEST` | `error.code` = `-32600` | `JsonRpcInvalidRequestException` | The JSON-RPC protocol structure is invalid or method-level request or contract validation failed. | No | `AFTER_REQUEST_REBUILD` | Correct the JSON-RPC envelope, invalid batch item, method request, or contract parameters before resubmitting. |
+| `JSON_RPC_METHOD_NOT_FOUND` | `error.code` = `-32601` | `JsonRpcMethodNotFoundException` | The requested method is unavailable or unsupported on this node/port. | No | `AFTER_STATE_CHANGE` | Use a compatible node/port, or wait for node availability or configuration to change. |
+| `JSON_RPC_INVALID_PARAMS` | `error.code` = `-32602` | `JsonRpcInvalidParamsException` | Parameters could not be bound to the method signature or failed method validation. | No | `AFTER_REQUEST_REBUILD` | Correct parameter count, types, formats, block tags, or ranges before resubmitting. |
+| `JSON_RPC_SERVLET_INTERNAL_ERROR` | `error.code` = `-32603` + `error.message` = `Internal error` | — | The JSON-RPC servlet caught an unexpected fallback exception. | No | `UNKNOWN` | Inspect node logs or use another healthy node; do not retry automatically from this fallback classification. |
+| `JSON_RPC_RESPONSE_TOO_LARGE` | `error.code` = `-32003` + `error.message` starts with `Response exceeds the limit of ` | — | The encoded JSON-RPC response exceeds maxResponseSize. | No | `AFTER_REQUEST_REBUILD` | Narrow or split the query so the encoded response fits maxResponseSize. |
+| `JSON_RPC_BATCH_TOO_LARGE` | `error.code` = `-32005` + `error.message` starts with `Batch size ` | — | The request batch contains more entries than maxBatchSize permits. | No | `AFTER_REQUEST_REBUILD` | Split the batch so each request contains no more than maxBatchSize entries. |
+| `JSON_RPC_FILTER_LIMIT_EXCEEDED` | `error.code` = `-32005` | `JsonRpcExceedLimitException` | The node has reached its active filter limit. | No | `AFTER_STATE_CHANGE` | Retry only after filter capacity is released, or use another node. |
+| `JSON_RPC_TOO_MANY_RESULTS` | `error.code` = `-32005` | `JsonRpcTooManyResultException` | The log query would return more results than the node permits. | No | `AFTER_REQUEST_REBUILD` | Narrow the block range, addresses, or topics before resubmitting. |
+| `JSON_RPC_UNDERLYING_INTERNAL_ERROR` | `error.code` = `-32001` + fallback match | `JsonRpcInternalException`; message metadata `<underlying exception message>` | Chain identity lookup failed with an underlying exception message. | No | `UNKNOWN` | Inspect the returned message and node context; do not retry automatically without a specific transient cause. |
+| `JSON_RPC_INTERNAL_ERROR` | `error.code` = `-32000` | `JsonRpcInternalException` | The method raised a java-tron JSON-RPC internal error. | No | `UNKNOWN` | Inspect error.message and node logs; do not retry automatically without a more specific classification. |
+| `JSON_RPC_ITEM_NOT_FOUND` | `error.code` = `-32000` | `ItemNotFoundException` | A requested filter, block item, or cached item was not found. | No | `AFTER_STATE_CHANGE` | Recreate a missing filter, wait for the item to become available, or use a node that has the requested data. |
+| `JSON_RPC_BAD_ITEM` | `error.code` = `-32000` | `BadItemException` | Log processing encountered an invalid underlying item. | No | `UNKNOWN` | Inspect the invalid underlying item and query context; do not retry automatically. |
+| `JSON_RPC_EXECUTION_ERROR` | `error.code` = `-32000` | `ExecutionException` | Asynchronous log-query execution failed. | No | `UNKNOWN` | Inspect the asynchronous execution failure and node logs before deciding whether to try again. |
+| `JSON_RPC_INTERRUPTED` | `error.code` = `-32000` | `InterruptedException` | Log-query execution declared InterruptedException, but the wire response cannot distinguish it safely from other -32000 failures. | No | `UNKNOWN` | The current wire response is ambiguous with other -32000 failures; do not retry automatically. |
+| `JSON_RPC_RATE_LIMITED` | HTTP 200 outside the JSON-RPC envelope + `$.Error` contains `lack of computing resources` | — | The shared servlet rate limiter rejected the request before a JSON-RPC envelope was written. | Yes | `SAFE_WITH_BACKOFF` | Retry automatically with exponential backoff and jitter; no Retry-After header is returned. |
+| `JSON_RPC_REQUEST_TOO_LARGE` | HTTP 413 outside the JSON-RPC envelope | — | The HTTP request body exceeds node.jsonrpc.maxMessageSize before servlet dispatch. | No | `AFTER_REQUEST_REBUILD` | Reduce the HTTP request body before resubmitting. |
+<!-- END GENERATED JSON-RPC ERROR CATALOG -->
 
 Example error response:
 

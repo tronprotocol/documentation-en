@@ -9,7 +9,7 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/tx-build-and-broadcast/getsignweight.md"
     "responses":
       "200":
-        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError. Use x-tron-in-band-error to detect failures and x-tron-error-model catalog IDs to classify retry behavior."
         "content":
           "application/json":
             "schema":
@@ -26,12 +26,21 @@
                     "responsePath": "$.result"
                     "discriminatorPath": "$.result.code"
                     "failureCondition": "field exists and is not ENOUGH_PERMISSION"
+                    "catalogIds":
+                      - "SIGN_WEIGHT_NOT_ENOUGH_PERMISSION"
+                      - "SIGN_WEIGHT_SIGNATURE_FORMAT_ERROR"
+                      - "SIGN_WEIGHT_COMPUTE_ADDRESS_ERROR"
+                      - "SIGN_WEIGHT_PERMISSION_ERROR"
+                      - "SIGN_WEIGHT_OTHER_ERROR"
                     "sources":
                       - "servlet"
                   -
                     "kind": "java-tron"
                     "schema": "#/components/schemas/JavaTronError"
                     "discriminatorPath": "$.Error"
+                    "catalogIds":
+                      - "HTTP_RATE_LIMITED"
+                      - "HTTP_SERVLET_EXCEPTION"
                     "sources":
                       - "servlet"
                       - "shared-rate-limiter"
@@ -42,6 +51,9 @@
                   - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "x-tron-errors":
+          "catalogIds":
+            - "HTTP_API_DISABLED"
         "content":
           "application/json":
             "schema":
@@ -50,6 +62,9 @@
               "Error": "this API is unavailable due to config"
       "413":
         "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "x-tron-errors":
+          "catalogIds":
+            - "HTTP_REQUEST_TOO_LARGE"
         "content":
           "text/html":
             "schema":

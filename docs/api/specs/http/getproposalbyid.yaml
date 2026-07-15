@@ -9,7 +9,7 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getproposalbyid.md"
     "responses":
       "200":
-        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError. Use x-tron-in-band-error to detect failures and x-tron-error-model catalog IDs to classify retry behavior."
         "content":
           "application/json":
             "schema":
@@ -20,6 +20,17 @@
                   "$ref": "#/components/schemas/JavaTronError"
               "x-tron-in-band-error":
                 "httpStatus": 200
+                "errors":
+                  -
+                    "kind": "java-tron"
+                    "schema": "#/components/schemas/JavaTronError"
+                    "discriminatorPath": "$.Error"
+                    "catalogIds":
+                      - "HTTP_RATE_LIMITED"
+                      - "HTTP_SERVLET_EXCEPTION"
+                    "sources":
+                      - "servlet"
+                      - "shared-rate-limiter"
                 "errorSchema": "#/components/schemas/JavaTronError"
                 "discriminatorField": "Error"
                 "sources":
@@ -27,6 +38,9 @@
                   - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "x-tron-errors":
+          "catalogIds":
+            - "HTTP_API_DISABLED"
         "content":
           "application/json":
             "schema":
@@ -35,6 +49,9 @@
               "Error": "this API is unavailable due to config"
       "413":
         "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "x-tron-errors":
+          "catalogIds":
+            - "HTTP_REQUEST_TOO_LARGE"
         "content":
           "text/html":
             "schema":
@@ -84,7 +101,7 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getproposalbyid.md"
     "responses":
       "200":
-        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError. Use x-tron-in-band-error to detect failures and x-tron-error-model catalog IDs to classify retry behavior."
         "content":
           "application/json":
             "schema":
@@ -95,6 +112,17 @@
                   "$ref": "#/components/schemas/JavaTronError"
               "x-tron-in-band-error":
                 "httpStatus": 200
+                "errors":
+                  -
+                    "kind": "java-tron"
+                    "schema": "#/components/schemas/JavaTronError"
+                    "discriminatorPath": "$.Error"
+                    "catalogIds":
+                      - "HTTP_RATE_LIMITED"
+                      - "HTTP_SERVLET_EXCEPTION"
+                    "sources":
+                      - "servlet"
+                      - "shared-rate-limiter"
                 "errorSchema": "#/components/schemas/JavaTronError"
                 "discriminatorField": "Error"
                 "sources":
@@ -102,6 +130,9 @@
                   - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "x-tron-errors":
+          "catalogIds":
+            - "HTTP_API_DISABLED"
         "content":
           "application/json":
             "schema":
@@ -110,6 +141,9 @@
               "Error": "this API is unavailable due to config"
       "413":
         "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "x-tron-errors":
+          "catalogIds":
+            - "HTTP_REQUEST_TOO_LARGE"
         "content":
           "text/html":
             "schema":

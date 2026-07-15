@@ -51,5 +51,6 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getWork",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetWork"
-  ]
+  ],
+  "x-tron-error-catalog": []
 }

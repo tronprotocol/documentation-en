@@ -65,5 +65,19 @@
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getFilterChanges",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterChanges",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+    },
+    {
+      "errorIndex": 1,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    },
+    {
+      "errorIndex": 2,
+      "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+    }
   ]
 }

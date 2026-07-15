@@ -9,7 +9,7 @@
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/smart-contract/triggersmartcontract.md"
     "responses":
       "200":
-        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError."
+        "description": "java-tron success or in-band error response. Endpoint business failures may use the endpoint result object; shared layers may return JavaTronError. Use x-tron-in-band-error to detect failures and x-tron-error-model catalog IDs to classify retry behavior."
         "content":
           "application/json":
             "schema":
@@ -26,6 +26,10 @@
                     "responsePath": "$.result"
                     "discriminatorPath": "$.result.code"
                     "failureCondition": "field exists and is not SUCCESS"
+                    "catalogIds":
+                      - "RETURN_CONTRACT_VALIDATE_ERROR"
+                      - "RETURN_CONTRACT_EXE_ERROR"
+                      - "RETURN_OTHER_ERROR"
                     "sources":
                       - "servlet"
                   -
@@ -33,12 +37,16 @@
                     "responsePath": "$.transaction.ret[0]"
                     "discriminatorPath": "$.transaction.ret[0].ret"
                     "failureCondition": "equals FAILED"
+                    "catalogIds":
+                      - "TRANSACTION_RESULT_FAILED"
                     "sources":
                       - "servlet"
                   -
                     "kind": "java-tron"
                     "schema": "#/components/schemas/JavaTronError"
                     "discriminatorPath": "$.Error"
+                    "catalogIds":
+                      - "HTTP_RATE_LIMITED"
                     "sources":
                       - "shared-rate-limiter"
                 "errorSchema": "#/components/schemas/JavaTronError"
@@ -47,6 +55,9 @@
                   - "shared-rate-limiter"
       "404":
         "description": "Endpoint disabled by node configuration."
+        "x-tron-errors":
+          "catalogIds":
+            - "HTTP_API_DISABLED"
         "content":
           "application/json":
             "schema":
@@ -55,6 +66,9 @@
               "Error": "this API is unavailable due to config"
       "413":
         "description": "Request body exceeds the node.http.maxMessageSize limit."
+        "x-tron-errors":
+          "catalogIds":
+            - "HTTP_REQUEST_TOO_LARGE"
         "content":
           "text/html":
             "schema":

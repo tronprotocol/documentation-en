@@ -64,5 +64,11 @@
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockByHash",
     "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
     "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    }
   ]
 }
