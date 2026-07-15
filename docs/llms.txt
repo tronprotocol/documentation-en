@@ -14,7 +14,7 @@
 - [Lite FullNode](https://tronprotocol.github.io/documentation-en/using_javatron/litefullnode/): Run and maintain a pruned, low-footprint node.
 - [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/): Stand up a private TRON chain.
 - [Node Monitoring](https://tronprotocol.github.io/documentation-en/using_javatron/metrics/): Prometheus / Grafana metrics and health endpoints.
-- [Node Maintenance Tool (Toolkit)](https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/): Database partitioning, lite-node pruning, copy, LevelDB→RocksDB conversion, and startup optimization.
+- [Node Maintenance Tool (Toolkit)](https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/): Database partitioning, lite-node pruning, copy, LevelDB→RocksDB conversion, startup optimization, and keystore management; documents the keystore commands' JSON output and exit behavior.
 - [Upgrade to a New Version](https://tronprotocol.github.io/documentation-en/releases/upgrade-instruction/): Upgrade procedure for new releases.
 
 ## APIs
