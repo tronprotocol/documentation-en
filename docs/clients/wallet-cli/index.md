@@ -85,7 +85,9 @@ java -jar build/libs/wallet-cli.jar help --command send-coin
 
 ## Global options (Standard CLI)
 
-Global options come **before** the command name. They are parsed by `GlobalOptions`.
+Execution-modifier global options are parsed by `GlobalOptions` and may appear either **before or
+after** the command name. Top-level mode selectors have stricter placement rules, as described
+below.
 
 | Option | Values | Description |
 |--------|--------|-------------|
@@ -102,8 +104,14 @@ Global options come **before** the command name. They are parsed by `GlobalOptio
 
 Notes:
 
-- `--output` and `--network` accept their value either as the next token (`--network nile`) or
-  inline (`--network=nile`).
+- The execution modifiers `--network`, `--grpc-endpoint`, `--output`, `--wallet`, `--quiet`,
+  `--verbose`, and `--password-stdin` are recognized before or after the command name.
+- The top-level mode selectors `--version` and `--interactive` must appear before the command name.
+  After a command, they are treated as command-local arguments instead.
+- `--help` and `-h` before the command request global help; after the command they request help for
+  that command.
+- Valued global options (`--output`, `--network`, `--wallet`, and `--grpc-endpoint`) accept their
+  value either as the next token (`--network nile`) or inline (`--network=nile`).
 - Options that take a value cannot be repeated, and unknown global options are rejected.
 
 ## Authentication (Standard CLI)
