@@ -32,6 +32,9 @@ jobs:
     - name: Build the document
       run: mkdocs build
 
+    - name: Generate machine-readable documentation manifest
+      run: python3 scripts/generate_docs_manifest.py
+
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
