@@ -290,6 +290,7 @@ nav:
         - Integrity Check: releases/signature_verification.md
         - History:
             - releases/versions/index.md
+            - v4.8.2 (Pyrrho): releases/versions/v4.8.2.md
             - v4.8.1 (Democritus): releases/versions/v4.8.1.md
             - v4.8.0.1 (Seneca): releases/versions/v4.8.0.1.md
             - v4.8.0 (Kant): releases/versions/v4.8.0.md
