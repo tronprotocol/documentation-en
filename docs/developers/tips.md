@@ -22,15 +22,15 @@
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
-| 2935 | [Serve historical block hashes from state](https://github.com/tronprotocol/tips/blob/master/tip-2935.md) | lily309@gmail.com | Core |
-| 836 | [harden exchange transaction calculations](https://github.com/tronprotocol/tips/blob/master/tip-836.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
-| 833 | [Harden ResourceProcessor Resource Window Calculations](https://github.com/tronprotocol/tips/blob/master/tip-833.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
 | 128 | [TIP128 Lite Fullnode support](https://github.com/tronprotocol/tips/blob/master/tip-128.md) | guoquan-wu([@guoquan-wu](https://github.com/guoquan-wu)) | Core |
 
 ### Final { #core-final }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
+| 2935 | [Serve historical block hashes from state](https://github.com/tronprotocol/tips/blob/master/tip-2935.md) | lily309@gmail.com | Core |
+| 836 | [harden exchange transaction calculations](https://github.com/tronprotocol/tips/blob/master/tip-836.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
+| 833 | [Harden ResourceProcessor Resource Window Calculations](https://github.com/tronprotocol/tips/blob/master/tip-833.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
 | 767 | [Transitioning proposal expire time configuration to Chain Governance](https://github.com/tronprotocol/tips/blob/master/tip-767.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |
 | 694 | [Enhance Verification of Transaction Limitation at Consensus Layer](https://github.com/tronprotocol/tips/blob/master/tip-694.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |
 | 697 | [Migrate Floating-Point Calculations from Math to StrictMath](https://github.com/tronprotocol/tips/blob/master/tip-697.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
@@ -104,7 +104,7 @@
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
-| 6963 | [Multi Injected Provider Discovery](https://github.com/tronprotocol/tips/blob/master/tip-6963.md) | Zorro([@zorro11639](https://github.com/zorro11639)) | Interface |
+| 6963 | [Multi Injected Provider Discovery](https://github.com/tronprotocol/tips/blob/master/tip-6963.md) | Zorro <zorro11639@gmail.com> | Interface |
 | 544 | [Add `data` to the http interfaces interacting with smart contract](https://github.com/tronprotocol/tips/blob/master/tip-544.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | Interface |
 | 712 | [TRON typed structured data hashing and signing](https://github.com/tronprotocol/tips/blob/master/tip-712.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | Interface |
 | 387 | [Transaction memo fee](https://github.com/tronprotocol/tips/blob/master/tip-387.md) | Andy([@zhang0125](https://github.com/zhang0125)) | Interface |
@@ -129,8 +129,6 @@
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
-| 7201 | [Namespaced Storage Layout](https://github.com/tronprotocol/tips/blob/master/tip-7201.md) | TonyStank911@gmail.com | TRC |
-| 2771 | [Secure Protocol for Native Meta Transactions](https://github.com/tronprotocol/tips/blob/master/tip-2771.md) | lily309@gmail.com | TRC |
 | 104 | [Data Signing Specification](https://github.com/tronprotocol/tips/blob/master/tip-104.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
 | 102 | [Hierarchical Deterministic Wallet](https://github.com/tronprotocol/tips/blob/master/tip-102.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
 | 101 | [Wallet Keystore Specification](https://github.com/tronprotocol/tips/blob/master/tip-101.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
@@ -139,6 +137,13 @@
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
+| 3156 | [Flash Loans](https://github.com/tronprotocol/tips/blob/master/tip-3156.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
+| 1363 | [Payable Token](https://github.com/tronprotocol/tips/blob/master/tip-1363.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
+| 1167 | [Minimal Proxy Contract](https://github.com/tronprotocol/tips/blob/master/tip-1167.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
+| 173 | [Contract Ownership Standard](https://github.com/tronprotocol/tips/blob/master/tip-173.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
+| 8126 | [AI Agent Verification](https://github.com/tronprotocol/tips/blob/master/tip-8126.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
+| 7201 | [Namespaced Storage Layout](https://github.com/tronprotocol/tips/blob/master/tip-7201.md) | TonyStank911@gmail.com | TRC |
+| 2771 | [Secure Protocol for Native Meta Transactions](https://github.com/tronprotocol/tips/blob/master/tip-2771.md) | lily309@gmail.com | TRC |
 | 8001 | [Agent Coordination Framework](https://github.com/tronprotocol/tips/blob/master/tip-8001.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
 | 7857 | [AI Agents NFT with Private Metadata](https://github.com/tronprotocol/tips/blob/master/tip-7857.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
 | 2612 | [Permit Extension for TIP-20 Signed Approvals](https://github.com/tronprotocol/tips/blob/master/tip-2612.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
@@ -166,7 +171,7 @@
 | 26 | [Add a contract creation function called CREATE2](https://github.com/tronprotocol/tips/blob/master/tip-26.md) | Unknown | TRC |
 | 41 | [Optimize transactionHistoryStore occupancy space#40](https://github.com/tronprotocol/tips/blob/master/tip-41.md) | wubin1<wubin1@tron.network> | TRC |
 | 32 | [TRC-32 Clear the ABI of contract](https://github.com/tronprotocol/tips/blob/master/tip-32.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |
-| 54 | [TRC-54: Automatically active non-existent account when transferring TRX/TRC-10 asset in a smart contract](https://github.com/tronprotocol/tips/blob/master/tip-54.md) | BlueHoopor([@BlueHoopor](https://github.com/BlueHoopor)) | TRC |
+| 54 | [TRC-54: Automatically active non-existent account when transferring TRX/TRC10 asset in a smart contract](https://github.com/tronprotocol/tips/blob/master/tip-54.md) | BlueHoopor([@BlueHoopor](https://github.com/BlueHoopor)) | TRC |
 | 37 | [TRC-37: forbid using TransferContract & TransferAssetContract  for contract account](https://github.com/tronprotocol/tips/blob/master/tip-37.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | TRC |
 | 43 | [TRC-43: Precompiled contract function for signature parallel verification](https://github.com/tronprotocol/tips/blob/master/tip-43.md) | Julian.Kang([@Sh11thead](https://github.com/Sh11thead)) | TRC |
 | 44 | [TRC-44 Address.isContract instructions](https://github.com/tronprotocol/tips/blob/master/tip-44.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |
@@ -200,17 +205,18 @@
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
-| 7951 | [Precompile for secp256r1 Curve Support](https://github.com/tronprotocol/tips/blob/master/tip-7951.md) | raymondliu0711([@raymondliu0711](https://github.com/raymondliu0711)) | VM |
-| 7939 | [Count leading zeros (CLZ) opcode](https://github.com/tronprotocol/tips/blob/master/tip-7939.md) | ouy95917([@ouy95917](https://github.com/ouy95917)) | VM |
-| 7883 | [ModExp Gas Cost Increase](https://github.com/tronprotocol/tips/blob/master/tip-7883.md) | ouy95917([@ouy95917](https://github.com/ouy95917)) | VM |
-| 7823 | [Set upper bounds for MODEXP](https://github.com/tronprotocol/tips/blob/master/tip-7823.md) | ouy95917([@ouy95917](https://github.com/ouy95917)) | VM |
-| 854 | [Canonicalize calldata for signature-verification precompiles](https://github.com/tronprotocol/tips/blob/master/tip-854.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | VM |
 | 176 | [altbn128 operation energy reduction in TVM](https://github.com/tronprotocol/tips/blob/master/tip-176.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | VM |
 
 ### Final { #vm-final }
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
+| 871 | [Canonicalize MODEXP output length when modulus is zero](https://github.com/tronprotocol/tips/blob/master/tip-871.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | VM |
+| 7951 | [Precompile for secp256r1 Curve Support](https://github.com/tronprotocol/tips/blob/master/tip-7951.md) | raymondliu0711([@raymondliu0711](https://github.com/raymondliu0711)) | VM |
+| 7939 | [Count leading zeros (CLZ) opcode](https://github.com/tronprotocol/tips/blob/master/tip-7939.md) | ouy95917@gmail.com | VM |
+| 7883 | [ModExp Gas Cost Increase](https://github.com/tronprotocol/tips/blob/master/tip-7883.md) | ouy95917@gmail.com | VM |
+| 7823 | [Set upper bounds for MODEXP](https://github.com/tronprotocol/tips/blob/master/tip-7823.md) | ouy95917@gmail.com | VM |
+| 854 | [Canonicalize calldata for signature-verification precompiles](https://github.com/tronprotocol/tips/blob/master/tip-854.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | VM |
 | 6780 | [Implement EIP-6780: SELFDESTRUCT only in same transaction](https://github.com/tronprotocol/tips/blob/master/tip-6780.md) | raymondliu0711([@raymondliu0711](https://github.com/raymondliu0711)) | VM |
 | 651 | [Implement EIP-5656 MCOPY - Memory copying instruction](https://github.com/tronprotocol/tips/blob/master/tip-651.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | VM |
 | 650 | [Implement EIP-1153 Transient storage opcodes](https://github.com/tronprotocol/tips/blob/master/tip-650.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | VM |
