@@ -2,1130 +2,1134 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/glossary/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/interface-definitions/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/account/accountpermissionupdate/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/account/createaccount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/account/getaccount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/account/getaccountbalance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/account/getaccountnet/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/account/getaccountresource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/account/updateaccount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/account/validateaddress/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/createassetissue/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/getassetissuebyaccount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/getassetissuebyid/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/getassetissuebyname/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/getassetissuelist/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/getassetissuelistbyname/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/getpaginatedassetissuelist/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/participateassetissue/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/transferasset/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/unfreezeasset/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/asset/updateasset/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getblock/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getblockbalance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getblockbyid/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getblockbylatestnum/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getblockbylimitnext/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getblockbynum/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getnowblock/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getpendingsize/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/gettransactionbyid/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/gettransactioncountbyblocknum/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/gettransactionfrompending/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/gettransactioninfobyblocknum/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/gettransactioninfobyid/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/gettransactionlistfrompending/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/getbandwidthprices/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/getburntrx/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/getenergyprices/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/getnodeinfo/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/listnodes/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/clearabi/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/deploycontract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/estimateenergy/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/getcontract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/getcontractinfo/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/triggerconstantcontract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/triggersmartcontract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/updateenergylimit/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/smart-contract/updatesetting/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v1/freezebalance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v1/getdelegatedresource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v1/getdelegatedresourceaccountindex/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v1/unfreezebalance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/cancelallunfreezev2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/delegateresource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/freezebalancev2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getavailableunfreezecount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getcandelegatedmaxsize/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getcanwithdrawunfreezeamount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getdelegatedresourceaccountindexv2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getdelegatedresourcev2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/undelegateresource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/unfreezebalancev2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/stake-v2/withdrawexpireunfreeze/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/broadcasthex/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/broadcasttransaction/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/createtransaction/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/getapprovedlist/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/getsignweight/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/createwitness/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getBrokerage/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getReward/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getchainparameters/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getnextmaintenancetime/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getpaginatednowwitnesslist/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getpaginatedproposallist/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getproposalbyid/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/listproposals/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/listwitnesses/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/proposalapprove/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/proposalcreate/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/proposaldelete/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/updateBrokerage/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/updatewitness/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/votewitnessaccount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/withdrawbalance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/account/eth_getBalance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/account/eth_getCode/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/account/eth_getStorageAt/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getBlockByHash/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getBlockByNumber/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getBlockReceipts/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByNumber/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getTransactionByHash/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getTransactionReceipt/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_getFilterChanges/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_getFilterLogs/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_getLogs/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_newBlockFilter/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_newFilter/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_uninstallFilter/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/eth_blockNumber/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/eth_chainId/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/eth_gasPrice/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/eth_protocolVersion/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/eth_syncing/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/net_listening/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/net_peerCount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/net_version/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/web3_clientVersion/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/node/web3_sha3/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/smart-contract/eth_call/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/smart-contract/eth_estimateGas/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/stub/eth_accounts/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/stub/eth_coinbase/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/stub/eth_getWork/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/json-rpc/tx-build/buildTransaction/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/account/AccountPermissionUpdate/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/account/CreateAccount2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/account/GetAccount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/account/GetAccountBalance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/account/GetAccountNet/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/account/GetAccountResource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/account/UpdateAccount2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/CreateAssetIssue2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/GetAssetIssueByAccount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/GetAssetIssueById/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/GetAssetIssueByName/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/GetAssetIssueList/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/GetAssetIssueListByName/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/GetPaginatedAssetIssueList/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/ParticipateAssetIssue2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/TransferAsset2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/UnfreezeAsset2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/asset/UpdateAsset2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetBlock/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetBlockBalanceTrace/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetBlockById/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetBlockByLatestNum2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetBlockByLimitNext2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetBlockByNum2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetNowBlock2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetPendingSize/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetTransactionById/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetTransactionCountByBlockNum/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetTransactionFromPending/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetTransactionInfoByBlockNum/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetTransactionInfoById/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetTransactionListFromPending/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/node-and-tools/GetBandwidthPrices/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/node-and-tools/GetBurnTrx/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/node-and-tools/GetEnergyPrices/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/node-and-tools/GetNodeInfo/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/node-and-tools/ListNodes/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/ClearContractABI/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/DeployContract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/EstimateEnergy/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/GetContract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/GetContractInfo/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/TriggerConstantContract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/TriggerContract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/UpdateEnergyLimit/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/UpdateSetting/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v1/FreezeBalance2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v1/GetDelegatedResource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v1/GetDelegatedResourceAccountIndex/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v1/UnfreezeBalance2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/CancelAllUnfreezeV2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/DelegateResource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/FreezeBalanceV2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/GetAvailableUnfreezeCount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/GetCanDelegatedMaxSize/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/GetCanWithdrawUnfreezeAmount/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/GetDelegatedResourceAccountIndexV2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/GetDelegatedResourceV2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/UnDelegateResource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/UnfreezeBalanceV2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/WithdrawExpireUnfreeze/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/tx-build-and-broadcast/BroadcastTransaction/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/tx-build-and-broadcast/CreateTransaction2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/tx-build-and-broadcast/GetTransactionApprovedList/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/tx-build-and-broadcast/GetTransactionSignWeight/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/CreateWitness2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetBrokerageInfo/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetChainParameters/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetNextMaintenanceTime/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetPaginatedNowWitnessList/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetPaginatedProposalList/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetProposalById/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetRewardInfo/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/ListProposals/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/ListWitnesses/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/ProposalApprove/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/ProposalCreate/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/ProposalDelete/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/UpdateBrokerage/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/UpdateWitness2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/VoteWitnessAccount2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/WithdrawBalance2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/architecture/database/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/architecture/event/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/accounts/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/gasfree/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/governance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/query/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/smart-contracts/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/staking/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/transactions/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/trc10/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/wallet-management/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/contracts/contract/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/contracts/tools/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/advanced-configuration/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/chainbase/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/code-structure/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/demo/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/governance/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/issue-workflow/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/java-tron/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/network/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/run-in-idea/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/tip-workflow/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/developers/tips/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/getting_started/getting_started_with_javatron/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/account/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/dex/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/dpos/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/multi-signatures/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/shielded-transaction/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/sr/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/mechanism-algorithm/system-contracts/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/signature_verification/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/upgrade-instruction/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v3.6.5/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v3.7/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.0.0/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.1.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.1.2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.1.3/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.2.0/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.2.2.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.2.2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.3.0/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.4.0/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.4.2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.4.4/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.4.5/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.4.6/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.5.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.5.2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.6.0/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.0.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.1.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.2/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.3.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.3/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.4/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.5/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.6/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.7.7/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.8.0.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.8.0/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.8.1/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
+    </url>
+    <url>
+         <loc>https://tronprotocol.github.io/documentation-en/releases/versions/v4.8.2/</loc>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/connecting_to_tron/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/litefullnode/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/metrics/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/private_network/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
 </urlset>
