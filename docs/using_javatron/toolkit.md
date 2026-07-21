@@ -8,6 +8,7 @@ The TRON Toolkit is a comprehensive utility that integrates various ecosystem to
 * [Data Conversion](#data-conversion-tool): Supports data format conversion from LevelDB to RocksDB.
 * [LevelDB Startup Optimization](#leveldb-startup-optimization-tool): Accelerates the startup speed for nodes using LevelDB.
 * [Merkle Root Computation](#merkle-root-computation-tool): Computes the Merkle root of a small database for verification purposes.
+* [Keystore Management](#keystore-management): Generates, imports, lists, and updates account keystore files.
 
 This document provides a detailed guide on how to acquire and use the TRON Toolkit.
 
@@ -35,6 +36,134 @@ You can obtain the `Toolkit.jar` file either by compiling the `java-tron` source
    ```
 
 Upon successful compilation, the `Toolkit.jar` artifact will be located in the `java-tron/build/libs/` directory.
+
+## Command-Line Output and Exit Behavior
+
+Toolkit uses command-specific output and exit codes. It does **not** currently provide a global JSON output option or a single error envelope shared by every command.
+
+* When Toolkit is invoked with a command, the process exits with the integer returned by that command. Invalid command-line syntax is handled by Picocli and exits with code `2`.
+* Invoking Toolkit without arguments prints the top-level usage and completes with exit code `0`.
+* The `keystore` commands described below return `0` after a successful operation and normally return `1` after an execution failure. `keystore list` also returns `0` when the directory is missing or contains no keystores.
+* `--json` is a per-command option supported only by `keystore new`, `keystore import`, `keystore list`, and `keystore update`. It controls successful output written to stdout. Errors and warnings remain plain text on stderr, including when `--json` is present.
+* The `db` commands do not support JSON output and retain command-specific exit-code behavior. Automation must not assume a Toolkit-wide `0`/`1`/`2` contract beyond the behavior explicitly documented for a command.
+
+For shell automation, check the exit code before parsing stdout. Do not attempt to parse stderr as JSON.
+
+## Keystore Management
+
+The `keystore` command group manages account keystore files in Web3 Secret Storage format. It replaces the deprecated interactive `FullNode.jar --keystore-factory` workflow.
+
+```bash
+java -jar build/libs/Toolkit.jar keystore --help
+```
+
+The default keystore directory is `Wallet` under the current working directory. Use `--keystore-dir <path>` to select another directory.
+
+### Generate a Keystore
+
+`keystore new` generates a random key pair and writes an encrypted keystore file:
+
+```bash
+# Interactive password entry
+java -jar build/libs/Toolkit.jar keystore new
+
+# Non-interactive password input and JSON result
+java -jar build/libs/Toolkit.jar keystore new \
+  --keystore-dir /data/keystores \
+  --password-file /secure/path/password.txt \
+  --json
+```
+
+Successful JSON output contains the generated address and filename:
+
+```json
+{"address":"T...","file":"UTC--...json"}
+```
+
+### Import a Private Key
+
+`keystore import` imports a 32-byte private key written as 64 hexadecimal characters. A leading `0x` or `0X` is accepted.
+
+```bash
+# Interactive private-key and password entry
+java -jar build/libs/Toolkit.jar keystore import
+
+# Non-interactive import
+java -jar build/libs/Toolkit.jar keystore import \
+  --keystore-dir /data/keystores \
+  --key-file /secure/path/private-key.txt \
+  --password-file /secure/path/password.txt \
+  --json
+```
+
+Successful JSON output has the same `address` and `file` fields as `keystore new`.
+
+By default, the command refuses to import a key when a keystore for the derived address already exists in the target directory. Pass `--force` only when creating an additional keystore for the same address is intentional.
+
+### List Keystores
+
+`keystore list` lists structurally valid `.json` keystore files in a directory:
+
+```bash
+java -jar build/libs/Toolkit.jar keystore list --keystore-dir /data/keystores
+java -jar build/libs/Toolkit.jar keystore list --keystore-dir /data/keystores --json
+```
+
+Successful JSON output wraps the results in a `keystores` array:
+
+```json
+{
+  "keystores": [
+    {"address":"T...","file":"UTC--...json"}
+  ]
+}
+```
+
+If the directory does not exist or contains no valid keystores, JSON mode returns `{"keystores":[]}` with exit code `0`. Unreadable or malformed `.json` files are skipped and may produce warnings on stderr.
+
+`keystore list` does not decrypt each file. The displayed address is the address declared inside the keystore JSON and is not cryptographically verified by this command. Only trust keystores from sources you control.
+
+### Update a Keystore Password
+
+`keystore update` locates a keystore by address, decrypts it with the current password, and rewrites it with a new password through a temporary file. Toolkit attempts an atomic replacement and falls back to a regular replacement when the filesystem does not support atomic moves:
+
+```bash
+# Interactive password entry
+java -jar build/libs/Toolkit.jar keystore update T... \
+  --keystore-dir /data/keystores
+
+# Non-interactive password update
+java -jar build/libs/Toolkit.jar keystore update T... \
+  --keystore-dir /data/keystores \
+  --password-file /secure/path/passwords.txt \
+  --json
+```
+
+For `update`, the password file must contain exactly two lines: the current password on the first line and the new password on the second line.
+
+Successful JSON output contains the verified address, filename, and update status:
+
+```json
+{"address":"T...","file":"UTC--...json","status":"updated"}
+```
+
+The command fails if no matching keystore exists or if more than one valid keystore declares the requested address. It does not choose arbitrarily between duplicates.
+
+### Keystore Options and Security
+
+| Option | Commands | Behavior |
+|---|---|---|
+| `--keystore-dir <path>` | all | Keystore directory; defaults to `Wallet`. |
+| `--json` | all | Writes the successful result as JSON to stdout; errors remain text on stderr. |
+| `--password-file <file>` | `new`, `import`, `update` | Avoids an interactive password prompt. `new` and `import` require one line; `update` requires exactly two lines. |
+| `--key-file <file>` | `import` | Reads the private key from a file instead of a terminal prompt. |
+| `--force` | `import` | Allows another keystore to be created for an address already present in the directory. |
+| `--sm2` | `new`, `import`, `update` | Uses SM2 instead of the default ECDSA engine. For `update`, it must match the algorithm used by the existing keystore. |
+
+Password and private-key input files must be regular files no larger than 1,024 bytes; symbolic links are rejected. Passwords selected by `keystore new` and `keystore import`, and the new password supplied to `keystore update`, must contain at least six characters. `keystore update` does not apply this minimum to the existing password so that legacy keystores remain accessible. On POSIX systems, Toolkit creates or rewrites keystore files with owner-only `0600` permissions.
+
+!!! warning "Protect temporary secret files"
+    `--password-file` and `--key-file` make non-interactive execution possible, but the files contain secrets in plaintext. Store them outside the repository, restrict them to the current user with `chmod 600`, never commit them, and remove them when they are no longer required.
 
 
 ## Database Partitioning Tool

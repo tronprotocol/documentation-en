@@ -389,7 +389,16 @@ To avoid specifying the private key in plaintext within the configuration file, 
         localwitnesskeystore = ["B/localwitnesskeystore.json"]
         ```
 
-    * You can use the `registerwallet` command from the `wallet-cli` project to generate the `keystore` file and password, or use the command `java -jar build/libs/FullNode.jar --keystore-factory` to generate them (starting from version 4.8.1, `KeystoreFactory.jar` is no longer provided).
+    * For an existing SR, the keystore must encrypt the private key corresponding to the address that is currently authorized on-chain to produce blocks. By default, this is the SR account address. If block-production authority has been assigned through the SR's witness permission to a different address, use the private key corresponding to that authorized address. Use Toolkit's [`keystore import`](toolkit.md#import-a-private-key) to create the encrypted keystore from the existing key:
+
+        ```bash
+        # Encrypt the currently authorized block-signing private key in a keystore
+        java -jar build/libs/Toolkit.jar keystore import
+        ```
+
+        Do not use `keystore new` merely to migrate an existing SR: it generates a random key that cannot produce blocks for that SR unless its derived address is first authorized as the SR's witness permission. For a new SR identity, or as part of a planned witness-permission rotation, you may generate a new key with [`keystore new`](toolkit.md#generate-a-keystore) or the `registerwallet` command from `wallet-cli`, then complete the required on-chain registration or permission update before starting block production.
+
+        `java -jar build/libs/FullNode.jar --keystore-factory` remains available for compatibility but is deprecated and will be removed in a future release. Starting from version 4.8.1, a separate `KeystoreFactory.jar` is no longer provided.
 
 2. **Starting a Block Production Node**:
 
