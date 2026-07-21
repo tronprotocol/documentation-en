@@ -9,10 +9,13 @@ Query all TRC-10 tokens with a given name.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `value` | string | Yes | Token name (UTF-8 encoded as hex) |
-| `visible` | bool | No | Format for addresses and text fields |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `value` | GET | string | Yes | Token name (UTF-8 encoded as hex) |
+| `value` | POST | string | No | Token name; omitted uses an empty value and normally returns `{}` when `visible=false` |
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:
 
@@ -27,7 +30,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -73,9 +75,9 @@ Returns `{}` if there is no match.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| `value` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : exception decoding Hex string: <details>"}` |
-| Request body is not valid JSON (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | `value` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : exception decoding Hex string: <details>"}` |
+| POST | Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

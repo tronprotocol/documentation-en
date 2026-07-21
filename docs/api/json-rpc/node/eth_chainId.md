@@ -39,4 +39,6 @@ The example below is the real response captured from a Nile testnet call:
 
 | Trigger | Code | message |
 |---|---|---|
-| Unable to load block 0 (extreme cases such as the node not having finished loading the genesis block) | `-32000` | passes through the underlying `Exception.getMessage()` |
+| Block 0 cannot be loaded | `-32001` | The underlying exception message |
+
+The implementation wraps a failure to load block 0 in `JsonRpcInternalException`, but the `eth_chainId` interface declaration does not define a matching `@JsonRpcErrors` entry. The java-tron resolver therefore returns no mapping, and jsonrpc4j uses its `ERROR_NOT_HANDLED` fallback (`-32001`). The response `error.message` comes from the underlying exception and is not the fixed string `JsonRpcInternalException`.

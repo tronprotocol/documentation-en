@@ -9,9 +9,13 @@ Returns the number of transactions contained in a given block number.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `num` | int64 | Yes | Block number |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `num` | GET | int64 | Yes | Block number; omission reaches `Long.parseLong(null)` and fails |
+| `num` | POST | int64 | No | Block number; Protobuf default is `0` |
+| `int64_as_string` | GET | bool | No | GET only; when `true`, returns `count` as a JSON string |
 
 Example:
 
@@ -24,7 +28,6 @@ curl --request POST \
 { "num": 66987565 }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -37,11 +40,17 @@ Response example:
 { "count": 4 }
 ```
 
+With `?int64_as_string=true` on a GET request:
+
+```json
+{ "count": "4" }
+```
+
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| `num` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET | `num` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

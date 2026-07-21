@@ -16,7 +16,7 @@ Delegate already-frozen resources to another account (Stake 2.0).
 | `resource` | enum | No | `BANDWIDTH` / `ENERGY` |
 | `lock` | bool | No | Whether the delegation is locked (cannot be undelegated early when true) |
 | `lock_period` | int64 | No | Lock duration (block count, only when `lock=true`) |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -80,8 +80,8 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Chain has not enabled resource delegation | `{"Error": "class org.tron.core.exception.ContractValidateException : No support for resource delegate"}` |
 | Proposal #70 `UNFREEZE_DELAY_DAYS` not activated | `{"Error": "... : Not support Delegate resource transaction, need to be opened by the committee"}` |
 | Invalid `owner_address` | `{"Error": "... : Invalid address"}` |

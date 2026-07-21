@@ -12,8 +12,8 @@ Update a contract's `consume_user_resource_percent` (deployer only).
 |---|---|---|---|
 | `owner_address` | string | Yes | Deployer address |
 | `contract_address` | string | Yes | Contract address |
-| `consume_user_resource_percent` | int64 | Yes | Caller-paid energy percentage 0–100 |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `consume_user_resource_percent` | int64 | No | Caller-paid energy percentage 0–100; omitted defaults to `0`, which passes the `[0,100]` validation |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -73,8 +73,8 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Invalid `owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid address"}` |
 | owner account does not exist | `{"Error": "... : Account[<address>] does not exist"}` |
 | `consume_user_resource_percent` not in [0, 100] | `{"Error": "... : percent not in [0, 100]"}` |

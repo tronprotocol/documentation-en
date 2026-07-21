@@ -13,7 +13,9 @@
       "name": "contractAddress",
       "required": true,
       "schema": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+        "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
       },
       "x-java-type": "String",
       "x-position": 0,
@@ -22,15 +24,13 @@
     {
       "name": "bnOrId",
       "required": true,
+      "description": "Only the case-insensitive latest tag is supported.",
       "schema": {
         "type": "string",
-        "enum": [
-          "latest"
-        ]
+        "pattern": "^[lL][aA][tT][eE][sS][tT]$"
       },
       "x-java-type": "String",
-      "x-position": 1,
-      "description": "Hex block number or supported block tag."
+      "x-position": 1
     }
   ],
   "result": {
@@ -57,5 +57,11 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getCode",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getABIOfSmartContract"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    }
   ]
 }

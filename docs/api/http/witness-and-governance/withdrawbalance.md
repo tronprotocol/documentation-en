@@ -11,7 +11,7 @@ Withdraw SR block-production rewards or voting account's reward share to balance
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `owner_address` | string | Yes | Claiming account address (SR or voter) |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -63,8 +63,8 @@ Response example (`txID`, `ref_block_*`, `expiration`, `timestamp`, `raw_data_he
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Invalid `owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid address"}` |
 | owner account does not exist | `{"Error": "... : Account[<address>] not exists"}` |
 | owner is a genesis SR (Guard Representative) | `{"Error": "... : Account[<address>] is a guard representative and is not allowed to withdraw Balance"}` |

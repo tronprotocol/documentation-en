@@ -5,7 +5,7 @@
       "name": "Transaction build"
     }
   ],
-  "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC10 transfer / contract deploy / contract trigger)",
+  "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC-10 transfer / contract deploy / contract trigger)",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/tx-build/buildTransaction.md` for examples and detailed behavior.",
   "paramStructure": "by-position",
   "params": [
@@ -18,11 +18,30 @@
         "properties": {
           "from": {
             "type": "string",
-            "description": "Sender account address."
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "to": {
-            "type": "string",
-            "description": "Recipient account or contract address."
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "title": "BuildTransactionParamString1"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "",
+                  "0x"
+                ],
+                "title": "BuildTransactionParamString2"
+              },
+              {
+                "type": "null",
+                "title": "BuildTransactionParamNull3"
+              }
+            ],
+            "description": "Target hex address. Contract deployment also accepts an omitted value, null, an empty string, or 0x; base58check is not accepted."
           },
           "gas": {
             "type": "string",
@@ -39,6 +58,10 @@
           "data": {
             "type": "string",
             "description": "Hex-encoded contract call data or transaction data."
+          },
+          "input": {
+            "type": "string",
+            "description": "Alias for data; when both are present they must encode the same bytes."
           },
           "nonce": {
             "type": "string",
@@ -64,6 +87,7 @@
             "type": "integer",
             "format": "int64",
             "minimum": 0,
+            "maximum": 100,
             "description": "Percentage of contract execution resource cost paid by the user."
           },
           "originEnergyLimit": {
@@ -90,7 +114,10 @@
             "type": "boolean",
             "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
           }
-        }
+        },
+        "required": [
+          "from"
+        ]
       },
       "x-java-type": "BuildArguments",
       "x-position": 0,
@@ -141,6 +168,24 @@
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#buildTransaction",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#buildTransaction",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class TransactionJson",
-    "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#class BuildArguments"
+    "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#input"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_REQUEST"
+    },
+    {
+      "errorIndex": 1,
+      "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+    },
+    {
+      "errorIndex": 2,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    },
+    {
+      "errorIndex": 3,
+      "catalogId": "JSON_RPC_INTERNAL_ERROR"
+    }
   ]
 }

@@ -15,11 +15,12 @@ Tron private extension. Constructs an **unsigned** Tron transaction; sign it and
 
 | Field | Default | Description |
 |---|---|---|
-| `from` | required | Sender address (hex or base58check) |
-| `to` | depends | Target address; empty for contract deployment |
+| `from` | required | Sender address: 20-byte hex or 21-byte Tron hex beginning with `41`, with or without `0x` (base58check is not accepted) |
+| `to` | depends | Target address in the same hexadecimal formats as `from`; empty for contract deployment |
 | `gas` | `0x0` | Maximum energy consumed by the transaction; ultimately `feeLimit = gas × eth_gasPrice` (sun) |
 | `value` | null | TRX amount (sun, hex) |
 | `data` | null | Contract bytecode (deployment) or calldata (trigger) |
+| `input` | null | Alias for `data`; stricter hex validation, preferred when using execution-API-compatible clients |
 | `tokenId` | `0` | TRC-10 token id (used for `TransferAssetContract`) |
 | `tokenValue` | `0` | TRC-10 amount |
 | `abi` | `""` | ABI JSON string for contract deployment (e.g. `[{...}]`) |
@@ -34,7 +35,7 @@ Contract type inference (`BuildArguments.getContractType`):
 
 | Condition | ContractType |
 |---|---|
-| `to` empty + `data` non-empty | `CreateSmartContract` |
+| `to` empty + calldata non-empty | `CreateSmartContract` |
 | `to` is a contract address | `TriggerSmartContract` |
 | `to` is a regular account + `tokenId>0` + `tokenValue>0` + `value` empty | `TransferAssetContract` |
 | `to` is a regular account + `value` non-empty | `TransferContract` |
@@ -103,8 +104,12 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 | `from` missing / invalid | `-32600` | `invalid json request` |
 | Contract type inference fails (e.g. `to` + `data` + `value` all empty) | `-32600` | `invalid json request` |
 | `to` non-empty but invalid hex / wrong length | `-32602` | passes through `addressCompatibleToByteArray` message |
+| `input` is not strict hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
+| `data` and `input` are both set but resolve to different bytes | `-32602` | `both "data" and "input" are set and not equal. Please use "input" to pass transaction call data` |
 | `value` is not valid hex | `-32602` | `invalid param value: invalid hex number` |
 | `gas` is not valid hex | `-32602` | `invalid param value: invalid hex number` |
+| `gas × eth_gasPrice` overflows a signed 64-bit `feeLimit` | `-32602` | `invalid gas: fee limit overflow` |
+| `abi` cannot be parsed for contract deployment | `-32602` | `invalid abi` |
 | `tokenId` invalid after string conversion (TRC-10 path only) | `-32602` | `invalid param value: invalid tokenId` |
 | Contract validation fails (`ContractValidateException`) | `-32600` | passes through message |
 | Internal exception | `-32000` | passes through message |

@@ -12,10 +12,10 @@ Update a TRC-10 token's description, URL, and bandwidth limits (issuer-only).
 |---|---|---|---|
 | `owner_address` | string | Yes | Issuer address |
 | `description` | string | No | New description (UTF-8 hex) |
-| `url` | string | No | New URL (UTF-8 hex) |
+| `url` | string | Yes | New URL (UTF-8 hex); an omitted value defaults to empty and fails URL validation |
 | `new_limit` | int64 | No | Per-account free bandwidth quota |
 | `new_public_limit` | int64 | No | Public free bandwidth quota |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields |
 
 Example:
@@ -75,8 +75,8 @@ Response example (`txID`, `ref_block_*`, `expiration`, `timestamp`, and `raw_dat
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Invalid `owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid ownerAddress"}` |
 | Account does not exist | `{"Error": "... : Account does not exist"}` |
 | Account has not issued any token (V1) | `{"Error": "... : Account has not issued any asset"}` |

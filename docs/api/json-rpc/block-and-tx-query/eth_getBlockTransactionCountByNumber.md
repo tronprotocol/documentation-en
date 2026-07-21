@@ -9,7 +9,7 @@ Query the number of transactions in a block by height or tag.
 
 | Position | Type | Required | Description |
 |---|---|---|---|
-| `params[0]` | string | yes | Block height (hex) or tag (`latest` / `earliest` / `finalized`; `pending` is explicitly unsupported) |
+| `params[0]` | string | yes | Non-negative block height (`0x`-prefixed hex or decimal) or tag (`latest` / `earliest` / `finalized`; `pending` and `safe` are explicitly unsupported) |
 
 ```bash
 curl -X POST https://nile.trongrid.io/jsonrpc \
@@ -31,5 +31,5 @@ The example below is the real response captured from the Nile testnet curl above
 
 | Trigger | Code | message |
 |---|---|---|
-| `params[0]` is `pending` | `-32602` | `TAG pending not supported` |
-| `params[0]` is neither valid hex nor a valid tag | `-32602` | `invalid block number` |
+| `params[0]` is `pending` or `safe` | `-32602` | `TAG pending not supported` or `TAG safe not supported` |
+| `params[0]` is neither a valid non-negative hex/decimal height nor a valid tag | `-32602` | `invalid block number` |

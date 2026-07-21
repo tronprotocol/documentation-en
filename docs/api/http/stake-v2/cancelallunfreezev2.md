@@ -11,7 +11,7 @@ Cancel all pending unfreeze requests on the account; pending portions go back to
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `owner_address` | string | Yes | Account address |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -67,8 +67,8 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Proposal #75 `CANCEL_ALL_UNFREEZE_V2` not activated | `{"Error": "class org.tron.core.exception.ContractValidateException : Not support CancelAllUnfreezeV2 transaction, need to be opened by the committee"}` |
 | Invalid `owner_address` | `{"Error": "... : Invalid address"}` |
 | owner account does not exist | `{"Error": "... : Account[<address>] not exists"}` |

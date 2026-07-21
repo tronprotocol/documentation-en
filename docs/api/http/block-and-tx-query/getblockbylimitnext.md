@@ -9,11 +9,15 @@ Get the list of blocks in the range `[startNum, endNum)` (endNum is exclusive).
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `startNum` | int64 | Yes | Starting block number (inclusive) |
-| `endNum` | int64 | Yes | Ending block number (exclusive) |
-| `visible` | bool | No | Format for addresses and text fields |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `startNum` | GET | int64 | Yes | Starting block number (inclusive); omission reaches `Long.parseLong(null)` and fails |
+| `startNum` | POST | int64 | No | Starting block number (inclusive); Protobuf default is `0` |
+| `endNum` | GET | int64 | Yes | Ending block number (exclusive); omission reaches `Long.parseLong(null)` and fails |
+| `endNum` | POST | int64 | No | Ending block number (exclusive); Protobuf default is `0` |
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Constraints: `endNum > startNum` and `endNum - startNum <= 100`.
 
@@ -28,7 +32,6 @@ curl --request POST \
 { "startNum": 66987565, "endNum": 66987567 }
 '
 ```
-
 ## Response
 
 Returns `api.BlockList`:
@@ -70,9 +73,9 @@ Returns `{}` when no blocks are available.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| `startNum` / `endNum` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET | `startNum` / `endNum` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

@@ -9,11 +9,15 @@ Query TRC-10 tokens with pagination.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `offset` | int64 | No | Starting offset; defaults to `0` |
-| `limit` | int64 | No | Number of records to return; defaults to `0`, which returns an empty list |
-| `visible` | bool | No | Format for addresses and text fields |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `offset` | GET | int64 | Yes | Starting offset; omission reaches `Long.parseLong(null)` and fails |
+| `offset` | POST | int64 | No | Starting offset; Protobuf default is `0` |
+| `limit` | GET | int64 | Yes | Number of records to return; omission reaches `Long.parseLong(null)` and fails |
+| `limit` | POST | int64 | No | Number of records to return; Protobuf default is `0`, which returns an empty list |
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:
 
@@ -29,7 +33,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -80,9 +83,9 @@ Returns `{}` if there are no results.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| `offset` / `limit` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET | `offset` / `limit` is not numeric (GET) | `{"Error": "class java.lang.NumberFormatException : <message>"}` |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

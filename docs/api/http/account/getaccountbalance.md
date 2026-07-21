@@ -13,7 +13,7 @@ Query an account's TRX balance at a specific block (block-anchored).
 |---|---|---|---|
 | `account_identifier.address` | string | Yes | Account address |
 | `block_identifier.hash` | string | Yes | Block hash |
-| `block_identifier.number` | int64 | Yes | Block number |
+| `block_identifier.number` | int64 | No | Block number; omitted defaults to `0`. It may be omitted only for the genesis block; for other blocks it must match `block_identifier.hash` |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -59,8 +59,8 @@ The node must enable `storage.balance.history.lookup = true` (equivalent to the 
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | `account_identifier` missing | `{"Error": "class java.lang.IllegalArgumentException : account_identifier is null"}` |
 | `account_identifier.address` missing | `{"Error": "class java.lang.IllegalArgumentException : account_identifier address is null"}` |
 | `block_identifier` missing | `{"Error": "class java.lang.IllegalArgumentException : block_identifier null"}` |

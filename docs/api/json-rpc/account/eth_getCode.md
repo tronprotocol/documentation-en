@@ -9,7 +9,7 @@ Query a contract's runtime bytecode.
 
 | Position | Type | Required | Description |
 |---|---|---|---|
-| `params[0]` | string | yes | Contract address (20-byte hex or base58check) |
+| `params[0]` | string | yes | Contract address: 20-byte hex or 21-byte Tron hex beginning with `41`, with or without `0x` (base58check is not accepted) |
 | `params[1]` | string | yes | Block tag, **only `latest` is supported** |
 
 ```bash
@@ -36,7 +36,7 @@ The example below is the real response captured from the Nile testnet curl above
 
 | Trigger | Code | message |
 |---|---|---|
-| `params[1]` is `earliest` / `pending` / `finalized` | `-32602` | `TAG [earliest \| pending \| finalized] not supported` |
-| `params[1]` is a valid hex number | `-32602` | `QUANTITY not supported, just support TAG as latest` |
-| `params[1]` is neither a valid tag nor a valid hex | `-32602` | `invalid block number` |
+| `params[1]` is `earliest` / `pending` / `finalized` / `safe` | `-32602` | `TAG [earliest \| pending \| finalized \| safe] not supported` |
+| `params[1]` is a valid hex or decimal number | `-32602` | `QUANTITY not supported, just support TAG as latest` |
+| `params[1]` is neither a valid tag nor a valid non-negative hex/decimal number | `-32602` | `invalid block number` |
 | `params[0]` is not a valid address | `-32602` | passes through the message |
