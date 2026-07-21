@@ -317,13 +317,17 @@ node.backup {
   # time interval to send keepAlive message, each member should have the same configuration unit: ms
   keepAliveInterval = 3000
 
-  # peers' IP list, must not include myself
+  # peers' IP address or domain name list, must not include myself
   members = [
-    # "ip",
-    # "ip"
+    # "ip-or-domain",
+    # "ip-or-domain"
   ]
 }
 ```
+
+Each `members` entry can be a domain name, an IPv4 address, or an IPv6 literal. Do not include a port in a member entry; all members use the UDP port configured separately by `node.backup.port`. Unlike IPv6 addresses in peer connection lists, IPv6 literals in `node.backup.members` are written without brackets and must not contain leading or trailing whitespace.
+
+At startup, java-tron validates backup members one by one and resolves domain names to IP addresses. If any member cannot be resolved, parameter initialization fails and the node does not start. After startup, domain names in `members` are resolved again every 60 seconds so that DNS address changes can take effect. If a refresh fails, java-tron continues using the previously resolved IP address.
 
 For example, if an account with block production rights deploys two nodes with IPs 192.168.0.100 and 192.168.0.101 respectively, their `node.backup` configurations should be as follows:
 
@@ -363,7 +367,7 @@ node.backup {
 
 ### Speeding Up Node Data Synchronization
 
-For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](backup_restore.md#main-net-data-snapshot) to accelerate node synchronization.
+For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use [data snapshots](backup_restore.md#mainnet-data-snapshots) to accelerate node synchronization.
 
 The operational steps are as follows:
 

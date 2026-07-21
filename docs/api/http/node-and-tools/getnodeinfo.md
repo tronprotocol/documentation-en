@@ -76,6 +76,7 @@ Response example (key fields only; `peerList`, full `memoryDescInfoList`, `cheat
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Internal node error (failed to collect node info or serialize) | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | Internal node error (failed to collect node info or serialize) | `{"Error": "<exceptionClass> : <message>"}` |

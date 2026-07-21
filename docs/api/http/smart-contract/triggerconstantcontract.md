@@ -13,7 +13,7 @@ Read-only contract call (does not go on-chain). Used to read view/pure functions
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `owner_address` | string | Yes | Caller address (`msg.sender` in the contract) |
-| `contract_address` | string | Yes | Target contract address |
+| `contract_address` | string | Conditional | Target contract address; `contract_address` or `data` must be provided |
 | `function_selector` | string | No | Function signature |
 | `parameter` | string | No | ABI-encoded parameters (hex) |
 | `data` | string | No | Call data (hex); use either this or `function_selector` |
@@ -21,8 +21,10 @@ Read-only contract call (does not go on-chain). Used to read view/pure functions
 | `token_id` | int64 | No | TRC-10 token id sent with the call |
 | `call_token_value` | int64 | No | TRC-10 amount sent with the call |
 | `extra_data` | string | No | Transaction memo (hex; UTF-8 text when `visible=true`) |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields (response includes `result.message`, which is affected by `visible`) |
+
+The required-field constraint is `owner_address AND (contract_address OR data)`. Omitting `contract_address` is valid when `data` is supplied, for example when simulating contract deployment.
 
 Example:
 
@@ -95,11 +97,14 @@ Response example (real Nile capture):
 
 ### Error responses
 
-This endpoint never writes `{"Error": ...}`. All exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`. Note: **EVM revert / runtime errors do not go through `result.code`** — instead `result.result=true`, `message` carries the revert/runtime info, and the failure is marked at `transaction.ret[0].ret="FAILED"`.
+This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`. Note: **EVM revert / runtime errors do not go through `result.code`** — instead `result.result=true`, `message` carries the revert/runtime info, and the failure is marked at `transaction.ret[0].ret="FAILED"`.
+
+Before the request reaches this servlet, shared layers can still return a different shape: `SizeLimitHandler` usually returns HTTP 413 `Payload Too Large` for an oversized body, and a non-blocking rate-limit rejection returns HTTP 200 with `{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}`.
 
 | Trigger | `result.result` | `result.code` | `result.message` | Other |
 |---|---|---|---|---|
-| Contract does not exist / validation failed (`ContractValidateException`) | default (false) | `CONTRACT_VALIDATE_ERROR` | Original validator message | — |
+| `contract_address` is set but the contract does not exist | default (false) | `CONTRACT_VALIDATE_ERROR` | `Smart contract is not exist.` | — |
+| The node has constant-call support disabled | default (false) | `CONTRACT_VALIDATE_ERROR` | `this node does not support constant` | — |
 | EVM revert / failed `require` | true | default (`SUCCESS`, omitted) | `REVERT opcode executed` | `transaction.ret[0].ret="FAILED"`; `constant_result[0]` is the `Error(string)` ABI encoding (when the contract supplies a reason) |
 | EVM runtime error (OOG, illegal opcode, etc., no `result.getException()`) | true | default (`SUCCESS`, omitted) | Raw `result.getRuntimeError()` string | Same as above |
 | `result.getException() != null` (e.g. `OutOfTimeException`) | default (false) | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) | — |

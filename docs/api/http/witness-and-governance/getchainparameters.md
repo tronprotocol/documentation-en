@@ -8,7 +8,12 @@ Get the current values of all chain parameters.
 
 ## Request parameters
 
-None (only `visible`).
+GET and POST read `visible` from the URL query; the servlet does not parse the POST body. `int64_as_string` is honored only on GET by `RateLimiterServlet`.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `visible` | GET / POST | bool | No | Output format; the default is `false` |
+| `int64_as_string` | GET | bool | No | When `true`, serializes int64 parameter values as JSON strings |
 
 Example:
 
@@ -46,6 +51,7 @@ Response example (Nile, first 8 entries; full list has 75 entries):
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Internal node error (failed to read DynamicProperties) | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | Internal node error (failed to read DynamicProperties) | `{"Error": "<exceptionClass> : <message>"}` |

@@ -15,7 +15,7 @@ Query event logs by criteria.
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| `fromBlock` | string | `latest` | Start block; accepts `latest` / `earliest` / `finalized` or a hex height (`pending` is explicitly unsupported) |
+| `fromBlock` | string | `latest` | Start block; accepts `latest` / `earliest` / `finalized` or a hex height (`pending` and `safe` are explicitly unsupported) |
 | `toBlock` | string | `latest` | End block; same as above |
 | `address` | string \| string[] | null | Single or multiple contract addresses; only logs produced by these addresses match |
 | `topics` | array | null | Up to 4 slots; each slot can be a single topic, `null`, or an array of topics (OR semantics); slots are AND-combined |
@@ -46,6 +46,7 @@ An array of `LogFilterElement` (matched by `address` / `topic` / block range):
 | `transactionHash` | hex | txid |
 | `blockHash` | hex | Block hash |
 | `blockNumber` | hex | Block height |
+| `blockTimestamp` | hex | Block timestamp in seconds |
 | `address` | hex | Address of the contract that emitted the log |
 | `data` | hex | abi-encoded concatenation of non-indexed parameters |
 | `topics` | array | Indexed parameters (the first entry is the event signature hash) |
@@ -62,6 +63,7 @@ The example below is the real response captured from the Nile testnet curl above
       "address": "0x9ff8fc48fb114ccd5bbdc24a86f0c73082f08825",
       "blockHash": "0x0000000003fe1ca05cf728c92ee79f5f2758c3e4e4ea88501826726880e8b81c",
       "blockNumber": "0x3fe1ca0",
+      "blockTimestamp": "0x697999ef",
       "transactionHash": "0x01b4cde4197b9d1a1ff09ef5d2b1d939d3ec2401b3f002ebd0802c0f30a6e4ca",
       "transactionIndex": "0x0",
       "logIndex": "0x0",
@@ -83,11 +85,13 @@ The example below is the real response captured from the Nile testnet curl above
 
 | Trigger | Code | message |
 |---|---|---|
-| `fromBlock` / `toBlock` is `pending` | `-32602` | `TAG pending not supported` |
+| `fromBlock` / `toBlock` is `pending` or `safe` | `-32602` | `TAG pending not supported` or `TAG safe not supported` |
 | `blockHash` is given together with `fromBlock` / `toBlock` | `-32602` | `cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other` |
-| `blockHash` does not exist on this node | `-32602` | `invalid blockHash` |
+| `blockHash` does not match the strict `(0x)?[0-9a-fA-F]{64}` hash rule | `-32602` | `invalid hash value` |
+| `blockHash` decodes successfully but does not exist on this node | `-32602` | `invalid blockHash` |
 | `fromBlock > toBlock` | `-32602` | `please verify: fromBlock <= toBlock` |
 | Range exceeds `maxBlockRange` (default 5000) | `-32602` | `exceed max block range: <N>` |
+| `address` array length > `maxAddressSize` (default 1000) | `-32602` | `exceed max addresses: <N>` |
 | `topics` array length > 4 | `-32602` | `topics size should be <= 4` |
 | A `topics` slot is an array with > `maxSubTopics` entries (default 1000) | `-32602` | `exceed max topics: <N>` |
 | A `topics` element or `address` is not valid hex | `-32602` | `invalid topic(s): <value>` / `invalid address at index <i>: <value>` etc. |

@@ -13,7 +13,7 @@ Update a contract's `origin_energy_limit` (deployer only).
 | `owner_address` | string | Yes | Deployer address |
 | `contract_address` | string | Yes | Contract address |
 | `origin_energy_limit` | int64 | Yes | Deployer's energy limit |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -73,8 +73,8 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Chain has not enabled the ENERGY_LIMIT proposal | `{"Error": "class org.tron.core.exception.ContractValidateException : contract type error, unexpected type [UpdateEnergyLimitContract]"}` |
 | Invalid `owner_address` | `{"Error": "... : Invalid address"}` |
 | owner account does not exist | `{"Error": "... : Account[<address>] does not exist"}` |

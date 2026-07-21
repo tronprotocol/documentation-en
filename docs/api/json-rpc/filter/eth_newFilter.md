@@ -11,7 +11,7 @@ Register a log filter; subsequently use [`eth_getFilterChanges`](eth_getFilterCh
 
 | Position | Type | Required | Description |
 |---|---|---|---|
-| `params[0]` | object | yes | `FilterRequest` (fields described in [`eth_getLogs`](eth_getLogs.md)). **The `finalized` tag is not accepted** |
+| `params[0]` | object | yes | `FilterRequest` (fields described in [`eth_getLogs`](eth_getLogs.md)). **The `finalized`, `pending`, and `safe` tags are not accepted** |
 
 ```bash
 curl -X POST http://127.0.0.1:8545/jsonrpc \
@@ -32,10 +32,13 @@ Behavior:
 - The FullNode port stores filters in `eventFilter2ResultFull`; the Solidity port stores them in `eventFilter2ResultSolidity`. The two are mutually invisible.
 - When the node produces / solidifies blocks, matching logs are asynchronously appended to the filter's result queue.
 - **Expires after 5 minutes without a read** (`getFilterChanges` / `getFilterLogs`) (`EXPIRE_SECONDS = 300`); subsequent access throws `-32000 filter not found`.
+- The number of log filters alive on a single node is capped by `node.jsonrpc.maxLogFilterNum` (default 20000).
 
 ### Error responses
 
 | Trigger | Code | message |
 |---|---|---|
+| Existing log filter count >= `maxLogFilterNum` | `-32005` | `exceed max log filters: <N>, try again later` |
 | `fromBlock` or `toBlock` is `finalized` | `-32602` | `invalid block range params` |
+| `fromBlock` or `toBlock` is `pending` or `safe` | `-32602` | `TAG pending not supported` or `TAG safe not supported` |
 | Other `FilterRequest` validation failures | `-32602` | passes through `LogFilterWrapper` validation message |

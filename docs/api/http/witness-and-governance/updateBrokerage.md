@@ -11,8 +11,8 @@ SR updates its reward share ratio (brokerage).
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `owner_address` | string | Yes | SR address |
-| `brokerage` | int32 | Yes | New brokerage percentage 0–100 |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `brokerage` | int32 | No | New brokerage percentage 0–100; omitted defaults to `0`, which is valid |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -66,8 +66,8 @@ Response example (`txID`, `ref_block_*`, `expiration`, `timestamp`, `raw_data_he
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | ChangeDelegation proposal not enabled on the chain | `{"Error": "class org.tron.core.exception.ContractValidateException : contract type error, unexpected type [UpdateBrokerageContract]"}` |
 | Invalid `owner_address` | `{"Error": "... : Invalid ownerAddress"}` |
 | `brokerage` not in [0, 100] | `{"Error": "... : Invalid brokerage"}` |

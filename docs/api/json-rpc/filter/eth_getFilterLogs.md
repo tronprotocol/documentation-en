@@ -28,5 +28,6 @@ Array of `LogFilterElement` (fields described in [`eth_getLogs`](eth_getLogs.md)
 | Trigger | Code | message |
 |---|---|---|
 | Filter ID does not exist / has expired / belongs to a block filter or another port | `-32000` | `filter not found` |
+| Saved filter range exceeds `maxBlockRange` (default 5000) | `-32602` | `exceed max block range: <N>` |
 | Hit count exceeds the limit | `-32005` | passes through `JsonRpcTooManyResultException` message |
 | Node is a lite fullnode and the queried block has been pruned | `-32000` | passes through `BadItemException` / `ItemNotFoundException` message |

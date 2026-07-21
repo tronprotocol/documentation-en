@@ -31,5 +31,4 @@ The example below is the real response captured from the Nile testnet curl above
 
 | Trigger | Code | message |
 |---|---|---|
-| `params[0]` does not match `(0x)?[a-zA-Z0-9]{64}` | `-32602` | `invalid hash value` |
-| `params[0]` is a valid 64-char string but fails to decode | `-32602` | passes through the message thrown by `ByteArray.fromHexString` |
+| `params[0]` does not match `(0x)?[0-9a-fA-F]{64}` | `-32602` | `invalid hash value` |

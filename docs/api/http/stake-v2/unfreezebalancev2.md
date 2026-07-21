@@ -13,7 +13,7 @@ Initiate an unfreeze request (Stake 2.0). Enters a 14-day waiting period; after 
 | `owner_address` | string | Yes | Unfreezing account address |
 | `unfreeze_balance` | int64 | Yes | Unfreeze amount (sun) |
 | `resource` | enum | No | `BANDWIDTH` / `ENERGY` / `TRON_POWER` |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -73,8 +73,8 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Proposal #70 `UNFREEZE_DELAY_DAYS` not activated | `{"Error": "class org.tron.core.exception.ContractValidateException : Not support UnfreezeV2 transaction, need to be opened by the committee"}` |
 | Invalid `owner_address` | `{"Error": "... : Invalid address"}` |
 | owner account does not exist | `{"Error": "... : Account[<address>] does not exist"}` |

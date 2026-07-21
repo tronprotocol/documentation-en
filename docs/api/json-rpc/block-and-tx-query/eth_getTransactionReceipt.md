@@ -31,7 +31,7 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 | `gasUsed` | hex | Energy used by this transaction |
 | `effectiveGasPrice` | hex | Energy unit price at block time (sun) |
 | `contractAddress` | hex | Only set for `CreateSmartContract` type |
-| `logs` | array | Log array (each entry includes `logIndex`, `address`, `data`, `topics[]`, `blockHash`, `blockNumber`, `transactionHash`, `transactionIndex`, `removed`) |
+| `logs` | array | Log array (each entry includes `logIndex`, `address`, `data`, `topics[]`, `blockHash`, `blockNumber`, `blockTimestamp`, `transactionHash`, `transactionIndex`, `removed`) |
 | `logsBloom` | hex | Constant 256 bytes of zeros |
 | `status` | hex | `0x1` success / `0x0` failure (based on `TransactionInfo.resultValue <= 1`) |
 | `type` | hex | Constant `0x0` |
@@ -61,6 +61,7 @@ The example below is the real response captured from the Nile testnet curl above
         "address": "0x9ff8fc48fb114ccd5bbdc24a86f0c73082f08825",
         "blockHash": "0x0000000003fe1ca05cf728c92ee79f5f2758c3e4e4ea88501826726880e8b81c",
         "blockNumber": "0x3fe1ca0",
+        "blockTimestamp": "0x697999ef",
         "transactionHash": "0x01b4cde4197b9d1a1ff09ef5d2b1d939d3ec2401b3f002ebd0802c0f30a6e4ca",
         "transactionIndex": "0x0",
         "logIndex": "0x0",
@@ -86,5 +87,4 @@ The example below is the real response captured from the Nile testnet curl above
 
 | Trigger | Code | message |
 |---|---|---|
-| `params[0]` does not match `(0x)?[a-zA-Z0-9]{64}` | `-32602` | `invalid hash value` |
-| `params[0]` is a valid 64-char string but fails to decode | `-32602` | passes through the message thrown by `ByteArray.fromHexString` |
+| `params[0]` does not match `(0x)?[0-9a-fA-F]{64}` | `-32602` | `invalid hash value` |

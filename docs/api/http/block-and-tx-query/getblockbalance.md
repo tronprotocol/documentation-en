@@ -12,7 +12,7 @@ Returns the balance trace for all transactions inside a block (block balance tra
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `hash` | string | Yes | Block hash hex |
-| `number` | int64 | Yes | Block number |
+| `number` | int64 | No | Block number; omitted defaults to `0`. It may be omitted only for the genesis block; for other blocks it must match the height represented by `hash` |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -78,8 +78,8 @@ Requires `storage.balance.history.lookup = true` (equivalent to launch flag `--h
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | `BlockIdentifier` missing | `{"Error": "class java.lang.IllegalArgumentException : block_identifier null"}` |
 | `number < 0` | `{"Error": "class java.lang.IllegalArgumentException : block_identifier number less than 0"}` |
 | `hash` length is not 32 bytes | `{"Error": "class java.lang.IllegalArgumentException : block_identifier hash length not equals 32"}` |

@@ -56,5 +56,6 @@
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_syncing",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getSyncingStatus",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class SyncingResult"
-  ]
+  ],
+  "x-tron-error-catalog": []
 }

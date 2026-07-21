@@ -62,7 +62,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
-import com.alibaba.fastjson.JSONObject;
+import org.tron.json.JSONObject;
 
 @Component
 @Slf4j(topic = "API")
@@ -328,4 +328,3 @@ On GitHub, create a Pull Request from your repository to `tronprotocol/java-tron
 ![提交 Pull Request 示例](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/javatron_pr.png)
 
 Ensure your Pull Request description is clear, detailing the changes you made and their purpose.
-

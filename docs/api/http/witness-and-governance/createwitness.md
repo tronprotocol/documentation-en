@@ -12,7 +12,7 @@ Apply to become a Super Representative (SR) candidate. Costs 9999 TRX (chain par
 |---|---|---|---|
 | `owner_address` | string | Yes | Applicant address |
 | `url` | string | Yes | Candidate URL (hex UTF-8) |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format of address / text fields |
 
 Example:
@@ -70,8 +70,8 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Invalid `owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid address"}` |
 | Invalid `url` (empty or too long) | `{"Error": "... : Invalid url"}` |
 | owner account does not exist | `{"Error": "... : account[<address>] not exists"}` |

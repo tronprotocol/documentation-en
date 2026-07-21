@@ -31,4 +31,4 @@ The example below is the real response captured from the Nile testnet curl above
 
 ### Error responses
 
-Same as [`eth_chainId`](eth_chainId.md): if the underlying genesis block cannot be loaded, throws `-32000`, passing through the underlying `Exception.getMessage()`.
+Same as [`eth_chainId`](eth_chainId.md): if the genesis block cannot be loaded, jsonrpc4j returns its unhandled-error fallback code `-32001`; `error.message` is the underlying exception message rather than the fixed string `JsonRpcInternalException`.

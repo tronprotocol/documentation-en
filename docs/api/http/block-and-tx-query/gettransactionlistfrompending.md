@@ -8,9 +8,11 @@ Returns the list of all transaction IDs in the pending pool.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `visible` | bool | No | No effect (response has no bytes fields) |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `visible` | GET / POST | bool | No | No effect (response has no bytes fields) |
 
 Example:
 
@@ -19,7 +21,6 @@ curl --request POST \
      --url https://nile.trongrid.io/wallet/gettransactionlistfrompending \
      --header 'accept: application/json'
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -39,6 +40,7 @@ Response example:
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Internal node error (failed to read the pending pool) | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | Internal node error (failed to read the pending pool) | `{"Error": "<exceptionClass> : <message>"}` |

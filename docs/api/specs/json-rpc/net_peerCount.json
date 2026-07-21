@@ -28,5 +28,6 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_peerCount",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getPeerCount"
-  ]
+  ],
+  "x-tron-error-catalog": []
 }

@@ -33,5 +33,11 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_coinbase",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCoinbase"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INTERNAL_ERROR"
+    }
   ]
 }

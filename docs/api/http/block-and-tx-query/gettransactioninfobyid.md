@@ -10,10 +10,13 @@ Query the **execution result** of a transaction by ID (includes receipt, logs, i
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `value` | string | Yes | Transaction ID hex |
-| `visible` | bool | No | Format for addresses and text fields; when `visible=true` the servlet additionally rewrites `log[].address` (EVM 20 bytes) by prepending `0x41` and converting to base58 |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `value` | GET | string | Yes | Transaction ID hex |
+| `value` | POST | string | No | Transaction ID; omitted uses empty bytes and returns `{}` |
+| `visible` | GET / POST | bool | No | Format for addresses and text fields; when `visible=true` the servlet additionally rewrites `log[].address` (EVM 20 bytes) by prepending `0x41` and converting to base58 |
 
 Example:
 
@@ -28,7 +31,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -110,9 +112,9 @@ Returns `{}` if the transaction is not on-chain.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| `value` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | `value` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

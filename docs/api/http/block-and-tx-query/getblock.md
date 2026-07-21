@@ -9,11 +9,13 @@ Query a block by number or hash, optionally returning the full transaction list.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `id_or_num` | string | No | Block number (decimal string) or block hash hex; empty returns the latest block |
-| `detail` | bool | No | Whether to return full `transactions`; if false only the header is returned (default false) |
-| `visible` | bool | No | Format for addresses and text fields |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `id_or_num` | GET / POST | string | No | Block number (decimal string) or block hash hex; empty returns the latest block |
+| `detail` | GET / POST | bool | No | Whether to return full `transactions`; if false only the header is returned (default false) |
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:
 
@@ -26,7 +28,6 @@ curl --request POST \
 { "id_or_num": "66987565", "detail": false }
 '
 ```
-
 ## Response
 
 Returns `protocol.Block` (whether `transactions` is populated depends on `detail`); fields are the same as [`/wallet/getnowblock`](getnowblock.md).
@@ -54,11 +55,11 @@ Returns `{}` if not found.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| `id_or_num` is negative | `{"Error": "num must be non-positive number."}` |
-| `id_or_num` length is not 64 (not a valid block hash length) | `{"Error": "id must be legal block hash."}` |
-| `id_or_num` is hex but parsing fails / hash cannot be resolved to a block number | `{"Error": "id must be legal block hash."}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| POST | Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | `id_or_num` is negative | `{"Error": "num must be non-positive number."}` |
+| GET / POST | `id_or_num` length is not 64 (not a valid block hash length) | `{"Error": "id must be legal block hash."}` |
+| GET / POST | `id_or_num` is hex but parsing fails / hash cannot be resolved to a block number | `{"Error": "id must be legal block hash."}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

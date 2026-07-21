@@ -12,12 +12,13 @@
     {
       "name": "blockHash",
       "required": true,
-      "description": "32-byte block hash, with or without the 0x prefix.",
       "schema": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^(0x)?[0-9a-fA-F]{64}$"
       },
       "x-java-type": "String",
-      "x-position": 0
+      "x-position": 0,
+      "description": "32-byte block hash, with or without the 0x prefix."
     }
   ],
   "result": {
@@ -53,5 +54,11 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockTransactionCountByHash",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockTransactionCountByHash"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    }
   ]
 }

@@ -9,10 +9,15 @@ Query the remaining number of unfreeze requests an account can initiate (Stake 2
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `owner_address` | string | Yes | Account address (also accepts `ownerAddress`) |
-| `visible` | bool | No | Address format |
+GET reads these fields from URL query parameters; POST reads them from a JSON request body.
+
+GET also accepts `ownerAddress` as an alias for `owner_address`. POST accepts only the canonical `owner_address` field; `ownerAddress` is treated as an unknown JSON field and ignored.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `owner_address` | GET | string | Conditional | Account address; GET requires either this field or the `ownerAddress` alias |
+| `owner_address` | POST | string | No | Account address; omitted uses empty bytes and returns the default empty result |
+| `visible` | GET / POST | bool | No | Address format |
 
 Example:
 
@@ -27,7 +32,6 @@ curl --request POST \
 }
 '
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -42,10 +46,10 @@ Response example (no pending unfreeze requests, full 32-quota available):
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Request body exceeds `node.maxMessageSize` (POST) | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| `owner_address` is not valid base58check (`visible=true`) | GET: with non-base58 characters, throws `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; if only the checksum is wrong, `Util.getHexAddress` silently returns empty string → no record found, returns `{}`. POST (via `JsonFormat.merge`): with non-base58 characters, throws `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <pos>: INVALID base58 String, ..."}`; if only the checksum is wrong, throws `{"Error": "class java.lang.NullPointerException : null"}` |
-| `owner_address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
-| Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | `owner_address` is not valid base58check (`visible=true`) | GET: with non-base58 characters, throws `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; if only the checksum is wrong, `Util.getHexAddress` silently returns empty string → no record found, returns `{}`. POST (via `JsonFormat.merge`): with non-base58 characters, throws `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <pos>: INVALID base58 String, ..."}`; if only the checksum is wrong, throws `{"Error": "class java.lang.NullPointerException : null"}` |
+| GET / POST | `owner_address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
+| POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

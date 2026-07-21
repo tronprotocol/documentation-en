@@ -9,9 +9,11 @@ Query all TRC-10 tokens on the network.
 
 ## Request parameters
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `visible` | bool | No | Format for addresses and text fields |
+Both GET and POST read these fields from URL query parameters; the servlet does not parse the POST body.
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:
 
@@ -20,7 +22,6 @@ curl --request POST \
      --url https://nile.trongrid.io/wallet/getassetissuelist \
      --header 'accept: application/json'
 ```
-
 ## Response
 
 | Field | Type | Description |
@@ -55,6 +56,7 @@ Returns `{}` if there are none.
 
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Internal node error (failed to read AssetIssue store) | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | Internal node error (failed to read AssetIssue store) | `{"Error": "<exceptionClass> : <message>"}` |

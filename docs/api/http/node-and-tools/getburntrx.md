@@ -8,7 +8,11 @@ Query the cumulative TRX burned (including transaction fees, contract burns, etc
 
 ## Request parameters
 
-None.
+POST has no request parameters and its body is not parsed. GET accepts the following URL query parameter:
+
+| Field | Method | Type | Required | Description |
+|---|---|---|---|---|
+| `int64_as_string` | GET | bool | No | When `true`, returns `burnTrxAmount` as a JSON string |
 
 Example:
 
@@ -28,8 +32,15 @@ Response example:
 { "burnTrxAmount": 153731208869910 }
 ```
 
+With `?int64_as_string=true` on a GET request:
+
+```json
+{ "burnTrxAmount": "153731208869910" }
+```
+
 ### Error responses
 
-| Trigger | Response |
-|---|---|
-| Internal node error (failed to read dynamic properties) | `{"Error": "<exceptionClass> : <message>"}` |
+| Method | Trigger | Response |
+|---|---|---|
+| GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| GET / POST | Internal node error (failed to read dynamic properties) | `{"Error": "<exceptionClass> : <message>"}` |

@@ -13,7 +13,7 @@ Create an unsigned TRX transfer transaction (`TransferContract`).
 | `owner_address` | string | Yes | Sender address |
 | `to_address` | string | Yes | Recipient address |
 | `amount` | int64 | Yes | Amount in sun (1 TRX = 1e6 sun) |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `extra_data` | string | No | Written into `raw_data.data` (hex; UTF-8 when `visible=true`) |
 | `visible` | bool | No | Address format |
 
@@ -70,8 +70,8 @@ Returns an unsigned `protocol.Transaction` (with `txID`, `raw_data`, `raw_data_h
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | Field type mismatch / address decode failure | `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | `extra_data` is not valid hex when `visible=false` | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (`Util.setTransactionExtraData` calls `ByteArray.fromHexString` directly, bypassing `JsonFormat`) |
 | `owner_address` is not a valid 21-byte address | `{"Error": "class org.tron.core.exception.ContractValidateException : Invalid ownerAddress!"}` |

@@ -13,7 +13,7 @@ Freeze TRX to obtain bandwidth / energy / TronPower (Stake 2.0). No fixed lock p
 | `owner_address` | string | Yes | Freezing account address |
 | `frozen_balance` | int64 | Yes | Frozen amount (sun) |
 | `resource` | enum | No | `BANDWIDTH` / `ENERGY` / `TRON_POWER`, default `BANDWIDTH` |
-| `permission_id` | int32 | No | Multi-sig permission ID |
+| `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -69,8 +69,8 @@ Response example (`txID`, `ref_block_*`, `expiration`, `timestamp`, `raw_data_he
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON / field type mismatch | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | Proposal #70 `UNFREEZE_DELAY_DAYS` not activated | `{"Error": "class org.tron.core.exception.ContractValidateException : Not support FreezeV2 transaction, need to be opened by the committee"}` |
 | Invalid `owner_address` | `{"Error": "... : Invalid address"}` |
 | owner account does not exist | `{"Error": "... : Account[<address>] not exists"}` |

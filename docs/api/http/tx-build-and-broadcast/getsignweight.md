@@ -14,7 +14,7 @@ Pass the JSON form of `protocol.Transaction` directly (with the collected `signa
 |---|---|---|---|
 | `raw_data` | object | Yes | Same as `createtransaction` response |
 | `raw_data_hex` | string | No (node ignores) | Same as [`broadcasttransaction`](broadcasttransaction.md): client display helper, not used for signature verification |
-| `signature` | string[] | Yes | Collected signatures (can be just one) |
+| `signature` | string[] | No | Collected signatures; when omitted, the request is still parsed and `current_weight` remains `0` |
 | `visible` | bool | No | Format of address / text fields (the response includes `result.message`, which is affected by `visible`) |
 
 Example: the request body is a Transaction JSON with `signature`, structured the same as [`/wallet/broadcasttransaction`](broadcasttransaction.md).
@@ -33,7 +33,7 @@ curl --request POST \
 '
 ```
 
-> The above is a placeholder; the real request body is a multi-sig transaction JSON with at least one `signature`.
+> The above is a placeholder. A real weight calculation normally uses a signed multi-sig transaction JSON, but the endpoint also accepts an empty or omitted `signature` array and reports `current_weight=0` together with the permission result.
 
 ## Response
 
@@ -78,7 +78,7 @@ When `current_weight >= permission.threshold`, `code=ENOUGH_PERMISSION` and the 
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | Missing `raw_data`, `raw_data.contract` is not an array, `signature` is not an array or its elements are not hex, field type mismatch in `raw_data`, etc. | `{"Error": "class java.lang.NullPointerException : null"}` (`Util.packTransaction` silently catches `JsonFormat$ParseException` / `ClassCastException` and returns `null`; downstream `getTransactionSignWeight(null)` triggers NPE) |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

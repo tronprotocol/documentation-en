@@ -14,7 +14,7 @@ Pass the JSON form of `protocol.Transaction` directly (i.e., the response from `
 |---|---|---|---|
 | `raw_data` | object | Yes | Same as `createtransaction` response; the node re-serializes it into protobuf bytes for SHA256 signature verification |
 | `raw_data_hex` | string | No (node ignores) | Client-side display helper — the protobuf encoding of `raw_data`. **Not a proto field of `protocol.Transaction`**; `JsonFormat.merge` skips it during parse, so the node neither reads it nor cross-checks it against `raw_data`. Clients usually SHA256 it to derive `txID` when signing, but whether it matches or is even valid hex when broadcast does not affect processing |
-| `signature` | string[] | Yes | Signature array (1 for ordinary accounts; per permission rules for multi-sig) |
+| `signature` | string[] | No | Optional at JSON/Protobuf parsing time. An ordinary transaction normally needs one valid signature to broadcast successfully; multi-sig transactions must satisfy the selected permission threshold. Missing signatures normally lead to a later `SIGERROR` |
 | `visible` | bool | No | Format of address / text fields |
 
 Example:
@@ -87,8 +87,8 @@ JSON parse failure, missing `raw_data`, type mismatch, etc. take the `Util.proce
 
 | Trigger | Response |
 |---|---|
-| Request body exceeds `node.maxMessageSize` | `{"Error": "class java.lang.Exception : body size is too big, the limit is <N>"}` |
-| Request body is not valid JSON | `{"Error": "class com.alibaba.fastjson.JSONException : <parser info>"}` |
+| Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
+| Request body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | Missing `raw_data`, `raw_data.contract` is not an array, `signature` is not an array or its elements are not hex, field type mismatch in `raw_data`, etc. | `{"Error": "class java.lang.NullPointerException : null"}` (`Util.packTransaction` silently catches `JsonFormat$ParseException` / `ClassCastException` and returns `null`; downstream `TransactionCapsule(null)` triggers NPE) |
 | Field type mismatch inside `raw_data.contract[i].parameter.value` | That contract is caught and dropped inside `packTransaction`, broadcast ends up with an empty contract list, returns `{"code": "CONTRACT_VALIDATE_ERROR", "message": "<hex of \"No contract!\">", ...}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
