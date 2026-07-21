@@ -19305,7 +19305,7 @@
       "httpStatus": 200
       "retryable": false
       "retryClass": "AFTER_STATE_CHANGE"
-      "description": "Account bandwidth or another account resource is insufficient."
+      "description": "The account has insufficient bandwidth, or its balance is insufficient to pay bandwidth, multi-signature, memo, or other transaction-related fees."
       "match":
         "schema": "#/components/schemas/Return"
         "discriminatorPaths":
