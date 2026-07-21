@@ -198,7 +198,7 @@ The permission JSON has the following shape (keys, thresholds, and weighted sign
       "type": 2,
       "permission_name": "active",
       "threshold": 2,
-      "operations": "7fff1fc0033e0000000000000000000000000000000000000000000000000000",
+      "operations": "7fff1fc0033ef30f000000000000000000000000000000000000000000000000",
       "keys": [
         { "address": "TAbc...", "weight": 1 },
         { "address": "TDef...", "weight": 1 }
@@ -210,5 +210,7 @@ The permission JSON has the following shape (keys, thresholds, and weighted sign
 
 - `threshold` is the total signer weight required for the permission to authorize an action.
 - `operations` (active permissions only) is a 32-byte hex bitmap selecting which contract/operation
-  types the permission may perform.
+  types the permission may perform. The example above matches the 4.9.7 default active-permission
+  bitmap: it excludes disabled operation 51 (`ShieldedTransferContract`) while retaining active
+  operations such as 49 and 52.
 - `witness_permission` is only relevant for super-representative accounts.

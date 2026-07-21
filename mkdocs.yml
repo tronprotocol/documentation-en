@@ -285,6 +285,7 @@ nav:
             - Governance: clients/wallet-cli/governance.md
             - GasFree: clients/wallet-cli/gasfree.md
             - Queries: clients/wallet-cli/query.md
+            - TypeScript / npm CLI: clients/wallet-cli/typescript-cli.md
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md
@@ -394,4 +395,3 @@ plugins:
         - introduction/overview.md
         - mechanism-algorithm/shielded-TRC20-contract.md
         - mechanism-algorithm/trc10.md
-
