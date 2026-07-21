@@ -227,7 +227,7 @@ Java-tron uses the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol t
 
 ### seed.node
 
-`seed.node` is used to initialize connections. It should point to online and stable Fullnode:
+`seed.node` is used to initialize connections. It should point to online and stable FullNodes. Each entry can use an IPv4 address, a bracketed IPv6 address, or a domain name:
 
 ```properties
 seed.node = {
@@ -236,6 +236,7 @@ seed.node = {
     "52.8.46.215:18888",
     ...
     "18.163.230.203:18888"
+    #"seed.example.com:18888", // domain name
     #"[2a05:d014:1f2f:2600:1b15:921:d60b:4c60]:18888", // use this if support ipv6
     #"[2600:1f18:7260:f400:8947:ebf3:78a0:282b]:18888", // use this if support ipv6
   ]
@@ -244,6 +245,18 @@ seed.node = {
 
 For TRON Mainnet, you can use [community public nodes](https://developers.tron.network/docs/networks#public-node) as seed nodes. To get the latest `seed.node` list, refer to the official [config file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 If your network interface supports IPv6, you can uncomment the relevant lines in the list.
+
+### Domain Names in Peer Configuration
+
+Starting with GreatVoyage-v4.8.2, `seed.node.ip.list`, `node.active`, `node.passive`, and `node.fastForward` accept domain names in `hostname:port` format in addition to IP addresses. IPv6 literals in these four configuration items must use `[IPv6-address]:port` format and must not contain leading or trailing whitespace.
+
+`node.backup.members` also accepts domain names and IP addresses, but its entries must not include a port. IPv6 literals in this list are written without brackets and must not contain leading or trailing whitespace. All backup members use the port configured separately by `node.backup.port`. For the complete backup-node configuration and deployment example, see [Master-Slave Mode for Block Production FullNodes](installing_javatron.md#master-slave-mode-for-block-production-fullnodes).
+
+At startup, java-tron resolves configured domain names to IP addresses. It first uses the operating system resolver, which honors local mappings such as `/etc/hosts`; if that fails or times out, it falls back to built-in public DNS resolvers. IPv4 is attempted first and IPv6 is used as a fallback. For `seed.node.ip.list`, `node.active`, `node.passive`, and `node.fastForward`, domain names in the same list are resolved in parallel and entries that cannot be resolved are skipped. In contrast, `node.backup.members` entries are validated one by one, and any member that cannot be resolved causes startup to fail with a parameter initialization error.
+
+Only domains in `node.backup.members` are refreshed periodically, every 60 seconds; domain names in the other peer configuration items are not refreshed automatically.
+
+Domain names in these peer configuration items use ordinary DNS A/AAAA resolution. This is separate from the DNS tree node-discovery mechanism configured through `node.dns.treeUrls`.
 
 ### Persistent Nodes from Database
 
@@ -310,25 +323,24 @@ node {
   active = [
     # Active establish connection in any case
     # Sample entries:
-    # "ip:port",
-    # "ip:port"
+    # "192.0.2.10:18888",
+    # "active.example.com:18888"
   ]
   ...
  }
 ``` 
 
 - Peers discovered via node discovery (medium priority)
-- DNS tree nodes (low priority). Rarely used, requires
-`treeUrls`：
+- DNS tree nodes (low priority). Rarely used and requires `node.dns.treeUrls`:
 
   ```properties
-  dns {
-  ...
-  # dns urls to get nodes, url format tree://{pubkey}@{domain}, default empty
-  treeUrls = [
-    #"tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net",
-  ]
-  ...
+  node {
+    dns {
+      # DNS URLs to get nodes, URL format tree://{pubkey}@{domain}, default empty
+      treeUrls = [
+        #"tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net",
+      ]
+    }
   }
   ```
   
@@ -346,8 +358,8 @@ node {
   passive = [
     # Passive accept connection in any case
     # Sample entries:
-    # "ip:port",
-    # "ip:port"
+    # "192.0.2.20:18888",
+    # "passive.example.com:18888"
   ]
   ...
  }
