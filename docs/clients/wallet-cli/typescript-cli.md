@@ -1,9 +1,10 @@
 # TypeScript / npm CLI
 
-Starting with `wallet-cli` 4.9.7, the repository also ships an agent-first TypeScript CLI published
-as the npm package `@tron-walletcli/wallet-cli`. It is separate from the Java JAR described in the
-rest of this section: the Java CLI uses commands such as `send-coin`, while the TypeScript CLI uses
-grouped commands such as `tx send`.
+Starting with release 4.9.7 of the `wallet-cli` repository, the repository also ships an agent-first
+TypeScript CLI. This CLI is published as the npm package `@tron-walletcli/wallet-cli` and uses an
+independent npm version number; `wallet-cli --version` reports the npm package version. It is
+separate from the Java JAR described in the rest of this section: the Java CLI uses commands such
+as `send-coin`, while the TypeScript CLI uses grouped commands such as `tx send`.
 
 The TypeScript CLI currently supports TRON mainnet, Nile, and Shasta. EVM chains are not supported
 by this version.
