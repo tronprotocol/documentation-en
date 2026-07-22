@@ -33,7 +33,7 @@ The operational steps for deploying a private network node are fundamentally the
 
 2. Get the java-tron Client
 
-    - Download the latest `FullNode.jar` from the [java-tron GitHub Releases](https://github.com/tronprotocol/java-tron/releases) page.
+    - Download the latest FullNode JAR for your system architecture—`FullNode-x64.jar` for x86-64 or `FullNode-aarch64.jar` for ARM64—from the [java-tron GitHub Releases](https://github.com/tronprotocol/java-tron/releases) page, and rename the downloaded file to `FullNode.jar`.
     - Copy the downloaded `JAR` file into each of the two node directories:
 
          ```bash
@@ -43,7 +43,8 @@ The operational steps for deploying a private network node are fundamentally the
 
 3. Prepare Configuration Files
 
-     - Download the official configuration file template ([config.conf](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf)) and change the `p2p.version` to any value other than **11111** or **20180622**.
+     - Download the current [`framework/src/main/resources/config.conf`](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
+     - Change `node.p2p.version` to a positive integer that is not used by a public network. The current public IDs are Mainnet `11111`, Nile `201910292`, and Shasta `1`.
      - Copy it into each node directory and rename the files for distinction.
 
         ```bash
@@ -62,10 +63,10 @@ The operational steps for deploying a private network node are fundamentally the
       | :-------- | :-------- | :-------- | :-------- |
       | `localwitness`     | The private key of Super Representative (SR) address | Leave empty     | Generating blocks requires signing with a private key   |
       | `genesis.block.witnesses`	     | SR address(es)    | Same as SR configuration	 | Genesis block-related configuration    |
-      | `genesis.block.Assets`     | Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required    | Same as SR configuration	   | Genesis block related configuration     |
-      | `p2p.version`     | Any positive integer except 11111     | Same as SR configuration   | Only nodes of the same `p2p.version` can shake hands successfully    |
-      | `seed.node`     | Leave empty    | Set `ip.list` to the IP address of the SR node and the port number specified in its `listen.port` configuration   | Enables FullNode to establish connection with SR node for data synchronization     |
-      | `needSyncCheck`     | `false`     | `true`     | Set the first SR’s `needSyncCheck` to `false`, other SRs `true`     |
+      | `genesis.block.assets`     | Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required    | Same as SR configuration	   | Genesis block related configuration     |
+      | `node.p2p.version`     | Any positive integer except `11111`, `201910292`, and `1`     | Same as SR configuration   | Only nodes with the same `node.p2p.version` can complete the P2P handshake    |
+      | `seed.node.ip.list`     | Leave the list empty    | Add the SR node as `SR_IP:SR_P2P_PORT`, using the port configured by its `node.listen.port` setting   | Enables FullNode to establish a connection with the SR node for data synchronization     |
+      | `block.needSyncCheck`     | `false`     | `true`     | Set `block.needSyncCheck` to `false` for the first SR and `true` for other SRs     |
       | `node.discovery.enable`     | `true`     | `true`     | If set to `false`, the current node will not be discovered by other nodes    |
       | `block.proposalExpireTime`|`600000` | Same as SR configuration	 | The default proposal expiration time is 3 days: 259200000 (ms). Because proposals must pass through at least one maintenanceTimeInterval to be approved, you should set both block.proposalExpireTime and block.maintenanceTimeInterval to smaller values if you want to speed up the proposal process in a private network.|
       | `block.maintenanceTimeInterval`|`300000`| Same as SR configuration	 | The default maintenance time interval is 6 hours: 21600000 (ms)|
@@ -76,9 +77,12 @@ The operational steps for deploying a private network node are fundamentally the
 
      Modify the port numbers in the configuration files to be different for the SR and the Full Node. This step is only required when running multiple nodes on the same machine to avoid port conflicts. Otherwise, you can skip it.
 
-     * `listen.port`: P2P listening port
-     * `http port`: HTTP listening port
-     * `rpc port`: RPC listening port
+     * `node.listen.port`: P2P listening port
+     * `node.http.fullNodePort`, `node.http.solidityPort`, and `node.http.PBFTPort`: HTTP listening ports
+     * `node.rpc.port`, `node.rpc.solidityPort`, and `node.rpc.PBFTPort`: gRPC listening ports
+     * `node.jsonrpc.httpFullNodePort`, `node.jsonrpc.httpSolidityPort`, and `node.jsonrpc.httpPBFTPort`: JSON-RPC listening ports when those services are enabled
+
+     See the [Node Configuration port table](configuration.md#api-services-and-ports) for the corresponding enable switches and defaults.
     
 6. Start the Nodes
 
@@ -107,7 +111,7 @@ The operational steps for deploying a private network node are fundamentally the
 
      - **Method 1: Set via Configuration File (For Initial Deployment)**
     
-         Some network parameters can be set directly in the configuration file. You can find a list of these parameters [here](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).
+         Some network parameters can be set directly in the configuration file. You can find the current definitions in [`Constant.java`](https://github.com/tronprotocol/java-tron/blob/master/common/src/main/java/org/tron/core/Constant.java).
       
          **Example**: Add the following `committee` block to your `.conf` file to enable multi-signature and contract creation:
       

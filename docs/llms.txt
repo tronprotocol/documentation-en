@@ -17,6 +17,7 @@ Use the documentation manifest to discover every page published in the site navi
 ## Running a Node
 
 - [Deploy java-tron](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/): Hardware requirements, JDK prerequisites, building from source, starting full / Solidity / Super Representative nodes, and JVM tuning.
+- [Node Configuration](https://tronprotocol.github.io/documentation-en/using_javatron/configuration/): Configuration source resolution and precedence, network and storage settings, API services and ports, rate limiting, block-production credentials, and dynamic reload behavior.
 - [Backup and Restore](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/): Snapshot and restore node databases.
 - [Lite FullNode](https://tronprotocol.github.io/documentation-en/using_javatron/litefullnode/): Run and maintain a pruned, low-footprint node.
 - [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/): Stand up a private TRON chain.
