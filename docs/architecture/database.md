@@ -52,6 +52,8 @@ dbSettings = {
 }
 ```
 
+Starting with java-tron v4.8.2, the periodic RocksDB backup feature configured through `storage.backup` has been removed. Existing `storage.backup` settings are ignored, and java-tron no longer creates periodic database copies through this mechanism.
+
 ## Migrating from LevelDB to RocksDB on x86_64 Platforms
 
 To migrate from LevelDB to RocksDB, use the TRON Toolkit `Toolkit.jar`.
