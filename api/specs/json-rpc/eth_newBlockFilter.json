@@ -37,5 +37,15 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_newBlockFilter",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#newBlockFilter"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_FILTER_LIMIT_EXCEEDED"
+    },
+    {
+      "errorIndex": 1,
+      "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+    }
   ]
 }

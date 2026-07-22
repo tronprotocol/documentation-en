@@ -7656,6 +7656,8 @@
       
         
       
+        
+      
     
     
       
@@ -7885,6 +7887,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9026,13 +9050,13 @@
 <td><code>params[0]</code></td>
 <td>object</td>
 <td>yes</td>
-<td><code>CallArguments</code> (same as <a href="../eth_call/"><code>eth_call</code></a>); <code>from</code> / <code>to</code> / <code>value</code> / <code>data</code> are used to infer the contract type</td>
+<td><code>CallArguments</code> (same as <a href="../eth_call/"><code>eth_call</code></a>); <code>from</code> / <code>to</code> / <code>value</code> / <code>data</code> / <code>input</code> are used to infer the contract type</td>
 </tr>
 </tbody>
 </table>
 <p><code>CallArguments.getContractType</code> inference rules:</p>
 <ul>
-<li><code>to</code> is empty and <code>data</code> is non-empty → <code>CreateSmartContract</code></li>
+<li><code>to</code> is empty and calldata is non-empty → <code>CreateSmartContract</code></li>
 <li><code>to</code> is a contract address → <code>TriggerSmartContract</code></li>
 <li><code>to</code> is a regular account and <code>value</code> is non-empty → <code>TransferContract</code> (returns <code>0x0</code> directly without entering EVM estimation)</li>
 <li>Otherwise → throws <code>-32600 invalid json request[: invalid value]</code></li>
@@ -9073,7 +9097,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 </thead>
 <tbody>
 <tr>
-<td><code>from</code> is missing / not valid hex / wrong length</td>
+<td><code>from</code> is not valid hex / wrong length</td>
 <td><code>-32602</code></td>
 <td>passes through <code>addressCompatibleToByteArray</code> message</td>
 </tr>
@@ -9083,7 +9107,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <td>passes through <code>addressCompatibleToByteArray</code> message</td>
 </tr>
 <tr>
-<td><code>from</code> is valid but both <code>to</code> and <code>data</code> are missing</td>
+<td><code>to</code> is empty and the resolved calldata is missing, <code>""</code>, or <code>"0x"</code> (<code>input</code> takes precedence over <code>data</code> when non-null)</td>
 <td><code>-32600</code></td>
 <td><code>invalid json request</code></td>
 </tr>
@@ -9103,7 +9127,27 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <td>message + the parsed revert string; <code>error.data</code> carries the original revert hex</td>
 </tr>
 <tr>
-<td><code>data</code> / <code>value</code> hex invalid or other internal exceptions</td>
+<td><code>input</code> is not strict hex</td>
+<td><code>-32602</code></td>
+<td>passes through <code>JsonRpcApiUtil.requireValidHex</code> validation message</td>
+</tr>
+<tr>
+<td><code>data</code> is not valid lenient hex</td>
+<td><code>-32602</code></td>
+<td>passes through <code>JsonRpcApiUtil.requireValidHex</code> validation message</td>
+</tr>
+<tr>
+<td><code>value</code> is not a valid non-negative hex long on the ordinary transfer path</td>
+<td><code>-32602</code></td>
+<td><code>invalid param value: invalid hex number</code> or <code>invalid param value: negative</code></td>
+</tr>
+<tr>
+<td><code>value</code> is not a valid non-negative hex long on the contract call or deployment path</td>
+<td><code>-32000</code></td>
+<td>passes through the parsing message</td>
+</tr>
+<tr>
+<td>Other internal exceptions during contract call or deployment estimation</td>
 <td><code>-32000</code></td>
 <td>passes through message (double quotes are replaced with single quotes)</td>
 </tr>
@@ -9129,7 +9173,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2026 06:51:18 UTC">May 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
   </span>
 
     

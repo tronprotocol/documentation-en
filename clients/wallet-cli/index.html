@@ -7580,6 +7580,8 @@
       
         
       
+        
+      
     
     
       
@@ -7809,6 +7811,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -8990,16 +9014,20 @@ and talks to a TRON node primarily over gRPC (through the
 <a href="https://github.com/tronprotocol/trident">Trident SDK</a>) to query chain data and build, sign, and
 broadcast transactions. A few features (such as GasFree fee-delegated transfers) instead call the
 relevant service over HTTP.</p>
-<p>It offers two ways to drive it:</p>
+<p>It offers three ways to drive it:</p>
 <ul>
-<li><strong>Interactive (REPL) mode</strong> — a human-friendly shell with tab completion and interactive prompts.
-  Best for manual exploration and day-to-day wallet management.</li>
-<li><strong>Standard CLI mode</strong> — a non-interactive, scriptable interface with deterministic exit codes and
-  optional JSON output. Best for automation, scripts, CI/CD, and AI agents.</li>
+<li><strong>Java Interactive (REPL) mode</strong> — a human-friendly shell with tab completion and interactive
+  prompts. Best for manual exploration and day-to-day wallet management.</li>
+<li><strong>Java Standard CLI mode</strong> — a non-interactive, scriptable interface with deterministic exit codes
+  and optional JSON output. Best for automation and scripts that use the Java JAR.</li>
+<li><strong>TypeScript / npm CLI</strong> — a separate Node.js-based CLI introduced in 4.9.7 and published as
+  <code>@tron-walletcli/wallet-cli</code>. It uses grouped commands such as <code>tx send</code> and <code>account balance</code>,
+  and is designed for automation, CI/CD, and AI agents.</li>
 </ul>
-<p>Every command in this documentation is shown in both modes wherever it exists in both. Use the tabs
-to switch:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Standard CLI</label><label for="__tabbed_1_2">REPL</label></div>
+<p>The command reference pages below focus on the Java JAR's REPL and Standard CLI modes. For the
+Node.js command surface, see <a href="typescript-cli/">TypeScript / npm CLI</a>. Use the tabs below to compare
+the same account query across the three entry points:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Java Standard CLI</label><label for="__tabbed_1_2">Java REPL</label><label for="__tabbed_1_3">TypeScript / npm CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>get-account<span class="w"> </span>--address<span class="w"> </span>TXyz...
@@ -9007,6 +9035,10 @@ to switch:</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>GetAccount TXyz...
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>wallet-cli<span class="w"> </span>account<span class="w"> </span>info<span class="w"> </span>--network<span class="w"> </span>tron:nile<span class="w"> </span>--account<span class="w"> </span>TXyz...
 </code></pre></div>
 </div>
 </div>
@@ -9045,7 +9077,9 @@ for example, are only available in their dashed form.</p>
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span><span class="nb">help</span><span class="w"> </span>--command<span class="w"> </span>send-coin
 </code></pre></div>
 <h2 id="global-options-standard-cli">Global options (Standard CLI)<a class="headerlink" href="#global-options-standard-cli" title="Permanent link">&para;</a></h2>
-<p>Global options come <strong>before</strong> the command name. They are parsed by <code>GlobalOptions</code>.</p>
+<p>Execution-modifier global options are parsed by <code>GlobalOptions</code> and may appear either <strong>before or
+after</strong> the command name. Top-level mode selectors have stricter placement rules, as described
+below.</p>
 <table>
 <thead>
 <tr>
@@ -9109,8 +9143,14 @@ for example, are only available in their dashed form.</p>
 </table>
 <p>Notes:</p>
 <ul>
-<li><code>--output</code> and <code>--network</code> accept their value either as the next token (<code>--network nile</code>) or
-  inline (<code>--network=nile</code>).</li>
+<li>The execution modifiers <code>--network</code>, <code>--grpc-endpoint</code>, <code>--output</code>, <code>--wallet</code>, <code>--quiet</code>,
+  <code>--verbose</code>, and <code>--password-stdin</code> are recognized before or after the command name.</li>
+<li>The top-level mode selectors <code>--version</code> and <code>--interactive</code> must appear before the command name.
+  After a command, they are treated as command-local arguments instead.</li>
+<li><code>--help</code> and <code>-h</code> before the command request global help; after the command they request help for
+  that command.</li>
+<li>Valued global options (<code>--output</code>, <code>--network</code>, <code>--wallet</code>, and <code>--grpc-endpoint</code>) accept their
+  value either as the next token (<code>--network nile</code>) or inline (<code>--network=nile</code>).</li>
 <li>Options that take a value cannot be repeated, and unknown global options are rejected.</li>
 </ul>
 <h2 id="authentication-standard-cli">Authentication (Standard CLI)<a class="headerlink" href="#authentication-standard-cli" title="Permanent link">&para;</a></h2>
@@ -9220,7 +9260,7 @@ JSON object from stdout.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 16, 2026 03:43:56 UTC">June 16, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 16, 2026 11:26:08 UTC">July 16, 2026</span>
   </span>
 
     

@@ -6,8 +6,8 @@
     "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation.",
     "x-java-tron-source": {
       "repo": "tronprotocol/java-tron",
-      "commit": "a79693e4508c05650cc474f23e7f97451d2861ec",
-      "version": "GreatVoyage-v4.8.1.1"
+      "commit": "f8ff7c76f45ab41d9bb76922329657506819701b",
+      "version": "GreatVoyage-v4.8.2"
     }
   },
   "servers": [
@@ -55,7 +55,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#web3_clientVersion",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#web3ClientVersion"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "web3_sha3",
@@ -103,6 +104,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#web3_sha3",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#web3Sha3"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -125,8 +132,8 @@
       },
       "errors": [
         {
-          "code": -32000,
-          "message": "JsonRpcInternalException"
+          "code": -32001,
+          "message": "<underlying exception message>"
         }
       ],
       "externalDocs": {
@@ -140,6 +147,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_version",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getNetVersion"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_UNDERLYING_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -172,7 +185,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_listening",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#isListening"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "net_peerCount",
@@ -204,7 +218,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#net_peerCount",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getPeerCount"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_chainId",
@@ -226,8 +241,8 @@
       },
       "errors": [
         {
-          "code": -32000,
-          "message": "JsonRpcInternalException"
+          "code": -32001,
+          "message": "<underlying exception message>"
         }
       ],
       "externalDocs": {
@@ -241,6 +256,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_chainId",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethChainId"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_UNDERLYING_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -273,7 +294,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_protocolVersion",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getProtocolVersion"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_syncing",
@@ -333,7 +355,8 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_syncing",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getSyncingStatus",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class SyncingResult"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_blockNumber",
@@ -365,7 +388,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_blockNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getLatestBlockNum"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_gasPrice",
@@ -397,7 +421,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_gasPrice",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#gasPrice"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_getBlockByHash",
@@ -415,7 +440,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -465,6 +490,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockByHash",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -481,38 +512,31 @@
         {
           "name": "bnOrId",
           "required": true,
+          "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
           "schema": {
             "oneOf": [
               {
                 "type": "string",
-                "enum": [
-                  "",
-                  "latest",
-                  "earliest",
-                  "finalized"
-                ],
+                "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
                 "title": "EthGetBlockByNumberParamString1"
               },
               {
-                "type": "string",
-                "pattern": "^0x[0-9a-fA-F]+$",
-                "title": "EthGetBlockByNumberParamString2"
+                "$ref": "#/components/schemas/BlockNumber"
               }
             ]
           },
           "x-java-type": "String",
-          "x-position": 0,
-          "description": "Hex block number or supported block tag."
+          "x-position": 0
         },
         {
           "name": "fullTransactionObjects",
           "required": true,
+          "description": "Whether to return full transaction objects instead of transaction hashes.",
           "schema": {
             "type": "boolean"
           },
           "x-java-type": "Boolean",
-          "x-position": 1,
-          "description": "Whether to return full transaction objects instead of transaction hashes."
+          "x-position": 1
         }
       ],
       "result": {
@@ -546,9 +570,15 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockByNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockByNumber",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcApiUtil.java#getByJsonBlockId",
+        "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcApiUtil.java#parseBlockNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/BlockResult.java#class BlockResult",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -565,12 +595,13 @@
         {
           "name": "blockHash",
           "required": true,
-          "description": "32-byte block hash, with or without the 0x prefix.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
-          "x-position": 0
+          "x-position": 0,
+          "description": "32-byte block hash, with or without the 0x prefix."
         }
       ],
       "result": {
@@ -606,6 +637,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockTransactionCountByHash",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockTransactionCountByHash"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -622,9 +659,18 @@
         {
           "name": "bnOrId",
           "required": true,
-          "description": "Hex block number or supported block tag.",
+          "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
           "schema": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+                "title": "EthGetBlockTransactionCountByNumberParamString1"
+              },
+              {
+                "$ref": "#/components/schemas/BlockNumber"
+              }
+            ]
           },
           "x-java-type": "String",
           "x-position": 0
@@ -663,6 +709,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockTransactionCountByNumber",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetBlockTransactionCountByNumber"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -681,7 +733,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -720,6 +772,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionByHash",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionByHash",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -738,7 +796,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -749,7 +807,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^0x[0-9a-fA-F]+$"
+            "pattern": "^0x(?:[0-9a-fA-F]{1,7}|[0-7][0-9a-fA-F]{7})$"
           },
           "x-java-type": "String",
           "x-position": 1,
@@ -788,6 +846,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionByBlockHashAndIndex",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionByBlockHashAndIndex",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -804,39 +868,32 @@
         {
           "name": "blockNumOrTag",
           "required": true,
+          "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
           "schema": {
             "oneOf": [
               {
                 "type": "string",
-                "enum": [
-                  "",
-                  "latest",
-                  "earliest",
-                  "finalized"
-                ],
+                "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
                 "title": "EthGetTransactionByBlockNumberAndIndexParamString1"
               },
               {
-                "type": "string",
-                "pattern": "^0x[0-9a-fA-F]+$",
-                "title": "EthGetTransactionByBlockNumberAndIndexParamString2"
+                "$ref": "#/components/schemas/BlockNumber"
               }
             ]
           },
           "x-java-type": "String",
-          "x-position": 0,
-          "description": "Hex block number or supported block tag."
+          "x-position": 0
         },
         {
           "name": "index",
           "required": true,
+          "description": "0x-prefixed transaction index from 0x0 through 0x7fffffff.",
           "schema": {
             "type": "string",
-            "pattern": "^0x[0-9a-fA-F]+$"
+            "pattern": "^0x(?:[0-9a-fA-F]{1,7}|[0-7][0-9a-fA-F]{7})$"
           },
           "x-java-type": "String",
-          "x-position": 1,
-          "description": "Hex-encoded transaction index within the block."
+          "x-position": 1
         }
       ],
       "result": {
@@ -871,6 +928,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionByBlockNumberAndIndex",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionByBlockNumberAndIndex",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -889,7 +952,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+            "pattern": "^(0x)?[0-9a-fA-F]{64}$"
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -928,6 +991,12 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionReceipt",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionReceipt",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionReceipt.java#class TransactionReceipt"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -944,38 +1013,26 @@
         {
           "name": "blockNumOrHashOrTag",
           "required": true,
+          "description": "Strict 32-byte block hash, non-negative block height (0x-prefixed hexadecimal or decimal), or case-insensitive latest, earliest, or finalized tag.",
           "schema": {
-            "oneOf": [
+            "anyOf": [
               {
                 "type": "string",
-                "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+                "pattern": "^(0x)?[0-9a-fA-F]{64}$",
                 "title": "EthGetBlockReceiptsParamString1"
               },
               {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "enum": [
-                      "",
-                      "latest",
-                      "earliest",
-                      "finalized"
-                    ],
-                    "title": "EthGetBlockReceiptsParamNested1String1"
-                  },
-                  {
-                    "type": "string",
-                    "pattern": "^0x[0-9a-fA-F]+$",
-                    "title": "EthGetBlockReceiptsParamNested1String2"
-                  }
-                ],
-                "title": "EthGetBlockReceiptsParamVariant2"
+                "type": "string",
+                "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+                "title": "EthGetBlockReceiptsParamString2"
+              },
+              {
+                "$ref": "#/components/schemas/BlockNumber"
               }
             ]
           },
           "x-java-type": "String",
-          "x-position": 0,
-          "description": "Block hash, hex block number, or supported block tag."
+          "x-position": 0
         }
       ],
       "result": {
@@ -1018,6 +1075,16 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBlockReceipts",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getBlockReceipts",
         "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionReceipt.java#class TransactionReceipt"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -1035,7 +1102,9 @@
           "name": "address",
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -1044,15 +1113,13 @@
         {
           "name": "blockNumOrTag",
           "required": true,
+          "description": "Only the case-insensitive latest tag is supported.",
           "schema": {
             "type": "string",
-            "enum": [
-              "latest"
-            ]
+            "pattern": "^[lL][aA][tT][eE][sS][tT]$"
           },
           "x-java-type": "String",
-          "x-position": 1,
-          "description": "Hex block number or supported block tag."
+          "x-position": 1
         }
       ],
       "result": {
@@ -1079,6 +1146,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getBalance",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTrxBalance"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -1096,7 +1169,9 @@
           "name": "address",
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -1106,7 +1181,9 @@
           "name": "storageIdx",
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?[0-9a-fA-F]{0,64}$",
+            "description": "Hex storage slot of at most 32 bytes, with or without 0x; shorter values are left-padded with zeros."
           },
           "x-java-type": "String",
           "x-position": 1,
@@ -1115,15 +1192,13 @@
         {
           "name": "blockNumOrTag",
           "required": true,
+          "description": "Only the case-insensitive latest tag is supported.",
           "schema": {
             "type": "string",
-            "enum": [
-              "latest"
-            ]
+            "pattern": "^[lL][aA][tT][eE][sS][tT]$"
           },
           "x-java-type": "String",
-          "x-position": 2,
-          "description": "Hex block number or supported block tag."
+          "x-position": 2
         }
       ],
       "result": {
@@ -1150,6 +1225,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getStorageAt",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getStorageAt"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -1167,7 +1248,9 @@
           "name": "contractAddress",
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "x-java-type": "String",
           "x-position": 0,
@@ -1176,15 +1259,13 @@
         {
           "name": "bnOrId",
           "required": true,
+          "description": "Only the case-insensitive latest tag is supported.",
           "schema": {
             "type": "string",
-            "enum": [
-              "latest"
-            ]
+            "pattern": "^[lL][aA][tT][eE][sS][tT]$"
           },
           "x-java-type": "String",
-          "x-position": 1,
-          "description": "Hex block number or supported block tag."
+          "x-position": 1
         }
       ],
       "result": {
@@ -1211,6 +1292,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getCode",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getABIOfSmartContract"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        }
       ]
     },
     {
@@ -1228,7 +1315,111 @@
           "name": "transactionCall",
           "required": true,
           "schema": {
-            "$ref": "#/components/schemas/TransactionCall"
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "from": {
+                "type": "string",
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
+              },
+              "to": {
+                "type": "string",
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
+              },
+              "gas": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "EthCallGasString"
+                  },
+                  {
+                    "type": "null",
+                    "title": "EthCallGasNull"
+                  }
+                ],
+                "description": "Accepted but ignored."
+              },
+              "gasPrice": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "EthCallGasPriceString"
+                  },
+                  {
+                    "type": "null",
+                    "title": "EthCallGasPriceNull"
+                  }
+                ],
+                "description": "Accepted but ignored."
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "null",
+                    "title": "EthCallValueNull"
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      ""
+                    ],
+                    "title": "EthCallValueEmpty"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^0x(?:\\+?0*(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})|-0+)$",
+                    "title": "EthCallValueHexLong"
+                  }
+                ],
+                "description": "Source-compatible non-negative hex long. null or an empty string means zero; non-empty values require a lowercase 0x prefix and must fit in signed long range."
+              },
+              "data": {
+                "oneOf": [
+                  {
+                    "type": "null",
+                    "title": "EthCallDataNull"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^(?:0x)?[0-9a-fA-F]*$",
+                    "title": "EthCallDataHex"
+                  }
+                ],
+                "description": "Lenient hex calldata. null and empty values are accepted; the lowercase 0x prefix is optional and odd-length payloads are left-padded before decoding."
+              },
+              "input": {
+                "oneOf": [
+                  {
+                    "type": "null",
+                    "title": "EthCallInputNull"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^(?:|0x(?:[0-9a-fA-F]{2})*)$",
+                    "title": "EthCallInputHex"
+                  }
+                ],
+                "description": "Strict hex calldata alias. null and an empty string are accepted; otherwise a lowercase 0x prefix and an even-length payload are required. When input is non-null, it takes precedence over data."
+              },
+              "nonce": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "EthCallNonceString"
+                  },
+                  {
+                    "type": "null",
+                    "title": "EthCallNonceNull"
+                  }
+                ],
+                "description": "Accepted but ignored."
+              }
+            },
+            "required": [
+              "to"
+            ]
           },
           "x-java-type": "CallArguments",
           "x-position": 0,
@@ -1237,50 +1428,49 @@
         {
           "name": "blockNumOrTag",
           "required": true,
+          "description": "Case-insensitive latest tag or object containing blockNumber and/or blockHash; blockNumber takes precedence.",
           "schema": {
             "oneOf": [
               {
                 "type": "string",
-                "enum": [
-                  "latest"
-                ],
+                "pattern": "^[lL][aA][tT][eE][sS][tT]$",
                 "title": "EthCallParamString1"
               },
               {
                 "type": "object",
-                "additionalProperties": false,
+                "additionalProperties": true,
+                "description": "At least one selector is required. If both are present, blockNumber takes precedence; other properties are ignored.",
                 "properties": {
                   "blockNumber": {
-                    "type": "string",
-                    "pattern": "^0x[0-9a-fA-F]+$",
-                    "description": "Hex-encoded block number."
-                  }
-                },
-                "required": [
-                  "blockNumber"
-                ],
-                "title": "EthCallParamRequiresBlockNumber2"
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
+                    "$ref": "#/components/schemas/BlockNumber",
+                    "description": "Non-negative block number encoded as 0x-prefixed hexadecimal or decimal, limited to signed long range."
+                  },
                   "blockHash": {
                     "type": "string",
-                    "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+                    "pattern": "^(0x)?[0-9a-fA-F]{64}$",
                     "description": "32-byte block hash, with or without the 0x prefix."
                   }
                 },
-                "required": [
-                  "blockHash"
+                "anyOf": [
+                  {
+                    "required": [
+                      "blockNumber"
+                    ],
+                    "title": "EthCallParamNested1RequiresBlockNumber1"
+                  },
+                  {
+                    "required": [
+                      "blockHash"
+                    ],
+                    "title": "EthCallParamNested1RequiresBlockHash2"
+                  }
                 ],
-                "title": "EthCallParamRequiresBlockHash3"
+                "title": "EthCallParamObject2"
               }
             ]
           },
           "x-java-type": "Object",
-          "x-position": 1,
-          "description": "Hex block number or supported block tag."
+          "x-position": 1
         }
       ],
       "result": {
@@ -1314,7 +1504,22 @@
       "x-overlay-derived": true,
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_call",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCall"
+        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCall",
+        "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#input"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_REQUEST"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -1371,7 +1576,21 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_estimateGas",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#estimateGas",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#class CallArguments"
+        "framework/src/main/java/org/tron/core/services/jsonrpc/types/CallArguments.java#input"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_REQUEST"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -1449,6 +1668,36 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getLogs",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class FilterRequest",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_TOO_MANY_RESULTS"
+        },
+        {
+          "errorIndex": 3,
+          "catalogId": "JSON_RPC_BAD_ITEM"
+        },
+        {
+          "errorIndex": 4,
+          "catalogId": "JSON_RPC_EXECUTION_ERROR"
+        },
+        {
+          "errorIndex": 5,
+          "catalogId": "JSON_RPC_INTERRUPTED"
+        },
+        {
+          "errorIndex": 6,
+          "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1466,7 +1715,154 @@
           "name": "fr",
           "required": true,
           "schema": {
-            "$ref": "#/components/schemas/LogFilter"
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "fromBlock": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "NewFilterFromBlockTag",
+                    "pattern": "^(?:|[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT])$"
+                  },
+                  {
+                    "title": "NewFilterFromBlockNumber",
+                    "$ref": "#/components/schemas/HexBlockNumber"
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterFromBlockNull"
+                  }
+                ],
+                "description": "Start block for a log filter."
+              },
+              "toBlock": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "NewFilterToBlockTag",
+                    "pattern": "^(?:|[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT])$"
+                  },
+                  {
+                    "title": "NewFilterToBlockNumber",
+                    "$ref": "#/components/schemas/HexBlockNumber"
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterToBlockNull"
+                  }
+                ],
+                "description": "End block for a log filter."
+              },
+              "address": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "NewFilterAddress",
+                    "pattern": "^(0x)?[0-9a-fA-F]{39,40}$"
+                  },
+                  {
+                    "type": "array",
+                    "title": "NewFilterAddressList",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^(0x)?[0-9a-fA-F]{39,40}$"
+                    }
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterAddressNull"
+                  }
+                ],
+                "description": "Account or contract address accepted by this endpoint."
+              },
+              "topics": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "maxItems": 4,
+                    "items": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/Topic32Input"
+                        },
+                        {
+                          "type": "null",
+                          "title": "NewFilterTopicNull"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Topic32Input"
+                          },
+                          "title": "EthNewFilterParamNested1Array3"
+                        }
+                      ]
+                    },
+                    "title": "EthNewFilterParamArray1"
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterTopicsNull"
+                  }
+                ],
+                "description": "Log topics filter."
+              },
+              "blockHash": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(0x)?[0-9a-fA-F]{64}$",
+                    "title": "EthNewFilterParamString1"
+                  },
+                  {
+                    "type": "null",
+                    "title": "NewFilterBlockHashNull"
+                  }
+                ],
+                "description": "32-byte block hash, with or without the 0x prefix."
+              }
+            },
+            "not": {
+              "allOf": [
+                {
+                  "required": [
+                    "blockHash"
+                  ],
+                  "properties": {
+                    "blockHash": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "fromBlock"
+                      ],
+                      "properties": {
+                        "fromBlock": {
+                          "type": "string"
+                        }
+                      },
+                      "title": "EthNewFilterParamRequiresFromBlock1"
+                    },
+                    {
+                      "required": [
+                        "toBlock"
+                      ],
+                      "properties": {
+                        "toBlock": {
+                          "type": "string"
+                        }
+                      },
+                      "title": "EthNewFilterParamRequiresToBlock2"
+                    }
+                  ]
+                }
+              ]
+            }
           },
           "x-java-type": "FilterRequest",
           "x-position": 0,
@@ -1488,6 +1884,10 @@
         {
           "code": -32602,
           "message": "JsonRpcInvalidParamsException"
+        },
+        {
+          "code": -32005,
+          "message": "JsonRpcExceedLimitException"
         }
       ],
       "externalDocs": {
@@ -1502,6 +1902,20 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_newFilter",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#newFilter",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class FilterRequest"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_FILTER_LIMIT_EXCEEDED"
+        }
       ]
     },
     {
@@ -1543,6 +1957,16 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_newBlockFilter",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#newBlockFilter"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_FILTER_LIMIT_EXCEEDED"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1599,6 +2023,20 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_uninstallFilter",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#uninstallFilter"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1628,7 +2066,16 @@
         "schema": {
           "type": "array",
           "items": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Block hash returned by a block filter.",
+                "title": "EthGetFilterChangesResultString1"
+              },
+              {
+                "$ref": "#/components/schemas/Log"
+              }
+            ]
           },
           "x-java-type": "Object[]"
         }
@@ -1657,7 +2104,22 @@
       "x-overlay-derived": true,
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getFilterChanges",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterChanges"
+        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterChanges",
+        "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1674,7 +2136,7 @@
         {
           "name": "filterId",
           "required": true,
-          "description": "Filter id returned by eth_newFilter or eth_newBlockFilter.",
+          "description": "Log filter id returned by eth_newFilter; block filter ids are not accepted.",
           "schema": {
             "type": "string"
           },
@@ -1734,6 +2196,36 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getFilterLogs",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getFilterLogs",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class LogFilterElement"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_TOO_MANY_RESULTS"
+        },
+        {
+          "errorIndex": 3,
+          "catalogId": "JSON_RPC_BAD_ITEM"
+        },
+        {
+          "errorIndex": 4,
+          "catalogId": "JSON_RPC_EXECUTION_ERROR"
+        },
+        {
+          "errorIndex": 5,
+          "catalogId": "JSON_RPC_INTERRUPTED"
+        },
+        {
+          "errorIndex": 6,
+          "catalogId": "JSON_RPC_ITEM_NOT_FOUND"
+        }
       ]
     },
     {
@@ -1743,7 +2235,7 @@
           "name": "Transaction build"
         }
       ],
-      "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC10 transfer / contract deploy / contract trigger)",
+      "summary": "Build an unsigned transaction (FullNode only; TRX transfer / TRC-10 transfer / contract deploy / contract trigger)",
       "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/tx-build/buildTransaction.md` for examples and detailed behavior.",
       "paramStructure": "by-position",
       "params": [
@@ -1756,11 +2248,30 @@
             "properties": {
               "from": {
                 "type": "string",
-                "description": "Sender account address."
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
               },
               "to": {
-                "type": "string",
-                "description": "Recipient account or contract address."
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                    "title": "BuildTransactionParamString1"
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      "",
+                      "0x"
+                    ],
+                    "title": "BuildTransactionParamString2"
+                  },
+                  {
+                    "type": "null",
+                    "title": "BuildTransactionParamNull3"
+                  }
+                ],
+                "description": "Target hex address. Contract deployment also accepts an omitted value, null, an empty string, or 0x; base58check is not accepted."
               },
               "gas": {
                 "type": "string",
@@ -1777,6 +2288,10 @@
               "data": {
                 "type": "string",
                 "description": "Hex-encoded contract call data or transaction data."
+              },
+              "input": {
+                "type": "string",
+                "description": "Alias for data; when both are present they must encode the same bytes."
               },
               "nonce": {
                 "type": "string",
@@ -1802,6 +2317,7 @@
                 "type": "integer",
                 "format": "int64",
                 "minimum": 0,
+                "maximum": 100,
                 "description": "Percentage of contract execution resource cost paid by the user."
               },
               "originEnergyLimit": {
@@ -1828,7 +2344,10 @@
                 "type": "boolean",
                 "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
               }
-            }
+            },
+            "required": [
+              "from"
+            ]
           },
           "x-java-type": "BuildArguments",
           "x-position": 0,
@@ -1879,7 +2398,25 @@
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#buildTransaction",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#buildTransaction",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#class TransactionJson",
-        "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#class BuildArguments"
+        "framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java#input"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INVALID_REQUEST"
+        },
+        {
+          "errorIndex": 1,
+          "catalogId": "JSON_RPC_METHOD_NOT_FOUND"
+        },
+        {
+          "errorIndex": 2,
+          "catalogId": "JSON_RPC_INVALID_PARAMS"
+        },
+        {
+          "errorIndex": 3,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -1917,6 +2454,12 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_coinbase",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getCoinbase"
+      ],
+      "x-tron-error-catalog": [
+        {
+          "errorIndex": 0,
+          "catalogId": "JSON_RPC_INTERNAL_ERROR"
+        }
       ]
     },
     {
@@ -1952,7 +2495,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_accounts",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getAccounts"
-      ]
+      ],
+      "x-tron-error-catalog": []
     },
     {
       "name": "eth_getWork",
@@ -1969,10 +2513,30 @@
         "name": "result",
         "schema": {
           "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "x-java-type": "List<Object>"
+          "items": [
+            {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^0x[0-9a-fA-F]{64}$",
+                  "title": "EthGetWorkResultString1"
+                },
+                {
+                  "type": "null",
+                  "title": "EthGetWorkResultNull2"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "x-java-type": "List<Object>",
+          "minItems": 3,
+          "maxItems": 3
         }
       },
       "errors": [],
@@ -1987,7 +2551,8 @@
       "x-source-refs": [
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getWork",
         "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#ethGetWork"
-      ]
+      ],
+      "x-tron-error-catalog": []
     }
   ],
   "x-tron-rate-limiting": {
@@ -2000,6 +2565,324 @@
     "errorShape": "JavaTronError for HTTP APIs; servlet-level error body for JSON-RPC",
     "message": "lack of computing resources",
     "description": "java-tron applies configurable servlet-level rate limiting. When a request is rejected by the rate limiter, RateLimiterServlet writes an error body without setting HTTP 429."
+  },
+  "x-tron-error-model": {
+    "schemaVersion": "1.0.0",
+    "wireFormatUnchanged": true,
+    "classificationRule": "Evaluate executable sharedCatalogIds matches first, then restrict method-declared candidates through x-tron-error-catalog. If multiple candidates remain for the same wire response, use ambiguousCodeFallback.",
+    "classificationOrder": [
+      "shared-executable-match",
+      "method-declared-error-match",
+      "ambiguous-code-fallback"
+    ],
+    "errorIndexBase": 0,
+    "errorIndexTarget": "method.errors",
+    "sourceExceptionSemantics": "sourceException and sourceMessage describe source declarations only and are not guaranteed to appear in the wire response.",
+    "retryableSemantics": "retryable=true permits automatic replay of the same logical operation. Conditional retry classes remain retryable=false until their stated precondition is satisfied.",
+    "ambiguousCodeFallback": {
+      "retryable": false,
+      "retryClass": "UNKNOWN"
+    },
+    "transportScope": "Includes stable protocol, servlet, and HTTP responses emitted by java-tron. Connection failures, timeouts, and generic I/O failures without a stable response contract remain client transport errors.",
+    "retryClasses": {
+      "SAFE_WITH_BACKOFF": {
+        "automaticRetry": true,
+        "description": "The same request may be retried with exponential backoff and jitter."
+      },
+      "AFTER_STATE_CHANGE": {
+        "automaticRetry": false,
+        "description": "Retry only after node, account, chain, permission, or resource state changes."
+      },
+      "AFTER_REQUEST_REBUILD": {
+        "automaticRetry": false,
+        "description": "Do not replay the same payload; correct or rebuild the request before resubmitting."
+      },
+      "VERIFY_BEFORE_RETRY": {
+        "automaticRetry": false,
+        "description": "Query the transaction or resource outcome before deciding whether to resubmit."
+      },
+      "NEVER": {
+        "automaticRetry": false,
+        "description": "The failure is deterministic for the same request and current state."
+      },
+      "UNKNOWN": {
+        "automaticRetry": false,
+        "description": "The wire response is not specific enough to classify safely; do not retry automatically."
+      }
+    },
+    "sharedCatalogIds": [
+      "JSON_RPC_PARSE_ERROR",
+      "JSON_RPC_INVALID_REQUEST",
+      "JSON_RPC_METHOD_NOT_FOUND",
+      "JSON_RPC_INVALID_PARAMS",
+      "JSON_RPC_SERVLET_INTERNAL_ERROR",
+      "JSON_RPC_RESPONSE_TOO_LARGE",
+      "JSON_RPC_BATCH_TOO_LARGE",
+      "JSON_RPC_RATE_LIMITED",
+      "JSON_RPC_REQUEST_TOO_LARGE"
+    ],
+    "catalog": [
+      {
+        "id": "JSON_RPC_PARSE_ERROR",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The request body is not valid JSON.",
+        "match": {
+          "code": -32700
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java"
+        ],
+        "code": -32700
+      },
+      {
+        "id": "JSON_RPC_INVALID_REQUEST",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The JSON-RPC protocol structure is invalid or method-level request or contract validation failed.",
+        "match": {
+          "code": -32600
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java",
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32600,
+        "sourceException": "JsonRpcInvalidRequestException"
+      },
+      {
+        "id": "JSON_RPC_METHOD_NOT_FOUND",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "AFTER_STATE_CHANGE",
+        "description": "The requested method is unavailable or unsupported on this node/port.",
+        "match": {
+          "code": -32601
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32601,
+        "sourceException": "JsonRpcMethodNotFoundException"
+      },
+      {
+        "id": "JSON_RPC_INVALID_PARAMS",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "Parameters could not be bound to the method signature or failed method validation.",
+        "match": {
+          "code": -32602
+        },
+        "sources": [
+          "framework/build.gradle#jsonrpc4j-1.6",
+          "com.github.briandilley.jsonrpc4j:jsonrpc4j:1.6#com.googlecode.jsonrpc4j.JsonRpcBasicServer.handleObject/findBestMethodByParamsNode",
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32602,
+        "sourceException": "JsonRpcInvalidParamsException"
+      },
+      {
+        "id": "JSON_RPC_SERVLET_INTERNAL_ERROR",
+        "kind": "protocol",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "The JSON-RPC servlet caught an unexpected fallback exception.",
+        "match": {
+          "code": -32603,
+          "messageEquals": "Internal error"
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java"
+        ],
+        "code": -32603
+      },
+      {
+        "id": "JSON_RPC_RESPONSE_TOO_LARGE",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The encoded JSON-RPC response exceeds maxResponseSize.",
+        "match": {
+          "code": -32003,
+          "messagePrefix": "Response exceeds the limit of "
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java"
+        ],
+        "code": -32003
+      },
+      {
+        "id": "JSON_RPC_BATCH_TOO_LARGE",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The request batch contains more entries than maxBatchSize permits.",
+        "match": {
+          "code": -32005,
+          "messagePrefix": "Batch size "
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/JsonRpcServlet.java"
+        ],
+        "code": -32005
+      },
+      {
+        "id": "JSON_RPC_FILTER_LIMIT_EXCEEDED",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_STATE_CHANGE",
+        "description": "The node has reached its active filter limit.",
+        "match": {
+          "code": -32005
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32005,
+        "sourceException": "JsonRpcExceedLimitException"
+      },
+      {
+        "id": "JSON_RPC_TOO_MANY_RESULTS",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The log query would return more results than the node permits.",
+        "match": {
+          "code": -32005
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32005,
+        "sourceException": "JsonRpcTooManyResultException"
+      },
+      {
+        "id": "JSON_RPC_UNDERLYING_INTERNAL_ERROR",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "Chain identity lookup failed with an underlying exception message.",
+        "match": {
+          "code": -32001,
+          "fallback": true
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#throws JsonRpcInternalException"
+        ],
+        "code": -32001,
+        "sourceException": "JsonRpcInternalException",
+        "sourceMessage": "<underlying exception message>"
+      },
+      {
+        "id": "JSON_RPC_INTERNAL_ERROR",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "The method raised a java-tron JSON-RPC internal error.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "JsonRpcInternalException"
+      },
+      {
+        "id": "JSON_RPC_ITEM_NOT_FOUND",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "AFTER_STATE_CHANGE",
+        "description": "A requested filter, block item, or cached item was not found.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "ItemNotFoundException"
+      },
+      {
+        "id": "JSON_RPC_BAD_ITEM",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "Log processing encountered an invalid underlying item.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "BadItemException"
+      },
+      {
+        "id": "JSON_RPC_EXECUTION_ERROR",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "Asynchronous log-query execution failed.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "ExecutionException"
+      },
+      {
+        "id": "JSON_RPC_INTERRUPTED",
+        "kind": "application",
+        "retryable": false,
+        "retryClass": "UNKNOWN",
+        "description": "Log-query execution declared InterruptedException, but the wire response cannot distinguish it safely from other -32000 failures.",
+        "match": {
+          "code": -32000
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#@JsonRpcError"
+        ],
+        "code": -32000,
+        "sourceException": "InterruptedException"
+      },
+      {
+        "id": "JSON_RPC_RATE_LIMITED",
+        "kind": "transport",
+        "retryable": true,
+        "retryClass": "SAFE_WITH_BACKOFF",
+        "description": "The shared servlet rate limiter rejected the request before a JSON-RPC envelope was written.",
+        "match": {
+          "httpStatus": 200,
+          "bodyPath": "$.Error",
+          "contains": "lack of computing resources",
+          "outsideJsonRpcEnvelope": true
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/core/services/http/RateLimiterServlet.java"
+        ]
+      },
+      {
+        "id": "JSON_RPC_REQUEST_TOO_LARGE",
+        "kind": "transport",
+        "retryable": false,
+        "retryClass": "AFTER_REQUEST_REBUILD",
+        "description": "The HTTP request body exceeds node.jsonrpc.maxMessageSize before servlet dispatch.",
+        "match": {
+          "httpStatus": 413,
+          "outsideJsonRpcEnvelope": true
+        },
+        "sources": [
+          "framework/src/main/java/org/tron/common/application/HttpService.java",
+          "framework/src/main/java/org/tron/core/services/jsonrpc/FullNodeJsonRpcHttpService.java"
+        ]
+      }
+    ]
   },
   "components": {
     "schemas": {
@@ -2039,7 +2922,16 @@
             "type": "string"
           },
           "to": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TransactionResultToString1"
+              },
+              {
+                "type": "null",
+                "title": "TransactionResultToNull2"
+              }
+            ]
           },
           "transactionIndex": {
             "type": "string"
@@ -2193,6 +3085,10 @@
           "blockNumber": {
             "type": "string"
           },
+          "blockTimestamp": {
+            "type": "string",
+            "description": "Block timestamp as a hex quantity in seconds."
+          },
           "data": {
             "type": "string"
           },
@@ -2205,22 +3101,7 @@
           "topics": {
             "type": "array",
             "items": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/Hash32"
-                },
-                {
-                  "type": "null",
-                  "title": "LogTopicsNull2"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Hash32"
-                  },
-                  "title": "LogTopicsArray3"
-                }
-              ]
+              "$ref": "#/components/schemas/Hash32"
             }
           },
           "transactionHash": {
@@ -2234,6 +3115,7 @@
           "address",
           "blockHash",
           "blockNumber",
+          "blockTimestamp",
           "data",
           "logIndex",
           "removed",
@@ -2342,33 +3224,166 @@
         "properties": {
           "from": {
             "type": "string",
-            "description": "Sender account address."
+            "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+            "description": "EVM hex address using 39 or 40 digits (39 digits are left-padded), or 21-byte Tron hex address beginning with 41; base58check is not accepted."
           },
           "to": {
-            "type": "string",
-            "description": "Recipient account or contract address."
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(0x)?(?:[0-9a-fA-F]{39,40}|41[0-9a-fA-F]{40})$",
+                "title": "TransactionCallToString1"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "",
+                  "0x"
+                ],
+                "title": "TransactionCallToString2"
+              },
+              {
+                "type": "null",
+                "title": "TransactionCallToNull3"
+              }
+            ],
+            "description": "Target hex address. Contract deployment also accepts an omitted value, null, an empty string, or 0x."
           },
           "gas": {
-            "type": "string",
-            "description": "Gas limit encoded as a hex quantity."
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TransactionCallGasString1"
+              },
+              {
+                "type": "null",
+                "title": "TransactionCallGasNull2"
+              }
+            ],
+            "description": "Accepted but ignored."
           },
           "gasPrice": {
-            "type": "string",
-            "description": "Gas price encoded as a hex quantity."
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TransactionCallGasPriceString1"
+              },
+              {
+                "type": "null",
+                "title": "TransactionCallGasPriceNull2"
+              }
+            ],
+            "description": "Accepted but ignored."
           },
           "value": {
-            "type": "string",
-            "description": "Hex string, amount, or value field accepted by this endpoint."
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "TransactionCallValueNull1"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  ""
+                ],
+                "title": "TransactionCallValueString2"
+              },
+              {
+                "type": "string",
+                "pattern": "^0x(?:\\+?0*(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})|-0+)$",
+                "title": "TransactionCallValueString3"
+              }
+            ],
+            "description": "Source-compatible non-negative hex long. null or an empty string means zero; non-empty values require a lowercase 0x prefix and must fit in signed long range."
           },
           "data": {
-            "type": "string",
-            "description": "Hex-encoded contract call data or transaction data."
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "TransactionCallDataNull1"
+              },
+              {
+                "type": "string",
+                "pattern": "^(?:0x)?[0-9a-fA-F]*$",
+                "title": "TransactionCallDataString2"
+              }
+            ],
+            "description": "Lenient hex calldata. null and empty values are accepted; the lowercase 0x prefix is optional and odd-length payloads are left-padded before decoding."
+          },
+          "input": {
+            "oneOf": [
+              {
+                "type": "null",
+                "title": "TransactionCallInputNull1"
+              },
+              {
+                "type": "string",
+                "pattern": "^(?:|0x(?:[0-9a-fA-F]{2})*)$",
+                "title": "TransactionCallInputString2"
+              }
+            ],
+            "description": "Strict hex calldata alias. null and an empty string are accepted; otherwise a lowercase 0x prefix and an even-length payload are required. When input is non-null, it takes precedence over data."
           },
           "nonce": {
-            "type": "string",
-            "description": "Transaction nonce encoded as a hex quantity."
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "TransactionCallNonceString1"
+              },
+              {
+                "type": "null",
+                "title": "TransactionCallNonceNull2"
+              }
+            ],
+            "description": "Accepted but ignored."
           }
         },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "to": {
+                  "enum": [
+                    null,
+                    "",
+                    "0x"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "anyOf": [
+                {
+                  "required": [
+                    "input"
+                  ],
+                  "properties": {
+                    "input": {
+                      "type": "string",
+                      "pattern": "^0x(?:[0-9a-fA-F]{2})+$"
+                    }
+                  },
+                  "title": "TransactionCallRequiresInput1"
+                },
+                {
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "input": {
+                      "type": "null"
+                    },
+                    "data": {
+                      "type": "string",
+                      "pattern": "^(?:0x)?[0-9a-fA-F]+$"
+                    }
+                  },
+                  "title": "TransactionCallRequiresData2"
+                }
+              ]
+            }
+          }
+        ],
         "x-java-type": "CallArguments"
       },
       "LogFilter": {
@@ -2376,56 +3391,147 @@
         "additionalProperties": false,
         "properties": {
           "fromBlock": {
-            "type": "string",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:|[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+                "title": "LogFilterFromBlockString1"
+              },
+              {
+                "$ref": "#/components/schemas/HexBlockNumber"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterFromBlockNull"
+              }
+            ],
             "description": "Start block for a log filter."
           },
           "toBlock": {
-            "type": "string",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:|[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
+                "title": "LogFilterToBlockString1"
+              },
+              {
+                "$ref": "#/components/schemas/HexBlockNumber"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterToBlockNull"
+              }
+            ],
             "description": "End block for a log filter."
           },
           "address": {
             "oneOf": [
               {
                 "type": "string",
+                "pattern": "^(0x)?[0-9a-fA-F]{39,40}$",
                 "title": "LogFilterAddressString1"
               },
               {
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^(0x)?[0-9a-fA-F]{39,40}$"
                 },
                 "title": "LogFilterAddressArray2"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterAddressNull"
               }
             ],
             "description": "Account or contract address accepted by this endpoint."
           },
           "topics": {
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/Hash32"
+            "oneOf": [
+              {
+                "type": "array",
+                "maxItems": 4,
+                "items": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Topic32Input"
+                    },
+                    {
+                      "type": "null",
+                      "title": "LogFilterTopicNull"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Topic32Input"
+                      },
+                      "title": "LogFilterTopicsNested1Array3"
+                    }
+                  ]
                 },
-                {
-                  "type": "null",
-                  "title": "LogFilterTopicsNull2"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Hash32"
-                  },
-                  "title": "LogFilterTopicsArray3"
-                }
-              ]
-            },
+                "title": "LogFilterTopicsArray1"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterTopicsNull"
+              }
+            ],
             "description": "Log topics filter."
           },
           "blockHash": {
-            "type": "string",
-            "pattern": "^(0x)?[a-zA-Z0-9]{64}$",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^(0x)?[0-9a-fA-F]{64}$",
+                "title": "LogFilterBlockHashString1"
+              },
+              {
+                "type": "null",
+                "title": "LogFilterBlockHashNull"
+              }
+            ],
             "description": "32-byte block hash, with or without the 0x prefix."
           }
+        },
+        "not": {
+          "allOf": [
+            {
+              "required": [
+                "blockHash"
+              ],
+              "properties": {
+                "blockHash": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "anyOf": [
+                {
+                  "required": [
+                    "fromBlock"
+                  ],
+                  "properties": {
+                    "fromBlock": {
+                      "type": "string"
+                    }
+                  },
+                  "title": "LogFilterRequiresFromBlock1"
+                },
+                {
+                  "required": [
+                    "toBlock"
+                  ],
+                  "properties": {
+                    "toBlock": {
+                      "type": "string"
+                    }
+                  },
+                  "title": "LogFilterRequiresToBlock2"
+                }
+              ]
+            }
+          ]
         },
         "x-java-type": "FilterRequest"
       },
@@ -2657,7 +3763,29 @@
       },
       "Hash32": {
         "type": "string",
-        "pattern": "^(0x)?[a-zA-Z0-9]{64}$"
+        "pattern": "^(0x)?[0-9a-fA-F]{64}$"
+      },
+      "Topic32Input": {
+        "type": "string",
+        "pattern": "^(0x)?[0-9a-fA-F]{63,64}$"
+      },
+      "BlockNumber": {
+        "oneOf": [
+          {
+            "type": "string",
+            "pattern": "^0?(?:[0-9]{1,18}|[0-8][0-9]{18}|9[0-1][0-9]{17}|92[0-1][0-9]{16}|922[0-2][0-9]{15}|9223[0-2][0-9]{14}|92233[0-6][0-9]{13}|922337[0-1][0-9]{12}|92233720[0-2][0-9]{10}|922337203[0-5][0-9]{9}|9223372036[0-7][0-9]{8}|92233720368[0-4][0-9]{7}|922337203685[0-3][0-9]{6}|9223372036854[0-6][0-9]{5}|92233720368547[0-6][0-9]{4}|922337203685477[0-4][0-9]{3}|9223372036854775[0-7][0-9]{2}|922337203685477580[0-6]|9223372036854775807)$",
+            "title": "BlockNumberString1"
+          },
+          {
+            "type": "string",
+            "pattern": "^0x0{0,2}(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})$",
+            "title": "BlockNumberString2"
+          }
+        ]
+      },
+      "HexBlockNumber": {
+        "type": "string",
+        "pattern": "^0x0{0,2}(?:[0-9a-fA-F]{1,15}|[0-7][0-9a-fA-F]{15})$"
       },
       "HexQuantity": {
         "type": "string",

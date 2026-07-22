@@ -7656,6 +7656,8 @@
       
         
       
+        
+      
     
     
       
@@ -7885,6 +7887,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9034,8 +9058,8 @@
 <tr>
 <td><code>contract_address</code></td>
 <td>string</td>
-<td>Yes</td>
-<td>Target contract address</td>
+<td>Conditional</td>
+<td>Target contract address; <code>contract_address</code> or <code>data</code> must be provided</td>
 </tr>
 <tr>
 <td><code>function_selector</code></td>
@@ -9080,7 +9104,7 @@
 <td>Transaction memo (hex; UTF-8 text when <code>visible=true</code>)</td>
 </tr>
 <tr>
-<td><code>permission_id</code></td>
+<td><code>Permission_id</code></td>
 <td>int32</td>
 <td>No</td>
 <td>Multi-sig permission ID</td>
@@ -9093,6 +9117,7 @@
 </tr>
 </tbody>
 </table>
+<p>The required-field constraint is <code>owner_address AND (contract_address OR data)</code>. Omitting <code>contract_address</code> is valid when <code>data</code> is supplied, for example when simulating contract deployment.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--url<span class="w"> </span>https://nile.trongrid.io/wallet/triggerconstantcontract<span class="w"> </span><span class="se">\</span>
@@ -9196,7 +9221,8 @@
 <p><code>txID</code> / <code>ref_block_*</code> / <code>expiration</code> / <code>timestamp</code> / <code>raw_data_hex</code> and other ephemeral fields share semantics with <a href="../../tx-build-and-broadcast/createtransaction/"><code>/wallet/createtransaction</code></a>. Constant calls do not go on-chain; the <code>transaction</code> field is provided only as context.</p>
 </blockquote>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
-<p>This endpoint never writes <code>{"Error": ...}</code>. All exceptions are caught and written into <code>result.code</code> / <code>result.message</code>; the HTTP body is still a <code>TransactionExtention</code>. Note: <strong>EVM revert / runtime errors do not go through <code>result.code</code></strong> — instead <code>result.result=true</code>, <code>message</code> carries the revert/runtime info, and the failure is marked at <code>transaction.ret[0].ret="FAILED"</code>.</p>
+<p>This endpoint never writes <code>{"Error": ...}</code> after the request reaches the servlet. Servlet-handled exceptions are caught and written into <code>result.code</code> / <code>result.message</code>; the HTTP body is still a <code>TransactionExtention</code>. Note: <strong>EVM revert / runtime errors do not go through <code>result.code</code></strong> — instead <code>result.result=true</code>, <code>message</code> carries the revert/runtime info, and the failure is marked at <code>transaction.ret[0].ret="FAILED"</code>.</p>
+<p>Before the request reaches this servlet, shared layers can still return a different shape: <code>SizeLimitHandler</code> usually returns HTTP 413 <code>Payload Too Large</code> for an oversized body, and a non-blocking rate-limit rejection returns HTTP 200 with <code>{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}</code>.</p>
 <table>
 <thead>
 <tr>
@@ -9209,10 +9235,17 @@
 </thead>
 <tbody>
 <tr>
-<td>Contract does not exist / validation failed (<code>ContractValidateException</code>)</td>
+<td><code>contract_address</code> is set but the contract does not exist</td>
 <td>default (false)</td>
 <td><code>CONTRACT_VALIDATE_ERROR</code></td>
-<td>Original validator message</td>
+<td><code>Smart contract is not exist.</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>The node has constant-call support disabled</td>
+<td>default (false)</td>
+<td><code>CONTRACT_VALIDATE_ERROR</code></td>
+<td><code>this node does not support constant</code></td>
 <td>—</td>
 </tr>
 <tr>
@@ -9266,7 +9299,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 13, 2026 03:09:42 UTC">June 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
   </span>
 
     

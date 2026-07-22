@@ -7656,6 +7656,8 @@
       
         
       
+        
+      
     
     
       
@@ -7885,6 +7887,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9026,7 +9050,7 @@
 <td><code>params[0]</code></td>
 <td>string</td>
 <td>yes</td>
-<td>Block hash (64 hex chars) / block height (hex) / tag (<code>latest</code> / <code>earliest</code> / <code>finalized</code>; <code>pending</code> is explicitly unsupported)</td>
+<td>Block hash (64 hex chars), non-negative block height (<code>0x</code>-prefixed hex or decimal), or tag (<code>latest</code> / <code>earliest</code> / <code>finalized</code>; <code>pending</code> and <code>safe</code> are explicitly unsupported)</td>
 </tr>
 </tbody>
 </table>
@@ -9072,6 +9096,7 @@
 <span class="w">          </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0000...05f&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;blockHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0000000003fe1ca05cf728c92ee79f5f2758c3e4e4ea88501826726880e8b81c&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;blockNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x3fe1ca0&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;blockTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x697999ef&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;transactionHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x01b4cde4197b9d1a1ff09ef5d2b1d939d3ec2401b3f002ebd0802c0f30a6e4ca&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;transactionIndex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;logIndex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
@@ -9115,19 +9140,14 @@
 </thead>
 <tbody>
 <tr>
-<td><code>params[0]</code> is neither hash-shaped nor a valid hex height / tag</td>
+<td><code>params[0]</code> is neither a strict 32-byte hex hash nor a valid non-negative hex/decimal height or tag</td>
 <td><code>-32602</code></td>
 <td><code>invalid block number</code></td>
 </tr>
 <tr>
-<td><code>params[0]</code> is hash-shaped (<code>(0x)?[a-zA-Z0-9]{64}</code>) but contains non-hex characters</td>
+<td><code>params[0]</code> is <code>pending</code> or <code>safe</code></td>
 <td><code>-32602</code></td>
-<td>passes through the message thrown by <code>ByteArray.fromHexString</code></td>
-</tr>
-<tr>
-<td><code>params[0]</code> is <code>pending</code></td>
-<td><code>-32602</code></td>
-<td><code>TAG pending not supported</code></td>
+<td><code>TAG pending not supported</code> or <code>TAG safe not supported</code></td>
 </tr>
 <tr>
 <td>Block transaction list and <code>TransactionInfoList</code> lengths mismatch (should not happen; defensive check only)</td>
@@ -9156,7 +9176,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 2, 2026 11:27:35 UTC">June 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
   </span>
 
     

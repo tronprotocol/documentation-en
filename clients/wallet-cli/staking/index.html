@@ -7580,6 +7580,8 @@
       
         
       
+        
+      
     
     
       
@@ -8045,6 +8047,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9354,17 +9378,16 @@ There are two staking mechanisms:</p>
 </tr>
 <tr>
 <td><code>2</code></td>
-<td>TRON_POWER (voting power; REPL freeze/unfreeze only, network-gated)</td>
+<td>TRON_POWER (voting power; freeze/unfreeze only, network-gated)</td>
 </tr>
 </tbody>
 </table>
-<p>Code <code>2</code> (TRON_POWER) is accepted only by the <strong>REPL</strong> freeze/unfreeze commands —
-<code>FreezeBalance</code>/<code>UnfreezeBalance</code> (Stake 1.0) and <code>FreezeBalanceV2</code>/<code>UnfreezeBalanceV2</code> (Stake 2.0).
-Even there it is network-gated: the node only allows a code-<code>2</code> freeze when the chain parameter
-<code>getAllowNewResourceModel</code> is enabled, which is <strong>not</strong> the case on mainnet — so in practice only
-<code>0</code>/<code>1</code> are usable. Every Standard CLI command that takes a <code>--resource</code> rejects anything other than
-<code>0</code> (BANDWIDTH) or <code>1</code> (ENERGY) up front with a usage error. Delegation commands (both modes)
-likewise accept only <code>0</code> or <code>1</code>.</p>
+<p>Code <code>2</code> (TRON_POWER) is network-gated for freeze/unfreeze commands:
+<code>FreezeBalance</code>/<code>UnfreezeBalance</code> (Stake 1.0), <code>FreezeBalanceV2</code>/<code>UnfreezeBalanceV2</code> (Stake 2.0),
+and their Standard CLI equivalents accept it only when the chain parameter
+<code>getAllowNewResourceModel</code> is enabled. If that chain parameter cannot be fetched, the 4.9.7 client
+fails open and lets the node validate the transaction at broadcast. Delegation commands (both modes)
+always accept only <code>0</code> or <code>1</code>; TRON_POWER is not delegatable.</p>
 <p>Amounts are in <strong>SUN</strong> (1 TRX = 1,000,000 SUN).</p>
 <p>As elsewhere, the REPL uses an optional leading <code>[OwnerAddress]</code> for multi-sig; the Standard CLI uses
 <code>--owner</code> + <code>--multi</code>. All state-changing staking/delegation commands on this page require auth; the
@@ -9385,8 +9408,9 @@ positions.)</p>
 </code></pre></div>
 <ul>
 <li><code>--amount</code> (required, SUN), <code>--duration</code> (required, days).</li>
-<li><code>--resource</code> (optional, <code>0</code>/<code>1</code>, default <code>0</code>). Standard CLI accepts only <code>0</code>/<code>1</code>; to freeze
-  for TRON_POWER (voting power, code <code>2</code>) use the REPL <code>FreezeBalance</code>.</li>
+<li><code>--resource</code> (optional, <code>0</code>/<code>1</code>/<code>2</code>, default <code>0</code>). <code>2</code> is TRON_POWER and is allowed only when
+  <code>getAllowNewResourceModel</code> is enabled. If <code>--receiver</code> is set, the operation is delegated and
+  <code>2</code> is rejected.</li>
 <li><code>--receiver</code> (optional) — delegate the obtained resource to another address.</li>
 <li><code>--owner</code>, <code>--multi</code> (optional).</li>
 </ul>
@@ -9405,7 +9429,9 @@ positions.)</p>
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>unfreeze-balance<span class="w"> </span>--resource<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <ul>
-<li><code>--resource</code> (optional, default <code>0</code>).</li>
+<li><code>--resource</code> (optional, <code>0</code>/<code>1</code>/<code>2</code>, default <code>0</code>). <code>2</code> is TRON_POWER and is allowed only when
+  <code>getAllowNewResourceModel</code> is enabled. If <code>--receiver</code> is set, the operation targets a
+  delegated freeze and <code>2</code> is rejected.</li>
 <li><code>--receiver</code> (optional) — required if the resource was delegated.</li>
 <li><code>--owner</code>, <code>--multi</code> (optional).</li>
 </ul>
@@ -9426,7 +9452,9 @@ positions.)</p>
 <span class="w">  </span>--amount<span class="w"> </span><span class="m">1000000</span><span class="w"> </span>--resource<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <ul>
-<li><code>--amount</code> (required, SUN), <code>--resource</code> (optional, default <code>0</code>).</li>
+<li><code>--amount</code> (required, SUN), <code>--resource</code> (optional, <code>0</code>/<code>1</code>/<code>2</code>, default <code>0</code>).
+  <code>2</code> is TRON_POWER and is allowed only when <code>getAllowNewResourceModel</code> is enabled; if that
+  chain parameter cannot be fetched, the client lets the node validate at broadcast.</li>
 <li><code>--owner</code>, <code>--permission-id</code>, <code>--multi</code> (optional).</li>
 </ul>
 </div>
@@ -9446,7 +9474,9 @@ waiting period (see <code>withdraw-expire-unfreeze</code>).</p>
 <span class="w">  </span>--amount<span class="w"> </span><span class="m">1000000</span><span class="w"> </span>--resource<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <ul>
-<li><code>--amount</code> (required, SUN), <code>--resource</code> (optional, default <code>0</code>).</li>
+<li><code>--amount</code> (required, SUN), <code>--resource</code> (optional, <code>0</code>/<code>1</code>/<code>2</code>, default <code>0</code>).
+  <code>2</code> is TRON_POWER and is allowed only when <code>getAllowNewResourceModel</code> is enabled; if that
+  chain parameter cannot be fetched, the client lets the node validate at broadcast.</li>
 <li><code>--owner</code>, <code>--permission-id</code>, <code>--multi</code> (optional).</li>
 </ul>
 </div>
@@ -9677,7 +9707,7 @@ GetDelegatedResourceAccountIndexV2 Address
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 16, 2026 03:43:56 UTC">June 16, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 03:08:10 UTC">July 10, 2026</span>
   </span>
 
     

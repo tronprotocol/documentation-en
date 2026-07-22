@@ -31,5 +31,6 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_accounts",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getAccounts"
-  ]
+  ],
+  "x-tron-error-catalog": []
 }

@@ -7656,6 +7656,8 @@
       
         
       
+        
+      
     
     
       
@@ -7885,6 +7887,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9039,8 +9063,8 @@
 <tr>
 <td><code>signature</code></td>
 <td>string[]</td>
-<td>Yes</td>
-<td>Collected signatures</td>
+<td>No</td>
+<td>Collected signatures; when omitted, the request is still parsed and the approved-address list is empty</td>
 </tr>
 <tr>
 <td><code>visible</code></td>
@@ -9064,7 +9088,7 @@
 <span class="s1">&#39;</span>
 </code></pre></div>
 <blockquote>
-<p>The above is a placeholder; the real request body is a multi-sig transaction JSON with at least one <code>signature</code> (from <a href="../createtransaction/"><code>/wallet/createtransaction</code></a> etc., then signed).</p>
+<p>The above is a placeholder. A real permission check normally uses a multi-sig transaction JSON produced by <a href="../createtransaction/"><code>/wallet/createtransaction</code></a> and then signed, but the endpoint also accepts an empty or omitted <code>signature</code> array and returns no approved addresses.</p>
 </blockquote>
 <h2 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h2>
 <table>
@@ -9121,12 +9145,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Request body exceeds <code>node.maxMessageSize</code></td>
-<td><code>{"Error": "class java.lang.Exception : body size is too big, the limit is &lt;N&gt;"}</code></td>
+<td>Request body exceeds <code>node.http.maxMessageSize</code></td>
+<td>Usually HTTP 413 <code>Payload Too Large</code> when rejected by <code>SizeLimitHandler</code></td>
 </tr>
 <tr>
 <td>Request body is not valid JSON</td>
-<td><code>{"Error": "class com.alibaba.fastjson.JSONException : &lt;parser info&gt;"}</code></td>
+<td><code>{"Error": "class org.tron.json.JSONException : &lt;parser info&gt;"}</code></td>
 </tr>
 <tr>
 <td>Missing <code>raw_data</code>, <code>raw_data.contract</code> is not an array, <code>signature</code> is not an array or its elements are not hex, field type mismatch in <code>raw_data</code>, etc.</td>
@@ -9158,7 +9182,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 03:13:07 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
   </span>
 
     

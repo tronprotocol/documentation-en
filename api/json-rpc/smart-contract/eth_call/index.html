@@ -7656,6 +7656,8 @@
       
         
       
+        
+      
     
     
       
@@ -7885,6 +7887,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9032,7 +9056,7 @@
 <td><code>params[1]</code></td>
 <td>string | object</td>
 <td>yes</td>
-<td>Block tag: a tag string, or a <code>{"blockNumber": "0x..."}</code> / <code>{"blockHash": "0x..."}</code> object (EIP-1898). <strong>Only <code>latest</code> is supported</strong> (other tags raise an error; specific heights, even if they exist, are rejected)</td>
+<td>Block tag: a tag string, or an object containing <code>blockNumber</code> (non-negative <code>0x</code>-hex or decimal) or <code>blockHash</code> (strict 32-byte hex). String tags only support <code>latest</code>; object form checks that the referenced block exists, but execution still uses the latest state</td>
 </tr>
 </tbody>
 </table>
@@ -9067,12 +9091,19 @@
 <td>calldata (4-byte selector + abi-encoded args)</td>
 </tr>
 <tr>
+<td><code>input</code></td>
+<td><code>null</code></td>
+<td>Alias for <code>data</code>; if both are set, <code>input</code> takes precedence for <code>eth_call</code></td>
+</tr>
+<tr>
 <td><code>gas</code> / <code>gasPrice</code> / <code>nonce</code></td>
 <td>unused</td>
 <td>—</td>
 </tr>
 </tbody>
 </table>
+<p><code>input</code> follows stricter execution-API hex rules: it must have a <code>0x</code> prefix and an even number of hex digits; <code>""</code> is accepted as empty bytes. <code>data</code> keeps the legacy lenient parser for backward compatibility.</p>
+<p>For <code>params[1]</code>, a string block tag must be <code>latest</code>. EIP-1898 object form accepts an existing <code>blockNumber</code> / <code>blockHash</code> and checks that the block exists, but the call still executes against latest state rather than historical state. Extra object properties are ignored; if both selectors are present, <code>blockNumber</code> takes precedence.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Example: call symbol() of Tether USD (USDT) on Nile testnet</span>
 curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://nile.trongrid.io/jsonrpc<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
@@ -9114,9 +9145,14 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <td><code>invalid json request</code></td>
 </tr>
 <tr>
-<td><code>blockNumber</code> in <code>params[1]</code> is not valid hex</td>
+<td><code>blockNumber</code> in <code>params[1]</code> is not a valid non-negative hex/decimal height</td>
 <td><code>-32602</code></td>
 <td><code>invalid block number</code></td>
+</tr>
+<tr>
+<td><code>blockHash</code> in <code>params[1]</code> does not match <code>(0x)?[0-9a-fA-F]{64}</code></td>
+<td><code>-32602</code></td>
+<td><code>invalid hash value</code></td>
 </tr>
 <tr>
 <td>The block specified in <code>params[1]</code> does not exist</td>
@@ -9124,12 +9160,12 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <td><code>header not found</code> or <code>header for hash not found</code></td>
 </tr>
 <tr>
-<td><code>params[1]</code> tag is <code>earliest</code> / <code>pending</code> / <code>finalized</code></td>
+<td><code>params[1]</code> tag is <code>earliest</code> / <code>pending</code> / <code>finalized</code> / <code>safe</code></td>
 <td><code>-32602</code></td>
-<td><code>TAG [earliest \| pending \| finalized] not supported</code></td>
+<td><code>TAG [earliest \| pending \| finalized \| safe] not supported</code></td>
 </tr>
 <tr>
-<td><code>params[1]</code> is a specific hex height (even if valid)</td>
+<td>string <code>params[1]</code> is a specific hex or decimal height (even if valid)</td>
 <td><code>-32602</code></td>
 <td><code>QUANTITY not supported, just support TAG as latest</code></td>
 </tr>
@@ -9137,6 +9173,11 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <td><code>from</code> / <code>to</code> address is invalid</td>
 <td><code>-32602</code></td>
 <td>passes through the message</td>
+</tr>
+<tr>
+<td><code>input</code> is not strict hex</td>
+<td><code>-32602</code></td>
+<td>passes through <code>JsonRpcApiUtil.requireValidHex</code> validation message</td>
 </tr>
 <tr>
 <td><code>value</code> is not valid hex</td>
@@ -9180,7 +9221,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 03:13:07 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
   </span>
 
     

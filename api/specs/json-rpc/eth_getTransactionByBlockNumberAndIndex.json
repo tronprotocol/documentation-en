@@ -12,39 +12,32 @@
     {
       "name": "blockNumOrTag",
       "required": true,
+      "description": "Non-negative block height (0x-prefixed hexadecimal or decimal) or case-insensitive latest, earliest, or finalized tag.",
       "schema": {
         "oneOf": [
           {
             "type": "string",
-            "enum": [
-              "",
-              "latest",
-              "earliest",
-              "finalized"
-            ],
+            "pattern": "^(?:[lL][aA][tT][eE][sS][tT]|[eE][aA][rR][lL][iI][eE][sS][tT]|[fF][iI][nN][aA][lL][iI][zZ][eE][dD])$",
             "title": "EthGetTransactionByBlockNumberAndIndexParamString1"
           },
           {
-            "type": "string",
-            "pattern": "^0x[0-9a-fA-F]+$",
-            "title": "EthGetTransactionByBlockNumberAndIndexParamString2"
+            "$ref": "#/components/schemas/BlockNumber"
           }
         ]
       },
       "x-java-type": "String",
-      "x-position": 0,
-      "description": "Hex block number or supported block tag."
+      "x-position": 0
     },
     {
       "name": "index",
       "required": true,
+      "description": "0x-prefixed transaction index from 0x0 through 0x7fffffff.",
       "schema": {
         "type": "string",
-        "pattern": "^0x[0-9a-fA-F]+$"
+        "pattern": "^0x(?:[0-9a-fA-F]{1,7}|[0-7][0-9a-fA-F]{7})$"
       },
       "x-java-type": "String",
-      "x-position": 1,
-      "description": "Hex-encoded transaction index within the block."
+      "x-position": 1
     }
   ],
   "result": {
@@ -79,5 +72,11 @@
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_getTransactionByBlockNumberAndIndex",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getTransactionByBlockNumberAndIndex",
     "framework/src/main/java/org/tron/core/services/jsonrpc/types/TransactionResult.java#class TransactionResult"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    }
   ]
 }
