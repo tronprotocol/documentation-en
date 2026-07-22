@@ -28,5 +28,6 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_protocolVersion",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#getProtocolVersion"
-  ]
+  ],
+  "x-tron-error-catalog": []
 }

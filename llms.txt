@@ -2,6 +2,13 @@
 
 > java-tron is the official Java implementation of the TRON network client, maintained by the TRON protocol team. It implements the TRON mainnet protocol — DPoS consensus, Super Representatives, the account and resource models, smart contracts, system contracts, and multi-signature permissions — and is the software for running full nodes, participating in Super Representative elections, deploying contracts, and building DApps. This site is the authoritative documentation; the Chinese translation lives at documentation-zh.
 
+Use the documentation manifest to discover every page published in the site navigation. Each manifest entry provides both the canonical HTML URL and a direct `markdown_url` for the authoritative source text.
+
+## Machine-readable Resources
+
+- [Documentation manifest](https://tronprotocol.github.io/documentation-en/docs-manifest.json): Complete inventory of the Markdown pages published in the MkDocs navigation, including title, section, canonical HTML URL, direct Markdown URL, source path, and last-modified time.
+- [Markdown source tree](https://github.com/tronprotocol/documentation-en/tree/master/docs): Authoritative open-source Markdown content for the documentation site.
+
 ## Getting Started
 
 - [Getting Started Guide](https://tronprotocol.github.io/documentation-en/getting_started/getting_started_with_javatron/): First steps with java-tron and the TRON protocol.
@@ -13,8 +20,11 @@
 - [Backup and Restore](https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore/): Snapshot and restore node databases.
 - [Lite FullNode](https://tronprotocol.github.io/documentation-en/using_javatron/litefullnode/): Run and maintain a pruned, low-footprint node.
 - [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/): Stand up a private TRON chain.
+- [Event Subscription](https://tronprotocol.github.io/documentation-en/architecture/event/): Subscribe to contract events and transaction logs through the supported event plugins and services.
+- [Database Configuration](https://tronprotocol.github.io/documentation-en/architecture/database/): Select LevelDB or RocksDB, configure storage, and migrate database formats.
+- [Network Connection](https://tronprotocol.github.io/documentation-en/using_javatron/connecting_to_tron/): Configure seed nodes, active/passive peers, connection limits, and network discovery.
 - [Node Monitoring](https://tronprotocol.github.io/documentation-en/using_javatron/metrics/): Prometheus / Grafana metrics and health endpoints.
-- [Node Maintenance Tool (Toolkit)](https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/): Database partitioning, lite-node pruning, copy, LevelDB→RocksDB conversion, and startup optimization.
+- [Node Maintenance Tool (Toolkit)](https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/): Database partitioning, lite-node pruning, copy, LevelDB→RocksDB conversion, startup optimization, and keystore management; documents the keystore commands' JSON output and exit behavior.
 - [Upgrade to a New Version](https://tronprotocol.github.io/documentation-en/releases/upgrade-instruction/): Upgrade procedure for new releases.
 
 ## APIs
@@ -25,6 +35,7 @@
 - [gRPC API reference](https://tronprotocol.github.io/documentation-en/api/rpc/): `protocol.Wallet` / `protocol.WalletSolidity` methods; contracts are defined by the `.proto` files in the java-tron repository.
 - [OpenAPI spec (HTTP)](https://tronprotocol.github.io/documentation-en/api/openapi.yaml): Machine-readable OpenAPI contract for the `/wallet/*` and `/walletsolidity/*` HTTP endpoints.
 - [OpenRPC spec (JSON-RPC)](https://tronprotocol.github.io/documentation-en/api/openrpc.json): Machine-readable OpenRPC contract for the `eth_*` / `net_*` / `web3_*` and `buildTransaction` methods.
+- [Machine-readable API definitions](https://tronprotocol.github.io/documentation-en/api/interface-definitions/): Scope, provenance, versioning, and generation details for the OpenAPI and OpenRPC contracts.
 
 ## Core Protocol
 
@@ -40,7 +51,17 @@
 
 - [Developer Guide](https://tronprotocol.github.io/documentation-en/developers/java-tron/): Building, contributing to, and extending java-tron.
 - [Core Modules](https://tronprotocol.github.io/documentation-en/developers/code-structure/): Source layout and module responsibilities.
+- [ChainBase Deep Dive](https://tronprotocol.github.io/documentation-en/developers/chainbase/): State storage architecture, database abstractions, and transaction processing.
+- [P2P Network Deep Dive](https://tronprotocol.github.io/documentation-en/developers/network/): Peer discovery, connection management, synchronization, and message handling.
+- [TIPs Workflow](https://tronprotocol.github.io/documentation-en/developers/tip-workflow/): Propose and review protocol changes through TRON Improvement Proposals.
+- [Issue Workflow](https://tronprotocol.github.io/documentation-en/developers/issue-workflow/): Report, triage, and resolve java-tron issues.
+- [Governance Workflow](https://tronprotocol.github.io/documentation-en/developers/governance/): Contributor roles, pull-request review, and repository governance.
 - [wallet-cli](https://tronprotocol.github.io/documentation-en/clients/wallet-cli/): Official command-line wallet and key management.
+
+## Releases
+
+- [Release History](https://tronprotocol.github.io/documentation-en/releases/versions/): Version-by-version changes and source references.
+- [Release Integrity Verification](https://tronprotocol.github.io/documentation-en/releases/signature_verification/): Verify release signatures and checksums before deployment.
 
 ## Optional
 

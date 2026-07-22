@@ -7580,6 +7580,8 @@
       
         
       
+        
+      
     
     
       
@@ -7809,6 +7811,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -8882,12 +8906,27 @@
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#error-responses" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#error-responses" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       Error responses
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Error responses" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#json-rpc-error-catalog" class="md-nav__link" >
+    <span class="md-ellipsis">
+      JSON-RPC error catalog
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -9021,54 +9060,193 @@
 <h2 id="protocol-conventions">Protocol conventions<a class="headerlink" href="#protocol-conventions" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Transport</strong>: <code>POST</code> only; the request body is in <a href="https://www.jsonrpc.org/specification">JSON-RPC 2.0</a> format: <code>{"jsonrpc":"2.0","method":"...","params":[...],"id":1}</code>.</li>
-<li><strong>HTTP status code</strong>: always 200; business errors are conveyed via the <code>error</code> field in the response body (see <code>JsonRpcServlet.java</code>).</li>
-<li><strong>Numeric encoding</strong>: all numbers (block number, balance, gas, timestamp, etc.) use <code>0x</code>-prefixed hex strings; null values map to <code>0x</code> or <code>0x0</code>.</li>
-<li><strong>Address encoding</strong>: JSON-RPC interfaces accept <code>0x</code>-prefixed 20-byte hex addresses by default; base58check is also accepted (internally converted by <code>JsonRpcApiUtil.addressCompatibleToByteArray</code>).</li>
-<li><strong>Block tags</strong>: among the common <code>latest</code> / <code>earliest</code> / <code>pending</code> / <code>finalized</code>, <strong>only a few methods support these tags</strong>:<ul>
-<li>Block-query methods such as <code>eth_getBlockByNumber</code> and <code>eth_getBlockReceipts</code> accept <code>latest</code> / <code>earliest</code> / <code>finalized</code>; <code>pending</code> is explicitly unsupported and throws <code>-32602 TAG pending not supported</code>.</li>
-<li><code>eth_getBalance</code> / <code>eth_getStorageAt</code> / <code>eth_getCode</code> / <code>eth_call</code> <strong>only support <code>latest</code></strong>; <code>earliest</code> / <code>pending</code> / <code>finalized</code> raise <code>-32602 TAG [earliest | pending | finalized] not supported</code>, and a specific height raises <code>-32602 QUANTITY not supported, just support TAG as latest</code>.</li>
-<li><code>eth_newFilter</code> does not support <code>finalized</code> (raises <code>-32602 invalid block range params</code>).</li>
+<li><strong>HTTP status code</strong>: after a request reaches <code>JsonRpcServlet</code>, JSON-RPC business errors are returned with HTTP 200 and an <code>error</code> field in the response body. Transport-layer failures can still return non-200 status codes; for example, an oversized request body may be rejected before servlet dispatch.</li>
+<li><strong>Numeric encoding</strong>: response quantities use <code>0x</code>-prefixed hex strings. Block-query selectors additionally accept non-negative decimal heights because <code>JsonRpcApiUtil.parseBlockNumber</code> supports both decimal and <code>0x</code>-prefixed input.</li>
+<li><strong>Address encoding</strong>: JSON-RPC state/call/build interfaces accept hexadecimal addresses only: either a 20-byte EVM-style address or a 21-byte Tron address beginning with <code>41</code>, with or without <code>0x</code>. Base58check (<code>T...</code>) is not accepted by <code>JsonRpcApiUtil.addressCompatibleToByteArray</code>. Log filters use 20-byte hexadecimal addresses.</li>
+<li><strong>Call data fields</strong>: <code>eth_call</code>, <code>eth_estimateGas</code>, and <code>buildTransaction</code> accept both <code>data</code> and <code>input</code>. <code>input</code> follows stricter execution-API hex rules (<code>0x</code> prefix, even length; empty string means empty bytes). <code>data</code> remains lenient for backward compatibility.</li>
+<li><strong>Block tags</strong>: among the common <code>latest</code> / <code>earliest</code> / <code>pending</code> / <code>finalized</code> / <code>safe</code>, <strong>only a few methods support these tags</strong>:<ul>
+<li>Block-query methods such as <code>eth_getBlockByNumber</code> and <code>eth_getBlockReceipts</code> accept <code>latest</code> / <code>earliest</code> / <code>finalized</code>; <code>pending</code> and <code>safe</code> are explicitly unsupported and throw <code>-32602 TAG pending not supported</code> or <code>-32602 TAG safe not supported</code>.</li>
+<li><code>eth_getBalance</code> / <code>eth_getStorageAt</code> / <code>eth_getCode</code> / <code>eth_call</code> <strong>only support <code>latest</code></strong>; <code>earliest</code> / <code>pending</code> / <code>finalized</code> / <code>safe</code> raise <code>-32602 TAG [earliest | pending | finalized | safe] not supported</code>, and a specific height raises <code>-32602 QUANTITY not supported, just support TAG as latest</code>.</li>
+<li><code>eth_newFilter</code> does not support <code>finalized</code> (raises <code>-32602 invalid block range params</code>), nor <code>pending</code> / <code>safe</code> (raises the corresponding <code>TAG ... not supported</code>).</li>
 </ul>
 </li>
 </ul>
 <h2 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h2>
-<p>JSON-RPC protocol errors use <code>error.code</code> / <code>error.message</code>. Business exceptions map as follows (see annotations on <code>TronJsonRpc.java</code> + <code>JsonRpcErrorResolver.java</code>):</p>
+<!-- BEGIN GENERATED JSON-RPC ERROR CATALOG -->
+<h3 id="json-rpc-error-catalog">JSON-RPC error catalog<a class="headerlink" href="#json-rpc-error-catalog" title="Permanent link">&para;</a></h3>
+<p>Catalog IDs and retry classifications are defined by <code>openrpc.json</code> under <code>x-tron-error-model</code>. They are machine-readable documentation classifications, not fields returned by java-tron on the wire.</p>
+<p><code>Automatic retry</code> maps exactly to catalog <code>retryable</code>: only <code>Yes</code> permits automatic replay of the same logical operation. Conditional retry classes remain <code>No</code> until the <code>Scope / action</code> precondition is satisfied.</p>
+<p>Evaluate executable <code>sharedCatalogIds</code> matches first, then restrict method-declared candidates through the method's <code>x-tron-error-catalog</code>. <code>sourceException</code> is source metadata, not a wire field. If reused codes such as <code>-32000</code> or <code>-32005</code> still identify multiple candidates, classify the response as <code>UNKNOWN</code> and do not retry automatically.</p>
 <table>
 <thead>
 <tr>
-<th>Code</th>
-<th>Exception class</th>
+<th>Catalog ID</th>
+<th>Wire signal</th>
+<th>Source declaration</th>
 <th>Meaning</th>
+<th>Automatic retry</th>
+<th>Retry class</th>
+<th>Scope / action</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>-32600</code></td>
+<td><code>JSON_RPC_PARSE_ERROR</code></td>
+<td><code>error.code</code> = <code>-32700</code></td>
+<td>—</td>
+<td>The request body is not valid JSON.</td>
+<td>No</td>
+<td><code>AFTER_REQUEST_REBUILD</code></td>
+<td>Correct the JSON syntax or reduce constructs that exceed parser limits before resubmitting.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_INVALID_REQUEST</code></td>
+<td><code>error.code</code> = <code>-32600</code></td>
 <td><code>JsonRpcInvalidRequestException</code></td>
-<td>Request body is invalid or contract validation failed (e.g. <code>eth_call</code>'s <code>params[1]</code> is neither a tag string nor a <code>{blockNumber/blockHash}</code> object, or <code>ContractValidateException</code>)</td>
+<td>The JSON-RPC protocol structure is invalid or method-level request or contract validation failed.</td>
+<td>No</td>
+<td><code>AFTER_REQUEST_REBUILD</code></td>
+<td>Correct the JSON-RPC envelope, invalid batch item, method request, or contract parameters before resubmitting.</td>
 </tr>
 <tr>
-<td><code>-32601</code></td>
+<td><code>JSON_RPC_METHOD_NOT_FOUND</code></td>
+<td><code>error.code</code> = <code>-32601</code></td>
 <td><code>JsonRpcMethodNotFoundException</code></td>
-<td>Method does not exist or is unavailable on the current node type (Solidity nodes disable <code>buildTransaction</code>, plus a set of always-unsupported methods)</td>
+<td>The requested method is unavailable or unsupported on this node/port.</td>
+<td>No</td>
+<td><code>AFTER_STATE_CHANGE</code></td>
+<td>Use a compatible node/port, or wait for node availability or configuration to change.</td>
 </tr>
 <tr>
-<td><code>-32602</code></td>
+<td><code>JSON_RPC_INVALID_PARAMS</code></td>
+<td><code>error.code</code> = <code>-32602</code></td>
 <td><code>JsonRpcInvalidParamsException</code></td>
-<td>Invalid parameters (wrong hash length, wrong address format, unsupported block tag, etc.)</td>
+<td>Parameters could not be bound to the method signature or failed method validation.</td>
+<td>No</td>
+<td><code>AFTER_REQUEST_REBUILD</code></td>
+<td>Correct parameter count, types, formats, block tags, or ranges before resubmitting.</td>
 </tr>
 <tr>
-<td><code>-32000</code></td>
-<td><code>JsonRpcInternalException</code> / <code>ItemNotFoundException</code> / <code>BadItemException</code> / <code>ExecutionException</code> / <code>InterruptedException</code></td>
-<td>Server-side internal error (block does not exist, VM execution fails, <code>etherbase</code> not configured, filter not found, lite fullnode pruned, etc.)</td>
+<td><code>JSON_RPC_SERVLET_INTERNAL_ERROR</code></td>
+<td><code>error.code</code> = <code>-32603</code> + <code>error.message</code> = <code>Internal error</code></td>
+<td>—</td>
+<td>The JSON-RPC servlet caught an unexpected fallback exception.</td>
+<td>No</td>
+<td><code>UNKNOWN</code></td>
+<td>Inspect node logs or use another healthy node; do not retry automatically from this fallback classification.</td>
 </tr>
 <tr>
-<td><code>-32005</code></td>
-<td><code>JsonRpcExceedLimitException</code> / <code>JsonRpcTooManyResultException</code></td>
-<td>Limit hit (<code>eth_newBlockFilter</code> exceeded <code>maxBlockFilterNum</code>, or <code>eth_getLogs</code> results exceed <code>LogBlockQuery.MAX_RESULT=10000</code>; <code>maxBlockRange</code> overflow throws <code>-32602</code> <code>exceed max block range</code> separately)</td>
+<td><code>JSON_RPC_RESPONSE_TOO_LARGE</code></td>
+<td><code>error.code</code> = <code>-32003</code> + <code>error.message</code> starts with <code>Response exceeds the limit of</code></td>
+<td>—</td>
+<td>The encoded JSON-RPC response exceeds maxResponseSize.</td>
+<td>No</td>
+<td><code>AFTER_REQUEST_REBUILD</code></td>
+<td>Narrow or split the query so the encoded response fits maxResponseSize.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_BATCH_TOO_LARGE</code></td>
+<td><code>error.code</code> = <code>-32005</code> + <code>error.message</code> starts with <code>Batch size</code></td>
+<td>—</td>
+<td>The request batch contains more entries than maxBatchSize permits.</td>
+<td>No</td>
+<td><code>AFTER_REQUEST_REBUILD</code></td>
+<td>Split the batch so each request contains no more than maxBatchSize entries.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_FILTER_LIMIT_EXCEEDED</code></td>
+<td><code>error.code</code> = <code>-32005</code></td>
+<td><code>JsonRpcExceedLimitException</code></td>
+<td>The node has reached its active filter limit.</td>
+<td>No</td>
+<td><code>AFTER_STATE_CHANGE</code></td>
+<td>Retry only after filter capacity is released, or use another node.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_TOO_MANY_RESULTS</code></td>
+<td><code>error.code</code> = <code>-32005</code></td>
+<td><code>JsonRpcTooManyResultException</code></td>
+<td>The log query would return more results than the node permits.</td>
+<td>No</td>
+<td><code>AFTER_REQUEST_REBUILD</code></td>
+<td>Narrow the block range, addresses, or topics before resubmitting.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_UNDERLYING_INTERNAL_ERROR</code></td>
+<td><code>error.code</code> = <code>-32001</code> + fallback match</td>
+<td><code>JsonRpcInternalException</code>; message metadata <code>&lt;underlying exception message&gt;</code></td>
+<td>Chain identity lookup failed with an underlying exception message.</td>
+<td>No</td>
+<td><code>UNKNOWN</code></td>
+<td>Inspect the returned message and node context; do not retry automatically without a specific transient cause.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_INTERNAL_ERROR</code></td>
+<td><code>error.code</code> = <code>-32000</code></td>
+<td><code>JsonRpcInternalException</code></td>
+<td>The method raised a java-tron JSON-RPC internal error.</td>
+<td>No</td>
+<td><code>UNKNOWN</code></td>
+<td>Inspect error.message and node logs; do not retry automatically without a more specific classification.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_ITEM_NOT_FOUND</code></td>
+<td><code>error.code</code> = <code>-32000</code></td>
+<td><code>ItemNotFoundException</code></td>
+<td>A requested filter, block item, or cached item was not found.</td>
+<td>No</td>
+<td><code>AFTER_STATE_CHANGE</code></td>
+<td>Recreate a missing filter, wait for the item to become available, or use a node that has the requested data.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_BAD_ITEM</code></td>
+<td><code>error.code</code> = <code>-32000</code></td>
+<td><code>BadItemException</code></td>
+<td>Log processing encountered an invalid underlying item.</td>
+<td>No</td>
+<td><code>UNKNOWN</code></td>
+<td>Inspect the invalid underlying item and query context; do not retry automatically.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_EXECUTION_ERROR</code></td>
+<td><code>error.code</code> = <code>-32000</code></td>
+<td><code>ExecutionException</code></td>
+<td>Asynchronous log-query execution failed.</td>
+<td>No</td>
+<td><code>UNKNOWN</code></td>
+<td>Inspect the asynchronous execution failure and node logs before deciding whether to try again.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_INTERRUPTED</code></td>
+<td><code>error.code</code> = <code>-32000</code></td>
+<td><code>InterruptedException</code></td>
+<td>Log-query execution declared InterruptedException, but the wire response cannot distinguish it safely from other -32000 failures.</td>
+<td>No</td>
+<td><code>UNKNOWN</code></td>
+<td>The current wire response is ambiguous with other -32000 failures; do not retry automatically.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_RATE_LIMITED</code></td>
+<td>HTTP 200 outside the JSON-RPC envelope + <code>$.Error</code> contains <code>lack of computing resources</code></td>
+<td>—</td>
+<td>The shared servlet rate limiter rejected the request before a JSON-RPC envelope was written.</td>
+<td>Yes</td>
+<td><code>SAFE_WITH_BACKOFF</code></td>
+<td>Retry automatically with exponential backoff and jitter; no Retry-After header is returned.</td>
+</tr>
+<tr>
+<td><code>JSON_RPC_REQUEST_TOO_LARGE</code></td>
+<td>HTTP 413 outside the JSON-RPC envelope</td>
+<td>—</td>
+<td>The HTTP request body exceeds node.jsonrpc.maxMessageSize before servlet dispatch.</td>
+<td>No</td>
+<td><code>AFTER_REQUEST_REBUILD</code></td>
+<td>Reduce the HTTP request body before resubmitting.</td>
 </tr>
 </tbody>
 </table>
+<!-- END GENERATED JSON-RPC ERROR CATALOG -->
+
 <p>Example error response:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
@@ -9271,7 +9449,12 @@
 <tr>
 <td><code>maxBlockRange</code></td>
 <td>5000</td>
-<td>Per-request <code>[fromBlock, toBlock]</code> span allowed for <code>eth_getLogs</code></td>
+<td>Per-request <code>[fromBlock, toBlock]</code> span allowed for <code>eth_getLogs</code> and <code>eth_getFilterLogs</code></td>
+</tr>
+<tr>
+<td><code>maxAddressSize</code></td>
+<td>1000</td>
+<td>Address count allowed in one filter request</td>
 </tr>
 <tr>
 <td><code>maxSubTopics</code></td>
@@ -9282,6 +9465,26 @@
 <td><code>maxBlockFilterNum</code></td>
 <td>50000</td>
 <td>Max block filters alive concurrently on a single node</td>
+</tr>
+<tr>
+<td><code>maxLogFilterNum</code></td>
+<td>20000</td>
+<td>Max log filters alive concurrently on a single node</td>
+</tr>
+<tr>
+<td><code>maxBatchSize</code></td>
+<td>100</td>
+<td>Max JSON-RPC batch request size</td>
+</tr>
+<tr>
+<td><code>maxResponseSize</code></td>
+<td>26214400</td>
+<td>Max response body size in bytes (25 MiB)</td>
+</tr>
+<tr>
+<td><code>maxMessageSize</code></td>
+<td>4194304</td>
+<td>Max JSON-RPC request body size in bytes (about 4 MiB); independent from HTTP/gRPC limits</td>
 </tr>
 </tbody>
 </table>
@@ -9351,7 +9554,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 13, 2026 03:09:42 UTC">June 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 15, 2026 08:54:44 UTC">July 15, 2026</span>
   </span>
 
     

@@ -44,5 +44,11 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#web3_sha3",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#web3Sha3"
+  ],
+  "x-tron-error-catalog": [
+    {
+      "errorIndex": 0,
+      "catalogId": "JSON_RPC_INVALID_PARAMS"
+    }
   ]
 }

@@ -7656,6 +7656,8 @@
       
         
       
+        
+      
     
     
       
@@ -7885,6 +7887,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9009,7 +9033,7 @@
 <blockquote>
 <p><strong>Disabled on-chain</strong>: After proposal #70 <code>UNFREEZE_DELAY_DAYS</code> is approved (already active on mainnet), <code>FreezeBalanceActuator.validate()</code> throws <code>freeze v2 is open, old freeze is closed</code> directly, so all new requests fail. Use <a href="../../stake-v2/freezebalancev2/"><code>/wallet/freezebalancev2</code></a> instead.</p>
 </blockquote>
-<p>Freeze TRX to obtain bandwidth or energy; can be delegated to others. Minimum freeze period is 3 days.</p>
+<p>Freeze TRX to obtain bandwidth or energy; can be delegated to others. On nodes with <code>block.checkFrozenTime=1</code>, the duration must be within the chain's current dynamic range (normally exactly 3 days).</p>
 <ul>
 <li>Source: <code>framework/src/main/java/org/tron/core/services/http/FreezeBalanceServlet.java</code></li>
 <li>Method: <code>POST</code></li>
@@ -9041,14 +9065,14 @@
 <tr>
 <td><code>frozen_duration</code></td>
 <td>int64</td>
-<td>Yes</td>
-<td>Freeze duration in days (must be ≥ 3)</td>
+<td>No</td>
+<td>Freeze duration in days; omitted defaults to <code>0</code>. Validated only when <code>block.checkFrozenTime=1</code>, when it must be within <code>[minFrozenTime, maxFrozenTime]</code> (normally <code>[3, 3]</code>)</td>
 </tr>
 <tr>
 <td><code>resource</code></td>
 <td>enum</td>
 <td>No</td>
-<td><code>BANDWIDTH</code> / <code>ENERGY</code>, default <code>BANDWIDTH</code></td>
+<td><code>BANDWIDTH</code> / <code>ENERGY</code>; <code>TRON_POWER</code> is also accepted when the chain enables the new resource model. Default <code>BANDWIDTH</code></td>
 </tr>
 <tr>
 <td><code>receiver_address</code></td>
@@ -9057,7 +9081,7 @@
 <td>Delegate target address (omit to freeze for self)</td>
 </tr>
 <tr>
-<td><code>permission_id</code></td>
+<td><code>Permission_id</code></td>
 <td>int32</td>
 <td>No</td>
 <td>Multi-sig permission ID</td>
@@ -9070,6 +9094,7 @@
 </tr>
 </tbody>
 </table>
+<p>When <code>resource=TRON_POWER</code>, <code>receiver_address</code> must be omitted because TronPower cannot be delegated. A node without <code>supportAllowNewResourceModel()</code> rejects <code>TRON_POWER</code>. Independently, when Stake 2.0 is enabled, the node normally rejects this legacy Stake 1.0 freeze operation as a whole.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--url<span class="w"> </span>https://nile.trongrid.io/wallet/freezebalance<span class="w"> </span><span class="se">\</span>
@@ -9125,12 +9150,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Request body exceeds <code>node.maxMessageSize</code></td>
-<td><code>{"Error": "class java.lang.Exception : body size is too big, the limit is &lt;N&gt;"}</code></td>
+<td>Request body exceeds <code>node.http.maxMessageSize</code></td>
+<td>Usually HTTP 413 <code>Payload Too Large</code> when rejected by <code>SizeLimitHandler</code></td>
 </tr>
 <tr>
 <td>Request body is not valid JSON / field type mismatch</td>
-<td><code>{"Error": "class com.alibaba.fastjson.JSONException : &lt;parser info&gt;"}</code> or <code>{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : &lt;decoder info&gt;"}</code></td>
+<td><code>{"Error": "class org.tron.json.JSONException : &lt;parser info&gt;"}</code> or <code>{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : &lt;decoder info&gt;"}</code></td>
 </tr>
 <tr>
 <td>Proposal #70 <code>UNFREEZE_DELAY_DAYS</code> activated (mainnet default)</td>
@@ -9161,7 +9186,7 @@
 <td><code>{"Error": "class org.tron.core.exception.ContractValidateException : frozenBalance must be less than or equal to accountBalance"}</code></td>
 </tr>
 <tr>
-<td><code>frozen_duration</code> outside <code>[minFrozenTime, maxFrozenTime]</code> (only when <code>--check-frozen-time=1</code>)</td>
+<td><code>frozen_duration</code> outside <code>[minFrozenTime, maxFrozenTime]</code> (only when <code>block.checkFrozenTime=1</code>)</td>
 <td><code>{"Error": "class org.tron.core.exception.ContractValidateException : frozenDuration must be less than &lt;max&gt; days and more than &lt;min&gt; days"}</code></td>
 </tr>
 <tr>
@@ -9214,7 +9239,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 03:13:07 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
   </span>
 
     

@@ -7656,6 +7656,8 @@
       
         
       
+        
+      
     
     
       
@@ -7885,6 +7887,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9013,10 +9037,12 @@
 <li>Response: <code>protocol.SmartContract</code> (<code>smart_contract.proto</code>)</li>
 </ul>
 <h2 id="request-parameters">Request parameters<a class="headerlink" href="#request-parameters" title="Permanent link">&para;</a></h2>
+<p>GET reads these fields from URL query parameters; POST reads them from a JSON request body.</p>
 <table>
 <thead>
 <tr>
 <th>Field</th>
+<th>Method</th>
 <th>Type</th>
 <th>Required</th>
 <th>Description</th>
@@ -9025,12 +9051,14 @@
 <tbody>
 <tr>
 <td><code>value</code></td>
+<td>GET / POST</td>
 <td>string</td>
-<td>Yes</td>
-<td>Contract address</td>
+<td>No</td>
+<td>Contract address; omitted uses empty bytes for the lookup and returns <code>{}</code></td>
 </tr>
 <tr>
 <td><code>visible</code></td>
+<td>GET / POST</td>
 <td>bool</td>
 <td>No</td>
 <td>Address format (<code>name</code> is a proto <code>string</code> and is not affected by <code>visible</code>)</td>
@@ -9144,28 +9172,34 @@
 <table>
 <thead>
 <tr>
+<th>Method</th>
 <th>Trigger</th>
 <th>Response</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Request body exceeds <code>node.maxMessageSize</code> (POST)</td>
-<td><code>{"Error": "class java.lang.Exception : body size is too big, the limit is &lt;N&gt;"}</code></td>
+<td>GET / POST</td>
+<td>Request body exceeds <code>node.http.maxMessageSize</code></td>
+<td>Usually HTTP 413 <code>Payload Too Large</code> when rejected by <code>SizeLimitHandler</code></td>
 </tr>
 <tr>
+<td>GET / POST</td>
 <td><code>value</code> is not valid base58check (<code>visible=true</code>)</td>
 <td>If it contains non-base58 characters: <code>{"Error": "class java.lang.IllegalArgumentException : &lt;details&gt;"}</code>. If only the checksum is wrong, <code>Util.getHexAddress</code> silently returns an empty string → contract is not found and <code>{}</code> is returned.</td>
 </tr>
 <tr>
+<td>GET / POST</td>
 <td><code>value</code> is not valid hex (<code>visible=false</code>)</td>
 <td><code>{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : &lt;details&gt;"}</code></td>
 </tr>
 <tr>
+<td>POST</td>
 <td>Request body is not valid JSON (POST)</td>
-<td><code>{"Error": "class com.alibaba.fastjson.JSONException : &lt;parser info&gt;"}</code></td>
+<td><code>{"Error": "class org.tron.json.JSONException : &lt;parser info&gt;"}</code></td>
 </tr>
 <tr>
+<td>GET / POST</td>
 <td>Other exceptions</td>
 <td><code>{"Error": "&lt;exceptionClass&gt; : &lt;message&gt;"}</code></td>
 </tr>
@@ -9191,7 +9225,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 03:13:07 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
   </span>
 
     

@@ -642,6 +642,15 @@
 </li>
         
           <li class="md-nav__item ">
+  <a href="#domain-names-in-peer-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Domain Names in Peer Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
   <a href="#persistent-nodes-from-database" class="md-nav__link" >
     <span class="md-ellipsis">
       Persistent Nodes from Database
@@ -7856,6 +7865,8 @@
       
         
       
+        
+      
     
     
       
@@ -8085,6 +8096,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9211,6 +9244,15 @@
 </li>
         
           <li class="md-nav__item ">
+  <a href="#domain-names-in-peer-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Domain Names in Peer Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
   <a href="#persistent-nodes-from-database" class="md-nav__link" >
     <span class="md-ellipsis">
       Persistent Nodes from Database
@@ -9617,13 +9659,14 @@
 <h3 id="boot-nodes">Boot Nodes<a class="headerlink" href="#boot-nodes" title="Permanent link">&para;</a></h3>
 <p>Java-tron uses the <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> protocol to discover peers. Discovery requires boot nodes, which consist of seed nodes and actively configured peers, see <a href="#active-connection-active-peers">Active Connection (Active Peers)</a>. </p>
 <h3 id="seednode">seed.node<a class="headerlink" href="#seednode" title="Permanent link">&para;</a></h3>
-<p><code>seed.node</code> is used to initialize connections. It should point to online and stable Fullnode:</p>
+<p><code>seed.node</code> is used to initialize connections. It should point to online and stable FullNodes. Each entry can use an IPv4 address, a bracketed IPv6 address, or a domain name:</p>
 <div class="highlight"><pre><span></span><code><span class="na">seed.node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
 <span class="w">  </span><span class="na">ip.list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
 <span class="w">    </span><span class="na">&quot;3.225.171.164</span><span class="o">:</span><span class="s">18888&quot;,</span>
 <span class="w">    </span><span class="na">&quot;52.8.46.215</span><span class="o">:</span><span class="s">18888&quot;,</span>
 <span class="w">    </span><span class="na">...</span>
 <span class="w">    </span><span class="na">&quot;18.163.230.203</span><span class="o">:</span><span class="s">18888&quot;</span>
+<span class="w">    </span><span class="c1">#&quot;seed.example.com:18888&quot;, // domain name</span>
 <span class="w">    </span><span class="c1">#&quot;[2a05:d014:1f2f:2600:1b15:921:d60b:4c60]:18888&quot;, // use this if support ipv6</span>
 <span class="w">    </span><span class="c1">#&quot;[2600:1f18:7260:f400:8947:ebf3:78a0:282b]:18888&quot;, // use this if support ipv6</span>
 <span class="w">  </span><span class="na">]</span>
@@ -9631,6 +9674,12 @@
 </code></pre></div>
 <p>For TRON Mainnet, you can use <a href="https://developers.tron.network/docs/networks#public-node">community public nodes</a> as seed nodes. To get the latest <code>seed.node</code> list, refer to the official <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config file</a>.
 If your network interface supports IPv6, you can uncomment the relevant lines in the list.</p>
+<h3 id="domain-names-in-peer-configuration">Domain Names in Peer Configuration<a class="headerlink" href="#domain-names-in-peer-configuration" title="Permanent link">&para;</a></h3>
+<p>Starting with GreatVoyage-v4.8.2, <code>seed.node.ip.list</code>, <code>node.active</code>, <code>node.passive</code>, and <code>node.fastForward</code> accept domain names in <code>hostname:port</code> format in addition to IP addresses. IPv6 literals in these four configuration items must use <code>[IPv6-address]:port</code> format and must not contain leading or trailing whitespace.</p>
+<p><code>node.backup.members</code> also accepts domain names and IP addresses, but its entries must not include a port. IPv6 literals in this list are written without brackets and must not contain leading or trailing whitespace. All backup members use the port configured separately by <code>node.backup.port</code>. For the complete backup-node configuration and deployment example, see <a href="../installing_javatron/#master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes</a>.</p>
+<p>At startup, java-tron resolves configured domain names to IP addresses. It first uses the operating system resolver, which honors local mappings such as <code>/etc/hosts</code>; if that fails or times out, it falls back to built-in public DNS resolvers. IPv4 is attempted first and IPv6 is used as a fallback. For <code>seed.node.ip.list</code>, <code>node.active</code>, <code>node.passive</code>, and <code>node.fastForward</code>, domain names in the same list are resolved in parallel and entries that cannot be resolved are skipped. In contrast, <code>node.backup.members</code> entries are validated one by one, and any member that cannot be resolved causes startup to fail with a parameter initialization error.</p>
+<p>Only domains in <code>node.backup.members</code> are refreshed periodically, every 60 seconds; domain names in the other peer configuration items are not refreshed automatically.</p>
+<p>Domain names in these peer configuration items use ordinary DNS A/AAAA resolution. This is separate from the DNS tree node-discovery mechanism configured through <code>node.dns.treeUrls</code>.</p>
 <h3 id="persistent-nodes-from-database">Persistent Nodes from Database<a class="headerlink" href="#persistent-nodes-from-database" title="Permanent link">&para;</a></h3>
 <p>When persistence is enabled, nodes in the routing table are periodically written to the database and reused on restart:</p>
 <div class="highlight"><pre><span></span><code><span class="na">node.discovery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
@@ -9677,24 +9726,23 @@ If your network interface supports IPv6, you can uncomment the relevant lines in
 <span class="w">  </span><span class="na">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
 <span class="w">    </span><span class="c1"># Active establish connection in any case</span>
 <span class="w">    </span><span class="c1"># Sample entries:</span>
-<span class="w">    </span><span class="c1"># &quot;ip:port&quot;,</span>
-<span class="w">    </span><span class="c1"># &quot;ip:port&quot;</span>
+<span class="w">    </span><span class="c1"># &quot;192.0.2.10:18888&quot;,</span>
+<span class="w">    </span><span class="c1"># &quot;active.example.com:18888&quot;</span>
 <span class="w">  </span><span class="na">]</span>
 <span class="w">  </span><span class="na">...</span>
 <span class="w"> </span><span class="na">}</span>
 </code></pre></div>
 <ul>
 <li>Peers discovered via node discovery (medium priority)</li>
-<li>DNS tree nodes (low priority). Rarely used, requires
-<code>treeUrls</code>：</li>
+<li>DNS tree nodes (low priority). Rarely used and requires <code>node.dns.treeUrls</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="na">dns</span><span class="w"> </span><span class="s">{</span>
-<span class="na">...</span>
-<span class="c1"># dns urls to get nodes, url format tree://{pubkey}@{domain}, default empty</span>
-<span class="na">treeUrls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
-<span class="w">  </span><span class="c1">#&quot;tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net&quot;,</span>
-<span class="na">]</span>
-<span class="na">...</span>
+<div class="highlight"><pre><span></span><code><span class="na">node</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">dns</span><span class="w"> </span><span class="s">{</span>
+<span class="w">    </span><span class="c1"># DNS URLs to get nodes, URL format tree://{pubkey}@{domain}, default empty</span>
+<span class="w">    </span><span class="na">treeUrls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">      </span><span class="c1">#&quot;tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net&quot;,</span>
+<span class="w">    </span><span class="na">]</span>
+<span class="w">  </span><span class="na">}</span>
 <span class="na">}</span>
 </code></pre></div>
 <p>Compared to traditional static seed node list, the DNS tree mechanism offers advantages in P2P network bootstrapping, such as dynamic node updates and resistance to attacks.</p>
@@ -9707,8 +9755,8 @@ If your network interface supports IPv6, you can uncomment the relevant lines in
 <span class="w">  </span><span class="na">passive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
 <span class="w">    </span><span class="c1"># Passive accept connection in any case</span>
 <span class="w">    </span><span class="c1"># Sample entries:</span>
-<span class="w">    </span><span class="c1"># &quot;ip:port&quot;,</span>
-<span class="w">    </span><span class="c1"># &quot;ip:port&quot;</span>
+<span class="w">    </span><span class="c1"># &quot;192.0.2.20:18888&quot;,</span>
+<span class="w">    </span><span class="c1"># &quot;passive.example.com:18888&quot;</span>
 <span class="w">  </span><span class="na">]</span>
 <span class="w">  </span><span class="na">...</span>
 <span class="w"> </span><span class="na">}</span>
@@ -9820,7 +9868,7 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2026 03:00:40 UTC">June 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 17, 2026 08:54:03 UTC">July 17, 2026</span>
   </span>
 
     

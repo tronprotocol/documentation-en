@@ -6907,6 +6907,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Machine-readable definitions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -6917,6 +6929,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#http-in-band-error-and-catalog-extensions" class="md-nav__link" >
+    <span class="md-ellipsis">
+      HTTP in-band error and catalog extensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#openrpc-error-catalog-extension" class="md-nav__link" >
+    <span class="md-ellipsis">
+      OpenRPC error catalog extension
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -7588,6 +7637,8 @@
       
         
       
+        
+      
     
     
       
@@ -7817,6 +7868,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -8866,6 +8939,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#http-in-band-error-and-catalog-extensions" class="md-nav__link" >
+    <span class="md-ellipsis">
+      HTTP in-band error and catalog extensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#openrpc-error-catalog-extension" class="md-nav__link" >
+    <span class="md-ellipsis">
+      OpenRPC error catalog extension
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -8939,6 +9038,37 @@
 </tbody>
 </table>
 <p>The published definitions are source-derived from java-tron API behavior and include links back to the corresponding human-readable API documentation. The top-level <code>openapi.yaml</code> and <code>openrpc.json</code> files bundle the per-interface fragments so tools can consume one standard file.</p>
+<h2 id="http-in-band-error-and-catalog-extensions">HTTP in-band error and catalog extensions<a class="headerlink" href="#http-in-band-error-and-catalog-extensions" title="Permanent link">&para;</a></h2>
+<p>HTTP endpoints can return success or error objects with status 200. The JSON response schema uses <code>x-tron-in-band-error</code> to describe how consumers detect those in-band failures. The top-level OpenAPI <code>x-tron-error-model</code> is the single source of truth for stable catalog IDs and retry classifications; these classifications document existing wire behavior and do not add an error-code field to java-tron responses.</p>
+<p>Every current <code>x-tron-in-band-error</code> object provides an <code>errors</code> array. A business-error entry contains <code>kind: business</code>, <code>responsePath</code>, <code>discriminatorPath</code>, <code>failureCondition</code>, <code>catalogIds</code>, and <code>sources</code>. A Java error entry contains <code>kind: java-tron</code>, the <code>JavaTronError</code> schema, the <code>$.Error</code> discriminator path, <code>catalogIds</code>, and <code>sources</code>. An operation is an in-band failure when any entry matches.</p>
+<p>Supported <code>failureCondition</code> forms are:</p>
+<ul>
+<li><code>equals &lt;value&gt;</code>: the discriminator field exists and equals the JSON scalar or enum token.</li>
+<li><code>missing or equals &lt;value&gt;</code>: the field is absent, or it exists and equals the value. JSON <code>null</code> is not considered missing.</li>
+<li><code>field exists and is not &lt;value&gt;</code>: the field exists and differs from the value. An absent proto3 default field does not match.</li>
+</ul>
+<p>Discriminator paths use the JSONPath subset <code>$</code>, dot-separated object members, and zero-based array indexes such as <code>[0]</code>.</p>
+<p>Classify an HTTP response in this order:</p>
+<ol>
+<li>Select the response status and OpenAPI content branch. HTTP 404 and 413 responses, plus known non-JSON HTTP 200 branches such as the lite FullNode rejection, link directly to candidates through <code>x-tron-errors.catalogIds</code>.</li>
+<li>For an application/json HTTP 200 response, evaluate <code>x-tron-in-band-error.errors</code> to detect the matching business or Java error branch.</li>
+<li>Evaluate the top-level catalog entries referenced by that branch's <code>catalogIds</code> in order, using their executable <code>match</code> constraints such as schema, path, value, operation ID, or media type.</li>
+<li>If a response is known to be a failure but no referenced catalog entry matches safely, classify it as <code>UNKNOWN</code> and do not retry it automatically.</li>
+</ol>
+<p>Each catalog entry has a <code>retryable</code> boolean and a more precise <code>retryClass</code>. <code>retryable: true</code> alone permits automatic replay of the same logical operation. Conditional classes such as <code>AFTER_STATE_CHANGE</code>, <code>AFTER_REQUEST_REBUILD</code>, and <code>VERIFY_BEFORE_RETRY</code> remain <code>retryable: false</code> until their precondition is satisfied; <code>UNKNOWN</code> also disables automatic retry.</p>
+<p>All current <code>x-tron-in-band-error</code> objects retain <code>errorSchema</code>, <code>discriminatorField</code>, and top-level <code>sources</code> only as compatibility fields for older consumers. Those legacy fields describe the <code>JavaTronError</code> branch only; the <code>errors</code> array is canonical for both Java and endpoint-specific business failures.</p>
+<h2 id="openrpc-error-catalog-extension">OpenRPC error catalog extension<a class="headerlink" href="#openrpc-error-catalog-extension" title="Permanent link">&para;</a></h2>
+<p>The top-level <code>x-tron-error-model</code> and each method's <code>x-tron-error-catalog</code> add stable error classifications and retry guidance without changing the JSON-RPC wire format or the source-derived OpenRPC <code>errors</code> arrays.</p>
+<p>Each method-catalog link contains an <code>errorIndex</code>. It is a zero-based index into that method's <code>errors</code> array; the linked <code>catalogId</code> identifies the corresponding entry in <code>x-tron-error-model.catalog</code>. An empty method catalog means the method has no source-declared errors, but method-independent failures from <code>sharedCatalogIds</code> still apply.</p>
+<p>Classify a response in this order:</p>
+<ol>
+<li>Evaluate executable matches referenced by <code>sharedCatalogIds</code>, including protocol/servlet failures and JSON-RPC transport responses outside the normal envelope.</li>
+<li>If the invoked method is known, restrict candidates using its <code>x-tron-error-catalog</code> links and match observable wire fields such as <code>code</code> or a documented message prefix.</li>
+<li>If multiple candidates remain for the same wire response—especially for reused <code>-32000</code> and <code>-32005</code> codes—use <code>ambiguousCodeFallback</code>: <code>retryable: false</code> and <code>retryClass: UNKNOWN</code>.</li>
+</ol>
+<p><code>sourceException</code> and <code>sourceMessage</code> are explanatory metadata derived from java-tron source declarations. They are not guaranteed to appear in <code>error.message</code>, <code>error.data</code>, or any other wire field and must not be used as runtime match conditions. In particular, <code>&lt;underlying exception message&gt;</code> is a source-description placeholder, not a literal response value.</p>
+<p><code>retryable: true</code> specifically permits automatic retry of the same logical operation. A conditional class such as <code>AFTER_STATE_CHANGE</code>, <code>AFTER_REQUEST_REBUILD</code>, or <code>VERIFY_BEFORE_RETRY</code> remains <code>retryable: false</code>; the client may attempt the operation again only after satisfying the class's stated precondition. <code>UNKNOWN</code> also disables automatic retry.</p>
+<p>The catalog includes stable protocol, servlet, and HTTP responses emitted by java-tron. Connection failures, timeouts, and generic I/O failures without a stable response contract remain client transport errors.</p>
 
 
 
@@ -8959,7 +9089,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 29, 2026 13:05:21 UTC">June 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 15, 2026 08:54:44 UTC">July 15, 2026</span>
   </span>
 
     

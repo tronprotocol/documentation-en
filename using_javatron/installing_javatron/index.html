@@ -7790,6 +7790,8 @@
       
         
       
+        
+      
     
     
       
@@ -8019,6 +8021,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9538,13 +9562,15 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 <span class="w">  </span><span class="c1"># time interval to send keepAlive message, each member should have the same configuration unit: ms</span>
 <span class="w">  </span><span class="na">keepAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3000</span>
 
-<span class="w">  </span><span class="c1"># peers&#39; IP list, must not include myself</span>
+<span class="w">  </span><span class="c1"># peers&#39; IP address or domain name list, must not include myself</span>
 <span class="w">  </span><span class="na">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
-<span class="w">    </span><span class="c1"># &quot;ip&quot;,</span>
-<span class="w">    </span><span class="c1"># &quot;ip&quot;</span>
+<span class="w">    </span><span class="c1"># &quot;ip-or-domain&quot;,</span>
+<span class="w">    </span><span class="c1"># &quot;ip-or-domain&quot;</span>
 <span class="w">  </span><span class="na">]</span>
 <span class="na">}</span>
 </code></pre></div>
+<p>Each <code>members</code> entry can be a domain name, an IPv4 address, or an IPv6 literal. Do not include a port in a member entry; all members use the UDP port configured separately by <code>node.backup.port</code>. Unlike IPv6 addresses in peer connection lists, IPv6 literals in <code>node.backup.members</code> are written without brackets and must not contain leading or trailing whitespace.</p>
+<p>At startup, java-tron validates backup members one by one and resolves domain names to IP addresses. If any member cannot be resolved, parameter initialization fails and the node does not start. After startup, domain names in <code>members</code> are resolved again every 60 seconds so that DNS address changes can take effect. If a refresh fails, java-tron continues using the previously resolved IP address.</p>
 <p>For example, if an account with block production rights deploys two nodes with IPs 192.168.0.100 and 192.168.0.101 respectively, their <code>node.backup</code> configurations should be as follows:</p>
 <ul>
 <li>Configuration for IP 192.168.0.100</li>
@@ -9578,7 +9604,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 </ul>
 <h2 id="optimizations-and-considerations">Optimizations and Considerations<a class="headerlink" href="#optimizations-and-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="speeding-up-node-data-synchronization">Speeding Up Node Data Synchronization<a class="headerlink" href="#speeding-up-node-data-synchronization" title="Permanent link">&para;</a></h3>
-<p>For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use <a href="../backup_restore/#main-net-data-snapshot">data snapshots</a> to accelerate node synchronization.</p>
+<p>For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use <a href="../backup_restore/#mainnet-data-snapshots">data snapshots</a> to accelerate node synchronization.</p>
 <p>The operational steps are as follows:</p>
 <ol>
 <li>Download the latest data snapshot.</li>
@@ -9602,7 +9628,12 @@ git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </
 </code></pre></div>
 </li>
 <li>
-<p>You can use the <code>registerwallet</code> command from the <code>wallet-cli</code> project to generate the <code>keystore</code> file and password, or use the command <code>java -jar build/libs/FullNode.jar --keystore-factory</code> to generate them (starting from version 4.8.1, <code>KeystoreFactory.jar</code> is no longer provided).</p>
+<p>For an existing SR, the keystore must encrypt the private key corresponding to the address that is currently authorized on-chain to produce blocks. By default, this is the SR account address. If block-production authority has been assigned through the SR's witness permission to a different address, use the private key corresponding to that authorized address. Use Toolkit's <a href="../toolkit/#import-a-private-key"><code>keystore import</code></a> to create the encrypted keystore from the existing key:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Encrypt the currently authorized block-signing private key in a keystore</span>
+java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>keystore<span class="w"> </span>import
+</code></pre></div>
+<p>Do not use <code>keystore new</code> merely to migrate an existing SR: it generates a random key that cannot produce blocks for that SR unless its derived address is first authorized as the SR's witness permission. For a new SR identity, or as part of a planned witness-permission rotation, you may generate a new key with <a href="../toolkit/#generate-a-keystore"><code>keystore new</code></a> or the <code>registerwallet</code> command from <code>wallet-cli</code>, then complete the required on-chain registration or permission update before starting block production.</p>
+<p><code>java -jar build/libs/FullNode.jar --keystore-factory</code> remains available for compatibility but is deprecated and will be removed in a future release. Starting from version 4.8.1, a separate <code>KeystoreFactory.jar</code> is no longer provided.</p>
 </li>
 </ul>
 </li>
@@ -9704,7 +9735,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>.....
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 18, 2026 08:53:10 UTC">June 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 17, 2026 08:54:03 UTC">July 17, 2026</span>
   </span>
 
     

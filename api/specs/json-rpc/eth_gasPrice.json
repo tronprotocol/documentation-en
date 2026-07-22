@@ -28,5 +28,6 @@
   "x-source-refs": [
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpc.java#eth_gasPrice",
     "framework/src/main/java/org/tron/core/services/jsonrpc/TronJsonRpcImpl.java#gasPrice"
-  ]
+  ],
+  "x-tron-error-catalog": []
 }

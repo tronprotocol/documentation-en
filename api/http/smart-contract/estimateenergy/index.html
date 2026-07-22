@@ -7656,6 +7656,8 @@
       
         
       
+        
+      
     
     
       
@@ -7885,6 +7887,28 @@
   
   <span class="md-ellipsis">
     Queries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
     
   </span>
   
@@ -9015,7 +9039,73 @@
 <li>Solidity endpoint: <code>/walletsolidity/estimateenergy</code></li>
 </ul>
 <h2 id="request-parameters">Request parameters<a class="headerlink" href="#request-parameters" title="Permanent link">&para;</a></h2>
-<p>Same as <a href="../triggerconstantcontract/"><code>/wallet/triggerconstantcontract</code></a>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>owner_address</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Caller address (<code>msg.sender</code> in the contract)</td>
+</tr>
+<tr>
+<td><code>contract_address</code></td>
+<td>string</td>
+<td>Conditional</td>
+<td>Target contract address; <code>contract_address</code> or <code>data</code> must be provided</td>
+</tr>
+<tr>
+<td><code>function_selector</code></td>
+<td>string</td>
+<td>No</td>
+<td>Function signature</td>
+</tr>
+<tr>
+<td><code>parameter</code></td>
+<td>string</td>
+<td>No</td>
+<td>ABI-encoded parameters (hex)</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>string</td>
+<td>No</td>
+<td>Pre-built call or deployment data (hex)</td>
+</tr>
+<tr>
+<td><code>call_value</code></td>
+<td>int64</td>
+<td>No</td>
+<td>TRX (sun) sent with the simulated call</td>
+</tr>
+<tr>
+<td><code>token_id</code></td>
+<td>int64</td>
+<td>No</td>
+<td>TRC-10 token id sent with the simulated call</td>
+</tr>
+<tr>
+<td><code>call_token_value</code></td>
+<td>int64</td>
+<td>No</td>
+<td>TRC-10 amount sent with the simulated call</td>
+</tr>
+<tr>
+<td><code>visible</code></td>
+<td>bool</td>
+<td>No</td>
+<td>Format for addresses and response text fields</td>
+</tr>
+</tbody>
+</table>
+<p>The required-field constraint is <code>owner_address AND (contract_address OR data)</code>. Unlike <a href="../triggerconstantcontract/"><code>/wallet/triggerconstantcontract</code></a>, this servlet does not apply <code>Permission_id</code> or <code>extra_data</code>; it also does not read <code>fee_limit</code>.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--url<span class="w"> </span>https://nile.trongrid.io/wallet/estimateenergy<span class="w"> </span><span class="se">\</span>
@@ -9058,9 +9148,10 @@
 <span class="w">  </span><span class="nt">&quot;energy_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1870</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>When <code>vm.estimateEnergy=true</code> is not enabled, the call goes through the exception branch (see below); typically <code>result.code = OTHER_ERROR</code> and <code>result.message</code> contains <code>this node does not support estimate energy</code>.</p>
+<p>When <code>vm.estimateEnergy=true</code> is not enabled, the call goes through the <code>ContractValidateException</code> branch (see below): <code>result.code = CONTRACT_VALIDATE_ERROR</code> and <code>result.message</code> is <code>this node does not support estimate energy</code>.</p>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
-<p>This endpoint never writes <code>{"Error": ...}</code>. All exceptions are caught and written into <code>result.code</code> / <code>result.message</code>; the HTTP body is still an <code>EstimateEnergyMessage</code>:</p>
+<p>This endpoint never writes <code>{"Error": ...}</code> after the request reaches the servlet. Servlet-handled exceptions are caught and written into <code>result.code</code> / <code>result.message</code>; the HTTP body is still an <code>EstimateEnergyMessage</code>.</p>
+<p>Before the request reaches this servlet, shared layers can still return a different shape: <code>SizeLimitHandler</code> usually returns HTTP 413 <code>Payload Too Large</code> for an oversized body, and a non-blocking rate-limit rejection returns HTTP 200 with <code>{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}</code>.</p>
 <table>
 <thead>
 <tr>
@@ -9072,13 +9163,25 @@
 </thead>
 <tbody>
 <tr>
-<td>Contract does not exist / validation failed (<code>ContractValidateException</code>)</td>
+<td>The node does not have <code>vm.estimateEnergy</code> enabled</td>
 <td>false</td>
 <td><code>CONTRACT_VALIDATE_ERROR</code></td>
-<td>Original validator message</td>
+<td><code>this node does not support estimate energy</code></td>
 </tr>
 <tr>
-<td>Node does not have <code>vm.estimateEnergy</code> enabled / EVM revert / other</td>
+<td>The node has constant-call support disabled</td>
+<td>false</td>
+<td><code>CONTRACT_VALIDATE_ERROR</code></td>
+<td><code>this node does not support constant, so estimate energy cannot work</code></td>
+</tr>
+<tr>
+<td><code>contract_address</code> is set but the contract does not exist</td>
+<td>false</td>
+<td><code>CONTRACT_VALIDATE_ERROR</code></td>
+<td><code>Smart contract is not exist.</code></td>
+</tr>
+<tr>
+<td>EVM exception / retry exhausted / other non-validation exception</td>
 <td>false</td>
 <td><code>OTHER_ERROR</code></td>
 <td><code>&lt;exceptionClass&gt; : &lt;message&gt;</code> (<code>"</code> → <code>'</code>)</td>
@@ -9106,7 +9209,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 03:13:07 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
   </span>
 
     
