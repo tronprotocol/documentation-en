@@ -9,7 +9,7 @@ Broadcast a signed transaction whose payload is the protobuf-hex encoding of `Tr
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `transaction` | string | Yes | Hex of the protobuf serialization of a complete `protocol.Transaction` |
+| `transaction` | string | Yes | Hex of the protobuf serialization of a complete `protocol.Transaction`. Each embedded signature must be `65`–`68` bytes; otherwise broadcast returns `SIGERROR` |
 
 Example:
 
