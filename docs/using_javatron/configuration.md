@@ -32,7 +32,7 @@ For a production deployment, start from the current configuration template for t
 - [Complete defaults (`reference.conf`)](https://github.com/tronprotocol/java-tron/blob/master/common/src/main/resources/reference.conf)
 - [Mainnet configuration template (`config.conf`)](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
 
-For Nile or another network, use that network's configuration template rather than modifying only the network name. Peer discovery, the P2P version, seed nodes, and genesis settings must all identify the same network. See [Deploying java-tron](installing_javatron.md#network-types) for the supported network templates.
+For Nile or another network, use the configuration template provided for that network. Peer discovery, the P2P version, seed nodes, and genesis settings must all identify the same network. See [Deploying java-tron](installing_javatron.md#network-types) for the supported network templates.
 
 ## Start a node with an external configuration
 
