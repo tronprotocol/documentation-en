@@ -281,10 +281,12 @@ Use the `db lite` command to perform data pruning operations:
 
 ```bash
 # full command
-  java -jar build/libs/Toolkit.jar db lite [-h] -ds=<datasetPath> -fn=<fnDataPath> [-o=<operate>] [-t=<type>]
+  java -jar build/libs/Toolkit.jar db lite [-h] -ds=<datasetPath> -fn=<fnDataPath> [-o=<operate>] [-t=<type>] [--exclude-historical-balance]
 # examples
   #split and get a snapshot dataset
   java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
+  #split and get a smaller snapshot without historical balance data
+  java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp --exclude-historical-balance
   #split and get a history dataset
   java -jar build/libs/Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
   #merge history dataset and snapshot dataset
@@ -301,6 +303,9 @@ Use the `db lite` command to perform data pruning operations:
 *   `-ds | --dataset-path <string>`：
     *   For `split`, this is the output directory for the generated snapshot or history dataset.
     *   For `merge`, this is the directory of the history dataset.
+*   `--exclude-historical-balance`: Used only with `-o split -t snapshot`. Default: `false`. When enabled, the tool excludes the `balance-trace` and `account-trace` databases from the snapshot to reduce its size. `split -t history` and `merge` ignore this option.
+
+    > **Warning:** If the source node has `storage.balance.history.lookup = true`, enabling this option permanently removes the data required for historical balance queries from the generated snapshot. A Lite FullNode started from that snapshot cannot safely serve `getblockbalance`, and `getaccountbalance` may return a balance of `0` when account trace data is unavailable. Merging a history dataset later does not restore the excluded databases. Do not enable this option if the resulting Lite FullNode must support historical balance queries.
 
 
 ### Usage Examples
@@ -323,6 +328,14 @@ java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path out
 * `--dataset-path`: The output directory for the generated snapshot dataset.
 
 After the command completes, a directory named `snapshot` will be created in the `/tmp` directory. This directory contains the Lite FullNode data. To use it, copy the data from the snapshot directory to your node's database directory (e.g., rename the `snapshot` directory to database and move it to the Lite FullNode's `output-directory`), and then restart the node.
+
+If historical balance queries are not required, you can generate a smaller snapshot by excluding the balance trace databases:
+
+```shell
+java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp --exclude-historical-balance
+```
+
+This exclusion is permanent for the generated snapshot. Do not use it when `storage.balance.history.lookup` must remain available on the resulting Lite FullNode.
 
 
 

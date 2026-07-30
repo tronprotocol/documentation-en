@@ -24,6 +24,8 @@ The deployment steps, configuration files, and startup commands for a Lite FullN
 - Download the Lite FullNode data snapshot from the [Public Backup Data](backup_restore.md/#lite-fullnode-data-snapshots) and use it directly.
 - Use the [Lite FullNode Pruning Tool](toolkit.md/#lite-fullnode-data-pruning) to convert a FullNode's database into a Lite FullNode's database.
 
+When creating your own snapshot, the pruning tool keeps the `balance-trace` and `account-trace` databases by default. If historical balance queries are not required, you can use `--exclude-historical-balance` with `split -t snapshot` to reduce the snapshot size. This exclusion cannot be reversed by merging a history dataset; do not enable it if the resulting Lite FullNode must support historical balance queries. See [Lite FullNode Data Pruning](toolkit.md/#lite-fullnode-data-pruning) for the command and complete warning.
+
 ## Lite FullNode Maintenance
 
 Although a Lite FullNode starts with a minimal data footprint, it continuously syncs and saves new block data during operation. Consequently, its data expansion rate matches that of a standard FullNode, and its disk usage will grow over time.
