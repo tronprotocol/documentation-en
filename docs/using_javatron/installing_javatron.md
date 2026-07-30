@@ -128,7 +128,7 @@ Network selection is performed by specifying the appropriate configuration file 
 
 ### Starting a FullNode on the TRON main network
 
-Launch a main-network full node with the built-in default configuration:
+If the current working directory does not contain `./config.conf`, the following command starts a Mainnet FullNode with the `config.conf` bundled in the JAR. If `./config.conf` exists, java-tron loads that file first. Use `-c` with an explicit path to avoid ambiguity; see [Node Configuration](configuration.md#configuration-files-and-precedence) for the complete resolution order.
 
 ```bash
 nohup java -jar build/libs/FullNode.jar &

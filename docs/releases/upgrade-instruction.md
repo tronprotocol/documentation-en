@@ -18,7 +18,7 @@ You can either download the compiled java-tron executable directly or download t
 
 #### Option 1: Download the Executable (Recommended)
 
-1. Visit the [java-tron GitHub Releases](https://github.com/tronprotocol/java-tron/releases) page to download the latest version of the `FullNode.jar` executable.
+1. Visit the [java-tron GitHub Releases](https://github.com/tronprotocol/java-tron/releases) page and download the latest executable for your system architecture: `FullNode-x64.jar` for x86-64 or `FullNode-aarch64.jar` for ARM64. After verifying its signature, rename the downloaded file to `FullNode.jar` for use in the subsequent steps.
 2. **Security Check**: To ensure the integrity and security of the file, it is essential to perform a signature verification on the downloaded JAR file according to the [java-tron Signature Verification](signature_verification.md) guide.
 
 

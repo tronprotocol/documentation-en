@@ -15,11 +15,11 @@ This guide explains how to configure the java-tron client to connect to these ne
 
 ## Basic Network Configuration
 
-You can connect a java-tron node to a specific network by modifying the following key items in the [config file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf):
+You can connect a java-tron node to a specific network by modifying the following key items in the current [Mainnet config file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 
 ### Network ID 
 
-The P2P Network ID(`p2p.version`) specifies the network you want to join. Mainnet configuration:
+The P2P Network ID (`node.p2p.version`) specifies the network you want to join. Mainnet configuration:
 
 ```properties
 node {
@@ -225,9 +225,9 @@ node.discovery = {
 
 Java-tron uses the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol to discover peers. Discovery requires boot nodes, which consist of seed nodes and actively configured peers, see [Active Connection (Active Peers)](#active-connection-active-peers). 
 
-### seed.node
+### seed.node.ip.list
 
-`seed.node` is used to initialize connections. It should point to online and stable FullNodes. Each entry can use an IPv4 address, a bracketed IPv6 address, or a domain name:
+`seed.node.ip.list` is used to initialize connections. It should point to online and stable FullNodes. Each entry can use an IPv4 address, a bracketed IPv6 address, or a domain name:
 
 ```properties
 seed.node = {
@@ -243,7 +243,7 @@ seed.node = {
 }
 ```
 
-For TRON Mainnet, you can use [community public nodes](https://developers.tron.network/docs/networks#public-node) as seed nodes. To get the latest `seed.node` list, refer to the official [config file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
+For TRON Mainnet, you can use [community public nodes](https://developers.tron.network/docs/networks#public-node) as seed nodes. To get the latest `seed.node.ip.list`, refer to the official [config file](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 If your network interface supports IPv6, you can uncomment the relevant lines in the list.
 
 ### Domain Names in Peer Configuration
@@ -291,7 +291,7 @@ In some cases (e.g., local testing or a fixed private network), you may disable 
 
 The number of peer connections is controlled by the following parameters. They are usually tuned together:
 
-- `node.maxConnections`: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in `node.passive`, `node.active`, or `fastForward` (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in `node.active` are bounded only by the size of the `node.active` list, while active connections to peers discovered via the discovery protocol are driven by `minConnections` and `minActiveConnections` (see below).
+- `node.maxConnections`: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in `node.passive`, `node.active`, or `node.fastForward` (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in `node.active` are bounded only by the size of the `node.active` list, while active connections to peers discovered via the discovery protocol are driven by `minConnections` and `minActiveConnections` (see below).
 - `node.minConnections`: the desired minimum total number of peer connections, counting both active and passive (default: 8). When the total is below this value, the node initiates active connections to discovered peers to close the gap.
 - `node.minActiveConnections`: the desired minimum number of active connections to discovered peers (default: 3). The node will keep initiating active connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded `minConnections`.
 - `node.maxConnectionsWithSameIp`: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single IP.

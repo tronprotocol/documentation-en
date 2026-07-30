@@ -25,6 +25,7 @@ This documentation is written for java-tron node operators, protocol researchers
     Operations guide for deploying, monitoring, and maintaining java-tron nodes.
 
     - [Deploy java-tron](using_javatron/installing_javatron.md)
+    - [Node Configuration](using_javatron/configuration.md)
     - [Node Monitoring](using_javatron/metrics.md)
     - [Upgrade to a New Version](releases/upgrade-instruction.md)
     - [Private Network](using_javatron/private_network.md)

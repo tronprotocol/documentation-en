@@ -9,9 +9,9 @@ This directory holds request / response documentation for the JSON-RPC interface
 | FullNode JSON-RPC | `8545` | `node.jsonrpc.httpFullNodeEnable` | Full database (the latest block is visible) |
 | Solidity JSON-RPC | `8555` | `node.jsonrpc.httpSolidityEnable` | Solidified data only |
 
-Ports can be overridden via `node.jsonrpc.httpFullNodePort` / `httpSolidityPort` (see the `jsonrpc {}` block in `framework/src/main/resources/config.conf`).
+Ports can be overridden via `node.jsonrpc.httpFullNodePort` / `node.jsonrpc.httpSolidityPort`. Their defaults are declared in the `node.jsonrpc` block of `common/src/main/resources/reference.conf`.
 
-> **Disabled by default**: every switch in the `jsonrpc {}` block of `config.conf` is commented out; in `Args` both `httpFullNodeEnable` and `httpSolidityEnable` are `false` (see `Args.java`). You must explicitly set `httpFullNodeEnable = true` / `httpSolidityEnable = true` in the config to start them with the node. The Solidity JSON-RPC service additionally requires the current process to be a FullNode (not a standalone SolidityNode process; see `JsonRpcServiceOnSolidity.java`).
+> **Disabled by default**: `reference.conf` sets both `node.jsonrpc.httpFullNodeEnable` and `node.jsonrpc.httpSolidityEnable` to `false`. You must explicitly set the corresponding switch to `true` in the node's external configuration file to start the service. The Solidity JSON-RPC service additionally requires the current process to be a FullNode (not a standalone SolidityNode process; see `JsonRpcServiceOnSolidity.java`).
 
 The URL path is always `/jsonrpc` (see `FullNodeJsonRpcHttpService.java`).
 
@@ -73,7 +73,9 @@ Example error response:
 }
 ```
 
-> **Note**: the `disabledApi` config item **does not affect JSON-RPC** (see the comment "but not jsonrpc" in `config.conf`). To disable JSON-RPC, turn off the corresponding `httpFullNodeEnable` / `httpSolidityEnable`.
+> **Note**: `node.disabledApi` **does not affect JSON-RPC**. To disable a JSON-RPC service, set the corresponding `node.jsonrpc.httpFullNodeEnable` or `node.jsonrpc.httpSolidityEnable` switch to `false`.
+
+See [Node Configuration](../../using_javatron/configuration.md) for configuration precedence, all API service ports, and restart requirements.
 
 ## Node info / chain identity
 
@@ -130,7 +132,7 @@ Example error response:
 | [`eth_getFilterChanges`](filter/eth_getFilterChanges.md) | Pull and drain filter increments |
 | [`eth_getFilterLogs`](filter/eth_getFilterLogs.md) | Pull a log filter's full set (without draining) |
 
-Filter-related defaults (see the `jsonrpc {}` block in `config.conf`):
+JSON-RPC limits and filter-related defaults (defined in the `node.jsonrpc` block of `common/src/main/resources/reference.conf`):
 
 | Config item | Default | Meaning |
 |---|---|---|
