@@ -351,6 +351,8 @@
       
         
       
+        
+      
     
     
       
@@ -397,6 +399,28 @@
   
   <span class="md-ellipsis">
     Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Configuration
     
   </span>
   
@@ -9041,7 +9065,7 @@
 <li><strong>Starts from a State Data Snapshot</strong>: A Lite FullNode does not sync from the genesis block. Instead, it directly loads a state data snapshot that contains only the latest state of the entire network and the historical data of the most recent 65,536 blocks. This block count is a fixed constant in the source code and cannot be changed via configuration. The value 65,536 (= 2^16) matches TRON's transaction reference-block window: every transaction's <code>ref_block_hash</code> must point to a block within the most recent 65,536 blocks, otherwise the transaction will fail the Tapos verification. A Lite FullNode therefore must retain at least this many recent blocks to validate incoming transactions.</li>
 <li><strong>Significant Resource Advantages</strong>: Because the initial data size is far smaller than that of a FullNode, Lite FullNodes have the distinct advantages of occupying less disk space and faster startup times.</li>
 <li><strong>Provides a Subset of FullNode APIs</strong>: By default, to save resources, a Lite FullNode disables historical data queries (for data outside the snapshot's range). For the list of unsupported APIs, please refer to <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryHttpFilter.java">HTTP</a> and <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/java/org/tron/core/services/filter/LiteFnQueryGrpcInterceptor.java">gRPC</a>.</li>
-<li><strong>Extendable Functionality</strong>: These unsupported APIs can be enabled by setting <code>openHistoryQueryWhenLiteFN = true</code> in the configuration file. Because a Lite FullNode stores data identically to a standard FullNode after startup, enabling this option re-opens all filtered APIs. However, historical data prior to the snapshot's start height remains unavailable.</li>
+<li><strong>Extendable Functionality</strong>: These unsupported APIs can be enabled by setting <code>node.openHistoryQueryWhenLiteFN = true</code> in the configuration file. Because a Lite FullNode stores data identically to a standard FullNode after startup, enabling this option re-opens all filtered APIs. However, historical data prior to the snapshot's start height remains unavailable.</li>
 </ul>
 <p>Therefore, if developers only need to use a node for block synchronization, processing, and broadcasting transactions, a Lite FullNode is a better choice.</p>
 <h2 id="lite-fullnode-deployment">Lite FullNode Deployment<a class="headerlink" href="#lite-fullnode-deployment" title="Permanent link">&para;</a></h2>
@@ -9050,6 +9074,7 @@
 <li>Download the Lite FullNode data snapshot from the <a href="../backup_restore/#lite-fullnode-data-snapshots">Public Backup Data</a> and use it directly.</li>
 <li>Use the <a href="../toolkit/#lite-fullnode-data-pruning">Lite FullNode Pruning Tool</a> to convert a FullNode's database into a Lite FullNode's database.</li>
 </ul>
+<p>When creating your own snapshot, the pruning tool keeps the <code>balance-trace</code> and <code>account-trace</code> databases by default. If historical balance queries are not required, you can use <code>--exclude-historical-balance</code> with <code>split -t snapshot</code> to reduce the snapshot size. This exclusion cannot be reversed by merging a history dataset; do not enable it if the resulting Lite FullNode must support historical balance queries. See <a href="../toolkit/#lite-fullnode-data-pruning">Lite FullNode Data Pruning</a> for the command and complete warning.</p>
 <h2 id="lite-fullnode-maintenance">Lite FullNode Maintenance<a class="headerlink" href="#lite-fullnode-maintenance" title="Permanent link">&para;</a></h2>
 <p>Although a Lite FullNode starts with a minimal data footprint, it continuously syncs and saves new block data during operation. Consequently, its data expansion rate matches that of a standard FullNode, and its disk usage will grow over time.</p>
 <p>To manage disk space, you can perform periodic maintenance (pruning) on the Lite FullNode's data. This maintenance is also done using the <a href="../toolkit/#lite-fullnode-data-pruning">Lite FullNode Pruning Tool</a>, which re-prunes the current node data into a new snapshot dataset containing only the latest state.</p>
@@ -9073,7 +9098,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 12, 2026 09:43:23 UTC">June 12, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:05:56 UTC">July 30, 2026</span>
   </span>
 
     

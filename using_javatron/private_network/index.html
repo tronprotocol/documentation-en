@@ -351,6 +351,8 @@
       
         
       
+        
+      
     
     
       
@@ -397,6 +399,28 @@
   
   <span class="md-ellipsis">
     Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Configuration
     
   </span>
   
@@ -9026,7 +9050,7 @@ mkdir<span class="w"> </span>FullNode
 <li>
 <p>Get the java-tron Client</p>
 <ul>
-<li>Download the latest <code>FullNode.jar</code> from the <a href="https://github.com/tronprotocol/java-tron/releases">java-tron GitHub Releases</a> page.</li>
+<li>Download the latest FullNode JAR for your system architecture—<code>FullNode-x64.jar</code> for x86-64 or <code>FullNode-aarch64.jar</code> for ARM64—from the <a href="https://github.com/tronprotocol/java-tron/releases">java-tron GitHub Releases</a> page, and rename the downloaded file to <code>FullNode.jar</code>.</li>
 <li>
 <p>Copy the downloaded <code>JAR</code> file into each of the two node directories:</p>
 <div class="highlight"><pre><span></span><code>cp<span class="w"> </span>FullNode.jar<span class="w"> </span>./SR
@@ -9038,7 +9062,8 @@ cp<span class="w"> </span>FullNode.jar<span class="w"> </span>./FullNode
 <li>
 <p>Prepare Configuration Files</p>
 <ul>
-<li>Download the official configuration file template (<a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">config.conf</a>) and change the <code>p2p.version</code> to any value other than <strong>11111</strong> or <strong>20180622</strong>.</li>
+<li>Download the current <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf"><code>framework/src/main/resources/config.conf</code></a>.</li>
+<li>Change <code>node.p2p.version</code> to a positive integer that is not used by a public network. The current public IDs are Mainnet <code>11111</code>, Nile <code>201910292</code>, and Shasta <code>1</code>.</li>
 <li>
 <p>Copy it into each node directory and rename the files for distinction.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Configuration file for the SR node</span>
@@ -9076,28 +9101,28 @@ cp<span class="w"> </span>private_net_config.conf<span class="w"> </span>./FullN
 <td style="text-align: left;">Genesis block-related configuration</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>genesis.block.Assets</code></td>
+<td style="text-align: left;"><code>genesis.block.assets</code></td>
 <td style="text-align: left;">Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required</td>
 <td style="text-align: left;">Same as SR configuration</td>
 <td style="text-align: left;">Genesis block related configuration</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>p2p.version</code></td>
-<td style="text-align: left;">Any positive integer except 11111</td>
+<td style="text-align: left;"><code>node.p2p.version</code></td>
+<td style="text-align: left;">Any positive integer except <code>11111</code>, <code>201910292</code>, and <code>1</code></td>
 <td style="text-align: left;">Same as SR configuration</td>
-<td style="text-align: left;">Only nodes of the same <code>p2p.version</code> can shake hands successfully</td>
+<td style="text-align: left;">Only nodes with the same <code>node.p2p.version</code> can complete the P2P handshake</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>seed.node</code></td>
-<td style="text-align: left;">Leave empty</td>
-<td style="text-align: left;">Set <code>ip.list</code> to the IP address of the SR node and the port number specified in its <code>listen.port</code> configuration</td>
-<td style="text-align: left;">Enables FullNode to establish connection with SR node for data synchronization</td>
+<td style="text-align: left;"><code>seed.node.ip.list</code></td>
+<td style="text-align: left;">Leave the list empty</td>
+<td style="text-align: left;">Add the SR node as <code>SR_IP:SR_P2P_PORT</code>, using the port configured by its <code>node.listen.port</code> setting</td>
+<td style="text-align: left;">Enables FullNode to establish a connection with the SR node for data synchronization</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>needSyncCheck</code></td>
+<td style="text-align: left;"><code>block.needSyncCheck</code></td>
 <td style="text-align: left;"><code>false</code></td>
 <td style="text-align: left;"><code>true</code></td>
-<td style="text-align: left;">Set the first SR’s <code>needSyncCheck</code> to <code>false</code>, other SRs <code>true</code></td>
+<td style="text-align: left;">Set <code>block.needSyncCheck</code> to <code>false</code> for the first SR and <code>true</code> for other SRs</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>node.discovery.enable</code></td>
@@ -9136,10 +9161,12 @@ cp<span class="w"> </span>private_net_config.conf<span class="w"> </span>./FullN
 <p>Adjust Network Ports (If Necessary)</p>
 <p>Modify the port numbers in the configuration files to be different for the SR and the Full Node. This step is only required when running multiple nodes on the same machine to avoid port conflicts. Otherwise, you can skip it.</p>
 <ul>
-<li><code>listen.port</code>: P2P listening port</li>
-<li><code>http port</code>: HTTP listening port</li>
-<li><code>rpc port</code>: RPC listening port</li>
+<li><code>node.listen.port</code>: P2P listening port</li>
+<li><code>node.http.fullNodePort</code>, <code>node.http.solidityPort</code>, and <code>node.http.PBFTPort</code>: HTTP listening ports</li>
+<li><code>node.rpc.port</code>, <code>node.rpc.solidityPort</code>, and <code>node.rpc.PBFTPort</code>: gRPC listening ports</li>
+<li><code>node.jsonrpc.httpFullNodePort</code>, <code>node.jsonrpc.httpSolidityPort</code>, and <code>node.jsonrpc.httpPBFTPort</code>: JSON-RPC listening ports when those services are enabled</li>
 </ul>
+<p>See the <a href="../configuration/#api-services-and-ports">Node Configuration port table</a> for the corresponding enable switches and defaults.</p>
 </li>
 <li>
 <p>Start the Nodes</p>
@@ -9165,7 +9192,7 @@ java<span class="w"> </span>-Xmx6g<span class="w"> </span>-XX:+HeapDumpOnOutOfMe
 <ul>
 <li>
 <p><strong>Method 1: Set via Configuration File (For Initial Deployment)</strong></p>
-<p>Some network parameters can be set directly in the configuration file. You can find a list of these parameters <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java">here</a>.</p>
+<p>Some network parameters can be set directly in the configuration file. You can find the current definitions in <a href="https://github.com/tronprotocol/java-tron/blob/master/common/src/main/java/org/tron/core/Constant.java"><code>Constant.java</code></a>.</p>
 <p><strong>Example</strong>: Add the following <code>committee</code> block to your <code>.conf</code> file to enable multi-signature and contract creation:</p>
 <div class="highlight"><pre><span></span><code><span class="na">committee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
 <span class="w">  </span><span class="na">allowCreationOfContracts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
@@ -9246,7 +9273,7 @@ java<span class="w"> </span>-Xmx6g<span class="w"> </span>-XX:+HeapDumpOnOutOfMe
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 13, 2026 02:58:55 UTC">June 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:05:56 UTC">July 30, 2026</span>
   </span>
 
     

@@ -349,6 +349,8 @@
       
         
       
+        
+      
     
     
       
@@ -395,6 +397,28 @@
   
   <span class="md-ellipsis">
     Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Configuration
     
   </span>
   
@@ -9051,8 +9075,8 @@
 <li><strong><code>Permission_id</code></strong>: optional on builder endpoints; selects which <code>Permission</code> to use for multi-sig accounts. The field name is case-sensitive.</li>
 <li><strong>Amount unit</strong>: TRC-10 amounts use the issuer-defined precision; every other amount is in sun (1 TRX = 1e6 sun).</li>
 <li><strong><code>int64_as_string</code></strong>: GET requests may add <code>int64_as_string=true</code> in the URL query. When enabled, int64 / uint64 fields in protobuf JSON responses are serialized as JSON strings to avoid precision loss in clients such as JavaScript. This flag is honored only for GET requests; POST bodies are not affected.</li>
-<li><strong>Request body size</strong>: HTTP request bodies are limited by <code>node.http.maxMessageSize</code> in <code>config.conf</code> (default <code>4194304</code>, about 4 MiB; <code>0</code> rejects every non-empty body). JSON-RPC has its own independent <code>node.jsonrpc.maxMessageSize</code>.</li>
-<li><strong>Rate limiting</strong>: per-endpoint HTTP limits are configured in <code>rate.limiter.http</code>. The global <code>rate.limiter.apiNonBlocking</code> switch controls over-limit behavior: <code>true</code> rejects immediately with HTTP 200 and <code>{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}</code>; <code>false</code> queues and blocks the caller until a permit is available.</li>
+<li><strong>Request body size</strong>: HTTP request bodies are limited by <code>node.http.maxMessageSize</code>. Its default is declared in <code>common/src/main/resources/reference.conf</code> (<code>4194304</code>, about 4 MiB; <code>0</code> rejects every non-empty body) and can be overridden in the node's external configuration file. JSON-RPC has its own independent <code>node.jsonrpc.maxMessageSize</code>. See <a href="../../using_javatron/configuration/">Node Configuration</a> for configuration loading and override behavior.</li>
+<li><strong>Rate limiting</strong>: per-endpoint HTTP limits are configured in <code>rate.limiter.http</code>. The global <code>rate.limiter.apiNonBlocking</code> switch controls permit acquisition: <code>true</code> rejects immediately when a permit is unavailable; <code>false</code> makes QPS and per-IP QPS strategies block while waiting for a token, while <code>GlobalPreemptibleAdapter</code> waits at most two seconds for a concurrency permit. A rejected request returns HTTP 200 with <code>{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}</code>.</li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">XSS security note</p>
@@ -9063,10 +9087,10 @@
 <h2 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h2>
 <p>In the vast majority of cases the HTTP status is <strong>200</strong> — business errors are conveyed in the response body, so the client must parse the body to determine success or failure. Known exceptions:</p>
 <ul>
-<li>When an endpoint is explicitly disabled via the node's <code>disabledApiList</code>, <code>HttpApiAccessFilter</code> returns <strong>HTTP 404</strong> with body <code>{"Error": "this API is unavailable due to config"}</code>.</li>
+<li>When an endpoint is explicitly disabled via <code>node.disabledApi</code>, <code>HttpApiAccessFilter</code> returns <strong>HTTP 404</strong> with body <code>{"Error": "this API is unavailable due to config"}</code>.</li>
 <li>When a request body exceeds <code>node.http.maxMessageSize</code>, the shared HTTP <code>SizeLimitHandler</code> may reject it with <strong>HTTP 413</strong> (<code>Payload Too Large</code>) before the target servlet handles the request. If the request reaches a servlet and the servlet-side <code>Util.checkBodySize</code> check detects the oversized body, the endpoint follows its own error-response format, which for some endpoints is still <strong>HTTP 200</strong> with an error body.</li>
 <li>When non-blocking rate limiting is enabled and the shared <code>RateLimiterServlet</code> cannot acquire a permit, it returns <strong>HTTP 200</strong> with body <code>{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}</code> before the target servlet runs. This is a shared-layer error rather than an endpoint business error.</li>
-<li>When the node runs in lite fullnode mode and <code>openHistoryQueryWhenLiteFN</code> is not enabled, <code>LiteFnQueryHttpFilter</code> returns <strong>HTTP 200</strong> for ~24 historical-query endpoints (<code>getblockbynum</code> / <code>gettransactionbyid</code> / <code>gettransactioninfobyid</code> / <code>gettransactioninfobyblocknum</code> / <code>getblockbyid</code> / <code>getblockbylatestnum</code> / <code>getblockbylimitnext</code> / <code>gettransactioncountbyblocknum</code>, etc.) but the body is the bare string <code>this API is closed because this node is a lite fullnode</code> (<strong>not JSON</strong>) — a naive <code>JSON.parse</code> will throw, so clients must check the prefix as a string first.</li>
+<li>When the node runs in lite fullnode mode and <code>node.openHistoryQueryWhenLiteFN</code> is not enabled, <code>LiteFnQueryHttpFilter</code> returns <strong>HTTP 200</strong> for ~24 historical-query endpoints (<code>getblockbynum</code> / <code>gettransactionbyid</code> / <code>gettransactioninfobyid</code> / <code>gettransactioninfobyblocknum</code> / <code>getblockbyid</code> / <code>getblockbylatestnum</code> / <code>getblockbylimitnext</code> / <code>gettransactioncountbyblocknum</code>, etc.) but the body is the bare string <code>this API is closed because this node is a lite fullnode</code> (<strong>not JSON</strong>) — a naive <code>JSON.parse</code> will throw, so clients must check the prefix as a string first.</li>
 <li>Network-layer errors produced by the servlet container or a reverse proxy (502, 504, connection refused, etc.) are out of scope for this document.</li>
 </ul>
 <!-- BEGIN GENERATED HTTP ERROR CATALOG -->
@@ -9115,7 +9139,7 @@
 <td>A lite FullNode rejected a historical block or transaction query.</td>
 <td>No</td>
 <td><code>AFTER_STATE_CHANGE</code></td>
-<td>Use a full node, or wait for openHistoryQueryWhenLiteFN to change.</td>
+<td>Use a full node, or wait for <code>node.openHistoryQueryWhenLiteFN</code> to change.</td>
 </tr>
 <tr>
 <td><code>HTTP_REQUEST_TOO_LARGE</code></td>
@@ -9769,7 +9793,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 21, 2026 06:44:33 UTC">July 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:05:56 UTC">July 30, 2026</span>
   </span>
 
     

@@ -349,6 +349,8 @@
       
         
       
+        
+      
     
     
       
@@ -395,6 +397,28 @@
   
   <span class="md-ellipsis">
     Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../using_javatron/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Configuration
     
   </span>
   
@@ -9064,7 +9088,7 @@
 <td><code>signature</code></td>
 <td>string[]</td>
 <td>No</td>
-<td>Optional at JSON/Protobuf parsing time. An ordinary transaction normally needs one valid signature to broadcast successfully; multi-sig transactions must satisfy the selected permission threshold. Missing signatures normally lead to a later <code>SIGERROR</code></td>
+<td>Optional at JSON/Protobuf parsing time. Each hex-encoded signature must decode to <code>65</code>–<code>68</code> bytes (normally <code>130</code>–<code>136</code> hex characters); a supplied signature outside this range is rejected immediately with <code>SIGERROR</code>. An ordinary transaction normally needs one valid signature to broadcast successfully, while multi-sig transactions must satisfy the selected permission threshold. A missing or cryptographically invalid signature normally results in <code>SIGERROR</code> when signature validation is reached</td>
 </tr>
 <tr>
 <td><code>visible</code></td>
@@ -9074,6 +9098,7 @@
 </tr>
 </tbody>
 </table>
+<p>The same signature-length validation is applied to transactions submitted through the gRPC <code>BroadcastTransaction</code> method and other API endpoints that use the node's transaction broadcast path.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--url<span class="w"> </span>https://nile.trongrid.io/wallet/broadcasttransaction<span class="w"> </span><span class="se">\</span>
@@ -9147,7 +9172,7 @@
 <tbody>
 <tr>
 <td><code>SIGERROR</code></td>
-<td>Signature verification failed</td>
+<td>Signature verification failed, or a supplied signature is shorter than <code>65</code> bytes or longer than <code>68</code> bytes</td>
 </tr>
 <tr>
 <td><code>CONTRACT_VALIDATE_ERROR</code></td>
@@ -9246,7 +9271,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:06:10 UTC">July 30, 2026</span>
   </span>
 
     

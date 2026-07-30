@@ -349,6 +349,8 @@
       
         
       
+        
+      
     
     
       
@@ -395,6 +397,28 @@
   
   <span class="md-ellipsis">
     Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Configuration
     
   </span>
   
@@ -7354,6 +7378,15 @@
   
 </li>
       
+        <li class="md-nav__item ">
+  <a href="#peer-connection-management" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Peer Connection Management
+    </span>
+  </a>
+  
+</li>
+      
         <li class="md-nav__item has-children">
   <a href="#block-synchronization" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
@@ -7363,6 +7396,15 @@
   
     <nav class="md-nav" aria-label="Block Synchronization" hidden>
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#synchronization-limits-and-resource-control" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Synchronization Limits and Resource Control
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item ">
   <a href="#blockchain-summary-and-list-of-missing-blocks" class="md-nav__link" >
@@ -7378,12 +7420,27 @@
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#block-and-transaction-broadcast" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#block-and-transaction-broadcast" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       Block and Transaction Broadcast
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Block and Transaction Broadcast" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#inbound-validation-and-backpressure" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Inbound Validation and Backpressure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -9035,6 +9092,15 @@
   
 </li>
       
+        <li class="md-nav__item ">
+  <a href="#peer-connection-management" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Peer Connection Management
+    </span>
+  </a>
+  
+</li>
+      
         <li class="md-nav__item has-children">
   <a href="#block-synchronization" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
@@ -9044,6 +9110,15 @@
   
     <nav class="md-nav" aria-label="Block Synchronization" hidden>
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#synchronization-limits-and-resource-control" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Synchronization Limits and Resource Control
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item ">
   <a href="#blockchain-summary-and-list-of-missing-blocks" class="md-nav__link" >
@@ -9059,12 +9134,27 @@
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#block-and-transaction-broadcast" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#block-and-transaction-broadcast" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       Block and Transaction Broadcast
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Block and Transaction Broadcast" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#inbound-validation-and-backpressure" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Inbound Validation and Backpressure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -9130,18 +9220,25 @@
 <p>As the most fundamental module of TRON, the P2P network directly determines the stability of the entire blockchain network. The network module can be divided into the following four parts according to the function:</p>
 <ul>
 <li>Node Discovery</li>
-<li>Node Connection</li>
+<li><a href="#peer-connection-management">Node Connection</a></li>
 <li><a href="#block-synchronization">Block Synchronization</a></li>
 <li><a href="#block-and-transaction-broadcast">Block and Transaction Broadcast</a></li>
 </ul>
 <p>The underlying implementations of <strong>Node Discovery</strong> and <strong>Node Connection</strong> have been extracted from the java-tron repository into a standalone external dependency, <a href="https://github.com/tronprotocol/libp2p"><code>io.github.tronprotocol:libp2p</code></a>. This library is responsible for low-level node discovery (based on the Kademlia algorithm) and connection transport, and it adds capabilities such as DNS-based node discovery. The TRON protocol layer above it — including the P2P_HELLO handshake, P2P_PING/P2P_PONG keep-alive, peer business-state management, message dispatch, synchronization, and broadcast — is still implemented in java-tron's <code>core/net</code>, which integrates with libp2p through <code>TronNetService</code>. For the low-level discovery and connection implementation details, please refer to the libp2p repository; they are no longer covered in this document.</p>
 <p><strong>Block Synchronization</strong> and <strong>Block and Transaction Broadcast</strong> are still implemented in java-tron's <code>core/net</code>, and are introduced separately below.</p>
+<h2 id="peer-connection-management">Peer Connection Management<a class="headerlink" href="#peer-connection-management" title="Permanent link">&para;</a></h2>
+<p>When random peer disconnection is enabled and the node has reached its maximum number of connections, java-tron periodically frees a connection slot so that it can discover potentially better peers. Trusted peers are never selected. In the primary selection path, peers that are synchronizing in either direction are also excluded. If at least three eligible broadcast peers remain, java-tron sorts them by <code>blockRcvTime</code>—the time at which each peer last supplied a successfully processed block—and keeps the older half as candidates. It then makes a weighted random selection based on <code>lastInteractiveTime</code>, so peers that have been inactive for longer are more likely to be disconnected. This prevents a full connection table from being occupied indefinitely by peers that contribute little recent block data.</p>
+<p>For received block inventory, <code>lastInteractiveTime</code> is updated only when a peer announces a block above the local head. Stale block inventory therefore cannot make a peer appear recently active.</p>
 <h2 id="block-synchronization">Block Synchronization<a class="headerlink" href="#block-synchronization" title="Permanent link">&para;</a></h2>
 <p>After completing the handshake with the peer node, if the peer node's blockchain is longer than the local blockchain, the block synchronization process <code>syncService.startSync</code> will be triggered according to the longest chain principle. The message interaction during the synchronization process is as follows:</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_syncflow.png" /></p>
 <p>Node A sends an <code>SYNC_BLOCK_CHAIN</code> message to peer node B to announce the blockchain summary information of the local chain. After the peer node B receives it, it calculates the list of missing blocks of node A, and sends the lost block ID list to node A through the <code>BLOCK_CHAIN_INVENTORY</code> message, carrying a maximum of 2000 block ids at a time.</p>
 <p>After node A receives the <code>BLOCK_CHAIN_INVENTORY</code> message, it gets the missing block id, and sends a <code>FETCH_INV_DATA</code> message to node B asynchronously to request the missing block, up to 100 blocks at a time. If there are still blocks that need to be synchronized (that is, the remain_num in the <code>BLOCK_CHAIN_INVENTORY</code> message is greater than 0), a new round of block synchronization process will be triggered.</p>
 <p>After node B receives the <code>FETCH_INV_DATA</code> message from node A, it sends the block to node A through the <code>BLOCK</code> message. After node A receives the <code>BLOCK</code> message, it asynchronously processes the block.</p>
+<h3 id="synchronization-limits-and-resource-control">Synchronization Limits and Resource Control<a class="headerlink" href="#synchronization-limits-and-resource-control" title="Permanent link">&para;</a></h3>
+<p>An inbound <code>SYNC_BLOCK_CHAIN</code> message must contain at least one block ID and may contain no more than 30 block IDs. A message outside these bounds is treated as an invalid protocol message. The separate <code>BLOCK_CHAIN_INVENTORY</code> response can still carry up to 2000 missing block IDs, as described above.</p>
+<p>To reduce retained heap usage during catch-up, java-tron stores pending synchronization blocks in its queues as a block ID plus serialized bytes instead of retaining a parsed <code>BlockCapsule</code>. The bytes are parsed again when the queued block is ready to be processed.</p>
+<p><code>node.maxPendingBlockSize</code> provides a global budget for new forward-progress synchronization requests. The available budget accounts for blocks requested across active peers, blocks just received, and blocks waiting to be processed. Retry requests for heights at or below the highest previously requested height may bypass this budget to avoid a synchronization deadlock, so the setting is not a strict upper bound on all in-flight blocks. Its default value is <code>500</code>; values outside the supported range of <code>50</code> to <code>2000</code> are clamped to the nearest bound.</p>
 <h3 id="blockchain-summary-and-list-of-missing-blocks">Blockchain Summary and List of Missing Blocks<a class="headerlink" href="#blockchain-summary-and-list-of-missing-blocks" title="Permanent link">&para;</a></h3>
 <p>Below will take several different block synchronization scenarios as examples to illustrate the generation of the blockchain summary and the lost block ID list. </p>
 <ul>
@@ -9171,6 +9268,46 @@
 </ul>
 <p>Node A sends the transaction or block to be broadcast to Node B via the <code>INVENTORY</code> list message. After node B receives the <code>INVENTORY</code> list message, it needs to check the status of the peer node, and if it can receive the message, it puts the blocks/transactions in the list into the "to be fetched queue" <code>invToFetch</code>. If it is a block list, it will also trigger the "get block &amp; transaction task" immediately to send a <code>FETCH_INV_DATA</code> message to node A to get the block &amp; transaction.</p>
 <p>After node A receives the <code>FETCH_INV_DATA</code> message, it will check whether an "INVENTORY" message has been sent to the peer. If it has been sent, it will send a transaction or block message to node B according to the list data. After node B receives the transaction or block message, it processes the message and triggers the forwarding process.</p>
+<h3 id="inbound-validation-and-backpressure">Inbound Validation and Backpressure<a class="headerlink" href="#inbound-validation-and-backpressure" title="Permanent link">&para;</a></h3>
+<p>Before accepting or forwarding broadcast data, java-tron applies validation and resource controls at the P2P boundary:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventory type and duplicates</td>
+<td>The inventory type in an <code>INVENTORY</code> or <code>FETCH_INV_DATA</code> message must be either <code>TRX</code> or <code>BLOCK</code>. Duplicate hashes within either message and duplicate transactions within a <code>TRXS</code> message cause the message to be rejected and the sending peer to be disconnected with <code>BAD_PROTOCOL</code>.</td>
+</tr>
+<tr>
+<td>Transaction inventory rate</td>
+<td>The number of transaction IDs announced by each peer is limited by <code>node.maxTps</code>, which defaults to <code>1000</code> IDs per second. The limit is evaluated over a 10-second window and includes the IDs in the current message. A transaction <code>INVENTORY</code> message that would exceed the projected window limit is dropped.</td>
+</tr>
+<tr>
+<td>Block inventory rate</td>
+<td>Block inventory from each peer is limited by <code>node.maxBlockInvPerSecond</code>. The limit is enforced over a rolling 10-second window. With the default value of <code>10</code>, up to <code>100</code> block IDs are allowed in the window, including IDs in the current message. Values below <code>1</code> are raised to <code>1</code>. A block <code>INVENTORY</code> message that would exceed the window limit is dropped.</td>
+</tr>
+<tr>
+<td>Transaction backpressure</td>
+<td>If the transaction handling queues and transaction cache exceed <code>node.maxTrxCacheSize</code>, new transaction inventory announcements are dropped until capacity becomes available. The default is <code>50000</code>; values below <code>2000</code> are raised to <code>2000</code>.</td>
+</tr>
+<tr>
+<td>Signature length</td>
+<td>Every signature in a transaction received over P2P, as well as the signature in a fast-forward <code>HelloMessage</code>, must be between <code>65</code> and <code>68</code> bytes, inclusive. A transaction containing a signature outside this range is treated as a bad transaction; an incorrectly sized <code>HelloMessage</code> signature is rejected before signature verification.</td>
+</tr>
+<tr>
+<td>Block validation</td>
+<td>An announced block is validated before it is re-broadcast. An invalid Merkle root or block signature causes the sending peer to be disconnected with the <code>BAD_BLOCK</code> reason.</td>
+</tr>
+<tr>
+<td>Protobuf normalization</td>
+<td>For a received <code>Block</code>, java-tron removes unknown protobuf fields from both the block itself and its <code>BlockHeader</code> before processing or forwarding it.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>This article introduces the P2P network, the lowest level module of TRON. Node discovery and node connection have been extracted into the external libp2p dependency and are only briefly located here; block synchronization and the process of block and transaction broadcasting, which remain in java-tron's <code>core/net</code>, are introduced in detail. I hope that reading this article can help developers to further understand and develop java-tron network-related modules.</p>
 
@@ -9193,7 +9330,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2026 03:00:40 UTC">June 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:06:10 UTC">July 30, 2026</span>
   </span>
 
     
