@@ -246,6 +246,31 @@ Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, 
 java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --solidity -c framework/src/main/resources/config.conf
 ```
 
+#### Configuring Conditional Shutdown
+
+SolidityNode supports the same `node.shutdown` conditions as FullNode. You can configure the node to shut down after it persists a block matching a target time or height, or after it synchronizes a specified number of blocks from its startup height.
+
+Configure exactly one of `BlockTime`, `BlockHeight`, or `BlockCount`. For example:
+
+```properties
+node.shutdown = {
+  # Quartz cron expression matched against the persisted block header time
+  BlockTime = "54 59 08 * * ?"
+
+  # Alternatively, configure exactly one of the following:
+  # BlockHeight = 33350800
+  # BlockCount = 12
+}
+```
+
+| Parameter | Description |
+|---|---|
+| `BlockTime` | A Quartz cron expression. The node shuts down after persisting a block whose header timestamp satisfies the expression. |
+| `BlockHeight` | The target persisted block height at which the node shuts down. Use a positive value that is not lower than the node's current head height. A negative value is treated as unset. A positive value below the current head causes startup to fail. A value of `0` is accepted but normally does not establish an active shutdown target; if the current head is also `0` and `--p2p-disable` is not enabled, the node exits immediately. Do not use `0` as a shutdown height. |
+| `BlockCount` | The number of additional blocks to synchronize after startup before shutting down. Use a value greater than `0`. A value of `0` causes startup to fail, while a negative value is treated as unset. |
+
+If more than one shutdown condition is enabled, or `BlockTime` is invalid, parameter initialization fails and the node does not start.
+
 
 ### Starting a Block Production Node
 

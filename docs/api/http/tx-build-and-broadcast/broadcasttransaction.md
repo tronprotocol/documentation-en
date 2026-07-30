@@ -14,8 +14,10 @@ Pass the JSON form of `protocol.Transaction` directly (i.e., the response from `
 |---|---|---|---|
 | `raw_data` | object | Yes | Same as `createtransaction` response; the node re-serializes it into protobuf bytes for SHA256 signature verification |
 | `raw_data_hex` | string | No (node ignores) | Client-side display helper — the protobuf encoding of `raw_data`. **Not a proto field of `protocol.Transaction`**; `JsonFormat.merge` skips it during parse, so the node neither reads it nor cross-checks it against `raw_data`. Clients usually SHA256 it to derive `txID` when signing, but whether it matches or is even valid hex when broadcast does not affect processing |
-| `signature` | string[] | No | Optional at JSON/Protobuf parsing time. An ordinary transaction normally needs one valid signature to broadcast successfully; multi-sig transactions must satisfy the selected permission threshold. Missing signatures normally lead to a later `SIGERROR` |
+| `signature` | string[] | No | Optional at JSON/Protobuf parsing time. Each hex-encoded signature must decode to `65`–`68` bytes (normally `130`–`136` hex characters); a supplied signature outside this range is rejected immediately with `SIGERROR`. An ordinary transaction normally needs one valid signature to broadcast successfully, while multi-sig transactions must satisfy the selected permission threshold. A missing or cryptographically invalid signature normally results in `SIGERROR` when signature validation is reached |
 | `visible` | bool | No | Format of address / text fields |
+
+The same signature-length validation is applied to transactions submitted through the gRPC `BroadcastTransaction` method and other API endpoints that use the node's transaction broadcast path.
 
 Example:
 
@@ -70,7 +72,7 @@ Business-level errors are **still returned in the same `result/code/message` sha
 
 | code | Meaning |
 |---|---|
-| `SIGERROR` | Signature verification failed |
+| `SIGERROR` | Signature verification failed, or a supplied signature is shorter than `65` bytes or longer than `68` bytes |
 | `CONTRACT_VALIDATE_ERROR` | Pre-execution contract validation failed (insufficient balance, invalid params, etc.) |
 | `CONTRACT_EXE_ERROR` | Failed during execution |
 | `BANDWITH_ERROR` | Insufficient bandwidth |

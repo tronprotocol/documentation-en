@@ -3929,12 +3929,24 @@
               "allOf":
                 -
                   "$ref": "#/components/schemas/TransactionRequest"
+                -
+                  "type": "object"
+                  "properties":
+                    "signature":
+                      "type": "array"
+                      "items":
+                        "type": "string"
+                        "description": "Hex-encoded transaction signature. After hexadecimal decoding, including removal of an optional lowercase `0x` prefix and left-padding of an odd number of hexadecimal digits, each supplied signature must be 65\u201368 bytes; otherwise broadcast returns `SIGERROR`."
+                      "description": "Transaction signatures supplied for broadcast."
               "required":
                 - "raw_data"
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/BroadcastServlet.java"
         - "framework/src/main/java/org/tron/core/services/http/Util.java"
+        - "framework/src/main/java/org/tron/core/Wallet.java"
+        - "crypto/src/main/java/org/tron/common/crypto/SignUtils.java"
+        - "common/src/main/java/org/tron/core/Constant.java"
         - "protocol/src/main/protos/core/Tron.proto#Transaction"
   "/wallet/broadcasthex":
     "post":
@@ -4046,7 +4058,7 @@
               "properties":
                 "transaction":
                   "type": "string"
-                  "description": "Transaction object."
+                  "description": "Hex-encoded serialized `protocol.Transaction`. Each signature embedded in the decoded protobuf transaction must be 65\u201368 bytes; otherwise broadcast returns `SIGERROR`."
               "required":
                 - "transaction"
               "x-source-shape": "servlet-json-fields"
@@ -4055,6 +4067,9 @@
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/BroadcastHexServlet.java"
         - "framework/src/main/java/org/tron/core/services/http/Util.java"
+        - "framework/src/main/java/org/tron/core/Wallet.java"
+        - "crypto/src/main/java/org/tron/common/crypto/SignUtils.java"
+        - "common/src/main/java/org/tron/core/Constant.java"
   "/wallet/createassetissue":
     "post":
       "tags":
