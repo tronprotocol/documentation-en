@@ -16,7 +16,7 @@ Registers the account as a witness (SR candidate).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile create-witness --url https://my-sr.example
+    java -jar java/build/libs/wallet-cli.jar --network nile create-witness --url https://my-sr.example
     ```
 
     - `--url` (required). `--owner`, `--multi` (optional).
@@ -34,7 +34,7 @@ Updates the witness's URL.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile update-witness --url https://my-sr.example
+    java -jar java/build/libs/wallet-cli.jar --network nile update-witness --url https://my-sr.example
     ```
 
     - `--url` (required). `--owner`, `--multi` (optional).
@@ -50,7 +50,7 @@ Updates the witness's URL.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile list-witnesses
+    java -jar java/build/libs/wallet-cli.jar --network nile list-witnesses
     ```
 
 === "REPL"
@@ -75,7 +75,7 @@ replaces your previous votes.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile vote-witness \
+    java -jar java/build/libs/wallet-cli.jar --network nile vote-witness \
       --votes "TWitnessA... 100 TWitnessB... 50"
     ```
 
@@ -97,7 +97,7 @@ Withdraws accumulated voting/witness rewards to the spendable balance.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile withdraw-balance
+    java -jar java/build/libs/wallet-cli.jar --network nile withdraw-balance
     ```
 
     - `--owner`, `--multi` (optional).
@@ -115,7 +115,7 @@ Shows the currently claimable reward for an address.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-reward --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-reward --address TXyz...
     ```
 
     - `--address` (required). No auth required.
@@ -133,7 +133,7 @@ Shows a witness's brokerage percentage (the share of rewards the SR keeps).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-brokerage --address TWitness...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-brokerage --address TWitness...
     ```
 
     - `--address` (required). No auth required.
@@ -151,7 +151,7 @@ Sets the witness's brokerage percentage (0–100).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile update-brokerage --brokerage 20
+    java -jar java/build/libs/wallet-cli.jar --network nile update-brokerage --brokerage 20
     ```
 
     - `--brokerage` (required, 0–100). `--owner`, `--multi` (optional).
@@ -174,7 +174,7 @@ effect when enough approvals are gathered. Each proposal is a set of `parameter_
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile create-proposal \
+    java -jar java/build/libs/wallet-cli.jar --network nile create-proposal \
       --parameters "9 1 18 1"
     ```
 
@@ -192,7 +192,7 @@ effect when enough approvals are gathered. Each proposal is a set of `parameter_
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile approve-proposal --id 42 --approve true
+    java -jar java/build/libs/wallet-cli.jar --network nile approve-proposal --id 42 --approve true
     ```
 
     - `--id` (required), `--approve` (required, `true` to add approval / `false` to withdraw it).
@@ -213,7 +213,7 @@ Cancels a proposal (proposer only).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile delete-proposal --id 42
+    java -jar java/build/libs/wallet-cli.jar --network nile delete-proposal --id 42
     ```
 
     - `--id` (required). `--owner`, `--multi` (optional).
@@ -229,7 +229,7 @@ Cancels a proposal (proposer only).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile list-proposals
+    java -jar java/build/libs/wallet-cli.jar --network nile list-proposals
     ```
 
 === "REPL"
@@ -243,7 +243,7 @@ Cancels a proposal (proposer only).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile list-proposals-paginated --offset 0 --limit 20
+    java -jar java/build/libs/wallet-cli.jar --network nile list-proposals-paginated --offset 0 --limit 20
     ```
 
     - `--offset` (required), `--limit` (required).
@@ -259,7 +259,7 @@ Cancels a proposal (proposer only).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-proposal --id 42
+    java -jar java/build/libs/wallet-cli.jar --network nile get-proposal --id 42
     ```
 
     - `--id` (required).

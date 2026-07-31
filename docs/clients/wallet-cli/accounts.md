@@ -16,7 +16,7 @@ once it is activated, e.g. by receiving TRX or via this command.)
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile create-account --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile create-account --address TXyz...
     ```
 
     - `--address` (required) — the address to activate.
@@ -33,7 +33,7 @@ once it is activated, e.g. by receiving TRX or via this command.)
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile update-account --name "my account"
+    java -jar java/build/libs/wallet-cli.jar --network nile update-account --name "my account"
     ```
 
     - `--name` (required) — the new account name.
@@ -52,7 +52,7 @@ Sets a unique, human-readable account ID for the account.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile set-account-id --id myaccountid
+    java -jar java/build/libs/wallet-cli.jar --network nile set-account-id --id myaccountid
     ```
 
     - `--id` (required) — the account ID to set.
@@ -71,7 +71,7 @@ Sets a unique, human-readable account ID for the account.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-account --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-account --address TXyz...
     ```
 
     - `--address` (required). No auth required.
@@ -87,7 +87,7 @@ Sets a unique, human-readable account ID for the account.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-account-by-id --id myaccountid
+    java -jar java/build/libs/wallet-cli.jar --network nile get-account-by-id --id myaccountid
     ```
 
     - `--id` (required). No auth required.
@@ -105,7 +105,7 @@ Prints the address of the active/logged-in wallet.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar get-address
+    java -jar java/build/libs/wallet-cli.jar get-address
     ```
 
     Requires auth (it reports the active wallet's address).
@@ -122,10 +122,10 @@ Prints the address of the active/logged-in wallet.
 
     ```bash
     # Balance of an explicit address (no auth needed)
-    java -jar build/libs/wallet-cli.jar --network nile get-balance --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-balance --address TXyz...
 
     # Balance of the active wallet (requires auth)
-    java -jar build/libs/wallet-cli.jar --network nile get-balance
+    java -jar java/build/libs/wallet-cli.jar --network nile get-balance
     ```
 
     - `--address` (optional). If provided, no auth is required; if omitted, the active wallet's
@@ -156,7 +156,7 @@ replaces the account's permission set with the one you supply.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile update-account-permission \
+    java -jar java/build/libs/wallet-cli.jar --network nile update-account-permission \
       --owner TXyz... --permissions '<permission-json>'
     ```
 
@@ -210,7 +210,7 @@ The permission JSON has the following shape (keys, thresholds, and weighted sign
 
 - `threshold` is the total signer weight required for the permission to authorize an action.
 - `operations` (active permissions only) is a 32-byte hex bitmap selecting which contract/operation
-  types the permission may perform. The example above matches the 4.9.7 default active-permission
-  bitmap: it excludes disabled operation 51 (`ShieldedTransferContract`) while retaining active
-  operations such as 49 and 52.
+  types the permission may perform. The example above matches the default active-permission bitmap:
+  it excludes disabled operation 51 (`ShieldedTransferContract`) while retaining active operations
+  such as 49 and 52.
 - `witness_permission` is only relevant for super-representative accounts.

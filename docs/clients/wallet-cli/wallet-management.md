@@ -22,7 +22,7 @@ Creates a brand-new wallet with a freshly generated mnemonic and stores an encry
 
     ```bash
     export MASTER_PASSWORD='your-wallet-password'
-    java -jar build/libs/wallet-cli.jar --network nile register-wallet --name my-wallet --words 12
+    java -jar java/build/libs/wallet-cli.jar --network nile register-wallet --name my-wallet --words 12
     ```
 
     - `--name` (required) — wallet name.
@@ -45,7 +45,7 @@ Derives an additional account from the current wallet's mnemonic at a given inde
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile generate-sub-account --index 1 --name sub-1
+    java -jar java/build/libs/wallet-cli.jar --network nile generate-sub-account --index 1 --name sub-1
     ```
 
     - `--index` (required) — derivation index.
@@ -95,14 +95,14 @@ GenerateAddress [isECKey]
 
     ```bash
     # List wallets and their active status
-    java -jar build/libs/wallet-cli.jar list-wallet
+    java -jar java/build/libs/wallet-cli.jar list-wallet
 
     # Set the active wallet by address or by name
-    java -jar build/libs/wallet-cli.jar set-active-wallet --address TXyz...
-    java -jar build/libs/wallet-cli.jar set-active-wallet --name my-wallet
+    java -jar java/build/libs/wallet-cli.jar set-active-wallet --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar set-active-wallet --name my-wallet
 
     # Show the current active wallet
-    java -jar build/libs/wallet-cli.jar get-active-wallet
+    java -jar java/build/libs/wallet-cli.jar get-active-wallet
     ```
 
     - `set-active-wallet` accepts `--address` or `--name` (provide one).
@@ -153,7 +153,7 @@ Prompts for the current password and a new password.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar modify-wallet-name --name new-name
+    java -jar java/build/libs/wallet-cli.jar modify-wallet-name --name new-name
     ```
 
     - `--name` (required) — the new wallet name. Requires auth.
@@ -171,7 +171,7 @@ Deletes the encrypted keystore file(s) for the wallet from local storage. This i
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar clear-wallet-keystore --force
+    java -jar java/build/libs/wallet-cli.jar clear-wallet-keystore --force
     ```
 
     - `--force` is syntactically optional, but required to execute the destructive action in
@@ -190,7 +190,7 @@ Wipes local wallet state back to an initial condition. This is destructive.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar reset-wallet --confirm delete-all-wallets
+    java -jar java/build/libs/wallet-cli.jar reset-wallet --confirm delete-all-wallets
     ```
 
     - `--confirm` must be passed with the exact value `delete-all-wallets` to perform the reset.
@@ -239,21 +239,21 @@ mode.
 
 ```bash
 # Add an account alias
-java -jar build/libs/wallet-cli.jar --network nile alias-add \
+java -jar java/build/libs/wallet-cli.jar --network nile alias-add \
   --name treasury --type ACCOUNT --address TXyz... --note "team treasury"
 
 # Add a token alias (with decimals)
-java -jar build/libs/wallet-cli.jar --network nile alias-add \
+java -jar java/build/libs/wallet-cli.jar --network nile alias-add \
   --name usdt --type TOKEN --address TR7NHq... --decimals 6
 
 # List aliases (optionally filter by type)
-java -jar build/libs/wallet-cli.jar --network nile alias-list --type ACCOUNT
+java -jar java/build/libs/wallet-cli.jar --network nile alias-list --type ACCOUNT
 
 # Resolve an alias or address to its canonical form
-java -jar build/libs/wallet-cli.jar --network nile alias-resolve --name treasury
+java -jar java/build/libs/wallet-cli.jar --network nile alias-resolve --name treasury
 
 # Remove a user alias
-java -jar build/libs/wallet-cli.jar --network nile alias-remove --name treasury
+java -jar java/build/libs/wallet-cli.jar --network nile alias-remove --name treasury
 ```
 
 Option notes:

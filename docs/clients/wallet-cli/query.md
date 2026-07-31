@@ -21,7 +21,7 @@ Shows which network the client is currently connected to (`MAIN`, `NILE`, `SHAST
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile current-network
+    java -jar java/build/libs/wallet-cli.jar --network nile current-network
     ```
 
 === "REPL"
@@ -37,7 +37,7 @@ Returns the on-chain governance parameters and their current values.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-chain-parameters
+    java -jar java/build/libs/wallet-cli.jar --network nile get-chain-parameters
     ```
 
 === "REPL"
@@ -53,7 +53,7 @@ Returns the timestamp (ms) of the next maintenance period, when SR/voting change
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-next-maintenance-time
+    java -jar java/build/libs/wallet-cli.jar --network nile get-next-maintenance-time
     ```
 
 === "REPL"
@@ -69,7 +69,7 @@ Returns the historical bandwidth price schedule.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-bandwidth-prices
+    java -jar java/build/libs/wallet-cli.jar --network nile get-bandwidth-prices
     ```
 
 === "REPL"
@@ -85,7 +85,7 @@ Returns the historical energy price schedule.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-energy-prices
+    java -jar java/build/libs/wallet-cli.jar --network nile get-energy-prices
     ```
 
 === "REPL"
@@ -101,7 +101,7 @@ Returns the fee charged for attaching a memo to a transaction.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-memo-fee
+    java -jar java/build/libs/wallet-cli.jar --network nile get-memo-fee
     ```
 
 === "REPL"
@@ -119,7 +119,7 @@ Returns a block by number, or the latest block when no number is given.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-block --number 1000000
+    java -jar java/build/libs/wallet-cli.jar --network nile get-block --number 1000000
     ```
 
     - `--number` (optional) — block number; defaults to the latest block.
@@ -137,7 +137,7 @@ Returns a block by number, or the latest block when no number is given.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-block-by-id --id 00000000000f4240...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-block-by-id --id 00000000000f4240...
     ```
 
     - `--id` (required) — the block ID (hash).
@@ -155,7 +155,7 @@ Accepts either a block number or a block ID.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-block-by-id-or-num --value 1000000
+    java -jar java/build/libs/wallet-cli.jar --network nile get-block-by-id-or-num --value 1000000
     ```
 
     - `--value` (required) — a block number or block ID.
@@ -174,7 +174,7 @@ Accepts either a block number or a block ID.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-block-by-latest-num --count 5
+    java -jar java/build/libs/wallet-cli.jar --network nile get-block-by-latest-num --count 5
     ```
 
     - `--count` (required) — number of most-recent blocks to return.
@@ -192,7 +192,7 @@ Returns blocks in the half-open range `[start, end)`.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-block-by-limit-next \
+    java -jar java/build/libs/wallet-cli.jar --network nile get-block-by-limit-next \
       --start 1000000 --end 1000005
     ```
 
@@ -209,7 +209,7 @@ Returns blocks in the half-open range `[start, end)`.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile \
+    java -jar java/build/libs/wallet-cli.jar --network nile \
       get-transaction-count-by-block-num --number 1000000
     ```
 
@@ -230,7 +230,7 @@ Returns the transaction body for a transaction ID.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-transaction-by-id --id <txid>
+    java -jar java/build/libs/wallet-cli.jar --network nile get-transaction-by-id --id <txid>
     ```
 
     - `--id` (required) — the transaction ID (hash).
@@ -249,7 +249,7 @@ logs. Use this to read the outcome of a state-changing contract call.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-transaction-info-by-id --id <txid>
+    java -jar java/build/libs/wallet-cli.jar --network nile get-transaction-info-by-id --id <txid>
     ```
 
     - `--id` (required).
@@ -279,7 +279,7 @@ Lists the peer nodes the connected node is aware of.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile list-nodes
+    java -jar java/build/libs/wallet-cli.jar --network nile list-nodes
     ```
 
 === "REPL"
@@ -297,7 +297,7 @@ Returns the USDT (TRC-20) balance of an address. Supported on `main`, `nile`, an
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-usdt-balance --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-usdt-balance --address TXyz...
     ```
 
     - `--address` (optional) — defaults to the current wallet's address.

@@ -23,7 +23,7 @@ calls, energy estimation, and contract queries do not.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile deploy-contract \
+    java -jar java/build/libs/wallet-cli.jar --network nile deploy-contract \
       --name MyToken \
       --abi '[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"}, ...]' \
       --bytecode 608060405234801561001057600080fd5b50... \
@@ -55,7 +55,7 @@ calls, energy estimation, and contract queries do not.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile trigger-contract \
+    java -jar java/build/libs/wallet-cli.jar --network nile trigger-contract \
       --contract TContract... \
       --method "transfer(address,uint256)" \
       --params "TRecipient...,1000000" \
@@ -86,7 +86,7 @@ spent.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile trigger-constant-contract \
+    java -jar java/build/libs/wallet-cli.jar --network nile trigger-constant-contract \
       --contract TContract... \
       --method "balanceOf(address)" \
       --params "TAccount..."
@@ -110,7 +110,7 @@ Estimates the energy a contract call would consume.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile estimate-energy \
+    java -jar java/build/libs/wallet-cli.jar --network nile estimate-energy \
       --contract TContract... \
       --method "transfer(address,uint256)" \
       --params "TRecipient...,1000000"
@@ -145,7 +145,7 @@ Create2 address code salt
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile update-setting \
+    java -jar java/build/libs/wallet-cli.jar --network nile update-setting \
       --contract TContract... --consume-user-resource-percent 50
     ```
 
@@ -163,7 +163,7 @@ Create2 address code salt
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile update-energy-limit \
+    java -jar java/build/libs/wallet-cli.jar --network nile update-energy-limit \
       --contract TContract... --origin-energy-limit 10000000
     ```
 
@@ -183,7 +183,7 @@ Removes the ABI stored on-chain for a contract.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile clear-contract-abi --contract TContract...
+    java -jar java/build/libs/wallet-cli.jar --network nile clear-contract-abi --contract TContract...
     ```
 
     - `--contract` (required). `--owner`, `--multi` (optional).
@@ -203,7 +203,7 @@ Returns the contract's bytecode and ABI.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-contract --address TContract...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-contract --address TContract...
     ```
 
     - `--address` (required).
@@ -221,7 +221,7 @@ Returns extended contract information (including runtime/code hash details).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-contract-info --address TContract...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-contract-info --address TContract...
     ```
 
     - `--address` (required).
