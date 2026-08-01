@@ -10,6 +10,8 @@ TronGrid offers an easy to use hosted API, load balanced full nodes, secure and 
 
 TronGrid uses a set of NodeJS apps to talk with Redis and PostgreSQL to provide a simple, fast and reliable query interface for the TRON API.
 
+For an independent latency and reliability comparison of public TRON JSON-RPC endpoints (TronGrid and community providers such as dRPC and PublicNode), see the [OpenChainBench TRON RPC benchmark](https://openchainbench.com/benchmarks/tron-rpc). Latency (p50/p90/p99) and success rate are probed every 60 seconds from 3 regions (US East, EU West, Singapore), published under CC BY 4.0 alongside the open-source harness.
+
 TronGrid supports 2 types of api:
 
 - FullNode & SolidityNode api
