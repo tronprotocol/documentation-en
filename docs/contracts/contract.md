@@ -102,6 +102,9 @@ There is a special type of message call, delegate call. The difference with comm
 This command will create a new contract with a new address. The primary difference from Ethereum is that the new TRON address is derived as `sha3omit12(rootTransactionId || nonce)` — the root transaction id concatenated with the 8-byte nonce, then hashed (the nonce itself is **not** pre-hashed); the final 21-byte address has a leading `0x41` TRON address prefix. Different from Ethereum (where nonce is the sender account's transaction nonce), here `nonce` is a per-root-transaction counter that increments on every internal action (internal call, transfer, `CREATE`, suicide, etc.), not only on `CREATE`. Refer to `TransactionUtil.generateContractAddress(byte[], long)` for the exact implementation.
 **Note**: Different from creating a contract by grpc's `deployContract`, contract created by `CREATE` command does not store contract abi.
 
+When `ALLOW_TVM_OSAKA` is active, `CREATE2` at the maximum call depth pushes
+zero instead of attempting another contract creation.
+
 #### built-in function and built-in function attribute
 
 1. TVM is compatible with solidity language's transfer format, including:
@@ -121,7 +124,13 @@ This command will create a new contract with a new address. The primary differen
    inside a contract. Enabled by the `ALLOW_TVM_VOTE` chain parameter,
    activated on mainnet by committee [proposal #84](https://tronscan.io/#/proposal/84).
    Provides `VOTEWITNESS` / `WITHDRAWREWARD` opcodes and related read-only
-   precompiles.
+   precompiles. At execution time, TVM selects the `VOTEWITNESS` Energy
+   calculation from the active chain parameters. When `ALLOW_TVM_OSAKA` is
+   active, it uses `BigInteger` for dynamic-array offsets, lengths, and memory
+   bounds to prevent 256-bit wraparound. Otherwise, it uses the
+   energy-adjustment calculation when `ALLOW_ENERGY_ADJUSTMENT` is active, or
+   the original calculation without the energy-adjustment and Osaka
+   overflow-protection changes when neither parameter is active.
 
 3. TRC-10 token operations: sending TRC-10 to a target address and querying
    the TRC-10 balance of an address. Enabled by the `ALLOW_TVM_TRANSFER_TRC10`
@@ -209,6 +218,24 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 #### Block Related
 
 - `blockhash(uint blockNumber) returns (bytes32)`: specified block hash, can only apply to the latest 256 blocks and current block excluded. **Note**: the form `block.blockhash(uint)` was deprecated in upstream Solidity 0.4.22 and removed in 0.5.0; TRON's Solidity fork inherits the deprecation from `tv_0.4.24` and the removal from `tv_0.5.4` onwards — use the top-level `blockhash(...)` instead
+
+    For access to older block hashes, the `ALLOW_TVM_PRAGUE` chain parameter
+    (ID 95) deploys the
+    [TIP-2935](https://github.com/tronprotocol/tips/blob/master/tip-2935.md)
+    block-hash history contract at
+    `0x0000F90827F1C53a10cb7A02335B175320002935`. This parameter requires
+    `ALLOW_TVM_SHANGHAI` to be active first because the history contract
+    bytecode uses `PUSH0`.
+
+    The contract stores parent block hashes in an 8191-slot ring buffer. For a
+    32-byte encoded block number `K`, the query is valid when `K` is in
+    `[block.number - 8191, block.number - 1]`; a future block or a block outside
+    that window causes the call to revert. Activation does not backfill hashes
+    from earlier blocks, so the buffer fills progressively after the parameter
+    takes effect.
+
+    This contract supplements rather than changes the `BLOCKHASH` opcode.
+
 - `block.basefee` (uint): returns the network energy fee from chain parameter (`getEnergyFee`); unlike Ethereum's per-block EIP-1559 base fee, this value only changes when a committee proposal modifies it. Available since the London upgrade (`ALLOW_TVM_LONDON`), activated on mainnet by committee [proposal #72](https://tronscan.io/#/proposal/72)
 - `block.coinbase` (address): Super Representative address that produced the current block
 - `block.difficulty` (uint): current block difficulty, not recommended, set 0

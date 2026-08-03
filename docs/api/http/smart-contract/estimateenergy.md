@@ -59,6 +59,9 @@ Response example:
 
 When `vm.estimateEnergy=true` is not enabled, the call goes through the `ContractValidateException` branch (see below): `result.code = CONTRACT_VALIDATE_ERROR` and `result.message` is `this node does not support estimate energy`.
 
+Energy estimation executes through the constant-call path and is subject to
+[`vm.constantCallTimeoutMs`](../../../using_javatron/configuration.md#tvm-and-constant-call-configuration).
+
 ### Error responses
 
 This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still an `EstimateEnergyMessage`.
