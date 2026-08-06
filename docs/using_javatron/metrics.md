@@ -15,6 +15,10 @@ node.metrics = {
 }
 ```
 
+Prometheus monitoring is disabled by default and listens on port `9527` when enabled.
+
+For details about Prometheus and legacy monitoring settings, see [Event subscription and monitoring](configuration.md#event-subscription-and-monitoring).
+
 ## Start the java-tron Node
 
 After updating the configuration, start the node as described in [Starting a java-tron Full Node](installing_javatron.md#starting-a-java-tron-node).
@@ -129,6 +133,3 @@ The deployment process of the Grafana visualization tool is as follows:
     ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png)
     
     Grafana will then render the dashboard according to the imported JSON file, allowing you to monitor the running status of the node in real time.
-
-
-
