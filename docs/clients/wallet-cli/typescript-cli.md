@@ -89,10 +89,16 @@ wallet-cli change-password
 `import mnemonic`, `import private-key`, and `change-password` are interactive-only. They require a
 real terminal and read secrets through hidden prompts; there is no non-interactive stdin alternative.
 
+For non-interactive use with commands such as `derive`, `backup`, and `tx sign`, provide the master
+password through `--password-stdin`. When signing with a Ledger account, do not pipe a password or
+pass `--password-stdin`. The `derive` example below shows the complete non-interactive form. To keep
+later examples concise, they may omit the password pipe and `--password-stdin`.
+
 For HD sub-account derivation, pass the HD seed id shown by `wallet-cli list`.
 
 ```bash
-wallet-cli derive --seed-id wlt_ab12cd34 --label operations
+printf '%s\n' "$WALLET_PASSWORD" |
+  wallet-cli derive --seed-id wlt_ab12cd34 --label operations --password-stdin
 ```
 
 Deleting a root HD wallet cascades to accounts derived from that root and cleans orphan labels. In a
@@ -296,14 +302,3 @@ Canonical command ids do not carry a `tron.` prefix: for example, the id is `tx.
 
 Invalid global values such as `--timeout 0` or an unsupported `--output` value fail with
 `invalid_value` instead of silently falling back to a default.
-
-For non-interactive authentication, pipe only the master password through `--password-stdin`:
-
-```bash
-printf '%s\n' "$WALLET_PASSWORD" | wallet-cli message sign --message 'hello' --password-stdin --output json
-wallet-cli tx broadcast --tx-stdin < signed.json
-```
-
-The password example assumes the shell variable is populated securely and is not exported. Only
-one `*-stdin` flag can consume stdin in each invocation. `import mnemonic`, `import private-key`,
-and `change-password` must be run interactively in a TTY.
