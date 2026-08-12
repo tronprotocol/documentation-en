@@ -26,6 +26,7 @@ This documentation is written for java-tron node operators, protocol researchers
 
     - [Deploy java-tron](using_javatron/installing_javatron.md)
     - [Node Configuration](using_javatron/configuration.md)
+    - [Node Logging](using_javatron/logging.md)
     - [Node Monitoring](using_javatron/metrics.md)
     - [Upgrade to a New Version](releases/upgrade-instruction.md)
     - [Private Network](using_javatron/private_network.md)

@@ -93,51 +93,43 @@ You can add the data storage path when you start the node, like:
 java -jar FullNode.jar -c config.conf -d /data/output
 ```
 
-### Is there any config file option, which I can use for sending logs to stdout?
+### How can I send node logs to stdout?
 
-Steps to send logs to stdout:
+Start with the `logback.xml` shipped with the same java-tron version that you run. The current reference file is [`framework/src/main/resources/logback.xml`](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/logback.xml).
 
-Download [https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml](https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml)
-
-Uncomment the configuration:
-
-appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"
-
-Go to the configuration: root level="INFO"
-uncomment the configuration: appender-ref ref="STDOUT"
-comment the configuration: appender-ref ref="ASYNC"
-
-Move logback.xml to the same directory with FullNode.jar
-
-Launch FullNode.jar with additional parameter: --log-config logback.xml, for example:
-
-```text
-java -jar FullNode.jar --log-config logback.xml
-```
-
-### How to change log level
-
-The log level is defined in logback.xml. Please set the root level to "ERROR" if you want to filter only error logs. Please refer to the configuration below.
+The default configuration already defines a `CONSOLE` appender. Attach it to the root logger:
 
 ```xml
-<root level="ERROR">
-    <!--<appender-ref ref="STDOUT"/>-->
-    <appender-ref ref="ASYNC"/>
-  </root>
-
-  <logger name="app" level="ERROR"/>
-  <logger name="net" level="ERROR"/>
-  <logger name="backup" level="ERROR"/>
-  <logger name="discover" level="ERROR"/>
-  <logger name="crypto" level="ERROR"/>
-  <logger name="utils" level="ERROR"/>
-  <logger name="actuator" level="ERROR"/>
-  <logger name="API" level="ERROR"/>
-  <logger name="witness" level="ERROR"/>
-  <logger name="DB" level="ERROR"/>
-  <logger name="capsule" level="ERROR"/>
-  <logger name="VM" level="ERROR"/>
+<root level="INFO">
+  <appender-ref ref="CONSOLE"/>
+  <appender-ref ref="ASYNC"/>
+  <appender-ref ref="METRICS"/>
+</root>
 ```
+
+This writes logs to both stdout and `logs/tron.log`. To write the main node log to stdout only, omit the `ASYNC` reference but keep `METRICS` if you use the Prometheus metric derived from `ERROR` logs.
+
+Save the customized file, then pass its path with `--log-config`:
+
+```text
+java -jar FullNode.jar --log-config /absolute/path/to/logback.xml
+```
+
+Relative paths are resolved from the process working directory, not from the directory containing `FullNode.jar`.
+
+The path must identify a readable file. Starting with GreatVoyage-v4.8.2, the node fails to start instead of silently falling back to the bundled configuration when the supplied file is missing or unreadable.
+
+For the default log files, rotation settings, and a complete customization guide, see [Node Logging](../using_javatron/logging.md).
+
+### How do I change a log level?
+
+Change the applicable logger in `logback.xml`. Many java-tron modules have an explicit `INFO` level, so changing only the root level does not override those module-specific settings. For example, to reduce P2P networking output:
+
+```xml
+<logger name="net" level="WARN"/>
+```
+
+The dedicated `LEVELDB`, `ROCKSDB`, and `io.grpc` loggers have their own levels and do not propagate to the root logger. Change their levels directly to control `db.log` and `grpc.log`. See [Adjust log levels for troubleshooting](../using_javatron/logging.md#adjust-log-levels-for-troubleshooting) for examples.
 
 ### How can I get asset from private net?
 
