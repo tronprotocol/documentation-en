@@ -15,7 +15,7 @@ node.metrics = {
 }
 ```
 
-Prometheus monitoring is disabled by default and listens on port `9527` when enabled.
+Prometheus monitoring is disabled by default. When enabled, it listens on port `9527` by default; the listening port can be changed through `node.metrics.prometheus.port`.
 
 For details about Prometheus and legacy monitoring settings, see [Event subscription and monitoring](configuration.md#event-subscription-and-monitoring).
 
