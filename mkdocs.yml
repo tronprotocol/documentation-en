@@ -290,6 +290,8 @@ nav:
                 - Queries: clients/wallet-cli/query.md
             - TypeScript / npm CLI:
                 - Overview: clients/wallet-cli/typescript-cli.md
+                - Multi-signature: clients/wallet-cli/typescript-cli-multisig.md
+                - GasFree: clients/wallet-cli/typescript-cli-gasfree.md
                 - Signing & Security: clients/wallet-cli/typescript-cli-signing.md
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
