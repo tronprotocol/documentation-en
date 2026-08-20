@@ -140,12 +140,13 @@ All PRs must be reviewed before merging.
 - Self-test before submission.
 - Pass standardized tests.
 
-CI Tools:
+### Automated CI Checks
 
-- Sonar: Static code analysis
-- Travis CI: Continuous integration checks
+java-tron uses GitHub Actions for PR validation, code and configuration checks, multi-platform builds, coverage gates, integration and security tests, reviewer assignment, and cancellation of work for closed, unmerged PRs. Which workflows run depends on the changed files, event, and target branch.
 
-Once all checks pass, maintainers will review and merge into `develop`.
+See [java-tron CI Workflows](workflows.md) for the trigger matrix, check details, thresholds, and branch-specific behavior.
+
+Once all checks pass, maintainers will review the PR and merge it into the appropriate target branch.
 
 > **Coding Standards**
 >
@@ -163,11 +164,14 @@ Once all checks pass, maintainers will review and merge into `develop`.
 
 1. One PR should address a single issue.
 2. Avoid excessively large changes.
-3. Title: Briefly describe the PR’s purpose.
-4. Description: Provide detailed information for reviewers.
-5. Specify areas where feedback is needed.
-6. Do not capitalize the first letter of the title.
-7. Do not end the title with a period.
+3. Format the title as `type: description` or `type(scope): description`.
+4. Keep the title between 10 and 72 characters.
+5. Use one of these types: `feat`, `fix`, `refactor`, `docs`, `style`, `test`, `chore`, `ci`, `perf`, `build`, or `revert`.
+6. Do not start the description portion of the title with an uppercase ASCII letter, and do not end the title with a period.
+7. Provide a PR description of at least 20 characters that explains what changed and why.
+8. Specify areas where feedback is needed.
+
+The scope is optional. Unknown scopes only produce a warning, and reviewer assignment uses a separate scope mapping. See [Scope Validation and Reviewer Assignment](workflows.md#scope-validation-and-reviewer-assignment) for details.
 
 ## Commit Message Specifications
 
@@ -190,14 +194,18 @@ Recommended format:
 - `refactor`: Code refactoring
 - `test`: Test code changes
 - `chore`: Build process or auxiliary tooling changes (no production code change)
+- `ci`: CI/CD configuration changes
+- `perf`: Performance improvements
+- `build`: Build system or dependency changes
+- `revert`: Reverts an earlier change
 
-The `scope` specifies the place of the change, for example: `protocol`, `api`, `test`, `docs`, `build`, `db`, `net`. Use `*` if there isn't a more fitting scope.
+The `scope` specifies the place of the change, for example: `protocol`, `api`, `test`, `vm`, `config`, `db`, `net`. Use `*` if there isn't a more fitting scope.
 
 ### Subject Specifications
 
-1. Limit to 50 characters; do not end with a period.
+1. Keep the subject between 10 and 72 characters; do not end with a period.
 2. Start with a verb and use the first-person present tense (e.g., use `change` instead of `changed` or `changes`).
-3. Start with a lowercase letter.
+3. Do not start the subject with an uppercase letter.
 4. Avoid meaningless commits. It is recommended to use the `git rebase` command.
 
 Example:
