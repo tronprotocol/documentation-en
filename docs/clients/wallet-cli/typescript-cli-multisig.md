@@ -1,27 +1,28 @@
 # TypeScript CLI multi-signature
 
-The TypeScript CLI supports the full TRON multi-signature lifecycle: inspect or replace account
-permissions, build a transaction for a selected permission, collect weighted signatures, verify the
-threshold, and broadcast. Signatures can be exchanged directly as a hex artifact or collected by
-the optional TronLink multi-signature service.
+The TypeScript CLI can inspect and replace account permissions, build a transaction for a selected
+permission, collect weighted signatures, and broadcast after the threshold is reached.
 
-## Permission model and fees
+Signers can exchange a transaction file directly or use the optional TronLink multi-signature
+service.
 
-Every TRON account has:
+## Permissions and fees
 
-- one owner permission, id `0`, with full control;
-- an optional witness permission, id `1`, for Super Representatives;
-- up to eight active permissions, ids `2`–`9`, scoped to selected contract operations.
+A TRON account can have:
 
-A permission contains up to five keys. Each key has a weight, and signatures authorize a
-transaction when their combined weight reaches the permission's threshold.
+- one owner permission, id `0`;
+- an optional witness permission, id `1`; and
+- up to eight active permissions, ids `2`–`9`.
 
-Two chain-set fees are especially important. wallet-cli reads their current values at runtime:
+Each permission can contain up to five keys. Every key has a weight, and the combined weight of the
+signatures must reach the permission threshold.
 
-- replacing an account's permission structure burns the permission-update fee, currently **100
-  TRX on mainnet**;
-- broadcasting a transaction with more than one signature incurs the additional multi-signature
-  fee, currently **1 TRX on mainnet**.
+Two chain fees are especially relevant:
+
+- replacing the account's permission structure currently costs **100 TRX on mainnet**; and
+- broadcasting a transaction with more than one signature currently adds **1 TRX on mainnet**.
+
+These are chain parameters and can change. wallet-cli reads the current values at runtime.
 
 ## Inspect and update permissions
 
@@ -32,18 +33,13 @@ wallet-cli permission show --account main --network tron:nile
 wallet-cli permission show --account main --network tron:nile --output json
 ```
 
-`permission show` lists owner, witness, and active groups; thresholds; weighted keys; decoded active
-operations; and which keys are held by the local wallet. A bare address is also accepted, so the
-account does not need to be imported locally for this read-only query.
-
-`permission update` replaces the entire structure. Export the current data, edit it, and dry-run the
-replacement before signing:
+`permission update` replaces the complete permission structure. Export the current structure,
+edit only the intended fields, and dry-run the replacement:
 
 ```bash
 wallet-cli permission show --account main --network tron:nile --output json |
   jq '.data' > permissions.json
 
-# Edit keys, weights, thresholds, names, and operations.
 $EDITOR permissions.json
 
 wallet-cli permission update \
@@ -53,16 +49,11 @@ wallet-cli permission update \
   --dry-run
 ```
 
-Each active permission contains decoded `operations`, its raw `operationsHex`, and
-`unknownOperationIds` for bitmap bits that this wallet-cli version cannot name. If
-`unknownOperationIds` is empty, edit `operations` and remove that group's old `operationsHex`;
-wallet-cli will regenerate the bitmap. If `unknownOperationIds` is non-empty, `operations` alone
-cannot preserve those bits. To keep them, retain `unknownOperationIds` and update `operationsHex`
-consistently with both the named and unknown operations. To remove them deliberately, remove or
-empty `unknownOperationIds` and remove `operationsHex`, so wallet-cli regenerates a bitmap from the
-named `operations` only. If the fields disagree, the update is rejected with `invalid_permission`.
-
-After reviewing the complete resulting structure and fee, submit it:
+Preserve fields you do not intend to change and review the complete dry-run result. When changing
+allowed operations, follow the upstream [`permission` reference](https://github.com/tronprotocol/wallet-cli/tree/master/ts/docs/commands/permission),
+because the related fields must remain consistent. If `permission show` reports unknown operations,
+leave that active permission unchanged unless you can preserve its bitmap. After checking the keys,
+weights, threshold, allowed operations, and fee, submit the update:
 
 ```bash
 printf '%s\n' "$WALLET_PASSWORD" |
@@ -75,20 +66,17 @@ printf '%s\n' "$WALLET_PASSWORD" |
 ```
 
 !!! danger
-    A permission update can permanently lock an account, and there is no on-chain recovery. The
-    chain accepts an owner group even if none of its keys are locally available or its threshold
-    requires unavailable co-signers. wallet-cli emits `owner_lockout` or
-    `owner_lockout_partial` warnings but does not block a deliberately multi-party setup. It also
-    warns when an active permission can itself update permissions.
+    A permission update can permanently lock an account, and there is no on-chain recovery. Confirm
+    that the new owner permission contains the intended keys and that available signers can reach
+    its threshold.
 
-## Direct artifact workflow
+## Exchange a transaction file
 
-The service-free workflow passes one transaction hex between signers.
+The direct workflow does not require an external collaboration service.
 
-### 1. Start the artifact
+### 1. Create the first artifact
 
-The initiator selects the permission group, extends the expiration, and produces the first
-signature:
+Select the permission, allow enough time for co-signers, and create the first signature:
 
 ```bash
 printf '%s\n' "$WALLET_PASSWORD" |
@@ -103,26 +91,22 @@ printf '%s\n' "$WALLET_PASSWORD" |
     --output text > transaction.hex
 ```
 
-The default transaction expiration is approximately 60 seconds. Use an explicit expiration, up to
-24 hours, when signatures will be collected manually.
-
-`--build-only` can instead produce an unsigned artifact without unlocking a wallet. This is useful
-when the first signer is on another machine or when opening a TronLink service collection.
+The default transaction expiration is approximately 60 seconds. For manual collection, set an
+expiration long enough for every signer, up to 24 hours. Use `--build-only` instead of
+`--sign-only` when the first signer is on another machine.
 
 ### 2. Inspect approvals
-
-Anyone with the artifact can inspect its permission, current weight, approved signers, missing
-weight, and expiration without signing or unlocking a wallet:
 
 ```bash
 wallet-cli tx approvals --file transaction.hex --network tron:nile
 ```
 
-An expired transaction remains inspectable but cannot be signed or broadcast.
+This shows the permission, approved signers, accumulated and missing weight, and expiration. An
+expired transaction can be inspected but not signed or broadcast.
 
-### 3. Append signatures
+### 3. Add signatures
 
-Each remaining signer appends exactly one signature while preserving the previous ones:
+Each signer uses the latest file produced by the previous signer:
 
 ```bash
 printf '%s\n' "$COSIGNER_PASSWORD" |
@@ -134,30 +118,24 @@ printf '%s\n' "$COSIGNER_PASSWORD" |
     --password-stdin
 ```
 
-Pass the resulting file to the next signer. Online signing verifies permission membership and
-rejects duplicate signatures before decrypting the key. On an air-gapped machine, add `--offline`;
-the node-backed weight check can be repeated later with `tx approvals`.
+Online signing checks permission membership and rejects duplicate signatures. On an air-gapped
+machine, add `--offline` and check the artifact later with `tx approvals`.
 
 ### 4. Validate and broadcast
 
-After `thresholdReached` is true, validate without submission and then broadcast:
+When `thresholdReached` is true, validate and broadcast the final artifact:
 
 ```bash
 wallet-cli tx broadcast --file transaction.signed.hex --network tron:nile --dry-run
 wallet-cli tx broadcast --file transaction.signed.hex --network tron:nile --wait
 ```
 
-`tx broadcast` refuses an expired artifact (`tx_expired`) locally and uses the node's read-only
-permission endpoints to reject one below its threshold (`not_authorized`). An incomplete
-transaction is therefore never submitted to the node's broadcast endpoint.
+wallet-cli refuses an expired transaction or one whose signature weight is below the threshold.
 
-## TronLink service collaboration
+## Use the TronLink service
 
-`tx multisig` is an optional convenience layer. The TronLink service stores a transaction,
-accumulates signatures, and notifies co-signers over WebSocket. The direct artifact workflow above
-does not require this service.
-
-Configure credentials matching the selected mainnet or testnet environment:
+`tx multisig` can store the transaction, coordinate signatures, and notify co-signers. Configure
+credentials that match the selected mainnet or testnet environment:
 
 ```bash
 wallet-cli config tronlinkSecretId '<secret-id>'
@@ -165,7 +143,7 @@ wallet-cli config tronlinkSecretKey '<secret-key>'
 wallet-cli config tronlinkChannel '<channel>'
 ```
 
-Build an unsigned artifact, then sign it locally and open a collection:
+Build an unsigned artifact and create a collection:
 
 ```bash
 wallet-cli tx send \
@@ -185,8 +163,8 @@ printf '%s\n' "$WALLET_PASSWORD" |
     --password-stdin
 ```
 
-Opening a collection adds the initiator's first signature; there is no empty collection. Other
-signers list work awaiting them and sign by transaction id:
+Creating a collection adds the initiator's first signature. Other signers can list requests and sign
+by transaction id:
 
 ```bash
 wallet-cli tx multisig --account cosigner --network tron:nile
@@ -199,27 +177,23 @@ printf '%s\n' "$COSIGNER_PASSWORD" |
     --password-stdin
 ```
 
-Use `tx multisig --watch` to receive only the count of transactions awaiting the selected account;
-transaction content is not included in notifications. When the threshold is reached, the service
-broadcasts automatically. Confirm the transaction on-chain before attempting the manual
-`tx broadcast` fallback.
+Use `tx multisig --watch` to receive notifications. The service broadcasts automatically when the
+threshold is reached. Confirm the transaction on-chain before attempting a manual broadcast.
 
 ## Safety checklist
 
-- Run `permission show` before selecting a permission or editing its keys.
-- Always `--dry-run` and manually review a full permission replacement.
-- Pass the newly signed artifact to the next signer. Its transaction body (`raw_data` and
-  `raw_data_hex`) and `txID` must remain unchanged while the signature array grows; changing the
-  transaction body invalidates all prior signatures.
+- Inspect current permissions before selecting or changing one.
+- Dry-run and review the complete permission replacement.
+- Pass only the latest artifact to the next signer; changing the transaction invalidates earlier
+  signatures.
 - Choose an expiration long enough for collection but no longer than necessary.
-- Check `thresholdReached`, not the number of signatures: signer weights may differ.
-- Treat TronLink responses as third-party data. wallet-cli re-derives and cross-checks transaction
-  identity, owner, contract type, weights, and signature progress before signing.
-- On mainnet, obtain explicit approval before updating permissions or broadcasting a transaction.
+- Check `thresholdReached`, not the number of signatures, because weights can differ.
+- Confirm the recipient, amount, permission, and fee before signing or broadcasting on mainnet.
 
-For complete command fields and error codes, see the upstream references for
+For all options and response fields, see the upstream references for
 [`permission`](https://github.com/tronprotocol/wallet-cli/tree/master/ts/docs/commands/permission),
 [`tx sign`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/tx/sign.md),
 [`tx approvals`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/tx/approvals.md),
 [`tx multisig`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/tx/multisig.md),
-and [`tx broadcast`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/tx/broadcast.md).
+and
+[`tx broadcast`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/tx/broadcast.md).

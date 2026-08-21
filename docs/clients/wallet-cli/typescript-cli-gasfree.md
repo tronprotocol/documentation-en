@@ -1,59 +1,46 @@
 # TypeScript CLI GasFree
 
-GasFree transfers let an account move supported tokens without holding TRX. The TypeScript CLI
-signs an EIP-712/TIP-712 authorization locally, and the GasFree provider relays the transfer and
-charges its fee in the transferred token.
+GasFree lets an account transfer supported tokens without holding TRX. The GasFree service submits
+the transfer and charges its fee in the transferred token.
 
-This workflow is separate from the Java CLI commands documented in [Java CLI GasFree](gasfree.md).
+This workflow is separate from the Java commands described in
+[Java CLI GasFree](gasfree.md).
 
-## Networks and credentials
+## Configure the service
 
-The TypeScript GasFree commands support TRON mainnet and Nile. Shasta is not supported. Configure
-API credentials that match the selected mainnet or testnet service environment:
+GasFree supports TRON mainnet and Nile; Shasta is not supported. Configure credentials for the
+selected mainnet or testnet environment:
 
 ```bash
 wallet-cli config gasfreeApiKey '<api-key>'
 wallet-cli config gasfreeApiSecret '<api-secret>'
 ```
 
-`gasfreeApiSecret` is masked in `wallet-cli config` text and JSON output; `gasfreeApiKey` is
-displayed. When the API secret is present, `config.yaml` must not be a symbolic link and must have
-no group or world permissions on POSIX; otherwise it is rejected with `insecure_config`. An
-unreadable or invalid configuration returns `invalid_config`.
+The API secret is masked when configuration is displayed. Keep `config.yaml` private; on POSIX,
+wallet-cli refuses to use an insecure configuration file that contains the secret.
 
-Missing credentials return `gasfree_credentials_missing`. Rejected credentials, including
-credentials for the wrong environment, return `gasfree_auth_failed`; rate limiting returns
-`provider_rate_limited`. Transport failures, malformed responses, and HTTP 5xx responses return
-`provider_error`. Other request or business rejection can return `gasfree_rejected`, while a
-missing provider resource returns `not_found`.
+## Find the GasFree address and fees
 
-## GasFree address and fees
+The GasFree service provides a dedicated address for each wallet account. Tokens used in this
+workflow must be sent to that address rather than the account's ordinary TRON address.
 
-For each wallet account, the GasFree service reports a dedicated GasFree address. The CLI obtains
-this address from the provider; it does not derive it locally. Assets used for GasFree transfers are
-held and sent from this address, not directly from the owner's ordinary TRON address. Query it
-together with activation state, nonce, supported tokens, and the provider's current fee schedule:
+Query the address, activation state, supported tokens, and current fees:
 
 ```bash
 wallet-cli gasfree info --account main --network tron:nile
 ```
 
-Give the returned GasFree address to a sender when the account needs to receive tokens for this
-workflow.
+The service charges:
 
-The provider deducts:
-
-- a per-transfer service fee; and
+- a fee for each transfer; and
 - a one-time activation fee on the first outgoing transfer from an inactive GasFree address.
 
-Both fees are charged in the token and are added to the requested transfer amount. The provider's
-supported-token list and fees are live configuration, so query or dry-run immediately before a
-transfer rather than hard-coding them.
+Both fees are paid in the token and added to the requested transfer amount. Fees and supported
+tokens can change, so query or dry-run immediately before transferring.
 
 ## Preview and submit a transfer
 
-Use `--dry-run` to retrieve fees, validate provider metadata, and check the token balance without
-unlocking the wallet or submitting an authorization:
+Use `--dry-run` to review the fees and check whether the GasFree address holds enough tokens:
 
 ```bash
 wallet-cli gasfree transfer \
@@ -64,10 +51,9 @@ wallet-cli gasfree transfer \
   --dry-run
 ```
 
-The balance must cover the amount plus the service fee and, when applicable, the activation fee.
-An insufficient balance returns `insufficient_token_balance`.
+The balance must cover the recipient amount plus the service fee and any activation fee.
 
-After reviewing the fee breakdown, sign and submit:
+After reviewing the result, sign and submit:
 
 ```bash
 printf '%s\n' "$WALLET_PASSWORD" |
@@ -79,80 +65,46 @@ printf '%s\n' "$WALLET_PASSWORD" |
     --password-stdin
 ```
 
-Ledger accounts also support GasFree signing. Do not pipe a password or pass `--password-stdin` for
-a Ledger account. Enable **Settings > Sign by Hash > Allowed** in the Ledger TRON app; otherwise the
-CLI returns `ledger_setting_required`. An app version without TIP-712 hash signing returns
-`ledger_unsupported`.
+`--to` also accepts a name stored with `contact add`.
 
-`--to` also accepts a name stored with `contact add`. The receipt includes `toContact` when a name
-was resolved.
+Ledger accounts support GasFree signing. Do not pass `--password-stdin` for a Ledger account, and
+enable **Settings > Sign by Hash > Allowed** in the Ledger TRON app.
 
-GasFree has no `--sign-only` or `--build-only` mode. Its signed authorization is bound to the
-provider submission protocol and is not a normal TRON transaction artifact for offline broadcast.
+GasFree does not support `--sign-only` or `--build-only`. Its authorization is submitted through
+the GasFree service rather than broadcast as a normal transaction artifact.
 
-## Track provider and chain state
+## Track the transfer
 
-Submission returns a provider `traceId`, not a transaction id. At this point the provider has
-accepted the request, but the transfer is not necessarily on-chain:
-
-```json
-{
-  "kind": "gasfree-transfer",
-  "stage": "submitted",
-  "traceId": "7f3e9a02-58c1-4d2e-b6a4-91d0c3f8e527"
-}
-```
-
-Either add `--wait` to the original transfer or query it later:
+Submission returns a GasFree `traceId`, not an on-chain transaction id. The transfer may still be
+waiting for the service or the network:
 
 ```bash
-wallet-cli gasfree trace \
-  7f3e9a02-58c1-4d2e-b6a4-91d0c3f8e527 \
-  --network tron:nile
+wallet-cli gasfree trace <TRACE_ID> --network tron:nile
 ```
 
-The non-terminal provider states are ordered as follows:
+You can also add `--wait` to `gasfree transfer`.
 
-```text
-WAITING → INPROGRESS → CONFIRMING
-```
+The service reports progress through `WAITING`, `INPROGRESS`, and `CONFIRMING`.
+`SUCCEED` and `FAILED` are terminal states. Polling may skip intermediate states.
 
-`SUCCEED` and `FAILED` are terminal states. Polling observes snapshots and may skip one or more
-intermediate states, so automation must not require every state to appear.
+Do not pass a GasFree trace id to `tx status`. Continue using `gasfree trace` until the service
+returns a terminal state. An on-chain transaction id appears after the service submits the
+transaction.
 
-An on-chain `txId` appears only after the provider submits the transaction. Do not pass a GasFree
-`traceId` to `tx status`; use `gasfree trace` until the provider returns a terminal state.
+For automation, inspect the returned `state` or `stage`. A successful status query can still
+report a failed transfer.
 
-A failed provider transfer is still a successful status query: `gasfree trace` exits `0` with
-`success: true`, while `data.state` is `FAILED`. When the provider supplies an explanation, it is
-returned as `data.failureReason`. Similarly, `gasfree transfer --wait` reports
-`data.stage: "failed"`. Automation must branch on these data fields rather than the command exit
-code alone.
+## Checklist
 
-## Integrity and signing checks
+- Use `gasfree info` to obtain the correct receiving address and current fees.
+- Keep mainnet and Nile credentials separate.
+- Dry-run immediately before sending.
+- Confirm the balance covers the amount and all fees.
+- Treat a submitted request as pending until it reaches a terminal state.
+- On mainnet, confirm the recipient, token, amount, and fee before signing.
 
-Before submission, wallet-cli:
-
-- validates supported-token and fee metadata returned by the provider;
-- checks amount plus all applicable fees against the GasFree token balance;
-- recomputes the typed-data digest;
-- signs locally and recovers the signer address from the signature;
-- rejects a signature that does not match the selected account.
-
-Metadata inconsistency returns `gasfree_integrity`, signing mismatch or refusal returns
-`signing_rejected`, and provider rejection returns `gasfree_rejected`. Watch-only accounts return
-`watch_only_no_signer` before signing.
-
-## Operational checklist
-
-- Use `gasfree info` to obtain the correct receiving address and current fee schedule.
-- Keep mainnet and Nile API credentials separate and switch them when changing environments.
-- Dry-run immediately before sending, especially for an inactive GasFree address.
-- Confirm `amount + serviceFee + activateFee`, not just the recipient amount.
-- Treat `stage: "submitted"` as provider acceptance, not chain confirmation.
-- On mainnet, confirm the recipient, token, amount, and fee with the user before signing.
-
-For complete fields and error codes, see the upstream references for
+For all options and response fields, see the upstream references for
 [`gasfree info`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/gasfree/info.md),
 [`gasfree transfer`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/gasfree/transfer.md),
-and [`gasfree trace`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/gasfree/trace.md).
+and
+[`gasfree trace`](https://github.com/tronprotocol/wallet-cli/blob/master/ts/docs/commands/gasfree/trace.md).
