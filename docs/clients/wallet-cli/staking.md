@@ -18,9 +18,9 @@ Resource codes used throughout:
 Code `2` (TRON_POWER) is network-gated for freeze/unfreeze commands:
 `FreezeBalance`/`UnfreezeBalance` (Stake 1.0), `FreezeBalanceV2`/`UnfreezeBalanceV2` (Stake 2.0),
 and their Standard CLI equivalents accept it only when the chain parameter
-`getAllowNewResourceModel` is enabled. If that chain parameter cannot be fetched, the 4.9.7 client
-fails open and lets the node validate the transaction at broadcast. Delegation commands (both modes)
-always accept only `0` or `1`; TRON_POWER is not delegatable.
+`getAllowNewResourceModel` is enabled. If that chain parameter cannot be fetched, the client fails
+open and lets the node validate the transaction at broadcast. Delegation commands (both modes) always
+accept only `0` or `1`; TRON_POWER is not delegatable.
 
 Amounts are in **SUN** (1 TRX = 1,000,000 SUN).
 
@@ -40,7 +40,7 @@ resource queries at the end of the page do not.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile freeze-balance \
+    java -jar java/build/libs/wallet-cli.jar --network nile freeze-balance \
       --amount 1000000 --duration 3 --resource 1
     ```
 
@@ -64,7 +64,7 @@ resource queries at the end of the page do not.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile unfreeze-balance --resource 1
+    java -jar java/build/libs/wallet-cli.jar --network nile unfreeze-balance --resource 1
     ```
 
     - `--resource` (optional, `0`/`1`/`2`, default `0`). `2` is TRON_POWER and is allowed only when
@@ -88,7 +88,7 @@ No duration: staked TRX stays staked until you explicitly unstake it.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile freeze-balance-v2 \
+    java -jar java/build/libs/wallet-cli.jar --network nile freeze-balance-v2 \
       --amount 1000000 --resource 1
     ```
 
@@ -111,7 +111,7 @@ waiting period (see `withdraw-expire-unfreeze`).
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile unfreeze-balance-v2 \
+    java -jar java/build/libs/wallet-cli.jar --network nile unfreeze-balance-v2 \
       --amount 1000000 --resource 1
     ```
 
@@ -133,7 +133,7 @@ Withdraws TRX whose unfreeze waiting period has elapsed, returning it to the spe
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile withdraw-expire-unfreeze
+    java -jar java/build/libs/wallet-cli.jar --network nile withdraw-expire-unfreeze
     ```
 
     - `--owner`, `--multi` (optional).
@@ -151,7 +151,7 @@ Cancels all pending v2 unstaking requests, returning that TRX to the staked stat
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile cancel-all-unfreeze-v2
+    java -jar java/build/libs/wallet-cli.jar --network nile cancel-all-unfreeze-v2
     ```
 
     - `--owner`, `--multi` (optional).
@@ -171,7 +171,7 @@ Lends staked bandwidth/energy to another account.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile delegate-resource \
+    java -jar java/build/libs/wallet-cli.jar --network nile delegate-resource \
       --amount 1000000 --resource 1 --receiver TXyz... --lock --lock-period 86400
     ```
 
@@ -195,7 +195,7 @@ Recalls previously delegated resources.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile undelegate-resource \
+    java -jar java/build/libs/wallet-cli.jar --network nile undelegate-resource \
       --amount 1000000 --resource 1 --receiver TXyz...
     ```
 
@@ -215,7 +215,7 @@ Recalls previously delegated resources.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-account-net --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-account-net --address TXyz...
     ```
 
     - `--address` (required).
@@ -231,7 +231,7 @@ Recalls previously delegated resources.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-account-resource --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-account-resource --address TXyz...
     ```
 
     - `--address` (required).
@@ -247,9 +247,9 @@ Recalls previously delegated resources.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-delegated-resource \
+    java -jar java/build/libs/wallet-cli.jar --network nile get-delegated-resource \
       --from TFrom... --to TTo...
-    java -jar build/libs/wallet-cli.jar --network nile get-delegated-resource-v2 \
+    java -jar java/build/libs/wallet-cli.jar --network nile get-delegated-resource-v2 \
       --from TFrom... --to TTo...
     ```
 
@@ -267,9 +267,9 @@ Recalls previously delegated resources.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile \
+    java -jar java/build/libs/wallet-cli.jar --network nile \
       get-delegated-resource-account-index --address TXyz...
-    java -jar build/libs/wallet-cli.jar --network nile \
+    java -jar java/build/libs/wallet-cli.jar --network nile \
       get-delegated-resource-account-index-v2 --address TXyz...
     ```
 
@@ -287,7 +287,7 @@ Recalls previously delegated resources.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-can-delegated-max-size \
+    java -jar java/build/libs/wallet-cli.jar --network nile get-can-delegated-max-size \
       --owner TXyz... --type 1
     ```
 
@@ -306,7 +306,7 @@ Recalls previously delegated resources.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-available-unfreeze-count --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile get-available-unfreeze-count --address TXyz...
     ```
 
     - `--address` (required).
@@ -322,7 +322,7 @@ Recalls previously delegated resources.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile get-can-withdraw-unfreeze-amount \
+    java -jar java/build/libs/wallet-cli.jar --network nile get-can-withdraw-unfreeze-amount \
       --address TXyz... --timestamp 1700000000000
     ```
 

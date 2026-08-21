@@ -16,7 +16,7 @@ current nonce/balance details used when building a transfer.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile gas-free-info --address TXyz...
+    java -jar java/build/libs/wallet-cli.jar --network nile gas-free-info --address TXyz...
     ```
 
     - `--address` (optional) — defaults to the current wallet's address. With `--address`, no auth
@@ -39,7 +39,7 @@ the GasFree relayer rather than in TRX. In JSON mode the response `data` include
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile gas-free-transfer \
+    java -jar java/build/libs/wallet-cli.jar --network nile gas-free-transfer \
       --to TXyz... --amount 1000000
     ```
 
@@ -59,7 +59,7 @@ Looks up the status of a previously submitted GasFree transfer by its trace/requ
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile gas-free-trace --id <traceId>
+    java -jar java/build/libs/wallet-cli.jar --network nile gas-free-trace --id <traceId>
     ```
 
     - `--id` (required). No auth required.

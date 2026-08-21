@@ -231,7 +231,7 @@ System.out.println(ByteArray.toHexString(operations));
 6. The last user signs and broadcasts.
 7. The node verifies if the total signature weight ≥ `threshold`; if yes, accepts the transaction.
 
->Example code reference: [wallet-cli Example](https://github.com/tronprotocol/wallet-cli/blob/develop/src/main/java/org/tron/common/utils/TransactionUtils.java)
+>Example code reference: [wallet-cli Example](https://github.com/tronprotocol/wallet-cli/blob/develop/java/src/main/java/org/tron/common/utils/TransactionUtils.java)
 
 ## Auxiliary Interfaces
 
