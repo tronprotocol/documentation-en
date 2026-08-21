@@ -95,6 +95,12 @@ Response example (real Nile capture):
 
 > `txID` / `ref_block_*` / `expiration` / `timestamp` / `raw_data_hex` and other ephemeral fields share semantics with [`/wallet/createtransaction`](../tx-build-and-broadcast/createtransaction.md). Constant calls do not go on-chain; the `transaction` field is provided only as context.
 
+> **Execution timeout:** This endpoint uses the node's constant-call execution
+> deadline. `vm.constantCallTimeoutMs = 0` uses the network's
+> `MAX_CPU_TIME_OF_ONE_TX` limit; a positive value sets a constant-call-only
+> deadline in milliseconds. See
+> [TVM and constant-call configuration](../../../using_javatron/configuration.md#tvm-and-constant-call-configuration).
+
 ### Error responses
 
 This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`. Note: **EVM revert / runtime errors do not go through `result.code`** — instead `result.result=true`, `message` carries the revert/runtime info, and the failure is marked at `transaction.ret[0].ret="FAILED"`.

@@ -92,6 +92,10 @@ Response example (real Nile capture):
 
 > For simulation only (no on-chain effect), use [`/wallet/triggerconstantcontract`](triggerconstantcontract.md); for energy estimation only, use [`/wallet/estimateenergy`](estimateenergy.md).
 
+> When the ABI marks the target function as `view` or `pure`, this endpoint is
+> dispatched through the constant-call path and is therefore subject to
+> [`vm.constantCallTimeoutMs`](../../../using_javatron/configuration.md#tvm-and-constant-call-configuration).
+
 ### Error responses
 
 This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`.
