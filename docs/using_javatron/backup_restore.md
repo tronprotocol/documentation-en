@@ -87,7 +87,10 @@ The TRON network has supported **Lite FullNode** type nodes since the GreatVoyag
 
 | Lite FullNode Node Data Source | Download Address | Description |
 | :----------------------------- | :--------------- | :---------- |
-| Official Data Source (Asia: Singapore) | [http://34.143.247.77/](http://34.143.247.77/) | LevelDB data |
+| Official Data Source (Americas: Virginia, USA) | [http://34.86.86.229/](http://34.86.86.229/) | LevelDB data, does not include internal transactions |
+| Official Data Source (Asia: Singapore) | [http://34.143.247.77/](http://34.143.247.77/) | LevelDB data, does not include internal transactions |
+| Official Data Source (Americas: USA) | [http://35.197.17.205/](http://35.197.17.205/) | RocksDB data, does not include internal transactions |
+| Official Data Source (Asia: Singapore) | [http://35.247.128.170/](http://35.247.128.170/) | LevelDB data, includes internal transactions |
 
 **Tip:** If you already have full data from a FullNode, you can use the [Lite FullNode Data Trimming Tool](toolkit.md/#lite-fullnode-data-pruning) to trim your FullNode data into Lite FullNode data yourself.
 
