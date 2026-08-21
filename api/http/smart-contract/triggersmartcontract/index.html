@@ -7666,22 +7666,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -7721,6 +7705,88 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_2" id="__nav_8_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/java-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -7921,6 +7987,58 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_3" id="__nav_8_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            TypeScript / npm CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -7932,12 +8050,42 @@
         
   
   <span class="md-ellipsis">
-    TypeScript / npm CLI
+    Overview
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../clients/wallet-cli/typescript-cli-signing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signing & Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -9232,6 +9380,9 @@
 <blockquote>
 <p><code>txID</code> / <code>ref_block_*</code> / <code>expiration</code> / <code>timestamp</code> / <code>raw_data_hex</code> and other ephemeral fields share semantics with <a href="../../tx-build-and-broadcast/createtransaction/"><code>/wallet/createtransaction</code></a>. The state-changing path does not populate <code>txid</code> / <code>constant_result</code> / <code>energy_used</code>; for a simulated execution result, use <a href="../triggerconstantcontract/"><code>/wallet/triggerconstantcontract</code></a>.</p>
 <p>For simulation only (no on-chain effect), use <a href="../triggerconstantcontract/"><code>/wallet/triggerconstantcontract</code></a>; for energy estimation only, use <a href="../estimateenergy/"><code>/wallet/estimateenergy</code></a>.</p>
+<p>When the ABI marks the target function as <code>view</code> or <code>pure</code>, this endpoint is
+dispatched through the constant-call path and is therefore subject to
+<a href="../../../../using_javatron/configuration/#tvm-and-constant-call-configuration"><code>vm.constantCallTimeoutMs</code></a>.</p>
 </blockquote>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
 <p>This endpoint never writes <code>{"Error": ...}</code> after the request reaches the servlet. Servlet-handled exceptions are caught and written into <code>result.code</code> / <code>result.message</code>; the HTTP body is still a <code>TransactionExtention</code>.</p>
@@ -9286,7 +9437,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 3, 2026 08:08:06 UTC">August 3, 2026</span>
   </span>
 
     

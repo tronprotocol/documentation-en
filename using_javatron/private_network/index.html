@@ -7647,22 +7647,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -7702,6 +7686,88 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_2" id="__nav_8_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/java-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -7902,6 +7968,58 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_3" id="__nav_8_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            TypeScript / npm CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -7913,12 +8031,42 @@
         
   
   <span class="md-ellipsis">
-    TypeScript / npm CLI
+    Overview
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/typescript-cli-signing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signing & Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -9206,10 +9354,10 @@ java<span class="w"> </span>-Xmx6g<span class="w"> </span>-XX:+HeapDumpOnOutOfMe
 </li>
 <li>
 <p><strong>Method 2: Modify via On-Chain Proposals (For a Running Network)</strong></p>
-<p>This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate has the right to create a proposal, but only SRs have the right to vote on its approval.</p>
+<p>This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate can create or approve a proposal, but only approvals from active SRs count toward the approval threshold.</p>
 <ul>
 <li>Create a Proposal: Any SR, SR Partner, or SR Candidate uses the <a href="../../api/http/witness-and-governance/proposalcreate/">proposalcreate</a> API, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).</li>
-<li>Approve a Proposal: An SR uses the <a href="../../api/http/witness-and-governance/proposalapprove/">proposalapprove</a> API to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').</li>
+<li>Approve a Proposal: An SR uses the <a href="../../api/http/witness-and-governance/proposalapprove/">proposalapprove</a> API to approve a proposal or withdraw an approval. When determining whether the proposal meets the approval threshold, only approvals from active SRs are counted; an SR that has not approved or has withdrawn approval does not increase the approval count.</li>
 <li>Related APIs:<ul>
 <li>Get all proposals: <a href="../../api/http/witness-and-governance/listproposals/">listproposals</a></li>
 <li>Get a proposal by ID: <a href="../../api/http/witness-and-governance/getproposalbyid/">getproposalbyid</a></li>
@@ -9248,7 +9396,7 @@ java<span class="w"> </span>-Xmx6g<span class="w"> </span>-XX:+HeapDumpOnOutOfMe
 <span class="nx">modifyChainParameters</span><span class="p">(</span><span class="nx">parametersForProposal1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 <p>Once the proposal is approved and the maintenance period has passed, the new network parameters will take effect. You can verify the changes using <a href="../../api/http/witness-and-governance/listproposals/">listproposals</a> or <a href="../../api/http/witness-and-governance/getchainparameters/">getchainparameters</a>.</p>
-<p>It is important to note that network parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission.</p>
+<p>It is important to note that network parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission. For example, activate <code>ALLOW_TVM_SHANGHAI</code> before creating a proposal to enable parameter 95 (<code>ALLOW_TVM_PRAGUE</code>).</p>
 </li>
 </ul>
 </li>
@@ -9273,7 +9421,7 @@ java<span class="w"> </span>-Xmx6g<span class="w"> </span>-XX:+HeapDumpOnOutOfMe
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:05:56 UTC">July 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 3, 2026 08:08:06 UTC">August 3, 2026</span>
   </span>
 
     

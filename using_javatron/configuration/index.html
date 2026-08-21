@@ -509,6 +509,15 @@
 </li>
       
         <li class="md-nav__item ">
+  <a href="#tvm-and-constant-call-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM and constant-call configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
   <a href="#rate-limiting" class="md-nav__link" >
     <span class="md-ellipsis">
       Rate limiting
@@ -7719,22 +7728,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -7774,6 +7767,88 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_2" id="__nav_8_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/java-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -7974,6 +8049,58 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_3" id="__nav_8_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            TypeScript / npm CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -7985,12 +8112,42 @@
         
   
   <span class="md-ellipsis">
-    TypeScript / npm CLI
+    Overview
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/typescript-cli-signing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signing & Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -9087,6 +9244,15 @@
 </li>
       
         <li class="md-nav__item ">
+  <a href="#tvm-and-constant-call-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TVM and constant-call configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
   <a href="#rate-limiting" class="md-nav__link" >
     <span class="md-ellipsis">
       Rate limiting
@@ -9384,6 +9550,67 @@ node {
 </ul>
 <p>Use <code>node.disabledApi</code> to disable selected HTTP, gRPC, or PBFT methods. It does not disable JSON-RPC methods; disable a JSON-RPC service with its <code>node.jsonrpc.*Enable</code> switch.</p>
 <p>Do not expose administrative or transaction-building APIs directly to an untrusted network. Restrict listening access with host or network controls, and place public services behind an appropriately configured gateway when necessary. See the <a href="../../api/http/">HTTP API</a> and <a href="../../api/json-rpc/">JSON-RPC API</a> guides for protocol-specific behavior.</p>
+<h2 id="tvm-and-constant-call-configuration">TVM and constant-call configuration<a class="headerlink" href="#tvm-and-constant-call-configuration" title="Permanent link">&para;</a></h2>
+<p>TVM simulation and Energy-estimation behavior is configured under <code>vm</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration path</th>
+<th style="text-align: right;">Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vm.supportConstant</code></td>
+<td style="text-align: right;"><code>false</code></td>
+<td>Enables read-only constant-contract execution.</td>
+</tr>
+<tr>
+<td><code>vm.maxEnergyLimitForConstant</code></td>
+<td style="text-align: right;"><code>100000000</code></td>
+<td>Maximum Energy available to one constant call. Values below 3,000,000 are raised to that minimum during configuration binding.</td>
+</tr>
+<tr>
+<td><code>vm.estimateEnergy</code></td>
+<td style="text-align: right;"><code>false</code></td>
+<td>Enables the dedicated <code>estimateenergy</code> implementation.</td>
+</tr>
+<tr>
+<td><code>vm.estimateEnergyMaxRetry</code></td>
+<td style="text-align: right;"><code>3</code></td>
+<td>Maximum retries while estimating Energy; values are constrained to the range 0–10.</td>
+</tr>
+<tr>
+<td><code>vm.constantCallTimeoutMs</code></td>
+<td style="text-align: right;"><code>0</code></td>
+<td>Optional execution deadline, in milliseconds, for calls routed through the constant-call path.</td>
+</tr>
+<tr>
+<td><code>vm.vmTrace</code></td>
+<td style="text-align: right;"><code>false</code></td>
+<td>Enables TVM trace output.</td>
+</tr>
+</tbody>
+</table>
+<p><code>vm.constantCallTimeoutMs = 0</code> preserves the original behavior, in which a
+constant call uses the network's <code>MAX_CPU_TIME_OF_ONE_TX</code> limit. A positive
+value sets a constant-call-only deadline in milliseconds. Negative values, or
+values too large to convert safely to the VM's microsecond deadline, cause
+configuration loading to fail. The deadline is not enforced in debug mode or
+by a standalone SolidityNode. Constant calls sent to a FullNode's
+<code>/walletsolidity</code> endpoints are still subject to the deadline.</p>
+<p>The setting applies to constant-call execution across HTTP, gRPC, and
+JSON-RPC, including
+<a href="../../api/http/smart-contract/triggerconstantcontract/"><code>/wallet/triggerconstantcontract</code></a>,
+<a href="../../api/http/smart-contract/triggersmartcontract/"><code>/wallet/triggersmartcontract</code></a>
+when an ABI <code>view</code>/<code>pure</code> function is dispatched to the constant-call path,
+<a href="../../api/http/smart-contract/estimateenergy/"><code>/wallet/estimateenergy</code></a>,
+<a href="../../api/json-rpc/smart-contract/eth_call/"><code>eth_call</code></a>, and
+<a href="../../api/json-rpc/smart-contract/eth_estimateGas/"><code>eth_estimateGas</code></a>.</p>
+<p>For production nodes, use <code>vm.constantCallTimeoutMs</code> when complex read-only
+calls need more time. Changes to these <code>vm</code> settings require a process restart;
+they are not part of dynamic configuration reload.</p>
 <h2 id="rate-limiting">Rate limiting<a class="headerlink" href="#rate-limiting" title="Permanent link">&para;</a></h2>
 <p>API limits are configured under <code>rate.limiter</code>:</p>
 <ul>
@@ -9401,7 +9628,17 @@ node {
 <p>Restrict the configuration and keystore files to the node's operating-system user, do not commit secrets to source control, and do not reuse a production key in test environments. See <a href="../installing_javatron/#starting-a-block-production-node">Starting a Block Production Node</a> and <a href="../installing_javatron/#specifying-super-representative-account-private-key-using-keystore-password">Specifying the private key with a keystore</a>.</p>
 <h2 id="event-subscription-and-monitoring">Event subscription and monitoring<a class="headerlink" href="#event-subscription-and-monitoring" title="Permanent link">&para;</a></h2>
 <p>Event delivery is controlled by <code>event.subscribe</code>. Its settings select the native queue or event plugin, the plugin path or target server, and the enabled trigger topics. See <a href="../../architecture/event/">Event Subscription</a> for a complete setup.</p>
-<p>Prometheus monitoring is configured under <code>node.metrics.prometheus</code>, including its enable switch and listening port. See <a href="../metrics/">Node Monitoring</a> for collection and dashboard instructions.</p>
+<p>Prometheus monitoring is configured under <code>node.metrics.prometheus</code>. It is disabled by default. When enabled, it listens on port <code>9527</code> by default; the listening port can be changed through <code>node.metrics.prometheus.port</code>:</p>
+<div class="highlight"><pre><span></span><code>node.metrics {
+  prometheus {
+    enable = true
+    port = 9527
+  }
+}
+</code></pre></div>
+<p>The deprecated <code>node.metricsEnable</code> setting is separate from the Prometheus switch. It enables legacy Dropwizard metrics collection and registers the gRPC <code>Monitor</code> service (<code>GetStatsInfo</code>).</p>
+<p>Starting with GreatVoyage-v4.8.2, the InfluxDB reporter is no longer supported. <code>node.metrics.storageEnable</code> and the entire <code>node.metrics.influxdb</code> block are no longer used and can be removed from your configuration.</p>
+<p>See <a href="../metrics/">Node Monitoring</a> for metric descriptions, collection, PromQL examples, and dashboard instructions.</p>
 <h2 id="dynamic-configuration-reload">Dynamic configuration reload<a class="headerlink" href="#dynamic-configuration-reload" title="Permanent link">&para;</a></h2>
 <p>Dynamic reload is disabled by default:</p>
 <div class="highlight"><pre><span></span><code>node.dynamicConfig {
@@ -9442,7 +9679,7 @@ node {
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:05:56 UTC">July 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 13, 2026 04:02:57 UTC">August 13, 2026</span>
   </span>
 
     

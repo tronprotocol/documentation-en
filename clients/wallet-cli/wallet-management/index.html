@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/clients/wallet-cli/wallet-management/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../java-cli/">
       
       
         <link rel="next" href="../accounts/">
@@ -7590,22 +7590,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -7645,6 +7629,90 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_2" id="__nav_8_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -8012,6 +8080,58 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_3" id="__nav_8_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            TypeScript / npm CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -8023,12 +8143,42 @@
         
   
   <span class="md-ellipsis">
-    TypeScript / npm CLI
+    Overview
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typescript-cli-signing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signing & Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -9257,7 +9407,7 @@ alias system.</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">MASTER_PASSWORD</span><span class="o">=</span><span class="s1">&#39;your-wallet-password&#39;</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>register-wallet<span class="w"> </span>--name<span class="w"> </span>my-wallet<span class="w"> </span>--words<span class="w"> </span><span class="m">12</span>
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>register-wallet<span class="w"> </span>--name<span class="w"> </span>my-wallet<span class="w"> </span>--words<span class="w"> </span><span class="m">12</span>
 </code></pre></div>
 <ul>
 <li><code>--name</code> (required) — wallet name.</li>
@@ -9278,7 +9428,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.ja
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Standard CLI</label><label for="__tabbed_2_2">REPL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>generate-sub-account<span class="w"> </span>--index<span class="w"> </span><span class="m">1</span><span class="w"> </span>--name<span class="w"> </span>sub-1
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>generate-sub-account<span class="w"> </span>--index<span class="w"> </span><span class="m">1</span><span class="w"> </span>--name<span class="w"> </span>sub-1
 </code></pre></div>
 <ul>
 <li><code>--index</code> (required) — derivation index.</li>
@@ -9320,14 +9470,14 @@ ImportWalletByLedger         # import an account from a Ledger hardware wallet
 <p>The Standard CLI does not log in interactively. Instead it acts on the <strong>active wallet</strong>, or a
 wallet selected per-command with the global <code>--wallet &lt;name|path&gt;</code> option.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># List wallets and their active status</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>list-wallet
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>list-wallet
 
 <span class="c1"># Set the active wallet by address or by name</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>set-active-wallet<span class="w"> </span>--address<span class="w"> </span>TXyz...
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>set-active-wallet<span class="w"> </span>--name<span class="w"> </span>my-wallet
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>set-active-wallet<span class="w"> </span>--address<span class="w"> </span>TXyz...
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>set-active-wallet<span class="w"> </span>--name<span class="w"> </span>my-wallet
 
 <span class="c1"># Show the current active wallet</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>get-active-wallet
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>get-active-wallet
 </code></pre></div>
 <ul>
 <li><code>set-active-wallet</code> accepts <code>--address</code> or <code>--name</code> (provide one).</li>
@@ -9366,7 +9516,7 @@ ViewBackupRecords       # list local backup history
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Standard CLI</label><label for="__tabbed_4_2">REPL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>modify-wallet-name<span class="w"> </span>--name<span class="w"> </span>new-name
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>modify-wallet-name<span class="w"> </span>--name<span class="w"> </span>new-name
 </code></pre></div>
 <ul>
 <li><code>--name</code> (required) — the new wallet name. Requires auth.</li>
@@ -9383,7 +9533,7 @@ ViewBackupRecords       # list local backup history
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Standard CLI</label><label for="__tabbed_5_2">REPL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>clear-wallet-keystore<span class="w"> </span>--force
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>clear-wallet-keystore<span class="w"> </span>--force
 </code></pre></div>
 <ul>
 <li><code>--force</code> is syntactically optional, but required to execute the destructive action in
@@ -9401,7 +9551,7 @@ ViewBackupRecords       # list local backup history
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Standard CLI</label><label for="__tabbed_6_2">REPL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>reset-wallet<span class="w"> </span>--confirm<span class="w"> </span>delete-all-wallets
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>reset-wallet<span class="w"> </span>--confirm<span class="w"> </span>delete-all-wallets
 </code></pre></div>
 <ul>
 <li><code>--confirm</code> must be passed with the exact value <code>delete-all-wallets</code> to perform the reset.
@@ -9439,21 +9589,21 @@ layers: a set of <strong>built-in</strong> aliases (read-only) and your <strong>
 numeric IDs. When an alias is resolved, the resolution is reported under <code>meta.resolved</code> in JSON
 mode.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Add an account alias</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-add<span class="w"> </span><span class="se">\</span>
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-add<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--name<span class="w"> </span>treasury<span class="w"> </span>--type<span class="w"> </span>ACCOUNT<span class="w"> </span>--address<span class="w"> </span>TXyz...<span class="w"> </span>--note<span class="w"> </span><span class="s2">&quot;team treasury&quot;</span>
 
 <span class="c1"># Add a token alias (with decimals)</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-add<span class="w"> </span><span class="se">\</span>
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-add<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--name<span class="w"> </span>usdt<span class="w"> </span>--type<span class="w"> </span>TOKEN<span class="w"> </span>--address<span class="w"> </span>TR7NHq...<span class="w"> </span>--decimals<span class="w"> </span><span class="m">6</span>
 
 <span class="c1"># List aliases (optionally filter by type)</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-list<span class="w"> </span>--type<span class="w"> </span>ACCOUNT
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-list<span class="w"> </span>--type<span class="w"> </span>ACCOUNT
 
 <span class="c1"># Resolve an alias or address to its canonical form</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-resolve<span class="w"> </span>--name<span class="w"> </span>treasury
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-resolve<span class="w"> </span>--name<span class="w"> </span>treasury
 
 <span class="c1"># Remove a user alias</span>
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-remove<span class="w"> </span>--name<span class="w"> </span>treasury
+java<span class="w"> </span>-jar<span class="w"> </span>java/build/libs/wallet-cli.jar<span class="w"> </span>--network<span class="w"> </span>nile<span class="w"> </span>alias-remove<span class="w"> </span>--name<span class="w"> </span>treasury
 </code></pre></div>
 <p>Option notes:</p>
 <ul>
@@ -9483,7 +9633,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.ja
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 16, 2026 03:43:56 UTC">June 16, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 31, 2026 09:29:55 UTC">July 31, 2026</span>
   </span>
 
     
@@ -9504,7 +9654,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.ja
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: wallet-cli">
+          <a href="../java-cli/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -9514,7 +9664,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/wallet-cli.ja
                 Previous
               </span>
               <div class="md-ellipsis">
-                wallet-cli
+                Overview
               </div>
             </div>
           </a>
