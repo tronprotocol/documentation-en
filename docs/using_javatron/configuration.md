@@ -211,7 +211,22 @@ Restrict the configuration and keystore files to the node's operating-system use
 
 Event delivery is controlled by `event.subscribe`. Its settings select the native queue or event plugin, the plugin path or target server, and the enabled trigger topics. See [Event Subscription](../architecture/event.md) for a complete setup.
 
-Prometheus monitoring is configured under `node.metrics.prometheus`, including its enable switch and listening port. See [Node Monitoring](metrics.md) for collection and dashboard instructions.
+Prometheus monitoring is configured under `node.metrics.prometheus`. It is disabled by default. When enabled, it listens on port `9527` by default; the listening port can be changed through `node.metrics.prometheus.port`:
+
+```hocon
+node.metrics {
+  prometheus {
+    enable = true
+    port = 9527
+  }
+}
+```
+
+The deprecated `node.metricsEnable` setting is separate from the Prometheus switch. It enables legacy Dropwizard metrics collection and registers the gRPC `Monitor` service (`GetStatsInfo`).
+
+Starting with GreatVoyage-v4.8.2, the InfluxDB reporter is no longer supported. `node.metrics.storageEnable` and the entire `node.metrics.influxdb` block are no longer used and can be removed from your configuration.
+
+See [Node Monitoring](metrics.md) for metric descriptions, collection, PromQL examples, and dashboard instructions.
 
 ## Dynamic configuration reload
 
