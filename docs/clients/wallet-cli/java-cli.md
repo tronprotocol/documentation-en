@@ -68,9 +68,7 @@ java -jar java/build/libs/wallet-cli.jar help --command send-coin
 
 ## Global options (Standard CLI)
 
-Execution-modifier global options are parsed by `GlobalOptions` and may appear either **before or
-after** the command name. Top-level mode selectors have stricter placement rules, as described
-below.
+The following options configure Standard CLI commands:
 
 | Option | Values | Description |
 |--------|--------|-------------|
@@ -87,26 +85,18 @@ below.
 
 Notes:
 
-- The execution modifiers `--network`, `--grpc-endpoint`, `--output`, `--wallet`, `--quiet`,
-  `--verbose`, and `--password-stdin` are recognized before or after the command name.
-- The top-level mode selectors `--version` and `--interactive` must appear before the command name.
-  After a command, they are treated as command-local arguments instead.
-- `--help` and `-h` before the command request global help; after the command they request help for
-  that command.
-- Valued global options (`--output`, `--network`, `--wallet`, and `--grpc-endpoint`) accept their
-  value either as the next token (`--network nile`) or inline (`--network=nile`).
-- Options that take a value cannot be repeated, and unknown global options are rejected.
+- Network, output, wallet, logging, and password options may appear before or after the command.
+- Put `--version` and `--interactive` before the command name.
+- Put `--help` before a command for global help or after it for command-specific help.
+- Options with values accept both `--network nile` and `--network=nile` forms.
 
 ## Authentication (Standard CLI)
 
 Standard CLI mode is non-interactive, so it never prompts for a password. Commands that build and
-sign a transaction (marked **requires auth** in this documentation) authenticate automatically:
-
-1. The wallet password is read from the `MASTER_PASSWORD` environment variable, or from **stdin**
-   when `--password-stdin` is passed (stdin takes precedence).
-2. The keystore is loaded from the `Wallet/` directory. Use `--wallet <name|path>` to pick a
-   specific wallet, or set an **active wallet** with `set-active-wallet` (see
-   [Wallet Management](wallet-management.md)).
+sign a transaction (marked **requires auth** in this documentation) read the wallet password from
+`MASTER_PASSWORD`, or from stdin when `--password-stdin` is passed. Stdin takes precedence. Use
+`--wallet <name|path>` to select a wallet, or set an **active wallet** with `set-active-wallet` (see
+[Wallet Management](wallet-management.md)).
 
 Most read-only query commands do not require authentication. The exceptions are queries that act on
 the current wallet: `get-address` always requires auth, and `get-balance` / `get-usdt-balance` /
@@ -144,13 +134,8 @@ Error:
 }
 ```
 
-Additional rules:
-
-- Commands that broadcast a transaction include the transaction id as `txid` in `data`
-  (single-signature broadcasts only).
-- `deploy-contract` includes the deployed `contract_address` in `data`.
-- When an alias is resolved for an option, the envelope includes a `meta.resolved` array describing
-  the resolution (see the alias system in [Wallet Management](wallet-management.md)).
+Transaction commands may add identifiers such as `txid` or `contract_address` to `data`. Alias
+resolution details may appear under `meta.resolved` (see [Wallet Management](wallet-management.md)).
 
 Exit codes:
 
@@ -160,15 +145,12 @@ Exit codes:
 | `1` | Execution error (`"error": "execution_error"` and others). |
 | `2` | Usage error (`"error": "usage_error"` — bad flags, missing required option, etc.). |
 
-This makes the standard CLI safe to drive from scripts: check the exit code, and parse the single
-JSON object from stdout.
+For scripts, check the exit code and parse the JSON object from stdout.
 
 ## Networks and configuration
 
-The default node endpoints for each network, plus other defaults, live in
-`java/src/main/resources/config.conf` (HOCON format). The `--network` flag selects among `main`,
-`nile` (testnet), `shasta` (testnet), and `custom`. For `custom`, provide the endpoint with
-`--grpc-endpoint host:port`.
+The `--network` flag selects `main`, `nile` (testnet), `shasta` (testnet), or `custom`. For a custom
+network, provide the node endpoint with `--grpc-endpoint host:port`.
 
 In the REPL, use `SwitchNetwork` to change networks and `CurrentNetwork` to see the active one.
 

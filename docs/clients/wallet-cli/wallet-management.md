@@ -174,8 +174,7 @@ Deletes the encrypted keystore file(s) for the wallet from local storage. This i
     java -jar java/build/libs/wallet-cli.jar clear-wallet-keystore --force
     ```
 
-    - `--force` is syntactically optional, but required to execute the destructive action in
-      Standard CLI mode — without it the command fails with a usage error. Requires auth.
+    - Pass `--force` to confirm the destructive action. Requires auth.
 
 === "REPL"
 
@@ -222,20 +221,10 @@ ViewTransactionHistory
 
 ## Aliases (Standard CLI only)
 
-The Standard CLI supports **aliases** — friendly names for accounts and tokens — so you can write
-`--to my-friend` instead of a raw Base58 address. Aliases are scoped per network and come from two
-layers: a set of **built-in** aliases (read-only) and your **user** aliases.
-
-Alias resolution applies to **address** fields, not to numeric IDs:
-
-- **Account aliases** (`--type ACCOUNT`) resolve on address fields such as `--to`, `--from`,
-  `--owner`, `--receiver`, and `--address`.
-- **Token aliases** (`--type TOKEN`) resolve on contract-address fields — the contract `--contract`
-  option and the `--address` of `get-contract` / `get-contract-info`.
-
-They do **not** apply to TRC-10 asset IDs (`--asset`) or to `--token-id`, which are read verbatim as
-numeric IDs. When an alias is resolved, the resolution is reported under `meta.resolved` in JSON
-mode.
+The Standard CLI supports network-specific aliases for account and token addresses, so you can use
+`--to my-friend` instead of a Base58 address. Built-in aliases are read-only; user aliases can be
+added and removed. Account aliases apply to account-address options, while token aliases apply to
+contract-address options. Aliases do not apply to numeric TRC-10 asset IDs or `--token-id`.
 
 ```bash
 # Add an account alias

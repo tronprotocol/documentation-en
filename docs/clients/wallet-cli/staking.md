@@ -15,12 +15,8 @@ Resource codes used throughout:
 | `1` | ENERGY |
 | `2` | TRON_POWER (voting power; freeze/unfreeze only, network-gated) |
 
-Code `2` (TRON_POWER) is network-gated for freeze/unfreeze commands:
-`FreezeBalance`/`UnfreezeBalance` (Stake 1.0), `FreezeBalanceV2`/`UnfreezeBalanceV2` (Stake 2.0),
-and their Standard CLI equivalents accept it only when the chain parameter
-`getAllowNewResourceModel` is enabled. If that chain parameter cannot be fetched, the client fails
-open and lets the node validate the transaction at broadcast. Delegation commands (both modes) always
-accept only `0` or `1`; TRON_POWER is not delegatable.
+Code `2` is available for freeze and unfreeze commands only when the network enables the new
+resource model. Delegation accepts only `0` or `1`; TRON_POWER cannot be delegated.
 
 Amounts are in **SUN** (1 TRX = 1,000,000 SUN).
 
@@ -45,9 +41,7 @@ resource queries at the end of the page do not.
     ```
 
     - `--amount` (required, SUN), `--duration` (required, days).
-    - `--resource` (optional, `0`/`1`/`2`, default `0`). `2` is TRON_POWER and is allowed only when
-      `getAllowNewResourceModel` is enabled. If `--receiver` is set, the operation is delegated and
-      `2` is rejected.
+    - `--resource` (optional, `0`/`1`/`2`, default `0`). With `--receiver`, use `0` or `1`.
     - `--receiver` (optional) — delegate the obtained resource to another address.
     - `--owner`, `--multi` (optional).
 
@@ -57,8 +51,6 @@ resource queries at the end of the page do not.
     FreezeBalance [OwnerAddress] frozen_balance frozen_duration [ResourceCode] [receiverAddress]
     ```
 
-    `ResourceCode`: `0` BANDWIDTH, `1` ENERGY, `2` TRON_POWER.
-
 ### Unfreeze balance — `unfreeze-balance` / `UnfreezeBalance`
 
 === "Standard CLI"
@@ -67,9 +59,7 @@ resource queries at the end of the page do not.
     java -jar java/build/libs/wallet-cli.jar --network nile unfreeze-balance --resource 1
     ```
 
-    - `--resource` (optional, `0`/`1`/`2`, default `0`). `2` is TRON_POWER and is allowed only when
-      `getAllowNewResourceModel` is enabled. If `--receiver` is set, the operation targets a
-      delegated freeze and `2` is rejected.
+    - `--resource` (optional, `0`/`1`/`2`, default `0`). With `--receiver`, use `0` or `1`.
     - `--receiver` (optional) — required if the resource was delegated.
     - `--owner`, `--multi` (optional).
 
@@ -93,8 +83,6 @@ No duration: staked TRX stays staked until you explicitly unstake it.
     ```
 
     - `--amount` (required, SUN), `--resource` (optional, `0`/`1`/`2`, default `0`).
-      `2` is TRON_POWER and is allowed only when `getAllowNewResourceModel` is enabled; if that
-      chain parameter cannot be fetched, the client lets the node validate at broadcast.
     - `--owner`, `--permission-id`, `--multi` (optional).
 
 === "REPL"
@@ -116,8 +104,6 @@ waiting period (see `withdraw-expire-unfreeze`).
     ```
 
     - `--amount` (required, SUN), `--resource` (optional, `0`/`1`/`2`, default `0`).
-      `2` is TRON_POWER and is allowed only when `getAllowNewResourceModel` is enabled; if that
-      chain parameter cannot be fetched, the client lets the node validate at broadcast.
     - `--owner`, `--permission-id`, `--multi` (optional).
 
 === "REPL"
@@ -186,7 +172,7 @@ Lends staked bandwidth/energy to another account.
     DelegateResource [OwnerAddress] balance ResourceCode ReceiverAddress [lock] [lockPeriod]
     ```
 
-    `ResourceCode`: `0` BANDWIDTH, `1` ENERGY. `lock` is `true`/`false`.
+    `lock` is `true` or `false`.
 
 ### Undelegate resource — `undelegate-resource` / `UnDelegateResource`
 
