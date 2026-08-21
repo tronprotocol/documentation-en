@@ -128,10 +128,10 @@ The operational steps for deploying a private network node are fundamentally the
 
      - **Method 2: Modify via On-Chain Proposals (For a Running Network)**
 
-        This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate has the right to create a proposal, but only SRs have the right to vote on its approval.
+        This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate can create or approve a proposal, but only approvals from active SRs count toward the approval threshold.
      
          - Create a Proposal: Any SR, SR Partner, or SR Candidate uses the [proposalcreate](../api/http/witness-and-governance/proposalcreate.md) API, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).
-         - Approve a Proposal: An SR uses the [proposalapprove](../api/http/witness-and-governance/proposalapprove.md) API to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').
+         - Approve a Proposal: An SR uses the [proposalapprove](../api/http/witness-and-governance/proposalapprove.md) API to approve a proposal or withdraw an approval. When determining whether the proposal meets the approval threshold, only approvals from active SRs are counted; an SR that has not approved or has withdrawn approval does not increase the approval count.
          - Related APIs:
              - Get all proposals: [listproposals](../api/http/witness-and-governance/listproposals.md)
              - Get a proposal by ID: [getproposalbyid](../api/http/witness-and-governance/getproposalbyid.md)
@@ -174,4 +174,4 @@ The operational steps for deploying a private network node are fundamentally the
 
          Once the proposal is approved and the maintenance period has passed, the new network parameters will take effect. You can verify the changes using [listproposals](../api/http/witness-and-governance/listproposals.md) or [getchainparameters](../api/http/witness-and-governance/getchainparameters.md).
     
-         It is important to note that network parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission.
+         It is important to note that network parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission. For example, activate `ALLOW_TVM_SHANGHAI` before creating a proposal to enable parameter 95 (`ALLOW_TVM_PRAGUE`).

@@ -54,6 +54,11 @@ The example below is the real response captured from the Nile testnet curl above
 }
 ```
 
+`eth_call` executes through the node's constant-call path and is subject to
+[`vm.constantCallTimeoutMs`](../../../using_javatron/configuration.md#tvm-and-constant-call-configuration).
+The default value `0` uses the network's `MAX_CPU_TIME_OF_ONE_TX` limit; a
+positive value sets a constant-call-only deadline in milliseconds.
+
 ### Error responses
 
 | Trigger | Code | message |
