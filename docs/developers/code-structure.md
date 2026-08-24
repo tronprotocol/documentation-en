@@ -5,7 +5,7 @@ java-tron is a TRON network client developed based on the Java language. It impl
 java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. The core of java-tron consists of 7 modules: [Protocol](#protocol), [Common](#common), [Chainbase](#chainbase), [Consensus](#consensus), [Actuator](#actuator), [Crypto](#crypto), [Framework](#framework). This document introduces the functions of these 7 core modules and their code organization. In addition, java-tron includes three auxiliary modules:
 
 * `plugins` - A set of node maintenance tools (Toolkit), providing offline database operations such as lite, convert, copy, move, and archive, as well as keystore management commands
-* `platform` - CPU architecture adaptation module, providing architecture-specific implementations (such as math operations and market order comparators) under the `common`/`x86`/`arm` directories respectively
+* `platform` - CPU architecture adaptation module that combines shared code from `common` with build-time-selected implementations from `x86` or `arm`, including math operations and market order comparators
 * `errorprone` - Custom Error Prone checks used during compilation to prevent error-prone coding patterns
 
 
