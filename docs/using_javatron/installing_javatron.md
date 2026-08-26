@@ -96,11 +96,13 @@ uname -m
     ```
 
     * The `-x test` parameter skips the execution of test cases. You can remove this parameter to execute test during compilation, but this will increase the compilation time.
-    * If you encounter `DependencyVerificationException` during the build, refresh dependencies and regenerate verification metadata:
+    * If the build fails with `DependencyVerificationException`, retry once with `--refresh-dependencies`:
 
-      ```bash
-      ./gradlew clean build -x test --refresh-dependencies
-      ```
+        ```bash
+        ./gradlew clean build -x test --refresh-dependencies
+        ```
+
+        The `--refresh-dependencies` option refreshes dependencies; it does not regenerate `gradle/verification-metadata.xml`. If verification still fails, do not regenerate the metadata merely to bypass the check. Confirm that the source checkout is unmodified, and contact the java-tron maintainers if you need further assistance.
 
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
