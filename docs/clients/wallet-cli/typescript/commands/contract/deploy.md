@@ -1,0 +1,83 @@
+# wallet-cli contract deploy
+
+Deploy a smart contract.
+
+## Synopsis
+
+```
+wallet-cli contract deploy --abi <json> --bytecode <hex> --fee-limit <sun>
+                           [--params <json>]
+                           [--dry-run | (--sign-only | --build-only) [--expiration <ms>] | --wait [--wait-timeout <ms>]] [--permission-id <n>] [options]
+```
+
+## Description
+
+Deploys compiled contract bytecode from the active account (or `--account`) and reports the new contract address. `--fee-limit` is **required** here (deployments are energy-heavy; there is no safe default). Constructor arguments go via `--params` alone — the parameter types are taken from the constructor entry in the `--abi` you pass.
+
+Two shapes are checked before anything is built, both reported as `invalid_value` at exit `2`:
+
+- **`--params` takes raw positional values here**, e.g. `[100, "T..."]`. The `{"type","value"}` entries that [`contract call`](call.md) and [`contract send`](send.md) take are rejected — deploy reads the types from the ABI's constructor instead.
+- **The ABI's `constructor` entry needs a string `stateMutability`** (`"nonpayable"` or `"payable"`). `solc` emits it; an ABI that was hand-trimmed, or produced by `solc` older than 0.5, may not have it.
+
+Same execution model as other broadcast commands: `--dry-run` previews, `--sign-only` outputs a signed transaction for [`tx broadcast`](../tx/broadcast.md), default returns at submission, `--wait` blocks until confirmed/failed.
+
+Requires an account. The master password (via `--password-stdin`) is needed only by the modes that sign — `--dry-run` and `--build-only` do not unlock the wallet and run without it. Watch-only accounts fail with `watch_only_no_signer` in a signing mode.
+
+## Options
+
+| Option | Description |
+|---|---|
+| `--abi <string>` | **Required.** Contract ABI as a JSON array string |
+| `--bytecode <string>` | **Required.** Compiled bytecode as hex (0x-prefixed or bare) |
+| `--fee-limit <number>` | **Required.** Max energy fee to burn, in SUN |
+| `--params <string>` | Constructor args as a JSON array of raw positional values, e.g. `[100, "T..."]`; types are taken from the ABI constructor. Omit to pass no constructor args |
+| `--dry-run` | Estimate only; excludes `--sign-only` / `--build-only` |
+| `--sign-only` | Sign without broadcasting, output the signed hex; excludes `--dry-run` / `--build-only`; pairs with `--expiration` |
+| `--build-only` | Build only, output the **unsigned** hex; excludes `--dry-run` / `--sign-only`; pairs with `--expiration` |
+| `--expiration <ms>` | Transaction expiration in ms, up to `86400000` (24h); only with `--sign-only` or `--build-only`; omitted = node default (~60s) |
+| `--permission-id <n>` | Permission group to sign with (0=owner, 1=witness, 2-9=active); default `0` |
+| `--wait` / `--wait-timeout <ms>` | Poll after broadcast until confirmed/failed (cap default: config `waitTimeoutMs`, built-in 60000) |
+| `--password-stdin` | Master password from stdin |
+
+Plus the [global options](../index.md#global-options-every-command).
+
+## Examples
+
+In the examples, `$PW` is your master password (from an environment variable, password manager, etc.), fed on stdin via `--password-stdin`.
+
+```bash
+echo "$PW" | wallet-cli contract deploy --abi "$(cat MyToken.abi.json)" --bytecode "$(cat MyToken.bin)" --fee-limit 1000000000 --network tron:nile --password-stdin
+```
+
+```console
+⏳ Contract deployed
+  Address  TXg3jWThoa5AxuwRA4aRyFAhmRN9hjhQFU
+  TxID     b7c...
+  Status   pending — not yet on-chain
+! Track it: wallet-cli tx info --network tron:nile --txid b7c...
+```
+
+```bash
+echo "$PW" | wallet-cli contract deploy --abi "$(cat MyToken.abi.json)" --bytecode "$(cat MyToken.bin)" --fee-limit 1000000000 --network tron:nile --password-stdin -o json
+```
+
+```json
+{"schema":"wallet-cli.result.v1","success":true,"command":"contract.deploy","data":{"kind":"contract-deploy","contractAddress":"TXg3jWThoa5AxuwRA4aRyFAhmRN9hjhQFU","stage":"submitted","txId":"b7c..."},"meta":{"durationMs":15,"warnings":[]},"chain":{"family":"tron","network":"tron:nile","chainId":"nile"}}
+```
+
+## Output
+
+`data` varies by stage:
+
+| Stage | Fields |
+|---|---|
+| default (submit) | `kind: "contract-deploy"`, `contractAddress` (deterministic new address), `stage: "submitted"`, `txId` |
+| `--wait` (confirmed) | above, plus `confirmed`, `blockNumber`, `feeSun`, `failed` |
+
+## Exit status
+
+`0` submitted (or built/signed in early-exit modes) · `1` execution failure (`watch_only_no_signer`, `auth_failed`, `rpc_error`, `timeout`) · `2` usage error (`missing_option` — no `--fee-limit`; `invalid_value` — bad ABI or bytecode, `--params` in `{"type","value"}` form, or an ABI constructor without a string `stateMutability`).
+
+## See also
+
+[`contract info`](info.md) · [`contract send`](send.md) · [`tx status`](../tx/status.md)

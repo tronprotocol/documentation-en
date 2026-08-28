@@ -1,50 +1,66 @@
 # wallet-cli
 
-`wallet-cli` is a command-line wallet for the TRON network; its official repository is
-[tronprotocol/wallet-cli](https://github.com/tronprotocol/wallet-cli). It manages keys and accounts
-locally and connects to TRON services to query chain data and build, sign, and broadcast
-transactions.
+A command-line wallet for the [TRON network](https://tron.network) — interactive in Java, agent-first in TypeScript.
 
-The repository provides two implementations:
+This repository holds **two independent implementations** that share the same purpose but target different users:
 
-- **[Java CLI](java-cli.md)** — the original, full-featured implementation. It provides an
-  interactive REPL for people and a non-interactive Standard CLI for scripts using the Java JAR.
-- **[TypeScript / npm CLI](typescript-cli.md)** — an agent-first Node.js implementation published as
-  `@tron-walletcli/wallet-cli`, with grouped commands, deterministic exit codes, and structured JSON
-  output.
+- **[Java](java/index.md)** — the original, full-featured reference CLI. An interactive prompt (REPL) you drive by hand.
+- **[TypeScript](typescript/index.md)** — an agent-first rewrite for automation. Standard subcommands with a stable JSON envelope, built for scripts, CI, and AI agents.
 
-## Compare entry points
+Both manage the same kind of wallet on the same networks — your address is identical regardless of which you use. They cover the same TRON feature surface and differ in how you install and drive them. Pick one and read its own README for depth; this page gives you the basics of each so you can choose.
 
-Each interface can query account data. The Java CLI accepts an arbitrary address, while the
-TypeScript CLI operates on an account already stored in its local wallet:
+## At a glance
 
-=== "Java Standard CLI"
+|                        | [**Java**](java/index.md) — the original                                                                                      | [**TypeScript**](typescript/index.md) — agent-first rewrite                                                                                                                                                                                                        |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **What it is**         | The mature, full-feature reference CLI.                                                                                        | A newer rewrite focused on programmatic integration.                                                                                                                                                                                                        |
+| **Runtime**            | JVM — built with Gradle, run as a `.jar`. Uses the [Trident](https://github.com/tronprotocol/trident) SDK.                     | [Node.js](https://nodejs.org) **20+**.                                                                                                                                                                                                                      |
+| **Install**            | `git clone` + `./gradlew build` (see [Setup](java/index.md#setup))                                                            | `npm install -g @tron-walletcli/wallet-cli`                                                                                                                                                                                                                 |
+| **How you drive it**   | An **interactive prompt only** — start it, then type commands at `>`.                                                          | **One-shot subcommands** — `wallet-cli <command>` from your shell. Interactive prompts only for secret input.                                                                                                                                               |
+| **Command style**      | PascalCase verbs: `RegisterWallet`, `SendCoin`, `GetBalance`. Amounts in **SUN** (1 TRX = 1,000,000 SUN).                      | Noun-verb subcommands: `create`, `tx send`, `account balance`, with `--flags`.                                                                                                                                                                              |
+| **Output for scripts** | Human-readable text.                                                                                                           | Stable JSON via `-o json` ([`wallet-cli.result.v1`](typescript/machine-interface.md)) + fixed exit codes (`0`/`1`/`2`).                                                                                                                                        |
+| **Config / networks**  | `config.conf` (net type + full node), or `SwitchNetwork` at runtime. Mainnet · Nile · Shasta · custom.                         | `--network` flag / `config` command. `tron:mainnet` · `tron:nile` · `tron:shasta`.                                                                                                                                                                          |
+| **Signing**            | Software keystore · Ledger.                                                                                                    | Encrypted local keystore · Ledger. The CLI reads no secret from argv or a dedicated env var.                                                                                                                                                                                              |
+| **Feature scope**      | **The full surface** — wallets and transfers, staking, voting and rewards, governance, contracts, TRC10, and the on-chain exchange. | **The full surface** — HD wallets, TRX/TRC20/TRC10 transfers, staking & delegation, voting & rewards, governance proposals & super-representative operation, contract call/deploy/governance, TRC10 issuance, the on-chain Bancor exchange, multi-sig, GasFree transfers, message signing, and on-chain queries. |
+| **Best for**           | People at a terminal who want every TRON capability.                                                                           | Scripting, CI pipelines, and AI agents.                                                                                                                                                                                                                     |
+| **Full docs**          | [Java CLI](java/index.md)                                                                                               | [TypeScript CLI](typescript/index.md)                                                                                                                                                                                                                                |
 
-    ```bash
-    java -jar java/build/libs/wallet-cli.jar --network nile get-account --address TXyz...
-    ```
+## Java — get a taste
 
-=== "Java REPL"
+Interactive only. Build it, start the prompt, then type commands:
 
-    ```
-    GetAccount TXyz...
-    ```
+```console
+$ git clone https://github.com/tronprotocol/wallet-cli.git
+$ cd wallet-cli && ./gradlew build && cd build/libs
+$ java -jar wallet-cli.jar        # opens the interactive prompt
+> RegisterWallet 123456           # create a keystore (password 123456)
+> Login                           # unlock it
+> GetAddress                      # your TRON address
+> GetBalance                      # TRX balance
+```
 
-=== "TypeScript / npm CLI"
+Full setup (config.conf, connecting to a node), the complete A–Z command list, and features like GasFree and multi-sig live in **[Java CLI](java/index.md)** — jump to [Setup](java/index.md#setup), [Quickstart](java/index.md#quickstart), [Commands](java/index.md#commands), or [GasFree](java/index.md#contracts-gasfree--chain-data).
 
-    ```bash
-    wallet-cli account info --network tron:nile
-    ```
+## TypeScript — get a taste
 
-    This uses the active account. Pass `--account` with an account id, label, or address already
-    present in the local wallet to select a different stored account.
+Install from npm, then run subcommands directly from your shell:
 
-## Choose an implementation
+```console
+$ npm install -g @tron-walletcli/wallet-cli
+$ wallet-cli create --label main               # prompts for a master password
+$ wallet-cli account balance --network tron:nile
+$ wallet-cli account balance -o json           # one wallet-cli.result.v1 JSON frame
+```
 
-| Implementation | Command style | Best suited for |
-|----------------|---------------|-----------------|
-| [Java CLI](java-cli.md) | Interactive commands such as `GetAccount`, or Standard CLI commands such as `get-account` | The complete TRON wallet feature set, manual operation, and Java JAR integrations |
-| [TypeScript / npm CLI](typescript-cli.md) | Grouped commands such as `account info` and `tx send` | Automation, CI/CD, structured JSON integrations, and AI agents |
+Every command has a reference page, and the JSON contract, exit codes, and agent integration are documented in depth. Start at **[TypeScript CLI](typescript/index.md)**, then:
 
-The two implementations have separate installation and runtime requirements. Continue with the
-[Java CLI overview](java-cli.md) or the [TypeScript / npm CLI overview](typescript-cli.md).
+- [Getting started](typescript/guide/getting-started.md) — create a wallet and send your first transaction
+- [Command reference](typescript/commands/index.md) — every command, A–Z
+- [Machine interface](typescript/machine-interface.md) — JSON envelope, exit codes, script safety
+- [Agent skill](https://github.com/tronprotocol/wallet-cli/blob/develop/ts/skills/wallet-cli/SKILL.md) — for AI agents
+
+## Which should I use?
+
+- **Scripting, CI, or building an AI agent?** → the [TypeScript version](typescript/index.md) — the JSON envelope and deterministic exit codes exist for exactly this.
+- **Working interactively** — one long-running session at a `>` prompt, with the wallet unlocked once for the whole session? → the [Java version](java/index.md).
+- **Just sending TRX/tokens or staking from your own machine?** → either works; the TypeScript CLI is the lighter install (`npm install -g`, no build step).
