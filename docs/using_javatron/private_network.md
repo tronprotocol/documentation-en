@@ -9,7 +9,7 @@ Before you begin, please ensure your development environment meets the following
 - **Java Development Kit (JDK)**: On x86_64 architecture, JDK 8 (latest minor version recommended) must be installed; on arm64 architecture, JDK 17 must be installed.
 - **TRON Accounts**: You need to create at least two TRON network addresses in advance and securely store the addresses and their corresponding private keys. One address will serve as the initial SR node (Block Production), and the other will be a regular account.
 - **Address Creation Tools**: You can use any of the following tools to generate and manage your TRON accounts:
-    - [Wallet-cli](https://github.com/tronprotocol/wallet-cli): An official command-line wallet tool, suitable for server environments.
+    - [wallet-cli](../clients/wallet-cli/index.md): The official command-line wallet, suitable for server environments. Available as an interactive Java client and a scriptable TypeScript client.
     - [TronLink](https://www.tronlink.org/): A multi-chain wallet that supports the TRON network, featuring a user-friendly graphical interface for easy address creation and management.
     - [TronWeb](https://tronweb.network/docu/docs/intro/): A JavaScript library for developers to interact with the TRON network and build dApps.
     - [Trident](https://github.com/tronprotocol/trident): A lightweight Java SDK designed to help developers easily and efficiently integrate TRON blockchain functionality into Java applications.
