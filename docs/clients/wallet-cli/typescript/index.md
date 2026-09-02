@@ -5,9 +5,10 @@ The agent-first implementation of wallet-cli, built for automation: every comman
 ## Key features
 
 - **Agent-first** — stable JSON output, deterministic exit codes, and discoverable schemas, built for scripts, CI, and AI agents (details in [The contract, in one paragraph](#the-contract-in-one-paragraph)).
-- **Encrypted local storage** — software keystores are encrypted on disk; the CLI reads no secret from argv or a dedicated environment variable.
+- **Encrypted local storage** — software keystores are encrypted on disk; secrets enter via stdin/TTY, never argv or dedicated secret environment variables.
 - **Software and Ledger signing** — sign in software, or on a Ledger device (the private key never leaves the device).
 - **Covers the full TRON feature surface** — HD wallets, TRX and TRC20/TRC10 transfers, staking / resource delegation, voting / rewards, governance proposals and super-representative operation, smart-contract calls, deployment and governance, TRC10 issuance, the on-chain Bancor exchange, multi-sig, GasFree transfers, message signing, and on-chain queries.
+- **EVM chains too** — transfers, tokens, contracts, and signing also run on Ethereum and BNB Smart Chain. TRON-protocol-only commands refuse an EVM network with `family_mismatch`; see [which commands run on which networks](commands/index.md#which-commands-run-on-which-networks).
 
 ## Table of contents
 
@@ -27,15 +28,19 @@ The agent-first implementation of wallet-cli, built for automation: every comman
 
 ## Supported chains
 
-Three TRON networks are supported today. Networks are identified by a canonical `family:chain` id (all `tron` today):
+Seven built-in networks across two chain families are supported, each identified by a canonical [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) `namespace:reference` id — `tron` for TRON, `eip155` for EVM. An **alias** is a short name you may type instead; it resolves at selection and never appears in output:
 
-| Network id | What it is | TRX value |
-|---|---|---|
-| `tron:mainnet` | Production mainnet | **Real funds** |
-| `tron:nile` | Primary testnet (faucet at nileex.io) | None — use freely |
-| `tron:shasta` | Alternate testnet | None |
+| Network id | Alias | What it is | Native coin value |
+|---|---|---|---|
+| `tron:728126428` | `tron` | Production TRON | **Real funds** |
+| `tron:3448148188` | `nile` | Primary TRON testnet (faucet at nileex.io) | None — use freely |
+| `tron:2494104990` | `shasta` | Alternate TRON testnet | None |
+| `eip155:1` | `ethereum` | Ethereum mainnet | **Real funds** |
+| `eip155:11155111` | `sepolia` | Ethereum test network | None |
+| `eip155:56` | `bsc` | BNB Smart Chain | **Real funds** |
+| `eip155:97` | `bsc-testnet` | BNB Smart Chain test network | None |
 
-Your address is the same on every network, but balances, tokens, and transactions are isolated per network. Fees use TRON's `tron-resource` model (bandwidth + energy) rather than EVM gas — see [networks](concepts/networks.md) and [energy & bandwidth](concepts/energy-bandwidth.md).
+Within a family your address is the same on every network (base58 `T…` on TRON, `0x…` on EVM — the two families derive **different** addresses from the same seed), while balances, tokens, and transactions stay isolated per network. Fees follow the family: TRON's `tron-resource` model (bandwidth + energy) or EVM gas — see [networks](concepts/networks.md) and [energy & bandwidth](concepts/energy-bandwidth.md).
 
 ## Install
 
@@ -174,13 +179,13 @@ Offline local commands and configuration.
 
 ## The contract, in one paragraph
 
-Every command supports `-o json` and then prints **exactly one** terminal JSON frame on stdout, schema [`wallet-cli.result.v1`](machine-interface.md#the-result-envelope). Exit codes are fixed: `0` success, `1` execution failure, `2` usage error. Secrets (passwords, mnemonics, private keys) are read from no argv value and no dedicated environment variable — only from stdin flags or interactive TTY prompts; mnemonic/private-key import and `change-password` are interactive-only (no stdin path at all). Full spec: [machine-interface.md](machine-interface.md); for calling from an AI agent, see the [Agent skill](https://github.com/tronprotocol/wallet-cli/blob/develop/ts/skills/wallet-cli/SKILL.md).
+Every command supports `-o json` and then prints **exactly one** terminal JSON frame on stdout, schema [`wallet-cli.result.v1`](machine-interface.md#the-result-envelope). Exit codes are fixed: `0` success, `1` execution failure, `2` usage error. Secrets (passwords, mnemonics, private keys) are never accepted via argv and are not read from dedicated secret environment variables. Passwords can enter through stdin flags or interactive TTY prompts; mnemonic/private-key import and `change-password` are interactive-only (no stdin path at all). Full spec: [machine-interface.md](machine-interface.md); for calling from an AI agent, see the [Agent skill](https://github.com/tronprotocol/wallet-cli/blob/develop/ts/skills/wallet-cli/SKILL.md).
 
 ## Understanding TRON mechanics
 
 TRON differs a lot from EVM chains in fees, accounts, and key permissions — these are worth understanding up front to avoid surprises:
 
-- [Networks](concepts/networks.md) — the three networks and the `family:chain` id
+- [Networks](concepts/networks.md) — the seven built-in networks, CAIP-2 ids, and the two chain families
 - [Accounts & HD](concepts/accounts-and-hd.md) — mnemonics, derivation paths, account activation
 - [Energy & bandwidth](concepts/energy-bandwidth.md) — TRON's resource-based fee model (in place of EVM gas)
 - [Security](concepts/security.md) — keystore encryption, secret handling, multi-sig permissions
@@ -189,4 +194,4 @@ TRON differs a lot from EVM chains in fees, accounts, and key permissions — th
 
 A command errored or behaved unexpectedly? Common issues and how to diagnose them are in [troubleshooting.md](troubleshooting.md).
 
-> All copy-pasteable examples in this documentation run against the **Nile testnet** (`--network tron:nile`). Mainnet commands move real funds; they appear only as annotated, non-copyable descriptions.
+> All copy-pasteable examples in this documentation run against the **Nile testnet** (`--network tron:3448148188`). Mainnet commands move real funds; they appear only as annotated, non-copyable descriptions.

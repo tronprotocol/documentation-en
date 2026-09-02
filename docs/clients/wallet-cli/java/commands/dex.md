@@ -17,10 +17,10 @@ Create an order to sell asset.
 Example:
 
 ```console
-MarketSellAsset TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW  1000001 200 _ 100
+MarketSellAsset TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW  1000001 200 _ 100    
 
-Get the result of the contract execution with the getTransactionInfoById command:
-getTransactionInfoById 10040f993cd9452b25bf367f38edadf11176355802baf61f3c49b96b4480d374
+Get the result of the contract execution with the getTransactionInfoById command:   
+getTransactionInfoById 10040f993cd9452b25bf367f38edadf11176355802baf61f3c49b96b4480d374   
 
 {
 	"id": "10040f993cd9452b25bf367f38edadf11176355802baf61f3c49b96b4480d374",
@@ -32,7 +32,7 @@ getTransactionInfoById 10040f993cd9452b25bf367f38edadf11176355802baf61f3c49b96b4
 	"receipt": {
 		"net_usage": 264
 	}
-}
+} 
 ```
 
 ## GetMarketOrderByAccount
@@ -48,7 +48,7 @@ Get the orders created by an account (only includes active status).
 Example:
 
 ```console
-GetMarketOrderByAccount TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
+GetMarketOrderByAccount TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW   
 {
 	"orders": [
 		{
@@ -62,7 +62,7 @@ GetMarketOrderByAccount TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 			"sell_token_quantity_remain": 100
 		}
 	]
-}
+}  
 ```
 
 ## GetMarketOrderById
@@ -76,7 +76,7 @@ Get the specific order by `order_id`.
 Example:
 
 ```console
-GetMarketOrderById fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0
+GetMarketOrderById fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0   
 {
 	"order_id": "fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0",
 	"owner_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
@@ -93,7 +93,7 @@ GetMarketOrderById fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75
 Get the market pair list.
 
 ```console
-GetMarketPairList
+GetMarketPairList   
 {
 	"orderPair": [
 		{
@@ -118,7 +118,7 @@ Get the order list by pair.
 Example:
 
 ```console
-GetMarketOrderListByPair _ 1000001
+GetMarketOrderListByPair _ 1000001   
 {
 	"orders": [
 		{
@@ -149,7 +149,7 @@ Get the market price by pair.
 Example:
 
 ```console
-GetMarketPriceByPair _ 1000001
+GetMarketPriceByPair _ 1000001   
 {
 	"sell_token_id": "_",
 	"buy_token_id": "1000001",
@@ -176,13 +176,13 @@ Cancel the order.
 Example:
 
 ```console
-MarketCancelOrder TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0
+MarketCancelOrder TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW fc9c64dfd48ae58952e85f05ecb8ec87f55e19402493bb2df501ae9d2da75db0  
 ```
 
 Get the result of the contract execution with the `getTransactionInfoById` command:
 
 ```console
-getTransactionInfoById b375787a098498623403c755b1399e82910385251b643811936d914c9f37bd27
+getTransactionInfoById b375787a098498623403c755b1399e82910385251b643811936d914c9f37bd27   
 {
 	"id": "b375787a098498623403c755b1399e82910385251b643811936d914c9f37bd27",
 	"blockNumber": 1582,
