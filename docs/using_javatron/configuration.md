@@ -152,6 +152,40 @@ Use `node.disabledApi` to disable selected HTTP, gRPC, or PBFT methods. It does 
 
 Do not expose administrative or transaction-building APIs directly to an untrusted network. Restrict listening access with host or network controls, and place public services behind an appropriately configured gateway when necessary. See the [HTTP API](../api/http/index.md) and [JSON-RPC API](../api/json-rpc/index.md) guides for protocol-specific behavior.
 
+## TVM and constant-call configuration
+
+TVM simulation and Energy-estimation behavior is configured under `vm`:
+
+| Configuration path | Default | Purpose |
+|---|---:|---|
+| `vm.supportConstant` | `false` | Enables read-only constant-contract execution. |
+| `vm.maxEnergyLimitForConstant` | `100000000` | Maximum Energy available to one constant call. Values below 3,000,000 are raised to that minimum during configuration binding. |
+| `vm.estimateEnergy` | `false` | Enables the dedicated `estimateenergy` implementation. |
+| `vm.estimateEnergyMaxRetry` | `3` | Maximum retries while estimating Energy; values are constrained to the range 0–10. |
+| `vm.constantCallTimeoutMs` | `0` | Optional execution deadline, in milliseconds, for calls routed through the constant-call path. |
+| `vm.vmTrace` | `false` | Enables TVM trace output. |
+
+`vm.constantCallTimeoutMs = 0` preserves the original behavior, in which a
+constant call uses the network's `MAX_CPU_TIME_OF_ONE_TX` limit. A positive
+value sets a constant-call-only deadline in milliseconds. Negative values, or
+values too large to convert safely to the VM's microsecond deadline, cause
+configuration loading to fail. The deadline is not enforced in debug mode or
+by a standalone SolidityNode. Constant calls sent to a FullNode's
+`/walletsolidity` endpoints are still subject to the deadline.
+
+The setting applies to constant-call execution across HTTP, gRPC, and
+JSON-RPC, including
+[`/wallet/triggerconstantcontract`](../api/http/smart-contract/triggerconstantcontract.md),
+[`/wallet/triggersmartcontract`](../api/http/smart-contract/triggersmartcontract.md)
+when an ABI `view`/`pure` function is dispatched to the constant-call path,
+[`/wallet/estimateenergy`](../api/http/smart-contract/estimateenergy.md),
+[`eth_call`](../api/json-rpc/smart-contract/eth_call.md), and
+[`eth_estimateGas`](../api/json-rpc/smart-contract/eth_estimateGas.md).
+
+For production nodes, use `vm.constantCallTimeoutMs` when complex read-only
+calls need more time. Changes to these `vm` settings require a process restart;
+they are not part of dynamic configuration reload.
+
 ## Rate limiting
 
 API limits are configured under `rate.limiter`:
@@ -177,7 +211,22 @@ Restrict the configuration and keystore files to the node's operating-system use
 
 Event delivery is controlled by `event.subscribe`. Its settings select the native queue or event plugin, the plugin path or target server, and the enabled trigger topics. See [Event Subscription](../architecture/event.md) for a complete setup.
 
-Prometheus monitoring is configured under `node.metrics.prometheus`, including its enable switch and listening port. See [Node Monitoring](metrics.md) for collection and dashboard instructions.
+Prometheus monitoring is configured under `node.metrics.prometheus`. It is disabled by default. When enabled, it listens on port `9527` by default; the listening port can be changed through `node.metrics.prometheus.port`:
+
+```hocon
+node.metrics {
+  prometheus {
+    enable = true
+    port = 9527
+  }
+}
+```
+
+The deprecated `node.metricsEnable` setting is separate from the Prometheus switch. It enables legacy Dropwizard metrics collection and registers the gRPC `Monitor` service (`GetStatsInfo`).
+
+Starting with GreatVoyage-v4.8.2, the InfluxDB reporter is no longer supported. `node.metrics.storageEnable` and the entire `node.metrics.influxdb` block are no longer used and can be removed from your configuration.
+
+See [Node Monitoring](metrics.md) for metric descriptions, collection, PromQL examples, and dashboard instructions.
 
 ## Dynamic configuration reload
 

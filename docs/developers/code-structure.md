@@ -2,10 +2,11 @@
 ## Code Structure
 java-tron is a TRON network client developed based on the Java language. It implements all the functions mentioned in the TRON white paper, including consensus mechanism, cryptography, database, TVM virtual machine, network management, etc. Starting java-tron runs a TRON node. This document details the code structure of java-tron and introduces the functions of its various modules to facilitate code analysis and development.
 
-java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. The core of java-tron consists of 7 modules: [Protocol](#protocol), [Common](#common), [Chainbase](#chainbase), [Consensus](#consensus), [Actuator](#actuator), [Crypto](#crypto), [Framework](#framework). This document introduces the functions of these 7 core modules and their code organization. In addition, java-tron includes two auxiliary modules:
+java-tron adopts a modular code structure; the code structure is clear and easy to maintain and expand. The core of java-tron consists of 7 modules: [Protocol](#protocol), [Common](#common), [Chainbase](#chainbase), [Consensus](#consensus), [Actuator](#actuator), [Crypto](#crypto), [Framework](#framework). This document introduces the functions of these 7 core modules and their code organization. In addition, java-tron includes three auxiliary modules:
 
-* `plugins` - A set of node maintenance tools (Toolkit), providing offline database operations such as lite, convert, copy, move, and archive
-* `platform` - CPU architecture adaptation module, providing architecture-specific implementations (such as math operations and market order comparators) under the `common`/`x86`/`arm` directories respectively
+* `plugins` - A set of node maintenance tools (Toolkit), providing offline database operations such as lite, convert, copy, move, and archive, as well as keystore management commands
+* `platform` - CPU architecture adaptation module that combines shared code from `common` with build-time-selected implementations from `x86` or `arm`, including math operations and market order comparators
+* `errorprone` - Custom Error Prone checks used during compilation to prevent error-prone coding patterns
 
 
 
@@ -207,21 +208,29 @@ The Crypto module is relatively independent yet crucial to the system. Data secu
 
 [crypto](https://github.com/tronprotocol/java-tron/tree/develop/crypto) module's source code is located at: `https://github.com/tronprotocol/java-tron/tree/develop/crypto`, its directory structure is as follows:
 ```
-|-- crypto/src/main/java/org/tron/common/crypto
-    |-- Blake2bfMessageDigest.java
-    |-- ECKey.java
-    |-- Hash.java
-    |-- SignInterface.java
-    |-- SignUtils.java
-    |-- SignatureInterface.java
-    |-- cryptohash
-    |-- jce
-    |-- sm2
-    |-- zksnark
+|-- crypto/src/main/java/org/tron
+    |-- common
+    |   |-- crypto
+    |       |-- Blake2bfMessageDigest.java
+    |       |-- ECKey.java
+    |       |-- Hash.java
+    |       |-- Rsv.java
+    |       |-- SignInterface.java
+    |       |-- SignUtils.java
+    |       |-- SignatureInterface.java
+    |       |-- cryptohash
+    |       |-- jce
+    |       |-- sm2
+    |       |-- zksnark
+    |-- keystore
+        |-- Credentials.java
+        |-- Wallet.java
+        |-- WalletFile.java
+        |-- WalletUtils.java
 ```
 
-* `sm2` and `jce` - Provide SM2 and ECKey encryption algorithm and signature algorithm
-* `zksnark` - Provide a zero-knowledge proof algorithm
+* `common/crypto` - Provides cryptographic primitives and implementations; `ECKey.java` provides an ECDSA implementation over secp256k1, `sm2` provides an SM2 signature implementation, and `zksnark` provides implementations of cryptographic primitives used in zero-knowledge proofs
+* `keystore` - Provides keystore file management utilities
 
 ### Framework
 
@@ -249,7 +258,6 @@ The Framework module serves as the core of java-tron and the primary entry point
     |   |-- services
     |   |-- trie
     |   |-- zen
-    |-- keystore
     |-- program
     |   |-- FullNode.java
 ```

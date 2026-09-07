@@ -14,7 +14,7 @@ together with `--multi`. Transfer commands require auth.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile send-coin \
+    java -jar java/build/libs/wallet-cli.jar --network nile send-coin \
       --to TXyz... --amount 1000000
     ```
 
@@ -33,7 +33,7 @@ together with `--multi`. Transfer commands require auth.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile transfer-asset \
+    java -jar java/build/libs/wallet-cli.jar --network nile transfer-asset \
       --to TXyz... --asset 1000001 --amount 100
     ```
 
@@ -53,7 +53,7 @@ Convenience command for transferring USDT (TRC-20). Supported on `main`, `nile`,
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile transfer-usdt \
+    java -jar java/build/libs/wallet-cli.jar --network nile transfer-usdt \
       --to TXyz... --amount 1000000
     ```
 
@@ -105,7 +105,7 @@ Submits a signed, hex-encoded transaction to the network.
 === "Standard CLI"
 
     ```bash
-    java -jar build/libs/wallet-cli.jar --network nile broadcast-transaction \
+    java -jar java/build/libs/wallet-cli.jar --network nile broadcast-transaction \
       --transaction 0a83010a02...
     ```
 
