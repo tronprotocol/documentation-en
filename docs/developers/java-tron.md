@@ -151,7 +151,7 @@ Once all checks pass, maintainers will review the PR and merge it into the appro
 > **Coding Standards**
 >
 >- Follow the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
->- All PRs must be based on the `develop` branch
+>- Choose the target branch based on the type of change: regular PRs should target `develop`; fixes for a `release_*` branch should target the corresponding `release_*` branch; post-release emergency fixes should target the corresponding `hotfix/*` branch.
 
 ## Branch Naming Conventions
 
