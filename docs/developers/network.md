@@ -32,9 +32,6 @@ As the most fundamental module of TRON, the P2P network directly determines the 
 
 The underlying implementations of **Node Discovery** and **Node Connection** have been extracted from the java-tron repository into a standalone external dependency, [`io.github.tronprotocol:libp2p`](https://github.com/tronprotocol/libp2p). This library is responsible for low-level node discovery (based on the Kademlia algorithm) and connection transport, and it adds capabilities such as DNS-based node discovery. The TRON protocol layer above it — including the P2P_HELLO handshake, P2P_PING/P2P_PONG keep-alive, peer business-state management, message dispatch, synchronization, and broadcast — is still implemented in java-tron's `core/net`, which integrates with libp2p through `TronNetService`. For the low-level discovery and connection implementation details, please refer to the libp2p repository; they are no longer covered in this document.
 
-Starting with libp2p v2.2.9, log output from abnormal peer handshake messages is
-limited to reduce excessive log growth and memory usage.
-
 **Block Synchronization** and **Block and Transaction Broadcast** are still implemented in java-tron's `core/net`, and are introduced separately below.
 
 ## Peer Connection Management
