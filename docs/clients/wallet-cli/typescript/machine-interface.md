@@ -167,7 +167,37 @@ The **exit code is the hard contract**: `2` means the call was malformed (it wil
 wallet-cli --json-schema | jq '.errorCodes'
 ```
 
-That index is the machine-readable catalog exposed by this build. Treat it as a discovery aid, not a closed enum: a few code paths choose among error-code strings dynamically, so a runtime envelope can still carry a code not present in `errorCodes`. The tables below are the frequently-hit subset, kept for reading. New codes may still be added within v1, and a few strings (e.g. `invalid_value`, `aborted`, `not_found`, `token_metadata_unavailable`) can appear under either exit code depending on where they are raised — so always tolerate an unknown code by falling back to its exit-code class.
+Each entry is an object, not a bare string:
+
+```json
+{ "rpc_error": { "exit": 1, "retry": "same", "meaning": "the node answered with an error" } }
+```
+
+`exit` is the authority for that code's exit status — the tables below are hand-written and checked
+against it by a test (every code the tables list must match the index's `exit` for that code; the
+test does not check the tables' `Meaning` text or that every code in the index appears in a table).
+A handful of codes carry `"either"`: they genuinely arise on both sides, and the exit status is the
+one the process returned.
+
+`retry` is the answer to "now what": `same` — retry the identical command right away (a node or
+service hiccup); `later` — the identical command will work, but not yet — back off and retry
+after a delay (a lock-up period, a withdrawal interval, a rate limit), unlike `same`, which is
+safe to retry immediately; `changed` — retry only after changing the request (raise the fee,
+rebuild with a new nonce); `never` — retrying as-is cannot succeed, something outside the command
+has to change. Every exit-`2` code is `never` by construction.
+
+`retry` describes the **error**, not the **command**. `timeout` and `rpc_error` are `same` because
+for most calls that is correct — the node never acted, so resending is free. But a command that
+may have already broadcast a transaction (`tx send` and anything else on the submit path) can hit
+`timeout` or `rpc_error` **after the node accepted the transaction and before the response made it
+back**. In that case the outcome is unknown, not failed, and resending does not retry the original
+request — it builds and signs a **new** transaction, which on TRON is a second, distinct transfer.
+`retry: "same"` is correct for a `timeout`/`rpc_error` that happens while resolving a network id or
+reading a balance; it is not a license to resend a broadcast blind. Reconcile with
+[`tx status`](#script-safety-never-mistake-submitted-for-confirmed) before deciding whether to
+retry, exactly as the four-state model below requires.
+
+That index is the machine-readable catalog exposed by this build. Treat it as a discovery aid, not a closed enum: a few code paths choose among error-code strings dynamically, so a runtime envelope can still carry a code not present in `errorCodes`. The tables below are the frequently-hit subset, kept for reading. New codes may still be added within v1, and two strings (`invalid_value`, `aborted`) can appear under either exit code depending on where they are raised — so always tolerate an unknown code by falling back to its exit-code class.
 
 Common codes at exit **2** (usage — fix the call):
 
@@ -200,13 +230,15 @@ Common codes at exit **2** (usage — fix the call):
 | `gasfree_credentials_missing` / `tronlink_credentials_missing` | Required service credentials are not configured (set them with `config`) |
 | `unknown_parameter` | No chain parameter by that name or id (`proposal create --set`) |
 | `invalid_asset_name` | A TRC10 name or abbreviation outside 1–32 visible ASCII characters |
+| `migration_required` | Persisted wallet data needs an upgrade that this invocation cannot perform — see [startup wallet-data upgrades](#startup-wallet-data-upgrades) |
+| `ambiguous_account` | `--account <address>` matches more than one account and they are not interchangeable signers for the family being acted on; `error.details` carries the candidates — see [`error.details.matches`](#errordetailsmatches) |
 
 Common codes at exit **1** (execution — runtime failure):
 
 | Code | Meaning |
 |---|---|
 | `rpc_error` | The node rejected or failed the request — a TRON API call, or a JSON-RPC method such as `eth_estimateGas` |
-| `invalid_node_response` | The node's answer contradicts the request or the protocol: a TRC10/exchange record whose id is not the one asked for, a `precision` outside 0..6, or a rate pair that is not a positive int32. These decide signed amounts, so the command stops rather than acting on them. List reads drop the offending record and keep the page |
+| `invalid_node_response` | The node's answer contradicts the request or the protocol: a TRC10/exchange record whose id is not the one asked for, a `precision` outside 0..6, or a rate pair that is not a positive int32; an EVM JSON-RPC response with neither a `result` nor an `error` field, in violation of JSON-RPC; or a request for the latest block that came back without one. These decide signed amounts, so the command stops rather than acting on them. List reads drop the offending record and keep the page |
 | `timeout` | Aborted waiting for network or device (`--timeout` exceeded) |
 | `auth_required` | Required credential was unavailable — a software master password, or Ledger app/device readiness |
 | `auth_failed` | Wrong master password (decryption failed) |
@@ -223,7 +255,7 @@ Common codes at exit **1** (execution — runtime failure):
 | `chain_id_mismatch` | An EVM transaction was built for a different chain than the selected network |
 | `nonce_too_low` | The EVM transaction's nonce is already used by a mined transaction |
 | `history_not_supported` | The endpoint lacks TronGrid history support (`account history`, TRON) |
-| `not_found` | The addressed thing does not exist — for example an unactivated account, transaction, block, or GasFree / TronLink resource. Some command-level lookups raise the same string as a usage error instead; branch on exit code first |
+| `not_found` | The addressed thing does not exist — for example an unactivated account, transaction, block, or GasFree / TronLink resource |
 | `proposal_not_found` / `contract_not_found` / `asset_not_found` / `exchange_not_found` | Nothing on chain under that proposal id, contract address, TRC10 reference, or exchange pair id |
 | `ambiguous_asset_name` | A TRC10 name matches more than one token; `error.details` carries the candidates — see [`error.details.matches`](#errordetailsmatches) |
 | `ledger_unsupported` | The selected Ledger app cannot sign this transaction type — refused before the device is touched (TRON account activation, account id, asset writes, contract deploy/governance, witness writes, and cancel-unfreeze) |
@@ -238,7 +270,7 @@ Common codes at exit **1** (execution — runtime failure):
 | `insufficient_reserve` | `exchange withdraw`: more than that side of the pair holds |
 | `precision_loss` / `slippage_exceeded` / `exchange_trading_disabled` | Node rejections named from a narrow allowlist — an amount the reserve ratio cannot convert cleanly, a return below the floor, or a network that is not accepting Bancor trades at all |
 | `not_exportable` | The account holds no exportable secret (watch-only or Ledger) — `backup` |
-| `account_exists` / `wrong_keystore_password` | `import keystore`: the address is already in the wallet, or the file's own password is wrong (distinct from `auth_failed`, which is the master password). A file whose `mac` is missing or not hex is `invalid_keystore`, not a wrong password — hex case is not significant |
+| `wrong_keystore_password` | `import keystore`: the file's own password is wrong (distinct from `auth_failed`, which is the master password). A file whose `mac` is missing or not hex is `invalid_keystore`, not a wrong password — hex case is not significant |
 | `internal_error` | Unexpected internal failure; message is intentionally generic |
 
 Unexpected exceptions are **redacted** to `internal_error` with a generic message, so a library error that happens to echo secret material can never reach the envelope. The two tables above are a reading aid; `--json-schema`'s `errorCodes` is the maintained discovery index, not a parser exhaustiveness guarantee.
@@ -249,6 +281,12 @@ Some failures are a **choice**, not a dead end: the call was well formed but nam
 
 ```json
 {"code":"ambiguous_asset_name","message":"2 TRC10 tokens are named MyToken; re-run with the id","details":{"name":"MyToken","assetIds":["1000123","1000488"],"matches":[{"assetId":"1000123","issuerAddress":"TQkXm4vN...","totalSupply":"1000000000000000","precision":6},{"assetId":"1000488","issuerAddress":"TZx9kP2m...","totalSupply":"5000000000","precision":2}]}}
+```
+
+`ambiguous_account` is the second citizen of this convention, and the more commonly hit one — any `--account <address>` that doesn't resolve to a single interchangeable signer on the family being acted on returns it:
+
+```json
+{"code":"ambiguous_account","message":"address T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb matches 2 accounts; address it by accountId","details":{"address":"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb","accountIds":["wlt_a1b2c.0","wlt_d3e4f.0"],"matches":[{"accountId":"wlt_a1b2c.0","label":"main","type":"seed","index":0},{"accountId":"wlt_d3e4f.0","label":"cold","type":"watch","index":null}]}}
 ```
 
 `matches` is the convention, not a per-code special case: **any** error may carry it, and any that does gets the same treatment. In text mode the candidates are printed as a table under the `error [...]` line, on stderr. Quantities inside `matches` stay raw (minimal units), matching how the corresponding success payload reports them; the text table scales them for display when the row carries a `precision`.

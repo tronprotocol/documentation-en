@@ -57,7 +57,6 @@ Every command has a reference page, and the JSON contract, exit codes, and agent
 - [Getting started](typescript/guide/getting-started.md) — create a wallet and send your first transaction
 - [Command reference](typescript/commands/index.md) — every command, A–Z
 - [Machine interface](typescript/machine-interface.md) — JSON envelope, exit codes, script safety
-- [Agent skill](https://github.com/tronprotocol/wallet-cli/blob/develop/ts/skills/wallet-cli/SKILL.md) — for AI agents
 
 ## Which should I use?
 
