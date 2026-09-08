@@ -86,7 +86,7 @@ After each block is produced, the block award is sent to the account's allowance
 
 ## How to create witness
 
-Applying to become a witness account needs to consume **100_000 TRX**. This part of the funds will be burned directly.
+Applying to become a witness account burns a fee set by the `getAccountUpgradeCost` chain parameter. Governance can change it, so query the current value with [`GetChainParameters`](chain-data.md#getchainparameters) rather than assuming a fixed amount. This part of the funds is burned directly.
 
 ### CreateWitness
 

@@ -50,7 +50,7 @@ Capital injection. When conducting a capital injection, depending on its quantit
 - `OwnerAddress` (optional) — the address of the account which initiated the transaction. Default: the address of the login account.
 - `exchange_id` — ID of the trading pair.
 - `token_id`, `quant` — the ID and quantity of tokens being exchanged, equivalent to selling.
-- `expected` — expected quantity of another token. `expected` must be less than `quant`, or an error will be reported.
+- `expected` — the minimum quantity of the other token you are willing to receive. It is a floor, not a prediction: if the trade would return less, it fails. It is denominated in the other token, so it is not comparable with `quant`.
 
 Example:
 

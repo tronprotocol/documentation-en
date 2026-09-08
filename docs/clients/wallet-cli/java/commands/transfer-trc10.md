@@ -154,7 +154,7 @@ Participate in the issuance of a TRC10 token.
 - `OwnerAddress` (optional) — the address of the account which initiated the transaction. Default: the address of the login account.
 - `ToAddress` — account address of TRC10 issuers.
 - `AssetID` — TRC10 token ID. Example: 1000001.
-- `Amount` — the number of TRC10 token to transfer.
+- `Amount` — the amount of **TRX to spend**, in SUN. This is what you pay, not the number of tokens you receive: tokens are issued at the rate fixed when the token was created, rounded down to a whole unit, and the TRX you paid is transferred in full — a truncated remainder is not refunded.
 
 The participation process must happen during the release of TRC10, otherwise an error may occur.
 

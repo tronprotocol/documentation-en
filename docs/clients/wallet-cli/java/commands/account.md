@@ -4,11 +4,11 @@ Query and update on-chain accounts, manage account metadata, and view local reco
 
 ## How to create account
 
-You can create accounts by transferring funds to non-existing accounts, or by initiating a transaction to create an account using the **CreateAccount** command. Transferring to a non-existent account has a minimum restriction amount of **1 TRX**. Creating an account through the `CreateAccount` command still burns **1 TRX**.
+You can create accounts by transferring funds to non-existing accounts, or by initiating a transaction to create an account using the **CreateAccount** command. Either way an **activation fee** set by the `getCreateNewAccountFeeInSystemContract` chain parameter is burned. Creating an account also consumes **bandwidth**, and only bandwidth from staking or delegated to you counts — the daily free allowance cannot pay for it. Without enough of that bandwidth, the `getCreateAccountFee` chain parameter is burned instead to cover it; with enough, it is not. Governance can change either parameter, so query the current values with [`GetChainParameters`](chain-data.md#getchainparameters) rather than assuming fixed amounts.
 
 ## CreateAccount
 
-Create a new account with an inactive address, burning a 1-TRX handling fee for it.
+Create a new account with an inactive address, burning the account-creation fee described above.
 
 ```console
 > CreateAccount [OwnerAddress] Address
