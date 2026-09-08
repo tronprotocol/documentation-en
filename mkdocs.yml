@@ -264,6 +264,7 @@ nav:
         - Account Permission Management: mechanism-algorithm/multi-signatures.md
     - For java-tron Developers:
         - Developer Guide: developers/java-tron.md
+        - CI Workflows: developers/workflows.md
         - Core Modules: developers/code-structure.md
         - ChainBase Deep Dive: developers/chainbase.md
         - P2P Network Deep Dive: developers/network.md

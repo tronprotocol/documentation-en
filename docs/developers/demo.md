@@ -302,6 +302,33 @@ After fixing the code style issues, run the check again to ensure all warnings h
 
 ![CheckStyle 代码风格修复后示例](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/demo_codestyle.png)
 
+For faster feedback, you can run the same Checkstyle tasks used by CI from the repository root:
+
+```bash
+./gradlew \
+  :framework:checkstyleMain \
+  :framework:checkstyleTest \
+  :plugins:checkstyleMain
+```
+
+The regular build also runs Checkstyle as part of its broader verification tasks. Before opening a PR, run the full build:
+
+```bash
+./gradlew clean build --no-daemon
+```
+
+On x86-64, the project requires JDK 8 and the regular test task uses LevelDB by default. Run the focused RocksDB engine tests separately:
+
+```bash
+./gradlew :framework:testWithRocksDb --no-daemon
+```
+
+On ARM64, the project requires JDK 17 and the regular framework test task already uses RocksDB. Therefore, `./gradlew clean build --no-daemon` already exercises the framework tests with RocksDB, and the additional `testWithRocksDb` command is normally unnecessary.
+
+GitHub Actions performs additional checks that may not be practical to reproduce completely on one development machine. See [java-tron CI Workflows](workflows.md) for the complete trigger matrix, coverage thresholds, and branch-specific behavior.
+
+Make sure all required checks pass on the PR before requesting final review.
+
 ## 5. Submitting Code and Creating a Pull Request
 
 ### 5.1 Submit a Commit
