@@ -28,17 +28,17 @@ The agent-first implementation of wallet-cli, built for automation: every comman
 
 ## Supported chains
 
-Seven built-in networks across two chain families are supported, each identified by a canonical [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) `namespace:reference` id — `tron` for TRON, `eip155` for EVM. An **alias** is a short name you may type instead; it resolves at selection and never appears in output:
+Seven built-in networks are supported. Networks use a canonical [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) `namespace:reference` id. The namespace is not the family: `eip155` is CAIP-2's namespace for EVM chains, while the family this CLI branches on is `evm`. An **alias** is a short name you may type instead; it resolves at selection and never appears in output:
 
 | Network id | Alias | What it is | Native coin value |
 |---|---|---|---|
 | `tron:728126428` | `tron` | Production TRON | **Real funds** |
 | `tron:3448148188` | `nile` | Primary TRON testnet (faucet at nileex.io) | None — use freely |
 | `tron:2494104990` | `shasta` | Alternate TRON testnet | None |
-| `eip155:1` | `ethereum` | Ethereum mainnet | **Real funds** |
-| `eip155:11155111` | `sepolia` | Ethereum test network | None |
-| `eip155:56` | `bsc` | BNB Smart Chain | **Real funds** |
-| `eip155:97` | `bsc-testnet` | BNB Smart Chain test network | None |
+| `eip155:1` | `ethereum` | Ethereum mainnet (ETH) | **Real funds** |
+| `eip155:11155111` | `sepolia` | Ethereum test network (ETH) | None |
+| `eip155:56` | `bsc` | BNB Smart Chain (BNB) | **Real funds** |
+| `eip155:97` | `bsc-testnet` | BNB Smart Chain test network (BNB) | None |
 
 Within a family your address is the same on every network (base58 `T…` on TRON, `0x…` on EVM — the two families derive **different** addresses from the same seed), while balances, tokens, and transactions stay isolated per network. Fees follow the family: TRON's `tron-resource` model (bandwidth + energy) or EVM gas — see [networks](concepts/networks.md) and [energy & bandwidth](concepts/energy-bandwidth.md).
 
