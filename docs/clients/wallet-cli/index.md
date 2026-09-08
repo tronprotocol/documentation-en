@@ -7,7 +7,7 @@ This repository holds **two independent implementations** that share the same pu
 - **[Java](java/index.md)** — the original, full-featured reference CLI. An interactive prompt (REPL) you drive by hand.
 - **[TypeScript](typescript/index.md)** — an agent-first rewrite for automation. Standard subcommands with a stable JSON envelope, built for scripts, CI, and AI agents.
 
-Both manage the same kind of wallet, and on TRON networks a seed derives the same address in either. They cover the same TRON feature surface and differ in how you install and drive them — and the TypeScript implementation additionally speaks **EVM networks** (Ethereum, BNB Smart Chain and their testnets), which the Java implementation does not. Pick one and read its own README for depth; this page gives you the basics of each so you can choose.
+Both manage the same kind of wallet, but **their account stores are not interchangeable**. The same mnemonic gives the same address only for the *first* account: beyond it the two walk different BIP44 paths — Java increments the address index (`m/44'/195'/0'/0/i`), TypeScript the account level (`m/44'/195'/i'/0/0`). A wallet restored in the other CLI therefore shows different addresses; the funds are not missing. Check the BIP44 path recorded with the account before migrating between the two. They cover the same TRON feature surface and differ in how you install and drive them — and the TypeScript implementation additionally speaks **EVM networks** (Ethereum, BNB Smart Chain and their testnets), which the Java implementation does not. Pick one and read its own README for depth; this page gives you the basics of each so you can choose.
 
 ## At a glance
 
@@ -31,9 +31,9 @@ Interactive only. Build it, start the prompt, then type commands:
 
 ```console
 $ git clone https://github.com/tronprotocol/wallet-cli.git
-$ cd wallet-cli && ./gradlew build && cd build/libs
+$ cd wallet-cli/java && ./gradlew build && cd build/libs
 $ java -jar wallet-cli.jar        # opens the interactive prompt
-> RegisterWallet 123456           # create a keystore (password 123456)
+> RegisterWallet                  # prompts twice for the password, then for mnemonic length
 > Login                           # unlock it
 > GetAddress                      # your TRON address
 > GetBalance                      # TRX balance

@@ -40,13 +40,13 @@ You can also switch networks at runtime with the [`SwitchNetwork`](commands/netw
 - **Compile and run**:
 
     ```console
-    $ cd wallet-cli
+    $ cd wallet-cli/java
     $ ./gradlew build
     $ cd build/libs
     $ java -jar wallet-cli.jar
     ```
 
-wallet-cli connects to java-tron via the gRPC protocol, which can be deployed locally or remotely. Configure the java-tron node IP and port in `src/main/resources/config.conf`, or use `SwitchNetwork` to switch among mainnet, testnets (Nile and Shasta), and custom networks.
+wallet-cli connects to java-tron via the gRPC protocol, which can be deployed locally or remotely. Configure the java-tron node IP and port in `java/src/main/resources/config.conf`, or use `SwitchNetwork` to switch among mainnet, testnets (Nile and Shasta), and custom networks.
 
 ## Quickstart
 
@@ -55,13 +55,13 @@ Build, create an account, and send your first transfer — all from the interact
 ```console
 # 1. Build
 $ git clone https://github.com/tronprotocol/wallet-cli.git
-$ cd wallet-cli && ./gradlew build && cd build/libs
+$ cd wallet-cli/java && ./gradlew build && cd build/libs
 
 # 2. Start the interactive wallet
 $ java -jar wallet-cli.jar
 
 # 3. In the wallet prompt: create an account (or ImportWallet), unlock, and inspect it
-> RegisterWallet 123456      # create a keystore with password 123456
+> RegisterWallet             # prompts twice for the password, then for mnemonic length
 > Login                      # unlock the account
 > GetAddress                 # show your address
 > GetBalance                 # TRX balance
