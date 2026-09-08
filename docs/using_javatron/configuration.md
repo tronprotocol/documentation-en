@@ -148,6 +148,11 @@ Request and message size limits are configured independently:
 - `node.jsonrpc.maxMessageSize` controls JSON-RPC request bodies.
 - `node.jsonrpc.maxBatchSize`, `maxResponseSize`, and filter limits constrain JSON-RPC workloads.
 
+`node.rpc.maxConcurrentCallsPerConnection` limits the number of concurrent gRPC
+calls on one connection. Its default value is `100`, and setting it to `0` also
+uses `100`. If a client needs more than 100 concurrent calls on one connection,
+configure a larger positive value.
+
 Use `node.disabledApi` to disable selected HTTP, gRPC, or PBFT methods. It does not disable JSON-RPC methods; disable a JSON-RPC service with its `node.jsonrpc.*Enable` switch.
 
 Do not expose administrative or transaction-building APIs directly to an untrusted network. Restrict listening access with host or network controls, and place public services behind an appropriately configured gateway when necessary. See the [HTTP API](../api/http/index.md) and [JSON-RPC API](../api/json-rpc/index.md) guides for protocol-specific behavior.
