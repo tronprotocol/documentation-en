@@ -230,7 +230,6 @@ Common codes at exit **2** (usage — fix the call):
 | `gasfree_credentials_missing` / `tronlink_credentials_missing` | Required service credentials are not configured (set them with `config`) |
 | `unknown_parameter` | No chain parameter by that name or id (`proposal create --set`) |
 | `invalid_asset_name` | A TRC10 name or abbreviation outside 1–32 visible ASCII characters |
-| `migration_required` | Persisted wallet data needs an upgrade that this invocation cannot perform — see [startup wallet-data upgrades](#startup-wallet-data-upgrades) |
 | `ambiguous_account` | `--account <address>` matches more than one account and they are not interchangeable signers for the family being acted on; `error.details` carries the candidates — see [`error.details.matches`](#errordetailsmatches) |
 
 Common codes at exit **1** (execution — runtime failure):

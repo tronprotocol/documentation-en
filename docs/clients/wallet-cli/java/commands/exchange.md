@@ -1,6 +1,6 @@
 # Exchange (Bancor)
 
-The built-in on-chain exchange. The trading and price fluctuations of trading pairs are in accordance with the Bancor Agreement, which can be found in TRON's [related documents](../../../../mechanism-algorithm/dex.md).
+The built-in on-chain exchange. Trading and the resulting price movements of a pair follow the Bancor protocol.
 
 ## ExchangeCreate
 

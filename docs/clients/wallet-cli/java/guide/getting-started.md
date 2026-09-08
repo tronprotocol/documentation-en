@@ -28,7 +28,7 @@ $ java -jar wallet-cli.jar
 
 ## How to create account
 
-You can create accounts by transferring funds to non-existing accounts, or by initiating a transaction to create an account using the **CreateAccount** command. Transferring to a non-existent account has a minimum restriction amount of **1 TRX**. Creating an account through the `CreateAccount` command still burns **1 TRX**.
+You can create accounts by transferring funds to non-existing accounts, or by initiating a transaction to create an account using the **CreateAccount** command. Either way an activation fee is burned and bandwidth is consumed; both are governance-controlled chain parameters rather than fixed amounts — see [commands/account](../commands/account.md#how-to-create-account) for the exact rule.
 
 See [commands/account](../commands/account.md) for the full `CreateAccount` example.
 
