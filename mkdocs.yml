@@ -17,6 +17,7 @@ nav:
         - Event Subscription: architecture/event.md
         - Database Configuration: architecture/database.md
         - Network Connection: using_javatron/connecting_to_tron.md
+        - Node Logging: using_javatron/logging.md
         - Node Monitoring: using_javatron/metrics.md
         - Node Maintenance Tool: using_javatron/toolkit.md
     - API:
