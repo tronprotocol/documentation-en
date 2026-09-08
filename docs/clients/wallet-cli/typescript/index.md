@@ -1,6 +1,6 @@
 # wallet-cli — TypeScript implementation
 
-The agent-first implementation of wallet-cli, built for automation: every command has a stable JSON envelope, deterministic exit codes, and discoverable schemas; interactive prompts are kept only for secret input (import / backup / delete). For what wallet-cli is and how the two implementations compare, see the [repository overview](../index.md); for the original, see the [Java implementation](../java/index.md).
+The agent-first implementation of wallet-cli, built for automation: every command has a stable JSON envelope, deterministic exit codes, and discoverable schemas; interactive prompts are kept to a short allowlist — `create`, the `import` variants, `backup`, `change-password` and `delete` — and everywhere else a missing credential is an error, never a prompt. For what wallet-cli is and how the two implementations compare, see the [repository overview](../index.md); for the original, see the [Java implementation](../java/index.md).
 
 ## Key features
 
@@ -44,7 +44,7 @@ Within a family your address is the same on every network (base58 `T…` on TRON
 
 ## Install
 
-**Prerequisites**: [Node.js](https://nodejs.org) **20 or later** (`node --version` to check). Ledger signing additionally needs a supported Ledger device with the TRON app installed — see the [Ledger guide](guide/ledger.md).
+**Prerequisites**: [Node.js](https://nodejs.org) **20 or later** (`node --version` to check). Ledger signing additionally needs a supported Ledger device with the app for the selected family installed — TRON for TRON accounts, Ethereum for EVM accounts. See the [Ledger guide](guide/ledger.md).
 
 ```bash
 npm install -g @tron-walletcli/wallet-cli
@@ -84,8 +84,13 @@ wallet-cli create --label main
 ```console
 ✅ Created wallet "main"
   Account ID    wlt_2dbv24de.0
+  Type          HD
   TRON address  TTVdGTBXY5mmY3nJFGUp7Vo898kUJ6gtFQ
+  EVM address   0x5c8e1b04A7f39d62C0B3e85A1d47F9028b6ce713
   Active        yes
+
+⚠️ Recovery phrase is encrypted locally and was not printed.
+⚠️ Run `backup` soon and store the file offline.
 ```
 
 ```bash
@@ -194,4 +199,4 @@ TRON differs a lot from EVM chains in fees, accounts, and key permissions — th
 
 A command errored or behaved unexpectedly? Common issues and how to diagnose them are in [troubleshooting.md](troubleshooting.md).
 
-> All copy-pasteable examples in this documentation run against the **Nile testnet** (`--network tron:3448148188`). Mainnet commands move real funds; they appear only as annotated, non-copyable descriptions.
+> Copy-pasteable examples that spend anything target a testnet — **Nile** (`--network tron:3448148188`) on TRON, **Sepolia** (`--network eip155:11155111`) on EVM. Mainnet ids (`tron:728126428`, `eip155:1`) also appear: in read-only examples such as token-book listings and config paths, and in a few illustrations of mainnet token contracts. Those last ones carry placeholder recipients (`T...` / `0x...`) and are not runnable as written.

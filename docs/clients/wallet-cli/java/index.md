@@ -18,7 +18,7 @@ git clone https://github.com/tronprotocol/wallet-cli.git
 
 ### Configuration
 
-A minimal `config.conf` only needs a network type and a full node to talk to:
+A minimal `config.conf` needs a full-node endpoint. `net.type` does not select the network; it only controls whether `grpc.mainnet.apiKey` is applied. The startup network is inferred from the configured node endpoints.
 
 ```
 net {
@@ -46,7 +46,7 @@ You can also switch networks at runtime with the [`SwitchNetwork`](commands/netw
     $ java -jar wallet-cli.jar
     ```
 
-wallet-cli connects to java-tron via the gRPC protocol, which can be deployed locally or remotely. Configure the java-tron node IP and port in `java/src/main/resources/config.conf`, or use `SwitchNetwork` to switch among mainnet, testnets (Nile and Shasta), and custom networks.
+wallet-cli connects to java-tron via gRPC. At startup it first looks for `config.conf` in the current working directory, then falls back to the bundled classpath resource. Use `SwitchNetwork` to switch among mainnet, testnets (Nile and Shasta), and custom networks.
 
 ## Quickstart
 
@@ -76,7 +76,7 @@ The full first-run walkthrough is in the [getting-started guide](guide/getting-s
 
 ## Commands
 
-Every command is documented on a family page under [docs/commands/](commands/index.md). The **[command index](commands/index.md)** has the full A–Z list linking each command to its section; in the wallet, typing any command shows its built-in usage tips.
+Every command is documented on a family page under [docs/commands/](commands/index.md). The **[command index](commands/index.md)** has the full A–Z list linking each command to its section; in the wallet, `help <command>` shows a command's built-in usage tips (`help` alone prints the full table).
 
 ### Wallets & accounts
 
