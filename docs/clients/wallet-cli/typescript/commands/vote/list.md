@@ -1,0 +1,72 @@
+# wallet-cli vote list
+
+List super representatives and candidates.
+
+## Synopsis
+
+```
+wallet-cli vote list [--limit <n>] [--candidates] [options]
+```
+
+## Description
+
+Lists SRs (the 27 elected, by default) with votes and reward ratio — the on-chain data available before a [`vote cast`](cast.md). Read-only, no account needed.
+
+Column semantics:
+
+- **APR** — reserved for a future estimate source. The current implementation does not query one, so the column always shows `—` and json always returns `null`.
+- **Reward ratio** — the share of rewards the SR passes to voters (on-chain, reliable). 80% means voters split 80% of the rewards; **0% means your votes earn nothing**. json also carries the chain-native `brokeragePct` (= 100 − rewardRatioPct).
+- **Ranks and eligibility** — ranks 1–27 are elected SRs (block + vote rewards); 28–127 are partners (vote rewards only); beyond 127 candidates earn nothing, so `--limit` caps at 127.
+
+## Options
+
+| Option | Description |
+|---|---|
+| `--limit <number>` | Max ranks to return (default 27, max 127). By default only the 27 elected SRs are listed, so a higher limit has no effect unless you also pass `--candidates` |
+| `--candidates` | Also list non-elected candidates (ranks 28+), so `--limit` can reach beyond 27 up to 127 |
+
+Plus the [global options](../index.md#global-options-every-command).
+
+## Examples
+
+```bash
+wallet-cli vote list --limit 3 --network tron:3448148188
+```
+
+```console
+| Rank | Name         | Votes         | APR | Reward ratio | Address                            |
+| ---- | ------------ | ------------- | --- | ------------ | ---------------------------------- |
+| 1    | tronscan.org | 1,203,456,789 | —   | 80%          | TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g |
+| 2    | binance.com  | 998,765,432   | —   | 0%           | TT5W8MPbYJih9R586kTszb4LoybzUvCYm2 |
+| 3    | justlend.org | 876,543,210   | —   | 80%          | TWxkzUeAiKcFvzXvJEcaTQCQqCuMednAtN |
+```
+
+```bash
+wallet-cli vote list --limit 3 --network tron:3448148188 -o json
+```
+
+```json
+{"schema":"wallet-cli.result.v1","success":true,"command":"vote.list","data":{"witnesses":[{"rank":1,"name":"tronscan.org","address":"TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g","voteCount":"1203456789","rewardRatioPct":80,"brokeragePct":20,"aprPct":null},{"rank":2,"name":"binance.com","address":"TT5W8MPbYJih9R586kTszb4LoybzUvCYm2","voteCount":"998765432","rewardRatioPct":0,"brokeragePct":100,"aprPct":null},{"rank":3,"name":"justlend.org","address":"TWxkzUeAiKcFvzXvJEcaTQCQqCuMednAtN","voteCount":"876543210","rewardRatioPct":80,"brokeragePct":20,"aprPct":null}]},"meta":{"durationMs":40,"warnings":[]},"chain":{"family":"tron","network":"tron:3448148188","chainId":"3448148188"}}
+```
+
+## Output
+
+`data.witnesses[]` — one entry per rank:
+
+| Field | Type | Meaning |
+|---|---|---|
+| `rank` | number | Rank by vote count (1 = most votes) |
+| `name` | string | Hostname derived from the witness URL; falls back to the URL text or address |
+| `address` | string | SR base58 address |
+| `voteCount` | string | Total votes, raw integer |
+| `rewardRatioPct` | number \| null | % of rewards passed to voters; `null` when brokerage cannot be read |
+| `brokeragePct` | number \| null | SR's cut (= 100 − `rewardRatioPct`); `null` when unavailable |
+| `aprPct` | null | Reserved field; always `null` in the current implementation |
+
+## Exit status
+
+`0` success · `1` execution failure (`rpc_error`) · `2` usage error (`invalid_value` — limit out of range).
+
+## See also
+
+[`vote cast`](cast.md) · [`vote status`](status.md)

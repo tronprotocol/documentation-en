@@ -278,21 +278,187 @@ nav:
         - Tools: contracts/tools.md
     - Clients:
         - wallet-cli:
-            - Overview: clients/wallet-cli/index.md
+            - "Overview": clients/wallet-cli/index.md
             - Java CLI:
-                - Overview: clients/wallet-cli/java-cli.md
-                - Wallet Management: clients/wallet-cli/wallet-management.md
-                - Accounts: clients/wallet-cli/accounts.md
-                - Staking & Resources: clients/wallet-cli/staking.md
-                - Transactions: clients/wallet-cli/transactions.md
-                - Smart Contracts: clients/wallet-cli/smart-contracts.md
-                - TRC-10 Assets: clients/wallet-cli/trc10.md
-                - Governance: clients/wallet-cli/governance.md
-                - GasFree: clients/wallet-cli/gasfree.md
-                - Queries: clients/wallet-cli/query.md
+                - "Overview": clients/wallet-cli/java/index.md
+                - Guides:
+                    - "Overview": clients/wallet-cli/java/guide/index.md
+                    - "Getting started": clients/wallet-cli/java/guide/getting-started.md
+                    - "Command-line operation flow": clients/wallet-cli/java/guide/command-flow.md
+                - Concepts:
+                    - "Overview": clients/wallet-cli/java/concepts/index.md
+                    - "Resources: bandwidth, energy & shares": clients/wallet-cli/java/concepts/resources.md
+                    - "Staking models: Stake 1.0 vs 2.0": clients/wallet-cli/java/concepts/staking-models.md
+                    - "Multi-signature concepts": clients/wallet-cli/java/concepts/multisig.md
+                - Command reference:
+                    - "Command index": clients/wallet-cli/java/commands/index.md
+                    - "Wallet management": clients/wallet-cli/java/commands/wallet.md
+                    - "Account commands": clients/wallet-cli/java/commands/account.md
+                    - "Network commands": clients/wallet-cli/java/commands/network.md
+                    - "TRC10 tokens": clients/wallet-cli/java/commands/transfer-trc10.md
+                    - "USDT & TRC20 transfers": clients/wallet-cli/java/commands/usdt.md
+                    - "Staking (Stake 2.0)": clients/wallet-cli/java/commands/stake-v2.md
+                    - "Staking (Stake 1.0, legacy)": clients/wallet-cli/java/commands/stake-v1-legacy.md
+                    - "Resource prices & memo fee": clients/wallet-cli/java/commands/resources.md
+                    - "Voting, rewards & witnesses": clients/wallet-cli/java/commands/vote-reward.md
+                    - "Proposals": clients/wallet-cli/java/commands/proposals.md
+                    - "Exchange (Bancor)": clients/wallet-cli/java/commands/exchange.md
+                    - "TRON-DEX market": clients/wallet-cli/java/commands/dex.md
+                    - "Multi-signature": clients/wallet-cli/java/commands/multisig.md
+                    - "Smart contracts": clients/wallet-cli/java/commands/contract.md
+                    - "GasFree transfers": clients/wallet-cli/java/commands/gasfree.md
+                    - "Chain data & utilities": clients/wallet-cli/java/commands/chain-data.md
+                - "Configuration reference": clients/wallet-cli/java/reference/config.md
             - TypeScript / npm CLI:
-                - Overview: clients/wallet-cli/typescript-cli.md
-                - Signing & Security: clients/wallet-cli/typescript-cli-signing.md
+                - "Overview": clients/wallet-cli/typescript/index.md
+                - Guides:
+                    - "Overview": clients/wallet-cli/typescript/guide/index.md
+                    - "Getting Started": clients/wallet-cli/typescript/guide/getting-started.md
+                    - "Sending TRX and Tokens": clients/wallet-cli/typescript/guide/send-tokens.md
+                    - "Staking and Resources": clients/wallet-cli/typescript/guide/stake-and-resources.md
+                    - "Using a Ledger Hardware Wallet": clients/wallet-cli/typescript/guide/ledger.md
+                    - "Scripting wallet-cli": clients/wallet-cli/typescript/guide/scripting.md
+                - Concepts:
+                    - "Overview": clients/wallet-cli/typescript/concepts/index.md
+                    - "Networks": clients/wallet-cli/typescript/concepts/networks.md
+                    - "Accounts and HD Wallets": clients/wallet-cli/typescript/concepts/accounts-and-hd.md
+                    - "Energy and Bandwidth": clients/wallet-cli/typescript/concepts/energy-bandwidth.md
+                    - "Security Model": clients/wallet-cli/typescript/concepts/security.md
+                - Command reference:
+                    - "Command index": clients/wallet-cli/typescript/commands/index.md
+                    - "create": clients/wallet-cli/typescript/commands/create.md
+                    - "list": clients/wallet-cli/typescript/commands/list.md
+                    - "use": clients/wallet-cli/typescript/commands/use.md
+                    - "current": clients/wallet-cli/typescript/commands/current.md
+                    - "derive": clients/wallet-cli/typescript/commands/derive.md
+                    - "rename": clients/wallet-cli/typescript/commands/rename.md
+                    - "backup": clients/wallet-cli/typescript/commands/backup.md
+                    - "delete": clients/wallet-cli/typescript/commands/delete.md
+                    - "change-password": clients/wallet-cli/typescript/commands/change-password.md
+                    - "block": clients/wallet-cli/typescript/commands/block.md
+                    - "networks": clients/wallet-cli/typescript/commands/networks.md
+                    - "config": clients/wallet-cli/typescript/commands/config.md
+                    - account:
+                        - "Overview": clients/wallet-cli/typescript/commands/account/index.md
+                        - "account activate": clients/wallet-cli/typescript/commands/account/activate.md
+                        - "account balance": clients/wallet-cli/typescript/commands/account/balance.md
+                        - "account history": clients/wallet-cli/typescript/commands/account/history.md
+                        - "account info": clients/wallet-cli/typescript/commands/account/info.md
+                        - "account portfolio": clients/wallet-cli/typescript/commands/account/portfolio.md
+                        - "account set": clients/wallet-cli/typescript/commands/account/set.md
+                    - address:
+                        - "Overview": clients/wallet-cli/typescript/commands/address/index.md
+                        - "address generate": clients/wallet-cli/typescript/commands/address/generate.md
+                    - asset:
+                        - "Overview": clients/wallet-cli/typescript/commands/asset/index.md
+                        - "asset info": clients/wallet-cli/typescript/commands/asset/info.md
+                        - "asset issue": clients/wallet-cli/typescript/commands/asset/issue.md
+                        - "asset list": clients/wallet-cli/typescript/commands/asset/list.md
+                        - "asset participate": clients/wallet-cli/typescript/commands/asset/participate.md
+                        - "asset unfreeze": clients/wallet-cli/typescript/commands/asset/unfreeze.md
+                        - "asset update": clients/wallet-cli/typescript/commands/asset/update.md
+                    - chain:
+                        - "Overview": clients/wallet-cli/typescript/commands/chain/index.md
+                        - "chain node": clients/wallet-cli/typescript/commands/chain/node.md
+                        - "chain params": clients/wallet-cli/typescript/commands/chain/params.md
+                        - "chain prices": clients/wallet-cli/typescript/commands/chain/prices.md
+                    - contact:
+                        - "Overview": clients/wallet-cli/typescript/commands/contact/index.md
+                        - "contact add": clients/wallet-cli/typescript/commands/contact/add.md
+                        - "contact list": clients/wallet-cli/typescript/commands/contact/list.md
+                        - "contact remove": clients/wallet-cli/typescript/commands/contact/remove.md
+                    - contract:
+                        - "Overview": clients/wallet-cli/typescript/commands/contract/index.md
+                        - "contract call": clients/wallet-cli/typescript/commands/contract/call.md
+                        - "contract clear-abi": clients/wallet-cli/typescript/commands/contract/clear-abi.md
+                        - "contract create2": clients/wallet-cli/typescript/commands/contract/create2.md
+                        - "contract deploy": clients/wallet-cli/typescript/commands/contract/deploy.md
+                        - "contract info": clients/wallet-cli/typescript/commands/contract/info.md
+                        - "contract send": clients/wallet-cli/typescript/commands/contract/send.md
+                        - "contract set-origin-energy-limit": clients/wallet-cli/typescript/commands/contract/set-origin-energy-limit.md
+                        - "contract set-user-resource-percent": clients/wallet-cli/typescript/commands/contract/set-user-resource-percent.md
+                    - encoding:
+                        - "Overview": clients/wallet-cli/typescript/commands/encoding/index.md
+                        - "encoding convert": clients/wallet-cli/typescript/commands/encoding/convert.md
+                    - exchange:
+                        - "Overview": clients/wallet-cli/typescript/commands/exchange/index.md
+                        - "exchange create": clients/wallet-cli/typescript/commands/exchange/create.md
+                        - "exchange inject": clients/wallet-cli/typescript/commands/exchange/inject.md
+                        - "exchange list": clients/wallet-cli/typescript/commands/exchange/list.md
+                        - "exchange show": clients/wallet-cli/typescript/commands/exchange/show.md
+                        - "exchange trade": clients/wallet-cli/typescript/commands/exchange/trade.md
+                        - "exchange withdraw": clients/wallet-cli/typescript/commands/exchange/withdraw.md
+                    - gasfree:
+                        - "Overview": clients/wallet-cli/typescript/commands/gasfree/index.md
+                        - "gasfree info": clients/wallet-cli/typescript/commands/gasfree/info.md
+                        - "gasfree trace": clients/wallet-cli/typescript/commands/gasfree/trace.md
+                        - "gasfree transfer": clients/wallet-cli/typescript/commands/gasfree/transfer.md
+                    - import:
+                        - "Overview": clients/wallet-cli/typescript/commands/import/index.md
+                        - "import keystore": clients/wallet-cli/typescript/commands/import/keystore.md
+                        - "import ledger": clients/wallet-cli/typescript/commands/import/ledger.md
+                        - "import mnemonic": clients/wallet-cli/typescript/commands/import/mnemonic.md
+                        - "import private-key": clients/wallet-cli/typescript/commands/import/private-key.md
+                        - "import watch": clients/wallet-cli/typescript/commands/import/watch.md
+                    - message:
+                        - "Overview": clients/wallet-cli/typescript/commands/message/index.md
+                        - "message sign": clients/wallet-cli/typescript/commands/message/sign.md
+                    - permission:
+                        - "Overview": clients/wallet-cli/typescript/commands/permission/index.md
+                        - "permission show": clients/wallet-cli/typescript/commands/permission/show.md
+                        - "permission update": clients/wallet-cli/typescript/commands/permission/update.md
+                    - proposal:
+                        - "Overview": clients/wallet-cli/typescript/commands/proposal/index.md
+                        - "proposal approve": clients/wallet-cli/typescript/commands/proposal/approve.md
+                        - "proposal create": clients/wallet-cli/typescript/commands/proposal/create.md
+                        - "proposal delete": clients/wallet-cli/typescript/commands/proposal/delete.md
+                        - "proposal list": clients/wallet-cli/typescript/commands/proposal/list.md
+                        - "proposal show": clients/wallet-cli/typescript/commands/proposal/show.md
+                    - reward:
+                        - "Overview": clients/wallet-cli/typescript/commands/reward/index.md
+                        - "reward balance": clients/wallet-cli/typescript/commands/reward/balance.md
+                        - "reward withdraw": clients/wallet-cli/typescript/commands/reward/withdraw.md
+                    - stake:
+                        - "Overview": clients/wallet-cli/typescript/commands/stake/index.md
+                        - "stake cancel-unfreeze": clients/wallet-cli/typescript/commands/stake/cancel-unfreeze.md
+                        - "stake delegate": clients/wallet-cli/typescript/commands/stake/delegate.md
+                        - "stake delegated": clients/wallet-cli/typescript/commands/stake/delegated.md
+                        - "stake freeze": clients/wallet-cli/typescript/commands/stake/freeze.md
+                        - "stake info": clients/wallet-cli/typescript/commands/stake/info.md
+                        - "stake undelegate": clients/wallet-cli/typescript/commands/stake/undelegate.md
+                        - "stake unfreeze": clients/wallet-cli/typescript/commands/stake/unfreeze.md
+                        - "stake withdraw": clients/wallet-cli/typescript/commands/stake/withdraw.md
+                    - token:
+                        - "Overview": clients/wallet-cli/typescript/commands/token/index.md
+                        - "token add": clients/wallet-cli/typescript/commands/token/add.md
+                        - "token balance": clients/wallet-cli/typescript/commands/token/balance.md
+                        - "token info": clients/wallet-cli/typescript/commands/token/info.md
+                        - "token list": clients/wallet-cli/typescript/commands/token/list.md
+                        - "token remove": clients/wallet-cli/typescript/commands/token/remove.md
+                    - tx:
+                        - "Overview": clients/wallet-cli/typescript/commands/tx/index.md
+                        - "tx approvals": clients/wallet-cli/typescript/commands/tx/approvals.md
+                        - "tx broadcast": clients/wallet-cli/typescript/commands/tx/broadcast.md
+                        - "tx info": clients/wallet-cli/typescript/commands/tx/info.md
+                        - "tx multisig": clients/wallet-cli/typescript/commands/tx/multisig.md
+                        - "tx send": clients/wallet-cli/typescript/commands/tx/send.md
+                        - "tx sign": clients/wallet-cli/typescript/commands/tx/sign.md
+                        - "tx status": clients/wallet-cli/typescript/commands/tx/status.md
+                    - typed-data:
+                        - "Overview": clients/wallet-cli/typescript/commands/typed-data/index.md
+                        - "typed-data sign": clients/wallet-cli/typescript/commands/typed-data/sign.md
+                    - vote:
+                        - "Overview": clients/wallet-cli/typescript/commands/vote/index.md
+                        - "vote cast": clients/wallet-cli/typescript/commands/vote/cast.md
+                        - "vote list": clients/wallet-cli/typescript/commands/vote/list.md
+                        - "vote status": clients/wallet-cli/typescript/commands/vote/status.md
+                    - witness:
+                        - "Overview": clients/wallet-cli/typescript/commands/witness/index.md
+                        - "witness create": clients/wallet-cli/typescript/commands/witness/create.md
+                        - "witness set-brokerage": clients/wallet-cli/typescript/commands/witness/set-brokerage.md
+                        - "witness update": clients/wallet-cli/typescript/commands/witness/update.md
+                - "Machine Interface": clients/wallet-cli/typescript/machine-interface.md
+                - "Troubleshooting": clients/wallet-cli/typescript/troubleshooting.md
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md

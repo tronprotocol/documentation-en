@@ -36,9 +36,9 @@ This guide use the command-line tool `wallet-cli` to demonstrate fundamental acc
 
 > **About `wallet-cli`**
 >
->`wallet-cli` is an interactive command-line tool that supports the TRON network. It simplifies complex operations by wrapping the node's gRPC interface into developer-friendly commands. It is used to sign and broadcast transactions in a secure local environment and can also be used to fetch on-chain data.
+>`wallet-cli` ships in two implementations: the Java one is an interactive command-line client that connects to the node over gRPC; the TypeScript one installs from npm, targets scripts and automation, and reaches the node over the FullNode HTTP interface. Both manage wallets locally, sign and broadcast transactions, and query on-chain data. This guide uses the Java implementation.
 >
-> Before proceeding, ensure you have downloaded and compiled `wallet-cli`. This guide only covers a few basic commands as examples. For more information, please refer to the official [GitHub documentation](https://github.com/tronprotocol/wallet-cli).
+> Before proceeding, ensure you have downloaded and compiled `wallet-cli`. This guide only covers a few basic commands as examples. For the full setup, see [Java CLI setup](../clients/wallet-cli/java/index.md#setup).
  
 Now, please complete the following three preparation steps in order.
 

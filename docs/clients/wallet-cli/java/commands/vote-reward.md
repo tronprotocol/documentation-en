@@ -1,0 +1,150 @@
+# Voting, rewards & witnesses
+
+Vote for super representatives, manage brokerage and claim rewards, and create / update witnesses.
+
+## How to vote
+
+Voting requires share. Share can be obtained by freezing funds.
+
+- The share calculation method is: **1** unit of share can be obtained for every **1 TRX** frozen.
+- After unfreezing, the previous vote will expire. You can avoid invalidating the vote by re-freezing and voting.
+
+**NOTE** The TRON network only records the status of your last vote, which means that each of your votes will overwrite all previous voting results.
+
+For example:
+
+```console
+> freezeBalance 10000000 3 1  # Freeze 10 TRX and acquire 10 units of shares
+
+> votewitness TJmka325yjJKeFpQDwKSQAoNwEyNGhsaEV 4 TFFLWM7tmKiwGtbh2mcz2rBssoFjHjSShG 6  # Cast 4 votes for the first SR and 6 for the second at the same time
+
+> votewitness TJmka325yjJKeFpQDwKSQAoNwEyNGhsaEV 10  # Vote 10 for the first SR only
+```
+
+Each SR must be given as a Base58Check address; a placeholder name is not accepted. The final result of the above commands was 10 votes for `TJmka325…` and 0 for `TFFLWM7t…`.
+
+## Brokerage
+
+After voting for a witness, you will receive rewards. The witness has the right to decide the ratio of brokerage. The default ratio is 20%, and the witness can adjust it.
+
+By default, if a witness is rewarded, they will receive 20% of the whole rewards, and 80% of the rewards will be distributed to their voters.
+
+### GetBrokerage
+
+View the ratio of brokerage of the witness.
+
+```console
+> getbrokerage OwnerAddress
+```
+
+`OwnerAddress` — the address of the witness's account, a base58check-type address.
+
+### GetReward
+
+Query unclaimed reward.
+
+```console
+> getreward OwnerAddress
+```
+
+`OwnerAddress` — the address of the voter's account, a base58check-type address.
+
+### UpdateBrokerage
+
+Update the ratio of brokerage. This command is usually used by a witness account.
+
+```console
+> updateBrokerage OwnerAddress brokerage
+```
+
+- `OwnerAddress` — the witness's account address, a base58check-type address.
+- `brokerage` — the ratio of brokerage you want to update, from 0 to 100. If the input is 10, it means 10% of the total reward would be distributed to the SR and the rest would be rewarded to all the voters, which is 90% in this case.
+
+Example:
+
+```console
+> getbrokerage TZ7U1WVBRLZ2umjizxqz3XfearEHhXKX7h  
+
+> getreward  TNfu3u8jo1LDWerHGbzs2Pv88Biqd85wEY
+
+> updateBrokerage TZ7U1WVBRLZ2umjizxqz3XfearEHhXKX7h 30
+```
+
+## WithdrawBalance
+
+Withdraw voting or block rewards.
+
+After each block is produced, the block award is sent to the account's allowance, and a withdraw operation is allowed every **24 hours** from allowance to balance. The funds in allowance cannot be locked or traded.
+
+```console
+> WithdrawBalance [owner_address]
+```
+
+```console
+> WithdrawBalance TEDapYSVvAZ3aYH7w8N9tMEEFKaNKUD5Bp
+```
+
+## How to create witness
+
+Applying to become a witness account burns a fee set by the `getAccountUpgradeCost` chain parameter. Governance can change it, so query the current value with [`GetChainParameters`](chain-data.md#getchainparameters) rather than assuming a fixed amount. This part of the funds is burned directly.
+
+### CreateWitness
+
+Apply to become a super representative candidate.
+
+```console
+> CreateWitness [owner_address] url
+```
+
+```console
+> CreateWitness TEDapYSVvAZ3aYH7w8N9tMEEFKaNKUD5Bp https://sr.example.com
+```
+
+### UpdateWitness
+
+Edit the URL of the SR's official website.
+
+```console
+> UpdateWitness TEDapYSVvAZ3aYH7w8N9tMEEFKaNKUD5Bp https://sr.example.com/v2
+```
+
+## ListWitnesses
+
+Get all miner node information.
+
+## GetPaginatedNowWitnessList
+
+Get the paginated current witness list.
+
+```console
+wallet> getPaginatedNowWitnessList 0 2
+{
+	"witnesses": [
+		{
+			"address": "TJmka325yjJKeFpQDwKSQAoNwEyNGhsaEV",
+			"voteCount": 5405926918,
+			"url": "http://sr-8.com",
+			"totalProduced": 1801675,
+			"totalMissed": 456,
+			"latestBlockNum": 64577529,
+			"latestSlotNum": 590063589,
+			"isJobs": true
+		},
+		{
+			"address": "TFFLWM7tmKiwGtbh2mcz2rBssoFjHjSShG",
+			"voteCount": 2322244615,
+			"url": "http://sr-27.com",
+			"totalProduced": 1807756,
+			"totalMissed": 619,
+			"latestBlockNum": 64577530,
+			"latestSlotNum": 590063590,
+			"isJobs": true
+		}
+	]
+}
+```
+
+## See also
+
+- [concepts/resources](../concepts/resources.md) — how shares are earned
+- [stake-v2](stake-v2.md) — freeze TRX to obtain vote share
