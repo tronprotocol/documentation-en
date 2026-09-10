@@ -5,8 +5,8 @@
   "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation."
   "x-java-tron-source":
     "repo": "tronprotocol/java-tron"
-    "commit": "f8ff7c76f45ab41d9bb76922329657506819701b"
-    "version": "GreatVoyage-v4.8.2"
+    "commit": "d5c3d1d1fd0cad12f09c4346d6ac937ab2cbb071"
+    "version": "GreatVoyage-v4.8.2.2"
 "servers":
   -
     "url": "https://nile.trongrid.io"
@@ -13256,7 +13256,7 @@
           "description": "Percentage of contract execution resource cost paid by the user."
         "name":
           "type": "string"
-          "description": "Name encoded as expected by java-tron."
+          "description": "Contract name. It must not exceed 32 bytes. After the VERSION_4_8_2_2 upgrade takes effect, the limit is measured using UTF-8 encoding, not by the number of characters."
         "origin_energy_limit":
           "type": "integer"
           "format": "int64"
@@ -14261,7 +14261,7 @@
           "description": "Contract parameter payload."
         "name":
           "type": "string"
-          "description": "Name encoded as expected by java-tron."
+          "description": "Contract name. It must not exceed 32 bytes. After the VERSION_4_8_2_2 upgrade takes effect, the limit is measured using UTF-8 encoding, not by the number of characters."
         "call_value":
           "type": "integer"
           "format": "int64"
@@ -16669,7 +16669,7 @@
           "description": "Percentage of contract execution resource cost paid by the user."
         "name":
           "type": "string"
-          "description": "Name encoded as expected by java-tron."
+          "description": "Contract name. It must not exceed 32 bytes. After the VERSION_4_8_2_2 upgrade takes effect, the limit is measured using UTF-8 encoding, not by the number of characters."
         "origin_energy_limit":
           "oneOf":
             -
