@@ -11,7 +11,7 @@ Deploy a smart contract. Returns the unsigned deployment transaction.
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `owner_address` | string | Yes | Deployer address |
-| `name` | string | No | Contract name |
+| `name` | string | No | Contract name; it must not exceed 32 bytes. After the `VERSION_4_8_2_2` upgrade takes effect, the limit is measured using UTF-8 encoding |
 | `abi` | json string | No | Contract ABI (JSON-array string) |
 | `bytecode` | string | Yes | Contract bytecode (hex) |
 | `parameter` | string | No | Constructor parameters (hex, appended to bytecode) |
@@ -102,4 +102,4 @@ Response example (real Nile capture):
 | `consume_user_resource_percent` not in [0, 100] | `{"Error": "class org.tron.core.exception.ContractValidateException : percent must be >= 0 and <= 100"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
 
-> Deployment-side errors (e.g. insufficient origin energy, oversized contract code, constructor revert) are only triggered during broadcast or block packing, not by this endpoint.
+> Deployment-side errors (e.g. insufficient origin energy, oversized contract code or contract name, constructor revert) are only triggered during broadcast or block packing, not by this endpoint.

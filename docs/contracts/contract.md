@@ -71,10 +71,10 @@ message SmartContract {
 - `bytecode`: smart contract byte code
 - `call_value`: TRX transferred into smart contract while call the contract
 - `consume_user_resource_percent`: resource consumption percentage set by the developer
-- `name`: smart contract name
+- `name`: smart contract name. It must not exceed 32 bytes. After the `VERSION_4_8_2_2` upgrade takes effect, the limit is measured using UTF-8 encoding, not by the number of characters
 - `origin_energy_limit`: energy consumption of the developer limit in one call, must be greater than 0. For old contracts that were deployed without this parameter, the stored value is 0 but the runtime substitutes a default of 10,000,000 energy (`CREATOR_DEFAULT_ENERGY_LIMIT`); developers can use the `updateEnergyLimit` api to update this parameter (the new value must be greater than 0)
-- `code_hash`: hash of the contract runtime bytecode
-- `trx_hash`: root transaction id of the deployment. Populated only for contracts deployed via the `CREATE2` opcode; left empty for contracts deployed via the `CREATE` opcode or via gRPC `deployContract`
+- `code_hash`: the hash of the deployed contract's runtime bytecode. The node calculates this field automatically, so callers constructing `CreateSmartContract` must leave it empty. After the `VERSION_4_8_2_2` upgrade takes effect, supplying a non-empty value causes deployment to fail
+- `trx_hash`: for a contract created through the TVM `CREATE2` opcode, the node sets this field to the root transaction ID. It remains empty for contracts created through `CREATE` or the `DeployContract` API. Callers constructing `CreateSmartContract` must leave it empty; after the `VERSION_4_8_2_2` upgrade takes effect, supplying a non-empty value causes deployment execution to fail
 - `version`: smart contract version. When the network has activated the `ALLOW_TVM_COMPATIBLE_EVM` proposal, newly deployed contracts are stamped with version 1 so the runtime can gate EVM-compatible behavior to them, while older contracts (deployed before activation) keep version 0 and retain the original TVM semantics. As of writing this proposal is not active on mainnet, so all contracts on mainnet have version 0
 
 Through other two grpc message types `CreateSmartContract` and `TriggerSmartContract` to create and use smart contract.

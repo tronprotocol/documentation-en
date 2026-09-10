@@ -24,7 +24,7 @@ Tron private extension. Constructs an **unsigned** Tron transaction; sign it and
 | `tokenId` | `0` | TRC-10 token id (used for `TransferAssetContract`) |
 | `tokenValue` | `0` | TRC-10 amount |
 | `abi` | `""` | ABI JSON string for contract deployment (e.g. `[{...}]`) |
-| `name` | `""` | Contract name when deploying |
+| `name` | `""` | Contract name when deploying; it must not exceed 32 bytes. After the `VERSION_4_8_2_2` upgrade takes effect, the limit is measured using UTF-8 encoding |
 | `consumeUserResourcePercent` | `0` | User-shared resource percentage (0–100) |
 | `originEnergyLimit` | `0` | Deployer's max energy per call |
 | `permissionId` | `0` | Multi-sig permission id |
