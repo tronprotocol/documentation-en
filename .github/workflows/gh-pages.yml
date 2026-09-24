@@ -30,7 +30,7 @@ jobs:
         pip-audit
 
     - name: Build the document
-      run: mkdocs build
+      run: mkdocs build --strict
 
     - name: Generate machine-readable documentation manifest
       run: python3 scripts/generate_docs_manifest.py
