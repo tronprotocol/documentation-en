@@ -11,7 +11,7 @@ Deploy a smart contract. Returns the unsigned deployment transaction.
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `owner_address` | string | Yes | Deployer address |
-| `name` | string | No | Contract name; it must not exceed 32 bytes. After the `VERSION_4_8_2_2` upgrade takes effect, the limit is measured using UTF-8 encoding |
+| `name` | string | No | Contract name; it must not exceed 32 bytes. The limit is measured using UTF-8 encoding |
 | `abi` | json string | No | Contract ABI (JSON-array string) |
 | `bytecode` | string | Yes | Contract bytecode (hex) |
 | `parameter` | string | No | Constructor parameters (hex, appended to bytecode) |
