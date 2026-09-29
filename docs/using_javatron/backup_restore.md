@@ -30,7 +30,10 @@ if [[ "$pid" == *$'\n'* ]]; then
   exit 1
 fi
 
-kill -15 "$pid"
+if ! kill -15 "$pid"; then
+  echo "Failed to send SIGTERM to java-tron (PID $pid)." >&2
+  exit 1
+fi
 
 echo "Waiting for java-tron (PID $pid) to shut down cleanly..."
 while kill -0 "$pid" 2>/dev/null; do
