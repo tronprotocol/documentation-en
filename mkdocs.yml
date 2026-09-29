@@ -338,6 +338,16 @@ nav:
                     - "block": clients/wallet-cli/typescript/commands/block.md
                     - "networks": clients/wallet-cli/typescript/commands/networks.md
                     - "config": clients/wallet-cli/typescript/commands/config.md
+                    - 8004:
+                        - "Overview": clients/wallet-cli/typescript/commands/8004/index.md
+                        - "8004 add-operator": clients/wallet-cli/typescript/commands/8004/add-operator.md
+                        - "8004 approve": clients/wallet-cli/typescript/commands/8004/approve.md
+                        - "8004 operator-check": clients/wallet-cli/typescript/commands/8004/operator-check.md
+                        - "8004 register": clients/wallet-cli/typescript/commands/8004/register.md
+                        - "8004 remove-operator": clients/wallet-cli/typescript/commands/8004/remove-operator.md
+                        - "8004 show": clients/wallet-cli/typescript/commands/8004/show.md
+                        - "8004 transfer": clients/wallet-cli/typescript/commands/8004/transfer.md
+                        - "8004 update": clients/wallet-cli/typescript/commands/8004/update.md
                     - account:
                         - "Overview": clients/wallet-cli/typescript/commands/account/index.md
                         - "account activate": clients/wallet-cli/typescript/commands/account/activate.md
@@ -357,6 +367,13 @@ nav:
                         - "asset participate": clients/wallet-cli/typescript/commands/asset/participate.md
                         - "asset unfreeze": clients/wallet-cli/typescript/commands/asset/unfreeze.md
                         - "asset update": clients/wallet-cli/typescript/commands/asset/update.md
+                    - bai:
+                        - "Overview": clients/wallet-cli/typescript/commands/bai/index.md
+                        - "bai recharge": clients/wallet-cli/typescript/commands/bai/recharge.md
+                        - "bai recharge-orders": clients/wallet-cli/typescript/commands/bai/recharge-orders.md
+                        - "bai report-recharge": clients/wallet-cli/typescript/commands/bai/report-recharge.md
+                        - "bai usage-records": clients/wallet-cli/typescript/commands/bai/usage-records.md
+                        - "bai usage-summary": clients/wallet-cli/typescript/commands/bai/usage-summary.md
                     - chain:
                         - "Overview": clients/wallet-cli/typescript/commands/chain/index.md
                         - "chain node": clients/wallet-cli/typescript/commands/chain/node.md
@@ -457,8 +474,18 @@ nav:
                         - "witness create": clients/wallet-cli/typescript/commands/witness/create.md
                         - "witness set-brokerage": clients/wallet-cli/typescript/commands/witness/set-brokerage.md
                         - "witness update": clients/wallet-cli/typescript/commands/witness/update.md
+                    - x402:
+                        - "Overview": clients/wallet-cli/typescript/commands/x402/index.md
+                        - "x402 endpoint-list": clients/wallet-cli/typescript/commands/x402/endpoint-list.md
+                        - "x402 pay": clients/wallet-cli/typescript/commands/x402/pay.md
+                        - "x402 provider-list": clients/wallet-cli/typescript/commands/x402/provider-list.md
+                        - "x402 provider-show": clients/wallet-cli/typescript/commands/x402/provider-show.md
+                        - "x402 roundtrip": clients/wallet-cli/typescript/commands/x402/roundtrip.md
+                        - "x402 serve": clients/wallet-cli/typescript/commands/x402/serve.md
+                        - "x402 update-catalog": clients/wallet-cli/typescript/commands/x402/update-catalog.md
                 - "Machine Interface": clients/wallet-cli/typescript/machine-interface.md
                 - "Troubleshooting": clients/wallet-cli/typescript/troubleshooting.md
+                - "Legacy derivation recovery": clients/wallet-cli/typescript/troubleshooting/legacy-derivation-recovery.md
     - Releases:
         - Deployment Manual for the New Version: releases/upgrade-instruction.md
         - Integrity Check: releases/signature_verification.md

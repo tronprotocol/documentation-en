@@ -4,11 +4,16 @@ Query and update on-chain accounts, manage account metadata, and view local reco
 
 ## How to create account
 
-You can create accounts by transferring funds to non-existing accounts, or by initiating a transaction to create an account using the **CreateAccount** command. Either way an **activation fee** set by the `getCreateNewAccountFeeInSystemContract` chain parameter is burned. Creating an account also consumes **bandwidth**, and only bandwidth from staking or delegated to you counts — the daily free allowance cannot pay for it. Without enough of that bandwidth, the `getCreateAccountFee` chain parameter is burned instead to cover it; with enough, it is not. Governance can change either parameter, so query the current values with [`GetChainParameters`](chain-data.md#getchainparameters) rather than assuming fixed amounts.
+You can create accounts by transferring funds to non-existing accounts, or by initiating a transaction to create an account using the **CreateAccount** command. Either way the payer bears two separate costs, each set by a chain parameter:
+
+- `getCreateNewAccountFeeInSystemContract` is always burned — 1,000,000 SUN (1 TRX) on mainnet today.
+- The transaction's Bandwidth is first taken from the payer's staked Bandwidth (the free daily allowance does not apply). Only if that is insufficient is `getCreateAccountFee` burned instead — 100,000 SUN (0.1 TRX) on mainnet today.
+
+So creating an account costs 1 TRX with enough staked Bandwidth and 1.1 TRX without it. Both parameters are proposal-adjustable, so read them with `getchainparameters` instead of assuming a fixed value.
 
 ## CreateAccount
 
-Create a new account with an inactive address, burning the account-creation fee described above.
+Create a new account with an inactive address. The payer covers the account-creation cost described above (on mainnet today, 1 TRX for `getCreateNewAccountFeeInSystemContract`, plus 0.1 TRX for `getCreateAccountFee` when its staked Bandwidth is insufficient).
 
 ```console
 > CreateAccount [OwnerAddress] Address
