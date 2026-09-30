@@ -58,6 +58,19 @@ curl --request POST \
 | `logs` | repeated TransactionLog | Event logs (if emitted) |
 | `internal_transactions` | repeated InternalTransaction | Internal calls (if any) |
 
+!!! note "Understanding simulation results"
+    The execution context used for this simulation includes the state view available to the node when it processes the request and the TVM rules in effect at that time. Because the node continuously processes blocks and pending transactions and may run other constant calls concurrently, a transaction submitted later may execute on-chain in a different execution context, and its result may differ from the result of this simulation. This is an expected characteristic of point-in-time simulation.
+
+    The execution context used for a simulation is primarily affected by the following:
+
+    - **Processing blocks:** A node executes the transactions in a block sequentially, updating accounts, contract storage, resources, and chain parameters as it proceeds. A simulation initiated during this process uses the data visible to the node at that moment.
+    - **Processing pending transactions:** `/wallet` provides a view of the latest state. While a node validates or replays pending transactions, this view may include local state updates and may continue to change as transactions are included in blocks or new blocks arrive.
+    - **Other constant calls:** Calls made through `/wallet` and `/walletsolidity` may use different proposal activation states and TVM rules. When calls with different execution contexts run concurrently, in rare cases a simulation may reflect the proposal activation state and TVM rules being applied by the node at that moment.
+
+    `constant_result`, `energy_used`, `logs`, and `internal_transactions` are produced by the current simulation. If the simulation reads different state or applies different TVM rules, the contract may follow a different execution path, and the values returned in these fields may also differ. The top-level `result` reports the status of the API request, while `transaction.ret[0].ret` reports the TVM execution result of the simulation.
+
+    Choose the endpoint based on the state view you need: `/wallet` provides the latest state, whereas `/walletsolidity` provides a slightly older, solidified state. When preparing a transaction, treat the simulation results as a reference and leave an appropriate margin in `fee_limit` to account for changes in Energy consumption as state changes. After broadcasting the transaction, rely on the transaction receipt for the actual on-chain execution result.
+
 Response example (real Nile capture):
 
 ```json
