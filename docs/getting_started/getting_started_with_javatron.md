@@ -83,7 +83,7 @@ currentNetwork: NILE
 
 **1. Register Account**
 
-At the prompt, enter the `registerwallet` command and follow the instructions to set a secure password. This command generates a new TRON network account and registers it with `wallet-cli`, storing the encrypted private key locally for future transaction signing.
+At the prompt, enter the `registerwallet` command and follow the instructions to set a secure password. This command generates a public-private key pair and derives the account address from the public key. It stores the encrypted private key locally for future transaction signing. It does not activate an account on the blockchain. Step C explains how to fund and activate the address on Mainnet or the Nile Testnet by receiving a TRX transfer.
 
 
 ```text
@@ -141,21 +141,28 @@ This is the most crucial step to ensure the security of your assets. We strongly
 Use the `backupwallet` command and enter your password when prompted to view the account's private key. Be sure to store the private key in an absolutely secure location.
 
 
-### Step C: Fund Your Account with TRX
+### Step C: Fund and Activate Your Account with TRX
 
-Executing any transaction on the TRON network (e.g., transfers, contract calls) consumes network resources, which are acquired by staking or burning TRX. Therefore, before performing any on-chain operations, you must ensure your account holds sufficient TRX. The method for obtaining TRX varies by network:
+Receiving a TRX transfer at a new address creates its on-chain account record and activates it on the network where the transfer occurs. Mainnet and Nile maintain separate account records: activating an address on one network does not activate it on the other.
+
+On-chain transactions consume bandwidth, and smart contract execution also consumes energy. Bandwidth may be covered by the account's free allowance; additional bandwidth and energy can come from staking or resource delegation. When available resources are insufficient, TRX may be burned to cover the cost. Before sending a transaction, ensure you have the required resources and enough TRX for the transfer amount and any applicable fees. In this tutorial, obtain test TRX to activate your address and fund the example transfers. The method for obtaining TRX varies by network:
 
 - **On the TRON Mainnet**, TRX is a real asset and is primarily obtained by:
     - Earning block rewards as a Super Representative or voting rewards.
     - Receiving TRX transfers from other TRON accounts.
     - Purchasing from cryptocurrency exchanges.
+
+    To activate a newly generated address on Mainnet, have an existing Mainnet account send TRX to it.
+
 - **On the Nile Testnet**, TRX has no real value. You can obtain it for free by visiting a [Faucet](https://nileex.io/join/getJoinPage). For a detailed guide, refer to [How to Get Testnet Tokens](https://developers.tron.network/docs/getting-testnet-tokens-on-tron).
+
+    Receiving the faucet's TRX transfer activates your address on Nile. You can also activate it by receiving TRX from an existing Nile account.
 
 After completing all the above preparations, you now have a properly configured TRON account on a secure network with test tokens.
 
 ## Skill 2: Start and Run a Java-tron Node { #start-and-run-a-java-tron-node }
 
-This module guide you through launching a java-tron instance, turning your computer into a TRON FullNode. Running your own node provides you with the most stable, reliable, and rate-unlimited network access. The network used in this module is the TRON [Nile Testnet](https://nileex.io/).
+This module guides you through launching a java-tron node. Running your own node gives you control over API access and rate-limit settings. java-tron includes configurable API rate limits, which you can manage when running your own node. The network used in this module is the TRON [Nile Testnet](https://nileex.io/).
 
 > Tips:
 > 
@@ -171,7 +178,7 @@ For the startup command, please refer to [Starting a FullNode on the Nile test n
 
 **2.1 Check Startup and Sync Logs**
 
-When the node starts, you will first see the network configuration information in the logs. The following logs indicate that java-tron has started and connected to the Nile testnet:
+During startup, java-tron prints its network configuration. The following log shows configuration values used for Nile, but it does not prove that startup has completed or that any peers have connected. Log classes, wording, and line numbers vary by version:
 
 
 ```text
@@ -183,7 +190,7 @@ When the node starts, you will first see the network configuration information i
 11:07:58.758 INFO  [main] [app](Args.java:1148) Discover enable: true
 ```
 
-Next, the node will begin searching for other connectable peers in the network and will continuously request blocks from them to synchronize the entire on-chain data. Successfully connected peers are called "active peers." The following logs indicate that the node has successfully connected to other nodes and has started syncing data:
+Next, the node searches for peers and requests missing blocks to advance its local chain. The following log illustrates a peer handshake followed by block synchronization; log messages may vary by version:
 
 ```text
 11:08:42.547 INFO  [TronJClientWorker-1] [net](Channel.java:116) Finish handshake with /123.56.3.74:18888.
@@ -212,7 +219,7 @@ Num:23113869,ID:000000000160b08d231e450ae1993a72ba19eb8f3c748fa70d105dadd0c9fd5f
 Num:23113870,ID:000000000160b08e37cb9951d31a4233f106c7e77e0535c597dbb6a16f163699, trx size: 0
 ```
 
-You can determine if the sync is progressing normally by observing whether the block number (the number after `Num:`) in the logs is increasing steadily. If the logs stop scrolling for an extended period or repeatedly show errors or warnings, the node may have encountered an issue.
+Increasing block numbers in received messages show that block data is arriving, but do not by themselves prove that the blocks have been validated and applied. Check that the local head height returned by `/wallet/getnowblock` continues to advance. If the local head stops advancing for an extended period while the network continues producing blocks, or logs repeatedly show errors, investigate the node's connectivity and synchronization status.
 
 
 
@@ -227,7 +234,7 @@ You can send the following HTTP requests to your java-tron node to verify that i
 - Get the current block height via the `/wallet/getnowblock` API:
 `curl http://127.0.0.1:8090/wallet/getnowblock`
 
-To confirm that your node is fully synchronized with the network, compare your local node's block height with the latest block height displayed on the [Tronscan block explorer](https://tronscan.org/). If they match, your local node is properly synchronized.
+Compare your local node's block height with the latest height on the [Nile Tronscan block explorer](https://nile.tronscan.org/). Use an explorer for the same network as your node. A small temporary difference is normal because new blocks may be produced between the two checks. Check repeatedly that your local head advances and stays close to the network head; a single matching height is not sufficient to establish healthy synchronization.
 
 ### **3. Stop the Node**
 
@@ -240,9 +247,9 @@ The core of this module is learning how to communicate with the TRON network usi
 Before you begin, you can choose between two ways to connect to a node:
 
 - **Use a Public Node** (Recommended for beginners): Start instantly without waiting for synchronization.
-- **Use Your Own Node** (If you completed Skill 2): Get more stable, rate-limit-free access.
+- **Use Your Own Node** (If you completed Skill 2): Control API access and configure rate limits.
 
-The examples in this module will primarily be demonstrated using a **public node**.
+The `wallet-cli` examples use a **public Nile node** selected in Skill 1. The cURL examples use a **local Nile FullNode** at `http://127.0.0.1:8090` and require the setup in Skill 2. If you skipped node deployment, continue with `wallet-cli`, or replace the base URL in the HTTP examples with your chosen public Nile provider's endpoint.
 
 ### Method One: Using `wallet-cli` (Recommended)
 
@@ -317,11 +324,11 @@ before sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240a89aef
 Please confirm and input your permission id, if input y/Y means default 0, other non-numeric characters will cancel transaction.
 ```
 
-This command returns a transaction pending confirmation. Please follow the steps below to complete the signing and broadcasting:
+This command returns an unsigned transaction. Follow the steps below to sign and broadcast it:
 
-1. Confirm the Transaction: After verifying the transaction details, enter `y` and press Enter (entering any other character will cancel the transaction).
-2. Select Signing Account: Follow the prompts to select the account that will sign this transaction (i.e., the sending account).
-3. Authorize with Password: Enter the password for the selected account. `wallet-cli` will then sign the transaction and broadcast it to the java-tron node, completing the transaction.
+1. Confirm the Transaction: After verifying the transaction details, enter `y` or `Y` to use the default permission ID `0`.
+2. Select Signing Account: Select the sending account's wallet to sign the transaction. This tutorial uses the account's default permissions.
+3. Authorize with Password: Enter the password for the selected wallet. `wallet-cli` signs the transaction and broadcasts it to the java-tron node. Broadcast success does not mean the transaction has been included in a block or confirmed; query its status as described below.
 
 ```text
 Please confirm and input your permission id, if input y/Y means default 0, other non-numeric characters will cancel transaction.
@@ -354,7 +361,7 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
   wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
 
-  The returned JSON data contains all the transaction details, such as the contract type (`TransferContract`), transfer amount, sender and recipient addresses, etc. `"contractRet":"SUCCESS"` indicates that the transaction's contract is syntactically correct.
+  The returned JSON data contains transaction details such as the contract type (`TransferContract`), transfer amount, and sender and recipient addresses. `"contractRet":"SUCCESS"` indicates successful execution.
 
   ```json
   {
@@ -397,7 +404,7 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
   wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
 
-  In the returned result, the most important field is `blockNumber`, which indicates the block height at which the transaction was confirmed. If this value exists, the transaction has been successfully recorded on the blockchain. Additionally, the `receipt` object records the resources consumed by the transaction, such as bandwidth (`net_usage`).
+  The `blockNumber` field identifies the block containing the transaction. Inclusion alone does not establish successful execution or solidified confirmation: failed smart contract transactions can also be included in blocks. Inspect the execution result and receipt, and use the solidified-state query described at the end of this guide to check confirmation. The `receipt` object also records consumed resources, such as bandwidth (`net_usage`).
 
   ```json
   {
@@ -424,11 +431,12 @@ Unlike `wallet-cli`, which automatically handles signing and broadcasting, using
 
 Before sending a transaction, let's first use the node's `wallet/getaccount` HTTP endpoint to query an account's TRX balance.
 
-Send a `POST` request to the node's `8090` port, including the address you want to query in the request body.
+With your local Nile FullNode running and synchronized, send a `POST` request to its `8090` port, including the address you want to query in the request body.
 
 ```bash
- curl -X POST http://127.0.0.1:8090/wallet/getaccount -d 
-     '{"address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+ curl -X POST http://127.0.0.1:8090/wallet/getaccount \
+     -H 'Content-Type: application/json' \
+     -d '{"address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
        "visible": true
      }'
 ```
@@ -439,7 +447,7 @@ In the returned JSON data, the `balance` field represents the TRX balance of the
 ```json
 {
     "account_name": "testacc2",
-    "address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+    "address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
     "balance": 1000000000000000,"account_resource": {}
 }
 ```
@@ -453,10 +461,11 @@ Step 1 - Create a Transaction
   Use the FullNode's `wallet/createtransaction` HTTP endpoint to create an unsigned TRX transfer transaction. In the request body, specify the sender (`owner_address`), recipient (`to_address`), and amount (`amount`).
     
     ```
-    curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d 
-        '{
+    curl -X POST http://127.0.0.1:8090/wallet/createtransaction \
+        -H 'Content-Type: application/json' \
+        -d '{
             "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf", 
-            "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM", 
+            "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
             "amount": 10000000,
             "visible":true
         }'
@@ -492,17 +501,17 @@ Step 1 - Create a Transaction
 
 Step 2 - Sign the Transaction
   
-  Use the sender's private key to sign the transaction data (`raw_data_hex` or `txid`) generated in the previous step, proving your ownership of the account.  
+  Use the sender's private key to sign the transaction ID (`txID`), the SHA-256 hash of the serialized `raw_data`.
   **Important Note**: 
   
-- To ensure the security of your private key, it is strongly recommended that you perform all signing operations in a local or secure server environment using official TRON SDKs (e.g., `TronWeb`, `java-tron-sdk`).
+- To ensure the security of your private key, perform signing locally or in a secure server environment using a TRON SDK such as `TronWeb` or `Trident-java`.
 - `cURL` cannot perform signing operations. This step is for procedural explanation only.
 
-  After signing, you will get a long string, which is the transaction's Signature Hash.
+  The signed transaction contains the hex-encoded signature in its `signature` array.
 
 Step 3 - Broadcast the Transaction
     
-  The final step is to broadcast the signed transaction. Call the [wallet/broadcasttransaction](../api/http/tx-build-and-broadcast/broadcasttransaction.md) endpoint, providing the transaction object from step one and the signature hash from step two in the request body. Upon submission, the node will verify the signature and then broadcast the transaction to the entire TRON network for confirmation, completing the transfer process.
+  Call the [wallet/broadcasttransaction](../api/http/tx-build-and-broadcast/broadcasttransaction.md) endpoint with the signed transaction object from step two. The node validates the transaction, including its signature, and attempts to propagate it to peers. A successful response indicates broadcast acceptance, not block inclusion, successful on-chain execution, or solidified confirmation. Query these separately after broadcasting.
     
     ```
     curl --location --request POST 'http://127.0.0.1:8090/wallet/broadcasttransaction' \
@@ -550,7 +559,7 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
 
 **`wallet/gettransactionbyid`**
 
-  Use the `wallet/gettransactionbyid` HTTP endpoint to get the full data of a broadcast transaction. In the request body, pass the `txid` you want to query in the `value` field:
+  Use the `wallet/gettransactionbyid` HTTP endpoint to get transaction data once the transaction has been included in a block known to the node. A newly broadcast transaction may not be found yet; retry after block inclusion. In the request body, pass the transaction ID in the `value` field:
 
   ```bash
   curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactionbyid' \
@@ -610,7 +619,9 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
   }'
   ```
   
-  The `blockNumber` field in the response is the key proof of a successful transaction. As long as this field has a value, it means your transaction is successfully and irreversibly recorded on the blockchain. The `receipt` field provides a detailed execution receipt.
+  The `blockNumber` field identifies the block containing the transaction. To check execution success, use `wallet/gettransactionbyid` as shown above: `"contractRet":"SUCCESS"` in the `ret` array indicates successful execution. Block inclusion does not establish solidified confirmation. The `receipt` field reports resource consumption, such as bandwidth usage (`net_usage`).
+
+  To check solidified confirmation, query `/walletsolidity/gettransactionbyid` with the same transaction ID. This endpoint reads solidified state. On a local node with the Solidity HTTP service enabled, its default port is `8091`; public providers may expose this path on the same base URL as their other APIs. Once the transaction is returned, check that `contractRet` in the `ret` array is `SUCCESS` to verify successful execution.
   
   
   ```json
@@ -631,4 +642,3 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
 ## Next Steps
 
 Congratulations on completing your introductory journey with java-tron! You have now mastered core skills like running a node, creating an account, and sending transactions, laying a solid foundation for deeper exploration of the TRON ecosystem.
-
