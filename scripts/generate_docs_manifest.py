@@ -47,6 +47,19 @@ def nav_documents(items: list[object], top_section: str | None = None):
                 yield from nav_documents(value, section)
 
 
+def section_for_unlisted_document(
+    relative_path: Path, sections_by_directory: dict[Path, set[str]]
+) -> str:
+    """Infer an unlisted page's section from nearby pages in the navigation."""
+    directory = relative_path.parent
+    while directory != Path("."):
+        sections = sections_by_directory.get(directory, set())
+        if len(sections) == 1:
+            return next(iter(sections))
+        directory = directory.parent
+    return "Other"
+
+
 def configured_documents() -> list[tuple[Path, str]]:
     config = yaml.safe_load(MKDOCS_CONFIG.read_text(encoding="utf-8"))
     nav = config.get("nav")
@@ -55,6 +68,7 @@ def configured_documents() -> list[tuple[Path, str]]:
 
     documents = []
     seen = set()
+    sections_by_directory: dict[Path, set[str]] = {}
     for relative_path, section in nav_documents(nav):
         if relative_path in seen:
             continue
@@ -65,6 +79,22 @@ def configured_documents() -> list[tuple[Path, str]]:
             raise FileNotFoundError(f"Navigation page does not exist: {relative_path}")
         seen.add(relative_path)
         documents.append((relative_path, section))
+
+        directory = relative_path.parent
+        while directory != Path("."):
+            sections_by_directory.setdefault(directory, set()).add(section)
+            directory = directory.parent
+
+    # Detailed reference pages are intentionally absent from the sidebar, but
+    # they are still built, searchable, and part of the published corpus.
+    for source_path in sorted(DOCS_ROOT.rglob("*.md")):
+        relative_path = source_path.relative_to(DOCS_ROOT)
+        if relative_path in seen:
+            continue
+        seen.add(relative_path)
+        section = section_for_unlisted_document(relative_path, sections_by_directory)
+        documents.append((relative_path, section))
+
     return documents
 
 

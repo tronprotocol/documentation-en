@@ -12,9 +12,10 @@ This documentation is written for java-tron node operators, protocol researchers
 
     ---
 
-    First time with java-tron or the TRON protocol? Start here.
+    New to java-tron or the TRON protocol? Begin with the guided learning sequence, then use the consensus overview and glossary as references.
 
-    - [Getting Started Guide](getting_started/getting_started_with_javatron.md)
+    - [Get Started](getting_started/index.md)
+    - [Hands-on Getting Started Guide](getting_started/getting_started_with_javatron.md)
     - [TRON Consensus (DPoS)](mechanism-algorithm/dpos.md)
     - [Glossary](glossary.md)
 
@@ -22,8 +23,9 @@ This documentation is written for java-tron node operators, protocol researchers
 
     ---
 
-    Operations guide for deploying, monitoring, and maintaining java-tron nodes.
+    Guides for java-tron deployment, configuration, connectivity, logging, monitoring, storage, backup, and maintenance.
 
+    - [Node Operations Overview](using_javatron/index.md)
     - [Deploy java-tron](using_javatron/installing_javatron.md)
     - [Node Configuration](using_javatron/configuration.md)
     - [Node Logging](using_javatron/logging.md)
@@ -35,8 +37,10 @@ This documentation is written for java-tron node operators, protocol researchers
 
     ---
 
-    Build applications against the HTTP, gRPC, and JSON-RPC interfaces exposed by java-tron.
+    Smart-contract development, java-tron APIs, and command-line tools for building DApps on TRON.
 
+    - [Build DApps with java-tron](contracts/index.md)
+    - [Choose an API](api/index.md)
     - [HTTP API](api/http/index.md)
     - [JSON-RPC API](api/json-rpc/index.md)
     - [gRPC API](api/rpc/index.md)
@@ -47,10 +51,11 @@ This documentation is written for java-tron node operators, protocol researchers
 
     ---
 
-    Modify java-tron source, submit TIPs, and participate in protocol evolution.
+    Guides for contributing to java-tron, configuring a development environment, understanding CI and the codebase, and following issue, TIP, and network-governance processes.
 
+    - [Contributor Overview](developers/index.md)
     - [Developer Guide](developers/java-tron.md)
-    - [TIPs Workflow](developers/tips.md)
+    - [TIPs Workflow](developers/tip-workflow.md)
     - [Configure the IDE](developers/run-in-idea.md)
     - [Core Modules](developers/code-structure.md)
 
@@ -58,14 +63,15 @@ This documentation is written for java-tron node operators, protocol researchers
 
 ## Browse by topic
 
-- __[Using java-tron](using_javatron/installing_javatron.md)__ — Deployment, backup and restore, lite node, private network, event subscription, database configuration, node monitoring, maintenance tooling
-- __[API](api/index.md)__ — HTTP, gRPC, JSON-RPC
-- __[Core Protocol](mechanism-algorithm/dpos.md)__ — DPoS consensus, Super Representatives, account model, resource model, smart contracts, system contracts, decentralized exchange, account permission management
-- __[For java-tron Developers](developers/java-tron.md)__ — Developer guide, TIPs workflow, issue workflow, governance workflow, IDE configuration, development examples, core modules
-- __[For DApp Developers](contracts/tools.md)__ — Development tooling
-- __[Clients](clients/wallet-cli/index.md)__ — wallet-cli
-- __[Releases](releases/upgrade-instruction.md)__ — Deployment manual for new versions, integrity check, release history
-- __[Appendix](glossary.md)__ — Glossary
+- __[Get started](getting_started/index.md)__ — A hands-on path for creating a TRON account, starting and verifying a java-tron node, and sending transactions or querying chain data with wallet-cli or cURL
+- __[Operate a node](using_javatron/index.md)__ — Guides for java-tron deployment, configuration, connectivity, logging, monitoring, storage, backup, and maintenance
+- __[API reference](api/index.md)__ — Guidance for choosing among the HTTP, JSON-RPC, and gRPC interfaces, plus reference indexes and machine-readable definitions
+- __[wallet-cli](clients/wallet-cli/index.md)__ — A command-line wallet for TRON and selected EVM networks — interactive in Java, agent-first in TypeScript
+- __[Understand the protocol](mechanism-algorithm/index.md)__ — Documentation about TRON consensus, Super Representatives, accounts and signatures, network resources, system contracts, and account permissions
+- __[Contribute to java-tron](developers/index.md)__ — Guides for contributing to java-tron, configuring a development environment, understanding CI and the codebase, and following issue, TIP, and network-governance processes
+- __[Build DApps](contracts/index.md)__ — Smart-contract development and developer tools for building DApps on TRON
+- __[Releases](releases/index.md)__ — Node upgrade procedures, release-package signature verification, and version history
+- __[Appendix](glossary.md)__ — Definitions of common TRON and java-tron terms
 
 ## Other resources
 
