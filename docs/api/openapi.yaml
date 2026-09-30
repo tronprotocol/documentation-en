@@ -13263,8 +13263,12 @@
           "description": "Origin energy limit for a deployed smart contract."
         "code_hash":
           "type": "string"
+          "description": "The hash of the deployed contract's runtime bytecode. The node automatically calculates this field from the final deployed runtime bytecode; callers constructing CreateSmartContract must leave it empty."
+          "readOnly": true
         "trx_hash":
           "type": "string"
+          "description": "The root transaction ID recorded by the node for contracts created through the CREATE2 opcode; callers constructing CreateSmartContract must leave it empty."
+          "readOnly": true
         "version":
           "type": "integer"
           "format": "int32"
@@ -16684,8 +16688,12 @@
           "description": "Origin energy limit for a deployed smart contract."
         "code_hash":
           "type": "string"
+          "description": "The hash of the deployed contract's runtime bytecode. The node automatically calculates this field from the final deployed runtime bytecode; callers constructing CreateSmartContract must leave it empty."
+          "readOnly": true
         "trx_hash":
           "type": "string"
+          "description": "The root transaction ID recorded by the node for contracts created through the CREATE2 opcode; callers constructing CreateSmartContract must leave it empty."
+          "readOnly": true
         "version":
           "type": "integer"
           "format": "int32"
