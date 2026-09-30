@@ -81,4 +81,4 @@ The java-tron repository retains `sonar-project.properties` and the SonarQube Gr
 
 ## Running Checks Locally
 
-The [development example](demo.md#4-checkstyle-code-style-check) provides the recommended Checkstyle, full-build, and RocksDB commands, including the JDK and storage-engine differences between ARM64 and x86-64.
+The [development example](demo.md#4-run-code-quality-checks) provides the recommended Checkstyle, full-build, and RocksDB commands, including the JDK and storage-engine differences between ARM64 and x86-64.

@@ -242,11 +242,26 @@ node {
 }
 ```
 
-Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, SolidityNode is started using the command-line parameter `--solidity`, as shown below:
+Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, start SolidityNode by passing `--solidity` to `FullNode.jar`. Use the command that matches the architecture and required JDK described at the beginning of this page.
+
+#### x86_64 (JDK 8)
 
 ```bash
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --solidity -c framework/src/main/resources/config.conf
+java -Xmx24G -XX:+UseConcMarkSweepGC \
+    -jar build/libs/FullNode.jar --solidity \
+    -c framework/src/main/resources/config.conf
 ```
+
+#### arm64 (JDK 17)
+
+```bash
+java -Xmx9G -XX:+UseZGC \
+    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+    -jar build/libs/FullNode.jar --solidity \
+    -c framework/src/main/resources/config.conf
+```
+
+`-XX:+UseConcMarkSweepGC` is a JDK 8 option and is not available on JDK 17.
 
 #### Configuring Conditional Shutdown
 
@@ -430,18 +445,46 @@ To avoid specifying the private key in plaintext within the configuration file, 
 2. **Starting a Block Production Node**:
 
     * **Interactive Startup without `nohup` (Recommended)**
-        * **Notes**: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool like screen or tmux."
-  
+        * **Notes**: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool such as `screen` or `tmux`.
+
+        On x86_64 with JDK 8:
+
         ```bash
-        java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf
+        java -Xmx24G -XX:+UseConcMarkSweepGC \
+            -jar build/libs/FullNode.jar --witness \
+            -c framework/src/main/resources/config.conf
+        ```
+
+        On arm64 with JDK 17:
+
+        ```bash
+        java -Xmx24G -XX:+UseZGC \
+            -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+            -jar build/libs/FullNode.jar --witness \
+            -c framework/src/main/resources/config.conf
         ```
 
         * During node startup, the system will prompt you to enter the password. After entering the password correctly, the node will complete its startup.
 
     * **Using `nohup` to pass the password directly in the command line via `--password`**
 
+        On x86_64 with JDK 8:
+
         ```bash
-        nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf --password "your_password" > start.log 2>&1 &
+        nohup java -Xmx24G -XX:+UseConcMarkSweepGC \
+            -jar build/libs/FullNode.jar --witness \
+            -c framework/src/main/resources/config.conf \
+            --password "your_password" > start.log 2>&1 &
+        ```
+
+        On arm64 with JDK 17:
+
+        ```bash
+        nohup java -Xmx24G -XX:+UseZGC \
+            -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+            -jar build/libs/FullNode.jar --witness \
+            -c framework/src/main/resources/config.conf \
+            --password "your_password" > start.log 2>&1 &
         ```
 
 ### Optimizing Memory Usage with `tcmalloc`
