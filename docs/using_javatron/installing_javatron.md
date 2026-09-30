@@ -128,6 +128,62 @@ The TRON network is mainly divided into:
 
 Network selection is performed by specifying the appropriate configuration file upon full-node startup. Mainnet configuration: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf); Nile testnet configuration: [config-nile.conf](https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf)
 
+### Optimizing Memory Usage with `tcmalloc`
+
+Before starting a java-tron node with `java -jar` on Linux, please configure the `tcmalloc` allocator provided by [gperftools](https://github.com/gperftools/gperftools) to help control memory usage while the node is running.
+
+!!! note
+    This optimization applies only to Linux. No `tcmalloc` configuration is required when running java-tron directly on macOS.
+
+    The official java-tron Docker images for version 4.8.1 and later already include `tcmalloc`; no manual configuration is required.
+
+1. **Install the gperftools runtime library**:
+
+    * **Ubuntu 22.04**:
+
+        ```bash
+        sudo apt update
+        sudo apt install libgoogle-perftools4
+        ```
+
+    * **Ubuntu 24.04 / Ubuntu 26.04 / Debian 13**:
+
+        ```bash
+        sudo apt update
+        sudo apt install libgoogle-perftools4t64
+        ```
+
+    For other supported Linux distributions, install the package that provides `libtcmalloc.so.4` using the distribution's package manager.
+
+2. **Locate and preload the library**:
+
+    The library path depends on the distribution and CPU architecture. For example, Debian-based x86_64 systems commonly install it under `/usr/lib/x86_64-linux-gnu/`, while ARM64 systems use `/usr/lib/aarch64-linux-gnu/`. Resolve the installed path instead of copying an architecture-specific path:
+
+    ```bash
+    TCMALLOC_PATH="$(ldconfig -p | awk '$1 == "libtcmalloc.so.4" {print $NF; exit}')"
+
+    if [ -z "$TCMALLOC_PATH" ]; then
+        echo "libtcmalloc.so.4 was not found" >&2
+        exit 1
+    fi
+
+    export LD_PRELOAD="$TCMALLOC_PATH"
+    export TCMALLOC_RELEASE_RATE=10
+    ```
+
+    Run the appropriate `java -jar` startup command from the following sections in the same shell, or add these lines before the Java command in your node's startup script.
+
+3. **Verify that `tcmalloc` is loaded**:
+
+    After starting the FullNode, check the process memory map:
+
+    ```bash
+    FULLNODE_PID="$(pgrep -f 'FullNode.jar' | head -n 1)"
+    grep tcmalloc "/proc/$FULLNODE_PID/maps"
+    ```
+
+    If `tcmalloc` is active, the command prints the path of the loaded `libtcmalloc` library.
+
 ### Starting a FullNode on the TRON main network
 
 If the current working directory does not contain `./config.conf`, the following command starts a Mainnet FullNode with the `config.conf` bundled in the JAR. If `./config.conf` exists, java-tron loads that file first. Use `-c` with an explicit path to avoid ambiguity; see [Node Configuration](configuration.md#configuration-files-and-precedence) for the complete resolution order.
@@ -242,11 +298,26 @@ node {
 }
 ```
 
-Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, SolidityNode is started using the command-line parameter `--solidity`, as shown below:
+Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, start SolidityNode by passing `--solidity` to `FullNode.jar`. Use the command that matches the architecture and required JDK described at the beginning of this page.
+
+#### x86_64 (JDK 8)
 
 ```bash
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --solidity -c framework/src/main/resources/config.conf
+java -Xmx24G -XX:+UseConcMarkSweepGC \
+    -jar build/libs/FullNode.jar --solidity \
+    -c framework/src/main/resources/config.conf
 ```
+
+#### arm64 (JDK 17)
+
+```bash
+java -Xmx9G -XX:+UseZGC \
+    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+    -jar build/libs/FullNode.jar --solidity \
+    -c framework/src/main/resources/config.conf
+```
+
+`-XX:+UseConcMarkSweepGC` is a JDK 8 option and is not available on JDK 17.
 
 #### Configuring Conditional Shutdown
 
@@ -430,76 +501,44 @@ To avoid specifying the private key in plaintext within the configuration file, 
 2. **Starting a Block Production Node**:
 
     * **Interactive Startup without `nohup` (Recommended)**
-        * **Notes**: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool like screen or tmux."
-  
+        * **Notes**: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool such as `screen` or `tmux`.
+
+        On x86_64 with JDK 8:
+
         ```bash
-        java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf
+        java -Xmx24G -XX:+UseConcMarkSweepGC \
+            -jar build/libs/FullNode.jar --witness \
+            -c framework/src/main/resources/config.conf
+        ```
+
+        On arm64 with JDK 17:
+
+        ```bash
+        java -Xmx24G -XX:+UseZGC \
+            -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+            -jar build/libs/FullNode.jar --witness \
+            -c framework/src/main/resources/config.conf
         ```
 
         * During node startup, the system will prompt you to enter the password. After entering the password correctly, the node will complete its startup.
 
     * **Using `nohup` to pass the password directly in the command line via `--password`**
 
+        On x86_64 with JDK 8:
+
         ```bash
-        nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf --password "your_password" > start.log 2>&1 &
+        nohup java -Xmx24G -XX:+UseConcMarkSweepGC \
+            -jar build/libs/FullNode.jar --witness \
+            -c framework/src/main/resources/config.conf \
+            --password "your_password" > start.log 2>&1 &
         ```
 
-### Optimizing Memory Usage with `tcmalloc`
+        On arm64 with JDK 17:
 
-To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's `glibc malloc`.
-**Note**:
- If you are deploying via the official java-tron Docker image (version 4.8.1 or later), `tcmalloc` is already integrated by default and no manual configuration is required.
-
-1. **Install `tcmalloc`**:
-    * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
-
-    ```bash
-    sudo apt install libgoogle-perftools4
-    ```
-
-    * **Ubuntu 16.04 LTS**:
-
-    ```bash
-    sudo apt install libgoogle-perftools4
-    ```
-
-    * **CentOS 7**:
-
-    ```bash
-    sudo yum install gperftools-libs
-    ```
-
-2. **Modify the Startup Script**:
-
-    * Add the following two lines to your node's startup script. Please note that the path to `libtcmalloc.so.4` might vary slightly across different Linux distributions.
-
-    ```bash
-    #!/bin/bash
-
-    export LD_PRELOAD="/usr/lib/libtcmalloc.so.4" # Adjust path according to your system
-    export TCMALLOC_RELEASE_RATE=10
-
-    # original start command
-    java -jar .....
-    ```
-
-    * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:
-
-    ```bash
-    export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4"
-    export TCMALLOC_RELEASE_RATE=10
-    ```
-
-    * **Ubuntu 16.04 LTS**:
-
-    ```bash
-    export LD_PRELOAD="/usr/lib/libtcmalloc.so.4"
-    export TCMALLOC_RELEASE_RATE=10
-    ```
-
-    * **CentOS 7**:
-
-    ```bash
-    export LD_PRELOAD="/usr/lib64/libtcmalloc.so.4"
-    export TCMALLOC_RELEASE_RATE=10
-    ```
+        ```bash
+        nohup java -Xmx24G -XX:+UseZGC \
+            -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+            -jar build/libs/FullNode.jar --witness \
+            -c framework/src/main/resources/config.conf \
+            --password "your_password" > start.log 2>&1 &
+        ```

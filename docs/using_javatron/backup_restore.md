@@ -11,35 +11,48 @@ Inside the data directory, all persistent state is stored under a `database/` su
 
 ## Backing Up Node Data
 
-Before backing up node data, it's crucial to **shut down the node process**. You can do this by following these steps:
-
-First, get the PID of the java-tron process using the following command:
+Before backing up node data, it's crucial to **shut down the node process**. A server normally runs only one java-tron node, so the following script locates that process automatically, sends signal 15 (`SIGTERM`) for a graceful shutdown, and waits for it to finish before the backup starts. Save it as `stop_java_tron.sh`:
 
 ```bash
-ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}'
+#!/usr/bin/env bash
+
+set -u
+
+pid="$(ps -eo pid=,args= | awk '/[j]ava .*FullNode\.jar/ {print $1}')"
+
+if [ -z "$pid" ]; then
+  echo "No running java-tron process was found." >&2
+  exit 1
+fi
+
+if [[ "$pid" == *$'\n'* ]]; then
+  echo "Multiple java-tron processes were found; stop them individually." >&2
+  exit 1
+fi
+
+if ! kill -15 "$pid"; then
+  echo "Failed to send SIGTERM to java-tron (PID $pid)." >&2
+  exit 1
+fi
+
+echo "Waiting for java-tron (PID $pid) to shut down cleanly..."
+while kill -0 "$pid" 2>/dev/null; do
+  sleep 1
+done
+
+echo "java-tron stopped successfully."
 ```
 
-Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the java-tron process and avoid database corruption:
+Run the script without arguments:
 
 ```bash
-#!/bin/bash
-while true; do
-  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'`
-  if [ -n "$pid" ]; then
-    kill -15 $pid
-    echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
-    sleep 1
-  else
-    echo "java-tron killed successfully!"
-    break
-  fi
-done
+bash stop_java_tron.sh
 ```
 
 Once the java-tron process has successfully shut down, you can back up the data using the following command:
 
 ```bash
-tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
+tar -czvf "output-directory.$(date '+%Y%m%d%H%M%S').etgz" output-directory
 ```
 
 
@@ -50,7 +63,7 @@ Restoring data is straightforward: simply copy the backed-up data to the node's 
 If your database backup file is named `output-directory.20220628152402.etgz`, you can use the following command to restore the database files:
 
 ```bash
-tar xzvf output-directory.20220628152402.etgz
+tar -xzvf output-directory.20220628152402.etgz
 ```
 
 
