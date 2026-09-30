@@ -98,7 +98,7 @@
           },
           "name": {
             "type": "string",
-            "description": "Name encoded as expected by java-tron."
+            "description": "Contract name for deployment. It must not exceed 32 bytes. The limit is measured using UTF-8 encoding, not by the number of characters."
           },
           "permissionId": {
             "type": "integer",

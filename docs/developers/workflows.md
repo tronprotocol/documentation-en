@@ -8,14 +8,13 @@ This page summarizes the GitHub Actions checks that contributors need to underst
 | --- | --- | --- | --- |
 | PR Check (`pr-check.yml`) | `develop`, `release_**` | Runs | Push to `master` or `release_**` |
 | PR Build (`pr-build.yml`) | `master`, `develop`, `release_**` | Skipped | Manual dispatch |
-| Single-node integration (`integration-test-single-node.yml`) | `develop`, `release_**` | Skipped | Push to `master` or `release_**`; manual dispatch |
-| Multi-node integration (`integration-test-multinode.yml`) | `develop`, `release_**` | Skipped | Push to `master` or `release_**`; manual dispatch |
+| Single-node integration (smoke) (`integration-test-single-node.yml`) | `develop`, `release_**` | Skipped | Push to `master` or `release_**`; manual dispatch |
 | CodeQL (`codeql.yml`) | `develop` | Skipped | Push to `develop`, `master`, or `release_**`; weekly schedule |
 | Math usage (`math-check.yml`) | `develop`, `release_**` | Runs | Push to `master` or `release_**`; manual dispatch |
 | Reviewer assignment (`pr-reviewer.yml`) | `develop`, `release_**` | Runs | None |
 | Cancel PR workflows (`pr-cancel.yml`) | Any branch | Runs when an unmerged PR is closed | None |
 
-PR Build, both integration-test workflows, and CodeQL are skipped when a pull request changes only documentation or certain repository-metadata files. If the same pull request includes any other file, the applicable workflows run normally. PR Check, Math usage, reviewer assignment, and cancellation do not have this path exclusion.
+PR Build, the single-node integration (smoke) workflow, and CodeQL are skipped when a pull request changes only documentation or certain repository-metadata files. If the same pull request includes any other file, the applicable workflows run normally. PR Check, Math usage, reviewer assignment, and cancellation do not have this path exclusion.
 
 ## PR Validation and Code Checks
 
@@ -48,12 +47,9 @@ The coverage gates require:
 
 ## Integration, Security, and Math Checks
 
-The documented source version includes both full integration-test workflows:
+The documented source version includes a single-node integration workflow that runs the smoke-test subset against one node. The full single-node suite and the multi-node integration workflow are not run by GitHub Actions.
 
-- The single-node workflow runs the full test set against one node.
-- The multi-node workflow runs the full test set against a three-witness stack.
-
-They run for applicable pull requests targeting `develop` or `release_**`, on pushes to `master` or `release_**`, and when started manually.
+The smoke workflow runs for applicable pull requests targeting `develop` or `release_**`, on pushes to `master` or `release_**`, and when started manually.
 
 CodeQL runs on pull requests targeting `develop` only. It also runs on pushes to `develop`, `master`, and `release_**`, and on a weekly schedule.
 
@@ -77,8 +73,7 @@ When a pull request is closed without being merged, java-tron attempts to cancel
 
 - PR Build
 - CodeQL
-- Single-node integration tests
-- Multi-node integration tests
+- Single-node integration (smoke)
 
 ## Sonar Configuration
 
