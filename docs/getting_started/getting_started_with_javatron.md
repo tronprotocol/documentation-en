@@ -4,7 +4,7 @@ This guide will walk you through a series of fundamental operations for java-tro
 
 - [**Create a TRON Account**](#creating-your-tron-account):
     - Obtain your digital identity in the blockchain world. Learn how to securely generate and manage your address and private key, which are your sole credentials for holding TRX assets, sending transactions, and interacting with smart contracts.
-- [**Start and Run a java-tron Node**](#start-and-run-a-java-tron-node):
+- [**Start and Run a java-tron Node**](#start-and-run-a-java-tron-node) (Optional):
     - Set up your dedicated gateway to the TRON network. Connect your computer to the TRON network, making it a part of the ecosystem. This is crucial for developers who want to maintain the network or require a local, high-availability API service.
 - [**Interact with the TRON Network Using a Java-tron Node**](#interacting-with-the-tron-network):
     - Learn how to send transactions and query on-chain data using client tools like `wallet-cli` or `cURL`. (This skill does not require you to run your own node; you can use public node services to complete these operations).
@@ -161,6 +161,8 @@ On-chain transactions consume bandwidth, and smart contract execution also consu
 After completing all the above preparations, you now have a properly configured TRON account on a secure network with test tokens.
 
 ## Skill 2: Start and Run a Java-tron Node { #start-and-run-a-java-tron-node }
+
+This module is optional. If you use a public node, you can skip node deployment and go directly to [Skill 3: Interacting with the TRON Network](#interacting-with-the-tron-network).
 
 This module guides you through launching a java-tron node. Running your own node gives you control over API access and rate-limit settings. java-tron includes configurable API rate limits, which you can manage when running your own node. The network used in this module is the TRON [Nile Testnet](https://nileex.io/).
 
