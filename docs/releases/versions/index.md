@@ -14,6 +14,7 @@ This page lists every public java-tron release, ordered from newest to oldest. E
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Anaxagoras    |  GreatVoyage-v4.8.2.3    |  2026-09-30    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.2.3)   |   N/A   |
 |  Parmenides    |  GreatVoyage-v4.8.2.2    |  2026-09-08    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.2.2)   |   N/A   |
 |  Heraclitus    |  GreatVoyage-v4.8.2.1    |  2026-07-31    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.2.1)   |   N/A   |
 |  Pyrrho    |  GreatVoyage-v4.8.2    |  2026-07-15    |  [TIP-7939](https://github.com/tronprotocol/tips/blob/master/tip-7939.md) <br> [TIP-7823](https://github.com/tronprotocol/tips/blob/master/tip-7823.md) <br> [TIP-7883](https://github.com/tronprotocol/tips/blob/master/tip-7883.md) <br> [TIP-7951](https://github.com/tronprotocol/tips/blob/master/tip-7951.md) <br> [TIP-2935](https://github.com/tronprotocol/tips/blob/master/tip-2935.md) <br> [TIP-833](https://github.com/tronprotocol/tips/blob/master/tip-833.md) <br> [TIP-854](https://github.com/tronprotocol/tips/blob/master/tip-854.md) <br> [TIP-871](https://github.com/tronprotocol/tips/blob/master/tip-871.md)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.2)   |   [Specs](v4.8.2.md)   |

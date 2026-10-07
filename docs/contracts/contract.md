@@ -253,6 +253,30 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 - `tx.origin` (address): transaction initiator
 
 
+### Storage
+
+When the `ALLOW_OPTIMIZE_TVM_STORAGE` chain parameter is enabled, TVM uses an optimized database key layout based on the full 32-byte storage slot key. This distinguishes slots that could map to the same database entry under the legacy layout.
+
+TVM reads the optimized layout first and falls back to legacy entries where applicable. Writes use the optimized layout, and legacy entries read during execution are migrated when storage is committed. This allows existing contract storage to be migrated as it is accessed.
+
+When the optimized layout is disabled and the required protocol upgrade is active on the network, TVM checks whether distinct storage slots map to the same legacy database entry. If TVM detects that distinct storage slots accessed during contract execution map to the same legacy database entry, it raises an out-of-time exception with the message `CPU timeout for storage check`.
+
 ### Energy
 
 Each command of smart contract consume system resource while running, we use `Energy` as the unit of the consumption of the resource.
+
+### Execution Time Limit
+
+The base execution time limit is governed by the `MAX_CPU_TIME_OF_ONE_TX` chain parameter, expressed in milliseconds and adjustable through committee proposals. The chain-parameter query API returns this value as `getMaxCpuTimeOfOneTx`.
+
+The `vm.minTimeRatio` and `vm.maxTimeRatio` settings adjust the local execution time limit when a node re-executes a contract transaction to verify a block. The node multiplies the base limit by `vm.minTimeRatio` if the transaction's recorded result is `OUT_OF_TIME`, or by `vm.maxTimeRatio` otherwise.
+
+For constant calls, a positive `vm.constantCallTimeoutMs` overrides the base limit; `0` uses the base limit. See [TVM and constant-call configuration](../using_javatron/configuration.md#tvm-and-constant-call-configuration) for details.
+
+Internal contract calls share the top-level execution's deadline.
+
+TVM checks this deadline before executing each instruction, including instructions executed by internally called contracts. When `ALLOW_ENERGY_ADJUSTMENT` is enabled, TVM performs an additional check after the top-level execution ends.
+
+Precompiled contract calls share the same execution deadline. Some precompiles, such as BN128 pairing, perform additional deadline checks during their internal computation.
+
+Exceeding the deadline raises an out-of-time exception. For transactions, this produces an `OUT_OF_TIME` result, consumes the remaining Energy allocated to the execution, and rejects internal transactions. See [Energy consumption](../mechanism-algorithm/resource.md#energy-consumption) for the resource implications of a timeout.
