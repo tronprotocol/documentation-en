@@ -31,7 +31,7 @@ curl --request POST \
 
 The parameter `key` corresponds to the parameter index settable via proposals (e.g., `getMaintenanceTimeInterval`, `getEnergyFee`).
 
-Response example (Nile, first 8 entries; full list has 75 entries):
+Response example (Nile, first 8 entries; the full list depends on the node version):
 
 ```json
 {
