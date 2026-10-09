@@ -18,7 +18,7 @@ The URL path is always `/jsonrpc` (see `FullNodeJsonRpcHttpService.java`).
 ## Protocol conventions
 
 - **Transport**: `POST` only; the request body is in [JSON-RPC 2.0](https://www.jsonrpc.org/specification) format: `{"jsonrpc":"2.0","method":"...","params":[...],"id":1}`.
-- **JSON parsing limits**: The request parser limits JSON nesting depth to 20 and token count to 100,000. JSON responses are parsed separately, with a maximum nesting depth of 1,000 and no token-count limit.
+- **JSON request parsing limits**: When parsing JSON requests, the node allows a maximum nesting depth of 20 and at most 100,000 tokens. Requests exceeding either limit fail to parse.
 - **HTTP status code**: after a request reaches `JsonRpcServlet`, JSON-RPC business errors are returned with HTTP 200 and an `error` field in the response body. Transport-layer failures can still return non-200 status codes; for example, an oversized request body may be rejected before servlet dispatch.
 - **Numeric encoding**: response quantities use `0x`-prefixed hex strings. Block-query selectors additionally accept non-negative decimal heights because `JsonRpcApiUtil.parseBlockNumber` supports both decimal and `0x`-prefixed input.
 - **Address encoding**: JSON-RPC state/call/build interfaces accept hexadecimal addresses only: either a 20-byte EVM-style address or a 21-byte Tron address beginning with `41`, with or without `0x`. Base58check (`T...`) is not accepted by `JsonRpcApiUtil.addressCompatibleToByteArray`. Log filters use 20-byte hexadecimal addresses.
