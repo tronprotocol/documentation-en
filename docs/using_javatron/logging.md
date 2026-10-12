@@ -45,7 +45,7 @@ For both JDK 8 and JDK 17, the relative `gc.log` path is resolved against the pr
 Follow the GC log with:
 
 ```bash
-tail -f ./gc.log
+tail -F ./gc.log
 ```
 
 Starting the node directly with `java -jar FullNode.jar` does not create a GC log unless an appropriate JVM logging option is supplied.
@@ -55,19 +55,19 @@ Starting the node directly with `java -jar FullNode.jar` does not create a GC lo
 Use the main log to follow block synchronization and general node status:
 
 ```bash
-tail -f ./logs/tron.log
+tail -F ./logs/tron.log
 ```
 
 For a gRPC connection, transport, or TLS problem, follow the dedicated gRPC log instead:
 
 ```bash
-tail -f ./logs/grpc/grpc.log
+tail -F ./logs/grpc/grpc.log
 ```
 
 To follow storage-engine diagnostics routed to the dedicated database logger, use:
 
 ```bash
-tail -f ./logs/db/db.log
+tail -F ./logs/db/db.log
 ```
 
 ## Use a custom Logback configuration
@@ -80,7 +80,7 @@ Start the node with the custom file:
 java -jar FullNode.jar --log-config /absolute/path/to/logback.xml
 ```
 
-If `--log-config` is omitted, java-tron uses the bundled Logback configuration. If the option is specified, its value must identify a readable regular file; otherwise, the node fails during startup.
+If `--log-config` is omitted, java-tron uses the bundled Logback configuration. If a non-empty value is provided for `--log-config`, it must identify a readable regular file; otherwise, the node fails during startup. An empty value is treated the same as omitting the option.
 
 A custom Logback configuration replaces the bundled configuration. Include any appenders and shutdown hooks required by your deployment, such as the dedicated gRPC appender, the Prometheus `METRICS` appender, and `TronLogShutdownHook`.
 

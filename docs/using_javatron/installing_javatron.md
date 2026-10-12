@@ -199,7 +199,7 @@ nohup java -jar build/libs/FullNode.jar &
 Using the command below, you can monitor the block synchronization progress:
 
 ```bash
-tail -f ./logs/tron.log
+tail -F ./logs/tron.log
 ```
 
 Use [TronScan](https://tronscan.org/#/), TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, and more.
