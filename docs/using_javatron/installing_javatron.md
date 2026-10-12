@@ -85,8 +85,8 @@ uname -m
 
     ```bash
     git clone https://github.com/tronprotocol/java-tron.git
-    git checkout -t origin/master
     cd java-tron
+    git checkout -t origin/master
     ```
 
 2. Then, run the following commands to build java-tron:
@@ -245,7 +245,8 @@ nohup java -Xmx9G -XX:+UseZGC \
 *   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
     * For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
     * For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
-*   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
+*   `-XX:MetaspaceSize`: Sets the initial class metadata usage threshold that triggers garbage collection.
+*   `-XX:MaxMetaspaceSize`: Sets the maximum size of Metaspace used to store class metadata.
 *   `-XX:MaxDirectMemorySize`: Limits the memory used by NIO Direct Byte Buffers.
 *   `-XX:ReservedCodeCacheSize`: Sets the maximum size of the JIT code cache.
 *   `-XX:+UseCodeCacheFlushing`: Allows the JVM to flush the code cache when full.
@@ -352,7 +353,7 @@ By adding the `--witness` parameter to the FullNode startup command above, the `
 **Important Notes**:
 
 * Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.
-    * Note that even if your node doesn't make it into the top 27, a node started with the `--witness` parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.
+    * A node started with the `--witness` parameter continues to operate as a regular FullNode if its account has not yet been elected as one of the top 27 SRs. Once the account is selected among the top 27 SRs during maintenance, the node can begin producing blocks in its scheduled slots starting with the upcoming epoch.
 * Fill in the **private key** of your Super Representative account in the `localwitness` list of `config.conf`.
 
 Here is an example of the `localwitness` configuration:
@@ -493,6 +494,15 @@ To avoid specifying the private key in plaintext within the configuration file, 
         # Encrypt the currently authorized block-signing private key in a keystore
         java -jar build/libs/Toolkit.jar keystore import
         ```
+
+        If the authorized block-signing address differs from the SR account address, also set `localWitnessAccountAddress` to the SR account's Base58Check address:
+
+        ```properties
+        localWitnessAccountAddress = "SR_ACCOUNT_BASE58CHECK_ADDRESS"
+        localwitnesskeystore = ["B/localwitnesskeystore.json"]
+        ```
+
+        Replace the address placeholder with the SR account address, and adjust the keystore path to the file containing the authorized signing key. If `localWitnessAccountAddress` is omitted, java-tron uses the address derived from the signing key as the witness account address. When this address differs from the SR account address, the node cannot produce blocks for that SR.
 
         Do not use `keystore new` merely to migrate an existing SR: it generates a random key that cannot produce blocks for that SR unless its derived address is first authorized as the SR's witness permission. For a new SR identity, or as part of a planned witness-permission rotation, you may generate a new key with [`keystore new`](toolkit.md#generate-a-keystore) or the `registerwallet` command from `wallet-cli`, then complete the required on-chain registration or permission update before starting block production.
 
