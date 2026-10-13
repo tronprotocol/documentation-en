@@ -144,7 +144,7 @@ The following defaults come from `reference.conf`. An external configuration can
 Request and message size limits are configured independently:
 
 - `node.http.maxMessageSize` controls HTTP request bodies.
-- `node.rpc.maxMessageSize` controls gRPC messages.
+- `node.rpc.maxMessageSize` controls gRPC request messages.
 - `node.jsonrpc.maxMessageSize` controls JSON-RPC request bodies.
 - `node.jsonrpc.maxBatchSize`, `maxResponseSize`, and filter limits constrain JSON-RPC workloads.
 
@@ -202,7 +202,7 @@ API limits are configured under `rate.limiter`:
 - `rate.limiter.global.api.qps` supplies the default per-endpoint limit.
 - `rate.limiter.apiNonBlocking` selects non-blocking or blocking permit acquisition.
 
-When `rate.limiter.apiNonBlocking` is `true`, an over-limit request is rejected immediately. When it is `false`, QPS and per-IP QPS strategies block while waiting for a token. `GlobalPreemptibleAdapter` is different: it waits for a concurrency permit for at most two seconds, then rejects the request if no permit becomes available.
+When `rate.limiter.apiNonBlocking` is `true`, all strategies, including `GlobalPreemptibleAdapter`, reject requests immediately if no permit is available. When it is `false`, QPS and per-IP QPS strategies block until a token becomes available, while `GlobalPreemptibleAdapter` waits for a concurrency permit for at most two seconds before rejecting the request.
 
 P2P message limits are separate and live under `rate.limiter.p2p`.
 
