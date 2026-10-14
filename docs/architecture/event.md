@@ -726,7 +726,7 @@ For information on installing a FullNode, please refer to the [Deploying a FullN
 You can verify that the event plugin has loaded successfully by checking the FullNode logs:
 
 ```bash
-tail -f logs/tron.log | grep -i eventplugin
+tail -F logs/tron.log | grep -i eventplugin
 ```
 
 If you see a message similar to the following, the plugin has loaded successfully:

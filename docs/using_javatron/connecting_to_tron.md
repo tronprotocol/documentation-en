@@ -379,7 +379,7 @@ Unlike node discovery, which uses UDP, peer connections use Transmission Control
 TRON node logs are stored in `logs/tron.log`：
 
 ```bash
-tail -f logs/tron.log
+tail -F logs/tron.log
 ```
 
 ### Example Sync Logs：
