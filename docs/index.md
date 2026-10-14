@@ -75,7 +75,7 @@ This documentation is written for java-tron node operators, protocol researchers
 
 ## Other resources
 
-- [TRON Whitepaper](https://tron.network/static/doc/white_paper_v_2_1.pdf) — Official document on TRON's protocol design and vision
+- [TRON Whitepaper](https://tron.network/static/doc/white_paper.pdf) — Official document on TRON's protocol design and vision
 - [TRON Improvement Proposals (TIPs)](https://github.com/tronprotocol/tips) — Repository for submitting, discussing, and archiving protocol evolution proposals
 - [TRON Developer Hub](https://developers.tron.network/) — DApp developer documentation, SDKs, and tutorials
 - [TRON Official Site](https://tron.network/index?lng=en) — Project updates, ecosystem partners, and community entry points
