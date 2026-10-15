@@ -462,6 +462,11 @@ node.backup {
 * When a node with high priority fails and loses its master node status, other slave nodes will compete to become the master node. When the high-priority node recovers and meets the conditions for block production again, it will not automatically regain master node status; it needs to wait until the current master node fails before it can compete for the role again.
 * Time required for master-slave switchover: When the master node fails, the time it takes for a slave node to switch to a master node is at least 2 * `keepAliveTimeout`, where `keepAliveTimeout` = `keepAliveInterval` * 6. Two `keepAliveTimeout` periods are needed because the slave node needs to transition through an intermediate "preparatory" state (INIT) to become the master node: Slave -> INIT -> Master.
 
+!!! warning "Restrict access to the master-slave communication UDP port"
+    If you deploy a master node and a slave node, verify that firewall rules on **both nodes** restrict the master-slave communication UDP port (`node.backup.port`, **10001** by default, or your configured port), which is used for keep-alive messages, so that only these two nodes can communicate through it.
+
+    Keep-alive messages lack authentication, and UDP source IP addresses can be spoofed. Keep this port inaccessible from the public internet to reduce the risk of forged keep-alive messages disrupting block production.
+
 ## Optimizations and Considerations
 
 ### Speeding Up Node Data Synchronization
