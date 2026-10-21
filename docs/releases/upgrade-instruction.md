@@ -86,11 +86,20 @@ This ensures that if the upgrade fails, you can quickly roll back to the previou
 After preparing the new version of the executable file and backing up the original node data, follow these steps to replace the old files:
 
 1. Copy the new `FullNode.jar` obtained in [Step 1](#prepare-the-new-version-package) to the java-tron working directory.
-2. Update the Configuration File (optional)
-    - We recommend replacing your existing configuration file with the new version from the release. After replacing it, merge your previous custom settings (e.g., private key, keystore path) into the new file.
-    - **Configuration Update Strategy**
-        - **This step is optional**. You can decide whether to update the configuration file based on your specific needs. However, we highly recommend using the latest file to ensure full compatibility and access to new features.
-        - If an update is required for a specific release, it will be explicitly stated in the release notes. Always review the release notes before upgrading.
+2. Review and update the configuration file. Updating the configuration file is optional unless the release requires a change. You can use either approach:
+
+    - **Start from the template and merge your custom settings (recommended).** Replace your configuration file with the `config.conf` template for the same network, then merge the supported custom settings from your backed-up configuration into it.
+    - **Update your existing configuration file.** Copy your backed-up configuration file back to its original path, then add or adjust settings according to the configuration differences and release instructions.
+
+        For example, if your backup is named `config.conf.20261021153000`, restore a copy with:
+
+        ```bash
+        cp config.conf.20261021153000 config.conf
+        ```
+
+        Replace the example backup filename with your actual backup filename. Edit the restored `config.conf` and keep the backup unchanged.
+
+    For either approach, review the release notes and compare your configuration with the current `config.conf` (`framework/src/main/resources/config.conf`) and `reference.conf` (`common/src/main/resources/reference.conf`). `reference.conf` supplies fallback defaults and documents supported parameters, including optional settings shown only as commented examples. `config.conf` is a deployment template containing commonly used settings and operational overrides.
   
 > **Note on the Database**: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built [database snapshot](../using_javatron/backup_restore.md).
 
