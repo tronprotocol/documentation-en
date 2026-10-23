@@ -255,9 +255,9 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 
 ### Storage
 
-When the `ALLOW_OPTIMIZE_TVM_STORAGE` chain parameter is enabled, TVM uses an optimized database key layout based on the full 32-byte storage slot key. This distinguishes slots that could map to the same database entry under the legacy layout.
+When the `ALLOW_OPTIMIZE_TVM_STORAGE_KEY` chain parameter is enabled, TVM uses an optimized database key layout based on the full 32-byte storage slot key. This distinguishes slots that could map to the same database entry under the legacy layout. TVM reads the optimized layout first and falls back to legacy entries where applicable. Writes to contract storage use the optimized layout. Reading a legacy entry alone does not migrate it to the optimized layout.
 
-TVM reads the optimized layout first and falls back to legacy entries where applicable. Writes use the optimized layout, and legacy entries read during execution are migrated when storage is committed. This allows existing contract storage to be migrated as it is accessed.
+With the `ALLOW_OPTIMIZE_TVM_STORAGE_KEY` chain parameter enabled, TVM also protects reads of legacy storage: if a read needs to fall back to the legacy layout, TVM has already recorded another storage slot using the same legacy database key during the current execution, and the corresponding legacy entry exists with a non-null value, TVM raises an out-of-time exception with the message `CPU timeout for storage check`.
 
 When the optimized layout is disabled and the required protocol upgrade is active on the network, TVM checks whether distinct storage slots map to the same legacy database entry. If TVM detects that distinct storage slots accessed during contract execution map to the same legacy database entry, it raises an out-of-time exception with the message `CPU timeout for storage check`.
 
