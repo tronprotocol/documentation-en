@@ -259,7 +259,7 @@ When the `ALLOW_OPTIMIZE_TVM_STORAGE_KEY` chain parameter is enabled, TVM uses a
 
 With the `ALLOW_OPTIMIZE_TVM_STORAGE_KEY` chain parameter enabled, TVM also protects reads of legacy storage: if a read needs to fall back to the legacy layout, TVM has already recorded another storage slot using the same legacy database key during the current execution, and the corresponding legacy entry exists with a non-null value, TVM raises an out-of-time exception with the message `CPU timeout for storage check`.
 
-When the optimized layout is disabled and the required protocol upgrade is active on the network, TVM checks whether distinct storage slots map to the same legacy database entry. If TVM detects that distinct storage slots accessed during contract execution map to the same legacy database entry, it raises an out-of-time exception with the message `CPU timeout for storage check`.
+When the `ALLOW_OPTIMIZE_TVM_STORAGE_KEY` chain parameter is disabled and the required protocol upgrade is active on the network, TVM checks whether distinct storage slots map to the same legacy database entry. If TVM detects that distinct storage slots accessed during contract execution map to the same legacy database entry, it raises an out-of-time exception with the message `CPU timeout for storage check`.
 
 ### Energy
 
