@@ -54,18 +54,18 @@ After updating the configuration, start the node as described in [Starting a jav
       follow_redirects: true
       static_configs:
       - targets:
-        - 127.0.0.1:9527
+        - 192.0.2.10:9527
         labels:
           group: group-xxx
           instance: xxx-01
       - targets:
-        - 127.0.0.2:9527
+        - 192.0.2.20:9527
         labels:
           group: group-xxx
           instance: xxx-02
     ```
 
-    You can use this template and modify the targets configuration item, which specifies the IP address and Prometheus port of your java-tron node(s). Save the file to a local directory, for example `/Users/test/deploy/prometheus/prometheus.yaml`.
+    This example monitors two java-tron nodes running on separate remote hosts. The IP addresses `192.0.2.10` and `192.0.2.20` are placeholders; replace them with the actual IP addresses or hostnames of your nodes and use each node's configured Prometheus metrics port. Save the file to a local directory, for example `/Users/test/deploy/prometheus/prometheus.yaml`.
 
 3. Start a Prometheus container
 
@@ -79,6 +79,8 @@ After updating the configuration, start the node as described in [Starting a jav
     ```
 
     After the container starts, you can view the running status of the Prometheus service at `http://localhost:9090/`.
+
+    The addresses and number of targets shown in the following screenshots are examples and may differ from your configuration.
 
     Go to "Status" -> "Configuration" to verify that the container is using the correct configuration file:
 
@@ -96,12 +98,14 @@ After updating the configuration, start the node as described in [Starting a jav
 
 The deployment process of the Grafana visualization tool is as follows:
 
+> **Grafana UI version note:** The Grafana interface may vary between versions. The screenshots and instructions below may not reflect the latest version. For up-to-date instructions, refer to the [Grafana Prometheus data source documentation](https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/).
+
 1. Install Grafana
 
-    Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/next/setup-grafana/installation/). This article uses the Docker image deployment, pulling the open source image (`grafana-oss`):
+    Please refer to the official documentation to install [Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/installation/). This article uses the Docker image deployment, pulling the open source image (`grafana/grafana`):
     
     ```bash
-    docker pull grafana/grafana-oss
+    docker pull grafana/grafana
     ```
 
 2. Start Grafana
@@ -109,27 +113,27 @@ The deployment process of the Grafana visualization tool is as follows:
     You can use the following command to start Grafana:
 
     ```bash
-    docker run -d --name=grafana -p 3000:3000 grafana/grafana-oss
+    docker run -d --name=grafana -p 3000:3000 grafana/grafana
     ```
 
 3. Log in to the Grafana web UI
 
-    After startup, log in to the Grafana web UI at `http://localhost:3000/`. The default username and password are both `admin`. After login, change the password according to the prompts, and then you can enter the main interface. Click the settings icon on the left side of the main page and select "Data Sources" to configure Grafana's data sources:
-    
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_datasource.png)
+    After startup, log in to the Grafana web UI at `http://localhost:3000/`. The default username and password are both `admin`. After login, change the password according to the prompts, and then you can enter the main interface. Click "Connections" in the left-side menu and select "Data sources" to configure Grafana's data sources. Add a Prometheus data source.
 
-    Enter the IP address and port of the Prometheus service in `URL`:
+    Enter the IP address and port of the Prometheus service in "Prometheus server URL". The URL shown is an example; use the address of your Prometheus service.
 
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_prometheus.png)
+    ![Grafana Connections and Prometheus data source configuration](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_prometheus.png)
     
-    Click the "Save & test" button at the bottom of the page. Grafana will test the connection, and if successful, a 'Data source is working' notification will appear.
+    Click the "Save & test" button at the bottom of the page. Grafana will test the connection and display a confirmation message if the test succeeds.
 
 4. Import Dashboard
 
     For the convenience of java-tron node deployers, the TRON community provides a set of pre-configured Grafana dashboards, each provided as a JSON file. Refer to the [Import dashboard section](https://github.com/tronprotocol/tron-docker/blob/main/metric_monitor/README.md#import-dashboard) of the tron-docker metric_monitor README to import them into Grafana.
 
-    Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import one of the JSON files mentioned above:
+    > **Note:** The `node-exporter-full.json` dashboard displays host resource metrics, such as CPU, memory, disk, and network usage. It requires Node Exporter to be deployed separately on the host you want to monitor and configured as a scrape target in Prometheus. The java-tron metrics endpoint alone does not provide the metrics required by this dashboard. See the [official Node Exporter guide](https://prometheus.io/docs/guides/node-exporter/) for setup instructions. Skip this template if you only need the java-tron dashboards.
+
+    Click "Dashboards" in the left-side menu, then select "New" → "Import". Click "Upload JSON file" to upload one of the JSON files mentioned above, select your Prometheus data source if prompted, and click "Import".
     
-    ![image](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png)
+    ![Grafana Dashboards New Import menu](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png)
     
     Grafana will then render the dashboard according to the imported JSON file, allowing you to monitor the running status of the node in real time.
