@@ -282,7 +282,11 @@ node {
 
 ### Disable Node Discovery
 
-In some cases (e.g., local testing or a fixed private network), you may disable discovery by setting:`node.discovery.enable = false` or by blocking UDP port 18888 via firewall.
+In some cases (e.g., local testing or a fixed private network), you may disable UDP-based node discovery by setting `node.discovery.enable = false`.
+
+Although blocking UDP traffic on `node.listen.port` (`18888` by default) does not disable the discovery service, it prevents discovery messages from being sent or received, effectively blocking UDP-based node discovery.
+
+When discovery is disabled, the node can still initiate TCP connections to peers such as those configured in `node.active` and accept incoming TCP connections from peers such as those configured in `node.passive`, provided the relevant TCP P2P ports are reachable.
 
 
 ## Node Connection
@@ -294,7 +298,7 @@ The number of peer connections is controlled by the following parameters. They a
 - `node.maxConnections`: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in `node.passive`, `node.active`, or `node.fastForward` (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in `node.active` are bounded only by the size of the `node.active` list, while active connections to peers discovered via the discovery protocol are driven by `minConnections` and `minActiveConnections` (see below).
 - `node.minConnections`: the desired minimum total number of peer connections, counting both active and passive (default: 8). When the total is below this value, the node initiates active connections to discovered peers to close the gap.
 - `node.minActiveConnections`: the desired minimum number of active connections to discovered peers (default: 3). The node will keep initiating active connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded `minConnections`.
-- `node.maxConnectionsWithSameIp`: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single IP.
+- `node.maxConnectionsWithSameIp`: the per-IP connection limit checked when accepting non-trusted passive connections and selecting discovered peers for active connections (default: 2). Trusted passive connections and explicitly configured active peers bypass this check.
 
 ```properties
 node {
@@ -385,7 +389,7 @@ tail -F logs/tron.log
 ### Example Sync Logs：
 
 ```text
-pushBlock block number:76, cost/txs:13/0 false
+PushBlock block number: 76, cost/txs: 13/0 false.
 Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
 ```
 
@@ -437,13 +441,13 @@ Example response：
 
 ### Verify Node Synchronization
 
-Compare your local block height with [TRONSCAN](https://tronscan.org/) ：
+Compare your local block height with a trusted reference on the same network. For Mainnet, you can use [TRONSCAN](https://tronscan.org/). For testnets, use the corresponding network's block explorer.
 
 ```bash
 curl http://127.0.0.1:8090/wallet/getnowblock
 ```
 
-If the heights match, synchronization is normal.
+A small height difference can occur because new blocks are produced between queries. Check that your local block height continues to advance and stays close to the reference. Matching heights alone do not confirm synchronization; also compare block IDs at the same height to verify that the nodes are following the same chain.
 
 ## Troubleshooting Common Connection Issues
 
