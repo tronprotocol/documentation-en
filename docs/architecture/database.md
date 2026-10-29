@@ -34,21 +34,23 @@ Key descriptions:
 
 ### 2. RocksDB Optimization Parameters
 
-The `dbSettings` block applies only when `db.engine = "ROCKSDB"`. Under LevelDB, these values are silently ignored.
+The `dbSettings` block must be placed inside the `storage` block, as shown below. It applies only when `storage.db.engine = "ROCKSDB"`. Under LevelDB, these values are silently ignored.
 
 RocksDB supports various tuning parameters that can be configured based on the performance of the node server. Below is an example of recommended parameters:
 
 ```properties
-dbSettings = {
-  levelNumber = 7
-  # compactThreads = 32
-  blocksize = 64                 # Unit: KB
-  maxBytesForLevelBase = 256     # Unit: MB
-  maxBytesForLevelMultiplier = 10
-  level0FileNumCompactionTrigger = 4
-  targetFileSizeBase = 256       # Unit: MB
-  targetFileSizeMultiplier = 1
-  maxOpenFiles= 5000
+storage {
+  dbSettings = {
+    levelNumber = 7
+    # compactThreads = 32
+    blocksize = 64                 # Unit: KB
+    maxBytesForLevelBase = 256     # Unit: MB
+    maxBytesForLevelMultiplier = 10
+    level0FileNumCompactionTrigger = 4
+    targetFileSizeBase = 256       # Unit: MB
+    targetFileSizeMultiplier = 1
+    maxOpenFiles= 5000
+  }
 }
 ```
 
@@ -102,12 +104,11 @@ To minimize downtime, follow these steps:
 3. Restart the node (continuing to use the original directory);
 4. Perform the data conversion in the new directory.
 
-Example commands:
+Run the following commands from the java-tron source root directory:
 
 ```bash
 java -jar build/libs/Toolkit.jar db cp output-directory/database /tmp/output-directory/database
-cd /tmp
-java -jar build/libs/Toolkit.jar db convert output-directory/database output-directory-dst/database
+java -jar build/libs/Toolkit.jar db convert /tmp/output-directory/database /tmp/output-directory-dst/database
 ```
 
 > **Note:** The entire data conversion process is expected to take approximately **10 hours**, depending on the data volume and disk performance.
