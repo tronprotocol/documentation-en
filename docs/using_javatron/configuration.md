@@ -10,8 +10,12 @@ java-tron has two bundled configuration files with different purposes:
 
 | File | Purpose |
 |---|---|
-| `common/src/main/resources/reference.conf` | Defines the complete set of default values and is always used as the fallback configuration. |
+| `common/src/main/resources/reference.conf` | Provides default values and is automatically loaded as the fallback configuration. Some optional settings appear only as commented examples; to use them, explicitly set them in your own configuration file. |
 | `framework/src/main/resources/config.conf` | Provides the bundled Mainnet deployment configuration and operational overrides. It is loaded when the resolved name is `config.conf` and no corresponding filesystem file exists. |
+
+The `config.conf` template contains commonly used settings and deployment overrides; it is not an exhaustive list of supported parameters. To customize your own configuration file, consult `reference.conf`, including its comments, for parameter defaults, usage, and any deprecation notes. Supported parameters can be added to or retained in your own configuration file even when they are absent from the `config.conf` template.
+
+Template values are not necessarily the same as fallback defaults. For example, `node.discovery.enable` and `node.discovery.persist` are `true` in `config.conf` but `false` in `reference.conf`. Deleting these overrides from your own file changes the resulting behavior.
 
 The configuration is resolved and applied in this order:
 
@@ -33,6 +37,26 @@ For a production deployment, start from the current configuration template for t
 - [Mainnet configuration template (`config.conf`)](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
 
 For Nile or another network, use the configuration template provided for that network. Peer discovery, the P2P version, seed nodes, and genesis settings must all identify the same network. See [Deploying java-tron](installing_javatron.md#network-types) for the supported network templates.
+
+## Customize your configuration
+
+1. Copy the configuration template for your target network to an operator-managed file.
+2. If a supported parameter is not listed in the template, find its key, type, and default in `reference.conf` and add the required override to your file. You do not need to copy all of `reference.conf` or edit the file bundled inside the JAR. To use optional settings shown only in comments in `reference.conf`, explicitly set them in your own configuration file.
+3. Start the node with an explicit `-c` path, as shown below, so the selected file is unambiguous.
+4. Restart the node after changes and [validate the resulting behavior](#validate-a-configuration-change). Only `node.active` and `node.passive` support [dynamic configuration reload](#dynamic-configuration-reload).
+
+For example, `vm.estimateEnergy` is supported even though it is not listed in the current `config.conf` template. To enable constant calls and Energy estimation, add or update these settings in your own file:
+
+```hocon
+vm {
+  supportConstant = true
+  estimateEnergy = true
+}
+```
+
+This is an excerpt to merge into your network configuration, not a complete deployment file. Both settings default to `false` in `reference.conf`; removing either override restores its default.
+
+When upgrading an existing deployment, compare and merge configuration changes as described in the [upgrade guide](../releases/upgrade-instruction.md#step-4-replace-old-files), preserving supported custom settings even when they are absent from the `config.conf` template.
 
 ## Start a node with an external configuration
 
@@ -81,6 +105,10 @@ node {
 ```
 
 Keep key names and value types exactly as shown in `reference.conf`. In particular, use unquoted `true` / `false` for booleans, numbers for numeric settings, quoted strings for text, and square brackets for lists.
+
+## Conditional shutdown
+
+Use `node.shutdown` to stop the node automatically at a specified block time or height, or after synchronizing a specified number of blocks. Configure exactly one of `BlockTime`, `BlockHeight`, or `BlockCount`. See [Configuring Conditional Shutdown](installing_javatron.md#configuring-conditional-shutdown) for configuration examples and constraints.
 
 ## Network and peer configuration
 
@@ -211,6 +239,10 @@ P2P message limits are separate and live under `rate.limiter.p2p`.
 A node started with `--witness` needs access to the block producer's signing key. Prefer `localwitnesskeystore` for production deployments. `localwitness` stores a private key directly in the configuration file and therefore requires especially careful file protection.
 
 Restrict the configuration and keystore files to the node's operating-system user, do not commit secrets to source control, and do not reuse a production key in test environments. See [Starting a Block Production Node](installing_javatron.md#starting-a-block-production-node) and [Specifying the private key with a keystore](installing_javatron.md#specifying-super-representative-account-private-key-using-keystore-password).
+
+## Block production backup
+
+Use `node.backup` to configure master-slave mode for multiple block-producing FullNodes using the same witness account. See [Master-Slave Mode for Block Production FullNodes](installing_javatron.md#master-slave-mode-for-block-production-fullnodes) for configuration details and deployment examples.
 
 ## Event subscription and monitoring
 
