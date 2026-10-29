@@ -63,9 +63,10 @@ The operational steps for deploying a private network node are fundamentally the
       | :-------- | :-------- | :-------- | :-------- |
       | `localwitness`     | The private key of Super Representative (SR) address | Leave empty     | Generating blocks requires signing with a private key   |
       | `genesis.block.witnesses`	     | SR address(es)    | Same as SR configuration	 | Genesis block-related configuration    |
-      | `genesis.block.assets`     | Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required    | Same as SR configuration	   | Genesis block related configuration     |
+      | `genesis.block.assets`     | Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its balance in SUN (`1 TRX = 1,000,000 SUN`; for example, `100000000` allocates 100 TRX)    | Same as SR configuration	   | Genesis block related configuration     |
       | `node.p2p.version`     | Any positive integer except `11111`, `201910292`, and `1`     | Same as SR configuration   | Only nodes with the same `node.p2p.version` can complete the P2P handshake    |
       | `seed.node.ip.list`     | Leave the list empty    | Add the SR node as `SR_IP:SR_P2P_PORT`, using the port configured by its `node.listen.port` setting   | Enables FullNode to establish a connection with the SR node for data synchronization     |
+      | `node.fastForward` | Leave the list empty | Leave the list empty | Remove the fast-forward addresses included in the template. If relay peers are needed, use only relay peers within the private network. |
       | `block.needSyncCheck`     | `false`     | `true`     | Set `block.needSyncCheck` to `false` for the first SR and `true` for other SRs     |
       | `node.discovery.enable`     | `true`     | `true`     | If set to `false`, the current node will not be discovered by other nodes    |
       | `block.proposalExpireTime`|`600000` | Same as SR configuration	 | The default proposal expiration time is 3 days: 259200000 (ms). Because proposals must pass through at least one maintenanceTimeInterval to be approved, you should set both block.proposalExpireTime and block.maintenanceTimeInterval to smaller values if you want to speed up the proposal process in a private network.|
@@ -105,33 +106,31 @@ The operational steps for deploying a private network node are fundamentally the
       
 7. Advanced Operation: Modifying Network Parameters
 
-     Network parameters can be retrieved via the [getchainparameters](../api/http/witness-and-governance/getchainparameters.md) API. The current Mainnet network parameters and related proposals can be viewed on the TRONSCAN [Parameters & Proposals page](https://tronscan.org/#/sr/committee). If you want your private network's parameters to match the Mainnet's, you can use the[ dbfork tool](https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md), which can capture the latest state of the Mainnet.
+     Network parameters can be retrieved via the [getchainparameters](../api/http/witness-and-governance/getchainparameters.md) API. The current Mainnet network parameters and related proposals can be viewed on the TRONSCAN [Parameters & Proposals page](https://tronscan.org/#/sr/committee).
+
+     To deploy a private network from an existing Mainnet state using your own SR accounts, first obtain a database snapshot or synchronize a node to the desired height. Then use the [DBFork tool](https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md) to modify the local database. By default (without `--retain-witnesses`), the tool replaces the witness records in the `witness` database and the active witness list in the `witness_schedule` database according to the `witnesses` settings in `fork.conf`. For addresses configured under `witnesses`, the tool automatically creates any missing accounts and marks the corresponding accounts as witnesses. This allows those accounts to participate in block production when the SR nodes are started. Use the `accounts` settings to configure additional account properties, such as balances, names, or owner permissions. The `accounts` settings can also be used to create or modify other accounts.
    
      After your private network is running, you may need to adjust certain network parameters (e.g., transaction fees, energy price). This can be achieved in two ways:
 
      - **Method 1: Set via Configuration File (For Initial Deployment)**
     
-         Some network parameters can be set directly in the configuration file. You can find the current definitions in [`Constant.java`](https://github.com/tronprotocol/java-tron/blob/master/common/src/main/java/org/tron/core/Constant.java).
+         Some network parameters can be set directly in the configuration file. For available configuration options and their defaults, see [`reference.conf`](https://github.com/tronprotocol/java-tron/blob/master/common/src/main/resources/reference.conf).
       
-         **Example**: Add the following `committee` block to your `.conf` file to enable multi-signature and contract creation:
+         **Example**: Add the following settings to the existing `committee` block in your `.conf` file to enable multi-signature and contract creation:
       
          ```properties
          committee = {
            allowCreationOfContracts = 1
-           allowAdaptiveEnergy = 0
            allowMultiSign = 1
-           allowDelegateResource = 1
-           allowSameTokenName = 0
-           allowTvmTransferTrc10 = 1
-          }
+         }
          ```
 
      - **Method 2: Modify via On-Chain Proposals (For a Running Network)**
 
         This is the standard method for on-chain governance. Any Super Representative (SR), SR Partner, or SR Candidate can create or approve a proposal, but only approvals from active SRs count toward the approval threshold.
      
-         - Create a Proposal: Any SR, SR Partner, or SR Candidate uses the [proposalcreate](../api/http/witness-and-governance/proposalcreate.md) API, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).
-         - Approve a Proposal: An SR uses the [proposalapprove](../api/http/witness-and-governance/proposalapprove.md) API to approve a proposal or withdraw an approval. When determining whether the proposal meets the approval threshold, only approvals from active SRs are counted; an SR that has not approved or has withdrawn approval does not increase the approval count.
+         - Create a Proposal: Use the [proposalcreate](../api/http/witness-and-governance/proposalcreate.md) API, specifying the parameter to be modified by its ID and the new value. See the `ProposalType` mapping linked below for parameter IDs.
+         - Approve a Proposal: Use the [proposalapprove](../api/http/witness-and-governance/proposalapprove.md) API to approve a proposal or withdraw an approval. When determining whether the proposal meets the approval threshold, only approvals from active SRs are counted; an SR that has not approved or has withdrawn approval does not increase the approval count.
          - Related APIs:
              - Get all proposals: [listproposals](../api/http/witness-and-governance/listproposals.md)
              - Get a proposal by ID: [getproposalbyid](../api/http/witness-and-governance/getproposalbyid.md)
@@ -141,37 +140,81 @@ The operational steps for deploying a private network node are fundamentally the
          The following code snippet demonstrates how to create a proposal to modify two network parameters and then vote on it. In [proposalcreate](../api/http/witness-and-governance/proposalcreate.md), network parameters are represented by their IDs. The mapping between parameter IDs and names is defined in the java-tron source code's [`enum ProposalType`](https://github.com/tronprotocol/java-tron/blob/master/actuator/src/main/java/org/tron/core/utils/ProposalUtil.java) (the number in parentheses for each enum entry is the parameter ID).
      
       
+         This example uses [TronWeb v6](https://tronweb.network/docu/docs/intro/#instantiation). Set `SR_PRIVATE_KEY` to the private key of the genesis SR account, which is already registered as a witness, and ensure it has enough balance or bandwidth for the transactions. The example assumes the default account permissions and no concurrent proposal submissions from this account. It waits for successful inclusion on the FullNode, then identifies the new proposal by its proposer and parameters instead of assuming an ID.
+
          ```javascript
-         var TronWeb = require('tronweb');
-         var tronWeb = new TronWeb({
+         const { TronWeb } = require('tronweb');
+         const tronWeb = new TronWeb({
              fullHost: 'http://localhost:8090',
-             privateKey: 'privateKey'
-         })
+             privateKey: process.env.SR_PRIVATE_KEY
+         });
+         const owner = tronWeb.defaultAddress.hex;
+         const parameters = [{ key: 9, value: 1 }, { key: 10, value: 1 }];
+         // Sort by stringified keys to match Protobuf map serialization.
+         parameters.sort((a, b) => {
+             const keyA = String(a.key);
+             const keyB = String(b.key);
+             return keyA < keyB ? -1 : keyA > keyB ? 1 : 0;
+         });
+         const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-         var parametersForProposal1 = [{"key":9,"value":1},{"key":10,"value":1}];
-
-         async function modifyChainParameters(parameters,proposalID){
-      
-             parameters.sort((a, b) => {
-                     return a.key.toString() > b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
-                 })
-            var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,"41D0B69631440F0A494BB51F7EEE68FF5C593C00F0");
-             var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
-             var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
-
-             setTimeout(async function() {
-                 console.log(receipt1)
-                 console.log("Vote proposal 1 !")
-                 var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
-                 var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
-                 var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
-             }, 4000)
-
+         async function broadcastAndWait(unsignedTransaction) {
+             const signed = await tronWeb.trx.sign(unsignedTransaction);
+             const result = await tronWeb.trx.sendRawTransaction(signed);
+             if (!result.result) {
+                 throw new Error(`Broadcast failed: ${JSON.stringify(result)}`);
+             }
+             const deadline = Date.now() + 120000;
+             while (Date.now() < deadline) {
+                 const info = await tronWeb.fullNode.request(
+                     'wallet/gettransactioninfobyid', { value: signed.txID }, 'post'
+                 );
+                 if (info.id === signed.txID && info.blockNumber !== undefined) {
+                     // SUCESS is the protobuf enum name; the default value may be omitted.
+                     const status = info.result ?? 'SUCESS';
+                     if (status !== 'SUCESS') {
+                         throw new Error(`Transaction ${signed.txID} failed: ${status}`);
+                     }
+                     return signed.txID;
+                 }
+                 await sleep(1000);
+             }
+             throw new Error(`Timed out waiting for ${signed.txID}; check it before retrying.`);
          }
 
-         modifyChainParameters(parametersForProposal1, 1) 
+         async function modifyChainParameters() {
+             const previousIds = new Set(
+                 (await tronWeb.trx.listProposals()).map((p) => p.proposal_id)
+             );
+             const createTxId = await broadcastAndWait(
+                 await tronWeb.transactionBuilder.createProposal(parameters, owner)
+             );
+             const matches = (await tronWeb.trx.listProposals()).filter((p) =>
+                 !previousIds.has(p.proposal_id) &&
+                 p.proposer_address.toLowerCase() === owner.toLowerCase() &&
+                 p.parameters.length === parameters.length &&
+                 parameters.every((expected) => p.parameters.some((actual) =>
+                     Number(actual.key) === expected.key && Number(actual.value) === expected.value
+                 ))
+             );
+             if (matches.length !== 1) {
+                 throw new Error(`Cannot uniquely identify the proposal from ${createTxId}; inspect listproposals.`);
+             }
+             const proposalID = matches[0].proposal_id;
+             const voteTxId = await broadcastAndWait(
+                 await tronWeb.transactionBuilder.voteProposal(proposalID, true, owner)
+             );
+             console.log({ proposalID, createTxId, voteTxId });
+         }
+
+         modifyChainParameters().catch((error) => {
+             console.error(error);
+             process.exitCode = 1;
+         });
          ```
 
-         Once the proposal is approved and the maintenance period has passed, the new network parameters will take effect. You can verify the changes using [listproposals](../api/http/witness-and-governance/listproposals.md) or [getchainparameters](../api/http/witness-and-governance/getchainparameters.md).
+         Approvals do not apply the parameters immediately. At the maintenance boundary when the proposal has expired, java-tron checks approvals from the then-active SRs and applies the parameters only if the proposal passes. You can check the proposal status using [listproposals](../api/http/witness-and-governance/listproposals.md) and verify the current network parameter values using [getchainparameters](../api/http/witness-and-governance/getchainparameters.md).
+
+         **Single-SR private networks:** The current implementation in [`ProposalCapsule.hasMostApprovals`](https://github.com/tronprotocol/java-tron/blob/master/chainbase/src/main/java/org/tron/core/capsule/ProposalCapsule.java) uses integer arithmetic: `approvalCount >= activeWitnessCount * 7 / 10`. With one active SR, the threshold is zero, so a pending proposal can pass at expiration without any approval votes.
     
          It is important to note that network parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission. For example, activate `ALLOW_TVM_SHANGHAI` before creating a proposal to enable parameter 95 (`ALLOW_TVM_PRAGUE`).
