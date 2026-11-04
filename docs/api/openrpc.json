@@ -6,8 +6,8 @@
     "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation.",
     "x-java-tron-source": {
       "repo": "tronprotocol/java-tron",
-      "commit": "d5c3d1d1fd0cad12f09c4346d6ac937ab2cbb071",
-      "version": "GreatVoyage-v4.8.2.2"
+      "commit": "4e8389f159d0782f1ebcd9dab2fd88388c0e6fe9",
+      "version": "GreatVoyage-v4.8.2.4"
     }
   },
   "servers": [
