@@ -3987,14 +3987,19 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 <p>After preparing the new version of the executable file and backing up the original node data, follow these steps to replace the old files:</p>
 <ol>
 <li>Copy the new <code>FullNode.jar</code> obtained in <a href="#prepare-the-new-version-package">Step 1</a> to the java-tron working directory.</li>
-<li>Update the Configuration File (optional)<ul>
-<li>We recommend replacing your existing configuration file with the new version from the release. After replacing it, merge your previous custom settings (e.g., private key, keystore path) into the new file.</li>
-<li><strong>Configuration Update Strategy</strong><ul>
-<li><strong>This step is optional</strong>. You can decide whether to update the configuration file based on your specific needs. However, we highly recommend using the latest file to ensure full compatibility and access to new features.</li>
-<li>If an update is required for a specific release, it will be explicitly stated in the release notes. Always review the release notes before upgrading.</li>
-</ul>
+<li>
+<p>Review and update the configuration file. Updating the configuration file is optional unless the release requires a change. You can use either approach:</p>
+<ul>
+<li><strong>Start from the template and merge your custom settings (recommended).</strong> Replace your configuration file with the <code>config.conf</code> template for the same network, then merge the supported custom settings from your backed-up configuration into it.</li>
+<li>
+<p><strong>Update your existing configuration file.</strong> Copy your backed-up configuration file back to its original path, then add or adjust settings according to the configuration differences and release instructions.</p>
+<p>For example, if your backup is named <code>config.conf.20261021153000</code>, restore a copy with:</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>config.conf.20261021153000<span class="w"> </span>config.conf
+</code></pre></div>
+<p>Replace the example backup filename with your actual backup filename. Edit the restored <code>config.conf</code> and keep the backup unchanged.</p>
 </li>
 </ul>
+<p>For either approach, review the release notes and compare your configuration with the current <code>config.conf</code> (<code>framework/src/main/resources/config.conf</code>) and <code>reference.conf</code> (<code>common/src/main/resources/reference.conf</code>). <code>reference.conf</code> supplies fallback defaults and documents supported parameters, including optional settings shown only as commented examples. <code>config.conf</code> is a deployment template containing commonly used settings and operational overrides.</p>
 </li>
 </ol>
 <blockquote>
@@ -4072,7 +4077,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:05:56 UTC">July 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 21, 2026 09:26:21 UTC">October 21, 2026</span>
   </span>
 
     

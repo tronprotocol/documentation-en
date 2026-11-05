@@ -3944,25 +3944,25 @@
 <p>This configuration writes detailed GC events with timestamps to <code>gc.log</code>. Unlike the JDK 17 configuration, these options do not configure size-based rotation or retention. The file continues to grow until it is rotated or archived externally.</p>
 <p>For both JDK 8 and JDK 17, the relative <code>gc.log</code> path is resolved against the process working directory, not the directory containing <code>FullNode.jar</code>.</p>
 <p>Follow the GC log with:</p>
-<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>./gc.log
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-F<span class="w"> </span>./gc.log
 </code></pre></div>
 <p>Starting the node directly with <code>java -jar FullNode.jar</code> does not create a GC log unless an appropriate JVM logging option is supplied.</p>
 <h2 id="follow-node-logs">Follow node logs<a class="headerlink" href="#follow-node-logs" title="Permanent link">&para;</a></h2>
 <p>Use the main log to follow block synchronization and general node status:</p>
-<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>./logs/tron.log
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-F<span class="w"> </span>./logs/tron.log
 </code></pre></div>
 <p>For a gRPC connection, transport, or TLS problem, follow the dedicated gRPC log instead:</p>
-<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>./logs/grpc/grpc.log
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-F<span class="w"> </span>./logs/grpc/grpc.log
 </code></pre></div>
 <p>To follow storage-engine diagnostics routed to the dedicated database logger, use:</p>
-<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>./logs/db/db.log
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-F<span class="w"> </span>./logs/db/db.log
 </code></pre></div>
 <h2 id="use-a-custom-logback-configuration">Use a custom Logback configuration<a class="headerlink" href="#use-a-custom-logback-configuration" title="Permanent link">&para;</a></h2>
 <p>Use the <code>logback.xml</code> bundled with the same java-tron version as the node as the starting point. The current reference file is <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/logback.xml"><code>framework/src/main/resources/logback.xml</code></a>.</p>
 <p>Start the node with the custom file:</p>
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span>--log-config<span class="w"> </span>/absolute/path/to/logback.xml
 </code></pre></div>
-<p>If <code>--log-config</code> is omitted, java-tron uses the bundled Logback configuration. If the option is specified, its value must identify a readable regular file; otherwise, the node fails during startup.</p>
+<p>If <code>--log-config</code> is omitted, java-tron uses the bundled Logback configuration. If a non-empty value is provided for <code>--log-config</code>, it must identify a readable regular file; otherwise, the node fails during startup. An empty value is treated the same as omitting the option.</p>
 <p>A custom Logback configuration replaces the bundled configuration. Include any appenders and shutdown hooks required by your deployment, such as the dedicated gRPC appender, the Prometheus <code>METRICS</code> appender, and <code>TronLogShutdownHook</code>.</p>
 <h2 id="send-logs-to-stdout">Send logs to stdout<a class="headerlink" href="#send-logs-to-stdout" title="Permanent link">&para;</a></h2>
 <p>The default file defines a <code>CONSOLE</code> appender. Attach it to the root logger to write to both stdout and the main log:</p>
@@ -4015,7 +4015,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 12, 2026 08:49:37 UTC">August 12, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 14, 2026 08:43:16 UTC">October 14, 2026</span>
   </span>
 
     

@@ -4494,7 +4494,9 @@ If your network interface supports IPv6, you can uncomment the relevant lines in
 <span class="na">}</span>
 </code></pre></div>
 <h3 id="disable-node-discovery">Disable Node Discovery<a class="headerlink" href="#disable-node-discovery" title="Permanent link">&para;</a></h3>
-<p>In some cases (e.g., local testing or a fixed private network), you may disable discovery by setting:<code>node.discovery.enable = false</code> or by blocking UDP port 18888 via firewall.</p>
+<p>In some cases (e.g., local testing or a fixed private network), you may disable UDP-based node discovery by setting <code>node.discovery.enable = false</code>.</p>
+<p>Although blocking UDP traffic on <code>node.listen.port</code> (<code>18888</code> by default) does not disable the discovery service, it prevents discovery messages from being sent or received, effectively blocking UDP-based node discovery.</p>
+<p>When discovery is disabled, the node can still initiate TCP connections to peers such as those configured in <code>node.active</code> and accept incoming TCP connections from peers such as those configured in <code>node.passive</code>, provided the relevant TCP P2P ports are reachable.</p>
 <h2 id="node-connection">Node Connection<a class="headerlink" href="#node-connection" title="Permanent link">&para;</a></h2>
 <h3 id="number-of-node-connections">Number of Node Connections<a class="headerlink" href="#number-of-node-connections" title="Permanent link">&para;</a></h3>
 <p>The number of peer connections is controlled by the following parameters. They are usually tuned together:</p>
@@ -4502,7 +4504,7 @@ If your network interface supports IPv6, you can uncomment the relevant lines in
 <li><code>node.maxConnections</code>: the maximum number of peer connections (default: 30). Passive connections from non-trusted peers are rejected once this limit is reached. A peer is considered trusted if its IP appears in <code>node.passive</code>, <code>node.active</code>, or <code>node.fastForward</code> (the IPs from all three are added to the trust list). Active connections bypass this check entirely: active connections to peers configured in <code>node.active</code> are bounded only by the size of the <code>node.active</code> list, while active connections to peers discovered via the discovery protocol are driven by <code>minConnections</code> and <code>minActiveConnections</code> (see below).</li>
 <li><code>node.minConnections</code>: the desired minimum total number of peer connections, counting both active and passive (default: 8). When the total is below this value, the node initiates active connections to discovered peers to close the gap.</li>
 <li><code>node.minActiveConnections</code>: the desired minimum number of active connections to discovered peers (default: 3). The node will keep initiating active connections to discovered peers until this threshold is met, even if the total connection count has already reached or exceeded <code>minConnections</code>.</li>
-<li><code>node.maxConnectionsWithSameIp</code>: the maximum number of connections allowed from the same IP address (default: 2). It mitigates abuse from a single IP.</li>
+<li><code>node.maxConnectionsWithSameIp</code>: the per-IP connection limit checked when accepting non-trusted passive connections and selecting discovered peers for active connections (default: 2). Trusted passive connections and explicitly configured active peers bypass this check.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="na">node</span><span class="w"> </span><span class="s">{</span>
 <span class="w">  </span><span class="na">...</span>
@@ -4567,10 +4569,10 @@ If your network interface supports IPv6, you can uncomment the relevant lines in
 <h2 id="logs-and-node-status-verification">Logs and Node Status Verification<a class="headerlink" href="#logs-and-node-status-verification" title="Permanent link">&para;</a></h2>
 <h3 id="view-sync-logs">View Sync Logs<a class="headerlink" href="#view-sync-logs" title="Permanent link">&para;</a></h3>
 <p>TRON node logs are stored in <code>logs/tron.log</code>：</p>
-<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>logs/tron.log
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-F<span class="w"> </span>logs/tron.log
 </code></pre></div>
 <h3 id="example-sync-logs">Example Sync Logs：<a class="headerlink" href="#example-sync-logs" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>pushBlock block number:76, cost/txs:13/0 false
+<div class="highlight"><pre><span></span><code>PushBlock block number: 76, cost/txs: 13/0 false.
 Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
 </code></pre></div>
 <h3 id="example-block-production-logs-for-super-representatives">Example Block Production Logs (for Super Representatives):<a class="headerlink" href="#example-block-production-logs-for-super-representatives" title="Permanent link">&para;</a></h3>
@@ -4610,10 +4612,10 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="verify-node-synchronization">Verify Node Synchronization<a class="headerlink" href="#verify-node-synchronization" title="Permanent link">&para;</a></h3>
-<p>Compare your local block height with <a href="https://tronscan.org/">TRONSCAN</a> ：</p>
+<p>Compare your local block height with a trusted reference on the same network. For Mainnet, you can use <a href="https://tronscan.org/">TRONSCAN</a>. For testnets, use the corresponding network's block explorer.</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:8090/wallet/getnowblock
 </code></pre></div>
-<p>If the heights match, synchronization is normal.</p>
+<p>A small height difference can occur because new blocks are produced between queries. Check that your local block height continues to advance and stays close to the reference. Matching heights alone do not confirm synchronization; also compare block IDs at the same height to verify that the nodes are following the same chain.</p>
 <h2 id="troubleshooting-common-connection-issues">Troubleshooting Common Connection Issues<a class="headerlink" href="#troubleshooting-common-connection-issues" title="Permanent link">&para;</a></h2>
 <p>If your java-tron node fails to connect to peers, check the following common causes:</p>
 <ul>
@@ -4666,7 +4668,7 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:05:56 UTC">July 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2026 04:38:50 UTC">October 22, 2026</span>
   </span>
 
     

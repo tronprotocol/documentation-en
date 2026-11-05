@@ -3787,11 +3787,11 @@
 </tr>
 </tbody>
 </table>
-<p>Parameter indices are the keys returned by <a href="../getchainparameters/"><code>/wallet/getchainparameters</code></a>.</p>
+<p>Proposal entries use numeric chain-parameter indices as <code>key</code> values. The <a href="../getchainparameters/"><code>/wallet/getchainparameters</code></a> response uses string parameter names instead; for example, proposal parameter <code>20</code> corresponds to <code>getAllowMultiSign</code> in the query response.</p>
 <blockquote>
 <p>Note: the servlet uses <code>JsonFormat</code> to parse protobuf; <code>parameters</code> must be in array form <code>[{"key":N,"value":V}]</code>. With map form <code>{"&lt;N&gt;": V}</code> all keys are parsed as 0, triggering the range check on parameter 0.</p>
 </blockquote>
-<p>Example (proposal that sets parameter 31 <code>getAllowMultiSign</code> to 1):</p>
+<p>Example (proposal that sets parameter 20 <code>getAllowMultiSign</code> to 1):</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--url<span class="w"> </span>https://nile.trongrid.io/wallet/proposalcreate<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--header<span class="w"> </span><span class="s1">&#39;accept: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
@@ -3800,7 +3800,7 @@
 <span class="s1">{</span>
 <span class="s1">  &quot;owner_address&quot;: &quot;419c7c7049d26108be0dcb5f78479c6ff27ba101d1&quot;,</span>
 <span class="s1">  &quot;parameters&quot;: [</span>
-<span class="s1">    {&quot;key&quot;: 31, &quot;value&quot;: 1}</span>
+<span class="s1">    {&quot;key&quot;: 20, &quot;value&quot;: 1}</span>
 <span class="s1">  ]</span>
 <span class="s1">}</span>
 <span class="s1">&#39;</span>
@@ -3810,7 +3810,7 @@
 <p>Response example (<code>txID</code>, <code>ref_block_*</code>, <code>expiration</code>, <code>timestamp</code>, <code>raw_data_hex</code> vary with construction moment):</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d749a445802ea86230d52fb35645ab497612dec59794f815d1418c1b03b67d02&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;txID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e7676fa5abbca3ad505d1272c6231246e0906bf49613b60e608455bcefb7da56&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;raw_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
@@ -3818,7 +3818,7 @@
 <span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;owner_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;419c7c7049d26108be0dcb5f78479c6ff27ba101d1&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+<span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="nt">&quot;type_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;type.googleapis.com/protocol.ProposalCreateContract&quot;</span>
@@ -3831,7 +3831,7 @@
 <span class="w">    </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1777446546000</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1777446488573</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0a0227e22208c4c88851291881b340d0d4c7c0dd335a58081012540a33747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e50726f706f73616c437265617465436f6e7472616374121d0a15419c7c7049d26108be0dcb5f78479c6ff27ba101d11204081f100170fd93c4c0dd33&quot;</span>
+<span class="w">  </span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0a0227e22208c4c88851291881b340d0d4c7c0dd335a58081012540a33747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e50726f706f73616c437265617465436f6e7472616374121d0a15419c7c7049d26108be0dcb5f78479c6ff27ba101d112040814100170fd93c4c0dd33&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
@@ -3897,7 +3897,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2026 02:51:44 UTC">July 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 23, 2026 09:06:29 UTC">October 23, 2026</span>
   </span>
 
     

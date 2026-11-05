@@ -3870,17 +3870,17 @@
 <span class="w">  </span><span class="nt">follow_redirects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">static_configs</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:9527</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.0.2.10:9527</span>
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">group-xxx</span>
 <span class="w">      </span><span class="nt">instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx-01</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.2:9527</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.0.2.20:9527</span>
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">group-xxx</span>
 <span class="w">      </span><span class="nt">instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx-02</span>
 </code></pre></div>
-<p>You can use this template and modify the targets configuration item, which specifies the IP address and Prometheus port of your java-tron node(s). Save the file to a local directory, for example <code>/Users/test/deploy/prometheus/prometheus.yaml</code>.</p>
+<p>This example monitors two java-tron nodes running on separate remote hosts. The IP addresses <code>192.0.2.10</code> and <code>192.0.2.20</code> are placeholders; replace them with the actual IP addresses or hostnames of your nodes and use each node's configured Prometheus metrics port. Save the file to a local directory, for example <code>/Users/test/deploy/prometheus/prometheus.yaml</code>.</p>
 </li>
 <li>
 <p>Start a Prometheus container</p>
@@ -3891,6 +3891,7 @@
 <span class="w">    </span>prom/prometheus:latest
 </code></pre></div>
 <p>After the container starts, you can view the running status of the Prometheus service at <code>http://localhost:9090/</code>.</p>
+<p>The addresses and number of targets shown in the following screenshots are examples and may differ from your configuration.</p>
 <p>Go to "Status" -&gt; "Configuration" to verify that the container is using the correct configuration file:</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_config.png" /></p>
 <p>Click "Status" -&gt; "Targets" to view the status of each monitored java-tron node:</p>
@@ -3901,32 +3902,37 @@
 </ol>
 <h2 id="deploy-grafana">Deploy Grafana<a class="headerlink" href="#deploy-grafana" title="Permanent link">&para;</a></h2>
 <p>The deployment process of the Grafana visualization tool is as follows:</p>
+<blockquote>
+<p><strong>Grafana UI version note:</strong> The Grafana interface may vary between versions. The screenshots and instructions below may not reflect the latest version. For up-to-date instructions, refer to the <a href="https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/">Grafana Prometheus data source documentation</a>.</p>
+</blockquote>
 <ol>
 <li>
 <p>Install Grafana</p>
-<p>Please refer to the official documentation to install <a href="https://grafana.com/docs/grafana/next/setup-grafana/installation/">Grafana</a>. This article uses the Docker image deployment, pulling the open source image (<code>grafana-oss</code>):</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>grafana/grafana-oss
+<p>Please refer to the official documentation to install <a href="https://grafana.com/docs/grafana/latest/setup-grafana/installation/">Grafana</a>. This article uses the Docker image deployment, pulling the open source image (<code>grafana/grafana</code>):</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>grafana/grafana
 </code></pre></div>
 </li>
 <li>
 <p>Start Grafana</p>
 <p>You can use the following command to start Grafana:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="o">=</span>grafana<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>grafana/grafana-oss
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="o">=</span>grafana<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>grafana/grafana
 </code></pre></div>
 </li>
 <li>
 <p>Log in to the Grafana web UI</p>
-<p>After startup, log in to the Grafana web UI at <code>http://localhost:3000/</code>. The default username and password are both <code>admin</code>. After login, change the password according to the prompts, and then you can enter the main interface. Click the settings icon on the left side of the main page and select "Data Sources" to configure Grafana's data sources:</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_datasource.png" /></p>
-<p>Enter the IP address and port of the Prometheus service in <code>URL</code>:</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_prometheus.png" /></p>
-<p>Click the "Save &amp; test" button at the bottom of the page. Grafana will test the connection, and if successful, a 'Data source is working' notification will appear.</p>
+<p>After startup, log in to the Grafana web UI at <code>http://localhost:3000/</code>. The default username and password are both <code>admin</code>. After login, change the password according to the prompts, and then you can enter the main interface. Click "Connections" in the left-side menu and select "Data sources" to configure Grafana's data sources. Add a Prometheus data source.</p>
+<p>Enter the IP address and port of the Prometheus service in "Prometheus server URL". The URL shown is an example; use the address of your Prometheus service.</p>
+<p><img alt="Grafana Connections and Prometheus data source configuration" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_prometheus.png" /></p>
+<p>Click the "Save &amp; test" button at the bottom of the page. Grafana will test the connection and display a confirmation message if the test succeeds.</p>
 </li>
 <li>
 <p>Import Dashboard</p>
 <p>For the convenience of java-tron node deployers, the TRON community provides a set of pre-configured Grafana dashboards, each provided as a JSON file. Refer to the <a href="https://github.com/tronprotocol/tron-docker/blob/main/metric_monitor/README.md#import-dashboard">Import dashboard section</a> of the tron-docker metric_monitor README to import them into Grafana.</p>
-<p>Click the Dashboards icon on the left, then select "+Import", then click "Upload JSON file" to import one of the JSON files mentioned above:</p>
-<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png" /></p>
+<blockquote>
+<p><strong>Note:</strong> The <code>node-exporter-full.json</code> dashboard displays host resource metrics, such as CPU, memory, disk, and network usage. It requires Node Exporter to be deployed separately on the host you want to monitor and configured as a scrape target in Prometheus. The java-tron metrics endpoint alone does not provide the metrics required by this dashboard. See the <a href="https://prometheus.io/docs/guides/node-exporter/">official Node Exporter guide</a> for setup instructions. Skip this template if you only need the java-tron dashboards.</p>
+</blockquote>
+<p>Click "Dashboards" in the left-side menu, then select "New" → "Import". Click "Upload JSON file" to upload one of the JSON files mentioned above, select your Prometheus data source if prompted, and click "Import".</p>
+<p><img alt="Grafana Dashboards New Import menu" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/metrics_import.png" /></p>
 <p>Grafana will then render the dashboard according to the imported JSON file, allowing you to monitor the running status of the node in real time.</p>
 </li>
 </ol>
@@ -3950,7 +3956,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 13, 2026 04:02:57 UTC">August 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 03:38:53 UTC">October 28, 2026</span>
   </span>
 
     

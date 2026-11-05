@@ -4170,8 +4170,8 @@
 <li>
 <p>Clone the repo and switch to the <code>master</code> branch:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tronprotocol/java-tron.git
-git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </span>origin/master
 <span class="nb">cd</span><span class="w"> </span>java-tron
+git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </span>origin/master
 </code></pre></div>
 </li>
 <li>
@@ -4276,7 +4276,7 @@ grep<span class="w"> </span>tcmalloc<span class="w"> </span><span class="s2">&qu
 <p>For production deployments or long-running Mainnet nodes, please refer to the below <a href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for FullNode</a> guide for the recommended Java commands.</p>
 </blockquote>
 <p>Using the command below, you can monitor the block synchronization progress:</p>
-<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>./logs/tron.log
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-F<span class="w"> </span>./logs/tron.log
 </code></pre></div>
 <p>Use <a href="https://tronscan.org/#/">TronScan</a>, TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, and more.</p>
 <p>Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.</p>
@@ -4312,7 +4312,8 @@ grep<span class="w"> </span>tcmalloc<span class="w"> </span><span class="s2">&qu
 <li>For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</li>
 </ul>
 </li>
-<li><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</li>
+<li><code>-XX:MetaspaceSize</code>: Sets the initial class metadata usage threshold that triggers garbage collection.</li>
+<li><code>-XX:MaxMetaspaceSize</code>: Sets the maximum size of Metaspace used to store class metadata.</li>
 <li><code>-XX:MaxDirectMemorySize</code>: Limits the memory used by NIO Direct Byte Buffers.</li>
 <li><code>-XX:ReservedCodeCacheSize</code>: Sets the maximum size of the JIT code cache.</li>
 <li><code>-XX:+UseCodeCacheFlushing</code>: Allows the JVM to flush the code cache when full.</li>
@@ -4404,7 +4405,7 @@ grep<span class="w"> </span>tcmalloc<span class="w"> </span><span class="s2">&qu
 <p><strong>Important Notes</strong>:</p>
 <ul>
 <li>Ensure that you own a Super Representative (SR) account and have received sufficient votes. If your vote count ranks among the top 27, you need to start an SR Node to participate in block production.<ul>
-<li>Note that even if your node doesn't make it into the top 27, a node started with the <code>--witness</code> parameter will still operate as a regular node; once its ranking reaches the top 27, it can immediately begin producing blocks.</li>
+<li>A node started with the <code>--witness</code> parameter continues to operate as a regular FullNode if its account has not yet been elected as one of the top 27 SRs. Once the account is selected among the top 27 SRs during maintenance, the node can begin producing blocks in its scheduled slots starting with the upcoming epoch.</li>
 </ul>
 </li>
 <li>Fill in the <strong>private key</strong> of your Super Representative account in the <code>localwitness</code> list of <code>config.conf</code>.</li>
@@ -4498,6 +4499,11 @@ grep<span class="w"> </span>tcmalloc<span class="w"> </span><span class="s2">&qu
 <li>When a node with high priority fails and loses its master node status, other slave nodes will compete to become the master node. When the high-priority node recovers and meets the conditions for block production again, it will not automatically regain master node status; it needs to wait until the current master node fails before it can compete for the role again.</li>
 <li>Time required for master-slave switchover: When the master node fails, the time it takes for a slave node to switch to a master node is at least 2 * <code>keepAliveTimeout</code>, where <code>keepAliveTimeout</code> = <code>keepAliveInterval</code> * 6. Two <code>keepAliveTimeout</code> periods are needed because the slave node needs to transition through an intermediate "preparatory" state (INIT) to become the master node: Slave -&gt; INIT -&gt; Master.</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Restrict access to the master-slave communication UDP port</p>
+<p>If you deploy a master node and a slave node, verify that firewall rules on <strong>both nodes</strong> restrict the master-slave communication UDP port (<code>node.backup.port</code>, <strong>10001</strong> by default, or your configured port), which is used for keep-alive messages, so that only these two nodes can communicate through it.</p>
+<p>Keep-alive messages lack authentication, and UDP source IP addresses can be spoofed. Keep this port inaccessible from the public internet to reduce the risk of forged keep-alive messages disrupting block production.</p>
+</div>
 <h2 id="optimizations-and-considerations">Optimizations and Considerations<a class="headerlink" href="#optimizations-and-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="speeding-up-node-data-synchronization">Speeding Up Node Data Synchronization<a class="headerlink" href="#speeding-up-node-data-synchronization" title="Permanent link">&para;</a></h3>
 <p>For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large amount of data, which will take a significant amount of time. You can use <a href="../backup_restore/#mainnet-data-snapshots">data snapshots</a> to accelerate node synchronization.</p>
@@ -4528,6 +4534,11 @@ grep<span class="w"> </span>tcmalloc<span class="w"> </span><span class="s2">&qu
 <div class="highlight"><pre><span></span><code><span class="c1"># Encrypt the currently authorized block-signing private key in a keystore</span>
 java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>keystore<span class="w"> </span>import
 </code></pre></div>
+<p>If the authorized block-signing address differs from the SR account address, also set <code>localWitnessAccountAddress</code> to the SR account's Base58Check address:</p>
+<div class="highlight"><pre><span></span><code><span class="na">localWitnessAccountAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SR_ACCOUNT_BASE58CHECK_ADDRESS&quot;</span>
+<span class="na">localwitnesskeystore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&quot;B/localwitnesskeystore.json&quot;]</span>
+</code></pre></div>
+<p>Replace the address placeholder with the SR account address, and adjust the keystore path to the file containing the authorized signing key. If <code>localWitnessAccountAddress</code> is omitted, java-tron uses the address derived from the signing key as the witness account address. When this address differs from the SR account address, the node cannot produce blocks for that SR.</p>
 <p>Do not use <code>keystore new</code> merely to migrate an existing SR: it generates a random key that cannot produce blocks for that SR unless its derived address is first authorized as the SR's witness permission. For a new SR identity, or as part of a planned witness-permission rotation, you may generate a new key with <a href="../toolkit/#generate-a-keystore"><code>keystore new</code></a> or the <code>registerwallet</code> command from <code>wallet-cli</code>, then complete the required on-chain registration or permission update before starting block production.</p>
 <p><code>java -jar build/libs/FullNode.jar --keystore-factory</code> remains available for compatibility but is deprecated and will be removed in a future release. Starting from version 4.8.1, a separate <code>KeystoreFactory.jar</code> is no longer provided.</p>
 </li>
@@ -4595,7 +4606,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<s
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 25, 2026 03:16:39 UTC">September 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 15, 2026 06:57:28 UTC">October 15, 2026</span>
   </span>
 
     

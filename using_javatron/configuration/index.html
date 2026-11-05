@@ -503,9 +503,27 @@
 </li>
       
         <li class="md-nav__item ">
+  <a href="#customize-your-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Customize your configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
   <a href="#start-a-node-with-an-external-configuration" class="md-nav__link" >
     <span class="md-ellipsis">
       Start a node with an external configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#conditional-shutdown" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Conditional shutdown
     </span>
   </a>
   
@@ -560,6 +578,15 @@
   <a href="#block-production-credentials" class="md-nav__link" >
     <span class="md-ellipsis">
       Block production credentials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#block-production-backup" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Block production backup
     </span>
   </a>
   
@@ -3834,9 +3861,27 @@
 </li>
       
         <li class="md-nav__item ">
+  <a href="#customize-your-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Customize your configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
   <a href="#start-a-node-with-an-external-configuration" class="md-nav__link" >
     <span class="md-ellipsis">
       Start a node with an external configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#conditional-shutdown" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Conditional shutdown
     </span>
   </a>
   
@@ -3891,6 +3936,15 @@
   <a href="#block-production-credentials" class="md-nav__link" >
     <span class="md-ellipsis">
       Block production credentials
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#block-production-backup" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Block production backup
     </span>
   </a>
   
@@ -3970,7 +4024,7 @@
 <tbody>
 <tr>
 <td><code>common/src/main/resources/reference.conf</code></td>
-<td>Defines the complete set of default values and is always used as the fallback configuration.</td>
+<td>Provides default values and is automatically loaded as the fallback configuration. Some optional settings appear only as commented examples; to use them, explicitly set them in your own configuration file.</td>
 </tr>
 <tr>
 <td><code>framework/src/main/resources/config.conf</code></td>
@@ -3978,6 +4032,8 @@
 </tr>
 </tbody>
 </table>
+<p>The <code>config.conf</code> template contains commonly used settings and deployment overrides; it is not an exhaustive list of supported parameters. To customize your own configuration file, consult <code>reference.conf</code>, including its comments, for parameter defaults, usage, and any deprecation notes. Supported parameters can be added to or retained in your own configuration file even when they are absent from the <code>config.conf</code> template.</p>
+<p>Template values are not necessarily the same as fallback defaults. For example, <code>node.discovery.enable</code> and <code>node.discovery.persist</code> are <code>true</code> in <code>config.conf</code> but <code>false</code> in <code>reference.conf</code>. Deleting these overrides from your own file changes the resulting behavior.</p>
 <p>The configuration is resolved and applied in this order:</p>
 <ol>
 <li>The configuration name is the value passed through <code>-c</code>; if <code>-c</code> is omitted, FullNode uses the default name <code>config.conf</code>.</li>
@@ -3996,6 +4052,21 @@
 <li><a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">Mainnet configuration template (<code>config.conf</code>)</a></li>
 </ul>
 <p>For Nile or another network, use the configuration template provided for that network. Peer discovery, the P2P version, seed nodes, and genesis settings must all identify the same network. See <a href="../installing_javatron/#network-types">Deploying java-tron</a> for the supported network templates.</p>
+<h2 id="customize-your-configuration">Customize your configuration<a class="headerlink" href="#customize-your-configuration" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Copy the configuration template for your target network to an operator-managed file.</li>
+<li>If a supported parameter is not listed in the template, find its key, type, and default in <code>reference.conf</code> and add the required override to your file. You do not need to copy all of <code>reference.conf</code> or edit the file bundled inside the JAR. To use optional settings shown only in comments in <code>reference.conf</code>, explicitly set them in your own configuration file.</li>
+<li>Start the node with an explicit <code>-c</code> path, as shown below, so the selected file is unambiguous.</li>
+<li>Restart the node after changes and <a href="#validate-a-configuration-change">validate the resulting behavior</a>. Only <code>node.active</code> and <code>node.passive</code> support <a href="#dynamic-configuration-reload">dynamic configuration reload</a>.</li>
+</ol>
+<p>For example, <code>vm.estimateEnergy</code> is supported even though it is not listed in the current <code>config.conf</code> template. To enable constant calls and Energy estimation, add or update these settings in your own file:</p>
+<div class="highlight"><pre><span></span><code>vm {
+  supportConstant = true
+  estimateEnergy = true
+}
+</code></pre></div>
+<p>This is an excerpt to merge into your network configuration, not a complete deployment file. Both settings default to <code>false</code> in <code>reference.conf</code>; removing either override restores its default.</p>
+<p>When upgrading an existing deployment, compare and merge configuration changes as described in the <a href="../../releases/upgrade-instruction/#step-4-replace-old-files">upgrade guide</a>, preserving supported custom settings even when they are absent from the <code>config.conf</code> template.</p>
 <h2 id="start-a-node-with-an-external-configuration">Start a node with an external configuration<a class="headerlink" href="#start-a-node-with-an-external-configuration" title="Permanent link">&para;</a></h2>
 <p>Pass the external file with <code>-c</code> and choose the node's output directory with <code>-d</code>:</p>
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w"> </span><span class="se">\</span>
@@ -4032,6 +4103,8 @@ node {
 }
 </code></pre></div>
 <p>Keep key names and value types exactly as shown in <code>reference.conf</code>. In particular, use unquoted <code>true</code> / <code>false</code> for booleans, numbers for numeric settings, quoted strings for text, and square brackets for lists.</p>
+<h2 id="conditional-shutdown">Conditional shutdown<a class="headerlink" href="#conditional-shutdown" title="Permanent link">&para;</a></h2>
+<p>Use <code>node.shutdown</code> to stop the node automatically at a specified block time or height, or after synchronizing a specified number of blocks. Configure exactly one of <code>BlockTime</code>, <code>BlockHeight</code>, or <code>BlockCount</code>. See <a href="../installing_javatron/#configuring-conditional-shutdown">Configuring Conditional Shutdown</a> for configuration examples and constraints.</p>
 <h2 id="network-and-peer-configuration">Network and peer configuration<a class="headerlink" href="#network-and-peer-configuration" title="Permanent link">&para;</a></h2>
 <p>The main peer-to-peer settings are:</p>
 <table>
@@ -4170,7 +4243,7 @@ node {
 <p>Request and message size limits are configured independently:</p>
 <ul>
 <li><code>node.http.maxMessageSize</code> controls HTTP request bodies.</li>
-<li><code>node.rpc.maxMessageSize</code> controls gRPC messages.</li>
+<li><code>node.rpc.maxMessageSize</code> controls gRPC request messages.</li>
 <li><code>node.jsonrpc.maxMessageSize</code> controls JSON-RPC request bodies.</li>
 <li><code>node.jsonrpc.maxBatchSize</code>, <code>maxResponseSize</code>, and filter limits constrain JSON-RPC workloads.</li>
 </ul>
@@ -4251,11 +4324,13 @@ they are not part of dynamic configuration reload.</p>
 <li><code>rate.limiter.global.api.qps</code> supplies the default per-endpoint limit.</li>
 <li><code>rate.limiter.apiNonBlocking</code> selects non-blocking or blocking permit acquisition.</li>
 </ul>
-<p>When <code>rate.limiter.apiNonBlocking</code> is <code>true</code>, an over-limit request is rejected immediately. When it is <code>false</code>, QPS and per-IP QPS strategies block while waiting for a token. <code>GlobalPreemptibleAdapter</code> is different: it waits for a concurrency permit for at most two seconds, then rejects the request if no permit becomes available.</p>
+<p>When <code>rate.limiter.apiNonBlocking</code> is <code>true</code>, all strategies, including <code>GlobalPreemptibleAdapter</code>, reject requests immediately if no permit is available. When it is <code>false</code>, QPS and per-IP QPS strategies block until a token becomes available, while <code>GlobalPreemptibleAdapter</code> waits for a concurrency permit for at most two seconds before rejecting the request.</p>
 <p>P2P message limits are separate and live under <code>rate.limiter.p2p</code>.</p>
 <h2 id="block-production-credentials">Block production credentials<a class="headerlink" href="#block-production-credentials" title="Permanent link">&para;</a></h2>
 <p>A node started with <code>--witness</code> needs access to the block producer's signing key. Prefer <code>localwitnesskeystore</code> for production deployments. <code>localwitness</code> stores a private key directly in the configuration file and therefore requires especially careful file protection.</p>
 <p>Restrict the configuration and keystore files to the node's operating-system user, do not commit secrets to source control, and do not reuse a production key in test environments. See <a href="../installing_javatron/#starting-a-block-production-node">Starting a Block Production Node</a> and <a href="../installing_javatron/#specifying-super-representative-account-private-key-using-keystore-password">Specifying the private key with a keystore</a>.</p>
+<h2 id="block-production-backup">Block production backup<a class="headerlink" href="#block-production-backup" title="Permanent link">&para;</a></h2>
+<p>Use <code>node.backup</code> to configure master-slave mode for multiple block-producing FullNodes using the same witness account. See <a href="../installing_javatron/#master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes</a> for configuration details and deployment examples.</p>
 <h2 id="event-subscription-and-monitoring">Event subscription and monitoring<a class="headerlink" href="#event-subscription-and-monitoring" title="Permanent link">&para;</a></h2>
 <p>Event delivery is controlled by <code>event.subscribe</code>. Its settings select the native queue or event plugin, the plugin path or target server, and the enabled trigger topics. See <a href="../../architecture/event/">Event Subscription</a> for a complete setup.</p>
 <p>Prometheus monitoring is configured under <code>node.metrics.prometheus</code>. It is disabled by default. When enabled, it listens on port <code>9527</code> by default; the listening port can be changed through <code>node.metrics.prometheus.port</code>:</p>
@@ -4309,7 +4384,7 @@ they are not part of dynamic configuration reload.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 2, 2026 03:47:52 UTC">September 2, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 21, 2026 09:26:21 UTC">October 21, 2026</span>
   </span>
 
     
