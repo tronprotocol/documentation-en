@@ -3984,7 +3984,7 @@
 <p><strong>Pre-Migration Considerations</strong></p>
 <p>Before migrating, please consider the following factors:</p>
 <ul>
-<li>Internal Transaction Log Support: <code>V2.0</code> currently does not support internal transaction logs (the <code>internalTransactionList</code> field will be empty). If your application has a dependency on this field, you must remain on <code>V1.0</code>.</li>
+<li>Internal Transaction Log Support: <code>V2.0</code> currently does not support internal transaction logs (the <code>internalTransactionList</code> field is <code>null</code>, not an empty array). If your application has a dependency on this field, you must remain on <code>V1.0</code>.</li>
 <li>Plugin Version: Use event-plugin <code>3.0.0</code> or later. java-tron v4.8.2 rejects older plugin packages during startup.</li>
 </ul>
 <p><strong>Migration Procedure</strong></p>
@@ -4095,13 +4095,13 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 <li><code>path</code>: The absolute local path to the plugin ZIP file you built or downloaded, e.g., <code>plugin-kafka-3.0.0.zip</code>. For java-tron v4.8.2 and later, the plugin package must declare <code>Plugin-Version</code> <code>3.0.0</code> or later. Please ensure the path is correct, or the plugin will fail to load.</li>
 <li><code>server</code>: The Kafka server address in <code>ip:port</code> format. The default Kafka port is <code>9092</code>. Please ensure the port number is correct and that the Kafka service is accessible.</li>
 <li><code>dbconfig</code>: This option is only for the MongoDB plugin and should be ignored for the Kafka plugin.</li>
-<li><code>contractParse</code>: Controls whether contract logs are ABI-decoded. When <code>true</code> (the default), the node matches each log against the contract's ABI; matched logs are delivered as decoded <code>contractevent</code> triggers, while unmatched logs are delivered as raw <code>contractlog</code> triggers. When <code>false</code>, ABI decoding is skipped and all logs are delivered as raw <code>contractlog</code> triggers.</li>
+<li><code>contractParse</code>: Controls whether contract logs are ABI-decoded. When <code>true</code> (the default), logs that match a non-anonymous event definition in the contract's ABI are classified as decoded <code>contractevent</code> triggers, while unmatched logs are classified as raw <code>contractlog</code> triggers. When <code>false</code>, ABI decoding is skipped and all logs are classified as raw <code>contractlog</code> triggers. The same rules apply to <code>solidityevent</code> and <code>soliditylog</code>. Delivery requires the corresponding subscription to be enabled.</li>
 <li><code>topics</code>: Configure the events to subscribe to. For more details, please refer to the <a href="#event-types">Event Types</a> section below.</li>
 <li><code>filter</code>: Filtering parameters. For more details, please refer to the <a href="#event-filtering">Event Filtering</a> section below.</li>
 </ul>
 <h4 id="event-types">Event Types<a class="headerlink" href="#event-types" title="Permanent link">&para;</a></h4>
 <p>TRON event subscription supports 7 types of events: <code>block</code>, <code>transaction</code>, <code>contractevent</code>, <code>contractlog</code>, <code>solidity</code>, <code>solidityevent</code>, and <code>soliditylog</code>. Developers should configure these based on their application's specific needs. <strong>We recommend subscribing to only 1-2 event types. Enabling too many triggers can lead to performance degradation.</strong></p>
-<p>On a chain reorganization, java-tron v4.8.2 re-emits rolled-back real-time <code>block</code>, <code>transaction</code>, <code>contractevent</code>, and <code>contractlog</code> triggers with <code>removed=true</code>. The replacement fork branch is then emitted normally with <code>removed=false</code>. Downstream consumers should treat a trigger with <code>removed=true</code> as a rollback signal and undo or mark the previously consumed event for the same block / transaction / log. Solidified triggers (<code>solidified=true</code>, <code>solidityevent</code>, and <code>soliditylog</code>) only represent solidified data; rollback contract triggers are not cached into the solidity event/log queues.</p>
+<p>On a chain reorganization, the node re-emits rolled-back real-time <code>block</code>, <code>transaction</code>, <code>contractevent</code>, and <code>contractlog</code> triggers with <code>removed=true</code>. Events from the replacement fork branch are then emitted normally with <code>removed=false</code>. Downstream consumers should treat a trigger with <code>removed=true</code> as a rollback signal and undo or mark the previously consumed event for the same block / transaction / log. Solidified triggers (<code>solidified=true</code>, <code>solidityevent</code>, and <code>soliditylog</code>) only represent solidified data; rollback contract triggers are not cached into the solidity event/log queues.</p>
 <h5 id="1-transaction-event">1. Transaction Event<a class="headerlink" href="#1-transaction-event" title="Permanent link">&para;</a></h5>
 <p>Subscribes to events related to on-chain transactions.</p>
 <p>Configuration Example:</p>
@@ -4119,7 +4119,7 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 <ul>
 <li><code>triggerName</code>: (String) The event type identifier. For transaction events, this value is fixed to <code>transaction</code>.</li>
 <li><code>enable</code>: (Boolean) Enables or disables the subscription for this event type.</li>
-<li><code>topic</code>: (String) The name of the topic for receiving this event type in MongoDB or Kafka. This value must match the configuration in MongoDB or Kafka.</li>
+<li><code>topic</code>: (String) The Kafka topic name or MongoDB collection name for receiving this event type. This value must match the configuration in MongoDB or Kafka.</li>
 <li><code>solidified</code>: (Boolean) If set to <code>true</code>, the subscription will only deliver events for transactions included in solidified blocks.</li>
 <li><code>ethCompatible</code>: (Boolean) If set to <code>true</code>, the event payload will include Ethereum-compatible fields (e.g., <code>transactionIndex</code>, <code>logList</code>).</li>
 </ul>
@@ -4127,8 +4127,8 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 <ul>
 <li><code>transactionId</code>: The transaction hash.</li>
 <li><code>blockNumber</code>: The block height containing the transaction.</li>
-<li><code>energyUsage</code>: The total amount of Energy consumed by the transaction.</li>
-<li><code>energyFee</code>: The total amount of TRX (in sun) consumed by the transaction.</li>
+<li><code>energyUsageTotal</code>: The total amount of Energy consumed by the transaction.</li>
+<li><code>energyFee</code>: The amount of TRX burned to pay for Energy, in sun.</li>
 <li><code>removed</code>: <code>true</code> if this transaction event is being rolled back because of a chain reorganization; otherwise <code>false</code>.</li>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/TransactionLogTrigger.java">TransactionLogTrigger</a> source code.</p>
@@ -4182,10 +4182,10 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 </code></pre></div>
 <p>Parameters:</p>
 <ul>
-<li><code>contractevent</code>: Subscribes to all contract events from all blocks.</li>
-<li><code>contractlog</code>: Subscribes to all contract logs from all blocks.</li>
-<li><code>solidityevent</code>: Subscribes only to contract events from solidified blocks.</li>
-<li><code>soliditylog</code>: Subscribes only to contract logs from solidified blocks.</li>
+<li><code>contractevent</code>: Subscribes to contract events decoded using the contract's ABI when <code>contractParse</code> is enabled.</li>
+<li><code>contractlog</code>: Subscribes to raw contract logs. With the default settings, raw logs corresponding to ABI-decoded contract events are excluded unless <code>redundancy</code> is enabled.</li>
+<li><code>solidityevent</code>: The solidified-block counterpart of <code>contractevent</code>.</li>
+<li><code>soliditylog</code>: The solidified-block counterpart of <code>contractlog</code>, with the same decoding and redundancy rules.</li>
 </ul>
 <p>Key Fields in Contract Events</p>
 <ul>
@@ -4223,7 +4223,7 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 <p>Key Fields in Solidity Notification Events:</p>
 <ul>
 <li><code>latestSolidifiedBlockNumber</code>: The block number of the newly solidified block.</li>
-<li><code>timestamp</code>: The timestamp of the solidified block.</li>
+<li><code>timeStamp</code>: The timestamp of the solidified block.</li>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/SolidityTrigger.java">SolidityTrigger</a> source code.</p>
 <h4 id="creating-a-kafka-subscription-topic">Creating a Kafka Subscription Topic<a class="headerlink" href="#creating-a-kafka-subscription-topic" title="Permanent link">&para;</a></h4>
@@ -4243,6 +4243,7 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 <div class="highlight"><pre><span></span><code>[o.t.c.l.EventPluginLoader] &#39;your plugin path/plugin-kafka-*.zip&#39; loaded
 </code></pre></div>
 <h5 id="verifying-event-subscription">Verifying Event Subscription<a class="headerlink" href="#verifying-event-subscription" title="Permanent link">&para;</a></h5>
+<p>Before starting the FullNode, find the configuration with <code>triggerName = "block"</code> in <code>event.subscribe.topics</code> and set <code>enable = true</code> and <code>topic = "block"</code>. The block event configuration example above has this subscription disabled by default.</p>
 <p>Execute the <code>kafka-console-consumer.sh</code> script to retrieve messages from the <code>"block"</code> topic in Kafka to verify that the event subscription is successful.</p>
 <p>In a Linux environment, the command is as follows:</p>
 <div class="highlight"><pre><span></span><code>bin/kafka-console-consumer.sh<span class="w"> </span>--topic<span class="w"> </span>block<span class="w"> </span>--from-beginning<span class="w"> </span>--bootstrap-server<span class="w"> </span>localhost:9092
@@ -4282,7 +4283,7 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 <h4 id="system-architecture-and-workflow">System Architecture and Workflow<a class="headerlink" href="#system-architecture-and-workflow" title="Permanent link">&para;</a></h4>
 <p>The TRON MongoDB event subscription system consists of three core modules:</p>
 <ol>
-<li><strong>Event Subscription Plugin</strong>: Connects to a TRON node to capture event data and writes it to MongoDB.</li>
+<li><strong>Event Subscription Plugin</strong>: Is loaded into the TRON node, receives event data from the node, and writes it to MongoDB.</li>
 <li><strong>MongoDB Database</strong>: The persistence layer for storing event data.</li>
 <li><strong>Event Query Service</strong>: Provides an HTTP API for external applications to query event data.</li>
 </ol>
@@ -4372,7 +4373,7 @@ bin/kafka-server-start.sh<span class="w"> </span>config/server.properties<span c
 <li><code>triggerName</code>: The name of the trigger, which cannot be modified.</li>
 <li><code>enable</code>: Toggles the event subscription. <code>true</code> enables it, <code>false</code> disables it.</li>
 <li><code>topic</code>: The name of the collection in MongoDB that will receive the events. This can be modified.</li>
-<li><code>redundancy</code>: Only applies to <code>contractlog</code> and <code>soliditylog</code>. When set to <code>true</code>, a contract log that has already been delivered as a <code>contractevent</code>/<code>solidityevent</code> is <strong>also</strong> delivered as a raw <code>contractlog</code>/<code>soliditylog</code>. Defaults to <code>false</code>.</li>
+<li><code>redundancy</code>: Only applies to <code>contractlog</code> and <code>soliditylog</code>. When <code>true</code>, the enabled log subscription also includes the raw logs of events decoded using the contract's ABI, regardless of whether the corresponding <code>contractevent</code> or <code>solidityevent</code> subscription is enabled. Defaults to <code>false</code>.</li>
 </ul>
 </li>
 <li><code>filter</code>: The criteria for filtering events.<ul>
@@ -4463,7 +4464,7 @@ mongo.threadsAllowedToBlockForConnectionMultiplier=4
 </code></pre></div>
 <p>Please modify <code>mongo.host</code>, <code>mongo.port</code>, <code>mongo.dbname</code>, <code>mongo.username</code>, and <code>mongo.password</code> according to your MongoDB configuration.</p>
 <h5 id="3-starting-the-tron-event-query-service">3. Starting the TRON Event Query Service<a class="headerlink" href="#3-starting-the-tron-event-query-service" title="Permanent link">&para;</a></h5>
-<p>Start the <code>tron-eventquery</code> service and insert the indexes:</p>
+<p>Start the <code>tron-eventquery</code> service and create the indexes:</p>
 <div class="highlight"><pre><span></span><code>sh<span class="w"> </span>deploy.sh
 sh<span class="w"> </span>insertIndex.sh
 </code></pre></div>
@@ -4480,24 +4481,24 @@ sh<span class="w"> </span>insertIndex.sh
 <p>For information on installing a FullNode, please refer to the <a href="../../using_javatron/installing_javatron/">Deploying a FullNode</a> documentation.</p>
 <h5 id="2-verifying-plugin-load">2. Verifying Plugin Load<a class="headerlink" href="#2-verifying-plugin-load" title="Permanent link">&para;</a></h5>
 <p>You can verify that the event plugin has loaded successfully by checking the FullNode logs:</p>
-<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>logs/tron.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>eventplugin
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-F<span class="w"> </span>logs/tron.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>eventplugin
 </code></pre></div>
 <p>If you see a message similar to the following, the plugin has loaded successfully:</p>
 <div class="highlight"><pre><span></span><code>o.t.c.l.EventPluginLoader &#39;your plugin path/plugin-mongodb-*.zip&#39; loaded
 </code></pre></div>
 <h5 id="3-verifying-data-persistence-in-mongodb">3. Verifying Data Persistence in MongoDB<a class="headerlink" href="#3-verifying-data-persistence-in-mongodb" title="Permanent link">&para;</a></h5>
-<p>Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:</p>
+<p>The configuration above enables only <code>solidity</code> events and sets <code>topic = "solidity"</code>, so the plugin writes these events to the <code>solidity</code> collection in MongoDB. The node automatically generates events for newly solidified blocks. Run the following commands to connect to MongoDB and query the <code>solidity</code> collection to verify that the event data has been stored:</p>
 <div class="highlight"><pre><span></span><code>mongo<span class="w"> </span><span class="m">127</span>.0.0.1:27017
 use<span class="w"> </span>eventlog
 db.auth<span class="o">(</span><span class="s2">&quot;&lt;eventlog-username&gt;&quot;</span>,<span class="w"> </span><span class="s2">&quot;&lt;eventlog-password&gt;&quot;</span><span class="o">)</span>
 show<span class="w"> </span>collections
-db.block.find<span class="o">()</span>
+db.solidity.find<span class="o">()</span>
 </code></pre></div>
 <p>If data is returned, it means the data has been stored successfully. Otherwise, please review the FullNode logs to troubleshoot the issue.</p>
 <h4 id="using-the-tron-event-query-service-api">Using the TRON Event Query Service API<a class="headerlink" href="#using-the-tron-event-query-service-api" title="Permanent link">&para;</a></h4>
 <p>The TRON Event Query Service provides a series of HTTP API endpoints for querying event data stored in MongoDB. For details on the specific APIs and their usage, please refer to the <a href="https://github.com/tronprotocol/tron-eventquery?tab=readme-ov-file#main-http-service">Event Query Service HTTP API documentation</a>.</p>
 <h2 id="built-in-message-queue-subscription-zeromq">Built-in Message Queue Subscription (ZeroMQ)<a class="headerlink" href="#built-in-message-queue-subscription-zeromq" title="Permanent link">&para;</a></h2>
-<p>The java-tron node includes a built-in <strong>ZeroMQ</strong> message queue that provides a lightweight event streaming service. This method requires no external plugins and is ideal for use cases that demand high real-time event delivery but do not require event persistence or historical replay, such as rapid prototyping and testing.</p>
+<p>The java-tron node includes a built-in <strong>ZeroMQ</strong> message queue that provides a lightweight event streaming service. This method requires no external plugins and is ideal for use cases that demand high real-time event delivery but do not require event persistence, such as rapid prototyping and testing.</p>
 <p>This method has the following advantages:</p>
 <ul>
 <li><strong>No Plugin Deployment</strong>: Subscriptions are established by connecting directly to a TRON node.</li>
@@ -4534,6 +4535,7 @@ db.block.find<span class="o">()</span>
 <li><code>native.sendqueuelength</code>: The length of the send queue. This is the maximum number of messages the TCP buffer can hold if the subscriber is slow to receive them. Messages published beyond this limit will be discarded.</li>
 <li><code>topics</code>: The subscribed <a href="#event-types">Event Types</a>, such as block types, transaction types, etc.</li>
 </ul>
+<p>Historical event replay is also available with ZeroMQ when using event service framework V2.0. Set <code>event.subscribe.version = 1</code> and <code>event.subscribe.startSyncBlockNum</code> to a positive starting block height for historical replay. Historical replay processes blocks with heights below the node's latest solidified block height. The node must have the historical data required to generate the subscribed events. Events are regenerated from blockchain data stored locally on the node and published through ZeroMQ.</p>
 <h3 id="starting-the-node">Starting the Node<a class="headerlink" href="#starting-the-node" title="Permanent link">&para;</a></h3>
 <p>The event subscription service is disabled by default and should be enabled with <code>event.subscribe.enable = true</code> in <code>config.conf</code>. The startup command is:</p>
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf
@@ -4592,7 +4594,7 @@ received a message related to: blockTrigger, containing message: {&quot;timeStam
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 04:56:48 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 26, 2026 10:27:19 UTC">October 26, 2026</span>
   </span>
 
     

@@ -3951,18 +3951,20 @@
 <li><code>transHistory.switch</code>: when <code>"off"</code>, <code>TransactionHistoryStore</code> and <code>TransactionRetStore</code> silently drop new writes, so <code>gettransactioninfobyid</code> returns empty for any transaction processed while the switch was off. Reads of pre-existing data still work. Default <code>"on"</code>.</li>
 </ul>
 <h3 id="2-rocksdb-optimization-parameters">2. RocksDB Optimization Parameters<a class="headerlink" href="#2-rocksdb-optimization-parameters" title="Permanent link">&para;</a></h3>
-<p>The <code>dbSettings</code> block applies only when <code>db.engine = "ROCKSDB"</code>. Under LevelDB, these values are silently ignored.</p>
+<p>The <code>dbSettings</code> block must be placed inside the <code>storage</code> block, as shown below. It applies only when <code>storage.db.engine = "ROCKSDB"</code>. Under LevelDB, these values are silently ignored.</p>
 <p>RocksDB supports various tuning parameters that can be configured based on the performance of the node server. Below is an example of recommended parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="na">dbSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
-<span class="w">  </span><span class="na">levelNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7</span>
-<span class="w">  </span><span class="c1"># compactThreads = 32</span>
-<span class="w">  </span><span class="na">blocksize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">64                 # Unit: KB</span>
-<span class="w">  </span><span class="na">maxBytesForLevelBase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256     # Unit: MB</span>
-<span class="w">  </span><span class="na">maxBytesForLevelMultiplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span>
-<span class="w">  </span><span class="na">level0FileNumCompactionTrigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
-<span class="w">  </span><span class="na">targetFileSizeBase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256       # Unit: MB</span>
-<span class="w">  </span><span class="na">targetFileSizeMultiplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
-<span class="w">  </span><span class="na">maxOpenFiles</span><span class="o">=</span><span class="w"> </span><span class="s">5000</span>
+<div class="highlight"><pre><span></span><code><span class="na">storage</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">dbSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
+<span class="w">    </span><span class="na">levelNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7</span>
+<span class="w">    </span><span class="c1"># compactThreads = 32</span>
+<span class="w">    </span><span class="na">blocksize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">64                 # Unit: KB</span>
+<span class="w">    </span><span class="na">maxBytesForLevelBase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256     # Unit: MB</span>
+<span class="w">    </span><span class="na">maxBytesForLevelMultiplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span>
+<span class="w">    </span><span class="na">level0FileNumCompactionTrigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+<span class="w">    </span><span class="na">targetFileSizeBase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256       # Unit: MB</span>
+<span class="w">    </span><span class="na">targetFileSizeMultiplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+<span class="w">    </span><span class="na">maxOpenFiles</span><span class="o">=</span><span class="w"> </span><span class="s">5000</span>
+<span class="w">  </span><span class="na">}</span>
 <span class="na">}</span>
 </code></pre></div>
 <p>Starting with java-tron v4.8.2, the periodic RocksDB backup feature configured through <code>storage.backup</code> has been removed. Existing <code>storage.backup</code> settings are ignored, and java-tron no longer creates periodic database copies through this mechanism.</p>
@@ -4002,10 +4004,9 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<s
 <li>Restart the node (continuing to use the original directory);</li>
 <li>Perform the data conversion in the new directory.</li>
 </ol>
-<p>Example commands:</p>
+<p>Run the following commands from the java-tron source root directory:</p>
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>db<span class="w"> </span>cp<span class="w"> </span>output-directory/database<span class="w"> </span>/tmp/output-directory/database
-<span class="nb">cd</span><span class="w"> </span>/tmp
-java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>db<span class="w"> </span>convert<span class="w"> </span>output-directory/database<span class="w"> </span>output-directory-dst/database
+java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<span class="w"> </span>db<span class="w"> </span>convert<span class="w"> </span>/tmp/output-directory/database<span class="w"> </span>/tmp/output-directory-dst/database
 </code></pre></div>
 <blockquote>
 <p><strong>Note:</strong> The entire data conversion process is expected to take approximately <strong>10 hours</strong>, depending on the data volume and disk performance.
@@ -4033,7 +4034,7 @@ java<span class="w"> </span>-jar<span class="w"> </span>build/libs/Toolkit.jar<s
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:05:39 UTC">July 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2026 10:56:20 UTC">October 22, 2026</span>
   </span>
 
     
