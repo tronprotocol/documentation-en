@@ -14,6 +14,8 @@ The bundled Logback configuration writes different categories of runtime output 
 
 Each default rolling file appender rolls over daily and when its active file reaches approximately 500 MB. For each appender, archived files are compressed with gzip and retained for up to seven daily periods, subject to a 50 GB archive size cap.
 
+To change retention days, file sizes, or log paths, see [Common logging settings](#common-logging-settings).
+
 The console appender is defined but is not attached to the root logger by default.
 
 The `LEVELDB` and `ROCKSDB` loggers write directly to `db.log` through the `DB` appender, without an asynchronous queue. The gRPC `GRPC` appender uses a non-blocking queue of 1,024 events. If the queue is full, new gRPC log events may be dropped instead of blocking gRPC threads. By contrast, the main `ASYNC` appender uses a queue of 100 events and blocks producers when its queue is full. Setting the gRPC appender's `discardingThreshold` to `0` prevents priority-based early discarding, but does not prevent drops when the non-blocking queue is full.
@@ -29,6 +31,8 @@ For ARM64 with JDK 17, the options provided with java-tron include:
 ```
 
 This configuration writes GC and heap events to `gc.log`, rotates the log when it reaches 100 MB, and retains up to 10 rotated files in addition to the active `gc.log`.
+
+Logback retention settings do not apply to GC logs.
 
 For x86_64 with JDK 8, the options provided with java-tron include:
 
@@ -83,6 +87,35 @@ java -jar FullNode.jar --log-config /absolute/path/to/logback.xml
 If `--log-config` is omitted, java-tron uses the bundled Logback configuration. If a non-empty value is provided for `--log-config`, it must identify a readable regular file; otherwise, the node fails during startup. An empty value is treated the same as omitting the option.
 
 A custom Logback configuration replaces the bundled configuration. Include any appenders and shutdown hooks required by your deployment, such as the dedicated gRPC appender, the Prometheus `METRICS` appender, and `TronLogShutdownHook`.
+
+### Common logging settings
+
+In your copy of `logback.xml`, edit the appender for the log you want to change: `FILE` for `tron.log`, `DB` for `db.log`, or `GRPC_FILE` for `grpc.log`.
+
+| Setting | Default value | How to configure |
+| --- | --- | --- |
+| `maxHistory` | `7` | Archive retention periods. With the default daily filename pattern, set this to `30` to retain up to 30 days. |
+| `maxFileSize` | `500MB` | Approximate size at which a single file rolls over. For example, set `1GB` to allow larger files. |
+| `totalSizeCap` | `50GB` | Total archive size limit for each appender. For example, set `100GB` to allow more archived logs. |
+| `file` | `./logs/tron.log` for `FILE` | Active log file path. Change it to the desired path, such as `/data/logs/tron.log`. |
+| `fileNamePattern` | `./logs/tron-%d{yyyy-MM-dd}.%i.log.gz` for `FILE` | Archive path and naming pattern. `%d{yyyy-MM-dd}` selects daily rollover, `%i` numbers files within a day, and `.gz` enables compression. When changing the log directory, update this path too. |
+
+Set `file` directly inside the appender; set the other four options inside its `rollingPolicy`.
+
+For example, to retain the main log for up to **30 days**, replace only the `rollingPolicy` inside `FILE` with:
+
+```xml
+<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+  <fileNamePattern>./logs/tron-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+  <maxFileSize>500MB</maxFileSize>
+  <maxHistory>30</maxHistory>
+  <totalSizeCap>50GB</totalSizeCap>
+</rollingPolicy>
+```
+
+This is a configuration fragment, not a complete `logback.xml`. To change database or gRPC log retention, update `maxHistory` in `DB` or `GRPC_FILE`, keeping their existing filename patterns. The size cap can delete older archives before 30 days, so adjust `totalSizeCap` for your log volume.
+
+Restart the node with the complete edited file selected by `--log-config`, as shown above.
 
 ## Send logs to stdout
 
