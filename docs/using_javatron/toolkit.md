@@ -25,13 +25,13 @@ You can obtain the `Toolkit.jar` file either by compiling the `java-tron` source
 
    ```bash
    git clone https://github.com/tronprotocol/java-tron.git
+   cd java-tron
    git checkout -t origin/master
    ```
 
 2. **Build the project**：
 
    ```bash
-   cd java-tron
    ./gradlew clean build -x test
    ```
 
@@ -102,7 +102,7 @@ By default, the command refuses to import a key when a keystore for the derived 
 
 ### List Keystores
 
-`keystore list` lists structurally valid `.json` keystore files in a directory:
+`keystore list` lists `.json` keystore files in a directory that pass basic metadata checks:
 
 ```bash
 java -jar build/libs/Toolkit.jar keystore list --keystore-dir /data/keystores
@@ -119,7 +119,11 @@ Successful JSON output wraps the results in a `keystores` array:
 }
 ```
 
-If the directory does not exist or contains no valid keystores, JSON mode returns `{"keystores":[]}` with exit code `0`. Unreadable or malformed `.json` files are skipped and may produce warnings on stderr.
+Passing these checks does not guarantee that the keystore is complete or can be decrypted.
+
+If the directory does not exist or contains no keystores passing these checks, JSON mode returns `{"keystores":[]}` with exit code `0`. Unreadable or malformed `.json` files are skipped and may produce warnings on stderr.
+
+`keystore list`, duplicate detection during `keystore import`, and address matching during `keystore update` only consider regular `.json` files no larger than 8 KiB (8,192 bytes). Symbolic links and oversized files are skipped with warnings on stderr.
 
 `keystore list` does not decrypt each file. The displayed address is the address declared inside the keystore JSON and is not cryptographically verified by this command. Only trust keystores from sources you control.
 
@@ -147,7 +151,7 @@ Successful JSON output contains the verified address, filename, and update statu
 {"address":"T...","file":"UTC--...json","status":"updated"}
 ```
 
-The command fails if no matching keystore exists or if more than one valid keystore declares the requested address. It does not choose arbitrarily between duplicates.
+The command fails if no matching keystore exists or if more than one keystore passing these checks declares the requested address. It does not choose arbitrarily between duplicates.
 
 ### Keystore Options and Security
 
@@ -176,15 +180,15 @@ Use the `db mv` command to execute the data migration：
 
 ```bash
 # full command
-java -jar build/libs/Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
+java -jar build/libs/Toolkit.jar db mv [-h] [-d=<database>] [-c=<config>]
 # examples
-java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
+java -jar build/libs/Toolkit.jar db mv -d /data/tron/output-directory -c framework/src/main/resources/config.conf
 ```
 
 **Optional Parameters**：
 
+*   `-d | --database-directory <string>`: Specifies the FullNode output directory, which contains the directory configured by `storage.db.directory` (`database` by default). Default: `output-directory`.
 *   `-c | --config <string>`: Specifies the FullNode configuration file path. Default: `config.conf`.
-*   `-d | --database-directory <string>`: Specifies the FullNode database directory. Default: `output-directory`.
 *   `-h | --help <boolean>`: Displays help information. Default: `false`.
 
 ### Usage Instructions
@@ -208,9 +212,9 @@ kill -15 $(ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}')
 
 #### 2. Configure Database Storage Migration
 
-Database migration is configured via the `storage.properties `field in the `java-tron` node configuration file. You can find an example configuration in the [java-tron repository](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
+Database migration is configured via the `storage.properties` field in the `java-tron` node configuration file. You can find an example configuration in the [java-tron repository](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf).
 
-The following example demonstrates how to migrate the `block` and `trans` databases to the `/data1/tron` directory:
+The following example uses `/data1/tron` as the destination base directory for the `block` and `trans` databases:
 
 
 ```conf
@@ -233,9 +237,9 @@ storage {
 ```
 
 *   `name`：The name of the database to be migrated.
-*   `path`：The target directory for the database migration.
+*   `path`：The destination base directory for the database migration.
 
-The tool will move the database specified by `name` to the `path` directory and create a soft link in the original location pointing to the new directory. Upon restarting, the FullNode will use this link to locate the data.
+The tool moves each database from `<output-directory>/<storage.db.directory>/<name>` to `<path>/<storage.db.directory>/<name>`, where `<output-directory>` is the directory supplied with `-d`. It creates a symbolic link at the original location pointing to the new database directory. With the default `storage.db.directory = "database"`, the example above produces `/data1/tron/database/block` and `/data1/tron/database/trans`.
 
 
 #### 3. Execute the Database Migration
@@ -243,12 +247,12 @@ The tool will move the database specified by `name` to the `path` directory and 
 After configuration, run the following command to perform the migration. The command will display the current progress.
 
 ```bash
-java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
+java -jar build/libs/Toolkit.jar db mv -d /data/tron/output-directory -c framework/src/main/resources/config.conf
 ```
 
 #### 4. Restart the FullNode Service
 
-Once the migration is complete, restart your `java-tron` node. 
+Once the migration is complete, restart your `java-tron` node.
 
 [**FullNode Startup Command Example**](installing_javatron.md#starting-a-fullnode-on-the-tron-main-network)
 
@@ -260,10 +264,10 @@ The TRON Toolkit provides a **data pruning tool** primarily used for generating 
 
 A FullNode's complete data can be split into two parts: a Snapshot Dataset or a History Dataset.
 
-* **Snapshot Dataset**: Used to start a lite FullNode. It does not contain historical data prior to the block height at the time of pruning.
+* **Snapshot Dataset**: Used to start a Lite FullNode.
 * **History Dataset**: Used for querying historical data.
 
-The Snapshot Dataset contains the latest state of the entire network plus the history of the most recent 65,536 blocks. It is far smaller than a FullNode's full database. Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.
+The Snapshot Dataset contains the latest network state, the genesis block, and the most recent 65,536 blocks. It is far smaller than a FullNode's full database. Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.
 
 The data pruning tool can split a FullNode's data into a **Snapshot Dataset** or a **History Dataset**. It also supports merging a history dataset back with a snapshot dataset. This enables the following use cases:
 
@@ -293,14 +297,14 @@ Use the `db lite` command to perform data pruning operations:
   java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
 
-**Optional Parameters**：
+**Parameters**：
 
 *   `-o | --operate <split | merge>`: Specifies the operation type. Default: `split`.
-*   `-t | --type <snapshot | history>`：Used only with `-o split`. `snapshot` creates a snapshot dataset; `history` creates a history dataset.
-*   `-fn | --fn-data-path <string>`：
+*   `-t | --type <snapshot | history>`：Used only with `-o split`. `snapshot` creates a snapshot dataset; `history` creates a history dataset. Default: `snapshot`.
+*   `-fn | --fn-data-path <string>`：Required.
     *   For `split`, this is the source directory of the data to be pruned.
     *   For `merge`, this is the directory of the lite FullNode's database (the snapshot dataset).
-*   `-ds | --dataset-path <string>`：
+*   `-ds | --dataset-path <string>`：Required.
     *   For `split`, this is the output directory for the generated snapshot or history dataset.
     *   For `merge`, this is the directory of the history dataset.
 *   `--exclude-historical-balance`: Used only with `-o split -t snapshot`. Default: `false`. When enabled, the tool excludes the `balance-trace` and `account-trace` databases from the snapshot to reduce its size. `split -t history` and `merge` ignore this option.
@@ -356,7 +360,7 @@ After the command completes, a directory named `history` will be created in the 
 
 #### Merge a History Dataset and a Snapshot Dataset
 
-Both the history dataset and the snapshot dataset contain an `info.properties` file that records the block height at which the split occurred. 
+Both datasets contain an `info.properties` file. In the snapshot dataset, `split_block_num` records the lowest retained non-genesis block height; in the history dataset, it records the latest block height at the time of splitting.
 > **Please Note**: To merge the two datasets, the block height of the history dataset must be greater than or equal to that of the snapshot dataset. After the `merge` operation, the Lite FullNode will be converted into a complete FullNode.
 
 Use the following command to merge a history dataset and a snapshot dataset:
@@ -391,7 +395,7 @@ Use the `db cp` command to perform a data copy operation:
 **Optional Parameters**:
 
 *   `<src>`: Specifies the source database directory. Default: `output-directory/database`.
-*   `<dest>`: Specifies the target directory for the copy. Default: `output-directory-cp/database`.
+*   `<dest>`: Specifies the target directory for the copy. It must not already exist, even as an empty directory. Default: `output-directory-cp/database`.
 *   `-h | --help <boolean>`: Displays help information. Default: `false`.
 
 > **Important Note**: Before performing any operation with this tool, you **must** stop the currently running node.
@@ -437,7 +441,7 @@ Use the `db archive` command to perform the LevelDB startup optimization:
    java -jar build/libs/Toolkit.jar db archive -d /tmp/db/database 
    #3. specify the batch size to 64000 when optimizing manifest
    java -jar build/libs/Toolkit.jar db archive -b 64000
-   #4. specify optimization only when Manifest exceeds 128M
+   #4. optimize when the manifest is at least 128 MiB
    java -jar build/libs/Toolkit.jar db archive -m 128 
 ```
 
@@ -445,7 +449,7 @@ Use the `db archive` command to perform the LevelDB startup optimization:
 
 *   `-b | --batch-size <integer>`: Specifies the batch size for `manifest` processing. Default: `80000`.
 *   `-d | --database-directory <string>`: Specifies the LevelDB database directory. Default: `output-directory/database`.
-*   `-m | --manifest-size <integer>`: The minimum size of the `manifest` file (in MB) to trigger the optimization. The tool will only process the file if its size exceeds this value. Default: `0`.
+*   `-m | --manifest-size <integer>`: The minimum size of the `manifest` file (in MiB) to trigger the optimization. The tool will only process the file if its size reaches or exceeds this value. Default: `0`.
 *   `-h | --help <boolean>`: Displays help information. Default: `false`.
 
 > **Important Note**: Before performing any operation with this tool, you must stop the currently running node.
@@ -462,7 +466,7 @@ Use the `db root` command to compute the Merkle root:
 
 ```bash
 # full command
-   java -jar build/libs/Toolkit.jar db root [-h] [--db=<dbs>]... [<db>]
+   java -jar build/libs/Toolkit.jar db root [-h] --db=<name> [--db=<name>]... [<db>]
 # examples
    #compute the merkle root of the `account` and `witness` dbs in the default database directory
    java -jar build/libs/Toolkit.jar db root --db account --db witness
@@ -470,8 +474,8 @@ Use the `db root` command to compute the Merkle root:
    java -jar build/libs/Toolkit.jar db root --db account /tmp/db/database
 ```
 
-**Optional Parameters**:
+**Parameters**:
 
-*   `<db>`: Specifies the database directory. Default: `output-directory/database`.
-*   `--db <string>`: Specifies the name of the database to compute the root for. This option can be repeated to compute roots for multiple databases.
+*   `<db>`: Optional. Specifies the database directory. Default: `output-directory/database`.
+*   `--db <string>`: Required unless displaying help. Specifies the name of a database within `<db>` to compute the root for. At least one specified database must exist. This option can be repeated to compute roots for multiple databases.
 *   `-h | --help <boolean>`: Displays help information. Default: `false`.
