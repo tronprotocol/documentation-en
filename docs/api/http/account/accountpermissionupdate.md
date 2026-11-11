@@ -23,7 +23,7 @@ Update an account's owner / witness / active permissions (multi-sig configuratio
 |---|---|---|
 | `type` | enum | `Owner` / `Witness` / `Active` |
 | `id` | int32 | Owner=0, Witness=1, Active>=2 |
-| `permission_name` | string | Permission name |
+| `permission_name` | string | Permission name; at most 32 UTF-16 code units (Java `String.length()`) |
 | `threshold` | int64 | Trigger threshold (the sum of `keys[i].weight` must reach this value to take effect) |
 | `operations` | bytes | Bitmap of contract types this active permission can execute (hex, 32 bytes) |
 | `keys` | repeated Key | Signing keys (`{address, weight}`) |
@@ -128,7 +128,7 @@ Response example (`txID`, `ref_block_*`, `expiration`, `timestamp`, and `raw_dat
 | `Permission.keys` is empty | `{"Error": "class org.tron.core.exception.ContractValidateException : key's count should be greater than 0"}` |
 | `witness` permission's keys count is not 1 | `{"Error": "class org.tron.core.exception.ContractValidateException : Witness permission's key count should be 1"}` |
 | `Permission.threshold <= 0` | `{"Error": "class org.tron.core.exception.ContractValidateException : permission's threshold should be greater than 0"}` |
-| `Permission.permission_name` exceeds 32 bytes | `{"Error": "class org.tron.core.exception.ContractValidateException : permission's name is too long"}` |
+| `Permission.permission_name` exceeds 32 UTF-16 code units (Java `String.length()`) | `{"Error": "class org.tron.core.exception.ContractValidateException : permission's name is too long"}` |
 | `Permission.parent_id != 0` | `{"Error": "class org.tron.core.exception.ContractValidateException : permission's parent should be owner"}` |
 | Duplicate addresses in `keys` | `{"Error": "class org.tron.core.exception.ContractValidateException : address should be distinct in permission <Owner\|Witness\|Active>"}` |
 | `keys[i].address` is not a valid 21-byte address | `{"Error": "class org.tron.core.exception.ContractValidateException : key is not a validate address"}` |

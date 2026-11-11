@@ -45,7 +45,7 @@ Returns a `BlockResult` object (see `BlockResult.java`), or `null` if not found.
 | `baseFeePerGas` | hex | Constant `0x0` (no EIP-1559 base fee) |
 | `mixHash` | hex | Constant 32 bytes of zeros |
 
-The example below is the real response captured from the Nile testnet curl above (block height `0x3fe1ca0` = 67026080; cross-check at [Nile Tronscan](https://nile.tronscan.org/#/block/67026080)):
+The example below is the real response captured from the Nile testnet curl above (block height `0x3fe1ca0` = 66985120; cross-check at [Nile Tronscan](https://nile.tronscan.org/#/block/66985120)):
 
 ```json
 {
@@ -73,7 +73,7 @@ The example below is the real response captured from the Nile testnet curl above
         "gasPrice": "0x64",
         "input": "0xa6bd98ac0000...0000",
         "type": "0x0",
-        "nonce": "0x0000000000000000",
+        "nonce": "0x0",
         "v": "0x1b",
         "r": "0x2154e8ef08f014063de8a88bafe748c8cbb48633c1657c083dca1a73439b289f",
         "s": "0x6aa796bfa58797da6354d35fb7334a8c145c48ae266e4a885f7ee44791b5a3c3"

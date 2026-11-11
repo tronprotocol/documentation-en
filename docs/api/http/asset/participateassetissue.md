@@ -17,7 +17,7 @@ Participate in a TRC-10 fundraising (buy with TRX).
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields |
 
-Constraints: must fall within `[start_time, end_time)`; the token amount received is computed as `amount * num / trx_num`.
+Constraints: must fall within `[start_time, end_time)`; the token amount received is `floor(amount * num / trx_num)` in token base units, with `amount` and `trx_num` in sun. A nonzero remainder is discarded while the full `amount` is paid; the purchase fails if the rounded-down token amount is zero or the multiplication overflows an int64.
 
 Example:
 
@@ -85,7 +85,8 @@ Response example (`asset_name` `31303035343136` decodes to token id `1005416`; `
 | Token does not exist | `{"Error": "... : No asset named <name>"}` |
 | `to_address` is not the issuer of this token | `{"Error": "... : The asset is not issued by <toAddress hex>"}` |
 | Outside fundraising window | `{"Error": "... : No longer valid period!"}` |
-| Exchange does not divide evenly | `{"Error": "... : Can not process the exchange!"}` |
+| `floor(amount * num / trx_num) <= 0` | `{"Error": "... : Can not process the exchange!"}` |
+| `amount * num` overflows int64 | `{"Error": "class org.tron.core.exception.ContractValidateException : long overflow"}` |
 | `to_address` account does not exist | `{"Error": "... : To account does not exist!"}` |
 | Issuer's remaining distributable balance is insufficient | `{"Error": "... : Asset balance is not enough !"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

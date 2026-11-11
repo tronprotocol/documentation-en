@@ -1,6 +1,6 @@
 # /wallet/createwitness
 
-Apply to become a Super Representative (SR) candidate. Costs 9999 TRX (chain parameter `getAccountUpgradeCost`).
+Apply to become a Super Representative (SR) candidate. The fee is the current chain parameter `getAccountUpgradeCost`, expressed in sun; its default is 9,999,000,000 sun (9999 TRX). Governance proposals can change this fee.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/CreateWitnessServlet.java`
 - Method: `POST`
@@ -32,7 +32,7 @@ curl --request POST \
 
 ## Response
 
-Before construction, the validator checks that the account balance is at least `getAccountUpgradeCost` (9999 TRX) and that the account is not already an SR candidate. The example account has insufficient balance; the actual Nile response is:
+Before construction, the validator checks that the account balance is at least the current `getAccountUpgradeCost` (default 9999 TRX) and that the account is not already an SR candidate. The example account has insufficient balance; the actual Nile response is:
 
 ```json
 {"Error": "class org.tron.core.exception.ContractValidateException : balance < AccountUpgradeCost"}
@@ -57,10 +57,10 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
         "type": "WitnessCreateContract"
       }
     ],
-    "ref_block_bytes": "<latest solidified block at construction time>",
-    "ref_block_hash":  "<latest solidified block at construction time>",
-    "expiration":      "<timestamp + 60_000>",
-    "timestamp":       "<construction moment>"
+    "ref_block_bytes": "<reference block selected by trx.reference.block; default: solid>",
+    "ref_block_hash":  "<reference block selected by trx.reference.block; default: solid>",
+    "expiration":      "<head block timestamp + trx.expiration.timeInMilliseconds (default interval: 60_000 ms)>",
+    "timestamp":       "<construction wall-clock time>"
   },
   "raw_data_hex": "<protobuf encoding of raw_data>"
 }

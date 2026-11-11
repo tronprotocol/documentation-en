@@ -7,22 +7,26 @@ A java-tron node exposes its API over gRPC. This directory lists short reference
 | Service | Default port | Description | Source |
 |---|---|---|---|
 | `protocol.Wallet` | `50051` | FullNode full-feature service (includes write transactions) | `framework/src/main/java/org/tron/core/services/RpcApiService.java` |
-| `protocol.WalletSolidity` | `50061` | Returns solidified data only; read-only | `framework/src/main/java/org/tron/core/services/interfaceOnSolidity/RpcApiServiceOnSolidity.java` |
+| `protocol.WalletSolidity` on a FullNode | `50061` | Read-only solidified view, available when `node.rpc.solidityEnable` is enabled | `framework/src/main/java/org/tron/core/services/interfaceOnSolidity/RpcApiServiceOnSolidity.java` |
+| `protocol.WalletSolidity` on a standalone SolidityNode | `50051` | Read-only service on the node's main gRPC port | `framework/src/main/java/org/tron/core/services/RpcApiService.java` |
 
-The ports can be overridden via `node.rpc.port` / `node.rpc.solidityPort` in the node configuration (see `framework/src/main/resources/config.conf`).
+The main gRPC port is configured by `node.rpc.port` (default 50051). A FullNode's additional solidified view uses `node.rpc.solidityPort` (default 50061) when enabled; a standalone SolidityNode serves `WalletSolidity` on `node.rpc.port`. See [Node Configuration](../../using_javatron/configuration.md).
 
 The proto definition lives in `protocol/src/main/protos/api/api.proto`.
 
 ## Calling
 
-gRPC does not use URL paths to distinguish `wallet` from `walletsolidity` — they are two independent service stubs reached on different ports:
+gRPC identifies `Wallet` and `WalletSolidity` by their protobuf service names. The port depends on the node mode and configuration:
 
 ```text
 # Wallet
 grpc://<host>:50051   protocol.Wallet/<Method>
 
-# WalletSolidity (read-only)
+# WalletSolidity on a FullNode (read-only; node.rpc.solidityEnable=true)
 grpc://<host>:50061   protocol.WalletSolidity/<Method>
+
+# WalletSolidity on a standalone SolidityNode (read-only)
+grpc://<host>:50051   protocol.WalletSolidity/<Method>
 ```
 
 Each method doc contains:
@@ -40,7 +44,7 @@ Each method doc contains:
 | [GetAccountBalance](account/GetAccountBalance.md) | Query an account's balance at a specific block |
 | [GetAccountNet](account/GetAccountNet.md) | Query an account's bandwidth resource |
 | [GetAccountResource](account/GetAccountResource.md) | Query an account's bandwidth + energy + TronPower |
-| [CreateAccount2](account/CreateAccount2.md) | Create an account on chain (consumes 1 TRX) |
+| [CreateAccount2](account/CreateAccount2.md) | Build an account-creation transaction; execution incurs an additional account-creation fee set by `getCreateNewAccountFeeInSystemContract` (currently 1,000,000 sun, or 1 TRX, on Mainnet). |
 | [UpdateAccount2](account/UpdateAccount2.md) | Update the account name |
 | [AccountPermissionUpdate](account/AccountPermissionUpdate.md) | Configure multi-sig permissions |
 
@@ -69,8 +73,8 @@ Each method doc contains:
 |---|---|
 | [CreateTransaction2](tx-build-and-broadcast/CreateTransaction2.md) | Build a TRX transfer transaction |
 | [GetTransactionSignWeight](tx-build-and-broadcast/GetTransactionSignWeight.md) | Query the current accumulated multi-sig weight |
-| [GetTransactionApprovedList](tx-build-and-broadcast/GetTransactionApprovedList.md) | List addresses that have signed a multi-sig transaction |
-| [BroadcastTransaction](tx-build-and-broadcast/BroadcastTransaction.md) | Broadcast a signed transaction (JSON) |
+| [GetTransactionApprovedList](tx-build-and-broadcast/GetTransactionApprovedList.md) | List signing addresses after all signatures pass validation |
+| [BroadcastTransaction](tx-build-and-broadcast/BroadcastTransaction.md) | Broadcast a signed protobuf `Transaction` |
 
 ## TRC-10 asset
 
@@ -113,7 +117,7 @@ Each method doc contains:
 | [VoteWitnessAccount2](witness-and-governance/VoteWitnessAccount2.md) | Vote for SRs |
 | [GetBrokerageInfo](witness-and-governance/GetBrokerageInfo.md) | An SR's current brokerage rate |
 | [UpdateBrokerage](witness-and-governance/UpdateBrokerage.md) | An SR updates its brokerage |
-| [GetRewardInfo](witness-and-governance/GetRewardInfo.md) | Query claimable voter rewards |
+| [GetRewardInfo](witness-and-governance/GetRewardInfo.md) | Query an account's total claimable rewards in sun. |
 | [WithdrawBalance2](witness-and-governance/WithdrawBalance2.md) | Withdraw block-production rewards / voter rewards |
 | [ProposalCreate](witness-and-governance/ProposalCreate.md) | Create a chain-parameter proposal |
 | [ProposalApprove](witness-and-governance/ProposalApprove.md) | An SR votes on a proposal |
@@ -142,7 +146,7 @@ After proposal #70 `UNFREEZE_DELAY_DAYS` was passed (mainnet has activated it), 
 | Method | Description |
 |---|---|
 | [FreezeBalanceV2](stake-v2/FreezeBalanceV2.md) | Freeze TRX for resources |
-| [UnfreezeBalanceV2](stake-v2/UnfreezeBalanceV2.md) | Initiate an unfreeze (14-day wait) |
+| [UnfreezeBalanceV2](stake-v2/UnfreezeBalanceV2.md) | Initiate an unfreeze; the waiting period is set by `UNFREEZE_DELAY_DAYS` (currently 14 days on Mainnet). |
 | [WithdrawExpireUnfreeze](stake-v2/WithdrawExpireUnfreeze.md) | Withdraw matured unfreeze |
 | [CancelAllUnfreezeV2](stake-v2/CancelAllUnfreezeV2.md) | Cancel all unmatured unfreezes |
 | [DelegateResource](stake-v2/DelegateResource.md) | Delegate resources to another account |

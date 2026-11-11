@@ -38,8 +38,8 @@ curl --request POST \
 
 | Field | Type | Description |
 |---|---|---|
-| `balance` | int64 | The account's balance at the anchored block (sun) |
-| `block_identifier` | object | Hash/number of the anchored block |
+| `balance` | int64 | Latest recorded account balance at or before the requested block (sun); accuracy depends on the node's history coverage |
+| `block_identifier` | object | Hash/number of the returned balance record, or the requested block when no record is found |
 
 Response example (Nile returns `block_identifier` as the most recent block in which the node tracked this account's balance, which may differ from the anchor in the request):
 
@@ -53,7 +53,7 @@ Response example (Nile returns `block_identifier` as the most recent block in wh
 }
 ```
 
-The node must enable `storage.balance.history.lookup = true` (equivalent to the `--history-balance-lookup` startup flag). Otherwise no error is raised — the response is `balance: 0` together with the request's `block_identifier` echoed verbatim, which is indistinguishable from a successful "no record for this account before this block" response and can easily be misread.
+Accurate results require the node to have recorded the relevant balance history. `storage.balance.history.lookup = true` (equivalent to the `--history-balance-lookup` startup flag) enables recording; the query itself reads existing records regardless of the current setting. Disabling recording leaves earlier records queryable and can produce a stale balance for a later requested block. Enabling or re-enabling it does not backfill missing history. When no record is found at or before the requested block, the response echoes the request's `block_identifier` and returns `balance: 0`; this does not prove that the account actually had a zero balance.
 
 ### Error responses
 

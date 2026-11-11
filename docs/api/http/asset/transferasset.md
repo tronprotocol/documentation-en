@@ -14,7 +14,7 @@ TRC-10 token transfer.
 | `to_address` | string | Yes | Recipient |
 | `asset_name` | string | Yes | Token id (since the `ALLOW_SAME_TOKEN_NAME` proposal, this is the token id as a string, e.g. `1000001`, encoded as UTF-8 hex) |
 | `amount` | int64 | Yes | Amount in the smallest unit |
-| `extra_data` | string | No | Memo (hex; UTF-8 text when `visible=true`) |
+| `extra_data` | string | No | Memo; plain text when `visible=true`, hex when `visible=false` |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields |
 

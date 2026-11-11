@@ -62,10 +62,10 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
         "type": "UnfreezeBalanceContract"
       }
     ],
-    "ref_block_bytes": "<latest solidified block at construction time>",
-    "ref_block_hash":  "<latest solidified block at construction time>",
-    "expiration":      "<timestamp + 60_000>",
-    "timestamp":       "<construction moment>"
+    "ref_block_bytes": "<reference block selected by trx.reference.block; default: solid>",
+    "ref_block_hash":  "<reference block selected by trx.reference.block; default: solid>",
+    "expiration":      "<head block timestamp + trx.expiration.timeInMilliseconds (default interval: 60_000 ms)>",
+    "timestamp":       "<construction wall-clock time>"
   },
   "raw_data_hex": "<protobuf encoding of raw_data>"
 }
@@ -85,7 +85,7 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 | `receiver_address` is set but no delegation record exists from owner→receiver | `{"Error": "class org.tron.core.exception.ContractValidateException : delegated Resource does not exist"}` |
 | Undelegating `BANDWIDTH` but the delegation record's bandwidth frozen amount is 0 | `{"Error": "class org.tron.core.exception.ContractValidateException : no delegatedFrozenBalance(BANDWIDTH)"}` |
 | Undelegating `ENERGY` but the delegation record's energy frozen amount is 0 | `{"Error": "class org.tron.core.exception.ContractValidateException : no delegateFrozenBalance(Energy)"}` |
-| Receiver's used resource is less than the delegated amount when undelegating (invariant violation) | `{"Error": "class org.tron.core.exception.ContractValidateException : AcquiredDelegatedFrozenBalanceFor<Resource>[<X>] < delegated<Resource>[<Y>]"}` |
+| Receiver's recorded acquired delegated frozen balance (sun) is below this delegation's frozen balance; checked when `AllowTvmConstantinople=0`, or when `AllowTvmSolidity059!=1` and the receiver exists and is not a contract | `{"Error": "class org.tron.core.exception.ContractValidateException : AcquiredDelegatedFrozenBalanceFor<Resource>[<X>] < delegated<Resource>[<Y>]"}` |
 | Undelegating but the delegation has not yet matured | `{"Error": "class org.tron.core.exception.ContractValidateException : It's not time to unfreeze."}` |
 | Self-unfreeze `BANDWIDTH` but no BANDWIDTH freeze on the account | `{"Error": "class org.tron.core.exception.ContractValidateException : no frozenBalance(BANDWIDTH)"}` |
 | Self-unfreeze `BANDWIDTH` but none of the records have matured | `{"Error": "class org.tron.core.exception.ContractValidateException : It's not time to unfreeze(BANDWIDTH)."}` |

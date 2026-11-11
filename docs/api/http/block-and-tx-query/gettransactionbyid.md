@@ -1,6 +1,6 @@
 # /wallet/gettransactionbyid
 
-Query a transaction by its ID (**execution result not included** — only the pre-broadcast transaction body is returned).
+Query a transaction by its ID, including its basic execution status in `ret[].contractRet`.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetTransactionByIdServlet.java`
 - Method: `GET` / `POST`
@@ -77,7 +77,7 @@ Response example (real Nile contract call; long `data` / `raw_data_hex` fields t
 }
 ```
 
-Returns `{}` if not found. For execution results (receipt, logs), use [`/wallet/gettransactioninfobyid`](gettransactioninfobyid.md).
+Returns `{}` if not found. For detailed execution information, including the receipt, logs, and internal transactions, use [`/wallet/gettransactioninfobyid`](gettransactioninfobyid.md).
 
 ### Error responses
 

@@ -30,13 +30,18 @@ curl --request POST \
 ```
 ## Response
 
-Returns `api.BlockList`; fields are the same as [`/wallet/getblockbylimitnext`](getblockbylimitnext.md).
+Returns `api.BlockList`, ordered by block height ascending (oldest to newest); fields are the same as [`/wallet/getblockbylimitnext`](getblockbylimitnext.md).
 
 Response example (the latest 2 Nile blocks, `transactions` body omitted):
 
 ```json
 {
   "block": [
+    {
+      "blockID": "0000000003fe266bf6b6d392f654dc2e5011601546ed04623d9fcc4e9d439a25",
+      "block_header": { /* ... */ },
+      "transactions": [ /* ... */ ]
+    },
     {
       "blockID": "0000000003fe266c55d8ec678995cff469dd46ee18671a96f5866f8cb227eed8",
       "block_header": {
@@ -50,11 +55,6 @@ Response example (the latest 2 Nile blocks, `transactions` body omitted):
         },
         "witness_signature": "22bb7fdb5cdd33b8eca9104925f0dbd89f65d8e6ee4f7eed6f21d81b1428977e521865406b3ef70abc77b051d930081c2b9e368dc3f2c20c4b5e31187ba945bd00"
       },
-      "transactions": [ /* ... */ ]
-    },
-    {
-      "blockID": "0000000003fe266bf6b6d392f654dc2e5011601546ed04623d9fcc4e9d439a25",
-      "block_header": { /* ... */ },
       "transactions": [ /* ... */ ]
     }
   ]

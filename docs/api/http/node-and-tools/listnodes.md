@@ -13,7 +13,7 @@ Both GET and POST read these fields from URL query parameters; the servlet does 
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `visible` | GET / POST | bool | No | Text field format (only affects `Address.host`: `true` outputs UTF-8 IP string, default/`false` outputs hex bytes) |
+| `visible` | GET / POST | bool | No | Text field format (only affects `Address.host`): when `true`, valid UTF-8 bytes are returned as text; all other cases use hex |
 
 Example:
 
@@ -27,7 +27,7 @@ curl --request POST \
 | Field | Type | Description |
 |---|---|---|
 | `nodes` | repeated Node | Known nodes |
-| `nodes[].address.host` | string | IP address; `visible=true` is UTF-8 text (e.g. `"176.9.148.236"`), otherwise hex of the corresponding bytes (e.g. `"3137362e392e3134382e323336"`) |
+| `nodes[].address.host` | string | IP address; when `visible=true` and the bytes are valid UTF-8, returned as text (e.g. `"176.9.148.236"`); otherwise, hex of the corresponding bytes (e.g. `"3137362e392e3134382e323336"`) |
 | `nodes[].address.port` | int32 | Port |
 
 Response example (default; first 3 entries shown — the actual response contains dozens of nodes):
@@ -54,7 +54,7 @@ Response example (`visible=true`, UTF-8 output for the same nodes):
 }
 ```
 
-> The public gateway (`nile.trongrid.io`) does not pass through the `visible` field in POST bodies, so `host` is always hex when going through it. To get UTF-8 form, query a self-hosted node directly.
+> For UTF-8 host strings, append `?visible=true` to the URL on either a GET or POST request. The node's servlet ignores the POST JSON body, so setting `visible` only in that body has no effect, including on a self-hosted node.
 
 Returns `{}` when there are no nodes.
 

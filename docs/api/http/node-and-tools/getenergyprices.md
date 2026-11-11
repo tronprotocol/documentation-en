@@ -38,4 +38,5 @@ Response example:
 | Method | Trigger | Response |
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| GET / POST | Internal node error (failed to read price history or serialize) | `{"Error": "<exceptionClass> : <message>"}` |
+| GET / POST | Failed to read price history | `{}` |
+| GET / POST | Other exceptions propagated to the servlet, such as serialization failures | `{"Error": "<exceptionClass> : <message>"}` |

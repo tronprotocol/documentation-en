@@ -1,6 +1,6 @@
 # CreateWitness2
 
-Apply to become a Super Representative candidate. Costs 9999 TRX.
+Apply to become a Super Representative candidate. The fee is the current chain parameter `getAccountUpgradeCost`, expressed in sun; its default is 9,999,000,000 sun (9999 TRX). Governance proposals can change this fee.
 
 - Service: `Wallet` only
 

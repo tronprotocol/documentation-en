@@ -9,7 +9,7 @@ Tron private extension. Constructs an **unsigned** Tron transaction; sign it and
 
 | Position | Type | Required | Description |
 |---|---|---|---|
-| `params[0]` | object | yes | `BuildArguments` (extends `CallArguments`; fields below) |
+| `params[0]` | object | yes | `BuildArguments` |
 
 `BuildArguments` fields (`framework/src/main/java/org/tron/core/services/jsonrpc/types/BuildArguments.java`):
 
@@ -28,8 +28,8 @@ Tron private extension. Constructs an **unsigned** Tron transaction; sign it and
 | `consumeUserResourcePercent` | `0` | User-shared resource percentage (0–100) |
 | `originEnergyLimit` | `0` | Deployer's max energy per call |
 | `permissionId` | `0` | Multi-sig permission id |
-| `extraData` | `""` | Memo data written into the transaction |
-| `visible` | `false` | Whether output addresses / strings use base58 / UTF-8 |
+| `extraData` | `""` | Memo data for TRX / TRC-10 transfers only; plain text when `visible=true`, hex when `visible=false` |
+| `visible` | `false` | Whether output addresses use Base58Check and fields such as `asset_name` use UTF-8 text; contract deployment output always uses hex |
 
 Contract type inference (`BuildArguments.getContractType`):
 
@@ -37,8 +37,8 @@ Contract type inference (`BuildArguments.getContractType`):
 |---|---|
 | `to` empty + calldata non-empty | `CreateSmartContract` |
 | `to` is a contract address | `TriggerSmartContract` |
-| `to` is a regular account + `tokenId>0` + `tokenValue>0` + `value` empty | `TransferAssetContract` |
-| `to` is a regular account + `value` non-empty | `TransferContract` |
+| `to` is a regular account + `tokenId>0` + `tokenValue>0` + `value` is null, `""`, or `"0x0"` | `TransferAssetContract` |
+| `to` is a regular account + `value` is non-empty + at least one of: `tokenId <= 0`, `tokenValue <= 0`, or `value != "0x0"` | `TransferContract` |
 | Otherwise | throws `-32600 invalid json request` |
 
 ```bash
@@ -92,7 +92,7 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 }
 ```
 
-> `ref_block_bytes` / `ref_block_hash` come from the latest block at construction time; `expiration` = `timestamp` + 60s; `txID` is the SHA256 hash of `raw_data`, so it changes whenever the above fields change — two calls of the same request will produce different `txID` values.
+> `ref_block_bytes` / `ref_block_hash` use the reference block selected by `trx.reference.block` (default `solid`; configurable to `head`). `expiration` is the latest head block timestamp plus `trx.expiration.timeInMilliseconds` (default 60000 ms), while the transaction `timestamp` is the node's wall-clock time at construction. `txID` is the SHA-256 hash of serialized `raw_data`: it changes when `raw_data` changes.
 >
 > `feeLimit` = `gas × wallet.getEnergyFee()`, automatically written to `raw_data.fee_limit` only for `CreateSmartContract` / `TriggerSmartContract`; `TransferContract` / `TransferAssetContract` don't need `feeLimit` (this is why the `raw_data` above has no `fee_limit` field).
 

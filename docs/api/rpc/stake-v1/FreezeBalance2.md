@@ -4,7 +4,7 @@
 >
 > Note: the `2` suffix is a historical proto naming convention (the V1 method that returns `TransactionExtention`); it is not the same method as Stake 2.0's `FreezeBalanceV2`.
 
-Freeze TRX to obtain bandwidth or energy, optionally delegating to another account. Minimum freeze period is 3 days.
+Freeze TRX to obtain bandwidth or energy, optionally delegating to another account. On nodes with `block.checkFrozenTime=1`, the duration must be exactly 3 days.
 
 - Service: `Wallet` only
 

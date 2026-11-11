@@ -35,7 +35,7 @@ Returns `api.AccountNetMessage` (`protocol/src/main/protos/api/api.proto`):
 | Field | Type | Description |
 |---|---|---|
 | `freeNetUsed` | int64 | Free bandwidth used |
-| `freeNetLimit` | int64 | Free bandwidth quota (resets every 24h) |
+| `freeNetLimit` | int64 | The total free bandwidth allowance per account, set by a chain parameter that can be changed through governance proposals. Used free bandwidth gradually becomes available again over a 24-hour recovery window. |
 | `NetUsed` | int64 | Staked bandwidth used |
 | `NetLimit` | int64 | Staked bandwidth quota |
 | `assetNetUsed` | map\<string,int64\> | Per-TRC-10 bandwidth used |
@@ -67,7 +67,7 @@ Returns `{}` if `address` is missing or the account does not exist.
 | Method | Trigger | Response |
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| GET / POST | `address` is not valid base58check (`visible=true`) | GET: non-base58 characters → `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; checksum-only error makes `Util.getHexAddress` silently return an empty string, the lookup misses and `{}` is returned. POST (via `JsonFormat.merge`): non-base58 characters → `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <pos>: INVALID base58 String, ..."}`; checksum-only error → `{"Error": "class java.lang.NullPointerException : null"}` |
+| GET / POST | `address` is not valid base58check (`visible=true`) | GET: a 34-character value containing non-base58 characters → `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; an empty value, a length other than 34, an invalid address prefix, or a bad checksum makes `Util.getHexAddress` return an empty string, the lookup misses and `{}` is returned. POST (via `JsonFormat.merge`): illegal characters, invalid length, or a bad checksum → `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <pos>: invalid address for field: protocol.Account.address"}` |
 | GET / POST | `address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
 | POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

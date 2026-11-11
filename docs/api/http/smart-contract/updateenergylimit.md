@@ -60,10 +60,10 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
         "type": "UpdateEnergyLimitContract"
       }
     ],
-    "ref_block_bytes": "<latest solidified block at construction time>",
-    "ref_block_hash":  "<latest solidified block at construction time>",
-    "expiration":      "<timestamp + 60_000>",
-    "timestamp":       "<construction moment>"
+    "ref_block_bytes": "<reference block selected by trx.reference.block; default: solid>",
+    "ref_block_hash":  "<reference block selected by trx.reference.block; default: solid>",
+    "expiration":      "<head block timestamp + trx.expiration.timeInMilliseconds (default interval: 60_000 ms)>",
+    "timestamp":       "<construction wall-clock time>"
   },
   "raw_data_hex": "<protobuf encoding of raw_data>"
 }
@@ -75,7 +75,7 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 |---|---|
 | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Request body is not valid JSON / field type mismatch | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
-| Chain has not enabled the ENERGY_LIMIT proposal | `{"Error": "class org.tron.core.exception.ContractValidateException : contract type error, unexpected type [UpdateEnergyLimitContract]"}` |
+| Latest block height is below the configured ENERGY_LIMIT activation height (`enery.limit.block.num`) | `{"Error": "class org.tron.core.exception.ContractValidateException : contract type error, unexpected type [UpdateEnergyLimitContract]"}` |
 | Invalid `owner_address` | `{"Error": "... : Invalid address"}` |
 | owner account does not exist | `{"Error": "... : Account[<address>] does not exist"}` |
 | `origin_energy_limit <= 0` | `{"Error": "... : origin energy limit must be > 0"}` |

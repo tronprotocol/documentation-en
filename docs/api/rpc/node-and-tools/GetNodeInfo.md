@@ -1,6 +1,6 @@
 # GetNodeInfo
 
-Return this node's status, version, memory, disk, latest block, peer statistics, and so on.
+Return this node's status, version, CPU, memory, thread/JVM/OS information, latest block, and peer statistics.
 
 - Service: `Wallet` only
 

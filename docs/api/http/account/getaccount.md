@@ -111,6 +111,6 @@ Returns `{}` if `address` is missing or the account does not exist.
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | GET / POST | `address` is not valid hex (`visible=false`) | `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <pos>: INVALID hex String"}` |
-| GET / POST | `address` is not valid base58check (`visible=true`) | Non-base58 characters → `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <pos>: INVALID base58 String, <details>"}`; checksum-only error → `{"Error": "class java.lang.NullPointerException : null"}` (GET and POST behave identically: the GET path wraps `address` into JSON and goes through the same `JsonFormat.merge`) |
+| GET / POST | `address` is not valid base58check (`visible=true`) | Illegal characters, invalid length, or a bad checksum → `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <pos>: invalid address for field: protocol.Account.address"}` (GET wraps `address` into JSON and uses the same `JsonFormat.merge` path as POST) |
 | POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

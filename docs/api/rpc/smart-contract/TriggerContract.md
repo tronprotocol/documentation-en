@@ -1,6 +1,6 @@
 # TriggerContract
 
-Trigger a smart contract (state-changing call). Returns an unsigned transaction along with the pre-execution result.
+Build an unsigned smart-contract transaction and return its construction status. When the contract's on-chain ABI marks the function as `view` or `pure`, or sets the legacy `constant` flag to `true`, this method executes a constant call and returns its simulation result. Use [TriggerConstantContract](TriggerConstantContract.md) to simulate an ordinary state-changing call.
 
 - Service: `Wallet` only
 

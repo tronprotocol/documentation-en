@@ -29,7 +29,7 @@ curl --request POST \
 
 | Field | Type | Description |
 |---|---|---|
-| `result` | bool | Whether it entered the transaction pool |
+| `result` | bool | Whether this broadcast attempt succeeded. A failed P2P broadcast can occur after the transaction has entered the pool |
 | `code` | string | Same as `broadcasttransaction`, but emitted directly as the enum name |
 | `message` | string | Failure reason (UTF-8) |
 | `transaction` | string | The parsed Transaction JSON in **string form** (the servlet forces `visible=true` and calls `JsonFormat.printToString`, then puts the string into the response; clients need to JSON-parse this field again) |
@@ -51,14 +51,14 @@ Response example:
 
 Business-level errors (`SIGERROR` / `DUP_TRANSACTION_ERROR` / `TAPOS_ERROR`, etc.) are returned in the `result/code/message` shape; `code` values match [`/wallet/broadcasttransaction`](broadcasttransaction.md).
 
-When `transaction` is missing, not valid hex, or `Transaction.parseFrom` deserialization fails, `Util.processError` kicks in. The servlet does not have its own `Util.checkBodySize` branch, but the shared HTTP `SizeLimitHandler` can still reject oversized request bodies.
+Invalid hex and protobuf-deserialization errors take the `Util.processError` path. A missing or null `transaction` is parsed as an empty transaction; if earlier broadcast checks pass, the node returns `CONTRACT_VALIDATE_ERROR` with the message `Contract validate error : No contract!`. The servlet does not have its own `Util.checkBodySize` branch, but the shared HTTP `SizeLimitHandler` can still reject oversized request bodies.
 
 | Trigger | Response |
 |---|---|
 | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Request body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
-| `transaction` field missing | Business-level response `{"result": false, "code": "CONTRACT_VALIDATE_ERROR", "message": "Contract validate error : No contract!", "transaction": "{}", "txid": "<SHA256 of empty Transaction>"}` (`getString` returns null → `ByteArray.fromHexString(null)` returns empty array → `Transaction.parseFrom` returns empty Transaction → enters broadcast) |
-| `transaction` is not a string (array/object/number) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (`org.tron.json.JSONObject#getString` returns scalar values via `asText(null)` and serializes arrays/objects before handing the result to `ByteArray.fromHexString`) |
+| `transaction` field missing or null | If earlier broadcast checks pass, business-level response `{"result": false, "code": "CONTRACT_VALIDATE_ERROR", "message": "Contract validate error : No contract!", "transaction": "{}", "txid": "<SHA256 of empty raw_data>"}` (`getString` returns null → `ByteArray.fromHexString(null)` returns empty array → `Transaction.parseFrom` returns empty Transaction → rejected by the node) |
+| `transaction` is not a string (array/object/number) | Unsupported input shape. `getString` coerces scalars to text and serializes arrays/objects; invalid hex produces `DecoderException`, hex-valid but invalid protobuf produces `InvalidProtocolBufferException`, and protobuf-valid content proceeds to broadcast. For example, numeric `10` becomes hex `10` and fails protobuf parsing |
 | `transaction` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` |
 | `transaction` is not valid protobuf | `{"Error": "class com.google.protobuf.InvalidProtocolBufferException : <message>"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

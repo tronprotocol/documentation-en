@@ -24,7 +24,7 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 | Field | Type | Description |
 |---|---|---|
 | `hash` | hex | txid |
-| `nonce` | hex | Constant 8 bytes of zeros with `0x` prefix (Tron has no account nonce) |
+| `nonce` | hex | Constant QUANTITY `0x0` (Tron has no account nonce); unlike the block-level nonce, this is not an 8-byte DATA value |
 | `blockHash` | hex | Block hash; returns `0x` when **not yet on-chain** or when the caller treats it as a pending transaction |
 | `blockNumber` | hex | Same as above; `0x` when not yet on-chain |
 | `transactionIndex` | hex | In-block transaction index; `0x` when not yet on-chain |
@@ -55,7 +55,7 @@ The example below is the real response captured from the Nile testnet curl above
     "gasPrice": "0x64",
     "input": "0xa6bd98ac0000...0000",
     "type": "0x0",
-    "nonce": "0x0000000000000000",
+    "nonce": "0x0",
     "v": "0x1b",
     "r": "0x2154e8ef08f014063de8a88bafe748c8cbb48633c1657c083dca1a73439b289f",
     "s": "0x6aa796bfa58797da6354d35fb7334a8c145c48ae266e4a885f7ee44791b5a3c3"

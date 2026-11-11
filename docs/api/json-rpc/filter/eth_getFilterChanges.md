@@ -39,4 +39,4 @@ After the call, the queue is drained and the expiration timer is reset to 5 minu
 
 | Trigger | Code | message |
 |---|---|---|
-| Filter ID does not exist / has expired / belongs to another port | `-32000` | `filter not found` |
+| Filter ID does not exist / has been removed by expiration cleanup / belongs to another port | `-32000` | `filter not found` |

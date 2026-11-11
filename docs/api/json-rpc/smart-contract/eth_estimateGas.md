@@ -60,7 +60,7 @@ The example below is the real response captured from the Nile testnet curl above
 | `to` is empty and the resolved calldata is missing, `""`, or `"0x"` (`input` takes precedence over `data` when non-null) | `-32600` | `invalid json request` |
 | `to` is not a contract and `value` is missing | `-32600` | `invalid json request: invalid value` |
 | Contract validation fails (`ContractValidateException`) | `-32600` | passes through message (fallback `invalid contract`) |
-| EVM execution `REVERT` | `-32000` | message + the parsed revert string; `error.data` carries the original revert hex |
+| EVM execution `REVERT` | `-32000` | Execution message; a non-empty, decodable `Error(string)` reason is appended only when its ABI payload is at most 4096 bytes. Non-empty revert bytes are returned as hex in `error.data`; with no bytes, `error.data` uses the default string `"{}"` |
 | `input` is not strict hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
 | `data` is not valid lenient hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
 | `value` is not a valid non-negative hex long on the ordinary transfer path | `-32602` | `invalid param value: invalid hex number` or `invalid param value: negative` |

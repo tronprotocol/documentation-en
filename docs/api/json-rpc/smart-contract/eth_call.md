@@ -72,7 +72,8 @@ positive value sets a constant-call-only deadline in milliseconds.
 | string `params[1]` is a specific hex or decimal height (even if valid) | `-32602` | `QUANTITY not supported, just support TAG as latest` |
 | `from` / `to` address is invalid | `-32602` | passes through the message |
 | `input` is not strict hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
+| `data` is not valid lenient hex | `-32602` | passes through `JsonRpcApiUtil.requireValidHex` validation message |
 | `value` is not valid hex | `-32602` | `invalid param value: invalid hex number` |
 | Contract validation fails (e.g. `to` is not a contract, args don't match, etc.) | `-32600` | passes through `ContractValidateException` message (fallback `Contract validate error : ` if no message) |
-| EVM execution `REVERT` | `-32000` | message + (if revert data starts with the `Error(string)` selector) the parsed string; `error.data` carries the original revert hex |
-| Other execution / encoding errors | `-32000` | passes through message (double quotes are replaced with single quotes) |
+| EVM execution `REVERT` | `-32000` | Execution message; a non-empty, decodable `Error(string)` reason is appended only when its ABI payload is at most 4096 bytes. Non-empty revert bytes are returned as hex in `error.data`; with no bytes, `error.data` uses the default string `"{}"` |
+| Other exceptions during constant-call processing | `-32000` | passes through message (double quotes are replaced with single quotes) |

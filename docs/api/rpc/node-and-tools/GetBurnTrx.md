@@ -1,6 +1,6 @@
 # GetBurnTrx
 
-Return the cumulative amount of TRX burned (including fees, contract burns, etc.).
+Return the cumulative TRX burned, excluding amounts transferred to the blackhole account.
 
 - Service: both `Wallet` and `WalletSolidity`
 

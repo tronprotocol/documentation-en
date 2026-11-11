@@ -34,7 +34,8 @@ Returns `api.AccountResourceMessage` (`api.proto`):
 
 | Field | Type | Description |
 |---|---|---|
-| `freeNetUsed` / `freeNetLimit` | int64 | Free bandwidth (resets every 24h) |
+| `freeNetUsed` | int64 | Free bandwidth used |
+| `freeNetLimit` | int64 | The total free bandwidth allowance per account, set by a chain parameter that can be changed through governance proposals. Used free bandwidth gradually becomes available again over a 24-hour recovery window. |
 | `NetUsed` / `NetLimit` | int64 | Staked bandwidth |
 | `assetNetUsed` / `assetNetLimit` | map | Per-TRC-10 bandwidth |
 | `TotalNetLimit` / `TotalNetWeight` | int64 | Network-wide bandwidth quota / total staked TRX |
@@ -71,6 +72,6 @@ Returns `{}` if `address` is missing or the account does not exist.
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | GET / POST | `address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : exception decoding Hex string: <details>"}` |
-| GET / POST | `address` is not valid base58check (`visible=true`) | `{"Error": "class java.lang.IllegalArgumentException : <details>"}` |
+| GET / POST | `address` is not valid base58check (`visible=true`) | A 34-character value containing non-base58 characters → `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; an empty value, a length other than 34, an invalid address prefix, or a bad checksum makes `Util.getHexAddress` return an empty string, so the lookup returns `{}` |
 | POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

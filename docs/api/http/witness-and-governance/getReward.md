@@ -1,6 +1,6 @@
 # /wallet/getReward
 
-Query the unclaimed voting rewards for an account.
+Query an account's total claimable rewards in sun.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetRewardServlet.java`
 - Method: `GET` / `POST`
@@ -12,7 +12,7 @@ GET reads `address` from the URL query; POST reads it from a JSON request body. 
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `address` | GET / POST | string | No | Voter account address; omitted or empty returns `reward: 0` |
+| `address` | GET / POST | string | No | Account address (voter or SR); omitted or empty returns `reward: 0` |
 | `visible` | GET / POST | bool | No | No effect (the servlet auto-detects address format via the `41` prefix; the response has no bytes fields) |
 | `int64_as_string` | GET | bool | No | GET only; when `true`, returns `reward` as a JSON string |
 
@@ -33,7 +33,7 @@ curl --request POST \
 
 | Field | Type | Description |
 |---|---|---|
-| `reward` | int64 | Unit: sun (1 TRX = 1e6 sun) |
+| `reward` | int64 | Total claimable rewards; unit: sun (1 TRX = 1e6 sun) |
 
 Response example (Nile, sr-15 currently accumulated reward, ~29994831 TRX):
 
@@ -41,7 +41,7 @@ Response example (Nile, sr-15 currently accumulated reward, ~29994831 TRX):
 { "reward": 29994831460307 }
 ```
 
-> Note: when `address` is missing or empty, no error is reported; `reward` is `0` (or `"0"` when `int64_as_string=true` on GET).
+> Missing or empty addresses, and Base58Check addresses rejected for length, checksum, or decoded-address validity, return a zero reward. This is indistinguishable from an account with no claimable rewards. Validate the address before using the result; parser exceptions follow the error table below.
 
 With `?int64_as_string=true` on a GET request:
 
@@ -56,6 +56,7 @@ Withdraw via [`/wallet/withdrawbalance`](withdrawbalance.md).
 | Method | Trigger | Response |
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| GET / POST | `address` parse failure (invalid hex / base58) | `{"Error": "INVALID address, <details>"}` |
+| GET / POST | Hex decoding throws, or Base58 decoding throws (for example, an illegal character in an address of the expected length) | `{"Error": "INVALID address, <details>"}` |
+| GET / POST | Base58Check address has the wrong length, checksum, or decoded-address validity | `{"reward": 0}` (or `{"reward": "0"}` with GET `int64_as_string=true`) |
 | POST | Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |
