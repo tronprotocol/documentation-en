@@ -2,8 +2,8 @@
   "post":
     "tags":
       - "Account"
-    "summary": "Create an on-chain account (costs 1 TRX)"
-    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/account/createaccount.md` for examples and detailed behavior."
+    "summary": "Build an account-creation transaction"
+    "description": "Execution incurs an additional account-creation fee set by `getCreateNewAccountFeeInSystemContract` (currently 1,000,000 sun, or 1 TRX, on Mainnet). Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/account/createaccount.md` for examples and detailed behavior."
     "operationId": "wallet_createaccount_post"
     "externalDocs":
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/account/createaccount.md"
