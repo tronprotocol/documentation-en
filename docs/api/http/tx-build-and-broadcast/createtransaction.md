@@ -14,7 +14,7 @@ Create an unsigned TRX transfer transaction (`TransferContract`).
 | `to_address` | string | Yes | Recipient address |
 | `amount` | int64 | Yes | Amount in sun (1 TRX = 1e6 sun) |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
-| `extra_data` | string | No | Written into `raw_data.data` (hex; UTF-8 when `visible=true`) |
+| `extra_data` | string | No | Written into `raw_data.data`; plain text when `visible=true`, hex when `visible=false` |
 | `visible` | bool | No | Address format |
 
 Example:
@@ -64,7 +64,7 @@ Returns an unsigned `protocol.Transaction` (with `txID`, `raw_data`, `raw_data_h
 }
 ```
 
-> The `txID`, `ref_block_bytes` / `ref_block_hash`, `expiration`, `timestamp`, `raw_data_hex` above vary with construction time: `ref_block_*` is taken from the latest solidified block at construction time; `expiration = timestamp + 60_000`; `txID` is the SHA256 of `raw_data`; `raw_data_hex` is the protobuf encoding of `raw_data`, and signing takes `raw_data_hex` as input. Other construction endpoints (`/wallet/triggersmartcontract`, `freezebalancev2`, `unfreezebalancev2`, etc.) return the same ephemeral fields with identical semantics; they are not repeated below.
+> These fields vary with construction time. `ref_block_bytes` / `ref_block_hash` use `trx.reference.block`: `solid` (the default) selects the latest solidified block; other values, including `head`, select the head block. `expiration` is the head block timestamp plus `trx.expiration.timeInMilliseconds` (default `60_000` ms). The transaction `timestamp` independently records the construction wall-clock time. `raw_data_hex` is the protobuf encoding of `raw_data`; `txID` is its SHA256 hash, which is signed. Other transaction-construction endpoints use the same reference-block and timestamp rules.
 
 ### Error responses
 
@@ -81,5 +81,5 @@ Returns an unsigned `protocol.Transaction` (with `txID`, `raw_data`, `raw_data_h
 | `amount <= 0` | `{"Error": "class org.tron.core.exception.ContractValidateException : Amount must be greater than 0."}` |
 | `to_address` is a contract and the `ForbidTransferToContract` proposal is enabled | `{"Error": "class org.tron.core.exception.ContractValidateException : Cannot transfer TRX to a smartContract."}` |
 | `to_address` is a v1 contract and the `AllowTvmCompatibleEvm` proposal is enabled | `{"Error": "class org.tron.core.exception.ContractValidateException : Cannot transfer TRX to a smartContract which version is one. Instead please use TriggerSmartContract "}` |
-| Insufficient balance for `amount + fee` (when receiver is a new account, `fee` includes 0.1 TRX creation fee) | `{"Error": "class org.tron.core.exception.ContractValidateException : Validate TransferContract error, balance is not sufficient."}` |
+| Insufficient balance for `amount + fee` (when the receiver is a new account, `fee` includes the account creation fee set by the chain parameter `getCreateNewAccountFeeInSystemContract`, in sun) | `{"Error": "class org.tron.core.exception.ContractValidateException : Validate TransferContract error, balance is not sufficient."}` |
 | `amount + fee` or recipient balance overflows `long` | `{"Error": "class org.tron.core.exception.ContractValidateException : <ArithmeticException message>"}` |

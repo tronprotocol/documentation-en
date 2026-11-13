@@ -13,10 +13,10 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `offset` | GET | int64 | Yes | Starting offset; omission reaches `Long.parseLong(null)` and fails |
-| `offset` | POST | int64 | No | Starting offset; Protobuf default is `0` |
-| `limit` | GET | int64 | Yes | Number of records to return; omission reaches `Long.parseLong(null)` and fails |
-| `limit` | POST | int64 | No | Number of records to return; Protobuf default is `0`, which returns an empty list |
+| `offset` | GET | int64 | Yes | Starting offset, at least `0`; omission reaches `Long.parseLong(null)` and fails |
+| `offset` | POST | int64 | No | Starting offset, at least `0`; Protobuf default is `0` |
+| `limit` | GET | int64 | Yes | Requested record count, `0`–`1000`; larger values are capped at `1000`; omission reaches `Long.parseLong(null)` and fails |
+| `limit` | POST | int64 | No | Requested record count, `0`–`1000`; larger values are capped at `1000`; Protobuf default `0` returns an empty result |
 | `visible` | GET / POST | bool | No | Format for addresses and text fields |
 
 Example:
@@ -79,7 +79,7 @@ Response example (Nile, limit=2):
 }
 ```
 
-Returns `{}` if there are no results.
+Returns `{}` if there are no results, `offset < 0`, or `limit < 0`. Advance `offset` by the number of records actually returned, rather than an uncapped requested `limit`.
 
 ### Error responses
 

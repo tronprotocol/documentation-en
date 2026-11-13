@@ -5,7 +5,7 @@
       "name": "Compatibility stub methods"
     }
   ],
-  "summary": "The configured etherbase address",
+  "summary": "The first address derived from the node's configured witness private keys that also appears in the chain's witness list",
   "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/stub/eth_coinbase.md` for examples and detailed behavior.",
   "paramStructure": "by-position",
   "params": [],

@@ -20,7 +20,7 @@ Read-only contract call (does not go on-chain). Used to read view/pure functions
 | `call_value` | int64 | No | TRX (sun) sent with the call |
 | `token_id` | int64 | No | TRC-10 token id sent with the call |
 | `call_token_value` | int64 | No | TRC-10 amount sent with the call |
-| `extra_data` | string | No | Transaction memo (hex; UTF-8 text when `visible=true`) |
+| `extra_data` | string | No | Transaction memo; plain text when `visible=true`, hex when `visible=false` |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields (response includes `result.message`, which is affected by `visible`) |
 
@@ -51,8 +51,8 @@ curl --request POST \
 |---|---|---|
 | `transaction` | Transaction | Unsigned transaction (context only — should not be signed and broadcast) |
 | `txid` | string(hex) | Transaction hash |
-| `constant_result` | repeated bytes(hex) | ABI-encoded hex of the function return value; **on revert, this is the ABI-encoded revert reason** (the leading 4 bytes `08c379a0` are the `Error(string)` selector) |
-| `result` | Return | Status; on revert / failed `require`, `result.result=false` and `result.message` contains `REVERT opcode executed` or `runtime error` |
+| `constant_result` | repeated bytes(hex) | Raw VM return data in hex. On success, decode using the function's return ABI. On revert, the data may encode `Error(string)`, `Panic(uint256)`, a custom error, or be empty |
+| `result` | Return | API request status. A simulation that returns normally, including a revert, has `result.result=true`; check `transaction.ret[0].ret` for execution failure. `result.message` carries revert or exception details when present |
 | `energy_used` | int64 | Estimated energy consumed |
 | `energy_penalty` | int64 | Energy penalty (if any) |
 | `logs` | repeated TransactionLog | Event logs (if emitted) |
@@ -65,7 +65,7 @@ curl --request POST \
 
     - **Processing blocks:** A node executes the transactions in a block sequentially, updating accounts, contract storage, resources, and chain parameters as it proceeds. A simulation initiated during this process uses the data visible to the node at that moment.
     - **Processing pending transactions:** `/wallet` provides a view of the latest state. While a node validates or replays pending transactions, this view may include local state updates and may continue to change as transactions are included in blocks or new blocks arrive.
-    - **Other constant calls:** Calls made through `/wallet` and `/walletsolidity` may use different proposal activation states and TVM rules. When calls with different execution contexts run concurrently, in rare cases a simulation may reflect the proposal activation state and TVM rules being applied by the node at that moment.
+    - **Other constant calls:** `/wallet` and `/walletsolidity` may see different proposal activation states. Each call has a thread-local TVM configuration snapshot, but constant calls share a mutable operation table. If concurrent calls apply different settings to this table, they may affect one another's simulation results.
 
     `constant_result`, `energy_used`, `logs`, and `internal_transactions` are produced by the current simulation. If the simulation reads different state or applies different TVM rules, the contract may follow a different execution path, and the values returned in these fields may also differ. The top-level `result` reports the status of the API request, while `transaction.ret[0].ret` reports the TVM execution result of the simulation.
 
@@ -116,7 +116,7 @@ Response example (real Nile capture):
 
 ### Error responses
 
-This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`. Note: **EVM revert / runtime errors do not go through `result.code`** — instead `result.result=true`, `message` carries the revert/runtime info, and the failure is marked at `transaction.ret[0].ret="FAILED"`.
+This endpoint never writes `{"Error": ...}` after the request reaches the servlet. Servlet-handled exceptions are caught and written into `result.code` / `result.message`; the HTTP body is still a `TransactionExtention`. For a revert, `result.result=true` and `result.code` remains `SUCCESS` (omitted); `result.message` contains `REVERT opcode executed` and `transaction.ret[0].ret="FAILED"` marks the execution failure. Exceptions follow the error-code branches below.
 
 Before the request reaches this servlet, shared layers can still return a different shape: `SizeLimitHandler` usually returns HTTP 413 `Payload Too Large` for an oversized body, and a non-blocking rate-limit rejection returns HTTP 200 with `{"Error":"class java.lang.IllegalAccessException : lack of computing resources"}`.
 
@@ -124,9 +124,8 @@ Before the request reaches this servlet, shared layers can still return a differ
 |---|---|---|---|---|
 | `contract_address` is set but the contract does not exist | default (false) | `CONTRACT_VALIDATE_ERROR` | `Smart contract is not exist.` | — |
 | The node has constant-call support disabled | default (false) | `CONTRACT_VALIDATE_ERROR` | `this node does not support constant` | — |
-| EVM revert / failed `require` | true | default (`SUCCESS`, omitted) | `REVERT opcode executed` | `transaction.ret[0].ret="FAILED"`; `constant_result[0]` is the `Error(string)` ABI encoding (when the contract supplies a reason) |
-| EVM runtime error (OOG, illegal opcode, etc., no `result.getException()`) | true | default (`SUCCESS`, omitted) | Raw `result.getRuntimeError()` string | Same as above |
-| `result.getException() != null` (e.g. `OutOfTimeException`) | default (false) | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) | — |
+| EVM revert / failed `require` | true | default (`SUCCESS`, omitted) | `REVERT opcode executed` | `transaction.ret[0].ret="FAILED"`; `constant_result[0]` contains the raw revert data, possibly empty |
+| Top-level VM execution exception (e.g. out of energy, illegal opcode, or timeout) | default (false) | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) | — |
 | Other (hex parsing, missing parameters, proto merge, etc.) | default (false) | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) | — |
 
-On revert, `result.message` does not carry the original reason string; you must decode it from `constant_result[0]`: skip the leading 4-byte `08c379a0` selector and ABI-decode the remaining bytes as `string`.
+On revert, `result.message` contains the generic `REVERT opcode executed` text. Inspect `constant_result[0]` for additional information. Only when its first four bytes are `08c379a0` should you decode the remaining bytes as the ABI argument of `Error(string)`. Decode `Panic(uint256)` or custom errors using their corresponding selector and ABI. Empty revert data provides no encoded reason.

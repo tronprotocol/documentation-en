@@ -1,6 +1,6 @@
 # GetTransactionApprovedList
 
-Return the list of addresses that have already signed a multi-sig transaction (signers only, no weight calculation).
+Return the transaction's signing addresses after validating all signatures against the account's current permissions. If validation fails, return an error without an approved-address list.
 
 - Service: `Wallet` only
 

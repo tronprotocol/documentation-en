@@ -156,10 +156,10 @@ JSON-RPC limits and filter-related defaults (defined in the `node.jsonrpc` block
 
 ## Compatibility stub methods
 
-Tron uses DPoS consensus and has no PoW work, uncle, or miner concepts. The following methods exist only to be compatible with standard ETH clients and always return constants:
+Tron uses DPoS consensus and has no PoW work, uncle, or miner concepts. The following methods provide compatibility responses with different behavior: `eth_accounts` returns a fixed empty array, `eth_getWork` includes the current block hash, and `eth_coinbase` depends on the node's witness configuration and chain state:
 
 | Method | Returns | Description |
 |---|---|---|
-| [`eth_coinbase`](stub/eth_coinbase.md) | The configured etherbase address | Throws `-32000 etherbase must be explicitly specified` if not configured |
+| [`eth_coinbase`](stub/eth_coinbase.md) | The first address derived from the node's configured witness private keys that also appears in the chain's witness list | Requires witness mode; throws `-32000 etherbase must be explicitly specified` when no matching address is available |
 | [`eth_accounts`](stub/eth_accounts.md) | `[]` | Nodes don't custody private keys |
 | [`eth_getWork`](stub/eth_getWork.md) | `[blockHash, null, null]` | Current block hash + two nulls |

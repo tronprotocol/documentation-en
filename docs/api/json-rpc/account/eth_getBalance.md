@@ -22,7 +22,7 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 
 Hex-encoded balance (in sun); a non-existent account is treated as 0.
 
-The example below is the real response captured from the Nile testnet curl above (`0x6d1a6c48` ≈ 1.83 TRX):
+The example below is the real response captured from the Nile testnet curl above (`0x6d1a6c48` = 1,830,448,200 sun = 1830.4482 TRX):
 
 ```json
 { "jsonrpc": "2.0", "id": 1, "result": "0x6d1a6c48" }

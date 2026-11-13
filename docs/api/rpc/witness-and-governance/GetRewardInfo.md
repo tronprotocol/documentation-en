@@ -1,6 +1,6 @@
 # GetRewardInfo
 
-Query an account's claimable (unwithdrawn) voting reward.
+Query an account's total claimable rewards in sun.
 
 - Service: both `Wallet` and `WalletSolidity`
 

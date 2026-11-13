@@ -1,6 +1,6 @@
 # /wallet/getburntrx
 
-Query the cumulative TRX burned (including transaction fees, contract burns, etc.).
+Query the cumulative TRX burned, excluding amounts transferred to the blackhole account.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetBurnTrxServlet.java`
 - Method: `GET` / `POST`

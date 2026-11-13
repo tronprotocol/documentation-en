@@ -63,7 +63,7 @@ Response example (`txID`, `ref_block_bytes`, `ref_block_hash`, `expiration`, `ti
 }
 ```
 
-The activation fee is deducted from `owner_address`; the amount is governed by chain parameters (typically 1 TRX).
+An additional account-creation fee is deducted from `owner_address` when the transaction executes. The fee is set by the chain parameter `getCreateNewAccountFeeInSystemContract` (currently 1,000,000 sun, or 1 TRX, on Mainnet).
 
 ### Error responses
 

@@ -2,7 +2,7 @@
 
 > **Disabled on-chain**: After proposal #70 `UNFREEZE_DELAY_DAYS` is approved (already active on mainnet), `FreezeBalanceActuator.validate()` throws `freeze v2 is open, old freeze is closed` directly, so all new requests fail. Use [`/wallet/freezebalancev2`](../stake-v2/freezebalancev2.md) instead.
 
-Freeze TRX to obtain bandwidth or energy; can be delegated to others. On nodes with `block.checkFrozenTime=1`, the duration must be within the chain's current dynamic range (normally exactly 3 days).
+Freeze TRX to obtain bandwidth or energy; can be delegated to others. On nodes with `block.checkFrozenTime=1`, the duration must be exactly 3 days.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/FreezeBalanceServlet.java`
 - Method: `POST`
@@ -14,7 +14,7 @@ Freeze TRX to obtain bandwidth or energy; can be delegated to others. On nodes w
 |---|---|---|---|
 | `owner_address` | string | Yes | Freezing account address |
 | `frozen_balance` | int64 | Yes | Frozen amount (sun) |
-| `frozen_duration` | int64 | No | Freeze duration in days; omitted defaults to `0`. Validated only when `block.checkFrozenTime=1`, when it must be within `[minFrozenTime, maxFrozenTime]` (normally `[3, 3]`) |
+| `frozen_duration` | int64 | No | Freeze duration in days; omitted defaults to `0`. Must be exactly `3` when `block.checkFrozenTime=1`. |
 | `resource` | enum | No | `BANDWIDTH` / `ENERGY`; `TRON_POWER` is also accepted when the chain enables the new resource model. Default `BANDWIDTH` |
 | `receiver_address` | string | No | Delegate target address (omit to freeze for self) |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
@@ -68,10 +68,10 @@ On chains where proposal #70 has not been activated, the endpoint still returns 
         "type": "FreezeBalanceContract"
       }
     ],
-    "ref_block_bytes": "<latest solidified block at construction time>",
-    "ref_block_hash":  "<latest solidified block at construction time>",
-    "expiration":      "<timestamp + 60_000>",
-    "timestamp":       "<construction moment>"
+    "ref_block_bytes": "<reference block selected by trx.reference.block; default: solid>",
+    "ref_block_hash":  "<reference block selected by trx.reference.block; default: solid>",
+    "expiration":      "<head block timestamp + trx.expiration.timeInMilliseconds (default interval: 60_000 ms)>",
+    "timestamp":       "<construction wall-clock time>"
   },
   "raw_data_hex": "<protobuf encoding of raw_data>"
 }
@@ -90,7 +90,7 @@ On chains where proposal #70 has not been activated, the endpoint still returns 
 | `frozen_balance < 1_000_000` (less than 1 TRX) | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenBalance must be greater than or equal to 1 TRX"}` |
 | Existing frozen-record count on the account is not in `{0,1}` | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenCount must be 0 or 1"}` |
 | `frozen_balance > account balance` | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenBalance must be less than or equal to accountBalance"}` |
-| `frozen_duration` outside `[minFrozenTime, maxFrozenTime]` (only when `block.checkFrozenTime=1`) | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenDuration must be less than <max> days and more than <min> days"}` |
+| `frozen_duration` is not `3` when `block.checkFrozenTime=1` | `{"Error": "class org.tron.core.exception.ContractValidateException : frozenDuration must be less than <max> days and more than <min> days"}` |
 | Invalid `resource` (when `AllowNewResourceModel` is not enabled, `TRON_POWER` is not allowed) | `{"Error": "class org.tron.core.exception.ContractValidateException : ResourceCode error, valid ResourceCode[BANDWIDTH、ENERGY]"}` or `... [BANDWIDTH、ENERGY、TRON_POWER]` |
 | `resource=TRON_POWER` but `receiver_address` is also set | `{"Error": "class org.tron.core.exception.ContractValidateException : TRON_POWER is not allowed to delegate to other accounts."}` |
 | `receiver_address == owner_address` | `{"Error": "class org.tron.core.exception.ContractValidateException : receiverAddress must not be the same as ownerAddress"}` |

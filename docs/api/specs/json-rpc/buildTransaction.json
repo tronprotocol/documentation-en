@@ -52,8 +52,17 @@
             "description": "Gas price encoded as a hex quantity."
           },
           "value": {
-            "type": "string",
-            "description": "Hex string, amount, or value field accepted by this endpoint."
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "BuildTransactionValueString1"
+              },
+              {
+                "type": "null",
+                "title": "BuildTransactionValueNull2"
+              }
+            ],
+            "description": "TRX amount in sun, encoded as hex; null is accepted."
           },
           "data": {
             "type": "string",
@@ -70,13 +79,11 @@
           "tokenId": {
             "type": "integer",
             "format": "int64",
-            "minimum": 0,
             "description": "TRC10 token id."
           },
           "tokenValue": {
             "type": "integer",
             "format": "int64",
-            "minimum": 0,
             "description": "TRC10 token amount."
           },
           "abi": {
@@ -108,11 +115,11 @@
           },
           "extraData": {
             "type": "string",
-            "description": "Extra transaction data encoded as expected by java-tron."
+            "description": "Memo data for TRX / TRC-10 transfers only; plain text when `visible=true`, hex when `visible=false`."
           },
           "visible": {
             "type": "boolean",
-            "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+            "description": "Whether output addresses use Base58Check and fields such as `asset_name` use UTF-8 text; contract deployment output always uses hex."
           }
         },
         "required": [

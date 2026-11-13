@@ -69,10 +69,10 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
         "type": "VoteWitnessContract"
       }
     ],
-    "ref_block_bytes": "<latest solidified block at construction time>",
-    "ref_block_hash":  "<latest solidified block at construction time>",
-    "expiration":      "<timestamp + 60_000>",
-    "timestamp":       "<construction moment>"
+    "ref_block_bytes": "<reference block selected by trx.reference.block; default: solid>",
+    "ref_block_hash":  "<reference block selected by trx.reference.block; default: solid>",
+    "expiration":      "<head block timestamp + trx.expiration.timeInMilliseconds (default interval: 60_000 ms)>",
+    "timestamp":       "<construction wall-clock time>"
   },
   "raw_data_hex": "<protobuf encoding of raw_data>"
 }

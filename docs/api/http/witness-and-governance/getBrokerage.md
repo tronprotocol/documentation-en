@@ -40,7 +40,7 @@ Response example (Nile, sr-15):
 { "brokerage": 100 }
 ```
 
-> Note: when `address` is missing or empty, no error is reported; the response is `{"brokerage": 0}` — indistinguishable from "this SR's current brokerage is 0", so callers must disambiguate themselves.
+> Missing or empty addresses, and Base58Check addresses rejected for length, checksum, or decoded-address validity, return `{"brokerage": 0}`. This is indistinguishable from a valid zero brokerage. Validate the address before using the result; parser exceptions follow the error table below.
 
 ### Error responses
 
@@ -48,6 +48,7 @@ Response example (Nile, sr-15):
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | GET / POST | `address` starts with `41` but is not valid hex | `{"Error": "INVALID address, <hex parser info>"}` |
-| GET / POST | `address` is not valid base58check | `{"Error": "INVALID address, <base58 check info>"}` |
+| GET / POST | Base58 decoding throws (for example, an illegal character in an address of the expected length) | `{"Error": "INVALID address, <base58 parser info>"}` |
+| GET / POST | Base58Check address has the wrong length, checksum, or decoded-address validity | `{"brokerage": 0}` |
 | POST | POST body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

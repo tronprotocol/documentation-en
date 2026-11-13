@@ -8,9 +8,9 @@ A java-tron node exposes three API surfaces. They share most underlying function
 |---|---|---|
 | Calling from a browser, mobile, or any HTTP client | **HTTP API** | `POST` / `GET` (partial support), no codegen, the broadest method coverage on the node |
 | Server-to-server in a typed language (Java, Go, Rust, C++) where latency or throughput matters | **gRPC API** | Persistent HTTP/2 connections, protobuf encoding, client code can be auto-generated from `.proto` with no hand-written networking |
-| Reusing existing Ethereum tooling (web3.js, ethers.js, MetaMask, Hardhat, Foundry) | **JSON-RPC API** | Implements the `eth_*` / `net_*` / `web3_*` method set so EVM tools work unchanged |
+| Using Ethereum-style queries and contract calls through clients such as web3.js or ethers.js | **JSON-RPC API** | Supports a subset of `eth_*` / `net_*` / `web3_*` methods |
 
-If you're undecided: start with **HTTP API**. It has the smallest setup cost and the widest method coverage. Switch to JSON-RPC only when EVM-tool compatibility is the goal, and to gRPC only when profiling shows the HTTP path is the bottleneck.
+If you're undecided: start with **HTTP API**. It has the smallest setup cost and the widest method coverage. Use JSON-RPC when its supported Ethereum-style queries and calls fit your client, and consider gRPC when profiling shows the HTTP path is the bottleneck.
 
 Notes:
 

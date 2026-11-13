@@ -12,7 +12,7 @@ Query a block by height or tag.
 | `params[0]` | string | yes | Non-negative block height (`0x`-prefixed hex or decimal) or tag: `latest` / `earliest` / `finalized` (`pending` and `safe` are explicitly unsupported, see Error responses) |
 | `params[1]` | bool | yes | Whether to return full transaction objects |
 
-Tag semantics (resolved by `Wallet.getByJsonBlockId`):
+Tag semantics:
 
 | tag | meaning |
 |---|---|
@@ -30,7 +30,7 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 
 A `BlockResult` object (fields described in [`eth_getBlockByHash`](eth_getBlockByHash.md)); returns `null` when not found.
 
-The example below is the real response captured from the Nile testnet curl above (block height `0x3fe1c00` = 67025920; cross-check at [Nile Tronscan](https://nile.tronscan.org/#/block/67025920)):
+The example below is the real response captured from the Nile testnet curl above (block height `0x3fe1c00` = 66984960; cross-check at [Nile Tronscan](https://nile.tronscan.org/#/block/66984960)):
 
 ```json
 {

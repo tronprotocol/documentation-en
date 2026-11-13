@@ -16,7 +16,7 @@ Register a log filter; subsequently use [`eth_getFilterChanges`](eth_getFilterCh
 ```bash
 curl -X POST http://127.0.0.1:8545/jsonrpc \
   -H 'Content-Type: application/json' \
-  -d '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"fromBlock":"latest","address":"0x4112ab345..."}],"id":1}'
+  -d '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"fromBlock":"latest","address":"0x9ff8fc48fb114ccd5bbdc24a86f0c73082f08825"}],"id":1}'
 ```
 
 ## Response
@@ -31,7 +31,7 @@ Behavior:
 
 - The FullNode port stores filters in `eventFilter2ResultFull`; the Solidity port stores them in `eventFilter2ResultSolidity`. The two are mutually invisible.
 - When the node produces / solidifies blocks, matching logs are asynchronously appended to the filter's result queue.
-- **Expires after 5 minutes without a read** (`getFilterChanges` / `getFilterLogs`) (`EXPIRE_SECONDS = 300`); subsequent access throws `-32000 filter not found`.
+- The filter expires after 5 minutes. Only `eth_getFilterChanges` refreshes this timeout; `eth_getFilterLogs` does not. Once an expired filter is removed, access throws `-32000 filter not found`.
 - The number of log filters alive on a single node is capped by `node.jsonrpc.maxLogFilterNum` (default 20000).
 
 ### Error responses

@@ -48,7 +48,7 @@ curl --request POST \
 
 Returns an unsigned `protocol.Transaction` (contract type `CreateSmartContract`).
 
-Special: when `Util.printTransactionToJSON` detects a `CreateSmartContract`, it injects an extra top-level `contract_address` (hex; derived from `owner_address` + nonce, **not affected by `visible`**) into the transaction. After signing and broadcasting, that address takes effect.
+When `Util.printTransactionToJSON` detects a `CreateSmartContract`, it adds a top-level `contract_address` in hex. The node hashes the protobuf-encoded transaction `raw_data` (SHA-256 for standard TRON transactions), concatenates that hash with the `owner_address` bytes, and applies `sha3omit12` to derive the address. Changing `raw_data` changes the predicted address. The contract is created at that address only if the signed deployment transaction executes successfully on-chain.
 
 Response example (real Nile capture):
 
@@ -87,14 +87,14 @@ Response example (real Nile capture):
 }
 ```
 
-> `txID` / `ref_block_*` / `expiration` / `timestamp` / `raw_data_hex` / `contract_address` vary by construction time; the other ephemeral-field semantics are the same as [`/wallet/createtransaction`](../tx-build-and-broadcast/createtransaction.md). `contract_address` is derived locally on the server side from `owner_address + nonce` — **it is not an on-chain result**: the address only takes effect after broadcasting.
+> `txID` / `ref_block_*` / `expiration` / `timestamp` / `raw_data_hex` / `contract_address` vary by construction time; the other ephemeral-field semantics are the same as [`/wallet/createtransaction`](../tx-build-and-broadcast/createtransaction.md). `contract_address` is predicted locally from the transaction raw-data hash and `owner_address` as described above. The contract is created at this address only if the deployment transaction executes successfully.
 
 ### Error responses
 
 | Trigger | Response |
 |---|---|
 | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| `owner_address` is not valid base58check (`visible=true`) | If it contains non-base58 characters: `{"Error": "class java.lang.IllegalArgumentException : <details>"}`. If only the checksum is wrong, `Util.getHexAddress` silently returns an empty string; `CreateSmartContract` construction does not validate non-empty owner, and returns a valid transaction with the `owner_address` field missing (signing/broadcasting will fail later). |
+| `owner_address` is not valid base58check (`visible=true`) | Non-base58 characters throw `{"Error": "class java.lang.IllegalArgumentException : <details>"}` only when the input is exactly 34 characters long. Incorrect input length, bad checksum, or an invalid decoded address causes `Util.getHexAddress` to return an empty hex string; if the other inputs are valid, construction returns a transaction with the `owner_address` field missing (the transaction will be rejected when broadcast). |
 | `owner_address` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (direct call to `ByteArray.fromHexString`) |
 | `bytecode` is not valid hex | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (direct call to `ByteArray.fromHexString`) |
 | `abi` is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |

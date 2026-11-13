@@ -1,6 +1,6 @@
 # /wallet/getpaginatednowwitnesslist
 
-Paginated query of currently active SRs.
+Paginated query of all SR candidates, sorted by their current vote totals. These totals include vote changes in the current cycle; the results are not restricted to the 27 active SRs or to candidates with `isJobs=true`.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetPaginatedNowWitnessListServlet.java`
 - Method: `GET` / `POST`
@@ -15,8 +15,8 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 |---|---|---|---|---|
 | `offset` | GET | int64 | Yes | Starting offset; omission reaches `Long.parseLong(null)` and fails |
 | `offset` | POST | int64 | No | Starting offset; Protobuf default is `0` |
-| `limit` | GET | int64 | Yes | Page size; omission reaches `Long.parseLong(null)` and fails |
-| `limit` | POST | int64 | No | Page size; Protobuf default is `0`, which returns an empty list |
+| `limit` | GET | int64 | Yes | Page size, capped at 1000; omission reaches `Long.parseLong(null)` and fails |
+| `limit` | POST | int64 | No | Page size, capped at 1000; Protobuf default is `0`, which returns `{}` |
 | `visible` | GET / POST | bool | No | Address format |
 
 Example:
@@ -35,7 +35,9 @@ curl --request POST \
 ```
 ## Response
 
-Same fields as [`/wallet/listwitnesses`](listwitnesses.md).
+Same fields as [`/wallet/listwitnesses`](listwitnesses.md), but `voteCount` includes the current cycle's vote changes before sorting and pagination. `/wallet/listwitnesses` returns the stored vote counts.
+
+`limit <= 0`, `offset < 0`, or an offset beyond the candidate list returns `{}`. Values of `limit` above 1000 are silently reduced to 1000; advance the offset by the number of entries actually returned.
 
 Response example (Nile, limit=2; `voteCount`, `latestBlockNum`, `latestSlotNum` change over time):
 

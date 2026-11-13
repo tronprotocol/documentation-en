@@ -1,6 +1,6 @@
 # /wallet/triggersmartcontract
 
-Trigger a smart contract (state-changing call). Returns the unsigned transaction and pre-execution result.
+Build an unsigned smart-contract transaction and return its construction status. When the contract's on-chain ABI marks the function as `view` or `pure`, or sets the legacy `constant` flag to `true`, this endpoint executes a constant call and returns its simulation result.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/TriggerSmartContractServlet.java`
 - Method: `POST`
@@ -50,7 +50,7 @@ curl --request POST \
 |---|---|---|
 | `transaction` | Transaction | Unsigned transaction |
 | `txid` | string(hex) | Transaction hash |
-| `constant_result` | repeated bytes(hex) | Populated only when the ABI marks the function as `view` / `pure` (state-changing calls usually don't have this) |
+| `constant_result` | repeated bytes(hex) | Populated only when the contract's on-chain ABI marks the function as `view` or `pure`, or sets the legacy `constant` flag to `true`; ordinary state-changing calls are not simulated |
 | `result` | Return | Status |
 | `energy_used` | int64 | Populated only on the constant-call path; not returned for ordinary state-changing calls |
 | `energy_penalty` | int64 | Energy penalty (if any) |
@@ -68,7 +68,7 @@ Response example (real Nile capture):
         {
           "parameter": {
             "value": {
-              "data":             "a9059cbb000000000000000000000000088a2bfcb1c7271029fd69a66859d5556089588400000000000000000000000000000000000000000000000000000000000000064",
+              "data":             "a9059cbb000000000000000000000000088a2bfcb1c7271029fd69a66859d555608958840000000000000000000000000000000000000000000000000000000000000064",
               "owner_address":    "41dd791d6b49e190062d650e6a23c575510d35f2f9",
               "contract_address": "41eca9bc828a3005b9a3b909f2cc5c2a54794de05f"
             },
@@ -92,7 +92,7 @@ Response example (real Nile capture):
 
 > For simulation only (no on-chain effect), use [`/wallet/triggerconstantcontract`](triggerconstantcontract.md); for energy estimation only, use [`/wallet/estimateenergy`](estimateenergy.md).
 
-> When the ABI marks the target function as `view` or `pure`, this endpoint is
+> When the contract's on-chain ABI marks the target function as `view` or `pure`, or sets the legacy `constant` flag to `true`, this endpoint is
 > dispatched through the constant-call path and is therefore subject to
 > [`vm.constantCallTimeoutMs`](../../../using_javatron/configuration.md#tvm-and-constant-call-configuration).
 

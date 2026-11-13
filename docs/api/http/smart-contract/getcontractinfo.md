@@ -66,7 +66,7 @@ Returns `{}` if not found.
 | Method | Trigger | Response |
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| GET / POST | `value` is not valid base58check (`visible=true`) | If it contains non-base58 characters: `{"Error": "class java.lang.IllegalArgumentException : <details>"}`. If only the checksum is wrong, `Util.getHexAddress` silently returns an empty string → contract is not found and `{}` is returned. |
+| GET / POST | `value` is not valid base58check (`visible=true`) | Non-base58 characters throw `{"Error": "class java.lang.IllegalArgumentException : <details>"}` only when the input is exactly 34 characters long. Incorrect input length, bad checksum, or an invalid decoded address causes `Util.getHexAddress` to return an empty hex string, so no contract is found and `{}` is returned. |
 | GET / POST | `value` is not valid hex (`visible=false`) | `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <details>"}` |
 | POST | Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

@@ -15,9 +15,9 @@ Build a TRC-10 token issuance transaction.
 | `abbr` | string | No | Abbreviation (UTF-8 encoded as hex) |
 | `total_supply` | int64 | Yes | Total supply |
 | `frozen_supply` | repeated FrozenSupply | No | Frozen portion; element `{frozen_amount, frozen_days}` |
-| `trx_num` | int32 | Yes | Exchange ratio denominator (trx_num TRX = num tokens) |
-| `num` | int32 | Yes | Exchange ratio numerator |
-| `precision` | int32 | No | Precision |
+| `trx_num` | int32 | Yes | Exchange ratio denominator, in sun: `trx_num` sun buys `num` token base units |
+| `num` | int32 | Yes | Exchange ratio numerator, in token base units |
+| `precision` | int32 | No | Token decimal precision |
 | `start_time` | int64 | Yes | Fundraising start time, milliseconds |
 | `end_time` | int64 | Yes | Fundraising end time, milliseconds |
 | `description` | string | No | Description (UTF-8 hex) |
@@ -26,6 +26,8 @@ Build a TRC-10 token issuance transaction.
 | `public_free_asset_net_limit` | int64 | No | Public free bandwidth quota for this token |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Format for addresses and text fields |
+
+Purchases receive `floor(amount * num / trx_num)` token base units, where `amount` is in sun (1 TRX = 1,000,000 sun). In the example below, `trx_num=1` and `num=1` set a price of 1 sun per token base unit.
 
 Example:
 
@@ -109,7 +111,7 @@ Cost: issuing a TRC-10 burns a sizable amount of TRX (governed by chain paramete
 | `end_time` missing | `{"Error": "... : End time should be not empty"}` |
 | `end_time <= start_time` | `{"Error": "... : End time should be greater than start time"}` |
 | `start_time <= current block time` | `{"Error": "... : Start time should be greater than HeadBlockTime"}` |
-| Token with the same name already exists | `{"Error": "... : Token exists"}` |
+| Token with the same name already exists and `AllowSameTokenName = 0` | `{"Error": "... : Token exists"}`; when the proposal is enabled, different issuers may use the same name and tokens are distinguished by ID |
 | `total_supply <= 0` | `{"Error": "... : TotalSupply must greater than 0!"}` |
 | `trx_num <= 0` | `{"Error": "... : TrxNum must greater than 0!"}` |
 | `num <= 0` | `{"Error": "... : Num must greater than 0!"}` |

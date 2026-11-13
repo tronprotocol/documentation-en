@@ -15,7 +15,7 @@ Pass the JSON form of `protocol.Transaction` directly (with the collected `signa
 | `raw_data` | object | Yes | Same as `createtransaction` response |
 | `raw_data_hex` | string | No (node ignores) | Same as [`broadcasttransaction`](broadcasttransaction.md): client display helper, not used for signature verification |
 | `signature` | string[] | No | Collected signatures; when omitted, the request is still parsed and `current_weight` remains `0` |
-| `visible` | bool | No | Format of address / text fields (the response includes `result.message`, which is affected by `visible`) |
+| `visible` | bool | No | Controls address / bytes-field formatting; `result.message` is a protobuf string and remains JSON text regardless of `visible` |
 
 Example: the request body is a Transaction JSON with `signature`, structured the same as [`/wallet/broadcasttransaction`](broadcasttransaction.md).
 
@@ -42,8 +42,8 @@ curl --request POST \
 | `permission` | Permission | The currently effective permission |
 | `current_weight` | int64 | Currently accumulated weight |
 | `result.code` | enum | `ENOUGH_PERMISSION` / `NOT_ENOUGH_PERMISSION` / `SIGNATURE_FORMAT_ERROR` / `COMPUTE_ADDRESS_ERROR` / `PERMISSION_ERROR` / `OTHER_ERROR` |
-| `result.message` | string | Error description |
-| `transaction` | TransactionExtention | Original transaction; its `transaction.transaction` field is rewritten by `Util.printTransactionToJSON` into a complete unsigned-transaction JSON (with `txID`, `raw_data.contract`, `raw_data_hex`) |
+| `result.message` | string | Error description as JSON text, independent of `visible` |
+| `transaction` | TransactionExtention | The submitted transaction with its collected signatures |
 | `approved_list` | repeated bytes | base58 address array when `visible=true`; hex (21 bytes, `41` prefix) when `visible=false` |
 
 Response example:
@@ -65,14 +65,17 @@ Response example:
   "result":         { "code": "NOT_ENOUGH_PERMISSION" },
   "transaction": {
     "txid":        "<computed from raw_data>",
+    "result":      { "result": true },
     "transaction": { "...": "..." }
   }
 }
 ```
 
-When `current_weight >= permission.threshold`, `code=ENOUGH_PERMISSION` and the transaction can be broadcast.
+When `current_weight >= permission.threshold`, the result code is `ENOUGH_PERMISSION` (the default enum value, omitted from JSON). This confirms only the selected permission's signature threshold. Broadcast still checks signature length, TAPOS, expiration, and transaction validity.
 
-> Note: signature parse, address recovery, and insufficient-permission errors **do not** go through `Util.processError` — they are written into the response's `result.code` / `result.message` (HTTP 200). The table below only lists failures that produce `{"Error": ...}`-shaped responses.
+> Note: after the transaction JSON is decoded, signature-format, address-recovery, and permission-check failures are written into the response's `result.code` / `result.message` (HTTP 200). The table below lists failures that produce `{"Error": ...}`-shaped responses, including invalid signature hex during JSON decoding.
+
+The protobuf JSON parser also accepts a single hex string for `signature` as a one-element list; a non-array value does not always cause a parse error. Use the documented array form for normal requests.
 
 ### Error responses
 
@@ -80,5 +83,7 @@ When `current_weight >= permission.threshold`, `code=ENOUGH_PERMISSION` and the 
 |---|---|
 | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
 | Request body is not valid JSON | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
-| Missing `raw_data`, `raw_data.contract` is not an array, `signature` is not an array or its elements are not hex, field type mismatch in `raw_data`, etc. | `{"Error": "class java.lang.NullPointerException : null"}` (`Util.packTransaction` silently catches `JsonFormat$ParseException` / `ClassCastException` and returns `null`; downstream `getTransactionSignWeight(null)` triggers NPE) |
+| Missing or null `raw_data` / `raw_data.contract` | `{"Error": "class java.lang.NullPointerException : <message>"}` while accessing the missing object or array |
+| `raw_data` is not an object, or `raw_data.contract` is not an array (excluding JSON strings that can be parsed into the required structure) | `{"Error": "class org.tron.json.JSONException : <message>"}`, for example `Field 'contract' is not an array` |
+| Invalid signature hex or a `raw_data` field value that `JsonFormat.merge` cannot decode | `packTransaction` catches the final `JsonFormat$ParseException` and returns `null`; the downstream operation then returns `{"Error": "class java.lang.NullPointerException : <message>"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

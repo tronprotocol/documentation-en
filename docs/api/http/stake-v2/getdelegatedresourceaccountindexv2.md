@@ -47,7 +47,7 @@ Response example (the account neither delegates to others nor receives delegatio
 | Method | Trigger | Response |
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| GET / POST | `value` is not valid base58check (`visible=true`) | With non-base58 characters: `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; if only the checksum is wrong, `Util.getHexAddress` silently returns null → no record found, returns `{}` (GET and POST behave identically; POST converts base58 → hex before merge) |
+| GET / POST | `value` is not valid base58check (`visible=true`) | Non-base58 characters cause `{"Error": "class java.lang.IllegalArgumentException : <details>"}` only when the input is exactly 34 characters long. Incorrect input length, bad checksum, or an invalid decoded address causes `Util.getHexAddress` to return an empty hex string. The resulting decoded address fails the 21-byte length check, returning `{}` (GET and POST behave identically; POST converts base58 → hex before merge) |
 | GET / POST | `value` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
 | POST | Request body is not valid JSON (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` |
 | GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

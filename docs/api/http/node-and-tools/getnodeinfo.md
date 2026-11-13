@@ -1,6 +1,6 @@
 # /wallet/getnodeinfo
 
-Get the running status, version, memory, disk, latest block, and peer-statistics of this node.
+Get the running status, version, CPU, memory, thread/JVM/OS information, latest block, and peer statistics of this node.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetNodeInfoServlet.java`
 - Method: `GET` / `POST`
@@ -32,10 +32,10 @@ Main fields:
 | `currentConnectCount` | int32 | Current peer connections |
 | `activeConnectCount` | int32 | Outbound (active) connections |
 | `passiveConnectCount` | int32 | Inbound (passive) connections |
-| `totalFlow` | int64 | Total traffic |
+| `totalFlow` | int64 | Unpopulated by the current implementation; remains `0` and cannot be used to measure cumulative traffic |
 | `peerList` | repeated PeerInfo | Per-peer details |
 | `configNodeInfo` | ConfigNodeInfo | Config (`codeVersion`, `versionNum`, `p2pVersion`, `listenPort`, etc.) |
-| `machineInfo` | MachineInfo | Machine info (CPU, memory, disk) |
+| `machineInfo` | MachineInfo | CPU, memory, thread, JVM, and OS information |
 | `cheatWitnessInfoMap` | map<string,string> | SR cheating statistics (key is the witness hex address with `41` prefix) |
 
 Response example (key fields only; `peerList`, full `memoryDescInfoList`, `cheatWitnessInfoMap`, etc. omitted):

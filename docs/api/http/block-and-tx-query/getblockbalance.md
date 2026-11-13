@@ -1,6 +1,6 @@
 # /wallet/getblockbalance
 
-Returns the balance trace for all transactions inside a block (block balance trace).
+Returns the block balance trace, containing transactions with recorded TRX balance-change operations. Transactions without such operations are omitted; match entries by `transaction_identifier`, not by their position in the block's transaction list.
 
 - Source: `framework/src/main/java/org/tron/core/services/http/GetBlockBalanceServlet.java`
 - Method: `POST`
@@ -37,7 +37,7 @@ curl --request POST \
 | `block_identifier.hash` | bytes | Block hash |
 | `block_identifier.number` | int64 | Block number |
 | `timestamp` | int64 | Block timestamp in milliseconds |
-| `transaction_balance_trace` | repeated TransactionBalanceTrace | Per-transaction balance changes within the block |
+| `transaction_balance_trace` | repeated TransactionBalanceTrace | Entries for transactions with a nonempty list of recorded balance-change operations |
 
 `TransactionBalanceTrace` (`balance_contract.proto`):
 
@@ -48,7 +48,7 @@ curl --request POST \
 | `type` | string | Contract type, e.g. `TransferContract` |
 | `status` | string | Status |
 
-Response example (only the first transaction shown; the actual response contains 4):
+Response example (only the first trace entry shown; the actual response contains 4 entries):
 
 ```json
 {
@@ -72,7 +72,7 @@ Response example (only the first transaction shown; the actual response contains
 }
 ```
 
-Requires `storage.balance.history.lookup = true` (equivalent to launch flag `--history-balance-lookup`); otherwise any block lookup falls into the "block has no balance trace or does not exist" `ItemNotFoundException` row below.
+The target block must have a balance trace recorded on this node. `storage.balance.history.lookup = true` (equivalent to launch flag `--history-balance-lookup`) enables trace recording; reads access the stored trace regardless of the current setting. Previously recorded traces remain queryable after recording is disabled, and enabling or re-enabling it does not backfill missing history. A missing trace produces the `ItemNotFoundException` shown below.
 
 ### Error responses
 

@@ -12,8 +12,8 @@ The following categories are intentionally not covered:
 
 - **Method**: a few pure-query endpoints accept `GET`, but most POST endpoints only accept `POST` with a JSON body.
 - **GET / POST boundaries**: on endpoints that support both methods, request and error tables identify the applicable method. GET normally reads URL query parameters; POST normally reads a JSON body, except where the endpoint page states that POST reuses query parameters or ignores its body.
-- **`visible`**: when `true`, addresses are base58check strings and text fields (URL, descriptions, etc.) are UTF-8 strings; when `false` (default), they are hex strings.
-- **Builder endpoints** return an unsigned `protocol.Transaction`. The caller signs it locally and broadcasts it via [`/wallet/broadcasttransaction`](tx-build-and-broadcast/broadcasttransaction.md) or [`/wallet/broadcasthex`](tx-build-and-broadcast/broadcasthex.md).
+- **`visible`**: when `true`, designated address bytes fields use base58check and designated text bytes fields (such as URLs and descriptions) use UTF-8 when valid (invalid UTF-8 bytes remain hex); when `false` (default), those bytes fields use hex. Native protobuf `string` fields, including permission names and the messages in `TransactionApprovedList.Result` / `TransactionSignWeight.Result`, always remain JSON text. See each endpoint for the fields affected.
+- **Builder endpoints** return an unsigned transaction, either directly as `protocol.Transaction` or nested in a `TransactionExtention` response with a separate `result` (for example, `/wallet/triggersmartcontract`). Follow the endpoint response schema, extract the transaction, sign it locally, and broadcast it via [`/wallet/broadcasttransaction`](tx-build-and-broadcast/broadcasttransaction.md) or [`/wallet/broadcasthex`](tx-build-and-broadcast/broadcasthex.md).
 - **`Permission_id`**: optional on builder endpoints; selects which `Permission` to use for multi-sig accounts. The field name is case-sensitive.
 - **Amount unit**: TRC-10 amounts use the issuer-defined precision; every other amount is in sun (1 TRX = 1e6 sun).
 - **`int64_as_string`**: GET requests may add `int64_as_string=true` in the URL query. When enabled, int64 / uint64 fields in protobuf JSON responses are serialized as JSON strings to avoid precision loss in clients such as JavaScript. This flag is honored only for GET requests; POST bodies are not affected.
@@ -60,10 +60,10 @@ Catalog IDs and retry classifications are defined by `openapi.yaml` under `x-tro
 | `RETURN_DUP_TRANSACTION_ERROR` | `$.code` or `$.result.code` = `DUP_TRANSACTION_ERROR` | The transaction is already known to the node. | No | `VERIFY_BEFORE_RETRY` | Query by txid before deciding whether a new transaction is required. |
 | `RETURN_TAPOS_ERROR` | `$.code` or `$.result.code` = `TAPOS_ERROR` | The transaction block reference is invalid or stale. | No | `AFTER_REQUEST_REBUILD` | Rebuild with a recent reference block and sign again. |
 | `RETURN_TOO_BIG_TRANSACTION_ERROR` | `$.code` or `$.result.code` = `TOO_BIG_TRANSACTION_ERROR` | The transaction is too large. | No | `AFTER_REQUEST_REBUILD` | Reduce or split the transaction before resubmitting. |
-| `RETURN_TRANSACTION_EXPIRATION_ERROR` | `$.code` or `$.result.code` = `TRANSACTION_EXPIRATION_ERROR` | The transaction has expired. | No | `AFTER_REQUEST_REBUILD` | Rebuild with a new expiration and sign again. |
+| `RETURN_TRANSACTION_EXPIRATION_ERROR` | `$.code` or `$.result.code` = `TRANSACTION_EXPIRATION_ERROR` | The transaction expiration precedes the next block slot, is at or before the head block time, or exceeds 24 hours after the head block time. | No | `AFTER_REQUEST_REBUILD` | Rebuild with an expiration inside the allowed interval and sign again. |
 | `RETURN_SERVER_BUSY` | `$.code` or `$.result.code` = `SERVER_BUSY` | The node has too many pending transactions. | Yes | `SAFE_WITH_BACKOFF` | Retry automatically with exponential backoff and jitter, or use another healthy node. |
-| `RETURN_NO_CONNECTION` | `$.code` or `$.result.code` = `NO_CONNECTION` | The node has no active peer connection. | Yes | `SAFE_WITH_BACKOFF` | Retry with backoff after connectivity recovers, or use another connected node. |
-| `RETURN_NOT_ENOUGH_EFFECTIVE_CONNECTION` | `$.code` or `$.result.code` = `NOT_ENOUGH_EFFECTIVE_CONNECTION` | The node has too few effective peer connections. | Yes | `SAFE_WITH_BACKOFF` | Retry with backoff after effective peers recover, or use another node. |
+| `RETURN_NO_CONNECTION` | `$.code` or `$.result.code` = `NO_CONNECTION` | When `node.rpc.minEffectiveConnection` is nonzero (default: `1`), the node has no active peer connections. | Yes | `SAFE_WITH_BACKOFF` | Retry with backoff after connectivity recovers, or use another connected node. |
+| `RETURN_NOT_ENOUGH_EFFECTIVE_CONNECTION` | `$.code` or `$.result.code` = `NOT_ENOUGH_EFFECTIVE_CONNECTION` | When `node.rpc.minEffectiveConnection` is nonzero (default: `1`), the node has too few effective peer connections, or P2P broadcasting reached no peers. | Yes | `SAFE_WITH_BACKOFF` | Retry with backoff after effective peers recover, or use another node. |
 | `RETURN_BLOCK_UNSOLIDIFIED` | `$.code` or `$.result.code` = `BLOCK_UNSOLIDIFIED` | The node is temporarily in an unsolidified-block state. | Yes | `SAFE_WITH_BACKOFF` | Retry with backoff after block solidification, or use another synchronized node. |
 | `RETURN_OTHER_ERROR` | `$.code` or `$.result.code` = `OTHER_ERROR` | The Return payload reports an unclassified failure. | No | `UNKNOWN` | Inspect the message; do not retry automatically without a more specific transient cause. |
 | `SIGN_WEIGHT_NOT_ENOUGH_PERMISSION` | `$.result.code` = `NOT_ENOUGH_PERMISSION` | The accumulated signature weight is insufficient. | No | `AFTER_REQUEST_REBUILD` | Add valid signatures for the selected permission before trying again. |
@@ -86,7 +86,7 @@ Catalog IDs and retry classifications are defined by `openapi.yaml` under `x-tro
 | [`/wallet/getaccountbalance`](account/getaccountbalance.md) | Query an account's balance at a specific block |
 | [`/wallet/getaccountnet`](account/getaccountnet.md) | Query an account's bandwidth resources |
 | [`/wallet/getaccountresource`](account/getaccountresource.md) | Query bandwidth + energy + TronPower |
-| [`/wallet/createaccount`](account/createaccount.md) | Create an on-chain account (costs 1 TRX) |
+| [`/wallet/createaccount`](account/createaccount.md) | Build an account-creation transaction; execution incurs an additional account-creation fee set by `getCreateNewAccountFeeInSystemContract` (currently 1,000,000 sun, or 1 TRX, on Mainnet). |
 | [`/wallet/updateaccount`](account/updateaccount.md) | Update an account's name |
 | [`/wallet/accountpermissionupdate`](account/accountpermissionupdate.md) | Configure multi-sig permissions |
 | [`/wallet/validateaddress`](account/validateaddress.md) | Validate an address |
@@ -116,7 +116,7 @@ Catalog IDs and retry classifications are defined by `openapi.yaml` under `x-tro
 |---|---|
 | [`/wallet/createtransaction`](tx-build-and-broadcast/createtransaction.md) | Build a TRX transfer transaction |
 | [`/wallet/getsignweight`](tx-build-and-broadcast/getsignweight.md) | Current multi-sig weight |
-| [`/wallet/getapprovedlist`](tx-build-and-broadcast/getapprovedlist.md) | Addresses that have already signed |
+| [`/wallet/getapprovedlist`](tx-build-and-broadcast/getapprovedlist.md) | List signing addresses after all signatures pass validation |
 | [`/wallet/broadcasttransaction`](tx-build-and-broadcast/broadcasttransaction.md) | Broadcast a signed transaction (JSON) |
 | [`/wallet/broadcasthex`](tx-build-and-broadcast/broadcasthex.md) | Broadcast a signed transaction (hex) |
 
@@ -188,7 +188,7 @@ After proposal #70 `UNFREEZE_DELAY_DAYS` was approved (already active on mainnet
 | Endpoint | Description |
 |---|---|
 | [`/wallet/freezebalancev2`](stake-v2/freezebalancev2.md) | Freeze TRX for resources |
-| [`/wallet/unfreezebalancev2`](stake-v2/unfreezebalancev2.md) | Initiate unfreeze (14-day waiting period) |
+| [`/wallet/unfreezebalancev2`](stake-v2/unfreezebalancev2.md) | Initiate unfreeze; the waiting period is set by `UNFREEZE_DELAY_DAYS` |
 | [`/wallet/withdrawexpireunfreeze`](stake-v2/withdrawexpireunfreeze.md) | Withdraw matured unfreezes |
 | [`/wallet/cancelallunfreezev2`](stake-v2/cancelallunfreezev2.md) | Cancel all unmatured unfreezes |
 | [`/wallet/delegateresource`](stake-v2/delegateresource.md) | Delegate resources to another account |

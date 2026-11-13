@@ -58,7 +58,7 @@ The example below is the real response captured from the Nile testnet curl above
           "data": "0x0000...05f",
           "blockHash": "0x0000000003fe1ca05cf728c92ee79f5f2758c3e4e4ea88501826726880e8b81c",
           "blockNumber": "0x3fe1ca0",
-          "blockTimestamp": "0x697999ef",
+          "blockTimestamp": "0x69f18c42",
           "transactionHash": "0x01b4cde4197b9d1a1ff09ef5d2b1d939d3ec2401b3f002ebd0802c0f30a6e4ca",
           "transactionIndex": "0x0",
           "logIndex": "0x0",
@@ -89,7 +89,7 @@ The example below is the real response captured from the Nile testnet curl above
 }
 ```
 
-> The actual response includes all 4 receipts; only the first 2 are shown here for brevity. `cumulativeGasUsed` stays at `0xae29` after index `0x1` because only the contract call at index `0x0` consumed energy (`0xae29`), and the remaining 3 TRX transfers all have `gasUsed` of `0x0`. `logsBloom` is actually 256 bytes of zeros; other fields are the node's real return values.
+> The actual response includes all 4 receipts; only the first 2 are shown here for brevity. `cumulativeGasUsed` stays at `0xae29` after index `0x1` because only the contract call at index `0x0` consumed energy (`0xae29`), and the remaining 3 TRX transfers all have `gasUsed` of `0x0`. The log `data` and `logsBloom` are abbreviated; `logsBloom` is actually 256 bytes of zeros. Other fields are the node's real return values.
 
 ### Error responses
 

@@ -12,10 +12,10 @@ GET reads these fields from URL query parameters; POST reads them from a JSON re
 
 | Field | Method | Type | Required | Description |
 |---|---|---|---|---|
-| `offset` | GET | int64 | Yes | Starting offset; omission reaches `Long.parseLong(null)` and fails |
-| `offset` | POST | int64 | No | Starting offset; Protobuf default is `0` |
-| `limit` | GET | int64 | Yes | Page size; omission reaches `Long.parseLong(null)` and fails |
-| `limit` | POST | int64 | No | Page size; Protobuf default is `0`, which returns an empty list |
+| `offset` | GET | int64 | Yes | Query proposals starting from ID `offset + 1`; omission reaches `Long.parseLong(null)` and fails |
+| `offset` | POST | int64 | No | Query proposals starting from ID `offset + 1`; Protobuf default is `0` |
+| `limit` | GET | int64 | Yes | Page size, capped at 1000; `0` returns `{}`; omission reaches `Long.parseLong(null)` and fails |
+| `limit` | POST | int64 | No | Page size, capped at 1000; Protobuf default is `0`, which returns `{}` |
 | `visible` | GET / POST | bool | No | Address format |
 
 Example:

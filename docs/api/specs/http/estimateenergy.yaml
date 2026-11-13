@@ -48,6 +48,7 @@
                     "failureCondition": "field exists and is not SUCCESS"
                     "catalogIds":
                       - "RETURN_CONTRACT_VALIDATE_ERROR"
+                      - "RETURN_CONTRACT_EXE_ERROR"
                       - "RETURN_OTHER_ERROR"
                     "sources":
                       - "servlet"

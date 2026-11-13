@@ -1,6 +1,6 @@
 # UnfreezeBalanceV2
 
-Initiate an unfreeze (Stake 2.0). Enters a 14-day waiting period, after which the matured amount can be withdrawn via `WithdrawExpireUnfreeze`.
+Initiate an unfreeze (Stake 2.0). The waiting period is set by the chain parameter `UNFREEZE_DELAY_DAYS` (currently 14 days on Mainnet). After maturity, the amount can be withdrawn via `WithdrawExpireUnfreeze`.
 
 - Service: `Wallet` only
 

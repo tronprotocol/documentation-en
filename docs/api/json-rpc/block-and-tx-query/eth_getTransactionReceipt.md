@@ -33,9 +33,9 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 | `contractAddress` | hex | Only set for `CreateSmartContract` type |
 | `logs` | array | Log array (each entry includes `logIndex`, `address`, `data`, `topics[]`, `blockHash`, `blockNumber`, `blockTimestamp`, `transactionHash`, `transactionIndex`, `removed`) |
 | `logsBloom` | hex | Constant 256 bytes of zeros |
-| `status` | hex | `0x1` success / `0x0` failure (based on `TransactionInfo.resultValue <= 1`) |
+| `status` | hex | `0x1` success when `txInfo.getReceipt().getResultValue() <= 1`, otherwise `0x0` |
 | `type` | hex | Constant `0x0` |
-| `root` | null | Not populated (post-Byzantium) |
+| `root` | omitted | This field is unset and excluded from the JSON response rather than emitted as null |
 
 > **Note**: To parse the `logs` field, please ensure the transaction succeeded (`status == "0x1"`) first — this alignment is recommended for data consistency. 
 
@@ -61,7 +61,7 @@ The example below is the real response captured from the Nile testnet curl above
         "address": "0x9ff8fc48fb114ccd5bbdc24a86f0c73082f08825",
         "blockHash": "0x0000000003fe1ca05cf728c92ee79f5f2758c3e4e4ea88501826726880e8b81c",
         "blockNumber": "0x3fe1ca0",
-        "blockTimestamp": "0x697999ef",
+        "blockTimestamp": "0x69f18c42",
         "transactionHash": "0x01b4cde4197b9d1a1ff09ef5d2b1d939d3ec2401b3f002ebd0802c0f30a6e4ca",
         "transactionIndex": "0x0",
         "logIndex": "0x0",
@@ -81,7 +81,7 @@ The example below is the real response captured from the Nile testnet curl above
 }
 ```
 
-> The log `data` is actually 224 bytes; only the head and tail are kept here for brevity. `logsBloom` is actually 256 bytes of zeros; other fields are the node's real return values.
+> The log `data` is actually 288 bytes; only the head and tail are kept here for brevity. `logsBloom` is actually 256 bytes of zeros; other fields are the node's real return values.
 
 ### Error responses
 

@@ -53,19 +53,18 @@ Response when V1 counterparties exist:
 ```json
 {
   "account":      "41dd791d6b49e190062d650e6a23c575510d35f2f9",
-  "fromAccounts": [],
   "toAccounts":   ["4192ad11c1bf16b3b14b0bd6b5c7e2db73a0b5e83a"]
 }
 ```
 
-Returns `{}` when there are no records at all.
+For any 21-byte query address, the response still includes `account` even when no delegation records are found. Empty `fromAccounts` / `toAccounts` lists are omitted. The endpoint returns `{}` if the address is empty or its decoded length is not 21 bytes.
 
 ### Error responses
 
 | Method | Trigger | Response |
 |---|---|---|
 | GET / POST | Request body exceeds `node.http.maxMessageSize` | Usually HTTP 413 `Payload Too Large` when rejected by `SizeLimitHandler` |
-| GET / POST | `value` is not valid base58check (`visible=true`) | With non-base58 characters: `{"Error": "class java.lang.IllegalArgumentException : <details>"}`; if only the checksum is wrong, `Util.getHexAddress` silently returns null → no record found, returns `{}` (GET and POST behave identically; POST converts base58 → hex before merge) |
+| GET / POST | `value` is not valid base58check (`visible=true`) | Non-base58 characters cause `{"Error": "class java.lang.IllegalArgumentException : <details>"}` only when the input is exactly 34 characters long. Incorrect input length, bad checksum, or an invalid decoded address causes `Util.getHexAddress` to return an empty hex string. The resulting decoded address fails the 21-byte length check, returning `{}` (GET and POST behave identically; POST converts base58 → hex before merge) |
 | GET / POST | `value` is not valid hex (`visible=false`) | `{"Error": "class org.bouncycastle.util.encoders.DecoderException : <message>"}` (GET); `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <message>"}` (POST) |
 | POST | Request body is not valid JSON / field type mismatch (POST) | `{"Error": "class org.tron.json.JSONException : <parser info>"}` or `{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : <decoder info>"}` |
 | GET / POST | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

@@ -1,6 +1,6 @@
 # GetTransactionById
 
-Look up a transaction by its txID (**execution result not included** — returns only the pre-execution transaction body).
+Look up a transaction by its txID, including its basic execution status in `ret[].contractRet`. For detailed execution information such as the receipt, logs, and internal transactions, use [`GetTransactionInfoById`](GetTransactionInfoById.md).
 
 - Service: both `Wallet` and `WalletSolidity`
 

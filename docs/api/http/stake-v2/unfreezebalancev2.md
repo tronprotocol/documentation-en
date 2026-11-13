@@ -1,6 +1,6 @@
 # /wallet/unfreezebalancev2
 
-Initiate an unfreeze request (Stake 2.0). Enters a 14-day waiting period; after maturity, withdraw via [`/wallet/withdrawexpireunfreeze`](withdrawexpireunfreeze.md).
+Initiate an unfreeze request (Stake 2.0). The waiting period is set by the chain parameter `UNFREEZE_DELAY_DAYS`. After maturity, withdraw via [`/wallet/withdrawexpireunfreeze`](withdrawexpireunfreeze.md).
 
 - Source: `framework/src/main/java/org/tron/core/services/http/UnFreezeBalanceV2Servlet.java`
 - Method: `POST`
@@ -60,10 +60,10 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
         "type": "UnfreezeBalanceV2Contract"
       }
     ],
-    "ref_block_bytes": "<latest solidified block at construction time>",
-    "ref_block_hash":  "<latest solidified block at construction time>",
-    "expiration":      "<timestamp + 60_000>",
-    "timestamp":       "<construction moment>"
+    "ref_block_bytes": "<reference block selected by trx.reference.block; default: solid>",
+    "ref_block_hash":  "<reference block selected by trx.reference.block; default: solid>",
+    "expiration":      "<head block timestamp + trx.expiration.timeInMilliseconds (default interval: 60_000 ms)>",
+    "timestamp":       "<construction wall-clock time>"
   },
   "raw_data_hex": "<protobuf encoding of raw_data>"
 }

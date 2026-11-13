@@ -15,9 +15,9 @@ Query event logs by criteria.
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| `fromBlock` | string | `latest` | Start block; accepts `latest` / `earliest` / `finalized` or a hex height (`pending` and `safe` are explicitly unsupported) |
+| `fromBlock` | string | `latest`, or `toBlock` if it refers to an earlier block | Start block; accepts `latest` / `earliest` / `finalized` or a hex height (`pending` and `safe` are explicitly unsupported) |
 | `toBlock` | string | `latest` | End block; same as above |
-| `address` | string \| string[] | null | Single or multiple contract addresses; only logs produced by these addresses match |
+| `address` | string \| string[] | null | Single or multiple 20-byte hex contract addresses, with or without `0x`; remove the Tron `41` prefix. Only logs produced by these addresses match |
 | `topics` | array | null | Up to 4 slots; each slot can be a single topic, `null`, or an array of topics (OR semantics); slots are AND-combined |
 | `blockHash` | string | null | If specified, equivalent to `fromBlock = toBlock = that block height` (EIP-234); mutually exclusive with `fromBlock` / `toBlock` |
 
@@ -63,7 +63,7 @@ The example below is the real response captured from the Nile testnet curl above
       "address": "0x9ff8fc48fb114ccd5bbdc24a86f0c73082f08825",
       "blockHash": "0x0000000003fe1ca05cf728c92ee79f5f2758c3e4e4ea88501826726880e8b81c",
       "blockNumber": "0x3fe1ca0",
-      "blockTimestamp": "0x697999ef",
+      "blockTimestamp": "0x69f18c42",
       "transactionHash": "0x01b4cde4197b9d1a1ff09ef5d2b1d939d3ec2401b3f002ebd0802c0f30a6e4ca",
       "transactionIndex": "0x0",
       "logIndex": "0x0",
@@ -79,7 +79,7 @@ The example below is the real response captured from the Nile testnet curl above
 }
 ```
 
-> The log `data` is actually 224 bytes; only the head and tail are kept here for brevity. Other fields are the node's real return values.
+> The log `data` is actually 288 bytes; only the head and tail are kept here for brevity. Other fields are the node's real return values.
 
 ### Error responses
 

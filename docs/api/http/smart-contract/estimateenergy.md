@@ -73,6 +73,7 @@ Before the request reaches this servlet, shared layers can still return a differ
 | The node does not have `vm.estimateEnergy` enabled | false | `CONTRACT_VALIDATE_ERROR` | `this node does not support estimate energy` |
 | The node has constant-call support disabled | false | `CONTRACT_VALIDATE_ERROR` | `this node does not support constant, so estimate energy cannot work` |
 | `contract_address` is set but the contract does not exist | false | `CONTRACT_VALIDATE_ERROR` | `Smart contract is not exist.` |
-| EVM exception / retry exhausted / other non-validation exception | false | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) |
+| Initial simulation at the chain's maximum fee limit returns `FAILED` (for example, revert or a runtime error) | default (false) | `CONTRACT_EXE_ERROR` | `REVERT opcode executed` or the runtime error text |
+| Thrown non-validation exception, including an exhausted timeout retry | false | `OTHER_ERROR` | `<exceptionClass> : <message>` (`"` → `'`) |
 
-On the exception path `energy_required` is not populated (value is 0).
+On the `CONTRACT_EXE_ERROR` path and exception paths, `energy_required` is not populated (default value 0, omitted from JSON).

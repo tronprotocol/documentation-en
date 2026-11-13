@@ -14,10 +14,12 @@ Delegate already-frozen resources to another account (Stake 2.0).
 | `receiver_address` | string | Yes | Receiver address |
 | `balance` | int64 | Yes | Frozen amount to delegate (sun) |
 | `resource` | enum | No | `BANDWIDTH` / `ENERGY` |
-| `lock` | bool | No | Whether the delegation is locked (cannot be undelegated early when true) |
-| `lock_period` | int64 | No | Lock duration (block count, only when `lock=true`) |
+| `lock` | bool | No | Whether the delegation is locked; defaults to `false`. When `true`, it cannot be undelegated before the lock expires |
+| `lock_period` | int64 | No | Lock duration in blocks when `lock=true`; omitted or `0` uses `86_400` blocks (3 days). Delegation requires #70 `UNFREEZE_DELAY_DAYS` > `0`; custom periods additionally require #78 `MAX_DELEGATE_LOCK_PERIOD` > `86_400` |
 | `Permission_id` | int32 | No | Multi-sig permission ID |
 | `visible` | bool | No | Address format |
+
+When `lock=true` and custom periods are enabled, `lock_period` must be nonnegative and must not exceed the value of #78 `MAX_DELEGATE_LOCK_PERIOD`. When `lock=true` and custom periods are disabled, `lock_period` is ignored and the 3-day default is used.
 
 Example:
 
@@ -67,10 +69,10 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
         "type": "DelegateResourceContract"
       }
     ],
-    "ref_block_bytes": "<latest solidified block at construction time>",
-    "ref_block_hash":  "<latest solidified block at construction time>",
-    "expiration":      "<timestamp + 60_000>",
-    "timestamp":       "<construction moment>"
+    "ref_block_bytes": "<reference block selected by trx.reference.block; default: solid>",
+    "ref_block_hash":  "<reference block selected by trx.reference.block; default: solid>",
+    "expiration":      "<head block timestamp + trx.expiration.timeInMilliseconds (default interval: 60_000 ms)>",
+    "timestamp":       "<construction wall-clock time>"
   },
   "raw_data_hex": "<protobuf encoding of raw_data>"
 }
@@ -93,7 +95,7 @@ When validation passes, returns an unsigned `protocol.Transaction`. Structure ou
 | Invalid `receiver_address` | `{"Error": "... : Invalid receiverAddress"}` |
 | `receiver_address == owner_address` | `{"Error": "... : receiverAddress must not be the same as ownerAddress"}` |
 | receiver account does not exist | `{"Error": "... : Account[<address>] not exists"}` |
-| `lock_period` out of range (after proposal #76) | `{"Error": "... : The lock period of delegate resource cannot be less than 0 and cannot exceed <max>!"}` |
+| Effective `lock_period` out of range when `lock=true` and chain parameter #78 `MAX_DELEGATE_LOCK_PERIOD` enables custom periods | `{"Error": "... : The lock period of delegate resource cannot be less than 0 and cannot exceed <max>!"}` |
 | Existing locked delegation still in lock period and the new lock period is shorter | `{"Error": "... : The lock period for <Resource> this time cannot be less than the remaining time[<n>ms] of the last lock period for <Resource>!"}` |
 | receiver is a contract address | `{"Error": "... : Do not allow delegate resources to contract addresses"}` |
 | Other exceptions | `{"Error": "<exceptionClass> : <message>"}` |

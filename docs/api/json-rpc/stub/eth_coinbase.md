@@ -17,7 +17,7 @@ curl -X POST https://nile.trongrid.io/jsonrpc \
 
 ## Response
 
-The string returned by `wallet.getCoinbase()`. Only returns a value when the node explicitly configures `node.etherbase`. With it configured, the response looks like:
+The string returned by `wallet.getCoinbase()`. The node must run in witness mode (`isWitness=true`), and an address derived from its configured local witness private keys must match an entry in the chain's witness list. The first matching local address is returned. For a matching address, an illustrative response is:
 
 ```json
 { "jsonrpc": "2.0", "id": 1, "result": "0x41a614f803b6fd780986a42c78ec9c7f77e6ded13c" }
@@ -29,9 +29,9 @@ The string returned by `wallet.getCoinbase()`. Only returns a value when the nod
 
 | Trigger | Code | message |
 |---|---|---|
-| Node has no etherbase configured | `-32000` | `etherbase must be explicitly specified` |
+| Node is not in witness mode, or none of its local witness key addresses matches the chain witness list | `-32000` | `etherbase must be explicitly specified` |
 
-The example below is the real response captured from the Nile testnet curl above (`nile.trongrid.io` has no etherbase configured, so it goes through the error branch):
+The example below is the real response captured from the Nile testnet curl above (the serving node does not return a matching witness address, so it goes through the error branch):
 
 ```json
 {

@@ -40,7 +40,7 @@ The example below is the real response captured from a Nile testnet call:
 }
 ```
 
-> All three values change in real time with node state. `highestBlock` is extrapolated from local system time, not from the actual highest block height of any peer; it will keep growing even when the network is disconnected.
+> All three values change in real time with node state. `highestBlock` is extrapolated from local system time, not from the actual highest block height of any peer; it can keep growing while block production or delivery has stalled, provided the peer list remains non-empty. Once the peer list is empty, this method returns `false` instead of a height estimate.
 
 ### Error responses
 

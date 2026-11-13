@@ -1,6 +1,6 @@
 # GetBlockBalanceTrace
 
-Return the balance-change trace (block balance trace) for all transactions in a given block.
+Return the block balance trace, containing only transactions with recorded TRX balance changes. Match entries by `transaction_identifier`; the list need not contain every transaction in the block.
 
 - Service: `Wallet` only
 

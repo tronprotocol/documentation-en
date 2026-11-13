@@ -31,4 +31,4 @@ Always returns `true` on success:
 
 | Trigger | Code | message |
 |---|---|---|
-| Filter ID does not exist (expired / never registered / belongs to another port) | `-32000` | `filter not found` |
+| Filter ID does not exist (never registered, already removed, expired and cleaned up, or belongs to another port) | `-32000` | `filter not found` |
