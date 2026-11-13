@@ -2,7 +2,7 @@
   "post":
     "tags":
       - "Stake 2.0"
-    "summary": "Initiate unfreeze (14-day waiting period)"
+    "summary": "Initiate unfreeze; the waiting period is set by UNFREEZE_DELAY_DAYS"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/stake-v2/unfreezebalancev2.md` for examples and detailed behavior."
     "operationId": "wallet_unfreezebalancev2_post"
     "externalDocs":

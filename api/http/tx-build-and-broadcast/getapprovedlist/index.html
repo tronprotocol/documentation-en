@@ -3744,7 +3744,7 @@
 
 
 <h1 id="walletgetapprovedlist">/wallet/getapprovedlist<a class="headerlink" href="#walletgetapprovedlist" title="Permanent link">&para;</a></h1>
-<p>Return the list of addresses that have already signed a multi-sig transaction (does not compute weight, just lists signers).</p>
+<p>Return the transaction's signing addresses after validating all signatures against the account's current permissions. If validation fails, return an error without an approved-address list.</p>
 <ul>
 <li>Source: <code>framework/src/main/java/org/tron/core/services/http/GetTransactionApprovedListServlet.java</code></li>
 <li>Method: <code>POST</code></li>
@@ -3778,13 +3778,13 @@
 <td><code>signature</code></td>
 <td>string[]</td>
 <td>No</td>
-<td>Collected signatures; when omitted, the request is still parsed and the approved-address list is empty</td>
+<td>Collected signatures; when omitted, the request is still parsed and the approved-address list is empty if the account and permission checks pass</td>
 </tr>
 <tr>
 <td><code>visible</code></td>
 <td>bool</td>
 <td>No</td>
-<td>Format of address / text fields (the response includes <code>result.message</code>, which is affected by <code>visible</code>)</td>
+<td>Controls address / bytes-field formatting; <code>result.message</code> is a protobuf string and remains JSON text regardless of <code>visible</code></td>
 </tr>
 </tbody>
 </table>
@@ -3802,7 +3802,7 @@
 <span class="s1">&#39;</span>
 </code></pre></div>
 <blockquote>
-<p>The above is a placeholder. A real permission check normally uses a multi-sig transaction JSON produced by <a href="../createtransaction/"><code>/wallet/createtransaction</code></a> and then signed, but the endpoint also accepts an empty or omitted <code>signature</code> array and returns no approved addresses.</p>
+<p>The above is a placeholder. A real permission check normally uses a multi-sig transaction JSON produced by <a href="../createtransaction/"><code>/wallet/createtransaction</code></a> and then signed, but the endpoint also accepts an empty or omitted <code>signature</code> array and returns no approved addresses if the account and permission checks pass.</p>
 </blockquote>
 <h2 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h2>
 <table>
@@ -3827,28 +3827,31 @@
 <tr>
 <td><code>result.message</code></td>
 <td>string</td>
-<td>Error description (UTF-8 when <code>visible=true</code>, otherwise hex)</td>
+<td>Error description as JSON text, independent of <code>visible</code></td>
 </tr>
 <tr>
 <td><code>transaction</code></td>
 <td>TransactionExtention</td>
-<td>Original transaction; its <code>transaction.transaction</code> is rewritten by <code>Util.printTransactionToJSON</code> into a complete unsigned-transaction JSON (with <code>txID</code>, <code>raw_data.contract</code>, <code>raw_data_hex</code>)</td>
+<td>The submitted transaction with its collected signatures</td>
 </tr>
 </tbody>
 </table>
+<p>On success, <code>result.code</code> has the protobuf default <code>SUCCESS</code> and is omitted from JSON, so the result object is <code>{}</code> when there is no message.</p>
 <p>Response example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;approved_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;41dd791d6b49e190062d650e6a23c575510d35f2f9&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w">       </span><span class="p">{},</span>
 <span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;&lt;computed from raw_data&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p>Note: signature parse and address recovery errors <strong>do not</strong> go through <code>Util.processError</code> — they are written into the response's <code>result.code</code> / <code>result.message</code> (HTTP 200). The table below only lists failures that produce <code>{"Error": ...}</code>-shaped responses.</p>
+<p>Note: after the transaction JSON is decoded, signature-format, address-recovery, and permission-check failures are written into the response's <code>result.code</code> / <code>result.message</code> (HTTP 200). The table below lists failures that produce <code>{"Error": ...}</code>-shaped responses, including invalid signature hex during JSON decoding.</p>
 </blockquote>
+<p>The protobuf JSON parser also accepts a single hex string for <code>signature</code> as a one-element list; a non-array value does not always cause a parse error. Use the documented array form for normal requests.</p>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3867,8 +3870,16 @@
 <td><code>{"Error": "class org.tron.json.JSONException : &lt;parser info&gt;"}</code></td>
 </tr>
 <tr>
-<td>Missing <code>raw_data</code>, <code>raw_data.contract</code> is not an array, <code>signature</code> is not an array or its elements are not hex, field type mismatch in <code>raw_data</code>, etc.</td>
-<td><code>{"Error": "class java.lang.NullPointerException : null"}</code> (<code>Util.packTransaction</code> silently catches <code>JsonFormat$ParseException</code> / <code>ClassCastException</code> and returns <code>null</code>; downstream <code>getTransactionApprovedList(null)</code> triggers NPE)</td>
+<td>Missing or null <code>raw_data</code> / <code>raw_data.contract</code></td>
+<td><code>{"Error": "class java.lang.NullPointerException : &lt;message&gt;"}</code> while accessing the missing object or array</td>
+</tr>
+<tr>
+<td><code>raw_data</code> is not an object, or <code>raw_data.contract</code> is not an array (excluding JSON strings that can be parsed into the required structure)</td>
+<td><code>{"Error": "class org.tron.json.JSONException : &lt;message&gt;"}</code>, for example <code>Field 'contract' is not an array</code></td>
+</tr>
+<tr>
+<td>Invalid signature hex or a <code>raw_data</code> field value that <code>JsonFormat.merge</code> cannot decode</td>
+<td><code>packTransaction</code> catches the final <code>JsonFormat$ParseException</code> and returns <code>null</code>; the downstream operation then returns <code>{"Error": "class java.lang.NullPointerException : &lt;message&gt;"}</code></td>
 </tr>
 <tr>
 <td>Other exceptions</td>
@@ -3896,7 +3907,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

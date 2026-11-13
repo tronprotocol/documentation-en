@@ -3857,7 +3857,7 @@
 <tr>
 <td>GET / POST</td>
 <td><code>address</code> is not valid base58check (<code>visible=true</code>)</td>
-<td>GET: non-base58 characters → <code>{"Error": "class java.lang.IllegalArgumentException : &lt;details&gt;"}</code>; checksum-only error makes <code>Util.getHexAddress</code> silently return an empty string, the lookup misses and <code>{}</code> is returned. POST (via <code>JsonFormat.merge</code>): non-base58 characters → <code>{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : &lt;pos&gt;: INVALID base58 String, ..."}</code>; checksum-only error → <code>{"Error": "class java.lang.NullPointerException : null"}</code></td>
+<td>GET: a 34-character value containing non-base58 characters → <code>{"Error": "class java.lang.IllegalArgumentException : &lt;details&gt;"}</code>; an empty value, a length other than 34, an invalid address prefix, or a bad checksum makes <code>Util.getHexAddress</code> return an empty string, the lookup misses and <code>{}</code> is returned. POST (via <code>JsonFormat.merge</code>): illegal characters, invalid length, or a bad checksum → <code>{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : &lt;pos&gt;: invalid address for field: protocol.Account.address"}</code></td>
 </tr>
 <tr>
 <td>GET / POST</td>
@@ -3896,7 +3896,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

@@ -3782,7 +3782,7 @@
 <tr>
 <td><code>fromBlock</code></td>
 <td>string</td>
-<td><code>latest</code></td>
+<td><code>latest</code>, or <code>toBlock</code> if it refers to an earlier block</td>
 <td>Start block; accepts <code>latest</code> / <code>earliest</code> / <code>finalized</code> or a hex height (<code>pending</code> and <code>safe</code> are explicitly unsupported)</td>
 </tr>
 <tr>
@@ -3795,7 +3795,7 @@
 <td><code>address</code></td>
 <td>string | string[]</td>
 <td>null</td>
-<td>Single or multiple contract addresses; only logs produced by these addresses match</td>
+<td>Single or multiple 20-byte hex contract addresses, with or without <code>0x</code>; remove the Tron <code>41</code> prefix. Only logs produced by these addresses match</td>
 </tr>
 <tr>
 <td><code>topics</code></td>
@@ -3895,7 +3895,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x9ff8fc48fb114ccd5bbdc24a86f0c73082f08825&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;blockHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0000000003fe1ca05cf728c92ee79f5f2758c3e4e4ea88501826726880e8b81c&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;blockNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x3fe1ca0&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;blockTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x697999ef&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;blockTimestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x69f18c42&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;transactionHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x01b4cde4197b9d1a1ff09ef5d2b1d939d3ec2401b3f002ebd0802c0f30a6e4ca&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;transactionIndex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;logIndex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
@@ -3911,7 +3911,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p>The log <code>data</code> is actually 224 bytes; only the head and tail are kept here for brevity. Other fields are the node's real return values.</p>
+<p>The log <code>data</code> is actually 288 bytes; only the head and tail are kept here for brevity. Other fields are the node's real return values.</p>
 </blockquote>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
 <table>
@@ -4005,7 +4005,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

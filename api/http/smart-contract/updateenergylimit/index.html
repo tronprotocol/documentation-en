@@ -3828,10 +3828,10 @@
 <span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UpdateEnergyLimitContract&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;latest solidified block at construction time&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;&lt;latest solidified block at construction time&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w">      </span><span class="s2">&quot;&lt;timestamp + 60_000&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w">       </span><span class="s2">&quot;&lt;construction moment&gt;&quot;</span>
+<span class="w">    </span><span class="nt">&quot;ref_block_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;reference block selected by trx.reference.block; default: solid&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ref_block_hash&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;&lt;reference block selected by trx.reference.block; default: solid&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w">      </span><span class="s2">&quot;&lt;head block timestamp + trx.expiration.timeInMilliseconds (default interval: 60_000 ms)&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w">       </span><span class="s2">&quot;&lt;construction wall-clock time&gt;&quot;</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;raw_data_hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;protobuf encoding of raw_data&gt;&quot;</span>
 <span class="p">}</span>
@@ -3854,7 +3854,7 @@
 <td><code>{"Error": "class org.tron.json.JSONException : &lt;parser info&gt;"}</code> or <code>{"Error": "class org.tron.core.services.http.JsonFormat$ParseException : &lt;decoder info&gt;"}</code></td>
 </tr>
 <tr>
-<td>Chain has not enabled the ENERGY_LIMIT proposal</td>
+<td>Latest block height is below the configured ENERGY_LIMIT activation height (<code>enery.limit.block.num</code>)</td>
 <td><code>{"Error": "class org.tron.core.exception.ContractValidateException : contract type error, unexpected type [UpdateEnergyLimitContract]"}</code></td>
 </tr>
 <tr>
@@ -3903,7 +3903,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2026 02:51:44 UTC">July 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

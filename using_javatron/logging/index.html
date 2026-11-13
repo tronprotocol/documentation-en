@@ -542,12 +542,27 @@
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#use-a-custom-logback-configuration" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#use-a-custom-logback-configuration" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       Use a custom Logback configuration
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Use a custom Logback configuration" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#common-logging-settings" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Common logging settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3824,12 +3839,27 @@
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#use-a-custom-logback-configuration" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#use-a-custom-logback-configuration" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       Use a custom Logback configuration
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Use a custom Logback configuration" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#common-logging-settings" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Common logging settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3928,6 +3958,7 @@
 </tbody>
 </table>
 <p>Each default rolling file appender rolls over daily and when its active file reaches approximately 500 MB. For each appender, archived files are compressed with gzip and retained for up to seven daily periods, subject to a 50 GB archive size cap.</p>
+<p>To change retention days, file sizes, or log paths, see <a href="#common-logging-settings">Common logging settings</a>.</p>
 <p>The console appender is defined but is not attached to the root logger by default.</p>
 <p>The <code>LEVELDB</code> and <code>ROCKSDB</code> loggers write directly to <code>db.log</code> through the <code>DB</code> appender, without an asynchronous queue. The gRPC <code>GRPC</code> appender uses a non-blocking queue of 1,024 events. If the queue is full, new gRPC log events may be dropped instead of blocking gRPC threads. By contrast, the main <code>ASYNC</code> appender uses a queue of 100 events and blocks producers when its queue is full. Setting the gRPC appender's <code>discardingThreshold</code> to <code>0</code> prevents priority-based early discarding, but does not prevent drops when the non-blocking queue is full.</p>
 <h2 id="jvm-garbage-collection-log">JVM garbage-collection log<a class="headerlink" href="#jvm-garbage-collection-log" title="Permanent link">&para;</a></h2>
@@ -3936,6 +3967,7 @@
 <div class="highlight"><pre><span></span><code>-Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M
 </code></pre></div>
 <p>This configuration writes GC and heap events to <code>gc.log</code>, rotates the log when it reaches 100 MB, and retains up to 10 rotated files in addition to the active <code>gc.log</code>.</p>
+<p>Logback retention settings do not apply to GC logs.</p>
 <p>For x86_64 with JDK 8, the options provided with java-tron include:</p>
 <div class="highlight"><pre><span></span><code>-XX:+PrintGCDetails
 -XX:+PrintGCDateStamps
@@ -3964,6 +3996,55 @@
 </code></pre></div>
 <p>If <code>--log-config</code> is omitted, java-tron uses the bundled Logback configuration. If a non-empty value is provided for <code>--log-config</code>, it must identify a readable regular file; otherwise, the node fails during startup. An empty value is treated the same as omitting the option.</p>
 <p>A custom Logback configuration replaces the bundled configuration. Include any appenders and shutdown hooks required by your deployment, such as the dedicated gRPC appender, the Prometheus <code>METRICS</code> appender, and <code>TronLogShutdownHook</code>.</p>
+<h3 id="common-logging-settings">Common logging settings<a class="headerlink" href="#common-logging-settings" title="Permanent link">&para;</a></h3>
+<p>In your copy of <code>logback.xml</code>, edit the appender for the log you want to change: <code>FILE</code> for <code>tron.log</code>, <code>DB</code> for <code>db.log</code>, or <code>GRPC_FILE</code> for <code>grpc.log</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default value</th>
+<th>How to configure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maxHistory</code></td>
+<td><code>7</code></td>
+<td>Archive retention periods. With the default daily filename pattern, set this to <code>30</code> to retain up to 30 days.</td>
+</tr>
+<tr>
+<td><code>maxFileSize</code></td>
+<td><code>500MB</code></td>
+<td>Approximate size at which a single file rolls over. For example, set <code>1GB</code> to allow larger files.</td>
+</tr>
+<tr>
+<td><code>totalSizeCap</code></td>
+<td><code>50GB</code></td>
+<td>Total archive size limit for each appender. For example, set <code>100GB</code> to allow more archived logs.</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>./logs/tron.log</code> for <code>FILE</code></td>
+<td>Active log file path. Change it to the desired path, such as <code>/data/logs/tron.log</code>.</td>
+</tr>
+<tr>
+<td><code>fileNamePattern</code></td>
+<td><code>./logs/tron-%d{yyyy-MM-dd}.%i.log.gz</code> for <code>FILE</code></td>
+<td>Archive path and naming pattern. <code>%d{yyyy-MM-dd}</code> selects daily rollover, <code>%i</code> numbers files within a day, and <code>.gz</code> enables compression. When changing the log directory, update this path too.</td>
+</tr>
+</tbody>
+</table>
+<p>Set <code>file</code> directly inside the appender; set the other four options inside its <code>rollingPolicy</code>.</p>
+<p>For example, to retain the main log for up to <strong>30 days</strong>, replace only the <code>rollingPolicy</code> inside <code>FILE</code> with:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;rollingPolicy</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;fileNamePattern&gt;</span>./logs/tron-%d{yyyy-MM-dd}.%i.log.gz<span class="nt">&lt;/fileNamePattern&gt;</span>
+<span class="w">  </span><span class="nt">&lt;maxFileSize&gt;</span>500MB<span class="nt">&lt;/maxFileSize&gt;</span>
+<span class="w">  </span><span class="nt">&lt;maxHistory&gt;</span>30<span class="nt">&lt;/maxHistory&gt;</span>
+<span class="w">  </span><span class="nt">&lt;totalSizeCap&gt;</span>50GB<span class="nt">&lt;/totalSizeCap&gt;</span>
+<span class="nt">&lt;/rollingPolicy&gt;</span>
+</code></pre></div>
+<p>This is a configuration fragment, not a complete <code>logback.xml</code>. To change database or gRPC log retention, update <code>maxHistory</code> in <code>DB</code> or <code>GRPC_FILE</code>, keeping their existing filename patterns. The size cap can delete older archives before 30 days, so adjust <code>totalSizeCap</code> for your log volume.</p>
+<p>Restart the node with the complete edited file selected by <code>--log-config</code>, as shown above.</p>
 <h2 id="send-logs-to-stdout">Send logs to stdout<a class="headerlink" href="#send-logs-to-stdout" title="Permanent link">&para;</a></h2>
 <p>The default file defines a <code>CONSOLE</code> appender. Attach it to the root logger to write to both stdout and the main log:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;root</span><span class="w"> </span><span class="na">level=</span><span class="s">&quot;INFO&quot;</span><span class="nt">&gt;</span>
@@ -4015,7 +4096,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 14, 2026 08:43:16 UTC">October 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 9, 2026 07:39:42 UTC">November 9, 2026</span>
   </span>
 
     

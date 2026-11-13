@@ -2,7 +2,7 @@
   "post":
     "tags":
       - "Transaction build / broadcast"
-    "summary": "Addresses that have already signed"
+    "summary": "List signing addresses after all signatures pass validation"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/tx-build-and-broadcast/getapprovedlist.md` for examples and detailed behavior."
     "operationId": "wallet_getapprovedlist_post"
     "externalDocs":

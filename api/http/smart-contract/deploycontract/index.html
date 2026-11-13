@@ -3860,7 +3860,7 @@
 </code></pre></div>
 <h2 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h2>
 <p>Returns an unsigned <code>protocol.Transaction</code> (contract type <code>CreateSmartContract</code>).</p>
-<p>Special: when <code>Util.printTransactionToJSON</code> detects a <code>CreateSmartContract</code>, it injects an extra top-level <code>contract_address</code> (hex; derived from <code>owner_address</code> + nonce, <strong>not affected by <code>visible</code></strong>) into the transaction. After signing and broadcasting, that address takes effect.</p>
+<p>When <code>Util.printTransactionToJSON</code> detects a <code>CreateSmartContract</code>, it adds a top-level <code>contract_address</code> in hex. The node hashes the protobuf-encoded transaction <code>raw_data</code> (SHA-256 for standard TRON transactions), concatenates that hash with the <code>owner_address</code> bytes, and applies <code>sha3omit12</code> to derive the address. Changing <code>raw_data</code> changes the predicted address. The contract is created at that address only if the signed deployment transaction executes successfully on-chain.</p>
 <p>Response example (real Nile capture):</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
@@ -3896,7 +3896,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p><code>txID</code> / <code>ref_block_*</code> / <code>expiration</code> / <code>timestamp</code> / <code>raw_data_hex</code> / <code>contract_address</code> vary by construction time; the other ephemeral-field semantics are the same as <a href="../../tx-build-and-broadcast/createtransaction/"><code>/wallet/createtransaction</code></a>. <code>contract_address</code> is derived locally on the server side from <code>owner_address + nonce</code> — <strong>it is not an on-chain result</strong>: the address only takes effect after broadcasting.</p>
+<p><code>txID</code> / <code>ref_block_*</code> / <code>expiration</code> / <code>timestamp</code> / <code>raw_data_hex</code> / <code>contract_address</code> vary by construction time; the other ephemeral-field semantics are the same as <a href="../../tx-build-and-broadcast/createtransaction/"><code>/wallet/createtransaction</code></a>. <code>contract_address</code> is predicted locally from the transaction raw-data hash and <code>owner_address</code> as described above. The contract is created at this address only if the deployment transaction executes successfully.</p>
 </blockquote>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
 <table>
@@ -3913,7 +3913,7 @@
 </tr>
 <tr>
 <td><code>owner_address</code> is not valid base58check (<code>visible=true</code>)</td>
-<td>If it contains non-base58 characters: <code>{"Error": "class java.lang.IllegalArgumentException : &lt;details&gt;"}</code>. If only the checksum is wrong, <code>Util.getHexAddress</code> silently returns an empty string; <code>CreateSmartContract</code> construction does not validate non-empty owner, and returns a valid transaction with the <code>owner_address</code> field missing (signing/broadcasting will fail later).</td>
+<td>Non-base58 characters throw <code>{"Error": "class java.lang.IllegalArgumentException : &lt;details&gt;"}</code> only when the input is exactly 34 characters long. Incorrect input length, bad checksum, or an invalid decoded address causes <code>Util.getHexAddress</code> to return an empty hex string; if the other inputs are valid, construction returns a transaction with the <code>owner_address</code> field missing (the transaction will be rejected when broadcast).</td>
 </tr>
 <tr>
 <td><code>owner_address</code> is not valid hex (<code>visible=false</code>)</td>
@@ -3964,7 +3964,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 29, 2026 07:49:14 UTC">September 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

@@ -2,7 +2,7 @@
   "get":
     "tags":
       - "Node / pricing / tools"
-    "summary": "Cumulative burned TRX"
+    "summary": "Cumulative burned TRX, excluding transfers to the blackhole account"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/node-and-tools/getburntrx.md` for examples and detailed behavior."
     "operationId": "wallet_getburntrx_get"
     "externalDocs":
@@ -100,7 +100,7 @@
   "post":
     "tags":
       - "Node / pricing / tools"
-    "summary": "Cumulative burned TRX"
+    "summary": "Cumulative burned TRX, excluding transfers to the blackhole account"
     "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/node-and-tools/getburntrx.md` for examples and detailed behavior."
     "operationId": "wallet_getburntrx_post"
     "externalDocs":

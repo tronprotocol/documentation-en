@@ -68,7 +68,7 @@
         "schema":
           "type": "integer"
           "format": "int64"
-          "description": "Zero-based pagination offset."
+          "description": "Query proposals starting from ID `offset + 1`."
         "x-source-derived": true
       -
         "name": "limit"
@@ -77,7 +77,7 @@
         "schema":
           "type": "integer"
           "format": "int64"
-          "description": "Maximum number of items to return."
+          "description": "Page size, capped at 1000; `0` returns `{}`."
         "x-source-derived": true
       -
         "name": "visible"
@@ -167,7 +167,7 @@
       "content":
         "application/json":
           "schema":
-            "$ref": "#/components/schemas/PaginatedMessageRequest"
+            "$ref": "#/components/schemas/PaginatedProposalMessageRequest"
     "x-overlay-derived": true
     "x-source-refs":
       - "framework/src/main/java/org/tron/core/services/http/GetPaginatedProposalListServlet.java"

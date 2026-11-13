@@ -3997,8 +3997,8 @@
 <ul>
 <li><strong>Method</strong>: a few pure-query endpoints accept <code>GET</code>, but most POST endpoints only accept <code>POST</code> with a JSON body.</li>
 <li><strong>GET / POST boundaries</strong>: on endpoints that support both methods, request and error tables identify the applicable method. GET normally reads URL query parameters; POST normally reads a JSON body, except where the endpoint page states that POST reuses query parameters or ignores its body.</li>
-<li><strong><code>visible</code></strong>: when <code>true</code>, addresses are base58check strings and text fields (URL, descriptions, etc.) are UTF-8 strings; when <code>false</code> (default), they are hex strings.</li>
-<li><strong>Builder endpoints</strong> return an unsigned <code>protocol.Transaction</code>. The caller signs it locally and broadcasts it via <a href="tx-build-and-broadcast/broadcasttransaction/"><code>/wallet/broadcasttransaction</code></a> or <a href="tx-build-and-broadcast/broadcasthex/"><code>/wallet/broadcasthex</code></a>.</li>
+<li><strong><code>visible</code></strong>: when <code>true</code>, designated address bytes fields use base58check and designated text bytes fields (such as URLs and descriptions) use UTF-8 when valid (invalid UTF-8 bytes remain hex); when <code>false</code> (default), those bytes fields use hex. Native protobuf <code>string</code> fields, including permission names and the messages in <code>TransactionApprovedList.Result</code> / <code>TransactionSignWeight.Result</code>, always remain JSON text. See each endpoint for the fields affected.</li>
+<li><strong>Builder endpoints</strong> return an unsigned transaction, either directly as <code>protocol.Transaction</code> or nested in a <code>TransactionExtention</code> response with a separate <code>result</code> (for example, <code>/wallet/triggersmartcontract</code>). Follow the endpoint response schema, extract the transaction, sign it locally, and broadcast it via <a href="tx-build-and-broadcast/broadcasttransaction/"><code>/wallet/broadcasttransaction</code></a> or <a href="tx-build-and-broadcast/broadcasthex/"><code>/wallet/broadcasthex</code></a>.</li>
 <li><strong><code>Permission_id</code></strong>: optional on builder endpoints; selects which <code>Permission</code> to use for multi-sig accounts. The field name is case-sensitive.</li>
 <li><strong>Amount unit</strong>: TRC-10 amounts use the issuer-defined precision; every other amount is in sun (1 TRX = 1e6 sun).</li>
 <li><strong><code>int64_as_string</code></strong>: GET requests may add <code>int64_as_string=true</code> in the URL query. When enabled, int64 / uint64 fields in protobuf JSON responses are serialized as JSON strings to avoid precision loss in clients such as JavaScript. This flag is honored only for GET requests; POST bodies are not affected.</li>
@@ -4136,10 +4136,10 @@
 <tr>
 <td><code>RETURN_TRANSACTION_EXPIRATION_ERROR</code></td>
 <td><code>$.code</code> or <code>$.result.code</code> = <code>TRANSACTION_EXPIRATION_ERROR</code></td>
-<td>The transaction has expired.</td>
+<td>The transaction expiration precedes the next block slot, is at or before the head block time, or exceeds 24 hours after the head block time.</td>
 <td>No</td>
 <td><code>AFTER_REQUEST_REBUILD</code></td>
-<td>Rebuild with a new expiration and sign again.</td>
+<td>Rebuild with an expiration inside the allowed interval and sign again.</td>
 </tr>
 <tr>
 <td><code>RETURN_SERVER_BUSY</code></td>
@@ -4152,7 +4152,7 @@
 <tr>
 <td><code>RETURN_NO_CONNECTION</code></td>
 <td><code>$.code</code> or <code>$.result.code</code> = <code>NO_CONNECTION</code></td>
-<td>The node has no active peer connection.</td>
+<td>When <code>node.rpc.minEffectiveConnection</code> is nonzero (default: <code>1</code>), the node has no active peer connections.</td>
 <td>Yes</td>
 <td><code>SAFE_WITH_BACKOFF</code></td>
 <td>Retry with backoff after connectivity recovers, or use another connected node.</td>
@@ -4160,7 +4160,7 @@
 <tr>
 <td><code>RETURN_NOT_ENOUGH_EFFECTIVE_CONNECTION</code></td>
 <td><code>$.code</code> or <code>$.result.code</code> = <code>NOT_ENOUGH_EFFECTIVE_CONNECTION</code></td>
-<td>The node has too few effective peer connections.</td>
+<td>When <code>node.rpc.minEffectiveConnection</code> is nonzero (default: <code>1</code>), the node has too few effective peer connections, or P2P broadcasting reached no peers.</td>
 <td>Yes</td>
 <td><code>SAFE_WITH_BACKOFF</code></td>
 <td>Retry with backoff after effective peers recover, or use another node.</td>
@@ -4292,7 +4292,7 @@
 </tr>
 <tr>
 <td><a href="account/createaccount/"><code>/wallet/createaccount</code></a></td>
-<td>Create an on-chain account (costs 1 TRX)</td>
+<td>Build an account-creation transaction; execution incurs an additional account-creation fee set by <code>getCreateNewAccountFeeInSystemContract</code> (currently 1,000,000 sun, or 1 TRX, on Mainnet).</td>
 </tr>
 <tr>
 <td><a href="account/updateaccount/"><code>/wallet/updateaccount</code></a></td>
@@ -4394,7 +4394,7 @@
 </tr>
 <tr>
 <td><a href="tx-build-and-broadcast/getapprovedlist/"><code>/wallet/getapprovedlist</code></a></td>
-<td>Addresses that have already signed</td>
+<td>List signing addresses after all signatures pass validation</td>
 </tr>
 <tr>
 <td><a href="tx-build-and-broadcast/broadcasttransaction/"><code>/wallet/broadcasttransaction</code></a></td>
@@ -4630,7 +4630,7 @@
 </tr>
 <tr>
 <td><a href="stake-v2/unfreezebalancev2/"><code>/wallet/unfreezebalancev2</code></a></td>
-<td>Initiate unfreeze (14-day waiting period)</td>
+<td>Initiate unfreeze; the waiting period is set by <code>UNFREEZE_DELAY_DAYS</code></td>
 </tr>
 <tr>
 <td><a href="stake-v2/withdrawexpireunfreeze/"><code>/wallet/withdrawexpireunfreeze</code></a></td>
@@ -4721,7 +4721,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 9, 2026 03:57:26 UTC">October 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

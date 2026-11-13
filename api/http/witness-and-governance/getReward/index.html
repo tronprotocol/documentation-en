@@ -3744,7 +3744,7 @@
 
 
 <h1 id="walletgetreward">/wallet/getReward<a class="headerlink" href="#walletgetreward" title="Permanent link">&para;</a></h1>
-<p>Query the unclaimed voting rewards for an account.</p>
+<p>Query an account's total claimable rewards in sun.</p>
 <ul>
 <li>Source: <code>framework/src/main/java/org/tron/core/services/http/GetRewardServlet.java</code></li>
 <li>Method: <code>GET</code> / <code>POST</code></li>
@@ -3768,7 +3768,7 @@
 <td>GET / POST</td>
 <td>string</td>
 <td>No</td>
-<td>Voter account address; omitted or empty returns <code>reward: 0</code></td>
+<td>Account address (voter or SR); omitted or empty returns <code>reward: 0</code></td>
 </tr>
 <tr>
 <td><code>visible</code></td>
@@ -3810,7 +3810,7 @@
 <tr>
 <td><code>reward</code></td>
 <td>int64</td>
-<td>Unit: sun (1 TRX = 1e6 sun)</td>
+<td>Total claimable rewards; unit: sun (1 TRX = 1e6 sun)</td>
 </tr>
 </tbody>
 </table>
@@ -3818,7 +3818,7 @@
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;reward&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">29994831460307</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p>Note: when <code>address</code> is missing or empty, no error is reported; <code>reward</code> is <code>0</code> (or <code>"0"</code> when <code>int64_as_string=true</code> on GET).</p>
+<p>Missing or empty addresses, and Base58Check addresses rejected for length, checksum, or decoded-address validity, return a zero reward. This is indistinguishable from an account with no claimable rewards. Validate the address before using the result; parser exceptions follow the error table below.</p>
 </blockquote>
 <p>With <code>?int64_as_string=true</code> on a GET request:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;reward&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;29994831460307&quot;</span><span class="w"> </span><span class="p">}</span>
@@ -3841,8 +3841,13 @@
 </tr>
 <tr>
 <td>GET / POST</td>
-<td><code>address</code> parse failure (invalid hex / base58)</td>
+<td>Hex decoding throws, or Base58 decoding throws (for example, an illegal character in an address of the expected length)</td>
 <td><code>{"Error": "INVALID address, &lt;details&gt;"}</code></td>
+</tr>
+<tr>
+<td>GET / POST</td>
+<td>Base58Check address has the wrong length, checksum, or decoded-address validity</td>
+<td><code>{"reward": 0}</code> (or <code>{"reward": "0"}</code> with GET <code>int64_as_string=true</code>)</td>
 </tr>
 <tr>
 <td>POST</td>
@@ -3876,7 +3881,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 13, 2026 08:18:04 UTC">July 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

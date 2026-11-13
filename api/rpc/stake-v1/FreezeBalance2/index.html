@@ -3707,7 +3707,7 @@
 <p><strong>Disabled on chain</strong>: after proposal #70 <code>UNFREEZE_DELAY_DAYS</code> was passed (mainnet has activated it), <code>FreezeBalanceActuator.validate()</code> throws <code>freeze v2 is open, old freeze is closed</code>, and any new request fails. Use <a href="../../stake-v2/FreezeBalanceV2/"><code>FreezeBalanceV2</code></a> instead.</p>
 <p>Note: the <code>2</code> suffix is a historical proto naming convention (the V1 method that returns <code>TransactionExtention</code>); it is not the same method as Stake 2.0's <code>FreezeBalanceV2</code>.</p>
 </blockquote>
-<p>Freeze TRX to obtain bandwidth or energy, optionally delegating to another account. Minimum freeze period is 3 days.</p>
+<p>Freeze TRX to obtain bandwidth or energy, optionally delegating to another account. On nodes with <code>block.checkFrozenTime=1</code>, the duration must be exactly 3 days.</p>
 <ul>
 <li>Service: <code>Wallet</code> only</li>
 </ul>
@@ -3734,7 +3734,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 1, 2026 03:13:07 UTC">May 1, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     
