@@ -3818,12 +3818,12 @@
 <tr>
 <td><code>result</code></td>
 <td>bool</td>
-<td>Whether the transaction entered the pool</td>
+<td>Whether this broadcast attempt succeeded; <code>false</code> is a protobuf default and is omitted from JSON. A failed P2P broadcast can occur after the transaction has entered the pool</td>
 </tr>
 <tr>
 <td><code>code</code></td>
 <td>enum</td>
-<td><code>SUCCESS</code> / <code>SIGERROR</code> / <code>CONTRACT_VALIDATE_ERROR</code> / <code>CONTRACT_EXE_ERROR</code> / <code>BANDWITH_ERROR</code> / <code>DUP_TRANSACTION_ERROR</code> / <code>TAPOS_ERROR</code> / <code>TOO_BIG_TRANSACTION_ERROR</code> / <code>TRANSACTION_EXPIRATION_ERROR</code> / <code>SERVER_BUSY</code> / <code>NO_CONNECTION</code> / <code>NOT_ENOUGH_EFFECTIVE_CONNECTION</code> / <code>BLOCK_UNSOLIDIFIED</code> / <code>OTHER_ERROR</code></td>
+<td><code>SUCCESS</code> (default, omitted from JSON) / <code>SIGERROR</code> / <code>CONTRACT_VALIDATE_ERROR</code> / <code>CONTRACT_EXE_ERROR</code> / <code>BANDWITH_ERROR</code> / <code>DUP_TRANSACTION_ERROR</code> / <code>TAPOS_ERROR</code> / <code>TOO_BIG_TRANSACTION_ERROR</code> / <code>TRANSACTION_EXPIRATION_ERROR</code> / <code>SERVER_BUSY</code> / <code>NO_CONNECTION</code> / <code>NOT_ENOUGH_EFFECTIVE_CONNECTION</code> / <code>BLOCK_UNSOLIDIFIED</code> / <code>OTHER_ERROR</code></td>
 </tr>
 <tr>
 <td><code>message</code></td>
@@ -3841,16 +3841,19 @@
 <p>Response example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d5ec749ecc2a615399d8a6c864ea4c74ff9f8453eaa44d6b1e2f0b7b3e2f3b6a&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>The protobuf JSON parser also accepts a single hex string for <code>signature</code> as a one-element list; a non-array value does not always cause a parse error. Use the documented array form for normal requests.</p>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
-<p>Business-level errors are <strong>still returned in the same <code>result/code/message</code> shape</strong>, e.g.:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DUP_TRANSACTION_ERROR&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dup transaction.&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIGERROR&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;validateSignature error&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAPOS_ERROR&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tapos failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
+<p>Business-level errors use <code>code</code> / <code>message</code> / <code>txid</code>; the default <code>result=false</code> is omitted. The following examples assume <code>visible=true</code>, so the messages are text:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DUP_TRANSACTION_ERROR&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dup transaction.&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIGERROR&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Validate signature error: &lt;details&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAPOS_ERROR&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tapos check error.&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;txid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>With <code>visible=false</code> (the default), <code>message</code> is hex-encoded; for example, <code>Dup transaction.</code> becomes <code>447570207472616e73616374696f6e2e</code>. Successful responses omit the default <code>code=SUCCESS</code>.</p>
 <p><code>code</code> semantics:</p>
 <table>
 <thead>
@@ -3890,7 +3893,7 @@
 </tr>
 <tr>
 <td><code>TRANSACTION_EXPIRATION_ERROR</code></td>
-<td><code>expiration</code> already passed</td>
+<td>Expiration precedes the next block slot, is at or before the head block timestamp, or is more than 24 hours after the head block timestamp</td>
 </tr>
 <tr>
 <td><code>SERVER_BUSY</code></td>
@@ -3898,11 +3901,11 @@
 </tr>
 <tr>
 <td><code>NO_CONNECTION</code> / <code>NOT_ENOUGH_EFFECTIVE_CONNECTION</code></td>
-<td>Insufficient outbound connections; not broadcast</td>
+<td>When <code>node.rpc.minEffectiveConnection</code> is nonzero (default: <code>1</code>): no active peers, too few peers that have finished syncing, or P2P broadcasting reached no peers</td>
 </tr>
 <tr>
 <td><code>BLOCK_UNSOLIDIFIED</code></td>
-<td>Block not yet solidified (for related queries)</td>
+<td>With the unsolidified-block check enabled, the gap between the head and solidified block heights has reached the configured <code>maxUnsolidifiedBlocks</code> threshold, so broadcast is rejected</td>
 </tr>
 <tr>
 <td><code>OTHER_ERROR</code></td>
@@ -3910,7 +3913,7 @@
 </tr>
 </tbody>
 </table>
-<p>JSON parse failure, missing <code>raw_data</code>, type mismatch, etc. take the <code>Util.processError</code> path:</p>
+<p>Request JSON and outer-structure failures take the <code>Util.processError</code> path; malformed individual contracts can instead be dropped during parsing, as described below:</p>
 <table>
 <thead>
 <tr>
@@ -3928,12 +3931,20 @@
 <td><code>{"Error": "class org.tron.json.JSONException : &lt;parser info&gt;"}</code></td>
 </tr>
 <tr>
-<td>Missing <code>raw_data</code>, <code>raw_data.contract</code> is not an array, <code>signature</code> is not an array or its elements are not hex, field type mismatch in <code>raw_data</code>, etc.</td>
-<td><code>{"Error": "class java.lang.NullPointerException : null"}</code> (<code>Util.packTransaction</code> silently catches <code>JsonFormat$ParseException</code> / <code>ClassCastException</code> and returns <code>null</code>; downstream <code>TransactionCapsule(null)</code> triggers NPE)</td>
+<td>Missing or null <code>raw_data</code> / <code>raw_data.contract</code></td>
+<td><code>{"Error": "class java.lang.NullPointerException : &lt;message&gt;"}</code> while accessing the missing object or array</td>
+</tr>
+<tr>
+<td><code>raw_data</code> is not an object, or <code>raw_data.contract</code> is not an array (excluding JSON strings that can be parsed into the required structure)</td>
+<td><code>{"Error": "class org.tron.json.JSONException : &lt;message&gt;"}</code>, for example <code>Field 'contract' is not an array</code></td>
+</tr>
+<tr>
+<td>Invalid signature hex or a <code>raw_data</code> field value that <code>JsonFormat.merge</code> cannot decode</td>
+<td><code>packTransaction</code> catches the final <code>JsonFormat$ParseException</code> and returns <code>null</code>; the downstream operation then returns <code>{"Error": "class java.lang.NullPointerException : &lt;message&gt;"}</code></td>
 </tr>
 <tr>
 <td>Field type mismatch inside <code>raw_data.contract[i].parameter.value</code></td>
-<td>That contract is caught and dropped inside <code>packTransaction</code>, broadcast ends up with an empty contract list, returns <code>{"code": "CONTRACT_VALIDATE_ERROR", "message": "&lt;hex of \"No contract!\"&gt;", ...}</code></td>
+<td>The affected contract is caught and dropped inside <code>packTransaction</code>. If no contracts remain after parsing and earlier broadcast checks pass, the response contains <code>code: "CONTRACT_VALIDATE_ERROR"</code> and <code>message</code> encoding <code>Contract validate error : No contract!</code> (hex by default; text with <code>visible=true</code>)</td>
 </tr>
 <tr>
 <td>Other exceptions</td>
@@ -3961,7 +3972,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 30, 2026 03:06:10 UTC">July 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

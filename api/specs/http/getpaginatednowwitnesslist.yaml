@@ -2,8 +2,8 @@
   "get":
     "tags":
       - "Witness / governance"
-    "summary": "Paginated SR list"
-    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md` for examples and detailed behavior."
+    "summary": "Paginated SR candidates ranked by current vote totals"
+    "description": "Includes all SR candidates and vote changes in the current cycle. Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md` for examples and detailed behavior."
     "operationId": "wallet_getpaginatednowwitnesslist_get"
     "externalDocs":
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md"
@@ -110,8 +110,8 @@
   "post":
     "tags":
       - "Witness / governance"
-    "summary": "Paginated SR list"
-    "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md` for examples and detailed behavior."
+    "summary": "Paginated SR candidates ranked by current vote totals"
+    "description": "Includes all SR candidates and vote changes in the current cycle. Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md` for examples and detailed behavior."
     "operationId": "wallet_getpaginatednowwitnesslist_post"
     "externalDocs":
       "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md"

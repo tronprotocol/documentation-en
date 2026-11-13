@@ -5,8 +5,8 @@
   "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation."
   "x-java-tron-source":
     "repo": "tronprotocol/java-tron"
-    "commit": "d5c3d1d1fd0cad12f09c4346d6ac937ab2cbb071"
-    "version": "GreatVoyage-v4.8.2.2"
+    "commit": "4e8389f159d0782f1ebcd9dab2fd88388c0e6fe9"
+    "version": "GreatVoyage-v4.8.2.4"
 "servers":
   -
     "url": "https://nile.trongrid.io"
@@ -633,8 +633,8 @@
     "post":
       "tags":
         - "Account"
-      "summary": "Create an on-chain account (costs 1 TRX)"
-      "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/account/createaccount.md` for examples and detailed behavior."
+      "summary": "Build an account-creation transaction"
+      "description": "Execution incurs an additional account-creation fee set by `getCreateNewAccountFeeInSystemContract` (currently 1,000,000 sun, or 1 TRX, on Mainnet). Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/account/createaccount.md` for examples and detailed behavior."
       "operationId": "wallet_createaccount_post"
       "externalDocs":
         "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/account/createaccount.md"
@@ -3739,7 +3739,7 @@
     "post":
       "tags":
         - "Transaction build / broadcast"
-      "summary": "Addresses that have already signed"
+      "summary": "List signing addresses after all signatures pass validation"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/tx-build-and-broadcast/getapprovedlist.md` for examples and detailed behavior."
       "operationId": "wallet_getapprovedlist_post"
       "externalDocs":
@@ -5644,7 +5644,6 @@
                       "failureCondition": "field exists and is not SUCCESS"
                       "catalogIds":
                         - "RETURN_CONTRACT_VALIDATE_ERROR"
-                        - "RETURN_CONTRACT_EXE_ERROR"
                         - "RETURN_OTHER_ERROR"
                       "sources":
                         - "servlet"
@@ -5739,7 +5738,6 @@
                       "failureCondition": "field exists and is not SUCCESS"
                       "catalogIds":
                         - "RETURN_CONTRACT_VALIDATE_ERROR"
-                        - "RETURN_CONTRACT_EXE_ERROR"
                         - "RETURN_OTHER_ERROR"
                       "sources":
                         - "servlet"
@@ -5867,6 +5865,7 @@
                       "failureCondition": "field exists and is not SUCCESS"
                       "catalogIds":
                         - "RETURN_CONTRACT_VALIDATE_ERROR"
+                        - "RETURN_CONTRACT_EXE_ERROR"
                         - "RETURN_OTHER_ERROR"
                       "sources":
                         - "servlet"
@@ -6822,8 +6821,8 @@
     "get":
       "tags":
         - "Witness / governance"
-      "summary": "Paginated SR list"
-      "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md` for examples and detailed behavior."
+      "summary": "Paginated SR candidates ranked by current vote totals"
+      "description": "Includes all SR candidates and vote changes in the current cycle. Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md` for examples and detailed behavior."
       "operationId": "wallet_getpaginatednowwitnesslist_get"
       "externalDocs":
         "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md"
@@ -6930,8 +6929,8 @@
     "post":
       "tags":
         - "Witness / governance"
-      "summary": "Paginated SR list"
-      "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md` for examples and detailed behavior."
+      "summary": "Paginated SR candidates ranked by current vote totals"
+      "description": "Includes all SR candidates and vote changes in the current cycle. Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md` for examples and detailed behavior."
       "operationId": "wallet_getpaginatednowwitnesslist_post"
       "externalDocs":
         "url": "https://github.com/tronprotocol/documentation-en/blob/master/docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md"
@@ -8289,7 +8288,7 @@
           "schema":
             "type": "integer"
             "format": "int64"
-            "description": "Zero-based pagination offset."
+            "description": "Query proposals starting from ID `offset + 1`."
           "x-source-derived": true
         -
           "name": "limit"
@@ -8298,7 +8297,7 @@
           "schema":
             "type": "integer"
             "format": "int64"
-            "description": "Maximum number of items to return."
+            "description": "Page size, capped at 1000; `0` returns `{}`."
           "x-source-derived": true
         -
           "name": "visible"
@@ -8388,7 +8387,7 @@
         "content":
           "application/json":
             "schema":
-              "$ref": "#/components/schemas/PaginatedMessageRequest"
+              "$ref": "#/components/schemas/PaginatedProposalMessageRequest"
       "x-overlay-derived": true
       "x-source-refs":
         - "framework/src/main/java/org/tron/core/services/http/GetPaginatedProposalListServlet.java"
@@ -9306,7 +9305,7 @@
     "post":
       "tags":
         - "Stake 2.0"
-      "summary": "Initiate unfreeze (14-day waiting period)"
+      "summary": "Initiate unfreeze; the waiting period is set by UNFREEZE_DELAY_DAYS"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/stake-v2/unfreezebalancev2.md` for examples and detailed behavior."
       "operationId": "wallet_unfreezebalancev2_post"
       "externalDocs":
@@ -10815,7 +10814,7 @@
           "required": false
           "schema":
             "type": "boolean"
-            "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+            "description": "When true, valid UTF-8 host bytes are returned as text; all other cases use hex."
           "x-source-derived": true
         -
           "name": "int64_as_string"
@@ -10898,7 +10897,7 @@
           "required": false
           "schema":
             "type": "boolean"
-            "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+            "description": "When true, valid UTF-8 host bytes are returned as text; all other cases use hex."
           "x-source-derived": true
   "/wallet/getenergyprices":
     "get":
@@ -11212,7 +11211,7 @@
     "get":
       "tags":
         - "Node / pricing / tools"
-      "summary": "Cumulative burned TRX"
+      "summary": "Cumulative burned TRX, excluding transfers to the blackhole account"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/node-and-tools/getburntrx.md` for examples and detailed behavior."
       "operationId": "wallet_getburntrx_get"
       "externalDocs":
@@ -11310,7 +11309,7 @@
     "post":
       "tags":
         - "Node / pricing / tools"
-      "summary": "Cumulative burned TRX"
+      "summary": "Cumulative burned TRX, excluding transfers to the blackhole account"
       "description": "Endpoint registration, HTTP method, servlet, and request type are derived from java-tron source. See `docs/api/http/node-and-tools/getburntrx.md` for examples and detailed behavior."
       "operationId": "wallet_getburntrx_post"
       "externalDocs":
@@ -11555,7 +11554,7 @@
         "trx_num":
           "type": "integer"
           "format": "int32"
-          "description": "TRX amount used in the asset issue exchange ratio."
+          "description": "Exchange ratio denominator, in sun: `trx_num` sun buys `num` token base units."
         "precision":
           "type": "integer"
           "format": "int32"
@@ -11563,7 +11562,7 @@
         "num":
           "type": "integer"
           "format": "int32"
-          "description": "Number of issued tokens in the exchange ratio; trx_num TRX can purchase num tokens."
+          "description": "Exchange ratio numerator, in token base units."
         "start_time":
           "type": "integer"
           "format": "int64"
@@ -11672,7 +11671,7 @@
         "lock_period":
           "type": "integer"
           "format": "int64"
-          "description": "Resource delegation lock period."
+          "description": "Lock duration in blocks when `lock=true`; omitted or `0` uses `86_400` blocks (3 days). Delegation requires #70 `UNFREEZE_DELAY_DAYS` > `0`; custom periods additionally require #78 `MAX_DELEGATE_LOCK_PERIOD` > `86_400`. When `lock=true` and custom periods are enabled, `lock_period` must be nonnegative and must not exceed the value of #78 `MAX_DELEGATE_LOCK_PERIOD`. When `lock=true` and custom periods are disabled, `lock_period` is ignored and the 3-day default is used."
       "x-proto-message": "DelegateResourceContract"
       "x-proto-file": "protocol/src/main/protos/core/contract/balance_contract.proto"
     "ExchangeCreateContract":
@@ -11765,7 +11764,7 @@
         "frozen_duration":
           "type": "integer"
           "format": "int64"
-          "description": "Freeze duration in days."
+          "description": "Freeze duration in days. Must be exactly `3` when `block.checkFrozenTime=1`."
         "resource":
           "type": "string"
           "enum":
@@ -12889,6 +12888,7 @@
         "freeNetLimit":
           "type": "integer"
           "format": "int64"
+          "description": "The total free bandwidth allowance per account, set by a chain parameter that can be changed through governance proposals. Used free bandwidth gradually becomes available again over a 24-hour recovery window."
         "NetUsed":
           "type": "integer"
           "format": "int64"
@@ -12924,6 +12924,7 @@
         "freeNetLimit":
           "type": "integer"
           "format": "int64"
+          "description": "The total free bandwidth allowance per account, set by a chain parameter that can be changed through governance proposals. Used free bandwidth gradually becomes available again over a 24-hour recovery window."
         "NetUsed":
           "type": "integer"
           "format": "int64"
@@ -13868,7 +13869,7 @@
           "description": "Permission id used to sign the transaction with a non-owner account permission."
         "extra_data":
           "type": "string"
-          "description": "Extra transaction data encoded as expected by java-tron."
+          "description": "Written into `raw_data.data`; plain text when `visible=true`, hex when `visible=false`."
       "x-proto-message": "TransferContract"
       "x-proto-file": "protocol/src/main/protos/core/contract/balance_contract.proto"
       "x-source-shape": "protobuf-json-plus-servlet-fields"
@@ -14010,7 +14011,7 @@
         "trx_num":
           "type": "integer"
           "format": "int32"
-          "description": "TRX amount used in the asset issue exchange ratio."
+          "description": "Exchange ratio denominator, in sun: `trx_num` sun buys `num` token base units."
           "minimum": 1
         "precision":
           "type": "integer"
@@ -14019,7 +14020,7 @@
         "num":
           "type": "integer"
           "format": "int32"
-          "description": "Number of issued tokens in the exchange ratio; trx_num TRX can purchase num tokens."
+          "description": "Exchange ratio numerator, in token base units."
           "minimum": 1
         "start_time":
           "type": "integer"
@@ -14150,7 +14151,7 @@
           "description": "Permission id used to sign the transaction with a non-owner account permission."
         "extra_data":
           "type": "string"
-          "description": "Extra transaction data encoded as expected by java-tron."
+          "description": "Memo; plain text when `visible=true`, hex when `visible=false`."
       "x-proto-message": "TransferAssetContract"
       "x-proto-file": "protocol/src/main/protos/core/contract/asset_issue_contract.proto"
       "x-source-shape": "protobuf-json-plus-servlet-fields"
@@ -14229,6 +14230,26 @@
           "type": "integer"
           "format": "int64"
           "description": "Maximum number of items to return."
+        "visible":
+          "type": "boolean"
+          "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+      "x-proto-message": "PaginatedMessage"
+      "x-proto-file": "protocol/src/main/protos/api/api.proto"
+      "x-source-shape": "protobuf-json-plus-servlet-fields"
+      "x-java-request-type": "org.tron.api.GrpcAPI.PaginatedMessage"
+      "x-java-unknown-fields": "ignored-by-jsonformat"
+    "PaginatedProposalMessageRequest":
+      "type": "object"
+      "additionalProperties": false
+      "properties":
+        "offset":
+          "type": "integer"
+          "format": "int64"
+          "description": "Query proposals starting from ID `offset + 1`; omitted defaults to `0`."
+        "limit":
+          "type": "integer"
+          "format": "int64"
+          "description": "Page size, capped at 1000; omitted defaults to `0`, which returns `{}`."
         "visible":
           "type": "boolean"
           "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
@@ -14387,7 +14408,7 @@
           "description": "Permission id used to sign the transaction with a non-owner account permission."
         "extra_data":
           "type": "string"
-          "description": "Extra transaction data written to the returned transaction."
+          "description": "Transaction memo; plain text when `visible=true`, hex when `visible=false`."
       "x-proto-message": "TriggerSmartContract"
       "x-proto-file": "protocol/src/main/protos/core/contract/smart_contract.proto"
       "x-source-shape": "protobuf-json-plus-servlet-fields"
@@ -14881,7 +14902,7 @@
         "frozen_duration":
           "type": "integer"
           "format": "int64"
-          "description": "Freeze duration in days."
+          "description": "Freeze duration in days; omitted defaults to `0`. Must be exactly `3` when `block.checkFrozenTime=1`."
         "resource":
           "type": "string"
           "enum":
@@ -15101,7 +15122,7 @@
         "lock_period":
           "type": "integer"
           "format": "int64"
-          "description": "Resource delegation lock period."
+          "description": "Lock duration in blocks when `lock=true`; omitted or `0` uses `86_400` blocks (3 days). Delegation requires #70 `UNFREEZE_DELAY_DAYS` > `0`; custom periods additionally require #78 `MAX_DELEGATE_LOCK_PERIOD` > `86_400`. When `lock=true` and custom periods are enabled, `lock_period` must be nonnegative and must not exceed the value of #78 `MAX_DELEGATE_LOCK_PERIOD`. When `lock=true` and custom periods are disabled, `lock_period` is ignored and the 3-day default is used."
         "visible":
           "type": "boolean"
           "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
@@ -15520,7 +15541,7 @@
           "format": "int32"
       "x-proto-message": "Address"
       "x-proto-file": "protocol/src/main/protos/api/api.proto"
-      "description": "Account or contract address accepted by this endpoint."
+      "description": "Peer network address."
     "Node":
       "type": "object"
       "additionalProperties": false
@@ -16174,6 +16195,7 @@
               "pattern": "^-?[0-9]+$"
               "title": "Int64StringVariant41"
           "x-tron-int64-as-string": true
+          "description": "The total free bandwidth allowance per account, set by a chain parameter that can be changed through governance proposals. Used free bandwidth gradually becomes available again over a 24-hour recovery window."
         "NetUsed":
           "oneOf":
             -
@@ -16273,6 +16295,7 @@
               "pattern": "^-?[0-9]+$"
               "title": "Int64StringVariant49"
           "x-tron-int64-as-string": true
+          "description": "The total free bandwidth allowance per account, set by a chain parameter that can be changed through governance proposals. Used free bandwidth gradually becomes available again over a 24-hour recovery window."
         "NetUsed":
           "oneOf":
             -
@@ -16527,7 +16550,7 @@
         "trx_num":
           "type": "integer"
           "format": "int32"
-          "description": "TRX amount used in the asset issue exchange ratio."
+          "description": "Exchange ratio denominator, in sun: `trx_num` sun buys `num` token base units."
         "precision":
           "type": "integer"
           "format": "int32"
@@ -16535,7 +16558,7 @@
         "num":
           "type": "integer"
           "format": "int32"
-          "description": "Number of issued tokens in the exchange ratio; trx_num TRX can purchase num tokens."
+          "description": "Exchange ratio numerator, in token base units."
         "start_time":
           "oneOf":
             -
@@ -16778,7 +16801,7 @@
               "pattern": "^-?[0-9]+$"
               "title": "Int64StringVariant83"
           "x-tron-int64-as-string": true
-          "description": "Resource delegation lock period."
+          "description": "Lock duration in blocks when `lock=true`; omitted or `0` uses `86_400` blocks (3 days). Delegation requires #70 `UNFREEZE_DELAY_DAYS` > `0`; custom periods additionally require #78 `MAX_DELEGATE_LOCK_PERIOD` > `86_400`. When `lock=true` and custom periods are enabled, `lock_period` must be nonnegative and must not exceed the value of #78 `MAX_DELEGATE_LOCK_PERIOD`. When `lock=true` and custom periods are disabled, `lock_period` is ignored and the 3-day default is used."
       "x-proto-message": "DelegateResourceContract"
       "x-proto-file": "protocol/src/main/protos/core/contract/balance_contract.proto"
     "ExchangeCreateContractInt64StringCompatible":
@@ -16959,7 +16982,7 @@
               "pattern": "^-?[0-9]+$"
               "title": "Int64StringVariant94"
           "x-tron-int64-as-string": true
-          "description": "Freeze duration in days."
+          "description": "Freeze duration in days. Must be exactly `3` when `block.checkFrozenTime=1`."
         "resource":
           "type": "string"
           "enum":
@@ -19388,7 +19411,7 @@
       "httpStatus": 200
       "retryable": false
       "retryClass": "AFTER_REQUEST_REBUILD"
-      "description": "The transaction has expired."
+      "description": "The transaction expiration precedes the next block slot, is at or before the head block time, or exceeds 24 hours after the head block time."
       "match":
         "schema": "#/components/schemas/Return"
         "discriminatorPaths":
@@ -19418,7 +19441,7 @@
       "httpStatus": 200
       "retryable": true
       "retryClass": "SAFE_WITH_BACKOFF"
-      "description": "The node has no active peer connection."
+      "description": "When `node.rpc.minEffectiveConnection` is nonzero (default: `1`), the node has no active peer connections."
       "match":
         "schema": "#/components/schemas/Return"
         "discriminatorPaths":
@@ -19433,7 +19456,7 @@
       "httpStatus": 200
       "retryable": true
       "retryClass": "SAFE_WITH_BACKOFF"
-      "description": "The node has too few effective peer connections."
+      "description": "When `node.rpc.minEffectiveConnection` is nonzero (default: `1`), the node has too few effective peer connections, or P2P broadcasting reached no peers."
       "match":
         "schema": "#/components/schemas/Return"
         "discriminatorPaths":

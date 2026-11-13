@@ -3836,11 +3836,10 @@
 <p>Response when V1 counterparties exist:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w">      </span><span class="s2">&quot;41dd791d6b49e190062d650e6a23c575510d35f2f9&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;fromAccounts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="w">  </span><span class="nt">&quot;toAccounts&quot;</span><span class="p">:</span><span class="w">   </span><span class="p">[</span><span class="s2">&quot;4192ad11c1bf16b3b14b0bd6b5c7e2db73a0b5e83a&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Returns <code>{}</code> when there are no records at all.</p>
+<p>For any 21-byte query address, the response still includes <code>account</code> even when no delegation records are found. Empty <code>fromAccounts</code> / <code>toAccounts</code> lists are omitted. The endpoint returns <code>{}</code> if the address is empty or its decoded length is not 21 bytes.</p>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3859,7 +3858,7 @@
 <tr>
 <td>GET / POST</td>
 <td><code>value</code> is not valid base58check (<code>visible=true</code>)</td>
-<td>With non-base58 characters: <code>{"Error": "class java.lang.IllegalArgumentException : &lt;details&gt;"}</code>; if only the checksum is wrong, <code>Util.getHexAddress</code> silently returns null → no record found, returns <code>{}</code> (GET and POST behave identically; POST converts base58 → hex before merge)</td>
+<td>Non-base58 characters cause <code>{"Error": "class java.lang.IllegalArgumentException : &lt;details&gt;"}</code> only when the input is exactly 34 characters long. Incorrect input length, bad checksum, or an invalid decoded address causes <code>Util.getHexAddress</code> to return an empty hex string. The resulting decoded address fails the 21-byte length check, returning <code>{}</code> (GET and POST behave identically; POST converts base58 → hex before merge)</td>
 </tr>
 <tr>
 <td>GET / POST</td>
@@ -3898,7 +3897,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

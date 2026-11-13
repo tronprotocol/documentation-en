@@ -3816,12 +3816,12 @@
 <tr>
 <td><code>balance</code></td>
 <td>int64</td>
-<td>The account's balance at the anchored block (sun)</td>
+<td>Latest recorded account balance at or before the requested block (sun); accuracy depends on the node's history coverage</td>
 </tr>
 <tr>
 <td><code>block_identifier</code></td>
 <td>object</td>
-<td>Hash/number of the anchored block</td>
+<td>Hash/number of the returned balance record, or the requested block when no record is found</td>
 </tr>
 </tbody>
 </table>
@@ -3834,7 +3834,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The node must enable <code>storage.balance.history.lookup = true</code> (equivalent to the <code>--history-balance-lookup</code> startup flag). Otherwise no error is raised — the response is <code>balance: 0</code> together with the request's <code>block_identifier</code> echoed verbatim, which is indistinguishable from a successful "no record for this account before this block" response and can easily be misread.</p>
+<p>Accurate results require the node to have recorded the relevant balance history. <code>storage.balance.history.lookup = true</code> (equivalent to the <code>--history-balance-lookup</code> startup flag) enables recording; the query itself reads existing records regardless of the current setting. Disabling recording leaves earlier records queryable and can produce a stale balance for a later requested block. Enabling or re-enabling it does not backfill missing history. When no record is found at or before the requested block, the response echoes the request's <code>block_identifier</code> and returns <code>balance: 0</code>; this does not prove that the account actually had a zero balance.</p>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3906,7 +3906,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 14, 2026 09:51:24 UTC">July 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

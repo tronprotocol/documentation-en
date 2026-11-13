@@ -6,8 +6,8 @@
     "description": "Machine-readable definition generated from java-tron source code, with human-facing metadata linked to the markdown API documentation.",
     "x-java-tron-source": {
       "repo": "tronprotocol/java-tron",
-      "commit": "d5c3d1d1fd0cad12f09c4346d6ac937ab2cbb071",
-      "version": "GreatVoyage-v4.8.2.2"
+      "commit": "4e8389f159d0782f1ebcd9dab2fd88388c0e6fe9",
+      "version": "GreatVoyage-v4.8.2.4"
     }
   },
   "servers": [
@@ -2282,8 +2282,17 @@
                 "description": "Gas price encoded as a hex quantity."
               },
               "value": {
-                "type": "string",
-                "description": "Hex string, amount, or value field accepted by this endpoint."
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "title": "BuildTransactionValueString1"
+                  },
+                  {
+                    "type": "null",
+                    "title": "BuildTransactionValueNull2"
+                  }
+                ],
+                "description": "TRX amount in sun, encoded as hex; null is accepted."
               },
               "data": {
                 "type": "string",
@@ -2300,13 +2309,11 @@
               "tokenId": {
                 "type": "integer",
                 "format": "int64",
-                "minimum": 0,
                 "description": "TRC10 token id."
               },
               "tokenValue": {
                 "type": "integer",
                 "format": "int64",
-                "minimum": 0,
                 "description": "TRC10 token amount."
               },
               "abi": {
@@ -2338,11 +2345,11 @@
               },
               "extraData": {
                 "type": "string",
-                "description": "Extra transaction data encoded as expected by java-tron."
+                "description": "Memo data for TRX / TRC-10 transfers only; plain text when `visible=true`, hex when `visible=false`."
               },
               "visible": {
                 "type": "boolean",
-                "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+                "description": "Whether output addresses use Base58Check and fields such as `asset_name` use UTF-8 text; contract deployment output always uses hex."
               }
             },
             "required": [
@@ -2426,7 +2433,7 @@
           "name": "Compatibility stub methods"
         }
       ],
-      "summary": "The configured etherbase address",
+      "summary": "The first address derived from the node's configured witness private keys that also appears in the chain's witness list",
       "description": "Method name, Java signature, parameters, return type, and declared errors are derived from java-tron source. See `docs/api/json-rpc/stub/eth_coinbase.md` for examples and detailed behavior.",
       "paramStructure": "by-position",
       "params": [],

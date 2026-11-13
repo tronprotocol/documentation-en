@@ -3795,19 +3795,19 @@
 <td><code>trx_num</code></td>
 <td>int32</td>
 <td>Yes</td>
-<td>Exchange ratio denominator (trx_num TRX = num tokens)</td>
+<td>Exchange ratio denominator, in sun: <code>trx_num</code> sun buys <code>num</code> token base units</td>
 </tr>
 <tr>
 <td><code>num</code></td>
 <td>int32</td>
 <td>Yes</td>
-<td>Exchange ratio numerator</td>
+<td>Exchange ratio numerator, in token base units</td>
 </tr>
 <tr>
 <td><code>precision</code></td>
 <td>int32</td>
 <td>No</td>
-<td>Precision</td>
+<td>Token decimal precision</td>
 </tr>
 <tr>
 <td><code>start_time</code></td>
@@ -3859,6 +3859,7 @@
 </tr>
 </tbody>
 </table>
+<p>Purchases receive <code>floor(amount * num / trx_num)</code> token base units, where <code>amount</code> is in sun (1 TRX = 1,000,000 sun). In the example below, <code>trx_num=1</code> and <code>num=1</code> set a price of 1 sun per token base unit.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>--url<span class="w"> </span>https://nile.trongrid.io/wallet/createassetissue<span class="w"> </span><span class="se">\</span>
@@ -3977,8 +3978,8 @@
 <td><code>{"Error": "... : Start time should be greater than HeadBlockTime"}</code></td>
 </tr>
 <tr>
-<td>Token with the same name already exists</td>
-<td><code>{"Error": "... : Token exists"}</code></td>
+<td>Token with the same name already exists and <code>AllowSameTokenName = 0</code></td>
+<td><code>{"Error": "... : Token exists"}</code>; when the proposal is enabled, different issuers may use the same name and tokens are distinguished by ID</td>
 </tr>
 <tr>
 <td><code>total_supply &lt;= 0</code></td>
@@ -4062,7 +4063,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 7, 2026 02:51:44 UTC">July 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

@@ -67,7 +67,7 @@
         "required": false
         "schema":
           "type": "boolean"
-          "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+          "description": "When true, valid UTF-8 host bytes are returned as text; all other cases use hex."
         "x-source-derived": true
       -
         "name": "int64_as_string"
@@ -150,5 +150,5 @@
         "required": false
         "schema":
           "type": "boolean"
-          "description": "When true, addresses are encoded in base58check; when false or omitted, addresses are hex-encoded."
+          "description": "When true, valid UTF-8 host bytes are returned as text; all other cases use hex."
         "x-source-derived": true

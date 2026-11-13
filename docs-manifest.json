@@ -60,7 +60,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/using_javatron/logging/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/using_javatron/logging.md",
       "source_path": "docs/using_javatron/logging.md",
-      "last_modified": "2026-10-14T16:43:16+08:00"
+      "last_modified": "2026-11-09T15:39:42+08:00"
     },
     {
       "title": "Lite FullNode",
@@ -124,7 +124,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/using_javatron/toolkit.md",
       "source_path": "docs/using_javatron/toolkit.md",
-      "last_modified": "2026-07-30T11:05:39+08:00"
+      "last_modified": "2026-11-03T15:31:33+08:00"
     },
     {
       "title": "java-tron APIs",
@@ -132,7 +132,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/index.md",
       "source_path": "docs/api/index.md",
-      "last_modified": "2026-09-24T21:37:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "java-tron HTTP API",
@@ -140,7 +140,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/index.md",
       "source_path": "docs/api/http/index.md",
-      "last_modified": "2026-10-09T11:57:26+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "java-tron gRPC API",
@@ -148,7 +148,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/index.md",
       "source_path": "docs/api/rpc/index.md",
-      "last_modified": "2026-06-14T09:22:31+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "java-tron JSON-RPC API documentation",
@@ -156,7 +156,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/index.md",
       "source_path": "docs/api/json-rpc/index.md",
-      "last_modified": "2026-10-09T11:57:26+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "Machine-readable API definitions",
@@ -700,7 +700,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/mechanism-algorithm/dpos/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/mechanism-algorithm/dpos.md",
       "source_path": "docs/mechanism-algorithm/dpos.md",
-      "last_modified": "2026-06-14T09:22:31+08:00"
+      "last_modified": "2026-11-12T17:04:37+08:00"
     },
     {
       "title": "Super Representatives & Committee",
@@ -908,7 +908,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/account/accountpermissionupdate/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/account/accountpermissionupdate.md",
       "source_path": "docs/api/http/account/accountpermissionupdate.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/createaccount",
@@ -916,7 +916,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/account/createaccount/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/account/createaccount.md",
       "source_path": "docs/api/http/account/createaccount.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getaccount",
@@ -924,7 +924,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/account/getaccount/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/account/getaccount.md",
       "source_path": "docs/api/http/account/getaccount.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getaccountbalance",
@@ -932,7 +932,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/account/getaccountbalance/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/account/getaccountbalance.md",
       "source_path": "docs/api/http/account/getaccountbalance.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getaccountnet",
@@ -940,7 +940,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/account/getaccountnet/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/account/getaccountnet.md",
       "source_path": "docs/api/http/account/getaccountnet.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getaccountresource",
@@ -948,7 +948,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/account/getaccountresource/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/account/getaccountresource.md",
       "source_path": "docs/api/http/account/getaccountresource.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/updateaccount",
@@ -972,7 +972,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/asset/createassetissue/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/asset/createassetissue.md",
       "source_path": "docs/api/http/asset/createassetissue.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getassetissuebyaccount",
@@ -980,7 +980,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/asset/getassetissuebyaccount/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/asset/getassetissuebyaccount.md",
       "source_path": "docs/api/http/asset/getassetissuebyaccount.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getassetissuebyid",
@@ -1020,7 +1020,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/asset/getpaginatedassetissuelist/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/asset/getpaginatedassetissuelist.md",
       "source_path": "docs/api/http/asset/getpaginatedassetissuelist.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/participateassetissue",
@@ -1028,7 +1028,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/asset/participateassetissue/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/asset/participateassetissue.md",
       "source_path": "docs/api/http/asset/participateassetissue.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/transferasset",
@@ -1036,7 +1036,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/asset/transferasset/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/asset/transferasset.md",
       "source_path": "docs/api/http/asset/transferasset.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/unfreezeasset",
@@ -1068,7 +1068,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getblockbalance/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/block-and-tx-query/getblockbalance.md",
       "source_path": "docs/api/http/block-and-tx-query/getblockbalance.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getblockbyid",
@@ -1084,7 +1084,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/getblockbylatestnum/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/block-and-tx-query/getblockbylatestnum.md",
       "source_path": "docs/api/http/block-and-tx-query/getblockbylatestnum.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getblockbylimitnext",
@@ -1124,7 +1124,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/block-and-tx-query/gettransactionbyid/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/block-and-tx-query/gettransactionbyid.md",
       "source_path": "docs/api/http/block-and-tx-query/gettransactionbyid.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/gettransactioncountbyblocknum",
@@ -1172,7 +1172,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/getbandwidthprices/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/node-and-tools/getbandwidthprices.md",
       "source_path": "docs/api/http/node-and-tools/getbandwidthprices.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getburntrx",
@@ -1180,7 +1180,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/getburntrx/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/node-and-tools/getburntrx.md",
       "source_path": "docs/api/http/node-and-tools/getburntrx.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getenergyprices",
@@ -1188,7 +1188,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/getenergyprices/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/node-and-tools/getenergyprices.md",
       "source_path": "docs/api/http/node-and-tools/getenergyprices.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getnodeinfo",
@@ -1196,7 +1196,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/getnodeinfo/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/node-and-tools/getnodeinfo.md",
       "source_path": "docs/api/http/node-and-tools/getnodeinfo.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/listnodes",
@@ -1204,7 +1204,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/node-and-tools/listnodes/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/node-and-tools/listnodes.md",
       "source_path": "docs/api/http/node-and-tools/listnodes.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/clearabi",
@@ -1212,7 +1212,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/clearabi/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/clearabi.md",
       "source_path": "docs/api/http/smart-contract/clearabi.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/deploycontract",
@@ -1220,7 +1220,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/deploycontract/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/deploycontract.md",
       "source_path": "docs/api/http/smart-contract/deploycontract.md",
-      "last_modified": "2026-09-29T15:49:14+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/estimateenergy",
@@ -1228,7 +1228,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/estimateenergy/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/estimateenergy.md",
       "source_path": "docs/api/http/smart-contract/estimateenergy.md",
-      "last_modified": "2026-08-05T15:53:05+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getcontract",
@@ -1236,7 +1236,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/getcontract/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/getcontract.md",
       "source_path": "docs/api/http/smart-contract/getcontract.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getcontractinfo",
@@ -1244,7 +1244,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/getcontractinfo/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/getcontractinfo.md",
       "source_path": "docs/api/http/smart-contract/getcontractinfo.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/triggerconstantcontract",
@@ -1252,7 +1252,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/triggerconstantcontract/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/triggerconstantcontract.md",
       "source_path": "docs/api/http/smart-contract/triggerconstantcontract.md",
-      "last_modified": "2026-09-18T09:39:58+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/triggersmartcontract",
@@ -1260,7 +1260,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/triggersmartcontract/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/triggersmartcontract.md",
       "source_path": "docs/api/http/smart-contract/triggersmartcontract.md",
-      "last_modified": "2026-08-05T15:53:05+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/updateenergylimit",
@@ -1268,7 +1268,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/updateenergylimit/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/updateenergylimit.md",
       "source_path": "docs/api/http/smart-contract/updateenergylimit.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/updatesetting",
@@ -1276,7 +1276,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/smart-contract/updatesetting/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/smart-contract/updatesetting.md",
       "source_path": "docs/api/http/smart-contract/updatesetting.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/freezebalance",
@@ -1284,7 +1284,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v1/freezebalance/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v1/freezebalance.md",
       "source_path": "docs/api/http/stake-v1/freezebalance.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getdelegatedresource",
@@ -1292,7 +1292,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v1/getdelegatedresource/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v1/getdelegatedresource.md",
       "source_path": "docs/api/http/stake-v1/getdelegatedresource.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getdelegatedresourceaccountindex",
@@ -1300,7 +1300,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v1/getdelegatedresourceaccountindex/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v1/getdelegatedresourceaccountindex.md",
       "source_path": "docs/api/http/stake-v1/getdelegatedresourceaccountindex.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/unfreezebalance",
@@ -1308,7 +1308,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v1/unfreezebalance/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v1/unfreezebalance.md",
       "source_path": "docs/api/http/stake-v1/unfreezebalance.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/cancelallunfreezev2",
@@ -1316,7 +1316,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/cancelallunfreezev2/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/cancelallunfreezev2.md",
       "source_path": "docs/api/http/stake-v2/cancelallunfreezev2.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/delegateresource",
@@ -1324,7 +1324,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/delegateresource/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/delegateresource.md",
       "source_path": "docs/api/http/stake-v2/delegateresource.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/freezebalancev2",
@@ -1340,7 +1340,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getavailableunfreezecount/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/getavailableunfreezecount.md",
       "source_path": "docs/api/http/stake-v2/getavailableunfreezecount.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getcandelegatedmaxsize",
@@ -1348,7 +1348,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getcandelegatedmaxsize/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/getcandelegatedmaxsize.md",
       "source_path": "docs/api/http/stake-v2/getcandelegatedmaxsize.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getcanwithdrawunfreezeamount",
@@ -1356,7 +1356,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getcanwithdrawunfreezeamount/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/getcanwithdrawunfreezeamount.md",
       "source_path": "docs/api/http/stake-v2/getcanwithdrawunfreezeamount.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getdelegatedresourceaccountindexv2",
@@ -1364,7 +1364,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getdelegatedresourceaccountindexv2/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/getdelegatedresourceaccountindexv2.md",
       "source_path": "docs/api/http/stake-v2/getdelegatedresourceaccountindexv2.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getdelegatedresourcev2",
@@ -1372,7 +1372,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/getdelegatedresourcev2/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/getdelegatedresourcev2.md",
       "source_path": "docs/api/http/stake-v2/getdelegatedresourcev2.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/undelegateresource",
@@ -1380,7 +1380,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/undelegateresource/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/undelegateresource.md",
       "source_path": "docs/api/http/stake-v2/undelegateresource.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/unfreezebalancev2",
@@ -1388,7 +1388,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/unfreezebalancev2/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/unfreezebalancev2.md",
       "source_path": "docs/api/http/stake-v2/unfreezebalancev2.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/withdrawexpireunfreeze",
@@ -1396,7 +1396,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/stake-v2/withdrawexpireunfreeze/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/stake-v2/withdrawexpireunfreeze.md",
       "source_path": "docs/api/http/stake-v2/withdrawexpireunfreeze.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/broadcasthex",
@@ -1404,7 +1404,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/broadcasthex/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/tx-build-and-broadcast/broadcasthex.md",
       "source_path": "docs/api/http/tx-build-and-broadcast/broadcasthex.md",
-      "last_modified": "2026-07-30T11:06:10+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/broadcasttransaction",
@@ -1412,7 +1412,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/broadcasttransaction/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/tx-build-and-broadcast/broadcasttransaction.md",
       "source_path": "docs/api/http/tx-build-and-broadcast/broadcasttransaction.md",
-      "last_modified": "2026-07-30T11:06:10+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/createtransaction",
@@ -1420,7 +1420,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/createtransaction/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/tx-build-and-broadcast/createtransaction.md",
       "source_path": "docs/api/http/tx-build-and-broadcast/createtransaction.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getapprovedlist",
@@ -1428,7 +1428,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/getapprovedlist/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/tx-build-and-broadcast/getapprovedlist.md",
       "source_path": "docs/api/http/tx-build-and-broadcast/getapprovedlist.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getsignweight",
@@ -1436,7 +1436,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/tx-build-and-broadcast/getsignweight/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/tx-build-and-broadcast/getsignweight.md",
       "source_path": "docs/api/http/tx-build-and-broadcast/getsignweight.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/createwitness",
@@ -1444,7 +1444,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/createwitness/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/witness-and-governance/createwitness.md",
       "source_path": "docs/api/http/witness-and-governance/createwitness.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getBrokerage",
@@ -1452,7 +1452,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getBrokerage/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/witness-and-governance/getBrokerage.md",
       "source_path": "docs/api/http/witness-and-governance/getBrokerage.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getReward",
@@ -1460,7 +1460,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getReward/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/witness-and-governance/getReward.md",
       "source_path": "docs/api/http/witness-and-governance/getReward.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getchainparameters",
@@ -1484,7 +1484,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getpaginatednowwitnesslist/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md",
       "source_path": "docs/api/http/witness-and-governance/getpaginatednowwitnesslist.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getpaginatedproposallist",
@@ -1492,7 +1492,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/getpaginatedproposallist/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/witness-and-governance/getpaginatedproposallist.md",
       "source_path": "docs/api/http/witness-and-governance/getpaginatedproposallist.md",
-      "last_modified": "2026-07-13T16:18:04+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/getproposalbyid",
@@ -1524,7 +1524,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/proposalapprove/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/witness-and-governance/proposalapprove.md",
       "source_path": "docs/api/http/witness-and-governance/proposalapprove.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/proposalcreate",
@@ -1540,7 +1540,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/proposaldelete/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/witness-and-governance/proposaldelete.md",
       "source_path": "docs/api/http/witness-and-governance/proposaldelete.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/updateBrokerage",
@@ -1564,7 +1564,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/http/witness-and-governance/votewitnessaccount/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/http/witness-and-governance/votewitnessaccount.md",
       "source_path": "docs/api/http/witness-and-governance/votewitnessaccount.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "/wallet/withdrawbalance",
@@ -1580,7 +1580,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/account/eth_getBalance/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/account/eth_getBalance.md",
       "source_path": "docs/api/json-rpc/account/eth_getBalance.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getCode",
@@ -1604,7 +1604,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getBlockByHash/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/block-and-tx-query/eth_getBlockByHash.md",
       "source_path": "docs/api/json-rpc/block-and-tx-query/eth_getBlockByHash.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getBlockByNumber",
@@ -1612,7 +1612,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getBlockByNumber/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/block-and-tx-query/eth_getBlockByNumber.md",
       "source_path": "docs/api/json-rpc/block-and-tx-query/eth_getBlockByNumber.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getBlockReceipts",
@@ -1620,7 +1620,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getBlockReceipts/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md",
       "source_path": "docs/api/json-rpc/block-and-tx-query/eth_getBlockReceipts.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getBlockTransactionCountByHash",
@@ -1644,7 +1644,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex.md",
       "source_path": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getTransactionByBlockNumberAndIndex",
@@ -1652,7 +1652,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex.md",
       "source_path": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getTransactionByHash",
@@ -1660,7 +1660,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getTransactionByHash/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/block-and-tx-query/eth_getTransactionByHash.md",
       "source_path": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionByHash.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getTransactionReceipt",
@@ -1668,7 +1668,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/block-and-tx-query/eth_getTransactionReceipt/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/block-and-tx-query/eth_getTransactionReceipt.md",
       "source_path": "docs/api/json-rpc/block-and-tx-query/eth_getTransactionReceipt.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getFilterChanges",
@@ -1676,7 +1676,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_getFilterChanges/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/filter/eth_getFilterChanges.md",
       "source_path": "docs/api/json-rpc/filter/eth_getFilterChanges.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getFilterLogs",
@@ -1684,7 +1684,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_getFilterLogs/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/filter/eth_getFilterLogs.md",
       "source_path": "docs/api/json-rpc/filter/eth_getFilterLogs.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getLogs",
@@ -1692,7 +1692,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_getLogs/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/filter/eth_getLogs.md",
       "source_path": "docs/api/json-rpc/filter/eth_getLogs.md",
-      "last_modified": "2026-07-15T12:06:12+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_newBlockFilter",
@@ -1708,7 +1708,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_newFilter/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/filter/eth_newFilter.md",
       "source_path": "docs/api/json-rpc/filter/eth_newFilter.md",
-      "last_modified": "2026-07-13T13:16:40+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_uninstallFilter",
@@ -1716,7 +1716,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/filter/eth_uninstallFilter/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/filter/eth_uninstallFilter.md",
       "source_path": "docs/api/json-rpc/filter/eth_uninstallFilter.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_blockNumber",
@@ -1756,7 +1756,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/node/eth_syncing/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/node/eth_syncing.md",
       "source_path": "docs/api/json-rpc/node/eth_syncing.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "net_listening",
@@ -1804,7 +1804,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/smart-contract/eth_call/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/smart-contract/eth_call.md",
       "source_path": "docs/api/json-rpc/smart-contract/eth_call.md",
-      "last_modified": "2026-08-05T15:53:05+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_estimateGas",
@@ -1812,7 +1812,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/smart-contract/eth_estimateGas/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/smart-contract/eth_estimateGas.md",
       "source_path": "docs/api/json-rpc/smart-contract/eth_estimateGas.md",
-      "last_modified": "2026-08-05T15:53:05+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_accounts",
@@ -1828,7 +1828,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/stub/eth_coinbase/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/stub/eth_coinbase.md",
       "source_path": "docs/api/json-rpc/stub/eth_coinbase.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "eth_getWork",
@@ -1844,7 +1844,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/json-rpc/tx-build/buildTransaction/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/json-rpc/tx-build/buildTransaction.md",
       "source_path": "docs/api/json-rpc/tx-build/buildTransaction.md",
-      "last_modified": "2026-09-29T15:49:14+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "AccountPermissionUpdate",
@@ -2004,7 +2004,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetBlockBalanceTrace/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/block-and-tx-query/GetBlockBalanceTrace.md",
       "source_path": "docs/api/rpc/block-and-tx-query/GetBlockBalanceTrace.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "GetBlockById",
@@ -2060,7 +2060,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/block-and-tx-query/GetTransactionById/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/block-and-tx-query/GetTransactionById.md",
       "source_path": "docs/api/rpc/block-and-tx-query/GetTransactionById.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "GetTransactionCountByBlockNum",
@@ -2116,7 +2116,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/node-and-tools/GetBurnTrx/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/node-and-tools/GetBurnTrx.md",
       "source_path": "docs/api/rpc/node-and-tools/GetBurnTrx.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "GetEnergyPrices",
@@ -2132,7 +2132,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/node-and-tools/GetNodeInfo/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/node-and-tools/GetNodeInfo.md",
       "source_path": "docs/api/rpc/node-and-tools/GetNodeInfo.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "ListNodes",
@@ -2196,7 +2196,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/smart-contract/TriggerContract/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/smart-contract/TriggerContract.md",
       "source_path": "docs/api/rpc/smart-contract/TriggerContract.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "UpdateEnergyLimit",
@@ -2220,7 +2220,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/stake-v1/FreezeBalance2/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/stake-v1/FreezeBalance2.md",
       "source_path": "docs/api/rpc/stake-v1/FreezeBalance2.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "GetDelegatedResource",
@@ -2324,7 +2324,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/stake-v2/UnfreezeBalanceV2/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/stake-v2/UnfreezeBalanceV2.md",
       "source_path": "docs/api/rpc/stake-v2/UnfreezeBalanceV2.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "WithdrawExpireUnfreeze",
@@ -2356,7 +2356,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/tx-build-and-broadcast/GetTransactionApprovedList/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/tx-build-and-broadcast/GetTransactionApprovedList.md",
       "source_path": "docs/api/rpc/tx-build-and-broadcast/GetTransactionApprovedList.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "GetTransactionSignWeight",
@@ -2372,7 +2372,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/CreateWitness2/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/witness-and-governance/CreateWitness2.md",
       "source_path": "docs/api/rpc/witness-and-governance/CreateWitness2.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "GetBrokerageInfo",
@@ -2404,7 +2404,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetPaginatedNowWitnessList/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/witness-and-governance/GetPaginatedNowWitnessList.md",
       "source_path": "docs/api/rpc/witness-and-governance/GetPaginatedNowWitnessList.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "GetPaginatedProposalList",
@@ -2428,7 +2428,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/api/rpc/witness-and-governance/GetRewardInfo/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/api/rpc/witness-and-governance/GetRewardInfo.md",
       "source_path": "docs/api/rpc/witness-and-governance/GetRewardInfo.md",
-      "last_modified": "2026-05-01T11:13:07+08:00"
+      "last_modified": "2026-11-11T12:17:20+08:00"
     },
     {
       "title": "ListProposals",

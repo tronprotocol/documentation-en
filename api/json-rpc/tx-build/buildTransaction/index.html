@@ -3764,7 +3764,7 @@
 <td><code>params[0]</code></td>
 <td>object</td>
 <td>yes</td>
-<td><code>BuildArguments</code> (extends <code>CallArguments</code>; fields below)</td>
+<td><code>BuildArguments</code></td>
 </tr>
 </tbody>
 </table>
@@ -3846,12 +3846,12 @@
 <tr>
 <td><code>extraData</code></td>
 <td><code>""</code></td>
-<td>Memo data written into the transaction</td>
+<td>Memo data for TRX / TRC-10 transfers only; plain text when <code>visible=true</code>, hex when <code>visible=false</code></td>
 </tr>
 <tr>
 <td><code>visible</code></td>
 <td><code>false</code></td>
-<td>Whether output addresses / strings use base58 / UTF-8</td>
+<td>Whether output addresses use Base58Check and fields such as <code>asset_name</code> use UTF-8 text; contract deployment output always uses hex</td>
 </tr>
 </tbody>
 </table>
@@ -3873,11 +3873,11 @@
 <td><code>TriggerSmartContract</code></td>
 </tr>
 <tr>
-<td><code>to</code> is a regular account + <code>tokenId&gt;0</code> + <code>tokenValue&gt;0</code> + <code>value</code> empty</td>
+<td><code>to</code> is a regular account + <code>tokenId&gt;0</code> + <code>tokenValue&gt;0</code> + <code>value</code> is null, <code>""</code>, or <code>"0x0"</code></td>
 <td><code>TransferAssetContract</code></td>
 </tr>
 <tr>
-<td><code>to</code> is a regular account + <code>value</code> non-empty</td>
+<td><code>to</code> is a regular account + <code>value</code> is non-empty + at least one of: <code>tokenId &lt;= 0</code>, <code>tokenValue &lt;= 0</code>, or <code>value != "0x0"</code></td>
 <td><code>TransferContract</code></td>
 </tr>
 <tr>
@@ -3932,7 +3932,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p><code>ref_block_bytes</code> / <code>ref_block_hash</code> come from the latest block at construction time; <code>expiration</code> = <code>timestamp</code> + 60s; <code>txID</code> is the SHA256 hash of <code>raw_data</code>, so it changes whenever the above fields change — two calls of the same request will produce different <code>txID</code> values.</p>
+<p><code>ref_block_bytes</code> / <code>ref_block_hash</code> use the reference block selected by <code>trx.reference.block</code> (default <code>solid</code>; configurable to <code>head</code>). <code>expiration</code> is the latest head block timestamp plus <code>trx.expiration.timeInMilliseconds</code> (default 60000 ms), while the transaction <code>timestamp</code> is the node's wall-clock time at construction. <code>txID</code> is the SHA-256 hash of serialized <code>raw_data</code>: it changes when <code>raw_data</code> changes.</p>
 <p><code>feeLimit</code> = <code>gas × wallet.getEnergyFee()</code>, automatically written to <code>raw_data.fee_limit</code> only for <code>CreateSmartContract</code> / <code>TriggerSmartContract</code>; <code>TransferContract</code> / <code>TransferAssetContract</code> don't need <code>feeLimit</code> (this is why the <code>raw_data</code> above has no <code>fee_limit</code> field).</p>
 </blockquote>
 <h3 id="error-responses">Error responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h3>
@@ -4032,7 +4032,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 29, 2026 07:49:14 UTC">September 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     

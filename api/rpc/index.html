@@ -3975,22 +3975,31 @@
 <td><code>framework/src/main/java/org/tron/core/services/RpcApiService.java</code></td>
 </tr>
 <tr>
-<td><code>protocol.WalletSolidity</code></td>
+<td><code>protocol.WalletSolidity</code> on a FullNode</td>
 <td><code>50061</code></td>
-<td>Returns solidified data only; read-only</td>
+<td>Read-only solidified view, available when <code>node.rpc.solidityEnable</code> is enabled</td>
 <td><code>framework/src/main/java/org/tron/core/services/interfaceOnSolidity/RpcApiServiceOnSolidity.java</code></td>
+</tr>
+<tr>
+<td><code>protocol.WalletSolidity</code> on a standalone SolidityNode</td>
+<td><code>50051</code></td>
+<td>Read-only service on the node's main gRPC port</td>
+<td><code>framework/src/main/java/org/tron/core/services/RpcApiService.java</code></td>
 </tr>
 </tbody>
 </table>
-<p>The ports can be overridden via <code>node.rpc.port</code> / <code>node.rpc.solidityPort</code> in the node configuration (see <code>framework/src/main/resources/config.conf</code>).</p>
+<p>The main gRPC port is configured by <code>node.rpc.port</code> (default 50051). A FullNode's additional solidified view uses <code>node.rpc.solidityPort</code> (default 50061) when enabled; a standalone SolidityNode serves <code>WalletSolidity</code> on <code>node.rpc.port</code>. See <a href="../../using_javatron/configuration/">Node Configuration</a>.</p>
 <p>The proto definition lives in <code>protocol/src/main/protos/api/api.proto</code>.</p>
 <h2 id="calling">Calling<a class="headerlink" href="#calling" title="Permanent link">&para;</a></h2>
-<p>gRPC does not use URL paths to distinguish <code>wallet</code> from <code>walletsolidity</code> — they are two independent service stubs reached on different ports:</p>
+<p>gRPC identifies <code>Wallet</code> and <code>WalletSolidity</code> by their protobuf service names. The port depends on the node mode and configuration:</p>
 <div class="highlight"><pre><span></span><code># Wallet
 grpc://&lt;host&gt;:50051   protocol.Wallet/&lt;Method&gt;
 
-# WalletSolidity (read-only)
+# WalletSolidity on a FullNode (read-only; node.rpc.solidityEnable=true)
 grpc://&lt;host&gt;:50061   protocol.WalletSolidity/&lt;Method&gt;
+
+# WalletSolidity on a standalone SolidityNode (read-only)
+grpc://&lt;host&gt;:50051   protocol.WalletSolidity/&lt;Method&gt;
 </code></pre></div>
 <p>Each method doc contains:</p>
 <ul>
@@ -4026,7 +4035,7 @@ grpc://&lt;host&gt;:50061   protocol.WalletSolidity/&lt;Method&gt;
 </tr>
 <tr>
 <td><a href="account/CreateAccount2/">CreateAccount2</a></td>
-<td>Create an account on chain (consumes 1 TRX)</td>
+<td>Build an account-creation transaction; execution incurs an additional account-creation fee set by <code>getCreateNewAccountFeeInSystemContract</code> (currently 1,000,000 sun, or 1 TRX, on Mainnet).</td>
 </tr>
 <tr>
 <td><a href="account/UpdateAccount2/">UpdateAccount2</a></td>
@@ -4124,11 +4133,11 @@ grpc://&lt;host&gt;:50061   protocol.WalletSolidity/&lt;Method&gt;
 </tr>
 <tr>
 <td><a href="tx-build-and-broadcast/GetTransactionApprovedList/">GetTransactionApprovedList</a></td>
-<td>List addresses that have signed a multi-sig transaction</td>
+<td>List signing addresses after all signatures pass validation</td>
 </tr>
 <tr>
 <td><a href="tx-build-and-broadcast/BroadcastTransaction/">BroadcastTransaction</a></td>
-<td>Broadcast a signed transaction (JSON)</td>
+<td>Broadcast a signed protobuf <code>Transaction</code></td>
 </tr>
 </tbody>
 </table>
@@ -4273,7 +4282,7 @@ grpc://&lt;host&gt;:50061   protocol.WalletSolidity/&lt;Method&gt;
 </tr>
 <tr>
 <td><a href="witness-and-governance/GetRewardInfo/">GetRewardInfo</a></td>
-<td>Query claimable voter rewards</td>
+<td>Query an account's total claimable rewards in sun.</td>
 </tr>
 <tr>
 <td><a href="witness-and-governance/WithdrawBalance2/">WithdrawBalance2</a></td>
@@ -4359,7 +4368,7 @@ grpc://&lt;host&gt;:50061   protocol.WalletSolidity/&lt;Method&gt;
 </tr>
 <tr>
 <td><a href="stake-v2/UnfreezeBalanceV2/">UnfreezeBalanceV2</a></td>
-<td>Initiate an unfreeze (14-day wait)</td>
+<td>Initiate an unfreeze; the waiting period is set by <code>UNFREEZE_DELAY_DAYS</code> (currently 14 days on Mainnet).</td>
 </tr>
 <tr>
 <td><a href="stake-v2/WithdrawExpireUnfreeze/">WithdrawExpireUnfreeze</a></td>
@@ -4450,7 +4459,7 @@ grpc://&lt;host&gt;:50061   protocol.WalletSolidity/&lt;Method&gt;
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 13, 2026 03:09:42 UTC">June 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 04:17:20 UTC">November 11, 2026</span>
   </span>
 
     
