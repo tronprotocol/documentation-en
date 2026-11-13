@@ -2,11 +2,9 @@
 
 ## Overview
 
-As a distributed ledger system, a blockchain boasts thousands, even tens of thousands, of independent nodes globally, each maintaining an identical copy of the ledger. To record new transaction data onto this shared ledger, universal agreement from these nodes is essential. Achieving this consensus in an inherently untrustworthy distributed environment is a complex engineering challenge.
+As a distributed ledger system, a blockchain can be maintained by many independent nodes across different regions, each keeping a copy of the ledger and synchronizing data over the network. To record new transaction data in this shared ledger, nodes need to validate transactions according to the consensus rules and agree on which blocks to accept. Achieving this in a distributed environment where some participants may fail or act maliciously is a complex engineering challenge.
 
-A blockchain system functions correctly (i.e., all nodes can consistently maintain a coherent ledger) provided that the vast majority of nodes in the system are honest and reliable. To ensure that honest nodes can collectively oversee the recording of transaction data, every blockchain system needs to establish its own **consensus mechanism**. 
-
-The consensus mechanism acts like the blockchain's "constitution," guaranteeing that even in an untrustworthy distributed environment, as long as the majority of nodes adhere to the consensus rules, the system can achieve deterministic and trustworthy results. Therefore, the significance of a consensus mechanism lies in its ability to enable honest nodes within the blockchain to ultimately agree on the ledger's content.
+A **consensus mechanism** defines the rules for reaching this agreement. Different consensus mechanisms have different requirements for participation and agreement.
 
 Currently, mainstream consensus mechanisms include Proof of Work (PoW), Proof of Stake (PoS), and Delegated Proof of Stake (DPoS), and each mechanism has its unique specific implementation in different blockchain systems. This document will focus on the DPoS consensus mechanism adopted by the **TRON network** and elaborate on its core components and operational principles.
 
@@ -32,12 +30,12 @@ The following will provide a detailed explanation, integrating the specific impl
 |TRX| The equity token issued and circulated within the TRON blockchain system, with the ticker symbol **TRX**.|
 |Super Representative (SR) |A node in the TRON network that has obtained block production qualifications. TRON sets the number of SRs at **27**. This document does not distinguish between block producer, Witness, SuperNode, SR, etc.|
 |Super Representative Candidate| A node in the TRON network that is eligible to become an SR.|
-|Super Representative Partner (SRP)| SR candidates ranked from **28th** to **127th** by vote count. They do not participate in block production or transaction packaging but can receive voting rewards. Voters who vote for SRPs will also receive voting rewards.|
+|Super Representative Partner (SRP)| SR candidates ranked from **28th** to **127th** by vote count. They do not participate in block production or transaction packaging but can receive voting rewards. Their voters can share the rewards remaining after the SRP's commission is deducted.|
 |Block Production / Producing Blocks|The process of validating transactions and recording them as entries. Since entries in TRON are carried by blocks, the block production process is also referred to as "producing blocks." This document does not distinguish between block production and producing blocks.|
 |Block Production Order (Block Generation Order)|The 27 SRs are ranked from highest to lowest by vote count, which determines their block production order. When two SRs have the same vote count, their addresses are used as a tiebreaker to produce a deterministic order.|
 |Slot|In the TRON network, every **3 seconds** is counted as a slot. Under normal circumstances, each SR producing a block will complete block generation within its corresponding slot time. Therefore, TRON's average block generation interval is approximately 3 seconds. If an SR fails to produce a block for any reason, the corresponding slot remains empty, and the next scheduled SR will produce a block in the subsequent slot. During maintenance periods, block production skips 2 slots.|
-|Epoch|TRON defines every **6 hours** as an epoch. At the boundary between consecutive epochs, the system performs a **maintenance period** to determine the block production order for the next epoch.|
-|Maintenance Period|At each epoch boundary, the system triggers maintenance: it tallies the votes accumulated during the epoch, re-elects the 27 SRs, and updates the block production order for the next epoch. During maintenance, block production **skips 2 slots** (**6 seconds**) so no blocks are produced in that interval. Since there are 4 epochs in 24 hours, there are naturally 4 maintenance periods per day.|
+|Epoch|An epoch is the interval between scheduled maintenance boundaries, currently **6 hours** on mainnet. This interval can be adjusted through an **on-chain proposal**.|
+|Maintenance Period|Maintenance is triggered when a node processes the first block whose timestamp reaches or exceeds the scheduled maintenance time. It tallies votes, re-elects the 27 SRs, and updates their block production order. After the maintenance-triggering block, block production **skips 2 slots** (**6 seconds**). With the current 6-hour mainnet interval and normal block production, maintenance occurs **4 times per day**.|
 
 ![Epoch](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/sequence_en.jpg)
 
@@ -59,7 +57,11 @@ SRs continuously repeat this process to ensure that all new transaction data in 
 
 Before voting for SRs, an account needs to acquire **voting power**, specifically **TRON Power (TP)**. Voting power is obtained by **staking TRX**. Staking TRX grants users voting power (TRON Power) in addition to Bandwidth or Energy. For every **1 TRX** staked, a user receives **1 TP**.
 
-When an account unstakes TRX, it loses the corresponding amount of TP, and its current votes become invalid. Votes are tallied every **6 hours**, and SRs and SRPs are also updated every 6 hours. If an account casts multiple votes before the vote tally, the TRON network will only record the account's **latest vote**, and previous votes will be overwritten.
+Unstaking TRX staked under **Stake 1.0** clears all of the account's existing votes.
+
+Under **Stake 2.0**, unstaking TRX reduces the account's TP. Existing votes remain unchanged if the remaining TP covers the account's total votes. Otherwise, the remaining TP is allocated according to each candidate's share of the account's previous total votes, and each resulting vote count is rounded down to an integer. The total retained votes may therefore be less than the remaining TP.
+
+Votes are tallied and SRs and SRPs are updated during each maintenance period, currently scheduled every **6 hours** on mainnet. If an account casts multiple votes before the vote tally, the TRON network will only record the account's **latest vote**, and previous votes will be overwritten.
 
 ### Voting Process
 
@@ -88,7 +90,7 @@ Ideally, in a blockchain system adopting DPoS consensus, the block production pr
 ![longest_chain1](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/longest_chain1_en.jpg)
 ![longest_chain2](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/longest_chain2_en.jpg)
 
-As mentioned earlier, the normal operation of a blockchain system is predicated on the vast majority of nodes in the system being honest and reliable. To further delve into this issue, the primary guarantee for blockchain system security is ledger security: the ledger cannot be maliciously written with illegal data, and the copies of the ledger stored on various nodes should remain consistent. From the perspective of DPoS consensus, the block production process is completed by SRs, so TRON's security depends on the reliability of the majority of SRs.
+Ledger security is fundamental to blockchain security: the ledger must be protected against malicious writes of invalid data, and its copies maintained by different nodes should remain consistent. Under DPoS consensus, SRs are responsible for producing blocks. In TRON's block solidification process, each active SR's confirmation carries equal weight. TRON's security therefore depends on a sufficient number of active SRs honestly and reliably following the consensus rules.
 
 TRON has established an **irreversible block** (or **solidified block**) mechanism, and to resist malicious behavior from a few block-producing nodes, TRON adopts the **longest chain principle** to confirm the main chain.
 
@@ -96,15 +98,15 @@ TRON has established an **irreversible block** (or **solidified block**) mechani
 
 Newly produced blocks initially remain in an unconfirmed state. The process of solidification works as follows:
 
-* A block becomes an **irreversible block** (commonly referred to as a **solidified block**) when it is acknowledged by at least **70%** of the SRs (i.e., 27 × 70% ≈ 19 SRs). Once solidified, the transactions within it are permanently confirmed by the entire network.
-* "Acknowledgment" occurs when an SR produces a subsequent block that builds upon the original unconfirmed block.
-* Therefore, a block is solidified when 18 subsequent blocks are produced by 18 *different* SRs (plus the original block producer, totaling 19 distinct SR confirmations).
+* A block becomes an **irreversible block** (commonly referred to as a **solidified block**) when at least **70%** of the **currently active SRs** have a latest produced block height greater than or equal to its height on the current chain. With 27 active SRs, this requires **19 distinct SRs**. Once solidified, the transactions within it are permanently confirmed by the entire network.
+* An SR acknowledges a block by producing the block itself or a subsequent block that builds upon it. Only SRs in the current active set count toward the threshold, so changes to that set during maintenance can change which producers count. The solidified height never decreases when the active set changes.
+* With an unchanged set of 27 active SRs, the original block producer plus **18 other distinct SRs** producing subsequent blocks that build upon the target block are sufficient to solidify it. Repeated blocks from the same SR do not add distinct confirmations.
 
-For example, as shown in Figure d, when SR C produces block 103, SR E produces block 104' based on block 103, and SRs G, A, and B produce blocks 105', 106', and 107' respectively. These are all subsequent blocks to block 103, signifying their acknowledgment of the block produced by C. Thus, when block 121' is produced, block 103 becomes a solidified block because it has accumulated 18 subsequent blocks. It is important to emphasize that the SRs who produced these 18 blocks must be different from each other and different from the SR who produced block 103 to ensure the block has received confirmations from 19 distinct SRs.
+Figure d illustrates a simplified network with a fixed set of **seven SRs (A–G)**. In this example, the 70% threshold requires **five distinct SRs**. SR C produces block 103, SR E produces block 104' based on block 103, and SRs G, A, and B produce blocks 105', 106', and 107' respectively on the same branch. These are all subsequent blocks to block 103, signifying their producers' acknowledgment of the block produced by C. Thus, when block **107'** is produced, block **103 becomes solidified** because it has accumulated four subsequent blocks produced by four different SRs. Including C, the original block producer, this gives **five distinct SR confirmations**.
 
 ### Longest Chain Principle
 
-When a blockchain forks, honest SRs will always choose to continue producing blocks on the currently **longest** fork chain.
+When a blockchain forks, honest SRs will always choose to continue producing blocks on the currently **longest** fork chain. Receiving an alternative branch of the same height does not by itself trigger a switch.
 
 ## Incentive Model
 
@@ -117,7 +119,7 @@ The reward amounts below reflect the **current mainnet values** after adjustment
 
 ## Proposal-Based Parameter Adjustment
 
-An important feature of DPoS is that any system parameter adjustment can be initiated through an **on-chain proposal**. SRs decide whether a proposal takes effect by voting on it. The benefit of this mechanism is that **no hard fork upgrade is required** when adjusting parameters on-chain.
+Dynamic chain parameters supported by the TRON node software can be adjusted through **on-chain proposals**. SRs decide whether a proposal takes effect by voting on it.
 
 For TRON's current network parameters and their values, as well as past proposal records, please refer to the [TRONSCAN Committee](https://tronscan.org/#/sr/committee) Page.
 
