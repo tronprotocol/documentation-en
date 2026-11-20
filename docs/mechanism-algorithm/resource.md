@@ -19,9 +19,9 @@ Before voting for Super Representatives, an account must first acquire TRON Powe
 
 ## Bandwidth
 
-Transactions are transmitted and stored on the network as byte arrays. The Bandwidth consumed by a transaction is calculated as `Transaction Size (bytes) * Bandwidth Rate`. The current Bandwidth rate is 1.
+The Bandwidth consumed by a transaction is based on its billable size. For a standard transaction awaiting broadcast, this is the Protobuf-serialized size of the fully signed transaction, plus 64 bytes reserved for the transaction result. Each byte of the billable size consumes 1 Bandwidth.
 
-For example, a transaction with a size of 200 bytes will consume 200 Bandwidth.
+For example, a fully signed transaction with a serialized size of 200 bytes has a billable size of 264 bytes and consumes 264 Bandwidth.
 
 > **Note:** Because the total staked funds in the network and an individual account's staked funds can change at any time, the amount of Bandwidth an account possesses is not a fixed value.
 
@@ -62,16 +62,18 @@ All transactions, except for query operations, consume Bandwidth. When you initi
 
 The system attempts to pay the Bandwidth fee in the following order:
 
-1.  **Staked Bandwidth:** Consumes the Bandwidth obtained by the transaction initiator from staking TRX.
-2.  **Free Bandwidth:** If staked Bandwidth is insufficient, consumes the initiator's 600 daily free allowance.
-3.  **TRX Burning:** If both staked and free Bandwidth are insufficient, burns the initiator's TRX to cover the fee.
-    - *Burn Fee = Transaction Size (bytes) × 1,000 sun*
+1.  **Staked Bandwidth:** Uses the initiator's Bandwidth obtained through staking or delegation if it can cover the full Bandwidth cost.
+2.  **Free Bandwidth:** Otherwise, attempts to cover the full cost using the initiator's remaining daily free Bandwidth.
+3.  **TRX Burning:** If both attempts fail, burns the initiator's TRX to pay the entire Bandwidth fee.
+    - *Burn Fee = Billable Transaction Size (bytes) × 1,000 sun*
+
+Staked and free Bandwidth cannot be combined to pay for a transaction.
 
 **Scenario 2: New Account Creation Transactions**
 
 Transactions that create a new account follow a special rule and do not use the daily free allowance:
 
-1.  **Staked Bandwidth:** First, attempts to consume the Bandwidth obtained by the transaction initiator from staking TRX.
+1.  **Staked Bandwidth:** First, attempts to cover the full Bandwidth cost using the initiator's Bandwidth obtained through staking or delegation.
 2.  **TRX Burning:** If staked Bandwidth is insufficient, directly burns 0.1 TRX to complete the account creation.
 
 **Scenario 3: TRC-10 Token Transfers**
@@ -90,11 +92,11 @@ TRC-10 token transfers have a unique consumption logic that introduces the "toke
       * The token issuer has sufficient staked Bandwidth. 
           * Query Method: [/wallet/getaccountnet](../api/http/account/getaccountnet.md)
           * Formula: `NetLimit - NetUsed`
-          * Description: The amount of available Bandwidth the issuer has obtained through staking.
-2.  **Initiator's Staked Bandwidth:** Attempts to consume the initiator's staked Bandwidth.
-3.  **Initiator's Free Bandwidth:** If staked Bandwidth is insufficient, consumes the initiator's free Bandwidth allowance.
-4.  **TRX Burning:** If all the above resources are insufficient, burns the initiator's TRX to pay the fee.
-      * *Burn Fee = Transaction Size (bytes) × 1,000 sun*
+          * Description: The amount of available Bandwidth the issuer has obtained through staking or delegation.
+2.  **Initiator's Staked Bandwidth:** Attempts to cover the full Bandwidth cost using the initiator's Bandwidth obtained through staking or delegation.
+3.  **Initiator's Free Bandwidth:** If staked Bandwidth is insufficient, attempts to cover the full cost using the initiator's remaining daily free Bandwidth.
+4.  **TRX Burning:** If all the above attempts fail, burns the initiator's TRX to pay the entire Bandwidth fee.
+      * *Burn Fee = Billable Transaction Size (bytes) × 1,000 sun*
 
 ### Automatic Bandwidth Recovery
 
@@ -106,8 +108,10 @@ You can query an account's current resource status by calling the `wallet/getacc
 
 ```text
 Remaining Free Bandwidth = freeNetLimit - freeNetUsed
-Remaining Staked Bandwidth = NetLimit - NetUsed
+Remaining Staked Bandwidth = max(NetLimit - NetUsed, 0)
 ```
+
+For example, after unstaking, `NetUsed` may temporarily exceed `NetLimit`; in this case, the remaining staked Bandwidth is `0`.
 
 *Note: If any of these parameters are absent from the API response, their value is `0`.*
 
@@ -189,7 +193,7 @@ _**Fee Deduction for Exceptions**_
 Contract execution can be interrupted for various reasons, with different rules for Energy deduction:
 
 * **Normal Interruption (`REVERT`):** If a contract exits due to a `REVERT` instruction, only the Energy for the instructions executed up to that point is deducted.
-* **Unexpected Interruption (bug or Timeout):** If a contract crashes due to a code bug, timeout, or another unexpected error, the system will deduct all available Energy for the transaction as a penalty. Users can limit this penalty by setting the `fee_limit` parameter for the transaction.
+* **Exceptional Interruption:** Errors that terminate transaction execution, such as timeouts or invalid instructions, consume the transaction's entire Energy budget. An exception is `TRANSFER_FAILED`, which consumes only the Energy used before the failure. Users can limit the caller's Energy consumption by setting the transaction's `fee_limit`.
 
 #### Energy Recovery
 
@@ -206,17 +210,17 @@ Consumed Energy resources gradually recover over a 24-hour period.
 Before setting `fee_limit`, understand these concepts:
 
 1.  A valid `fee_limit` is an integer ranging from 0 to 15,000,000,000 sun (equivalent to 15,000 TRX). The `fee_limit` upper bound is a network parameter that can be modified by committee proposals ([#47](https://tronscan.io/#/sr/committee)), and its current value is 15,000 TRX.
-2.  Contracts of varying complexity consume different amounts of Energy. The same contract generally consumes a similar amount of Energy per execution[^1], but with the dynamic energy model, popular contracts may require more Energy at different times. For details, see the [Dynamic Energy Model](#dynamic-energy-model) section. During execution, Energy is deducted instruction by instruction. If the cost exceeds the `fee_limit`, the execution fails, and the consumed Energy is not refunded.
-3.  The `fee_limit` currently specifies the maximum amount of TRX the **caller** is willing to pay to execute a contract[^2]. Note that the total Energy consumed by the contract's execution can be a combination of what the caller pays and what the developer covers for the contract.
-4.  If a contract execution times out or crashes due to a bug, all the Energy allowed for the current transaction will be consumed. This total energy pool is the sum of the following components: `Total Consumed Energy = Energy from Caller's Stake + Energy from Developer's Share + Energy from Burned TRX`. The "Energy from Burned TRX" component is capped by `fee_limit`.
-5.  Through the [Energy sharing mechanism](https://developers.tron.network/docs/energy-consumption-mechanism#tron-energy-sharing-mechanism), a developer may cover a percentage of the Energy cost (e.g., 90%). However, if the developer's account has insufficient Energy, the remaining cost falls entirely to the caller. Within the `fee_limit`, if the caller's Energy is also insufficient, an equivalent amount of TRX will be burned.
+2.  Contracts of varying complexity consume different amounts of Energy. The same contract generally consumes a similar amount of Energy per execution[^1], but with the dynamic energy model, popular contracts may require more Energy at different times. For details, see the [Dynamic Energy Model](#dynamic-energy-model) section. During execution, Energy is deducted instruction by instruction. If execution requires more Energy than the transaction's total Energy budget, it fails, and the Energy already consumed is not refunded.
+3.  The `fee_limit` is denominated in sun and limits the caller's total Energy consumption, valued at the current Energy unit price. This includes both Energy obtained through staking or delegation and Energy paid for by burning TRX. It does not represent the amount of TRX that will necessarily be burned. Energy contributed by the contract deployer is accounted for separately[^2].
+4.  The caller's Energy budget cannot exceed `floor(fee_limit / Energy unit price)`, regardless of how that Energy is supplied.
+5.  Through the [Energy sharing mechanism](https://developers.tron.network/docs/energy-consumption-mechanism#tron-energy-sharing-mechanism), a developer may cover a percentage of the Energy cost (e.g., 90%). The developer's contribution is limited by both their available Energy and the contract's `origin_energy_limit`, which is measured in Energy units. The caller pays any remaining Energy cost. Within the `fee_limit`, if the caller's Energy is also insufficient, an equivalent amount of TRX will be burned.
 
 **Example:**
 Here's how to estimate the `fee_limit` for executing a contract `C`:
 
 - Assume contract C consumed 18,000 Energy during its last successful execution. By calling the [estimateenergy](../api/http/smart-contract/estimateenergy.md) API to get a pre-execution estimate, let's assume the upper limit of Energy consumption for this transaction is approximately 20,000 Energy.
 - When burning TRX, since the unit price of Energy is currently 100 sun, 10 TRX can be exchanged for a fixed 100,000 Energy units.
-- Assume the developer has committed to covering 90% of the Energy cost and has sufficient Energy.
+- Assume the developer has committed to covering 90% of the Energy cost. The developer has at least 18,000 Energy available, and the contract's `origin_energy_limit` is at least 18,000 Energy.
 
 The `fee_limit` estimation method is as follows:
 
@@ -258,11 +262,15 @@ Each contract has an `energy_factor`, which is a multiplier for its base Energy 
 - An `energy_factor` of `0` means the contract is using resources reasonably, and calls will incur no extra Energy cost.
 - An `energy_factor` greater than `0` indicates it is a popular contract, and calls will consume additional Energy. You can query a contract's `energy_factor` via the `getcontractinfo` API endpoint.
 
-The final Energy consumption for a contract call is calculated as:
+The `energy_factor` returned by `getcontractinfo` is scaled by 10,000. Divide this value by 10,000 before using it in the formulas below. For example, `34000` represents an `energy_factor` of `3.4`.
+
+For a single contract's execution, Energy consumption can be approximated as:
 
 ```text
-Contract Transaction Energy Consumption = Base Energy Consumption Generated by the Contract Call Transaction * (1 + energy_factor)
+Energy Consumption ≈ Base Energy Consumption * (1 + energy_factor)
 ```
+
+During the execution of a contract call transaction, internal calls to other contracts may involve different energy factors. The transaction's total Energy consumption includes the Energy consumed by the entry contract and its internal calls.
 
 The dynamic energy model introduces three network parameters that control the `energy_factor`:
 
@@ -326,14 +334,14 @@ Before delegating, you must understand the following key rules:
 When delegating, you can choose to enable a time lock, which affects when you can reclaim the resources.
 
 * **With Time Lock:** The resources are locked for a period. You must wait for this period to end before you can undelegate.
-    **Important:** If you delegate to the same address again during this period, the pending period resets.
+    **Important:** If you make another locked delegation of the same resource to the same recipient before the existing lock expires, the new lock period must be at least as long as the remaining lock time. The new lock expiration time applies to both the existing and newly delegated amounts.
 * **Without Time Lock:** You can undelegate at any time and reclaim the resources immediately.
 
 **Related API Endpoints**
 
 * `delegateresource`: Delegate resources.
 * `undelegateresource`: Undelegate (reclaim) resources.
-* `getcandelegatedmaxsize`: Query the maximum amount of a resource you can delegate.
+* `getcandelegatedmaxsize`: Query the maximum amount of staked TRX available for resource delegation, in sun.
 
 ### How to Unstake
 
@@ -363,13 +371,18 @@ _**TP Reclamation Priority**_: When the system reclaims TP, it follows the follo
 
 _**Rules for Calculating Vote Revocation**_
 
-The revocation operation is not random. Instead, votes are revoked proportionally and fairly from every Super Representative (SR) and Super Representative Partner you have voted for.
+If the account's total TP after unstaking is less than its total votes, the remaining votes for each SR or SR Partner are calculated as follows:
 
 - *Formula:*
 
     ```text
-    Votes Revoked from a Given SR = Total Votes to Revoke * (Votes Cast for that SR or SR Partner / Total Votes Cast by the Account)
+    Remaining Votes = floor((Original Votes / Original Total Votes) * Remaining TP)
+    Revoked Votes = Original Votes - Remaining Votes
     ```
+
+    Here, `Original Votes` is the number of votes cast for the given SR or SR Partner before unstaking, and `Original Total Votes` is the account's total votes before unstaking. `Remaining TP` is the account's total TP after unstaking, including TP still used for voting.
+
+    Remaining votes are rounded down separately for each SR or SR Partner. As a result, the total number of votes revoked may exceed the TP shortfall, leaving some TP unused.
 
 - *Example:*
 
@@ -387,9 +400,9 @@ The revocation operation is not random. Instead, votes are revoked proportionall
     1.  Reclamation Demand: The system needs to reclaim 1,500 TP.
     2.  Reclaim Unused TP: First, it reclaims all 1,000 idle TP.
     3.  Calculate Shortfall: A remaining `1,500 - 1,000 = 500 TP` must be reclaimed by revoking votes.
-    4.  Proportional revocation:
-          * Votes revoked for SR1: `500 * (600 / 1000) = 300` votes.
-          * Votes revoked for SR2: `500 * (400 / 1000) = 200` votes.
+    4.  Calculate the remaining votes using the account's `2,000 - 1,500 = 500 TP` after unstaking:
+          * SR1: `floor((600 / 1000) * 500) = 300` votes remain, so `600 - 300 = 300` votes are revoked.
+          * SR2: `floor((400 / 1000) * 500) = 200` votes remain, so `400 - 200 = 200` votes are revoked.
     5.  Final State: User A successfully unstakes 1,500 TRX. Their voting state is updated to: 300 votes for SR1 and 200 votes for SR2.
 
 !!! Note
@@ -412,7 +425,7 @@ If you initiate an unstake but change your mind, Stake 2.0 provides an efficient
 
 You can query the transaction details using `gettransactioninfobyid` and check the following fields:
 
-* `cancel_unfreezeV2_amount`: The total amount of TRX that was successfully canceled and re-staked.
+* `cancel_unfreezeV2_amount`: A map of resource types to the amounts of TRX re-staked by this operation, in sun.
 * `withdraw_expire_amount`: The total amount of matured unstaked TRX that was automatically withdrawn to your account balance.
 
 
@@ -497,7 +510,7 @@ After reclamation, the account states become:
 | `wallet/withdrawexpireunfreeze` | Withdraw unstaked TRX that has passed the pending period. |
 | `wallet/getavailableunfreezecount` | Check the remaining number of unstake operations allowed. |
 | `wallet/getcanwithdrawunfreezeamount` | Check the amount of withdrawable unstaked TRX. |
-| `wallet/getcandelegatedmaxsize` | Check the maximum amount of delegable resources. |
+| `wallet/getcandelegatedmaxsize` | Query the maximum amount of staked TRX available for resource delegation, in sun. |
 | `wallet/getdelegatedresourcev2` | Check resources delegated from one address to another. |
 | `wallet/getdelegatedresourceaccountindexv2` | Check an account's delegation and received delegation status. |
 | `wallet/getaccount` | Check account stake, resources, unstake, and voting status. |
