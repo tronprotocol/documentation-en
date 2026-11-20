@@ -111,6 +111,8 @@ The Committee is the highest governing body of the TRON network, responsible for
 
 In the TRON network, all SRs, SR Partners, and SR candidates have the right to initiate proposals to modify network parameters.
 
+A new proposal cannot be created until the existing proposal expires.
+
 Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network parameters and their values.
 
 **Example**:
