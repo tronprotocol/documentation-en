@@ -111,8 +111,6 @@ The Committee is the highest governing body of the TRON network, responsible for
 
 In the TRON network, all SRs, SR Partners, and SR candidates have the right to initiate proposals to modify network parameters.
 
-A new proposal cannot be created until the existing proposal expires.
-
 Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network parameters and their values.
 
 **Example**:
@@ -131,6 +129,9 @@ The voting process for proposals follows these core rules:
 
 1.  The governance system only supports approval votes. Not voting is equivalent to disapproving.
 2.  The on-chain parameter `getProposalExpireTime` (#92) sets the base duration for calculating when a proposal expires. It is currently 3 days on mainnet and can be changed by proposal. The expiration time is adjusted to fall at a later scheduled maintenance time. With the current 3-day base duration and 6-hour maintenance interval, a proposal expires more than 3 days and no later than 3 days and 6 hours after creation. Here, creation time refers to the proposal's recorded `create_time`, which is the timestamp of the parent block of the block containing the proposal creation transaction.
+
+    **Note**: If there are any unexpired proposals on the network, do not create a proposal to change the proposal expiration time (`getProposalExpireTime`, #92).
+
 3.  Once a proposal expires, approvals can no longer be added or removed. At the first maintenance at or after a proposal's expiration time, the proposal is marked `DISAPPROVED` if it has not been canceled and has fewer than 18 approvals from the SRs who ranked in the top 27 by votes in the most recent election.
 
 **Example**:
