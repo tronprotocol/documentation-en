@@ -24,11 +24,15 @@ All accounts in the TRON network have the right to vote for the Super Representa
 
 - The Impact of Unstaking on Voting
  
-    When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system retracts TP according to the following rules:
-    
-    * Unused TP is reclaimed first.
-    * If the available TP is insufficient, the system automatically retracts a proportional amount from your existing votes to cover the deficit.
-    * If you have voted for multiple SRs, the system will retract votes proportionally from each SR based on your voting distribution.
+    Under the current mainnet resource model, unstaking TRX reduces your TP. The effect on existing votes depends on the staking version.
+
+    For **Stake 2.0** (`UnfreezeBalanceV2Contract`):
+
+    * If you still have enough TP for all your existing votes, those votes remain unchanged.
+    * Otherwise, the system reduces your votes for each candidate in proportion to your remaining TP, rounding each result down to a whole number. This can leave some TP unused.
+    * For example, if you have 10 TP and have cast 4 votes for one candidate and 6 for another, unstaking 1 TRX leaves 9 TP and reduces those votes to 3 and 5, respectively.
+
+    For **Stake 1.0** (`UnfreezeBalanceContract`), unstaking clears all your existing votes, even if you still have enough TP for some or all of them. You must vote again using your remaining TP.
 
 **Important Note:**
 The TRON network only records the state of your last vote. This means that every new vote you cast will completely overwrite all previous voting effects.
@@ -47,33 +51,34 @@ The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.
 
 ### Brokerage of SRs and SR Partners
 
-SRs and SR Partners can set a Commission Rate (also known as Brokerage Rate) to determine how rewards are distributed between themselves and their voters.
+SR candidates can set a Commission Rate (also known as Brokerage Rate) to determine how their rewards are distributed between themselves and their voters.
 
 - Default Rate
 
-    The default commission rate for a newly elected SR or SR Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.
+    If no commission rate has been set, the default is 20%. This means that 20% of the total rewards go to the SR/SR Partner, and the remaining 80% is distributed to their voters in proportion to their votes. Becoming an SR or SR Partner does not change a rate you have already set.
 
 - Customizing the Rate
 
-    SRs and SR Partners can adjust their commission rate at any time via the [`wallet/updateBrokerage`](../api/http/witness-and-governance/updateBrokerage.md) API interface.
+    Any SR candidate, including those outside the top 127, can change their commission rate at any time using the [`wallet/updateBrokerage`](../api/http/witness-and-governance/updateBrokerage.md) API. Changes take effect from the next epoch. Until then, rewards use the current epoch's rate.
 
     - 100% Commission: All rewards go to the SR/SR Partner.
     - 0% Commission: All rewards are distributed to the voters.
 
 ### Block Production Rewards and Voting Rewards
 
-Rewards are divided into block rewards and vote rewards. The differences are as follows:
+Rewards are divided into block rewards and voting rewards. The table below describes their distribution when chain parameter #30 (`getChangeDelegation`) is enabled. This parameter is currently enabled on mainnet.
 
+Allowance is a separate reward balance that must be withdrawn before it can be spent.
 
 |  | **Block Production Rewards** | **Voting Rewards** |
 | :--- | :--- | :--- |
 | **Total Rewards** | On-chain parameter modifiable by proposal, currently 8 TRX | On-chain parameter modifiable by proposal, currently 128 TRX |
-| **Related On-chain Parameter ID** | #5 (requires activation of #30 chain parameter) | #31 (requires activation of #30 chain parameter) |
+| **Related On-chain Parameter ID** | #5 | #31 |
 | **Related On-chain Parameter Name** | `getWitnessPayPerBlock` | `getWitness127PayPerBlock` |
 | **Rewards Distribution Target** | SRs, their voters | SRs/SR partners, their voters |
-| **Rewards Distribution** | **SR**: After producing each block<br><br>**Voters**: Triggered when voters initiate any of these 4 transactions:<br>- `VoteWitnessContract`<br>- `UnfreezeBalanceContract`<br>- `UnfreezeBalanceV2Contract`<br>- `WithdrawBalanceContract`(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution) | **SRs/SR partners**: After producing each block<br><br>**Voters**: Triggered when  a voter initiates any of the following 4 transactions:<br>- `VoteWitnessContract`<br>- `UnfreezeBalanceContract`<br>- `UnfreezeBalanceV2Contract`<br>- `WithdrawBalanceContract`(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution) |
+| **Rewards Distribution** | **SR**: Rewards are added to allowance after producing a block.<br><br>**Voters**: Rewards from completed epochs are calculated and added to allowance when any of these transactions is executed:<br>- `VoteWitnessContract`<br>- `UnfreezeBalanceContract`<br>- `UnfreezeBalanceV2Contract`<br>- `WithdrawBalanceContract` (also transfers allowance to the account balance) | **SRs/SR partners**: Rewards are added to allowance after each block is produced.<br><br>**Voters**: Rewards from completed epochs are calculated and added to allowance when any of these transactions is executed:<br>- `VoteWitnessContract`<br>- `UnfreezeBalanceContract`<br>- `UnfreezeBalanceV2Contract`<br>- `WithdrawBalanceContract` (also transfers allowance to the account balance) |
 | **Rewards Withdrawn to Account Balance** |Triggered when `WithdrawBalanceContract` transaction is initiated  | Triggered when `WithdrawBalanceContract` transaction is initiated|
-| **Specific Rewards** | SR: <br>`8 * brokerageRate`<br><br>voter:<br> `8 * (1-brokerageRate) * (votes of this voter) / (total votes received by this SR)` | SR/SR partner:<br> `128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs & SR partners)`<br><br>voter:<br> `128 * (1-brokerageRate) * (votes of this voter) / (total votes received by all SRs & SR partners)` |
+| **Specific Rewards** | SR: <br>`8 * brokerageRate`<br><br>voter:<br> `8 * (1-brokerageRate) * (votes cast by this voter for this SR) / (total votes received by this SR)` | SR/SR partner:<br> `128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs & SR partners)`<br><br>voter:<br> `128 * (1-brokerageRate) * (votes cast by this voter for this SR/SR partner) / (total votes received by all SRs & SR partners)` |
 
 
 **Notes:**
@@ -83,6 +88,7 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 - SRs and SR Partners are the top 127 SR candidates.
 - Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Likewise, their voters cannot receive block or vote rewards either.
 - If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.
+- Voter rewards from the current epoch cannot be added to allowance or withdrawn until that epoch ends. `WithdrawBalanceContract` collects any unclaimed rewards from completed epochs into allowance, then transfers the full allowance to the spendable account balance.
 - Via the `WithdrawBalanceContract` transaction, withdrawing rewards to the account balance is subject to a 24-hour withdrawal interval limit: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.
 
 ## Committee
@@ -91,13 +97,13 @@ Rewards are divided into block rewards and vote rewards. The differences are as 
 
 The Committee is the highest governing body of the TRON network, responsible for modifying the network parameters (eg. transaction fees, block rewards).
 
-- **Composition**: The Committee is composed of the current 27 active Super Representatives (SRs).
+- **Composition**: The Committee consists of the top 27 candidates by vote count, known as Super Representatives (SRs).
 - **Powers**: Each committee member has two core powers: 
 
     - To create a proposal: Initiate a proposal to modify network parameters.
     - To vote on a proposal: Vote on proposals to modify network parameters (including proposals initiated by oneself).
 
-- **Proposal Effective Mechanism**: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.
+- **Proposal Effective Mechanism**: A proposal that has not been canceled is evaluated at the first maintenance at or after its expiration time. Only approvals from the SRs who ranked in the top 27 by votes in the most recent election count. If at least 18 of those SRs approve, the proposal passes and its parameter changes take effect. Receiving enough approvals earlier does not make it take effect sooner.
 
 **Note**: The Create, Vote on, and Cancel Proposal examples below are wallet-cli client commands. For the corresponding HTTP API interfaces, see [ProposalCreate](../api/http/witness-and-governance/proposalcreate.md), [ProposalApprove](../api/http/witness-and-governance/proposalapprove.md), and [ProposalDelete](../api/http/witness-and-governance/proposaldelete.md).
 
@@ -122,7 +128,8 @@ Please refer to [here](https://tronscan.org/#/sr/committee) for TRON network par
 The voting process for proposals follows these core rules:
 
 1.  The governance system only supports approval votes. Not voting is equivalent to disapproving.
-2.  A proposal is valid for 3 days from its creation by default. This duration is the on-chain parameter `getProposalExpireTime` (#92), which can be modified by proposal (currently 3 days on mainnet). If it does not receive enough approval votes within this period, it will expire.
+2.  The on-chain parameter `getProposalExpireTime` (#92) sets the base duration for calculating when a proposal expires. It is currently 3 days on mainnet and can be changed by proposal. The expiration time is adjusted to fall at a later scheduled maintenance time. With the current 3-day base duration and 6-hour maintenance interval, a proposal expires more than 3 days and no later than 3 days and 6 hours after creation. Here, creation time refers to the proposal's recorded `create_time`, which is the timestamp of the parent block of the block containing the proposal creation transaction.
+3.  Once a proposal expires, approvals can no longer be added or removed. At the first maintenance at or after a proposal's expiration time, the proposal is marked `DISAPPROVED` if it has not been canceled and has fewer than 18 approvals from the SRs who ranked in the top 27 by votes in the most recent election.
 
 **Example**:
 
@@ -139,7 +146,7 @@ The voting process for proposals follows these core rules:
 
 ### Cancel Proposal
 
-The creator of a proposal can cancel it at any time before it takes effect.
+The creator can cancel a proposal only before it expires, as long as it has not already been canceled.
 
 **Example**:
 
