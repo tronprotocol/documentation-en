@@ -4182,8 +4182,8 @@
 <li><strong>Querying:</strong> You can check your account's total and used TP at any time using the <code>wallet/getaccountresource</code> API endpoint.</li>
 </ul>
 <h2 id="bandwidth">Bandwidth<a class="headerlink" href="#bandwidth" title="Permanent link">&para;</a></h2>
-<p>Transactions are transmitted and stored on the network as byte arrays. The Bandwidth consumed by a transaction is calculated as <code>Transaction Size (bytes) * Bandwidth Rate</code>. The current Bandwidth rate is 1.</p>
-<p>For example, a transaction with a size of 200 bytes will consume 200 Bandwidth.</p>
+<p>The Bandwidth consumed by a transaction is based on its billable size. For a standard transaction awaiting broadcast, this is the Protobuf-serialized size of the fully signed transaction, plus 64 bytes reserved for the transaction result. Each byte of the billable size consumes 1 Bandwidth.</p>
+<p>For example, a fully signed transaction with a serialized size of 200 bytes has a billable size of 264 bytes and consumes 264 Bandwidth.</p>
 <blockquote>
 <p><strong>Note:</strong> Because the total staked funds in the network and an individual account's staked funds can change at any time, the amount of Bandwidth an account possesses is not a fixed value.</p>
 </blockquote>
@@ -4215,17 +4215,18 @@
 <p><strong>Scenario 1: Standard Transactions</strong></p>
 <p>The system attempts to pay the Bandwidth fee in the following order:</p>
 <ol>
-<li><strong>Staked Bandwidth:</strong> Consumes the Bandwidth obtained by the transaction initiator from staking TRX.</li>
-<li><strong>Free Bandwidth:</strong> If staked Bandwidth is insufficient, consumes the initiator's 600 daily free allowance.</li>
-<li><strong>TRX Burning:</strong> If both staked and free Bandwidth are insufficient, burns the initiator's TRX to cover the fee.<ul>
-<li><em>Burn Fee = Transaction Size (bytes) × 1,000 sun</em></li>
+<li><strong>Staked Bandwidth:</strong> Uses the initiator's Bandwidth obtained through staking or delegation if it can cover the full Bandwidth cost.</li>
+<li><strong>Free Bandwidth:</strong> Otherwise, attempts to cover the full cost using the initiator's remaining daily free Bandwidth.</li>
+<li><strong>TRX Burning:</strong> If both attempts fail, burns the initiator's TRX to pay the entire Bandwidth fee.<ul>
+<li><em>Burn Fee = Billable Transaction Size (bytes) × 1,000 sun</em></li>
 </ul>
 </li>
 </ol>
+<p>Staked and free Bandwidth cannot be combined to pay for a transaction.</p>
 <p><strong>Scenario 2: New Account Creation Transactions</strong></p>
 <p>Transactions that create a new account follow a special rule and do not use the daily free allowance:</p>
 <ol>
-<li><strong>Staked Bandwidth:</strong> First, attempts to consume the Bandwidth obtained by the transaction initiator from staking TRX.</li>
+<li><strong>Staked Bandwidth:</strong> First, attempts to cover the full Bandwidth cost using the initiator's Bandwidth obtained through staking or delegation.</li>
 <li><strong>TRX Burning:</strong> If staked Bandwidth is insufficient, directly burns 0.1 TRX to complete the account creation.</li>
 </ol>
 <p><strong>Scenario 3: TRC-10 Token Transfers</strong></p>
@@ -4247,15 +4248,15 @@
 <li>The token issuer has sufficient staked Bandwidth. <ul>
 <li>Query Method: <a href="../../api/http/account/getaccountnet/">/wallet/getaccountnet</a></li>
 <li>Formula: <code>NetLimit - NetUsed</code></li>
-<li>Description: The amount of available Bandwidth the issuer has obtained through staking.</li>
+<li>Description: The amount of available Bandwidth the issuer has obtained through staking or delegation.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>Initiator's Staked Bandwidth:</strong> Attempts to consume the initiator's staked Bandwidth.</li>
-<li><strong>Initiator's Free Bandwidth:</strong> If staked Bandwidth is insufficient, consumes the initiator's free Bandwidth allowance.</li>
-<li><strong>TRX Burning:</strong> If all the above resources are insufficient, burns the initiator's TRX to pay the fee.<ul>
-<li><em>Burn Fee = Transaction Size (bytes) × 1,000 sun</em></li>
+<li><strong>Initiator's Staked Bandwidth:</strong> Attempts to cover the full Bandwidth cost using the initiator's Bandwidth obtained through staking or delegation.</li>
+<li><strong>Initiator's Free Bandwidth:</strong> If staked Bandwidth is insufficient, attempts to cover the full cost using the initiator's remaining daily free Bandwidth.</li>
+<li><strong>TRX Burning:</strong> If all the above attempts fail, burns the initiator's TRX to pay the entire Bandwidth fee.<ul>
+<li><em>Burn Fee = Billable Transaction Size (bytes) × 1,000 sun</em></li>
 </ul>
 </li>
 </ol>
@@ -4264,8 +4265,9 @@
 <h3 id="querying-bandwidth-balance">Querying Bandwidth Balance<a class="headerlink" href="#querying-bandwidth-balance" title="Permanent link">&para;</a></h3>
 <p>You can query an account's current resource status by calling the <code>wallet/getaccountresource</code> HTTP endpoint. In the returned JSON data, use the following formulas to calculate the remaining Bandwidth:</p>
 <div class="highlight"><pre><span></span><code>Remaining Free Bandwidth = freeNetLimit - freeNetUsed
-Remaining Staked Bandwidth = NetLimit - NetUsed
+Remaining Staked Bandwidth = max(NetLimit - NetUsed, 0)
 </code></pre></div>
+<p>For example, after unstaking, <code>NetUsed</code> may temporarily exceed <code>NetLimit</code>; in this case, the remaining staked Bandwidth is <code>0</code>.</p>
 <p><em>Note: If any of these parameters are absent from the API response, their value is <code>0</code>.</em></p>
 <h2 id="energy">Energy<a class="headerlink" href="#energy" title="Permanent link">&para;</a></h2>
 <p>Energy is the unit of measurement for the computational resources consumed by the TRON Virtual Machine (TVM) when executing the instructions of a smart contract. This section provides a comprehensive overview of Energy focusing on the following three aspects:</p>
@@ -4320,7 +4322,7 @@ C: 36,000,000,000
 <p>Contract execution can be interrupted for various reasons, with different rules for Energy deduction:</p>
 <ul>
 <li><strong>Normal Interruption (<code>REVERT</code>):</strong> If a contract exits due to a <code>REVERT</code> instruction, only the Energy for the instructions executed up to that point is deducted.</li>
-<li><strong>Unexpected Interruption (bug or Timeout):</strong> If a contract crashes due to a code bug, timeout, or another unexpected error, the system will deduct all available Energy for the transaction as a penalty. Users can limit this penalty by setting the <code>fee_limit</code> parameter for the transaction.</li>
+<li><strong>Exceptional Interruption:</strong> Errors that terminate transaction execution, such as timeouts or invalid instructions, consume the transaction's entire Energy budget. An exception is <code>TRANSFER_FAILED</code>, which consumes only the Energy used before the failure. Users can limit the caller's Energy consumption by setting the transaction's <code>fee_limit</code>.</li>
 </ul>
 <h4 id="energy-recovery">Energy Recovery<a class="headerlink" href="#energy-recovery" title="Permanent link">&para;</a></h4>
 <p>Consumed Energy resources gradually recover over a 24-hour period.</p>
@@ -4334,17 +4336,17 @@ Since the Energy consumed by a contract can be converted to TRX (or sun), this s
 <p>Before setting <code>fee_limit</code>, understand these concepts:</p>
 <ol>
 <li>A valid <code>fee_limit</code> is an integer ranging from 0 to 15,000,000,000 sun (equivalent to 15,000 TRX). The <code>fee_limit</code> upper bound is a network parameter that can be modified by committee proposals (<a href="https://tronscan.io/#/sr/committee">#47</a>), and its current value is 15,000 TRX.</li>
-<li>Contracts of varying complexity consume different amounts of Energy. The same contract generally consumes a similar amount of Energy per execution<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, but with the dynamic energy model, popular contracts may require more Energy at different times. For details, see the <a href="#dynamic-energy-model">Dynamic Energy Model</a> section. During execution, Energy is deducted instruction by instruction. If the cost exceeds the <code>fee_limit</code>, the execution fails, and the consumed Energy is not refunded.</li>
-<li>The <code>fee_limit</code> currently specifies the maximum amount of TRX the <strong>caller</strong> is willing to pay to execute a contract<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. Note that the total Energy consumed by the contract's execution can be a combination of what the caller pays and what the developer covers for the contract.</li>
-<li>If a contract execution times out or crashes due to a bug, all the Energy allowed for the current transaction will be consumed. This total energy pool is the sum of the following components: <code>Total Consumed Energy = Energy from Caller's Stake + Energy from Developer's Share + Energy from Burned TRX</code>. The "Energy from Burned TRX" component is capped by <code>fee_limit</code>.</li>
-<li>Through the <a href="https://developers.tron.network/docs/energy-consumption-mechanism#tron-energy-sharing-mechanism">Energy sharing mechanism</a>, a developer may cover a percentage of the Energy cost (e.g., 90%). However, if the developer's account has insufficient Energy, the remaining cost falls entirely to the caller. Within the <code>fee_limit</code>, if the caller's Energy is also insufficient, an equivalent amount of TRX will be burned.</li>
+<li>Contracts of varying complexity consume different amounts of Energy. The same contract generally consumes a similar amount of Energy per execution<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, but with the dynamic energy model, popular contracts may require more Energy at different times. For details, see the <a href="#dynamic-energy-model">Dynamic Energy Model</a> section. During execution, Energy is deducted instruction by instruction. If execution requires more Energy than the transaction's total Energy budget, it fails, and the Energy already consumed is not refunded.</li>
+<li>The <code>fee_limit</code> is denominated in sun and limits the caller's total Energy consumption, valued at the current Energy unit price. This includes both Energy obtained through staking or delegation and Energy paid for by burning TRX. It does not represent the amount of TRX that will necessarily be burned. Energy contributed by the contract deployer is accounted for separately<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</li>
+<li>The caller's Energy budget cannot exceed <code>floor(fee_limit / Energy unit price)</code>, regardless of how that Energy is supplied.</li>
+<li>Through the <a href="https://developers.tron.network/docs/energy-consumption-mechanism#tron-energy-sharing-mechanism">Energy sharing mechanism</a>, a developer may cover a percentage of the Energy cost (e.g., 90%). The developer's contribution is limited by both their available Energy and the contract's <code>origin_energy_limit</code>, which is measured in Energy units. The caller pays any remaining Energy cost. Within the <code>fee_limit</code>, if the caller's Energy is also insufficient, an equivalent amount of TRX will be burned.</li>
 </ol>
 <p><strong>Example:</strong>
 Here's how to estimate the <code>fee_limit</code> for executing a contract <code>C</code>:</p>
 <ul>
 <li>Assume contract C consumed 18,000 Energy during its last successful execution. By calling the <a href="../../api/http/smart-contract/estimateenergy/">estimateenergy</a> API to get a pre-execution estimate, let's assume the upper limit of Energy consumption for this transaction is approximately 20,000 Energy.</li>
 <li>When burning TRX, since the unit price of Energy is currently 100 sun, 10 TRX can be exchanged for a fixed 100,000 Energy units.</li>
-<li>Assume the developer has committed to covering 90% of the Energy cost and has sufficient Energy.</li>
+<li>Assume the developer has committed to covering 90% of the Energy cost. The developer has at least 18,000 Energy available, and the contract's <code>origin_energy_limit</code> is at least 18,000 Energy.</li>
 </ul>
 <p>The <code>fee_limit</code> estimation method is as follows:</p>
 <ul>
@@ -4382,9 +4384,11 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <li>An <code>energy_factor</code> of <code>0</code> means the contract is using resources reasonably, and calls will incur no extra Energy cost.</li>
 <li>An <code>energy_factor</code> greater than <code>0</code> indicates it is a popular contract, and calls will consume additional Energy. You can query a contract's <code>energy_factor</code> via the <code>getcontractinfo</code> API endpoint.</li>
 </ul>
-<p>The final Energy consumption for a contract call is calculated as:</p>
-<div class="highlight"><pre><span></span><code>Contract Transaction Energy Consumption = Base Energy Consumption Generated by the Contract Call Transaction * (1 + energy_factor)
+<p>The <code>energy_factor</code> returned by <code>getcontractinfo</code> is scaled by 10,000. Divide this value by 10,000 before using it in the formulas below. For example, <code>34000</code> represents an <code>energy_factor</code> of <code>3.4</code>.</p>
+<p>For a single contract's execution, Energy consumption can be approximated as:</p>
+<div class="highlight"><pre><span></span><code>Energy Consumption ≈ Base Energy Consumption * (1 + energy_factor)
 </code></pre></div>
+<p>During the execution of a contract call transaction, internal calls to other contracts may involve different energy factors. The transaction's total Energy consumption includes the Energy consumed by the entry contract and its internal calls.</p>
 <p>The dynamic energy model introduces three network parameters that control the <code>energy_factor</code>:</p>
 <ul>
 <li><code>threshold</code>: The threshold for a contract's base Energy consumption. If a contract exceeds this threshold in a maintenance period, its Energy cost will increase in the next period.</li>
@@ -4437,14 +4441,14 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <p>When delegating, you can choose to enable a time lock, which affects when you can reclaim the resources.</p>
 <ul>
 <li><strong>With Time Lock:</strong> The resources are locked for a period. You must wait for this period to end before you can undelegate.
-    <strong>Important:</strong> If you delegate to the same address again during this period, the pending period resets.</li>
+    <strong>Important:</strong> If you make another locked delegation of the same resource to the same recipient before the existing lock expires, the new lock period must be at least as long as the remaining lock time. The new lock expiration time applies to both the existing and newly delegated amounts.</li>
 <li><strong>Without Time Lock:</strong> You can undelegate at any time and reclaim the resources immediately.</li>
 </ul>
 <p><strong>Related API Endpoints</strong></p>
 <ul>
 <li><code>delegateresource</code>: Delegate resources.</li>
 <li><code>undelegateresource</code>: Undelegate (reclaim) resources.</li>
-<li><code>getcandelegatedmaxsize</code>: Query the maximum amount of a resource you can delegate.</li>
+<li><code>getcandelegatedmaxsize</code>: Query the maximum amount of staked TRX available for resource delegation, in sun.</li>
 </ul>
 <h3 id="how-to-unstake">How to Unstake<a class="headerlink" href="#how-to-unstake" title="Permanent link">&para;</a></h3>
 <p>After staking TRX, you can initiate an unstake operation at any time using the <code>unfreezebalancev2</code> API. However, this process has a time delay and follows specific rules.</p>
@@ -4467,12 +4471,15 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <li><strong>Cancel Votes as Needed:</strong> If the idle TP is insufficient to meet the reclamation demand, the system will begin to revoke your cast votes to reclaim the remaining required TP.</li>
 </ol>
 <p><em><strong>Rules for Calculating Vote Revocation</strong></em></p>
-<p>The revocation operation is not random. Instead, votes are revoked proportionally and fairly from every Super Representative (SR) and Super Representative Partner you have voted for.</p>
+<p>If the account's total TP after unstaking is less than its total votes, the remaining votes for each SR or SR Partner are calculated as follows:</p>
 <ul>
 <li>
 <p><em>Formula:</em></p>
-<div class="highlight"><pre><span></span><code>Votes Revoked from a Given SR = Total Votes to Revoke * (Votes Cast for that SR or SR Partner / Total Votes Cast by the Account)
+<div class="highlight"><pre><span></span><code>Remaining Votes = floor((Original Votes / Original Total Votes) * Remaining TP)
+Revoked Votes = Original Votes - Remaining Votes
 </code></pre></div>
+<p>Here, <code>Original Votes</code> is the number of votes cast for the given SR or SR Partner before unstaking, and <code>Original Total Votes</code> is the account's total votes before unstaking. <code>Remaining TP</code> is the account's total TP after unstaking, including TP still used for voting.</p>
+<p>Remaining votes are rounded down separately for each SR or SR Partner. As a result, the total number of votes revoked may exceed the TP shortfall, leaving some TP unused.</p>
 </li>
 <li>
 <p><em>Example:</em></p>
@@ -4489,9 +4496,9 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <li>Reclamation Demand: The system needs to reclaim 1,500 TP.</li>
 <li>Reclaim Unused TP: First, it reclaims all 1,000 idle TP.</li>
 <li>Calculate Shortfall: A remaining <code>1,500 - 1,000 = 500 TP</code> must be reclaimed by revoking votes.</li>
-<li>Proportional revocation:<ul>
-<li>Votes revoked for SR1: <code>500 * (600 / 1000) = 300</code> votes.</li>
-<li>Votes revoked for SR2: <code>500 * (400 / 1000) = 200</code> votes.</li>
+<li>Calculate the remaining votes using the account's <code>2,000 - 1,500 = 500 TP</code> after unstaking:<ul>
+<li>SR1: <code>floor((600 / 1000) * 500) = 300</code> votes remain, so <code>600 - 300 = 300</code> votes are revoked.</li>
+<li>SR2: <code>floor((400 / 1000) * 500) = 200</code> votes remain, so <code>400 - 200 = 200</code> votes are revoked.</li>
 </ul>
 </li>
 <li>Final State: User A successfully unstakes 1,500 TRX. Their voting state is updated to: 300 votes for SR1 and 200 votes for SR2.</li>
@@ -4514,7 +4521,7 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 <p><strong>How to Verify the Result</strong></p>
 <p>You can query the transaction details using <code>gettransactioninfobyid</code> and check the following fields:</p>
 <ul>
-<li><code>cancel_unfreezeV2_amount</code>: The total amount of TRX that was successfully canceled and re-staked.</li>
+<li><code>cancel_unfreezeV2_amount</code>: A map of resource types to the amounts of TRX re-staked by this operation, in sun.</li>
 <li><code>withdraw_expire_amount</code>: The total amount of matured unstaked TRX that was automatically withdrawn to your account balance.</li>
 </ul>
 <h3 id="resource-reclamation-upon-undelegation">Resource Reclamation Upon Undelegation<a class="headerlink" href="#resource-reclamation-upon-undelegation" title="Permanent link">&para;</a></h3>
@@ -4644,7 +4651,7 @@ Unrecovered resource amount = Original unrecovered resource amount - Reclaimed u
 </tr>
 <tr>
 <td style="text-align: left;"><code>wallet/getcandelegatedmaxsize</code></td>
-<td style="text-align: left;">Check the maximum amount of delegable resources.</td>
+<td style="text-align: left;">Query the maximum amount of staked TRX available for resource delegation, in sun.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>wallet/getdelegatedresourcev2</code></td>
@@ -4699,7 +4706,7 @@ Unrecovered resource amount = Original unrecovered resource amount - Reclaimed u
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 13, 2026 02:58:55 UTC">June 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 20, 2026 06:44:23 UTC">November 20, 2026</span>
   </span>
 
     
