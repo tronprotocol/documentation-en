@@ -3998,12 +3998,14 @@
 </li>
 <li>
 <p>The Impact of Unstaking on Voting</p>
-<p>When you unstake a portion of your TRX, you lose an equivalent amount of TP. The system retracts TP according to the following rules:</p>
+<p>Under the current mainnet resource model, unstaking TRX reduces your TP. The effect on existing votes depends on the staking version.</p>
+<p>For <strong>Stake 2.0</strong> (<code>UnfreezeBalanceV2Contract</code>):</p>
 <ul>
-<li>Unused TP is reclaimed first.</li>
-<li>If the available TP is insufficient, the system automatically retracts a proportional amount from your existing votes to cover the deficit.</li>
-<li>If you have voted for multiple SRs, the system will retract votes proportionally from each SR based on your voting distribution.</li>
+<li>If you still have enough TP for all your existing votes, those votes remain unchanged.</li>
+<li>Otherwise, the system reduces your votes for each candidate in proportion to your remaining TP, rounding each result down to a whole number. This can leave some TP unused.</li>
+<li>For example, if you have 10 TP and have cast 4 votes for one candidate and 6 for another, unstaking 1 TRX leaves 9 TP and reduces those votes to 3 and 5, respectively.</li>
 </ul>
+<p>For <strong>Stake 1.0</strong> (<code>UnfreezeBalanceContract</code>), unstaking clears all your existing votes, even if you still have enough TP for some or all of them. You must vote again using your remaining TP.</p>
 </li>
 </ul>
 <p><strong>Important Note:</strong>
@@ -4016,15 +4018,15 @@ The TRON network only records the state of your last vote. This means that every
 <p>The final result of the commands above is 3 votes for SR1 and 7 votes for SR2.</p>
 <h2 id="rewards">Rewards<a class="headerlink" href="#rewards" title="Permanent link">&para;</a></h2>
 <h3 id="brokerage-of-srs-and-sr-partners">Brokerage of SRs and SR Partners<a class="headerlink" href="#brokerage-of-srs-and-sr-partners" title="Permanent link">&para;</a></h3>
-<p>SRs and SR Partners can set a Commission Rate (also known as Brokerage Rate) to determine how rewards are distributed between themselves and their voters.</p>
+<p>SR candidates can set a Commission Rate (also known as Brokerage Rate) to determine how their rewards are distributed between themselves and their voters.</p>
 <ul>
 <li>
 <p>Default Rate</p>
-<p>The default commission rate for a newly elected SR or SR Partner is 20%. This means that 20% of the total rewards go to the SR, and the remaining 80% is distributed to their voters in proportion to their votes.</p>
+<p>If no commission rate has been set, the default is 20%. This means that 20% of the total rewards go to the SR/SR Partner, and the remaining 80% is distributed to their voters in proportion to their votes. Becoming an SR or SR Partner does not change a rate you have already set.</p>
 </li>
 <li>
 <p>Customizing the Rate</p>
-<p>SRs and SR Partners can adjust their commission rate at any time via the <a href="../../api/http/witness-and-governance/updateBrokerage/"><code>wallet/updateBrokerage</code></a> API interface.</p>
+<p>Any SR candidate, including those outside the top 127, can change their commission rate at any time using the <a href="../../api/http/witness-and-governance/updateBrokerage/"><code>wallet/updateBrokerage</code></a> API. Changes take effect from the next epoch. Until then, rewards use the current epoch's rate.</p>
 <ul>
 <li>100% Commission: All rewards go to the SR/SR Partner.</li>
 <li>0% Commission: All rewards are distributed to the voters.</li>
@@ -4032,7 +4034,8 @@ The TRON network only records the state of your last vote. This means that every
 </li>
 </ul>
 <h3 id="block-production-rewards-and-voting-rewards">Block Production Rewards and Voting Rewards<a class="headerlink" href="#block-production-rewards-and-voting-rewards" title="Permanent link">&para;</a></h3>
-<p>Rewards are divided into block rewards and vote rewards. The differences are as follows:</p>
+<p>Rewards are divided into block rewards and voting rewards. The table below describes their distribution when chain parameter #30 (<code>getChangeDelegation</code>) is enabled. This parameter is currently enabled on mainnet.</p>
+<p>Allowance is a separate reward balance that must be withdrawn before it can be spent.</p>
 <table>
 <thead>
 <tr>
@@ -4049,8 +4052,8 @@ The TRON network only records the state of your last vote. This means that every
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Related On-chain Parameter ID</strong></td>
-<td style="text-align: left;">#5 (requires activation of #30 chain parameter)</td>
-<td style="text-align: left;">#31 (requires activation of #30 chain parameter)</td>
+<td style="text-align: left;">#5</td>
+<td style="text-align: left;">#31</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Related On-chain Parameter Name</strong></td>
@@ -4064,8 +4067,8 @@ The TRON network only records the state of your last vote. This means that every
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Rewards Distribution</strong></td>
-<td style="text-align: left;"><strong>SR</strong>: After producing each block<br><br><strong>Voters</strong>: Triggered when voters initiate any of these 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code><br>- <code>WithdrawBalanceContract</code>(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution)</td>
-<td style="text-align: left;"><strong>SRs/SR partners</strong>: After producing each block<br><br><strong>Voters</strong>: Triggered when  a voter initiates any of the following 4 transactions:<br>- <code>VoteWitnessContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code><br>- <code>WithdrawBalanceContract</code>(unlike the prior 3 transactions: rewards withdrawn to account balance immediately after distribution)</td>
+<td style="text-align: left;"><strong>SR</strong>: Rewards are added to allowance after producing a block.<br><br><strong>Voters</strong>: Rewards from completed epochs are calculated and added to allowance when any of these transactions is executed:<br>- <code>VoteWitnessContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code><br>- <code>WithdrawBalanceContract</code> (also transfers allowance to the account balance)</td>
+<td style="text-align: left;"><strong>SRs/SR partners</strong>: Rewards are added to allowance after each block is produced.<br><br><strong>Voters</strong>: Rewards from completed epochs are calculated and added to allowance when any of these transactions is executed:<br>- <code>VoteWitnessContract</code><br>- <code>UnfreezeBalanceContract</code><br>- <code>UnfreezeBalanceV2Contract</code><br>- <code>WithdrawBalanceContract</code> (also transfers allowance to the account balance)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Rewards Withdrawn to Account Balance</strong></td>
@@ -4074,8 +4077,8 @@ The TRON network only records the state of your last vote. This means that every
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Specific Rewards</strong></td>
-<td style="text-align: left;">SR: <br><code>8 * brokerageRate</code><br><br>voter:<br> <code>8 * (1-brokerageRate) * (votes of this voter) / (total votes received by this SR)</code></td>
-<td style="text-align: left;">SR/SR partner:<br> <code>128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs &amp; SR partners)</code><br><br>voter:<br> <code>128 * (1-brokerageRate) * (votes of this voter) / (total votes received by all SRs &amp; SR partners)</code></td>
+<td style="text-align: left;">SR: <br><code>8 * brokerageRate</code><br><br>voter:<br> <code>8 * (1-brokerageRate) * (votes cast by this voter for this SR) / (total votes received by this SR)</code></td>
+<td style="text-align: left;">SR/SR partner:<br> <code>128 * brokerageRate * (votes received by this SR/SR partner) / (total votes received by all SRs &amp; SR partners)</code><br><br>voter:<br> <code>128 * (1-brokerageRate) * (votes cast by this voter for this SR/SR partner) / (total votes received by all SRs &amp; SR partners)</code></td>
 </tr>
 </tbody>
 </table>
@@ -4086,13 +4089,14 @@ The TRON network only records the state of your last vote. This means that every
 <li>SRs and SR Partners are the top 127 SR candidates.</li>
 <li>Candidates ranked beyond 127th remain SR candidates and receive neither block nor vote rewards. Likewise, their voters cannot receive block or vote rewards either.</li>
 <li>If a voter votes for an SR, they are eligible for both block and vote rewards (block rewards only when that SR produces a block). If a voter votes for a Partner, they are only eligible for vote rewards.</li>
+<li>Voter rewards from the current epoch cannot be added to allowance or withdrawn until that epoch ends. <code>WithdrawBalanceContract</code> collects any unclaimed rewards from completed epochs into allowance, then transfers the full allowance to the spendable account balance.</li>
 <li>Via the <code>WithdrawBalanceContract</code> transaction, withdrawing rewards to the account balance is subject to a 24-hour withdrawal interval limit: if less than 24 hours have passed since the last withdrawal, another withdrawal is rejected during validation.</li>
 </ul>
 <h2 id="committee">Committee<a class="headerlink" href="#committee" title="Permanent link">&para;</a></h2>
 <h3 id="about-the-committee">About the Committee<a class="headerlink" href="#about-the-committee" title="Permanent link">&para;</a></h3>
 <p>The Committee is the highest governing body of the TRON network, responsible for modifying the network parameters (eg. transaction fees, block rewards).</p>
 <ul>
-<li><strong>Composition</strong>: The Committee is composed of the current 27 active Super Representatives (SRs).</li>
+<li><strong>Composition</strong>: The Committee consists of the top 27 candidates by vote count, known as Super Representatives (SRs).</li>
 <li>
 <p><strong>Powers</strong>: Each committee member has two core powers: </p>
 <ul>
@@ -4101,7 +4105,7 @@ The TRON network only records the state of your last vote. This means that every
 </ul>
 </li>
 <li>
-<p><strong>Proposal Effective Mechanism</strong>: A proposal is passed when it receives at least 18 approval votes. It will then take effect in the next maintenance period.</p>
+<p><strong>Proposal Effective Mechanism</strong>: A proposal that has not been canceled is evaluated at the first maintenance at or after its expiration time. Only approvals from the SRs who ranked in the top 27 by votes in the most recent election count. If at least 18 of those SRs approve, the proposal passes and its parameter changes take effect. Receiving enough approvals earlier does not make it take effect sooner.</p>
 </li>
 </ul>
 <p><strong>Note</strong>: The Create, Vote on, and Cancel Proposal examples below are wallet-cli client commands. For the corresponding HTTP API interfaces, see <a href="../../api/http/witness-and-governance/proposalcreate/">ProposalCreate</a>, <a href="../../api/http/witness-and-governance/proposalapprove/">ProposalApprove</a>, and <a href="../../api/http/witness-and-governance/proposaldelete/">ProposalDelete</a>.</p>
@@ -4118,7 +4122,8 @@ The TRON network only records the state of your last vote. This means that every
 <p>The voting process for proposals follows these core rules:</p>
 <ol>
 <li>The governance system only supports approval votes. Not voting is equivalent to disapproving.</li>
-<li>A proposal is valid for 3 days from its creation by default. This duration is the on-chain parameter <code>getProposalExpireTime</code> (#92), which can be modified by proposal (currently 3 days on mainnet). If it does not receive enough approval votes within this period, it will expire.</li>
+<li>The on-chain parameter <code>getProposalExpireTime</code> (#92) sets the base duration for calculating when a proposal expires. It is currently 3 days on mainnet and can be changed by proposal. The expiration time is adjusted to fall at a later scheduled maintenance time. With the current 3-day base duration and 6-hour maintenance interval, a proposal expires more than 3 days and no later than 3 days and 6 hours after creation. Here, creation time refers to the proposal's recorded <code>create_time</code>, which is the timestamp of the parent block of the block containing the proposal creation transaction.</li>
+<li>Once a proposal expires, approvals can no longer be added or removed. At the first maintenance at or after a proposal's expiration time, the proposal is marked <code>DISAPPROVED</code> if it has not been canceled and has fewer than 18 approvals from the SRs who ranked in the top 27 by votes in the most recent election.</li>
 </ol>
 <p><strong>Example</strong>:</p>
 <div class="highlight"><pre><span></span><code>&gt;approveProposal id is_or_not_add_approval
@@ -4131,7 +4136,7 @@ The TRON network only records the state of your last vote. This means that every
 <li>Passing <code>false</code> when you have not approved the proposal before (there is no approval to cancel).</li>
 </ul>
 <h3 id="cancel-proposal">Cancel Proposal<a class="headerlink" href="#cancel-proposal" title="Permanent link">&para;</a></h3>
-<p>The creator of a proposal can cancel it at any time before it takes effect.</p>
+<p>The creator can cancel a proposal only before it expires, as long as it has not already been canceled.</p>
 <p><strong>Example</strong>:</p>
 <div class="highlight"><pre><span></span><code>&gt;deleteProposal proposalId
 # id: proposal id
@@ -4163,7 +4168,7 @@ The TRON network only records the state of your last vote. This means that every
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 13, 2026 02:58:55 UTC">June 13, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 20, 2026 06:44:06 UTC">November 20, 2026</span>
   </span>
 
     

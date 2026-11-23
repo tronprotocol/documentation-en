@@ -708,7 +708,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/mechanism-algorithm/sr/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/mechanism-algorithm/sr.md",
       "source_path": "docs/mechanism-algorithm/sr.md",
-      "last_modified": "2026-06-14T09:22:31+08:00"
+      "last_modified": "2026-11-20T14:44:06+08:00"
     },
     {
       "title": "Account Model",
@@ -716,7 +716,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/mechanism-algorithm/account/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/mechanism-algorithm/account.md",
       "source_path": "docs/mechanism-algorithm/account.md",
-      "last_modified": "2026-06-14T09:22:31+08:00"
+      "last_modified": "2026-11-20T14:44:15+08:00"
     },
     {
       "title": "Resource Model",
@@ -724,7 +724,7 @@
       "html_url": "https://tronprotocol.github.io/documentation-en/mechanism-algorithm/resource/",
       "markdown_url": "https://raw.githubusercontent.com/tronprotocol/documentation-en/master/docs/mechanism-algorithm/resource.md",
       "source_path": "docs/mechanism-algorithm/resource.md",
-      "last_modified": "2026-06-14T09:22:31+08:00"
+      "last_modified": "2026-11-20T14:44:23+08:00"
     },
     {
       "title": "System Contracts",
