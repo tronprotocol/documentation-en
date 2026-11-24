@@ -1,6 +1,6 @@
 # System Contracts
 
-The TRON network supports many different types of transactions, such as TRX transfers, TRC-10 transfers, smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `wallet/deploycontractAPI`.The transaction type of stake TRX is `FreezeBalanceV2Contract`, which requires calling the ` wallet/freezebalancev2API`. We collectively refer to the implementation of these different transaction types as system contracts.
+The TRON network supports many different types of transactions, such as TRX transfers, TRC-10 transfers, smart contract creation and triggering and TRX staking. To create different types of transactions, you need to call different APIs. For example, the transaction type for smart contract deployment is `CreateSmartContract`, which requires calling the `/wallet/deploycontract` API. The transaction type for TRX staking is `FreezeBalanceV2Contract`, which requires calling the `/wallet/freezebalancev2` API. We collectively refer to the implementation of these different transaction types as system contracts.
 
 ## ContractType Overview
 
@@ -11,10 +11,10 @@ Every system contract is identified by a `ContractType` enum value defined in [`
 | 0 | AccountCreateContract | AccountContract.AccountCreateContract | CreateAccountActuator | ✅ Enabled | Create an on-chain account |
 | 1 | TransferContract | BalanceContract.TransferContract | TransferActuator | ✅ Enabled | TRX Transfer |
 | 2 | TransferAssetContract | AssetIssueContractOuterClass.TransferAssetContract | TransferAssetActuator | ✅ Enabled | TRC-10 token transfer |
-| 3 | VoteAssetContract | | | 🚫 Disabled (Actuator not implemented) | |
+| 3 | VoteAssetContract | VoteAssetContractOuterClass.VoteAssetContract | | 🚫 Disabled (Actuator not implemented) | |
 | 4 | VoteWitnessContract | WitnessContract.VoteWitnessContract | VoteWitnessActuator | ✅ Enabled | Vote for SRs using account's TronPower; refresh voting records (takes effect at next maintenance) |
 | 5 | WitnessCreateContract | WitnessContract.WitnessCreateContract | WitnessCreateActuator | ✅ Enabled | Apply to become a SR |
-| 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC-10 tokens; freeze balance during recruitment period according to ICO rules |
+| 6 | AssetIssueContract | AssetIssueContractOuterClass.AssetIssueContract | AssetIssueActuator | ✅ Enabled | Issue TRC-10 tokens; optionally lock issued tokens |
 | 8 | WitnessUpdateContract | WitnessContract.WitnessUpdateContract | WitnessUpdateActuator | ✅ Enabled | Update the official website URL of a SR |
 | 9 | ParticipateAssetIssueContract | AssetIssueContractOuterClass.ParticipateAssetIssueContract | ParticipateAssetIssueActuator | ✅ Enabled | Participate in a TRC-10 token issuance with TRX during the ICO period |
 | 10 | AccountUpdateContract | AccountContract.AccountUpdateContract | UpdateAccountActuator | ✅ Enabled | Modify account name (subject to AllowUpdateAccountName constraint) |
@@ -39,7 +39,7 @@ Every system contract is identified by a `ContractType` enum value defined in [`
 | 45 | UpdateEnergyLimitContract | SmartContractOuterClass.UpdateEnergyLimitContract | UpdateEnergyLimitContractActuator | ✅ Enabled | Update `origin_energy_limit` (max energy willing to pay per contract call) |
 | 46 | AccountPermissionUpdateContract | AccountContract.AccountPermissionUpdateContract | AccountPermissionUpdateActuator | ✅ Enabled | Update account permissions: owner/witness/active |
 | 48 | ClearABIContract | SmartContractOuterClass.ClearABIContract | ClearABIContractActuator | ✅ Enabled | Clear contract ABI |
-| 49 | UpdateBrokerageContract | StorageContract.UpdateBrokerageContract | UpdateBrokerageActuator | ✅ Enabled | Adjust the brokerage ratio (0-100%) for voters |
+| 49 | UpdateBrokerageContract | StorageContract.UpdateBrokerageContract | UpdateBrokerageActuator | ✅ Enabled | Adjust the percentage of rewards retained by the SR |
 | 51 | ShieldedTransferContract | ShieldContract.ShieldedTransferContract | ShieldedTransferActuator | 🚫 Disabled (`getAllowShieldedTransaction` not enabled) | ZK-SNARK anonymous transfer (transparent in + shielded spend/receive + transparent out) |
 | 52 | MarketSellAssetContract | MarketContract.MarketSellAssetContract | MarketSellAssetActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Place a limit sell order on the built-in order book (sell/buy two assets + price) |
 | 53 | MarketCancelOrderContract | MarketContract.MarketCancelOrderContract | MarketCancelOrderActuator | 🚫 Disabled (`getAllowMarketTransaction` not enabled) | Cancel own unexecuted market order; refund remaining assets |
@@ -64,7 +64,9 @@ The protobuf message definition and field-level documentation of each contract a
 
 - `owner_address`: The address of the account creating the new account.
 - `account_address`: The target address to create.
-- `type`: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.
+- `type`: The type assigned to the new account: `0` for a normal account (`Normal`), `1` for an `AssetIssue` account (used by genesis accounts), or `2` for a smart contract account (`Contract`).
+
+Setting `type` to `Contract` does not deploy a smart contract. Use `CreateSmartContract` for deployment; it also creates the contract account.
 
 ## TransferContract
 
@@ -113,7 +115,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `owner_address`: The address of the account casting votes for SRs.
 - `vote_address`: The SR address.
 - `vote_count`: The votes number.
-- `support`: Constant true, not used.
+- `support`: Unused.
 
 ## WitnessCreateContract
 
@@ -161,7 +163,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `name`: The token name to issue.
 - `abbr`: The abbreviation of the token name.
 - `total_supply`: The amount of token to issue.
-- `frozen_supply`: The amount of token and staked days to stake.
+- `frozen_supply`: A list of token amounts to lock. Each entry specifies `frozen_amount` and `frozen_days`. The lock expires at `start_time + frozen_days * 86400000` (milliseconds), and the tokens can then be released with `UnfreezeAssetContract`.
 - `trx_num`: trx_num/num defines the token price.
 - `num`: trx_num/num defines the token price.
 - `start_time`: ICO starts time.
@@ -202,12 +204,11 @@ The protobuf message definition and field-level documentation of each contract a
 - `owner_address`: The address of the account participating in the asset issue.
 - `to_address`: The token owner's address.
 - `asset_name`: The token id.
-- `amount`: The amount of token to purchase.
+- `amount`: The amount of TRX to spend, in sun. The purchased token amount is `floor(amount * num / trx_num)`, in the token's smallest units.
 
 ## AccountUpdateContract
 
 ```protobuf
-    // Update account name. Account name is unique now.
     message AccountUpdateContract {
       bytes account_name = 1;
       bytes owner_address = 2;
@@ -215,7 +216,7 @@ The protobuf message definition and field-level documentation of each contract a
 ```
 
 - `owner_address`: The address of the account to update.
-- `account_name`: Account name.
+- `account_name`: Account name. When `AllowUpdateAccountName` is `0` (the current mainnet setting), the name must be unique, and an existing non-empty name cannot be changed.
 
 ## UnfreezeBalanceContract
 
@@ -229,7 +230,7 @@ The protobuf message definition and field-level documentation of each contract a
 
 - `owner_address`: The address of the account unstaking TRX.
 - `resource`: The type of resource to unfree.
-- `receiver_address`: The account address to receive resource.
+- `receiver_address`: The address that previously received the delegated Stake 1.0 resources. Specify it when unstaking delegated TRX; omit it when unstaking TRX for the owner's own resources. The unstaked TRX is returned to `owner_address`. This field is ignored when resource delegation is disabled. When used, it must differ from `owner_address`.
 
 ## WithdrawBalanceContract
 
@@ -266,8 +267,10 @@ The protobuf message definition and field-level documentation of each contract a
 - `owner_address`: The address of the token issuer.
 - `description`: The description of the token.
 - `url`: The website url of the token.
-- `new_limit`: The bandwidth consumption limit of each account when transfers asset.
-- `new_public_limit`: The bandwidth consumption limit of the accounts.
+- `new_limit`: The bandwidth limit for each account transferring this TRC-10 token, covered by the token issuer.
+- `new_public_limit`: The total bandwidth limit shared by all accounts transferring this TRC-10 token, covered by the token issuer.
+
+If the issuer-provided bandwidth cannot cover the transaction, the sender's bandwidth or TRX is used instead.
 
 ## ProposalCreateContract
 
@@ -326,14 +329,14 @@ The protobuf message definition and field-level documentation of each contract a
     message CreateSmartContract {
       bytes owner_address = 1;
       SmartContract new_contract = 2;
-      int64 call_token_value = 5;
-      int64 token_id = 6;
+      int64 call_token_value = 3;
+      int64 token_id = 4;
     }
 ```
 
 - `owner_address`: The address of the account deploying the contract.
 - `new_contract`: the smart contract.
-- `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
+- `call_token_value` : The amount of TRC-10 tokens to send to the contract during deployment.
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
 
 ## TriggerSmartContract
@@ -352,7 +355,7 @@ The protobuf message definition and field-level documentation of each contract a
 - `owner_address`: The address of the account calling the contract.
 - `contract_address`: The contract address.
 - `call_value`: The amount of TRX to send to the contract when triggers.
-- `data`: The parameters to trigger the contract.
+- `data`: The data sent to the contract, typically consisting of a 4-byte function selector followed by the ABI-encoded function arguments.
 - `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
 - `token_id` : The id of the TRC-10 token to be sent to the contract.
 
@@ -474,7 +477,7 @@ For more details, see [Account Permission Management](./multi-signatures.md).
 ```
 
 - `owner_address`: The address of the SR adjusting its brokerage ratio.
-- `brokerage`: Brokerage ratio, from 0 to 100, 1 means 1%.
+- `brokerage`: The percentage of rewards retained by the SR, from 0 to 100. The remaining percentage is used for voter rewards. For example, `20` means the SR retains 20% and voters share the remaining 80%.
 
 ## FreezeBalanceV2Contract
 
