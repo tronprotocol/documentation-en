@@ -102,6 +102,7 @@ message AccountPermissionUpdateContract {
 
 - This contract is used to **update all account permission structures at once**, which is an "all-or-nothing" update. Even if modifying a single permission, the full permission set must be resubmitted to prevent accidental loss of access.
 - Even if only one permission is modified, all other existing permissions must be fully specified in the contract.
+- The `witness` field is required for witness accounts and must be omitted for non-witness accounts. Including this field for a non-witness account causes validation to fail.
 
 ### 5. Contract Type Enumeration: `ContractType`
 
@@ -133,10 +134,10 @@ localwitness = [
 ]
 ```
 
-If the `witness` permission is modified, then:
+If the `witness` permission is delegated to `TSMC4YzU...PBebBk2E`, set `localWitnessAccountAddress` to the original SR account address and configure `localwitness` with the private key of the delegated address:
 
 ```properties
-localWitnessAccountAddress = TSMC4YzU...PBebBk2E
+localWitnessAccountAddress = TMK5c1jd...m6FXFXEz
 localwitness = [
   yyy  # Private key of TSMC4YzU...PBebBk2E
 ]
@@ -150,6 +151,8 @@ localwitness = [
 - Supports up to 8 `active` permission configurations.
 - Permission IDs start from 2 and increment.
 - When creating an account by default, one `active` permission is generated, with a default threshold of 1, containing only the account's own address.
+
+>**Note**: An Active permission can authorize `AccountPermissionUpdateContract` (ID 46) when bit 46 is enabled in its `operations` bitmap. The default Active permission does not enable bit 46.
 
 ## Fees and Constraints
 
@@ -169,9 +172,9 @@ The above fees can be adjusted through proposals.
 3. Call `AccountPermissionUpdateContract`.
 4. Sign and broadcast the transaction.
 
-**Note**: When a block contains transactions that modify account permissions, no further transactions from this account will be included in this block to ensure that such account permission modify transactions actually take effect starting from the next block.
+**Note**: When java-tron generates a block, it skips subsequent transactions from the same account after selecting an `AccountPermissionUpdateContract`. The permission state is updated when the update transaction executes. Under this block-generation policy, subsequent transactions using the updated permissions can be included starting from the next block.
 
-#### Example Request:
+#### Example Request (Witness Account):
 
 ```text
 POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
@@ -204,6 +207,8 @@ POST http://{{host}}:{{port}}/wallet/accountpermissionupdate
   ]
 }
 ```
+
+The `operations` value shown in this example includes bit 46, allowing this Active permission to authorize account permission updates.
 
 ### 2. Operations Value Calculation Example
 
